@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/references.bib",
+    "evidence/cut_lp_certify.py",
+    "evidence/J_m_1_certificates.json",
+    "evidence/J_m_1_verification.json"
+  ],
+  "pdf": "manuscript/article.pdf",
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex"
+}

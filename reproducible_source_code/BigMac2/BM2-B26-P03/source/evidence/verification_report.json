@@ -1,0 +1,48 @@
+{
+  "checks": {
+    "all_168_invertible_matrices_reconstructed": true,
+    "all_checks_passed": true,
+    "conjugacy_class_count": 15,
+    "conjugacy_element_checks": 50400,
+    "irreducible_class_ids": [
+      7,
+      11,
+      14
+    ],
+    "subgroup_count": 179,
+    "subgroup_direct_product_checks": 45473,
+    "subgroup_partition_coverage": 179,
+    "subgroup_single_adjunction_saturation_checks": 30072,
+    "weak_ekr_pair_checks": 12288,
+    "weak_ekr_summary": [
+      {
+        "antecedent_true_tests": 3849,
+        "class_id": 7,
+        "order": 7,
+        "violations": 2184,
+        "witness_verified": true
+      },
+      {
+        "antecedent_true_tests": 3849,
+        "class_id": 11,
+        "order": 21,
+        "violations": 2184,
+        "witness_verified": true
+      },
+      {
+        "antecedent_true_tests": 3849,
+        "class_id": 14,
+        "order": 168,
+        "violations": 2184,
+        "witness_verified": true
+      }
+    ]
+  },
+  "inputs": {
+    "evidence/gl32_subgroup_irreducibility.json": "6c48a9801f8f94bd0a95b4b2f86300fc0d3160bfeae5b82357099c3d2222528c",
+    "evidence/gl32_weak_ekr_classification.json": "2d807accf4fc246e277b0118d28c190bdddca8ea1db68da73d54744c82eb4572",
+    "source.md": "89ab768f731deb6bf1cced9744fe07d7bbd5b865896b0b59dcf9e19bc59c2ac4"
+  },
+  "schema": "gl32-independent-verification-v1",
+  "verifier_independence": "Standalone implementation; imports neither generating script and reconstructs the matrix group and every tested relation from JSON."
+}

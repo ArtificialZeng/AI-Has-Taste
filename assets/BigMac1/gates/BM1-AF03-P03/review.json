@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF03-P03",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "原题指定 n=5 基底端点已精确认证；一般 n 猜想和初始理想递推仍未解决。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "371018beb64598ae541912982284da690d461287e8cac30108cf5ed2f6575e0a",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; Conjecture 3.2 is certified at n=5 over every characteristic-zero field: the quotient dimension and candidate rank are both 1920. A uniform 4n invariant-generator proof, the exact QQ/Singular normal-form certificate, an exact QQ/FLINT reconstruction, and a frozen no-import QQ/Singular reconstruction of all 396 blocks agree. The general-n conjecture and an initial-ideal recurrence remain open.",
+      "sha256": "3bbbac8715ee6b0cc6beceacd1b71168ff8ca9f24c363d30a5f7082a3c8c9919",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nAudit date: 2026-08-29 (Asia/Shanghai).  Mode: web-search validation against\nprimary sources, followed by a manuscript-level consistency check.\n\n## Pass 1: external claim inventory\n\n| ID | Manuscript claim | Claim form | Cited location | Disposition |\n|---|---|---|---|---|\n| C01 | Lentfer constructs \\(B_n^{(1,2)}\\) and Conjecture 3.2 says it is a basis. | paraphrase | Definition 3.1 and Conjecture 3.2, journal p. 717 | verified |\n| C02 | The candidate cardinality is \\(2^{n-1}n!\\). | paraphrase | Theorem 3.7, journal p. 719 | verified |\n| C03 | The author reports verification ",
+      "sha256": "7bd535074726ea32d6bb019769188a5cd09702cc95b1310e2247399f3dae59f1",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nAudit date: 2026-08-29 (Asia/Shanghai).\n\nStatus: **PASS**.  The main exact certificate, independent Artin--exterior\nreconstruction, and frozen no-import breaker all pass in characteristic zero.\n\n## Endpoint and hypotheses\n\nThe audited endpoint is precisely the finite specialization (n=5) of\nLentfer's Conjecture 3.2: over a characteristic-zero field, the residue\nclasses of the 1920 monomials in (B_5^{(1,2)}) form a basis of\n(R_5^{(1,2)}).  `problem/source_statement.md` preserves the supplied\nproblem, and `problem/formal_statement.md` fixes the coefficient field,\nsupercommutative ",
+      "sha256": "13983a78ed84ca5fadcf170d6a79319392d2f5d79f46de12f172e4c9d03b0060",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "# Submission-readiness audit\n\nAudit date: 2026-08-29 (Asia/Shanghai).\n\nStatus: **PASS**.  The frozen no-import breaker completed all 396 blocks,\nand the isolated release staging manifest verifies every recorded file.\n\n## Mathematical gate\n\n- [x] The formal theorem matches Conjecture 3.2 at the claimed finite endpoint\n  (n=5), and the paper labels it a certified finite theorem.\n- [x] Characteristic zero, the supercommutative convention, the group action,\n  and the invariant ideal appear in the theorem setup.\n- [x] The generator proof treats the scalar case, (n=1), odd collisions,\n  and zero Rey",
+      "sha256": "38c1d779b681b2806ce1cc47d013a95bf8956965cc3e9f52c4fda21c89a0fc91",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/04_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-5-page visual/build/metadata gate PASS; current SHA-256 371018beb64598ae541912982284da690d461287e8cac30108cf5ed2f6575e0a agrees with final record. # PDF audit\n\nAudit date: 2026-08-29 (Asia/Shanghai). Final source audited:\n`paper/main.tex`; rendered artifact: `paper/main.pdf`.\n\n## Build and metadata\n\nA clean temporary-directory build from only `main.tex` and `references.bib`\ncompleted under pdfT",
+      "sha256": "83d1a8155149e6262f4c241056ab2430f0b3c8bdb03bff15df827e7dfb11bd19",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/05_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "原题指定 n=5 基底端点已精确认证；一般 n 猜想和初始理想递推仍未解决。",
+      "sha256": "6bfb96ae8a70249d94117f948da6218dcaf38a38035de9cfb98a947ce2f9e8d6",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/06_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "- <code>literature/sources/post_result_arxiv_search_exact_title_2026-08-29.html</code>\n- <code>literature/sources/post_result_arxiv_search_conjecture_3_2_2026-08-29.html</code>\n- <code>literature/sources/post_result_doi_10.5802_alco.424_csl.json</code>\n- <code>literature/sources/post_result_ALCO_424_publisher_2026-08-29.html</code>\n- <code>literature/sources/post_result_github_repo_exact_title_2026-08-29.json</code>\n  and <code>literature/sources/post_result_github_repo_doi_2026-08-29.json</code>\n- <code>literature/sources/post_result_github_code_arxiv_2026-08-29.json</code>\n## Final pre-release novelty pass after the exact $n=5$ result\nThis is the contractual second novelty search. It ran on **2026-08-29,\nThis pass is the final pre-release novelty lock for the present release, so no",
+      "sha256": "fbb0b404b9c1c0da19f093e1a9a0611fe64c86f2fb098f1115a86d961ca6ddf0",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/07_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C05 | As of the cutoff there is no public proof/disproof of $n=5$ or of the full conjecture. | global novelty/absence claim | **not established globally; no solution found in the recorded search scope** | Strongest positive frontier evidence: Jiang--Lentfer, arXiv:2608.02881v1 (submitted 2026-08-03), Table 1, PDF p. 3, marks the $(k,j)=(1,2)$ dimension $2^{n-1}n!$ with a dagger and says daggered entries are conjectural. TeX lines 221--244. Lentfer, arXiv:2505.14885v2 (revised 2026-06-23), PDF p. 10, says all $k+j\\ge3$ Frobenius-series cases remain open. Exact-title, exact-topic, author, citing-paper, publisher/DOI, and code searches found no proof/disproof. “Not found” is limited to those sources and queries. | 95% for the scoped conclusion; 0% for any impossible-to-certify all-public-literature absence claim | Gate 1 permits the $n=5$ result to be reported with the stated novelty qualification. The contractual final pre-release search was completed after the exact result was available. |\n| C10 | A 2026 Lentfer dissertation may supersede the paper. | unverified source lead | **bibliographic lead located; thesis text not publicly located in the audited official sources** | Jiang--Lentfer arXiv:2608.02881v1 bibliography cites John Lentfer, *Combinatorics of Bosonic-Fermionic Coinvariant Rings*, PhD thesis, UC Berkeley, 2026, but gives no URL. The UC Berkeley department publication searches returned no Lentfer/title match; the official author page links no thesis. | 90% that the dissertation exists as cited; 0% on uninspected contents | Its unavailability in the final pre-release pass is an explicit residual limitation, not evidence that it contains no solution. |\n## Final pre-release Gate-1 verdict after the exact $n=5$ result\n**NOVELTY_LOCK: FINAL PRE-RELEASE PASS COMPLETE; PASS, QUALIFIED.** After the",
+      "sha256": "bcbcb247a3a541b5132981bad519a6a38088b1c80177a5e74fe130034ae56f66",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P03/evidence/08_claim_ledger.md"
+    }
+  ]
+}

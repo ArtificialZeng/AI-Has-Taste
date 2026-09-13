@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "python": "3.13.5",
+  "script_sha256": "769f8b2b0202de3eeaae740437f494e6604fdac59b5c18994e4d6c6a385e699d",
+  "tests": [
+    {
+      "name": "valid_certificate",
+      "expected": "accept",
+      "returncode": 0,
+      "output": "{\"certificate_sha256\": \"b57cad6aeea0d3db3ac39999bfbdcdcacd48c36d5b2de4883e6806a080bfc935\", \"claim\": \"the corrected ordered star4 chamber contains no saturated critical root\", \"saturated_vector_dimension\": 48, \"singular\": \"Singular for arm64-Darwin version 4.4.1 (44105, 64 bit) Nov 11 2025 16:12:34\", \"singular_script_sha256\": \"195856c3e4e1463872515b2b65e8731cd6c2105537ab53320a3ac60f8a2133ee\", \"status\": \"ACCEPT\", \"sturm_roots_in_open_2_infinity\": 0, \"verifier_sha256\": \"d83386a7256562094b3bee44dcb1115efc58e755509a1130c3ba6815fa081dbb\"}"
+    },
+    {
+      "name": "changed_chamber_edge",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "REJECT: certificate is not the star4 chamber"
+    },
+    {
+      "name": "changed_vector_dimension",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "REJECT: unexpected ideal invariants"
+    },
+    {
+      "name": "weakened_ideal_consequence",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "REJECT: altered ideal consequences"
+    },
+    {
+      "name": "changed_sturm_entry",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "REJECT: Sturm sequence mismatch"
+    },
+    {
+      "name": "missing_conclusion",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "REJECT: wrong or incomplete top-level schema"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+AFFINE-OMEGA TILTED MOVING-SHEET TEST RESULTS
+Date: 2026-08-24
+Scope: tilted chart 1/5<=X<=3/13 only; full compact ball/common metric/fixed lens open.
+Interpreter: .venv/bin/python
+Python: 3.11.15
+SymPy: 1.14.0
+
+NORMAL SOURCE: PASS (exit 0)
+PASS original fully conjugated Hermitian gate and Gram gate
+PASS 22/18/1013 quotient counts and 48/48 strict controls
+PASS lambda, 0<Z<1, rank-two PSD, both signed z, D>=S/100
+PASS exact S->0 obstruction for every X>3/13
+PASS X=1/5 seam, X=3/13 endpoint, 72/72 exact legal nodes
+TILT_SLOPE -10636/275
+QUOTIENT_COUNTS 22 18 1013
+BERNSTEIN_DEGREE (5, 7)
+BERNSTEIN_CONTROLS 48
+STRICT_RESERVE 2564950982194530478444050838857341987999/31850496000000000000000000000
+Z_LOWER 8879008598718934873/15857127000000000000
+Z_UPPER 8316795197/13013000000
+ENDPOINT_TMAX -1/100
+ENDPOINT_DANGER 1/1000000
+LEFT_SEAM_36GAMMA 213355344357890421512795094325969057679/40000000000000000000000000000000000
+RIGHT_ENDPOINT_36GAMMA 184421770823082033734271204948812328298851568079/16726464040000000000000000000000000000000000
+VERIFIER_SHA256 50c81b2ce85f5d162844a477e329d79301b1e54facbddd9f4b6506446a00992f
+
+NORMAL INDEPENDENT REFEREE: PASS (exit 0)
+PASS independent signed-z Gram columns and original Hermitian gate
+PASS direct 22/18/1013 quotient and 48/48 strict controls
+PASS independent lambda/Z/rank/signed-z and D>=S/100 legality
+PASS independent X>3/13 S->0 obstruction
+PASS independent seam/endpoint data and 72/72 legal nodes
+TILT_SLOPE -10636/275
+QUOTIENT_COUNTS 22 18 1013
+BERNSTEIN_DEGREE (5, 7)
+BERNSTEIN_CONTROLS 48
+STRICT_RESERVE 2564950982194530478444050838857341987999/31850496000000000000000000000
+Z_LOWER 8879008598718934873/15857127000000000000
+Z_UPPER 8316795197/13013000000
+ENDPOINT_TMAX -1/100
+ENDPOINT_DANGER 1/1000000
+LEFT_SEAM_36GAMMA 213355344357890421512795094325969057679/40000000000000000000000000000000000
+RIGHT_ENDPOINT_36GAMMA 184421770823082033734271204948812328298851568079/16726464040000000000000000000000000000000000
+REFEREE_SHA256 becc0405facab40e95aac34e718453010bb18fea29c8ab73e69657157d9a1acd
+
+FAIL-CLOSED SOURCE -O: PASS (exit 1)
+RuntimeError: fail closed: optimized Python disables verification
+
+FAIL-CLOSED SOURCE BAD DEPENDENCY: PASS (exit 1)
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_ranktwo_transverse_compact_ball_positive_z_moving_sheet_x4_breakpoint_extension.md
+
+FAIL-CLOSED SOURCE DROP TERM: PASS (exit 1)
+RuntimeError: verification failed: complete post-first-layer term set
+
+FAIL-CLOSED REFEREE -O: PASS (exit 1)
+RuntimeError: fail closed: optimized Python disables verification
+
+FAIL-CLOSED REFEREE BAD DEPENDENCY: PASS (exit 1)
+RuntimeError: independent verification failed: dependency hash mismatch tmp/research/common_metric_ranktwo_transverse_compact_ball_positive_z_moving_sheet_x4_breakpoint_extension.md
+
+FAIL-CLOSED REFEREE DROP TERM: PASS (exit 1)
+RuntimeError: independent verification failed: 22-term bidegree-(5,4) direct quotient
+
+PY_COMPILE SOURCE+REFEREE: PASS (exit 0; cache outside workspace)
+
+SOURCE-FREEZE MANIFEST: PASS (direct shasum -a 256 -c)
+THEOREM MANIFEST: PASS (direct shasum -a 256 -c)
+INDEPENDENT-REFEREE MANIFEST: PASS (direct shasum -a 256 -c)
+
+RESULT: exact strict partial-theorem candidate on the closed affine-omega
+tilted chart. Promotion remains conditional on independent root replay.

@@ -1,0 +1,1608 @@
+                                               Representation Redundancy and Structural Complexity in
+                                                                Finite-Field Inversion
+                                                                               Zheng Zhang ∗, Na Zhang †
+
+
+
+
+arXiv:2609.04583v1 [cs.LG] 4 Sep 2026
+                                                                                          Abstract
+                                                 The representation chosen for a mathematical operation can affect both its algebraic form
+                                              and its empirical learning difficulty. We study this phenomenon for inversion over F2n , with field
+                                              elements expressed in varying ordered F2 -bases. We prove that two ordered bases induce the
+                                              same coordinate inversion map if and only if they belong to the same Galois orbit. Since every
+                                              orbit has size n, the correspondence between ordered bases and distinct inversion maps is exactly
+                                              n-to-one. We then analyze three Boolean formulations of inversion. The reference formulation
+                                              has algebraic degree n−1 and joint ANF leap 1, the mixed representation formulation has degree
+                                              2(n − 1) and joint ANF leap 2, and the complete raw formulation has degree at most 3(n − 1)
+                                              and joint ANF leap at least n. Exhaustive computations agree with the theoretical results
+                                              and bounds in the cases considered. Controlled experiments with multilayer perceptrons show
+                                              the same ordering in learning difficulty, while Galois orbit redundancy provides only a limited
+                                              generalization benefit under the tested conditions. These results show that exact redundancy
+                                              among representations can coexist with changes in Boolean structure and learning behavior
+                                              when the representation is exposed as part of the input.
+                                                 Keywords: Finite field; Algebraic normal form; Boolean functions; Neural-network learning
+
+
+                                              1     Introduction
+                                              Many mathematical and learning problems admit more than one coordinate representation of
+                                              the same underlying object. An element of a finite field, a point on a manifold, an image under
+                                              a group action, or a physical state expressed in different bases may all be encoded by different
+                                              input vectors while representing the same object. Although the underlying operation remains
+                                              unchanged, its coordinate form can depend strongly on the chosen representation. This raises
+                                              two basic questions: how much of the variation among representations is redundant, and how
+                                              does the choice of representation affect the algebraic structure and learnability of the resulting
+                                              map?
+
+                                              1.1    Symmetry and Sample Complexity
+                                              A central motivation for equivariant learning is that exploiting symmetry and redundancy among
+                                              representations can improve sample efficiency and generalization. This may be achieved by
+                                              encoding a known group action in the architecture, sharing parameters across inputs connected
+                                              by the symmetry, or constructing invariant representations Cohen and Welling (2016); Esteves
+                                              (2020); Bronstein et al. (2021).
+                                          ∗
+                                             Corresponding author: Department of Mathematics, Towson University, 7800 York Rd, Towson, MD 21204, USA.
+                                        Email: zhengzhang@towson.edu.
+                                           †
+                                             Department of Mathematics, Towson University, 7800 York Rd, Towson, MD 21204, USA. Email:
+                                        nzhang@towson.edu.
+
+
+                                                                                              1
+    Several works place these benefits on rigorous statistical foundations. Generalization bounds
+for invariant classifiers can depend on the complexity of the quotient space induced by the
+transformations, which may be much smaller than that of the full input space Sokolić et al.
+(2017). Strict generalization improvements have also been established for equivariant linear
+models under suitable distributional assumptions Elesedy and Zaidi (2021). Invariant kernels
+can improve sample complexity by a factor related to the size of the transformation group, with
+the finite-sample gain also depending on the structure of the group Bietti et al. (2021). Related
+separation results quantify the benefits of architectural biases such as locality and weight sharing
+by comparing convolutional, locally connected, and fully connected networks Lahoti et al. (2024).
+    These works assume a known transformation structure or impose a corresponding architec-
+tural constraint, and then quantify its statistical benefits within a specified learning model. Our
+focus is complementary. We study a finite and exactly enumerable setting in which two prop-
+erties can be analyzed separately. The first is the exact redundancy induced by representation
+choice. The second is the algebraic structure of the joint task obtained when the representation
+itself is exposed as an input variable.
+
+1.2    Redundancy and Algebraic Complexity
+We study two aspects of representation choice as separate, precisely defined questions.
+Question 1 (Exact redundancy). Given a family of coordinate representations related by a
+known symmetry group, when do two representations induce exactly the same function, rather
+than agreeing only approximately or with high probability? How large are the resulting equiv-
+alence classes?
+Question 2 (Algebraic complexity). When the representation is included as part of the
+input in addition to the operand, how does it change the algebraic structure of the resulting
+Boolean map?
+    This question does not concern the computational complexity of finite-field inversion, since
+the underlying operation remains unchanged. It concerns the ANF structure of the joint map
+from the representation and the operand to the output.
+    The two questions are defined at different mathematical levels. Exact redundancy concerns
+equivalence among the maps associated with different representations, whereas algebraic com-
+plexity concerns the interactions between the representation variables and the operand variables
+in the joint map. Neither analysis can replace the other.
+
+1.3    Finite-Field Inversion as an Exactly Solvable Model
+We study these questions through multiplicative inversion in the finite field F = F2n , expressed
+in coordinates relative to a varying ordered basis over F2 . Finite-field inversion is a classical
+example of a vectorial Boolean function with important cryptographic properties Nyberg (1994);
+Carlet (2021). It also forms the nonlinear core of the AES S-box, where inversion in F28 is
+followed by an affine transformation Daemen and Rijmen (2020).
+    Our earlier work studied finite-field multiplication under changes of basis, with an emphasis
+on symmetry, invariance, and learning across Galois equivalent representations Zhang and Zhang
+(2026). The present work turns to inversion and studies both the exact redundancy among its
+coordinate maps and the change in ANF structure when the basis is included as part of the
+input. We choose inversion as a model for three reasons.
+    First, it provides a finite and explicit space of representations. The admissible representations
+are precisely the ordered F2 -bases of F , and for small n, the entire representation space can be
+enumerated, so sampling is unnecessary.
+    Second, its representation redundancy can be characterized exactly. The Galois group of
+F/F2 is cyclic of order n and acts naturally on ordered bases through the Frobenius automor-
+phism. This suggests that bases in the same Galois orbit define equivalent tasks. The central
+
+
+
+                                                 2
+question is whether belonging to the same orbit is also necessary for two bases to induce the
+same coordinate inversion map.
+    Third, the structural complexity introduced by the choice of representation can be analyzed
+algebraically. In binary coordinates, inversion becomes a vector-valued Boolean map whose
+algebraic normal form can be studied directly. This allows us to determine how the interactions
+among the input variables change when the basis is fixed, used to transform the input, or
+included as part of the raw input. For small fields, the resulting structural quantities can also
+be verified by exhaustive computation over the full input space.
+
+1.4    Two Theorem Chains
+We answer the two questions through two complementary chains of results.
+Exact redundancy. We give an exact characterization of task equivalence. Two ordered bases
+induce the same coordinate inversion map if and only if they belong to the same Galois orbit.
+Every such orbit contains exactly n bases, so each inversion task has exactly n different basis
+representations. Equivalently, the number of distinct inversion maps is the number of ordered
+bases divided by n. Thus, basis variation produces an exact n-to-one redundancy.
+Algebraic complexity. We also characterize how including the basis as part of the input
+changes the algebraic complexity of inversion. The reference inversion map has degree n − 1,
+while the mixed representation map Jn (P u) has degree 2(n − 1). Thus, introducing the basis
+matrix at the input transformation stage doubles the algebraic degree. The complete raw map
+fraw , which also includes the inverse basis transformation, has degree at most 3(n − 1).
+    To describe aspects of the ANF structure that are not captured by degree, we introduce the
+joint ANF leap. This definition adapts the leap and staircase ideas of Abbe et al. Abbe et al.
+(2022, 2023) from the Fourier support of scalar-valued functions to the joint ANF support of
+vector-valued Boolean maps. We prove that the joint ANF leap is 1 for the reference map, 2
+for the mixed representation map, and at least n for the complete raw map. These results dis-
+tinguish two complementary aspects of ANF structure: interaction order and stepwise variable
+introduction. We later compare this measure with the observed learning behavior. A formal
+connection to ANF based learnability is left for future work.
+
+Redundancy and accessibility from raw inputs. The contrast between the two
+chains is a central point of the paper. The redundancy result shows that variation among
+representations creates an exact redundancy by a factor of n. The complexity results show
+that exposing the representation changes the ANF structure of the task, both in its interaction
+order and in how its variables must be introduced across the joint ANF support. The existence
+of redundancy does not imply that a model trained on raw inputs can readily use it. Our
+experiments examine whether this distinction is reflected in the observed learning behavior.
+
+1.5    Experiments
+We use four experiments to examine the theoretical results. The first verifies the ANF structure
+for n = 3 and n = 4 by exhaustive computation. The remaining three study learning across
+the three formulations, generalization across Galois orbits, and scaling with training data and
+model width.
+
+Experiment 0: Exact ANF computation. We compute the exact ANF structure of
+the reference, mixed representation, and complete raw formulations for n = 3 and n = 4, and
+compare the results with the theoretical statements and bounds.
+
+Experiment 1: Learning across the three formulations. We compare the three
+formulations under matched experimental conditions to examine whether the ordering suggested
+by their ANF structure is also reflected in the observed learning performance.
+
+
+                                               3
+Experiment 2: Generalization and representation redundancy. We compare
+random-basis and orbit-disjoint splits into training and test sets to examine the practical effect
+of the exact representation redundancy characterized by the first theorem chain.
+
+Experiment 3: Scaling with data and model width. We vary the amount of
+training data and model width to examine whether the empirical differences among the three
+formulations persist as data and model capacity increase.
+
+1.6    Contributions
+Our main contributions are summarized as follows.
+    • Exact representation redundancy. We prove that two ordered bases induce the same
+      coordinate inversion map if and only if they belong to the same Galois orbit. Since each
+      orbit has size n, every inversion task has exactly n different basis representations.
+    • Algebraic complexity under representation change. We characterize how the ANF
+      structure changes when the basis is included at different stages of the inversion map. The
+      algebraic degrees of the reference, mixed representation, and complete raw formulations
+      satisfy
+                                 n − 1 −→ 2(n − 1) −→ ≤ 3(n − 1).
+      We also introduce the joint ANF leap, which adapts the leap ordering principle from
+      the Fourier support of scalar-valued functions to the joint ANF support of vector-valued
+      Boolean maps. For the three formulations, the corresponding values satisfy
+
+                                          1 −→ 2 −→ ≥ n.
+
+      These results describe two complementary aspects of ANF structure: interaction order
+      and stepwise variable introduction.
+    • Computational and empirical verification. We verify the ANF structure for n = 3
+      and n = 4 by exhaustive computation. We then use controlled learning experiments to
+      compare the three formulations, study generalization across Galois orbits, and examine
+      scaling with training data and model width. The observed learning behavior is consistent
+      with the ordering given by the ANF analysis.
+
+
+2     Coordinates over Finite Fields and Galois Orbits
+This section develops the coordinate framework needed to characterize representation redun-
+dancy in finite-field inversion. We first define the reference and basis-dependent inversion maps
+and relate them through a change of basis. We then introduce the Frobenius action on ordered
+bases and prove that its Galois orbits are exactly the equivalence classes of bases that induce
+the same inversion map. This gives an exact count of the redundancy created by basis variation.
+
+2.1    Finite-field coordinates and change of basis
+Let
+                                            F = F2n .
+A standard construction of F is
+                                        F = F2 [t]/(p(t)),
+where p(t) ∈ F2 [t] is irreducible of degree n Lidl and Niederreiter (1997). Let α denote the
+residue class of t modulo p(t). Every element x ∈ F can be written uniquely as
+
+                         x = x0 + x1 α + · · · + xn−1 αn−1 ,    xi ∈ F2 .
+
+
+                                                4
+Hence
+                                        E = (1, α, . . . , αn−1 )
+is an ordered basis of F over F2 . Throughout the paper, we fix E as the reference basis.
+    Let
+                                           V = Fn2 .
+For x ∈ F , we denote its coordinate vector relative to E by
+
+                                    [x]E = (x0 , . . . , xn−1 )T ∈ V.
+
+We extend inversion to all of F by adopting the convention
+
+                                               0−1 := 0.
+
+Definition 1 (Reference inversion map). The reference inversion map is the function
+
+                                            Jn : V −→ V
+
+defined by
+                                  Jn ([x]E ) = [x−1 ]E ,        x ∈ F.
+    Jn is the coordinate realization of field inversion in the fixed reference basis E. It will serve
+as the baseline with a fixed representation throughout the paper.
+    Now let
+                                         B = (b0 , . . . , bn−1 )
+be an arbitrary ordered basis of F over F2 . Every x ∈ F has a unique representation
+
+                             x = u0 b0 + · · · + un−1 bn−1 ,           ui ∈ F2 .
+
+We denote its coordinate vector relative to B by
+
+                                    [x]B = (u0 , . . . , un−1 )T ∈ V.
+
+Definition 2 (Basis-dependent inversion map). For an ordered basis B of F over F2 , the basis-
+dependent inversion map is the function
+
+                                           InvB : V −→ V
+
+defined by
+                                 InvB ([x]B ) = [x−1 ]B ,            x ∈ F.
+   In particular,
+                                             Jn = InvE .
+    Although Jn and InvB are both maps from V to V , their coordinates have different meanings.
+The input and output of Jn are interpreted relative to E, whereas those of InvB are interpreted
+relative to B. Changing the basis therefore changes the coordinate map even though the un-
+derlying field operation x 7→ x−1 remains the same. To compare these coordinate realizations
+within a common reference system, we introduce the matrix that converts B-coordinates into
+E-coordinates.
+Definition 3 (Change-of-basis matrix). For an ordered basis
+
+                                         B = (b0 , . . . , bn−1 ),
+
+define the change-of-basis matrix from B-coordinates to E-coordinates by
+                                                        
+                        PB = [b0 ]E [b1 ]E · · · [bn−1 ]E ∈ GLn (F2 ).
+
+
+                                                    5
+   The jth column of PB is the coordinate vector of bj relative to E. Hence, for every x ∈ F ,
+
+                                             [x]E = PB [x]B .
+
+It follows that
+                                   InvB ([x]B ) = [x−1 ]B
+                                                  = PB−1 [x−1 ]E
+                                                  = PB−1 Jn ([x]E )
+                                                  = PB−1 Jn (PB [x]B ).
+Therefore, for every u ∈ V ,
+                                      InvB (u) = PB−1 Jn (PB u).                              (1)
+We obtained the following lemma.
+Lemma 4. For every ordered basis B of F over F2 ,
+
+                                        InvB = PB−1 ◦ Jn ◦ PB .
+
+   Lemma 4 gives a direct procedure for computing inversion in any basis B. First, PB converts
+the input from the basis B to the reference basis. Next, Jn computes the inverse in the reference
+basis. Finally, PB−1 converts the result back to the basis B. Thus, the effect of choosing B is
+completely described by its change-of-basis matrix PB .
+
+2.2      Frobenius action and Galois orbits
+Subsection 2.1 shows how each ordered basis determines an inversion map through its change-
+of-basis matrix. We now ask when two different bases determine exactly the same map. The
+natural candidate for this equivalence is provided by the Galois action. The Galois group of F
+over F2 is cyclic of order n:
+
+                             Gal(F/F2 ) = ⟨σ⟩ = {σ r : 0 ≤ r ≤ n − 1},
+
+where
+                                        σ(x) = x2 ,          x∈F
+is the Frobenius automorphism.
+    The Galois group acts componentwise on the set of ordered F2 -bases of F . For
+
+                                          B = (b0 , . . . , bn−1 ),
+
+define
+                                  σ r (B) = σ r (b0 ), . . . , σ r (bn−1 ) .
+                                                                          
+
+Since σ r is an F2 -linear automorphism of F , σ r (B) is again an ordered F2 -basis.
+Definition 5 (Galois orbit of a basis). The Galois orbit of an ordered basis B is
+
+                                  O(B) = {σ r (B) : 0 ≤ r ≤ n − 1}.
+
+   The following observation is fundamental to our analysis: two bases in the same Galois orbit
+induce the same coordinate inversion map.
+Theorem 6 (Exact task equivalence). Let B and B ′ be ordered F2 -bases of F . Then
+
+                                InvB = InvB ′        ⇐⇒       B ′ = σ r (B)
+
+for some r ∈ {0, . . . , n − 1}. Equivalently,
+
+                                 InvB = InvB ′       ⇐⇒       B ′ ∈ O(B).
+
+
+                                                      6
+Proof. Suppose first that B ′ = σ r (B). If
+                                                      n−1
+                                                      X
+                                               x=           ui bi ,
+                                                      i=0
+
+then, since σ r fixes F2 ,
+                                                      n−1
+                                                      X
+                                          σ r (x) =         ui σ r (bi ).
+                                                      i=0
+
+Hence,
+                                             [σ r (x)]B ′ = [x]B .
+Since σ r is a field automorphism, it commutes with inversion. It follows that
+
+                 InvB ′ ([x]B ) = [σ r (x)−1 ]B ′ = [σ r (x−1 )]B ′ = [x−1 ]B = InvB ([x]B ).
+
+As x ranges over F , the vector [x]B ranges over Fn2 . Therefore,
+
+                                              InvB ′ = InvB .
+
+   Now suppose that
+                                              InvB ′ = InvB .
+Let S : F → F be the unique F2 linear bijection satisfying S(bi ) = b′i for every i. Then
+
+                                   [S(x)]B ′ = [x]B           for all x ∈ F.
+
+For every nonzero x ∈ F , the equality of the two inversion maps gives
+
+                                     [S(x−1 )]B ′ = [x−1 ]B
+                                                   = InvB ([x]B )
+                                                   = InvB ′ ([S(x)]B ′ )
+                                                   = [S(x)−1 ]B ′ .
+
+Hence,
+                                            S(x−1 ) = S(x)−1 .
+   In particular,
+                                              S(1) = S(1)−1 .
+Since S(1) ̸= 0 and F has characteristic two, this gives S(1) = 1. Hua’s theorem Hua (1949);
+Artin (1957) now implies that S is a field automorphism of F . Hence
+
+                                                   S = σr
+
+for some r ∈ {0, . . . , n − 1}. Consequently,
+
+                                 B ′ = S(b0 ), . . . , S(bn−1 ) = σ r (B).
+                                                               
+
+
+
+
+   The preceding theorem shows that the equivalence classes of basis-dependent inversion tasks
+are precisely the Galois orbits of ordered bases. We next determine the size of these classes.
+The Galois action is free. If σ r (B) = B, then σ r fixes every element of the basis B, and
+therefore every element of F . Thus, σ r must be the identity. Since Gal(F/F2 ) has order n,
+every Galois orbit contains exactly n bases. The following corollary gives the resulting exact
+count of representation redundancy.
+
+
+                                                       7
+Corollary 7 (Exact basis redundancy). The map
+
+                                            B 7−→ InvB
+
+from ordered F2 -bases of F to coordinate inversion maps is exactly n-to-one. Consequently, the
+number of distinct basis-dependent inversion maps is
+                                                    n−1
+                                   | GLn (F2 )|   1 Y n
+                                                =       (2 − 2j ).
+                                       n          n j=0
+
+Proof. By Theorem 6, two ordered bases induce the same inversion map if and only if they
+belong to the same Galois orbit. Every Galois orbit contains exactly n ordered bases, while the
+total number of ordered F2 -bases of F is
+                                                     n−1
+                                                     Y
+                                    | GLn (F2 )| =         (2n − 2j ).
+                                                     j=0
+
+The conclusion follows.
+
+   The |GLn (F2 )| ordered bases induce exactly |GLn (F2 )|/n distinct inversion maps, giving an
+exact redundancy factor of n. After determining this redundancy, we examine how including
+the basis transformation together with the operand changes the algebraic structure of inversion.
+
+
+3     Algebraic Complexity of the Inversion Formulations
+This section compares three formulations of finite-field inversion: the reference, mixed repre-
+sentation, and complete raw formulations. The basis transformation is introduced in stages,
+first through input mixing and then through output conversion. We study the resulting changes
+using algebraic degree and joint ANF leap. Algebraic degree measures the maximum interaction
+order, while joint ANF leap measures how many new variables must be introduced at a single
+step when the joint ANF support is optimally ordered.
+
+3.1    Algebraic Normal Form and Degree
+We begin by recalling the standard definitions of algebraic normal form and algebraic degree for
+Boolean and vector-valued Boolean functions Cusick and Stănică (2017); Carlet (2021).
+Definition 8 (Algebraic normal form and algebraic degree). Let
+
+                                            f : Fd2 −→ F2
+
+be a Boolean function, and write
+
+                                    x = (x0 , . . . , xd−1 )T ∈ Fd2 .
+
+The algebraic normal form (ANF) of f is its unique multilinear polynomial representation
+                                   M           Y
+                         f (x) =            cA     xi ,    cA ∈ F2 .
+                                    A⊆{0,...,d−1}       i∈A
+      L
+Here,    denotes addition in F2 , equivalently XOR, and the empty product corresponds to the
+constant term. The algebraic degree of f is
+                                                
+                                  deg(f ) = max |A| : cA ̸= 0 .
+
+We use the convention deg(0) = −∞.
+
+
+                                                    8
+   For a vector-valued Boolean map
+
+                                G = (G0 , . . . , Gm−1 ) : Fd2 −→ Fm
+                                                                   2 ,
+
+we define
+                                   deg(G) =         max      deg(Gj ).
+                                                 0≤j≤m−1
+
+   We first determine the algebraic degree of inversion in the fixed reference basis. This provides
+the baseline against which the mixed representation and complete raw formulations will be
+compared. The proof uses a standard result from the cryptographic theory of Boolean functions.
+The algebraic degree of a finite-field power map is given by the binary Hamming weight of its
+exponent Carlet (2021). This result applies to Jn because the reference coordinates identify F
+with Fn2 through an invertible F2 -linear map, which preserves algebraic degree.
+Theorem 9 (Degree of reference inversion). For n ≥ 2, the reference inversion map
+
+                                            Jn : Fn2 −→ Fn2
+
+has algebraic degree
+                                           deg(Jn ) = n − 1.
+
+Proof. It is standard that the algebraic degree of the finite-field power map x 7→ xs over F2n
+equals the binary Hamming weight w2 (s) of the exponent s Carlet (2021). The field inversion
+function underlying Jn has the univariate representation
+                                                         n
+                                              x 7−→ x2 −2 ,
+          n
+where 02 −2 = 0. Since
+                                      2n − 2 = (11 · · · 110)2 ,
+we have
+                                         w2 (2n − 2) = n − 1.
+Therefore,
+                                           deg(Jn ) = n − 1.
+
+
+    We next include the basis transformation only at the input stage. Instead of fixing a par-
+ticular change-of-basis matrix PB , we treat the entries of a matrix P jointly with u as Boolean
+input variables and consider the map Jn (P u). This isolates the structural effect of converting
+the input to the reference basis before converting the output back to the original basis.
+Theorem 10 (Degree of mixed representation inversion). Let
+
+                                          P = (pij )0≤i,j≤n−1
+
+be a variable matrix over F2 , and let
+
+                                         u = (u0 , . . . , un−1 )T .
+
+Regarding the entries of P and the coordinates of u jointly as Boolean input variables, we have,
+for every n ≥ 2,                               
+                                   deg Jn (P u) = 2(n − 1).
+
+Proof. We prove the upper and lower bounds separately. For the upper bound, each coordinate
+of P u is
+                                             n−1
+                                             X
+                                    (P u)i =     pij uj ,
+                                                      j=0
+
+
+                                                     9
+which has degree 2 in the joint variables (P, u). Each monomial
+                                              Y
+                                                  xi
+                                               i∈A
+
+in a coordinate ANF of Jn has |A| ≤ n − 1. After substituting x = P u, this monomial becomes
+                                          Y
+                                            (P u)i ,
+                                              i∈A
+
+which has degree at most
+                                          2|A| ≤ 2(n − 1).
+Hence,                                         
+                                   deg Jn (P u) ≤ 2(n − 1).
+   For the lower bound, specialize P by setting
+                                    pij = 0         for all i ̸= j.
+This specialization is used only to obtain a lower bound. It is not a without-loss-of-generality
+assumption on P . Since restricting the input variables cannot increase algebraic degree, it
+suffices to show that the restricted function has degree 2(n − 1).
+    Since
+                                         deg(Jn ) = n − 1,
+some coordinate function of Jn contains a monomial
+                                   Y
+                                      xi ,   |A| = n − 1,
+                                    i∈A
+
+with nonzero coefficient. Under the diagonal specialization,
+                                          (P u)i = pii ui ,
+and hence this monomial becomes               Y
+                                                    pii ui ,
+                                              i∈A
+
+which has degree 2(n − 1). Moreover, distinct monomials in the ANF of Jn remain distinct after
+this substitution, so this monomial cannot cancel. Therefore, the restricted function has degree
+at least 2(n − 1), and consequently,
+                                               
+                                   deg Jn (P u) ≥ 2(n − 1).
+
+
+
+    Theorem 10 shows that including the basis transformation at the input stage doubles the
+algebraic degree from n − 1 to 2(n − 1). However, the mixed representation map Jn (P u) does
+not yet describe the complete basis-dependent task because its output remains expressed in the
+reference basis.
+    Recall from Lemma 4 that
+                                   InvB (u) = PB−1 Jn (PB u).
+Thus, when the basis matrix and the operand are treated jointly as inputs, the complete raw
+formulation is
+                        (P, u) 7−→ P −1 Jn (P u),  P ∈ GLn (F2 ).
+    To study its ANF, we extend this map from the invertible matrices to the full Boolean matrix
+space. Such an extension is needed because the ANF is defined on a full Boolean domain. Over
+F2 , every invertible matrix has determinant one, so
+                             P −1 = adj(P )           for P ∈ GLn (F2 ).
+
+
+                                                    10
+Definition 11 (Complete raw inversion map). The complete raw inversion map is the polyno-
+mial map
+                                 fraw : Fn×n
+                                         2   × V −→ V
+defined by
+                                  fraw (P, u) = adj(P )Jn (P u).
+   For every valid change-of-basis matrix PB ,
+                                    fraw (PB , u) = InvB (u).
+The algebraic degree and ANF support studied below are defined for this polynomial extension
+over the full Boolean matrix space. In the learning experiments, we restrict the same map to
+invertible matrices, since only these matrices represent valid changes of basis.
+    The output conversion introduces additional dependence on P through adj(P ). Combining
+this with the degree of the mixed representation map gives the following upper bound for the
+complete raw formulation.
+Proposition 12 (Degree bound for the raw inversion task). For n ≥ 2, the polynomial repre-
+sentation of the raw inversion task satisfies
+                                     deg(fraw ) ≤ 3(n − 1).
+Proof. Each entry of adj(P ) is the determinant of an (n − 1) × (n − 1) submatrix of P , and
+therefore has algebraic degree at most n − 1 in the entries of P . By the preceding theorem,
+                                               
+                                   deg Jn (P u) = 2(n − 1).
+Each coordinate of fraw is a sum of products of an entry of adj(P ) and a coordinate of Jn (P u).
+Hence
+                           deg(fraw ) ≤ (n − 1) + 2(n − 1) = 3(n − 1).
+
+
+    Algebraic degree measures the largest interaction order appearing in a Boolean map, but it
+does not describe how the variables are organized across the joint ANF support. We next intro-
+duce a finer structural measure based on the number of new variables that must be introduced
+at one step under an optimal ordering of the joint ANF support.
+
+3.2    Joint ANF support and joint ANF leap
+We begin by collecting the ANF supports of all output coordinates into a single joint support.
+Definition 13 (Joint ANF support). Let
+                                         G : Fd2 −→ Fm
+                                                     2
+
+be a vector-valued Boolean map. Its coordinate ANFs can be written jointly as
+                                     M         Y
+                         G(x) =             cA   xi ,    cA ∈ Fm
+                                                               2 ,
+                                  A⊆{0,...,d−1}        i∈A
+
+where the XOR is taken componentwise in Fm
+                                         2 .
+   The joint ANF support of G is
+                            A(G) = {A ⊆ {0, . . . , d − 1} : cA ̸= 0} .
+Thus, A ∈ A(G) precisely when the monomial
+                                        Y
+                                                    xi
+                                              i∈A
+
+appears with nonzero coefficient in at least one coordinate of G.
+
+
+                                                  11
+    Our next definition brings together two related but distinct perspectives on interaction struc-
+ture. Fourier analysis provides a standard way to describe Boolean functions through their
+spectral support O’Donnell (2014). The staircase and leap framework of Abbe et al. Abbe et al.
+(2022, 2023) uses this Fourier support to describe hierarchical structure in scalar-valued func-
+tions. Separately, Möbius-based representations have been used to identify and recover higher-
+order interactions among input variables Kang et al. (2024). Our setting concerns vector-valued
+polynomial maps over F2 , for which the ANF directly records interactions among the basis and
+operand variables.
+    ANF support and Fourier support encode different objects, so the Fourier definition of leap
+does not transfer directly to our setting. The ordering idea can still be used. Given an ordering
+of the supported monomials, we record how many variables in each monomial have not appeared
+earlier in the ordering. For a vector-valued Boolean map, we apply this construction to the joint
+ANF support. A monomial is included once if it appears in at least one output coordinate.
+    To the best of our knowledge, this ANF based, vector-valued adaptation of leap has not been
+studied previously. We call the resulting measure the joint ANF leap. Its relationship with the
+observed learning behavior is examined separately in Section 4.
+Definition 14 (Joint ANF leap). Let
+
+                                           G : Fd2 −→ Fm
+                                                       2
+
+be a nonzero map, and let
+                                            q = |A(G)|.
+For an ordering
+                                             A1 , . . . , A q
+of the sets in A(G), the number of variables introduced for the first time at step t is
+
+                                                   [
+                                            At \         As .
+                                                   s<t
+
+The joint ANF leap of G is
+
+                                                                   [
+                             Ljoint
+                              ANF (G) =      min        max At \         As ,
+                                          (A1 ,...,Aq ) 1≤t≤q
+                                                                   s<t
+
+where the minimum is taken over all orderings of A(G).
+   To determine which monomials belong to the joint ANF support, we use the standard ANF
+coefficient formula. For A ⊆ {0, . . . , d − 1}, the coefficient vector of the monomial
+                                                  Y
+                                                     xi
+                                                i∈A
+
+is                                               M
+                                        cA =            G(1C ),
+                                                C⊆A
+
+where 1C ∈ Fd2 is the indicator vector of C, and the XOR is taken componentwise in Fm
+                                                                                    2 . Hence,
+                                                   M
+                              A ∈ A(G) ⇐⇒              G(1C ) ̸= 0.
+                                                         C⊆A
+
+   We now compute the joint ANF leap for the same three formulations considered in the degree
+analysis. We begin with the reference inversion map, which provides the baseline for the mixed
+representation and complete raw formulations.
+
+
+                                                   12
+Theorem 15 (Joint ANF leap of reference inversion). For every n ≥ 2,
+
+                                          Ljoint
+                                           ANF (Jn ) = 1.
+
+Proof. For each j ∈ {0, . . . , n−1}, the coefficient vector corresponding to the singleton monomial
+xj is
+                                   c{j} = Jn (0) ⊕ Jn (ej ) = Jn (ej ),
+where ej is the jth standard basis vector of V .
+   Since ej ̸= 0, it represents a nonzero element of F . Its inverse is also nonzero, and hence
+
+                                           Jn (ej ) ̸= 0.
+
+It follows that
+                                   {j} ∈ A(Jn )        for every j.
+   We may order the joint ANF support by placing the singleton sets first,
+
+                                      {0}, {1}, . . . , {n − 1},
+
+followed by all remaining support sets in any order. Each singleton introduces exactly one new
+variable. After these n sets have been listed, every input variable has already appeared, so each
+remaining support set introduces no new variables. Thus,
+
+                                          Ljoint
+                                           ANF (Jn ) ≤ 1.
+
+   On the other hand, Jn (0) = 0 and Jn is nonzero. Hence, its joint ANF support contains a
+nonempty set. The first support set in any ordering introduces at least one variable, so
+
+                                          Ljoint
+                                           ANF (Jn ) ≥ 1.
+
+Combining the two bounds gives
+                                          Ljoint
+                                           ANF (Jn ) = 1.
+
+
+
+
+   We next consider the mixed representation formulation Jn (P u). Including the basis transfor-
+mation at the input stage changes not only the algebraic degree but also the way new variables
+enter the joint ANF support.
+Theorem 16 (Joint ANF leap of the mixed representation formulation). For every n ≥ 2,
+
+                                 Ljoint
+                                              
+                                  ANF Jn (P u) = 2.
+
+Proof. Let
+                                       G : Fn×n
+                                            2   × V −→ V
+be defined by
+                                        G(P, u) = Jn (P u).
+We consider the entries of P and the coordinates of u jointly as n2 + n Boolean input variables.
+  We first prove the lower bound. Since
+
+                                       G(P, 0) = Jn (0) = 0
+
+for every P , the joint ANF support of G contains no set consisting only of variables from P .
+Similarly,
+                                    G(0, u) = Jn (0) = 0
+for every u, so the joint ANF support contains no set consisting only of variables from u.
+
+
+                                                  13
+    Consequently, every set in A(G) contains at least one variable pij and at least one variable
+uk . The first support set in any ordering of A(G) introduces at least two variables. Hence,
+
+                                                Ljoint
+                                                 ANF (G) ≥ 2.
+
+   For the upper bound, let Eij denote the matrix whose (i, j) entry is one and whose remaining
+entries are zero, and let ek denote the kth standard basis vector of V .
+   By the ANF coefficient formula, the coefficient vector of the monomial pij uk in G is
+                    c{pij ,uk } = G(0, 0) ⊕ G(Eij , 0) ⊕ G(0, ek ) ⊕ G(Eij , ek ).
+The first three terms are zero. Moreover,
+                                                    (
+                                                     ei , k = j,
+                                           Eij ek =
+                                                     0, k ̸= j.
+
+It follows that                                       (
+                                                          Jn (ei ),   k = j,
+                                      c{pij ,uk } =
+                                                          0,          k ̸= j.
+Since Jn (ei ) ̸= 0, we obtain
+                           {pij , uj } ∈ A(G)             for all 0 ≤ i, j ≤ n − 1.
+   We order these support sets first, grouping them by their column index j:
+                                 {p00 , u0 }, {p10 , u0 }, . . . , {pn−1,0 , u0 },
+                                 {p01 , u1 }, {p11 , u1 }, . . . , {pn−1,1 , u1 },
+                                                           ..
+                                                            .
+                                 {p0,n−1 , un−1 }, . . . , {pn−1,n−1 , un−1 }.
+For each j, the first set in the jth group introduces the two variables p0j and uj . Every
+subsequent set in the group introduces only one new variable, namely pij .
+   After these sets have been listed, all entries of P and all coordinates of u have appeared.
+Every remaining set in A(G) therefore introduces no new variables. This ordering introduces
+at most two new variables at each step, so
+                                                Ljoint
+                                                 ANF (G) ≤ 2.
+
+   Combining the two bounds gives
+                                            Ljoint
+                                                         
+                                             ANF Jn (P u) = 2.
+
+
+
+
+    We finally arrive at the complete raw formulation fraw , which also converts the output
+through adj(P ). For this formulation, the joint ANF leap grows at least linearly with the
+field dimension. Unlike the preceding two results, which give exact values, the following result
+establishes a lower bound.
+Theorem 17 (Lower bound on the joint ANF leap of the complete raw formulation). For every
+n ≥ 2, each set A ∈ A(fraw ) satisfies
+                                       |A| ≥ n.
+Equivalently, every monomial appearing in the joint ANF support of
+                                       fraw (P, u) = adj(P )Jn (P u)
+has degree at least n. Consequently,
+                                              Ljoint
+                                               ANF (fraw ) ≥ n.
+
+
+                                                        14
+Proof. Let A be a set of input variables satisfying
+                                              |A| < n.
+We show that its coefficient vector cA is zero, and hence that A ∈
+                                                                 / A(fraw ).
+  By the ANF coefficient formula,
+                                             M
+                                      cA =       fraw (1C ).
+                                              C⊆A
+
+   Fix C ⊆ A. The indicator assignment 1C determines a matrix PC and a vector uC given by
+                              (                         (
+                                1, pij ∈ C,              1, uk ∈ C,
+                    (PC )ij =                  (uC )k =
+                                0, pij ∈
+                                       / C,              0, uk ∈/ C.
+Thus, we identify 1C with the pair (PC , uC ).
+   Let kP and ku denote the numbers of matrix variables and vector variables contained in C,
+respectively. Then
+                                     kP + ku = |C| < n.
+   If kP ≤ n − 2, the matrix PC has at most n − 2 nonzero entries. Hence,
+                                        rank(PC ) ≤ n − 2,
+which implies
+                                           adj(PC ) = 0.
+It follows that
+                            fraw (PC , uC ) = adj(PC )Jn (PC uC ) = 0.
+   The only remaining possibility is kP = n − 1. Since kP + ku < n, we must have ku = 0, and
+hence
+                                           uC = 0.
+Consequently,
+                                      Jn (PC uC ) = Jn (0) = 0,
+and again
+                                         fraw (PC , uC ) = 0.
+   Every term in the coefficient formula is therefore zero, so
+                                              cA = 0.
+Thus,
+                              A∈
+                               / A(fraw )         whenever |A| < n.
+   Finally, fraw is nonzero because
+                                        fraw (I, u) = Jn (u)
+and Jn is nonzero. The first support set in any ordering of A(fraw ) therefore contains at least
+n variables. Hence,
+                                      Ljoint
+                                        ANF (fraw ) ≥ n.
+
+
+
+    The results of this section give the following degree and joint ANF leap values and bounds
+for the three formulations:
+                  algebraic degree:       n − 1 −→ 2(n − 1) −→ ≤ 3(n − 1),
+                   joint ANF leap:        1 −→ 2 −→ ≥ n.
+From the reference formulation to the mixed representation formulation, both the algebraic
+degree and the joint ANF leap increase. For the complete raw formulation, the joint ANF leap
+is at least n, while the algebraic degree is bounded above by 3(n − 1).
+
+
+                                                 15
+Redundancy and complexity of the raw formulation. The contrast with the re-
+dundancy result is now precise. Let B and B ′ be distinct bases in the same Galois orbit. Their
+basis matrices PB and PB ′ are different, but they define the same function slice:
+
+                             fraw (PB , ·) = InvB = InvB ′ = fraw (PB ′ , ·).
+
+Thus, each Galois orbit gives n distinct basis inputs whose associated inversion maps are iden-
+tical. This is the exact representation redundancy established in Section 2.
+    The redundancy result and the complexity bounds describe different properties. Redundancy
+compares the function slices obtained by fixing different basis matrices, whereas structural com-
+plexity describes the full joint map in the variables (P, u). Exact redundancy can therefore
+coexist with a structurally complex raw formulation. We do not claim that redundancy causes
+this complexity. Rather, the presence of redundancy alone does not make the raw formulation
+algebraically simple.
+    This distinction motivates the experiments in the next section. We examine whether redun-
+dancy within Galois orbits affects generalization to unseen bases and whether the structural
+differences among the three formulations are reflected in learning with finite data and model
+capacity.
+
+
+4     Experiments
+We now examine two theoretical phenomena established in the preceding sections. One is exact
+representation redundancy among bases in the same Galois orbit. The other is the change
+in algebraic structure that occurs when the basis transformation is included as part of the
+input. Our experimental study combines exhaustive computation for finite cases with controlled
+learning experiments that examine whether these theoretical differences are reflected in learning
+performance under limited data and model capacity.
+
+4.1    Experimental setup
+Model. All learning experiments were implemented in Python using PyTorch Paszke et al.
+(2019). All learning experiments use a fully connected multilayer perceptron (MLP). The model
+does not include Transformer layers or architectural components designed to encode Galois
+symmetry. The MLP consists of three hidden layers with ReLU activations and a final linear
+layer with n output logits. Experiments 1 and 2 use hidden width 256, while Experiment 3
+varies the width as part of its scaling study.
+    We choose an MLP because each input is a short binary vector of fixed length with no
+natural token or sequence structure that would call for a Transformer. The MLP also receives
+no explicit information about the Galois symmetry. This allows the comparison to focus on
+the effect of the formulation without introducing an architectural bias designed around the
+symmetry. Finally, a fully connected network is closer in spirit to the models considered in the
+staircase and leap literature. Our architecture and training procedure are not identical to those
+theoretical settings. Moreover, we do not claim that their learning guarantees apply directly
+here.
+
+Input and output encoding. No tokenization or learned embedding is used. Each input
+consists of a basis matrix
+                                          P = (pij ) ∈ GLn (F2 )
+and an operand
+                                       u = (u0 , . . . , un−1 )T ∈ Fn2 .
+We flatten P in row major order and concatenate it with u:
+                                                                              T            2
+                 x(P, u) = p00 , p01 , . . . , pn−1,n−1 , u0 , . . . , un−1        ∈ {0, 1}n +n .
+
+
+                                                      16
+The binary entries are supplied directly to the MLP as floating point values. The input dimen-
+sion is 12 for n = 3 and 20 for n = 4. The output consists of n logits, one for each coordinate
+of the target vector specified by the corresponding formulation.
+
+Training and evaluation. The model is trained using coordinatewise binary cross-entropy
+with logits. We use AdamW Loshchilov and Hutter (2019) with learning rate 10−3 and param-
+eters
+                (β1 , β2 ) = (0.9, 0.999), ϵ = 10−8 , weight decay = 10−2 ,
+together with batches of size at most 512. We use no learning rate scheduler, warmup, early
+stopping, or gradient clipping. Model widths, training budgets, splits into training and test sets,
+and numbers of random seeds are given in the corresponding experiment subsections.
+    We report bit accuracy and exact accuracy. Bit accuracy is the proportion of individual
+output coordinates predicted correctly. Exact accuracy counts an example as correct only when
+all n output bits are correct and is used as the primary metric. Reported deviations are sample
+standard deviations across random seeds.
+
+4.2    Experiment 0: Exact ANF computation
+Purpose and design. This experiment verifies the ANF structure of the reference, mixed
+representation, and complete raw formulations for n = 3 and n = 4. We evaluate the reference
+map
+                                           Jn (u)
+over Fn2 , and the other two maps
+
+                        Jn (P u)      and       fraw (P, u) = adj(P )Jn (P u)
+
+over
+                                              Fn×n
+                                               2   × Fn2 .
+The full Boolean matrix space is used because the ANF is defined on the complete Boolean
+domain. This includes both invertible and singular values of P and agrees with the polynomial
+extension used in the definition of fraw .
+    All input assignments are evaluated. The reference formulation requires 8 evaluations for
+n = 3 and 16 for n = 4. Each of the other two formulations requires 212 = 4096 evaluations for
+n = 3 and 220 = 1,048,576 for n = 4. The six computations contain 2,105,368 input evaluations
+in total.
+    For each output coordinate, we recover the ANF from its complete truth table using the
+Boolean Möbius transform. We then compute the algebraic degree, minimum positive monomial
+degree, joint ANF leap, and total coordinate-wise monomial count
+                                              m−1
+                                              X
+                                    N (G) =         |suppANF (Gk )| .
+                                              k=0
+
+A monomial appearing in several output coordinates is counted once for each coordinate in
+which it appears. No neural network training is used in this experiment.
+
+Results. The exact ANF statistics are reported in Table 1.
+
+Analysis. The exact values in Table 1 agree with the theoretical results of the preceding
+section. For both n = 3 and n = 4, the complete raw formulation reaches the upper bound
+
+                                       deg(fraw ) = 3(n − 1)
+
+and the lower bound
+                                         Ljoint
+                                          ANF (fraw ) = n.
+
+
+                                                    17
+Table 1: Exact ANF statistics for the three formulations. Here N (G) counts ANF monomials
+across output coordinates with multiplicity; |A(G)| is reported in Table 8.
+
+           n    Formulation             Degree       Min. positive degree             Joint leap   N (G)
+           3    reference                     2                                   1           1       9
+           3    mixed representation          4                                   2           2      45
+           3    complete raw                  6                                   3           3     168
+           4    reference                     3                                   1           1      27
+           4    mixed representation          6                                   2           2     552
+           4    complete raw                  9                                   4           4    7008
+
+
+     Thus, both bounds are sharp for the two field sizes considered. The minimum positive mono-
+     mial degree and the total coordinate-wise monomial count N (G) also increase across the three
+     formulations.
+        These computations suggest that
+
+                               deg(fraw ) = 3(n − 1),          Ljoint
+                                                                ANF (fraw ) = n
+
+     may hold for general n, although the cases n = 3 and n = 4 do not prove either equality.
+     Additional exact ANF degree profiles and coordinate statistics are provided in Appendix A.
+
+     4.3       Experiment 1: Learning across the three formulations
+     Purpose and design. This experiment compares learning across the reference, mixed rep-
+     resentation, and complete raw formulations under matched conditions. A direct comparison
+     would create a domain mismatch. The reference map
+
+                                             Jn : Fn2 −→ Fn2
+
+     has 2n inputs, while the other two formulations take both a basis matrix P and an operand u as
+     input. The input dimension, dataset size, and split into training and test sets would therefore
+     differ across the three formulations.
+         To place all three maps on a common input domain, we lift the reference map by defining
+
+                                            Jen (P, u) = Jn (u).
+
+     The matrix P is included as an input but does not affect the output. The following proposition
+     shows that this lifting preserves the ANF structure of the reference map.
+     Proposition 18 (ANF invariance under lifting). Let n ≥ 2, and define
+
+                                         Jen : Fn×n
+                                                2   × Fn2 −→ Fn2
+
+     by
+                                            Jen (P, u) = Jn (u).
+     Then Jen and Jn have the same algebraic degree, minimum positive monomial degree, and degree
+     profile. Under the natural identification of the variables u0 , . . . , un−1 ,
+
+                                 A(Jen ) = A(Jn ),          N (Jen ) = N (Jn ).
+
+     They also have the same joint ANF leap. In particular,
+
+                                  deg(Jen ) = n − 1,         Ljoint
+                                                              ANF (Jn ) = 1.
+                                                                    e
+
+
+                                                       18
+Proof. Write the kth coordinate ANF of Jn as
+                                           M                      Y
+                              Jn,k (u) =                   ck,S         ui .
+                                          S⊆{0,...,n−1}           i∈S
+
+
+By definition,
+                                     Jen,k (P, u) = Jn,k (u).
+Hence, the ANF of Jen,k contains exactly the same monomials as that of Jn,k , and no monomial
+contains a matrix variable pij . When the support of Jn is viewed in the enlarged variable
+set, all coordinate ANF supports remain unchanged. The algebraic degree, minimum positive
+monomial degree, and degree profile are therefore preserved, and
+
+                             A(Jen ) = A(Jn ),         N (Jen ) = N (Jn ).
+
+   Every ordering of the sets in A(Jn ) gives an ordering of A(Jen ) with the same number of new
+variables at each step, and conversely. Thus,
+
+                                    Ljoint        joint
+                                     ANF (Jn ) = LANF (Jn ).
+                                           e
+
+The stated values follow from
+
+                              deg(Jn ) = n − 1,         Ljoint
+                                                         ANF (Jn ) = 1.
+
+
+
+
+   We then compare the three maps
+
+                                 fref (P, u) = Jen (P, u) = Jn (u),                          (2)
+                                fmix (P, u) = Jn (P u),                                      (3)
+                                                  −1
+                                fraw (P, u) = P        Jn (P u)                              (4)
+
+on the common experimental domain
+
+                                         GLn (F2 ) × Fn2 .
+
+Thus, all three formulations use the same input dimension, input pairs, splits into training and
+test sets, model architecture, and optimization budget. The ANF statement in Proposition 18
+is made on the full ambient Boolean domain, whereas the learning experiment restricts P to
+invertible matrices.
+    For each n ∈ {3, 4}, we randomly divide the complete set of input pairs (P, u) into 75%
+training and 25% test examples. For each random seed, the same split indices are used for
+all three formulations. For n = 3, the domain contains 1344 examples, giving 1008 training
+examples and 336 test examples. For n = 4, the domain contains 322,560 examples, giving
+241,920 training examples and 80,640 test examples.
+    All models have three ReLU hidden layers of width 256 and are trained for 1000 optimization
+steps. Each condition is repeated with five random seeds, giving 3 × 2 × 5 = 30 training runs in
+total. The remaining model and optimization settings are those described in Section 4.1.
+
+Results. Figure 1 shows the held-out exact accuracy throughout training for all five random
+seeds. Table 2 reports the final exact and bit accuracies.
+
+
+
+
+                                                  19
+Figure 1: Held-out exact accuracy for the lifted reference, mixed representation, and complete raw
+formulations. Rows correspond to n = 3, 4, and each line represents one of five random seeds.
+
+
+     Analysis. Figure 1 and Table 2 show the same ordering for both field sizes:
+
+                       lifted reference > mixed representation > complete raw.
+
+     The same ordering holds for bit accuracy. Because the three formulations use the same inputs,
+     splits into training and test sets, model architecture, and optimization budget, these differences
+     cannot be attributed to unequal input dimensions or test sets.
+          The lifted reference reaches perfect test accuracy for both n = 3 and n = 4. Thus, including
+     the irrelevant matrix P does not prevent the MLP from learning Jn (u). The mixed represen-
+     tation formulation achieves lower accuracy than the lifted reference but remains much easier
+     to learn than the complete raw formulation. The gap between the mixed representation and
+     complete raw formulations is especially clear in exact accuracy for n = 4.
+          The held-out learning curves also reveal differences over the course of optimization. The
+     lifted reference reaches perfect held-out accuracy within the first 100 optimization steps for
+     both field sizes. For n = 3, the held-out accuracy of the mixed representation formulation
+     improves rapidly and then levels off, whereas that of the complete raw formulation reaches a
+     much lower plateau early in optimization. For n = 4, the mixed representation formulation
+     continues to improve throughout the budget of 1000 steps, while the complete raw formulation
+     improves only slowly.
+          These observations are consistent with the exact ANF results in Table 1. By Proposition 18,
+     the lifted reference has the same ANF structure as the reference formulation. The reference
+     formulation has the smallest algebraic degree and joint ANF leap, the mixed representation
+     formulation has intermediate values, and the complete raw formulation has the largest values
+     for n = 3 and n = 4. As these ANF quantities increase, the observed learning accuracy decreases
+     under the tested conditions.
+
+
+
+
+                                                    20
+Table 2: Final test performance across the three formulations under matched conditions. Results
+are means ± sample standard deviations over five random seeds.
+
+                   n   Formulation                Exact accuracy        Bit accuracy
+                   3   reference                  1.0000 ± 0.0000     1.0000 ± 0.0000
+                   3   mixed representation       0.6274 ± 0.0367     0.8304 ± 0.0205
+                   3   complete raw               0.2661 ± 0.0378     0.6079 ± 0.0226
+                   4   reference                  1.0000 ± 0.0000     1.0000 ± 0.0000
+                   4   mixed representation       0.5905 ± 0.0477     0.8385 ± 0.0154
+                   4   complete raw               0.1528 ± 0.0031     0.5928 ± 0.0026
+
+Table 3: Generalization under random-basis and Galois-orbit-disjoint splits for the complete raw
+formulation. Results are means ± sample standard deviations over ten random seeds.
+
+                       n    Split             Exact accuracy        Bit accuracy
+                       3    random basis      0.3089 ± 0.0250     0.6388 ± 0.0180
+                       3    orbit disjoint    0.2857 ± 0.0096     0.6284 ± 0.0211
+                       4    random basis      0.1591 ± 0.0035     0.5980 ± 0.0022
+                       4    orbit disjoint    0.1589 ± 0.0040     0.5974 ± 0.0032
+
+
+     4.4    Experiment 2: Generalization and representation redundancy
+     Purpose and design. Theorem 6 shows that two bases induce the same coordinate in-
+     version map if and only if they belong to the same Galois orbit. A random split of individual
+     bases may therefore place different representations of the same task in the training and test
+     sets. This experiment examines whether such overlap affects generalization for the complete
+     raw formulation.
+         We compare two splitting methods. In the random-basis split, entire basis matrices are
+     assigned randomly to the training or test set, and all 2n operands associated with each basis
+     remain together. A Galois orbit may contain bases from both sets. In the orbit-disjoint split,
+     entire Galois orbits are assigned to one set, so no Galois equivalent bases appear in both sets.
+         Both methods use a 75/25 division. For n = 3, the 168 bases form 56 orbits of size 3. The
+     split contains 126 training bases and 42 test bases, giving 1008 training examples and 336 test
+     examples. In the orbit-disjoint split, these bases correspond to 42 training orbits and 14 test
+     orbits. For n = 4, the 20,160 bases form 5040 orbits of size 4. The split contains 15,120 training
+     bases and 5040 test bases, giving 241,920 training examples and 80,640 test examples. The
+     corresponding orbit counts are 3780 and 1260.
+         For each field size and splitting method, we train an MLP with three hidden layers of width
+     256 for 1200 optimization steps. Each condition is repeated with ten random seeds, giving 40
+     training runs in total. The remaining settings are given in Section 4.1.
+
+     Results. Table 3 reports the test performance under the two splitting methods.
+
+     Analysis. For n = 3, the random-basis split gives a mean exact accuracy 0.0232 higher than
+     the orbit-disjoint split. Its mean bit accuracy is also 0.0104 higher. Allowing Galois equivalent
+     bases to appear in both sets therefore gives a modest improvement for the smaller field.
+        For n = 4, the two splitting methods give nearly identical results. Their mean exact ac-
+     curacies differ by approximately 0.0002, and their mean bit accuracies differ by approximately
+     0.0006. Both differences are smaller than the variation across random seeds. We find no clear
+
+
+
+                                                    21
+benefit from overlap between equivalent tasks at n = 4 under the tested model and training
+budget.
+   The theorem gives an exact redundancy factor of n among basis representations, but this
+redundancy does not necessarily produce a large improvement in test performance. Its effect is
+modest for n = 3 and is not detectable for n = 4 in this experiment.
+
+4.5    Experiment 3: Scaling with data and model width
+Purpose and design. This experiment examines how the three formulations respond to
+increases in training data and model width. We focus on n = 4, the larger and more difficult of
+the two field sizes considered in Experiment 1, for which the complete input domain GL4 (F2 )×F42
+contains
+                               |GL4 (F2 )| · 24 = 20,160 · 16 = 322,560
+input pairs. For each random seed, we divide this domain into 241,920 training examples and
+80,640 test examples. The test set is held fixed, while the training set is subsampled using
+fractions
+                                 25%,      50%,     100%.
+These fractions correspond to
+
+                                60,480,     120,960,      241,920
+
+training examples, respectively. Within each seed, the same split and nested training subsets
+are used for all three formulations and all model widths.
+     We compare the lifted reference, mixed representation, and complete raw formulations. The
+lifted reference is defined in Proposition 18. We vary the hidden width over
+
+                                     128,     256,      512.
+
+Each model is trained for five epochs. With batch size 512, the three training fractions corre-
+spond to 595, 1185, and 2365 optimization steps, respectively. Thus, the number of epochs is
+fixed, while larger training sets provide both more examples and more optimization steps.
+    Each combination of formulation, data fraction, and model width is repeated with four
+random seeds, giving
+
+                 3 formulations × 3 data fractions × 3 widths × 4 seeds = 108
+
+training runs. The remaining model and optimization settings are those described in Section 4.1.
+
+Results. Figure 2 reports the held-out exact accuracy for all 27 combinations of formulation,
+data fraction, and model width.
+    The lifted reference reaches perfect exact accuracy in every condition. For the mixed rep-
+resentation formulation with the full training set, increasing the width from 128 to 512 raises
+exact accuracy from
+                             0.6688 ± 0.0413 to 0.9546 ± 0.0084.
+For the complete raw formulation, the corresponding increase is from
+
+                            0.1655 ± 0.0027    to    0.2566 ± 0.0100.
+
+Analysis. The lifted reference remains easy to learn across all training fractions and model
+widths. Its perfect accuracy shows that the MLP can consistently ignore the irrelevant matrix
+input and learn J4 (u).
+    The mixed representation formulation improves with greater model width. Its performance
+also improves when a larger training set is used while the number of training epochs is fixed at
+five. At the largest setting, it reaches approximately 95.5% exact accuracy. The complete raw
+
+
+                                               22
+Figure 2: Mean held-out exact accuracy at n = 4 across model widths and training fractions. Error
+bars show sample standard deviations over four seeds.
+
+
+     formulation also improves, but much more slowly. Even with the full training set and width
+     512, its exact accuracy is approximately 25.7%.
+         These results extend the comparison in Experiment 1. Increasing the model width and
+     the training fraction under the five epoch protocol largely closes the gap between the mixed
+     representation formulation and the lifted reference. In contrast, the complete raw formulation
+     remains difficult over the tested range. This behavior is consistent with its larger computed
+     algebraic degree and joint ANF leap for n = 4.
+         Because the number of optimization steps increases with the training fraction, the effect of
+     additional data cannot be separated completely from the effect of additional optimization. The
+     results should therefore be interpreted as scaling under a training protocol of five epochs, rather
+     than as a controlled comparison with a fixed number of optimization steps.
+
+
+     5    Discussion
+     Exact redundancy and empirical generalization. Theorem 6 and Experiment 2
+     describe two aspects of representation redundancy. The theorem shows that each coordinate
+     inversion task has exactly n basis representations, with the equivalence classes given by Galois
+     orbits. This is an exact property of the task family, but it does not imply that a learner can
+     identify or use the equivalence from raw basis matrices.
+        Experiment 2 makes this distinction visible. Allowing bases from the same Galois orbit to
+     appear in both the training and test sets gives only a modest improvement for n = 3 and no clear
+     improvement for n = 4 under the tested conditions. Hence, exact representation redundancy
+     can be present without producing a large generalization gain for a standard MLP. Using this
+     redundancy more effectively may require a representation or model architecture that makes the
+     Galois action explicit.
+
+     ANF structure and learning difficulty. The theoretical and experimental results agree
+     on the ordering of the three formulations. The reference formulation has the smallest algebraic
+     degree and joint ANF leap and is learned easily. The mixed representation formulation has
+     intermediate values and improves strongly with additional data and model width. For n = 3
+     and n = 4, the exact ANF computations assign the largest degree and joint ANF leap to the
+     complete raw formulation. In the learning experiments, this formulation also achieves the lowest
+     accuracy under all tested conditions.
+         The comparison between the mixed representation and complete raw formulations helps
+     locate where this difficulty enters. The map
+
+                                                  Jn (P u)
+
+
+                                                     23
+uses P only to transform the input, while
+
+                                           P −1 Jn (P u)
+
+also converts the output back to the original basis. The theoretical results give bounds on the
+algebraic degree and joint ANF leap. For n = 3 and n = 4, the exact computations reach both
+bounds. The learning experiments also show a clear separation between the two formulations,
+especially as the training fraction and model width increase.
+    This agreement supports the use of algebraic degree and joint ANF leap as descriptions of the
+structure introduced by representation exposure. It does not imply that either quantity alone
+determines neural-network performance. In particular, our joint ANF leap is defined using the
+joint ANF support of a vector-valued Boolean map, while the original staircase and leap results
+concern Fourier support and specific learning settings. The experiments provide evidence of a
+connection, but they are not a direct application of those learning guarantees.
+    The ANF analysis is performed on the polynomial extension defined using the adjugate over
+the full Boolean matrix space, whereas the learning experiments are restricted to invertible basis
+matrices. Establishing an intrinsic notion of ANF complexity for the restricted domain is left
+for future work.
+
+
+6    Conclusion
+We studied how basis choice affects finite-field inversion from two points of view: exact repre-
+sentation redundancy and the structure of the joint map obtained when the basis is included
+as part of the input. We proved that two ordered bases induce the same coordinate inversion
+map if and only if they belong to the same Galois orbit. Since the Galois action is free, every
+inversion task has exactly n basis representations.
+    We also compared the reference, mixed representation, and complete raw formulations
+through algebraic degree and joint ANF leap. The reference formulation has degree n − 1
+and joint ANF leap 1, while the mixed representation formulation has degree 2(n − 1) and joint
+ANF leap 2. For the complete raw formulation, the algebraic degree is at most 3(n − 1), and the
+joint ANF leap is at least n. These results show that exposing the basis transformation alters
+the ANF structure of the task in ways that are not captured by the exact redundancy count.
+    The experiments are consistent with the theoretical analysis. Exact computations for n = 3
+and n = 4 attain the raw degree and joint ANF leap bounds. In the learning experiments,
+accuracy decreases from the lifted reference to the mixed representation and complete raw for-
+mulations. Increasing the amount of training data and the model width greatly improves the
+mixed representation formulation, while the complete raw formulation remains more difficult
+over the tested range. The exact redundancy within Galois orbits gives only a modest general-
+ization benefit for n = 3 and no clear benefit for n = 4 under the tested conditions.
+    The main conclusion is that exact representation redundancy can coexist with a joint map
+that is difficult to learn from raw inputs. Several inputs may represent the same task without
+making that equivalence easy for a standard learner to identify or use. The present exact
+computations are limited to n = 3 and n = 4, and the learning experiments use a standard
+MLP without explicit Galois symmetry. The scaling experiment also fixes the number of epochs,
+so the effects of additional data and additional optimization steps are not separated. Proving
+the exact raw ANF values for general n, separating the effect of joint ANF leap from algebraic
+degree, and studying models that explicitly use the Galois action are natural directions for future
+work.
+
+
+
+
+                                                24
+Table 4: Complete ANF degree profiles. Counts are summed over the output coordinates.
+
+       n    Formulation                Degree profile ℓ : c
+       3    reference                  1 : 6, 2 : 3
+       3    mixed representation       2 : 18, 3 : 9, 4 : 18
+       3    complete raw               3 : 24, 4 : 66, 5 : 42, 6 : 36
+       4    reference                  1 : 10, 2 : 12, 3 : 5
+       4    mixed representation       2 : 40, 3 : 48, 4 : 164, 5 : 180, 6 : 120
+       4    complete raw               4 : 168, 5 : 792, 6 : 1440, 7 : 2280, 8 : 1608, 9 : 720
+
+
+ A         Additional exact ANF results
+ This appendix gives the degree profiles, coordinate-level monomial counts, joint ANF support
+ sizes, and joint ANF leap values from Experiment 0. Let
+
+                                 G = (G0 , . . . , Gm−1 ) : Fd2 −→ Fm
+                                                                    2
+
+ be a vector-valued Boolean map with coordinate ANFs
+                                           M           Y
+                              Gk (x) =            ck,A   xi .
+                                               A⊆{0,...,d−1}       i∈A
+
+
+ For 0 ≤ ℓ ≤ d, let Nℓ (G) denote the total number of ANF monomials of degree ℓ across all
+ output coordinates:
+                                m−1
+                                X
+                     Nℓ (G) =         |{A ⊆ {0, . . . , d − 1} : ck,A ̸= 0, |A| = ℓ}| .
+                                k=0
+
+ A monomial appearing in multiple output coordinates is counted once for each coordinate in
+ which it appears. The total coordinate-wise monomial count is
+                                        d
+                                        X                m−1
+                                                         X
+                           N (G) =            Nℓ (G) =         |suppANF (Gk )| .
+                                        ℓ=0              k=0
+
+    For each output coordinate, the ANF coefficients are recovered from the complete truth table
+ on the ambient Boolean domain using the Boolean Möbius transform
+                                             M
+                                     ck,A =       Gk (1C ),
+                                                   C⊆A
+
+
+ where 1C ∈ Fd2 is the indicator vector of C. All values reported below are exact.
+
+ A.1       Degree profiles
+ Table 4 reports the complete degree profiles. An entry ℓ : c means that Nℓ (G) = c, with
+ monomials appearing in multiple output coordinates counted once for each coordinate.
+     The profiles show that the difference among the formulations is not limited to their largest
+ degrees. The mixed representation and complete raw formulations contain monomials over wider
+ degree ranges, and the complete raw formulation has no monomial below degree n for either
+ field size.
+
+
+
+
+                                                     25
+                    Table 5: Coordinate-level ANF statistics for n = 3.
+
+            Formulation                Output      Degree profile ℓ : c                 Monomials
+            reference                  0           1 : 3, 2 : 1                                 4
+            reference                  1           1 : 1, 2 : 1                                 2
+            reference                  2           1 : 2, 2 : 1                                 3
+            mixed representation       0           2 : 9, 3 : 3, 4 : 6                         18
+            mixed representation       1           2 : 3, 3 : 3, 4 : 6                         12
+            mixed representation       2           2 : 6, 3 : 3, 4 : 6                         15
+            complete raw               0           3 : 8, 4 : 22, 5 : 14, 6 : 12               56
+            complete raw               1           3 : 8, 4 : 22, 5 : 14, 6 : 12               56
+            complete raw               2           3 : 8, 4 : 22, 5 : 14, 6 : 12               56
+
+                    Table 6: Coordinate-level ANF statistics for n = 4.
+
+Formulation                Output     Degree profile ℓ : c                                      Monomials
+reference                  0          1 : 4, 2 : 2, 3 : 2                                               8
+reference                  1          1 : 1, 2 : 4, 3 : 1                                               6
+reference                  2          1 : 2, 2 : 3, 3 : 1                                               6
+reference                  3          1 : 3, 2 : 3, 3 : 1                                               7
+mixed representation       0          2 : 16, 3 : 8, 4 : 32, 5 : 72, 6 : 48                           176
+mixed representation       1          2 : 4, 3 : 16, 4 : 52, 5 : 36, 6 : 24                           132
+mixed representation       2          2 : 8, 3 : 12, 4 : 40, 5 : 36, 6 : 24                           120
+mixed representation       3          2 : 12, 3 : 12, 4 : 40, 5 : 36, 6 : 24                          124
+complete raw               0          4 : 42, 5 : 198, 6 : 360, 7 : 570, 8 : 402, 9 : 180            1752
+complete raw               1          4 : 42, 5 : 198, 6 : 360, 7 : 570, 8 : 402, 9 : 180            1752
+complete raw               2          4 : 42, 5 : 198, 6 : 360, 7 : 570, 8 : 402, 9 : 180            1752
+complete raw               3          4 : 42, 5 : 198, 6 : 360, 7 : 570, 8 : 402, 9 : 180            1752
+
+
+A.2    Coordinate-level ANF statistics
+The preceding degree profiles combine the monomial counts from all output coordinates. We
+now report the corresponding coordinate-level results. Output coordinate k is the coefficient of
+tk in the fixed polynomial basis:
+
+                        a0 + a1 t + · · · + an−1 tn−1 ←→ (a0 , a1 , . . . , an−1 )T .
+
+For each coordinate, we report both its degree profile and its total number of ANF monomials.
+As above, an entry ℓ : c means that the coordinate contains c monomials of degree ℓ. Tables 5
+and 6 report these statistics for n = 3 and n = 4, respectively.
+    For n = 3, Table 5 shows that the reference and mixed representation formulations have
+different monomial counts across their output coordinates. In contrast, the three output co-
+ordinates of the complete raw formulation have identical degree profiles, each containing 56
+monomials. Summing the coordinate counts gives 9, 45, and 168 monomials for the three for-
+mulations, respectively.
+    For n = 4, Table 6 shows that the same pattern is stronger. The reference formulation
+contains between 6 and 8 monomials per coordinate, while the mixed representation formulation
+contains between 120 and 176. Every coordinate of the complete raw formulation contains 1752
+monomials with the same degree profile. Summing the coordinate counts gives the totals 27,
+552, and 7008 reported in Table 1.
+
+
+                                                    26
+Table 7: Explicit joint ANF leap certificates for the complete raw formulation. Each listed support
+set belongs to A(fraw ).
+
+       n   Step   Support set                                       Newly introduced variables   Count
+       3    1     {p01 , p10 , u0 }                                 {p01 , p10 , u0 }              3
+       3    2     {p00 , p11 , u1 }                                 {p00 , p11 , u1 }              3
+       3    3     {p12 , p20 , u2 }                                 {p12 , p20 , u2 }              3
+       3    4     {p02 , p21 , p22 , u2 }                           {p02 , p21 , p22 }             3
+       4    1     {p02 , p10 , p33 , u3 }                           {p02 , p10 , p33 , u3 }        4
+       4    2     {p03 , p11 , p32 , u2 }                           {p03 , p11 , p32 , u2 }        4
+       4    3     {p12 , p23 , p30 , u0 }                           {p12 , p23 , p30 , u0 }        4
+       4    4     {p00 , p13 , p21 , u1 }                           {p00 , p13 , p21 , u1 }        4
+       4    5     {p00 , p01 , p20 , p22 , p31 , u0 , u1 }          {p01 , p20 , p22 , p31 }       4
+
+
+        The equality of the coordinate-level profiles in the complete raw formulation is an observed
+     property of the n = 3 and n = 4 computations. We do not claim that this equality holds for
+     arbitrary n or for every choice of reference basis.
+
+     A.3    Joint ANF leap verification
+     The joint ANF leap is computed from the deduplicated joint ANF support A(G), while N (G)
+     counts monomials separately across output coordinates. For each formulation, the minimum
+     positive monomial degree gives a lower bound on the joint ANF leap, since the first nonempty
+     support set in any ordering must introduce at least that many variables.
+        For the reference and mixed representation formulations, the exact joint ANF leaps follow
+     from Theorems 15 and 16. For the complete raw formulation, the theoretical result gives the
+     lower bound
+                                           Ljoint
+                                             ANF (fraw ) ≥ n.
+
+     To verify that this bound is attained for n = 3 and n = 4, we construct an initial sequence of
+     sets in A(fraw ) such that each set introduces at most n new variables and the sequence covers
+     every input variable. Once all input variables have appeared, the remaining sets in the joint
+     ANF support may be appended in any order without introducing new variables. Table 7 gives
+     these explicit certificate sequences.
+         For n = 3, the four sets in Table 7 cover all 12 input variables and introduce at most 3 new
+     variables at each step. Hence,
+                                              Ljoint
+                                               ANF (fraw ) ≤ 3.
+
+     Along with the theoretical lower bound, this gives
+
+                                                       Ljoint
+                                                        ANF (fraw ) = 3.
+
+        For n = 4, the five listed sets cover all 20 input variables. The final set contains seven
+     variables, but p00 , u0 , and u1 have already appeared, so it introduces only four new variables.
+     Therefore,
+                                               Ljoint
+                                                ANF (fraw ) ≤ 4.
+
+     Combining this certificate with the lower bound gives
+
+                                                       Ljoint
+                                                        ANF (fraw ) = 4.
+
+        Thus, the exact joint ANF leaps are 1, 2, and 3 for n = 3, and 1, 2, and 4 for n = 4, as
+     summarized in Tables 8 and 1.
+
+
+
+                                                              27
+Table 8: Exact verification of the joint ANF leap. The column |A(G)| gives the cardinality of the
+deduplicated joint ANF support.
+
+            n   Formulation            |A(G)|     Joint ANF leap   Certificate length
+            3   reference                    6                 1                   3
+            3   mixed representation        36                 2                   6
+            3   complete raw               168                 3                   4
+            4   reference                   14                 1                   4
+            4   mixed representation       368                 2                  10
+            4   complete raw              6504                 4                   5
+
+
+
+
+                                                 28
+References
+Abbe, E., Boix-Adserà, E., and Misiakiewicz, T. (2022). The merged-staircase property: A
+  necessary and nearly sufficient condition for SGD learning of sparse functions on two-layer
+  neural networks. In 35th Conference on Learning Theory, volume 178 of Proceedings of
+  Machine Learning Research, pages 4782–4887, New York, NY, USA. PMLR.
+
+Abbe, E., Boix-Adserà, E., and Misiakiewicz, T. (2023). SGD learning on neural networks: Leap
+  complexity and saddle-to-saddle dynamics. In 36th Conference on Learning Theory, volume
+  195 of Proceedings of Machine Learning Research, pages 2552–2623, New York, NY, USA.
+  PMLR.
+
+Artin, E. (1957). Geometric Algebra, volume 3 of Interscience Tracts in Pure and Applied
+  Mathematics. Interscience Publishers, New York.
+
+Bietti, A., Venturi, L., and Bruna, J. (2021). On the sample complexity of learning under
+  invariance and geometric stability. In Advances in Neural Information Processing Systems,
+  volume 34, pages 10677–10689, Red Hook, NY, USA. Curran Associates, Inc.
+
+Bronstein, M. M., Bruna, J., Cohen, T., and Veličković, P. (2021). Geometric deep learning:
+  Grids, groups, graphs, geodesics, and gauges. arXiv preprint arXiv:2104.13478.
+
+Carlet, C. (2021). Boolean Functions for Cryptography and Coding Theory. Cambridge Univer-
+  sity Press, Cambridge.
+
+Cohen, T. S. and Welling, M. (2016). Group equivariant convolutional networks. In Proceed-
+  ings of the 33rd International Conference on Machine Learning, volume 48 of Proceedings of
+  Machine Learning Research, pages 2990–2999, New York, NY, USA. PMLR.
+
+Cusick, T. W. and Stănică, P. (2017). Cryptographic Boolean Functions and Applications.
+  Academic Press, London, UK, 2 edition.
+
+Daemen, J. and Rijmen, V. (2020). The Design of Rijndael: The Advanced Encryption Standard
+  (AES). Springer, Berlin, Germany, 2 edition.
+
+Elesedy, B. and Zaidi, S. (2021). Provably strict generalisation benefit for equivariant models. In
+  38th International Conference on Machine Learning, volume 139 of Proceedings of Machine
+  Learning Research, pages 2959–2969. PMLR.
+
+Esteves, C. (2020). Theoretical aspects of group equivariant neural networks. arXiv preprint
+  arXiv:2004.05154.
+
+Hua, L.-K. (1949). On the automorphisms of a sfield. Proceedings of the National Academy of
+  Sciences of the United States of America, 35(7):386–389.
+
+Kang, J. S., Erginbas, Y. E., Butler, L., Pedarsani, R., and Ramchandran, K. (2024). Learning
+  to understand: Identifying interactions via the möbius transform. In Advances in Neural
+  Information Processing Systems, volume 37, Red Hook, NY, USA. Curran Associates, Inc.
+
+Lahoti, A., Karp, S., Winston, E., Singh, A., and Li, Y. (2024). Role of locality and weight
+  sharing in image-based tasks: A sample complexity separation between CNNs, LCNs, and
+  FCNs. In The Twelfth International Conference on Learning Representations.
+
+Lidl, R. and Niederreiter, H. (1997). Finite Fields, volume 20 of Encyclopedia of Mathematics
+  and Its Applications. Cambridge University Press, Cambridge, UK, 2 edition.
+
+Loshchilov, I. and Hutter, F. (2019). Decoupled weight decay regularization. In 7th International
+  Conference on Learning Representations.
+
+
+                                                29
+Nyberg, K. (1994). Differentially uniform mappings for cryptography. In Helleseth, T., edi-
+  tor, Advances in Cryptology—EUROCRYPT ’93, volume 765 of Lecture Notes in Computer
+  Science, pages 55–64, Berlin, Germany. Springer.
+
+O’Donnell, R. (2014). Analysis of Boolean Functions. Cambridge University Press, Cambridge,
+  UK.
+
+Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z.,
+  Gimelshein, N., Antiga, L., Desmaison, A., Kopf, A., Yang, E., DeVito, Z., Raison, M., Tejani,
+  A., Chilamkurthy, S., Steiner, B., Fang, L., Bai, J., and Chintala, S. (2019). PyTorch: An
+  imperative style, high-performance deep learning library. In Advances in Neural Information
+  Processing Systems, volume 32, pages 8024–8035.
+
+Sokolić, J., Giryes, R., Sapiro, G., and Rodrigues, M. R. D. (2017). Generalization error of
+  invariant classifiers. In 20th International Conference on Artificial Intelligence and Statistics,
+  volume 54 of Proceedings of Machine Learning Research, pages 1094–1103. PMLR.
+
+Zhang, Z. and Zhang, N. (2026). From symmetry to invariance: Learning galois equivalent
+  representations in finite fields. arXiv:2608.22513.
+
+
+
+
+                                                30
+

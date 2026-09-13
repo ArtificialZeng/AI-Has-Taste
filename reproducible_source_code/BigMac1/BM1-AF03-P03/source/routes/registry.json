@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Do the candidate residue classes form a basis at n=5?",
+      "premises": [
+        "published definitions of R_n^(1,2) and B_n^(1,2)",
+        "characteristic zero"
+      ],
+      "method": "prove the exact 4n invariant-generator reduction, then compute quotient dimension and full candidate normal-form rank over Q",
+      "status": "completed",
+      "evidence": [
+        "proof/generator_lemma.md",
+        "proof/computational_proposition.md",
+        "certificates/n5_input.json",
+        "certificates/verify_certificate.py",
+        "results/exact_run.log"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Is some multidegree block of B_5 dependent or incomplete in the exact quotient?",
+      "premises": [
+        "characteristic zero",
+        "supercommutative sign convention fixed from source"
+      ],
+      "method": "independent Artin--exterior block reconstruction and exact rational rank checks in all 396 blocks",
+      "status": "completed",
+      "evidence": [
+        "proof/builder_n5_exact_blocks.json",
+        "independent/certificate/exact_n5.json",
+        "audit/PROOF_AUDIT.md"
+      ],
+      "failure_reason": "No counterexample exists at n=5: every block satisfies the exact ideal and combined-rank identities.",
+      "next_test": null
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Which finite invariant generators and degree bounds suffice?",
+      "premises": [
+        "finite S_n action",
+        "characteristic zero"
+      ],
+      "method": "Reynolds orbit sums, kernel-partition induction, Newton identities, and characteristic-polynomial truncation",
+      "status": "completed",
+      "evidence": [
+        "proof/generator_lemma.md",
+        "proof/structural_reduction.md"
+      ],
+      "failure_reason": null,
+      "next_test": "A general candidate straightening or initial-ideal recurrence remains an open research direction, not a gap in the n=5 endpoint."
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can independent fail-closed implementations reconstruct and challenge the n=5 result?",
+      "premises": [
+        "small hash-bound configuration and source definition only"
+      ],
+      "method": "root no-import verifier plus frozen independent no-import Artin--exterior/Singular breaker, with malformed-input rejection tests",
+      "status": "completed",
+      "evidence": [
+        "certificates/verify_certificate.py",
+        "tests/test_verifier.py",
+        "independent/verify_exact.py",
+        "independent/tests/test_fail_closed.py",
+        "independent/certificate/exact_n5.json",
+        "audit/PROOF_AUDIT.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    }
+  ]
+}

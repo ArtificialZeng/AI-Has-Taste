@@ -1,0 +1,28 @@
+Complex-scale half-width 50/919 exact-certificate test record
+Date: 2026-08-24
+Environment: Python 3.11.15, SymPy 1.14.0, project .venv
+
+PASS source normal: exit 0
+PASS referee normal: exit 0
+PASS source optimized fail-closed: exit 1 at __debug__ guard
+PASS referee optimized fail-closed: exit 1 at __debug__ guard
+PASS source bad-dependency negative test: exit 1 at SHA-256 mismatch
+PASS referee bad-dependency negative test: exit 1 at SHA-256 mismatch
+PASS source dropped-sign negative test: exit 1 at seven-sign set gate
+PASS referee dropped-sign negative test: exit 1 at seven-sign set gate
+PASS source direct manifest: 11/11 entries
+
+Source normal terminal record:
+  rho_wide=22832956414652720419288572875925058067205119308096/
+    419658897924777012091564281675537127592865447699025
+  source_sha256=6e9be003ceb0e89e50e9156ede7d54d6a79888bb7768ac854dd4318792d9e415
+
+Referee normal terminal record:
+  center controls=40595 per r-cell
+  corner split=48 positive-g + 48 nonpositive-g
+  minimum_corner_gate_T1=40614857500397194448289907112063/
+    17267773417544622036100000000
+  referee_sha256=a8cb4c4a99f644fbdd97191bf53504bf90a28f85227d3c1c8dfc907febdcf350
+
+No raw legal gate negative was found; the exact certificate is strictly
+positive on the full stated continuum. The general gate remains open.

@@ -1,0 +1,53 @@
+COMMON METRIC RANK-TWO TRANSVERSE COMPACT-BALL INWARD-Z RECENTERED LIFT X15/16
+INDEPENDENT REFEREE TEST RESULTS
+Date: 2026-08-25
+
+EXACT RESERVE SCOUT
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x15_16_independent_referee.py
+exit: 1 (intentional freeze-before-formal-normal gate)
+result: independently derived the exact reserve, then stopped before the
+literal was inserted. The independently derived fraction agreed digit for
+digit with the separately supplied public comparison value.
+
+NORMAL
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x15_16_independent_referee.py
+exit: 0
+result: PASS
+
+PASS frozen source/manifest/reduction/predecessor hashes
+INDEPENDENCE candidate source bytes used only for SHA-256
+PASS direct compression=reversed Gram and Q^2 9/9
+PASS literal raw gate and exact deg_Z=4
+PASS positive reversible clearing and 34/34/1659
+PASS bidegree (7,4), 40/40 strict, unique weakest=(7,0)
+WEAKEST_RESERVE 164130585516459842755162401427385937241790749657112188185532058233551242392421285681/719207337600221184000000000000000000000000000000000000000000000000000000
+WEAKEST_POLYNOMIAL independently reconstructed in full and recorded in the atomic normal log; exact centered coefficient-l1 lower equals WEAKEST_RESERVE
+PASS parameter/cleared-gate/cleared-core splice at X=11/12
+PASS complete Z/danger/det(C)/both-z/rank-two legality
+PASS 72/72 exact legal raw-gate nodes (diagnostic only)
+NODE_MIN 25220495515731432464178726657578211986171632846803988079/16726464040000000000000000000000000000000000
+NODE_MIN_ARGUMENT (S,X,M,omega,nu)=(1/10000,11/12,-1/1000,-1/100,-1/100)
+
+FAIL-CLOSED
+normal exit=0
+-O exit=1: optimized Python is forbidden
+bad source hash exit=1: frozen candidate source SHA-256
+bad predecessor hash exit=1: frozen predecessor-referee SHA-256
+bad sparse normalization exit=1: claimed sparse-Z normalization
+drop-Q^2 exit=1: literal raw gate equals cyclic vector gate
+flip danger exit=1: literal raw gate equals cyclic vector gate
+drop core exit=1: 34 core coefficients
+
+The bad-normalization attack passed direct compression, Q^2 9/9, raw gate,
+and deg_Z before the exact normalization gate rejected it. The drop-core
+attack passed the same definition-level gates before the structural count
+rejected the 33-term core.
+
+POLICY
+The 72 nodes are breaker diagnostics only; 40 strict exact controls prove the continuum.
+No CE-046/048 real-part or absorption route, CE-059 allocation, or CE-060
+Z=0 remainder is used. No chart obstruction is called a raw negative or
+maximality theorem, and no full-ball/common-metric/fixed-lens claim is made.
+
+CLASSIFICATION fatal=0 major=0 minor=0
+FINAL PASS: exact independently audited adjacent local cell only.

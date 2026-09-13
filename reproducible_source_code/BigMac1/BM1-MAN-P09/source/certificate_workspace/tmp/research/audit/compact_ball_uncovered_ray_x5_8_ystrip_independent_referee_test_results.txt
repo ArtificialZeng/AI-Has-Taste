@@ -1,0 +1,64 @@
+COMPACT-BALL UNCOVERED-RAY x=5/8 y-STRIP INDEPENDENT REFEREE RESULTS
+Date: 2026-08-26
+
+Scope
+  x=5/8, Z=1/8, |y|<=1/100, both signed-z lifts,
+  0<S=h^2<=1, lambda>0.
+
+Independence boundary
+  Candidate source, source note, and source manifest were used only as
+  opaque byte strings for SHA-256.  They were not opened, parsed, imported,
+  executed, or used as coefficient/control inputs.
+
+Literal-free scout
+  command: /opt/anaconda3/bin/python tmp/research/audit/uncovered_ray_x5_8_ystrip_referee_literal_free_scout.py
+  exit: 0
+  result: PASS
+  independent Gram/direct compression: PASS
+  Q^2 entries: 9/9 PASS
+  lambda coefficient count: 5
+  Bernstein control groups: 1, 3, 10, 21, 36
+  total exact controls: 71/71 strictly positive
+  coefficient tuple SHA-256: b0ceebda4f845cb5d4d988c2f2b6f4384d0143859a48c5b9779f1f73ac7b3855
+  complete control table SHA-256: 2a57209ee9fe5745b0ae7bf366534808ec0862e83903036cff95229594bae226
+  danger reserve: 19371/40000
+  det(C)/S: 5/72
+  exact diagnostic nodes: 27/27 (diagnostics only)
+
+Formal normal
+  command: /opt/anaconda3/bin/python tmp/research/audit/verify_compact_ball_uncovered_ray_x5_8_ystrip_independent_referee.py
+  exit: 0
+  result: PASS
+
+Syntax gate
+  command: /opt/anaconda3/bin/python -m py_compile tmp/research/audit/verify_compact_ball_uncovered_ray_x5_8_ystrip_independent_referee.py
+  exit: 0
+  result: PASS
+
+Fail-closed attacks (all expected nonzero)
+  optimized Python (-O): exit 1 at optimized-Python gate
+  bad source hash: exit 1 at candidate-source SHA gate
+  bad source-manifest hash: exit 1 at source-manifest SHA gate
+  bad predecessor hash: exit 1 at predecessor-referee SHA gate
+  drop Q^2 term: exit 1 at literal/vector raw-gate identity
+  flip danger sign: exit 1 at exact danger-scalar identity
+  corrupt one derived coefficient: exit 1 at coefficient reconstruction
+  drop one Bernstein control: exit 1 at complete-control-count gate
+
+Implementation events retained for audit
+  Scout attempt 1 exited 1 because a symbolic relational was converted to a
+  Python bool; the exact endpoint-reserve gate replaced that implementation
+  error.  It was not a mathematical finding.
+  Formal normal attempt 1 used a Python interpreter without sympy and exited
+  1; the existing /opt/anaconda3 environment (sympy 1.13.3) was then used.
+  No environment was installed, copied, or mutated.
+
+Integrity attacks
+  Numerical samples were not used to infer positivity.
+  No chart obstruction was asserted as a raw-gate counterexample or maximality.
+  CE-046/048/059/060 were not reused.
+
+FINAL: PASS
+FATAL: 0
+MAJOR: 0
+MINOR: 0

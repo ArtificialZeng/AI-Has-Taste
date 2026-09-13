@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every integer N>=2, let A_N be uniform on the set of binary N by N matrices with every row and column sum equal to two, allowing diagonal ones, and set p_N=P(det(A_N)!=0) over the real numbers. With D(z)=exp(-z/2)(1-z)^(-1/2) and H(z)=exp(-z/2)(1+z)^(1/4)(1-z)^(-1/4), using the branches defined by their formal series at zero, p_N=[z^N]H(z)/[z^N]D(z). The denominator is positive for all N>=2. Moreover |M_(N,2)|=(N!)^2[z^N]D(z), and its invertible subset has size (N!)^2[z^N]H(z). The conditioned Ewens_N(1/2) representation A=P(I+Q) is justified by its weighted matching fibers, and A is invertible if and only if every cycle of Q is odd (necessarily of length at least three). The small cases are p_2=p_4=0 and p_3=1, with 0<p_N<1 for all N>=5. As N tends to infinity through all integers, p_N=C0*N^(-1/4)+(-1)^(N+1)*C1*(N^(-3/4)+N^(-7/4))+O(N^(-9/4)), where C0=2^(1/4)*sqrt(pi)/Gamma(1/4) and C1=e*sqrt(pi)/(2^(9/4)*Gamma(3/4)). In particular p_N is asymptotic to C0*N^(-1/4). This includes the contribution from z=-1 and proves cancellation of the nonoscillating N^(-5/4) term. No zero-diagonal or shifted-matrix claim is made.",
+  "contribution": "A complete exact probability calculation and rigorously controlled parity-sensitive asymptotic for the frozen loops-allowed degree-two model. The conditional Ewens representation is attributed to He--Huang, and the determinant cycle criterion and existence facts are already in older determinant-classification literature, including Li--Lin--Rodman (1999). The proposed contribution is the all-N uniform probability and explicit asymptotic constants/cancellation, not those known reductions. No equivalent probability/asymptotic formula was found in the inspected primary-source portions on 2026-09-08; the bounded search does not establish priority. The argument and computational evidence request fresh mathematical review and do not constitute an audit acceptance.",
+  "proposer_job_id": "bigMac-00014-p01-research-09c4ecbfdfab",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/proof.md",
+    "evidence/verify_exact.py",
+    "evidence/exact_checks.json",
+    "evidence/verify_asymptotics.py",
+    "evidence/asymptotic_checks.json",
+    "literature/research_comparison.md",
+    "literature/user_bibliography_check.md"
+  ]
+}

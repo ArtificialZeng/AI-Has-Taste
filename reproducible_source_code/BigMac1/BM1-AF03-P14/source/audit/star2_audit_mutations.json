@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "python": "3.13.5",
+  "script_sha256": "d41b43ad60382393e0375f596e38f04d8ceedc3c76711bdee4e21c2b0f091ca6",
+  "tests": [
+    {
+      "name": "valid",
+      "expected": "accept",
+      "returncode": 0,
+      "message": "{\n  \"status\": \"PASS\",\n  \"method\": \"standard-library Fraction sparse polynomials; no SymPy or project imports\",\n  \"python\": \"3.13.5\",\n  \"seed\": 220260829,\n  \"random_exact_checks\": 4,\n  \"boundary_checks\": 4,\n  \"active_subs"
+    },
+    {
+      "name": "changed_claim",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: altered claim"
+    },
+    {
+      "name": "changed_critical_declaration",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: altered critical-numerator declaration"
+    },
+    {
+      "name": "changed_graph",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: wrong high-pair graph"
+    },
+    {
+      "name": "changed_direction",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: wrong direction combination"
+    },
+    {
+      "name": "changed_coefficient",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: independently recomputed Bernstein table differs from certificate"
+    },
+    {
+      "name": "missing_domain",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: wrong or incomplete top-level schema"
+    },
+    {
+      "name": "duplicate_top_key",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: duplicate JSON key: schema"
+    },
+    {
+      "name": "duplicate_nested_key",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: duplicate JSON key: a4"
+    },
+    {
+      "name": "boolean_normalization",
+      "expected": "reject",
+      "returncode": 1,
+      "message": "AUDIT FAIL: boolean forbidden in certificate at $.normalization.a4"
+    }
+  ]
+}

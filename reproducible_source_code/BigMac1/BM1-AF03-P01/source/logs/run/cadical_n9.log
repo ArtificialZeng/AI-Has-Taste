@@ -1,0 +1,112 @@
+c --- [ banner ] -------------------------------------------------------------
+c 
+c CaDiCaL SAT Solver
+c Copyright (c) 2016-2026
+c A. Biere, M. Fleury, N. Froleyks, K. Fazekas, F. Pollitt, T. Faller
+c JKU Linz, University of Freiburg, TU Wien
+c 
+c Version 3.0.1
+c Apple clang version 21.0.0 (clang-2100.0.123.102) -Wall -Wextra -O3 -DNDEBUG -DNCLOSEFROM
+c Sun Jul 19 15:40:55 UTC 2026 Darwin Tahoe-arm64.local 25.4.0 arm64
+c 
+c --- [ proof tracing ] ------------------------------------------------------
+c 
+c opening file to write 'certificates/ekr_k4d3_n9.lrat'
+c writing non-binary proof trace to 'certificates/ekr_k4d3_n9.lrat'
+c 
+c --- [ parsing input ] ------------------------------------------------------
+c 
+c reading DIMACS file from 'instances/ekr_k4d3_n9.cnf'
+c opening file to read 'instances/ekr_k4d3_n9.cnf'
+c found 'p cnf 126 819' header
+c parsed 819 clauses in 0.00 seconds process time
+c 
+c --- [ options ] ------------------------------------------------------------
+c 
+c   --binary=false                 (different from default 'true')
+c   --lrat=true                    (different from default 'false')
+c 
+c --- [ solving ] ------------------------------------------------------------
+c 
+c time measured in process time since initialization
+c 
+c  seconds  reduction conflicts       size tier2     variables
+c         MB    restarts   redundant    glue  trail      remaining
+c          level     rate       size/glu tier1 irredundant
+c 
+c *  0.00  0  0 0   0  0    0    0 0.0 0 0 2 6  0%  819 126 100%
+c )  0.00  0  0 0   0  0    0    0 0.0 0 0 2 6  0%  819 126 100%
+c {  0.00  0  0 0   0  0    0    0 0.0 0 0 2 6  0%  819 126 100%
+c i  0.00  0  2 0   0  1   21   15 1.7 3 2 2 6 35%  819 125 99%
+c i  0.00  0  4 0   6  1  120   80 1.8 4 2 2 6 41%  819 118 94%
+c }  0.00  0  4 0   6  1  141   93 1.8 4 2 2 6 41%  819  76 60%
+c 0  0.00  0  4 0   6  1  141   93 1.8 4 2 2 6 41%  819  76 60%
+c 
+c --- [ closing proof ] ------------------------------------------------------
+c 
+c LRAT proof file 'certificates/ekr_k4d3_n9.lrat' closed
+c LRAT 184 added clauses 82.14%
+c LRAT 40 deleted clauses 17.86%
+c LRAT 11240 bytes (0.01 MB)
+c 
+c --- [ result ] -------------------------------------------------------------
+c 
+s UNSATISFIABLE
+c 
+c --- [ run-time profiling ] -------------------------------------------------
+c 
+c process time taken by individual solving procedures
+c (percentage relative to process time for solving)
+c 
+c         0.00   95.83% search
+c         0.00   84.95% unstable
+c         0.00   44.86% parse
+c         0.00    9.69% lucky
+c         0.00    0.00% simplify
+c   =================================
+c         0.00   47.59% solve
+c 
+c last line shows process time for solving
+c (percentage relative to total process time)
+c 
+c --- [ statistics ] ---------------------------------------------------------
+c 
+c chronological:                31        21.99 %  of conflicts
+c conflicts:                   141    210134.13    per second
+c decisions:                   177    263785.39    per second
+c fixed:                        50        39.68 %  of all variables
+c learned:                     129        91.49 %  per conflict
+c learned_lits:                795       100.00 %  learned literals
+c minimized:                     0         0.00 %  learned literals
+c shrunken:                    217        27.30 %  learned literals
+c minishrunken:                 20         2.52 %  learned literals
+c otfs:                          7         4.96 %  of conflict
+c propagations:               2665         3.97 M  per second
+c restarts:                      6        23.50    interval
+c subsumed:                     33         3.49 %  of all clauses
+c strengthened:                  7         0.74 %  of all clauses
+c ticks:                     24625         9.24    propagation
+c 
+c seconds are measured in process time for solving
+c 
+c --- [ glue usage ] ---------------------------------------------------------
+c 
+c focused glue 2 used 68 clauses 39.30% accumulated 72.25% tier1
+c focused glue 3 used 29 clauses 16.76% accumulated 89.01% tier2
+c 
+c stable glue 2 used 0 clauses 0.000% accumulated 0.000% tier1
+c stable glue 3 used 0 clauses 0.000% accumulated 0.000%
+c stable glue 4 used 0 clauses 0.000% accumulated 0.000%
+c stable glue 5 used 0 clauses 0.000% accumulated 0.000%
+c stable glue 6 used 0 clauses 0.000% accumulated 0.000% tier2
+c 
+c 
+c --- [ resources ] ----------------------------------------------------------
+c 
+c total process time since initialization:         0.00    seconds
+c total real time since initialization:            0.00    seconds
+c maximum resident set size of process:            2.36    MB
+c 
+c --- [ shutting down ] ------------------------------------------------------
+c 
+c exit 20

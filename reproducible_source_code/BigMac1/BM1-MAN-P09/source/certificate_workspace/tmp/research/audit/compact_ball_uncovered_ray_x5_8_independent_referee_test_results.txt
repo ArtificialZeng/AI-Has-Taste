@@ -1,0 +1,81 @@
+VERDICT PASS
+FATAL 0
+MAJOR 0
+MINOR 0
+
+SCOPE fixed shape ray (x,y,Z)=(5/8,0,1/8),
+      0<h<=1, S=h^2, lambda>0, both signed-z lifts.
+
+INDEPENDENCE
+- Candidate source, source note, source manifest, coverage note and coverage
+  manifest were opaque SHA-256 inputs only.
+- No candidate or note import, execution, parsing, coefficient reuse, or
+  claim reuse.
+- Original Hermitian frame/compression rebuilt with mixed-column-first Gram,
+  z-h-q elimination, and Q^2 multiplication order (1,2,0).
+- Five lambda coefficients and all S-positivity data derived literal-free.
+
+OPAQUE HASH GATES
+- source 9ed1c14f3616c88de59d8ff3c2b2aa93a772f40b488cdb2246144b74195f5e6f
+- source note 15223a05f711dc819e43cfe43261a5c34858eb9abead5f88b133cfa578dd7002
+- source manifest 0859899d0d4c04a490eefab4bd219a8254e49c0cd4467ed7e31f8a6ce0176a21
+- coverage note 45837237f7772cffc2340e6f5f3b2fde773a480712e0b02124c8c5f98d5b6447
+- coverage manifest 5b84c3f0c4aa263b30265e0dfed65b288dd2eaafae474eee45d143c1d6585ab8
+
+LEGALITY
+- danger=31/64>0;
+- det(C)/S=(5/9)Z=5/72>0;
+- Z=1/8 is strict;
+- signed-z invariance passes;
+- original frame remains orthonormal at every 0<S<=1, including S=1;
+- hence C is positive definite and the compression has rank two.
+
+EXACT 36*GAMMA COEFFICIENTS IN ASCENDING LAMBDA POWER
+- c0 = 5.
+- c1 = 85*S/96.
+- c2 = 215*S*(21249*S+19037)/331776.
+- c3 = 5*S*(2654208*S^2+8572032*S+4083977)/31850496.
+- c4 = S*(987426091008*S^3+2214366284160*S^2
+          +1677691247279*S+423511736838)/110075314176.
+
+S-POSITIVITY CERTIFICATES
+- c0: order 0, residual Bernstein (5).
+- c1: order 1, residual Bernstein (85/96).
+- c2: order 1, residual Bernstein
+  (4092955/331776,4330745/165888).
+- c3: order 1, residual Bernstein
+  (20419885/31850496,41849965/31850496,76551085/31850496).
+- c4: order 1, residual Bernstein
+  (70585289473/18345885696,
+   2948226457793/330225942528,
+   427517749327/20639121408,
+   5302995359285/110075314176).
+- Every displayed number is strictly positive; therefore every coefficient is
+  strictly positive for 0<S<=1, and 36*Gamma>0 for every lambda>0.
+
+DIAGNOSTICS ONLY
+- 9 exact (S,lambda) nodes checked.
+- minimum=
+  33592320006031526764440574185198142121068487
+  /6718464000000000000000000000000000000000000
+  at (S,lambda)=(1/1000000,1/1000).
+- Diagnostics are not used in the theorem proof.
+
+FAIL-CLOSED ATTACKS (all exit 1)
+- optimized: optimized Python is forbidden.
+- bad source: frozen candidate source SHA-256.
+- bad source manifest: frozen source-manifest SHA-256.
+- bad coverage: frozen coverage-note SHA-256.
+- drop Q^2: fully conjugated literal gate equals vector gate.
+- flip danger: strict danger reserve 31/64.
+- corrupt one coefficient: derived coefficient reconstruction.
+- drop one gate: complete fixed-ray legality gate list.
+
+INTEGRITY
+- no numerical evidence promoted to theorem;
+- no CE-046/048/059/060 route reused;
+- no claim beyond this single fixed shape ray;
+- no resource failure and no proof assistant used.
+
+PY_COMPILE scout and formal exit 0
+NORMAL scout and formal exit 0

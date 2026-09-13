@@ -1,0 +1,22 @@
+{
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/main.bbl"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "writer_job_id": "bigMac-00006-p03-write-8f1871c215ee",
+  "build": {
+    "cwd": "manuscript",
+    "engine": "pdflatex",
+    "bibliography_backend": "biber",
+    "commands": [
+      "pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+      "biber main",
+      "pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+      "pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex"
+    ]
+  },
+  "citation_limitations": "The workbook BibTeX entry is authoritative and preserved verbatim. External refresh of DOI 10.2139/ssrn.7380519 and full-text access were unavailable in this writing job. The citation is confined to the methodological comparison documented in literature/user_bibliography_check.md.",
+  "writing_evidence": "evidence/write-report.md"
+}

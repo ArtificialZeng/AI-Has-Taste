@@ -1,0 +1,219 @@
+A STRICT CERTIFIED SEARCH EXTENSION FOR ERDŐS
+PROBLEM 647
+ZIJIAN ZENG
+
+Abstract. Let τ (m) denote the number of positive divisors of m. Erdős
+Problem 647 asks whether there is an n > 24 for which maxm<n (m + τ (m)) ≤
+n + 2. We give a reproducible finite exclusion for
+9,174,471,185,880,000,000 < n ≤ 9,180,628,549,092,000,000.
+It reconstructs all 96 residue classes in the published theorem-grade modular reduction, expands them into 50,784 arithmetic progressions, and checks
+5,078,450,784 progression cells. Exact small-prime divisor lower bounds reject
+all but 21 cells; those 21 are factored independently and each violates one
+of the shifts 1 ≤ k ≤ 6. Combined with the reported previous computation
+through the left endpoint, this gives a strict new computational frontier at
+9,180,628,549,092,000,000. The inherited prefix was not rerun here, and the
+global existence problem remains open.
+
+1. Introduction
+For a positive integer m, write τ (m) for its number of positive divisors. The
+problem, originating with Erdős and Selfridge, asks whether there is an integer
+n > 24 such that
+
+(1)
+max m + τ (m) ≤ n + 2.
+1≤m<n
+
+The value 24 is the last known equality case [2, 1]. Direct and certificate-based finite
+computations have successively treated ranges through 1012 and beyond [5, 6, 7],
+but no finite computation alone settles the existential question. Erdős also noted
+that a related fixed-window statement follows from Schinzel’s Hypothesis H [3]; that
+conditional statement does not control the full prefix in (1).
+The public program of Tordjman reports exclusion through
+9,174,471,185,880,000,000
+[7]. The contribution here is an independently replayed interval above that endpoint.
+The distinction is important: Theorem 3.1 is supported by the new local certificate,
+whereas Corollary 3.2 additionally inherits the earlier computation.
+2. Local and modular reductions
+Putting k = n − m transforms (1), for a fixed n, into the equivalent family
+τ (n − k) ≤ k + 2
+
+(2)
+
+(1 ≤ k < n).
+
+Thus a single exact inequality τ (n − k) > k + 2 rejects n.
+Date: August 29, 2026.
+
+1
+
+2
+
+ZIJIAN ZENG
+
+We use the following published prerequisite. Its proof path is formalized in Lean
+4 and, at the stage used here, does not use the later open-residue axiom [4].
+Proposition 2.1 (Hughes modular reduction). If n > 84 satisfies (2), then n =
+2520N for an integer N , and r = N mod M belongs to
+R = {0 ≤ r < M : dr ̸≡ 1
+
+(3)
+
+(mod q) for every d ∈ D, q ∈ Q} ,
+
+where
+M = 46189 = 11 · 13 · 17 · 19,
+Q = {11, 13, 17, 19},
+D = {105, 140, 210, 252, 280, 315, 420, 504, 630, 840, 1260, 2520}.
+Moreover, |R| = 96.
+We deliberately retain all 96 classes. In particular, the present result does not
+use the subsequent split into 55 closed and 41 open classes, nor the problem-specific
+axiom associated with that split.
+Set
+A = 2520 · 46189 · 529 = 61,573,632,120,
+u0 = 149,000,000,
+
+u1 = 149,100,000.
+
+For r ∈ R and 0 ≤ s < 529, define
+Br,s = 2520(46189s + r),
+
+(4)
+
+n = Au + Br,s .
+
+Every N with N mod M ∈ R has a unique representation of this form. Since 0 ≤
+Br,s < A, every candidate in (Au0 , Au1 ] occurs among the cells with u0 ≤ u ≤ u1 .
+This inclusive choice of u0 is essential for covering the partial layer immediately to
+the right of Au0 ; cells with u = u1 and Br,s > 0 are harmless overcoverage.
+3. The certified increment
+Theorem 3.1. No integer n with
+9,174,471,185,880,000,000 < n ≤ 9,180,628,549,092,000,000
+satisfies (1).
+Proof. The endpoint identities are
+Au0 = 9,174,471,185,880,000,000,
+
+Au1 = 9,180,628,549,092,000,000.
+
+Since the interval lies above 84, Proposition 2.1 and the parameterization (4) include
+every possible candidate among the
+96 · 529 · (u1 − u0 + 1) = 5,078,450,784
+enumerated cells.
+For each cell the verifier examines Fk = n − k forQ1 ≤ k ≤ 16. It removes the
+exact valuations of every prime p ≤ 100,000. If Q = pvp (Fk ) is the removed part
+and C = Fk /Q, then gcd(Q, C) = 1 and hence
+(
+τ (Q), C = 1,
+(5)
+τ (Fk ) = τ (Q)τ (C) ≥
+2τ (Q), C > 1.
+The implementation rejects a cell only when this integer lower bound exceeds k + 2.
+It rejects 5,078,450,763 cells in this way.
+
+A STRICT CERTIFIED SEARCH EXTENSION FOR ERDŐS PROBLEM 647
+
+3
+
+The remaining 21 cells are emitted rather than accepted. A separate Python
+verifier factors Fk from scratch using deterministic 64-bit primality testing and
+Pollard–rho factorization, checks the product and every prime factor, reconstructs
+τ (Fk ), and finds τ (Fk ) > k + 2 in each case. The killing-shift distribution is
+k
+hard cells killed
+
+1
+14
+
+2 3 4 6
+3 2 1 1.
+
+There are no unresolved cells. Thus every cell violates (2), and consequently no n
+in the stated interval satisfies (1).
+□
+Corollary 3.2 (reported combined frontier). Combining Theorem 3.1 with the
+previously reported exclusion through 9,174,471,185,880,000,000 [7] gives a reported
+combined computational frontier through
+9,180,628,549,092,000,000.
+Remark 3.3. The wording of Corollary 3.2 records a trust split. The current
+artifact independently replays the entire strict increment, including its left partial
+layer. It audits the source, logs, and exceptional factorizations of the inherited
+computation, but it does not rerun that full earlier scan.
+4. Certificate and independent replay
+The serialized input records the endpoints, the formula (4), the full Cartesian
+product R × {0, . . . , 528}, and cryptographic hashes. The verifier does not accept a
+copied residue list: it regenerates R from (3), proves that its size is 96, and checks
+that the 50,784 rows are exactly the required Cartesian product. It also checks
+the identities defining A and the two endpoints and refuses arithmetic outside the
+signed 64-bit domain.
+The decisive output is
+Quantity
+
+Exact value
+
+Residues r
+96
+Subprogressions (r, s)
+50,784
+Values of u per subprogression
+100,001
+Enumerated cells
+5,078,450,784
+Strict lower-bound kills
+5,078,450,763
+Independently factored hard cells
+21
+Unresolved cells
+0
+As one representative hard certificate, for
+n = 9,175,022,326,300,168,800,
+
+k = 6,
+
+the verifier reconstructs
+n − k = 2 · 3 · 176017 · 8687628966047,
+
+τ (n − k) = 16 > 8 = k + 2.
+
+All 21 exact records, including (r, s, u, n, k), the prime factorization, and τ (n − k),
+are stored in certificates/finite_extension_certificate.json.
+From the project root, the decisive reconstruction command is
+python3 verification/verify_extension.py --threads 12
+The certificate’s SHA-256 digest is
+19f8f31a1d037ddae404448ba13863f10607a23f24414b57628bf13b6ecc83c3.
+
+4
+
+ZIJIAN ZENG
+
+The verifier also binds the input, pair table, C source, Python source, and discovery
+log by SHA-256.
+5. Scope and disclosure
+This result is a strict finite bound, not a proof that a second n exists or does
+not exist. Large unsuccessful searches cannot decide the remaining infinite tail. A
+second novelty search on August 29, 2026 found no publication or database entry
+reporting the exact endpoint above; this is a bounded search statement, not a claim
+about unpublished work.
+The new replay used no proof assistant. Its imported modular prerequisite was
+formalized in Lean 4 by Hughes; the present project inspected that theorem boundary
+but did not invoke Lean locally. OpenAI Codex assisted with literature search,
+proof exploration, code, tests, and prose. The discovery scan used an existing C
+program [7]; the decisive replay was separately implemented and used exact integer
+arithmetic. Runs were deterministic and used no random seed.
+References
+1. Thomas F. Bloom, Erdős Problem 647, Erdős Problems database, Accessed 2026-08-29.
+2. Paul Erdős, Some Unconventional Problems in Number Theory, Mathematics Magazine 52
+(1979), no. 2, 67–70.
+, Some Unconventional Problems in Number Theory, Acta Mathematica Academiae
+3.
+Scientiarum Hungaricae 33 (1979), no. 1–2, 71–80.
+4. Scott D. Hughes, Erdős #647 Proof Chain, GitHub repository, version 0.1.0, 2026, Audited
+commit be657cf1b89aebb98bbb8117f29c0456a8435ac6.
+5. Patrik Idén, Computational Verification of Erdős Problem 647 up to 1012 , 2026.
+6. Ibrahim Mian and Shayaan Siddique, A Kernel-Checked Exclusion Certificate for Erdős Problem
+647, 2026.
+7. Benjamin Tordjman, Erdős #647 Frontier Extension, GitHub repository, version 1.0.0, 2026,
+Audited commit f727ab831abd533d36260f36f0b3433d8db0715e.
+School of Artificial Intelligence and Automation, China University of Geosciences;
+Institute of Computer Science and Digital Innovation, UCSI University
+Email address: 1002266693@ucsiuniversity.edu.my
+
+

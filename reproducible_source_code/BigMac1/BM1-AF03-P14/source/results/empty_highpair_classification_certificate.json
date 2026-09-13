@@ -1,0 +1,171 @@
+{
+  "certificate_type": "q5_empty_highpair_chamber_classification",
+  "format_version": 1,
+  "theorem": {
+    "claim": "The only real full-support critical direction in the positive ordered closure of the empty high-pair chamber is the diagonal direction.",
+    "scope": "a0>=a1>=a2>=a3>=a4>0 and ai+aj<=T for all pairs, with T=(a0+a1+a2+a3+a4)/2",
+    "conclusion": "a0=a1=a2=a3=a4",
+    "excluded": "zero-coordinate strata and all sign chambers having at least one strictly high pair"
+  },
+  "normalization": {
+    "sum": "a0+a1+a2+a3+a4=2",
+    "pair_wall": "ai+aj=1",
+    "order": "a0>=a1>=a2>=a3>=a4>0"
+  },
+  "empty_chamber": {
+    "high_pairs": [],
+    "low_pair_closure": "ai+aj<=1 for every 0<=i<j<=4",
+    "ordered_reduction": "a0+a1<=1"
+  },
+  "symmetric_system": {
+    "P": "3*p1^4/8-3*p1^2*p2+3*p2^2+4*p1*p3-4*p4",
+    "S": "p2",
+    "Pi_at_x": "C0+C1*x+12*p1*x^2-16*x^3",
+    "C0": "3*p1^3/2-6*p1*p2+4*p3",
+    "C1": "-6*p1^2+12*p2",
+    "q": "-16*S*x^4+12*p1*S*x^3+(C1*S+P)*x^2+C0*S*x-S*P",
+    "critical_root_rule": "every coordinate value is a root of q",
+    "degree_bound": 4
+  },
+  "factor_polynomials": {
+    "A4": [54, -72, 32, -4, 1],
+    "A5": [334, -332, 52, 44, -19, 2],
+    "A8": [200, -760, 1552, -1960, 1589, -758, 148, 40, 2],
+    "B4": [3, 8, -64, 48, -8],
+    "B5": [501, -1338, 1376, -688, 168, -16],
+    "C4": [15, -36, 32, -16, -8],
+    "D8": [72, -384, 2144, -2272, 1652, -1496, 852, -216, 19],
+    "E8": [4800, -13440, 20608, -20736, 14960, -7312, 2176, -256, 19],
+    "F2": [9, -8, 2],
+    "F4": [40, -56, 32, -8, 1]
+  },
+  "three_value_cases": [
+    {
+      "multiplicities": [1, 1, 3],
+      "z": "(2-x-y)/3",
+      "f_scale": [27, 2],
+      "g_scale": [81, 2],
+      "resultant_constant": -881596846080000,
+      "resultant_factors": [["x", 4], ["half", 8], ["seven", 1], ["A4", 1], ["A8", 1]],
+      "surviving_branches": ["half"]
+    },
+    {
+      "multiplicities": [1, 2, 2],
+      "z": "1-x/2-y",
+      "f_scale": [4, 1],
+      "g_scale": [8, 1],
+      "resultant_constant": -33554432000,
+      "resultant_factors": [["x", 4], ["B4", 2], ["C4", 2], ["B5", 1]],
+      "surviving_branches": ["B4", "B5"]
+    },
+    {
+      "multiplicities": [1, 3, 1],
+      "z": "2-x-3*y",
+      "f_scale": [1, 2],
+      "g_scale": [1, 2],
+      "resultant_constant": 14929920000,
+      "resultant_factors": [["x", 4], ["half", 4], ["A4", 1], ["A5", 1], ["A8", 1]],
+      "surviving_branches": ["half", "A5"]
+    },
+    {
+      "multiplicities": [2, 1, 2],
+      "z": "1-x-y/2",
+      "f_scale": [4, 1],
+      "g_scale": [8, 1],
+      "resultant_constant": -11796480000,
+      "resultant_factors": [["half", 8], ["seven", 1], ["D8", 1], ["E8", 1]],
+      "surviving_branches": ["half"]
+    },
+    {
+      "multiplicities": [2, 2, 1],
+      "z": "2-2*x-2*y",
+      "f_scale": [1, 2],
+      "g_scale": [1, 2],
+      "resultant_constant": -7680000,
+      "resultant_factors": [["half", 4], ["B5", 1], ["D8", 1], ["E8", 1]],
+      "surviving_branches": ["half"]
+    },
+    {
+      "multiplicities": [3, 1, 1],
+      "z": "2-3*x-y",
+      "f_scale": [1, 2],
+      "g_scale": [1, 6],
+      "resultant_constant": -32000,
+      "resultant_factors": [["half", 12], ["seven", 1], ["F2", 2], ["F4", 2]],
+      "surviving_branches": ["half"]
+    }
+  ],
+  "branch_groebner_bases": {
+    "113_half": ["y^2", "2*x-1"],
+    "122_B4": ["88*y^2+(44*x-88)*y-3*x^3+26*x^2-40*x+24", "B4"],
+    "122_B5": ["3*x+2*y-2", "B5"],
+    "131_half": ["2*y-1", "2*x-1"],
+    "131_A5": ["2*x+3*y-2", "A5"],
+    "212_half": ["y^2", "2*x-1"],
+    "221_half": ["2*y-1", "2*x-1"],
+    "311_half": ["y^2*(2*y-1)", "2*x-1"]
+  },
+  "sturm_checks": [
+    ["A4", [2, 5], [2, 3], 0],
+    ["A8", [2, 5], [2, 3], 0],
+    ["B4", [2, 5], [2, 3], 1],
+    ["B4", [59, 100], [3, 5], 1],
+    ["C4", [2, 5], [2, 3], 0],
+    ["B5", [2, 5], [2, 3], 1],
+    ["A5", [2, 5], [2, 3], 1],
+    ["B5", [2, 5], [1, 2], 0],
+    ["D8", [2, 5], [1, 2], 0],
+    ["E8", [2, 5], [1, 2], 0],
+    ["F2", [2, 5], [1, 2], 0],
+    ["F4", [2, 5], [1, 2], 0]
+  ],
+  "branch_inequality_certificate": {
+    "B4_isolating_interval": [[59, 100], [3, 5]],
+    "ordered_root_condition": "y>(2-x)/4",
+    "empty_condition": "y<=1-x",
+    "boundary_value": "R_B4(x,1-x)=-3*x^3+70*x^2-84*x+24",
+    "boundary_sign": "negative on [59/100,3/5]",
+    "B5_collapse": "3*x+2*y-2=0 implies z=x",
+    "A5_collapse": "2*x+3*y-2=0 implies z=x"
+  },
+  "two_value_certificate": [
+    {
+      "large_multiplicity": 1,
+      "range": [[1, 1], [2, 1]],
+      "divided_difference": "15*r^4*(r-3)/8",
+      "nonzero_reason": "r>=1 and r<=2"
+    },
+    {
+      "large_multiplicity": 2,
+      "range": [[1, 1], [3, 2]],
+      "divided_difference": "5*(16*r^5-48*r^4+40*r^3-8*r^2-9*r+3)/8",
+      "sturm_root_count": 0
+    },
+    {
+      "large_multiplicity": 3,
+      "range": [[1, 1], [2, 1]],
+      "divided_difference": "5*(3*r^5-9*r^4-8*r^3+40*r^2-48*r+16)/8",
+      "sturm_root_count": 0
+    },
+    {
+      "large_multiplicity": 4,
+      "range": [[1, 1], null],
+      "divided_difference": "15*(1-3*r)/8",
+      "nonzero_reason": "r>=1"
+    }
+  ],
+  "four_value_certificate": {
+    "duplicated_value": "1/2",
+    "other_values_sum": "x+y+z=1",
+    "u": "x*y+x*z+y*z",
+    "w": "x*y*z",
+    "vieta_e4_identity": "P/16-w/2=(4*u-1)^2/64",
+    "vieta_e3_identity": "C0/16-(w+u/2)=(4*u-4*w-1)/16",
+    "contradiction": "e4 gives u=1/4; e3 then gives w=0, contradicting x*y*z>0"
+  },
+  "closure_coverage": {
+    "included": ["positive coordinate-equality faces", "all pair walls incident to the empty chamber", "their intersections"],
+    "wall_justification": "the paired truncated-power numerator is C^3 and adjacent first derivatives agree when a pair form is zero",
+    "not_included": ["a4=0", "lower-support strata", "nonempty high-pair chambers"]
+  }
+}

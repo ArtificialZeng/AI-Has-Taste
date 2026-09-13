@@ -1,0 +1,205 @@
+{
+  "claim": "Abs(D_4) admits a normalized flow with unit vertex weights",
+  "environment": {
+    "algorithm": "integer Dinic max-flow; deterministic; no random seed",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "python": "3.13.5"
+  },
+  "failure_cut": null,
+  "layers": [
+    {
+      "flows": [
+        {
+          "degree_from": 12,
+          "degree_to": 1,
+          "denominator": 1,
+          "edge_count": 12,
+          "edge_denominator": 12,
+          "edge_numerator": 1,
+          "from": "1,1,1,1|-",
+          "numerator": 1,
+          "to": "2,1,1|-"
+        }
+      ],
+      "rank": 0
+    },
+    {
+      "flows": [
+        {
+          "degree_from": 1,
+          "degree_to": 2,
+          "denominator": 25,
+          "edge_count": 12,
+          "edge_denominator": 100,
+          "edge_numerator": 1,
+          "from": "2,1,1|-",
+          "numerator": 3,
+          "to": "1,1|1,1"
+        },
+        {
+          "degree_from": 2,
+          "degree_to": 2,
+          "denominator": 25,
+          "edge_count": 24,
+          "edge_denominator": 100,
+          "edge_numerator": 1,
+          "from": "2,1,1|-",
+          "numerator": 6,
+          "to": "2,2|-"
+        },
+        {
+          "degree_from": 8,
+          "degree_to": 3,
+          "denominator": 25,
+          "edge_count": 96,
+          "edge_denominator": 150,
+          "edge_numerator": 1,
+          "from": "2,1,1|-",
+          "numerator": 16,
+          "to": "3,1|-"
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "flows": [
+        {
+          "degree_from": 8,
+          "degree_to": 2,
+          "denominator": 25,
+          "edge_count": 48,
+          "edge_denominator": 400,
+          "edge_numerator": 1,
+          "from": "1,1|1,1",
+          "numerator": 3,
+          "to": "1|2,1"
+        },
+        {
+          "degree_from": 2,
+          "degree_to": 2,
+          "denominator": 7,
+          "edge_count": 24,
+          "edge_denominator": 168,
+          "edge_numerator": 1,
+          "from": "2,2|-",
+          "numerator": 1,
+          "to": "2|1,1"
+        },
+        {
+          "degree_from": 8,
+          "degree_to": 2,
+          "denominator": 175,
+          "edge_count": 96,
+          "edge_denominator": 16800,
+          "edge_numerator": 17,
+          "from": "2,2|-",
+          "numerator": 17,
+          "to": "4|-"
+        },
+        {
+          "degree_from": 3,
+          "degree_to": 4,
+          "denominator": 175,
+          "edge_count": 96,
+          "edge_denominator": 16800,
+          "edge_numerator": 29,
+          "from": "3,1|-",
+          "numerator": 29,
+          "to": "1|2,1"
+        },
+        {
+          "degree_from": 6,
+          "degree_to": 4,
+          "denominator": 175,
+          "edge_count": 192,
+          "edge_denominator": 33600,
+          "edge_numerator": 83,
+          "from": "3,1|-",
+          "numerator": 83,
+          "to": "4|-"
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "flows": [
+        {
+          "degree_from": 2,
+          "degree_to": 4,
+          "denominator": 15,
+          "edge_count": 48,
+          "edge_denominator": 180,
+          "edge_numerator": 1,
+          "from": "1|2,1",
+          "numerator": 4,
+          "to": "-|2,2"
+        },
+        {
+          "degree_from": 4,
+          "degree_to": 3,
+          "denominator": 105,
+          "edge_count": 96,
+          "edge_denominator": 5040,
+          "edge_numerator": 1,
+          "from": "1|2,1",
+          "numerator": 2,
+          "to": "-|3,1"
+        },
+        {
+          "degree_from": 1,
+          "degree_to": 12,
+          "denominator": 45,
+          "edge_count": 12,
+          "edge_denominator": 540,
+          "edge_numerator": 1,
+          "from": "2|1,1",
+          "numerator": 1,
+          "to": "-|1,1,1,1"
+        },
+        {
+          "degree_from": 8,
+          "degree_to": 3,
+          "denominator": 315,
+          "edge_count": 96,
+          "edge_denominator": 15120,
+          "edge_numerator": 19,
+          "from": "2|1,1",
+          "numerator": 38,
+          "to": "-|3,1"
+        },
+        {
+          "degree_from": 4,
+          "degree_to": 6,
+          "denominator": 7,
+          "edge_count": 192,
+          "edge_denominator": 336,
+          "edge_numerator": 1,
+          "from": "4|-",
+          "numerator": 4,
+          "to": "-|3,1"
+        }
+      ],
+      "rank": 3
+    }
+  ],
+  "n": 4,
+  "orbit_count": 11,
+  "orbit_encoding": "positive_partition|negative_partition; negative partition has even length",
+  "quotient_action": "conjugation by B_4 on D_4",
+  "rank_orbit_counts": [
+    1,
+    1,
+    3,
+    3,
+    3
+  ],
+  "rank_sizes": [
+    1,
+    12,
+    50,
+    84,
+    45
+  ],
+  "schema_version": 1,
+  "status": "feasible"
+}

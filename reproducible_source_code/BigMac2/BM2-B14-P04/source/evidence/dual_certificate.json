@@ -1,0 +1,33 @@
+{
+  "schema": "b3-relative-dimension-cover-dual-v1",
+  "element_encoding": "integer x in 0..7 represents the subset whose characteristic vector is the three bits of x",
+  "claimed_dual_value": {"numerator": 16, "denominator": 1},
+  "nonzero_weights": [
+    {"requirement": ["comparable", 0, 3], "weight": {"numerator": 1, "denominator": 3}},
+    {"requirement": ["comparable", 0, 5], "weight": {"numerator": 1, "denominator": 3}},
+    {"requirement": ["comparable", 0, 6], "weight": {"numerator": 1, "denominator": 3}},
+    {"requirement": ["comparable", 3, 7], "weight": {"numerator": 1, "denominator": 3}},
+    {"requirement": ["comparable", 5, 7], "weight": {"numerator": 1, "denominator": 3}},
+    {"requirement": ["comparable", 6, 7], "weight": {"numerator": 1, "denominator": 3}},
+    {"requirement": ["orientation", 1, 2], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 2, 1], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 1, 4], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 4, 1], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 2, 4], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 4, 2], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 3, 5], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 5, 3], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 3, 6], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 6, 3], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 5, 6], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 6, 5], "weight": {"numerator": 2, "denominator": 3}},
+    {"requirement": ["orientation", 6, 1], "weight": {"numerator": 2, "denominator": 1}},
+    {"requirement": ["orientation", 5, 2], "weight": {"numerator": 2, "denominator": 1}},
+    {"requirement": ["orientation", 3, 4], "weight": {"numerator": 2, "denominator": 1}}
+  ],
+  "upper_witness": [
+    [0, 1, 2, 3, 4, 5, 6, 7],
+    [4, 2, 6, 1, 5, 3],
+    [5, 2]
+  ]
+}

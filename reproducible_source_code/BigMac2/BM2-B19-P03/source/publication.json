@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "title": "An Exact Weighted-Cycle Obstruction for the 812-Vertex AGL(1,29) Orientation Instance",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build": {
+    "engine": "latexmk with pdfLaTeX and Biber",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+    "working_directory": "manuscript"
+  },
+  "supplementary_files": [
+    "evidence/exact_cycle_weights.tsv",
+    "evidence/check_exact_weight_certificate.py",
+    "evidence/exact_weight_check.json",
+    "evidence/replay_exact_weight_certificate.py",
+    "evidence/exact_weight_replay.json",
+    "evidence/cycles_14_16.tsv",
+    "evidence/orientation_search_instance.tsv"
+  ],
+  "citation_metadata_basis": "Garcia metadata refreshed from arXiv on 2026-09-09; Zeng2026SSRN7380519 preserved from the user-designated workbook because direct DOI refresh was unavailable."
+}

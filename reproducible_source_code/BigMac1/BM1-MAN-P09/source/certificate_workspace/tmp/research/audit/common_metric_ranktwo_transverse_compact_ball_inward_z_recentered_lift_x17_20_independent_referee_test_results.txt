@@ -1,0 +1,68 @@
+COMMON METRIC RANK-TWO TRANSVERSE COMPACT-BALL INWARD-Z RECENTERED LIFT X17/20
+INDEPENDENT REFEREE TEST RESULTS
+Date: 2026-08-25
+
+NORMAL REPLAY
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py
+exit: 0
+result: PASS
+
+PASS frozen source/manifest/claim/reduction/predecessor hashes
+INDEPENDENCE candidate source bytes were used only for SHA-256
+PASS all 9/9 Q^2 entries reconstructed by explicit multiplication
+PASS fully conjugated raw gate and exact deg_Z=4
+PASS reversible positive clearing and 34/34/1659 structure
+PASS internal deleted-core attack changes the structural count
+PASS bidegree (7,4) and 40/40 strict exact Bernstein controls
+WEAKEST_INDEX (7, 0)
+WEAKEST_RESERVE 4989868253428042904100458867373768732890103155600729500817292846407383462088295685657449907/37458715500011520000000000000000000000000000000000000000000000000000000000000000
+WEAKEST_POLYNOMIAL independently reconstructed in full and printed by the normal replay; its exact centered coefficient-l1 lower bound equals WEAKEST_RESERVE above
+PASS exact parameter-by-parameter predecessor splice at X=83059/100000
+PASS complete lambda/Z/danger/det(C)/rank-two legality for both signed-z lifts
+PASS 72/72 exact legal raw-gate diagnostic nodes
+NODE_MIN 2300246806628869221146172981442144843035125440470830199752746439/2613510006250000000000000000000000000000000000000000
+NODE_MIN_ARGUMENT (S,X,M,omega,nu)=(1/10000,83059/100000,-1/1000,-1/100,-1/100)
+DIAGNOSTIC_POLICY exact nodes are breaker checks, not the continuum proof
+SCOPE one recentered local chart only; no raw negative or maximality claim
+
+FAIL-CLOSED ATTACKS
+
+1. optimized Python
+command: .venv/bin/python -O -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py
+exit: 1
+gate: FAIL CLOSED: optimized Python is forbidden
+
+2. bad frozen-source hash
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py --source-path tmp/research/compact_ball_inward_z_recentered_lift_x17_20_source_freeze_manifest.sha256
+exit: 1
+gate: FAIL CLOSED: frozen candidate source SHA-256
+
+3. bad recentered-Z normalization
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py --attack bad-normalization
+exit: 1
+prior gates: 9/9 Q^2 and raw gate/deg_Z PASS
+gate: FAIL CLOSED: claimed sparse recentered-Z normalization
+
+4. deleted Q^2 contribution
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py --attack drop-q2
+exit: 1
+gate: FAIL CLOSED: literal fully conjugated raw gate equals cyclic vector gate
+
+5. flipped danger sign
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py --attack flip-danger
+exit: 1
+gate: FAIL CLOSED: literal fully conjugated raw gate equals cyclic vector gate
+
+6. deleted core coefficient
+command: .venv/bin/python -B tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_recentered_lift_x17_20_independent_referee.py --attack drop-core
+exit: 1
+prior gates: 9/9 Q^2 and raw gate/deg_Z PASS
+gate: FAIL CLOSED: 34 nonzero (S,X) coefficients after layer removal
+
+ENVIRONMENT OBSERVATION
+The system python3 lacks sympy and failed before mathematical execution.
+The project-reconstructed .venv supplied Python 3.11.15 and SymPy 1.14.0.
+This is not a mathematical or release finding and required no environment mutation.
+
+CLASSIFICATION fatal=0 major=0 minor=0
+FINAL RESULT PASS: exact independently audited partial theorem on the displayed cell only.

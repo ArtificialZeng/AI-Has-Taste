@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF04-P02",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "指定79点分量直径11及半径6已精确认证。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "ec6c19cff46f9441f6901b792735950771a7b0ea438f293a280eef70197695a7",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; The simple Pasch-switch quotient has 258 edges and components 79+1. The 79-vertex component has diameter 11 and radius 6; the isolated vertex is V036. Exactly two unordered pairs attain the diameter: V000-V006 and V000-V028.",
+      "sha256": "710c1d4cd0ae0417f521fc77ab1bde398314dc914eae1cece1a2dff4648b6bee",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Verification Report\n\n**Mode:** Search  \n**Document:** `paper/main.tex` (frozen claim set C01--C14)  \n**Generated:** 2026-08-30 (Asia/Shanghai)\n\n## Summary\n\n| Metric | Count |\n|---|---:|\n| Total claims extracted | 14 |\n| Verified | 14 |\n| Numerical Error | 0 |\n| Unverified | 0 |\n| Hallucination | 0 |\n| Misleading | 0 |\n| Citation Not Found | 0 |\n\n**Overall Status:** PASS: all frozen claims are verified at the stated scope.\n\nThe audit deliberately treats C04 as a bounded search-process statement: it\nverifies that the recorded searches did not locate a prior statement of the\ndiameter.  It does ",
+      "sha256": "be6d76ea24ca1c4be77a06133f4ca83f929bd3abb6b0cda5278e153fad970be7",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nStatus: **PASS — CERTIFIED_FINITE_RESULT**  \nDate: 2026-08-30 (Asia/Shanghai)\n\n## Endpoint checked\n\nThe simple Pasch-switch quotient graph on the 80 STS(15) isomorphism\nclasses has 258 edges and components of orders 79 and 1. The nontrivial\ncomponent has diameter 11 and radius 6; the isolated component has diameter\n0. Exactly two unordered pairs attain distance 11 in the released naming.\n\n## Independent reconstruction\n\n- Discovery searched four-block subsets and used nauty only for canonical\n  naming.\n- Certification did not import discovery output or invoke nauty. It found\n  Pa",
+      "sha256": "b34a4dd828431858d135f16b284e8186df0aa66eb01a78966018cd5b525cb328",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-5-page visual/build/metadata gate PASS; current SHA-256 ec6c19cff46f9441f6901b792735950771a7b0ea438f293a280eef70197695a7 agrees with final record. # PDF audit\n\nStatus: **PASS**  \nArtifact: `output/pdf/sts15-pasch-diameter.pdf`  \nPages: 5  \nFinal SHA-256: `ec6c19cff46f9441f6901b792735950771a7b0ea438f293a280eef70197695a7`\n\n## Metadata and identity\n\n- Title: *The Pasch-switch quotient graph of STS",
+      "sha256": "01ce79a0073bbbfcc464eed7113ed9229085d21cdfff216e6aae96849806c0cc",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "指定79点分量直径11及半径6已精确认证。",
+      "sha256": "312e2441ce128ec19aee7d1d8a4c9eb7f35c091dd2bf731625588444962bf87d",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "claims were frozen before the queries below.  A second novelty pass is\n## Pass 2: sources and queries\nsurvive release until the exact value is searched in a second pass.",
+      "sha256": "70417972da2f4b2fae01c6f97109741924a11f13ddedc215c8bc1bac624b2fd4",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C05 | The 79-component diameter has not previously been published. | bounded novelty report | exact value not located after two passes | Exact-term/full-text searches of Gibbons (metadata), Grannell–Griggs–Murphy (complete PDF), Kaski–Mäkinen–Östergård, Erskine–Griggs 2025/arXiv:2405.07750, TheoremDB snapshot, DesignTheory.org, public-code searches, and second-pass queries for diameter 11, 258 edges, radius 6, and \\(M(15,4)\\); see `search_log.md`. | 90% | Supports only the bounded wording “not located in the recorded searches.” |\n| C06 | TheoremDB’s dated frontier says the sole remainder is the diameter. | author/report status | verified as a dated secondary record, not a proof | TheoremDB P2788/R1156, reviewed 2026-07-31. | 95% | Motivates but does not certify the result. |",
+      "sha256": "30e49a62b1ae8bd03fec2347a24609bd402ae32f0e7cef901edc3812e0cf8d12",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/07_claim_ledger.md"
+    },
+    {
+      "original_project_relative_path": "literature/NOVELTY_LOCK.md",
+      "summary": "Status: **PASSED FOR A BOUNDED NOVELTY CLAIM**.\nand two diameter pairs in the released canonical numbering.  A second pass",
+      "sha256": "b8a7a5f07a4de2b1215c3fc1b3d5403d20086622711836e24bd4935fe66f293f",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P02/evidence/08_NOVELTY_LOCK.md"
+    }
+  ]
+}

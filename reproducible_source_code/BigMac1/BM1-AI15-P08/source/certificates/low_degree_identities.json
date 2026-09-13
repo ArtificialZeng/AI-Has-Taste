@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "description": "Serialized exact Laurent-polynomial identities supporting the audited n=3,4,5 Schur reductions. Analytic and topological proof steps remain in proof/builder_notes.md.",
+  "variables": ["q", "d", "D", "b", "B", "c", "C", "r"],
+  "conjugation": {
+    "invert": ["q"],
+    "swap": [["d", "D"], ["b", "B"], ["c", "C"]],
+    "fixed": ["r"]
+  },
+  "groups": [
+    {
+      "name": "degree_three",
+      "definitions": {
+        "z": "q",
+        "p": "D + z + z**2 + d*z**3",
+        "real_part": "q + q**-1 - (q**3 + q**-3)/4",
+        "full_expression": "q**-3*(D + q**2 + q**4 + d*q**6 - (1/2 + 2*D))",
+        "remainder": "full_expression - real_part"
+      },
+      "checks": [
+        {
+          "kind": "schur",
+          "label": "(3.3) first Schur identity",
+          "input": ["d", "d*z + 1", "d*z**2 + z + 1"],
+          "expected": ["p*z**-2", "(1 + z)*p*z**-2"]
+        },
+        {
+          "kind": "schur",
+          "label": "(3.8) derivative Schur coefficients",
+          "input": ["1", "2", "3*d"],
+          "expected": ["6*D - 2", "9*d*D - 1"]
+        },
+        {
+          "kind": "conjugation",
+          "label": "(3.6) displayed part is real",
+          "expression": "real_part",
+          "sign": 1
+        },
+        {
+          "kind": "conjugation",
+          "label": "(3.6) discarded part is pure imaginary",
+          "expression": "remainder",
+          "sign": -1
+        }
+      ]
+    },
+    {
+      "name": "degree_four",
+      "definitions": {
+        "z": "q",
+        "p": "D + B*z + r*z**2 + b*z**3 + d*z**4",
+        "u": "b*z",
+        "S": "r + u + B*z**-1"
+      },
+      "checks": [
+        {
+          "kind": "schur",
+          "label": "(4.4) first Schur identity",
+          "input": ["d", "d*z + b", "d*z**2 + b*z + r", "d*z**3 + b*z**2 + r*z + B"],
+          "expected": ["p*z**-3*b", "p*z**-3*(b*z + r)", "p*z**-3*(b*z**2 + r*z + B)"]
+        },
+        {
+          "kind": "schur",
+          "label": "(4.6) second Schur endpoint coefficients",
+          "input": ["b", "b*z + r", "b*z**2 + r*z + B"],
+          "expected": ["z**-1*(r*S + u**2)", "S**2 - b*B"]
+        },
+        {
+          "kind": "equal",
+          "label": "(4.8) boundary decomposition",
+          "left": "z**-2*(p - 2*D)",
+          "right": "S + d*z**2 - D*z**-2"
+        }
+      ]
+    },
+    {
+      "name": "degree_five",
+      "definitions": {
+        "z": "q**2",
+        "p": "D + B*z + C*z**2 + c*z**3 + b*z**4 + d*z**5",
+        "k0": "b",
+        "k1": "b*z + c",
+        "k2": "b*z**2 + c*z + C",
+        "k3": "b*z**3 + c*z**2 + C*z + B",
+        "BB": "b*q**3",
+        "CC": "c*q",
+        "S": "BB + CC + C*q**-1 + B*q**-3",
+        "ell0": "BB",
+        "ell1": "BB + CC",
+        "ell2": "BB + CC + C*q**-1",
+        "ell3": "S"
+      },
+      "checks": [
+        {
+          "kind": "schur",
+          "label": "(5.2) first Schur identity",
+          "input": ["d", "d*z + b", "d*z**2 + b*z + c", "d*z**3 + b*z**2 + c*z + C", "d*z**4 + b*z**3 + c*z**2 + C*z + B"],
+          "expected": ["p*z**-4*k0", "p*z**-4*k1", "p*z**-4*k2", "p*z**-4*k3"]
+        },
+        {
+          "kind": "list_equal",
+          "label": "(5.4) unit-phase transformation",
+          "left": ["q**3*k0", "q**3*k1*q**-2", "q**3*k2*q**-4", "q**3*k3*q**-6"],
+          "right": ["ell0", "ell1", "ell2", "ell3"]
+        },
+        {
+          "kind": "schur_coefficients",
+          "label": "(5.5) second Schur endpoint coefficients",
+          "input": ["ell0", "ell1", "ell2", "ell3"],
+          "expected": {"0": "S*CC + BB**2", "-1": "S**2 - BB*B*q**-3"}
+        },
+        {
+          "kind": "equal",
+          "label": "(5.6) boundary decomposition",
+          "left": "q**-5*(p - 2*D)",
+          "right": "S + d*q**5 - D*q**-5"
+        }
+      ]
+    }
+  ]
+}

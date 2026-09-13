@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "candidate_kind": "resolution-paper",
+  "main_tex": "manuscript/article.tex",
+  "pdf": "manuscript/article.pdf",
+  "inputs": [
+    "manuscript/article.tex",
+    "manuscript/references.bib"
+  ],
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/references.bib"
+  ],
+  "figures": [],
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex",
+  "citation_notes": "manuscript/citation-notes.md"
+}

@@ -1,0 +1,25 @@
+{
+  "pdf": "manuscript/article.pdf",
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/article.bbl",
+    "manuscript/references.bib",
+    "evidence/gauss_d7_rational_point.json",
+    "evidence/mixed_d6_rational_point.json",
+    "evidence/mixed_d7_farkas.json",
+    "evidence/verify_primal_certificates_independent.py",
+    "evidence/verify_d7_farkas_independent.py",
+    "evidence/primal_certificates_verification.json",
+    "evidence/mixed_d7_farkas_verification.json"
+  ],
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex",
+  "verification_commands": [
+    "/Users/mac/4prove-or-disprove-math/.research-venv/bin/python evidence/verify_primal_certificates_independent.py",
+    "/Users/mac/4prove-or-disprove-math/.research-venv/bin/python evidence/verify_d7_farkas_independent.py"
+  ],
+  "bibliography_basis": {
+    "user_record": "literature/user_bibliography_check.md",
+    "external_refresh": "unavailable on 2026-09-09; user-designated workbook metadata retained",
+    "scope": "Zeng et al. is cited only for an adjacent exact-certificate methodology comparison"
+  }
+}

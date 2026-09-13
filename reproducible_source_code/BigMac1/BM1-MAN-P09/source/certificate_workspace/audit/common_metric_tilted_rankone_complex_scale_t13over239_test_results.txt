@@ -1,0 +1,60 @@
+Complex-scale half-width 13/239 exact test results
+Date: 2026-08-24
+Environment: Python 3.11.15, SymPy 1.14.0
+
+SOURCE NORMAL
+command: .venv/bin/python -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t13over239_enlargement.py
+exit: 0
+PASS audited t=4 center dependency chain
+PASS original conjugated gate, rank-two Schur boundary, and scale cubic
+PASS recomputed seven derivative majorants on 943/239 <= t <= 969/239
+PASS all fourteen exact half-width-13/239 reserves
+PASS complete legal T half-line, nonredundancy, and live complex phases
+rho_wide=27162772450885609710321172264010161955258866496/499232790087220155922502903379517386791638099025
+verifier_sha256=3e2cb11a74a7e77993f3464ccdd888f2dd5d495903b137444adf05344e68bf09
+
+SOURCE OPTIMIZED
+command: .venv/bin/python -O -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t13over239_enlargement.py
+exit: 1
+RuntimeError: fail closed: optimized Python disables checks
+
+SOURCE BAD DEPENDENCY
+command: T13OVER239_TEST_BAD_DEPENDENCY=1 .venv/bin/python -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t13over239_enlargement.py
+exit: 1
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_tilted_rankone_complex_scale_t5over92_enlargement.md
+
+SOURCE DROPPED SIGN
+command: T13OVER239_TEST_DROP_SIGN=1 .venv/bin/python -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t13over239_enlargement.py
+exit: 1
+RuntimeError: verification failed: seven terminal signs
+
+REFEREE NORMAL
+command: .venv/bin/python -B audit/verify_common_metric_tilted_rankone_complex_scale_t13over239_referee.py
+exit: 0
+PASS original conjugated gate, Schur boundary, and complete T half-line
+PASS independent nodal Bernstein/inverse reconstruction: 40595 controls per cell
+PASS recomputed 13/239-box derivative majorants and fourteen strict reserves
+PASS exact q comparison, unique low-cell N0 bottleneck, and seam coverage
+PASS exact 96-corner attack: g>0 48, g<=0 48
+minimum_corner_gate_T1=3791537219332938219668993327/1612003174500796900000000
+rho_wide=27162772450885609710321172264010161955258866496/499232790087220155922502903379517386791638099025
+verifier_sha256=c29f5c864a66c369c439976fb9873d8a22a4a935c3286e7656e16638371c71a8
+
+REFEREE OPTIMIZED
+command: .venv/bin/python -O -B audit/verify_common_metric_tilted_rankone_complex_scale_t13over239_referee.py
+exit: 1
+RuntimeError: fail closed: optimized Python disables checks
+
+REFEREE BAD DEPENDENCY
+command: T13OVER239_REFEREE_TEST_BAD_DEPENDENCY=1 .venv/bin/python -B audit/verify_common_metric_tilted_rankone_complex_scale_t13over239_referee.py
+exit: 1
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_tilted_rankone_complex_scale_t13over239_enlargement.md
+
+REFEREE DROPPED SIGN
+command: T13OVER239_REFEREE_TEST_DROP_SIGN=1 .venv/bin/python -B audit/verify_common_metric_tilted_rankone_complex_scale_t13over239_referee.py
+exit: 1
+RuntimeError: verification failed: seven terminal signs
+
+BYTECODE COMPILATION
+command: .venv/bin/python -m py_compile tmp/research/verify_common_metric_tilted_rankone_complex_scale_t13over239_enlargement.py audit/verify_common_metric_tilted_rankone_complex_scale_t13over239_referee.py
+exit: 0

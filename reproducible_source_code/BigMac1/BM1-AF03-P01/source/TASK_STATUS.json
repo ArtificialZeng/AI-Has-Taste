@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "number": 1,
+  "title": "\\(d\\)-degree Erdős–Ko–Rado：只剩 \\(n=9,10\\) 即可解决整个 \\((k,d)=(4,3)\\) 参数族",
+  "state": "PROVED",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 99,
+  "summary": "A self-contained sharp proof establishes delta_3(F)<=1 for every intersecting 4-uniform family on n>=9; the original n=9,10 endpoints also have independently checked exact LRAT UNSAT certificates, and n=8 has an exact counterexample with delta_3=2.",
+  "evidence": [
+    "arXiv:2407.14091v1 Theorem 1.1 and Conjecture 4.1 independently checked",
+    "Crossref/Elsevier DOI 10.1016/j.jcta.2026.106163 metadata checked",
+    "No prior endpoint resolution or public certificate found by two recorded bounded novelty searches; Gan-Han-Im arXiv:2605.17945 does not cover n=9,10",
+    "Blind mathematical referee found zero fatal and zero major proof gaps",
+    "Canonical n=9 and n=10 CNFs have LRAT refutations accepted by a fresh build from pinned lrat-check.c source; eight adversarial traces are rejected fail closed",
+    "Independent literal verifier certifies the n=8 family: 35 edges and triple-degree histogram 42x2 + 14x4",
+    "All three citations were independently verified against official sources",
+    "Clean LaTeX/BibTeX build, manifest gate, font checks, and four-page visual PDF audit passed"
+  ],
+  "deliverables": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "routes/registry.json",
+    "proof/main_proof.md",
+    "proof/independent_crosscheck.md",
+    "certificates/ekr_k4d3_n9.lrat",
+    "certificates/ekr_k4d3_n10.lrat",
+    "discovery/breaker/n8_literal_family.json",
+    "audit/PROOF_AUDIT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "output/pdf/d_degree_ekr_k4d3.pdf"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "updated_utc": "2026-08-29T10:38:09Z"
+}

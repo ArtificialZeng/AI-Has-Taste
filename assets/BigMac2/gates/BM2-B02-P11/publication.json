@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "writer_job_id": "bigMac-00002-p11-write-8a5611a68e95",
+  "candidate_kind": "result-note",
+  "original_status": "unresolved",
+  "title": "Strictness of the Planar L2 Rogers-Shephard Inequality for Centrally Symmetric Hexagons",
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/references.bib",
+    "evidence/verify_p2_hexagon.py"
+  ],
+  "figure_files": [],
+  "pdf": "manuscript/article.pdf",
+  "build": {
+    "command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex",
+    "engine": "pdfLaTeX via latexmk",
+    "bibliography": "BibTeX via latexmk"
+  },
+  "citation_verification": "literature/manuscript_bibliography_verification.md",
+  "scope": "Strictness only for centrally symmetric hexagons at p=2; the original equality conjecture remains unresolved.",
+  "limitations": [
+    "No claim is made for p other than 2, polygons with eight or more vertices, or nonpolygonal bodies.",
+    "The deficit has no uniform positive gap under degeneration to a parallelogram."
+  ],
+  "next_test": "Obtain fresh citation, clean-build, and all-page visual audits against the frozen manuscript snapshot."
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can triple codegrees force two disjoint 4-sets by a short local incidence argument?",
+      "premises": ["n in {9,10}", "every triple has degree at least two"],
+      "method": "link families, complements, shadows, and double counting",
+      "status": "proved",
+      "evidence": ["proof/main_proof.md gives a self-contained fixed-edge/link proof for every n>=9", "proof/independent_crosscheck.md gives a distinct n=9 graph-counting proof"],
+      "failure_reason": null,
+      "next_test": "independent referee reconstruction from definitions"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does an exact SAT/PB model admit a counterexample for n=9 or n=10?",
+      "premises": ["one Boolean variable per 4-set", "pairwise-disjoint exclusion", "triple degree at least two"],
+      "method": "independent CNF/PB encodings with exact model verification",
+      "status": "refuted",
+      "evidence": ["n=8 exact SAT family verifies delta_3=2", "two independent encodings report UNSAT at n=9,10", "canonical instances have externally verified LRAT certificates"],
+      "failure_reason": "No endpoint counterexample exists; the canonical LRAT proofs derive the empty clause.",
+      "next_test": "retain n=8 as a sharp positive control"
+    },
+    {
+      "id": "C01",
+      "kind": "certification",
+      "question": "Can UNSAT be bound to a standard proof trace checked independently?",
+      "premises": ["deterministic DIMACS generator", "standard CNF cardinality encoding"],
+      "method": "CaDiCaL proof trace plus a separate proof checker; hashes bind generator, CNF, trace, and output",
+      "status": "proved",
+      "evidence": ["certificates/ekr_k4d3_n9.lrat", "certificates/ekr_k4d3_n10.lrat", "freshly compiled pinned external lrat-check reports VERIFIED", "eight proof mutations/mismatches are rejected"],
+      "failure_reason": null,
+      "next_test": "freeze hashes in release manifest"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Can S_n symmetry and monotonicity reduce one endpoint to the other or shrink certificates without losing completeness?",
+      "premises": ["relabeling invariance"],
+      "method": "proved orbit/canonical augmentation only; no heuristic symmetry assumptions",
+      "status": "superseded",
+      "evidence": ["naive deletion loses one unit of triple degree", "direct proof separates n=9 from uniform n>=10 range"],
+      "failure_reason": "Deletion only preserves minimum triple degree at least one, so no 10-to-9 induction closes the counterexample condition.",
+      "next_test": "none; direct structural proof is stronger"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can an independent implementation reconstruct and reject malformed certificates from serialized inputs only?",
+      "premises": ["no import from discovery modules"],
+      "method": "definition-first verifier, mutation tests, second encoding/evaluator, and referee reconstruction",
+      "status": "proved",
+      "evidence": ["definition-first CNF verifier accepts canonical instances and rejects five mutations", "snapshot-based LRAT wrapper accepts two proofs and rejects eight bad traces", "independent witness-CNF breaker route agrees", "blind mathematical referee and certificate referee report no fatal or major defects", "three isolated citation audits, second novelty pass, clean build, and four-page visual audit pass"],
+      "failure_reason": null,
+      "next_test": "none; all required audit gates are closed"
+    }
+  ]
+}

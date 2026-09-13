@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "title": "Reduced Graph Rank-Order Conjecture at Rank 10",
+  "created_utc": "2026-08-26T17:48:01.512353+00:00",
+  "status": "audited_tree_unicyclic_bicyclic_partial_theorems",
+  "formal_target": "Find a reduced simple graph of order at least 63 and real adjacency rank exactly 10, or prove the 62-vertex bound for a precisely specified nontrivial infinite class.",
+  "current_claim": "No order-at-least-63 counterexample is known. Exact independently implemented certificates prove the sharp 62-vertex upper bound for every reduced rank-10 graph containing a connected nonsingular induced ten-vertex core with at most eleven edges: tree, unicyclic, or bicyclic. The current seven-page sparse-core manuscript combines those three audited theorems. Cores with at least twelve edges, and hence the full rank-10 conjecture, remain open.",
+  "exact_baseline": {
+    "certificate": "certificates/standard_rank10_order62.json",
+    "sha256": "5fd3931417842eb88dc9755df545d7cf94f89c0bb3b7b6fea07c43877df089a9",
+    "order": 62,
+    "rank": 10,
+    "principal_core_determinant": -1,
+    "counterexample": false
+  },
+  "one_vertex_test": {
+    "family_size": 5,
+    "vectors_per_member": 1024,
+    "accepted_new_vertices": 0,
+    "scope": "fixed-input one-vertex maximality only",
+    "audit_status": "not yet independent"
+  },
+  "active_routes": [],
+  "next_exact_frontier": "The tree, unicyclic and bicyclic milestones are frozen and independently audited. The user-authorized terminal result is the sharp sparse-core structural theorem. If the unrestricted project is explicitly resumed, enumerate connected tricyclic ten-vertex cores by two independent canonical routes and apply the same exact profile-compatibility target-53 gate.",
+  "pdf_policy": "The seven-page combined sparse-core partial theorem is the single current submission-ready replacement. Do not create additional versions unless the mathematical theorem or author metadata changes and a new independent submission audit passes.",
+  "allowed_terminal_statuses": [
+    "disproved",
+    "proved",
+    "partial theorem",
+    "certified finite result",
+    "open after search"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-29T06:26:23Z",
+  "scope": "Exact enumeration of all unlabelled trees of order 31",
+  "order": 31,
+  "modulus": 120,
+  "workers": 8,
+  "expected_tree_count": 40330829030,
+  "resume_policy": "A residue is skipped only when both its .summary.done and .exceptions.done files exist; new outputs are written to PID-qualified temporary files and renamed atomically only after the checker emits exactly one RESEARCH_CHECK summary.",
+  "preexisting_complete_residues": 0,
+  "uint64_argument": {
+    "max_coefficient_bound": "i_k(T) <= binom(31,k) <= binom(31,15) = 300540195",
+    "max_product_bound": "max(i_k^2, i_{k-1}*i_{k+1}) <= 300540195^2 = 90324408810638025 < 2^64-1 = 18446744073709551615",
+    "dp_intermediate_bound": "Every partial product in the rooted DP is the independence polynomial of a processed induced subforest; its nonnegative coefficient accumulator is bounded by the corresponding binomial coefficient. A and B count disjoint constrained classes, so their sum is also bounded by binom(s,k) for s <= 31.",
+    "tree_counter_bound": "40330829030 < 2^64-1",
+    "hash_note": "FNV word multiplication and the sums of per-tree fingerprints intentionally use defined uint64 arithmetic modulo 2^64; they are coverage fingerprints, not mathematical coefficient calculations."
+  },
+  "sha256": {
+    "experiments/order31_checker.c": "38fad81aaae42ab4fe4d764abd03482535b54483aa308b9b6ce924d8edd4db36",
+    "experiments/order31_plugin_decl.h": "f136645bb253fadf8385d63c069f3641cfadc3773609a75269f4d4b8a26e5a21",
+    "experiments/gentreeg_order31_checker": "93a463c656872a4e977390fcae8110cbcd558570bf06a8b78e628dad7752c00e",
+    "experiments/build_order31_checker.sh": "2a189ed72342547d3d904d7ebabb3de1cd5252416130d60a48b5f1417dfd3e01",
+    "experiments/run_tree_sweep_worker.sh": "9b831ed959bd6d449ca86c8c5cefcb61be9b48f787e663a0b2f3c12b4f145653",
+    "experiments/run_tree_sweep_all.sh": "168dab234fc337dcc9225272b89531f4e9fd983cb82d77ba45a7e58b131da978",
+    "experiments/aggregate_tree_sweep.py": "116760c55af428f7879486dd454aa031a8057cd2cf0eb0d4e242a8b268237fd9",
+    "literature/external/nauty2_9_3.tar.gz": "9fc4edae04f88a0f5883985be3b39cf7f898fd6cc96e96b9ee25452743cc1b5b"
+  },
+  "fail_closed_conditions": [
+    "missing or malformed chunk summary",
+    "missing paired .done file",
+    "trees != generated within any chunk",
+    "any NONUNIMODAL record",
+    "aggregate tree count != 40330829030",
+    "artifact hash drift"
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "number": 14,
+  "title": "中心超立方体截面：先完整解决 \\(Q_5\\) 的局部极值分类",
+  "state": "PROVED",
+  "original_prompt_complete": true,
+  "submission_ready": true,
+  "solution_percent": 100,
+  "confidence_percent": 99,
+  "summary": "The complete Q5 local-extremum classification is proved: modulo signed coordinate permutations, the locally extremal central sections are exactly d1, d2, and d5. The unique non-diagonal full-support critical orbit and the support-four (1,1,2,2,0) orbit are saddles. Exact certificates cover all six full-support chambers, all walls, and supports 1 through 4. The 23-check primary master suite, 17-input independent audit, hostile full referee, and release-delta referee all pass; independent mutations and parser attacks are rejected. Citation/BibTeX audits, two clean builds, archive extraction/rebuild, manifest checks, and 8/8 pagewise PDF inspection pass. Confidence is 99 rather than 100 because the exact proof is machine-assisted but not formalized in an interactive proof assistant. A publishable PDF and clean source ZIP are retained under release/.",
+  "referee_gate": {
+    "status": "PASS_FATAL0_MAJOR0_LOCAL0_EXPOSITORY0",
+    "current_proof_sha256": "1d53b2d70c0ee37e306929414e3c7d4b84baaa7469868c204bcf4a4fa03ea85f",
+    "prior_verdict": "Initial MAJOR_REVISION solely for R-M1; final full rereview PASS",
+    "repair_scope": "all affected release verifiers/loaders hardened; R-M1, L-01, and E-01 closed; mathematical certificates and theorem scope unchanged",
+    "revision_frozen_hashes": {
+      "master_verifier": "b781d39f0b89fda14a8969458d098942569d0ad191103546d8904ec4566bc1a2",
+      "master_log": "18f6a4fb55480a3d097d6b96b2d69fa7497f4e7ccf88b689083b267139de4903",
+      "independent_binding": "af44b6d7739996eab1726eaca41f3078aa1b9efd20cb78cc8ca0e5efbcd375e5",
+      "independent_verifier": "e6ce6ac216afa419442acc9cb6cce3dd256826a5ab28f9262bfd9e5fba5ab73d",
+      "independent_result": "333821801a789688976abea57f6d76475f4b6c8eb955e4a6008ca4983289ff6b",
+      "independent_semantic_mutation_suite": "e4a9e2008777dad92189772c2f967b2c1f9f7bc56a630e507964c3a4243982c4",
+      "independent_semantic_mutation_log": "66b53cd9f1ed852133544ed5717005fe9f3e564f13e1263b2cd8b43dfca695e4",
+      "primary_json_attack_suite": "09cf73ba05de8a6e5cb09300c73514aa9b9f1ae1ada6c81f8c90cb7690e21292",
+      "independent_parser_attack_suite": "82db691efc8db2ee2f453cca9bd5519620592410befa518dcc5240fd1d13a946",
+      "q4_q5_breaker_attack_suite": "44936e45e6562098fbaece6d97964ed299d5f2daee892d140163d1f5927bf740",
+      "star2_independent_attack_suite": "d41b43ad60382393e0375f596e38f04d8ceedc3c76711bdee4e21c2b0f091ca6",
+      "proof": "1d53b2d70c0ee37e306929414e3c7d4b84baaa7469868c204bcf4a4fa03ea85f",
+      "paper_source": "1bcccfa9a6db0660c1e3d349351ad4740ea7f9ea5b90e050701c94bb7f19bd58",
+      "proof_referee_report": "e5e6f978e300788fd1d79666461e464251dd4636df0f4fd5434082b8b2465f31",
+      "independent_referee_report": "8786f25cdb545b73b4f10d2e242e176c64b2353c8cb2ba7783b78e6c12b9a67e",
+      "hostile_referee_verdict": "d622bd2395f475d5b0411695df13d7c8b7277c5f0decc818ef77141278d3d2fc",
+      "release_delta_report": "865c29574f2599b9241abd5baaa91e88ab96fec2e4f5927cbce8d5775bd665be",
+      "release_delta_verdict": "b1d77f965512777cb271a21860bdcd0c7ed9e0fa80095edce4a39644fd430e37"
+    },
+    "protected_files_frozen": [
+      "proof/main_proof.md",
+      "certificates/star1_exact_certificate.json",
+      "results/empty_highpair_classification_certificate.json",
+      "results/star2_bernstein_no_go_certificate.json",
+      "certificates/star3_decomposition.json",
+      "results/breaker_star4_certificate.json",
+      "results/triangle_highpair_no_go_certificate.json",
+      "paper/main.tex"
+    ],
+    "required_next_event": "none; mathematical and submission gates are complete"
+  },
+  "release": {
+    "status": "SUBMISSION_READY",
+    "pdf": "release/Q5_central_sections_Zijian_Zeng.pdf",
+    "pdf_sha256": "183ff0236e53de460de80a9c97ace776aba06eb681bd79315ab344827a55d7eb",
+    "source_zip": "release/Q5_central_sections_Zijian_Zeng_source.zip",
+    "source_zip_sha256": "dbbbbe24fe08d770c06f95b9b6cc3275e6eba459ce030026b043a921fb57284f",
+    "archive_rebuild_log_sha256": "88f91648c89e9862423064efc99ad06d53f2fad87e1ebeda001b0bc13c552863",
+    "clean_builds": 2,
+    "archive_manifest_files": 101,
+    "archive_rebuild_pdf_identical": true,
+    "pdf_pages_inspected": 8,
+    "undefined_citations_references_errors": 0
+  },
+  "evidence": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "literature/sources/root/ambrus_gargyan_2024_vor.pdf",
+    "literature/sources/root/ambrus_gargyan_2025_vor.pdf",
+    "proof/agent_builder_report.md",
+    "proof/main_proof.md",
+    "proof/agent_empty_audit.md",
+    "proof/agent_star1_report.md",
+    "proof/agent_star1_audit.md",
+    "proof/agent_star2_audit.md",
+    "proof/agent_triangle_audit.md",
+    "proof/root_star2_bernstein_report.md",
+    "proof/agent_star3_report.md",
+    "proof/agent_star4_report.md",
+    "results/triangle_highpair_no_go_certificate.json",
+    "results/star2_bernstein_no_go_certificate.json",
+    "certificates/star3_decomposition.json",
+    "results/breaker_star4_certificate.json"
+    ,"results/empty_highpair_classification_certificate.json"
+    ,"certificates/star1_exact_certificate.json"
+    ,"results/q3_classification_certificate.json"
+    ,"results/breaker_q4_baseline_certificate.json"
+    ,"src/verify_all.py"
+    ,"audit/verification_log.json"
+    ,"audit/star1_independent_audit.json"
+    ,"audit/star1_audit_mutations.json"
+    ,"audit/star2_independent_audit.json"
+    ,"audit/star2_audit_mutations.json"
+    ,"audit/saddle_mutation_log.json"
+    ,"audit/R_M1_REPAIR_HASHES.md"
+    ,"proof/referee_report.md"
+    ,"audit/independent_referee/REFEREE_REPORT.md"
+    ,"audit/independent_referee/hostile_referee_verdict.json"
+    ,"audit/independent_referee/RELEASE_DELTA_REPORT.md"
+    ,"audit/independent_referee/release_delta_verdict.json"
+    ,"audit/SUBMISSION_AUDIT.md"
+    ,"release/Q5_central_sections_Zijian_Zeng.pdf"
+    ,"release/Q5_central_sections_Zijian_Zeng_source.zip"
+  ],
+  "deliverables": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "proof/agent_builder_report.md",
+    "proof/agent_breaker_report.md",
+    "proof/agent_triangle_audit.md",
+    "proof/root_star2_bernstein_report.md",
+    "proof/agent_star3_report.md",
+    "proof/agent_star4_report.md",
+    "proof/main_proof.md",
+    "proof/gap_ledger.md",
+    "proof/proof_dag.md",
+    "release/Q5_central_sections_Zijian_Zeng.pdf",
+    "release/Q5_central_sections_Zijian_Zeng_source.zip"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "updated_utc": "2026-08-29T17:10:17Z"
+}

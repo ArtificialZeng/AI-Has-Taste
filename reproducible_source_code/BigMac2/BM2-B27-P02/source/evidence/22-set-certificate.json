@@ -1,0 +1,78 @@
+{
+  "graph": "C_8 square C_8",
+  "coordinate_convention": "Vertices are [i,j] with i,j in {0,...,7}; all neighbor coordinates are reduced modulo 8.",
+  "threshold": 3,
+  "initial_size": 22,
+  "layers": [
+    {
+      "round": 0,
+      "vertices": [[0,0], [0,1], [0,5], [1,2], [1,4], [1,7], [2,0], [2,5], [3,2], [3,4], [3,7], [4,1], [4,3], [4,6], [5,0], [5,5], [6,1], [6,3], [6,7], [7,2], [7,4], [7,6]]
+    },
+    {
+      "round": 1,
+      "vertices": [[0,2], [0,4], [1,0], [1,5], [2,4], [2,7], [3,3], [4,2], [5,1], [6,0], [6,2], [7,1], [7,3], [7,5]]
+    },
+    {
+      "round": 2,
+      "vertices": [[0,3], [1,1], [5,2], [7,0]]
+    },
+    {
+      "round": 3,
+      "vertices": [[1,3], [5,3], [7,7]]
+    },
+    {
+      "round": 4,
+      "vertices": [[0,7], [2,3]]
+    },
+    {
+      "round": 5,
+      "vertices": [[0,6], [2,2]]
+    },
+    {
+      "round": 6,
+      "vertices": [[1,6], [2,1]]
+    },
+    {
+      "round": 7,
+      "vertices": [[2,6], [3,1]]
+    },
+    {
+      "round": 8,
+      "vertices": [[3,0], [3,6]]
+    },
+    {
+      "round": 9,
+      "vertices": [[3,5], [4,0]]
+    },
+    {
+      "round": 10,
+      "vertices": [[4,5], [4,7]]
+    },
+    {
+      "round": 11,
+      "vertices": [[4,4], [5,7]]
+    },
+    {
+      "round": 12,
+      "vertices": [[5,4], [5,6]]
+    },
+    {
+      "round": 13,
+      "vertices": [[6,4], [6,6]]
+    },
+    {
+      "round": 14,
+      "vertices": [[6,5]]
+    }
+  ],
+  "claimed_checks": {
+    "layer_sizes": [22, 14, 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    "final_infected_size": 64,
+    "rounds_after_initialization": 14,
+    "initial_induced_edges": 1,
+    "complement_vertices": 42,
+    "complement_induced_edges": 41,
+    "complement_components": 1,
+    "complement_is_tree": true
+  }
+}

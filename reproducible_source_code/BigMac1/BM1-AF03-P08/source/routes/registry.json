@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Do heaps or Bruhat interval products split every pair into independent Fibonacci blocks?",
+      "premises": [
+        "v_n has fixed reduced word Omega_n=s_2s_1...s_{n-1}s_{n-2}",
+        "every element below v_n occurs as a reduced subword"
+      ],
+      "method": "heap/word decomposition and induction on the terminal two generators",
+      "status": "candidate",
+      "evidence": [
+        "literature/original/arxiv-1312.2170v1/q-Fibonacci-s.tex",
+        "proof/builder_notes.md",
+        "proof/gap_ledger.md"
+      ],
+      "failure_reason": "Support decomposition and capped-ladder reduction are proved, but the path-forest and disjoint-footprint lemmas remain open.",
+      "next_test": "prove or exactly refute the P-MASK path-forest property for arbitrary capped-ladder blocks"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does any exact pair in the complete n=10 lower interval fail Fibonacci-monoid membership?",
+      "premises": [
+        "integer coefficient arithmetic only",
+        "complete canonical enumeration of [e,v_10]"
+      ],
+      "method": "exact Dyer recurrence followed by complete Fibonacci-monoid membership",
+      "status": "refuted",
+      "evidence": [
+        "experiments/breaker/RUN_RECORD.md",
+        "certificates/n10_finite_certificate.txt",
+        "audit/referee_work.md"
+      ],
+      "failure_reason": "No failing pair exists: all 6,229,297 comparable n=10 pairs pass the exact test.",
+      "next_test": "Any further counterexample search belongs to n>=11 and is outside this finite endpoint."
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Is the source formula equivalent to membership of B_uv(x) in the Fibonacci multiplicative monoid?",
+      "premises": [
+        "tilde R_uv is monic of degree ell(v)-ell(u)",
+        "its degrees have fixed parity"
+      ],
+      "method": "factor the forced top power q^d and use x=q^{-2}",
+      "status": "proved",
+      "evidence": [
+        "problem/formal_statement.md"
+      ],
+      "failure_reason": null,
+      "next_test": "audit unit factors F_0=F_1=1 and empty-product endpoints"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can an implementation accept a false factorization because of a Bruhat, recurrence, or unit-factor convention error?",
+      "premises": [
+        "no discovery output is trusted by the final verifier"
+      ],
+      "method": "definition-first reconstruction, independent evaluator, malformed/tampered certificate tests",
+      "status": "proved",
+      "evidence": [
+        "tests/test_certificate_rejection.py",
+        "audit/referee_work.md",
+        "audit/PROOF_AUDIT.md"
+      ],
+      "failure_reason": null,
+      "next_test": "closed for the released verifier hash; re-audit after any source modification"
+    },
+    {
+      "id": "C01",
+      "kind": "certification",
+      "question": "Can the full finite result be reconstructed from compact serialized exact inputs without importing discovery values?",
+      "premises": [
+        "n=10 and Omega_10 uniquely determine the lower interval",
+        "Dyer recurrence uniquely determines every polynomial"
+      ],
+      "method": "independent canonical enumeration and exact recurrence with fail-closed certificate parsing",
+      "status": "proved",
+      "evidence": [
+        "certificates/verify_n10.cpp",
+        "certificates/verify_certificate.py",
+        "certificates/n10_finite_certificate.txt",
+        "proof/finite_theorem.md"
+      ],
+      "failure_reason": null,
+      "next_test": "closed for n=10; the all-n conjecture remains outside this certificate"
+    },
+    {
+      "id": "R02",
+      "kind": "reduction",
+      "question": "Which connected-support cases are genuinely new at n=10 after support factorization?",
+      "premises": [
+        "Omega_n is the fixed two-row ladder word",
+        "the complete n<=9 baseline is certified"
+      ],
+      "method": "support direct products and the minimal capped-ladder ambient-rank embedding",
+      "status": "proved",
+      "evidence": [
+        "proof/builder_notes.md",
+        "paper/main.tex"
+      ],
+      "failure_reason": null,
+      "next_test": "use the three boundary types A, B, C as the domain for an all-rank structural induction"
+    }
+  ]
+}

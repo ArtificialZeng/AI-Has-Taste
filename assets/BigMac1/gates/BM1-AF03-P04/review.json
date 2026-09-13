@@ -1,0 +1,51 @@
+{
+  "package_id": "BM1-AF03-P04",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "记录证明所有 n≥1，覆盖原题 n=5。",
+  "historical_gate_summary": "历史串行角色审计；非本次fresh审稿。",
+  "pdf_sha256": "ccd7a30bcbca30a79f0caec88a27c5150ab7808aa8a6cc5e2df14580e6db97c0",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; The requested n=5 conjecture is proved, in fact uniformly for every n>=1, by an exact component identity. Two novelty passes, exact enumeration, independent no-import verification, corruption tests, a separate exact sl2 breaker, proof/citation audits, a clean LaTeX build, and page-by-page PDF inspection all passed.",
+      "sha256": "6ac8bc5018662740918c9ee52f0a0a8e107a78a729df220ce8765dac0d77929e",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nStatus: **PASS**.\n\nSearch/audit date: 2026-08-29.\n\nThe bibliography contains one source, and every use was checked against the\nversioned primary source arXiv:2602.02342v2.\n\n| Manuscript claim | Source location | Result |\n|---|---|---|\n| Authors/title and introduction of transitive CYBE/transitive arrays | arXiv metadata; v2 introduction | supported |\n| General conjecture and reported \\(n\\le4\\) baseline | v2 p. 5, Conjecture 1.5 and preceding sentence | supported |\n| Same statement numbered Conjecture 1.4 in v1 | v1 p. 5, Conjecture 1.4 | supported |\n| Characteristic-zero base",
+      "sha256": "a3431b5be588e76ab513afaefbe098c6a30ad858549018d5ec9368c0643b1001",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nStatus: **PASS** (serial referee role; not external peer review).\n\nAudit date: 2026-08-29.\n\n## Reconstruction from definitions\n\n1. Rewrote source formula (1.2) as\n   \\(R=\\sum_{i,j}(r^{(a_{ij})})^{j,i}\\) in\n   \\(\\mathfrak g^{\\oplus n}\\otimes\\mathfrak g^{\\oplus n}\\).\n2. Expanded each of\n   \\([R_{12},R_{13}]\\), \\([R_{12},R_{23}]\\), and\n   \\([R_{13},R_{23}]\\) without assuming the intended conclusion.\n3. Used only the defining direct-sum bracket to obtain the three support\n   conditions.  The colors at output support \\((j,i,k)\\) are respectively\n   \\((a_{ij},a_{kj})\\), \\((a_{ij},a_{k",
+      "sha256": "5025c278604dbf671c4df35080448a198ef7b2ea648105da31924fe84c06034e",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-4-page visual/build/metadata gate PASS; current SHA-256 ccd7a30bcbca30a79f0caec88a27c5150ab7808aa8a6cc5e2df14580e6db97c0 agrees with final record. # PDF audit\n\nStatus: **PASS**.\n\nAudit date: 2026-08-29.\n\n- Build: clean `latexmk` run with no warnings, undefined references,\n  overfull boxes, or underfull boxes.\n- Page count: 4.\n- Page size: US letter, 612 by 792 points.\n- PDF metadata title: *The",
+      "sha256": "a0ce5083097332526506b73372328160259bffcd4ce72abc49c0f12abc3a9ea6",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "记录证明所有 n≥1，覆盖原题 n=5。",
+      "sha256": "2abd16fc78e93e4a8371cd46df1d687eacb5cbfbb66d458d62cc860abca7d2bf",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "| S08 | web exact query `\"The transitive-array conjecture\" CYBE` | Found MathDB problem page reporting no posted solution; this is secondary evidence only. |\n| S14 | second pass: `\"Monomial bialgebras\" \"Conjecture 1.5\"` | Only the source/preprint copies and index pages were found; no proof or counterexample. |\n| S15 | second pass: `\"transitive array\" \"classical Yang-Baxter\" proof` | The source and MathDB open-problem page were the only relevant results. |\n| S16 | second pass: `\"transitive CYBE\" solution conjecture` and `\"r(a)\" \"transitive CYBE\"` | Source copies, reviews, and unrelated CYBE pages; no later solution located. |",
+      "sha256": "08e321ab911004a808c3de840ac0e9ced09b6c3d15cb5f044ec9de3e886efe0c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "",
+      "sha256": "20a45d0d0a0149e3c060a5b1744953d1dc7ffbe556e05a4a57eb65c2959f117c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P04/evidence/07_claim_ledger.md"
+    }
+  ]
+}

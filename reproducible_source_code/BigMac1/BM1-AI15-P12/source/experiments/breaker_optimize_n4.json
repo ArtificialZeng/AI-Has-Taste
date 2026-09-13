@@ -1,0 +1,126 @@
+{
+  "accepted_away_from_rank_one": 14414,
+  "bound": 20.0,
+  "candidates": [
+    {
+      "method": "random",
+      "normalized_D": -3.9717375531314065e-23,
+      "parameters": [
+        0.5686696818181644,
+        0.5958392943227152,
+        -0.13487575670980026,
+        131.66110766123865,
+        -135.15467335899282,
+        -0.22308397017944417,
+        0.021962066532000436,
+        0.41541891310575013
+      ],
+      "per_T_unscaled": -121509.18013477325,
+      "per_block_unscaled": 634319903808.011
+    },
+    {
+      "method": "differential_evolution",
+      "normalized_D": 7.747143393167415e-27,
+      "parameters": [
+        -16.300154935764887,
+        -16.296986059081927,
+        -16.303717216584417,
+        -16.294866196532137,
+        0.06346061960272209,
+        0.06327013237807044,
+        -16.897337369505944,
+        0.06350123382261152
+      ],
+      "per_T_unscaled": -0.24905109405517578,
+      "per_block_unscaled": 4.341918897638448
+    },
+    {
+      "method": "nelder_mead",
+      "normalized_D": 2.63805917985513e-26,
+      "parameters": [
+        -16.30390789172715,
+        -16.30081464082189,
+        -16.300461526191526,
+        -16.299369800300415,
+        0.06377178142662349,
+        0.06357911448474823,
+        -16.983424501393102,
+        0.06379438020535638
+      ],
+      "per_T_unscaled": -0.38338279724121094,
+      "per_block_unscaled": 10.289005727209712
+    }
+  ],
+  "differential_evolution_maxiter": 250,
+  "discovery_only": true,
+  "environment": {
+    "numpy": "2.2.3",
+    "python": "3.13.5",
+    "scipy": "1.15.3"
+  },
+  "exact_fixed_denominator_rounding_diagnostic": {
+    "binomial": 70,
+    "evaluators": [
+      "definition/permutation enumeration",
+      "Ryser inclusion-exclusion",
+      "repeated-row/column coefficient DP"
+    ],
+    "field": "Z",
+    "matrix": [
+      [
+        -4018882,
+        -3692804,
+        27789565526,
+        -4018882
+      ],
+      [
+        -3999104,
+        -3673088,
+        27784300672,
+        -3999104
+      ],
+      [
+        -3997190,
+        -3671180,
+        27783791170,
+        -3997190
+      ],
+      [
+        -3990172,
+        -3664184,
+        27781922996,
+        -3990172
+      ]
+    ],
+    "n": 4,
+    "parameters": {
+      "a_numerators": [
+        -163039,
+        -163008,
+        -163005,
+        -162994
+      ],
+      "b_numerators": [
+        638,
+        636,
+        -169834,
+        638
+      ],
+      "common_denominator": 10000
+    },
+    "per_T": -39239307517698912944639066972160,
+    "per_duplicated_block": 107780520422844576186697719689559466773522850625509002515054592000,
+    "rank_over_Q": 2,
+    "rhs": 107780627812797969764986801920249088086338960091109002515054592000,
+    "schema": "breaker-candidate-v1",
+    "source": "floating-adversarial-rounded",
+    "strict_difference_left_minus_right": -107389953393578289082230689621312816109465600000000000000000
+  },
+  "exact_positive_certificate": null,
+  "n": 4,
+  "objective": "(per(block)-binom(2n,n)per(T)^2)/(sum_ij T_ij^2)^n",
+  "parameterization": "T_ij=1+a_i*b_j",
+  "random_trials": 20000,
+  "schema": "breaker-floating-search-v1",
+  "seed": 120041
+}

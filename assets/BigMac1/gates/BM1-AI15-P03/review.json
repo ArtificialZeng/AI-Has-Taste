@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AI15-P03",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "Complete claimed zero-set theorem: generalized chorded cycles lack proper three-colourings exactly at n in {7,8,12,16}.",
+  "historical_gate_summary": "Historical submission gates reviewed; no fresh proof, citation or novelty audit in this packaging task.",
+  "pdf_sha256": "29d3ce3524c49628d613a749d5c05673eb47b8c69749107f74e8dc8efccce83b",
+  "evidence": [
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "L43: remediation, and returned `PASS; unresolved items: none` in | L48: A second exact proof route is recorded in `proof/transfer_automaton.md`. | L70: `audit/AUTOMATON_EQUIVALENCE_AUDIT.md` is `PASS; unresolved items: none`. | L83: valid cells print PASS and the nine tampered cells exit nonzero without PASS. | L89: The two-pass novelty search found no prior all-order proof or counterexample | L112: Expected result: every verification command reports `PASS`; the transfer | L127: auxiliary entries.  `unzip -t` passes.  The fail-closed static manifest | L128: verifier and the skill's generic manifest verifier both pass.",
+      "sha256": "a69baff0c857c410e3faa483a2b5811a7b1fd715f78d349de58773bc2a19c675",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/01_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "The theorem is proved and the release gate is closed. A deterministic 41-entry source ZIP and 43-entry manifest were rebuilt from exact static whitelists with zero logs/tmp/cache/bytecode/build junk. From the final clean extraction, all four verifiers passed byte-identically in normal and optimized isolated modes, the primary fail-closed harness passed in both modes, and the LaTeX audit reported 4/4. Both manifest verifiers and ZIP integrity pass; the PDF hash is unchanged. No proof assistant was used.",
+      "sha256": "02a89637853e1be5105cc287d98d305511b59cfd4e5a1f1d1b99f7a9f4c53443",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/02_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "L27: | 1 | Title, author, abstract, opening citations, footnote metadata, bottom margin | PASS: no clipping, overlap, missing glyph, broken citation, or crowding | | L28: | 2 | graph definition, modular notation, three-item lemma, displayed equation, section transition | PASS: formulas and list align; proof square and margins are clear | | L29: | 3 | four-family display, junction strings, underbraced half-words, coordinate ranges, section transition | PASS: all subscripts/superscripts and underbraces render sharply; no collision | | L30: | 4 | obstruction proposition, possibility table, sliding-window formula, main theorem, start of certificate section | PASS: table rules/columns align; links and theorem hierarchy are legible | | L31: | 5 | command block, diagnostic numbers, disclosure, four bibliography items, address/email | PASS: long code names and URLs wrap without overflow; final-page whitespace is balanced | | L35: PASS.  The final rendering has no clipping, overlap, black boxes, missing",
+      "sha256": "73b8f117bdc137d67748c8b5a899ed477db76e48b718e1ffee3df39ea5c78792",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/03_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "L5: **PASS.**  Starting only from the graph definition in | L16: `proof/main_proof.md` gives a second valid route once its finite seed data are | L22: stated.  It does not certify the separate literature/novelty claim in lines | L169: \\(m=10\\) also passes all necessary and sufficient conditions.  Therefore the | L217:    PASS direct graph-edge check n=6..500 plus 1000,1002,10000,10002 | L229:    PASS all 14 seed half-words, extended m=12..1000, and special n=20 | L242:    PASS independent direct graph-colouring exhaustion with c(0)=0 | L264:    `verifier/certificate.json`.  The data are present and independently pass,",
+      "sha256": "fd6e8e428c6c7187ce9fe01b5e65262e344549e02021c4fb69d2a4a8ee9dec3a",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/04_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "L11: | Fixed claims extracted in pass 1 | 10 | | L18: **Overall status: PASS.**  The search-scope novelty sentence is classified as | L23: ## Fixed pass-1 claim list and pass-2 decisions | L32: | C06 | No prior all-order proof or counterexample was found in the recorded search scope through 2026-08-29. | Temporal/existence, Introduction | Verified within stated scope | Two recorded search passes in `literature/search_log.md`: OEIS, arXiv, DOI/Crossref, OpenAlex, SciNet, GitHub, and exact final-wording/block queries.  The manuscript expressly disclaims a global-priority guarantee. | interpretation | | L36: | C10 | The archived diagnostic reports PASS, 9,991 constructed orders, and 128/256/4096/65536 sign words exhausted. | Statistic, Section 5 | Verified | Re-run of `certificates/verify_builder_construction.py --max-n 10000`; JSON record `results/builder_verifier_10000.json`; counts equal 2^7, 2^8, 2^12, 2^16 exactly. | exact |",
+      "sha256": "c2d9d333c1a49bf1a9aa5f963198d782b932374416aa9976db37319b66f69970",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/05_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "L3: **Result: PASS**   | L18: - The independent referee's remediation recheck ends in a clean PASS with no | L22:   implementation/cone recheck ends in PASS with no unresolved item. | L27:   was accepted; a second search was run after the exact theorem wording and | L29: - The manuscript makes only a bounded search-scope novelty statement and does | L70: - A second verifier reconstructs exact colouring counts through \\(n=20\\) in | L74:   were replaced by explicit failures.  A 12-cell adversarial matrix now passes | L78:   separate direct-graph finite certificate through \\(n=25\\).  It passes in",
+      "sha256": "6603c5f462106a9d38aae8e69ab586989b92f1193ae0cb875ba40967e97486a2",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/06_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "L37: - Publisher landing/PDF was Cloudflare-blocked (HTTP 403 in direct `curl`); final DOI-stamped author-uploaded text was inspected at <https://www.researchgate.net/publication/397141446_Chromatic_Polynomials_of_C3_n_Graphs_Lucas_Sequences_phn_Asymptotics_and_Linear_Recurrence_Existence>. The publisher’s under-review file at <https://files.sdiarticle5.com/wp-content/uploads/2025/10/Ms_JAMCS_146917.pdf> was used only as a cross-check, not for publication metadata. | L97: ## Locked novelty conclusion | L101: The lock does **not** certify global novelty. Before any “new/publishable” claim, repeat S01, S04, S06, S07 with the final theorem wording and search for later versions, corrections, citations, and independent repositories. | L103: ## S08 — post-result novelty recheck | L125:   `SECOND_NOVELTY_SEARCH_PASS = NO_PRIOR_ALL_N_PROOF_FOUND_IN_RECORDED_SCOPE`.",
+      "sha256": "002085154efc843997db6318225696dab11c74fbed18723184b1e85bb1d52b65",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/07_search_log.md"
+    },
+    {
+      "original_project_relative_path": "audit/RELEASE_FREEZE_AUDIT.md",
+      "summary": "L3: **Status:** PASS. | L21: 2. `unzip -t` passes and `unzip -Z1` contains no forbidden entry; | L22: 3. all four released theorem verifiers pass in normal and optimized isolated | L24: 4. the primary fail-closed harness passes from the clean extraction; | L27:    verifier both pass; | L37: member-name scan passed; the latter found zero entries under `logs/`, `tmp/`, | L41: code, the following four verifiers each passed in normal and `-O -I` modes: | L49: the independent verifier printed its PASS header in both modes.  The primary",
+      "sha256": "de0341427ba6ea436ada0ed1abd7369dc8674cf7ac449234459198311e4e2be9",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P03/evidence/08_RELEASE_FREEZE_AUDIT.md"
+    }
+  ]
+}

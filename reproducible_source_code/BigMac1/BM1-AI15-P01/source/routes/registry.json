@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can the displayed matrix be proved nonexpressible over R?",
+      "premises": ["A o B = M", "rank(A), rank(B) <= 2"],
+      "method": "zero-pattern branching and rank-two structural reduction",
+      "status": "refuted",
+      "evidence": ["certificates/builder_counterexample.json"],
+      "failure_reason": "An exact rational feasible pair exists; its legal zero branch is Z(A3)=Z(A4)={3,4}, Z(B3)={1}, Z(B4)={2}, with B24=0.",
+      "next_test": "none; the proposed nonexistence endpoint is false"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Can the matrix-specific nonexistence assertion be disproved by an exact factorization?",
+      "premises": ["rational factors are allowed as real factors"],
+      "method": "rank-two row-span ansatz and exact rational reconstruction",
+      "status": "proved",
+      "evidence": [
+        "certificates/builder_counterexample.json",
+        "certificates/builder_verify_counterexample.py",
+        "certificates/rational_decomposition.json",
+        "verifier/verify_rational_decomposition.py"
+      ],
+      "failure_reason": null,
+      "next_test": "complete adversarial and source audits"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Is the witness isolated or part of an exact structural family?",
+      "premises": ["x,y,z are pairwise distinct nonzero scalars"],
+      "method": "choose two row-space bases and cover target zeros by equality fibers",
+      "status": "proved",
+      "evidence": ["audit/builder_notes.md", "proof/exact_disproof.md"],
+      "failure_reason": null,
+      "next_test": "audit all denominators and specializations"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Attack every candidate lemma",
+      "premises": [],
+      "method": "independent reconstruction, malformed-certificate tests, and source audit",
+      "status": "proved",
+      "evidence": [
+        "audit/builder_notes.md",
+        "audit/breaker_notes.md",
+        "audit/referee_notes.md",
+        "audit/PROOF_AUDIT.md"
+      ],
+      "failure_reason": null,
+      "next_test": "none for the matrix-specific endpoint"
+    }
+  ]
+}

@@ -1,0 +1,1921 @@
+{
+  "checked_date": "2026-09-13",
+  "audit_kind": "Independent transplant build and dependency check of copied final LaTeX only; not mathematical, novelty, citation-content or new page-by-page visual review",
+  "scope_root": "repository/latex_source_code/BigMac1",
+  "toolchain": {
+    "latexmk": "4.88",
+    "pdfinfo": "26.04.0"
+  },
+  "controls": {
+    "max_parallel_builds": 3,
+    "timeout_seconds_per_manuscript": 60,
+    "canonical_entries_only": true,
+    "prebuilt_bbl_and_build_sidecars_excluded": true,
+    "shell_escape_disabled": true,
+    "automatic_latexmk_rc_loading_disabled": true,
+    "no_math_verifier_or_research_solver_run": true,
+    "no_original_research_write": true,
+    "no_archived_source_or_pdf_write": true
+  },
+  "summary": {
+    "manuscripts": 41,
+    "clean_build_passed": 41,
+    "page_count_matched": 41,
+    "total_pages": 280,
+    "missing_citations": 0,
+    "undefined_references": 0,
+    "missing_dependencies": 0,
+    "latex_errors": 0,
+    "timeouts": 0,
+    "original_pdf_hashes_unchanged": 41,
+    "max_elapsed_seconds": 3.609
+  },
+  "nonblocking_observations": [
+    "All builds emit the epstopdf warning that shell escape is not enabled; this is the deliberately enforced policy, and no canonical manuscript uses includegraphics, external input/include files, minted, gnuplot or shell commands.",
+    "BM1-MAN-P06 has one existing underfull bibliography hbox (badness 7433, generated bbl lines 21-23), consistent with its historical PDF audit. No overfull box or compilation failure.",
+    "DM01-P13 and DM01-P15 have byte-identical duplicate main.tex entrypoints; only paper/main.tex was compiled, preserving the original relative bibliography layout.",
+    "Newly generated PDFs remain under work/latex-qa and must not replace archived final PDFs. Page-count agreement and successful clean compilation do not constitute fresh visual or mathematical acceptance."
+  ],
+  "rows": [
+    {
+      "package_id": "BM1-AF03-P01",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "1f9b89dab0406a4b3edbb9a8ed09904e9e42d8a9bc9e245ddad9a4bfbd9923d8",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "50fe9eece9d223ac55a4e9fc5a2843a74359fb99776a46847d692c084d299c46",
+        "paper/main.tex": "1f9b89dab0406a4b3edbb9a8ed09904e9e42d8a9bc9e245ddad9a4bfbd9923d8",
+        "paper/references.bib": "7d6b69e1d99f045f29cbe560f6ecadc304d0236164b53285c8f5c3b263f7394a"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 4,
+      "expected_pdf_sha256": "f5ffc1c942f5a246278a40c1e8b81739704f369effe42f0339b3793e36cc5f1c",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.054,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 4,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P03",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "b775e3cd08b828fbfad4ea02cd5e4a76a8ca10c2183c87c608265c41eef55379",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "b775e3cd08b828fbfad4ea02cd5e4a76a8ca10c2183c87c608265c41eef55379",
+        "paper/references.bib": "4f2ff129fbb850ae42d5ae58648c37e3eb31d4b78b14ee2fe0500d071a1cab76"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "371018beb64598ae541912982284da690d461287e8cac30108cf5ed2f6575e0a",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.067,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P04",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "80b6c15b233eeb092b6cd17151224254cda88a9e9f0dee6fd43bab6831c35088",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "80b6c15b233eeb092b6cd17151224254cda88a9e9f0dee6fd43bab6831c35088",
+        "paper/references.bib": "be1e8ac15a9d033ca53f70ac067b6a1350ec5a997ab10b8995b01fbcf4e8c70f"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 4,
+      "expected_pdf_sha256": "ccd7a30bcbca30a79f0caec88a27c5150ab7808aa8a6cc5e2df14580e6db97c0",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.944,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 4,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P05",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "ec4ff6cbd8c6b28b1248122ffc468a0f98a2039a93fe164ba14fa64b24538c01",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "5811a2bd00865c6477d72f060655940429c77bcfd60ebfa875efc68e7a6b672a",
+        "paper/main.tex": "ec4ff6cbd8c6b28b1248122ffc468a0f98a2039a93fe164ba14fa64b24538c01",
+        "paper/references.bib": "d0814d13bf1d527ecd224197b70e6d63a1b7737b16cde444038a54e2336f0d4d"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "d271645951e7d5ee0844eabc7ac7bd9227a41cfaeac05cd77f8529fdb3048688",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.759,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P07",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "89f70b59d678f83e16dbbce1fdcacbcfcba5dbe16b59e4daec39ed5df6e6cd4d",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "dea1816c09819c815aa3cc4233df7d8444f8cb8ada6d0a1881e485b28c7138e3",
+        "paper/main.tex": "89f70b59d678f83e16dbbce1fdcacbcfcba5dbe16b59e4daec39ed5df6e6cd4d",
+        "paper/references.bib": "4e13017154dd3db33244fa44df44346bb8a1d92c8839b8a04fe0732cb039d594"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "befffe6e09fac9d8ac6e5d1c7759fbe74e7f6f65848134ef8fa25a6ecf3c6d8e",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.707,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P08",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "ef1831ef2512be83b99b5b8bfd5c7bf24e8ceabe3a635c545adbcd1e13a2f43f",
+      "source_snapshot_sha256": {
+        "literature/original/arxiv-1312.2170v1/q-Fibonacci-s.tex": "6b4ea0bf537ad3f6dc4591f71247bef19a19a56f103bf541460f7e24a4f84561",
+        "paper/main.bbl": "f482d9d3b6bf0962e37ceeeef57035347f7d1a871ad7f053e2f253618bf854f6",
+        "paper/main.tex": "ef1831ef2512be83b99b5b8bfd5c7bf24e8ceabe3a635c545adbcd1e13a2f43f",
+        "paper/references.bib": "359cf9fb5b94d694dd0780a0ed3d71e421072a3b07a336cc4b360edf12cdff1a"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 7,
+      "expected_pdf_sha256": "96b8154056468be7bf8f3f4a2f2156d121cf0e20be23645b6b7be837ad3f1d2c",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.017,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 7,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P10",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "991fdd7083a93ae3983935e60b165942541009e95c6bad28cc189ac124630414",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "6416122c335e87b2faafa7726c0dddb4a65110acb05e9de4ead035a8ebc60bd1",
+        "paper/main.tex": "991fdd7083a93ae3983935e60b165942541009e95c6bad28cc189ac124630414",
+        "paper/references.bib": "ab689a8b90b83e36c95b692df35151752f12472a0ec808d755d14d587d47fee3"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "24959453f24bc7c50cd2578e95f52389de140fae3665af9e1d24d226bfc97e47",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.853,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P11",
+      "canonical_entry": "main.tex",
+      "main_source_sha256": "5206aae1502cf80f1c24f9c0883196c87e2ebe5a0ef141caaf25fd8c3054cd85",
+      "source_snapshot_sha256": {
+        "main.tex": "5206aae1502cf80f1c24f9c0883196c87e2ebe5a0ef141caaf25fd8c3054cd85",
+        "references.bib": "3fad954228793b72cb53a3ec9cabd21207f2ed8f2820ececadc636f24ff93dd9"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "76997d53c15fe7d7890f3e46a8276d3d5a00e5faf73ecb775d1ae8277f8ee17d",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.839,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P12",
+      "canonical_entry": "main.tex",
+      "main_source_sha256": "8bf92439f14394a9cd2a3a90f33e0e0686cd309dc2a602a8155ff53ef0bc0ad2",
+      "source_snapshot_sha256": {
+        "main.bbl": "5d564735954d6ff8d72970267576af5475c40e5d5778903761d41988844ca572",
+        "main.tex": "8bf92439f14394a9cd2a3a90f33e0e0686cd309dc2a602a8155ff53ef0bc0ad2",
+        "references.bib": "9e9cfb636c86c551529fff9f91b28943af24851ab616a74787d0c44b51f984a0"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 10,
+      "expected_pdf_sha256": "1d634d4f8dadcafbb491e2a05e8dfaf612c609999cced9b3d6ec188db9fb0f17",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.066,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 10,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P13",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "0286c7d1230ee9617f93d86399341b5605e89ecf3c708495eb234329903c43cb",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "2fbdc8fd6bbddd299ada254070d1095e0d5b9aad707e7435f61575d82f7846c9",
+        "paper/main.tex": "0286c7d1230ee9617f93d86399341b5605e89ecf3c708495eb234329903c43cb",
+        "paper/references.bib": "9f3e1c2bb6469b99dae4c9970bdf1801bbbf84a55fc48291c920a83bac7c2cbe"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "97bc0949eca16e0225e89b21ec451b5de92df66878900d4fcd24000e05bf0b55",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.982,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P14",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "1bcccfa9a6db0660c1e3d349351ad4740ea7f9ea5b90e050701c94bb7f19bd58",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "1bcccfa9a6db0660c1e3d349351ad4740ea7f9ea5b90e050701c94bb7f19bd58",
+        "paper/references.bib": "dcba8a3ac13a247390162d618a422ea07ecfa80d38dc3589b271936299789d6b"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 8,
+      "expected_pdf_sha256": "183ff0236e53de460de80a9c97ace776aba06eb681bd79315ab344827a55d7eb",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.991,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 8,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF03-P15",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "eddc3ba6c21ba34897445bad95839e17aa77ef2e8a03ddf8f03213aea9c0621f",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "eddc3ba6c21ba34897445bad95839e17aa77ef2e8a03ddf8f03213aea9c0621f",
+        "paper/references.bib": "0b55338f6307dfb2cadc4a488da7ddfd9d797b4ebe7b1c863fec15b64aa4128e"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "c8741981935f22594dcc944e2981b166b1084f58cf6d59c455ecb9f02c08d184",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.975,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P01",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "bc9e1125527cfd9e1e288c3fe39085d423a1f4b9de48d2a127f1747705094559",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "727b0037690b2596ed7bc52ea324a22ff800a8128565c9888ad654a12d4568b3",
+        "paper/main.tex": "bc9e1125527cfd9e1e288c3fe39085d423a1f4b9de48d2a127f1747705094559",
+        "paper/references.bib": "f2ca0f609aee25865f4463ba3a325be2dd46e5c219892b99c314058f0944921f"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 4,
+      "expected_pdf_sha256": "181de7b00cd7f4dc0806e78866f179d386b671e0fb6e3b70eb7b0f56ecaf0393",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.855,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 4,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P02",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "62c0b4f51bb413d3f485ffcfd000bb5a2a8b766e139bc19075fa6f9291c99031",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "f02172023a4383619a1bcc5c25ec95ebbfb4369692c88412cbee27f8e476d7c6",
+        "paper/main.tex": "62c0b4f51bb413d3f485ffcfd000bb5a2a8b766e139bc19075fa6f9291c99031",
+        "paper/references.bib": "f817b4a6b424050269f975cf3fe89759c8d1930c455b1de3590568c89a95f23f"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "ec6c19cff46f9441f6901b792735950771a7b0ea438f293a280eef70197695a7",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.924,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P03",
+      "canonical_entry": "main.tex",
+      "main_source_sha256": "f27da15bf2d75306eb78e47a8397f3cb83b4bd57ca22d7881b9f69d75bfe0588",
+      "source_snapshot_sha256": {
+        "main.bbl": "dfd3103488a57d938c8f0a1aed91fd5b858c9eadb2d0de22d26aca683d2d8365",
+        "main.tex": "f27da15bf2d75306eb78e47a8397f3cb83b4bd57ca22d7881b9f69d75bfe0588",
+        "references.bib": "623da9f4543ecfb0f707b37d480abf520b4e8485d6495ac1e4efb3a5b8a1ae8f"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "1f72dfdde2bf58cc3c77795510056a563d35816fa152ab722211c4c09db37426",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.944,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P06",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "09ebd2c6586553b47533e15de393a4c584e9a273b275f96bb90237e23eb517a9",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "50f0579c646e72438754fd60a211a29f4c1ebccb789c30207916daddf91c08a5",
+        "paper/main.tex": "09ebd2c6586553b47533e15de393a4c584e9a273b275f96bb90237e23eb517a9",
+        "paper/references.bib": "f7d78773cb74b409da0c28e1f3bc228e98cc55937e703925acf925e5d3b19e2e"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "75b09a4161b52732f87834804feba5bcdda77637d4a29b9548ed4f5e630b5905",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.985,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P07",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "d8a063d969b1b67217e8cff9dae37e6f6d74e69284662ddb7c03cb126e631168",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "9202e6ae003e748076f66080210803e3f190a3cd83f3272bc689e61d9f231ef4",
+        "paper/main.tex": "d8a063d969b1b67217e8cff9dae37e6f6d74e69284662ddb7c03cb126e631168",
+        "paper/references.bib": "73a35eb3f15d4822cac04ba1b96be379c9356ed44ebd436f599b3b29e6a75172"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 7,
+      "expected_pdf_sha256": "715bc1f928b608988d528b234c3ec16ecd1ed3ecfdb0bc9997cd3fb0624ed5f2",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.984,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 7,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P10",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "b5b0ba04a4c05cb8072b3d864f11ecc2ea23c235cf907c1663a0fbcb33741e02",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "6512568faad30364b21c14c9eb1b9adfb699d6f9def4c8651a21f6596f125b89",
+        "paper/main.tex": "b5b0ba04a4c05cb8072b3d864f11ecc2ea23c235cf907c1663a0fbcb33741e02",
+        "paper/references.bib": "958bed0b88896bad3872ada85ec1d1cb7613b2dd478d665e672864aa9317e6df"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "9427e0ec397d0b0ef2064e73c574951767799c0fb9d7a8ecabacadecd0a05eb4",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.984,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AF04-P15",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "6083b0d65f9300df87ffc5ce9a172da49400846b73109546cf15cb6c6fd007b5",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "42af5c85aefc6dd825e810873dc3c8ee95c9816e9abd36dfef05f41b780c5502",
+        "paper/main.tex": "6083b0d65f9300df87ffc5ce9a172da49400846b73109546cf15cb6c6fd007b5",
+        "paper/references.bib": "06fe215b9c75129aaf6a76f818221d3b3b0724f75935137fa44a38f923689fc2"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "d4c1cde0b8b91e97686bcf71c6f082ba099e7523179592d50222f3f2f327ebbd",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.221,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P01",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "3a2f7880aae651b9d802008ce173b48e44ab81fa1cf7398bc6bb33149fe492b5",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "3a2f7880aae651b9d802008ce173b48e44ab81fa1cf7398bc6bb33149fe492b5",
+        "paper/references.bib": "c2e55f0861306d798ea91b6e76627ba26856af95e2121694118d07249ab4abce"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 3,
+      "expected_pdf_sha256": "bd271cefe03202471b6b93fa8b7d9812e3da48cbc4bf7ec7bc1df23f8749d53a",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.883,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 3,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P02",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "abf7ecc9fec07da54baee6c1ebe2f414db9e38035d8fba5618c2ffa7b0725f42",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "abf7ecc9fec07da54baee6c1ebe2f414db9e38035d8fba5618c2ffa7b0725f42",
+        "paper/references.bib": "63902080b01b58fb9db0d37a561f2042fefd2657896d7dfba0d2ea5952d5ca2f"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "bfcd1dcfab157ad1f7b7fefdc021e4275726d93053d32b32630e2d78695c5587",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.17,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P03",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "cc8b44e6b4fa1779c3d763ac2df5b17d4884afbb29b121c7b346f01df5cfb422",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "cc8b44e6b4fa1779c3d763ac2df5b17d4884afbb29b121c7b346f01df5cfb422",
+        "paper/references.bib": "d3c15e51ffe178ac296e4ec68c830536462e7c593d128d28b8c5ca323c2fded3"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "29d3ce3524c49628d613a749d5c05673eb47b8c69749107f74e8dc8efccce83b",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.906,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P05",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "0897d9d5486639cdd64cbf5cfb47567cd5f1ebd06ced13d04a31b70f66c9bea3",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "683d7cb5fa51fa90a517b9132fe6f0234e84f5b3fc8e7d88c3205cb96f913e61",
+        "paper/main.tex": "0897d9d5486639cdd64cbf5cfb47567cd5f1ebd06ced13d04a31b70f66c9bea3",
+        "paper/references.bib": "bfb7ae4d16166eb2dbedb694a94d90f7ad99d02ae2ae3dcdbb48680d73ed7bdc"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 4,
+      "expected_pdf_sha256": "3064f945793bb825c945fd666b99a47ad596b638f4a23a01e8edd46019b6b98f",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.051,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 4,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P06",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "d55cdd3cd7a6785bbacdb23b3817868af0ca973651532ed8aa5da0d26d163b11",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "c2595b4b5e6428ab180cbf8d5c177dd954c31842498fde925eb9dbd27ff60563",
+        "paper/main.tex": "d55cdd3cd7a6785bbacdb23b3817868af0ca973651532ed8aa5da0d26d163b11",
+        "paper/references.bib": "d8023291072ff9f640b848d7a2d8504b4a408014a2eca872a1956ce825e10147"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 8,
+      "expected_pdf_sha256": "23e7143150038d5dad511afdb0f49ca3118566b7371d933b1eaa371bb6e410b1",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.902,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 8,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P07",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "d1ba1c3b876126ef9ef5f11d87969781d9338a7dc617df93a7a2b14a61a7a879",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "d1ba1c3b876126ef9ef5f11d87969781d9338a7dc617df93a7a2b14a61a7a879",
+        "paper/references.bib": "2e772ee42a55a5ae20d71414e2f5b156d70d1d5262e7aa433e78f6a68abbfcdd"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "ecd6979b9994c47562678637b9a545c9ff2330ef2515f9b1e4e275848916e37b",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.096,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P08",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "ca929d47781190a84937445afecf5bfa63888e02476316a7b3694395642d86d4",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "ca929d47781190a84937445afecf5bfa63888e02476316a7b3694395642d86d4",
+        "paper/references.bib": "3f41c5b78d8165dffef9ead91cfd1fbbd755b9bceb9d1208c653e5db7f033c93"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 8,
+      "expected_pdf_sha256": "f5e502d6f122d8720a5871e6b435429102b9ca75eb2c58fa266f2da129be7260",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.886,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 8,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P11",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "1388523226c63863c59593acd827095faf9be1d51a0b8ef3bc3933bd1702dfcd",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "073404bdbc5f1bfeb30f425622113ef0c3c48b165fb44066b907289ec437cf1f",
+        "paper/main.tex": "1388523226c63863c59593acd827095faf9be1d51a0b8ef3bc3933bd1702dfcd",
+        "paper/references.bib": "db15d311aa5242c2c21de8e8a7e1b5570c88c5976ad802733768fd878c260437"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "22426d70897c55f8acac4e315ba7d132194ef55aa97027a7b195b92150786f7b",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.812,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P12",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "b0fa15967cbf9c58def7173a9b4088919b6cd8571d36f6e0310b8463cf3795a7",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "12f58ff2597909ad8e4f4813c05ff4c7440416c0759212af714eacfb7ff2eaac",
+        "paper/main.tex": "b0fa15967cbf9c58def7173a9b4088919b6cd8571d36f6e0310b8463cf3795a7",
+        "paper/references.bib": "341394460190dd2f184a099c57b22fbcb51ec2dae96530764c93e0bdc2e19d3c"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "7f89daee40e5dec6bd334b284af8bbb27f39c4a294c73a3a0e7d3b3bafff4f43",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.085,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-AI15-P13",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "3e8627d3a15a6c8504554e5bdad19ae4f054cab83bcc9d83bf5c1dd4d3210f06",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "cec906f2ab0638e3462eced1f5ab2b413c7322f4c6c35666a64c6151709c1e71",
+        "paper/main.tex": "3e8627d3a15a6c8504554e5bdad19ae4f054cab83bcc9d83bf5c1dd4d3210f06",
+        "paper/references.bib": "c7fba9e309ad2a3a53ea4075f67eb8d6c6b75587cad9648c1613b0e446640246"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "24dabee471d37e8995e58ec9010f6873a131d7bd587a7a5e54fca0a4823e931e",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.833,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-DM01-P13",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "2384bee5b8605a69308fe954549f3230bf3ec0373f523c3f9dde632921164815",
+      "source_snapshot_sha256": {
+        "main.tex": "2384bee5b8605a69308fe954549f3230bf3ec0373f523c3f9dde632921164815",
+        "paper/main.tex": "2384bee5b8605a69308fe954549f3230bf3ec0373f523c3f9dde632921164815",
+        "paper/references.bib": "d1193e151e56fb9ea743bbdeb2d22aa123fde541baa481fe699815379dc06db2",
+        "references.bib": "d1193e151e56fb9ea743bbdeb2d22aa123fde541baa481fe699815379dc06db2"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 7,
+      "expected_pdf_sha256": "0b76d86e6d8fcd39615dd64b16c7cb8f429aa569f522c5ee3c036edf470d93c8",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.916,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 7,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-DM01-P15",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "55ed5acd85783ab35ba6be1a73780f8ac74c98d44e052c2f3dedfede1d55b889",
+      "source_snapshot_sha256": {
+        "main.tex": "55ed5acd85783ab35ba6be1a73780f8ac74c98d44e052c2f3dedfede1d55b889",
+        "paper/main.tex": "55ed5acd85783ab35ba6be1a73780f8ac74c98d44e052c2f3dedfede1d55b889",
+        "paper/references.bib": "3252382716265c46ea24b6da69cf4f6af36ac867ecea5fe9839024262f5e68a0",
+        "references.bib": "3252382716265c46ea24b6da69cf4f6af36ac867ecea5fe9839024262f5e68a0"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "5a29efe8e2ac3d89e269143615ef16faf0369480919d2394af6663f1361f24e2",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.801,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P01",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "259117fa6f4dcf15a8b38ce3b603578879266a53fc01fe9bea5242838010dc35",
+      "source_snapshot_sha256": {
+        "literature/references.bib": "6eb0eba58acaa563b9bd2b2db9c02425f5c1a73df18d48cce13043764be38af3",
+        "paper/main.bbl": "b83cc15eefbdb27853cc4baa2144b22d6f4f9f401a3e661a6856e3ef8df08dc0",
+        "paper/main.tex": "259117fa6f4dcf15a8b38ce3b603578879266a53fc01fe9bea5242838010dc35"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "../literature/references",
+          "exists": true,
+          "resolved": "literature/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 4,
+      "expected_pdf_sha256": "80fd5f4a8416ab6905f6ec2095fb8b2add96092ab01ec4227104039a379a9291",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.847,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 4,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P02",
+      "canonical_entry": "paper_sparse_core/main.tex",
+      "main_source_sha256": "c8844ddcdf3e0bc09a0b00b74978aad0b2608ec7457529a96f6e1a91dcfb56f9",
+      "source_snapshot_sha256": {
+        "paper_sparse_core/main.bbl": "9bb7ec31a73f9c8e3ab05a2f6f673e76d508fa9bebb33b4f9dc9c02d5ca97e3e",
+        "paper_sparse_core/main.tex": "c8844ddcdf3e0bc09a0b00b74978aad0b2608ec7457529a96f6e1a91dcfb56f9",
+        "paper_sparse_core/references.bib": "b434827a6e3be281274ee2aacab9dae04742feecef875d699d1dc762080b77f2"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper_sparse_core/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 7,
+      "expected_pdf_sha256": "d9706802a1ac3e38fba43220fb89edd0ffc09140f2a6e154d73c957ec29a8e66",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.06,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 7,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P03",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "5190298defd70ddbee4d4d101324fcfd2a25f1d6adb488e065cb89461330a626",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "188481bf1007156d2d51c7c0fbe501ccf3011ea68e11c92aab489197f685133e",
+        "paper/main.tex": "5190298defd70ddbee4d4d101324fcfd2a25f1d6adb488e065cb89461330a626",
+        "paper/references.bib": "6d0eeef47377bcca7d23c894c6b66d40e6c9a27061686b1e6fb9f95d988fb0c7"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 7,
+      "expected_pdf_sha256": "5c337fc6650d7f17bbbea2a0ed13fa2980a6b9733d55f206360c40c943538af2",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.101,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 7,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P04",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "61995d899367cfef1265d47ece1e3fcf062fff4aa907e75b5218d31dbc192be1",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "55a6d0587ab792f18e049f68cd027a684707faa89537d772895e4a228dbf527a",
+        "paper/main.tex": "61995d899367cfef1265d47ece1e3fcf062fff4aa907e75b5218d31dbc192be1",
+        "paper/references.bib": "4ad178a9590e226127ab4932b76dae908d4f7981f1879ced080fd61aa8820d99"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "813039ae323615633c1594079173a194d2da338e15a0c7fa839e0ed8b15ef3ed",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.084,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P05",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "f54d88ea3c10e2f611040a402013496dadc39bbd5ddd32755be1863cf234a8e2",
+      "source_snapshot_sha256": {
+        "paper/main.tex": "f54d88ea3c10e2f611040a402013496dadc39bbd5ddd32755be1863cf234a8e2",
+        "paper/references.bib": "48c4e34748e0221d0d322bd965f74d4d14c29b82089cf1b0655bbe6eb83bb5bb"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "d8554328da59fe562cdfaa7169a69eb7b2924184422618e44e4a0b14cbaac1fa",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.817,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P06",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "ca74f461246b93d3a3ad4024211ba4218b2e96432733159eb7b03ccd7e2989d7",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "75dc4a8fde363d1c07c2df231d2fa38f9d16db08c8e8b77ef0e8d66366c544f0",
+        "paper/main.tex": "ca74f461246b93d3a3ad4024211ba4218b2e96432733159eb7b03ccd7e2989d7",
+        "paper/references.bib": "b680d7925b09c269fe8f791e3e733ee6c6814084c683d001eecbf4d0c236a712"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 13,
+      "expected_pdf_sha256": "d1de62b1898fb2176d5215e8ef6af9fcce4e707f070a1388f96ec33973461e33",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.341,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled.",
+        "Underfull \\hbox (badness 7433) in paragraph at lines 21--23"
+      ],
+      "pages": 13,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P07",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "c8bdf08039c62369dcf5d8a03ea1c6ca12f0acca10c6d2201bda30fe9fbf3b07",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "ecf5f71fe8a8c3418e120272ddd9a521194a100bfb355cfbc631f9e3451c257a",
+        "paper/main.tex": "c8bdf08039c62369dcf5d8a03ea1c6ca12f0acca10c6d2201bda30fe9fbf3b07",
+        "paper/references.bib": "6f2d075e3f34521881576cf92cc757d57f310f5db8431dda63e1b6243c341656"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 8,
+      "expected_pdf_sha256": "46d23f3c7f5e60633a9c09a95d657b9487fd5ba3edf51d10d5190870212f3a97",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.093,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 8,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P08",
+      "canonical_entry": "paper/main.tex",
+      "main_source_sha256": "78ceee411807348873c4f89febb5c43b2c36eac17e9ac143aefebbc1cbc03048",
+      "source_snapshot_sha256": {
+        "paper/main.bbl": "ad9129dea15af5595710917ae9041901cd892241efa933874ef172af89dce59c",
+        "paper/main.tex": "78ceee411807348873c4f89febb5c43b2c36eac17e9ac143aefebbc1cbc03048",
+        "paper/references.bib": "f1cb3cb95d92ac0dd3a2222b5aefd560acc20fff85105360ef247944d91a4d0b"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "paper/references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 6,
+      "expected_pdf_sha256": "e22bc052d7c361a41acdb9169b64a719f804a3db909262d46ced7813154af67d",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.041,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 6,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MAN-P09",
+      "canonical_entry": "main.tex",
+      "main_source_sha256": "fa1bf034586c22fd545479a93c03d8b373841fbdc6dfa9e87c75793565dd054e",
+      "source_snapshot_sha256": {
+        "main.bbl": "3d8e3ac2c999b50e84b126e5f04e108d3e74f0e971aa2ca9f91eaa4742d04f1b",
+        "main.tex": "fa1bf034586c22fd545479a93c03d8b373841fbdc6dfa9e87c75793565dd054e",
+        "references.bib": "989cbb89877e9af6649de49818bf9db5fc83b29f8fa96319fe22242784ade600"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 42,
+      "expected_pdf_sha256": "2f04f9b65c6c31cc9b4f806bc9e264aec4ac951dcc525d2519206ecb3c1a89fc",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 3.609,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 42,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    },
+    {
+      "package_id": "BM1-MATH15-P13",
+      "canonical_entry": "main.tex",
+      "main_source_sha256": "954d751f86eaf191b967ae3d686e1dad6d4e55c5c693862d00aec1824fae4fff",
+      "source_snapshot_sha256": {
+        "main.bbl": "cee2d53f80cf50d249a4810b16eb4ab44ad24f510f50d989748e48bc76b86be3",
+        "main.tex": "954d751f86eaf191b967ae3d686e1dad6d4e55c5c693862d00aec1824fae4fff",
+        "references.bib": "82dc2ca4691522167127aa7bb53c15b2af208ff0f9e2692575b9b0db9d5cc314"
+      },
+      "dependencies": [
+        {
+          "command": "bibliography",
+          "target": "references",
+          "exists": true,
+          "resolved": "references.bib",
+          "within_source": true
+        }
+      ],
+      "unsafe_commands": [],
+      "expected_pages": 5,
+      "expected_pdf_sha256": "a44bf276672d63acb0786498847929d1cc5084289708ca57365374b6d74d3e75",
+      "command": [
+        "latexmk",
+        "-norc",
+        "-pdf",
+        "-no-shell-escape",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "elapsed_seconds": 2.677,
+      "exit_code": 0,
+      "citation_missing": [],
+      "undefined_references": [],
+      "missing_dependencies": [],
+      "tex_errors": [],
+      "warning_lines": [
+        "Package epstopdf Warning: Shell escape feature is not enabled."
+      ],
+      "pages": 5,
+      "page_count_matches": true,
+      "clean_build_success": true,
+      "status": "pass",
+      "original_pdf_unchanged": true
+    }
+  ],
+  "subsequent_git_distribution_note": "Historical review of the full local source snapshot. LaTeX is now excluded from Git; see git-upload-validation.json for the current distribution."
+}

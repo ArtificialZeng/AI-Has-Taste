@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "role": "Builder",
+      "question": "Can exact cyclotomic Boolean solving extend the seven-orbit baseline to weight 20?",
+      "premises": ["Phi_105 is the minimal polynomial", "the lower-weight orbit list is complete"],
+      "method": "integer remainder matrix, all lower affine blockers, x_0=1, exact cardinality 20, Z3 enumeration, and direct Gray-code minimality checks",
+      "status": "proved_discovery_claim",
+      "evidence": ["results/baseline_through_19.json", "results/weight20_z3_discovery.json"],
+      "failure_reason": "The terminal Z3 UNSAT status is discovery evidence only and is not used as the release certificate.",
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "role": "Breaker",
+      "question": "Is the possible no-solution answer at weight 20 false?",
+      "premises": ["S is a distinct 20-subset of Z/105Z"],
+      "method": "search for exact survivors and test every proper nonempty subset by a second exact evaluator",
+      "status": "proved_two_examples",
+      "evidence": ["results/weight20_z3_discovery.json", "certificates/weight20_certificate.json"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "role": "Builder",
+      "question": "Which exact finite object represents a vanishing distinct-root subset?",
+      "premises": ["zeta_105 is primitive", "coefficients are 0 or 1"],
+      "method": "divisibility by Phi_105 iff the 48-coordinate integer remainder is zero; quotient the affine action",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md", "proof/proof_dag.md"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "R02",
+      "kind": "reduction",
+      "role": "Certifier",
+      "question": "Can completeness through weight 20 be reduced to a compact exact enumeration independent of SAT proof logging?",
+      "premises": ["Q(zeta_7) and Q(zeta_15) are linearly disjoint", "zeta_105=zeta_7 zeta_15^{-2}"],
+      "method": "partition S into seven masks M_i of 15th roots; prove vanishing iff all seven mask values agree; enumerate equal-valued seven-tuples with total weight at most 20",
+      "status": "proved",
+      "evidence": ["certificates/fiber_enumeration_manifest.json", "results/independent_verification.json", "proof/proof_dag.md"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "role": "Certifier",
+      "question": "Can a generic CNF/LRAT encoding provide the final exhaustive certificate?",
+      "premises": ["standard pseudo-Boolean BDD encoding", "CaDiCaL proof logging"],
+      "method": "encode all exact cyclotomic rows and lower blockers, with and without affine lex leaders",
+      "status": "superseded",
+      "evidence": ["results/cnf_build.json", "results/cnf_build_symmetry.json", "results/cadical_lrat.log"],
+      "failure_reason": "The attempted proof logs did not terminate within practical resource limits; no incomplete LRAT or CNF is retained as a certificate.",
+      "next_test": null
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "role": "Referee",
+      "question": "Can malformed matrices, invalid representatives, path traversal, or corrupted certificate files pass?",
+      "premises": ["the verifier must fail closed and must not import discovery output"],
+      "method": "standard-library reconstruction, meet-in-the-middle minimality, independent Gray-code fiber values, exact manifest binding, and destructive-input tests",
+      "status": "proved",
+      "evidence": ["certificates/verify_weight20.py", "tests/test_verifier_fail_closed.py", "results/independent_verification.json"],
+      "failure_reason": null,
+      "next_test": null
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can comparable endpoint tableaux be filled one Young-lattice cover at a time inside their K-Knuth class?",
+      "premises": ["T and U are K-Knuth equivalent", "shape(T) is contained in shape(U)", "b is an addable box of shape(T) contained in shape(U)"],
+      "method": "seek a local K-jdt or insertion construction of an equivalent tableau of shape shape(T) union {b}",
+      "status": "active",
+      "evidence": ["the local cover property is exactly verified for every class on alphabets n<=8 by the certificate", "outer-hook invariance forces every varying box to lie strictly inside the first row and first column"],
+      "failure_reason": null,
+      "next_test": "derive the cover construction from a common K-jdt ancestor, or find an exact n=9 class refuting this stronger local formulation"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does an exact n=8 K-Knuth class have a missing shape between comparable endpoint shapes?",
+      "premises": ["all increasing tableaux on [8] are included", "components are the exact Algorithm 1 congruence closure"],
+      "method": "complete canonical enumeration and exhaustive interval search",
+      "status": "refuted",
+      "evidence": ["results/discovery_n8.json", "certificates/n8_certificate.json", "results/verification_n0_n8.log"],
+      "failure_reason": "No n=8 counterexample exists: all 988384 initial components are interval-complete.",
+      "next_test": "The first remaining finite counterexample search is n=9; it is outside the certified endpoint of this project."
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What finite normalization and shape restrictions are forced before search?",
+      "premises": ["relations depend only on order and equality", "outer hook is invariant under K-Knuth equivalence"],
+      "method": "standardize alphabets and quotient by fixed outer-hook data",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md", "Gaetz et al. Definitions 2.4, 2.6 and Proposition 2.43"],
+      "failure_reason": null,
+      "next_test": "Use interval-subalphabet invariants to refine the interior-shape constraints."
+    },
+    {
+      "id": "C01",
+      "kind": "certification",
+      "question": "Can n<=8 be rebuilt without importing discovery states, transitions, components, or interval outputs?",
+      "premises": ["published Algorithm 1 and Theorem 3.1", "strict JSON certificate schema"],
+      "method": "independent shape-first/cell-coded enumeration, explicit-grid insertion, congruence closure, and bitset order-convexity audit",
+      "status": "proved",
+      "evidence": ["src/verifier.cpp", "src/verify_certificate.py", "results/verification_n0_n8.log"],
+      "failure_reason": null,
+      "next_test": "freeze hashes in the release manifest and rerun from a clean build"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Will the verifier reject malformed, incomplete, duplicate-key, type-confused, and count-tampered certificates?",
+      "premises": [],
+      "method": "six adversarial input tests",
+      "status": "proved",
+      "evidence": ["tests/test_fail_closed.py: FAIL_CLOSED_TESTS_PASS cases=6"],
+      "failure_reason": null,
+      "next_test": "repeat after every certificate schema or verifier change"
+    },
+    {
+      "id": "A02",
+      "kind": "audit",
+      "question": "Can a referee reconstruct the finite theorem from definitions rather than discovery intuition?",
+      "premises": [],
+      "method": "serial clean-room referee audit of enumeration, insertion, Algorithm 1 closure, quantifiers, and interval predicate",
+      "status": "proved",
+      "evidence": ["audit/PROOF_AUDIT.md", "audit/REFEREE_NOTES.md", "results/verification_n0_n8.log"],
+      "failure_reason": null,
+      "next_test": "repeat after any change to the theorem, certificate, driver, or verifier"
+    }
+  ]
+}

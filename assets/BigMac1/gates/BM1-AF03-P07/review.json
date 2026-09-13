@@ -1,0 +1,51 @@
+{
+  "package_id": "BM1-AF03-P07",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "字母表大小≤8 的指定有限端点已认证；无界字母表母猜想仍开放。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "befffe6e09fac9d8ac6e5d1c7759fbe74e7f6f65848134ef8fa25a6ecf3c6d8e",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; Complete exact enumeration and an independent no-import verifier certify Conjecture 7.6 for every alphabet of cardinality at most eight. The general unbounded-alphabet conjecture remains open.",
+      "sha256": "f1096da2710a5b164397d3a2ef2c5a85aed9d098374f9a0fbd785d91c7870e7c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nAudit date: 2026-08-29  \nMode: primary-source web verification plus LaTeX/BibTeX consistency audit  \nVerdict: **PASS**\n\nThe manuscript has one cited work, so the `bib-reference-audit` skill's\nfew-citation exception was used and no citation subagent was spawned.\n\n| Key | Manuscript uses | Verification source | Result |\n|---|---|---|---|\n| `Gaetz_2016` | Conjecture 7.6 and the reported (n\\le7) computation; Algorithm 1/Theorem 3.1; baseline counts; the multi-box shape-change warning | Official EJC article page and PDF; DOI `10.37236/4805`; arXiv `1409.6659v2` for version history",
+      "sha256": "9a00d95386a7d60475cfc16ae5fd5ae202368fd5151232a74aa665d70f053f65",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Independent proof audit\n\nAudit date: 2026-08-29  \nEndpoint audited: every ordered alphabet of cardinality at most eight  \nVerdict: **PASS for `CERTIFIED_FINITE_RESULT`; not a general proof**\n\n## 1. Quantifiers and boundary cases\n\nThe audited theorem quantifies over every (0\\le n\\le8), every K-Knuth class\nof initial straight increasing tableaux on ([n]), every comparable pair of\nshapes in that class, and every partition between the pair. Incomparable pairs\nimpose no condition. Equal endpoints give singleton intervals. At (n=0), the\nunique empty tableau and empty shape are included. Order-pres",
+      "sha256": "835480197ed2ce5ace4c5ec65205ff3a83c96097c133ce8aa16802b3115fff21",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-5-page visual/build/metadata gate PASS; current SHA-256 befffe6e09fac9d8ac6e5d1c7759fbe74e7f6f65848134ef8fa25a6ecf3c6d8e agrees with final record. # PDF audit\n\nAudit date: 2026-08-29  \nArtifact: `paper/main.pdf`  \nMethod: Poppler render at 150 dpi plus page-by-page visual inspection and\nlayout-preserving text extraction  \nVerdict: **PASS after final rebuild**\n\n## Global checks\n\n- Five US-letter",
+      "sha256": "3607339d37b7ab724a2d15a1bb807c752252c5c62e2ce96b9c94a8c41f0ae3ec",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "字母表大小≤8 的指定有限端点已认证；无界字母表母猜想仍开放。",
+      "sha256": "f5e30870095089da5762d0455c28a9f5b675be60df8ff1f96faea8bce35fe946",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "## Frozen-result novelty pass (Gate 1 pass 2)\na second search was run on 2026-08-29.  It used the following result-specific\n**Pass-2 decision:** the bounded novelty lock remains `PASS`.  This permits the",
+      "sha256": "1bed2f9f38d1afae98ff6fec658b93ff001db9f4f160662bea9f91ce01b4c200",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "**PASS, bounded to the two search passes logged on 2026-08-29.** The source, DOI,\nlimited to C11's recorded databases and full-text corpus. The mandatory second",
+      "sha256": "b25c3538beec8404a85254275326cb2035bfd08eb1fc83124743bff7437d1653",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P07/evidence/07_claim_ledger.md"
+    }
+  ]
+}

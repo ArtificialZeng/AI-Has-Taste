@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can all nonexceptional orders be covered by explicit cyclic difference words?",
+      "premises": ["edges have offsets 1 and 3", "even orders also have diameter edges"],
+      "method": "encode adjacent colour differences by signs and construct residue-class families",
+      "status": "proved",
+      "evidence": [
+        "proof/builder_notes.md",
+        "certificates/builder_construction_spec.json",
+        "certificates/verify_builder_construction.py"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does any n>16 fail three-colourability, or does any claimed exceptional n admit a colouring?",
+      "premises": ["finite CSP over three colours"],
+      "method": "independent exact backtracking/SAT-style exhaustive search with serialized witnesses",
+      "status": "refuted",
+      "evidence": [
+        "proof/builder_notes.md Section 3",
+        "certificates/verify_builder_construction.py",
+        "verification/primary_verify.py"
+      ],
+      "failure_reason": "The candidate proof gives constructions for every nonexceptional order and exact obstructions for all four exceptional orders.",
+      "next_test": null
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can transfer-matrix recurrences certify eventual positivity?",
+      "premises": ["paired-window transfer representation for even n"],
+      "method": "exact recurrence/minimal polynomial followed by root or cone bounds",
+      "status": "proved",
+      "evidence": [
+        "proof/transfer_automaton.md",
+        "certificates/transfer_automata_certificate.json",
+        "verification/verify_transfer_automata.py",
+        "results/transfer_automata_verification.json",
+        "audit/AUTOMATON_EQUIVALENCE_AUDIT.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Attack every candidate lemma",
+      "premises": [],
+      "method": "boundary and randomized tests",
+      "status": "proved",
+      "evidence": [
+        "audit/PROOF_AUDIT.md",
+        "audit/AUTOMATON_EQUIVALENCE_AUDIT.md",
+        "audit/VERIFIER_HASH_LOCK.md",
+        "verifier/certificate.json",
+        "verifier/verify_zero_set.py",
+        "audit/CITATION_AUDIT.md",
+        "audit/PDF_AUDIT.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "P03",
+      "kind": "proof",
+      "question": "Can a separate sign-word pumping construction reproduce the theorem?",
+      "premises": ["difference-word criterion", "one-flip half-word lemma"],
+      "method": "finite one-flip seeds with a residue-neutral length-nine extension",
+      "status": "proved",
+      "evidence": [
+        "proof/main_proof.md",
+        "certificates/zero_set_certificate.json",
+        "verification/primary_verify.py",
+        "verification/PRIMARY_FAIL_CLOSED_AUDIT.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    }
+  ]
+}

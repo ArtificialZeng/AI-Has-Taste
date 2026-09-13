@@ -1,0 +1,11 @@
+# Claim ledger
+
+| ID | Claim | Status | Evidence | Scope warning |
+|---|---|---|---|---|
+| BS-C01 | Drury's `F_A` counterexample has order 8, rank 2, and complex Hermitian entries. | primary-source fact | `literature/drury_2018_FA_counterexample.pdf` | It is not a real symmetric counterexample. |
+| BS-C02 | Drury's real order-16 rank-3 example disproves a stronger POT/Oppenheim statement. | primary-source fact | `literature/drury_2017_real_POT_counterexample.pdf` | POT failure does not automatically imply `F_A` failure for the same matrix. |
+| BS-C03 | Pioge et al.'s order-16 `F_A` real-Rayleigh example uses a complex Hermitian Gram matrix and their order-15 search found no example. | primary-source fact | `literature/pioge_et_al_2025_implication.pdf` | "Real Rayleigh vector" is not "real symmetric matrix". |
+| BS-C04 | No exact real symmetric counterexample of order at most 15 has yet been certified in this project. | open | `research_state.json` | Numerical failures are not an exclusion proof. |
+| BS-C05 | For every `n>=3`, the regular real projective polygon Gram matrix `A_n=(cos(pi(i-j)/n))` has `per(A_n)=n!/2^(n-1)` and exact `F_A` spectrum `n!/2^n (binom(n-1,s)^(-1)+binom(n-1,s-1 mod n)^(-1))`; hence the constant mode is uniquely maximal. | exact analytic theorem; definition-level exact audit PASS | `proof/regular_projective_polygon_theorem.md`; `work/audit/regular_projective_family_exact_audit.json` | This is a nontrivial infinite rank-two family, not the complete real rank-two cone or a dimension-15 exclusion. |
+| BS-C06 | A 99,850-evaluation numerical scan over real unit Gram matrices of ranks 2--5 and orders 6--15 found no strict `F_A` violation. | numerical discovery evidence only | `work/discovery/n*_r*_scan.json` | It is neither an exclusion proof nor evidence of global minimal dimension. |
+| BS-C07 | The four-page partial-result manuscript has a clean LaTeX/BibTeX build, complete author block with Yonghua Xiong marked as corresponding author, exact-verifier PASS, and page-by-page visual inspection. | submission-ready partial theorem | `paper/main.tex`; `output/pdf/bapat_sunder_regular_projective_family.pdf`; `work/audit/final_submission_audit.md` | Submission-ready applies to Theorem 2 only, not to the unrestricted real conjecture. |

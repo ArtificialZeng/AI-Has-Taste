@@ -1,0 +1,69 @@
+{
+  "package_id": "BM1-AF03-P12",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "记录证明所有 3-packed words 的 3-stability，允许中心化子使用所有正整数字母。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "1d634d4f8dadcafbb491e2a05e8dfaf612c609999cced9b3d6ec188db9fb0f17",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; Every 3-packed word u is proved 3-stable for centralizer witnesses over all positive integers, including the empty word: C(u^k)=C(u^3) for every k>=3. G01-G06 are closed. The independent full proof-DAG referee returned fatal=0 and major=0 and issued a hash-bound post-repair PASS. Second novelty, citation, clean LaTeX, pagewise PDF, source-ZIP, and release-manifest gates passed.",
+      "sha256": "4f9c43d47baf4d427e7488f5eddfb3c640a7ab67eda0244408a283ee97545b80",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nMain source: `paper/main.tex`  \nBibliography: `paper/references.bib`  \nStatus: **POST-FULL-DAG CITATION AND CLEAN-BUILD PASS**\n\nExactly two citation keys occur in the frozen manuscript.  After the\nhash-bound full-DAG recheck, each key was assigned to a different independent\nverifier and checked against primary official records and the cited theorem\ncontexts.  Neither verifier edited any file.\n\n| Key | Official record | Claim-level result | Bibliographic action | Remaining uncertainty |\n|---|---|---|---|---|\n| `Sagan_2026` | Bruce E. Sagan an",
+      "sha256": "9ea788f058205cac615ee653cad223cb7157074361b33992874cbe1fec02b5b4",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nEndpoint: `problem/formal_statement.md` (T3)  \nStatus: **FULL MATHEMATICAL PROOF AND RELEASE AUDIT PASS**\n\n`audit/REFEREE_TROPICAL.md` independently passes exactly the two targeted\nfatal lemmas G01 and G04.  It is not a full proof-DAG audit.  Its four minors\nhave now been incorporated into `paper/main.tex` and\n`proof/tropical_route.md`:\n\n1. the maximal-diagonal families now contain the full transient-term and\n   forced-common-value inequalities corresponding to referee I.3--I.11;\n2. the restriction is stated literally as erasing every letter gr",
+      "sha256": "1a717e2132f61d3e37d1c61da3dde0ddb882259a2a731198b99bf92c8d859161",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "# Submission-readiness audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nStatus: **PASS**\n\n## Mathematical gate\n\n- [x] The formal theorem matches the corrected source endpoint and quantifies\n  over arbitrary positive-letter witnesses, including the empty word.\n- [x] Every reused endpoint carries its hypotheses; rank-three and\n  arbitrary-alphabet thresholds are distinguished.\n- [x] Empty witnesses, missing-letter auxiliary matrices, weak diagonal ties,\n  all thirteen orders, and every G02 zero/minimum boundary are covered.\n- [x] Equality/sharpness dimension is not applicable: this is an exact\n  equiva",
+      "sha256": "5e759e2ea24c35c48336e8b9d61352993ce7f4284c146ac0f5759ceedfc09141",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/04_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SOURCE_AUDIT.md",
+      "summary": "# LaTeX source-package audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nArtifact: `output/source/Stability_of_3-Packed_Words-source.zip`  \nStatus: **PASS**\n\nThe package contains exactly the three submission-source files:\n\n```text\nmain.tex\nreferences.bib\nmain.bbl\n```\n\nArchive integrity (`unzip -t`) reports no errors.  The ZIP was unpacked into\nthe newly allocated directory `/tmp/plactic3-source-audit.dYxcF5`, where no\nworkspace auxiliary file was available.  A clean `latexmk -C` followed by\n`latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex` succeeded and\nconverged through BibTeX.\n\nIndepen",
+      "sha256": "57c8f72a53c4fd607f548c5f08466c797064dba7a5ec356c35a8792e134078d6",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/05_SOURCE_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-10-page visual/build/metadata gate PASS; current SHA-256 1d634d4f8dadcafbb491e2a05e8dfaf612c609999cced9b3d6ec188db9fb0f17 agrees with final record. # PDF audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nArtifact: `output/pdf/Stability_of_3-Packed_Words.pdf`  \nStatus: **PASS**\n\nThe PDF was produced only after the full-DAG hash-bound post-repair PASS,\nsecond novelty pass, independent citation checks, sta",
+      "sha256": "e78959e2ff66ca2adbc31d2027c7473c18963a3baa873704e0a5fa4e1bb5992e",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/06_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "记录证明所有 3-packed words 的 3-stability，允许中心化子使用所有正整数字母。",
+      "sha256": "8e8d09ff8c77074e9f488c63996aa0a963ef583aa3844633cb5da36ec19dd3c0",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/07_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "second novelty pass is required before any publication claim.\n## Pass 2: release novelty check\nhash-bound post-repair PASS.  This pass supersedes the earlier pre-release pass",
+      "sha256": "7bc1c4159c450fe1597851eec57181158046d81e4b81ced980da0b630cbf1e7c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/08_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| L10 | No later public proof/counterexample of the 3-packed case was located as of 2026-08-29. | bounded negative search | Gate 1, pre-release pass 2, and post-full-DAG pass 3 completed | arXiv/title/phrase/DOI/citation/code searches recorded in search log | search log and independent report | 92% within stated search scope | permits a carefully qualified novelty claim; does not prove global nonexistence |",
+      "sha256": "34c7222e29ff24d03a799985bb4fe907ae0bf401b27d5cb5a673269d16da2bd7",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/09_claim_ledger.md"
+    },
+    {
+      "original_project_relative_path": "literature/NOVELTY_LOCK.md",
+      "summary": "again on 2026-08-29 after the full-DAG post-repair PASS; its queries and",
+      "sha256": "1926692e1f916933b7b39d1f240d9d2f10012a5b5d4645cbd2703b8466cf088b",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P12/evidence/10_NOVELTY_LOCK.md"
+    }
+  ]
+}

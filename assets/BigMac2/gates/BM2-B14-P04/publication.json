@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "source_files": [
+    "manuscript/main.tex"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "bibliography_notes": [
+    {
+      "citation": "duerrschnabel-et-al",
+      "basis": "Current arXiv record and inspected arXiv:2609.05166v1 full text."
+    },
+    {
+      "citation": "zeng-certified",
+      "basis": "User-supplied authoritative workbook record summarized in literature/user_bibliography_check.md.",
+      "limitation": "External DOI/SSRN refresh was unavailable during writing; the citation is used only as a bibliographic example concerning certified bounds in finite-poset counting."
+    }
+  ]
+}

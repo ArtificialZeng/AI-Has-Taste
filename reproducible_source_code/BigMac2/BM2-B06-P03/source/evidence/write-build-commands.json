@@ -1,0 +1,43 @@
+{
+  "cwd": "manuscript",
+  "clean": true,
+  "commands": [
+    {
+      "command": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "biber",
+        "main"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "main.tex"
+      ],
+      "returncode": 0
+    }
+  ]
+}

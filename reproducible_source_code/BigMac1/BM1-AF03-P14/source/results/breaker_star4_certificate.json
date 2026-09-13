@@ -1,0 +1,31 @@
+{
+  "schema": "q5-star4-no-critical-root-v1",
+  "gauge": "a4=1",
+  "ordered_variables": ["a0", "a1", "a2", "a3", "a4"],
+  "high_pairs": [[0, 1], [0, 2], [0, 3], [0, 4]],
+  "expected_saturated_dimension": 0,
+  "expected_saturated_vector_dimension": 48,
+  "ideal_consequences": {
+    "h23": "(a2-1)*(a2-a3)*(a3-1)",
+    "h13": "(a1-1)*(a1-a3)*(a3-1)",
+    "h12": "(a1-1)*(a1-a2)*(a2-1)",
+    "k3": "(a3-1)*(a0*a3+a0-a1*a3-a1-a2*a3-a2-a3^2+2*a3-1)",
+    "k2": "(a2-1)*(a0*a2+a0-a1*a2-a1-a2^2+a2-a3^2-1)",
+    "k1": "(a1-1)*(a0*a1+a0-a1^2-a2^2-a3^2-1)"
+  },
+  "all_leaves_one_polynomial_degree_descending": [1, -12, 51, -96, 96, 0, -64],
+  "sturm_sequence_primitive_degree_descending": [
+    [1, -12, 51, -96, 96, 0, -64],
+    [1, -10, 34, -48, 32, 0],
+    [3, -20, 32, -64, 64],
+    [-5, -40, 272, -320],
+    [-19, 92, -100],
+    [379, -540],
+    [1]
+  ],
+  "expected_sturm_variations_at_2": 2,
+  "expected_sturm_variations_at_positive_infinity": 2,
+  "ordered_chamber_reduction": "a0+1>a1+a2+a3",
+  "branch_margin_numerator_degree_descending": [-2, 2],
+  "conclusion": "no saturated critical root satisfies a0>=a1>=a2>=a3>=a4=1 and a0+1>a1+a2+a3"
+}

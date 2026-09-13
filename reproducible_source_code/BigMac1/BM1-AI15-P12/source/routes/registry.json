@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can the n=3 real rank-at-most-two inequality be proved on projective normal forms?",
+      "premises": ["T is real 3 x 3", "rank(T) <= 2"],
+      "method": "rank-two factorisation, PGL2 row-line normal forms, exact SOS identities",
+      "status": "proved",
+      "evidence": ["proof/n3_proof.md", "certificates/n3_sos_certificate.json", "certificates/verify_n3_sos_stdlib.py", "audit/agents/referee.md"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Small exact counterexample route",
+      "premises": ["T=UV^T with U,V integer", "n in {3,4}"],
+      "method": "deterministic small-integer search with Ryser/factor-formula cross-check",
+      "status": "active",
+      "evidence": ["experiments/search_counterexamples.py"],
+      "failure_reason": null,
+      "next_test": "for n=4, derive an exact cross-ratio certificate; recorded finite searches are not a proof"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Attack every candidate lemma",
+      "premises": ["candidate N3 and its stated equality classification"],
+      "method": "reconstruction from definitions, homogeneous boundary and randomized tests",
+      "status": "proved",
+      "evidence": ["proof/gap_ledger.md", "audit/agents/referee.md", "experiments/referee_verify_n3.py"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What quotient removes row/column scales without losing zero strata?",
+      "premises": ["rank(T) <= 2", "T=UV^T"],
+      "method": "homogeneous projective coordinates for rows of U and V",
+      "status": "proved",
+      "evidence": ["proof/n3_proof.md", "audit/agents/builder.md"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can n=4 be reduced to a one-cross-ratio polynomial SOS/CAD problem?",
+      "premises": ["T is real 4 x 4", "rank(T) <= 2"],
+      "method": "PGL2 normalise three row lines and retain the fourth cross-ratio",
+      "status": "active",
+      "evidence": ["audit/agents/referee.md", "audit/agents/breaker.md"],
+      "failure_reason": null,
+      "next_test": "derive the exact homogeneous gap on the generic stratum"
+    }
+  ]
+}

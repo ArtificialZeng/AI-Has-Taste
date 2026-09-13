@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can the binomial transport identity and a lower bound for the large-prime part force a common prime?",
+      "premises": [
+        "A=binom(n,i), B=binom(n,j)",
+        "V_i(n) is the divisor of A supported on primes >= i"
+      ],
+      "method": "Use A*binom(n-i,j-i)=B*binom(j,i), then compare V_i(n) with binom(j,i)",
+      "status": "proved",
+      "evidence": [
+        "Counterexample implies V_i(n) | binom(j,i)",
+        "Kummer gives V_i(n) >= binom(n,i)/n^pi(i-1)",
+        "Hence n^(i-pi(i-1)) <= j^i"
+      ],
+      "failure_reason": null,
+      "next_test": "seek a stronger arithmetic lower bound for V_i(n) than the universal carry-count bound"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does a finite weak-form counterexample occur beyond the public exhaustive baseline?",
+      "premises": [
+        "Only i <= n-prevprime(n) can occur",
+        "Accepted partial theorem excludes j <= 3i/2 and n=2j"
+      ],
+      "method": "Independent exact Lucas/Kummer row coverage search, followed by gcd factorization if a witness appears",
+      "status": "active",
+      "evidence": [
+        "Open-source Rust report found no weak counterexample through n=10^7",
+        "Exact i=3 discovery scan completed through n=100000000",
+        "Separately derived Legendre verifier rebuilt the same whole endpoint and exited 0",
+        "Direct gcd oracle covered all pairs through n=2000"
+      ],
+      "failure_reason": "No counterexample in the certified finite i=3 domain; this does not close n>10^8 or i>=4",
+      "next_test": "Target the unbounded i=3 tail or unsettled i>=4 strata using the recorded gap and smoothness obstructions"
+    },
+    {
+      "id": "D02",
+      "kind": "disproof",
+      "question": "Can the strong-form exceptional families be deformed so that the endpoint prime p=i also disappears?",
+      "premises": [
+        "Known strong failures concentrate at i=2,3,5",
+        "Weak failure at prime i also requires i not to divide binom(n,j)"
+      ],
+      "method": "Target prime-power rows and base-i digit patterns; test exact Lucas constraints",
+      "status": "active",
+      "evidence": [
+        "For n=3^m+1 and 2<=j<=n/2, Lucas forces 3 | binom(n,j), so that prominent strong-failure family cannot become weak"
+      ],
+      "failure_reason": null,
+      "next_test": "classify nearby residues n=3^m+r and search exact digit-compatible j"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What necessary smoothness and prime-gap conditions must every counterexample satisfy?",
+      "premises": [
+        "p>k divides binom(n,k) iff n mod p<k",
+        "i<j<=n/2"
+      ],
+      "method": "Analyze prime divisors of the final interval n-i+1,...,n",
+      "status": "proved",
+      "evidence": [
+        "Counterexample implies i <= n-prevprime(n)",
+        "Every integer in [n-i+1,n] is j-smooth",
+        "For fixed (i,j), the explicit size bound makes n finite"
+      ],
+      "failure_reason": null,
+      "next_test": "combine smooth-run restrictions with exact Lucas compatibility rather than size alone"
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can the current accepted j<=3i/2 and n=2j theorem be independently reconstructed?",
+      "premises": [
+        "EEES large-prime-part theorem with 12 explicit exceptions"
+      ],
+      "method": "Rebuild the identity/size proof and independently enumerate all exceptional triples",
+      "status": "superseded",
+      "evidence": [
+        "Primary EEES theorem and its 12 (n,i) exceptions were read from the publisher PDF"
+      ],
+      "failure_reason": null,
+      "next_test": "serialize and verify the finite exception list without relying on the discovery implementation"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Do the reductions mishandle p=i, n=2j, or primes with multiple base-p digits?",
+      "premises": [],
+      "method": "Definition-first reconstruction plus brute-force Lucas/Legendre/gcd cross-checks",
+      "status": "proved",
+      "evidence": [
+        "Formal statement explicitly separates p=i from p>i",
+        "Prime-gap proof uses p>j, not merely p>=i",
+        "Lucas discovery, Legendre verification, and direct-gcd oracle agree on the complete overlap",
+        "Strict parser rejects missing, duplicate, and non-null certificate fixtures",
+        "Hash-bound release layer equates the canonical certificate and strict-output counts at 43631335536",
+        "External-cwd normal/-O tamper matrix rejects changed endpoint, bad hash, changed count, truncation, and duplicate fields"
+      ],
+      "failure_reason": null,
+      "next_test": "No further exact audit is required for the frozen i=3 endpoint; full-conjecture routes remain open"
+    }
+  ]
+}

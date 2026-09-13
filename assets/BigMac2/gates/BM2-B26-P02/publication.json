@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "candidate_kind": "resolution-paper",
+  "writer_job_id": "bigMac-00026-p02-write-80370fd25a3d",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_engine": "pdfLaTeX with biber via latexmk",
+  "clean_build_command": "cd manuscript && /Library/TeX/texbin/latexmk -C main.tex && /Library/TeX/texbin/latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+  "bibliography_basis": "Si primary PDF plus the user-designated workbook records documented in literature/user_bibliography_check.md",
+  "citation_limitations": [
+    "No external refresh of the two user-workbook records was attempted; their supplied DOI and BibTeX metadata were preserved, and they are cited only as methodological comparisons."
+  ]
+}

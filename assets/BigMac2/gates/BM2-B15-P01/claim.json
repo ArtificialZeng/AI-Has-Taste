@@ -1,0 +1,17 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every integer n >= 2 and every monic irreducible degree-n polynomial p over F_2, let F=F_2[t]/(p), use the polynomial coordinate basis (1,t,...,t^(n-1)), and let J_{n,p} be field inversion in coordinates with J_{n,p}(0)=0. For every P in Mat_n(F_2), including singular P, and u in F_2^n, set G(P,u)=adj(P)J_{n,p}(Pu), with adj(P)_{ab} equal to the determinant after deleting row b and column a. Write the unique multilinear vector ANF as G=XOR_{A subset V} c_A product_{v in A}v on the n^2+n matrix-entry and operand variables V, let S={A:c_A is nonzero}, and define L(G)=min over orderings (A_1,...,A_s) of S of max_j |A_j minus union_{i<j}A_i|. Then L(G)=n.",
+  "contribution": "A uniform n-monomial cyclic prefix gives the missing upper bound L(G)<=n for every allowed modulus: its exact nonzero coefficients are certified using singular rank-(n-1) partial permutation matrices, and its union leaves only one matrix row unseen. A self-contained low-weight argument gives L(G)>=n. This resolves the frozen universal equality; priority beyond the bounded cited-source screen is not asserted.",
+  "proposer_job_id": "bigMac-00015-p01-research-a8f7c58ba90d",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/universal-proof.md",
+    "evidence/exact_triage.py",
+    "evidence/exact-triage.json",
+    "evidence/exact-summary.json",
+    "evidence/triage-literature.md",
+    "evidence/2609.04583v1.pdf"
+  ]
+}

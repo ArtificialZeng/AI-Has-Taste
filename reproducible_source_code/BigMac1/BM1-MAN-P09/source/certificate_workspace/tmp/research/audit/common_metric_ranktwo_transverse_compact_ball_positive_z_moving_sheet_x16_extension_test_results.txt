@@ -1,0 +1,61 @@
+X16 MOVING-SHEET CLOSED-CELL TEST RESULTS
+Date: 2026-08-24
+Scope: 1/17<=X<=1/16 only; full compact ball/common metric/fixed lens open.
+
+NORMAL SOURCE: PASS (exit 0)
+PASS original fully conjugated Hermitian gate and independent Gram gate
+PASS 20 quotient terms, 16 higher terms, 947 monomials, strict margin
+PASS lambda, 50/289<Z<1, open unit ball, rank-two PSD, both z signs
+PASS closed X=1/17 seam, X=1/16 endpoint, and 72 legal exact nodes
+SIGMA_MAX 17/10000
+STRICT_MARGIN 141635970781970514779535557286727779805714617592267929266532825868383583/70448201072640000000000000000000000000000000000000000000000
+Z_UPPER 735402099/4004000000
+DANGER_RESERVE 242981998379/555555000000
+LEFT_SEAM_36GAMMA 1552541492892247573695625585542882277607759/3340840000000000000000000000000000000000
+RIGHT_ENDPOINT_36GAMMA 5243094533770053746415166844845583951/10000000000000000000000000000000000
+ROOT_REPLAY_SOURCE_SHA256 3d744fa0e38715f71b2211ba3a11da4a5d315cc2061cb695856b35834f220096
+PACKAGE_SOURCE_SHA256 6b4835d5c00e56efa90d6451bd789554a0304be9880f45fc739066660d9ac2d4
+PACKAGE_SOURCE_STDOUT_SHA256 0a61a5b061ce12c3287e688adf4fccabbff4815f4e59637e8b27c84c119d5021
+PACKAGE CANONICAL/GROUPED SOURCE: PASS (byte-identical scripts and stdout)
+
+NORMAL INDEPENDENT REFEREE: PASS (exit 0)
+PASS independent signed-z Gram columns and original Hermitian gate
+PASS no-cache direct quotient and strict continuum reserve
+PASS lambda, signed z, open-unit-ball danger, determinant, rank two, seam
+PASS endpoint/seam values and 72 exact legal falsification nodes
+STRICT_RESERVE 141635970781970514779535557286727779805714617592267929266532825868383583/70448201072640000000000000000000000000000000000000000000000
+Z_UPPER 183846771/1001000000
+DANGER_RESERVE 971936326841/2222220000000
+ROOT_REPLAY_REFEREE_SHA256 f7f3e37decf8ca528b520d8c085ab95631c5649ff5766434af8370f5d4259890
+PACKAGE_REFEREE_SHA256 cfb2bd700c68ac9f37cfbe1bf9f87b5d46791dc953d54e33c920929583044d6e
+PACKAGE_REFEREE_STDOUT_SHA256 01dfa1cebcb0e33ee033c90e3acbb86b6c8704a8f9e97fbaae848db1e843a188
+PACKAGE CANONICAL/GROUPED REFEREE: PASS (byte-identical scripts and stdout)
+
+FAIL-CLOSED SOURCE -O: PASS (exit 1)
+RuntimeError: fail closed: optimized Python disables verification
+
+FAIL-CLOSED SOURCE BAD DEPENDENCY: PASS (exit 1)
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_ranktwo_transverse_compact_ball_positive_z_moving_sheet_x17_extension.md
+
+FAIL-CLOSED SOURCE DROP TERM: PASS (exit 1)
+RuntimeError: verification failed: 16 higher terms and 947 parameter monomials
+
+FAIL-CLOSED REFEREE -O: PASS (exit 1)
+RuntimeError: fail closed: optimized Python disables verification
+
+FAIL-CLOSED REFEREE BAD DEPENDENCY: PASS (exit 1)
+RuntimeError: independent verification failed: dependency hash mismatch tmp/research/common_metric_ranktwo_transverse_compact_ball_positive_z_moving_sheet_x17_extension.md
+
+FAIL-CLOSED REFEREE DROP TERM: PASS (exit 1)
+RuntimeError: independent verification failed: complete term set
+
+PY_COMPILE SOURCE+REFEREE: PASS (exit 0; cache outside workspace)
+
+FAIL-CLOSED SOURCE+REFEREE UNKNOWN LAYOUT: PASS (exit 1)
+RuntimeError: unsupported verifier layout
+
+PACKAGE MANIFESTS: PASS (source and referee; canonical and grouped copies)
+
+RESULT: exact strict moving-sheet theorem candidate on the closed X16 cell.
+The root replay is frozen; v10 remains a builder candidate pending a fresh
+independent v10 final manuscript/archive audit.

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "equation": "a1^6+a2^6+a3^6+a4^6+a5^6=B^6",
+  "domain": "positive primitive integers; repetitions allowed",
+  "moduli": {
+    "2": 8,
+    "3": 9,
+    "7": 7
+  },
+  "sixth_power_residues": {
+    "7": [0, 1],
+    "8": [0, 1],
+    "9": [0, 1]
+  },
+  "proved_claims": [
+    "gcd(B,42)=1",
+    "exactly one left occurrence is a unit at each of 2,3,7",
+    "every repeated left base is divisible by 42",
+    "multiplicity patterns (5), (4,1), and (3,2) are impossible",
+    "at least three distinct left bases are necessary"
+  ],
+  "exactly_three_distinct": {
+    "patterns": [[3, 1, 1], [2, 2, 1]],
+    "pattern_3_1_1": "tripled base divisible by 42; each prime 2,3,7 divides exactly one singleton",
+    "pattern_2_2_1": "both doubled bases divisible by 42; singleton and B coprime to 42"
+  }
+}

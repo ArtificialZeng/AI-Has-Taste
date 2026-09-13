@@ -1,0 +1,12 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let pi=(pi_i) be a nonincreasing strictly positive probability mass function with pi_k in RV_{-1/gamma} for some 0<gamma<1. For every fixed rho in [0,1), construct the stationary sticky-refresh sequence by retaining the current label with probability rho and otherwise drawing independently from pi. Form the directed and undirected loop-deleted simple graphs from consecutive observations, suppress repeated edges, and normalize degree counts by the observed range as in source.md and problem.md. Then, almost surely, simultaneously for every fixed integer k>=1, the four clock-time limits of the directed and undirected degree-k masses and degree-at-least-k tails equal the corresponding iid limits. Taking k to infinity only after each clock-time limit, the directed and undirected tails are asymptotic to pi_k^gamma and 2^gamma pi_k^gamma, respectively, while the directed and undirected local masses are asymptotic to pi_k^gamma/k and 2^gamma pi_k^gamma/k, respectively. Thus both local laws have exponent two, the undirected-to-directed amplitude ratio is 2^gamma, and no rho-dependent factor remains. No simultaneous k=k(n) limit or uniform rho-to-one assertion is included.",
+  "contribution": "A complete pathwise resolution of the frozen sticky-refresh specialization: after loop deletion, its graph at clock time n is exactly the iid graph on M_n+1 refresh labels, and M_n+1 tends to infinity almost surely. The proof audits the observed-range normalization, refresh redraws that repeat a label, the directed terminal-vertex convention, simultaneous fixed-k events, and all four ordered outer asymptotics. No claim of literature priority is made.",
+  "proposer_job_id": "bigMac-00014-p02-research-0af33245d73e",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/skeleton_transfer.md"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "independent_audit": true,
+  "bibliography_frozen": true,
+  "claims_checked": 11,
+  "claims_passed": 11,
+  "unresolved_items": [],
+  "audited_utc": "2026-09-04T09:05:42Z",
+  "access_date": "2026-09-04",
+  "manuscript_sha256": "55ed5acd85783ab35ba6be1a73780f8ac74c98d44e052c2f3dedfede1d55b889",
+  "bibliography_sha256": "3252382716265c46ea24b6da69cf4f6af36ac867ecea5fe9839024262f5e68a0",
+  "baseline_commit": "8777aae",
+  "diff_audit": {
+    "status": "passed-heading-only",
+    "authorized_old_heading": "Exact certificate and independent recomputations",
+    "authorized_new_heading": "Certificate or computational verification: exact certificate and independent recomputations",
+    "main_tex_insertions": 1,
+    "main_tex_deletions": 1,
+    "bibliography_diff_lines": 0,
+    "unexpected_changes": 0,
+    "reverse_substitution_byte_identical": true,
+    "bibliography_byte_identical": true,
+    "citation_sequence_unchanged": true,
+    "numeric_token_sequence_unchanged": true,
+    "all_other_prose_formulas_numbers_keys_endpoints_unchanged": true
+  },
+  "citation_inventory": {
+    "occurrences": 3,
+    "unique_keys": 3,
+    "ordered_keys": [
+      "OEISA093818",
+      "CarofiglioDeFilpoGambini2024",
+      "Shiu2024"
+    ],
+    "missing_keys": [],
+    "unused_keys": [],
+    "duplicate_keys": []
+  },
+  "claim_statuses": {
+    "CC01": "passed-exact",
+    "CC02": "passed-exact",
+    "CC03": "passed-exact",
+    "CC04": "passed-faithful-paraphrase",
+    "CC05": "passed-faithful-paraphrase",
+    "CC06": "passed-exact",
+    "CC07": "passed-exact",
+    "CC08": "passed-attribution-and-faithful-title-paraphrase",
+    "NC01": "passed-bounded-nonfinding",
+    "NC02": "passed-exact-false-match-accounting",
+    "NC03": "passed-explicitly-bounded-wording"
+  },
+  "novelty_scope": {
+    "prior_disclosure_found": false,
+    "bounded_to_declared_interfaces_queries_and_date": true,
+    "absolute_world_novelty_claimed": false
+  },
+  "mechanical_checks": {
+    "bibtex_metadata_checked": true,
+    "bibtex_key_check_passed": true,
+    "missing_key_count": 0,
+    "unused_key_count": 0,
+    "duplicate_key_count": 0,
+    "strict_json_duplicate_key_check_passed": true,
+    "strict_json_files_checked_at_stage": 31
+  },
+  "evidence": [
+    "audit/CITATION_AUDIT.md",
+    "audit/CITATION_CLAIMS.md",
+    "paper/main.tex",
+    "paper/references.bib",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "literature/novelty_search_2026-09-04.md",
+    "literature/novelty_lock.json"
+  ],
+  "notes": [
+    "Pass 1 froze exactly 3 occurrences, 3 unique keys, and CC01--CC08 plus NC01--NC03 before Pass 2 source decisions.",
+    "Three independent read-only key checks were reconciled with a separate principal-source review.",
+    "The fresh search found no exact 31862/179 endpoint; this is a bounded nonfinding, not an absolute novelty claim.",
+    "No manuscript mathematics, numerical endpoint, citation key, or bibliography entry was changed."
+  ]
+}

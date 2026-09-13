@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "description": "Exact binary64 scalar fixed point for Sherman-Morrison iterative refinement",
+  "format": {
+    "radix": 2,
+    "precision": 53,
+    "rounding": "roundTiesToEven",
+    "unit_roundoff": "1/9007199254740992"
+  },
+  "inputs": {
+    "A": "1",
+    "u": "-9007199254740991/9007199254740992",
+    "v": "2251799813685249/2251799813685248",
+    "b": "1"
+  },
+  "expected": {
+    "fl_v_times_z": "-4503599627370497/4503599627370496",
+    "beta": "-1/4503599627370496",
+    "theta": "-4503599627370498",
+    "x_fixed": "-4503599627370496",
+    "computed_residual": "0",
+    "true_B": "-6755399441055743/20282409603651670423947251286016",
+    "true_backward_error": "2251799813685247/11258999068426239"
+  }
+}

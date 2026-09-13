@@ -1,0 +1,58 @@
+{
+  "finite_scan": {
+    "arithmetic": "exact Python integers and fractions; no floating point",
+    "direct_formula_cross_checks": [
+      {"a": 240, "n": 496, "recurrence_equals_direct_formula": true},
+      {"a": 241, "n": 497, "recurrence_equals_direct_formula": true},
+      {"a": 985, "n": 2000, "recurrence_equals_direct_formula": true},
+      {"a": 985, "n": 2001, "recurrence_equals_direct_formula": true},
+      {"a": 2026, "n": 4096, "recurrence_equals_direct_formula": true},
+      {"a": 4965, "n": 10000, "recurrence_equals_direct_formula": true},
+      {"a": 24921, "n": 50000, "recurrence_equals_direct_formula": true},
+      {"a": 49889, "n": 100000, "recurrence_equals_direct_formula": true}
+    ],
+    "global_maximum_in_scanned_range": {
+      "a": 241,
+      "denominator": "1244178776886798559376852519679727312145940779847803015228116370126676703693436008376554173282694689491423060033686442485784922334745298967107709050286060480478312904438634578739043086660493672680175092696611425949071940184741593290542237530829708000",
+      "denominator_minus_numerator": "55634527693375121605572309554577463259123553507162100652851617720053410474191623673979117997508571704335185204348861351349575244185839610561689061985555443146204645856025083175129915260942905463433264879399267657275228676779623256045374306687649",
+      "n": 497,
+      "numerator": "1244123142359105184255246947370172734682681656294295853127463518508956650282961816752880194164697180919718724848482093624433572759501113127497147361224074925035166699792778553655867956745232729774711659431732026681414664956064813667286192156523020351",
+      "strictly_below_one": true,
+      "t": 16
+    },
+    "maximizer_tie_rows": 0,
+    "range": {"first_n": 496, "last_n": 100000, "row_count": 99505},
+    "row_signature_sha256": "9b908153a9c38afe5ae28a184267bbc69a65778c08e567eb46658b5e6344c294",
+    "transition_counts": {"0": 49855, "1": 49649},
+    "violation_count": 0,
+    "violations": []
+  },
+  "source_sha256": "ce462b0aacd55a07bf7a64e52e96110e6e6f953d4bf779163753c7cb2ce876b9",
+  "tail_rational_certificate": {
+    "C_inverse_square_margin": {
+      "denominator": "111112444422333065556655569",
+      "numerator": "222173443930000000000"
+    },
+    "all_checks_passed": true,
+    "e_partial_sum": {"denominator": "720", "numerator": "1957"},
+    "e_square_margin": {"denominator": "250000000", "numerator": "111719"},
+    "endpoint_n": 100001,
+    "exponential_input_margin": {
+      "denominator": "1500005999849999400000",
+      "numerator": "999979999650001"
+    },
+    "pi_square_margin": {"denominator": "10000", "numerator": "83"},
+    "sqrt_A_square_margin": {
+      "denominator": "9999999999000000000000",
+      "numerator": "45689989995431"
+    },
+    "strict_margin_below_one": {
+      "denominator": "25000000000000000000",
+      "numerator": "42212387703123817"
+    },
+    "uniform_upper_bound": {
+      "denominator": "25000000000000000000",
+      "numerator": "24957787612296876183"
+    }
+  }
+}

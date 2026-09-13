@@ -1,0 +1,22 @@
+{
+  "candidate_kind": "resolution-paper",
+  "original_status": "proved",
+  "source_files": [
+    "evidence/exhaustive_certificate.json",
+    "evidence/exhaustive_search.py",
+    "evidence/independent_verification.json",
+    "evidence/independent_verify.py",
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build": {
+    "engine": "pdfLaTeX and BibTeX via latexmk",
+    "command": "cd manuscript && /Library/TeX/texbin/latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+  },
+  "citation_basis": "The project-local literature/user_bibliography_check.md was absent. The bibliography conservatively uses the two directly relevant primary records already identified in source.md and problem.md; the local copy of arXiv:2601.12250v3 was inspected for the attributed statements, and the publisher record for DOI 10.1007/s40590-025-00772-2 was refreshed on 2026-09-09.",
+  "citation_limitations": [
+    "No project-local user_bibliography_check.md or workbook record was available to inspect during writing.",
+    "No priority or exhaustive-literature claim is made."
+  ]
+}

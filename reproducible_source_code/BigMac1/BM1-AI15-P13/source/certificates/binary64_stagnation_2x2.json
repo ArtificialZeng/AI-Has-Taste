@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "claim": "Exact 2x2 binary64 SM-IR stagnation with both condition numbers of square-root unit-roundoff scale",
+  "arithmetic": {
+    "format": "IEEE-754 binary64",
+    "precision_bits": 53,
+    "rounding": "roundTiesToEven",
+    "unit_roundoff_exponent2": -53
+  },
+  "parameters": {
+    "p": 53,
+    "m": 26
+  },
+  "inputs": {
+    "A_diagonal_integers": [1, 67108864],
+    "u_integers": [1, 0],
+    "v_integers": [9007199254740992, 0],
+    "b_integers": [1, 0]
+  },
+  "exact_system": {
+    "B_diagonal_integers": [9007199254740993, 67108864],
+    "kappa2_A": {
+      "numerator": 67108864,
+      "denominator": 1
+    },
+    "kappa2_B": {
+      "numerator": 9007199254740993,
+      "denominator": 67108864
+    },
+    "epsilon_times_kappa_A": {
+      "numerator": 1,
+      "denominator": 134217728
+    },
+    "epsilon_times_kappa_B": {
+      "numerator": 9007199254740993,
+      "denominator": 604462909807314587353088
+    }
+  },
+  "expected_trace": {
+    "y": [1, 0],
+    "z": [1, 0],
+    "alpha": 9007199254740992,
+    "beta_exact_before_round": 9007199254740993,
+    "beta_rounded": 9007199254740992,
+    "theta": 1,
+    "initial_x": [0, 0],
+    "residual_at_zero": [1, 0],
+    "next_x": [0, 0],
+    "normwise_relative_backward_error": 1
+  }
+}

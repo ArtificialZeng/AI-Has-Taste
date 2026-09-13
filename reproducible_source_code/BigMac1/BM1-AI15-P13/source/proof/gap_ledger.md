@@ -1,0 +1,17 @@
+# Gap ledger
+
+| ID | Proposition/location | Missing step | Severity | Test/repair | Status |
+|---|---|---|---|---|---|
+| G01 | Source conjecture | "safely", "eventually", stability constant, stopping, and breakdown behavior are not quantified. | major for literal source; not fatal to repaired core | State both all-precision `O(epsilon)` endpoint and binary64 `5 epsilon` endpoint. | resolved in `problem/formal_statement.md` and `proof/main_proof.md` |
+| G02 | T1 tie step | Need exact rather than host-float evidence for `RN_even(2^p+1)`. | fatal | Midpoint/parity proof plus Fraction verifier. | resolved |
+| G03 | T1 all iterations | Finite iteration tests do not prove perpetual stagnation. | fatal | Prove the deterministic transition maps zero to zero, then induct. | resolved |
+| G04 | T1 backward stability | A fixed binary64 example alone could be hidden by an absurd constant `C=2^53`. | major | Precision-parametric family has `eta/epsilon=2^p -> infinity`; also compare with source's explicit `5 epsilon` experimental threshold. | resolved |
+| G05 | T1 dimension one | Scalar condition numbers do not reflect scale separation; a reader may seek a nontrivial dimension. | local | Embed in dimension two with both `epsilon*kappa -> 0`. | resolved by T2 |
+| G06 | T2 condition numbers | Need exact singular values and safety margins. | fatal | Positive diagonal exact formulas and serialized rational certificate. | resolved |
+| G07 | Positive recurrence | Uniform correction contraction does not follow from the two condition numbers. | fatal for positive proof route | Exact counterexample refutes implication; retain recurrence only as conditional theorem. | closed: route refuted |
+| G08 | Novelty | Database absence is not proof; acceptance status not publisher-confirmed. | major for publishability | Bounded claim wording and second-pass arXiv/DataCite/Crossref/OpenAlex/S2/OUP audit. | resolved with bounded wording and two logged passes |
+| G09 | Release | Independent referee, citations, clean build, PDF pages, and manifest not yet checked. | major | Complete Gates 5--6 after verifier hardening. | resolved by final source-order, citation, novelty, clean-reproduction, PDF, and manifest audits |
+| G10 | Main verifier schema | Subset-key parsing and Python type coercions could accept malformed certificates. | fatal for certificate trust | Enforce exact keys and exact types at every object, reject duplicate keys and nonstandard constants. | resolved in `verification/verify_stagnation.py` |
+| G11 | Negative verification | A positive certificate run alone does not show fail-closed behavior. | major | Require badhash/extra/drop/change-input/change-trace/change-arithmetic nonzero exits with semantic mutants given their own hashes. | resolved; 12-case root suite and independent breaker audit in `audit/TAMPER_AUDIT.md` |
+| G12 | Source operation order | Algorithm 2 residual and Step 5 parentheses could differ from the verifier. | fatal | Referee must reconstruct from source algorithms and residual lemma, then test both Step 5 associations. | resolved in `audit/REFEREE_OPERATION_ORDER.md` |
+| G13 | Scope | A disproof could be overstated as covering guarded or altered algorithms. | major | State that only the broad condition-number-only conjecture is refuted; genuinely scale-guarded/fallback variants remain open. | resolved in theorem, manuscript, and referee audit |

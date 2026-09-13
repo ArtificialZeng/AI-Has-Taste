@@ -1,0 +1,48 @@
+{
+  "interpretation": "The cited coefficient inequality first passes at n=11; its failure at n=9,10 explains why that proof route does not close the endpoints.",
+  "parameters": {
+    "d": 3,
+    "k": 4,
+    "only_odd_index": 3
+  },
+  "schema_version": 1,
+  "source": "Huang--Zhang arXiv:2407.14091v1, proof of Theorem 1.1 and Lemma A.3",
+  "tests": [
+    {
+      "S_3": "1/2",
+      "T_3": "1/50",
+      "lhs": "97/50",
+      "n": 9,
+      "passes": false,
+      "rhs": "1",
+      "slack_rhs_minus_lhs": "-47/50"
+    },
+    {
+      "S_3": "3/10",
+      "T_3": "2/135",
+      "lhs": "52/45",
+      "n": 10,
+      "passes": false,
+      "rhs": "1",
+      "slack_rhs_minus_lhs": "-7/45"
+    },
+    {
+      "S_3": "1/5",
+      "T_3": "5/441",
+      "lhs": "563/735",
+      "n": 11,
+      "passes": true,
+      "rhs": "1",
+      "slack_rhs_minus_lhs": "172/735"
+    },
+    {
+      "S_3": "1/7",
+      "T_3": "1/112",
+      "lhs": "61/112",
+      "n": 12,
+      "passes": true,
+      "rhs": "1",
+      "slack_rhs_minus_lhs": "51/112"
+    }
+  ]
+}

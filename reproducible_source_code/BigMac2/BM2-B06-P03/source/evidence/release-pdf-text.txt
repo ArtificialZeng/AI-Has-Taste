@@ -1,0 +1,137 @@
+                                                           2
+ An Exact Counterexample to a Modulo-Five Congruence for b̄4,4
+
+                                        Xiaojian Zeng
+                       PBC School of Finance, Tsinghua University, 100190
+                                 xiaojianzeng@foxmail.com
+
+
+                                                        Abstract
+         Let
+                                            X
+                                                     2               (q 2 ; q 2 )8∞
+                                                   b̄4,4 (N )q N =                  .
+                                                                      (q; q)16 ∞
+                                            N ≥0
+                                   2
+      We disprove the assertion b̄4,4 (5n) ≡ 0 (mod 5) for every n ≥ 1. Formal logarithmic differen-
+                                                                           2
+      tiation gives an exact recurrence for the coefficients, from which b̄4,4 (5) = 25056 ≡ 1 (mod 5).
+      Thus the least admissible value, n = 1, is already a counterexample. The closely related con-
+      jecture in the motivating source has tuple parameter k = 4, not k = 2, and is not addressed by
+      this counterexample.
+
+
+1    Statement and parameter scope
+For a formal variable q and a positive integer d, write
+                                                        Y
+                                 fd := (q d ; q d )∞ :=   (1 − q dm ).
+                                                                    m≥1
+
+The generating function introduced by Thejitha and Fathima is
+                                                                       (3s−2r)k
+                                          X                          f2
+                                                 b̄kr,s (N )q N =            (s−r)k
+                                                                                        .                          (1)
+                                          N ≥0                      f12sk f4
+
+See [1, Eq. (1.2), version 1]. Substitution of (r, s, k) = (4, 4, 2) in (1) gives the formal power series
+                     X                   f28   Y
+          F (q) :=          b(N )q N =       =   (1 − q 2m )8 (1 − q m )−16 ,                          2
+                                                                                            b(N ) := b̄4,4 (N ).   (2)
+                                         f116 m≥1
+                     N ≥0
+
+Every coefficient in this product depends on only finitely many factors, so (2) is well defined in
+Z[[q]].
+    The question resolved here is the universal assertion
+
+                                         b(5n) ≡ 0      (mod 5)              (n ≥ 1).                              (3)
+                                                                   4 (5n) ≡ 0 (mod 5), with k = 4.
+The source comparison requires care: Conjecture 7.1 of [1] lists b̄4,4
+In contrast, (3) has k = 2. They are different statements.
+
+
+
+
+                                                             1
+2    The exact counterexample
+Theorem 1. For the coefficients defined by (2),
+
+                                       b(5) = 25056 = 5 · 5011 + 1.
+
+Consequently, (3) is false, with counterexample n = 1.
+Proof. All operations below take place in the formal power-series ring. Because F (0) = 1, formal
+logarithmic differentiation of (2) is legitimate and gives
+                              qF ′ (q)       X                 X
+                                       = 16        mq mr − 16       mq 2mr
+                               F (q)
+                                            m,r≥1             m,r≥1
+                                         X
+                                                 j
+                                       =     cj q ,
+                                           j≥1
+
+where, with σ1 (j) denoting the sum of the positive divisors of j,
+                                     (
+                                      16σ1 (j),               j odd,
+                                cj =                                                             (4)
+                                      16 σ1 (j) − σ1 (j/2) , j even.
+
+Comparing the coefficient of q N in qF ′ = F j≥1 cj q j yields the exact recurrence
+                                             P
+
+                                             N
+                                             X
+                                N b(N ) =          cj b(N − j),        b(0) = 1.                  (5)
+                                             j=1
+
+For 1 ≤ j ≤ 5, formula (4) gives
+
+                                 (c1 , c2 , c3 , c4 , c5 ) = (16, 32, 64, 64, 96).
+
+Successive use of (5) therefore gives
+
+                   (b(0), b(1), b(2), b(3), b(4), b(5)) = (1, 16, 144, 960, 5264, 25056).
+
+In particular, the final recurrence step is
+
+                   5b(5) = 16(5264) + 32(960) + 64(144) + 64(16) + 96 = 125280,
+
+and hence b(5) = 25056 ≡ 1 (mod 5). Since the quantifier in (3) includes n = 1, this single exact
+coefficient disproves the universal assertion.
+
+
+3    Relation to the motivating conjecture
+Equation (1) shows that the k = 4 series appearing in the source conjecture is f216 /f132 , whereas
+the series tested in (2) is f28 /f116 . Theorem 1 therefore resolves only the stated k = 2 problem. It
+neither proves nor disproves the k = 4 congruence in [1, Conjecture 7.1]. The source comparison
+of partition congruences is limited to that directly motivating paper; no claim of an exhaustive
+literature search or of priority is made.
+    The use of generating-function coefficient analysis alongside separate exact finite diagnostics
+provides a methodological comparison with Zeng’s study of distinct cycle lengths [2]. Here the
+finite calculation produces a counterexample at one index; it is not used to infer a pattern at all
+indices. No result on cycle lengths is needed for the partition calculation above.
+
+                                                        2
+Computational and AI assistance disclosure
+Two Python 3 programs using exact integer arithmetic independently checked the coefficients
+through degree five: one multiplied the uncancelled Euler factors with sparse dictionaries, and
+the other compared uncancelled and cancelled dense convolutions. No floating-point computation
+was used. These checks are supplementary; the proof above is the displayed formal recurrence and
+integer calculation. An OpenAI Codex system assisted with the exact computations, proof checking,
+source comparison, and manuscript preparation.
+
+
+References
+[1]   M. P. Thejitha and S. N. Fathima. Overcolored Partition k-tuples Restricted by Parity of the
+      Parts. Version 1, submitted 3 September 2026. 2026. arXiv: 2609.03926v1 [math.NT]. url:
+      https://arxiv.org/abs/2609.03926v1.
+[2]   Z. Zeng. “The Distinct-Cycle-Length Probability is Strictly Decreasing after 30”. 2026. doi:
+      10.2139/ssrn.7380519. url: https://doi.org/10.2139/ssrn.7380519.
+
+
+
+
+                                                 3
+

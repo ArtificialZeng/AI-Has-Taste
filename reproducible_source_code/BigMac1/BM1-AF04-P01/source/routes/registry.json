@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can the EGF be embedded in a rational first-order differential system and eliminated exactly?",
+      "premises": [
+        "s^2=1-2t and s(0)=1",
+        "F=E+E/s-G",
+        "E=exp(-1-t+s), G=(2-t)exp(-t)"
+      ],
+      "method": "derive a 3-dimensional rational differential system and eliminate its state variables",
+      "status": "proved",
+      "evidence": [
+        "Gate-1 sources fix the EGF",
+        "symbolic row elimination produced a candidate order-3 operator"
+      ],
+      "failure_reason": null,
+      "next_test": "none; exact no-import certification passed"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does the OEIS relation fail because of an index shift, undefined a(0), or a small exact coefficient?",
+      "premises": [
+        "a_n=n![t^n]F(t)"
+      ],
+      "method": "exact formal-series expansion and exact residuals at every boundary index",
+      "status": "refuted",
+      "evidence": [
+        "exact expansion gives (a0,...,a8)=(0,0,1,1,21,168,1968,26094,398653)",
+        "the OEIS offset omits the needed a0 at n=4"
+      ],
+      "failure_reason": "The universal formal ODE proof passed independent certification; all exact boundary and finite tests agree.",
+      "next_test": "none for the stated theorem"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Which polynomial ODE has the target recurrence as its coefficient equation?",
+      "premises": [
+        "EGF coefficient rule [t^m/m!] t^j F^(k)=(m)_j a_(m-j+k)"
+      ],
+      "method": "construct and certify a polynomial left multiple of the order-3 annihilator",
+      "status": "proved",
+      "evidence": [
+        "candidate order-5 operator obtained exactly"
+      ],
+      "failure_reason": null,
+      "next_test": "none; Ore product and coefficient extraction independently rebuilt"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can any sign, branch, noncommutative-product, factorial, or starting-index error break the proof?",
+      "premises": [
+        "referee must reconstruct from definitions"
+      ],
+      "method": "serial breaker/certifier/referee passes with separate records and corrupted-input tests",
+      "status": "proved",
+      "evidence": [
+        "formal statement records branch and index degeneracies"
+      ],
+      "failure_reason": null,
+      "next_test": "complete manuscript, citation, PDF, and release-manifest audits"
+    }
+  ]
+}

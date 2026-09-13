@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "independent_audit": true,
+  "audited_utc": "2026-09-04T09:11:30Z",
+  "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+  "working_directory": "/tmp/mac01-p15-finalizer-linkage-build.NKv79x",
+  "source_files_copied": [
+    "paper/main.tex",
+    "paper/references.bib"
+  ],
+  "source_directory_was_empty": true,
+  "exit_code": 0,
+  "latex_audit_passed": true,
+  "bibtex_key_audit_passed": true,
+  "manuscript_checks_passed": true,
+  "metadata_checks_passed": true,
+  "text_extraction_passed": true,
+  "endpoint_linkage_passed": true,
+  "publication_invariant_passed": true,
+  "strict_json_check_passed": true,
+  "manuscript_sha256": "55ed5acd85783ab35ba6be1a73780f8ac74c98d44e052c2f3dedfede1d55b889",
+  "bibliography_sha256": "3252382716265c46ea24b6da69cf4f6af36ac867ecea5fe9839024262f5e68a0",
+  "log_sha256": "ad8a6405cd5a47f7b6c15a85ec699696aa7bbf74cfa6a8868ee55595563fecde",
+  "candidate_pdf_sha256": "5a29efe8e2ac3d89e269143615ef16faf0369480919d2394af6663f1361f24e2",
+  "candidate_pdf_bytes": 331805,
+  "candidate_pdf_pages": 6,
+  "candidate_pdf_external_path": "/tmp/mac01-p15-release-candidate-final/main.pdf",
+  "undefined_references": 0,
+  "undefined_citations": 0,
+  "latex_errors": 0,
+  "missing_characters": 0,
+  "overfull_boxes": 0,
+  "underfull_boxes": 0,
+  "unresolved_or_rerun_warnings": 0,
+  "bibtex_warnings": 0,
+  "bibtex_errors": 0,
+  "endpoint_checks": {
+    "matching_theorem_proof_pairs": 1,
+    "rendered_plaintext_tokens_in_order": true,
+    "visible_certificate_heading": true,
+    "main_proof_words_before_certificate_heading": 434
+  },
+  "metadata": {
+    "title": "Proved: 179 Occurs in the Factorial-GCD Sequence of Harmonic Numerators",
+    "author": "Xiaojian Zeng",
+    "title_matches_project_metadata": true,
+    "author_matches_project_metadata": true
+  },
+  "rendered_internal_hashes": [],
+  "rendered_internal_run_markers": [],
+  "log_path": "audit/release-build.log",
+  "toolchain": {
+    "latexmk": "4.88",
+    "pdftex": "3.141592653-2.6-1.40.29 (TeX Live 2026)",
+    "bibtex": "0.99e (TeX Live 2026)",
+    "pdfinfo": "26.04.0",
+    "pdftotext": "26.04.0"
+  },
+  "notes": [
+    "The temporary build directory was uniquely allocated, removed, recreated empty, and populated with only main.tex and references.bib before the exact recorded command.",
+    "The final main.log and main.blg have zero warnings or errors in every required class.",
+    "The visible finalizer-linkage heading is present after the substantive main proof in extracted PDF text.",
+    "This build audit does not re-prove the mathematics and does not complete the PDF or release gates."
+  ]
+}

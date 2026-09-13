@@ -1,0 +1,76 @@
+INDEPENDENT NO-IMPORT REFEREE TEST RESULTS
+Target: 16/25 <= x <= 7/10, |y| <= 1/100, Z=1/8,
+        both signed-z lifts, 0<S<=1, lambda>0
+
+OPAQUE BINDINGS
+PASS source SHA 2e646d18b9d40ebb286a59e455176709a4306401a992fb6638e5552ddee90599
+PASS source-manifest SHA 3badb8170b102316c2890131fba7b7061a6c5d48fb0d96979fa4dc2c50278a05
+PASS predecessor source/referee/report/manifests and reduction dependencies
+PASS current candidate artifacts never parsed, imported, or executed
+
+DEFINITION-LEVEL GATES
+PASS reverse signed-z Gram assembly = direct compression
+PASS Hermitian frame, conjugations, and det(C) identity
+PASS Q^2 9/9 in independent multiplication order (1,0,2)
+PASS fully conjugated literal raw/cyclic gate = vector gate
+PASS h,z,q elimination gives a real radical-free gate
+PASS both signed-z lifts agree exactly
+PASS D >= 3849/10000 > 0
+PASS det(C)/S = 5/72 > 0 and rank two for all S>0
+PASS five lambda coefficients, degree 4
+PASS exact S-adic divisibility before positive clearing
+
+EXACT BERNSTEIN CERTIFICATE
+PASS groups/degrees/counts:
+  lambda^0: order 0, degrees (0,0,0), 1
+  lambda^1: order 1, degrees (0,2,2), 9
+  lambda^2: order 1, degrees (1,4,4), 50
+  lambda^3: order 1, degrees (2,6,6), 147
+  lambda^4: order 1, degrees (3,8,8), 324
+PASS 531/531 controls exact and strictly positive
+PASS coefficient SHA b11348d029f2b1fd6bcbf4dfe3ff789f1f5e67a0846f2a83041e7af62bd9497f
+PASS control SHA 0fc14fff3113fcf0ddcb24747af6d4e13667b356b06f72b42396bade4ceed4fc
+PASS group minima in (S,v_x,u_y) order:
+  lambda^0 (0,0,0) = 5
+  lambda^1 (0,2,2) = 517/1000
+  lambda^2 (0,0,4) = 445787099/36000000
+  lambda^3 (0,0,6) = 6613713203/12000000000
+  lambda^4 (0,0,8) = 845947392310481/216000000000000
+PASS unique global weakest switches to lambda^1,(0,2,2)=517/1000
+PASS complete index-order involution (S,v_x,u_y)<->(S,u_y,v_x)
+
+FOUR-LAYER SEAM AT x=16/25
+PASS parameter equality
+PASS Hermitian matrices equal entry-by-entry
+PASS fully conjugated raw gates identical
+PASS five boundary faces 1+3+10+21+36=71/71
+PASS seam SHA 79e086b34409a911c84048b751fdea7dfef8470574026b49ff46c5d84357b57c
+
+DIAGNOSTICS ONLY
+PASS 81/81 exact nodes positive
+minimum =
+1620000000171848841039116449058653213029997439/
+324000000000000000000000000000000000000000000
+at (S,x,y,lambda)=(1/1000000,7/10,1/100,1/1000)
+Nodes are diagnostics, not proof.
+
+EXECUTION
+PASS py_compile/scout/formal normal/root replay/fresh isolated replay
+
+FAIL-CLOSED MUTATIONS (15/15 actual exit 1 at intended exact gate)
+PASS optimized; bad source; bad manifest; bad predecessor
+PASS bad normalization; bad S clearing
+PASS drop Q^2; break conjugation; omit minus-z; flip danger
+PASS corrupt coefficient; drop control
+PASS break parameter seam; break Hermitian seam; break control seam
+
+SCOPE ATTACKS
+PASS no numerical-as-proof inference
+PASS no chart obstruction promoted to raw negative or maximality
+PASS no CE-046/048/059/060 reuse
+PASS no full-ball/common-metric/arbitrary-node extension
+
+VERDICT PASS
+FATAL 0
+MAJOR 0
+MINOR 0

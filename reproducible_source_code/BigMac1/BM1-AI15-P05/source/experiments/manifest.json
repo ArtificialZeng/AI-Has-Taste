@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-29T03:41:18Z",
+  "host": {
+    "model": "Mac15,7",
+    "os": "macOS 26.5 (25F71)",
+    "kernel": "Darwin 25.5.0 arm64",
+    "physical_cores": 12,
+    "logical_cores": 12,
+    "memory_bytes": 38654705664
+  },
+  "software": {
+    "discovery_compiler": "Apple clang 21.0.0",
+    "verifier_compiler": "Apple clang 21.0.0",
+    "python": "3.14.7",
+    "random_seed": null,
+    "randomness_note": "Both exhaustive enumeration and decisive Miller-Rabin bases are deterministic; no random seed is used."
+  },
+  "objective": "For every enumerated n, find k in 1..16 with tau(n-k)>k+2.",
+  "parameterization": {
+    "A": 61573632120,
+    "u_lo": 149000000,
+    "u_hi": 149100000,
+    "sieve_residues": 96,
+    "subprogressions": 50784,
+    "cells": 5078450784,
+    "prior_frontier": 9174471185880000000,
+    "new_frontier": 9180628549092000000
+  },
+  "discovery": {
+    "program_commit": "f727ab831abd533d36260f36f0b3433d8db0715e",
+    "program_sha256": "72d23c4210c693020706ea21bf5bb6700b8406f74967691f3feaa563f289fbbd",
+    "wall_seconds": 28.54,
+    "u_lo": 149000001,
+    "u_hi": 149100000,
+    "open_subprogressions": 15140,
+    "enumerated_cells": 1514000000,
+    "survivors": 0,
+    "raw_log": "raw/discovery_extension_u149000001_149100000.log",
+    "raw_log_sha256": "cfea6953a57d56a08b3ad6bc26ecbf97dfeffc18c74e23e7f42c96171eb97603"
+  },
+  "independent_replay": {
+    "final_mode_matrix": ["normal", "-O", "-I", "-O -I"],
+    "all_four_outputs_byte_identical": true,
+    "reconstructed_sieve_residues": 96,
+    "reconstructed_subprogressions": 50784,
+    "u_lo": 149000000,
+    "u_hi": 149100000,
+    "enumerated_cells": 5078450784,
+    "cheap_exact_lower_bound_kills": 5078450763,
+    "hard_cells_factored_exactly": 21,
+    "unresolved_cells": 0,
+    "certificate": "../certificates/finite_extension_certificate.json",
+    "certificate_sha256": "19f8f31a1d037ddae404448ba13863f10607a23f24414b57628bf13b6ecc83c3",
+    "input_sha256": "f989257da9c9fe568be4eaea8df59d20891e94572ec62e78b483767acc36e2ce",
+    "pairs_sha256": "05693f57f61cfbc61af1a983a6080e9768c60f1bebc250aa87bde686d14abb59",
+    "c_replay_source_sha256": "340e44cb5ed1e60339280740d9390acf497f4facd77177c582be4e7d2a44930a",
+    "python_verifier_sha256": "b75c881a95a8e0bf304f0117a3ae9c4804a0d330c456ea3440bb0ab4e4c7b43c",
+    "stdout_sha256_each_mode": "19f8f31a1d037ddae404448ba13863f10607a23f24414b57628bf13b6ecc83c3",
+    "stderr_sha256_each_mode": "1a7e52d4c37623cdeddf7cb194195a929e65c138f9bc9876c54c779ec52ab300"
+  },
+  "gate4_adversarial_tests": {
+    "modes": ["normal", "-O", "-I", "-O -I"],
+    "all_four_logs_byte_identical": true,
+    "test_source_sha256": "c32a72da127f7bc52bc3258b07b42b3ad000e59ea831687ce59fe961f5406cb2",
+    "log_sha256_each_mode": "81a9874cabe68f939aaae4d9521b70937afa08d4e0c1b781f756bfa35b2dc19d",
+    "negative_cases": ["hash", "duplicate pair", "endpoint", "signed-64 overflow", "deleted required field", "modified HARD factor", "inconsistent HARD coordinates"],
+    "ast_assert_nodes_in_test_and_verifier": 0
+  },
+  "gate5_gate6_release_audit": {
+    "audited_utc": "2026-08-29T03:54:10Z",
+    "terminal_claim": "NEW_STRICT_BOUND",
+    "global_problem_claimed_solved": false,
+    "dependency_boundary_pass": true,
+    "release_time_novelty_pass_scope": "No exact or larger bound found in the recorded sources and queries through 2026-08-29",
+    "citation_keys_in_tex": 7,
+    "citation_keys_in_bib": 7,
+    "citation_keys_in_aux": 7,
+    "clean_build_directory": "build/clean-20260829-v3",
+    "latex_warning_scan_bytes": 0,
+    "pdf_pages": 4,
+    "pdf_sha256": "3064f945793bb825c945fd666b99a47ad596b638f4a23a01e8edd46019b6b98f",
+    "all_fonts_embedded": true,
+    "page_by_page_visual_audit_pass": true,
+    "proof_assistant_used_for_new_replay": false,
+    "imported_prerequisite_formalized_in_lean": true
+  }
+}

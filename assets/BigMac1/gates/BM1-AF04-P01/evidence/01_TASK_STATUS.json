@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "number": 1,
+  "title": "A278992：从已知指数生成函数严格推出四阶 D-finite 递推",
+  "state": "PROVED",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 99,
+  "confidence_basis": "The proof, exact certificate, fail-closed verifier, independent symbolic check, boundary analysis, and exhaustive small-case audit all pass. After temporarily withdrawing the release state, an absolute-path manifest verification passed on a stable 33-file staging root containing no logs; the live research log remains preserved outside that root.",
+  "summary": "PROVED: the stated recurrence follows rigorously from the published EGF for n >= 4 with the canonical a_0 = 0 extension (equivalently n >= 5 at OEIS offset 1). The release manifest is frozen from a stable staging tree that excludes live logs and passes independent absolute-path verification.",
+  "evidence": [
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "problem/formal_statement.md",
+    "routes/registry.json",
+    "proof/gap_ledger.md"
+  ],
+  "deliverables": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "routes/registry.json",
+    "proof/gap_ledger.md",
+    "proof/main_proof.md",
+    "certificates/annihilator_certificate.json",
+    "certificates/verify_certificate.py",
+    "audit/BUILDER.md",
+    "audit/BREAKER.md",
+    "audit/CERTIFIER.md",
+    "audit/REFEREE.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "audit/SUBMISSION_AUDIT.md",
+    "paper/main.tex",
+    "paper/references.bib",
+    "paper/main.bbl",
+    "output/pdf/A278992_D-finite_recurrence_proof.pdf",
+    "output/A278992_D-finite_recurrence_source.zip",
+    "manifests/release_manifest.json",
+    "FINAL_STATUS.md",
+    "CLI_PROMPT.md"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "updated_utc": "2026-08-29T20:58:29+00:00"
+}

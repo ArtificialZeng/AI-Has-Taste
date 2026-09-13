@@ -1,0 +1,31 @@
+{
+  "schema": "cyclic-315-fixed-clique-enumeration-v1",
+  "scope": "Only target-13 packings containing block variable 390 or one of its 30 multiplier images; this is not a global proof that M < 13",
+  "target": 13,
+  "fixed_variable": 390,
+  "fixed_block": [0, 1, 3, 8, 22],
+  "multiplier_orbit_variables": [390, 535, 629, 718, 724, 741, 1133, 1179, 1216, 1300, 1307, 1689, 1705, 1873, 1911, 1992, 2281, 2341, 2400, 2430, 3001, 3097, 3364, 3451, 3483, 3498, 3769, 3816, 3954, 3971],
+  "instance": {
+    "path": "experiments/instance.json",
+    "sha256": "f43bb843344058df6794c5c86e314f547292a65fa43183d2678ef178e5e4034d"
+  },
+  "graph": {
+    "path": "experiments/compatibility_fixed390.clq",
+    "sha256": "b209bb20253352afdec0482a6ad498f8267b21e13d86b8a780def1e03a4abeea",
+    "vertices": 2086,
+    "edges": 973024
+  },
+  "enumeration": {
+    "path": "experiments/exact_clique_fixed390_verify_fast.jsonl",
+    "sha256": "09f8bd5e56446468e278c8705945a24dd7914a2845d28b6bed5ba54010d5c895",
+    "neighbor_target": 12,
+    "nodes": 291087266
+  },
+  "verifier": {
+    "source_path": "code/exact_clique.cpp",
+    "source_sha256": "ae549763147bd579353d3b91fcbad4e9afb4e2e404c97f915115d8b6e84458c9",
+    "binary_path": "experiments/exact_clique_fixed_fast",
+    "binary_sha256": "2b0cb86d49c2ce6add774dedf98796b706d72cd0d2266b5a7aa9ce653413d30f"
+  },
+  "status": "CERTIFIED_FIXED_BRANCH_UNSAT"
+}

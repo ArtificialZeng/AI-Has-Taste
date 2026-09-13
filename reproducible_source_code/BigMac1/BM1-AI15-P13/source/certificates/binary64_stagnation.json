@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "claim": "Exact binary64 fixed-point counterexample to universal SM-IR eventual backward stability",
+  "arithmetic": {
+    "format": "IEEE-754 binary64",
+    "radix": 2,
+    "precision_bits": 53,
+    "emin": -1022,
+    "emax": 1023,
+    "rounding": "roundTiesToEven",
+    "unit_roundoff": {
+      "numerator": 1,
+      "exponent2": -53
+    },
+    "fused_operations": false
+  },
+  "dimension": 1,
+  "inputs": {
+    "A_integer": 1,
+    "u_integer": 1,
+    "v_integer": 9007199254740992,
+    "b_integer": 1
+  },
+  "exact_system": {
+    "B_integer": 9007199254740993,
+    "kappa2_A": 1,
+    "kappa2_B": 1
+  },
+  "expected_trace": {
+    "y_integer": 1,
+    "z_integer": 1,
+    "alpha_integer": 9007199254740992,
+    "beta_exact_before_round_integer": 9007199254740993,
+    "beta_rounded_integer": 9007199254740992,
+    "theta_integer": 1,
+    "initial_x_integer": 0,
+    "residual_at_zero_integer": 1,
+    "correction_y_integer": 1,
+    "correction_alpha_integer": 9007199254740992,
+    "correction_theta_integer": 1,
+    "next_x_integer": 0,
+    "normwise_relative_backward_error_at_zero": 1,
+    "componentwise_relative_backward_error_at_zero": 1
+  },
+  "theorem_endpoint": "All SM-IR iterates are exactly zero and have relative backward error one; both exact scalar condition numbers equal one."
+}

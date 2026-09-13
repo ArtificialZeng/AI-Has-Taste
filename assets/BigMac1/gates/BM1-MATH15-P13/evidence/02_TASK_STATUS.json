@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "task_number": 13,
+  "title": "线性有序弦图中边的 Ramsey degree",
+  "folder": "13_chordal_edge_ramsey_degree",
+  "session": "m15_13_chordal_edge_ramsey_degree",
+  "queue_position": 13,
+  "state": "complete",
+  "terminal_status": "partial theorem",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 97,
+  "summary": "The narrowed research endpoint is complete. In finite linearly ordered split graphs under induced order-preserving embeddings, the ordered edge has small Ramsey degree exactly 3. The proof includes the marked free-amalgamation upper bound, an explicit forgetful-reduct argument, and the unique-partition ordered P4 lower bound. For all ordered chordal graphs, only the lower bound 2 and exact free/PEO amalgamation obstructions are claimed; the original degree remains open. Referee, novelty, citation, exact-certificate, clean-build, visual-PDF, and extracted-release gates all passed.",
+  "exact_result": "For the class S_< of finite linearly ordered split graphs with induced order-preserving embeddings, t_{S_<}(K2)=3.",
+  "limitations": [
+    "The exact small Ramsey degree for the full class of ordered chordal graphs is not determined.",
+    "For the full chordal class the certified result is only t(K2)>=2, together with exact failures of free amalgamation and amalgamation after naming a PEO.",
+    "The novelty conclusion is bounded to the recorded searches through 2026-08-28 and cannot exclude unpublished or differently indexed work."
+  ],
+  "deliverables": [
+    "literature/sources/kam_problem_collection_2025.pdf",
+    "literature/sources/guingona_et_al_indivisibility.pdf",
+    "certificates/split_witness.json",
+    "code/verify_split_witness.py",
+    "proof/builder_notes.md",
+    "proof/breaker_notes.md",
+    "proof/certifier_notes.md",
+    "proof/referee_notes.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "audit/SUBMISSION_AUDIT.md",
+    "output/pdf/ordered_split_edge_ramsey_degree.pdf",
+    "output/source/ordered_split_edge_ramsey_degree_source.zip"
+  ],
+  "recommended_continuation": "For the original chordal problem, seek an edge-specific partite construction that preserves induced chordality without assuming amalgamation of named PEO expansions.",
+  "updated_utc": "2026-08-28T00:27:16Z"
+}

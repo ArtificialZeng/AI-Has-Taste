@@ -1,0 +1,31 @@
+Moving-sheet X19 exact verification results
+Date: 2026-08-24
+
+Normal source verifier: PASS
+  PASS original fully conjugated Hermitian gate and independent Gram gate
+  PASS 20 quotient terms, 16 higher terms, 947 monomials, strict margin
+  PASS lambda, 59/400<Z<1/6, strict danger, rank-two PSD, both z signs
+  PASS closed X=1/20 seam, X=1/19 endpoint, and 72 legal exact nodes
+
+Normal independent referee: PASS
+  PASS independent signed-z Gram columns and original Hermitian gate
+  PASS no-cache direct quotient and strict continuum reserve
+  PASS lambda, signed z, danger, determinant, rank two, and closed seam
+  PASS endpoint/seam values and 72 exact legal falsification nodes
+
+Exact source/referee continuum reserve:
+  26756976522448207008651434175031131058236664369690137089162898293759
+  /13308465593548800000000000000000000000000000000000000000 > 0
+
+Fail-closed checks: PASS
+  source under python -O: rejected before mathematical work
+  source with X19_TEST_BAD_DEPENDENCY=1: rejected dependency hash
+  source with X19_TEST_DROP_TERM=1: rejected 16/947 term count
+  referee under python -O: rejected before mathematical work
+  referee with X19_REFEREE_BAD_DEPENDENCY=1: rejected dependency hash
+  referee with X19_REFEREE_DROP_TERM=1: rejected complete 20-term set
+
+Compilation: both Python verifiers pass py_compile.
+Proof assistant: none used.
+Scope: exact five-real-parameter moving-sheet partial theorem only; the full
+compact-ball quartic, common-metric theorem, and fixed-lens constant remain open.

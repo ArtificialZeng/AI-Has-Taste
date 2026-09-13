@@ -1,0 +1,27 @@
+{
+  "base": "01213101314310",
+  "method": "For each split q, insert the primitive Parikh signature of every factor ending at q into an exact open-addressed hash table, then query the signature of every factor starting at q. Hash collisions are resolved by full packed-signature equality.",
+  "completeness": "Every triple 0 <= p < q < r <= 38416 occurs uniquely at split q. The sweep either returns an exactly rechecked witness or, if completed, has queried every right factor against all left factors at that split.",
+  "word_encoding_for_digest": "raw bytes with values 0,1,2,3,4",
+  "h3_crosscheck": {
+    "prefix_length": 2744,
+    "prefix_sha256": "d75c5ab42c29c34f3b71c5c981cd0c6abf23f40dd10ce9e3ead29a5bdf1e003d",
+    "expected_prefix_sha256": "d75c5ab42c29c34f3b71c5c981cd0c6abf23f40dd10ce9e3ead29a5bdf1e003d",
+    "outcome": "no_violation_in_finite_prefix",
+    "left_signatures_inserted": 3763396,
+    "right_signatures_queried": 3763396,
+    "expected_right_signatures_queried": 3763396,
+    "seconds": 0.287226
+  },
+  "test": "all triples 0 <= p < q < r <= 38416 for h^4(0)",
+  "power": 4,
+  "prefix_length": 38416,
+  "prefix_sha256": "9734d1c142cd0712871db7e12e0a68304797fba7d9ab8ee6266af3fe7a06a6f2",
+  "outcome": "no_violation_in_finite_prefix",
+  "splits_completed": 38415,
+  "left_signatures_inserted_before_stop": 737875320,
+  "right_signatures_queried_before_stop": 737875320,
+  "expected_each_side_if_complete": 737875320,
+  "seconds": 72.275056,
+  "witness": null
+}

@@ -1,0 +1,514 @@
+{
+  "certificate_sha256": "0ca709a95df4164ed9a2106cd7502efd2613848d0c4b4544b4e99dfdce470887",
+  "executions": 60,
+  "modes": [
+    "normal",
+    "optimized",
+    "isolated",
+    "optimized_isolated"
+  ],
+  "mutations": [
+    "genuine",
+    "missing_scope",
+    "changed_labels",
+    "changed_gap_total",
+    "changed_denominator",
+    "changed_formula",
+    "changed_term_numerator",
+    "changed_chain_bound",
+    "changed_partition_total",
+    "removed_partition_survivor",
+    "changed_endpoint_count",
+    "changed_R10_list",
+    "changed_generator_hash",
+    "extra_root_field",
+    "changed_limitation"
+  ],
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "records": [
+    {
+      "expected_pass": true,
+      "input_sha256": "dac1b696cef5307b239f4779a31b810245390f9c852eb305fec3150296ffd9a3",
+      "mode": "normal",
+      "mutation": "genuine",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "expected_pass": true,
+      "input_sha256": "dac1b696cef5307b239f4779a31b810245390f9c852eb305fec3150296ffd9a3",
+      "mode": "optimized",
+      "mutation": "genuine",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "expected_pass": true,
+      "input_sha256": "dac1b696cef5307b239f4779a31b810245390f9c852eb305fec3150296ffd9a3",
+      "mode": "isolated",
+      "mutation": "genuine",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "expected_pass": true,
+      "input_sha256": "dac1b696cef5307b239f4779a31b810245390f9c852eb305fec3150296ffd9a3",
+      "mode": "optimized_isolated",
+      "mutation": "genuine",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "b693a3cfbf5fe535c2b0cb70e9810608d8806a26f3db9689e956541c88c7e468",
+      "mode": "normal",
+      "mutation": "missing_scope",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "b693a3cfbf5fe535c2b0cb70e9810608d8806a26f3db9689e956541c88c7e468",
+      "mode": "optimized",
+      "mutation": "missing_scope",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "b693a3cfbf5fe535c2b0cb70e9810608d8806a26f3db9689e956541c88c7e468",
+      "mode": "isolated",
+      "mutation": "missing_scope",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "b693a3cfbf5fe535c2b0cb70e9810608d8806a26f3db9689e956541c88c7e468",
+      "mode": "optimized_isolated",
+      "mutation": "missing_scope",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e8b4b166c72556ae6da8f4b947bca15e71ce949e0adc64c96bee8c832472f627",
+      "mode": "normal",
+      "mutation": "changed_labels",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e8b4b166c72556ae6da8f4b947bca15e71ce949e0adc64c96bee8c832472f627",
+      "mode": "optimized",
+      "mutation": "changed_labels",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e8b4b166c72556ae6da8f4b947bca15e71ce949e0adc64c96bee8c832472f627",
+      "mode": "isolated",
+      "mutation": "changed_labels",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e8b4b166c72556ae6da8f4b947bca15e71ce949e0adc64c96bee8c832472f627",
+      "mode": "optimized_isolated",
+      "mutation": "changed_labels",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "1f11eef3be2343ab1da79a6a00e12e049f3665032dec105820a190cdfc5991ce",
+      "mode": "normal",
+      "mutation": "changed_gap_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "1f11eef3be2343ab1da79a6a00e12e049f3665032dec105820a190cdfc5991ce",
+      "mode": "optimized",
+      "mutation": "changed_gap_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "1f11eef3be2343ab1da79a6a00e12e049f3665032dec105820a190cdfc5991ce",
+      "mode": "isolated",
+      "mutation": "changed_gap_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "1f11eef3be2343ab1da79a6a00e12e049f3665032dec105820a190cdfc5991ce",
+      "mode": "optimized_isolated",
+      "mutation": "changed_gap_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c58985e615d3481212442a9510ed441a82ed8717131b0f4a1539addfefb2eee1",
+      "mode": "normal",
+      "mutation": "changed_denominator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c58985e615d3481212442a9510ed441a82ed8717131b0f4a1539addfefb2eee1",
+      "mode": "optimized",
+      "mutation": "changed_denominator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c58985e615d3481212442a9510ed441a82ed8717131b0f4a1539addfefb2eee1",
+      "mode": "isolated",
+      "mutation": "changed_denominator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c58985e615d3481212442a9510ed441a82ed8717131b0f4a1539addfefb2eee1",
+      "mode": "optimized_isolated",
+      "mutation": "changed_denominator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "bd1e0d266a6fe35ce89b1538584e3fcae20ea213d87fbff4a1310929391dd38a",
+      "mode": "normal",
+      "mutation": "changed_formula",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "bd1e0d266a6fe35ce89b1538584e3fcae20ea213d87fbff4a1310929391dd38a",
+      "mode": "optimized",
+      "mutation": "changed_formula",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "bd1e0d266a6fe35ce89b1538584e3fcae20ea213d87fbff4a1310929391dd38a",
+      "mode": "isolated",
+      "mutation": "changed_formula",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "bd1e0d266a6fe35ce89b1538584e3fcae20ea213d87fbff4a1310929391dd38a",
+      "mode": "optimized_isolated",
+      "mutation": "changed_formula",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "5d1b49f7e093c937327b9c62aec47e9961c4d69470f716a3a7a5baa605187c89",
+      "mode": "normal",
+      "mutation": "changed_term_numerator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "5d1b49f7e093c937327b9c62aec47e9961c4d69470f716a3a7a5baa605187c89",
+      "mode": "optimized",
+      "mutation": "changed_term_numerator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "5d1b49f7e093c937327b9c62aec47e9961c4d69470f716a3a7a5baa605187c89",
+      "mode": "isolated",
+      "mutation": "changed_term_numerator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "5d1b49f7e093c937327b9c62aec47e9961c4d69470f716a3a7a5baa605187c89",
+      "mode": "optimized_isolated",
+      "mutation": "changed_term_numerator",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c32a5a6c8f9bdb877cd283f0b0bdcb382d78c8cd21fa0f72e575b92e960c7bb7",
+      "mode": "normal",
+      "mutation": "changed_chain_bound",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c32a5a6c8f9bdb877cd283f0b0bdcb382d78c8cd21fa0f72e575b92e960c7bb7",
+      "mode": "optimized",
+      "mutation": "changed_chain_bound",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c32a5a6c8f9bdb877cd283f0b0bdcb382d78c8cd21fa0f72e575b92e960c7bb7",
+      "mode": "isolated",
+      "mutation": "changed_chain_bound",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "c32a5a6c8f9bdb877cd283f0b0bdcb382d78c8cd21fa0f72e575b92e960c7bb7",
+      "mode": "optimized_isolated",
+      "mutation": "changed_chain_bound",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "dc7287dcb2820a3157a23416b70046e44443b7bd7a373727a18180774dba932e",
+      "mode": "normal",
+      "mutation": "changed_partition_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "dc7287dcb2820a3157a23416b70046e44443b7bd7a373727a18180774dba932e",
+      "mode": "optimized",
+      "mutation": "changed_partition_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "dc7287dcb2820a3157a23416b70046e44443b7bd7a373727a18180774dba932e",
+      "mode": "isolated",
+      "mutation": "changed_partition_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "dc7287dcb2820a3157a23416b70046e44443b7bd7a373727a18180774dba932e",
+      "mode": "optimized_isolated",
+      "mutation": "changed_partition_total",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "13ddd430fd082ffb477e43e93a76eed2e3459f4dc399982a30e5619e3355d050",
+      "mode": "normal",
+      "mutation": "removed_partition_survivor",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "13ddd430fd082ffb477e43e93a76eed2e3459f4dc399982a30e5619e3355d050",
+      "mode": "optimized",
+      "mutation": "removed_partition_survivor",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "13ddd430fd082ffb477e43e93a76eed2e3459f4dc399982a30e5619e3355d050",
+      "mode": "isolated",
+      "mutation": "removed_partition_survivor",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "13ddd430fd082ffb477e43e93a76eed2e3459f4dc399982a30e5619e3355d050",
+      "mode": "optimized_isolated",
+      "mutation": "removed_partition_survivor",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "37d29ee3a802c54c9b2a787d166a3a9abc3da32aca1ad7be4d923af6eccee62d",
+      "mode": "normal",
+      "mutation": "changed_endpoint_count",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "37d29ee3a802c54c9b2a787d166a3a9abc3da32aca1ad7be4d923af6eccee62d",
+      "mode": "optimized",
+      "mutation": "changed_endpoint_count",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "37d29ee3a802c54c9b2a787d166a3a9abc3da32aca1ad7be4d923af6eccee62d",
+      "mode": "isolated",
+      "mutation": "changed_endpoint_count",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "37d29ee3a802c54c9b2a787d166a3a9abc3da32aca1ad7be4d923af6eccee62d",
+      "mode": "optimized_isolated",
+      "mutation": "changed_endpoint_count",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "7cf4abc1c8289dac971f3d7764181cab7e0b3815e79fa0d10c45475591014433",
+      "mode": "normal",
+      "mutation": "changed_R10_list",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "7cf4abc1c8289dac971f3d7764181cab7e0b3815e79fa0d10c45475591014433",
+      "mode": "optimized",
+      "mutation": "changed_R10_list",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "7cf4abc1c8289dac971f3d7764181cab7e0b3815e79fa0d10c45475591014433",
+      "mode": "isolated",
+      "mutation": "changed_R10_list",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "7cf4abc1c8289dac971f3d7764181cab7e0b3815e79fa0d10c45475591014433",
+      "mode": "optimized_isolated",
+      "mutation": "changed_R10_list",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e06eddc04e1a6db5afccc71a4148f07a9e98c525072b0e8205f75f314a0e28a1",
+      "mode": "normal",
+      "mutation": "changed_generator_hash",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e06eddc04e1a6db5afccc71a4148f07a9e98c525072b0e8205f75f314a0e28a1",
+      "mode": "optimized",
+      "mutation": "changed_generator_hash",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e06eddc04e1a6db5afccc71a4148f07a9e98c525072b0e8205f75f314a0e28a1",
+      "mode": "isolated",
+      "mutation": "changed_generator_hash",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e06eddc04e1a6db5afccc71a4148f07a9e98c525072b0e8205f75f314a0e28a1",
+      "mode": "optimized_isolated",
+      "mutation": "changed_generator_hash",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "02b0aa9f98bc9062e7fe70ecd62e02750e85309162020013e12ae33325a64f75",
+      "mode": "normal",
+      "mutation": "extra_root_field",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "02b0aa9f98bc9062e7fe70ecd62e02750e85309162020013e12ae33325a64f75",
+      "mode": "optimized",
+      "mutation": "extra_root_field",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "02b0aa9f98bc9062e7fe70ecd62e02750e85309162020013e12ae33325a64f75",
+      "mode": "isolated",
+      "mutation": "extra_root_field",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "02b0aa9f98bc9062e7fe70ecd62e02750e85309162020013e12ae33325a64f75",
+      "mode": "optimized_isolated",
+      "mutation": "extra_root_field",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e989a03726d29e4d2d9f8d57b2ced0aa241caf4556466befce04bcf63b4b9d33",
+      "mode": "normal",
+      "mutation": "changed_limitation",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e989a03726d29e4d2d9f8d57b2ced0aa241caf4556466befce04bcf63b4b9d33",
+      "mode": "optimized",
+      "mutation": "changed_limitation",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e989a03726d29e4d2d9f8d57b2ced0aa241caf4556466befce04bcf63b4b9d33",
+      "mode": "isolated",
+      "mutation": "changed_limitation",
+      "returncode": 1,
+      "status": "FAIL"
+    },
+    {
+      "expected_pass": false,
+      "input_sha256": "e989a03726d29e4d2d9f8d57b2ced0aa241caf4556466befce04bcf63b4b9d33",
+      "mode": "optimized_isolated",
+      "mutation": "changed_limitation",
+      "returncode": 1,
+      "status": "FAIL"
+    }
+  ],
+  "runner_sha256": "c0ed14acfbeabb7f52616009b867df5d94b545697996cbde6da6363643eb2d18",
+  "scope": "external t=18 verifier matrix; all mutations created in /private/tmp",
+  "status": "PASS",
+  "verifier_sha256": "6feb99e1fd6b6c8793011597a0f8c172e89fe838c7cc93fd08e5f77761b61a0e"
+}

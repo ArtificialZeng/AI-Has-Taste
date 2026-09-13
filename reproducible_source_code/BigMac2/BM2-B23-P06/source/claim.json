@@ -1,0 +1,20 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every integer n with 1 <= n <= 32 and every subset D of the strict positive divisors D_n, the canonical records in evidence/n32_manifest.json (records SHA-256 fe36f96a628851b9ef03d912c8d9ec451e48d4c7773ab12626aa36a52610357e) give the exact perfectness classification of ICG_n(D): 415 of the 539 inputs are perfect and 124 are imperfect; imperfect inputs occur only for n in {12,20,24,28,30}, with the complete divisor-mask list stated in evidence/n32-result.md. Every imperfect record has an exactly replayed induced odd hole in the graph or complement, and every perfect record has an exhaustive exact two-sided odd-hole-search certificate whose completeness follows from translation symmetry. No claim is made for 33 <= n <= 64, so the frozen original problem remains unresolved.",
+  "contribution": "A complete, compressed, exactly certified classification of the 539-input n<=32 subsidiary layer, with canonical forbidden-cycle witnesses, a separate adjacency-and-witness replay, and a distinct chordless-cycle cross-check. The bounded source screen found no equivalent perfectness census but does not establish priority; prior spectral enumeration of the underlying ICG symbols is explicitly excluded from the novelty claim.",
+  "proposer_job_id": "bigMac-00023-p06-research-d993171d8665",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/n32-result.md",
+    "evidence/n32_census.py",
+    "evidence/n32_manifest.json",
+    "evidence/replay_n32.py",
+    "evidence/n32_replay.json",
+    "evidence/networkx_crosscheck_n32.py",
+    "evidence/n32_networkx_crosscheck.json",
+    "evidence/primary-source-collision-screen.md",
+    "literature/2609.03184v1.pdf"
+  ]
+}

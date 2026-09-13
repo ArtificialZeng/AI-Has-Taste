@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can rooted-state coefficient geometry be shown to preserve unimodality under every tree composition?",
+      "premises": ["A_T=product(A_j+B_j)", "B_T=x product(A_j)"],
+      "method": "derive ratio/interlacing or synchronized-mode invariants closed under rooted composition",
+      "status": "active",
+      "evidence": [
+        "problem/formal_statement.md#exact-recurrences",
+        "notes/referee_report.md: exact counterexamples to common-mode and naive cross-minor invariants"
+      ],
+      "failure_reason": null,
+      "next_test": "seek an invariant strictly weaker than common gamma center and not implying a uniform cross-minor sign"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Can an exact counterexample be found outside the certified finite frontier?",
+      "premises": ["finite simple trees", "objective Delta(T)>0"],
+      "method": "subtree mutation and grammar search with exact integer rooted DP, followed by independent edge-list verification",
+      "status": "active",
+      "evidence": [
+        "experiments/order31_checker.c",
+        "results/partition_test_order23_aggregate.json",
+        "results/order31_aggregate.json",
+        "results/order31_independent_aggregate.json"
+      ],
+      "failure_reason": null,
+      "next_test": "any counterexample search must now start at order 32; the present endpoint is the exact order-31 finite theorem"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Which plausible closure lemmas already fail on small rooted trees?",
+      "premises": ["restart from independent-set definitions"],
+      "method": "exact boundary, high-degree, path, star, subdivided-star, caterpillar and randomized tests",
+      "status": "proved",
+      "evidence": [
+        "notes/referee_report.md",
+        "audit/referee_subset_evaluator.py"
+      ],
+      "failure_reason": "common-mode and uniform adjacent cross-minor signs fail on exact rooted stars",
+      "next_test": "audit each new candidate invariant against the retained exact witnesses"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What is the smallest exact rooted-state representation that is complete for tree composition?",
+      "premises": ["rooted children form an unordered multiset"],
+      "method": "canonical AHU encoding plus exact polynomial-pair DP",
+      "status": "active",
+      "evidence": [
+        "problem/formal_statement.md#exact-recurrences",
+        "experiments/order31_checker.c",
+        "audit/referee_subset_evaluator.py"
+      ],
+      "failure_reason": null,
+      "next_test": "add rooted AHU canonicalization only if a state-grammar proof route requires deduplication"
+    },
+    {
+      "id": "D02",
+      "kind": "disproof",
+      "question": "Can known non-log-concave tree constructions be parameter-amplified into a triple valley?",
+      "premises": ["source families to be verified in Gate 1"],
+      "method": "symbolic independence polynomials in integer parameters and exact valley inequalities",
+      "status": "active",
+      "evidence": [
+        "literature/claim_ledger.md C04",
+        "Galvin family formula I=(C_t)^m+x(1+2x)^{tm} extracted from arXiv:2502.10654"
+      ],
+      "failure_reason": null,
+      "next_test": "search exact products and root-coupled combinations of source families for a strict triple valley"
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Does common-center gamma positivity give a composition-closed tree subclass?",
+      "premises": ["A_v and B_v lie in the same gamma cone for each rooted cell"],
+      "method": "gamma-basis semiring closure and independent-set decomposition over a core tree",
+      "status": "proved",
+      "evidence": [
+        "notes/builder_report.md",
+        "experiments/builder_gamma_verify.py",
+        "arXiv:2604.18824 Remark 1.5 and Bridge Lemma 1.9"
+      ],
+      "failure_reason": "not a new endpoint: double-private-leaf gamma positivity is explicit prior art and the broader gluing overlaps the 2026 bridge framework",
+      "next_test": "retain as a proof invariant and obstruction example, but make no novelty claim"
+    },
+    {
+      "id": "C01",
+      "kind": "certified finite result",
+      "question": "Are all unlabelled trees on exactly 31 vertices unimodal?",
+      "premises": ["nauty gentreeg 2.9.3 free-tree enumeration", "exact rooted two-state integer DP", "all 120 res/mod chunks"],
+      "method": "frozen eight-worker exhaustive sweep, exact count aggregation, independent no-project-import reconstruction, and isolated source rebuild",
+      "status": "proved",
+      "evidence": [
+        "certificates/order31_preflight.json",
+        "results/order31_aggregate.json",
+        "results/order31_independent_aggregate.json",
+        "results/order31_rebuild_audit.txt",
+        "audit/order31_protocol_audit.md"
+      ],
+      "failure_reason": null,
+      "next_test": "complete citation, manuscript, clean-build, and PDF audits before terminal release"
+    }
+  ]
+}

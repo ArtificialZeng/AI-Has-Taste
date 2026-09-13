@@ -1,0 +1,59 @@
+COMPACT-BALL UNCOVERED x=5/8 xy-BOX INDEPENDENT REFEREE RESULTS
+Date: 2026-08-26
+
+Scope
+  |x-5/8|<=1/1000, |y|<=1/100, Z=1/8,
+  both signed-z lifts, 0<S=h^2<=1, lambda>0.
+
+Independence boundary
+  The candidate source, note, and source manifest were used only as opaque
+  bytes for SHA-256. They were never opened, parsed, imported, executed, or
+  used as coefficient/control inputs.
+
+Literal-free scout
+  command: /opt/anaconda3/bin/python tmp/research/audit/uncovered_box_x5_8_xy_referee_literal_free_scout.py
+  exit: 0
+  reordered Gram/direct compression: PASS
+  independently reordered Q^2: 9/9 PASS
+  fully conjugated raw gate and radical elimination: PASS
+  lambda coefficient count: 5
+  Bernstein control groups: 1, 9, 50, 147, 324
+  total exact controls: 531/531 strictly positive
+  coefficient tuple SHA-256: b11348d029f2b1fd6bcbf4dfe3ff789f1f5e67a0846f2a83041e7af62bd9497f
+  complete control table SHA-256: 89c49a8ba13aa17da382f3f62666246a9a70906fad34d16705d4f99f059b6a3d
+  unique global weakest: lambda^3, index (0,0,6)
+  weakest exact value: 8332318460470459/15187500000000000
+  danger reserve: 30189/62500
+  det(C)/S: 5/72
+  exact diagnostic nodes: 81/81 (diagnostics only)
+
+Formal normal
+  command: /opt/anaconda3/bin/python tmp/research/audit/verify_compact_ball_uncovered_box_x5_8_xy_independent_referee.py
+  exit: 0
+  result: PASS
+
+Syntax gate
+  command: /opt/anaconda3/bin/python -m py_compile tmp/research/audit/verify_compact_ball_uncovered_box_x5_8_xy_independent_referee.py
+  exit: 0
+  result: PASS
+
+Fail-closed attacks (all expected nonzero)
+  optimized Python (-O): exit 1 at optimized-Python gate
+  bad source hash: exit 1 at candidate-source SHA gate
+  bad source-manifest hash: exit 1 at source-manifest SHA gate
+  bad predecessor hash: exit 1 at predecessor-referee SHA gate
+  bad x normalization: exit 1 at right-endpoint normalization gate
+  drop Q^2 term: exit 1 at literal/vector raw-gate identity
+  flip danger sign: exit 1 at exact danger-scalar identity
+  corrupt one derived coefficient: exit 1 at coefficient reconstruction
+  drop one Bernstein control: exit 1 at complete-control-count gate
+
+Integrity attacks
+  Numerical diagnostics were not used to infer positivity.
+  No chart obstruction was asserted as raw negativity or maximality.
+  CE-046/048/059/060 were not reused.
+
+FINAL: PASS
+FATAL: 0
+MAJOR: 0
+MINOR: 0

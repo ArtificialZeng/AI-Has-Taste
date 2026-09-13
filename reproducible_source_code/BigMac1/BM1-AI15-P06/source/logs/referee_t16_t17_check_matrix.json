@@ -1,0 +1,252 @@
+{
+  "ast_assert_counts": {
+    "t16": 0,
+    "t17": 0
+  },
+  "audit": "external fail-closed t16/t17 checker matrix",
+  "case_count": 4,
+  "cases": [
+    {
+      "checker_sha256": "12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69",
+      "expected": "PASS",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_genuine/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"c7_comparison_119^6_gt_10x81^6\": true, \"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"243/50\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"1\"]}, \"code_sha256\": \"12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}}, \"partitions\": {\"minimum_eliminated\": [\"(4, 4, 4, 2, 2)\", \"667/110\"], \"partitions_checked\": 48, \"survivors\": {\"(4, 3, 3, 3, 3)\": \"287/50\", \"(4, 4, 3, 3, 2)\": \"1623/275\", \"(5, 3, 3, 3, 2)\": \"13061/2200\"}}, \"patterns\": {\"(4, 3, 3, 3, 3)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 10, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 8}, \"(4, 4, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 7, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 1, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 6, \"minimum_singleton_copies\": 10}}, \"proof_sha256\": \"114d861529243e3eb96415e10f14920370b91f5085d1538fc0bb0f564e26d889\", \"scope\": \"exact finite t=16 arithmetic/enumeration only; singleton compression remains a human proof\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7683113969d032a34657028010a70a710eca37d3bc4927ef15c36b848fbdc6e3"
+        },
+        "normal": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_genuine/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"c7_comparison_119^6_gt_10x81^6\": true, \"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"243/50\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"1\"]}, \"code_sha256\": \"12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}}, \"partitions\": {\"minimum_eliminated\": [\"(4, 4, 4, 2, 2)\", \"667/110\"], \"partitions_checked\": 48, \"survivors\": {\"(4, 3, 3, 3, 3)\": \"287/50\", \"(4, 4, 3, 3, 2)\": \"1623/275\", \"(5, 3, 3, 3, 2)\": \"13061/2200\"}}, \"patterns\": {\"(4, 3, 3, 3, 3)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 10, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 8}, \"(4, 4, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 7, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 1, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 6, \"minimum_singleton_copies\": 10}}, \"proof_sha256\": \"114d861529243e3eb96415e10f14920370b91f5085d1538fc0bb0f564e26d889\", \"scope\": \"exact finite t=16 arithmetic/enumeration only; singleton compression remains a human proof\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7683113969d032a34657028010a70a710eca37d3bc4927ef15c36b848fbdc6e3"
+        },
+        "optimized": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_genuine/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"c7_comparison_119^6_gt_10x81^6\": true, \"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"243/50\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"1\"]}, \"code_sha256\": \"12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}}, \"partitions\": {\"minimum_eliminated\": [\"(4, 4, 4, 2, 2)\", \"667/110\"], \"partitions_checked\": 48, \"survivors\": {\"(4, 3, 3, 3, 3)\": \"287/50\", \"(4, 4, 3, 3, 2)\": \"1623/275\", \"(5, 3, 3, 3, 2)\": \"13061/2200\"}}, \"patterns\": {\"(4, 3, 3, 3, 3)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 10, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 8}, \"(4, 4, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 7, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 1, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 6, \"minimum_singleton_copies\": 10}}, \"proof_sha256\": \"114d861529243e3eb96415e10f14920370b91f5085d1538fc0bb0f564e26d889\", \"scope\": \"exact finite t=16 arithmetic/enumeration only; singleton compression remains a human proof\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7683113969d032a34657028010a70a710eca37d3bc4927ef15c36b848fbdc6e3"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_genuine/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"c7_comparison_119^6_gt_10x81^6\": true, \"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"243/50\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"1\"]}, \"code_sha256\": \"12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}}, \"partitions\": {\"minimum_eliminated\": [\"(4, 4, 4, 2, 2)\", \"667/110\"], \"partitions_checked\": 48, \"survivors\": {\"(4, 3, 3, 3, 3)\": \"287/50\", \"(4, 4, 3, 3, 2)\": \"1623/275\", \"(5, 3, 3, 3, 2)\": \"13061/2200\"}}, \"patterns\": {\"(4, 3, 3, 3, 3)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 10, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 8}, \"(4, 4, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 7, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 2)\": {\"category_assignments_checked\": 243, \"deficit_compatible_assignments\": 1, \"forced_internal_non_singleton_copies\": 6, \"maximum_non_singleton_copies\": 6, \"minimum_singleton_copies\": 10}}, \"proof_sha256\": \"114d861529243e3eb96415e10f14920370b91f5085d1538fc0bb0f564e26d889\", \"scope\": \"exact finite t=16 arithmetic/enumeration only; singleton compression remains a human proof\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7683113969d032a34657028010a70a710eca37d3bc4927ef15c36b848fbdc6e3"
+        }
+      },
+      "name": "t16_genuine"
+    },
+    {
+      "checker_sha256": "12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69",
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_tampered/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 68900bf40f3d6f0113682f771b6f489022178b5c1b7319708f2038ecbfe37703\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "27e605b6fc87621aeac89ba09f1e35869476bd290fa6be9015256e876490f91b",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_tampered/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 68900bf40f3d6f0113682f771b6f489022178b5c1b7319708f2038ecbfe37703\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "27e605b6fc87621aeac89ba09f1e35869476bd290fa6be9015256e876490f91b",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_tampered/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 68900bf40f3d6f0113682f771b6f489022178b5c1b7319708f2038ecbfe37703\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "27e605b6fc87621aeac89ba09f1e35869476bd290fa6be9015256e876490f91b",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t16_tampered/audit/referee_t16_check_postfix.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 68900bf40f3d6f0113682f771b6f489022178b5c1b7319708f2038ecbfe37703\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "27e605b6fc87621aeac89ba09f1e35869476bd290fa6be9015256e876490f91b",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "t16_tampered_proof"
+    },
+    {
+      "checker_sha256": "f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3",
+      "expected": "PASS",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_genuine/audit/referee_t17_check.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"97/20\", \"146/25\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"99/100\", \"99/100\"], \"powered_comparisons\": {\"c7_143^6_gt_10x97^6\": true, \"c8_102^7_gt_10x73^7\": true}}, \"code_sha256\": \"f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"6\": {\"counts\": {\"all\": 210, \"neither\": 28, \"one\": 112, \"regular\": 70}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"new_integer_checks\": {\"quintuple_neither_4x19^8_gt_81x13^8\": true, \"sextuple_nonregular_3^10_gt_45x2^10\": true}}, \"loss_cases\": {\"(4, 4, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 19, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(4, 4, 4, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 6, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 16, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(5, 4, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 3, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(6, 3, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}}, \"partitions\": {\"minimum_eliminated\": [\"(5, 4, 4, 2, 2)\", \"3097/440\"], \"partitions_checked\": 66, \"survivors\": {\"(4, 4, 3, 3, 3)\": \"167/25\", \"(4, 4, 4, 3, 2)\": \"3763/550\", \"(5, 3, 3, 3, 3)\": \"1343/200\", \"(5, 4, 3, 3, 2)\": \"15129/2200\", \"(6, 3, 3, 3, 2)\": \"3807/550\"}}, \"proof_sha256\": \"5332a2acc28a5407b3837c28fe4d007fae64d8031ad18a64e6b8177e32e856a3\", \"scope\": \"exact finite t=17 arithmetic/enumeration and symbolic sign-subset audit; rank proof remains human\", \"status\": \"PASS\", \"unique_negative_sign_cases\": {\"negative_label_choices\": 11, \"proper_nonempty_symbolic_zero_subsets\": 0, \"subset_types_checked\": 22528, \"subsets_per_choice\": 2048}}",
+          "stdout_sha256": "d139ecf06e623861347f1b83aca31f2c3f2e17caf1b83c7a36b059b6b8cb1cc4"
+        },
+        "normal": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_genuine/audit/referee_t17_check.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"97/20\", \"146/25\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"99/100\", \"99/100\"], \"powered_comparisons\": {\"c7_143^6_gt_10x97^6\": true, \"c8_102^7_gt_10x73^7\": true}}, \"code_sha256\": \"f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"6\": {\"counts\": {\"all\": 210, \"neither\": 28, \"one\": 112, \"regular\": 70}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"new_integer_checks\": {\"quintuple_neither_4x19^8_gt_81x13^8\": true, \"sextuple_nonregular_3^10_gt_45x2^10\": true}}, \"loss_cases\": {\"(4, 4, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 19, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(4, 4, 4, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 6, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 16, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(5, 4, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 3, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(6, 3, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}}, \"partitions\": {\"minimum_eliminated\": [\"(5, 4, 4, 2, 2)\", \"3097/440\"], \"partitions_checked\": 66, \"survivors\": {\"(4, 4, 3, 3, 3)\": \"167/25\", \"(4, 4, 4, 3, 2)\": \"3763/550\", \"(5, 3, 3, 3, 3)\": \"1343/200\", \"(5, 4, 3, 3, 2)\": \"15129/2200\", \"(6, 3, 3, 3, 2)\": \"3807/550\"}}, \"proof_sha256\": \"5332a2acc28a5407b3837c28fe4d007fae64d8031ad18a64e6b8177e32e856a3\", \"scope\": \"exact finite t=17 arithmetic/enumeration and symbolic sign-subset audit; rank proof remains human\", \"status\": \"PASS\", \"unique_negative_sign_cases\": {\"negative_label_choices\": 11, \"proper_nonempty_symbolic_zero_subsets\": 0, \"subset_types_checked\": 22528, \"subsets_per_choice\": 2048}}",
+          "stdout_sha256": "d139ecf06e623861347f1b83aca31f2c3f2e17caf1b83c7a36b059b6b8cb1cc4"
+        },
+        "optimized": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_genuine/audit/referee_t17_check.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"97/20\", \"146/25\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"99/100\", \"99/100\"], \"powered_comparisons\": {\"c7_143^6_gt_10x97^6\": true, \"c8_102^7_gt_10x73^7\": true}}, \"code_sha256\": \"f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"6\": {\"counts\": {\"all\": 210, \"neither\": 28, \"one\": 112, \"regular\": 70}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"new_integer_checks\": {\"quintuple_neither_4x19^8_gt_81x13^8\": true, \"sextuple_nonregular_3^10_gt_45x2^10\": true}}, \"loss_cases\": {\"(4, 4, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 19, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(4, 4, 4, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 6, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 16, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(5, 4, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 3, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(6, 3, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}}, \"partitions\": {\"minimum_eliminated\": [\"(5, 4, 4, 2, 2)\", \"3097/440\"], \"partitions_checked\": 66, \"survivors\": {\"(4, 4, 3, 3, 3)\": \"167/25\", \"(4, 4, 4, 3, 2)\": \"3763/550\", \"(5, 3, 3, 3, 3)\": \"1343/200\", \"(5, 4, 3, 3, 2)\": \"15129/2200\", \"(6, 3, 3, 3, 2)\": \"3807/550\"}}, \"proof_sha256\": \"5332a2acc28a5407b3837c28fe4d007fae64d8031ad18a64e6b8177e32e856a3\", \"scope\": \"exact finite t=17 arithmetic/enumeration and symbolic sign-subset audit; rank proof remains human\", \"status\": \"PASS\", \"unique_negative_sign_cases\": {\"negative_label_choices\": 11, \"proper_nonempty_symbolic_zero_subsets\": 0, \"subset_types_checked\": 22528, \"subsets_per_choice\": 2048}}",
+          "stdout_sha256": "d139ecf06e623861347f1b83aca31f2c3f2e17caf1b83c7a36b059b6b8cb1cc4"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_genuine/audit/referee_t17_check.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"ast_assert_nodes\": 0, \"chain_costs\": {\"costs\": [\"0\", \"0\", \"2/11\", \"24/25\", \"19/10\", \"23/8\", \"193/50\", \"97/20\", \"146/25\"], \"increments\": [\"0\", \"2/11\", \"214/275\", \"47/50\", \"39/40\", \"197/200\", \"99/100\", \"99/100\"], \"powered_comparisons\": {\"c7_143^6_gt_10x97^6\": true, \"c8_102^7_gt_10x73^7\": true}}, \"code_sha256\": \"f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3\", \"endpoint_penalties\": {\"2\": {\"counts\": {\"all\": 45, \"neither\": 28, \"one\": 16, \"regular\": 1}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"3\": {\"counts\": {\"all\": 120, \"neither\": 56, \"one\": 56, \"regular\": 8}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"4\": {\"counts\": {\"all\": 210, \"neither\": 70, \"one\": 112, \"regular\": 28}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"5\": {\"counts\": {\"all\": 252, \"neither\": 56, \"one\": 140, \"regular\": 56}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"6\": {\"counts\": {\"all\": 210, \"neither\": 28, \"one\": 112, \"regular\": 70}, \"minimum_neither_ratio_squared\": \"4/81\", \"minimum_nonregular_ratio_squared\": \"1/45\"}, \"new_integer_checks\": {\"quintuple_neither_4x19^8_gt_81x13^8\": true, \"sextuple_nonregular_3^10_gt_45x2^10\": true}}, \"loss_cases\": {\"(4, 4, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 19, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(4, 4, 4, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 6, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(5, 3, 3, 3, 3)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 16, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 9, \"minimum_singleton_copies\": 8}, \"(5, 4, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 3, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}, \"(6, 3, 3, 3, 2)\": {\"assignments_checked\": 243, \"deficit_compatible_assignments\": 2, \"forced_internal_non_singleton_copies\": 7, \"maximum_non_singleton_copies\": 8, \"minimum_singleton_copies\": 9}}, \"partitions\": {\"minimum_eliminated\": [\"(5, 4, 4, 2, 2)\", \"3097/440\"], \"partitions_checked\": 66, \"survivors\": {\"(4, 4, 3, 3, 3)\": \"167/25\", \"(4, 4, 4, 3, 2)\": \"3763/550\", \"(5, 3, 3, 3, 3)\": \"1343/200\", \"(5, 4, 3, 3, 2)\": \"15129/2200\", \"(6, 3, 3, 3, 2)\": \"3807/550\"}}, \"proof_sha256\": \"5332a2acc28a5407b3837c28fe4d007fae64d8031ad18a64e6b8177e32e856a3\", \"scope\": \"exact finite t=17 arithmetic/enumeration and symbolic sign-subset audit; rank proof remains human\", \"status\": \"PASS\", \"unique_negative_sign_cases\": {\"negative_label_choices\": 11, \"proper_nonempty_symbolic_zero_subsets\": 0, \"subset_types_checked\": 22528, \"subsets_per_choice\": 2048}}",
+          "stdout_sha256": "d139ecf06e623861347f1b83aca31f2c3f2e17caf1b83c7a36b059b6b8cb1cc4"
+        }
+      },
+      "name": "t17_genuine"
+    },
+    {
+      "checker_sha256": "f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3",
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_tampered/audit/referee_t17_check.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 851f4b927f48fde2f56534e6ad67d16628fbcd99ad0c85a260b108fcd86ed52b\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "c2f79bd74f9c03d4cbe046567dcfe6bd6403147b74c27a508ca1ce05299527f8",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_tampered/audit/referee_t17_check.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 851f4b927f48fde2f56534e6ad67d16628fbcd99ad0c85a260b108fcd86ed52b\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "c2f79bd74f9c03d4cbe046567dcfe6bd6403147b74c27a508ca1ce05299527f8",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_tampered/audit/referee_t17_check.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 851f4b927f48fde2f56534e6ad67d16628fbcd99ad0c85a260b108fcd86ed52b\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "c2f79bd74f9c03d4cbe046567dcfe6bd6403147b74c27a508ca1ce05299527f8",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+            "-O",
+            "-I",
+            "/private/tmp/kusner_t16_t17_y3bywjs9/t17_tampered/audit/referee_t17_check.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditFailure: proof hash mismatch: 851f4b927f48fde2f56534e6ad67d16628fbcd99ad0c85a260b108fcd86ed52b\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "c2f79bd74f9c03d4cbe046567dcfe6bd6403147b74c27a508ca1ce05299527f8",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "t17_tampered_proof"
+    }
+  ],
+  "checker_sha256": {
+    "t16": "12108c0614bf59e54403d7936821d0f23414927cc99fd1c4fe4a2b4008b66b69",
+    "t17": "f7352bb8e590e163fe8d5c3d8af8b6917a52114dfdbfb868957079cdc58b17c3"
+  },
+  "external_workdir": "/private/tmp/kusner_t16_t17_y3bywjs9",
+  "external_workdir_inside_project": false,
+  "modes": [
+    "normal",
+    "optimized",
+    "isolated",
+    "optimized_isolated"
+  ],
+  "process_count": 16,
+  "project_root": "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral",
+  "proof_sha256": {
+    "t16": "114d861529243e3eb96415e10f14920370b91f5085d1538fc0bb0f564e26d889",
+    "t17": "5332a2acc28a5407b3837c28fe4d007fae64d8031ad18a64e6b8177e32e856a3"
+  },
+  "python": "3.9.6 (default, Apr  7 2026, 02:38:40) \n[Clang 21.0.0 (clang-2100.0.123.102)]",
+  "runner_sha256": "3fae216743c8f7f24f91cbf7315df5b681e19c360e0357a294661343540a7149",
+  "status": "PASS",
+  "timestamp_utc": "2026-08-29T04:21:19.292289+00:00"
+}

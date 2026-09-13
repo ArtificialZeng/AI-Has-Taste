@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "number": 5,
+  "title": "Erdős #647：寻找第二个 \\(n>24\\) 的极小纪录点",
+  "state": "NEW_STRICT_BOUND",
+  "terminal_state": "NEW_STRICT_BOUND",
+  "original_prompt_complete": true,
+  "solution_percent": 28,
+  "confidence_percent": 97,
+  "summary": "A fail-closed exact replay excludes every candidate in 9,174,471,185,880,000,000 < n <= 9,180,628,549,092,000,000. Joined to the fixed prior reported frontier, this is a NEW_STRICT_BOUND through 9,180,628,549,092,000,000. It does not establish existence or global nonexistence; Erdős Problem 647 remains open.",
+  "evidence": [
+    "verification/FROZEN_CODE_MANIFEST.sha256: frozen verifier, C replay, tests, generator, input, pair table, and canonical certificate",
+    "certificates/finite_extension_certificate.json: canonical PASS output, SHA-256 19f8f31a1d037ddae404448ba13863f10607a23f24414b57628bf13b6ecc83c3",
+    "audit/GATE4_AUDIT.md: zero Assert nodes, fail-closed schemas, requested negative mutations, and four-mode test/full-replay matrix",
+    "verification/logs: four byte-identical decisive outputs and four byte-identical adversarial logs",
+    "audit/DEPENDENCY_AUDIT.md: fixed imported theorem surface and explicit exclusion of the later 55/41 split and open-residue axiom",
+    "audit/PROOF_AUDIT.md: quantifier, coverage, endpoint, divisor-bound, hard-factor, overflow, and limitation audit",
+    "literature/claim_ledger.md and literature/search_log.md: pre-search NOVELTY_LOCK and release-time second novelty pass through 2026-08-29",
+    "audit/CITATION_AUDIT.md: all seven citations checked against primary or official sources",
+    "audit/PDF_AUDIT.md: clean build, zero warning scan, embedded fonts, text check, and four-page visual audit",
+    "final source archive extraction: 55-file internal manifest PASS, frozen manifest PASS, outside-project python3 -O -I full replay byte-identical to the canonical certificate, and clean manuscript rebuild PASS"
+  ],
+  "exact_counts": {
+    "sieve_residues": 96,
+    "subprogressions": 50784,
+    "cells": 5078450784,
+    "cheap_exact_lower_bound_kills": 5078450763,
+    "hard_cells_factored_exactly": 21,
+    "unresolved_cells": 0
+  },
+  "release_artifacts": {
+    "pdf": "output/pdf/erdos647_strict_bound.pdf",
+    "pdf_sha256": "3064f945793bb825c945fd666b99a47ad596b638f4a23a01e8edd46019b6b98f",
+    "source_zip": "output/source/erdos647_strict_bound_source.zip",
+    "source_zip_sha256": "62374d07bd8f5fc1a974a91511a6a7243836f1cecf6a464ab9b53b61b9e39879",
+    "outer_manifest": "output/MANIFEST.sha256",
+    "inner_manifest_sha256": "fec1a52dde5dc2906040443d3ce28f3d6a61341561ad968795eb6414cf180c81"
+  },
+  "limitations": [
+    "The infinite tail beyond 9,180,628,549,092,000,000 is not controlled.",
+    "The all-candidate 2520-divisibility and 96-residue implication is imported from a fixed Lean 4 source and was not reproved locally.",
+    "The previously reported prefix through 9,174,471,185,880,000,000 was source/log audited but its full earlier scan was not rerun locally.",
+    "The novelty statement is limited to the recorded sources and queries through 2026-08-29."
+  ],
+  "proof_assistant": {
+    "used_for_new_replay": false,
+    "used_locally_in_this_project": false,
+    "imported_prerequisite_formalized_in_lean4": true
+  },
+  "gates": {
+    "gate_1_novelty_lock": "PASS",
+    "gate_2_symmetric_attack": "PASS",
+    "gate_3_exact_certificate": "PASS",
+    "gate_4_adversarial_verification": "PASS",
+    "gate_5_dependency_novelty_citation_audit": "PASS",
+    "gate_6_clean_build_pdf_package_audit": "PASS"
+  },
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "NEW_STRICT_BOUND",
+    "NEW_INFINITE_SUBCLASS",
+    "ALREADY_SOLVED_STOP",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "updated_utc": "2026-08-29T03:58:29Z"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "frozen_source_sha256": "286465529d9e1b65716790ac01e87b68f8a7593a5dadd3a415c247bc2f74c3df",
+  "all_attacks_rejected": true,
+  "attacks": {
+    "bad_source_hash": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 441, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 327, in main\n    raise ValueError(\"source SHA-256 mismatch\")\nValueError: source SHA-256 mismatch"
+    },
+    "drop_record": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 441, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 337, in main\n    raise ValueError(\"source record count mismatch\")\nValueError: source record count mismatch"
+    },
+    "alter_edge_list": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 441, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 344, in main\n    core = adjacency_from_edges(record.get(\"canonical_edge_list\"))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 308, in adjacency_from_edges\n    raise ValueError(\"invalid source edge\")\nValueError: invalid source edge"
+    },
+    "disable_exact_search": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 441, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 332, in main\n    raise ValueError(\"source domain or exact search is incomplete\")\nValueError: source domain or exact search is incomplete"
+    },
+    "flip_top_level_conclusion": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 441, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/linear_verify_bicyclic_core_family.py\", line 330, in main\n    raise ValueError(\"source does not contain the expected negative conclusion\")\nValueError: source does not contain the expected negative conclusion"
+    }
+  }
+}

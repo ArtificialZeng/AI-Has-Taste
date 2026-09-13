@@ -1,0 +1,2126 @@
+{
+  "arithmetic": "exact integers and F_2 bit operations only",
+  "domain_argument": {
+    "degree_cases": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "geng_semantics": "one graph6 representative of each unlabeled simple graph on 8 vertices; -dK -DK imposes minimum degree = maximum degree = K",
+    "maximum_simple_graph_degree": 7,
+    "ordinary_magic_constant_formula": "c=9k/2",
+    "representative_counts_by_degree": {
+      "0": 1,
+      "2": 3,
+      "4": 6,
+      "6": 1
+    },
+    "total_representatives": 11
+  },
+  "generator": {
+    "commands": [
+      {
+        "argv": [
+          "/opt/homebrew/bin/geng",
+          "-q",
+          "-d0",
+          "-D0",
+          "8"
+        ],
+        "degree": 0,
+        "record_count": 1,
+        "stdout_sha256": "f71639135eea1fe2f83b13f254b947d72289da4674658c2c4c39b96310b6c9d9"
+      },
+      {
+        "argv": [
+          "/opt/homebrew/bin/geng",
+          "-q",
+          "-d2",
+          "-D2",
+          "8"
+        ],
+        "degree": 2,
+        "record_count": 3,
+        "stdout_sha256": "20ce8cc524cda8206c51739881bd71b60c8475c5f0eee5ebf2e7ed3776f2a86f"
+      },
+      {
+        "argv": [
+          "/opt/homebrew/bin/geng",
+          "-q",
+          "-d4",
+          "-D4",
+          "8"
+        ],
+        "degree": 4,
+        "record_count": 6,
+        "stdout_sha256": "781b0a4dd2c4289669bc9ff37264cc85afccfa9aaddc9313ae8466fd1bb111e5"
+      },
+      {
+        "argv": [
+          "/opt/homebrew/bin/geng",
+          "-q",
+          "-d6",
+          "-D6",
+          "8"
+        ],
+        "degree": 6,
+        "record_count": 1,
+        "stdout_sha256": "a69069ddf9f7235299e9bbb051f992cb0b0de73168ca4c580408345fbe34f257"
+      }
+    ],
+    "executable_sha256": "ad2f68adf733dbed7cad543841cfa329740596ee5cd136f17a0a17f6e744f5ad",
+    "resolved_executable": "/opt/homebrew/Cellar/nauty/2.9.3/bin/geng"
+  },
+  "python_executable": "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+  "records": [
+    {
+      "adjacency_rows": [
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000"
+      ],
+      "class_id": "d0-1",
+      "degree": 0,
+      "edges_zero_based": [],
+      "first_labeling_by_vertex": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "first_neighborhood_sums": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "G?????",
+      "is_ordinary_distance_magic": true,
+      "magic_constant": 0,
+      "ordinary_magic_labeling_count": 40320,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [],
+        "input_rows": [
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1000000",
+          "0100000",
+          "0010000",
+          "0001000",
+          "0000100",
+          "0000010",
+          "0000001"
+        ],
+        "left_transform_rows": [
+          "1000000",
+          "0100000",
+          "0010000",
+          "0001000",
+          "0000100",
+          "0000010",
+          "0000001"
+        ],
+        "nullity": 7,
+        "pivot_columns_zero_based": [],
+        "rank": 0,
+        "rref_rows": [
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00001100",
+        "00001100",
+        "00000011",
+        "00000011",
+        "11000000",
+        "11000000",
+        "00110000",
+        "00110000"
+      ],
+      "class_id": "d2-1",
+      "degree": 2,
+      "edges_zero_based": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": [
+        1,
+        8,
+        2,
+        7,
+        3,
+        6,
+        4,
+        5
+      ],
+      "first_neighborhood_sums": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "G?r@`_",
+      "is_ordinary_distance_magic": true,
+      "magic_constant": 9,
+      "ordinary_magic_labeling_count": 384,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            4
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "xor",
+            0,
+            1
+          ],
+          [
+            "xor",
+            2,
+            1
+          ],
+          [
+            "xor",
+            3,
+            1
+          ],
+          [
+            "xor",
+            4,
+            1
+          ],
+          [
+            "xor",
+            0,
+            2
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            3,
+            2
+          ]
+        ],
+        "input_rows": [
+          "0011110",
+          "0011110",
+          "0011001",
+          "0011001",
+          "1111000",
+          "1111000",
+          "0000000"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1100000",
+          "0011000",
+          "0000110",
+          "1010101"
+        ],
+        "left_transform_rows": [
+          "0010100",
+          "0010000",
+          "0110000",
+          "0011000",
+          "1100000",
+          "0000110",
+          "0000001"
+        ],
+        "nullity": 4,
+        "pivot_columns_zero_based": [
+          0,
+          2,
+          4
+        ],
+        "rank": 3,
+        "rref_rows": [
+          "1100001",
+          "0011001",
+          "0000111",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00001100",
+        "00001010",
+        "00000101",
+        "00000011",
+        "11000000",
+        "10100000",
+        "01010000",
+        "00110000"
+      ],
+      "class_id": "d2-2",
+      "degree": 2,
+      "edges_zero_based": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "G?qa`_",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 9,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            4
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "swap",
+            1,
+            5
+          ],
+          [
+            "xor",
+            0,
+            1
+          ],
+          [
+            "xor",
+            6,
+            1
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            3,
+            2
+          ],
+          [
+            "xor",
+            4,
+            2
+          ],
+          [
+            "xor",
+            5,
+            2
+          ],
+          [
+            "swap",
+            3,
+            4
+          ],
+          [
+            "xor",
+            5,
+            3
+          ],
+          [
+            "xor",
+            1,
+            4
+          ],
+          [
+            "xor",
+            2,
+            4
+          ],
+          [
+            "xor",
+            5,
+            4
+          ]
+        ],
+        "input_rows": [
+          "0011110",
+          "0011101",
+          "0011010",
+          "0011001",
+          "1111000",
+          "1001000",
+          "0110000"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1111000",
+          "0110011"
+        ],
+        "left_transform_rows": [
+          "0000010",
+          "0001110",
+          "0001000",
+          "1010000",
+          "0011000",
+          "1111000",
+          "0000111"
+        ],
+        "nullity": 2,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "rank": 5,
+        "rref_rows": [
+          "1001000",
+          "0101001",
+          "0011001",
+          "0000100",
+          "0000011",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00010100",
+        "00001010",
+        "00000011",
+        "10000100",
+        "01000001",
+        "10010000",
+        "01100000",
+        "00101000"
+      ],
+      "class_id": "d2-3",
+      "degree": 2,
+      "edges_zero_based": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": false,
+      "graph6": "GCQR@O",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 9,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            3
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "swap",
+            1,
+            4
+          ],
+          [
+            "xor",
+            6,
+            1
+          ],
+          [
+            "xor",
+            0,
+            2
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            3,
+            2
+          ],
+          [
+            "xor",
+            4,
+            2
+          ],
+          [
+            "xor",
+            6,
+            2
+          ],
+          [
+            "xor",
+            5,
+            3
+          ],
+          [
+            "xor",
+            2,
+            4
+          ],
+          [
+            "xor",
+            6,
+            4
+          ],
+          [
+            "xor",
+            0,
+            5
+          ],
+          [
+            "xor",
+            1,
+            5
+          ],
+          [
+            "xor",
+            2,
+            5
+          ],
+          [
+            "xor",
+            3,
+            5
+          ],
+          [
+            "xor",
+            6,
+            5
+          ]
+        ],
+        "input_rows": [
+          "0011110",
+          "0010001",
+          "0010101",
+          "1010110",
+          "0110100",
+          "1011100",
+          "0100100"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1001010"
+        ],
+        "left_transform_rows": [
+          "1000010",
+          "1001110",
+          "1111010",
+          "0001010",
+          "0110000",
+          "1011010",
+          "1111111"
+        ],
+        "nullity": 1,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "rank": 6,
+        "rref_rows": [
+          "1000010",
+          "0100000",
+          "0010000",
+          "0001010",
+          "0000100",
+          "0000001",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00001111",
+        "00001111",
+        "00001111",
+        "00001111",
+        "11110000",
+        "11110000",
+        "11110000",
+        "11110000"
+      ],
+      "class_id": "d4-1",
+      "degree": 4,
+      "edges_zero_based": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": [
+        1,
+        2,
+        7,
+        8,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_neighborhood_sums": [
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "G?~vf_",
+      "is_ordinary_distance_magic": true,
+      "magic_constant": 18,
+      "ordinary_magic_labeling_count": 4608,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "xor",
+            1,
+            0
+          ],
+          [
+            "xor",
+            2,
+            0
+          ],
+          [
+            "xor",
+            3,
+            0
+          ]
+        ],
+        "input_rows": [
+          "1111111",
+          "1111111",
+          "1111111",
+          "1111111",
+          "0000000",
+          "0000000",
+          "0000000"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1100000",
+          "1010000",
+          "1001000",
+          "1000100",
+          "1000010",
+          "1000001"
+        ],
+        "left_transform_rows": [
+          "1000000",
+          "1100000",
+          "1010000",
+          "1001000",
+          "0000100",
+          "0000010",
+          "0000001"
+        ],
+        "nullity": 6,
+        "pivot_columns_zero_based": [
+          0
+        ],
+        "rank": 1,
+        "rref_rows": [
+          "1111111",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00011110",
+        "00001111",
+        "00001111",
+        "10000111",
+        "11100001",
+        "11110000",
+        "11110000",
+        "01111000"
+      ],
+      "class_id": "d4-2",
+      "degree": 4,
+      "edges_zero_based": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "GCzvbo",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 18,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            3
+          ],
+          [
+            "xor",
+            4,
+            0
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "xor",
+            6,
+            0
+          ],
+          [
+            "xor",
+            0,
+            1
+          ],
+          [
+            "xor",
+            2,
+            1
+          ],
+          [
+            "xor",
+            3,
+            1
+          ],
+          [
+            "xor",
+            4,
+            1
+          ],
+          [
+            "xor",
+            5,
+            1
+          ],
+          [
+            "xor",
+            6,
+            1
+          ],
+          [
+            "swap",
+            2,
+            3
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            4,
+            2
+          ]
+        ],
+        "input_rows": [
+          "0110011",
+          "0111011",
+          "0111011",
+          "1111111",
+          "1001100",
+          "1000100",
+          "1000100"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "0110000",
+          "1000100",
+          "0100010",
+          "0100001"
+        ],
+        "left_transform_rows": [
+          "0101000",
+          "1000000",
+          "1100000",
+          "0110000",
+          "1001100",
+          "0101010",
+          "0101001"
+        ],
+        "nullity": 4,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          3
+        ],
+        "rank": 3,
+        "rref_rows": [
+          "1000100",
+          "0110011",
+          "0001000",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00011110",
+        "00010111",
+        "00001111",
+        "11001010",
+        "10110001",
+        "11100001",
+        "11110000",
+        "01101100"
+      ],
+      "class_id": "d4-3",
+      "degree": 4,
+      "edges_zero_based": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "GEnfbW",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 18,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            3
+          ],
+          [
+            "xor",
+            4,
+            0
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "xor",
+            6,
+            0
+          ],
+          [
+            "xor",
+            2,
+            1
+          ],
+          [
+            "xor",
+            3,
+            1
+          ],
+          [
+            "xor",
+            4,
+            1
+          ],
+          [
+            "swap",
+            2,
+            5
+          ],
+          [
+            "xor",
+            0,
+            2
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            6,
+            2
+          ],
+          [
+            "swap",
+            3,
+            5
+          ],
+          [
+            "xor",
+            1,
+            3
+          ],
+          [
+            "xor",
+            6,
+            3
+          ],
+          [
+            "swap",
+            4,
+            5
+          ],
+          [
+            "xor",
+            0,
+            4
+          ],
+          [
+            "xor",
+            1,
+            4
+          ],
+          [
+            "xor",
+            2,
+            4
+          ],
+          [
+            "xor",
+            3,
+            4
+          ],
+          [
+            "xor",
+            6,
+            4
+          ]
+        ],
+        "input_rows": [
+          "0111001",
+          "0111101",
+          "0110001",
+          "1010011",
+          "1101110",
+          "1000110",
+          "1001110"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1000010",
+          "0010001"
+        ],
+        "left_transform_rows": [
+          "1100010",
+          "1111010",
+          "1101010",
+          "1010000",
+          "1100000",
+          "0101100",
+          "1010011"
+        ],
+        "nullity": 2,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "rank": 5,
+        "rref_rows": [
+          "1000010",
+          "0100000",
+          "0010001",
+          "0001000",
+          "0000100",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00011101",
+        "00010111",
+        "00001111",
+        "11001010",
+        "10110010",
+        "11100001",
+        "01111000",
+        "11100100"
+      ],
+      "class_id": "d4-4",
+      "degree": 4,
+      "edges_zero_based": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": false,
+      "graph6": "GEnbvG",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 18,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "xor",
+            1,
+            0
+          ],
+          [
+            "xor",
+            2,
+            0
+          ],
+          [
+            "xor",
+            6,
+            0
+          ],
+          [
+            "swap",
+            1,
+            4
+          ],
+          [
+            "xor",
+            0,
+            1
+          ],
+          [
+            "xor",
+            6,
+            1
+          ],
+          [
+            "swap",
+            2,
+            3
+          ],
+          [
+            "xor",
+            0,
+            2
+          ],
+          [
+            "xor",
+            6,
+            2
+          ],
+          [
+            "xor",
+            1,
+            3
+          ],
+          [
+            "xor",
+            6,
+            3
+          ],
+          [
+            "xor",
+            2,
+            4
+          ],
+          [
+            "xor",
+            6,
+            4
+          ],
+          [
+            "xor",
+            1,
+            5
+          ],
+          [
+            "xor",
+            2,
+            5
+          ],
+          [
+            "xor",
+            6,
+            5
+          ]
+        ],
+        "input_rows": [
+          "1111100",
+          "1111001",
+          "1110101",
+          "0010111",
+          "0101011",
+          "0000010",
+          "1001110"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "0001101"
+        ],
+        "left_transform_rows": [
+          "1001100",
+          "1010110",
+          "1101010",
+          "1010000",
+          "1100000",
+          "0000010",
+          "1111111"
+        ],
+        "nullity": 1,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "rank": 6,
+        "rref_rows": [
+          "1000000",
+          "0100000",
+          "0010000",
+          "0001001",
+          "0000101",
+          "0000010",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00101110",
+        "00011101",
+        "10001011",
+        "01000111",
+        "11100010",
+        "11010001",
+        "10111000",
+        "01110100"
+      ],
+      "class_id": "d4-5",
+      "degree": 4,
+      "edges_zero_based": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "GQzTrg",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 18,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            2
+          ],
+          [
+            "xor",
+            4,
+            0
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "xor",
+            6,
+            0
+          ],
+          [
+            "xor",
+            0,
+            1
+          ],
+          [
+            "xor",
+            2,
+            1
+          ],
+          [
+            "xor",
+            4,
+            1
+          ],
+          [
+            "xor",
+            5,
+            1
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            3,
+            2
+          ],
+          [
+            "xor",
+            5,
+            2
+          ],
+          [
+            "xor",
+            6,
+            2
+          ]
+        ],
+        "input_rows": [
+          "0101101",
+          "0110100",
+          "1111111",
+          "0011001",
+          "1001011",
+          "1010010",
+          "1100110"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1111000",
+          "0100100",
+          "1000010",
+          "1110001"
+        ],
+        "left_transform_rows": [
+          "0110000",
+          "1000000",
+          "1100000",
+          "1101000",
+          "0110100",
+          "1010010",
+          "1110001"
+        ],
+        "nullity": 4,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          2
+        ],
+        "rank": 3,
+        "rref_rows": [
+          "1001011",
+          "0101101",
+          "0011001",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00101110",
+        "00011011",
+        "10001101",
+        "01000111",
+        "11100010",
+        "10110001",
+        "11011000",
+        "01110100"
+      ],
+      "class_id": "d4-6",
+      "degree": 4,
+      "edges_zero_based": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": null,
+      "first_neighborhood_sums": null,
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "GQyurg",
+      "is_ordinary_distance_magic": false,
+      "magic_constant": 18,
+      "ordinary_magic_labeling_count": 0,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "swap",
+            0,
+            2
+          ],
+          [
+            "xor",
+            4,
+            0
+          ],
+          [
+            "xor",
+            5,
+            0
+          ],
+          [
+            "xor",
+            6,
+            0
+          ],
+          [
+            "xor",
+            0,
+            1
+          ],
+          [
+            "xor",
+            2,
+            1
+          ],
+          [
+            "xor",
+            4,
+            1
+          ],
+          [
+            "xor",
+            6,
+            1
+          ],
+          [
+            "xor",
+            1,
+            2
+          ],
+          [
+            "xor",
+            3,
+            2
+          ],
+          [
+            "xor",
+            5,
+            2
+          ],
+          [
+            "xor",
+            6,
+            2
+          ],
+          [
+            "swap",
+            3,
+            5
+          ],
+          [
+            "xor",
+            1,
+            3
+          ],
+          [
+            "xor",
+            6,
+            3
+          ],
+          [
+            "swap",
+            4,
+            5
+          ],
+          [
+            "xor",
+            0,
+            4
+          ],
+          [
+            "xor",
+            2,
+            4
+          ],
+          [
+            "xor",
+            6,
+            4
+          ]
+        ],
+        "input_rows": [
+          "0101101",
+          "0110111",
+          "1111100",
+          "0011001",
+          "1001011",
+          "1100010",
+          "1010110"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1111000",
+          "0110011"
+        ],
+        "left_transform_rows": [
+          "1011000",
+          "0110010",
+          "0001000",
+          "1110010",
+          "1101000",
+          "0110100",
+          "1001011"
+        ],
+        "nullity": 2,
+        "pivot_columns_zero_based": [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "rank": 5,
+        "rref_rows": [
+          "1001000",
+          "0101001",
+          "0011001",
+          "0000100",
+          "0000011",
+          "0000000",
+          "0000000"
+        ]
+      }
+    },
+    {
+      "adjacency_rows": [
+        "00111111",
+        "00111111",
+        "11001111",
+        "11001111",
+        "11110011",
+        "11110011",
+        "11111100",
+        "11111100"
+      ],
+      "class_id": "d6-1",
+      "degree": 6,
+      "edges_zero_based": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "first_labeling_by_vertex": [
+        1,
+        8,
+        2,
+        7,
+        3,
+        6,
+        4,
+        5
+      ],
+      "first_neighborhood_sums": [
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      "generating_F2_cubed_magic_by_source_criterion": true,
+      "graph6": "G]~v~w",
+      "is_ordinary_distance_magic": true,
+      "magic_constant": 27,
+      "ordinary_magic_labeling_count": 384,
+      "permutations_tested": 40320,
+      "reduced_adjacency_certificate": {
+        "elementary_row_operations": [
+          [
+            "xor",
+            1,
+            0
+          ],
+          [
+            "swap",
+            1,
+            2
+          ],
+          [
+            "xor",
+            3,
+            1
+          ],
+          [
+            "swap",
+            2,
+            4
+          ],
+          [
+            "xor",
+            5,
+            2
+          ]
+        ],
+        "input_rows": [
+          "1100001",
+          "1100001",
+          "0011001",
+          "0011001",
+          "0000111",
+          "0000111",
+          "0000000"
+        ],
+        "kernel_basis_quotient_coordinates": [
+          "1100000",
+          "0011000",
+          "0000110",
+          "1010101"
+        ],
+        "left_transform_rows": [
+          "1000000",
+          "0010000",
+          "0000100",
+          "0011000",
+          "1100000",
+          "0000110",
+          "0000001"
+        ],
+        "nullity": 4,
+        "pivot_columns_zero_based": [
+          0,
+          2,
+          4
+        ],
+        "rank": 3,
+        "rref_rows": [
+          "1100001",
+          "0011001",
+          "0000111",
+          "0000000",
+          "0000000",
+          "0000000",
+          "0000000"
+        ]
+      }
+    }
+  ],
+  "schema": "order8-regular-distance-magic-classification-v1",
+  "search": {
+    "criterion_failure_class_ids": [],
+    "label_permutations_per_representative": 40320,
+    "ordinary_distance_magic_class_count": 4,
+    "ordinary_distance_magic_class_ids": [
+      "d0-1",
+      "d2-1",
+      "d4-1",
+      "d6-1"
+    ],
+    "total_label_permutations_tested": 443520,
+    "universal_assertion_holds": true
+  },
+  "source_md_sha256": "59a054758e876b4f40c2ad469819dc925ef8f259f2d23eeafa4a82b8d2f04053"
+}

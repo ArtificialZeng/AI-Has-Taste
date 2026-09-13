@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Does the ordinary CYBE residual split into transitive-CYBE components?",
+      "premises": [
+        "R(a)=sum_{i,j}(r^(a_ij))^(j,i)",
+        "distinct direct-sum components commute"
+      ],
+      "method": "expand all three commutators and group by ordered support triple",
+      "status": "proved",
+      "evidence": [
+        "proof/main_proof.md",
+        "logs/verify_symbolic_expansion.log"
+      ],
+      "failure_reason": null,
+      "next_test": "adversarial line-by-line referee reconstruction"
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can the published n<=4 baseline and the n=5 endpoint be certified by finite canonical enumeration?",
+      "premises": [
+        "Proposition 3.14 classification",
+        "quotient by color relabeling only"
+      ],
+      "method": "enumerate canonical equality patterns and normalize every residual component",
+      "status": "proved",
+      "evidence": [
+        "certificates/transitive_arrays_n_le_5.json",
+        "logs/verify_certificate.log"
+      ],
+      "failure_reason": null,
+      "next_test": "corrupt certificate fields and demand fail-closed rejection"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Can a rational noncommutative two-color family in sl2 produce an n=5 counterexample?",
+      "premises": [
+        "[H,E]=2E, [H,F]=-2F, [E,F]=H",
+        "r+=H tensor H+4E tensor F",
+        "r-=-H tensor H-4F tensor E"
+      ],
+      "method": "integral tensor evaluation on every one- and two-color canonical n=5 type",
+      "status": "refuted",
+      "evidence": [
+        "experiments/exact_sl2_breaker.py",
+        "logs/exact_sl2_breaker.log"
+      ],
+      "failure_reason": "No residual survives 562625 exact component checks; P01 proves no Lie algebra can witness a counterexample.",
+      "next_test": "none: universal component identity makes the counterexample target structurally impossible"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Which invariances remove finite search redundancy?",
+      "premises": [
+        "color relabeling",
+        "simultaneous index permutations"
+      ],
+      "method": "canonical restricted-growth color labels; retain index permutations for a simpler completeness audit",
+      "status": "proved",
+      "evidence": [
+        "discovery/enumerate_transitive.py",
+        "certificates/transitive_arrays_n_le_5.json"
+      ],
+      "failure_reason": null,
+      "next_test": "index-permutation quotient is unnecessary for the theorem or certificate size"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can transpose conventions, repeated indices, or malformed certificates invalidate P01/P02?",
+      "premises": [
+        "no trust in discovery output",
+        "strict serialized schema"
+      ],
+      "method": "second symbolic expansion, repeated-index audit, and six corruption tests",
+      "status": "proved",
+      "evidence": [
+        "verifier/verify_symbolic_expansion.py",
+        "tests/test_verifier.py",
+        "logs/test_verifier.log"
+      ],
+      "failure_reason": null,
+      "next_test": "independent referee report and clean reproduction"
+    }
+  ]
+}

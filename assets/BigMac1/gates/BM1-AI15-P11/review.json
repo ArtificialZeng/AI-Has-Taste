@@ -1,0 +1,51 @@
+{
+  "package_id": "BM1-AI15-P11",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "Partial finite NEW_STRICT_BOUND: complete order-31 tree census; unrestricted tree independence-sequence unimodality conjecture remains open.",
+  "historical_gate_summary": "Historical submission gates reviewed; no fresh proof, citation or novelty audit in this packaging task.",
+  "pdf_sha256": "22426d70897c55f8acac4e315ba7d132194ef55aa97027a7b195b92150786f7b",
+  "evidence": [
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "L30: through order 11.  Gate 4 passed 24/24 checks. | L42: layer.  This is a date- and database-bounded novelty conclusion, not a claim | L45: The two-pass citation audit uses the formal Kadrawi--Levit journal record, | L48: build, zero-warning log audit, and five-page visual PDF inspection passed. | L51: build, and PDF text/byte comparisons all passed.",
+      "sha256": "cd3fafebef9914de7ba7970d6c380d35b1428bd33259eee4686756de9ed37bd9",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/01_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "NEW_STRICT_BOUND: all 120 fixed-modulus residues total exactly 40,330,829,030 unlabelled trees of order 31, matching A000055(31), with trees=generated and nonunimodal=0. Exactly 159 non-log-concave trees were serialized, independently rebuilt with Python integers, and confirmed unimodal. Production and no-project-import aggregators agree on sequence hash 92f46f1b00c219ad and parent hash d53b120ed8c90b52. Four fresh corruptions were each rejected with nonzero exit. Isolation rebuild, post-result novelty, formal-journal citation, LaTeX, PDF, manifest, and fresh-root release audits all passed. The proved theorem is only for n=31; the unrestricted conjecture remains open.",
+      "sha256": "fd72fc074d9c99a646a93b4766b325150188b11a4931cdfcad0c6a734d2958e4",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/02_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "L3: Status: **PASS** (2026-08-29, Asia/Shanghai). | L33: | 1 | PASS | title, author, abstract, displayed sequence, citations, date, page number | | L34: | 2 | PASS | definitions, rooted-tree recurrence, integer bounds, corrected Li--Ruskey attribution, theorem opening | | L35: | 3 | PASS | proof continuation, exact census, hashes, corollary, proposition | | L36: | 4 | PASS | certificate table, three principal SHA-256 values, commands, limitations, disclosure | | L37: | 5 | PASS | AI disclosure, nine references including the formal Kadrawi--Levit journal record, affiliation and email |",
+      "sha256": "a1ae18c2318d33b8755d6a42ddfa60a679c525023828eb5a9add81dee256197d",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/03_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "L11: ## Gate 4: exact-certificate matrix — 24/24 PASS | L15: | 1 | Scope frozen before the run | `certificates/order31_preflight.json`: order 31, modulus 120, workers 8, expected 40,330,829,030 | PASS | | L16: | 2 | Checker source frozen | SHA-256 `38fad81aaae42ab4fe4d764abd03482535b54483aa308b9b6ce924d8edd4db36` | PASS | | L17: | 3 | Checker binary frozen | SHA-256 `93a463c656872a4e977390fcae8110cbcd558570bf06a8b78e628dad7752c00e` | PASS | | L18: | 4 | nauty source archive frozen | SHA-256 `9fc4edae04f88a0f5883985be3b39cf7f898fd6cc96e96b9ee25452743cc1b5b` | PASS | | L19: | 5 | Runner and aggregator frozen | Six orchestration/source hashes recorded in the preflight and rechecked by the independent verifier | PASS | | L20: | 6 | Coefficient arithmetic fits `uint64_t` | \\(i_k\\leq\\binom{31}{k}\\leq300{,}540{,}195<2^{64}\\) | PASS | | L21: | 7 | Comparison products fit `uint64_t` | \\(300{,}540{,}195^2=90{,}324{,}408{,}810{,}638{,}025<2^{64}-1\\) | PASS |",
+      "sha256": "28461aa14cbe465a3ab260b528aec47080dbf89e79cd17d94e259ffe305f7c0c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/04_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "L33: | C17 | The summed checker CPU time is exactly 56,320.05 seconds. | statistic/original result | line 193 | | L38: | C22 | The isolated rebuild reproduced the order-23 residue fingerprints and passed the direct subset audit through order 11. | existence/original validation | lines 204--208 | | L65: Overall status: **PASS, 24/24**. | L77: | C07 | Verified — exact local theorem | `results/order31_aggregate.json` and the independent aggregate both return PASS with exact complete coverage and zero non-unimodal trees. | | L87: | C17 | Verified — exact | Both local aggregates independently sum checker CPU time to 56,320.05 seconds. Deviation: 0. | | L89: | C19 | Verified — exact attribution | The frozen `gentreeg.c` says that the wrapper contains `FreeTrees.c` written by Li and Ruskey, labels them the programmers, and identifies the algorithm as coming from their 1999 paper.  The manuscript makes only this algorithm/code-source attribution; it does not say that the 1999 paper describes the later wrapper.  The [official University of Victoria publication page](https://webhome.cs.uvic.ca/~ruskey/Publications/RootedFreeTree/RootedFreeTree.html) verifies the paper metadata. | | L92: | C22 | Verified — exact local certificate | `results/order31_rebuild_audit.txt` records the matching order-23 residue fields, all 436 direct-subset checks, and `REBUILD_AUDIT PASS`. | | L144: Terminal-revision result: **PASS, 5/5**.  Combined citation/claim result:",
+      "sha256": "4f205dcffad613f1f92e7c73829ff447660c30564eb137c5d15294434b637722",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/05_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "L3: ## NOVELTY_LOCK pass 1 — frozen claims | L19: ## NOVELTY_LOCK pass 2 — source audit | L44: ### Theorem frontier found in pass 2 | L76: ### Bounded conclusion of pass 2 | L80: the mathematical search and before asserting novelty for any local theorem or | L83: ## NOVELTY_LOCK pass 3 — post-result search | L86: had returned PASS.  The candidate claims were frozen before searching: | L125: This is a date- and database-bounded novelty conclusion, not a proof that no",
+      "sha256": "d23fb7f8ec765e246319029a2bec3bc8c97d9c196a6b47017ca451decf5b5c3a",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "audit/RELEASE_AUDIT.md",
+      "summary": "L5: Status: **PASS**. | L45:    construction, returned PASS with exactly 40,330,829,030 trees, | L56: Final output: `RELEASE_ROOT_AUDIT PASS`.",
+      "sha256": "4d2cb0ea1f9c73553d54f8ebfa63725ec248a313ab693dadfb641889fc7f3563",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P11/evidence/07_RELEASE_AUDIT.md"
+    }
+  ]
+}

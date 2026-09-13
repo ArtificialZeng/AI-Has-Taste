@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "number": 7,
+  "title": "Erdős–Szekeres #699：二项式系数的公共“大”素因子",
+  "state": "CERTIFIED_FINITE_RESULT",
+  "original_prompt_complete": true,
+  "solution_percent": 25,
+  "confidence_percent": 98,
+  "summary": "Terminal certified finite result: i=3 is verified for every 8<=n<=100000000. A fast fail-closed binder now fixes n_min, n_max, i, both 43631335536 counts, certificate/source/output hashes, and the C++ build command; its external-cwd normal/-O tamper matrix passes. Three bounded novelty passes, citation/LaTeX audits, a clean build, and five-page PDF inspection pass. The original conjecture remains open.",
+  "solution_percent_basis": "Conservative assessment of the original infinite problem: i=1,2 are proved and a large but finite i=3 prefix is certified; the unbounded i=3 tail and general i>=4 strata remain open.",
+  "confidence_percent_basis": "98% confidence applies only to the delimited finite theorem: an iff completeness reduction, two full exact implementations, direct-gcd overlap, frozen output, hash/count binder, and fail-closed tamper matrix support it. It is not confidence that the full conjecture is true.",
+  "evidence": [
+    "Original Erdős--Szekeres 1978 paper located (Conjecture 1)",
+    "Erdős Problems #699 current page/history/discussion/proof claims checked on 2026-08-29",
+    "Crossref/Cambridge DOI 10.1017/S1446788700011770 checked",
+    "GitHub issue #887 status and formalization distinction checked",
+    "Exact reductions L1--L6 recorded with endpoint audit",
+    "Discovery certificate certificates/i3_scan_100m.json: n=8..100000000, 43631335536 anchor-compatible indices, no witness; SHA-256 23c45255e41877ccde381d86564e991ced9b7e08b8559f48405f4a759b51f0ba",
+    "Strict independent verifier rebuilt the whole range and exited 0; SHA-256 9a1a430068f5813195a90b0f22937095008b50f84c66fb311ca64ff3dc2904ab",
+    "Direct arbitrary-precision gcd oracle checked 994009 pairs through n=2000",
+    "Malformed missing-field, duplicate-key, and non-null certificates were rejected fail-closed",
+    "Release binder equates certificate candidate_indices_tested and strict-output anchor_candidates at 43631335536 while pinning n=[8,100000000], i=3 and artifact hashes",
+    "Eight-case external-cwd binder matrix passed under Python normal and -O; runtime is ignored",
+    "Final novelty lock found no prior public complete all-row i=3 endpoint at 100000000 in the recorded searches; absolute priority is not claimed",
+    "Final converged main.log and main.blg contain no warnings or undefined references; all five rendered PDF pages passed visual inspection"
+  ],
+  "deliverables": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md"
+    ,"proof/proof_dag.md"
+    ,"proof/gap_ledger.md"
+    ,"routes/registry.json",
+    "code/scan_i3.cpp",
+    "code/verify_i3.cpp",
+    "code/brute_oracle.py",
+    "code/verify_release_binding.py",
+    "code/test_release_binding.py",
+    "certificates/i3_scan_100m.json",
+    "certificates/i3_verify_100m_strict.txt",
+    "certificates/i3_brute_2000.json",
+    "certificates/i3_release_binding.json",
+    "proof/i3_finite_theorem.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "audit/SUBMISSION_AUDIT.md",
+    "experiments/i3_100m_manifest.json",
+    "paper/main.tex",
+    "output/pdf/erdos699_i3_100m_certified.pdf",
+    "release/erdos699_i3_100m_source.zip",
+    "release/MANIFEST.sha256",
+    "FINAL_STATUS.md"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "NEW_STRICT_BOUND",
+    "NEW_INFINITE_SUBCLASS",
+    "ALREADY_SOLVED_STOP",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "updated_utc": "2026-08-29T05:35:55+00:00"
+}

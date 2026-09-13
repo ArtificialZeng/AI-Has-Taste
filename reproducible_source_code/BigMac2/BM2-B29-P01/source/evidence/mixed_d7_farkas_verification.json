@@ -1,0 +1,39 @@
+{
+  "format": "mixed-d7-farkas-independent-verification-v1",
+  "verdict": "pass",
+  "certificate": "evidence/mixed_d7_farkas.json",
+  "certificate_sha256": "5401a7b957284303b56c5e147fcc43464a9523627df49ca7eea629b3de849b26",
+  "parameters": {
+    "n": 20,
+    "k": 8,
+    "d": 7
+  },
+  "generator": "standalone reconstruction from problem.md; no import from the discovery generator or certificate builder",
+  "exact_system": {
+    "variables": 1813,
+    "compositions": 1771,
+    "equalities": 3205,
+    "packing_inequalities": 20,
+    "joint_transform_shape": [
+      1771,
+      1771
+    ],
+    "joint_transform_entries_generated": 3136441,
+    "joint_transform_int64_sha256": "6614fe6ea76e95c98f55d0a57dd28956c40d1bc90869c8f955f8f80736cb7ed0",
+    "joint_transform_max_abs": 11732745024
+  },
+  "certificate_checks": {
+    "common_dyadic_denominator": 77371252455336267181195264,
+    "nonzero_equality_multipliers": 1703,
+    "lower_multipliers_replayed": 1813,
+    "minimum_lower_numerator": 4503599627370496,
+    "all_lower_multipliers_nonnegative": true,
+    "rhs_numerator": -77295694591609668243554304,
+    "rhs_denominator": 77371252455336267181195264,
+    "rhs_strictly_negative": true,
+    "all_equality_row_indices_and_names_match": true,
+    "all_variable_coefficients_cancel_exactly": true,
+    "packing_multipliers_are_zero": true
+  },
+  "conclusion": "For every x>=0 satisfying E x=b, exact replay gives (E^T y)^T x>=0 but y^T b<0. Hence M_2(20,8,7) is empty."
+}

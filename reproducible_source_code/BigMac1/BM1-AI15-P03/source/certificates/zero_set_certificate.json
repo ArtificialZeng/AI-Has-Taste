@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "definition": {
+    "vertex_set": "Z/nZ",
+    "cyclic_offsets": [1, 3],
+    "diameter_offset_for_even_n": "n/2",
+    "colors": [0, 1, 2]
+  },
+  "sign_encoding": {
+    "+": 1,
+    "-": -1,
+    "color_rule": "c[0]=0; c[i+1]=c[i]+d[i] mod 3"
+  },
+  "odd_families": [
+    {
+      "n": "6*k+1",
+      "range": "k>=2",
+      "plus_count": "3*k+2",
+      "minus_count": "3*k-1"
+    },
+    {
+      "n": "6*k+3",
+      "range": "k>=1",
+      "plus_count": "3*k",
+      "minus_count": "3*k+3"
+    },
+    {
+      "n": "6*k+5",
+      "range": "k>=1",
+      "plus_count": "3*k+1",
+      "minus_count": "3*k+4"
+    }
+  ],
+  "even_one_flip": {
+    "rule": "d=a followed by a copy of a with its first sign flipped",
+    "extension_block": "++-++-++-",
+    "extension_length": 9,
+    "half_word_seeds": {
+      "3": "++-",
+      "5": "++-+-",
+      "7": "++-+-+-",
+      "9": "++-++--+-",
+      "11": "++-++-+--+-",
+      "12": "++-++-++-++-",
+      "13": "++-++-+-+--+-",
+      "14": "++-++-++-++-+-",
+      "15": "++-++-++--+--+-",
+      "16": "++-++-++-++-+-+-",
+      "17": "++-++-++-+--+--+-",
+      "18": "++-++-++-++-++--+-",
+      "19": "++-++-++-+-+--+--+-",
+      "20": "++-++-++-++-++-+--+-"
+    },
+    "large_half_rule": "for m>=12, take r in [12,20] congruent to m mod 9 and prefix the r-seed by ((++-) repeated 3*((m-r)/9) times)"
+  },
+  "special_difference_words": {
+    "20": "++-++-++-++-++-++-+-"
+  },
+  "claimed_zeros": [7, 8, 12, 16]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "outcome": "proved",
+  "original_problem_resolved": true,
+  "source_status_verified": true,
+  "independent_audit_passed": true,
+  "no_fatal_or_major_gaps": true,
+  "claimed_endpoint": "h(31862)=179,\\quad\\text{and hence }\\exists n\\in\\mathbb{Z}_{\\geq1}\\;h(n)=179.",
+  "claimed_endpoint_plaintext": "At n = 31862, the reduced numerator U_n of the harmonic number satisfies gcd(U_n, n!) = 179; therefore a positive-integer witness exists.",
+  "resolution_evidence": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "decision/candidate_resolution.json",
+    "proof/candidate_proof.md",
+    "proof/proof_dag.md",
+    "proof/gap_ledger.md",
+    "evidence/witness-31862.json",
+    "audit/PROOF_AUDIT.md",
+    "audit/resolution-audit-result-02.json",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "literature/novelty_search_2026-09-04.md",
+    "literature/novelty_lock.json"
+  ],
+  "verification_evidence": [
+    "verification/verify_lcm_sum.py",
+    "verification/verify_recurrence.py",
+    "audit/verify_independent_no_import.py",
+    "audit/referee_verify_no_import.py",
+    "audit/referee_fail_closed.py",
+    "evidence/fail-closed-repair-02.json",
+    "audit/PROOF_AUDIT.md",
+    "audit/resolution-audit-result-02.json"
+  ],
+  "source_status_boundary_utc": "2026-09-04T07:28:10Z",
+  "notes": [
+    "The claimed endpoint fields exactly match decision/candidate_resolution.json and resolve only the frozen existential proposition.",
+    "Independent audit 02 is accepted and records no fatal, major, or gate-only gap.",
+    "Four exact baseline algorithms were rerun during release preparation and all returned h(31862)=179.",
+    "The 34-class fail-closed suite was rerun across all four verifiers; every damaged input was rejected.",
+    "The dated prior-art conclusion is bounded to the sources and queries recorded in literature/novelty_search_2026-09-04.md and is not an absolute novelty claim."
+  ]
+}

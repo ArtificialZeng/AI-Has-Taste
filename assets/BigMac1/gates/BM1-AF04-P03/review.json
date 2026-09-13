@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF04-P03",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "精确最大值 M=12（372个展开块）记录已证；当前 research_state.json 仍残留 queued，采用较新 TASK_STATUS 与 FINAL_STATUS。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "1f72dfdde2bf58cc3c77795510056a563d35816fa152ab722211c4c09db37426",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; The exact maximum is M=12. The positive certificate has 12 base blocks, 372 developed blocks, and 3720 distinct triples. The negative certificate covers all 162 multiplier branches and all 4761 block variables; its fail-closed verifier returns VERIFIED_GLOBAL_TARGET13_UNSAT.",
+      "sha256": "6d4473df867b21c5014a6ed30d1f0675e7a868a064238e40a93df50ac11d1cb3",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nAudit date: 2026-08-30. Mode: web-backed verification of literature claims\nand definition-level local verification of the new finite claims. Pass 1 was\nfrozen in `audit/CITATION_CLAIMS.md` before this Pass 2 audit; no claim was\nadded, removed, or silently weakened during verification.\n\n## Bibliographic record audit\n\nThe three journal records were checked by title, authors, year, venue,\npagination, and DOI using DOI/publisher metadata and independent indexes. The\nBibTeX records were originally fetched by DOI content negotiation. Only TeX\nnormalization (math delimiters, page da",
+      "sha256": "1782f7b94618b30cc4290a9b0969a42106ce11a241498a21409c35bcb996dbcf",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nFinal status: **passed**, 2026-08-30.\n\n## Positive endpoint\n\n- `certificates/packing12.json` has SHA-256\n  `23dc758771e6dce03b943a48aab50077a5ee00c36e24cde02f74aa2468f8cf45`.\n- The no-import verifier reconstructs all 31 translations and accepts exactly\n  372 developed blocks and 3,720 distinct triples.\n- `tests/test_positive_verifier.py` passes and rejects malformed schemas,\n  duplicate orbits, range/sorting errors, Boolean integers, and a deliberate\n  triple collision.\n\n## Structural reduction\n\n- Translation canonicalization from the definitions gives exactly 145\n  triple resou",
+      "sha256": "5e97e4f2d1b9d3c642a0c9401cb7b3766a6a39f6a100d1f105c2044ba03be021",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-5-page visual/build/metadata gate PASS; current SHA-256 1f72dfdde2bf58cc3c77795510056a563d35816fa152ab722211c4c09db37426 agrees with final record. # PDF audit\n\nStatus: **passed**, 2026-08-30.\n\nFinal artifact:\n`output/pdf/cyclic-315-packing-M12.pdf`\n\nSHA-256:\n`1f72dfdde2bf58cc3c77795510056a563d35816fa152ab722211c4c09db37426`\n\n## Build checks\n\n- `latexmk -pdf -interaction=nonstopmode -halt-on-err",
+      "sha256": "bf8fdc173692f6ba8797e16f414a43c9ee4b06ef9941a7709187fba682510934",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "精确最大值 M=12（372个展开块）记录已证；当前 research_state.json 仍残留 queued，采用较新 TASK_STATUS 与 FINAL_STATUS。",
+      "sha256": "4321c584b078bae026fdf787b016a45e30cde8183d8dbb67ce99cd8de1f6e663",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "  title/abstract searches were used to screen later work, with a second pass\nreopened for a second novelty search after a candidate exact value is certified.\n## Gate 2 post-result pass",
+      "sha256": "087cc28c63b8a1b088e503e5e78443a8199127720e4eb1f1d4cfc61433083e22",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C09 | No checked primary paper, arXiv record, professional-database record, or public code settles \\(\\Phi(31,5,2)\\), gives the local twelve-block packing, or proves target 13 impossible. | bounded novelty claim | not found in both Gate 1 and the post-result Gate 2 pass | searches in TheoremDB, arXiv API, Crossref, zbMATH Open, OpenAlex, GitHub/Zenodo recorded in log | query log, including Gate 2 | 90% within the documented scope | Supports provisional novelty only; unindexed or unpublished prior work is not excluded. |\nsecond novelty pass and citation-by-citation audit.\nThe second novelty pass is complete. C14 is a strict local theorem; its",
+      "sha256": "d3299fec51c615d8b24ff1b009c3b2d79e11af4d46025bf3ce7e35a8a043cfb5",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/07_claim_ledger.md"
+    },
+    {
+      "original_project_relative_path": "literature/NOVELTY_LOCK.md",
+      "summary": "- Novelty is provisional until a post-result second pass.\n## Gate 2 — post-result search, 2026-08-30",
+      "sha256": "66e6b917ad7023b152689804a64e0a0c8fd343ccfd49e39a49c31bdf6ba879ba",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P03/evidence/08_NOVELTY_LOCK.md"
+    }
+  ]
+}

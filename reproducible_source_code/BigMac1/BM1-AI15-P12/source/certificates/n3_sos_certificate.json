@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "theorem": "For every real 3 by 3 matrix T of rank at most 2, per([[T,T],[T,T]]) <= 20*per(T)^2.",
+  "normal_forms": [
+    {
+      "name": "three_distinct_nonzero_row_lines",
+      "row_projective_parameters": [-1, 0, 1],
+      "entries": "A_ij = c_j + a_i*d_j",
+      "claimed_gap": "16*((d2*c3-c2*d3)^2*(d1^2+3*c1^2)+(d1*c3-c1*d3)^2*(d2^2+3*c2^2)+(d1*c2-c1*d2)^2*(d3^2+3*c3^2))"
+    },
+    {
+      "name": "one_repeated_nonzero_row_line",
+      "row_projective_parameters": [0, 0, 1],
+      "entries": "A_ij = c_j + a_i*d_j",
+      "claimed_gap": "16*((d1*c2-c1*d2)^2*c3^2+(d1*c3-c1*d3)^2*c2^2+(d2*c3-c2*d3)^2*c1^2)"
+    }
+  ],
+  "permanent_convention": "sum over all permutations, with no signs",
+  "block_convention": "B_ij = A_(i mod 3),(j mod 3) for 0-based indices",
+  "coefficient": 20
+}

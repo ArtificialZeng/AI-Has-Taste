@@ -1,0 +1,9 @@
+valid_normal_external_cwd: rc=0 expected=0 output=BOUND VERIFIED erdos699 i=3 n=[8,100000000] candidate_indices_tested=43631335536 anchor_candidates=43631335536 runtime_ignored=true
+valid_python_O_external_cwd: rc=0 expected=0 output=BOUND VERIFIED erdos699 i=3 n=[8,100000000] candidate_indices_tested=43631335536 anchor_candidates=43631335536 runtime_ignored=true
+changed_endpoint: rc=2 expected=2 output=binding verification failed closed: certificate n_max mismatch: expected 100000000, got 99999999
+bad_hash: rc=2 expected=2 output=binding verification failed closed: source SHA-256 mismatch: expected 5365f052cd14ae35efa5e7efed5008584fb4ab523f8f1a6c51058a14a2d9bcd5, got 428933f5a38396b8feab5b5e737e8bbab19804dc0ffdc3840620a9225e407fe3
+changed_count_false_null: rc=2 expected=2 output=binding verification failed closed: certificate candidate_indices_tested mismatch: expected 43631335536, got 43631335535
+truncated_output: rc=2 expected=2 output=binding verification failed closed: strict output is malformed, duplicated, or truncated
+duplicate_certificate_field: rc=2 expected=2 output=binding verification failed closed: invalid or non-unique JSON /private/var/folders/kh/3l44w5_56q36j9p6cyg1fgy00000gq/T/erdos699-duplicate_certificate_field-4frjrvc7/project-copy/certificates/i3_scan_100m.json: duplicate JSON field: i
+duplicate_binding_field: rc=2 expected=2 output=binding verification failed closed: invalid or non-unique JSON /private/var/folders/kh/3l44w5_56q36j9p6cyg1fgy00000gq/T/erdos699-duplicate_binding_field-u7ysmbyf/binding.json: duplicate JSON field: i
+TAMPER MATRIX PASSED cases=8 external_cwd=true python_normal=true python_O=true

@@ -1,0 +1,51 @@
+{
+  "package_id": "BM1-AF03-P01",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "原题指定 (k,d)=(4,3) 族已记录为完整证明；不是全部 (k,d) 的母猜想。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "f5ffc1c942f5a246278a40c1e8b81739704f369effe42f0339b3793e36cc5f1c",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; A self-contained sharp proof establishes delta_3(F)<=1 for every intersecting 4-uniform family on n>=9; the original n=9,10 endpoints also have independently checked exact LRAT UNSAT certificates, and n=8 has an exact counterexample with delta_3=2.",
+      "sha256": "e373dc8f8081dfb1a02732814ba5f230c91f8f79acf4245cc6e7e4eea2d77239",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nSearch date: 2026-08-29.  Status: **PASS**.  Each of the manuscript's three\ncitations was assigned to a separate isolated audit and checked against\npublisher/DOI metadata and the cited theorem text.\n\n## `ERD_S_1961`\n\n- Verified against the Oxford University Press record, DOI\n  <https://doi.org/10.1093/qmath/12.1.313>, Crossref, and the archived paper.\n- Metadata: P. Erdős, Chao Ko, and R. Rado, *Intersection Theorems for Systems\n  of Finite Sets*, *The Quarterly Journal of Mathematics* 12(1) (1961),\n  313--320.\n- The current entry is an exact field-for-field match to the DOI\n",
+      "sha256": "9326849c1bb67f0c1f18be75ef03f9ad37acb3cb3a6294e4cbba7e503c122599",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof and certificate audit\n\nAudit date: 2026-08-29.  Overall mathematical status: **PASS**.  The final\npost-repair certificate-wrapper review is recorded below.\n\n## Blind mathematical referee\n\nAn isolated referee reconstructed the argument from the formal definitions\nwithout using the discovery transcript.  The verdict was PASS with zero fatal\nand zero major proof gaps.  In particular, the referee checked:\n\n- the exterior-triple identity against the fixed edge;\n- the choice of distinct labels for two disjoint exterior triples when\n  \\(n\\ge10\\);\n- the multiset-complement argument proving \\(e",
+      "sha256": "5bc86d8bb6a23458aac812c59b16c19f5ecb96feb85976b0c7319adc297def4d",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-4-page visual/build/metadata gate PASS; current SHA-256 f5ffc1c942f5a246278a40c1e8b81739704f369effe42f0339b3793e36cc5f1c agrees with final record. # PDF and LaTeX audit\n\nStatus: **PASS**.  Final audit date: 2026-08-29.\n\n## Clean build\n\nThe PDF artifact operation was marked once before creation, as required by the\nPDF workflow.  The release candidate was then built from an entirely fresh\noutput ",
+      "sha256": "696f09b0cd2d669f79136237f16dca2334ba5cc6faf3087cd3bfefaa9efc0a0b",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "原题指定 (k,d)=(4,3) 族已记录为完整证明；不是全部 (k,d) 的母猜想。",
+      "sha256": "9c10e7631acbc48f4bd3103ef39dbea526adb11af1b21f50f6b761a7a7580fc1",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "## 2026-08-29 Gate 1 pass 2: primary-source verification\n## 2026-08-29 Gate 1 pass 2: later literature and novelty\n## 2026-08-29 Gate 1 pass 2: public code and certificate search\n## 2026-08-29 Gate 1 second novelty pass\nAn isolated second search repeated and broadened the first pass after the\ncertificate for these instances.  The result is a bounded negative PASS, not\nThe second pass rechecked Huang--Zhang's Theorem 1.1 and Conjecture 4.1,",
+      "sha256": "5d072a778bfb0362aab7f91ec515e86a0f2986509deea40a636a16e19f503901",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C06 | No later primary-source paper publicly resolves the two endpoints \\(n=9,10\\) or the full \\((4,3)\\) family as of 2026-08-29. | two bounded negative passes completed; no prior resolution found | arXiv/full-text forward search; Crossref; OpenAlex; Semantic Scholar; publisher/author pages; exact web queries | `search_log.md`, Gate 1 and second-pass entries | 95% (necessarily non-absolute) | Exact research and qualified release wording permitted; no categorical priority claim. |\n| C07 | No public code/certificate already establishes the proposed \\(n=9,10\\) SAT instances. | two bounded negative passes completed; no public artifact found | arXiv source/ancillary; Crossref relations; GitHub code/repository/issues; GitLab projects; Zenodo; author page | `search_log.md`, public-code audit and second pass | 95% (necessarily non-absolute) | New certificates may be released with a bounded-search qualification. |",
+      "sha256": "8fa36ebe9225866507d754de3dfbb74b9c98bddcf194ec8ebc515c7e4d42066f",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P01/evidence/07_claim_ledger.md"
+    }
+  ]
+}

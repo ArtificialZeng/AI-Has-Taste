@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "number": 10,
+  "title": "Lotka–Volterra tree-systems：首个未验证阶 \\(n=9\\)",
+  "state": "PROVED",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 98,
+  "summary": "The generic van der Kamp tree-system conjecture is proved for every n>=2, hence for n=9. An independent exact certificate exhausts all unlabeled trees through order nine and a fail-closed verifier rejects six corrupted inputs.",
+  "evidence": [
+    "literature/NOVELTY_LOCK.md",
+    "literature/NOVELTY_PASS2.md",
+    "problem/formal_statement.md",
+    "proof/main_proof.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "certificates/trees_n2_n9.json",
+    "code/verifier/verify_tree_certificate.py",
+    "tests/test_verifier_rejects.py",
+    "release/manifest.json"
+  ],
+  "deliverables": [
+    "output/pdf/generic_lv_tree_systems_determine_trees.pdf",
+    "output/source/generic_lv_tree_systems_source.zip",
+    "paper/main.tex",
+    "paper/references.bib",
+    "certificates/trees_n2_n9.json",
+    "release/manifest.json"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "confidence_basis": "Serial builder, breaker, certifier, and definition-first referee audits passed. The no-import standard-library verifier exhaustively reconstructed 1,1,2,3,6,11,23,47 unlabeled trees and recomputed two exact invariants; six destructive mutations were rejected. A second novelty search found no antecedent, all twelve frozen citation claims passed, LaTeX built cleanly, and all six PDF pages were visually inspected.",
+  "updated_utc": "2026-08-29T12:23:55+00:00"
+}

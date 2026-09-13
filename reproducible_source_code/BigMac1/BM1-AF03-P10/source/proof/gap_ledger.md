@@ -1,0 +1,13 @@
+# Gap ledger
+
+| ID | Proposition/location | Missing step | Severity | Test/repair | Status |
+|---|---|---|---|---|---|
+| G01 | Formal statement / class equivalence | Source prose does not give a standalone scheme-theoretic definition of parameter-class equivalence. | local | Use the generic rational-function-field formulation and prove only the necessary implication from any allowed conjugacy. | resolved in `problem/formal_statement.md` and proof §5 |
+| G02 | Lemma 2 / completeness of linear DPs | The source names the edge DPs but a new proof must exclude hidden generic supports of size \(\ge3\). | fatal | Apply C2/C3 over the algebraically independent parameter field; attack every division and zero case. | resolved in `proof/main_proof.md` §2 |
+| G03 | Lemma 2 / disconnected support | C2 could conceivably hold through repeated matrix entries forced by the tree. | major | Express every off-diagonal entry by the first neighbor in its column and use distinct directed-edge parameters. | resolved by L01--L02 |
+| G04 | Cone normalization | Edge-coefficient rescalings might have incompatible products. | major | Root the graph; recursive scalings are consistent exactly because \(T\) is acyclic. | resolved by L05 |
+| G05 | Triangle reconstruction | Degree-one edge forms are indistinguishable from leaf coordinate forms. | major | Show swapping those roles on a pendant triple only creates the same unlabeled leaf attachment; give explicit reconstruction. | resolved by L07 |
+| G06 | Parameter degeneracies | Vanishing coefficients or extra DPs could invalidate the finite projective set. | fatal | Work at the generic point; identify the proper algebraic boundary; cite v4's special-subclass exclusion. | resolved for stated endpoint |
+| G07 | Independent exact computation | Discovery enumeration could omit a tree or trust cached classifications. | major | No-import verifier enumerates all Prüfer words and recomputes AHU codes and both invariants. | resolved; verifier hash recorded in audit log |
+| G08 | Novelty after the new general theorem | Gate-1 search preceded proof discovery and cannot certify novelty of the exact new theorem wording. | publication blocker | Run a second primary-source and graph/matroid literature search before retaining a paper. | resolved by `literature/NOVELTY_PASS2.md`; bounded search found no antecedent |
+| G09 | Citation and manuscript audit | Borrowed incidence-matroid facts and source definitions require line-by-line citation and artifact audit. | publication blocker | Verify primary citations, run LaTeX audit, clean build, and page inspection. | resolved by `audit/CITATION_AUDIT.md`, `audit/PDF_AUDIT.md`, and clean build |

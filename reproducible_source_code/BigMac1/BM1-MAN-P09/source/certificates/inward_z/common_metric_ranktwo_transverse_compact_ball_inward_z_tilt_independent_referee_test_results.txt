@@ -1,0 +1,71 @@
+Independent inward-Z referee test record
+Date: 2026-08-25 Asia/Shanghai
+Workspace interpreter: .venv/bin/python
+Python: 3.11.15
+SymPy: 1.14.0
+uv pip check: 19 packages compatible
+
+FINAL NORMAL RUN
+Command:
+  PYTHONUNBUFFERED=1 PYTHONPYCACHEPREFIX=<fresh-temp> .venv/bin/python tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_tilt_independent_referee.py
+Exit status: 0
+Output:
+  PASS frozen source and analytic dependency hashes
+  PASS independent signed-z/Q/Q^2 reconstruction and cyclic Gram identity
+  PASS direct quotient/core counts 32/32/1581 and bidegree (7,4)
+  PASS 80 controls: three closure zeros, 77 strict, identical R* and W
+  PASS continuum lambda/Z/danger/rank-two legality for both z signs
+  PASS independent 72/72 exact legal raw-gate nodes
+  SOURCE_HASH 6ee91b88c1835f44183a8da833239c817cdd6d079d73cd5b9e9c42428661f6ca
+  QUOTIENT_COUNTS 32 32 1581
+  BERNSTEIN_DEGREE (7, 9)
+  BERNSTEIN_CONTROLS 80 3 77
+  ZERO_CONTROLS [(0, 0), (0, 1), (1, 0)]
+  STRICT_RESERVE 10071067674014002577317165966399410637259618083/128416777961472000000000000000000000000000000
+  Z_LOWER 9984760329129934873/15857127000000000000
+  Z_UPPER_STRICT 108/169
+  GRID_MIN_36GAMMA 182249907370437372958214245586018359494715888079/16726464040000000000000000000000000000000000
+  REFEREE_SHA256 e6cb94c9ecd322190e959ede9ce19131e57a6964dfb29ccd88f76c076abff3c0
+  RESULT independently audited inward-Z partial theorem
+  SCOPE full compact ball/common metric/fixed lens remain open
+
+FINAL FAIL-CLOSED TESTS
+
+1. Optimized Python
+Command:
+  .venv/bin/python -O tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_tilt_independent_referee.py
+Exit status: 1 (expected nonzero)
+Decisive error:
+  RuntimeError: fail closed: optimized Python disables verification
+
+2. Bad frozen dependency hash
+Command:
+  INWARD_Z_REFEREE_BAD_DEPENDENCY=1 .venv/bin/python tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_tilt_independent_referee.py
+Exit status: 1 (expected nonzero)
+Decisive error:
+  RuntimeError: independent verification failed: dependency hash mismatch tmp/research/compact_ball_inward_z_tilt_discovery.py
+
+3. Deleted exact core term
+Command:
+  INWARD_Z_REFEREE_DROP_TERM=1 PYTHONUNBUFFERED=1 .venv/bin/python tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_tilt_independent_referee.py
+Exit status: 1 (expected nonzero)
+Decisive error:
+  RuntimeError: independent verification failed: 32 direct core coefficients
+
+4. External-cache syntax compilation
+Command:
+  PYTHONPYCACHEPREFIX=<fresh-temp> .venv/bin/python -m py_compile tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_tilt_independent_referee.py
+Exit status: 0
+
+IMPLEMENTATION-FAILURE RECORD RETAINED
+
+The first pre-freeze normal implementation run reached and passed frozen
+hashes, signed-z/Q/Q^2 reconstruction, 32/32/1581 counts, and all 80
+Bernstein controls, then stopped at the referee's syntactic comparison of
+two un-cancelled SymPy rational derivatives with 1 and 6/5. Direct exact
+cancel/factor reduction proved those derivatives equal 1 and 6/5. The final
+code uses that exact reduced comparison and additionally records the danger
+reserve as 10801*S*(13*X-3)/3575. This was a verifier implementation defect,
+not a failed mathematical identity, negative gate, changed certificate, or
+weakened theorem. The final code was replayed from the beginning after the
+repair and passed all normal and adversarial gates above.

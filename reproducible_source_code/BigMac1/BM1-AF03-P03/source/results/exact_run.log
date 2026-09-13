@@ -1,0 +1,45 @@
+Python 3.14.7
+Singular for arm64-Darwin version 4.4.1 (44105, 64 bit) Nov 11 2025 16:12:34
+VERIFIED n=3 dimension=24 candidate_rank=24 input_sha256=5d53309ec34ce19a95e505009fc572bf9bba6e53fb7f42c399e53d4da11448f1 verifier_sha256=a5653c26e9aa961360b9d71e04ef0da3751dd2aca09c83fc42c1ced75afbaeaa
+VERIFIED n=4 dimension=192 candidate_rank=192 input_sha256=6e31c3a7b2888037c9a101255e7962ca43b877ce4c8a6bf1e8559af1726b9541 verifier_sha256=a5653c26e9aa961360b9d71e04ef0da3751dd2aca09c83fc42c1ced75afbaeaa
+VERIFIED n=5 dimension=1920 candidate_rank=1920 input_sha256=09700e99a7add186ea0f04877b33f041bcd9e01c8633cf83aa15131f596bf25f verifier_sha256=a5653c26e9aa961360b9d71e04ef0da3751dd2aca09c83fc42c1ced75afbaeaa
+tamper tests: 5 run, all passed
+n3 input sha256: 5d53309ec34ce19a95e505009fc572bf9bba6e53fb7f42c399e53d4da11448f1
+n4 input sha256: 6e31c3a7b2888037c9a101255e7962ca43b877ce4c8a6bf1e8559af1726b9541
+n5 input sha256: 09700e99a7add186ea0f04877b33f041bcd9e01c8633cf83aa15131f596bf25f
+verifier sha256: a5653c26e9aa961360b9d71e04ef0da3751dd2aca09c83fc42c1ced75afbaeaa
+candidate generator sha256: 03610e9c8799f13bd9aebee865bc2896cbb5d37997617c1054d092671abaf540
+polarized power-sum discovery sha256: 82de178ab8b8aa01f993f65d476428c3c4670b9d30ae2d38bd9250e8bb81c3c5
+
+Command: sh experiments/run_exact.sh
+Exit status: 0
+
+Independent term-order robustness checks (exact QQ):
+lp: n=5 candidates=1920 vdim=1920 std-size=241 candidate-rank=1920 unchanged=1113 vanished=0
+Dp: n=5 candidates=1920 vdim=1920 std-size=241 candidate-rank=1920 unchanged=1113 vanished=0
+
+Independent Artin--exterior block audit (exact Q, python-flint 0.9.0):
+blocks=396 ambient_dimension=122880 invariant_dimension=1024
+quotient_dimension=1920 candidate_count=1920
+all_blocks_span=true all_blocks_independent=true
+artifact sha256: 1b94fd44826a6726f993f4debadf293692f00d68af0658b1cfb4a89a84d85951
+internal canonical digest: 796cce75b1ab19e3471abfefc74824d08f65cb5e48eea08cfe32c4409ed83dda
+builder tests: PASS 9
+
+Frozen independent no-import breaker (exact Q, Singular 4.4.1):
+n3 record sha256: dbcbf9458739a8f38b83f7afbed90978cbbe170f52c65688105e3a23781b0364
+n4 record sha256: c67cfeb22e094235ccddaa37da2263bc27b2efc14262818b5e7e892db0c47d87
+n5 blocks=396 candidate_blocks=95 max_ambient_dimension=2200
+n5 candidate_count_sum=1920 quotient_dimension_sum=1920
+n5 all exact block rank conditions: PASS
+n5 record sha256: a886f61b0a487a72c1b826f5044839ec970e79fe803a82718d9ac2edd3b6a659
+verifier sha256: 67db9be8adf3ae88d92cab1f5f08df304984a9b220d0050ea2bed5602c794cfa
+configuration sha256: 5b6349749cd3128f38a5158f5b5e088ef57585ad2a6430d745ab58daca6e604f
+negative-test sha256: 9277207937b2564a6542d140e6294c5deeb24713f136f5d946ba0454e813a032
+source PDF sha256: 37f6b097ff430f9ea498ae2aaf70013e105d0b6221d642ac147103babe8768ca
+fail-closed malformed configuration tests: PASS 7
+recorded n5 elapsed_seconds: 7637.684116363525
+
+Independent-breaker commands:
+python independent/verify_exact.py independent/certificate/certificate.json --case 5 --output independent/certificate/exact_n5.json
+python3 independent/tests/test_fail_closed.py

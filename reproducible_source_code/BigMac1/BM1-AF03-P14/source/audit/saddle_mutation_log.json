@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "python": "3.13.5",
+  "script_sha256": "44936e45e6562098fbaece6d97964ed299d5f2daee892d140163d1f5927bf740",
+  "tests": [
+    {
+      "name": "valid_q5_saddle",
+      "expected": "accept",
+      "returncode": 0
+    },
+    {
+      "name": "valid_q4_baseline",
+      "expected": "accept",
+      "returncode": 0
+    },
+    {
+      "name": "q5_changed_polynomial",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: unexpected minimal polynomial"
+    },
+    {
+      "name": "q5_missing_field",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: wrong or incomplete top-level schema"
+    },
+    {
+      "name": "q5_wrong_root_interval",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: interval is not contained in the claimed open chamber"
+    },
+    {
+      "name": "q5_changed_signature",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: unexpected claimed signature"
+    },
+    {
+      "name": "q5_duplicate_top_key",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: duplicate JSON key: schema"
+    },
+    {
+      "name": "q5_duplicate_nested_key",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: duplicate JSON key: left"
+    },
+    {
+      "name": "q5_boolean_signature",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: boolean forbidden in certificate at $.expected_tangent_signature.positive"
+    },
+    {
+      "name": "q4_changed_vector",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: schema or claimed exact data mismatch"
+    },
+    {
+      "name": "q4_duplicate_top_key",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: duplicate JSON key: schema"
+    },
+    {
+      "name": "q4_duplicate_nested_key",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: duplicate JSON key: positive"
+    },
+    {
+      "name": "q4_boolean_signature",
+      "expected": "reject",
+      "returncode": 1,
+      "stderr_or_stdout_prefix": "REJECT: boolean forbidden in certificate at $.expected_tangent_signature.positive"
+    }
+  ]
+}

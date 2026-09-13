@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "frozen_source_sha256": "1bdc9e089030ae02b67042e437fcb5cc9249cd841aeb85fac4cfc4858d4072d4",
+  "all_attacks_rejected": true,
+  "attacks": {
+    "bad_source_hash": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 426, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 333, in main\n    raise ValueError(\nValueError: source SHA-256 mismatch: got 1bdc9e089030ae02b67042e437fcb5cc9249cd841aeb85fac4cfc4858d4072d4, expected 0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "drop_tree": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 426, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 343, in main\n    raise ValueError(\"incomplete tree enumeration\")\nValueError: incomplete tree enumeration"
+    },
+    "alter_edge_list": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 426, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 354, in main\n    raise ValueError(\"edge-list mismatch\")\nValueError: edge-list mismatch"
+    },
+    "flip_target_result": {
+      "returncode": 1,
+      "rejected": true,
+      "diagnostic_tail": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 426, in <module>\n    main()\n  File \"/Users/mac/Documents/ChatGPT/math/reduced-graph-rank10/src/builder_verify_tree_core_search.py\", line 370, in main\n    raise ValueError(\"unexpected target-clique flag\")\nValueError: unexpected target-clique flag"
+    }
+  }
+}

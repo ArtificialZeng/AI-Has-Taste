@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "description": "Exact binary64 2x2 SM-IR fixed point with both condition numbers of order epsilon^(-1/2)",
+  "format": {
+    "radix": 2,
+    "precision": 53,
+    "rounding": "roundTiesToEven",
+    "unit_roundoff": "1/9007199254740992"
+  },
+  "inputs": {
+    "A": [["1", "0"], ["0", "67108864"]],
+    "u": ["1", "0"],
+    "v": ["9007199254740992", "0"],
+    "b": ["1", "0"]
+  },
+  "expected": {
+    "B": [["9007199254740993", "0"], ["0", "67108864"]],
+    "kappa_A": "67108864",
+    "kappa_B": "9007199254740993/67108864",
+    "beta": "9007199254740992",
+    "theta": "1",
+    "x_fixed": ["0", "0"],
+    "computed_residual": ["1", "0"],
+    "true_backward_error": "1"
+  }
+}

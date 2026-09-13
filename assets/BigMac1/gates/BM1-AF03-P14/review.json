@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF03-P14",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "Q5 局部极值分类记录为完整证明；不外推到任意维度。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "183ff0236e53de460de80a9c97ace776aba06eb681bd79315ab344827a55d7eb",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; The complete Q5 local-extremum classification is proved: modulo signed coordinate permutations, the locally extremal central sections are exactly d1, d2, and d5. The unique non-diagonal full-support critical orbit and the support-four (1,1,2,2,0) orbit are saddles. Exact certificates cover all six full-support chambers, all walls, and supports 1 through 4. The 23-check primary master suite, 17-input independent audit, hostile full referee, and release-delta referee all pass; independent mutations and parser attacks are rejected. Citation/BibTeX audits, two clean builds, archive extraction/rebuild, manifest checks, and 8/8 pagewise PDF inspection pass. Confidence is 99 rather than 100 because the exact proof is machine-assisted but not formalized in an interactive proof assistant. A publishable PDF and clean source ZIP are retained under release/.",
+      "sha256": "af49487eac4888132e98bdc227fcee389f9cd642268b715001c74b72055de851",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation and claim audit\n\nMode: search verification (strict academic precision)  \nDocument: `paper/main.tex`  \nCutoff: 2026-08-30 (release rerun)\n\n## Pass 1: frozen extraction (no verification in this pass)\n\nThe following claim set was extracted from the complete manuscript before any\nclaim-by-claim citation verification.  Definitions, the manuscript's own\ntheorems, proof steps, methodology descriptions, and disclosure statements are\nexcluded under the skill's extraction rules.\n\n| ID | Frozen claim | Type | Location |\n|---|---|---|---|\n| C01 | Ambrus and Gargyan conjectured that, for every `",
+      "sha256": "ebb7dae6b0baaf260e29e995b629491e945ad0e08b09e521b67efe82ca726468",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nStatus: **PASS**  \nDate: 2026-08-30\n\n## Mathematical endpoint\n\nThe terminal state is `PROVED`.  Up to signed coordinate permutations, the\nlocally extremal central sections of (Q_5) are exactly (d_1,d_2,d_5).\nThe unique non-diagonal full-support critical orbit and the support-four\n((1,1,2,2,0)/\\sqrt{10}) orbit are saddles.\n\n## Exact reconstruction\n\n- `src/verify_all.py`: **23/23 PASS**, exit 0.\n- Independent no-project-import verifier: **PASS**, 17/17 bound inputs.\n- Independent semantic mutations: **10/10 rejected**.\n- Independent parser attacks: **4/4 rejected**, with the sole ",
+      "sha256": "2cee2fb51081519c779b4da5fe9df0904ee8747fa6af7009bc468f7965dee2a9",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "# Submission audit\n\nStatus: **PASS — submission-ready**  \nDate: 2026-08-30 (Asia/Shanghai)\n\n## Exact and referee gates\n\n- Terminal mathematical state: PROVED; original endpoint complete.\n- Primary exact master: 23/23 PASS, exit 0; log SHA-256\n  18f6a4fb55480a3d097d6b96b2d69fa7497f4e7ccf88b689083b267139de4903.\n- Independent verifier: PASS on 17/17 hash-bound inputs; result SHA-256\n  333821801a789688976abea57f6d76475f4b6c8eb955e4a6008ca4983289ff6b.\n- Independent semantic mutations: 10/10 rejected.\n- Independent parser attacks: 4/4 rejected.\n- Full hostile referee: PASS, fatal/major/local/exposit",
+      "sha256": "65a107af638a391d55e6ef5cc1d918c7beeab0883d52885426c026d8d5beb7ce",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/04_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-8-page visual/build/metadata gate PASS; current SHA-256 183ff0236e53de460de80a9c97ace776aba06eb681bd79315ab344827a55d7eb agrees with final record. # PDF audit\n\nStatus: **PASS**  \nDate: 2026-08-30  \nArtifact checked: `paper/main.pdf`  \nSHA-256: `183ff0236e53de460de80a9c97ace776aba06eb681bd79315ab344827a55d7eb`\n\n## Build and structure\n\n- Two independent clean `latexmk` builds converged from no au",
+      "sha256": "f607647a6c356d948a3c14efe29609385a7029f1d5e1736a449e45b4218201f4",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/05_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "Q5 局部极值分类记录为完整证明；不外推到任意维度。",
+      "sha256": "01b5eae4ae062e973f95031b577fc2ddcd3e4085a27466aa93a795db2dd14618",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/06_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "12. An independent second researcher repeated the metadata, citation, version,\nlisted above.  A second pass is mandatory if a rigorous new theorem emerges.\nThis is a second, release-date search after the mathematical endpoint and\nhostile-referee PASS were frozen.  Search snippets were used only for",
+      "sha256": "5eac1815c990d42789caea0d80e6880e49c0ffee98b8c7b6269cf46b356c6b22",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/07_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C09 | The displayed truncated-power formula in `problem/formal_statement.md` equals the central section volume, including the support-reduction convention. | exact formula | VERIFIED BY INDEPENDENT DERIVATION | Coarea gives \\(\\sigma(a)=\\|a\\|f_{\\sum a_iU_i}(0)\\); translating \\(U_i\\sim\\mathrm{Unif}[-1/2,1/2]\\) to \\([0,a_i]\\) and inclusion–exclusion gives the displayed box-spline density. Zero coordinates factor off a unit cube. A second evaluator is still required for decisive computations. | 99% | Formula may be used as a proved structural lemma after it is written out in the proof report. |",
+      "sha256": "231d4287d95437fdc234dc48ebe5c8a926033561fafdd70b2a82b02d753f98e5",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P14/evidence/08_claim_ledger.md"
+    }
+  ]
+}

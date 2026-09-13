@@ -1,0 +1,68 @@
+{
+  "enumeration": {
+    "neighbor_target": 12,
+    "nodes": 354595887,
+    "path": "experiments/exact_clique_fixed70_verify.jsonl",
+    "sha256": "ec40d58c38c9c77b8ff498f3de8489142cdb210d52463c8428065fb23bc27c16"
+  },
+  "fixed_block": [
+    0,
+    1,
+    2,
+    7,
+    11
+  ],
+  "fixed_variable": 70,
+  "graph": {
+    "edges": 1104199,
+    "path": "experiments/compatibility_fixed70.clq",
+    "sha256": "11b11a09cedc256fc45b21712fcf17e7dc4567b546e7f02c5631420739c105f8",
+    "vertices": 2225
+  },
+  "instance": {
+    "path": "experiments/instance.json",
+    "sha256": "f43bb843344058df6794c5c86e314f547292a65fa43183d2678ef178e5e4034d"
+  },
+  "multiplier_orbit_variables": [
+    70,
+    275,
+    484,
+    528,
+    801,
+    826,
+    987,
+    1128,
+    1154,
+    1233,
+    1253,
+    1299,
+    1628,
+    1953,
+    2007,
+    2362,
+    2450,
+    2612,
+    2754,
+    2765,
+    2920,
+    3481,
+    3532,
+    3651,
+    3763,
+    3929,
+    4131,
+    4333,
+    4530,
+    4577
+  ],
+  "schema": "cyclic-315-fixed-clique-enumeration-v1",
+  "scope": "Only target-13 packings containing block variable 70 or one of the 30 distinct variables in its multiplier orbit; this is not a global proof that M < 13",
+  "status": "CERTIFIED_FIXED_BRANCH_UNSAT",
+  "target": 13,
+  "verifier": {
+    "binary_path": "experiments/exact_clique_fixed_fast",
+    "binary_sha256": "2b0cb86d49c2ce6add774dedf98796b706d72cd0d2266b5a7aa9ce653413d30f",
+    "source_path": "code/exact_clique.cpp",
+    "source_sha256": "ae549763147bd579353d3b91fcbad4e9afb4e2e404c97f915115d8b6e84458c9"
+  }
+}

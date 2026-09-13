@@ -1,0 +1,14 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every Δ>log 2, let q=2e^(−Δ)/(1+2e^(−Δ)), let κ_j be the j-th derivative at zero of log(1−q+q cosh z), and let m_*(Δ)=min{m≥2: (−1)^(m+1)κ_(2m)(q)<0}. This minimum exists. If a=arcosh(e^Δ/2), β=arctan(a/π), and t=π/(4β), then for all sufficiently small a>0 one has t<m_*(Δ)≤ceil(t+1)<t+2. Consequently a m_*(Δ)→π²/4 as Δ↓log 2, equivalently lim_(ε↓0) sqrt(ε)m_*(log 2+ε)=π²/(4sqrt(2)).",
+  "contribution": "A complete proof of the frozen critical first-failure asymptotic, based on an exact absolutely convergent zero-sum formula that controls every preceding integer order. It also gives the stronger two-lattice-step localization of m_* near π/[4 arctan(a/π)]. The cited 2026 source proves only fixed-parameter eventual failure; a bounded current search found no equivalent uniform first-failure result, but no priority claim is made.",
+  "proposer_job_id": "bigMac-00015-p02-research-ba28698d02fb",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/zero_sum_proof.md",
+    "evidence/exact_recurrence.py",
+    "evidence/exact_sequence.tsv"
+  ]
+}

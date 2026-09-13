@@ -1,0 +1,50 @@
+{
+  "all_corruptions_rejected": true,
+  "baseline_accepted": true,
+  "cases": [
+    {
+      "case": "repeated_point_in_block",
+      "diagnostic": "REJECTED: V000 block 0 has invalid points",
+      "mutated_file": "representatives.json",
+      "rejected": true,
+      "returncode": 1
+    },
+    {
+      "case": "missing_vertex",
+      "diagnostic": "REJECTED: certificate must contain exactly 80 vertices",
+      "mutated_file": "representatives.json",
+      "rejected": true,
+      "returncode": 1
+    },
+    {
+      "case": "deleted_edge",
+      "diagnostic": "REJECTED: edge list is incomplete/unsound: missing=[('V077', 'V078')], extra=[]",
+      "mutated_file": "quotient_edges.json",
+      "rejected": true,
+      "returncode": 1
+    },
+    {
+      "case": "duplicate_edge",
+      "diagnostic": "REJECTED: edge list is not sorted and duplicate-free",
+      "mutated_file": "quotient_edges.json",
+      "rejected": true,
+      "returncode": 1
+    },
+    {
+      "case": "wrong_diameter",
+      "diagnostic": "REJECTED: reported diameter is wrong",
+      "mutated_file": "result.json",
+      "rejected": true,
+      "returncode": 1
+    },
+    {
+      "case": "wrong_switch_target",
+      "diagnostic": "REJECTED: V000 switch 0 reports the wrong target",
+      "mutated_file": "switch_occurrences.json",
+      "rejected": true,
+      "returncode": 1
+    }
+  ],
+  "corruptions_tested": 6,
+  "schema": "sts15-verifier-negative-tests-v1"
+}

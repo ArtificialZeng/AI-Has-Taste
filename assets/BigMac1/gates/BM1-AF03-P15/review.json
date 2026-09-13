@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF03-P15",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "D9 normalized flow 指定有限端点已认证；不证明所有 Dn。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "c8741981935f22594dcc944e2981b166b1084f58cf6d59c455ecb9f02c08d184",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; Abs(D_9) admits a normalized flow with unit vertex weights. The exact finite theorem is certified by 284 nonzero rational B_9-orbit flow totals and two independent fail-closed verifiers.",
+      "sha256": "bda817b27dca0f7e7fd78f73a4f9cb34a8b9b685ddbac507f0af1380945c62d0",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nAudit date: 2026-08-29 (Asia/Shanghai)  \nMode: source-verification with web search and archived primary PDFs  \nManuscript: `paper/main.tex`\n\n## Pass 1: frozen citation-dependent claims\n\nThe citation surface was extracted before final source checking.  The paper\nuses only two bibliography keys and makes the following source-dependent\nclaims.\n\n| ID | Manuscript claim | Required source location |\n|---|---|---|\n| P-C01 | Gaetz--Gao conjecture that `Abs(D_n)` has a normalized flow with unit vertex weights | Gaetz--Gao, Conjecture 1.3(a), journal p. 792 |\n| P-C02 | Gaetz--Gao repor",
+      "sha256": "fdda4aafedfa89f4fececd21957f6b4864b3883e5647f6fab8a07bb4af9dd6a8",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nAudit date: 2026-08-29 (Asia/Shanghai)  \nEndpoint: `Abs(D_9) admits a normalized flow with unit vertex weights`  \nDecision: **PASS -- CERTIFIED_FINITE_RESULT**\n\n## Frozen primary pair\n\n| Role | Path | SHA-256 |\n|---|---|---|\n| formal theorem statement | `problem/formal_statement.md` | `a423a584b8a229845dc64dbca6233df9d7d36ca7d9a0c1a5de55571d54aca084` |\n| unique primary certificate | `certificates/d9_normalized_flow.json` | `d8fe947906c577f3a7c585fc07e0bcb6648e2555056a756af98bf307ab72ea7f` |\n| unique primary verifier | `certificates/verify_d9_flow.py` | `a076f7dc4a715d0adb9d1c7b7",
+      "sha256": "0a0a6f65b5b3474ea57409d0137fc6e4372d1c440198868847e2633ea2df950c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-6-page visual/build/metadata gate PASS; current SHA-256 c8741981935f22594dcc944e2981b166b1084f58cf6d59c455ecb9f02c08d184 agrees with final record. # PDF audit\n\nAudit date: 2026-08-29 (Asia/Shanghai)  \nArtifact: `output/pdf/d9_normalized_flow.pdf`  \nDecision: **PASS**\n\n## Build and structure\n\n- Clean build command: `latexmk -pdf -interaction=nonstopmode\n  -halt-on-error -file-line-error -outdir=",
+      "sha256": "7566c180d3f4a942002513dff0ed8d31a4e33fb9474093db1eb424609e9fe89d",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "D9 normalized flow 指定有限端点已认证；不证明所有 Dn。",
+      "sha256": "6fbd79735bef1e77ad10262e4a0ef8dbb7c4ce6831239ded7258546cd6b8f4d6",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "- A current secondary entry, [MathDB problem\n  secondary/automated tracker, it is used only as a freshness signal.\nThe required second, independently phrased novelty search is recorded in\n## 8. Second-pass post-result novelty audit\nproduced, so the contractual post-result novelty check was run before any\n- The second-pass Semantic Scholar topic endpoint returned HTTP 429. The\n  3.2, but the rate-limited second attempt contributes no negative evidence.\n### 8.5 Result of the post-result audit\nwas located in the accessible second-pass sources. The only new formal citing\n- The second Semantic Scholar API call was rate-limited with HTTP 429.",
+      "sha256": "3a8ae4bd6822ede4d12aee4b69cae0d784f6a5fe32d6c2cd92a572715e807725",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "during the post-result audit to record a newly surfaced primary dependency;\n| C11 | As of the lock date, \\(D_9\\) is the first case beyond the authors' published verified range for which no later public resolution was located. | Inference from C04, C06, and the dated search | Supported within two recorded search passes; not globally provable from bibliographic databases | C04 restricts the family to \\(n\\ge4\\), C06 reports all \\(n\\le8\\), and both the pre-discovery and post-result searches in [`search_log.md`](search_log.md) found no post-2020 proof, disproof, \\(D_9\\) certificate, \\(n\\ge9\\) verification, or general \\(D_n\\) solution. The second pass used zbMATH, OpenAlex, OpenCitations, Crossref, arXiv, focused repository searches, and current author records. A current secondary tracker also labels the conjecture open: [MathDB entry](https://mathdb.com/p/342030/normalized-flow-conjecture-for-the-absolute-order-of-type-d); this tracker is a freshness signal, not primary evidence. Access failures listed separately in the log are excluded from this inference. | Medium-high | The title “Type \\(D_9\\)” remains a defensible finite research boundary after the independent post-result audit. Phrase it as “first case beyond the published \\(n\\le8\\) report,” not as an absolute priority claim over unpublished work. |\n| C15 | No relevant public code repository or exact \\(D_9\\) certificate was found in the recorded searches. | Negative search result | No hit in two independently phrased passes; not a universal nonexistence claim | The first pass searched the DOI/arXiv ID, exact title, published verification sentence, and source terminology. The post-result pass instead searched `G(2,2,9)`, `D9`/`D_9` + `Sperner`, even signed permutations, Farkas/orbit-flow terminology, and type-\\(D\\) absolute-order repositories through authenticated GitHub search, Zenodo, and the accessible OSF endpoints. Focused queries returned zero relevant hits. Figshare's API returned HTTP 403 and is therefore an access limitation, not negative evidence. Full query strings and counts are in [`search_log.md`](search_log.md). | Medium-high within the searched public repositories | The contractually required independent post-result novelty search has been completed. Refresh it if release is materially delayed; retain the qualification about private or unindexed artifacts. |",
+      "sha256": "99b2e7480005725a9c66c997cc7e299a90367483162dac17ab4e743461c52cec",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/07_claim_ledger.md"
+    },
+    {
+      "original_project_relative_path": "literature/NOVELTY_LOCK.md",
+      "summary": "post-result novelty pass is recorded in Section 8 of `search_log.md`; it",
+      "sha256": "e82e889972f1667a29414e14de7098a09838fa758e6e781ae33f0dd442f5d745",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P15/evidence/08_NOVELTY_LOCK.md"
+    }
+  ]
+}

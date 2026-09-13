@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can an exact witness n>24 be found beyond the current 9.174e18 frontier?",
+      "premises": ["local inequalities tau(n-k)<=k+2", "candidate lies in the verified modular and prime-chain search space"],
+      "method": "segmented arithmetic-progression sieve followed by full exact factorization and prefix reconstruction",
+      "status": "active",
+      "evidence": ["proof/structural_reduction.md", "literature frontier recorded in claim ledger"],
+      "failure_reason": null,
+      "next_test": "scan a reproducible interval immediately above 9,174,471,185,880,000,000 and exactify every survivor"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Can domination intervals be proved to cover every integer n>24?",
+      "premises": ["I_m=[m+1,m+tau(m)-3] kills every n in I_m"],
+      "method": "derive an unbounded overlap theorem for divisor-rich record holders",
+      "status": "blocked",
+      "evidence": ["proof/structural_reduction.md, Lemma 3", "arXiv:2608.17880 identifies the same asymptotic gap"],
+      "failure_reason": "No theorem is known that makes the domination intervals eventually gapless; the January 2026 claim failed exactly here.",
+      "next_test": "seek a provable lower bound on overlap between consecutive record-holder kill intervals, and falsify it on exact record data"
+    },
+    {
+      "id": "D02",
+      "kind": "disproof",
+      "question": "Can the finite no-solution frontier be strictly extended with an exact reproducible certificate?",
+      "premises": ["2520-modular reduction", "all 96 elementary sieve residues modulo 46189", "finite exhaustive enumeration"],
+      "method": "AP sieve with exact divisor lower bounds; independent full replay from serialized bounds and residue data",
+      "status": "candidate",
+      "evidence": ["public frontier 9,174,471,185,880,000,000 independently located", "5,078,450,784-cell independent replay passed", "21 residual exact factorization certificates"],
+      "failure_reason": null,
+      "next_test": "complete referee, citation, manifest, and clean-build audits before promoting the new endpoint"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What exact local conditions are equivalent to the prefix maximum?",
+      "premises": ["k=n-m"],
+      "method": "bijective change of variables",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md"],
+      "failure_reason": null,
+      "next_test": "none"
+    },
+    {
+      "id": "R02",
+      "kind": "reduction",
+      "question": "Which prime-chain shapes are forced by shifts 1,2,4,8?",
+      "premises": ["n>24", "tau(n-k)<=k+2"],
+      "method": "complete divisor-count classification and 2-adic case split",
+      "status": "proved",
+      "evidence": ["proof/structural_reduction.md, Lemmas 1--2"],
+      "failure_reason": null,
+      "next_test": "cross-check every discarded valuation branch computationally"
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can Schinzel-H/prime tuples construct full solutions rather than fixed-window near-solutions?",
+      "premises": ["finite collections of admissible linear forms can be prime infinitely often"],
+      "method": "grow the certified window and control all older m simultaneously",
+      "status": "blocked",
+      "evidence": ["Erdos 1979 fixed-window observation", "proof/structural_reduction.md search-space boundary"],
+      "failure_reason": "Hypothesis H handles each fixed window but supplies no single n satisfying the unbounded full prefix condition.",
+      "next_test": "identify a uniform divisor-count cutoff K(n) compatible with one finite admissible tuple"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can a referee reconstruct every claimed finite exclusion from definitions and serialized input?",
+      "premises": ["no trust in discovery aggregates", "fail closed on malformed data"],
+      "method": "independent implementation, boundary/overflow tests, manifest hashes, and exact re-factorization",
+      "status": "proved",
+      "evidence": ["proof/gap_ledger.md", "audit/GATE4_AUDIT.md", "four byte-identical fast-test logs", "four byte-identical 5,078,450,784-cell full-replay outputs", "ASan/UBSan small-range replay passed"],
+      "failure_reason": null,
+      "next_test": "none for Gate 4; re-run after any verifier or certificate mutation"
+    }
+  ]
+}

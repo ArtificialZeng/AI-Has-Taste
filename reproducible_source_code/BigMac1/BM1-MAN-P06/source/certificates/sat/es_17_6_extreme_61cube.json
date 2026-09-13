@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "claim": "the extreme-normalized direct 17-point no-convex-six formula is unsatisfiable",
+  "global_es7_claim_solved": false,
+  "geometric_normalization": {
+    "extreme_label": 0,
+    "fixed_positive_orientations": 120,
+    "scope": "without loss of generality for realizable planar counterexamples"
+  },
+  "base_formula": {
+    "path": "tmp/sat/es_17_6_direct_relations_prime_extreme.cnf",
+    "variables": 680,
+    "clauses": 217176,
+    "literal_occurrences": 849304
+  },
+  "partition": {
+    "manifest": "tmp/cubes/es17_first_window_prime_extreme/manifest.json",
+    "assigned_variables_per_leaf": 10,
+    "all_first_window_assignments": 1024,
+    "locally_rejected_assignments": 963,
+    "retained_covering_cubes": 61,
+    "coverage_check": "code/verify_es17_cube_certificate.py"
+  },
+  "solving": {
+    "solver": "Kissat 4.0.4",
+    "summary": "tmp/certification/es17_61cubes_120s/summary.json",
+    "unsat_leaves": 61,
+    "sum_leaf_wall_seconds": 1767.817,
+    "median_leaf_wall_seconds": 23.912,
+    "maximum_leaf_wall_seconds": 100.976,
+    "total_drat_bytes": 288562058
+  },
+  "conversion_and_checking": {
+    "lrat_summary": "tmp/certification/es17_61cubes_120s/lrat_summary.json",
+    "drat_leaves_verified": 61,
+    "lrat_leaves_verified": 61,
+    "total_lrat_bytes": 871234978,
+    "verifier": "code/verify_es17_cube_certificate.py"
+  },
+  "logical_scope": "certifies the known geometric upper bound ES(6) <= 17; the unanchored abstract F_(17,6) UNSAT statement is supplied separately by Szekeres--Peters Theorem 2"
+}

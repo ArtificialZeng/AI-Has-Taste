@@ -1,0 +1,123 @@
+{
+  "ast_assert_nodes": 0,
+  "audit": "independent external t18 checker genuine/tamper matrix",
+  "case_count": 2,
+  "cases": [
+    {
+      "case": "genuine",
+      "expected": "PASS",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-I",
+            "/tmp/kusner_referee_t18_pnpdi_6w/genuine/audit/referee_t18_check.py"
+          ],
+          "exit_code": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "220a423adfe130eb6250baff0d3dd24a62172fff2d8f21bf2532e58a0848276a",
+          "verdict": "PASS"
+        },
+        "normal": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/tmp/kusner_referee_t18_pnpdi_6w/genuine/audit/referee_t18_check.py"
+          ],
+          "exit_code": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "220a423adfe130eb6250baff0d3dd24a62172fff2d8f21bf2532e58a0848276a",
+          "verdict": "PASS"
+        },
+        "optimized": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-O",
+            "/tmp/kusner_referee_t18_pnpdi_6w/genuine/audit/referee_t18_check.py"
+          ],
+          "exit_code": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "220a423adfe130eb6250baff0d3dd24a62172fff2d8f21bf2532e58a0848276a",
+          "verdict": "PASS"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-O",
+            "-I",
+            "/tmp/kusner_referee_t18_pnpdi_6w/genuine/audit/referee_t18_check.py"
+          ],
+          "exit_code": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "220a423adfe130eb6250baff0d3dd24a62172fff2d8f21bf2532e58a0848276a",
+          "verdict": "PASS"
+        }
+      },
+      "proof_sha256": "2a50ff367e65652e43e58a44319a86fdff61e04ca41b106260e192c6ee3f20c9"
+    },
+    {
+      "case": "tampered_proof",
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-I",
+            "/tmp/kusner_referee_t18_pnpdi_6w/tampered_proof/audit/referee_t18_check.py"
+          ],
+          "exit_code": 1,
+          "stderr_sha256": "a9461e960c39112219369d2b10dc63cc55f09590bf7a2c7482a5f4464015afe0",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "verdict": "FAIL"
+        },
+        "normal": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/tmp/kusner_referee_t18_pnpdi_6w/tampered_proof/audit/referee_t18_check.py"
+          ],
+          "exit_code": 1,
+          "stderr_sha256": "a9461e960c39112219369d2b10dc63cc55f09590bf7a2c7482a5f4464015afe0",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "verdict": "FAIL"
+        },
+        "optimized": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-O",
+            "/tmp/kusner_referee_t18_pnpdi_6w/tampered_proof/audit/referee_t18_check.py"
+          ],
+          "exit_code": 1,
+          "stderr_sha256": "a9461e960c39112219369d2b10dc63cc55f09590bf7a2c7482a5f4464015afe0",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "verdict": "FAIL"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-O",
+            "-I",
+            "/tmp/kusner_referee_t18_pnpdi_6w/tampered_proof/audit/referee_t18_check.py"
+          ],
+          "exit_code": 1,
+          "stderr_sha256": "a9461e960c39112219369d2b10dc63cc55f09590bf7a2c7482a5f4464015afe0",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "verdict": "FAIL"
+        }
+      },
+      "proof_sha256": "422fb54aee5808a977488b50bbfcbe3097ffb48e733351548c8c0c839aea6b05"
+    }
+  ],
+  "checker_sha256": "90895d6fea54ff722c16c1d360d0ed8fd7cedeca8779fbbd3a549e9968975903",
+  "external_workdir": "/tmp/kusner_referee_t18_pnpdi_6w",
+  "external_workdir_inside_project": false,
+  "modes": [
+    "normal",
+    "optimized",
+    "isolated",
+    "optimized_isolated"
+  ],
+  "process_count": 8,
+  "proof_sha256": "2a50ff367e65652e43e58a44319a86fdff61e04ca41b106260e192c6ee3f20c9",
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "status": "PASS",
+  "timestamp_utc": "2026-08-29T04:40:28.729697+00:00"
+}

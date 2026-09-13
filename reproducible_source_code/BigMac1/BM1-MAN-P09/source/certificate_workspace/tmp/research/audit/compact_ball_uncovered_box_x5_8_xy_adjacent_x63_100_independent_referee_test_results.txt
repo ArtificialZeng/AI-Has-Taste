@@ -1,0 +1,106 @@
+INDEPENDENT NO-IMPORT REFEREE TEST RESULTS
+Target: 627/1000 <= x <= 63/100, |y| <= 1/100, Z=1/8,
+        both signed-z lifts, 0<S<=1, lambda>0
+
+OPAQUE BINDINGS
+PASS source SHA 823fbb26a31378530567674cce08ec7f7203c9882256dabed2a776e2ae6b7825
+PASS source-manifest SHA ac8c581ef64e6de4b03e657f3c9201d2864a86d3ee0af91021607a3613c13f2e
+PASS predecessor source/referee/report/manifests and reduction dependencies
+PASS current candidate source/manifest never parsed, imported, or executed
+
+DEFINITION-LEVEL GATES
+PASS reverse signed-z Gram-column assembly = direct compression
+PASS Hermitian frame, complex conjugations, and C determinant identity
+PASS Q^2 9/9 using multiplication order (1,0,2)
+PASS fully conjugated literal raw/cyclic gate = vector gate
+PASS radical elimination in order h,z,q; resulting gate is real
+PASS both signed-z lifts agree exactly
+PASS D >= 239/500 > 0
+PASS det(C)/S = 5/72 > 0 and rank two for every S>0
+PASS five independently derived lambda coefficients; degree 4
+PASS exact S-adic divisibility before every positive clearing
+
+EXACT BERNSTEIN CERTIFICATE
+PASS group shapes/control counts:
+  lambda^0: S-order 0, degrees (0,0,0), 1 control
+  lambda^1: S-order 1, degrees (0,2,2), 9 controls
+  lambda^2: S-order 1, degrees (1,4,4), 50 controls
+  lambda^3: S-order 1, degrees (2,6,6), 147 controls
+  lambda^4: S-order 1, degrees (3,8,8), 324 controls
+PASS 531/531 controls are exact and strictly positive
+PASS coefficient tuple SHA b11348d029f2b1fd6bcbf4dfe3ff789f1f5e67a0846f2a83041e7af62bd9497f
+PASS complete control-table SHA b339535bbefde30457c7c9af08bed3c407ebce15c00a0d4810aaf57cc6125e04
+PASS group minima in referee order (S,v_x,u_y):
+  lambda^0 (0,0,0) = 5
+  lambda^1 (0,2,2) = 101/150
+  lambda^2 (0,0,4) = 39447892217179/3240000000000
+  lambda^3 (0,0,6) = 533736176784030589/972000000000000000
+  lambda^4 (0,0,8) =
+    6540698095666461427781281/1749600000000000000000000
+PASS unique global weakest: lambda^3,(0,0,6), multiplicity 1
+
+INDEX-ORDER RECONCILIATION
+PASS referee order is (S,v_x,u_y)
+PASS candidate reporting order is (S,u_y,v_x)
+PASS complete 531-control table survives exact involution (i,j,k)<->(i,k,j)
+PASS source-style group-minimum indices are
+  (0,0,0),(0,2,2),(0,4,0),(0,6,0),(0,8,0)
+The differing written indices are a coordinate-order convention, not a
+coefficient, minimum, or seam discrepancy.
+
+PREDECESSOR SEAM
+PASS current left x=627/1000 equals predecessor right x
+PASS Hermitian parameter matrices agree entry-by-entry
+PASS fully conjugated raw gates agree identically
+PASS five boundary-control faces agree 1+3+10+21+36=71/71
+PASS seam SHA 0bf006896aa9a52e0fecd449698df34c577134d3fba2e8398b4e2fce64a0b6a0
+
+DIAGNOSTICS ONLY
+PASS 81/81 exact nodes positive
+minimum =
+1312200000179917510543226655785546860611510431/
+262440000000000000000000000000000000000000000
+at (S,x,y,lambda)=(1/1000000,63/100,1/100,1/1000)
+The nodes are falsification diagnostics, never the proof.
+
+EXECUTION
+PASS py_compile exit 0
+PASS literal-free scout exit 0
+PASS formal normal exit 0
+PASS root replay exit 0
+PASS fresh isolated-copy replay exit 0
+
+FAIL-CLOSED MUTATIONS (all expected nonzero; all actual exit 1)
+PASS optimized Python -> optimized-Python structural gate
+PASS bad source bytes -> source SHA gate
+PASS bad source-manifest bytes -> source-manifest SHA gate
+PASS bad predecessor bytes -> predecessor SHA gate
+PASS altered normalization -> right-endpoint normalization gate
+PASS over-divided S clearing -> exact S-divisibility gate
+PASS dropped Q^2 term -> literal/vector raw-gate identity gate
+PASS broken conjugation -> literal/vector raw-gate identity gate
+PASS omitted signed-z lift -> both-sign identity gate
+PASS flipped danger sign -> exact danger-scalar gate
+PASS corrupted derived coefficient -> coefficient reconstruction gate
+PASS dropped control -> complete-control-count gate
+PASS broken seam -> lambda^4 boundary-control seam gate
+
+IMPLEMENTATION EVENT
+The first mutation suite exposed an immutable-matrix assignment in the
+omit-z mutation harness.  The frozen harness converts that deliberately
+mutated comparison matrix to a mutable Matrix; the rerun then fails at the
+intended both-signed-z exact gate.  All frozen normal, attack, and replay logs
+were regenerated after the fix.  This is not a candidate mathematical finding.
+
+SCOPE ATTACKS
+PASS no numerical evidence promoted to theorem
+PASS no positive clearing or division by S without exact divisibility
+PASS no conjugate/cyclic phase or Q^2 term discarded
+PASS no chart obstruction described as raw negativity or maximality
+PASS no CE-046/048/059/060 route reused
+PASS no extension to full compact ball, general metric, or arbitrary nodes
+
+VERDICT PASS
+FATAL 0
+MAJOR 0
+MINOR 0

@@ -1,0 +1,66 @@
+{
+  "schema": "a383733-transfer-automata-certificate-v1",
+  "graph": {
+    "minimum_n": 6,
+    "colors": [0, 1, 2],
+    "cyclic_offsets": [1, 3],
+    "even_diameter": true
+  },
+  "odd_automaton": {
+    "state_rule": "triples (x0,x1,x2) with x0!=x1 and x1!=x2",
+    "transition_rule": "(x0,x1,x2)->(x1,x2,x3) iff x3!=x2 and x3!=x0",
+    "acceptance": "a(n)=trace(O^n) for odd n>=7",
+    "expected_state_count": 12,
+    "expected_transition_count": 18,
+    "transition_matrix_sha256": "015de555faf78002f4a295aafb8db08d814956af339c6f2ef16916723baab2a9",
+    "full_positive_power": 10,
+    "positive_power_matrix_sha256": "60c37736e05a71a2d58e40979685e037485f9c2193cc5c3eaa9b0227362a003e",
+    "power_min_entry": 1,
+    "power_max_entry": 26,
+    "power_entry_sum": 1398,
+    "separate_positive_trace_n": 9,
+    "separate_trace_value": 18
+  },
+  "even_automaton": {
+    "state_rule": "ordered pairs of odd states with coordinatewise unequal colors",
+    "transition_rule": "coordinatewise odd-automaton transition",
+    "closure_rule": "after m steps end at the track-swap of the initial state",
+    "acceptance": "a(2m)=trace(E^m P), where P is track swap",
+    "expected_state_count": 54,
+    "expected_transition_count": 114,
+    "transition_matrix_sha256": "fbbf93271d70402aca563534f82ba99ef73c6f6dcc60f78b580e35a24d58ce7d",
+    "full_positive_half_power": 13,
+    "positive_power_matrix_sha256": "cfcbabfd011035603fd011e34e8447ab3f98085424ac9b19669ae63d95ad82b7",
+    "power_min_entry": 20,
+    "power_max_entry": 4097,
+    "power_entry_sum": 2750778,
+    "naive_trace_counterexamples": {
+      "6": {"ordinary_trace": 0, "twisted_trace": 42},
+      "8": {"ordinary_trace": 114, "twisted_trace": 0}
+    }
+  },
+  "finite_direct_counts_with_c0_fixed_to_zero": {
+    "6": 14,
+    "7": 0,
+    "8": 0,
+    "9": 6,
+    "10": 62,
+    "11": 22,
+    "12": 0,
+    "13": 78,
+    "14": 310,
+    "15": 250,
+    "16": 0,
+    "17": 748,
+    "18": 1526,
+    "19": 2166,
+    "20": 40,
+    "21": 6118,
+    "22": 7438,
+    "23": 16974,
+    "24": 832,
+    "25": 46500
+  },
+  "claimed_zeros": [7, 8, 12, 16],
+  "eventual_positivity_threshold": 26
+}

@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF03-P08",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "n=10 全部可比对的有限端点已认证；不证明所有 n。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "96b8154056468be7bf8f3f4a2f2156d121cf0e20be23645b6b7be837ad3f1d2c",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; The complete n=10 endpoint is certified: all 6,229,297 comparable pairs in the 12,866-element interval satisfy the q-Fibonacci product formula. This does not prove the all-n conjecture.",
+      "sha256": "49bfc528abc7dd2f8f1287ef28a384d0ea315ca78926b0020e88b077569cc00d",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nSearch date: 2026-08-29.\n\nA local `@STRING{July = \"July\"}` declaration precedes the entries solely to\nmake the official Pagliacci export's `month=July` token defined under BibTeX;\nthe exported article block itself is unchanged.\n\n| Key | Intended claim/context | Official title/record | Official source | BibTeX action | Key change | Uncertainty |\n|---|---|---|---|---|---|---|\n| `chen2013classkazhdanlusztigrpolynomialsqfibonacci` | Exact conjecture, authors' `n<=9` report, and proved upper-endpoint formula | *A Class of Kazhdan-Lusztig R-Polynomials and q-Fibonacci Numbers*, fou",
+      "sha256": "39ca66d3b92e73378ff6e5bf83a797d36fe29c9d24aceb906d794ebd4483f829",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nStatus: **PASS for the finite endpoint; OPEN for the stated all-rank gap**.\n\n## Audited endpoint\n\nThe released theorem quantifies over every comparable ordered pair in\n`[e,v_10]`.  The verifier regenerates the 12,866-element universe by both a\nfull rank-matrix filter of `S_10` and the complete subword set, regenerates all\n6,229,297 comparable pairs, and evaluates each pair with integer arithmetic.\nThe normalized Dyer recurrence and a separate ordinary-R recurrence agree\nafter an exact Laurent change of variables.  Membership is tested against the\ncomplete 434-element Fibonacci-p",
+      "sha256": "ccd1ad51110370526077cf0eb23bfad613b565539db84e2962febd4cf646ee3f",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-7-page visual/build/metadata gate PASS; current SHA-256 96b8154056468be7bf8f3f4a2f2156d121cf0e20be23645b6b7be837ad3f1d2c agrees with final record. # PDF audit\n\nStatus: **PASS**.\n\n- Artifact: `output/pdf/kl_r_fibonacci_n10.pdf`\n- SHA-256: `96b8154056468be7bf8f3f4a2f2156d121cf0e20be23645b6b7be837ad3f1d2c`\n- Size: 375,872 bytes\n- Pages: 7, US Letter, no rotation, unencrypted\n- PDF metadata author:",
+      "sha256": "0d05fb0c52418716ea1c16efb177fdab71d05d5d954f1fbd6a656a1d126450cd",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "n=10 全部可比对的有限端点已认证；不证明所有 n。",
+      "sha256": "a7c8a3a173f4198ac41a7089281f7d059caa6cbfc2a743905aa406c33d2e90dc",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "## Gate 1 pass 2: primary-record and discovery searches\nrechecked in the mandatory second novelty pass before terminal release.\n## Gate 5 second novelty pass (2026-08-29)\nThe second pass used fresh and differently phrased queries after the exact",
+      "sha256": "e499845b8fd826843ea7e6313ba7fcc0c3ccd1b96a2904256371d9e9450be960",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C08 | No later paper explicitly resolving this exact conjecture was found in the recorded title/formula/citation searches; OpenAlex reports zero citing works. | bounded negative finding, not proof of openness | OpenAlex cited-by query plus recorded web searches | search dated 2026-08-29 | medium | “Still open” remains provisional until Gate 5 second-pass novelty search. |\n| C12 | No public solution of the \\(n=10\\) case or the all-\\(n\\) conjecture was found in two recorded search passes. | bounded negative finding, never an absolute proof of openness | arXiv, DataCite, Crossref, OpenAlex, author page, GitHub repository search, exact-title/formula web searches | second pass completed 2026-08-29 | medium-high within searched sources | The final manuscript says only that no resolution was found in the recorded searches. |",
+      "sha256": "775af88953c272f86a3a798bbf4926fb9ddd0acb7f9172ffe9b62b7701db2754",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/07_claim_ledger.md"
+    },
+    {
+      "original_project_relative_path": "literature/NOVELTY_LOCK.md",
+      "summary": "provisional until the second novelty pass.\nThe Gate 5 second pass was completed on the same date using fresh exact-title,",
+      "sha256": "febbacc4917419958503de3926f464f7b15208796c4fb4d791b6f40549d1c5fe",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P08/evidence/08_NOVELTY_LOCK.md"
+    }
+  ]
+}

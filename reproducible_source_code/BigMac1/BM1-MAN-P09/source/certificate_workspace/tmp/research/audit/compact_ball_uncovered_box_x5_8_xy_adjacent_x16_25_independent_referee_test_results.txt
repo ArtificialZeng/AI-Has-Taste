@@ -1,0 +1,93 @@
+INDEPENDENT NO-IMPORT REFEREE TEST RESULTS
+Target: 63/100 <= x <= 16/25, |y| <= 1/100, Z=1/8,
+        both signed-z lifts, 0<S<=1, lambda>0
+
+OPAQUE BINDINGS
+PASS source SHA da611b4325ce935c6e9857a2867d92a51a3426a07cb4a1ae1db4f12bc53088cc
+PASS source-manifest SHA dd0d83483d0b8f8c3e6d4f2626dcf89398ff992b5900463811eef70016aa0022
+PASS predecessor source/referee/report/manifests and reduction dependencies
+PASS current candidate source/manifest never parsed, imported, or executed
+
+DEFINITION-LEVEL GATES
+PASS reverse signed-z Gram-column assembly = direct compression
+PASS Hermitian frame, complex conjugations, and C determinant identity
+PASS Q^2 9/9 using multiplication order (1,0,2)
+PASS fully conjugated literal raw/cyclic gate = vector gate
+PASS radical elimination in order h,z,q; resulting gate is real
+PASS both signed-z lifts agree exactly
+PASS D >= 4653/10000 > 0
+PASS det(C)/S = 5/72 > 0 and rank two for every S>0
+PASS five independently derived lambda coefficients; degree 4
+PASS exact S-adic divisibility before every positive clearing
+
+EXACT BERNSTEIN CERTIFICATE
+PASS group shapes/control counts:
+  lambda^0: S-order 0, degrees (0,0,0), 1 control
+  lambda^1: S-order 1, degrees (0,2,2), 9 controls
+  lambda^2: S-order 1, degrees (1,4,4), 50 controls
+  lambda^3: S-order 1, degrees (2,6,6), 147 controls
+  lambda^4: S-order 1, degrees (3,8,8), 324 controls
+PASS 531/531 controls exact and strictly positive
+PASS coefficient tuple SHA b11348d029f2b1fd6bcbf4dfe3ff789f1f5e67a0846f2a83041e7af62bd9497f
+PASS complete control-table SHA e454c503ecf14e61e605f562c49859fa85bd580d23eb5966d51f7a6f183a6b0a
+PASS group minima in referee order (S,v_x,u_y):
+  lambda^0 (0,0,0) = 5
+  lambda^1 (0,2,2) = 649/1000
+  lambda^2 (0,0,4) = 9900499/810000
+  lambda^3 (0,0,6) = 66774911/121500000
+  lambda^4 (0,0,8) = 413215508881/109350000000
+PASS unique global weakest lambda^3,(0,0,6), multiplicity 1
+PASS complete index-order involution (S,v_x,u_y)<->(S,u_y,v_x)
+
+FOUR-LAYER PREDECESSOR SEAM AT x=63/100
+PASS endpoint parameter equality
+PASS Hermitian parameter matrices agree entry-by-entry
+PASS fully conjugated raw gates agree identically
+PASS five boundary-control faces agree 1+3+10+21+36=71/71
+PASS seam SHA 641abe2196970879b1bb1c358dc62b5c8d17aeb2645d911c87531a16c94b37a1
+
+DIAGNOSTICS ONLY
+PASS 81/81 exact nodes positive
+minimum =
+1620000000214288268329299248323667489194610231/
+324000000000000000000000000000000000000000000
+at (S,x,y,lambda)=(1/1000000,16/25,1/100,1/1000)
+Nodes are falsification diagnostics, never the proof.
+
+EXECUTION
+PASS py_compile exit 0
+PASS literal-free scout exit 0
+PASS formal normal exit 0
+PASS root replay exit 0
+PASS fresh isolated-copy replay exit 0
+
+FAIL-CLOSED MUTATIONS (all actual exit 1 at intended gate)
+PASS optimized Python -> optimized-Python structural gate
+PASS bad source -> source SHA gate
+PASS bad manifest -> source-manifest SHA gate
+PASS bad predecessor -> predecessor SHA gate
+PASS altered normalization -> endpoint normalization gate
+PASS over-divided S clearing -> exact divisibility gate
+PASS dropped Q^2 term -> literal/vector raw-gate gate
+PASS broken conjugation -> literal/vector raw-gate gate
+PASS omitted minus-z lift -> both-sign identity gate
+PASS flipped danger sign -> exact danger gate
+PASS corrupted coefficient -> reconstruction gate
+PASS dropped control -> complete-control-count gate
+PASS broken parameter seam -> exact parameter seam gate
+PASS broken Hermitian seam -> entrywise Hermitian seam gate
+PASS broken control seam -> lambda^4 boundary-control seam gate
+
+SCOPE ATTACKS
+PASS no numerical evidence promoted to theorem
+PASS no division by S without exact divisibility
+PASS no conjugate/cyclic phase or Q^2 term discarded
+PASS no signed-z lift omitted
+PASS no chart obstruction described as raw negativity or maximality
+PASS no CE-046/048/059/060 route reused
+PASS no extension to full compact ball, common metric, or arbitrary nodes
+
+VERDICT PASS
+FATAL 0
+MAJOR 0
+MINOR 0

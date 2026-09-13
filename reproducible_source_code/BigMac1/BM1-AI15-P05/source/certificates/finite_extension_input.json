@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "problem": "Erdos 647 finite exclusion extension",
+  "prior_frontier": 9174471185880000000,
+  "new_frontier": 9180628549092000000,
+  "parameterization": {
+    "A": 61573632120,
+    "formula": "n = A*u + B, B = 2520*(46189*s+r)",
+    "u_lo": 149000000,
+    "u_hi": 149100000,
+    "k_cover": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  },
+  "sieve_definition": {
+    "modulus": 46189,
+    "coefficients": [105, 140, 210, 252, 280, 315, 420, 504, 630, 840, 1260, 2520],
+    "sieve_primes": [11, 13, 17, 19],
+    "rule": "d*r mod q != 1 for every displayed coefficient d and sieve prime q",
+    "surviving_residue_count": 96,
+    "subprogression_modulus": 529
+  },
+  "sieve_pair_count": 50784,
+  "pairs_file": "sieve96_subaps.tsv",
+  "pairs_sha256": "05693f57f61cfbc61af1a983a6080e9768c60f1bebc250aa87bde686d14abb59",
+  "discovery_open_pairs_file": "open_subaps.tsv",
+  "discovery_open_pairs_sha256": "87fc8a0ccbd57895c39e6d04cb79c2b3697b3e6b7161ea373bc8aed4c4c30965",
+  "discovery_log": "../experiments/raw/discovery_extension_u149000001_149100000.log",
+  "discovery_log_sha256": "cfea6953a57d56a08b3ad6bc26ecbf97dfeffc18c74e23e7f42c96171eb97603",
+  "discovery_program": {
+    "url": "https://github.com/bentrd/erdos647-frontier-extension/blob/f727ab831abd533d36260f36f0b3433d8db0715e/extend647.c",
+    "commit": "f727ab831abd533d36260f36f0b3433d8db0715e",
+    "source_sha256": "72d23c4210c693020706ea21bf5bb6700b8406f74967691f3feaa563f289fbbd"
+  },
+  "discovery_result": {
+    "enumerated_cells": 1514000000,
+    "survivors": 0,
+    "hard_exact_cascades": 7,
+    "deep_kills_after_16": 0
+  },
+  "imported_dependency": {
+    "statement": "Every candidate n>84 has n=2520*N and N mod 46189 satisfies the displayed 12-form sieve rule.",
+    "source": "S. D. Hughes, erdos647-proof-chain, BridgeV1/Bridge2 reduction",
+    "scope_note": "The independent verifier reconstructs all 96 surviving residues and replays every one of their 529 subprogressions in the new interval; it does not re-prove the imported all-n 2520-divisibility and 12-form implications."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "outcome": "proved",
+  "original_problem_resolved": true,
+  "source_status_verified": true,
+  "independent_audit_passed": true,
+  "no_fatal_or_major_gaps": true,
+  "resolution_evidence": [
+    "proof/candidate_resolution.md",
+    "proof/proof_dag.md",
+    "proof/structural_lemmas.md"
+  ],
+  "verification_evidence": [
+    "scripts/verify_candidate_resolution.py",
+    "results/candidate_resolution_verification.json",
+    "audit/RESOLUTION_CANDIDATE_FRESH_INDEPENDENT_AUDIT.md",
+    "audit/resolution_candidate_fresh_independent_audit.json",
+    "audit/resolution_candidate_fresh_independent_verifier.py"
+  ],
+  "notes": [
+    "Fresh independent Breaker/Referee audit passed at frozen candidate commit 21b3516e55a3521d22fac995a4473c7e6d797202.",
+    "The supervising context replayed the self-contained verifier and obtained PASS; finite checks are regression tests, not the universal proof.",
+    "No proof assistant was used."
+  ]
+}

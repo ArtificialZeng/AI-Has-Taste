@@ -1,0 +1,292 @@
+{
+  "environment": {
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "python_executable": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "python_version": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]"
+  },
+  "inputs": {
+    "certificate": "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/certificates/zero_set_certificate.json",
+    "certificate_sha256": "ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c",
+    "harness": "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/test_primary_fail_closed.py",
+    "harness_sha256": "226022fc6ee40687e2e10445f05f19f1b412d1ee565de31497cca7e59cda90d3",
+    "verifier": "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+    "verifier_sha256": "a142f97841cc7e74dccd5cf951de21d3e4f54a569a9df9ebc23b261107828268"
+  },
+  "meaning": "PASS means valid inputs were accepted and every listed tampering was rejected by nonzero exit in every interpreter mode.",
+  "mode_matrix": {
+    "normal": [],
+    "optimized": [
+      "-O"
+    ],
+    "optimized_isolated": [
+      "-O",
+      "-I"
+    ]
+  },
+  "remaining_vulnerabilities": [],
+  "results": [
+    {
+      "case": "valid",
+      "certificate_sha256": "ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<valid.json>"
+      ],
+      "description": "unmodified source certificate",
+      "emitted_pass_status": true,
+      "expectation_met": true,
+      "expected_exit": "zero_with_pass",
+      "interpreter_flags": [],
+      "mode": "normal",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"certificate_sha256\": \"ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c\", \"diagnostic_witness_range\": [6, 1000], \"finite_exception_enumeration\": {\"12\": [1366, 174], \"16\": [21846, 1038], \"7\": [42, 0], \"8\": [86, 30]}, \"status\": \"PASS\", \"theorem\": \"three-colourability zero set for n>=6 is {7,8,12,16}\", \"verifier_sha256\": \"a142f97841cc7e74dccd5cf951de21d3e4f54a569a9df9ebc23b261107828268\"}\n",
+      "timed_out": false
+    },
+    {
+      "case": "valid",
+      "certificate_sha256": "ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<valid.json>"
+      ],
+      "description": "unmodified source certificate",
+      "emitted_pass_status": true,
+      "expectation_met": true,
+      "expected_exit": "zero_with_pass",
+      "interpreter_flags": [
+        "-O"
+      ],
+      "mode": "optimized",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"certificate_sha256\": \"ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c\", \"diagnostic_witness_range\": [6, 1000], \"finite_exception_enumeration\": {\"12\": [1366, 174], \"16\": [21846, 1038], \"7\": [42, 0], \"8\": [86, 30]}, \"status\": \"PASS\", \"theorem\": \"three-colourability zero set for n>=6 is {7,8,12,16}\", \"verifier_sha256\": \"a142f97841cc7e74dccd5cf951de21d3e4f54a569a9df9ebc23b261107828268\"}\n",
+      "timed_out": false
+    },
+    {
+      "case": "valid",
+      "certificate_sha256": "ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "-I",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<valid.json>"
+      ],
+      "description": "unmodified source certificate",
+      "emitted_pass_status": true,
+      "expectation_met": true,
+      "expected_exit": "zero_with_pass",
+      "interpreter_flags": [
+        "-O",
+        "-I"
+      ],
+      "mode": "optimized_isolated",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"certificate_sha256\": \"ff2d77c2e21b883c6588036137c5482f72a2bbfff3723151d8ab5b72f66a677c\", \"diagnostic_witness_range\": [6, 1000], \"finite_exception_enumeration\": {\"12\": [1366, 174], \"16\": [21846, 1038], \"7\": [42, 0], \"8\": [86, 30]}, \"status\": \"PASS\", \"theorem\": \"three-colourability zero set for n>=6 is {7,8,12,16}\", \"verifier_sha256\": \"a142f97841cc7e74dccd5cf951de21d3e4f54a569a9df9ebc23b261107828268\"}\n",
+      "timed_out": false
+    },
+    {
+      "case": "bad_extension_block",
+      "certificate_sha256": "1e8adee3d6a3c08b53b9bdf00c9a56c83cca9f8a72b5d6940555123933cd450a",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<bad_extension_block.json>"
+      ],
+      "description": "even_one_flip.extension_block changed to '+++++++++'",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [],
+      "mode": "normal",
+      "returncode": 1,
+      "stderr": "FAIL: extension block is not the proved neutral prefix\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "bad_extension_block",
+      "certificate_sha256": "1e8adee3d6a3c08b53b9bdf00c9a56c83cca9f8a72b5d6940555123933cd450a",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<bad_extension_block.json>"
+      ],
+      "description": "even_one_flip.extension_block changed to '+++++++++'",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [
+        "-O"
+      ],
+      "mode": "optimized",
+      "returncode": 1,
+      "stderr": "FAIL: extension block is not the proved neutral prefix\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "bad_extension_block",
+      "certificate_sha256": "1e8adee3d6a3c08b53b9bdf00c9a56c83cca9f8a72b5d6940555123933cd450a",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "-I",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<bad_extension_block.json>"
+      ],
+      "description": "even_one_flip.extension_block changed to '+++++++++'",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [
+        "-O",
+        "-I"
+      ],
+      "mode": "optimized_isolated",
+      "returncode": 1,
+      "stderr": "FAIL: extension block is not the proved neutral prefix\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "bad_claimed_zeros",
+      "certificate_sha256": "49ebfa380c1dcf7361f062679a0b5468362529136f48d9f61be4af0fe3d1fc39",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<bad_claimed_zeros.json>"
+      ],
+      "description": "claimed_zeros (exceptional-order/zero list) changed to [7,8,12]",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [],
+      "mode": "normal",
+      "returncode": 1,
+      "stderr": "FAIL: claimed zero list mismatch\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "bad_claimed_zeros",
+      "certificate_sha256": "49ebfa380c1dcf7361f062679a0b5468362529136f48d9f61be4af0fe3d1fc39",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<bad_claimed_zeros.json>"
+      ],
+      "description": "claimed_zeros (exceptional-order/zero list) changed to [7,8,12]",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [
+        "-O"
+      ],
+      "mode": "optimized",
+      "returncode": 1,
+      "stderr": "FAIL: claimed zero list mismatch\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "bad_claimed_zeros",
+      "certificate_sha256": "49ebfa380c1dcf7361f062679a0b5468362529136f48d9f61be4af0fe3d1fc39",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "-I",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<bad_claimed_zeros.json>"
+      ],
+      "description": "claimed_zeros (exceptional-order/zero list) changed to [7,8,12]",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [
+        "-O",
+        "-I"
+      ],
+      "mode": "optimized_isolated",
+      "returncode": 1,
+      "stderr": "FAIL: claimed zero list mismatch\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "missing_schema_version",
+      "certificate_sha256": "0991b6c0c11a1e7ef5e2ec619202613d25543d5629449bb5ca36e25147cce548",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<missing_schema_version.json>"
+      ],
+      "description": "required top-level key schema_version removed",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [],
+      "mode": "normal",
+      "returncode": 1,
+      "stderr": "FAIL: certificate top-level schema mismatch\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "missing_schema_version",
+      "certificate_sha256": "0991b6c0c11a1e7ef5e2ec619202613d25543d5629449bb5ca36e25147cce548",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<missing_schema_version.json>"
+      ],
+      "description": "required top-level key schema_version removed",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [
+        "-O"
+      ],
+      "mode": "optimized",
+      "returncode": 1,
+      "stderr": "FAIL: certificate top-level schema mismatch\n",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "case": "missing_schema_version",
+      "certificate_sha256": "0991b6c0c11a1e7ef5e2ec619202613d25543d5629449bb5ca36e25147cce548",
+      "command": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "-O",
+        "-I",
+        "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/03_a383733_zero_set/verification/primary_verify.py",
+        "<missing_schema_version.json>"
+      ],
+      "description": "required top-level key schema_version removed",
+      "emitted_pass_status": false,
+      "expectation_met": true,
+      "expected_exit": "nonzero_without_pass",
+      "interpreter_flags": [
+        "-O",
+        "-I"
+      ],
+      "mode": "optimized_isolated",
+      "returncode": 1,
+      "stderr": "FAIL: certificate top-level schema mismatch\n",
+      "stdout": "",
+      "timed_out": false
+    }
+  ],
+  "schema": "a383733-primary-fail-closed-regression-v1",
+  "status": "PASS",
+  "unmet_expectations": []
+}

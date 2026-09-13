@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "title": "Three Probes Suffice for Directional Localization on the Three-Cube",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+  },
+  "build_command": "latexmk -cd -pdf -interaction=nonstopmode -halt-on-error manuscript/main.tex",
+  "supplementary_files": [
+    "evidence/proof.md",
+    "evidence/solve_q3.py",
+    "evidence/check_q3_certificate.py",
+    "evidence/q3_certificate.json",
+    "evidence/solver_report.json",
+    "evidence/replay_report.json"
+  ],
+  "bibliography_basis": {
+    "JonesKinnersley2026": "User-designated source.md record and the hash-matching local arXiv v1 primary-source PDF, as documented in literature/user_bibliography_check.md."
+  },
+  "citation_scope_note": "The cited primary paper supports the game context, the hypercube bracket used for the lower bound, and the provenance of Question 6.1. The Q_3 strategy is proved directly; no exhaustive priority or higher-dimensional claim is made."
+}

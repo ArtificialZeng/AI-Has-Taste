@@ -1,0 +1,1772 @@
+{
+  "schema": "bigmac1-reproduction-static-review-v1",
+  "prepared_on": "2026-09-13",
+  "snapshot_utc": "2026-09-13T00:58:35.418941+00:00",
+  "review_scope": "Independent static packaging safety/portability QA of all 41 selected reproducible-source directories, plus five isolated small exact verifier/diagnostic runs. No new mathematical research, no new independent mathematical proof/novelty/citation audit, no full replay of all papers.",
+  "root": "repository/reproducible_source_code/BigMac1",
+  "package_script_sha256": "23bc659a2012913773abd17a9e03a6b243a9e08a4af88a1c378bbc20aee0fc7b",
+  "summary": {
+    "projects": 41,
+    "files": 4617,
+    "bytes": 34396630,
+    "code_and_build_files": 603,
+    "python_files_parsed_under_3_12_14": 552,
+    "python_syntax_errors_under_3_12_14": 0,
+    "files_over_10_MB": 0,
+    "compiled_magic_hits": 0,
+    "symlinks": 0,
+    "forbidden_cache_or_private_names": 0,
+    "secret_signature_hits": 0,
+    "agent_launcher_hits": 0,
+    "external_original_paper_hits_final_snapshot": 0,
+    "isolated_smoke_passed": 5,
+    "isolated_smoke_total": 5
+  },
+  "verdict": "PASS for the scanned source-only safety exclusions after the external-paper fix; CONDITIONAL portability. Several historical wrappers need explicitly documented alternate entrypoints, local tools or omitted-input regeneration. Do not label these 41 directories as 41 independently re-executed complete reproductions.",
+  "methodology": {
+    "filesystem": "Read-only complete file inventory under the 41 reproduction directories; no reads of external credentials or .env contents.",
+    "magic": "ELF, Mach-O thin/fat/fat64, PE/MZ and ar archive signatures scanned; none found. Image/other genuine mathematical assets were not treated as native executable magic.",
+    "secrets": "Filename exclusions and high-specificity private-key/OpenAI-project/GitHub/AWS/Slack token signatures; this is not proof that arbitrary opaque text cannot contain secrets.",
+    "portability": "Scanned /Users, /home, /opt/homebrew, /opt/anaconda and private temporary prefixes. Manually distinguished historical metadata, optional audit tooling, configurable external tools, shebangs, and real execution hard dependencies. Earlier narrower 'zero paths' note is superseded by this report.",
+    "math_inputs": "Reviewed selected package filters, retained certificate/code presence, selected file literals and known omission notes; static literal checks are not exhaustive dynamic dependency resolution.",
+    "runtime": "All 552 .py files AST-parse under Python 3.12.14. A separate system Python 3.9.6 parse rejects a PEP-701-style historical discovery f-string; do not interpret that as a 3.12 syntax error.",
+    "smoke": "Each selected verifier was read completely before execution. Only the script and explicitly read inputs were copied into unique work/repro-qa directories. Five subprocesses used Python 3.12.14 -I -B and a 30-second timeout each; no network/native subprocesses. One diagnostic wrote its known JSON output only inside its copy. Original selected bytes unchanged."
+  },
+  "resolved_findings": [
+    {
+      "id": "external-original-AF03-P08",
+      "severity": "must-remove",
+      "status": "resolved",
+      "path": "BM1-AF03-P08/source/literature/original/arxiv-1312.2170v1/q-Fibonacci-s.tex",
+      "finding": "Initially found a 32,183-byte full third-party article source by Chen/Fan/Guo/Zhong, not authored reproduction code. Parent quarantined both copies into work/excluded-third-party, added literature/original/ filtering, and rebuilt package manifests. Final complete inventory has zero external-original hits.",
+      "safe_to_remove_for_math_replay": "No authored runtime reference requiring this external article source was found; bibliography and historical citation evidence remain."
+    },
+    {
+      "id": "compiled-MachO-AI15-P11",
+      "status": "resolved",
+      "finding": "Earlier production/debug extensionless Mach-O binaries were excluded by updated binary magic screening. Authored C sources and census records remain; resulting wrapper limitations are explicitly documented."
+    },
+    {
+      "id": "render-cache-AI15-P05",
+      "status": "resolved",
+      "finding": "Earlier rendered_pages_final images excluded by generalized rendered_pages filter."
+    },
+    {
+      "id": "MAN-P06-tool-note",
+      "status": "resolved",
+      "finding": "Parent updated reproduction note to distinguish small retained ES5 proof inputs from missing local DRAT/LRAT tools and missing large ES17 traces."
+    }
+  ],
+  "portability_and_reproduction_findings": [
+    {
+      "id": "BM1-AI15-P11",
+      "severity": "reproduction-limitation",
+      "status": "documented",
+      "finding": "Frozen order-31 aggregate scripts bind omitted native checker binaries and nauty source archive; 240 completed census records and authored C/Python checkers remain, but original advertised replay is not self-contained.",
+      "evidence": [
+        "source/audit/order31_independent_aggregate.py",
+        "source/audit/rebuild_order31_checker.sh",
+        "source/experiments/aggregate_tree_sweep.py:88",
+        "source/README.md"
+      ],
+      "direct_entrypoint": "python3 audit/order31_independent_aggregate.py",
+      "prerequisites": "Historical entrypoint is not runnable unchanged in this source-only subset. Restore/build pinned nauty 2.9.3 from upstream and adapt historical native-binary identity checks in a separate replay copy; source archive SHA-256 is recorded in source/README.md.",
+      "scope": "Finite order-31 result; retained completed records and exception witnesses, not unrestricted tree conjecture."
+    },
+    {
+      "id": "BM1-AF04-P03",
+      "severity": "reproduction-limitation",
+      "status": "documented",
+      "finding": "Positive 12-block witness checker is self-contained. Global negative replay depends on omitted generated graphs (about 2.09 GB) and machine binary; 162 branch records and C++ search source remain.",
+      "evidence": [
+        "source/code/verify_packing_certificate.py",
+        "source/code/verify_global_fixed_cover.py",
+        "source/REPRODUCE.md"
+      ],
+      "direct_entrypoint": "python3 code/verify_packing_certificate.py certificates/packing12.json --expected-blocks 12",
+      "prerequisites": "Python standard library for positive witness. Full negative replay requires graph regeneration, C++ compiler/local build, replay adapter and substantial compute; not rerun.",
+      "scope": "Positive witness only for direct small command, not independent reproduction of global upper bound."
+    },
+    {
+      "id": "BM1-MAN-P06",
+      "severity": "reproduction-limitation",
+      "status": "documented",
+      "finding": "Retained ES5 CNF/DRAT/LRAT are not sufficient for default verifier execution: verify_sat_certificates.py requires absent literature/external/drat-trim/{drat-trim,lrat-check}. ES17/ES6 full trace and several tmp/certification and formula inputs are intentionally not in this source-only subset.",
+      "evidence": [
+        "source/code/verify_sat_certificates.py:87",
+        "source/code/verify_es17_cube_certificate.py",
+        "source/code/convert_and_check_es17_lrat.py",
+        "source/reproduction/es17_certificate.md"
+      ],
+      "direct_entrypoint": "python3 code/verify_encoding_certificate.py",
+      "prerequisites": "Python standard library and retained code/compact_sat.py suffice for encoding-count check. For ES5 proof checking, locally build DRAT/LRAT checkers and adapt placement in a replay copy, then python3 code/verify_sat_certificates.py. Do not use -O because this historical checker uses assertions. Full ES17 replay additionally requires regeneration of omitted large formulas/traces.",
+      "scope": "Encoding check is not the full SAT proof. Archived ES5 proof inputs remain; heavy ES17 certificate summary is not its complete proof trace."
+    },
+    {
+      "id": "BM1-AF03-P03",
+      "severity": "portability",
+      "status": "document-alternative",
+      "finding": "experiments/run_exact.sh hardcodes /opt/homebrew/bin/Singular; certificate verifier defaults to it but offers --singular. Older system Python 3.9 cannot parse a historical discovery f-string that Python 3.12 parses.",
+      "evidence": [
+        "source/experiments/run_exact.sh:9",
+        "source/certificates/verify_certificate.py:255",
+        "source/independent/discover_modular.py:190"
+      ],
+      "direct_entrypoint": "python3 certificates/verify_certificate.py certificates/n5_input.json --singular /path/to/Singular",
+      "prerequisites": "Python 3.12 recommended for the complete archived Python source; locally installed Singular at explicitly supplied path. Full independent n=5 reconstruction was historically about 7638 seconds, so was not run.",
+      "scope": "Finite n=5 certificate, not the all-n conjecture."
+    },
+    {
+      "id": "BM1-AF03-P14",
+      "severity": "portability",
+      "status": "document-alternative",
+      "finding": "src/verify_all.py hardcodes an Anaconda interpreter; three authored source shebangs also do. Calling each script through a selected python3 bypasses shebang only, not verify_all.py's internal hard dependency. Independent referee accepts SINGULAR env override; its output also embeds a historical default path as metadata.",
+      "evidence": [
+        "source/src/verify_all.py:15",
+        "source/src/builder_verify_star1.py:1",
+        "source/src/builder_test_star1_mutations.py:1",
+        "source/src/builder_build_star1_certificate.py:1",
+        "source/audit/independent_referee/independent_verifier.py:456",
+        "source/audit/independent_referee/independent_verifier.py:1839"
+      ],
+      "direct_entrypoint": "python3 src/builder_verify_star1.py certificates/star1_exact_certificate.json",
+      "prerequisites": "Python with SymPy for this star1 certificate. This is only one chamber; full suite must invoke all listed verifiers with portable Python and install Singular/set SINGULAR for independent referee in a separate replay copy.",
+      "scope": "The direct command is star1 only, not all chambers or whole-paper independent verification."
+    },
+    {
+      "id": "BM1-AF04-P02",
+      "severity": "portability",
+      "status": "document-alternative",
+      "finding": "Discovery code fixes labelg to /opt/homebrew/bin/labelg, but the independent serialized-certificate verifier avoids nauty.",
+      "evidence": [
+        "source/code/discover_graph.py:23",
+        "source/code/independent_verifier.py",
+        "source/README.md"
+      ],
+      "direct_entrypoint": "python3 code/independent_verifier.py certificate",
+      "prerequisites": "Python standard library for independent certificate verification. Discovery regeneration requires nauty labelg and path adaptation in a replay copy.",
+      "scope": "Independent finite certificate verifier is separate from discovery."
+    },
+    {
+      "id": "BM1-AI15-P02",
+      "severity": "portability",
+      "status": "document-alternative",
+      "finding": "Top-level make verify includes latex-audit via an unshipped <historical-home>/.codex skill script; it is not a portable total entrypoint, although mathematical verifiers are portable.",
+      "evidence": [
+        "source/Makefile:2",
+        "source/Makefile:6",
+        "source/Makefile:25"
+      ],
+      "direct_entrypoint": "python3 code/verify_certificate.py certificate/a321614_certificate.json",
+      "additional_entrypoint": "python3 agents/referee/verify_no_import.py certificate/a321614_certificate.json",
+      "prerequisites": "Python standard library; use direct mathematical verifiers. LaTeX build needs TeX Live separately; historical private skill path is audit tooling, not required mathematical input.",
+      "scope": "Certificate verification rather than rerunning private LaTeX audit integration."
+    },
+    {
+      "id": "BM1-AF03-P04",
+      "severity": "portability",
+      "status": "optional-path-only",
+      "finding": "Only make audit uses an unshipped <historical-home>/.codex skill path; mathematical verify target is independent of it.",
+      "evidence": [
+        "source/Makefile:15"
+      ],
+      "direct_entrypoint": "python3 verifier/verify_certificate.py certificates/transitive_arrays_n_le_5.json",
+      "prerequisites": "Python standard library for finite certificate; symbolic expansion is a separate verifier. Omit optional historical make audit unless an equivalent local audit tool is intentionally supplied.",
+      "scope": "Finite certificate check, not new bibliography or full mathematical audit."
+    },
+    {
+      "id": "BM1-MAN-P07",
+      "severity": "portability",
+      "status": "document-alternative",
+      "finding": "Optional C++ tests hardcode Homebrew GMP include/lib flags. Main full_certificate script locates Python from PATH, uses a new mktemp directory and guarded cleanup; its /private/tmp reference is an allowed cleanup prefix, not an execution dependency.",
+      "evidence": [
+        "source/tests/test_search_bounded_prime_sets.sh:10",
+        "source/tests/test_verify_bounded_prime_sets.sh:10",
+        "source/tests/run_full_certificate.sh:6",
+        "source/tests/run_full_certificate.sh:17"
+      ],
+      "direct_entrypoint": "bash tests/run_full_certificate.sh",
+      "prerequisites": "Bash/POSIX mktemp and Python >=3.10 standard library; not executed here because full cap=347 replay can be long. Optional C++ routes additionally need C++17 and GMP with local compiler flags.",
+      "scope": "Bounded prime-set/cap certificate, not unrestricted Lehmer conjecture."
+    },
+    {
+      "id": "BM1-MAN-P09",
+      "severity": "scope-and-environment",
+      "status": "intentional-layout",
+      "finding": "certificate_workspace/tmp/research is deliberate frozen exact-certificate layout and must not be treated as scratch. Historical manifests may bind omitted old logs/build outputs, and whole-release manifest also binds PDF stored separately in this repository.",
+      "evidence": [
+        "source/README.md:398",
+        "source/certificates/PORTABILITY_NOTE.md",
+        "source/certificate_workspace/requirements-portable.txt",
+        "source/certificates/xy_box_post_v17_portable/README.md"
+      ],
+      "direct_entrypoint": "cd certificate_workspace && python3 -B -u tmp/research/compact_ball_uncovered_box_x5_8_xy_adjacent_x627_1000_exact_gate.py",
+      "additional_entrypoint": "cd certificate_workspace && python3 -B -u tmp/research/audit/verify_compact_ball_uncovered_box_x5_8_xy_adjacent_x627_1000_independent_referee.py",
+      "prerequisites": "Reconstruct environment from requirements-portable.txt in a separate replay copy. There are four paired post-v17 gates/referees plus broader historical programs; these potentially heavy runs were not executed. Keep fresh stdout/results outside immutable source or use a separate copy.",
+      "scope": "Frozen v18 audited partial islands/local boxes, not arbitrary kernels, arbitrary-node theorem, or later non-submission checkpoint claims."
+    },
+    {
+      "id": "BM1-AF03-P01",
+      "severity": "external-tool-prerequisite",
+      "status": "documented-entry",
+      "finding": "The exact LRAT replay requires pinned upstream checker source/local compilation; the fetch script writes only verification/third_party in the replay copy.",
+      "evidence": [
+        "source/verification/fetch_lrat_checker.sh",
+        "source/verification/verify_lrat.py"
+      ],
+      "direct_entrypoint": "python3 verification/verify_lrat.py instances/ekr_k4d3_n9.cnf certificates/ekr_k4d3_n9.lrat --n 9",
+      "prerequisites": "Python plus C toolchain; provision pinned drat-trim commit 2e3b2dc0ecf938addbd779d42877b6ed69d9a985 using the included fetch script and hash file. Network fetching and compilation were not run.",
+      "scope": "n9 direct command; n10 has separate retained formula/proof."
+    },
+    {
+      "id": "BM1-AF04-P07",
+      "severity": "external-tool-prerequisite",
+      "status": "documented-entry",
+      "finding": "Small minimizer witness is self-contained; complete tournament sweeps require building the two C scanners and nauty gentourng on PATH.",
+      "evidence": [
+        "source/code/README.md",
+        "source/code/Makefile",
+        "source/code/run_sweep.sh",
+        "source/code/verify_minimizer.py"
+      ],
+      "direct_entrypoint": "python3 code/verify_minimizer.py certificates/minimizer_11.json",
+      "prerequisites": "Python standard library for no-search minimizer check. Full sweep requires make/C compiler, nauty 2.9.3 gentourng and significant compute; not run.",
+      "scope": "The small command verifies the displayed packing witness only, not the complete tournament sweep."
+    },
+    {
+      "id": "BM1-AI15-P05",
+      "severity": "heavy-replay-not-run",
+      "status": "documented-entry",
+      "finding": "Full extension verifier enumerates 5,078,450,784 cells and compiles authored C; not suitable for smoke checking.",
+      "evidence": [
+        "source/README.md",
+        "source/verification/verify_extension.py"
+      ],
+      "direct_entrypoint": "python3 verification/test_verifier.py",
+      "prerequisites": "Read tests and source/README.md before local execution; full verification requires C compiler and substantial CPU with python3 verification/verify_extension.py --threads 12.",
+      "scope": "Unit/fail-closed tests are not a full cell-census replay."
+    },
+    {
+      "id": "BM1-AI15-P12",
+      "severity": "environment-pin",
+      "status": "documented-entry",
+      "finding": "Original clean reproduction requires its pinned interpreter/dependency environment, not arbitrary stdlib Python.",
+      "evidence": [
+        "source/scripts/reproduce_clean.sh"
+      ],
+      "direct_entrypoint": "bash scripts/reproduce_clean.sh",
+      "prerequisites": "Pinned CPython 3.13.5, hash-locked SymPy 1.13.3/mpmath 1.3.0, fresh virtual environment and LaTeX tooling as required by the script. Run only in a replay copy, not frozen source; not executed.",
+      "scope": "No whole-paper reproduction claimed during packaging."
+    }
+  ],
+  "isolated_smoke_tests": [
+    {
+      "id": "BM1-MATH15-P13",
+      "command": [
+        "python3",
+        "-I",
+        "-B",
+        "code/verify_split_witness.py",
+        "certificates/split_witness.json"
+      ],
+      "runtime_executable": "<historical-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14",
+      "elapsed_seconds": 0.036,
+      "copy_dir": "work/repro-qa/BM1-MATH15-P13-z1wovc87",
+      "read_scope_audited": "No writes; standard-library exact four-vertex witness.",
+      "input_bindings": [
+        {
+          "path": "code/verify_split_witness.py",
+          "sha256": "7ae75675d46048a7c2524dc920d86d6e8752c079ce14b31732e07c358a3e6fe8"
+        },
+        {
+          "path": "certificates/split_witness.json",
+          "sha256": "ea5757d58335c05b03abeb5ec8063a31f5d633c3044514a9f9fd46811902fc6c"
+        }
+      ],
+      "changed_or_created_copy_files": [],
+      "original_selected_bytes_unchanged": true,
+      "exit_code": 0,
+      "stdout": "OK split_witness partitions=1 types=IQ,QQ,QI input_sha256=ea5757d58335c05b03abeb5ec8063a31f5d633c3044514a9f9fd46811902fc6c code_sha256=7ae75675d46048a7c2524dc920d86d6e8752c079ce14b31732e07c358a3e6fe8\n",
+      "stderr": "",
+      "timeout": false,
+      "timeout_limit_seconds": 30,
+      "scope": "No writes; standard-library exact four-vertex witness."
+    },
+    {
+      "id": "BM1-AI15-P01",
+      "command": [
+        "python3",
+        "-I",
+        "-B",
+        "certificates/builder_verify_counterexample.py",
+        "certificates/builder_counterexample.json"
+      ],
+      "runtime_executable": "<historical-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14",
+      "elapsed_seconds": 0.039,
+      "copy_dir": "work/repro-qa/BM1-AI15-P01-udn9__xt",
+      "read_scope_audited": "No writes; Fraction 4x4 Hadamard/minor verification.",
+      "input_bindings": [
+        {
+          "path": "certificates/builder_verify_counterexample.py",
+          "sha256": "d5e22bf05c15a84052f2b5396187660759d233016a620cd401e9c5bbcddc19f1"
+        },
+        {
+          "path": "certificates/builder_counterexample.json",
+          "sha256": "07367eb903e471f833dd2d5229765ffa1c96a360b7d961b0f3e5a192d82a6184"
+        }
+      ],
+      "changed_or_created_copy_files": [],
+      "original_selected_bytes_unchanged": true,
+      "exit_code": 0,
+      "stdout": "PASS exact rational Hadamard rank-(2,2) factorization\ndet(M)=1\nA: checked 16 3x3 minors; nonzero 2x2 minors=25\nB: checked 16 3x3 minors; nonzero 2x2 minors=36\ninput_sha256=07367eb903e471f833dd2d5229765ffa1c96a360b7d961b0f3e5a192d82a6184\ncode_sha256=d5e22bf05c15a84052f2b5396187660759d233016a620cd401e9c5bbcddc19f1\n",
+      "stderr": "",
+      "timeout": false,
+      "timeout_limit_seconds": 30,
+      "scope": "No writes; Fraction 4x4 Hadamard/minor verification."
+    },
+    {
+      "id": "BM1-AF04-P01",
+      "command": [
+        "python3",
+        "-I",
+        "-B",
+        "certificates/verify_certificate.py",
+        "certificates/annihilator_certificate.json"
+      ],
+      "runtime_executable": "<historical-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14",
+      "elapsed_seconds": 0.053,
+      "copy_dir": "work/repro-qa/BM1-AF04-P01-7z_ihsnq",
+      "read_scope_audited": "No writes; Fraction polynomial/ODE recurrence identities.",
+      "input_bindings": [
+        {
+          "path": "certificates/verify_certificate.py",
+          "sha256": "86232f3821c5d37b6c7c6b40729b34faf98418d24eaa69829ceadf440e958982"
+        },
+        {
+          "path": "certificates/annihilator_certificate.json",
+          "sha256": "8d31bebf230f3a3eda53d881f5094573d6fcee8406619e27878fbffa95b3a1ba"
+        }
+      ],
+      "changed_or_created_copy_files": [],
+      "original_selected_bytes_unchanged": true,
+      "exit_code": 0,
+      "stdout": "{\"checks\": [\"state_system_to_L3\", \"ore_left_product_to_L5\", \"L5_to_recurrence\", \"formal_series_initials\", \"boundary_residuals_n4_to_n8\"], \"input_sha256\": \"8d31bebf230f3a3eda53d881f5094573d6fcee8406619e27878fbffa95b3a1ba\", \"status\": \"VERIFIED\", \"verifier_sha256\": \"86232f3821c5d37b6c7c6b40729b34faf98418d24eaa69829ceadf440e958982\"}\n",
+      "stderr": "",
+      "timeout": false,
+      "timeout_limit_seconds": 30,
+      "scope": "No writes; Fraction polynomial/ODE recurrence identities."
+    },
+    {
+      "id": "BM1-MAN-P03",
+      "command": [
+        "python3",
+        "-I",
+        "-B",
+        "code/verify_borsuk_ternary4.py"
+      ],
+      "runtime_executable": "<historical-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14",
+      "elapsed_seconds": 0.171,
+      "copy_dir": "work/repro-qa/BM1-MAN-P03-rh3rtte7",
+      "read_scope_audited": "No writes; bounded 81-vertex exact finite certificate.",
+      "input_bindings": [
+        {
+          "path": "code/verify_borsuk_ternary4.py",
+          "sha256": "572c3f4dd610266a4e44f0db156edc993ec4182d83be250fbe727542f9ebad65"
+        },
+        {
+          "path": "certificates/borsuk_ternary4.json",
+          "sha256": "d0ebc8d42c44fcf74d2e321310e0fb104e5f8ef08c714560e97ba19225bd5ceb"
+        }
+      ],
+      "changed_or_created_copy_files": [],
+      "original_selected_bytes_unchanged": true,
+      "exit_code": 0,
+      "stdout": "VERIFIED: max_S subset {-1,0,1}^4 b(S) = 4\ndistance_spectrum=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 16]\ndelta6_maximal_cliques=15056 delta6_orbits=72\ncertificate_sha256=d0ebc8d42c44fcf74d2e321310e0fb104e5f8ef08c714560e97ba19225bd5ceb\nverifier_sha256=572c3f4dd610266a4e44f0db156edc993ec4182d83be250fbe727542f9ebad65\n",
+      "stderr": "",
+      "timeout": false,
+      "timeout_limit_seconds": 30,
+      "scope": "Ternary4 Borsuk certificate only; no kissing5 replay"
+    },
+    {
+      "id": "BM1-DM01-P13",
+      "command": [
+        "python3",
+        "-I",
+        "-B",
+        "scripts/verify_candidate_resolution.py"
+      ],
+      "runtime_executable": "<historical-home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "python_version": "3.12.14",
+      "elapsed_seconds": 0.999,
+      "copy_dir": "work/repro-qa/BM1-DM01-P13-pg2bk8wu",
+      "read_scope_audited": "Only writes results/candidate_resolution_verification.json under copied ROOT; finite algebraic diagnostic, not the universal theorem.",
+      "input_bindings": [
+        {
+          "path": "scripts/verify_candidate_resolution.py",
+          "sha256": "f2eebfa1bb5688ba05c8ca84320ecef44435f1726b7bfcd607270b7bf933a43d"
+        },
+        {
+          "path": "proof/candidate_resolution.md",
+          "sha256": "fd65b8faf92b6c70ea71374e497669948796086a7daffbcb00a8fad6c1278d16"
+        },
+        {
+          "path": "proof/structural_lemmas.md",
+          "sha256": "68f77c3747509f70f239e10001efdd2057f352dd2757cfc1b208a574d2342ae2"
+        }
+      ],
+      "changed_or_created_copy_files": [
+        "results/candidate_resolution_verification.json"
+      ],
+      "original_selected_bytes_unchanged": true,
+      "exit_code": 0,
+      "stdout": "{\"eligible_primes_through_300\": 33, \"output\": \"results/candidate_resolution_verification.json\", \"output_sha256\": \"befbf0a6291f499a704818165ef758266f09ce47e4374d3208395f1d3bcf664b\", \"status\": \"PASS\", \"symbolic_checks\": 950}\n",
+      "stderr": "",
+      "timeout": false,
+      "timeout_limit_seconds": 30,
+      "scope": "Finite diagnostic: 33 eligible primes through 300 and 950 symbolic checks; not a proof of an unrestricted theorem"
+    }
+  ],
+  "not_executed": [
+    "Full 40,330,829,030-tree order-31 census",
+    "5,078,450,784-cell extension check",
+    "Complete packing/global fixed-cover search (68,377,851,660 branching nodes historically)",
+    "Multi-GB ES17 SAT proof regeneration/checking",
+    "Full n=5 no-import Artin/exterior reconstruction",
+    "Lens exact gate/referee suite and later research checkpoints",
+    "Any Codex/Claude agent launcher or new CLI worker",
+    "Any network fetch, dependency installation or build of upstream tools"
+  ],
+  "integrity_and_manifest_note": "Old full-release manifests are retained historical provenance and may name omitted PDFs, build products, third-party archives, binaries or logs. Use the new repository package-manifest.json for the selected-source subset; do not claim old manifests pass unchanged. Smoke results bind only their explicitly listed input hashes.",
+  "rows": [
+    {
+      "id": "BM1-AF03-P01",
+      "files": 71,
+      "bytes": 819212,
+      "code_files": 16,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/discovery/breaker/run_log.json",
+        "source/literature/search_log.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/discovery/breaker/generated/n10_witness_pair.metadata.json",
+          "bytes": 176905
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P03",
+      "files": 58,
+      "bytes": 998233,
+      "code_files": 13,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [
+        {
+          "path": "source/certificates/verify_certificate.py",
+          "line": 255
+        },
+        {
+          "path": "source/experiments/run_exact.sh",
+          "line": 9
+        }
+      ],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/results/general_structure_exploration.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/n5_input.json",
+          "bytes": 276570
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [
+        {
+          "path": "source/independent/discover_modular.py",
+          "error": "f-string expression part cannot include a backslash (discover_modular.py, line 190)"
+        }
+      ],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "experiments/run_exact.sh hardcodes /opt/homebrew/bin/Singular; certificate verifier defaults to it but offers --singular. Older system Python 3.9 cannot parse a historical discovery f-string that Python 3.12 parses."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P04",
+      "files": 32,
+      "bytes": 271907,
+      "code_files": 6,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [
+        {
+          "path": "source/Makefile",
+          "line": 15
+        }
+      ],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/transitive_arrays_n_le_5.json",
+          "bytes": 182224
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "Only make audit uses an unshipped <historical-home>/.codex skill path; mathematical verify target is independent of it."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P05",
+      "files": 37,
+      "bytes": 1461026,
+      "code_files": 6,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/discovery/breaker_enumeration_manifest.json",
+        "source/discovery/breaker_projection_results.json",
+        "source/literature/agent_search_raw.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/discovery/breaker_projection_results.json",
+          "bytes": 1197269
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P07",
+      "files": 36,
+      "bytes": 120018,
+      "code_files": 6,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/REPRODUCE.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/src/discovery.cpp",
+          "bytes": 22798
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P08",
+      "files": 35,
+      "bytes": 194461,
+      "code_files": 6,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/audit/CITATION_AUDIT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/audit/referee_work.md",
+          "bytes": 35002
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P10",
+      "files": 31,
+      "bytes": 617190,
+      "code_files": 4,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/README.md",
+        "source/audit/REPRODUCTION_LOG.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/trees_n2_n9.json",
+          "bytes": 521362
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P11",
+      "files": 17,
+      "bytes": 63870,
+      "code_files": 3,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/code/verify_certificate.py",
+          "bytes": 11868
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P12",
+      "files": 13,
+      "bytes": 101748,
+      "code_files": 8,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/main.tex",
+          "bytes": 25020
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P13",
+      "files": 42,
+      "bytes": 2013395,
+      "code_files": 8,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/PROOF_AUDIT.md",
+        "source/paper/main.tex"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/experiments/breaker_length10_exact.jsonl",
+          "bytes": 1380172
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P14",
+      "files": 93,
+      "bytes": 1097637,
+      "code_files": 37,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [
+        {
+          "path": "source/audit/independent_referee/independent_verifier.py",
+          "line": 456
+        },
+        {
+          "path": "source/audit/independent_referee/independent_verifier.py",
+          "line": 1839
+        },
+        {
+          "path": "source/src/builder_build_star1_certificate.py",
+          "line": 1
+        },
+        {
+          "path": "source/src/builder_test_star1_mutations.py",
+          "line": 1
+        },
+        {
+          "path": "source/src/builder_verify_star1.py",
+          "line": 1
+        },
+        {
+          "path": "source/src/verify_all.py",
+          "line": 15
+        }
+      ],
+      "absolute_metadata_files": [
+        "source/README_RELEASE.md",
+        "source/audit/independent_referee/verification_result.json",
+        "source/audit/verification_log.json",
+        "source/paper/main.tex",
+        "source/proof/referee_report.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/star1_exact_certificate.json",
+          "bytes": 162073
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "src/verify_all.py hardcodes an Anaconda interpreter; three authored source shebangs also do. Calling each script through a selected python3 bypasses shebang only, not verify_all.py's internal hard dependency. Independent referee accepts SINGULAR env override; its output also embeds a historical default path as metadata."
+      ]
+    },
+    {
+      "id": "BM1-AF03-P15",
+      "files": 56,
+      "bytes": 814854,
+      "code_files": 12,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/REPRODUCE.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/d9_normalized_flow.json",
+          "bytes": 89760
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P01",
+      "files": 30,
+      "bytes": 78309,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/verify_certificate.py",
+          "bytes": 12976
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P02",
+      "files": 42,
+      "bytes": 1460558,
+      "code_files": 6,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [
+        {
+          "path": "source/code/discover_graph.py",
+          "line": 23
+        }
+      ],
+      "absolute_metadata_files": [
+        "source/audit/BUILD_AUDIT.md",
+        "source/certificate/discovery_provenance.json",
+        "source/certificate/representatives.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificate/switch_occurrences.json",
+          "bytes": 1072420
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "Discovery code fixes labelg to /opt/homebrew/bin/labelg, but the independent serialized-certificate verifier avoids nauty."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P03",
+      "files": 341,
+      "bytes": 713113,
+      "code_files": 7,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/REPRODUCE.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/experiments/instance.json",
+          "bytes": 337699
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P06",
+      "files": 29,
+      "bytes": 105226,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/CITATION_AUDIT.md",
+        "source/results/independent_verification.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/verify_weight20.py",
+          "bytes": 18150
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P07",
+      "files": 977,
+      "bytes": 537575,
+      "code_files": 15,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/audit/CITATION_AUDIT.md",
+        "source/certificates/baseline_n10_builder_full.json",
+        "source/certificates/baseline_n10_certifier_opt.json",
+        "source/certificates/baseline_n9_builder_full.json",
+        "source/certificates/baseline_n9_certifier_opt.json",
+        "source/certificates/n11_builder_full_m192.json",
+        "source/certificates/n11_certifier_full_m192.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/MANIFEST.json",
+          "bytes": 170091
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P10",
+      "files": 23,
+      "bytes": 109891,
+      "code_files": 4,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/verification/verify_radius6.py",
+          "bytes": 22305
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AF04-P15",
+      "files": 51,
+      "bytes": 162978,
+      "code_files": 8,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/reproducibility/ENVIRONMENT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/paper/main.log",
+          "bytes": 26190
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P01",
+      "files": 29,
+      "bytes": 92380,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/CITATION_AUDIT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/audit/referee_notes.md",
+          "bytes": 9279
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P02",
+      "files": 34,
+      "bytes": 279658,
+      "code_files": 8,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [
+        {
+          "path": "source/Makefile",
+          "line": 2
+        }
+      ],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/agents/referee_report.md",
+        "source/audit/PROOF_AUDIT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificate/a321614_certificate.json",
+          "bytes": 62614
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "Top-level make verify includes latex-audit via an unshipped <historical-home>/.codex skill script; it is not a portable total entrypoint, although mathematical verifiers are portable."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P03",
+      "files": 41,
+      "bytes": 223612,
+      "code_files": 8,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/literature/search_log.md",
+        "source/release/frozen/README.md",
+        "source/verification/primary_fail_closed_results.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/audit/AUTOMATON_EQUIVALENCE_AUDIT.md",
+          "bytes": 17878
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P05",
+      "files": 43,
+      "bytes": 3321873,
+      "code_files": 4,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/experiments/raw/discovery_extension_u149000001_149100000.log",
+          "bytes": 1767897
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P06",
+      "files": 69,
+      "bytes": 1355042,
+      "code_files": 18,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/FAIL_CLOSED_AUDIT.md",
+        "source/audit/referee_round3_t16.md",
+        "source/audit/referee_round4_sync.md",
+        "source/audit/referee_round4_t17.md",
+        "source/logs/fail_closed_matrix.json",
+        "source/logs/fail_closed_matrix_full.json",
+        "source/logs/integer_box_side5_verifier.log",
+        "source/logs/referee_t15_check_matrix.json",
+        "source/logs/referee_t16_t17_check_matrix.json",
+        "source/logs/referee_t18_check_matrix.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificate/t16_block_size_reduction.json",
+          "bytes": 652416
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P07",
+      "files": 44,
+      "bytes": 131249,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/FINAL_STATUS.md",
+        "source/audit/CITATION_AUDIT.md",
+        "source/logs/release_binding_tamper_matrix.txt"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/logs/main_release_converged.log",
+          "bytes": 26403
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P08",
+      "files": 33,
+      "bytes": 225971,
+      "code_files": 4,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/CITATION_AUDIT.md",
+        "source/audit/GATE4_SERIALIZED_CERTIFICATE.md",
+        "source/audit/PROOF_AUDIT.md",
+        "source/audit/fail_closed_dependency.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/tests/verify_serialized_low_degree_certificate.py",
+          "bytes": 22744
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P11",
+      "files": 354,
+      "bytes": 3358287,
+      "code_files": 14,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/discovery/breaker_quick_run.json",
+        "source/discovery/breaker_run.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/discovery/breaker_run.json",
+          "bytes": 2884005
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [
+        {
+          "path": "source/experiments/aggregate_tree_sweep.py",
+          "line": 88,
+          "literal": "literature/external/nauty2_9_3.tar.gz"
+        }
+      ],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P12",
+      "files": 66,
+      "bytes": 215945,
+      "code_files": 12,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/CITATION_AUDIT.md",
+        "source/audit/LATEX_AUDIT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/literature/novelty_recheck_n3.md",
+          "bytes": 14970
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-AI15-P13",
+      "files": 32,
+      "bytes": 154717,
+      "code_files": 7,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/notes/agent_builder.md",
+          "bytes": 15685
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-DM01-P13",
+      "files": 16,
+      "bytes": 89625,
+      "code_files": 2,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/paper/main.tex",
+          "bytes": 14770
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-DM01-P15",
+      "files": 18,
+      "bytes": 94481,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/paper/main.tex",
+          "bytes": 14247
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P01",
+      "files": 19,
+      "bytes": 65120,
+      "code_files": 3,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/paper/main.tex",
+          "bytes": 10754
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P02",
+      "files": 54,
+      "bytes": 4510323,
+      "code_files": 14,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/work/builder/bicyclic_core_fail_closed_attacks.json",
+        "source/work/builder/tree_core_fail_closed_attacks.json",
+        "source/work/builder/unicyclic_core_fail_closed_attacks.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/work/builder/bicyclic_core_exact_search.json",
+          "bytes": 2593198
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P03",
+      "files": 15,
+      "bytes": 104982,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/borsuk_ternary4.json",
+          "bytes": 49620
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P04",
+      "files": 14,
+      "bytes": 54077,
+      "code_files": 4,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/release_manifest.json",
+          "bytes": 17235
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P05",
+      "files": 15,
+      "bytes": 67680,
+      "code_files": 5,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/MANIFEST.json",
+          "bytes": 25636
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P06",
+      "files": 29,
+      "bytes": 375410,
+      "code_files": 12,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/certificates/sat/es_9_5_factored.lrat",
+          "bytes": 183964
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [
+        {
+          "path": "source/code/convert_and_check_es17_lrat.py",
+          "line": 20,
+          "literal": "tmp/certification/es17_61cubes_120s/lrat_summary.json"
+        },
+        {
+          "path": "source/code/verify_es17_cube_certificate.py",
+          "line": 16,
+          "literal": "tmp/sat/es_17_6_direct_relations_prime_extreme.cnf"
+        },
+        {
+          "path": "source/code/verify_es17_cube_certificate.py",
+          "line": 19,
+          "literal": "tmp/certification/es17_61cubes_120s/summary.json"
+        },
+        {
+          "path": "source/code/verify_es17_cube_certificate.py",
+          "line": 22,
+          "literal": "tmp/certification/es17_61cubes_120s/lrat_summary.json"
+        },
+        {
+          "path": "source/code/verify_es17_cube_certificate.py",
+          "line": 156,
+          "literal": "tmp/sat/es_17_6_direct_relations_prime_extreme.cnf"
+        }
+      ],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P07",
+      "files": 25,
+      "bytes": 569511,
+      "code_files": 12,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [
+        {
+          "path": "source/tests/run_full_certificate.sh",
+          "line": 17
+        },
+        {
+          "path": "source/tests/test_search_bounded_prime_sets.sh",
+          "line": 10
+        },
+        {
+          "path": "source/tests/test_search_bounded_prime_sets.sh",
+          "line": 11
+        },
+        {
+          "path": "source/tests/test_verify_bounded_prime_sets.sh",
+          "line": 10
+        },
+        {
+          "path": "source/tests/test_verify_bounded_prime_sets.sh",
+          "line": 11
+        }
+      ],
+      "absolute_metadata_files": [
+        "source/certificates/README.md",
+        "source/results/survivor_obstructions_cap347.json"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/results/survivor_obstructions_cap347.json",
+          "bytes": 429521
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "Optional C++ tests hardcode Homebrew GMP include/lib flags. Main full_certificate script locates Python from PATH, uses a new mktemp directory and guarded cleanup; its /private/tmp reference is an allowed cleanup prefix, not an execution dependency."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P08",
+      "files": 20,
+      "bytes": 138006,
+      "code_files": 9,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/audit/CITATION_AUDIT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/results/fc_deletion_lift_bounds.json",
+          "bytes": 51458
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MAN-P09",
+      "files": 1625,
+      "bytes": 7198948,
+      "code_files": 271,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [
+        "source/certificate_workspace/audit/COMMON_METRIC_TILTED_RANKONE_COMPLEX_SCALE_T100_MONOTONICITY_REFEREE_AUDIT.md",
+        "source/certificate_workspace/audit/COMMON_METRIC_TILTED_RANKONE_COMPLEX_SCALE_T19_MONOTONICITY_REFEREE_AUDIT.md",
+        "source/certificate_workspace/audit/COMMON_METRIC_TILTED_RANKONE_COMPLEX_SCALE_T20_MONOTONICITY_REFEREE_AUDIT.md",
+        "source/certificate_workspace/tmp/research/audit/compact_ball_uncovered_box_x5_8_xy_independent_referee_test_results.txt",
+        "source/certificate_workspace/tmp/research/audit/compact_ball_uncovered_ray_x5_8_ystrip_independent_referee_test_results.txt",
+        "source/certificates/scale_cubic/COMMON_METRIC_TILTED_RANKONE_COMPLEX_SCALE_T100_MONOTONICITY_REFEREE_AUDIT.md",
+        "source/certificates/scale_cubic/COMMON_METRIC_TILTED_RANKONE_COMPLEX_SCALE_T19_MONOTONICITY_REFEREE_AUDIT.md",
+        "source/certificates/scale_cubic/COMMON_METRIC_TILTED_RANKONE_COMPLEX_SCALE_T20_MONOTONICITY_REFEREE_AUDIT.md"
+      ],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/RELEASE_MANIFEST.sha256",
+          "bytes": 367368
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    },
+    {
+      "id": "BM1-MATH15-P13",
+      "files": 8,
+      "bytes": 28532,
+      "code_files": 1,
+      "large_files": [],
+      "compiled_magic": [],
+      "symlinks": [],
+      "forbidden_names": [],
+      "secret_signature_files": [],
+      "absolute_code_lines": [],
+      "absolute_metadata_files": [],
+      "launcher_lines": [],
+      "suspected_external_originals": [],
+      "top_five_largest": [
+        {
+          "path": "source/main.tex",
+          "bytes": 16690
+        }
+      ],
+      "python_syntax_errors_python_3_9_6": [],
+      "python_syntax_errors_python_3_12_14": [],
+      "missing_static_literal_paths": [],
+      "absolute_path_assessment": [
+        "No scanned user-home/Homebrew/Anaconda/private-temp absolute paths in executable code; any reported absolute paths occur in historical documentation/results."
+      ]
+    }
+  ],
+  "public_export_note": "Original user-home prefixes in this review were replaced by <historical-home>; source evidence bytes are separately preserved and hashed."
+}

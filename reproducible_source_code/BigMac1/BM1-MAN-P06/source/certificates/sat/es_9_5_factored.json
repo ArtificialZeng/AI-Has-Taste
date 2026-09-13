@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "claim": "the factored one-sided signotope formula F_(9,5) is unsatisfiable",
+  "mathematical_consequence": "ES(5) <= 9; with the classical lower bound, ES(5) = 9",
+  "formula": {
+    "path": "tmp/sat/es_9_5_factored.cnf",
+    "bytes": 15783,
+    "variables": 210,
+    "clauses": 1134,
+    "literal_occurrences": 3654
+  },
+  "solver": {
+    "name": "Kissat",
+    "version": "4.0.4",
+    "source_revision": "8af8e56f174b778aef3aa45af9f739b2a5f492c2",
+    "result": "UNSAT",
+    "process_seconds": 0.03,
+    "conflicts": 2646,
+    "decisions": 7525,
+    "proof": "certificates/sat/es_9_5_factored.drat",
+    "proof_bytes": 36761
+  },
+  "conversion_and_checking": {
+    "drat_to_lrat": "certificates/sat/es_9_5_factored.to_lrat.log",
+    "drat_result": "VERIFIED",
+    "lrat": "certificates/sat/es_9_5_factored.lrat",
+    "lrat_bytes": 183964,
+    "lrat_checker": "certificates/sat/es_9_5_factored.lrat_check.log",
+    "lrat_result": "VERIFIED"
+  },
+  "global_es7_claim_solved": false
+}

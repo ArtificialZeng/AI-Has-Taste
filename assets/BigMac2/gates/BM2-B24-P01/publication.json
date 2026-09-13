@@ -1,0 +1,14 @@
+{
+  "kind": "resolution-paper",
+  "title": "Convergence of Chebyshev's Method for z(z^18-1)",
+  "pdf": "manuscript/main.pdf",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "evidence/verify_orbit_threshold.py",
+    "literature/user_bibliography_check.md"
+  ],
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "build_directory": "manuscript",
+  "bibliography_basis": "User-designated workbook metadata plus the supplied primary-source PDF"
+}

@@ -1,0 +1,94 @@
+Independent referee test log: inward-Z endpoint extension
+Date: 2026-08-25
+Environment: project .venv, CPython 3.11.15, SymPy 1.14.0
+
+Frozen dependencies checked before mathematical reconstruction
+------------------------------------------------------------
+source SHA-256:
+  2ab0f3f532fbfe0d2fc6b2aa3301ff4857f783161f109ad4d846cbcbf266df4f
+claim-note SHA-256:
+  146743ebe254682bee761d0378b90a1e76ca139063ca83cb6f5a7c1b625243c9
+source-freeze-manifest SHA-256:
+  ae3ede1048aad9625884963ffbff66437dbd6c36540244cdb82a94efb999a0a8
+
+The frozen source was read only as bytes for SHA-256.  It was not imported,
+executed, parsed, or used as a coefficient/control table.
+
+Final normal replay
+-------------------
+Command:
+  .venv/bin/python tmp/research/audit/verify_common_metric_ranktwo_transverse_compact_ball_inward_z_endpoint_extension_independent_referee.py
+
+Exit: 0
+
+PASS frozen dependency hashes (source bytes used only for SHA-256)
+PASS independent reordered signed-z/Q/Q^2 raw-gate reconstruction
+PASS lossless clearing, 32/32/1581 counts, and bidegree (7,4)
+PASS 40/40 strict Bernstein controls, zero=[], min=(0,0)
+RESERVE 987933779504207075207504779933987999/7187610992640000000000000000
+PASS exact predecessor/new-cell cleared-gate splice
+PASS endpoint b/Z/danger/det(C) exact bounds and both z signs
+NOTE danger fraction is the outer corner (X=131/520,S=1/10000);
+     uniform endpoint-slice infimum for 0<S<=1/10000 is 11/1300.
+PASS 72 exact rational attack nodes (diagnostic only, not proof)
+SCOPE exact independently audited partial theorem on the displayed cell only;
+      full compact ball/common metric/arbitrary-node/fixed-lens remain open
+
+Additional exact gates in the final script
+------------------------------------------
+- reordered compression frame orthonormality;
+- det(C)=(5/9)SZ and equality of both signed-z lifts;
+- five strict tau=0 row controls;
+- (0,0) is the unique global weakest lower control;
+- control (0,0)=95367431640625(M+1)^12/685464;
+- exact monotonicity formulas for b and Z;
+- global-cell legality D>1/130 and det(C)>0;
+- exact predecessor/new-cell cleared-gate equality at X=1/4.
+
+Fail-closed controls on the final script
+----------------------------------------
+1. Optimized Python
+   Command: .venv/bin/python -O <referee-script>
+   Exit: 1
+   Rejected at: FAIL CLOSED: optimized Python is forbidden
+
+2. Bad frozen-source hash
+   Command: .venv/bin/python <referee-script> --source-path /dev/null
+   Exit: 1
+   Rejected at: FAIL CLOSED: frozen source SHA-256
+
+3. Delete the first raw-gate core square
+   Command: .venv/bin/python <referee-script> --attack-gate drop-core
+   Exit: 1
+   Rejected at: FAIL CLOSED: literal fully conjugated Q,Q^2 gate equals cyclic Gram-vector gate
+
+4. Flip the raw-gate danger-term sign
+   Command: .venv/bin/python <referee-script> --attack-gate flip-sign
+   Exit: 1
+   Rejected at: FAIL CLOSED: literal fully conjugated Q,Q^2 gate equals cyclic Gram-vector gate
+
+5. External-cache byte compilation
+   PYTHONPYCACHEPREFIX=<fresh mktemp directory> .venv/bin/python -m py_compile <referee-script>
+   Exit: 0; the expected .pyc existed only under the fresh external cache.
+
+6. Direct source-freeze manifest replay
+   shasum -a 256 -c tmp/research/compact_ball_inward_z_endpoint_extension_source_freeze_manifest.sha256
+   Exit: 0; 6/6 entries OK.
+
+Pre-freeze referee-development incidents
+----------------------------------------
+- A first implementation used SymPy structural equality for a Hermitian
+  identity; it failed closed although entrywise exact cancellation was zero.
+- A first interpretation treated the phrase "tau=0 complete polynomial" as
+  the whole tau=0 function.  Inspection of the frozen final claim established
+  that the intended object is the weakest control (0,0); the final script
+  checks that object and all five controls in its row.
+- Two long replays were deliberately interrupted to add missing explicit
+  coverage gates (five tau=0 controls and separate cleared/core 32 counts).
+- One replay passed the main certificate and splice, then failed closed
+  because a factored derivative and its expanded equal expression were
+  compared structurally.  The final script uses exact rational cancellation
+  for all derivative identities and subsequently passed from scratch.
+
+These incidents occurred before the final referee hash was frozen.  None was
+suppressed or reclassified as a mathematical failure of the source theorem.

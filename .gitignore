@@ -1,0 +1,44 @@
+# Manuscript LaTeX is retained locally, not published to Git.
+/latex_source_code/
+# Reproduction bundles also contain copies of manuscript source files.
+*.tex
+*.bib
+*.bbl
+*.bst
+*.sty
+*.cls
+*.ltx
+*.dtx
+*.ins
+.latexmkrc
+latexmkrc
+
+# TeX build sidecars (PDFs are deliberately NOT ignored).
+*.aux
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# Local staging, machine metadata, environments and bytecode.
+/work/
+.DS_Store
+._*
+__MACOSX/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.lake/
+node_modules/
+.env
+.env.local
+
+# Keep mathematical data and proof traces: no blanket *.json, *.txt,
+# *.log, *.sha256, *.cnf, *.drat, *.lrat, *.done or *.pdf exclusions.

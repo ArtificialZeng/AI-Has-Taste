@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "number": 2,
+  "title": "STS(15) 的 Pasch-switch 商图：确定 79 点连通分量的直径",
+  "state": "CERTIFIED_FINITE_RESULT",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 99,
+  "confidence_basis": "The complete 80-vertex quotient graph was reconstructed exactly and replayed by a no-nauty verifier using a different Pasch enumerator and explicit Steiner-quasigroup isomorphisms. A standalone BFS verifier confirms diameter 11. All six corruptions are rejected. The remaining 1% reflects reliance on the classical published 80-class completeness theorem and the necessarily bounded priority search.",
+  "summary": "The simple Pasch-switch quotient has 258 edges and components 79+1. The 79-vertex component has diameter 11 and radius 6; the isolated vertex is V036. Exactly two unordered pairs attain the diameter: V000-V006 and V000-V028.",
+  "evidence": [
+    "certificate/representatives.json",
+    "certificate/switch_occurrences.json",
+    "certificate/quotient_edges.json",
+    "certificate/result.json",
+    "certificate/catalog_crosscheck.json",
+    "certificate/negative_tests.json",
+    "code/independent_verifier.py",
+    "code/verify_bfs.py",
+    "proof/result.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/BUILD_AUDIT.md",
+    "audit/PDF_AUDIT.md"
+  ],
+  "deliverables": [
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/NOVELTY_LOCK.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "routes/registry.json",
+    "proof/gap_ledger.md",
+    "proof/proof_dag.md",
+    "proof/result.md",
+    "certificate/representatives.json",
+    "certificate/quotient_edges.json",
+    "certificate/switch_occurrences.json",
+    "certificate/result.json",
+    "code/independent_verifier.py",
+    "code/verify_bfs.py",
+    "output/pdf/sts15-pasch-diameter.pdf",
+    "output/sts15-pasch-diameter-source.zip",
+    "release_bundle/MANIFEST.json",
+    "FINAL_STATUS.md"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "updated_utc": "2026-08-29T21:00:00Z"
+}

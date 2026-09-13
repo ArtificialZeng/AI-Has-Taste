@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "candidate_kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "The Three-Neighbor Percolation Number of the 8 by 8 Torus",
+  "authors": [
+    {
+      "name": "Xiaojian Zeng",
+      "affiliation": "PBC School of Finance, Tsinghua University, Beijing 100190, China",
+      "email": "xiaojianzeng@foxmail.com"
+    }
+  ],
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "evidence/22-set-certificate.json",
+    "evidence/verify_22.py"
+  ],
+  "tex_inputs": [
+    "manuscript/main.tex"
+  ],
+  "bibliography_inputs": [
+    "manuscript/references.bib"
+  ],
+  "figure_inputs": [],
+  "supplementary_files": [
+    "evidence/22-set-certificate.json",
+    "evidence/verify_22.py"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "citation_basis": "The requested literature/user_bibliography_check.md was absent. Metadata and claim support were checked against the locally inspected primary PDF arXiv:2608.06133v1 and publisher records for the two journal articles; no literature-priority claim is asserted."
+}

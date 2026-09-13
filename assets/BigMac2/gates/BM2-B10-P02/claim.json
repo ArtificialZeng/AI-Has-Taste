@@ -1,0 +1,12 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the exact asynchronous with-replacement birth-death chain frozen in source.md and problem.md, let Phi(x)=integral_0^x exp(-t^2/2) dt, S=sqrt(pi/2), A(x)=integral_0^x Phi(y)exp(y^2/2)/y dy, and B(x)=integral_x^infinity (S-Phi(y))exp(y^2/2)/y dy. There is a unique x_*>0 satisfying A(x_*)=B(x_*). Uniformly on compact subsets of [0,infinity), N^(-3/2)u_N(floor(x sqrt(N))) converges to ((S-Phi(x))/S)A(x)+(Phi(x)/S)B(x), continuously extended by zero at x=0. Consequently C_*=lim_N N^(-3/2)max_{1<=s<N} u_N(s) exists and equals A(x_*)=B(x_*), every choice s_N in argmax_{1<=s<N}u_N(s) satisfies s_N/sqrt(N)->x_*, and the full extended-half-line limit set of scaled maximizers is exactly {x_*}, excluding +infinity.",
+  "contribution": "A full uniform Green-kernel asymptotic for the exact finite chain, with an explicit geometric tail bound and a strictly monotone exact increment-crossing formula that together justify maximization and classify all scaled maximizers. This resolves the frozen sharp-constant question relative to the cited Theta(N^(3/2)) result; no literature-priority claim is made.",
+  "proposer_job_id": "bigMac-00010-p02-research-53f7673708d0",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/green_kernel_resolution.md"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "created_utc": "2026-08-29T10:34:55.525694+00:00",
+  "encoding": "canonical no-auxiliary long-clause CNF",
+  "objective_convention": "SAT means an intersecting 4-family with every triple degree >=2; UNSAT means no counterexample exists",
+  "runs": [
+    {
+      "cnf_sha256": "957acb8bedc7e47df7bc2b46c0754cc66612cc731c87db44f2757070f1cb07da",
+      "command": [
+        "cadical",
+        "--seed=0",
+        "--lrat",
+        "--no-binary",
+        "--checkproof=3",
+        "instances/ekr_k4d3_n9.cnf",
+        "certificates/ekr_k4d3_n9.lrat"
+      ],
+      "independent_verification": {
+        "checker_binary_sha256": "d162f97e5cf8a7023c8ea2782b676f9f49722b6d977a1e9fac125c1f87723bd3",
+        "checker_build_command": [
+          "cc",
+          "<verified-source-snapshot>",
+          "-std=c99",
+          "-DLONGTYPE",
+          "-O2",
+          "-o",
+          "<fresh-temporary-executable>"
+        ],
+        "checker_commit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985",
+        "checker_source_sha256": "bf07c2ac96b9035da1ebcc578cb95e956a2b795629d613154cdb307f8a8f4a95",
+        "cnf_sha256": "957acb8bedc7e47df7bc2b46c0754cc66612cc731c87db44f2757070f1cb07da",
+        "instance_verifier_sha256": "f50d0303d9908f28869c2ecd65b1a36b5b432523452e034f6d5759f18af61f2f",
+        "n": 9,
+        "proof_addition_lines": 184,
+        "proof_deletion_lines": 28,
+        "proof_sha256": "44d28573280a35b81f46000e57aa7da676b4b1f844469ea130a48289992d6c9c",
+        "status": "VERIFIED_UNSAT_LRAT",
+        "wrapper_sha256": "a45f8ba5b89278cb142ae5d0c64148d2b28d2bf027dd25a603dead01bde697d9"
+      },
+      "n": 9,
+      "proof_sha256": "44d28573280a35b81f46000e57aa7da676b4b1f844469ea130a48289992d6c9c",
+      "seed": 0,
+      "solver": "CaDiCaL",
+      "solver_exit_code": 20,
+      "solver_log_sha256": "0c2a9b8e22a4b030f44f2c46dfc404566e8f32ab40fc48baf03e4bfbeb6b79d9",
+      "solver_status": "UNSATISFIABLE",
+      "solver_version": "3.0.1"
+    },
+    {
+      "cnf_sha256": "b5cd1a2b73f76f2bd4753943dc74347bc2690ad1c5490df84c5414550dad7e8d",
+      "command": [
+        "cadical",
+        "--seed=0",
+        "--lrat",
+        "--no-binary",
+        "--checkproof=3",
+        "instances/ekr_k4d3_n10.cnf",
+        "certificates/ekr_k4d3_n10.lrat"
+      ],
+      "independent_verification": {
+        "checker_binary_sha256": "d162f97e5cf8a7023c8ea2782b676f9f49722b6d977a1e9fac125c1f87723bd3",
+        "checker_build_command": [
+          "cc",
+          "<verified-source-snapshot>",
+          "-std=c99",
+          "-DLONGTYPE",
+          "-O2",
+          "-o",
+          "<fresh-temporary-executable>"
+        ],
+        "checker_commit": "2e3b2dc0ecf938addbd779d42877b6ed69d9a985",
+        "checker_source_sha256": "bf07c2ac96b9035da1ebcc578cb95e956a2b795629d613154cdb307f8a8f4a95",
+        "cnf_sha256": "b5cd1a2b73f76f2bd4753943dc74347bc2690ad1c5490df84c5414550dad7e8d",
+        "instance_verifier_sha256": "f50d0303d9908f28869c2ecd65b1a36b5b432523452e034f6d5759f18af61f2f",
+        "n": 10,
+        "proof_addition_lines": 81,
+        "proof_deletion_lines": 8,
+        "proof_sha256": "1df5a6c057fd6b4fed51dfd6512433a146b9ce322586434e09ba550123459240",
+        "status": "VERIFIED_UNSAT_LRAT",
+        "wrapper_sha256": "a45f8ba5b89278cb142ae5d0c64148d2b28d2bf027dd25a603dead01bde697d9"
+      },
+      "n": 10,
+      "proof_sha256": "1df5a6c057fd6b4fed51dfd6512433a146b9ce322586434e09ba550123459240",
+      "seed": 0,
+      "solver": "CaDiCaL",
+      "solver_exit_code": 20,
+      "solver_log_sha256": "cb89ccb285a86ebfcda9bb794f746ae3122beaf64e669697fe9aabcf158640cc",
+      "solver_status": "UNSATISFIABLE",
+      "solver_version": "3.0.1"
+    }
+  ],
+  "schema_version": 1
+}

@@ -1,0 +1,182 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/opt/anaconda3/bin/python",
+        "discovery/breaker/generate_pb_witness.py",
+        "8",
+        "discovery/breaker/generated"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"auxiliary_variable_count\": 560, \"cnf_clause_count\": 1211, \"cnf_sha256\": \"56994eeb5d2596b8c4ae257105e16dccec09afc405b9f613d873f9a9ee8161ea\", \"disjoint_pair_count\": 35, \"n\": 8, \"opb_constraint_count\": 91, \"opb_sha256\": \"0c4fb5453d4852dc6b29e184f20a41ce8d093759e39b8c695261aca205e0084c\", \"primary_variable_count\": 70, \"total_variable_count\": 630, \"triple_count\": 56}"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/cadical/3.0.1/bin/cadical",
+        "-q",
+        "--seed=0",
+        "-w",
+        "discovery/breaker/generated/n8.solver_witness",
+        "discovery/breaker/generated/n8_witness_pair.cnf"
+      ],
+      "exit_code": 10,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/opt/anaconda3/bin/python",
+        "discovery/breaker/generate_pb_witness.py",
+        "9",
+        "discovery/breaker/generated"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"auxiliary_variable_count\": 1260, \"cnf_clause_count\": 2919, \"cnf_sha256\": \"ab350ed1e22859d36ad1a93598748c79820d02fadf622f0d00ffe2690e11aeb9\", \"disjoint_pair_count\": 315, \"n\": 9, \"opb_constraint_count\": 399, \"opb_sha256\": \"978ada999dfc0d2f6ffb1dd6202ab4ee0ae7bbf9f1c6f1e06120249f1dd36923\", \"primary_variable_count\": 126, \"total_variable_count\": 1386, \"triple_count\": 84}"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/cadical/3.0.1/bin/cadical",
+        "-q",
+        "--seed=0",
+        "-w",
+        "discovery/breaker/generated/n9.solver_status",
+        "discovery/breaker/generated/n9_witness_pair.cnf"
+      ],
+      "exit_code": 20,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/opt/anaconda3/bin/python",
+        "discovery/breaker/generate_pb_witness.py",
+        "10",
+        "discovery/breaker/generated"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"auxiliary_variable_count\": 2520, \"cnf_clause_count\": 6735, \"cnf_sha256\": \"e44dfcec0e75785f55dbc5d1fff520c7122d3907055426d0438adfcd506850ba\", \"disjoint_pair_count\": 1575, \"n\": 10, \"opb_constraint_count\": 1695, \"opb_sha256\": \"2aa8fc953c0516c9287b720f56cec58cbee0ce5c67960e1d8124804483052b8e\", \"primary_variable_count\": 210, \"total_variable_count\": 2730, \"triple_count\": 120}"
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/cadical/3.0.1/bin/cadical",
+        "-q",
+        "--seed=0",
+        "-w",
+        "discovery/breaker/generated/n10.solver_status",
+        "discovery/breaker/generated/n10_witness_pair.cnf"
+      ],
+      "exit_code": 20,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/opt/anaconda3/bin/python",
+        "discovery/breaker/extract_primary_family.py",
+        "8",
+        "discovery/breaker/generated/n8.solver_witness",
+        "discovery/breaker/n8_literal_family.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"family_size\": 35, \"n\": 8}"
+    },
+    {
+      "argv": [
+        "/opt/anaconda3/bin/python",
+        "discovery/breaker/verify_family.py",
+        "discovery/breaker/n8_literal_family.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"degree_histogram\": {\"2\": 42, \"4\": 14}, \"family_size\": 35, \"first_minimizer\": [1, 2, 3], \"input_sha256\": \"883771ca549281bfbf264e321bd9270d23097291d7b03b7f16828d67938108a8\", \"minimum_triple_degree\": 2, \"n\": 8, \"number_of_minimizers\": 42, \"status\": \"VERIFIED_LITERAL_COUNTEREXAMPLE\", \"verifier_sha256\": \"e77e5dad9da9ce8165ad91df1cb5415a2c7622b415deba9e211716705a1a134c\"}"
+    }
+  ],
+  "determinism": {
+    "instances_and_variable_order": "lexicographic",
+    "solver_seed": 0,
+    "timings_omitted": true
+  },
+  "environment": {
+    "python": "3.13.5",
+    "solver": "cadical",
+    "solver_binary_sha256": "601c9fa8ba5d09fd81bb00c89b3e54832f138bccc3422bd8652e8cda4d74d1fa",
+    "solver_version": "3.0.1"
+  },
+  "instances": {
+    "10": {
+      "auxiliary_variable_count": 2520,
+      "certification_scope": "discovery-only UNSAT status; no proof certificate",
+      "cnf_clause_count": 6735,
+      "cnf_sha256": "e44dfcec0e75785f55dbc5d1fff520c7122d3907055426d0438adfcd506850ba",
+      "disjoint_pair_count": 1575,
+      "opb_constraint_count": 1695,
+      "opb_sha256": "2aa8fc953c0516c9287b720f56cec58cbee0ce5c67960e1d8124804483052b8e",
+      "primary_variable_count": 210,
+      "solver_exit_code": 20,
+      "solver_output_sha256": "bde6e1eede96772c07c8ce29fd18088863815bd043aa59a06f11f5838cf8a162",
+      "solver_status": "UNSATISFIABLE",
+      "total_variable_count": 2730,
+      "triple_count": 120
+    },
+    "8": {
+      "auxiliary_variable_count": 560,
+      "certification_scope": "literal exact model independently checked",
+      "cnf_clause_count": 1211,
+      "cnf_sha256": "56994eeb5d2596b8c4ae257105e16dccec09afc405b9f613d873f9a9ee8161ea",
+      "disjoint_pair_count": 35,
+      "opb_constraint_count": 91,
+      "opb_sha256": "0c4fb5453d4852dc6b29e184f20a41ce8d093759e39b8c695261aca205e0084c",
+      "primary_variable_count": 70,
+      "solver_exit_code": 10,
+      "solver_output_sha256": "e90139af28bdeca8162f020514bde107363d10ce88247394fa9377f318e552b7",
+      "solver_status": "SATISFIABLE",
+      "total_variable_count": 630,
+      "triple_count": 56
+    },
+    "9": {
+      "auxiliary_variable_count": 1260,
+      "certification_scope": "discovery-only UNSAT status; no proof certificate",
+      "cnf_clause_count": 2919,
+      "cnf_sha256": "ab350ed1e22859d36ad1a93598748c79820d02fadf622f0d00ffe2690e11aeb9",
+      "disjoint_pair_count": 315,
+      "opb_constraint_count": 399,
+      "opb_sha256": "978ada999dfc0d2f6ffb1dd6202ab4ee0ae7bbf9f1c6f1e06120249f1dd36923",
+      "primary_variable_count": 126,
+      "solver_exit_code": 20,
+      "solver_output_sha256": "bde6e1eede96772c07c8ce29fd18088863815bd043aa59a06f11f5838cf8a162",
+      "solver_status": "UNSATISFIABLE",
+      "total_variable_count": 1386,
+      "triple_count": 84
+    }
+  },
+  "n8_literal_verification": {
+    "degree_histogram": {
+      "2": 42,
+      "4": 14
+    },
+    "family_size": 35,
+    "first_minimizer": [
+      1,
+      2,
+      3
+    ],
+    "input_sha256": "883771ca549281bfbf264e321bd9270d23097291d7b03b7f16828d67938108a8",
+    "minimum_triple_degree": 2,
+    "n": 8,
+    "number_of_minimizers": 42,
+    "status": "VERIFIED_LITERAL_COUNTEREXAMPLE",
+    "verifier_sha256": "e77e5dad9da9ce8165ad91df1cb5415a2c7622b415deba9e211716705a1a134c"
+  },
+  "route": "breaker exact PB plus witness-pair CNF",
+  "schema_version": 1,
+  "source_sha256": {
+    "extract_primary_family.py": "c82686e99242a018bb99b9ad17333933de19cb00a1817b249e07106bf0de7aa5",
+    "generate_pb_witness.py": "e5016156ba44c278c4c3fbe542cb22352a7f525be11938fbb0fad18a47b63dcf",
+    "rerun.py": "6822b3fcfe161a810c619e89b3d25f1b2743381916b910dc226ad903bb82ae3d",
+    "verify_family.py": "e77e5dad9da9ce8165ad91df1cb5415a2c7622b415deba9e211716705a1a134c"
+  }
+}

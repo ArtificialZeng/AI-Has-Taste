@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/article.pdf",
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex"
+}

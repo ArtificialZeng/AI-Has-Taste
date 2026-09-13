@@ -1,0 +1,15 @@
+{
+  "kind": "resolution-paper",
+  "statement": "For every integer c>5 with c!=7, the full wall-convention Sprague--Grundy sequence of S={2,5,c} is purely periodic from n=0 if and only if c mod 7 lies in Theta_7 union Theta_{c+2} union Theta_{c+5}, where Manabe's source predicates specialize to Theta_7={2,5}, Theta_{c+2}={1,5}, and Theta_{c+5}={2,3,6}. Equivalently, pure periodicity holds exactly for residues {1,2,3,5,6}. In those cases the least period is c+2 for residue 1, 7 for residues 2 and 5, and c+5 for residues 3 and 6, with no proper-divisor exception for this primitive non-harmonic shape. For the excluded residues, exact full-nim word formulae prove non-pure periodicity: if c=7k+4 then G=B^k E (A C^{k-1} D)^omega, and if c=7k then G=B^k F (H^{k-1} I J)^omega, with the blocks defined in evidence/fixed_shape_proof.md.",
+  "original_status": "proved",
+  "contribution": "Complete all-c proof of the frozen fixed-shape claim. Manabe supplies sufficiency and least periods on admissible residues. New exact ultimately periodic nim-word formulae for residues 4 and 0, verified by a finite universal mex-signature argument, show an eventual period c+2 that fails at n=0; a transfer lemma then excludes every possible pure period. A focused literature screen records that an anonymous 2009 note stated the same preperiod classification without proof and with an apparent positive-period typo, so no claim is made that the classification itself was never stated.",
+  "proposer_job_id": "bigMac-00007-p01-research-b0cf55c4c707",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "literature/2609.05358v1.pdf",
+    "evidence/fixed_shape_proof.md",
+    "evidence/fixed_shape_certificate.py",
+    "evidence/literature_screen.md"
+  ]
+}

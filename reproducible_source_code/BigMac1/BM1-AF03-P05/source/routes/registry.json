@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can every non-bipartite complement H on nine vertices with at most six edges be given an exact projection realization?",
+      "premises": ["H is simple", "|V(H)|=9", "|E(H)|<=6"],
+      "method": "odd-cycle/core classification followed by explicit rational or algebraic Parseval frames",
+      "status": "succeeded",
+      "evidence": [
+        "certificates/n9_exact_frames.json",
+        "verification/verify_n9_certificate.py",
+        "proof/proof_dag.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does any canonical non-bipartite H with at most six edges fail to admit a symmetric involution with precisely the complementary support?",
+      "premises": ["complete isomorph-free enumeration", "all eigenvalue multiplicity strata are considered"],
+      "method": "independent numerical discovery by projection and direct-involution parameterizations, followed only if needed by Groebner/CAD infeasibility certification",
+      "status": "closed_no_counterexample",
+      "evidence": [
+        "discovery/agent_breaker_notes.md",
+        "discovery/breaker_projection_results.json",
+        "verification/verify_n9_certificate.py"
+      ],
+      "failure_reason": "Exact positive certificates cover every isomorphism class; numerical failure was never used as a premise.",
+      "next_test": null
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Which invariances, component reductions, SSP supergraph steps, or core extensions reduce the finite endpoint without losing exact nonzero constraints?",
+      "premises": ["orthogonal normalization is exact"],
+      "method": "prove reductions from definitions and audit all zero/nonzero endpoints",
+      "status": "succeeded",
+      "evidence": [
+        "problem/formal_statement.md#orthogonal-normalization",
+        "routes/agent_builder_notes.md",
+        "proof/proof_dag.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can a reconstruction from definitions break any proof lemma, certificate parser, pattern test, or enumeration completeness claim?",
+      "premises": ["no discovery outputs imported by the final verifier"],
+      "method": "independent canonical enumeration, exact identity recomputation, and malformed-certificate rejection tests",
+      "status": "passed",
+      "evidence": [
+        "audit/agent_referee_report.md",
+        "verification/test_fail_closed.py",
+        "literature/claim_ledger.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    }
+  ]
+}

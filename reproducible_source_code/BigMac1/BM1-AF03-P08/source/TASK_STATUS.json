@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "number": 8,
+  "title": "Kazhdan–Lusztig \\(R\\)-polynomial 的 \\(q\\)-Fibonacci product formula：首个未验证 \\(n=10\\)",
+  "state": "CERTIFIED_FINITE_RESULT",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 99,
+  "summary": "The complete n=10 endpoint is certified: all 6,229,297 comparable pairs in the 12,866-element interval satisfy the q-Fibonacci product formula. This does not prove the all-n conjecture.",
+  "evidence": [
+    "The no-import verifier reconstructed 12,866 elements and 6,229,297 comparable pairs at n=10 with zero nonmembers.",
+    "Normalized tilde-R and ordinary R recurrences agreed exactly for every pair.",
+    "The n=2,...,9 baseline was independently reproduced.",
+    "Eight malformed/tampered certificate variants were rejected fail-closed, including an overflowing endpoint.",
+    "The breaker route reproduced the result twice and under ASan/UBSan without importing verifier output.",
+    "A latest-hash independent referee rerun, UBSan check, citation audit, clean LaTeX build, and seven-page PDF inspection all passed.",
+    "For every n=2,...,10, the observed normalized classes equal exactly the product classes indexed by nondecreasing h_i>=2 with sum h_i<=n-2."
+  ],
+  "deliverables": [
+    "problem/formal_statement.md",
+    "literature/NOVELTY_LOCK.md",
+    "proof/finite_theorem.md",
+    "certificates/n10_finite_certificate.txt",
+    "certificates/verify_n10.cpp",
+    "certificates/verify_certificate.py",
+    "tests/test_certificate_rejection.py",
+    "experiments/breaker/RUN_RECORD.md",
+    "audit/referee_work.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "paper/main.tex",
+    "output/pdf/kl_r_fibonacci_n10.pdf",
+    "output/source/kl_r_fibonacci_n10_source.zip",
+    "release_manifest.json",
+    "FINAL_STATUS.md"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "updated_utc": "2026-08-29T11:57:17+00:00"
+}

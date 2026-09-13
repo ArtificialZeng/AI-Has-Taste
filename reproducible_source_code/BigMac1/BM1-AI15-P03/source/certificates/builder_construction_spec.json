@@ -1,0 +1,32 @@
+{
+  "graph": {
+    "vertices": "Z/nZ",
+    "offset_edges": [1, 3],
+    "diameter_edge_for_even_n": true,
+    "minimum_n": 6
+  },
+  "colors": [0, 1, 2],
+  "blocks": {
+    "A": "01",
+    "B": "21202"
+  },
+  "families": [
+    {
+      "condition": "odd n >= 9",
+      "word": "A^((n-5)/2) B"
+    },
+    {
+      "condition": "n == 2 (mod 4)",
+      "word": "A^(n/2)"
+    },
+    {
+      "condition": "n == 20",
+      "word": "A^3 B A^2 B"
+    },
+    {
+      "condition": "n == 0 (mod 4), n >= 24, k=n/4",
+      "word": "A^(k-1) B A^(k-4) B"
+    }
+  ],
+  "exceptional_n": [7, 8, 12, 16]
+}

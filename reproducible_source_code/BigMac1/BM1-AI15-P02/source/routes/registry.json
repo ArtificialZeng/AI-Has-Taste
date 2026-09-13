@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Does equality in the 2-by-2 cell bound reduce every placement to a fixed 12-state path?",
+      "premises": ["partition into upper/lower 2-by-2 cells", "exactly 2n kings"],
+      "method": "enumerate the three admissible row pairs and four local column choices; derive boundary compatibility",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md", "definition-level enumeration gives 12 states and identity counts 12,79,408,1847"],
+      "failure_reason": null,
+      "next_test": "serialize the state matrix and verify completeness independently"
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can all four Burnside fixed-count sequences be represented by one finite integer linear system?",
+      "premises": ["P01", "Klein-four action"],
+      "method": "12-state adjacency plus local row/column involutions and parity interleaving matrices",
+      "status": "proved",
+      "evidence": ["direct fixed counts for n=1..4 reproduce 4,23,106,473", "root 68-dimensional exact certificate has 68 observable zero moments", "builder polynomial resolvent certificate derives all four rational branches"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "P03",
+      "kind": "proof",
+      "question": "Is the order ten minimal?",
+      "premises": ["exact rational generating function"],
+      "method": "exact polynomial gcd/Bezout certificate for numerator and denominator",
+      "status": "proved",
+      "evidence": ["serialized rational Bezout identity verifies gcd(P,Q)=1", "root and builder verifiers independently report degree 10 and gcd 1"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does the candidate fail at a boundary index or under definition-level raw enumeration?",
+      "premises": ["literal king attack relation", "order-four action"],
+      "method": "raw subsets for the smallest boards and independent state-word orbit enumeration",
+      "status": "refuted",
+      "evidence": ["raw placement checks n=0..6", "independent state-word enumeration n=0..80", "all-n exact certificates prove no counterexample exists under the fixed Klein-four convention"],
+      "failure_reason": "The candidate does not fail under the repaired convention; an exact all-n proof closes the disproof route.",
+      "next_test": null
+    },
+    {
+      "id": "D02",
+      "kind": "disproof",
+      "question": "Is the phrase all rectangle symmetries ambiguous at the 4-by-4 board?",
+      "premises": ["n=2 gives a square"],
+      "method": "compare Burnside under Klein four and full D4",
+      "status": "proved",
+      "evidence": ["Klein four gives 23; full D4 gives 14"],
+      "failure_reason": null,
+      "next_test": "keep the repaired convention explicit in theorem and paper"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can a referee reconstruct every fixed-point formula from the group action?",
+      "premises": [],
+      "method": "independent role reconstruction without trusting discovery code",
+      "status": "proved",
+      "evidence": ["agents/referee_report.md Section 8 reconstructs the state isomorphism and all 144 transfer entries", "no fatal or major mathematical gap remains"],
+      "failure_reason": null,
+      "next_test": null
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "enumeration": {
+    "neighbor_target": 12,
+    "nodes": 598054845,
+    "path": "experiments/exact_clique_fixed168_verify.jsonl",
+    "sha256": "096790a179b86299e45de51d621d662cec82ac814194d53b9cd721a812184058"
+  },
+  "fixed_block": [
+    0,
+    1,
+    2,
+    12,
+    21
+  ],
+  "fixed_variable": 168,
+  "graph": {
+    "edges": 1400189,
+    "path": "experiments/compatibility_fixed168.clq",
+    "sha256": "e052130c12c06829f508f8869d796cd5d0e2f9218b421e8a28613e1af460aa31",
+    "vertices": 2501
+  },
+  "instance": {
+    "path": "experiments/instance.json",
+    "sha256": "f43bb843344058df6794c5c86e314f547292a65fa43183d2678ef178e5e4034d"
+  },
+  "multiplier_orbit_variables": [
+    168,
+    205,
+    313,
+    1116,
+    1260,
+    1793,
+    2730,
+    3054,
+    3238,
+    4072,
+    4193,
+    4238,
+    4324,
+    4603,
+    4689
+  ],
+  "schema": "cyclic-315-fixed-clique-enumeration-v1",
+  "scope": "Only target-13 packings containing block variable 168 or one of the 15 distinct variables in its multiplier orbit; this is not a global proof that M < 13",
+  "status": "CERTIFIED_FIXED_BRANCH_UNSAT",
+  "target": 13,
+  "verifier": {
+    "binary_path": "experiments/exact_clique_fixed_fast",
+    "binary_sha256": "2b0cb86d49c2ce6add774dedf98796b706d72cd0d2266b5a7aa9ce653413d30f",
+    "source_path": "code/exact_clique.cpp",
+    "source_sha256": "ae549763147bd579353d3b91fcbad4e9afb4e2e404c97f915115d8b6e84458c9"
+  }
+}

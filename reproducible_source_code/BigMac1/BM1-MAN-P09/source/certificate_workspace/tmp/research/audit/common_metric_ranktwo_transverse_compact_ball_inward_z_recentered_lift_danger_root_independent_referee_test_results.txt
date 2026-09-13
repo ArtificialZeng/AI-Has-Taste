@@ -1,0 +1,48 @@
+VERDICT PASS
+FATAL 0
+MAJOR 0
+MINOR 0
+
+SCOPE 39/40 <= X <= 1019767/1040000, 0 < S <= 1/10000,
+      original M/omega/nu box, recentered Z chart only.
+
+INDEPENDENCE
+- Candidate source, source note, and source-produced logs were used only as
+  opaque SHA-256 byte streams.  No candidate code was imported, executed,
+  parsed, or read for formulas, coefficients, controls, or helpers.
+- Original Hermitian Q and Q^2 definitions were rebuilt with reversed signed-z
+  Gram columns, q-then-z-then-h elimination, and a dense u-first Bernstein
+  transform.
+
+EXACT NORMAL (exit 0)
+- direct compression = reversed Gram; Q^2 9/9;
+- literal fully-conjugated raw gate = cyclic vector gate; deg_Z=4;
+- independently derived X*=1019767/1040000;
+- positive reversible clearing; 34/34/1659; bidegree (7,4);
+- X=39/40 parameter/cleared-gate/cleared-core splice 3/3;
+- 40/40 exact strict controls; unique weakest=(7,0);
+- reserve =
+  74930996060450233534496330989817712955209239262450259704704694012020764601549216227
+  /239735779200073728000000000000000000000000000000000000000000000000000000;
+- root danger_base=0; T_max=-4181417/143000<0; hence D=-S*T>0
+  for every S>0 at X=X*;
+- full-cell Z, det(C), both signed-z lifts, lambda and rank-two legality;
+- 72/72 exact nodes passed as diagnostics only.
+
+FAIL-CLOSED ATTACKS
+- python -O: exit 1 at optimized Python is forbidden.
+- bad source hash: exit 1 at frozen candidate source SHA-256.
+- bad predecessor hash: exit 1 at frozen predecessor-referee SHA-256.
+- bad sparse normalization: exit 1 at claimed sparse-Z normalization.
+- drop Q^2 core term: exit 1 at literal raw gate equals cyclic vector gate.
+- flip danger sign: exit 1 at literal raw gate equals cyclic vector gate.
+- drop core coefficient: exit 1 at 34 core coefficients.
+
+SCOPE ATTACKS
+- No numerical sample is used to prove positivity.
+- No chart obstruction is called a raw-gate negative or maximality result.
+- CE-046/048/059/060 routes are not reused.
+- No claim is made for the full compact ball, unrestricted common metric,
+  fixed-lens optimal constant, or arbitrary nodes.
+
+PY_COMPILE exit 0

@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF04-P01",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "递推由已知 EGF 推出；须保留 a0=0 延拓时 n≥4、OEIS offset1 时等价为 n≥5 的端点说明。",
+  "historical_gate_summary": "历史串行角色审计；非本次fresh审稿。",
+  "pdf_sha256": "181de7b00cd7f4dc0806e78866f179d386b671e0fb6e3b70eb7b0f56ecaf0393",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; PROVED: the stated recurrence follows rigorously from the published EGF for n >= 4 with the canonical a_0 = 0 extension (equivalently n >= 5 at OEIS offset 1). The release manifest is frozen from a stable staging tree that excludes live logs and passes independent absolute-path verification.",
+      "sha256": "450b698645c198b45090885267bada1713bbb6423ab518f9a79d071b76772651",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Verification Report\n\n**Mode:** Search verification for external claims; exact-artifact verification\nfor new mathematical claims  \n**Document:** `paper/main.tex`  \n**Generated:** 2026-08-30 CST  \n**Frozen extraction:** `audit/CITATION_CLAIMS_PASS1.md`\n\n## Summary\n\n| Metric | Count |\n|---|---:|\n| Total claims extracted | 12 |\n| Verified | 12 |\n| Numerical Error | 0 |\n| Unverified | 0 |\n| Hallucination | 0 |\n| Misleading | 0 |\n\n**Overall status:** PASS: all frozen claims verified.\n\n## Verified claims\n\n| ID | Claim | Source/evidence | Location | Confidence |\n|---|---|---|---|---|\n| M01 | Krasko-",
+      "sha256": "3015c6be1a2b3230ec8efccf4487bd485142f90c5bcba70ec0959b6331503088",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nStatus: PASS.  Date: 2026-08-30 CST.\n\n## Statement and scope\n\n- The formal theorem defines the square-root branch, formal EGF coefficients,\n  exact recurrence, universal range, and both initial-index conventions.\n- The proved endpoint matches the user's recurrence.  The sole boundary\n  clarification is explicit: define (a_0=F(0)=0) to include (n=4), or use\n  the OEIS offset and start at (n=5).\n- No claim of minimal ODE order, a new EGF, a re-proof of the combinatorial EGF,\n  or the OEIS asymptotic is made.\n\n## Dependency reconstruction\n\n1. (s^2=1-2t), (s(0)=1) implies (s'=-1/s).",
+      "sha256": "430e86ce335cb0b44c71973d09d509c4a2a106ee755da4a9d2c5d7858a717202",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "# Submission-readiness audit\n\nDate: 2026-08-30 CST.  Status: PASS.  The release manifest was regenerated from\nthe stable `release_manifest_root` staging tree and independently verified using\nabsolute paths.  The live research log is preserved in the project tree but is\nexcluded from both the staging tree and the frozen manifest.\n\n## Mathematical gate\n\n- [x] Formal theorem matches the source problem and final scope.\n- [x] All hypotheses are stated at the theorem endpoint.\n- [x] Branch, zero, boundary, singular, and starting-index cases are covered.\n- [x] Exact certificate is independently repro",
+      "sha256": "b7d1ef08c9ff2948ec7cf04b8a94bdf2ce6f899c8f4b5afeb5a663260c57d5fd",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/04_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-4-page visual/build/metadata gate PASS; current SHA-256 181de7b00cd7f4dc0806e78866f179d386b671e0fb6e3b70eb7b0f56ecaf0393 agrees with final record. # PDF audit\n\nStatus: PASS.  Date: 2026-08-30 CST.\n\nFinal file: `output/pdf/A278992_D-finite_recurrence_proof.pdf`\n\n## File and metadata\n\n- Pages: 4.\n- Size: 312,538 bytes.\n- SHA-256:\n  `181de7b00cd7f4dc0806e78866f179d386b671e0fb6e3b70eb7b0f56ecaf0393",
+      "sha256": "2e2ddfb1a7d9397548c2342d20cea684cae04be95821a536229683eef2ac1e83",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/05_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "递推由已知 EGF 推出；须保留 a0=0 延拓时 n≥4、OEIS offset1 时等价为 n≥5 的端点说明。",
+      "sha256": "2493b131a7082addc01e83be6b29220aa8e4deff42fa71a3eb1d3c68b39daf82",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/06_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "| S09 | Web exact title plus `citations`, and exact-title searches | Located publisher, arXiv, DBLP, institutional, and secondary metadata pages; no recurrence proof located. |\npriority.  A second search after the theorem and its exact identities are fixed\n## Pass 2 after exact theorem freeze",
+      "sha256": "52e6b64e7debe2aeb6e756213d394397f5c9dc221b34d7a86e3433d659b993de",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/07_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "certification and the second-pass novelty search S16--S20.",
+      "sha256": "0367ca679b2acddcbff67a84f6252e1cfe42afe3806e8b1910bbdafd2651269e",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P01/evidence/08_claim_ledger.md"
+    }
+  ]
+}

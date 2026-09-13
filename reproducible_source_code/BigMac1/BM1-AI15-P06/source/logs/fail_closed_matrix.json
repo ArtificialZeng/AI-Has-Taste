@@ -1,0 +1,113 @@
+{
+  "schema": "kusner.fail-closed-matrix.v1",
+  "status": "PASS",
+  "timestamp_utc": "2026-08-29T03:43:01.434030+00:00",
+  "execution": {
+    "python_executable": "/opt/anaconda3/bin/python",
+    "python_version": "3.13.5",
+    "external_workdir": "/private/tmp/kusner_fail_closed_srii_y11",
+    "external_workdir_inside_project": false,
+    "modes": [
+      "normal",
+      "-O",
+      "-I",
+      "-O -I"
+    ],
+    "case_count": 12,
+    "process_count": 48
+  },
+  "ast_assert_counts": {
+    "certificate/verify_sparse_gap.py": 0,
+    "certificate/verify_equilateral_witnesses.py": 0,
+    "experiments/proof_cut_frame_audit.py": 0
+  },
+  "artifact_sha256": {
+    "audit/run_fail_closed_matrix.py": "772a51b17f9c88fb391fa494433a913f0fdfba22415d8a16459ded175cbe9a54",
+    "certificate/verify_sparse_gap.py": "6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5",
+    "certificate/sparse_gap_claim.json": "00713a6115905a8fb56b2c4fc4c67654aacdace17236eb4cb4ee35ad469c37a6",
+    "certificate/verify_equilateral_witnesses.py": "c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96",
+    "certificate/equilateral_witnesses.json": "48bab7651de14addcc4fcddce0431707607426476e5084d97179d2e36b6a127d",
+    "experiments/proof_cut_frame_audit.py": "eb1c5627359cee682693ae904b249c16c42f01324790ca2be94d4dd7b3e0789a",
+    "generated_frame_changed_m.py": "3ba8b04b85f9bc044ceacef1083d42178ae892a0d1415e8823fd65127020606a",
+    "logs/fail_closed_matrix_full.json": "06c14c25caa3eab24a7a8b3e835524bad1a97fc70b0a7c177fbdb6749301fc25"
+  },
+  "cases": [
+    {
+      "name": "valid_sparse",
+      "expected": "PASS",
+      "exit_codes": [0, 0, 0, 0],
+      "stdout_sha256_all_modes": "32276d04e5f75ec9e55ed2139ed520a5ed4c1541570e0871571ebeea05eeceab"
+    },
+    {
+      "name": "valid_witnesses",
+      "expected": "PASS",
+      "exit_codes": [0, 0, 0, 0],
+      "stdout_sha256_all_modes": "381b88a964be950d078922b8669f3a3ed1c49c33300d21b3ac30b40faa7be819"
+    },
+    {
+      "name": "valid_frame_audit",
+      "expected": "PASS",
+      "exit_codes": [0, 0, 0, 0],
+      "stdout_sha256_all_modes": "7d4df6d515e52d550f2ec0b8f84408db35f558fa7944a93d478ac2760ba54d48"
+    },
+    {
+      "name": "sparse_missing_m",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "b4d6660bf20d200a9083351cdc742b9fd917229c2b185187722e57fd6f3ac4f2"
+    },
+    {
+      "name": "sparse_changed_m",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "077cb516a8f6b570fc948d8fe422fd146b87243816ce1e3102366fdac84977f1"
+    },
+    {
+      "name": "sparse_changed_d",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "095adf90faa767db99f8f6ab9ba9aef2470b2d25400ae4e32582543b413c86c3"
+    },
+    {
+      "name": "sparse_changed_gap_count",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "9dc87049a18da1bf4575ebb08ffce7e3cf0dc0186fc1d603cd2d16af01c7d6f4"
+    },
+    {
+      "name": "witness_missing_points",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "7cbaaf0923f0b0f1821d9be06b19cd2d95b2eb2c204149abf79caf4bb89aa8e0"
+    },
+    {
+      "name": "witness_changed_dimension",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "4886331e07f9bb8ef94a36abe6015a89df92f3b8346180c6c07d215d6bfd51f2"
+    },
+    {
+      "name": "witness_changed_distance",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "592d52f6cccd31cca6c4b8819767f8e6694c9a25254fa10dc612a129636c4117"
+    },
+    {
+      "name": "witness_changed_coordinate",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "e1403fd22c67fb5a7a05cd53aab81ba90decb34bad79d94ba8228bdb2e78e297"
+    },
+    {
+      "name": "frame_changed_m",
+      "expected": "FAIL",
+      "exit_codes": [1, 1, 1, 1],
+      "stderr_sha256_all_modes": "9bbc93e084c9c199808ea1225a751a35150d0085f3b95115e354613ee98eea91"
+    }
+  ],
+  "runner_verdict": "All 48 processes matched the expected pass/fail semantics; no tampered case printed PASS.",
+  "independent_referee_rerun": {
+    "status": "PASS",
+    "report": "audit/referee_round1.md"
+  }
+}

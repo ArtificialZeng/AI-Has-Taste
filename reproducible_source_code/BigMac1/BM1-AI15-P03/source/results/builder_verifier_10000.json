@@ -1,0 +1,21 @@
+{
+  "command": "python3 certificates/verify_builder_construction.py --max-n 10000",
+  "environment": {
+    "python": "3.14.7",
+    "system": "Darwin 25.5.0 arm64"
+  },
+  "output": {
+    "status": "PASS",
+    "constructed_orders_checked": 9991,
+    "maximum_n": 10000,
+    "exception_increment_words_exhausted": {
+      "7": 128,
+      "8": 256,
+      "12": 4096,
+      "16": 65536
+    },
+    "spec_sha256": "d9d5589991ec9292f2844a93edb092a268d14de594cfdc5835d9f01e2350cdb8",
+    "verifier_sha256": "a5e0fb1d56df089e5fe6ce3f4c44f26f712cceeb0056249f944330b916c54a00"
+  },
+  "role": "supplemental diagnostic only; the infinite result is proved in proof/builder_notes.md"
+}

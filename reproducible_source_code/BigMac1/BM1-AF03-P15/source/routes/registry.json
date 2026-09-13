@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can Abs(D9) be certified by a B9-conjugacy quotient and exact rational transportation flows?",
+      "premises": [
+        "D_n is normal in B_n and B_n conjugation preserves the D_n reflection set",
+        "reflection length in D_n equals fixed-space codimension",
+        "B_n signed-cycle classes in D_n are indexed by (lambda,mu) with even length(mu)"
+      ],
+      "method": "derive the exact signed-cycle quotient and cover multiplicities, clear normalized-flow denominators to integral max flow, then verify the serialized rational flow without importing discovery code",
+      "status": "proved",
+      "evidence": [
+        "notes/builder.md",
+        "proof/proof_dag.md",
+        "certificates/d9_normalized_flow.json",
+        "certificates/verify_d9_flow.py",
+        "audit/referee_verify_d9.py",
+        "audit/REFEREE_REPORT.md"
+      ],
+      "failure_reason": null,
+      "next_test": "for the stronger all-n conjecture, prove weighted Hall inequalities or construct a compatible closed kernel; the finite D9 endpoint is complete"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Is any adjacent-rank D9 transportation system infeasible, admitting an exact min-cut/Farkas obstruction?",
+      "premises": [
+        "the B9 orbit quotient and its rational marginals are exact"
+      ],
+      "method": "solve every cleared integer max-flow instance and retain a min-cut if its value is deficient",
+      "status": "refuted",
+      "evidence": [
+        "all nine exact maximum-flow values equal their required integer scales",
+        "certificates/d9_normalized_flow.json",
+        "tests/verify_breaker_orbit_candidate.py"
+      ],
+      "failure_reason": "A strictly feasible exact primal certificate exists for every adjacent-rank layer, so no infeasibility certificate exists for this D9 LP.",
+      "next_test": "none for the D9 endpoint"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can split classes, wrong cover multiplicities, rank asymmetry, or malformed certificates invalidate the Bn quotient proof?",
+      "premises": [
+        "audit starts from even signed permutations and does not import the constructor"
+      ],
+      "method": "complete element enumeration for D4-D6, exact D8-D9 regression checks, and a fresh full-DAG D9 referee that multiplies canonical signed permutations by all reflections in both directions and runs fail-closed mutations",
+      "status": "proved",
+      "evidence": [
+        "notes/breaker.md",
+        "discovery/breaker_d4_element_audit.json",
+        "discovery/breaker_d5_element_audit.json",
+        "discovery/breaker_d6_element_audit.json",
+        "tests/test_breaker_crosscheck.py",
+        "tests/test_verify_d9_flow.py"
+      ],
+      "failure_reason": null,
+      "next_test": "none for the D9 endpoint; rerun after any certificate or verifier edit"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Does a Bn-conjugacy flow lift exactly across even-n split Dn conjugacy classes?",
+      "premises": [
+        "D_n is normal in B_n",
+        "B_n conjugation preserves the D_n reflection set"
+      ],
+      "method": "prove orbit-pair biregularity and lift total mass F by the exact full edge count E; enumerate D4-D6 split classes independently",
+      "status": "proved",
+      "evidence": [
+        "notes/builder.md Sections 3-5",
+        "notes/breaker.md",
+        "certificates/README.md"
+      ],
+      "failure_reason": null,
+      "next_test": "none"
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can the finite orbit flows be organized into an all-n recurrence D_n to D_{n+1}?",
+      "premises": [
+        "the signed-bipartition quotient and integer transportation formulation are uniform in n"
+      ],
+      "method": "test fixed-point embedding and search for weighted-Hall or closed-kernel identities",
+      "status": "closed_out_of_scope",
+      "evidence": [
+        "the naive append-a-positive-fixed-point proportionality already fails from D8 to D9"
+      ],
+      "failure_reason": "The user fixed the release scope to D9 and prohibited further n>9 extension work. The naive fixed-point proportionality failure is retained only as a limitation, not as a release gate.",
+      "next_test": "none in this D9 project"
+    }
+  ]
+}

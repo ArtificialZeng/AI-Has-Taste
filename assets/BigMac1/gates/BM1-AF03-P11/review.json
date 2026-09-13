@@ -1,0 +1,51 @@
+{
+  "package_id": "BM1-AF03-P11",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "首个 n=7 枚举关系及八对一删除映射已认证；一般 n 的 Conjecture4.4 未解决。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "76997d53c15fe7d7890f3e46a8276d3d5a00e5faf73ecb775d1ae8277f8ee17d",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; The requested first unverified relation n=7 is an exact certified finite theorem: |M_13|=47,265,120, |M_14|=378,120,960=8|M_13|, and deleting the last entry and standardizing is eight-to-one. Two discovery enumerators, a portable no-import full verifier, structured negative tests, a 362,879-case factorization attack, primary-source citation audit, post-result novelty search, clean LaTeX build, five-page visual inspection, source-ZIP rebuild, and inner/outer manifests all pass. This does not prove Conjecture 4.4 for all n.",
+      "sha256": "420b69e46eaeb0f188ddd982af6aed19e53ddf2e100725d464404fb8b46477dd",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nAudit date: 2026-08-29  \nMode: two-pass, claim-by-claim verification against primary records  \nStatus: **PASS**\n\n## Scope and outcome\n\nThe manuscript contains two bibliography entries and fourteen frozen claims in\n`audit/CITATION_CLAIMS_PASS1.md`. Both references were independently checked\nagainst their DOI records, publisher/journal pages, arXiv records, and the\nrelevant theorem or conjecture in the papers. No citation key changed and no\nunverified bibliography item remains.\n\n## Berlow2021\n\n- Katalin Berlow, *Restricted Stacks as Functions*, *Discrete Mathematics*\n  344(11) ",
+      "sha256": "c0e3db9106977298c2de2ac3348667d1987ec557db14744b30a92ae44a9982ea",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nAudit date: 2026-08-29  \nEndpoint: the finite relation at `n=7`, not Conjecture 4.4 for all `n`  \nStatus: **PASS**\n\n## Audited dependency chain\n\n1. The right-greedy legality criterion follows directly from the two\n   forbidden patterns: a new top `x` creates `123` or `132` exactly when at\n   least two old stack entries exceed `x`.\n2. The large-label factorization was checked line by line. A large input\n   cannot pop a small stack top; projected large-on-large pops may be delayed\n   until the next small input or the final flush. The resulting symbolic map\n   is therefore the proj",
+      "sha256": "cfdf8ce65a8128e6cfb4a718f24db727d5906c980d82d9cdecd12843108fe983",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-5-page visual/build/metadata gate PASS; current SHA-256 76997d53c15fe7d7890f3e46a8276d3d5a00e5faf73ecb775d1ae8277f8ee17d agrees with final record. # PDF audit\n\nAudit date: 2026-08-29  \nStatus: **PASS**\n\nThe manuscript was built in a fresh temporary directory with `pdflatex`,\n`bibtex`, and two final `pdflatex` passes. The final log contains no LaTeX\nwarning, undefined citation/reference, overful",
+      "sha256": "a4050c52d23c30c0f2163772e963165251b88a17f07fc5fe3da0549423b3e840",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "首个 n=7 枚举关系及八对一删除映射已认证；一般 n 的 Conjecture4.4 未解决。",
+      "sha256": "027b6fedb6c5f3d44c38eac3b88194353f9982306f2e89d2678b16a434aadd6c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "## Pass 2: primary-record searches\n`NOVELTY_LOCK` is provisionally **PASS** as of 2026-08-29: the exact source\nThis is a bounded search statement, not proof of worldwide absence.  A second\n## Pass 3: post-result fingerprint search (2026-08-29)\nThe mandatory post-result novelty pass is therefore **PASS** for release with",
+      "sha256": "bdeb09b684b46cc26a470e9e31a2c02e9cb08e6ab36a19b3e50ef80a4a56ef9f",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "",
+      "sha256": "2f6447ca8dccfe840e3ac7c5a1125b7e65911d5fe6bc80ce620dd667377e4f34",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P11/evidence/07_claim_ledger.md"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+Complex-scale half-width 5/92 exact test results
+Date: 2026-08-24
+Environment: Python 3.11.15, SymPy 1.14.0
+
+SOURCE NORMAL
+command: .venv/bin/python -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t5over92_enlargement.py
+exit: 0
+PASS audited t=4 center dependency chain
+PASS original conjugated gate, rank-two Schur boundary, and scale cubic
+PASS recomputed seven derivative majorants on 363/92 <= t <= 373/92
+PASS all fourteen exact half-width-5/92 reserves
+PASS complete legal T half-line, nonredundancy, and live complex phases
+rho_wide=896775556481533279336770926007341554681088/16481441167216725968620003969664490147404575
+verifier_sha256=d357bbfaac1fd054c4bab671e488243f75bfc709acff2dde29e42c7e827043a7
+
+SOURCE OPTIMIZED
+command: .venv/bin/python -O -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t5over92_enlargement.py
+exit: 1
+RuntimeError: fail closed: optimized Python disables checks
+
+SOURCE BAD DEPENDENCY
+command: T5OVER92_TEST_BAD_DEPENDENCY=1 .venv/bin/python -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t5over92_enlargement.py
+exit: 1
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_tilted_rankone_complex_scale_t2over37_enlargement.md
+
+SOURCE DROPPED SIGN
+command: T5OVER92_TEST_DROP_SIGN=1 .venv/bin/python -B tmp/research/verify_common_metric_tilted_rankone_complex_scale_t5over92_enlargement.py
+exit: 1
+RuntimeError: verification failed: seven terminal signs
+
+REFEREE NORMAL
+command: .venv/bin/python -B audit/verify_common_metric_tilted_rankone_complex_scale_t5over92_referee.py
+exit: 0
+PASS original conjugated gate, Schur boundary, and complete T half-line
+PASS independent nodal Bernstein/inverse reconstruction: 40595 controls per cell
+PASS recomputed 5/92-box derivative majorants and fourteen strict reserves
+PASS exact q comparison, unique low-cell N0 bottleneck, and seam coverage
+PASS exact 96-corner attack: g>0 48, g<=0 48
+minimum_corner_gate_T1=127470839802864241085806509/54194925629649800000000
+rho_wide=896775556481533279336770926007341554681088/16481441167216725968620003969664490147404575
+verifier_sha256=0df222da6d9b4a1f4bb58f2a7d1e842219ee3952dce022ce984cded57f9b3f7d
+
+REFEREE OPTIMIZED
+command: .venv/bin/python -O -B audit/verify_common_metric_tilted_rankone_complex_scale_t5over92_referee.py
+exit: 1
+RuntimeError: fail closed: optimized Python disables checks
+
+REFEREE BAD DEPENDENCY
+command: T5OVER92_REFEREE_TEST_BAD_DEPENDENCY=1 .venv/bin/python -B audit/verify_common_metric_tilted_rankone_complex_scale_t5over92_referee.py
+exit: 1
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_tilted_rankone_complex_scale_t5over92_enlargement.md
+
+REFEREE DROPPED SIGN
+command: T5OVER92_REFEREE_TEST_DROP_SIGN=1 .venv/bin/python -B audit/verify_common_metric_tilted_rankone_complex_scale_t5over92_referee.py
+exit: 1
+RuntimeError: verification failed: seven terminal signs

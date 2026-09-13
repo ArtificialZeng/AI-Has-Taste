@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can the published 1999 per-Pasch switch table be reduced to the exact simple quotient graph and all-pairs distances?",
+      "premises": ["Grannell-Griggs-Murphy Appendix is complete in standard numbering"],
+      "method": "reproduce the published count vector and 79+1 baseline, then compare it with direct reconstruction and exact BFS",
+      "status": "completed",
+      "evidence": ["certificate/published_baseline.json", "code/verify_published_baseline.py"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Does direct canonical reconstruction from 80 representatives yield a complete exact quotient graph?",
+      "premises": ["complete 80-class catalogue", "isomorphisms transport Pasch configurations"],
+      "method": "enumerate all Pasches, switch, canonicalize incidence graphs, and deduplicate simple edges",
+      "status": "completed",
+      "evidence": ["code/discover_graph.py", "certificate/representatives.json", "certificate/quotient_edges.json"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Can any asserted edge, component size, or diameter be falsified from exact representatives?",
+      "premises": ["none of the published graph properties are trusted by the breaker"],
+      "method": "independent cycle-graph Pasch enumeration, point-mapping isomorphism, exhaustive replay, and corrupted-input tests",
+      "status": "completed_no_counterexample",
+      "evidence": ["code/independent_verifier.py", "certificate/negative_tests.json"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "Why is one representative per class enough to enumerate all quotient neighbors?",
+      "premises": ["Pasch configurations and switching commute with point relabeling"],
+      "method": "prove equivariance and reduce quotient adjacency to switches in one representative",
+      "status": "completed",
+      "evidence": ["problem/formal_statement.md", "proof/proof_dag.md"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Do parametrization duplicates, self-switches, multiple edges, or a noncanonical catalogue corrupt the graph?",
+      "premises": [],
+      "method": "set-based occurrence normalization, simple-edge normalization, pairwise nonisomorphism, catalogue equality, and two BFS implementations",
+      "status": "completed",
+      "evidence": ["certificate/catalog_crosscheck.json", "certificate/result.json", "audit/PROOF_AUDIT.md"],
+      "failure_reason": null,
+      "next_test": null
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+n=0 unlabeled_tournaments=1
+n=1 unlabeled_tournaments=1
+n=2 unlabeled_tournaments=1
+n=3 unlabeled_tournaments=2
+n=4 unlabeled_tournaments=4
+n=5 unlabeled_tournaments=12
+n=6 unlabeled_tournaments=56
+n=7 unlabeled_tournaments=456
+n=8 unlabeled_tournaments=6880
+n=9 unlabeled_tournaments=191536
+n=10 unlabeled_tournaments=9733056
+n=11 unlabeled_tournaments=903753248
+BURNSIDE_OK n=11 count=903753248 arithmetic=fractions.Fraction
+BUILDER_OK n=3 target=0 count=2 sha256=b8bd9f18dbaa6e48bf08aea7368585a4e3e001c4914a4012b138c7aa8b1bb6a0 nodes=2 max_nodes=1
+BUILDER_OK n=4 target=1 count=4 sha256=91dde84a6b6286a5e0b7b6295ccb1d16955dc4d74b8b93163d50d8a9cd7c7921 nodes=8 max_nodes=2
+BUILDER_OK n=5 target=2 count=12 sha256=5d16cab0f65c58f402ef49c3442e3e8fedbb5498a8cb09f58a5d8d733784f6e4 nodes=36 max_nodes=3
+BUILDER_OK n=6 target=3 count=56 sha256=814e0ed10e5d3aaae92d809b9eb915f1eb5542a65a33fe4d47463d22159a525b nodes=224 max_nodes=4
+BUILDER_OK n=7 target=5 count=456 sha256=164260b94960af0cc63faf3f178ceb95f4dd23bbca376ec23872c33b30d94261 nodes=2736 max_nodes=6
+BUILDER_OK n=8 target=7 count=6880 sha256=fc96c6997724e54ccea3bd166f4117d9e27925d85f568e31b0623527e5139dad nodes=55074 max_nodes=25
+CERTIFIER_OK n=3 target=0 count=2 sha256=b8bd9f18dbaa6e48bf08aea7368585a4e3e001c4914a4012b138c7aa8b1bb6a0 nodes=2 max_nodes=1
+CERTIFIER_OK n=4 target=1 count=4 sha256=91dde84a6b6286a5e0b7b6295ccb1d16955dc4d74b8b93163d50d8a9cd7c7921 nodes=8 max_nodes=2
+CERTIFIER_OK n=5 target=2 count=12 sha256=5d16cab0f65c58f402ef49c3442e3e8fedbb5498a8cb09f58a5d8d733784f6e4 nodes=36 max_nodes=3
+CERTIFIER_OK n=6 target=3 count=56 sha256=814e0ed10e5d3aaae92d809b9eb915f1eb5542a65a33fe4d47463d22159a525b nodes=225 max_nodes=5
+CERTIFIER_OK n=7 target=5 count=456 sha256=164260b94960af0cc63faf3f178ceb95f4dd23bbca376ec23872c33b30d94261 nodes=2739 max_nodes=7
+CERTIFIER_OK n=8 target=7 count=6880 sha256=fc96c6997724e54ccea3bd166f4117d9e27925d85f568e31b0623527e5139dad nodes=55100 max_nodes=22
+SMALL_BASELINE_OK programs=2 orders=3..8
+MINIMIZER_OK certificate_sha256=0ba6795a77cc37aef8d98a87040e1160da94efc6dd583b15d8cc0be03611681d value=15 witness_pairs=45 within_pairs=15 transitive_triples_checked=117
+REJECT_OK invalid-json
+REJECT_OK missing-field
+REJECT_OK flipped-cross-arc
+REJECT_OK duplicate-triple
+REJECT_OK cyclic-triple
+REJECT_OK out-of-range
+NEGATIVE_CONTROLS_OK count=6
+REJECT_OK builder_scan-short-line
+REJECT_OK builder_scan-nonbinary
+REJECT_OK certifier_scan-short-line
+REJECT_OK certifier_scan-nonbinary
+POSITIVE_CONTROL_OK aggregate
+REJECT_OK missing-status
+REJECT_OK nonzero-status
+REJECT_OK malformed-summary
+REJECT_OK wrong-exact-total
+REJECT_OK role-mismatch
+SWEEP_NEGATIVE_CONTROLS_OK count=9
+POSITIVE_CONTROL_OK sweep-compare
+REJECT_OK compare-non-pass
+REJECT_OK compare-stream-hash
+REJECT_OK compare-slice-count
+REJECT_OK compare-same-scanner
+REJECT_OK compare-wrong-endpoint
+REJECT_OK compare-malformed-json
+COMPARE_NEGATIVE_CONTROLS_OK count=6
+SWEEPS_MATCH_OK n=9 target=9 slices=4 total=191536 output=certificates/baseline_n9_sweeps_match.json
+SWEEPS_MATCH_OK n=10 target=12 slices=16 total=9733056 output=certificates/baseline_n10_sweeps_match.json
+SWEEPS_MATCH_OK n=11 target=15 slices=192 total=903753248 output=certificates/n11_sweeps_match.json

@@ -1,0 +1,274 @@
+{
+  "certificates_sha256": {
+    "certificates/star1_exact_certificate.json": "70cf7f980c89ff36e6b07ccecde268bcde6d8cf5f9da171759b5d8ba5c0e3fa7",
+    "certificates/star3_decomposition.json": "f966e220261ffc316d37aaac9522e0484e2b931792c5fe985aae351052254024",
+    "results/breaker_q4_baseline_certificate.json": "1c732a3b4c95b2bd743a05248dff841457ec11cdd70c76a96435dffb89a86c15",
+    "results/breaker_saddle_certificate.json": "6bac02ad20ab063e8db1bbe8f79d1495dcb3134788f43b760ad119131872d03a",
+    "results/breaker_star4_certificate.json": "b57cad6aeea0d3db3ac39999bfbdcdcacd48c36d5b2de4883e6806a080bfc935",
+    "results/empty_highpair_classification_certificate.json": "3d5c97a23ad36956387e4ddbdaca0f74720953f34a59af422ed15944b23e1e6a",
+    "results/q3_classification_certificate.json": "6f704264551c322228d9af0fffcd03e7ae5071be2ddbe04d0f54ed583cb8db28",
+    "results/star2_bernstein_no_go_certificate.json": "fd591e360a57668ad818ba8adb8e48d5670a211da3f43528c7f3f68517310a80",
+    "results/triangle_highpair_no_go_certificate.json": "5e0bab27d028cdfc65027c3c346d3f0397dd13a623b1bf7782616823019278a1"
+  },
+  "checks": [
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/builder_verify_formulas.py"
+      ],
+      "name": "formula reconstruction",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "builder exact checks: PASS"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/verify_q3_classification.py",
+        "results/q3_classification_certificate.json"
+      ],
+      "name": "Q3 classification",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: the balanced positive Q3 critical orbit is diagonal"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "tests/test_q3_verifier.py"
+      ],
+      "name": "Q3 classification mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: valid Q3 certificate accepted; 5 corruptions rejected"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_verify_q4_baseline.py",
+        "results/breaker_q4_baseline_certificate.json"
+      ],
+      "name": "Q4 certificate",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"certificate_sha256\": \"1c732a3b4c95b2bd743a05248dff841457ec11cdd70c76a96435dffb89a86c15\", \"claim\": \"Q4 direction (2,2,1,1) is an exact saddle\", \"log_hessian_eigenvalues\": [\"-1\", \"-2/5\", \"1/5\"], \"status\": \"ACCEPT\", \"verifier_sha256\": \"17a76acbfc92a7f1be82425c4d07ad03299be862866dfdb7eecc1e905c3ce20a\"}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_verify_saddle.py",
+        "results/breaker_saddle_certificate.json"
+      ],
+      "name": "Q5 saddle certificate",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"active_sign_vectors\": 16, \"certificate_sha256\": \"6bac02ad20ab063e8db1bbe8f79d1495dcb3134788f43b760ad119131872d03a\", \"claim\": \"exact non-diagonal full-support critical point is a saddle\", \"status\": \"ACCEPT\", \"tangent_signs\": [-1, -1, -1, 1], \"verifier_sha256\": \"7b8a9f4bd4a2397ca55872c441fed22f1e3eba30040c9ec3367192571091eba4\"}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_test_verifiers.py",
+        "--output",
+        "audit/saddle_mutation_log.json"
+      ],
+      "name": "Q4/Q5 saddle mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"python\": \"3.13.5\",\n  \"script_sha256\": \"44936e45e6562098fbaece6d97964ed299d5f2daee892d140163d1f5927bf740\",\n  \"tests\": [\n    {\n      \"name\": \"valid_q5_saddle\",\n      \"expected\": \"accept\",\n      \"returncode\": 0\n    },\n    {\n      \"name\": \"valid_q4_baseline\",\n      \"expected\": \"accept\",\n      \"returncode\": 0\n    },\n    {\n      \"name\": \"q5_changed_polynomial\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: unexpected minimal polynomial\"\n    },\n    {\n      \"name\": \"q5_missing_field\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: wrong or incomplete top-level schema\"\n    },\n    {\n      \"name\": \"q5_wrong_root_interval\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: interval is not contained in the claimed open chamber\"\n    },\n    {\n      \"name\": \"q5_changed_signature\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: unexpected claimed signature\"\n    },\n    {\n      \"name\": \"q5_duplicate_top_key\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: duplicate JSON key: schema\"\n    },\n    {\n      \"name\": \"q5_duplicate_nested_key\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: duplicate JSON key: left\"\n    },\n    {\n      \"name\": \"q5_boolean_signature\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: boolean forbidden in certificate at $.expected_tangent_signature.positive\"\n    },\n    {\n      \"name\": \"q4_changed_vector\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: schema or claimed exact data mismatch\"\n    },\n    {\n      \"name\": \"q4_duplicate_top_key\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: duplicate JSON key: schema\"\n    },\n    {\n      \"name\": \"q4_duplicate_nested_key\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: duplicate JSON key: positive\"\n    },\n    {\n      \"name\": \"q4_boolean_signature\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"stderr_or_stdout_prefix\": \"REJECT: boolean forbidden in certificate at $.expected_tangent_signature.positive\"\n    }\n  ]\n}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/verify_empty_highpair_classification.py",
+        "results/empty_highpair_classification_certificate.json"
+      ],
+      "name": "empty chamber",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: empty-chamber classification, exact resultants, branches, and Sturm counts verified"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "tests/test_empty_highpair_verifier.py"
+      ],
+      "name": "empty chamber mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: valid certificate accepted; 8 corruptions rejected"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/builder_verify_star1.py",
+        "certificates/star1_exact_certificate.json"
+      ],
+      "name": "star1 chamber",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: exact star1 closure has one critical orbit, ((24+sqrt(69))/13)^2,1^3, and its tangent Hessian is indefinite"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/builder_test_star1_mutations.py",
+        "src/builder_verify_star1.py",
+        "certificates/star1_exact_certificate.json"
+      ],
+      "name": "star1 mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS mutation rejected: semantic chamber metadata\nPASS mutation rejected: critical-equation combination\nPASS mutation rejected: Bernstein table hash\nPASS mutation rejected: positive Bernstein coefficient with refreshed digest\nPASS mutation rejected: component polynomial\nPASS mutation rejected: resultant factor\nPASS mutation rejected: algebraic isolating interval\nPASS mutation rejected: Hessian exact quadratic form\nPASS mutation rejected: deleted chamber margin\nPASS: all 9 mutations rejected"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_star1_audit.py",
+        "certificates/star1_exact_certificate.json",
+        "--output",
+        "audit/star1_independent_audit.json"
+      ],
+      "name": "star1 independent audit",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"method\": \"Fraction sparse polynomials + independently generated Singular ideal audit + Q(alpha) Hessian; no builder imports\",\n  \"python\": \"3.13.5\",\n  \"singular\": \"Singular for arm64-Darwin version 4.4.1 (44105, 64 bit) Nov 11 2025 16:12:34\",\n  \"seed\": 140120260829,\n  \"random_exact_checks\": 64,\n  \"active_subsets_at_strict_sample\": 16,\n  \"paired_equals_32_subset\": true,\n  \"critical_numerator_F_squared_identities\": 4,\n  \"bernstein_degree\": 9,\n  \"bernstein_rows\": 55,\n  \"bernstein_positive_parameter_monomials\": 1620,\n  \"bernstein_minimum_positive_coefficient\": \"2\",\n  \"bernstein_rows_sha256\": \"d47de13461dbd9d8d06ff8a896b0986ede3410a448f1da3722a74250610015b3\",\n  \"zero_set_endpoint_witnesses\": [\n    [\n      9,\n      0\n    ],\n    [\n      0,\n      9\n    ]\n  ],\n  \"singular_residual_checks\": {\n    \"STAR1_VDIM\": \"15\",\n    \"STAR1_FORWARD\": \"1\",\n    \"STAR1_REVERSE\": \"1\",\n    \"STAR1_RESULTANT\": \"1\",\n    \"STAR1_IRREDUCIBLE\": \"1\"\n  },\n  \"semialgebraic_component_audit\": {\n    \"component_1\": \"discriminant(4u^2+4u+3)=-32<0\",\n    \"component_3\": \"3w+2=0 forces w=-2/3<0\",\n    \"component_4\": \"2w+2u+3>0 on u,w>=0\",\n    \"component_5\": \"all seven u-polynomial coefficients are positive\",\n    \"component_2\": \"w=0 and 52u^2-36u-15 has exactly one positive root\"\n  },\n  \"survivor_all_H_remainders_zero\": true,\n  \"full_tangent_gram_diagonal\": [\n    [\n      \"-54388/864435\",\n      \"-1824/22165\"\n    ],\n    [\n      \"-5468/66495\",\n      \"128/5115\"\n    ],\n    [\n      \"-5468/22165\",\n      \"128/1705\"\n    ],\n    [\n      \"-2580/169\",\n      \"96/13\"\n    ]\n  ],\n  \"tangent_signature\": [\n    \"negative\",\n    \"negative\",\n    \"negative\",\n    \"positive\"\n  ],\n  \"certificate_sha256\": \"70cf7f980c89ff36e6b07ccecde268bcde6d8cf5f9da171759b5d8ba5c0e3fa7\",\n  \"audit_script_sha256\": \"095eaa7a5d1ba0553e46368fbe66075880b1de6a3e1248fea9d789baef61485a\"\n}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_star1_audit_tests.py",
+        "--output",
+        "audit/star1_audit_mutations.json"
+      ],
+      "name": "star1 independent-audit mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"python\": \"3.13.5\",\n  \"builder_fail_closed_repairs_verified\": [\n    \"duplicate JSON object keys are rejected\",\n    \"Bernstein row order is canonicalized\",\n    \"resultant content rational must be reduced\",\n    \"False is rejected where survivor w must be integer zero\",\n    \"True is rejected where a symmetry dimension must be an integer\"\n  ],\n  \"tests\": [\n    {\n      \"name\": \"valid\",\n      \"expected_builder_accept\": true,\n      \"observed_builder_accept\": true,\n      \"expected_independent_accept\": true,\n      \"observed_independent_accept\": true,\n      \"builder_message\": \"PASS: exact star1 closure has one critical orbit, ((24+sqrt(69))/13)^2,1^3, and its tangent Hessian is indefinite\",\n      \"independent_message\": \"{\\n  \\\"status\\\": \\\"PASS\\\",\\n  \\\"method\\\": \\\"Fraction sparse polynomials + independently generated Singular ideal audit + Q(alpha) Hessian; no builder imports\\\",\\n  \\\"python\\\": \\\"3.13.5\\\",\\n  \\\"singular\\\": \\\"Singular for arm64-Darwin version 4.4.1 (44105, 64 b\"\n    },\n    {\n      \"name\": \"duplicate_top_level_schema_key\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: cannot parse certificate: duplicate JSON key: schema\",\n      \"independent_message\": \"AUDIT FAIL: duplicate JSON key: schema\"\n    },\n    {\n      \"name\": \"reordered_bernstein_rows_refreshed_digest\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: noncanonical Bernstein row order\",\n      \"independent_message\": \"AUDIT FAIL: certificate Bernstein rows differ or are noncanonical\"\n    },\n    {\n      \"name\": \"noncanonical_resultant_content\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: noncanonical resultant content\",\n      \"independent_message\": \"AUDIT FAIL: altered or noncanonical resultant factorization\"\n    },\n    {\n      \"name\": \"boolean_surviving_w\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: surviving w: expected integer\",\n      \"independent_message\": \"AUDIT FAIL: root.surviving_component.w: forbidden JSON scalar type\"\n    },\n    {\n      \"name\": \"boolean_symmetry_dimension\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: symmetry dimension large_block: expected integer\",\n      \"independent_message\": \"AUDIT FAIL: root.hessian.symmetry_dimensions.large_block: forbidden JSON scalar type\"\n    },\n    {\n      \"name\": \"deleted_pair_wall\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: wrong pair-margin count\",\n      \"independent_message\": \"AUDIT FAIL: wrong margin count\"\n    },\n    {\n      \"name\": \"flipped_high_pair_kind\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: 01 must be the high pair\",\n      \"independent_message\": \"AUDIT FAIL: wrong pair sign\"\n    },\n    {\n      \"name\": \"changed_bernstein_coefficient_refreshed_digest\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: Bernstein identity does not reconstruct K\",\n      \"independent_message\": \"AUDIT FAIL: certificate Bernstein rows differ or are noncanonical\"\n    },\n    {\n      \"name\": \"changed_residual_B\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: B is not reconstructed from H_z\",\n      \"independent_message\": \"AUDIT FAIL: B residual factor identity failed\"\n    },\n    {\n      \"name\": \"changed_hessian_form\",\n      \"expected_builder_accept\": false,\n      \"observed_builder_accept\": false,\n      \"expected_independent_accept\": false,\n      \"observed_independent_accept\": false,\n      \"builder_message\": \"REJECT: Hessian form small_block mismatch\",\n      \"independent_message\": \"AUDIT FAIL: altered or noncanonical Hessian certificate\"\n    }\n  ],\n  \"script_sha256\": \"9efea55706eff402c44716dddba1a7e8e2258a0d75c164d4a86beffd75e783e2\"\n}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/verify_star2_bernstein.py",
+        "results/star2_bernstein_no_go_certificate.json"
+      ],
+      "name": "star2 chamber",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: star2 Bernstein positivity certificate verified"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "tests/test_star2_bernstein_verifier.py"
+      ],
+      "name": "star2 mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: valid certificate accepted; 8 corruptions rejected"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_star2_audit.py",
+        "results/star2_bernstein_no_go_certificate.json",
+        "--output",
+        "audit/star2_independent_audit.json"
+      ],
+      "name": "star2 independent audit",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"method\": \"standard-library Fraction sparse polynomials; no SymPy or project imports\",\n  \"python\": \"3.13.5\",\n  \"seed\": 220260829,\n  \"random_exact_checks\": 64,\n  \"boundary_checks\": 4,\n  \"active_subsets_at_strict_sample\": 16,\n  \"paired_equals_32_subset\": true,\n  \"critical_numerator_F_squared_identities\": 4,\n  \"P_degree_v\": 4,\n  \"H_degree_v\": 8,\n  \"P_positive_coefficients\": 70,\n  \"H_positive_coefficients\": 1125,\n  \"P_minimum_coefficient\": \"16\",\n  \"H_minimum_coefficient\": \"32\",\n  \"P_block_term_counts\": [\n    14,\n    14,\n    14,\n    14,\n    14\n  ],\n  \"H_block_term_counts\": [\n    125,\n    125,\n    125,\n    125,\n    125,\n    125,\n    125,\n    125,\n    125\n  ],\n  \"minimum_exact_P_point_value\": \"22\",\n  \"minimum_exact_H_point_value\": \"72\",\n  \"canonical_tables_sha256\": \"7ea0e1ec667bcceb0be53f4cc437fe0ffef5d146528268054d98c39b8b82d95f\",\n  \"certificate_sha256\": \"fd591e360a57668ad818ba8adb8e48d5670a211da3f43528c7f3f68517310a80\",\n  \"audit_script_sha256\": \"968c765dcf648ab47daef92dd1ef44188633e9a8219190b201de176fce9e6b31\"\n}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_star2_audit_tests.py",
+        "--output",
+        "audit/star2_audit_mutations.json"
+      ],
+      "name": "star2 independent-audit mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"python\": \"3.13.5\",\n  \"script_sha256\": \"d41b43ad60382393e0375f596e38f04d8ceedc3c76711bdee4e21c2b0f091ca6\",\n  \"tests\": [\n    {\n      \"name\": \"valid\",\n      \"expected\": \"accept\",\n      \"returncode\": 0,\n      \"message\": \"{\\n  \\\"status\\\": \\\"PASS\\\",\\n  \\\"method\\\": \\\"standard-library Fraction sparse polynomials; no SymPy or project imports\\\",\\n  \\\"python\\\": \\\"3.13.5\\\",\\n  \\\"seed\\\": 220260829,\\n  \\\"random_exact_checks\\\": 4,\\n  \\\"boundary_checks\\\": 4,\\n  \\\"active_subs\"\n    },\n    {\n      \"name\": \"changed_claim\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: altered claim\"\n    },\n    {\n      \"name\": \"changed_critical_declaration\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: altered critical-numerator declaration\"\n    },\n    {\n      \"name\": \"changed_graph\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: wrong high-pair graph\"\n    },\n    {\n      \"name\": \"changed_direction\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: wrong direction combination\"\n    },\n    {\n      \"name\": \"changed_coefficient\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: independently recomputed Bernstein table differs from certificate\"\n    },\n    {\n      \"name\": \"missing_domain\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: wrong or incomplete top-level schema\"\n    },\n    {\n      \"name\": \"duplicate_top_key\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: duplicate JSON key: schema\"\n    },\n    {\n      \"name\": \"duplicate_nested_key\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: duplicate JSON key: a4\"\n    },\n    {\n      \"name\": \"boolean_normalization\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"AUDIT FAIL: boolean forbidden in certificate at $.normalization.a4\"\n    }\n  ]\n}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/builder_verify_star3.py"
+      ],
+      "name": "star3 chamber and mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "mutation rejected: removed_star_edge\nmutation rejected: changed_minpoly_coefficient\nmutation rejected: changed_component_generator\nmutation rejected: changed_system_hash\nstar3 verifier: PASS"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_star4_verify.py",
+        "results/breaker_star4_certificate.json"
+      ],
+      "name": "star4 chamber",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"certificate_sha256\": \"b57cad6aeea0d3db3ac39999bfbdcdcacd48c36d5b2de4883e6806a080bfc935\", \"claim\": \"the corrected ordered star4 chamber contains no saturated critical root\", \"saturated_vector_dimension\": 48, \"singular\": \"Singular for arm64-Darwin version 4.4.1 (44105, 64 bit) Nov 11 2025 16:12:34\", \"singular_script_sha256\": \"195856c3e4e1463872515b2b65e8731cd6c2105537ab53320a3ac60f8a2133ee\", \"status\": \"ACCEPT\", \"sturm_roots_in_open_2_infinity\": 0, \"verifier_sha256\": \"d83386a7256562094b3bee44dcb1115efc58e755509a1130c3ba6815fa081dbb\"}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/breaker_star4_test.py",
+        "--output",
+        "audit/star4_mutation_log.json"
+      ],
+      "name": "star4 mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"python\": \"3.13.5\",\n  \"script_sha256\": \"769f8b2b0202de3eeaae740437f494e6604fdac59b5c18994e4d6c6a385e699d\",\n  \"tests\": [\n    {\n      \"name\": \"valid_certificate\",\n      \"expected\": \"accept\",\n      \"returncode\": 0,\n      \"output\": \"{\\\"certificate_sha256\\\": \\\"b57cad6aeea0d3db3ac39999bfbdcdcacd48c36d5b2de4883e6806a080bfc935\\\", \\\"claim\\\": \\\"the corrected ordered star4 chamber contains no saturated critical root\\\", \\\"saturated_vector_dimension\\\": 48, \\\"singular\\\": \\\"Singular for arm64-Darwin version 4.4.1 (44105, 64 bit) Nov 11 2025 16:12:34\\\", \\\"singular_script_sha256\\\": \\\"195856c3e4e1463872515b2b65e8731cd6c2105537ab53320a3ac60f8a2133ee\\\", \\\"status\\\": \\\"ACCEPT\\\", \\\"sturm_roots_in_open_2_infinity\\\": 0, \\\"verifier_sha256\\\": \\\"d83386a7256562094b3bee44dcb1115efc58e755509a1130c3ba6815fa081dbb\\\"}\"\n    },\n    {\n      \"name\": \"changed_chamber_edge\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"REJECT: certificate is not the star4 chamber\"\n    },\n    {\n      \"name\": \"changed_vector_dimension\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"REJECT: unexpected ideal invariants\"\n    },\n    {\n      \"name\": \"weakened_ideal_consequence\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"REJECT: altered ideal consequences\"\n    },\n    {\n      \"name\": \"changed_sturm_entry\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"REJECT: Sturm sequence mismatch\"\n    },\n    {\n      \"name\": \"missing_conclusion\",\n      \"expected\": \"reject\",\n      \"returncode\": 1,\n      \"message\": \"REJECT: wrong or incomplete top-level schema\"\n    }\n  ]\n}"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "src/verify_triangle_highpair_no_go.py",
+        "results/triangle_highpair_no_go_certificate.json"
+      ],
+      "name": "triangle chamber",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: exact saturated ideal, factorization, and proof identities verified"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "tests/test_triangle_highpair_verifier.py"
+      ],
+      "name": "triangle mutations",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: valid certificate accepted; 6 corruptions rejected"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "tests/test_nonstar1_json_failclosed.py"
+      ],
+      "name": "non-star1 canonical JSON attacks",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: all 17 non-star1 duplicate-key/boolean attacks rejected"
+    },
+    {
+      "command": [
+        "/opt/anaconda3/bin/python3",
+        "audit/independent_referee/test_parser_failclosed.py"
+      ],
+      "name": "independent referee parser attacks",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "PASS: independent referee rejected 4 parser attacks and accepted only the canonical star3 boolean"
+    }
+  ],
+  "generated_utc": "2026-08-29T16:55:19.174418+00:00",
+  "python": "/opt/anaconda3/bin/python3",
+  "schema": "q5-master-verification-v1",
+  "singular_required": true,
+  "status": "PASS"
+}

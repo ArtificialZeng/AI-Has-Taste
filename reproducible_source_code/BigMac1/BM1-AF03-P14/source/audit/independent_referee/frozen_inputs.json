@@ -1,0 +1,124 @@
+{
+  "schema": "q5-independent-referee-binding-v1",
+  "inputs": [
+    {
+      "id": "formal_statement",
+      "path": "problem/formal_statement.md",
+      "sha256": "83fab549580aaa398cf8e0cedea8e3366a7b35550fb51f88459daf6a27878ce9",
+      "kind": "text"
+    },
+    {
+      "id": "main_proof",
+      "path": "proof/main_proof.md",
+      "sha256": "1d53b2d70c0ee37e306929414e3c7d4b84baaa7469868c204bcf4a4fa03ea85f",
+      "kind": "text"
+    },
+    {
+      "id": "paper_claim_map",
+      "path": "paper/main.tex",
+      "sha256": "1bcccfa9a6db0660c1e3d349351ad4740ea7f9ea5b90e050701c94bb7f19bd58",
+      "kind": "text"
+    },
+    {
+      "id": "builder_report",
+      "path": "proof/agent_builder_report.md",
+      "sha256": "99daef202ae37d65144543125a9dbf06828c4a01de2bd13c3eae408043af4965",
+      "kind": "text"
+    },
+    {
+      "id": "empty",
+      "path": "results/empty_highpair_classification_certificate.json",
+      "sha256": "3d5c97a23ad36956387e4ddbdaca0f74720953f34a59af422ed15944b23e1e6a",
+      "kind": "json"
+    },
+    {
+      "id": "star1",
+      "path": "certificates/star1_exact_certificate.json",
+      "sha256": "70cf7f980c89ff36e6b07ccecde268bcde6d8cf5f9da171759b5d8ba5c0e3fa7",
+      "kind": "json"
+    },
+    {
+      "id": "star2",
+      "path": "results/star2_bernstein_no_go_certificate.json",
+      "sha256": "fd591e360a57668ad818ba8adb8e48d5670a211da3f43528c7f3f68517310a80",
+      "kind": "json"
+    },
+    {
+      "id": "star3",
+      "path": "certificates/star3_decomposition.json",
+      "sha256": "f966e220261ffc316d37aaac9522e0484e2b931792c5fe985aae351052254024",
+      "kind": "json"
+    },
+    {
+      "id": "star4",
+      "path": "results/breaker_star4_certificate.json",
+      "sha256": "b57cad6aeea0d3db3ac39999bfbdcdcacd48c36d5b2de4883e6806a080bfc935",
+      "kind": "json"
+    },
+    {
+      "id": "triangle",
+      "path": "results/triangle_highpair_no_go_certificate.json",
+      "sha256": "5e0bab27d028cdfc65027c3c346d3f0397dd13a623b1bf7782616823019278a1",
+      "kind": "json"
+    },
+    {
+      "id": "q3",
+      "path": "results/q3_classification_certificate.json",
+      "sha256": "6f704264551c322228d9af0fffcd03e7ae5071be2ddbe04d0f54ed583cb8db28",
+      "kind": "json"
+    },
+    {
+      "id": "q4",
+      "path": "results/breaker_q4_baseline_certificate.json",
+      "sha256": "1c732a3b4c95b2bd743a05248dff841457ec11cdd70c76a96435dffb89a86c15",
+      "kind": "json"
+    },
+    {
+      "id": "star1_saddle",
+      "path": "results/breaker_saddle_certificate.json",
+      "sha256": "6bac02ad20ab063e8db1bbe8f79d1495dcb3134788f43b760ad119131872d03a",
+      "kind": "json"
+    },
+    {
+      "id": "ambrus_2022",
+      "path": "literature/sources/root/ambrus_2022_arxiv.txt",
+      "sha256": "442076b763308b364323658b743d50c66d98cdd308edea6cb154f30d6bc8f023",
+      "kind": "text"
+    },
+    {
+      "id": "ag_2024",
+      "path": "literature/sources/root/ambrus_gargyan_2024_vor.txt",
+      "sha256": "752242ed82313c65934261220e9c747fd9937ef604e07acdc58c30e1f3d0da43",
+      "kind": "text"
+    },
+    {
+      "id": "ag_2025",
+      "path": "literature/sources/root/ambrus_gargyan_2025_vor.txt",
+      "sha256": "1e15bd363db08c659d36e259e6b599890d70d83c88f7f489ffa348823d0fcd16",
+      "kind": "text"
+    },
+    {
+      "id": "pournin_2025",
+      "path": "literature/sources/root/pournin_2025_erratum.txt",
+      "sha256": "7e94b4d1525979eb8d5d0e5644d10e7beecad52899b798a849522c32ca72dde1",
+      "kind": "text"
+    }
+  ],
+  "semantic_contract": {
+    "chambers": {
+      "empty": [],
+      "star1": [[0, 1]],
+      "star2": [[0, 1], [0, 2]],
+      "star3": [[0, 1], [0, 2], [0, 3]],
+      "star4": [[0, 1], [0, 2], [0, 3], [0, 4]],
+      "triangle": [[0, 1], [0, 2], [1, 2]]
+    },
+    "support_paths": {
+      "d3": [[1, 1], [1, 1], [1, -2], [0, 0], [0, 0]],
+      "d4": [[1, 0], [1, 0], [1, 0], [1, 0], [0, 1]]
+    },
+    "wall_policy": "all pair walls are weak chamber-closure constraints; the singleton balance wall is checked separately",
+    "star1_root_interval": [[12, 5], [5, 2]],
+    "star1_hessian_signature": [1, 3]
+  }
+}

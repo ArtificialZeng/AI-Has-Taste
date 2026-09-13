@@ -1,0 +1,96 @@
+{
+  "schema": "q5-hostile-referee-verdict-v2",
+  "date": "2026-08-30",
+  "verdict": "PASS",
+  "publication_claim": false,
+  "mathematical_endpoint_status": "PASS",
+  "finding_counts": {
+    "fatal": 0,
+    "major": 0,
+    "local": 0,
+    "expository": 0
+  },
+  "theorem_endpoint": "Modulo signed coordinate permutations, the locally extremal Q5 central-section directions are exactly d1, d2, and d5; the unique non-diagonal full-support critical orbit and the support-four (1,1,2,2,0) orbit are saddles.",
+  "closed_findings": [
+    {
+      "id": "R-M1",
+      "status": "CLOSED",
+      "evidence": "All decisive primary, supplemental, star1, and independent JSON loaders reject duplicate keys recursively and reject noncanonical booleans; all bound attacks pass."
+    },
+    {
+      "id": "L-01",
+      "status": "CLOSED",
+      "evidence": "paper/main.tex now gives the specialized Q3 second equation as a^3(a-1)^2."
+    },
+    {
+      "id": "E-01",
+      "status": "CLOSED",
+      "evidence": "The five literal comma-quad strings and one comma-qquad string in proof/main_proof.md are corrected to TeX spacing commands."
+    }
+  ],
+  "frozen": {
+    "formal_statement_sha256": "83fab549580aaa398cf8e0cedea8e3366a7b35550fb51f88459daf6a27878ce9",
+    "proof_sha256": "1d53b2d70c0ee37e306929414e3c7d4b84baaa7469868c204bcf4a4fa03ea85f",
+    "builder_report_sha256": "99daef202ae37d65144543125a9dbf06828c4a01de2bd13c3eae408043af4965",
+    "paper_sha256": "1f2237109932b4b017e9d017187923b8d0f79a0ab2b1f93384ce8e53f217556a",
+    "binding_sha256": "8f25404fc08ff0468cd413bdca66c80b8d3ffa791db6ea17e89c811ded89b699",
+    "master_verifier_sha256": "b781d39f0b89fda14a8969458d098942569d0ad191103546d8904ec4566bc1a2",
+    "master_log_sha256": "a480c22e49928e7ce8d7360b69869dec5c215f3009680778ff308710f1b98eab",
+    "independent_verifier_sha256": "e6ce6ac216afa419442acc9cb6cce3dd256826a5ab28f9262bfd9e5fba5ab73d",
+    "independent_result_sha256": "896229b63ac2d877c49e7272913e07f62d8d6612ab38c46e9816518b4052c3cf",
+    "semantic_mutation_script_sha256": "e4a9e2008777dad92189772c2f967b2c1f9f7bc56a630e507964c3a4243982c4",
+    "semantic_mutation_result_sha256": "4a31dabad8f83d399c67e4fde472d02540ac2ca2ce8b815f71e143822b84d897",
+    "parser_harness_sha256": "82db691efc8db2ee2f453cca9bd5519620592410befa518dcc5240fd1d13a946",
+    "proof_referee_report_sha256": "e5e6f978e300788fd1d79666461e464251dd4636df0f4fd5434082b8b2465f31",
+    "independent_referee_report_sha256": "8786f25cdb545b73b4f10d2e242e176c64b2353c8cb2ba7783b78e6c12b9a67e"
+  },
+  "certificates_sha256": {
+    "empty": "3d5c97a23ad36956387e4ddbdaca0f74720953f34a59af422ed15944b23e1e6a",
+    "star1": "70cf7f980c89ff36e6b07ccecde268bcde6d8cf5f9da171759b5d8ba5c0e3fa7",
+    "star2": "fd591e360a57668ad818ba8adb8e48d5670a211da3f43528c7f3f68517310a80",
+    "star3": "f966e220261ffc316d37aaac9522e0484e2b931792c5fe985aae351052254024",
+    "star4": "b57cad6aeea0d3db3ac39999bfbdcdcacd48c36d5b2de4883e6806a080bfc935",
+    "triangle": "5e0bab27d028cdfc65027c3c346d3f0397dd13a623b1bf7782616823019278a1",
+    "q3": "6f704264551c322228d9af0fffcd03e7ae5071be2ddbe04d0f54ed583cb8db28",
+    "q4_saddle_only": "1c732a3b4c95b2bd743a05248dff841457ec11cdd70c76a96435dffb89a86c15",
+    "q5_saddle": "6bac02ad20ab063e8db1bbe8f79d1495dcb3134788f43b760ad119131872d03a"
+  },
+  "exact_evidence": {
+    "master_checks": "23/23 PASS",
+    "independent_bound_inputs": 17,
+    "independent_core": "PASS; temporary result byte-identical to frozen result",
+    "semantic_mutations": "10/10 rejected; temporary result byte-identical to frozen result",
+    "cross_primary_json_attacks": "17/17 rejected",
+    "q4_q5_breaker_corruptions": "11/11 rejected with both valid controls accepted",
+    "star2_independent_corruptions": "9/9 rejected with valid control accepted",
+    "independent_parser_attacks": "4/4 rejected with sole canonical star3 boolean accepted"
+  },
+  "endpoint_coverage": {
+    "formal_quantifiers_and_symmetry": "PASS",
+    "truncated_power_formula_and_regularity": "PASS",
+    "dominant_region_and_singleton_wall": "PASS",
+    "six_chamber_exhaustion": "PASS",
+    "all_pair_and_coincident_walls": "PASS",
+    "empty": "PASS",
+    "star1": "PASS",
+    "star2": "PASS",
+    "star3": "PASS",
+    "star4": "PASS",
+    "triangle": "PASS",
+    "full_support_critical_set_and_hessians": "PASS",
+    "q3_q2_q1_support": "PASS",
+    "q4_complete_exhaustion": "PASS",
+    "zero_coordinate_support_splice": "PASS",
+    "diagonal_local_types": "PASS",
+    "non_diagonal_saddle_types": "PASS",
+    "division_and_saturation_scope": "PASS",
+    "theorem_wording": "PASS",
+    "canonical_fail_closed_integrity": "PASS"
+  },
+  "release_artifacts": {
+    "generated_paper_pdf_present": false,
+    "source_zip_present": false,
+    "literature_source_pdfs_are_not_release_artifacts": true
+  },
+  "proof_assistants": []
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Does exhaustive canonical enumeration prove every 11-vertex tournament has a 15-packing?",
+      "premises": ["gentourng emits one representative per isomorphism class", "the exact target search is sound"],
+      "method": "canonical generation, independent exact bit-mask packing, fail-only logs, class-count and stream digests",
+      "status": "proved_by_two_complete_exact_sweeps",
+      "evidence": ["certificates/n11_builder_full_m192.json", "certificates/n11_certifier_full_m192.json", "certificates/n11_sweeps_match.json", "logs/n11_builder_full_m192_driver.log", "logs/n11_certifier_full_m192_driver.log"],
+      "failure_reason": null,
+      "next_test": "none; retain the canonical-generation contract as an explicit trusted-base item"
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Is there an 11-vertex tournament whose exact maximum packing is at most 14?",
+      "premises": ["all orientations are represented by 55-bit strings"],
+      "method": "structured cyclic blow-ups, random and score-extreme tournaments, then exhaustive counterexample scan",
+      "status": "refuted_by_complete_builder_sweep",
+      "evidence": ["certificates/n11_builder_full_m192.json", "logs/breaker_random100k_builder.log", "logs/breaker_random100k_certifier.log"],
+      "failure_reason": "Every one of the 903753248 canonical representatives has a target-15 Builder witness; no below-target literal was emitted.",
+      "next_test": "independent full Certifier replay is retained as adversarial audit, not as discovery"
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What exact finite hypergraph problem is equivalent to TT3 packing?",
+      "premises": ["a tournament has one arc on every unordered vertex pair"],
+      "method": "map each transitive vertex triple to a 3-subset of the C(n,2) pair indices; packing becomes 3-set matching",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md"],
+      "failure_reason": null,
+      "next_test": "use relabeling invariance to justify canonical representatives"
+    },
+    {
+      "id": "R02",
+      "kind": "reduction",
+      "question": "Can deletion to the certified n=10 case force three additional triples?",
+      "premises": ["every 10-vertex subtournament has a 12-packing"],
+      "method": "analyze unused-pair graph of a 12-packing and extension triples through the deleted vertex",
+      "status": "conditional_reduction_proved_naive_force_not_obtained",
+      "evidence": ["proof/structural_reductions.md"],
+      "failure_reason": "A 12-packing extends by three triples through the deleted vertex exactly when its admissible leave graph has a 3-matching; nine leave edges alone do not force such a matching.",
+      "next_test": "not needed for the finite endpoint once the independent exhaustive certificate passes"
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can malformed input, an incorrect transitivity test, reused arcs, truncation, or an incomplete slice be falsely accepted?",
+      "premises": ["verification must fail closed"],
+      "method": "fresh verifier, negative controls, independent evaluator, exact count/digest checks",
+      "status": "certified_audit_and_release_gates_passed",
+      "evidence": ["tests/test_fail_closed.py", "tests/test_sweep_fail_closed.py", "tests/test_compare_fail_closed.py", "logs/final_replay.log", "logs/sanitizer_audit.log", "certificates/minimizer_11.json", "certificates/n11_sweeps_match.json"],
+      "failure_reason": null,
+      "next_test": "none"
+    }
+  ]
+}

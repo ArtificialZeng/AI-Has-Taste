@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF03-P10",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "记录给出全部 n≥2 的 generic tree-system 定理，覆盖 n=9；generic 假设不可删除。",
+  "historical_gate_summary": "历史串行角色审计；非本次fresh审稿。",
+  "pdf_sha256": "24959453f24bc7c50cd2578e95f52389de140fae3665af9e1d24d226bfc97e47",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "PROVED; The generic van der Kamp tree-system conjecture is proved for every n>=2, hence for n=9. An independent exact certificate exhausts all unlabeled trees through order nine and a fail-closed verifier rejects six corrupted inputs.",
+      "sha256": "c6259c920ca31d412c86fd2edbf2f41f3702e31b5d90f7d0818a3d8c7c044416",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit — pass 2\n\nAudit date: 2026-08-29.  Frozen input: the twelve claims CC01--CC12 in\n`audit/CITATION_CLAIMS.md`.  No claim was added during verification.\n\n## Result\n\nAll twelve claims are supported.  All three cited BibTeX records resolve to\nthe stated official DOI metadata, every cited key occurs in both the\nbibliography and the final AUX file, and no bibliography key is unused.\n\n| ID | Verification evidence | Verdict |\n|---|---|---|\n| CC01 | Quispel--Tapley--McLaren--van der Kamp (2023), DOI `10.1088/1751-8121/ace0e9`, and van der Kamp--Quispel--McLaren (2024), DOI `10.1007/s110",
+      "sha256": "bdaac53a3ba5805442fce5a75259f0c93ae7575012341391cd1e793ec8729f77",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nStatus: mathematical endpoint passed serial builder, breaker, certifier, and\ndefinition-first referee audits on 2026-08-29.\n\nOutcome: the proof establishes the full generic conjecture for every\n\\(n\\ge2\\), hence the requested order-nine endpoint.  The no-import finite\ncertificate independently covers all 47 order-nine trees and reproduces the\npublished \\(n<9\\) frontier.\n\nAll nonmathematical release gates also passed: the theorem-specific novelty\nrecheck, frozen-claim citation audit, official-BibTeX key audit, clean LaTeX\nbuild, six-page visual inspection, fail-closed mutation sui",
+      "sha256": "4f3121e6dde558ab2dab8bdb8d848a814f07ce5cd618209c4cbc015ee2d320c2",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-6-page visual/build/metadata gate PASS; current SHA-256 24959453f24bc7c50cd2578e95f52389de140fae3665af9e1d24d226bfc97e47 agrees with final record. # PDF audit\n\nAudit date: 2026-08-29.\n\nStatus: **passed**.\n\n- Clean build: `latexmk -C main.tex` followed by\n  `latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex`.\n- Build result: six pages, no undefined citations/references, no BibTeX\n  w",
+      "sha256": "e4240fa2a770bfe1af7e08c1b92b8522e00cd5e049f5fa0c714f2e75a5f7ca35",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "记录给出全部 n≥2 的 generic tree-system 定理，覆盖 n=9；generic 假设不可删除。",
+      "sha256": "db1e024cd8428e593cece7c66989a89442708fcd7e3f17857a4d40255f67b7a2",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "## Pass 2 searches and records",
+      "sha256": "853b16fedf7bdd4653d5def12504aab07d2d690cf4f317f9b0a9c8204eba66e8",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C14 | A theorem-specific second search found no use of the cone graphic matroid or three-element projective DP circuits to resolve Conjecture 12. | bounded negative search | web, arXiv, Semantic Scholar, OpenAlex, GitHub | `literature/NOVELTY_PASS2.md` | medium | Supports, but cannot absolutely establish, novelty of the proof route. |",
+      "sha256": "b1f141540ea88fa0bbddd6b29ec23f206b3aa8863a9bce738c1c1777d18d105b",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/07_claim_ledger.md"
+    },
+    {
+      "original_project_relative_path": "literature/NOVELTY_LOCK.md",
+      "summary": "Any claimed new theorem must undergo a second novelty search after exact",
+      "sha256": "19eae362c74095023aacbe039ad6e569d690883102d959f5dab6ddef610dcd77",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P10/evidence/08_NOVELTY_LOCK.md"
+    }
+  ]
+}

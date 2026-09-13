@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can symmetry and the forced roots reduce the disk problem?",
+      "premises": ["Lee--Vindas-Melendez--Wang Theorem 2.9"],
+      "method": "center at the functional-equation axis and set y=x^2",
+      "status": "completed",
+      "evidence": ["routes/builder_transform.md", "paper/main.tex:132"],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Does palindromic negative-real-rooted h* alone imply the disk?",
+      "premises": ["Braun--Jal h*-real-rootedness"],
+      "method": "exact Ehrhart-transform obstruction",
+      "status": "refuted",
+      "evidence": ["routes/builder_transform.md"],
+      "failure_reason": "h*(z)=(1+z)^11 is realized by a 24-dimensional lattice polytope yet its radial Ehrhart factor has a root in (-145,-144)",
+      "next_test": null
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Does any literal length-10 word violate |t+7|<=6?",
+      "premises": ["corrected finite endpoint F10"],
+      "method": "unquotiented 1024-word exact search followed by rational Rouché exactification",
+      "status": "completed",
+      "evidence": [
+        "experiments/breaker_counterexample_certificate.json",
+        "discovery/breaker_verify_counterexample.py",
+        "discovery/breaker_report.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "D02",
+      "kind": "disproof",
+      "question": "Does the authors' reported length-9 baseline survive exact reproduction?",
+      "premises": ["same corrected actual-length parameterization"],
+      "method": "independent source-cover reconstruction and rational Rouché disk",
+      "status": "completed",
+      "evidence": [
+        "experiments/breaker_length9_counterexample_certificate.json",
+        "discovery/breaker_length9_verify_counterexample.py",
+        "discovery/breaker_length9_report.md"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Can a different exact evaluator and root theorem reproduce the length-10 failure?",
+      "premises": ["serialized input contains only word and endpoint"],
+      "method": "order-ideal multichains plus Cayley transform and exact Routh table",
+      "status": "completed",
+      "evidence": [
+        "certificates/routh_audit_input.json",
+        "audit/independent_routh_verifier.py",
+        "tests/test_independent_routh_verifier.py"
+      ],
+      "failure_reason": null,
+      "next_test": null
+    },
+    {
+      "id": "N01",
+      "kind": "novelty",
+      "question": "Was the corrected endpoint publicly resolved by the cutoff?",
+      "premises": ["frozen Gate 1 questions", "post-result word and coefficient fingerprints"],
+      "method": "primary-source, citation-frontier, code, and fingerprint searches",
+      "status": "completed",
+      "evidence": [
+        "literature/search_log.md",
+        "audit/referee_novelty.md",
+        "literature/referee_search_raw.md"
+      ],
+      "failure_reason": null,
+      "next_test": "repeat immediately before any external submission"
+    }
+  ]
+}
+

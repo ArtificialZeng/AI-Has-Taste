@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "number": 6,
+  "title": "Kusner 的 taxicab 等距集猜想：首个开放维数 n=5",
+  "state": "PARTIAL_THEOREM",
+  "original_prompt_complete": true,
+  "solution_percent": 48,
+  "confidence_percent": 96,
+  "summary": "The original yes/no problem remains open. The strongest frozen result is an independently audited partial theorem: every hypothetical eleven-point equilateral set in l1^5 has at least 19 positive consecutive coordinate gaps, hence at least 24 total coordinate levels. A separate exact finite certificate proves maximum 10 only in the box {0,1,2,3,4}^5.",
+  "solution_percent_basis": "The work gives a substantial new necessary condition and eliminates all support strata t<=18, but it neither excludes all t>=19 branches nor constructs eleven points, so it does not resolve the original conjecture.",
+  "confidence_percent_basis": "The stated partial theorem has a complete human proof, exact rational/integer finite checks, referee rounds 1-5, a final hash-bound adversarial referee PASS, fail-closed optimization/isolation matrices, and a clean citation/LaTeX/PDF audit. The remaining uncertainty concerns bounded literature novelty, not the internal theorem.",
+  "exact_result": {
+    "statement": "If eleven equilateral points in l1^5 exist and q_j is the number of coordinate-j levels, then sum_j(q_j-1)>=19 and sum_j q_j>=24.",
+    "scope": "Structural necessary condition only; Kusner n=5 remains open.",
+    "finite_box": "The maximum equilateral subset of {0,1,2,3,4}^5 is 10; this does not imply the unrestricted theorem."
+  },
+  "evidence": [
+    "proof/builder_notes.md and proof/structural_reduction.md give the exact cut-chain, Parseval, Naimark, and spectral-deficit reductions.",
+    "proof/t15_dense_branch.md, proof/t16_branch.md, proof/t17_branch.md, and proof/t18_branch.md eliminate t=15,16,17,18.",
+    "audit/referee_round1.md through audit/referee_round5_t18.md independently audit the proof chain.",
+    "audit/final_hash_referee.md binds the final paper/main.tex SHA-256 and specifically audits kernels, boundary cases, coefficient signs, complement orientation, repeated cuts, and strict inequalities.",
+    "logs/fail_closed_matrix.json records 48/48 expected foundational genuine/tamper outcomes in four interpreter modes.",
+    "logs/t18_fail_closed_matrix.json records 60/60 expected t=18 genuine/tamper outcomes in four interpreter modes.",
+    "certificate/integer_box_side5.json and certificate/verify_integer_box.py certify only the finite-box maximum 10.",
+    "literature/NOVELTY_LOCK.md and literature/search_log.md record the primary-source lock and the final bounded support-19 novelty sweep.",
+    "audit/CITATION_AUDIT.md, audit/PROOF_AUDIT.md, and audit/PDF_AUDIT.md record Gate 5/6 PASS."
+  ],
+  "deliverables": [
+    "paper/main.tex",
+    "paper/references.bib",
+    "output/pdf/kusner_l1_5_support19_partial_theorem.pdf",
+    "output/source/kusner_l1_5_support19_partial_theorem_source.zip",
+    "audit/final_hash_referee.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "literature/NOVELTY_LOCK.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "FINAL_STATUS.md"
+  ],
+  "artifact_hashes": {
+    "paper_main_tex": "d55cdd3cd7a6785bbacdb23b3817868af0ca973651532ed8aa5da0d26d163b11",
+    "pdf": "23e7143150038d5dad511afdb0f49ca3118566b7371d933b1eaa371bb6e410b1",
+    "source_zip": "dd3cfdb62e7c9abd952df1982fece973f5efaca4041ffa3cbc97437773d6de9d"
+  },
+  "python_requirement": "Python >=3.10",
+  "proof_assistant_used": false,
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "NEW_STRICT_BOUND",
+    "NEW_INFINITE_SUBCLASS",
+    "ALREADY_SOLVED_STOP",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "updated_utc": "2026-08-29T05:31:29Z"
+}

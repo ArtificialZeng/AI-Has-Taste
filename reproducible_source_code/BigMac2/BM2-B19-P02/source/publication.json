@@ -1,0 +1,26 @@
+{
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/citation_notes.md",
+    "literature/user_bibliography_check.md",
+    "evidence/geng_excess2_search.cpp",
+    "evidence/attachment_orbit_crosscheck.cpp",
+    "evidence/cycle_detector_crosscheck.cpp",
+    "evidence/graph6_parser_dump.cpp",
+    "evidence/pass2_A_m0.log",
+    "evidence/pass2_A_m1.log",
+    "evidence/pass2_A_m2.log"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_directory": "manuscript",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "citation_notes": "manuscript/citation_notes.md",
+  "bibliography_basis": {
+    "Garcia2026": "Official arXiv abstract and HTML plus the frozen primary-source PDF in the research root.",
+    "Markstrom2004": "Classical cubic-boundary citation as reported by Garcia and the available bibliographic record.",
+    "McKayPiperno2014": "Journal record and official nauty documentation.",
+    "Zeng2026SSRN7380519": "User-designated workbook, worksheet 数学主表 row 40; supplied DOI and BibTeX are authoritative if refresh is unavailable."
+  },
+  "citation_scope_note": "Zeng2026SSRN7380519 is cited only for a narrow proof-architecture comparison; it supports no graph theorem, finite boundary, software claim, or priority statement."
+}

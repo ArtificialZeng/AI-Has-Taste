@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "title": "The Grid-Traffic Threshold: A Proof for Every n >= 496",
+  "kind": "resolution-paper",
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/references.bib",
+    "source.md",
+    "evidence/exact_scan.py",
+    "evidence/resolution_check.py",
+    "evidence/resolution_check_results.json"
+  ],
+  "pdf": "manuscript/article.pdf",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex",
+  "bibliography_basis": {
+    "GilEtAl2026": "Metadata refreshed from the official arXiv abstract page on 2026-09-08.",
+    "Zeng2026SSRN7380519": "User-designated workbook record (worksheet 数学主表, row 40); DOI endpoint refresh was unavailable, so the authoritative supplied BibTeX was preserved exactly.",
+    "Robbins1955": "Classical source for the one-sided Stirling bounds used in the proof."
+  },
+  "citation_scope_note": "Zeng2026SSRN7380519 is cited only for the narrow methodological comparison authorized by the supplied bibliography check; it supports no grid-traffic formula, threshold claim, or priority assertion."
+}

@@ -1,0 +1,51 @@
+{
+  "package_id": "BM1-AF04-P06",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "weight20 恰好两个 affine–Galois 轨道，有限分类已认证；research_state.json 残留 queued，采用终态文件。",
+  "historical_gate_summary": "历史串行角色审计；非本次fresh审稿。",
+  "pdf_sha256": "75b09a4161b52732f87834804feba5bcdda77637d4a29b9548ed4f5e630b5905",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; Two weight-20 affine-Galois orbits were found. A no-import standard-library verifier reconstructed all 1,209,813 normalized vanishing subsets of weight at most 20 and certified that each contains one of exactly nine minimal affine orbits.",
+      "sha256": "34a186e237ec1187b5487bbd583e72b5531281cc5170fbc9f5a4c9168221e99c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\nAudit date: 2026-08-30.  Four citation keys were extracted from\n`paper/main.tex` and checked serially.  Parallel citation agents were not used\nbecause the user required the current Codex CLI to be the sole executor.\n\n| Key | Cited claim and location | Official record | BibTeX action | Key change | Uncertainty |\n|---|---|---|---|---|---|\n| `Lam_2000` | Group-ring methods, weight restrictions, and smallest asymmetric examples; Introduction | DOI/Crossref and publisher: https://doi.org/10.1006/jabr.1999.8089 | Used DOI content-negotiation export unchanged | none | none |\n| `Sive",
+      "sha256": "84cca36df12f3880382fee51edf7736d038d5012ab3262357cbe7d45ad34ceb9",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nAudit date: 2026-08-30.  Role: Referee, run serially after Builder, Breaker,\nand Certifier.  No sub-agent was used because the user required this Codex CLI\nto be the sole research executor.\n\n## Verdict\n\n**PASS — certified finite result.**  Up to translation and multiplication by a\nunit modulo 105, exactly two inclusion-minimal vanishing subsets have weight\n20.  Together with the reproduced seven lower-weight orbits, they give exactly\nnine orbits through weight 20.\n\n## Dependency reconstruction\n\n1. `problem/formal_statement.md` explicitly excludes the empty set, fixes\n   distinct",
+      "sha256": "f7feecc8bfbf488a574146de3db7e81132efb9535bead4d20dc381bec56afeed",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-6-page visual/build/metadata gate PASS; current SHA-256 75b09a4161b52732f87834804feba5bcdda77637d4a29b9548ed4f5e630b5905 agrees with final record. # PDF audit\n\nStatus: **PASS**.\n\n- File: `output/pdf/minimal105_weight20.pdf`\n- Inspection date: 2026-08-30\n- Pages: 6\n- Page size: US Letter, 612 by 792 points\n- Bytes: 355,042\n- SHA-256: `75b09a4161b52732f87834804feba5bcdda77637d4a29b9548ed4f5e630b5",
+      "sha256": "063c89e9d0a272ddfec572aa1d5b009d508980ca650cfc485eb0366f1d568c5c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/04_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "weight20 恰好两个 affine–Galois 轨道，有限分类已认证；research_state.json 残留 queued，采用终态文件。",
+      "sha256": "9cf7e9bbbb3713c1856f71d57985ca44643917d010c4a065312e058f3270a0d5",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/05_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "the cutoff.”  A second novelty and citation pass is required after obtaining a\n## Result-aware second pass\n| General web index | Exact string `0,1,3,11,12,16,24,33,41,42,45,46,54,63,71,75,76,84,86,87` | No matching mathematical record for the second representative. |",
+      "sha256": "dfc55498659b9dfba99476213d21aff2229172e1896c7bd2349bdb52d2d32e83",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/06_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "| C12 | A result-aware second search found neither exact weight-20 representative, no later fixed-conductor-105 classification, and no updated public implementation; TheoremDB still states that weight 20 is open. | bounded negative search, not proof of absence | exact-string web search; arXiv; Crossref; OpenAlex; J-GLOBAL/zbMATH-linked metadata; GitHub API; TheoremDB | queries and API results dated 2026-08-30 | medium-high | Supports the dated novelty claim for the two-orbit certified result. |\nGate 1 is locked for discovery; a second pass is mandatory before release.\n## RELEASE_NOVELTY_PASS (2026-08-30, after certification)\nThe second pass used both complete exponent lists as exact-string fingerprints,",
+      "sha256": "87efa61a2017aa49f8080db2b42d1be389f44c511d74e69fef744f66e84e47cf",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF04-P06/evidence/07_claim_ledger.md"
+    }
+  ]
+}

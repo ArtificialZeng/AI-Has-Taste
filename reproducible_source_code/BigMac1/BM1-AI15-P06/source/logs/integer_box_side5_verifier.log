@@ -1,0 +1,14 @@
+Audit date: 2026-08-29
+Working directory: /tmp (outside the project)
+Command: /opt/homebrew/opt/python@3.14/bin/python3.14 -O -I /Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_integer_box.py /Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/integer_box_side5.json
+Exit: 0
+Output:
+{"certificate_sha256": "8c9501f60eb3eddf03f32fc96e1c61fd761fecf025440cd1d72781db27b80a24", "coordinate_set": [0, 1, 2, 3, 4], "dimension": 5, "fixed_target_search_nodes": {"1": 0, "10": 684783, "11": 0, "12": 6658, "13": 0, "14": 1159, "15": 0, "16": 473, "17": 0, "18": 17, "19": 0, "2": 1028, "20": 1, "3": 0, "4": 152142, "5": 0, "6": 10688209, "7": 0, "8": 2485226, "9": 0}, "python": "3.14.7", "status": "PASS", "verified_largest_equilateral_size": 10, "verifier_sha256": "7f1918241417c90bdadfa3e56ee6f86350b179d84809d3b8d3d69c841e532337"}
+
+Version-guard check:
+Working directory: /tmp
+Command: /usr/bin/python3 -O -I /Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_integer_box.py /Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/integer_box_side5.json
+Interpreter: Apple system Python 3.9
+Exit: 1
+Output:
+FAIL: Python >= 3.10 is required (uses int.bit_count)

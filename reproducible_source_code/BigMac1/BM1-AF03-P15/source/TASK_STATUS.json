@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "number": 15,
+  "title": "Type \\(D_9\\) absolute order 的 normalized flow",
+  "state": "CERTIFIED_FINITE_RESULT",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 99,
+  "confidence_basis": [
+    "The unique primary exact rational certificate is frozen by SHA-256 and passes its fail-closed verifier.",
+    "A separately written standard-library verifier imported no discovery or primary-verifier code, reconstructed the full signed-permutation quotient, and reported fatal=0 and major=0.",
+    "All nine targeted corruptions were rejected, and every one of the nine adjacent-rank layers was checked with exact rational and denominator-cleared integer conservation.",
+    "Carter's reflection-length theorem was checked at Lemma 2, journal page 3, and its applicability to exactly the 72 D9 reflections was independently audited.",
+    "Two dated novelty searches, official citation verification, a clean LaTeX build, and a six-page visual PDF audit passed.",
+    "Confidence is not set to 100 because no proof-assistant formalization was produced and bounded public searches cannot exclude private or unindexed prior work."
+  ],
+  "summary": "Abs(D_9) admits a normalized flow with unit vertex weights. The exact finite theorem is certified by 284 nonzero rational B_9-orbit flow totals and two independent fail-closed verifiers.",
+  "evidence": [
+    "Primary certificate SHA-256 d8fe947906c577f3a7c585fc07e0bcb6648e2555056a756af98bf307ab72ea7f.",
+    "Primary verifier SHA-256 a076f7dc4a715d0adb9d1c7b7946431a7f63de744b53a8782a6c50ed7580c706.",
+    "No-import referee verifier SHA-256 2b2ff8f48853ed534c7d98dc6e8aab45b0413871029b35ba80f1cbd62078a8c4.",
+    "Referee reconstruction: 150 orbits, 609 supported orbit pairs, 284 positive flows, 3,344,302,080 covers, all nine layers verified.",
+    "Mutation suite: 9/9 corruptions rejected.",
+    "Final referee severity: fatal 0; major 0; local 0; expository 0."
+  ],
+  "deliverables": [
+    "problem/formal_statement.md",
+    "certificates/PRIMARY_D9_BINDING.json",
+    "certificates/d9_normalized_flow.json",
+    "certificates/verify_d9_flow.py",
+    "audit/referee_verify_d9.py",
+    "audit/REFEREE_REPORT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/PDF_AUDIT.md",
+    "paper/main.tex",
+    "paper/references.bib",
+    "output/pdf/d9_normalized_flow.pdf",
+    "output/d9_normalized_flow_source.zip",
+    "manifests/release_manifest.json"
+  ],
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "proof_assistant": {
+    "used": false,
+    "systems": [],
+    "claim": "No Lean, Coq, Isabelle, or other proof-assistant formalization was used or claimed."
+  },
+  "updated_utc": "2026-08-29T14:23:35Z"
+}

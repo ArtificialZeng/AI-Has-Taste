@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "routes": [
+    {
+      "id": "P01",
+      "kind": "proof",
+      "question": "Can an integer projection of the Rao--Rosenfeld h6 fixed point remain additive-square-free?",
+      "premises": ["h6 is the cited six-letter 3-uniform morphism", "letters have the cited Z^2 weights", "projection is (x,y) -> p*x+q*y with primitive integers (p,q)"],
+      "method": "generate the fixed point exactly and mark the primitive perpendicular direction of every nonzero adjacent-block difference vector",
+      "status": "active",
+      "evidence": ["experiments/h6_screen_n10000_h100.txt", "experiments/h6_screen_n30000_h100.txt", "src/h6_projection_screen.cpp"],
+      "failure_reason": "All 12,176 primitive directions of height at most 100 are killed within the first 30,000 symbols; this bounded failure does not cover higher directions.",
+      "next_test": "Use template/factor structure rather than quadratic prefix scans to decide directions above height 100."
+    },
+    {
+      "id": "P02",
+      "kind": "proof",
+      "question": "Can a low-expansion primitive morphism meet the Rao--Rosenfeld finite-ancestor criterion after scalar weighting?",
+      "premises": ["primitive prolongable morphism", "integer letter weights", "expanding eigenspace intersects the length-and-sum kernel trivially"],
+      "method": "spectral filtering followed by finite forbidden-template ancestor verification",
+      "status": "proposed",
+      "evidence": ["Rao--Rosenfeld, DOI 10.1137/17M1149377"],
+      "failure_reason": null,
+      "next_test": "Synthesize 4-letter morphisms beyond uniform modulus 2; modulus 2 is excluded by D02."
+    },
+    {
+      "id": "D01",
+      "kind": "disproof",
+      "question": "Can van der Waerden coloring of prefix sums force exact zero second difference for every bounded-increment walk?",
+      "premises": ["color n by S_n modulo m", "use a monochromatic three-term progression of indices"],
+      "method": "combine modular divisibility with an Archimedean bound on the second difference",
+      "status": "blocked",
+      "evidence": ["proof/gap_ledger.md#G02"],
+      "failure_reason": "The progression length supplied for modulus m is not bounded independently of m, so divisibility by m does not force the length-dependent second difference to vanish.",
+      "next_test": "A repair must couple modulus and scale without assuming m > 2*diam(A)*W(m,3)."
+    },
+    {
+      "id": "D02",
+      "kind": "disproof",
+      "question": "Can a 2-uniform endomorphism on four symbols, prolongable on one symbol, have an additive-square-free fixed point under any integer weighting?",
+      "premises": ["four-symbol endomorphism", "uniform image length 2", "prolongable on a letter"],
+      "method": "complete enumeration of 4^7 morphisms and exact abelian-square detection",
+      "status": "proved",
+      "evidence": ["certificates/uniform2_no_go.json", "certificates/verify_uniform2_no_go.py", "src/uniform2_morphism_census.cpp"],
+      "failure_reason": null,
+      "next_test": "Do not extrapolate to codings, more state symbols, nonuniform morphisms, or uniform modulus at least 3."
+    },
+    {
+      "id": "R01",
+      "kind": "reduction",
+      "question": "What affine and reflection normalizations preserve the exact problem?",
+      "premises": ["the compared blocks have equal length", "integer affine multiplier is nonzero"],
+      "method": "subtract the two transformed block sums and divide by the common nonzero multiplier",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md", "proof/proof_dag.md"],
+      "failure_reason": null,
+      "next_test": "Use only primitive minimum-zero representatives and one representative of each reflection pair."
+    },
+    {
+      "id": "R02",
+      "kind": "reduction",
+      "question": "When do arbitrarily long finite ASF words give an infinite word?",
+      "premises": ["one fixed finite alphabet A", "vertices are ASF prefixes"],
+      "method": "König's infinity lemma on the finitely branching prefix tree",
+      "status": "proved",
+      "evidence": ["problem/formal_statement.md"],
+      "failure_reason": null,
+      "next_test": "Reject every argument that lets A vary with the depth."
+    },
+    {
+      "id": "F01",
+      "kind": "finite",
+      "question": "What are the exact maxima for all primitive normalized four-letter integer alphabets with maximum letter at most 5, modulo reflection?",
+      "premises": ["A={0<a<b<c}", "gcd(a,b,c)=1", "c<=5", "identify A with c-A"],
+      "method": "canonical alphabet enumeration and complete exact ASF prefix-tree traversal",
+      "status": "proved",
+      "evidence": ["certificates/census_max5.json", "certificates/verify_finite_census.py", "certificates/independent_tail_dfs.cpp", "results/CENSUS_MAX5.md"],
+      "failure_reason": null,
+      "next_test": "Any extension to maximum 6 requires a new complete certificate; no monotonicity in the maximum letter is assumed."
+    },
+    {
+      "id": "A01",
+      "kind": "audit",
+      "question": "Does an implementation independent of discovery reconstruct every finite-census claim from serialized input?",
+      "premises": ["strict JSON schema", "no discovery output imported", "right-tail cumulative evaluator"],
+      "method": "compile a separate verifier, rerun all seven trees, compare exact invariants, and inject malformed certificates",
+      "status": "proved",
+      "evidence": ["certificates/verify_finite_census.py", "tests/test_fail_closed.py"],
+      "failure_reason": null,
+      "next_test": "Freeze hashes in the release manifest after manuscript completion."
+    },
+    {
+      "id": "A02",
+      "kind": "audit",
+      "question": "Can the certified finite statements be mistaken for a solution of the infinite problem?",
+      "premises": ["finite census only has c<=5", "h6 screen only has height<=100 and prefix<=30000", "morphism census only has uniform modulus 2 and four states"],
+      "method": "quantifier reconstruction from definitions and explicit counter-scope checks",
+      "status": "proved",
+      "evidence": ["proof/gap_ledger.md", "audit/REFEREE.md", "paper/main.tex"],
+      "failure_reason": null,
+      "next_test": "Any future extension must repeat this quantifier audit for its enlarged scope."
+    }
+  ]
+}

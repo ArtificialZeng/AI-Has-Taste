@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "independent_audit": true,
+  "bibliography_frozen": true,
+  "claims_checked": 25,
+  "unresolved_items": [],
+  "evidence": [
+    "audit/CITATION_CLAIMS.md",
+    "audit/RELEASE_CITATION_AUDIT.md",
+    "audit/RESOLUTION_CANDIDATE_FRESH_INDEPENDENT_AUDIT.md",
+    "audit/resolution_candidate_fresh_independent_audit.json",
+    "audit/resolution_candidate_fresh_independent_verifier.py",
+    "paper/main.tex",
+    "paper/references.bib",
+    "problem/formal_statement.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "project_metadata.json",
+    "scripts/verify_candidate_resolution.py"
+  ],
+  "notes": [
+    "Search-mode audit used a frozen Pass 1 list of 25 claims and a separate Pass 2 verification.",
+    "Initial Pass 2 found one numerical metadata error: the Sun publication year was 2011, but the journal record is 2013; the bibliography was corrected and rechecked.",
+    "The official arXiv v2 theorem statements, PDF, and e-print were inspected for Theorems 2.5 and 3.2, including hypotheses, signs, endpoints, residue classes, and moduli.",
+    "OEIS A079727 and A003625 were checked in official public and internal records for the original conjecture, inclusive endpoints, and residue classes.",
+    "Author affiliation, postal code 100190, and email are user-specified metadata checked only for internal consistency with project_metadata.json.",
+    "Two unique bibliography entries and four citation occurrences were checked; no unresolved citation or claim remains.",
+    "Incremental recheck: reversing only the optional short-title argument and the main-theorem math-mode wrapper exactly reconstructs the previously audited main.tex hash; all 25 claims and citation scopes remain unchanged.",
+    "Final incremental recheck: removing only the outer small-size group around the already audited main-theorem math wrapper exactly reconstructs the immediately preceding main.tex hash; the claimed endpoint, all 25 claims, four citation occurrences, two keys, and user-fixed metadata remain unchanged."
+  ],
+  "first_incremental_recheck": {
+    "performed_at": "2026-09-04T13:52:46+08:00",
+    "status": "passed",
+    "prior_main_tex_sha256": "d7c1f8a6e21662e2af1e4c75a96a6ebf8e8c0dd125b2999c22faa9ea45c2a3be",
+    "current_main_tex_sha256": "f2f16b7bfb5c36ce1654f534ede79583455ddce2e481c61fce74b96e176236da",
+    "reconstructed_prior_matches": true,
+    "references_bib_sha256": "d1193e151e56fb9ea743bbdeb2d22aa123fde541baa481fe699815379dc06db2",
+    "citation_claims_sha256": "6492d487a8359372e727cce2fa50832e732b5de56a5b7f6449bc3587f351256b",
+    "changes": [
+      "Added an optional short title without changing the full title.",
+      "Wrapped the unchanged main-theorem statement in TeX inline math delimiters."
+    ],
+    "claims_checked": 25,
+    "citation_commands": 4,
+    "citation_occurrences": 4,
+    "unique_citation_keys": 2,
+    "bibliography_unchanged": true,
+    "author_metadata_unchanged": true,
+    "unresolved_items": []
+  },
+  "incremental_recheck": {
+    "performed_at": "2026-09-04T13:55:52+08:00",
+    "status": "passed",
+    "prior_main_tex_sha256": "f2f16b7bfb5c36ce1654f534ede79583455ddce2e481c61fce74b96e176236da",
+    "current_main_tex_sha256": "2384bee5b8605a69308fe954549f3230bf3ec0373f523c3f9dde632921164815",
+    "reconstructed_prior_matches": true,
+    "references_bib_sha256": "d1193e151e56fb9ea743bbdeb2d22aa123fde541baa481fe699815379dc06db2",
+    "citation_claims_sha256": "2010eb99751632a0470f076fa69ce6224df4ddf40cba94453847f7f28264244b",
+    "changes": [
+      "Added an outer small-size TeX group around the unchanged main-theorem math wrapper."
+    ],
+    "claimed_endpoint_unchanged": true,
+    "claims_checked": 25,
+    "citation_commands": 4,
+    "citation_occurrences": 4,
+    "unique_citation_keys": 2,
+    "bibliography_unchanged": true,
+    "author_metadata_unchanged": true,
+    "unresolved_items": []
+  }
+}

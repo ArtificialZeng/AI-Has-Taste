@@ -1,0 +1,28 @@
+Complex-scale half-width 21/386 exact-certificate test record
+Date: 2026-08-24
+Environment: Python 3.11.15, SymPy 1.14.0, project .venv
+
+PASS source normal: exit 0
+PASS referee normal: exit 0
+PASS source optimized fail-closed: exit 1 at __debug__ guard
+PASS referee optimized fail-closed: exit 1 at __debug__ guard
+PASS source bad-dependency negative test: exit 1 at SHA-256 mismatch
+PASS referee bad-dependency negative test: exit 1 at SHA-256 mismatch
+PASS source dropped-sign negative test: exit 1 at seven-sign set gate
+PASS referee dropped-sign negative test: exit 1 at seven-sign set gate
+PASS source direct manifest: 11/11 entries
+
+Source normal terminal record:
+  rho_wide=4663813122843737977650051498551334435768458336/
+    85718455710308009675929498510346753854808433775
+  source_sha256=1c50d77fe25ca57b60085abcad2b6570c417bdaf6107950b7e8fa6ec64d9bb27
+
+Referee normal terminal record:
+  center controls=40595 per r-cell
+  corner split=48 positive-g + 48 nonpositive-g
+  minimum_corner_gate_T1=19751109446339394000443880157/
+    8397359187577272900000000
+  referee_sha256=141e7ce16042f2bac264e52715258e8689a5ade08cefa555d715b34f3e5afea5
+
+Host python3: unavailable for this certificate because SymPy is not installed
+(ModuleNotFoundError); no mathematical sign decision was attempted there.

@@ -1,0 +1,757 @@
+{
+  "ast_assert_counts": {
+    "certificate/verify_equilateral_witnesses.py": 0,
+    "certificate/verify_sparse_gap.py": 0,
+    "experiments/proof_cut_frame_audit.py": 0
+  },
+  "audit": "fail-closed verifier execution matrix",
+  "case_count": 12,
+  "cases": [
+    {
+      "argument_sha256": [
+        "00713a6115905a8fb56b2c4fc4c67654aacdace17236eb4cb4ee35ad469c37a6"
+      ],
+      "expected": "PASS",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/sparse_gap_claim.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"certified_minimum_positive_gaps\": 12, \"code_sha256\": \"6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5\", \"cut_intersection_types_checked\": 320, \"d\": 5, \"input_sha256\": \"00713a6115905a8fb56b2c4fc4c67654aacdace17236eb4cb4ee35ad469c37a6\", \"m\": 11, \"nested_types_checked\": 55, \"scope\": \"finite arithmetic core; human Parseval/Naimark implication not machine-checked\", \"status\": \"PASS\"}",
+          "stdout_sha256": "32276d04e5f75ec9e55ed2139ed520a5ed4c1541570e0871571ebeea05eeceab"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/sparse_gap_claim.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"certified_minimum_positive_gaps\": 12, \"code_sha256\": \"6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5\", \"cut_intersection_types_checked\": 320, \"d\": 5, \"input_sha256\": \"00713a6115905a8fb56b2c4fc4c67654aacdace17236eb4cb4ee35ad469c37a6\", \"m\": 11, \"nested_types_checked\": 55, \"scope\": \"finite arithmetic core; human Parseval/Naimark implication not machine-checked\", \"status\": \"PASS\"}",
+          "stdout_sha256": "32276d04e5f75ec9e55ed2139ed520a5ed4c1541570e0871571ebeea05eeceab"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/sparse_gap_claim.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"certified_minimum_positive_gaps\": 12, \"code_sha256\": \"6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5\", \"cut_intersection_types_checked\": 320, \"d\": 5, \"input_sha256\": \"00713a6115905a8fb56b2c4fc4c67654aacdace17236eb4cb4ee35ad469c37a6\", \"m\": 11, \"nested_types_checked\": 55, \"scope\": \"finite arithmetic core; human Parseval/Naimark implication not machine-checked\", \"status\": \"PASS\"}",
+          "stdout_sha256": "32276d04e5f75ec9e55ed2139ed520a5ed4c1541570e0871571ebeea05eeceab"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/sparse_gap_claim.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"certified_minimum_positive_gaps\": 12, \"code_sha256\": \"6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5\", \"cut_intersection_types_checked\": 320, \"d\": 5, \"input_sha256\": \"00713a6115905a8fb56b2c4fc4c67654aacdace17236eb4cb4ee35ad469c37a6\", \"m\": 11, \"nested_types_checked\": 55, \"scope\": \"finite arithmetic core; human Parseval/Naimark implication not machine-checked\", \"status\": \"PASS\"}",
+          "stdout_sha256": "32276d04e5f75ec9e55ed2139ed520a5ed4c1541570e0871571ebeea05eeceab"
+        }
+      },
+      "name": "valid_sparse",
+      "script_sha256": "6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5"
+    },
+    {
+      "argument_sha256": [
+        "48bab7651de14addcc4fcddce0431707607426476e5084d97179d2e36b6a127d"
+      ],
+      "expected": "PASS",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/equilateral_witnesses.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"code_sha256\": \"c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96\", \"input_sha256\": \"48bab7651de14addcc4fcddce0431707607426476e5084d97179d2e36b6a127d\", \"status\": \"PASS\", \"witnesses\": [{\"name\": \"cross_polytope_l1_5\", \"pairs\": 45, \"points\": 10}, {\"name\": \"sharp_q11_example_in_l1_6\", \"pairs\": 55, \"points\": 11}]}",
+          "stdout_sha256": "381b88a964be950d078922b8669f3a3ed1c49c33300d21b3ac30b40faa7be819"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/equilateral_witnesses.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"code_sha256\": \"c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96\", \"input_sha256\": \"48bab7651de14addcc4fcddce0431707607426476e5084d97179d2e36b6a127d\", \"status\": \"PASS\", \"witnesses\": [{\"name\": \"cross_polytope_l1_5\", \"pairs\": 45, \"points\": 10}, {\"name\": \"sharp_q11_example_in_l1_6\", \"pairs\": 55, \"points\": 11}]}",
+          "stdout_sha256": "381b88a964be950d078922b8669f3a3ed1c49c33300d21b3ac30b40faa7be819"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/equilateral_witnesses.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"code_sha256\": \"c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96\", \"input_sha256\": \"48bab7651de14addcc4fcddce0431707607426476e5084d97179d2e36b6a127d\", \"status\": \"PASS\", \"witnesses\": [{\"name\": \"cross_polytope_l1_5\", \"pairs\": 45, \"points\": 10}, {\"name\": \"sharp_q11_example_in_l1_6\", \"pairs\": 55, \"points\": 11}]}",
+          "stdout_sha256": "381b88a964be950d078922b8669f3a3ed1c49c33300d21b3ac30b40faa7be819"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/equilateral_witnesses.json"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"code_sha256\": \"c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96\", \"input_sha256\": \"48bab7651de14addcc4fcddce0431707607426476e5084d97179d2e36b6a127d\", \"status\": \"PASS\", \"witnesses\": [{\"name\": \"cross_polytope_l1_5\", \"pairs\": 45, \"points\": 10}, {\"name\": \"sharp_q11_example_in_l1_6\", \"pairs\": 55, \"points\": 11}]}",
+          "stdout_sha256": "381b88a964be950d078922b8669f3a3ed1c49c33300d21b3ac30b40faa7be819"
+        }
+      },
+      "name": "valid_witnesses",
+      "script_sha256": "c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96"
+    },
+    {
+      "argument_sha256": [],
+      "expected": "PASS",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/experiments/proof_cut_frame_audit.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"canonical_cuts\": 1023, \"explicit_decompositions\": [\"singleton:1/2\", \"QR(11,5,2):1/6\"], \"m\": 11, \"nested_cardinality_pairs\": 45, \"nonorthogonal_pairs_with_repetition\": 523776, \"private_direction_diagnostic\": \"table21,gaps:1/3,1/7,1/4\", \"scope\": \"finite arithmetic audit; not a machine proof of the human frame implications\", \"script_sha256\": \"eb1c5627359cee682693ae904b249c16c42f01324790ca2be94d4dd7b3e0789a\", \"spectral_deficit_audit\": \"markov_inverse,endpoint45,power_bounds,budgets12-15\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7d4df6d515e52d550f2ec0b8f84408db35f558fa7944a93d478ac2760ba54d48"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/experiments/proof_cut_frame_audit.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"canonical_cuts\": 1023, \"explicit_decompositions\": [\"singleton:1/2\", \"QR(11,5,2):1/6\"], \"m\": 11, \"nested_cardinality_pairs\": 45, \"nonorthogonal_pairs_with_repetition\": 523776, \"private_direction_diagnostic\": \"table21,gaps:1/3,1/7,1/4\", \"scope\": \"finite arithmetic audit; not a machine proof of the human frame implications\", \"script_sha256\": \"eb1c5627359cee682693ae904b249c16c42f01324790ca2be94d4dd7b3e0789a\", \"spectral_deficit_audit\": \"markov_inverse,endpoint45,power_bounds,budgets12-15\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7d4df6d515e52d550f2ec0b8f84408db35f558fa7944a93d478ac2760ba54d48"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/experiments/proof_cut_frame_audit.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"canonical_cuts\": 1023, \"explicit_decompositions\": [\"singleton:1/2\", \"QR(11,5,2):1/6\"], \"m\": 11, \"nested_cardinality_pairs\": 45, \"nonorthogonal_pairs_with_repetition\": 523776, \"private_direction_diagnostic\": \"table21,gaps:1/3,1/7,1/4\", \"scope\": \"finite arithmetic audit; not a machine proof of the human frame implications\", \"script_sha256\": \"eb1c5627359cee682693ae904b249c16c42f01324790ca2be94d4dd7b3e0789a\", \"spectral_deficit_audit\": \"markov_inverse,endpoint45,power_bounds,budgets12-15\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7d4df6d515e52d550f2ec0b8f84408db35f558fa7944a93d478ac2760ba54d48"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/experiments/proof_cut_frame_audit.py"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "{\"canonical_cuts\": 1023, \"explicit_decompositions\": [\"singleton:1/2\", \"QR(11,5,2):1/6\"], \"m\": 11, \"nested_cardinality_pairs\": 45, \"nonorthogonal_pairs_with_repetition\": 523776, \"private_direction_diagnostic\": \"table21,gaps:1/3,1/7,1/4\", \"scope\": \"finite arithmetic audit; not a machine proof of the human frame implications\", \"script_sha256\": \"eb1c5627359cee682693ae904b249c16c42f01324790ca2be94d4dd7b3e0789a\", \"spectral_deficit_audit\": \"markov_inverse,endpoint45,power_bounds,budgets12-15\", \"status\": \"PASS\"}",
+          "stdout_sha256": "7d4df6d515e52d550f2ec0b8f84408db35f558fa7944a93d478ac2760ba54d48"
+        }
+      },
+      "name": "valid_frame_audit",
+      "script_sha256": "eb1c5627359cee682693ae904b249c16c42f01324790ca2be94d4dd7b3e0789a"
+    },
+    {
+      "argument_sha256": [
+        "3572225c44553e6bef314b4f664ca50c51a93c87de61bf987a3815c66cf262bd"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_missing_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: missing required fields: ['m']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "b4d6660bf20d200a9083351cdc742b9fd917229c2b185187722e57fd6f3ac4f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_missing_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: missing required fields: ['m']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "b4d6660bf20d200a9083351cdc742b9fd917229c2b185187722e57fd6f3ac4f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_missing_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: missing required fields: ['m']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "b4d6660bf20d200a9083351cdc742b9fd917229c2b185187722e57fd6f3ac4f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_missing_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: missing required fields: ['m']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "b4d6660bf20d200a9083351cdc742b9fd917229c2b185187722e57fd6f3ac4f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "sparse_missing_m",
+      "script_sha256": "6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5"
+    },
+    {
+      "argument_sha256": [
+        "f92d221557fa1079fa5ae2922307fdcb26ab077d280153155e79d566f75fad9c"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: m must equal 11, got 10\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "077cb516a8f6b570fc948d8fe422fd146b87243816ce1e3102366fdac84977f1",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: m must equal 11, got 10\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "077cb516a8f6b570fc948d8fe422fd146b87243816ce1e3102366fdac84977f1",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: m must equal 11, got 10\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "077cb516a8f6b570fc948d8fe422fd146b87243816ce1e3102366fdac84977f1",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_m.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: m must equal 11, got 10\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "077cb516a8f6b570fc948d8fe422fd146b87243816ce1e3102366fdac84977f1",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "sparse_changed_m",
+      "script_sha256": "6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5"
+    },
+    {
+      "argument_sha256": [
+        "a0bf9cac25ea5f58389c5fec5054bfdfe9d6db8bd3cca18601be58bb1a828268"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_d.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: d must equal 5, got 6\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "095adf90faa767db99f8f6ab9ba9aef2470b2d25400ae4e32582543b413c86c3",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_d.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: d must equal 5, got 6\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "095adf90faa767db99f8f6ab9ba9aef2470b2d25400ae4e32582543b413c86c3",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_d.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: d must equal 5, got 6\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "095adf90faa767db99f8f6ab9ba9aef2470b2d25400ae4e32582543b413c86c3",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_d.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: d must equal 5, got 6\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "095adf90faa767db99f8f6ab9ba9aef2470b2d25400ae4e32582543b413c86c3",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "sparse_changed_d",
+      "script_sha256": "6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5"
+    },
+    {
+      "argument_sha256": [
+        "21fe8321746a06e3044a8fe43cfaa376f544d4c93b79d4736642deefb6739140"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_gap_count.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: excluded gap-count list mismatch\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9dc87049a18da1bf4575ebb08ffce7e3cf0dc0186fc1d603cd2d16af01c7d6f4",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_gap_count.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: excluded gap-count list mismatch\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9dc87049a18da1bf4575ebb08ffce7e3cf0dc0186fc1d603cd2d16af01c7d6f4",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_gap_count.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: excluded gap-count list mismatch\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9dc87049a18da1bf4575ebb08ffce7e3cf0dc0186fc1d603cd2d16af01c7d6f4",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_sparse_gap.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/sparse_changed_gap_count.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: excluded gap-count list mismatch\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9dc87049a18da1bf4575ebb08ffce7e3cf0dc0186fc1d603cd2d16af01c7d6f4",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "sparse_changed_gap_count",
+      "script_sha256": "6bbe60889ba2d5d8fc2ab9f62255237cf8f77b874f62f0efd446f7a4cf823ae5"
+    },
+    {
+      "argument_sha256": [
+        "5034bcb618cead281210992c80f5b1d0223ea6b72fd92bf051464f5930409f9f"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_missing_points.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: witness 0 missing fields: ['points']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "7cbaaf0923f0b0f1821d9be06b19cd2d95b2eb2c204149abf79caf4bb89aa8e0",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_missing_points.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: witness 0 missing fields: ['points']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "7cbaaf0923f0b0f1821d9be06b19cd2d95b2eb2c204149abf79caf4bb89aa8e0",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_missing_points.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: witness 0 missing fields: ['points']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "7cbaaf0923f0b0f1821d9be06b19cd2d95b2eb2c204149abf79caf4bb89aa8e0",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_missing_points.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: witness 0 missing fields: ['points']\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "7cbaaf0923f0b0f1821d9be06b19cd2d95b2eb2c204149abf79caf4bb89aa8e0",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "witness_missing_points",
+      "script_sha256": "c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96"
+    },
+    {
+      "argument_sha256": [
+        "8916794ff1db29587a6f04754a10b8efaf8507782e6d3218ca3da83c28f5d237"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_dimension.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: dimension mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "4886331e07f9bb8ef94a36abe6015a89df92f3b8346180c6c07d215d6bfd51f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_dimension.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: dimension mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "4886331e07f9bb8ef94a36abe6015a89df92f3b8346180c6c07d215d6bfd51f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_dimension.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: dimension mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "4886331e07f9bb8ef94a36abe6015a89df92f3b8346180c6c07d215d6bfd51f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_dimension.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: dimension mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "4886331e07f9bb8ef94a36abe6015a89df92f3b8346180c6c07d215d6bfd51f2",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "witness_changed_dimension",
+      "script_sha256": "c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96"
+    },
+    {
+      "argument_sha256": [
+        "b8858a1f919a51a5415f3ba4c183b46408984c7197a109e1c742b40496c82a87"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_distance.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: common distance endpoint mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "592d52f6cccd31cca6c4b8819767f8e6694c9a25254fa10dc612a129636c4117",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_distance.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: common distance endpoint mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "592d52f6cccd31cca6c4b8819767f8e6694c9a25254fa10dc612a129636c4117",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_distance.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: common distance endpoint mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "592d52f6cccd31cca6c4b8819767f8e6694c9a25254fa10dc612a129636c4117",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_distance.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: common distance endpoint mismatch for cross_polytope_l1_5\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "592d52f6cccd31cca6c4b8819767f8e6694c9a25254fa10dc612a129636c4117",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "witness_changed_distance",
+      "script_sha256": "c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96"
+    },
+    {
+      "argument_sha256": [
+        "3f5a4c388b3b294d307e7457f19c9a30982528c777cfb19cdf1f5540bdd39c6f"
+      ],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_coordinate.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: distance mismatch in cross_polytope_l1_5 at pair index 0: 3 != 2\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "e1403fd22c67fb5a7a05cd53aab81ba90decb34bad79d94ba8228bdb2e78e297",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_coordinate.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: distance mismatch in cross_polytope_l1_5 at pair index 0: 3 != 2\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "e1403fd22c67fb5a7a05cd53aab81ba90decb34bad79d94ba8228bdb2e78e297",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_coordinate.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: distance mismatch in cross_polytope_l1_5 at pair index 0: 3 != 2\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "e1403fd22c67fb5a7a05cd53aab81ba90decb34bad79d94ba8228bdb2e78e297",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral/certificate/verify_equilateral_witnesses.py",
+            "/private/tmp/kusner_fail_closed_srii_y11/witness_changed_coordinate.json"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"VerificationError: distance mismatch in cross_polytope_l1_5 at pair index 0: 3 != 2\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "e1403fd22c67fb5a7a05cd53aab81ba90decb34bad79d94ba8228bdb2e78e297",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "witness_changed_coordinate",
+      "script_sha256": "c05022faa74457ac3b57dfa53c6d2e5fa5c564a0745b02b48fd76412c3b8dc96"
+    },
+    {
+      "argument_sha256": [],
+      "expected": "FAIL",
+      "modes": {
+        "isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-I",
+            "/private/tmp/kusner_fail_closed_srii_y11/proof_cut_frame_audit_m12.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditError: audit is bound to m=11, got 12\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9bbc93e084c9c199808ea1225a751a35150d0085f3b95115e354613ee98eea91",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "normal": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "/private/tmp/kusner_fail_closed_srii_y11/proof_cut_frame_audit_m12.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditError: audit is bound to m=11, got 12\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9bbc93e084c9c199808ea1225a751a35150d0085f3b95115e354613ee98eea91",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "/private/tmp/kusner_fail_closed_srii_y11/proof_cut_frame_audit_m12.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditError: audit is bound to m=11, got 12\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9bbc93e084c9c199808ea1225a751a35150d0085f3b95115e354613ee98eea91",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "optimized_isolated": {
+          "command": [
+            "/opt/anaconda3/bin/python",
+            "-O",
+            "-I",
+            "/private/tmp/kusner_fail_closed_srii_y11/proof_cut_frame_audit_m12.py"
+          ],
+          "exit_code": 1,
+          "stderr": "{\"error\": \"AuditError: audit is bound to m=11, got 12\", \"status\": \"FAIL\"}",
+          "stderr_sha256": "9bbc93e084c9c199808ea1225a751a35150d0085f3b95115e354613ee98eea91",
+          "stdout": "",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "frame_changed_m",
+      "script_sha256": "3ba8b04b85f9bc044ceacef1083d42178ae892a0d1415e8823fd65127020606a"
+    }
+  ],
+  "external_workdir": "/private/tmp/kusner_fail_closed_srii_y11",
+  "external_workdir_inside_project": false,
+  "modes": [
+    "normal",
+    "optimized",
+    "isolated",
+    "optimized_isolated"
+  ],
+  "process_count": 48,
+  "project_root": "/Users/mac/Documents/ChatGPT/ai15-open-math-2026-08-28-batch/06_kusner_l1_5_equilateral",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+  "runner_sha256": "772a51b17f9c88fb391fa494433a913f0fdfba22415d8a16459ded175cbe9a54",
+  "status": "PASS",
+  "timestamp_utc": "2026-08-29T03:43:01.434030+00:00"
+}

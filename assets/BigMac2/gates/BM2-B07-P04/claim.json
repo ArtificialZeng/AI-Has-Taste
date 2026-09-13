@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let K=GF(2^14). For each k in {3,5}, define F_k(t)=t^(2^(2k)-2^k+1) and Delta_k={F_k(t)+F_k(t+1)+1:t in K}. Then |Delta_3|=|Delta_5|=8192 and, for every rho in K\\{0,1}, the number of ordered triples (x,y,z) in Delta_k^3 satisfying x+rho*y+(1+rho)*z=0 is exactly 2^25. The claim resolves only this frozen finite n=14 layer and asserts nothing for arbitrary n.",
+  "contribution": "A reproducible integer-only exhaustive proof in the certified polynomial-basis model GF(2)[alpha]/(alpha^14+alpha^5+1): the full certificate records both 16,384-entry Walsh spectra and all 32,764 admissible (k,rho) counts. A separately structured implementation reconstructs every spectrum and correlation entry and performs held-out direct triple-count checks.",
+  "proposer_job_id": "bigMac-00007-p04-research-a16ca3c16293",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "checkpoint.md",
+    "evidence/n14_verification.md",
+    "evidence/verify_n14.c",
+    "evidence/n14_certificate.tsv",
+    "evidence/n14_run.log",
+    "evidence/audit_n14.c",
+    "evidence/n14_audit.log"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "exact verification passed",
+  "field_generators": [
+    "sqrt(2)",
+    "sqrt(9+8*sqrt(2))"
+  ],
+  "r": "2/(1 + sqrt(9 + 8*sqrt(2)))",
+  "C": "2/(1 + sqrt(9 + 8*sqrt(2)))**2",
+  "h1": "sqrt(2)",
+  "h2": "2*(1 + sqrt(2))/(1 + sqrt(9 + 8*sqrt(2))) + 1",
+  "positive_dual_support": {
+    "*<-0": "4*sqrt(2)/(1 + sqrt(9 + 8*sqrt(2)))**2",
+    "*<-1": "4*(sqrt(2) + 2)/(1 + sqrt(9 + 8*sqrt(2)))**2",
+    "*<-2": "2/(1 + sqrt(9 + 8*sqrt(2)))",
+    "0<-1": "4*(1 + sqrt(2))/(1 + sqrt(9 + 8*sqrt(2)))**2",
+    "1<-0": "4/(1 + sqrt(9 + 8*sqrt(2)))**2",
+    "1<-2": "1 - 2/(1 + sqrt(9 + 8*sqrt(2)))"
+  },
+  "dual_psd_factor": [
+    "sqrt(2)/(1 + sqrt(9 + 8*sqrt(2)))",
+    "-2/(1 + sqrt(9 + 8*sqrt(2)))",
+    "-2*(1 + sqrt(2))/(1 + sqrt(9 + 8*sqrt(2)))",
+    "-sqrt(2)/2"
+  ],
+  "checked": [
+    "original radical schedule and constant",
+    "three-variable function-value balance",
+    "all sixteen entries S = w*w^T",
+    "Huber, quadratic, and right-capped equality values",
+    "global-case boundary identities H=h1+h2 and u0*v0=r"
+  ]
+}

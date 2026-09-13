@@ -1,0 +1,152 @@
+{
+  "binding_sha256": "af44b6d7739996eab1726eaca41f3078aa1b9efd20cb78cc8ca0e5efbcd375e5",
+  "python": "3.13.5",
+  "results": {
+    "binding": {
+      "hashes_enforced": true,
+      "inputs": 17
+    },
+    "chambers": {
+      "balance_wall": "excluded by positive derivative a_j/(a0*R)",
+      "graphs": 6,
+      "strict_samples": 6
+    },
+    "d4_transverse": {
+      "identity": "F5=sqrt(t^2+4)*(3*t^3-16*t^2+128)/192",
+      "square_gap": "9*t^3*(9*t^5-96*t^4+292*t^3+384*t^2-3072*t+3072)",
+      "strict_increase_interval": "0<t<=1/2"
+    },
+    "empty": {
+      "branch_ideals": 8,
+      "common_quartic": true,
+      "four_value_contradiction": true,
+      "ordered_closure_orbits": 1,
+      "three_value_cases": 6,
+      "two_value_cases": 4
+    },
+    "literature_scope": {
+      "2022_q4": "critical-direction classification, with independent Hessian correction used here",
+      "2024_ag": "conjecture plus constructed non-diagonal family; not a Q5 exhaustion",
+      "2025_ag": "only subdiagonals 3<=k<=n-1 are declared non-extremal",
+      "2025_pournin": "missing transverse Hessian term; main-diagonal claims unchanged",
+      "d1_global": "Vaaler/Hensley lower bound scope: every central hyperplane section",
+      "d2_global": "Ball 1986 scope: every central hyperplane section"
+    },
+    "nonzero_factors": {
+      "clearing_factor": "D>0 on positive support",
+      "empty_divided_difference": "only on distinct-value branch",
+      "q3_multiplicity_only": "(b-1)^8 reduced to (b-1)^6; locus retained",
+      "q3_removed_zero_loci": [
+        "b=0 (outside b>0)",
+        "b^2+1=0 (no real root)"
+      ],
+      "saturation_factors": [
+        "positive coordinates",
+        "P>0 by equatorial-ball volume",
+        "S>=1 in gauge"
+      ],
+      "star1_prefactors": [
+        "w+1>=1",
+        "2u+2w+3>=3"
+      ],
+      "wall_factors_saturated": 0
+    },
+    "q3": {
+      "positive_branch": "a=b=1",
+      "primitive_removed": [
+        "b^5",
+        "(b-1)^2",
+        "b^2+1"
+      ],
+      "raw_resultant": "-64*b^7*(b-1)^8*(b^2+1)*(b^2+b+1)^3"
+    },
+    "q4": {
+      "critical_orbits": [
+        "diagonal",
+        "(2,2,1,1)"
+      ],
+      "ideal_containment": {
+        "special_fibres": {
+          "star": 3,
+          "triangle": 2
+        },
+        "star_elimination": "bidirectional",
+        "triangle_elimination": "bidirectional"
+      },
+      "non_diagonal_signature": [
+        1,
+        2,
+        0
+      ],
+      "star_vdim": 20,
+      "strict_sign_exclusions": "q1,q2 positive on r>0; residual quartic negative on [1,3) by Sturm",
+      "triangle_vdim": 8
+    },
+    "star1": {
+      "bernstein_rows": 55,
+      "components": 5,
+      "hessian_signature": [
+        1,
+        3
+      ],
+      "positive_parameter_terms": 1620
+    },
+    "star2": {
+      "H_positive_terms": 1125,
+      "P_positive_terms": 70,
+      "closure": true
+    },
+    "star3": {
+      "complex_points": 14,
+      "ordered_closure_points": 0,
+      "real_points": 8,
+      "saturated_dimension": 0
+    },
+    "star4": {
+      "complex_multiplicity": 48,
+      "pair_boundary_delegated_to": "star3 closure",
+      "saturated_dimension": 0,
+      "sturm_roots_on_2_inf": 0
+    },
+    "support_types": {
+      "d4_transverse": {
+        "identity": "F5=sqrt(t^2+4)*(3*t^3-16*t^2+128)/192",
+        "square_gap": "9*t^3*(9*t^5-96*t^4+292*t^3+384*t^2-3072*t+3072)",
+        "strict_increase_interval": "0<t<=1/2"
+      },
+      "d5_hessian": "-5*sqrt(5)/32 multiplicity 4",
+      "external_global_dependencies": [
+        "Vaaler/Hensley lower bound for d1",
+        "Ball cube-slicing upper bound for d2"
+      ],
+      "s1": "coordinate diagonal only; strict local minimum",
+      "s2": "no positive interior critical; d2 at equality",
+      "s3": "diagonal only; d3 exact cubic crossing",
+      "s4": "diagonal plus rational saddle; d4 support-decrease/transverse-increase"
+    },
+    "triangle": {
+      "basis_size": 6,
+      "ordered_closure_points": 0,
+      "saturated_dimension": 1,
+      "walls_included": true
+    },
+    "wall_support_stitching": {
+      "balance_wall": "nonstationary: a_j/S>0",
+      "coordinate_boundary": "recursive supports s=1,2,3,4",
+      "pair_piece_regularity": "C3",
+      "pair_wall_routes": {
+        "empty": "empty closure",
+        "star1": "star1 closure",
+        "star2": "star2 closure",
+        "star3": "star3 closure",
+        "star4": "strict interior; every pair wall has a shorter strict-high graph",
+        "triangle": "triangle closure"
+      },
+      "wall_forms_divided_out": 0
+    }
+  },
+  "schema": "q5-independent-referee-result-v1",
+  "singular": "/opt/homebrew/bin/Singular",
+  "status": "PASS",
+  "verifier_sha256": "e6ce6ac216afa419442acc9cb6cce3dd256826a5ab28f9262bfd9e5fba5ab73d"
+}

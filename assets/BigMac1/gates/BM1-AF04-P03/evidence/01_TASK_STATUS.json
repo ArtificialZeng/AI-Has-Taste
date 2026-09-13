@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "number": 3,
+  "title": "最大 cyclic 3-(31,5,1) packing",
+  "state": "PROVED",
+  "original_prompt_complete": true,
+  "solution_percent": 100,
+  "confidence_percent": 100,
+  "confidence_basis": "A 12-orbit packing passes independent full development. Target 13 is excluded by 162 independently checkable exact fixed-block branches whose reconstructed multiplier orbits are disjoint and cover all 4761 valid block variables. The global verifier rebuilds the instance and cover from definitions and fails closed on corruptions.",
+  "summary": "The exact maximum is M=12. The positive certificate has 12 base blocks, 372 developed blocks, and 3720 distinct triples. The negative certificate covers all 162 multiplier branches and all 4761 block variables; its fail-closed verifier returns VERIFIED_GLOBAL_TARGET13_UNSAT.",
+  "strict_frontier": {
+    "lower_bound": 12,
+    "upper_bound": 12,
+    "remaining_question": null
+  },
+  "negative_certificate": {
+    "branches": 162,
+    "covered_block_variables": 4761,
+    "multiplier_orbit_distribution": "30^156,15^5,6^1",
+    "total_nodes": 68377851660,
+    "minimum_nodes": 251805613,
+    "maximum_nodes": 636752470,
+    "manifest": "certificates/negative/target13_global_fixed_cover_manifest.json",
+    "manifest_sha256": "ae259e64de1793421a7e5e4bd525fec405133f3f277074a222badf6ac5d522b3",
+    "verifier_status": "VERIFIED_GLOBAL_TARGET13_UNSAT"
+  },
+  "evidence": [
+    "experiments/instance.json sha256:f43bb843344058df6794c5c86e314f547292a65fa43183d2678ef178e5e4034d",
+    "certificates/packing12.json sha256:23dc758771e6dce03b943a48aab50077a5ee00c36e24cde02f74aa2468f8cf45",
+    "certificates/negative/target13_global_fixed_cover_manifest.json sha256:ae259e64de1793421a7e5e4bd525fec405133f3f277074a222badf6ac5d522b3",
+    "code/exact_clique.cpp sha256:ae549763147bd579353d3b91fcbad4e9afb4e2e404c97f915115d8b6e84458c9",
+    "experiments/exact_clique_fixed_fast sha256:2b0cb86d49c2ce6add774dedf98796b706d72cd0d2266b5a7aa9ce653413d30f",
+    "proof/structural_reduction.md",
+    "proof/exact_clique_algorithm.md",
+    "audit/PROOF_AUDIT.md",
+    "audit/CITATION_AUDIT.md",
+    "audit/PDF_AUDIT.md"
+  ],
+  "non_evidence": [
+    "All target-13 SAT/PB/CP-SAT/ILP/clique timeouts or UNKNOWN statuses",
+    "Interrupted complete-search processes and incomplete proof streams",
+    "Failure of local search to find 13",
+    "Floating-point optimizer and LP bounds"
+  ],
+  "deliverables": [
+    "FINAL_STATUS.md",
+    "REPRODUCE.md",
+    "problem/source_statement.md",
+    "problem/formal_statement.md",
+    "literature/NOVELTY_LOCK.md",
+    "literature/claim_ledger.md",
+    "literature/search_log.md",
+    "routes/registry.json",
+    "proof/structural_reduction.md",
+    "proof/exact_clique_algorithm.md",
+    "certificates/packing12.json",
+    "certificates/negative/target13_global_fixed_cover_manifest.json",
+    "code/verify_packing_certificate.py",
+    "code/verify_global_fixed_cover.py",
+    "tests/test_positive_verifier.py",
+    "tests/test_fixed_clique_certificate.py",
+    "tests/test_global_fixed_cover.py",
+    "paper/main.tex",
+    "output/pdf/cyclic-315-packing-M12.pdf",
+    "output/source/cyclic-315-packing-M12-source.zip"
+  ],
+  "proof_assistant_used": false,
+  "allowed_terminal_states": [
+    "PROVED",
+    "DISPROVED",
+    "PARTIAL_THEOREM",
+    "CERTIFIED_FINITE_RESULT",
+    "OPEN_AFTER_SEARCH"
+  ],
+  "author": "Zijian Zeng",
+  "affiliation": "Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA",
+  "emails": [
+    "zijianzeng@foxmail.com",
+    "1002266693@ucsiuniversity.edu.my"
+  ],
+  "updated_utc": "2026-08-30T08:24:28Z"
+}

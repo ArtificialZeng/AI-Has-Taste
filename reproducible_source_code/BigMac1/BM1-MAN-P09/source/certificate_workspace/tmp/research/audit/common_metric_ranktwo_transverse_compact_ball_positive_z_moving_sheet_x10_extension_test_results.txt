@@ -1,0 +1,58 @@
+X10 MOVING-SHEET CLOSED-CELL TEST RESULTS
+Date: 2026-08-24
+Scope: 1/11<=X<=1/10 only; full compact ball/common metric/fixed lens open.
+
+NORMAL SOURCE: PASS (exit 0)
+PASS original fully conjugated Hermitian gate and independent Gram gate
+PASS 20 quotient terms, 16 higher terms, 947 monomials, strict margin
+PASS lambda, 32/121<Z<1, open unit ball, rank-two PSD, both z signs
+PASS actual compact-ball prerequisites do not require Z<1/6
+PASS closed X=1/11 seam, X=1/10 endpoint, and 72 legal exact nodes
+SIGMA_MAX 11/10000
+REMAINDER_ABS 49402788328028888026519091478503109294374086495731924832776011169131/17199267840000000000000000000000000000000000000000000000000
+STRICT_MARGIN 34577435471298132570968167233095613728692125913504268075167223988830869/17199267840000000000000000000000000000000000000000000000000
+Z_UPPER 290363181/1001000000
+DANGER_RESERVE 188815385879/555555000000
+Z_EQUALS_ONE_SIXTH_CROSS_RESERVE 71/726
+LEFT_SEAM_36GAMMA 58882961473898540310036519874857514970749/53240000000000000000000000000000000000
+RIGHT_ENDPOINT_36GAMMA 53498106375203857863287641100293057679/40000000000000000000000000000000000
+VERIFIER_SHA256 dd65ae3e8a2891b13f0fa3991dbe35057dd8c04480eee3b1528c9ce9cd4dcd5c
+
+NORMAL INDEPENDENT REFEREE: PASS (exit 0)
+PASS independent signed-z Gram columns and original Hermitian gate
+PASS no-cache direct quotient and strict continuum reserve
+PASS lambda, signed z, open-unit-ball danger, determinant, rank two, seam
+PASS actual compact-ball prerequisites strictly beyond Z=1/6
+PASS endpoint/seam values and 72 exact legal falsification nodes
+STRICT_RESERVE 34577435471298132570968167233095613728692125913504268075167223988830869/17199267840000000000000000000000000000000000000000000000000
+Z_UPPER 11614287/40040000
+DANGER_RESERVE 188818719209/555555000000
+Z_EQUALS_ONE_SIXTH_CROSS_RESERVE 71/726
+LEFT_SEAM_36GAMMA 58882961473898540310036519874857514970749/53240000000000000000000000000000000000
+RIGHT_ENDPOINT_36GAMMA 53498106375203857863287641100293057679/40000000000000000000000000000000000
+REFEREE_SHA256 b33291f23537e5e23ae04d02a83e0f4373ec0f9fd8dd2fb33589a15ce7004364
+
+FAIL-CLOSED SOURCE -O: PASS (exit 1)
+RuntimeError: fail closed: optimized Python disables verification
+
+FAIL-CLOSED SOURCE BAD DEPENDENCY: PASS (exit 1)
+RuntimeError: verification failed: dependency hash mismatch tmp/research/common_metric_ranktwo_transverse_compact_ball_positive_z_moving_sheet_x11_extension.md
+
+FAIL-CLOSED SOURCE DROP TERM: PASS (exit 1)
+RuntimeError: verification failed: 16 higher terms and 947 parameter monomials
+
+FAIL-CLOSED REFEREE -O: PASS (exit 1)
+RuntimeError: fail closed: optimized Python disables verification
+
+FAIL-CLOSED REFEREE BAD DEPENDENCY: PASS (exit 1)
+RuntimeError: independent verification failed: dependency hash mismatch tmp/research/common_metric_ranktwo_transverse_compact_ball_positive_z_moving_sheet_x11_extension.md
+
+FAIL-CLOSED REFEREE DROP TERM: PASS (exit 1)
+RuntimeError: independent verification failed: complete term set
+
+PY_COMPILE SOURCE+REFEREE: PASS (exit 0; cache outside workspace)
+
+RESULT: exact strict moving-sheet theorem candidate on the closed X10 cell.
+Promotion remains conditional on frozen manifests and independent root replay.
+
+

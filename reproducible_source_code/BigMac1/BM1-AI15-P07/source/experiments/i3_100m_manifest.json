@@ -1,0 +1,67 @@
+{
+  "schema": "erdos699-experiment-manifest-v1",
+  "claim": "For i=3 and every 8<=n<=100000000, all 4<=j<=floor(n/2) have an odd common prime divisor of C(n,3) and C(n,j).",
+  "arithmetic": "exact deterministic integer arithmetic",
+  "random_seed": null,
+  "environment": {
+    "os": "Darwin 25.5.0 arm64",
+    "cpu": "Apple M3 Pro",
+    "cxx": "Apple clang 21.0.0",
+    "python": "3.14.7"
+  },
+  "runs": [
+    {
+      "role": "discovery",
+      "build": "c++ -O3 -std=c++17 -Wall -Wextra -pedantic code/scan_i3.cpp -o code/scan_i3",
+      "command": "code/scan_i3 8 100000000 > certificates/i3_scan_100m.json",
+      "exit_code": 0,
+      "output_sha256": "23c45255e41877ccde381d86564e991ced9b7e08b8559f48405f4a759b51f0ba",
+      "source_sha256": "4d082ab479f1afe267dd4eea26cbbed03de1038a3f053f108ec34b183b159338"
+    },
+    {
+      "role": "independent_full_range_verifier",
+      "build": "c++ -O3 -std=c++17 -Wall -Wextra -pedantic code/verify_i3.cpp -o code/verify_i3",
+      "command": "code/verify_i3 certificates/i3_scan_100m.json > certificates/i3_verify_100m_strict.txt",
+      "exit_code": 0,
+      "output_sha256": "9a1a430068f5813195a90b0f22937095008b50f84c66fb311ca64ff3dc2904ab",
+      "source_sha256": "5365f052cd14ae35efa5e7efed5008584fb4ab523f8f1a6c51058a14a2d9bcd5"
+    },
+    {
+      "role": "definition_level_overlap",
+      "command": "python3 code/brute_oracle.py 8 2000 > certificates/i3_brute_2000.json",
+      "exit_code": 0,
+      "pairs_checked": 994009,
+      "output_sha256": "7ec7aa3ea271f797b28ac1e920eebcfe046ec60962864950bd02792142d0748a",
+      "source_sha256": "671a1dfe110d59ffedfca81d84b6aa24b5f116a39edd968965ae3261c20e1f06"
+    }
+  ],
+  "negative_parser_tests": {
+    "fixtures": [
+      "code/testdata/malformed_missing.json",
+      "code/testdata/malformed_duplicate.json",
+      "code/testdata/non_null.json"
+    ],
+    "expected_exit_code_each": 2,
+    "observed": "pass",
+    "log_sha256": "875a2ff8e9edb2ada4b71ff6baf1117f4d1341eb96048e658bc36dd2dfb76bc9"
+  },
+  "release_binding": {
+    "command": "python3 code/verify_release_binding.py --root . --binding certificates/i3_release_binding.json",
+    "binding_sha256": "6f3ad7c49a882c8ea4bcddb81cdd04ba4690055100798f2f9743663077d08195",
+    "source_sha256": "bfbcf3fd1ef16089cd7f3b6ca6092df64e2d6340ade73788d021392b7cc444cf",
+    "test_source_sha256": "53ea030f0b9b1d5ac6df562bae763ec6ca03936c2104265677192a0f984c29af",
+    "tamper_log_sha256": "093af76e00801f7d20328f11c50462a6015763e2821be504115080c80634a7b9",
+    "external_cwd": true,
+    "python_modes": ["normal", "-O"],
+    "tamper_cases": [
+      "changed_endpoint",
+      "bad_hash",
+      "changed_count_false_null",
+      "truncated_output",
+      "duplicate_certificate_field",
+      "duplicate_binding_field"
+    ],
+    "observed": "pass"
+  },
+  "note": "The two candidate counts are release-bound for cross-artifact consistency. Elapsed times remain diagnostics and are not proof assumptions."
+}

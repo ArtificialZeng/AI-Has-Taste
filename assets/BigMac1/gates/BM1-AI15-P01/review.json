@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AI15-P01",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "Matrix-specific disproof: the proposed 4x4 real candidate has rational rank-(2,2) Hadamard factors; universal expressibility remains open.",
+  "historical_gate_summary": "Historical submission gates reviewed; no fresh proof, citation or novelty audit in this packaging task.",
+  "pdf_sha256": "bd271cefe03202471b6b93fa8b7d9812e3da48cbc4bf7ec7bc1df23f8749d53a",
+  "evidence": [
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "L48: All exact verifiers pass. The LaTeX audit reports | L57: extraction, three exact verifiers pass under `python3 -I`; changing | L59: three-page clean build pass.  Rebuilt PDF text equals the released PDF text.",
+      "sha256": "eec5181289cf1e67879bbd5ac4f4b3abbe9bf62e9c173335326044d77ad66d4c",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/01_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "The displayed candidate's real nonexpressibility assertion is exactly disproved. The source ZIP portability defect is repaired: a whitelist archive contains no caches or temporary files and passes isolated verifiers, tamper rejection, unzip integrity, LaTeX audit, and clean build from a fresh extraction. The broader universal question remains unresolved.",
+      "sha256": "c707c7f8daa369acc3e3141589b64520092d83bc091960b993df97f4b62d4e98",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/02_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "L3: Audit date: 2026-08-29 (Asia/Shanghai). Status: **PASS**. | L27: provenance; they are not the source of the released PDF.",
+      "sha256": "f1409f0601dca3a2aa3bc0884446e12ce99421c40a78e9ec3e25bceaf9e36ff8",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/03_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "L48: `python verifier/run_all.py` returns `ALL_PASS`. The run includes three",
+      "sha256": "908f27aec5f1fd0bfa4e99735f8d35aed84fbf23de7f2bb77b586e1c4d389115",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/04_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "L7: **PASS for the manuscript's single citation.** The cited item exists, its",
+      "sha256": "8e9949c8348754424ca30fadf07cec4277edc1d0a1aec51447512a4a731b7845",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/05_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "L32:       and passes `unzip -t`. | L33: - [x] Two independent certificate verifiers and the breaker verifier pass from | L35: - [x] LaTeX audit and a warning-free three-page build pass from the same clean | L52: - [x] PDF layout and metadata pass; hash, size, and page count are recorded. | L55: - [x] Test, build, citation, proof, novelty, and PDF audits are included.",
+      "sha256": "8ea940a1aef40b870821be7d271783255b1f4981e3d9d952ea537d2b309d41d7",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/06_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "L4: is not treated as proof of novelty. | L21: ## Pass 2: post-result novelty audit | L38:   does not prove, lack of journal publication.",
+      "sha256": "2780613c73a42706a5d0dead165fd724ffeedde50485186854bf75812f5d7950",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/07_search_log.md"
+    },
+    {
+      "original_project_relative_path": "audit/RELEASE_PORTABILITY_AUDIT.md",
+      "summary": "L3: Audit date: 2026-08-29 (Asia/Shanghai). Status: **PASS after repair**. | L10: archive passed all tests.  The workspace cache file and its empty directory | L24: - `unzip -t`: PASS | L25: - forbidden-entry scan: PASS | L26: - workspace cache scan after verification: PASS | L31: that directory, with no project-relative fallback, the following passed: | L50: - `latexmk -pdf -interaction=nonstopmode -halt-on-error`: PASS in a fresh | L52: - final TeX log warning/error/overfull/underfull scan: PASS;",
+      "sha256": "f154a4ceef20b2cd9ea2bad75c1db580fa8f56143d6cb836754f8662db08306f",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AI15-P01/evidence/08_RELEASE_PORTABILITY_AUDIT.md"
+    }
+  ]
+}

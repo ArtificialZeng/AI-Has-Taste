@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "case": "missing_residue_119",
+      "exit_code": 1,
+      "expected_rejection": "missing paired completed files for residue 119",
+      "status": "PASS",
+      "stderr": "FAIL independent order-31 audit: missing paired completed files for residue 119"
+    },
+    {
+      "case": "residue_000_count_mismatch",
+      "exit_code": 1,
+      "expected_rejection": "checker/generator count mismatch at residue 0",
+      "status": "PASS",
+      "stderr": "FAIL independent order-31 audit: checker/generator count mismatch at residue 0"
+    },
+    {
+      "case": "terminal_coefficient_tamper",
+      "exit_code": 1,
+      "expected_rejection": "rebuilt coefficients disagree",
+      "status": "PASS",
+      "stderr": "FAIL independent order-31 audit: rebuilt coefficients disagree in <CASE_ROOT>/results/order31_sweep/order31_chunk000_of_120.exceptions.done"
+    },
+    {
+      "case": "preflight_hash_tamper",
+      "exit_code": 1,
+      "expected_rejection": "artifact hash drift",
+      "status": "PASS",
+      "stderr": "FAIL independent order-31 audit: artifact hash drift: experiments/aggregate_tree_sweep.py"
+    }
+  ],
+  "status": "PASS",
+  "verifier": "audit/order31_independent_aggregate.py"
+}

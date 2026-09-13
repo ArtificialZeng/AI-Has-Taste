@@ -1,0 +1,65 @@
+{
+  "endpoint": "all generalized snake words with exactly 10 L/R letters",
+  "word_count": 1024,
+  "dimension": 24,
+  "corrected_center": -7,
+  "corrected_radius": 6,
+  "orbit_count_under_complement_and_reversal": 272,
+  "distinct_exact_hstar_count": 272,
+  "orbit_size_counts": {
+    "2": 32,
+    "4": 240
+  },
+  "exact_hstar_complement_equal_all_words": true,
+  "exact_hstar_reversal_equal_all_words": true,
+  "directed_cover_graph_complement_isomorphic_word_count": 1024,
+  "directed_cover_graph_reversal_isomorphic_word_count": 64,
+  "directed_cover_graph_first_reversal_nonisomorphic_word": "LLLLLLLLLR",
+  "numeric_violating_word_count": 6,
+  "numeric_violating_words": [
+    "LRLLRLRLRL",
+    "LRLRLRLLRL",
+    "LRLRLRLRLR",
+    "RLRLRLRLRL",
+    "RLRLRLRRLR",
+    "RLRRLRLRLR"
+  ],
+  "numeric_violating_orbit_representatives": [
+    "LRLLRLRLRL",
+    "LRLRLRLRLR"
+  ],
+  "worst_word": "LRLRLRLRLR",
+  "worst_residual_quintic_coefficients_ascending": [
+    861267456,
+    2548853712,
+    387713340,
+    33236028,
+    928404,
+    13860
+  ],
+  "worst_numeric_max_y_modulus": "39.1426105456697357498243779026950489367256645831266874560689650683002",
+  "worst_numeric_x_radius_excess": "0.2564055611564805070346918766199542001557847296425417892002772606925155",
+  "fixed_boundary_y_roots": [
+    0,
+    1,
+    4,
+    9,
+    16,
+    25,
+    36
+  ],
+  "environment": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+    "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "mpmath": "1.3.0",
+    "networkx": "3.4.2",
+    "command": "python discovery/breaker_exact_search.py --length 10 --dps 80"
+  },
+  "notes": [
+    "All 1024 words were visited; symmetries were not used to establish completeness.",
+    "All polynomial fields are exact integers. Fields prefixed numeric_ are localization only.",
+    "Complement is a poset isomorphism in all 1024 directed-cover-graph checks.",
+    "Reversal preserves h* in all 1024 exact checks but is not generally a poset isomorphism; completeness did not use it.",
+    "The exact counterexample certificate is verified separately by breaker_verify_counterexample.py."
+  ]
+}

@@ -1,0 +1,16 @@
+Command: python3 evidence/numerical_sanity.py
+Run date: 2026-09-08 (Asia/Shanghai)
+Purpose: floating-point sanity check only; not proof evidence for the theorem.
+
+trial predicted limit = 1.856109332277
+comparison predicted limit = 4.934802200545
+u            trial_scaled    comparison_scaled   q<=rho
+0.04            1.879338001          3.991081338   True
+0.01            1.863579972          4.462942532   True
+0.0025          1.858186425          4.704780922   True
+0.000625        1.856655061          4.822367794   True
+0.00015625      1.856249097          4.879394248   True
+
+Here `trial_scaled=(log(q(u))+(pi^2/4)u)/u^(3/2)` and
+`comparison_scaled=(log(rho(u))+(pi^2/4)u)/u^(3/2)`.  The quadrature uses
+the exact one-dimensional autocorrelation formula recorded in the script.

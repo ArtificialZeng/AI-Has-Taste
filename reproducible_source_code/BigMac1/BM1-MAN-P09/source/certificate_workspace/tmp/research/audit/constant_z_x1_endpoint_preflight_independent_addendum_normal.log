@@ -1,0 +1,16 @@
+PASS opaque source/manifest and frozen predecessor/reduction hashes
+INDEPENDENCE preflight source/manifest used only for SHA-256
+X1_Z_BASE -20233/2600000
+X1_Z_WORST -172289947376065127/15857127000000000000
+PASS Zconst<0 for every 0<S<=1/10000 and the frozen box at X=1
+X1_DETC_OVER_S_WORST -172289947376065127/28542828600000000000
+PASS det(C)/S=(5/9)Zconst<0: constant-Z chart is illegal at X=1
+X1_DANGER_BASE 20233/2600000
+X1_TMAX -432183/14300
+PASS danger=Dbase-S*T>Dbase>0 at X=1
+ROOT_BRACKET_LEFT 497/500 value=17798406223702873/15857127000000000000
+ROOT_BRACKET_RIGHT 199/200 value=-13803700407925127/15857127000000000000
+PASS unique lower-corner Z root satisfies 497/500<root<199/200
+SCOPE chart illegality only; no raw-gate sign or Bernstein claim
+SCOPE no maximality, CE-046/048/059/060, full-ball or common-metric inference
+VERDICT PASS independent constant-Z X=1 endpoint addendum

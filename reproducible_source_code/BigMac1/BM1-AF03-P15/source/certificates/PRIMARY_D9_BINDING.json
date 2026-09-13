@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "endpoint": "Abs(D_9) admits a normalized flow with unit vertex weights",
+  "status": "frozen_for_independent_referee",
+  "primary": {
+    "certificate": {
+      "path": "certificates/d9_normalized_flow.json",
+      "sha256": "d8fe947906c577f3a7c585fc07e0bcb6648e2555056a756af98bf307ab72ea7f"
+    },
+    "verifier": {
+      "path": "certificates/verify_d9_flow.py",
+      "sha256": "a076f7dc4a715d0adb9d1c7b7946431a7f63de744b53a8782a6c50ed7580c706"
+    },
+    "formal_statement": {
+      "path": "problem/formal_statement.md",
+      "sha256": "a423a584b8a229845dc64dbca6233df9d7d36ca7d9a0c1a5de55571d54aca084"
+    }
+  },
+  "cross_check_only": {
+    "certificate": {
+      "path": "discovery/d9_orbit_flow_candidate.json",
+      "sha256": "1139852c155f754f6b998b15bf3fcd0f42942351a609e283615cb7599002beca"
+    },
+    "verifier": {
+      "path": "tests/verify_breaker_orbit_candidate.py",
+      "sha256": "fb1e14209cbdb299a98c7049c8c0b23c8ad0467070c3ef06b9d445fbeb6284da"
+    },
+    "binding_test": "tests.test_breaker_crosscheck.BreakerCrossCheck.test_independently_accepted_flows_equal_release_certificates"
+  },
+  "primary_dependency": {
+    "carter_1972_pdf": {
+      "path": "literature/sources/carter-1972.pdf",
+      "sha256": "9906164332f45299f337c5e95f8681c8ec02356a6b34d72aada16e7be0a3eaf5",
+      "location": "Lemma 2, journal page 3"
+    }
+  },
+  "scope": "D_9 only; D_4 and D_8 artifacts are baselines; no n>9 artifact is retained"
+}

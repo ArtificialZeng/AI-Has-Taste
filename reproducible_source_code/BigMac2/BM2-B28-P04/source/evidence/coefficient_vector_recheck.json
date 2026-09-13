@@ -1,0 +1,657 @@
+{
+  "arithmetic": "exact Python integers",
+  "method": "For each explicitly enumerated increasing alphabet (a,b,c,d) in [0,D], form all dot products c0*a+c1*b+c2*c+c3*d over the 35 nonnegative coefficient vectors with c0+c1+c2+c3=4.",
+  "implementation_sha256": "efeada981d1ea6a1aa564fe71f84c09d70af8ddb3a75e5fee46a27453b00944f",
+  "coefficient_vector_count": 35,
+  "coefficient_vectors": [
+    [
+      0,
+      0,
+      0,
+      4
+    ],
+    [
+      0,
+      0,
+      1,
+      3
+    ],
+    [
+      0,
+      0,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      3,
+      1
+    ],
+    [
+      0,
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      3
+    ],
+    [
+      0,
+      1,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2,
+      1
+    ],
+    [
+      0,
+      1,
+      3,
+      0
+    ],
+    [
+      0,
+      2,
+      0,
+      2
+    ],
+    [
+      0,
+      2,
+      1,
+      1
+    ],
+    [
+      0,
+      2,
+      2,
+      0
+    ],
+    [
+      0,
+      3,
+      0,
+      1
+    ],
+    [
+      0,
+      3,
+      1,
+      0
+    ],
+    [
+      0,
+      4,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      3
+    ],
+    [
+      1,
+      0,
+      1,
+      2
+    ],
+    [
+      1,
+      0,
+      2,
+      1
+    ],
+    [
+      1,
+      0,
+      3,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      2
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      2,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      1
+    ],
+    [
+      1,
+      2,
+      1,
+      0
+    ],
+    [
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      2
+    ],
+    [
+      2,
+      0,
+      1,
+      1
+    ],
+    [
+      2,
+      0,
+      2,
+      0
+    ],
+    [
+      2,
+      1,
+      0,
+      1
+    ],
+    [
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      2,
+      2,
+      0,
+      0
+    ],
+    [
+      3,
+      0,
+      0,
+      1
+    ],
+    [
+      3,
+      0,
+      1,
+      0
+    ],
+    [
+      3,
+      1,
+      0,
+      0
+    ],
+    [
+      4,
+      0,
+      0,
+      0
+    ]
+  ],
+  "by_diameter": {
+    "15": {
+      "diameter": 15,
+      "expected_alphabet_count": 1820,
+      "enumerated_alphabet_count": 1820,
+      "coverage_check": true,
+      "labels": [
+        13,
+        16,
+        17,
+        19,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "label_frequencies": {
+        "13": 35,
+        "16": 48,
+        "17": 24,
+        "19": 90,
+        "21": 102,
+        "23": 105,
+        "24": 108,
+        "25": 422,
+        "26": 54,
+        "27": 70,
+        "29": 122,
+        "30": 190,
+        "31": 284,
+        "32": 26,
+        "33": 90,
+        "34": 46,
+        "35": 4
+      },
+      "witness_checks": {
+        "13": {
+          "witness": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "recomputed_label": 13,
+          "valid_alphabet": true
+        },
+        "16": {
+          "witness": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "recomputed_label": 16,
+          "valid_alphabet": true
+        },
+        "17": {
+          "witness": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "recomputed_label": 17,
+          "valid_alphabet": true
+        },
+        "19": {
+          "witness": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "recomputed_label": 19,
+          "valid_alphabet": true
+        },
+        "21": {
+          "witness": [
+            0,
+            1,
+            2,
+            6
+          ],
+          "recomputed_label": 21,
+          "valid_alphabet": true
+        },
+        "23": {
+          "witness": [
+            0,
+            1,
+            2,
+            7
+          ],
+          "recomputed_label": 23,
+          "valid_alphabet": true
+        },
+        "24": {
+          "witness": [
+            0,
+            1,
+            2,
+            8
+          ],
+          "recomputed_label": 24,
+          "valid_alphabet": true
+        },
+        "25": {
+          "witness": [
+            0,
+            1,
+            2,
+            9
+          ],
+          "recomputed_label": 25,
+          "valid_alphabet": true
+        },
+        "26": {
+          "witness": [
+            0,
+            1,
+            3,
+            8
+          ],
+          "recomputed_label": 26,
+          "valid_alphabet": true
+        },
+        "27": {
+          "witness": [
+            0,
+            1,
+            3,
+            9
+          ],
+          "recomputed_label": 27,
+          "valid_alphabet": true
+        },
+        "29": {
+          "witness": [
+            0,
+            1,
+            3,
+            10
+          ],
+          "recomputed_label": 29,
+          "valid_alphabet": true
+        },
+        "30": {
+          "witness": [
+            0,
+            1,
+            3,
+            11
+          ],
+          "recomputed_label": 30,
+          "valid_alphabet": true
+        },
+        "31": {
+          "witness": [
+            0,
+            1,
+            3,
+            13
+          ],
+          "recomputed_label": 31,
+          "valid_alphabet": true
+        },
+        "32": {
+          "witness": [
+            0,
+            1,
+            4,
+            13
+          ],
+          "recomputed_label": 32,
+          "valid_alphabet": true
+        },
+        "33": {
+          "witness": [
+            0,
+            1,
+            4,
+            14
+          ],
+          "recomputed_label": 33,
+          "valid_alphabet": true
+        },
+        "34": {
+          "witness": [
+            0,
+            1,
+            6,
+            14
+          ],
+          "recomputed_label": 34,
+          "valid_alphabet": true
+        },
+        "35": {
+          "witness": [
+            0,
+            1,
+            11,
+            15
+          ],
+          "recomputed_label": 35,
+          "valid_alphabet": true
+        }
+      }
+    },
+    "16": {
+      "diameter": 16,
+      "expected_alphabet_count": 2380,
+      "enumerated_alphabet_count": 2380,
+      "coverage_check": true,
+      "labels": [
+        13,
+        16,
+        17,
+        19,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "label_frequencies": {
+        "13": 40,
+        "16": 56,
+        "17": 28,
+        "19": 105,
+        "21": 117,
+        "23": 123,
+        "24": 132,
+        "25": 551,
+        "26": 66,
+        "27": 80,
+        "29": 144,
+        "30": 230,
+        "31": 430,
+        "32": 34,
+        "33": 136,
+        "34": 96,
+        "35": 12
+      },
+      "witness_checks": {
+        "13": {
+          "witness": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "recomputed_label": 13,
+          "valid_alphabet": true
+        },
+        "16": {
+          "witness": [
+            0,
+            1,
+            2,
+            4
+          ],
+          "recomputed_label": 16,
+          "valid_alphabet": true
+        },
+        "17": {
+          "witness": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "recomputed_label": 17,
+          "valid_alphabet": true
+        },
+        "19": {
+          "witness": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "recomputed_label": 19,
+          "valid_alphabet": true
+        },
+        "21": {
+          "witness": [
+            0,
+            1,
+            2,
+            6
+          ],
+          "recomputed_label": 21,
+          "valid_alphabet": true
+        },
+        "23": {
+          "witness": [
+            0,
+            1,
+            2,
+            7
+          ],
+          "recomputed_label": 23,
+          "valid_alphabet": true
+        },
+        "24": {
+          "witness": [
+            0,
+            1,
+            2,
+            8
+          ],
+          "recomputed_label": 24,
+          "valid_alphabet": true
+        },
+        "25": {
+          "witness": [
+            0,
+            1,
+            2,
+            9
+          ],
+          "recomputed_label": 25,
+          "valid_alphabet": true
+        },
+        "26": {
+          "witness": [
+            0,
+            1,
+            3,
+            8
+          ],
+          "recomputed_label": 26,
+          "valid_alphabet": true
+        },
+        "27": {
+          "witness": [
+            0,
+            1,
+            3,
+            9
+          ],
+          "recomputed_label": 27,
+          "valid_alphabet": true
+        },
+        "29": {
+          "witness": [
+            0,
+            1,
+            3,
+            10
+          ],
+          "recomputed_label": 29,
+          "valid_alphabet": true
+        },
+        "30": {
+          "witness": [
+            0,
+            1,
+            3,
+            11
+          ],
+          "recomputed_label": 30,
+          "valid_alphabet": true
+        },
+        "31": {
+          "witness": [
+            0,
+            1,
+            3,
+            13
+          ],
+          "recomputed_label": 31,
+          "valid_alphabet": true
+        },
+        "32": {
+          "witness": [
+            0,
+            1,
+            4,
+            13
+          ],
+          "recomputed_label": 32,
+          "valid_alphabet": true
+        },
+        "33": {
+          "witness": [
+            0,
+            1,
+            4,
+            14
+          ],
+          "recomputed_label": 33,
+          "valid_alphabet": true
+        },
+        "34": {
+          "witness": [
+            0,
+            1,
+            5,
+            16
+          ],
+          "recomputed_label": 34,
+          "valid_alphabet": true
+        },
+        "35": {
+          "witness": [
+            0,
+            1,
+            10,
+            16
+          ],
+          "recomputed_label": 35,
+          "valid_alphabet": true
+        }
+      }
+    }
+  },
+  "labels_in_16_not_15": [],
+  "labels_in_15_not_16": [],
+  "equal_label_sets": true,
+  "all_coverage_checks": true,
+  "all_witness_checks": true
+}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "title": "The u^(3/2) Endpoint Remainder for a Truncated Gaussian Heat Kernel",
+  "kind": "resolution-paper",
+  "source_files": [
+    "manuscript/article.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/article.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error article.tex"
+  },
+  "bibliography_basis": {
+    "LiuChen2026": "Metadata and scope checked against the local arXiv v1 PDF and the official arXiv abstract page on 2026-09-08.",
+    "SlepianPollak1961": "Classical time-frequency limiting reference as cited in the inspected Liu-Chen source bibliography.",
+    "202608.1272": "User-designated workbook record, worksheet 数学主表 row 13; official Preprints.org page matched the supplied metadata on 2026-09-08."
+  },
+  "citation_scope_note": "The Zeng record is cited only for a narrow operator-theoretic methodological comparison. It supports no claim about the Gaussian kernel, the endpoint remainder, quantum walks, or priority."
+}

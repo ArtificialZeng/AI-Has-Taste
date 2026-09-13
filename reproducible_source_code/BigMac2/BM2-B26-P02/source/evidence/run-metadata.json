@@ -1,0 +1,49 @@
+{
+  "job_id": "bigMac-00026-p02-research-f35a90bf9b7b",
+  "generated_at_utc": "2026-09-09T01:30:51Z",
+  "working_directory": "/Users/mac/4prove-or-disprove-math/projects/bigMac-00026-p02",
+  "platform": {
+    "architecture": "arm64",
+    "macos_version": "26.5 (25F71)",
+    "python": "/Users/mac/4prove-or-disprove-math/.research-venv/bin/python 3.12.14",
+    "compiler": "Apple clang 21.0.0 (clang-2100.0.123.102)",
+    "nauty": "2.9.3"
+  },
+  "commands": {
+    "inventory": "/opt/homebrew/bin/geng -cq 8 8:28 evidence/order8-connected-nontrees.g6",
+    "compile": "/usr/bin/clang++ -std=c++20 -O3 -DNDEBUG -Wall -Wextra -pedantic evidence/census_modular.cpp -o evidence/census_modular",
+    "census": "evidence/census_modular evidence/order8-connected-nontrees.g6 evidence/base-rooted-canonical.g6 evidence/augmented-rooted-canonical.g6",
+    "exact_regression": "/Users/mac/4prove-or-disprove-math/.research-venv/bin/python evidence/exact_regression.py",
+    "clean_reproduction": "/bin/zsh evidence/reproduce.sh"
+  },
+  "counts": {
+    "inventory_graphs": 11094,
+    "nonedges": 150573,
+    "marked_instances": 1204584,
+    "direct_augmented_graphs_per_solver": 150573,
+    "direct_marked_comparisons_per_solver": 1204584,
+    "zero_difference_residues_method_a_prime_1000003": 0,
+    "zero_difference_residues_method_b_prime_1000033": 0
+  },
+  "sha256": {
+    "source.md": "e8d3f12668e1311cc09c0fb6df882dfb0726e649e17c394b04813b8d6b92fe1a",
+    "problem.md": "74a60128aa1fe359bd3502c3566a09863241f78322b90960a36185cdea66f595",
+    "evidence/certificate.md": "e9007c3ca3ca1ad68365066688dc7fbfb7ce70d48aca2a95e1a88a13ea68959e",
+    "evidence/order8-connected-nontrees.g6": "63b2d6b5a6092d23ea899a1cf4d50305ab45d746c389562ad3dcdbcc7da97307",
+    "evidence/census_modular.cpp": "9d52ae84226fd45bd49b57f1008c87ce1fb5322af1ca53372efcb141c218e284",
+    "evidence/census_modular": "cd93ad1271c11a05a1eb411fab9ef6f3c57d5e3f047095ca6850f8c6bb5e2a75",
+    "evidence/census-modular-result.json": "7861d3fd4969eb8c216e239f14eb8fb3bd63a91bb4b5b16201105914ea7c01f9",
+    "evidence/exact_regression.py": "5768e104774af66edceadd8a77c1bb5fb138a6bfdb89e0a442dcd7c5e64c3f7c",
+    "evidence/exact-regression.json": "b3410fea764c8f22fd6dd58d52a28098e771e2bc0d7938543646f21aa9d792a7",
+    "evidence/build_rooted_streams.py": "7600d6baf271d1947628a96bf9ea797c878a6533dd1022a583b8b6d8154471ff",
+    "evidence/base-rooted-canonical.g6": "7cd6533f33760709164d32716531d3cb3f547cc5a68b07c779ae39dca3108d1d",
+    "evidence/augmented-rooted-canonical.g6": "8d9c24ab17c9490936991bab2d565c8eebf908644ef43d91c6a3a9f01cf15dcf",
+    "evidence/graph6_crosscheck.py": "3f39e499dffdf4aa00b5cbe54feef1404b1e9b7eb5ace6f959985fed4a8d8612",
+    "evidence/graph6-crosscheck.json": "a9e42ec745b4d746997357e66b4747e0677204698e6d489fcbfb5e5acce5c94a",
+    "evidence/reproduce.sh": "59c01d0e11e7f50a9fd9b776e3d24814ad0185ce002d5016f827f376df5777f3",
+    "evidence/reproduction-result.json": "ee6238f2b45e3f6964cdab82a0cab420d655e0b38a66ef508a4308798d2d4d19",
+    "/opt/homebrew/bin/geng": "ad2f68adf733dbed7cad543841cfa329740596ee5cd136f17a0a17f6e744f5ad",
+    "/opt/homebrew/bin/labelg": "0be70bdbe1c24030b1ed80652026c8284fff8700fb0a0a9331742d593a514bca",
+    "/usr/bin/clang++": "179301dcb41ea78accc3fa0048a7e6f6710d891945a751a34addd622020c1818"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "resolution-paper",
+  "statement": "Let V=F_2^3 and G=GL(3,2). Up to conjugacy in G, the irreducible subgroups L<=G are exactly three classes, of orders 7, 21, and 168, represented by the explicit matrix generators in evidence/result.md. For each of these three representatives, the universal property P(L) in problem.md is false: with W=span{(1,0,0)} and A={(0,0,0),(1,0,0),(0,1,0)}, one has union_{ell in L} W^ell=V, hence A-A is contained in that union, while |A|=3>2=|W|. Thus no irreducible subgroup of GL(3,2) satisfies the frozen implication.",
+  "original_status": "proved",
+  "contribution": "Complete exact resolution of the frozen (d,p)=(3,2) classification: enumeration and single-adjunction completeness certification for all 179 subgroups of GL(3,2), exact partition into 15 conjugacy classes, direct irreducibility tests on every line and plane, and an explicit exactly verified counterexample for every retained irreducible class. A standalone verifier independently reconstructs and checks all decisive finite evidence. No novelty or priority claim is included.",
+  "proposer_job_id": "bigMac-00026-p03-research-76cf6f402469",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "checkpoint.md",
+    "evidence/result.md",
+    "evidence/enumerate_gl32_subgroups.py",
+    "evidence/gl32_subgroup_irreducibility.json",
+    "evidence/test_weak_ekr.py",
+    "evidence/gl32_weak_ekr_classification.json",
+    "evidence/verify_certificates.py",
+    "evidence/verification_report.json",
+    "evidence/literature_check.md"
+  ]
+}

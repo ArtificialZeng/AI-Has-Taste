@@ -1,0 +1,57 @@
+{
+  "package_id": "BM1-AF03-P05",
+  "review_type": "historical gate and final-version archival review, not a new mathematical audit",
+  "scope": "九顶点、补图边数≤6 的全部108类已认证；不外推至一般阶。",
+  "historical_gate_summary": "历史审计；非本次fresh审稿。",
+  "pdf_sha256": "d271645951e7d5ee0844eabc7ac7bd9227a41cfaeac05cd77f8529fdb3048688",
+  "evidence": [
+    {
+      "original_project_relative_path": "TASK_STATUS.json",
+      "summary": "CERTIFIED_FINITE_RESULT; Exact finite certification proves q(G)=2 for every nine-vertex graph with e(bar(G))<=6. The no-import verifier reconstructs all 108 isomorphism classes, independently reproduces n=7,8, and passes 18 fail-closed mutations; an independent referee reports no open fatal or major issue.",
+      "sha256": "f1d310464a4efecbcfcd91224e1bc4172effc6ac86dc7eb72917b839903f6762",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/01_TASK_STATUS.json"
+    },
+    {
+      "original_project_relative_path": "audit/CITATION_AUDIT.md",
+      "summary": "# Citation audit\n\n## Verification report\n\n**Mode:** search verification with locally archived primary PDFs  \n**Document:** `paper/main.tex` / `paper/main.pdf`  \n**Generated:** 2026-08-29 (Asia/Shanghai)  \n**Overall status:** **PASS with bounded negative-search limitations**\n\n| Metric | Count |\n|---|---:|\n| Frozen claims checked | 14 |\n| Verified as stated and scoped | 14 |\n| Numerical errors | 0 |\n| Hallucinations/misquotations | 0 |\n| Unverified absolute novelty claims | 0 |\n| Bibliography entries cited/available | 5/5 |\n\nThe audit used the required two-pass architecture.  Pass 1 was the froz",
+      "sha256": "79c9af9ec82ac4920fbc82ce62ffa984b729b0d57ed3772ccefa55e555c7c396",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/02_CITATION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PROOF_AUDIT.md",
+      "summary": "# Proof audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nEndpoint: for every nine-vertex simple graph \\(G\\) with\n\\(e(\\overline G)\\le6\\), \\(q(G)=2\\)  \nDisposition: **PASS -- no open fatal or major issue**\n\n## Exact proof chain\n\n1. Permutation similarity makes \\(q(G)\\) invariant under graph relabeling.\n2. A two-eigenvalue symmetric realization is affinely equivalent to a\n   symmetric involution with the same off-diagonal support.\n3. The verifier reconstructs every complement from a unique multiset of\n   connected graph-atlas types.  A nontrivial connected component with at\n   most six edges has at most",
+      "sha256": "d3547aba31de82c89f23cef76f8b58b2ab913df3b33a8cd8ffb0c8e98f77a0d9",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/03_PROOF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/SUBMISSION_AUDIT.md",
+      "summary": "# Submission audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nStatus: **PASS**\n\n- The title and abstract state the exact finite endpoint and do not imply an\n  all-orders proof.\n- The novelty claim is bounded by named searches and the date 2026-08-29.\n- The theorem statement contains all quantifiers, order, simplicity, weak\n  edge inequality, complement convention, and conclusion.\n- Discovery and verification are separated; numerical search is disclosed as\n  non-certifying.\n- Certificate and verifier hashes are printed in the paper/archive records.\n- Exact route counts, residual witness count, and rep",
+      "sha256": "8024e285842ed56be7891285b571daf73b641f00e48ea89a65af0a4e61e4432f",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/04_SUBMISSION_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "audit/PDF_AUDIT.md",
+      "summary": "Historical final all-5-page visual/build/metadata gate PASS; current SHA-256 d271645951e7d5ee0844eabc7ac7bd9227a41cfaeac05cd77f8529fdb3048688 agrees with final record. # PDF audit\n\nDate: 2026-08-29 (Asia/Shanghai)  \nArtifact: `paper/main.pdf`  \nStatus: **PASS**\n\n## Build and metadata\n\n- Clean build command: `latexmk -C main.tex`, followed by\n  `latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex` in `pape",
+      "sha256": "0985c6d3a7a4398dea1892354950a56a70a84e369e56a5ac3d3fd007cabefcd0",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/05_PDF_AUDIT.md"
+    },
+    {
+      "original_project_relative_path": "FINAL_STATUS.md",
+      "summary": "九顶点、补图边数≤6 的全部108类已认证；不外推至一般阶。",
+      "sha256": "a50834b2529143e6552d0049b6bd82b782f23f38f940c59c921143f0cea03676",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/06_FINAL_STATUS.md"
+    },
+    {
+      "original_project_relative_path": "literature/search_log.md",
+      "summary": "`NOVELTY_LOCK = PASS_WITH_RECORDED_LIMITATIONS`.  A second current search is\n## Systematic Gate 6 pass (post-manuscript, pre-release)\n`SECOND_NOVELTY_SEARCH = PASS_WITH_RECORDED_LIMITATIONS`.",
+      "sha256": "279fbda99aa75e527049dce0731db0df62d1df9d6c8182c1ea16d7c74c0eb49e",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/07_search_log.md"
+    },
+    {
+      "original_project_relative_path": "literature/claim_ledger.md",
+      "summary": "",
+      "sha256": "f84fea674c5efa20a7fd96057fa5b95a135b5023a13e310b63668670852449c3",
+      "archived_evidence": "assets/BigMac1/gates/BM1-AF03-P05/evidence/08_claim_ledger.md"
+    }
+  ]
+}
