@@ -1,0 +1,310 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The shifted subtree-root annulus for trees of diameter at most three},
+  pdfauthor={Xiaojian Zeng},pdfsubject={Subtree polynomial roots of stars and double stars}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\C}{\mathbb C}
+\newcommand{\abs}[1]{\left|#1\right|}
+\title{The shifted subtree-root annulus for trees\\of diameter at most three}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Brown and Mol conjectured that every subtree root of an $n$-vertex tree,
+$n\geq2$, lies in the annulus centred at $-1/2$ with inner radius $1/2$
+and outer radius $1/2+(n-1)^{1/(n-1)}$.
+We prove this assertion for all trees of diameter at most three.
+For every double star with at least one leaf at each centre, all nonzero
+roots lie strictly between the two circles. Together with the known star
+formula, this gives the full boundary classification in this class:
+zero is the sole inner-boundary root, and outer equality occurs precisely
+for even-order stars, at the unique root $-1-(n-1)^{1/(n-1)}$.
+The proof uses a convex endpoint estimate and Rouch\'e's theorem.
+The conjecture for arbitrary trees remains unresolved.
+\end{abstract}
+
+\section{The annulus and the restricted result}
+
+Let $T$ be a finite simple tree of order $n$. For $1\leq k\leq n$, let
+$s_k(T)$ count the vertex subsets of size $k$ whose induced subgraphs are
+connected, each subset counted once. Its \emph{subtree polynomial} is
+\[
+ \Phi_T(z)=\sum_{k=1}^n s_k(T)z^k.
+\]
+Enumeration by subtree order is part of the classical study of mean
+subtree order initiated by Jamison~\cite{Jamison1983}.
+We use the connected-induced-subgraph convention of
+Brown and Mol~\cite{BrownMol2020}. Since $s_1(T)=n$, zero is always
+a simple root of $\Phi_T$.
+
+Brown and Mol proposed the following annulus bound
+\cite[Conjecture~4.2 in the preprint version]{BrownMol2020}:
+for every tree of order $n\geq2$ and every zero $z$ of $\Phi_T$,
+\begin{equation}\label{eq:annulus}
+ \frac12\leq\abs{z+\frac12}\leq\frac12+(n-1)^{1/(n-1)}.
+\end{equation}
+They reported verification for all trees through order~18.
+Jin, Ma and Wang~\cite[Theorem~1.3]{JinMaWang2026} proved the
+origin-centred bound $|z|\leq1+(n-1)^{1/(n-1)}$, including its equality
+classification. Their Conjecture~5.1 retains~\eqref{eq:annulus}.
+The origin-centred disk does not imply either of the two shifted bounds.
+
+Write $D(a,b)$ for the double star obtained from an edge $uv$ by attaching
+$a$ leaves to $u$ and $b$ leaves to $v$, where $a,b\geq1$ are integers.
+These are exactly the trees of diameter three.
+
+\begin{theorem}\label{thm:main}
+Let $T$ be a finite simple tree with $n\geq2$ vertices and
+$\diam(T)\leq3$. Every zero of $\Phi_T$ satisfies~\eqref{eq:annulus}.
+The simple zero $z=0$ is the only root on the inner boundary.
+A root lies on the outer boundary if and only if $n$ is even and
+$T\cong K_{1,n-1}$; in that case the unique such root is
+$z=-1-(n-1)^{1/(n-1)}$.
+In particular, every nonzero subtree root of $D(a,b)$, for all integers
+$a,b\geq1$, satisfies
+\begin{equation}\label{eq:strict}
+ \frac12<\abs{z+\frac12}<\frac12+(a+b+1)^{1/(a+b+1)}.
+\end{equation}
+\end{theorem}
+
+The contribution is the proof for the complete two-parameter double-star
+family, allowing arbitrary order and arbitrary imbalance between $a$ and $b$.
+The star formula and the radii in~\eqref{eq:annulus} are prior results
+and conjectured bounds, respectively. The substantive estimate below
+controls $|z|$ and $|1+z|$ together on the translated circle.
+For comparison, Wagner and Wang~\cite[Theorem~3]{WagnerWang2026}
+obtain root bounds for graphs with minimum degree at least $\alpha n$,
+for fixed $\alpha>0$ and sufficiently large $n$.
+Their tree-subgraph convention agrees with ours when the ambient graph
+is a tree, but the degree hypothesis does not cover an unbounded family
+of double stars, whose minimum degree is one.
+
+\section{A comparison on the translated circle}
+
+\begin{lemma}\label{lem:endpoint}
+Let $c>0$, $K=2c^2+2c+1$, and $k\geq1$ be real. For $c\leq t\leq c+1$,
+\begin{equation}\label{eq:endpoint}
+ \frac{t^{-k}}{\sqrt{K-t^2}}\leq\frac{c^{-k}}{c+1}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+All denominators are positive, since $K-(c+1)^2=c^2$.
+Set $f_k(t)=t^{-k}(K-t^2)^{-1/2}$. Direct differentiation gives
+\[
+ (\log f_k)''(t)=\frac{k}{t^2}+\frac{K+t^2}{(K-t^2)^2}>0.
+\]
+Consequently $f_k''=f_k\bigl(((\log f_k)')^2+(\log f_k)''\bigr)>0$.
+Convexity bounds $f_k$ by the larger endpoint value, and
+\[
+ f_k(c)=\frac{c^{-k}}{c+1},\qquad
+ \frac{f_k(c+1)}{f_k(c)}=\left(\frac{c}{c+1}\right)^{k-1}\leq1.
+\]
+This proves~\eqref{eq:endpoint}.
+\end{proof}
+
+The geometry behind the lemma is elementary. On
+$|z+1/2|=c+1/2$, set $t=|z+1|$ and $s=|z|$. Then
+\begin{equation}\label{eq:geometry}
+ c\leq t\leq c+1,\qquad s^2+t^2=2c^2+2c+1=K,
+ \qquad s=\sqrt{K-t^2}\geq c.
+\end{equation}
+The identity follows by expanding both squared moduli; the interval
+follows by measuring the distance from $-1$ to that circle.
+Thus Lemma~\ref{lem:endpoint} applies directly to $1/(s t^k)$.
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+First consider $D(a,b)$ and put
+\[
+ q=a+b\geq2,\qquad w=1+z,\qquad c=(q+1)^{1/(q+1)}>1.
+\]
+A connected vertex subset either contains neither centre, contains $u$
+but not $v$, contains $v$ but not $u$, or contains both centres.
+In the first case it is a single leaf. The generating polynomials of
+the four disjoint classes are $qz$, $zw^a$, $zw^b$, and $z^2w^q$.
+Hence
+\begin{equation}\label{eq:counting}
+ \Phi_{D(a,b)}(z)=zQ(z),\qquad
+ Q(z)=q+w^a+w^b+zw^q.
+\end{equation}
+The polynomial $Q$ is monic of degree $q+1$, and $Q(0)=q+2$.
+
+\subsection*{The closed inner disk}
+If $|z+1/2|\leq1/2$, then $|z|\leq1$, $|w|\leq1$ and
+$\operatorname{Re}w\geq0$. For $q\geq4$,
+\[
+ |w^a+w^b+zw^q|\leq3<q,
+\]
+so $Q(z)\ne0$. For $q=3$ the same comparison is strict except possibly
+at $z=0,-1$: away from these two points both $|z|$ and $|w|$ are
+strictly less than one. At the exceptions, $Q(0)=q+2$ and $Q(-1)=q$.
+For $q=2$, necessarily $a=b=1$, and
+\[
+ |2+2w|\geq\operatorname{Re}(2+2w)\geq2>1\geq|zw^2|.
+\]
+Thus $Q$ has no zero in the closed inner disk for every $a,b\geq1$.
+
+\subsection*{The outer circle}
+On $|z+1/2|=c+1/2$, use $s,t,K$ from~\eqref{eq:geometry}.
+For fixed $t>1$, convexity of $x\mapsto t^x+t^{q-x}$ on $[1,q-1]$
+gives
+\[
+ t^a+t^b\leq t+t^{q-1}.
+\]
+For $q=2$ this is an equality on a one-point interval.
+The triangle inequality and Lemma~\ref{lem:endpoint} now imply
+\begin{align}
+ \frac{|q+w^a+w^b|}{|zw^q|}
+ &\leq\frac{q+t^a+t^b}{s t^q}\notag\\
+ &\leq f_{q-1}(t)+f_1(t)+qf_q(t)\notag\\
+ &\leq\frac{c+c^{q-1}+q}{(c+1)c^q}=:F.\label{eq:domination}
+\end{align}
+Every index in this use of the lemma is at least one.
+Using $c^{q+1}=q+1$, direct simplification yields
+\begin{equation}\label{eq:margin}
+ 1-F=\frac{(c-1)(q+1-c^2)}{c(c+1)(q+1)}>0.
+\end{equation}
+Indeed $c>1$ and $c^2=(q+1)^{2/(q+1)}<q+1$ because $q+1\geq3$.
+This is a positive margin for each parameter pair; no positive lower
+bound independent of $q$ is needed.
+
+It follows that $|q+w^a+w^b|<|zw^q|$ everywhere on the outer circle.
+Rouch\'e's theorem, in its usual holomorphic form
+\cite[Corollary~5.4.3]{Lebl2026}, gives the same number of zeros inside
+the circle for $Q(z)$ and $z(z+1)^q$.
+Both zeros $0,-1$ of the latter polynomial lie strictly inside, so the
+number is $q+1$, counted with multiplicity. This is exactly the degree
+of $Q$, and the strict comparison excludes boundary zeros.
+All zeros of $Q$ therefore satisfy the strict outer bound. Together with
+the inner-disk exclusion and~\eqref{eq:counting}, this proves
+\eqref{eq:strict}.
+
+\subsection*{Stars and the boundary classification}
+A tree of diameter one or two is a star. To see that a tree of diameter
+three is a double star, take a longest path $x,u,v,y$. Every component off
+this path attaches to exactly one of its vertices. Attachment at $x$ or
+$y$, or depth at least two from $u$ or $v$, would produce a path of
+length at least four. All off-path vertices are therefore leaves at
+$u$ or $v$, and $x,y$ ensure that both leaf populations are nonempty.
+
+For the star $K_{1,m}$, where $m=n-1\geq1$, the known formula
+\cite[Section~1]{BrownMol2020} is
+\begin{equation}\label{eq:star}
+ \Phi_{K_{1,m}}(z)=z\bigl((1+z)^m+m\bigr).
+\end{equation}
+Every nonzero root has $w=1+z$ satisfying $w^m=-m$ and
+$|w|=d:=m^{1/m}$. If $m\geq2$, then $d>1$, and
+\[
+ \abs{z+\frac12}=\abs{w-\frac12}\geq d-\frac12>\frac12.
+\]
+For $m=1$ the sole nonzero root is $-2$, with shifted modulus $3/2$.
+Also $|w-1/2|\leq d+1/2$, with equality exactly when $w=-d$.
+This value solves $w^m=-m$ precisely when $m$ is odd, equivalently
+when $n$ is even, and gives the unique boundary root $z=-1-d$.
+Zero is simple by~\eqref{eq:star}. Combining the stars with the strict
+double-star result proves every assertion of the theorem.\qed
+
+\section{Exact checks and limits}
+
+The preceding proof covers all parameters. Supplementary exact
+computations checked the following finite ranges, with $a\leq b$ to
+avoid repeating isomorphic double stars:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Check & Parameter range & Number of cases\\
+\midrule
+Connected-subset coefficients & $2\leq a+b\leq10$ & $25$\\
+Both root regions & $2\leq a+b\leq24$ & $144$\\
+Endpoint identity~\eqref{eq:margin} & $2\leq q\leq64$ & $63$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each root check covers every root of the specified polynomial.
+These ranges describe a double-star family check, not a census of trees.
+The coefficient counts were also recomputed by a separate graph-traversal
+implementation, and a separately written rational-arithmetic checker
+verified the same $288$ root-region tests.
+
+Here are the transformations and the certificate criterion, to make
+the finite claims reproducible. For $d=\deg Q$, the inner check uses
+\begin{equation}\label{eq:innertransform}
+ I(u)=(2u)^d Q\left(\frac{1-u}{2u}\right).
+\end{equation}
+Its constant term is one. Its leading coefficient is checked to be
+nonzero, excluding loss of a root at $z=-1/2$.
+The transformed roots are $u=1/(2z+1)$, so $|u|<1$ is equivalent to
+$|z+1/2|>1/2$. For the outer check choose
+\[
+ c_0=\frac{1}{10^4}\max\{k\in\mathbb Z_{\geq0}:
+            k^{q+1}<(q+1)10^{4(q+1)}\},\qquad R=c_0+\frac12.
+\]
+Integer bisection determines $c_0$ exactly. Clearing rational
+denominators in $Q(Ru-1/2)$ gives the outer polynomial, whose strict
+unit-disk containment implies $|z+1/2|<R<c+1/2$.
+
+The first checker uses the classical Schur reduction
+\cite{Duffin1969}. For a real polynomial $P$ of degree $d$ with leading
+coefficient $A$ and constant coefficient $B$, set
+\[
+ P^*(u)=u^dP(1/u),\qquad G(u)=\frac{AP(u)-BP^*(u)}{u}.
+\]
+If $|B|<|A|$ and all zeros of $G$ lie in $|u|<1$, then the same holds
+for $P$. For completeness, a unit-circle zero of $P$ would also be a
+zero of $P^*$, and hence of $G$, which is impossible. On that circle
+$|P^*|=|P|$, so Rouch\'e's theorem compares $AP$ with $uG$.
+The leading coefficient of $G$ is $A^2-B^2>0$ and its degree is $d-1$.
+Recursive verification down to a nonzero constant therefore certifies
+all roots using only integer arithmetic and positive-content divisions.
+
+The second checker uses a half-plane coordinate. The map
+$M(v)=(1+v)/(1-v)$ straightens the circular boundaries of a lens
+in Zeng~\cite{Zeng2026Lens}.
+Its signed conjugate gives the scalar coordinate
+\[
+ s=-M(-u)=\frac{u-1}{u+1},\qquad
+ u=\frac{1+s}{1-s},\qquad
+ \operatorname{Re}s=\frac{|u|^2-1}{|u+1|^2}.
+\]
+Thus $|u|<1$ corresponds to $\operatorname{Re}s<0$.
+Disk and half-plane stability algorithms and their connection are
+treated by Duffin~\cite{Duffin1969}.
+For each transformed polynomial, the second checker formed
+$(1-s)^dP((1+s)/(1-s))$, rejected any degree loss at $u=-1$, and
+verified a strictly positive first column in its exact rational Routh
+table. The code and complete initial integer polynomials are included
+in the accompanying reproducibility dossier; no approximate root
+solver is used for these certificates.
+
+The theorem supplies no conclusion for diameter four or greater.
+A bounded primary-source comparison completed on 13 September 2026
+located no equivalent all-parameter double-star annulus theorem in the
+inspected literature; it does not establish exhaustive priority.
+The finite checks above are supplementary to the analytic proof and
+do not resolve the arbitrary-tree conjecture.
+
+\paragraph{Computational and AI assistance.}
+OpenAI language models accessed through Codex assisted with proof
+development, exact-check code, literature screening and manuscript
+preparation. A separate model context examined the proof and produced
+the second checking implementation. This separation does not imply
+statistical independence or external peer review. The proof is given
+in full above; the computations use Python integer and rational
+arithmetic, with SymPy for supplementary symbolic identities.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

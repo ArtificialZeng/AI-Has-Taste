@@ -1,0 +1,306 @@
+Retrieved 2026-09-13 +08 via live web tool; source https://arxiv.org/html/2608.07898v2 . Tool-rendered capture of inspected content, not original HTML bytes.
+
+Proof of a Brown-Mol conjecture on subtree roots (https://arxiv.org/html/2608.07898v2)
+citeturn3view0 [wordlim: 200] Crawled: yesterday; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2608.07898v2","lineno":538}); Total lines: 650
+L347:  | $$B_{m}(\gamma_{n})\leq\frac{m-1}{a_{n}^{m-1}}.$$  |
+L348: 
+L349: Consider the composition $(1,1,\dots,1)\in\mathcal{C}(m-1)$. Note that $B_{1}(\gamma_{n})=0$, $\lambda_{1}(\gamma_{n})=\gamma_{n}$ and $\lambda_{1}(\gamma_{n})-1=a_{n}$. Then
+L350: 
+L351:  | $$\frac{\sum_{i=1}^{d}\lambda_{1}(\gamma_{n})\left(1+B_{1}(\gamma_{n})\right)}{\gamma_{n}\prod_{i=1}^{d}\left(\lambda_{1}(\gamma_{n})-1\right)}=\frac{(m-1)\lambda_{1}(\gamma_{n})}{\gamma_{n}\bigl(\lambda_{1}(\gamma_{n})-1\bigr)^{m-1}}=\frac{m-1}{a_{n}^{m-1}}.$$  |
+L352: 
+L353: Thus
+L354:  | $$B_{m}(\gamma_{n})\geq\frac{m-1}{a_{n}^{m-1}}.$$  |
+L355: 
+L356: Consequently,
+L357: 
+L358:  | $$B_{m}(\gamma_{n})=\frac{m-1}{a_{n}^{m-1}}.$$  |
+L359: 
+L360: It remains to determine the compositions attaining the maximum when $m=n$. Let $(n_{1},\ldots,n_{d})\in\mathcal{C}(n-1)$ be a composition that attains the maximum of $B_{n}(\gamma_{n})$, that is,
+L361: 
+L362:  | $$B_{n}(\gamma_{n})=\frac{\sum_{i=1}^{d}\lambda_{n_{i}}(\gamma_{n})\bigl(1+B_{n_{i}}(\gamma_{n})\bigr)}{\gamma_{n}\prod_{i=1}^{d}\bigl(\lambda_{n_{i}}(\gamma_{n})-1\bigr)}.$$  |
+L363: By Equation (cite38†2.6 ) and the fact $B_{n}(\gamma_{n})=1$, we have
+L364: 
+L365:  | $$\sum_{i=1}^{d}\bigl(a_{n}^{n_{i}-1}+n_{i}-1\bigr)=(n-1)\prod_{i=1}^{d}q_{n_{i}}.$$  |
+L366: 
+L367: By the characterization of equality in Lemma cite37†2.5 , we have $(n_{1},\ldots,n_{d})=(1,\dots,1)\in\mathcal{C}(n-1)$ or $(n_{1},\ldots,n_{d})=(n-1)\in\mathcal{C}(n-1)$. Note that the exceptional case in Lemma cite37†2.5 cannot occur here, since the sum of the parts is $n-1$.
+L368: 
+L369: This completes the proof. ∎
+L370: ## 3 Proof of Theorem cite31†1.3 L371: 
+L372: The next lemma is the central comparison estimate.
+L373: 
+L374: ###### Lemma 3.1.
+L375: 
+L376: Let $T$ be a tree of order $n$, let $u\in V(T)$, and let $z\in\mathbb{C}$ satisfy $|z|=r\geq 2$. Then
+L377: 
+L378:  | $$|\Phi_{T-u}(z)|\leq B_{n}(r)|\Phi_{T,u}(z)|.$$  |
+L379: ###### Proof.
+L380: 
+L381: We proceed by induction on $n$. If $n=1$, then $T-u$ is empty and the left-hand side is zero.
+L382: 
+L383: Assume $n\geq 2$. Let $T_{1},\dots,T_{d}$ be the components of $T-u$, rooted at the corresponding neighbors $u_{1},\dots,u_{d}$ of $u$, and let $n_{i}=|V(T_{i})|$. For convenience, set
+L384: 
+L385:  | $$L_{i}=\Phi_{T_{i},u_{i}}(z)$$  |
+L386: 
+L387: and
+L388: 
+L389:  | $$F_{i}=\Phi_{T_{i}-u_{i}}(z).$$  |
+L390: 
+L391: By the induction hypothesis,
+L392: 
+L393:  | $$|F_{i}|\leq B_{n_{i}}(r)|L_{i}|.$$  |  | (3.1)
+L394: Since $\Phi_{T_{i}}(z)=L_{i}+F_{i}$ and $\Phi_{T-u}(z)=\sum_{i=1}^{d}\Phi_{T_{i}}(z)$, we obtain
+L395: 
+L396:  | $$|\Phi_{T-u}(z)|\leq\sum_{i=1}^{d}\bigl(|F_{i}|+|L_{i}|\bigr)\leq\sum_{i=1}^{d}\bigl(1+B_{n_{i}}(r)\bigr)|L_{i}|.$$  |
+L397: 
+L398: On the other hand, the product formula (cite39†2.2 ) and the reverse triangle inequality give
+L399: 
+L400:  | $$|\Phi_{T,u}(z)|=r\prod_{i=1}^{d}|1+L_{i}|\geq r\prod_{i=1}^{d}\bigl(|L_{i}|-1\bigr).$$  |
+L401: 
+L402: By Lemma cite40†2.1 , we have
+L403: 
+L404:  | $$|L_{i}|\geq\lambda_{n_{i}}(r)>1,$$  |
+L405: and then $|\Phi_{T,u}(z)|>0$. Consequently,
+L406: 
+L407:  | $$\frac{|\Phi_{T-u}(z)|}{|\Phi_{T,u}(z)|}\leq\frac{\sum_{i=1}^{d}|L_{i}|\bigl(1+B_{n_{i}}(r)\bigr)}{r\prod_{i=1}^{d}(|L_{i}|-1)}\leq\frac{\sum_{i=1}^{d}\lambda_{n_{i}}(r)\bigl(1+B_{n_{i}}(r)\bigr)}{r\prod_{i=1}^{d}(\lambda_{n_{i}}(r)-1)},$$  |  | (3.2)
+L408: 
+L409: where the last inequality holds by Lemma cite32†2.2 . By the definition of $B_{n}(r)$, we have
+L410:  | $$\frac{\sum_{i=1}^{d}\lambda_{n_{i}}(r)\bigl(1+B_{n_{i}}(r)\bigr)}{r\prod_{i=1}^{d}(\lambda_{n_{i}}(r)-1)}\leq B_{n}(r).$$  |
+L411: 
+L412: Thus
+L413: 
+L414:  | $$\frac{|\Phi_{T-u}(z)|}{|\Phi_{T,u}(z)|}\leq B_{n}(r).$$  |
+L415: 
+L416: This completes the proof. ∎
+L417: 
+L418: We now prove Theorem cite31†1.3 .
+L419: ###### Proof of Theorem cite31†1.3 .
+L420: 
+L421: For $n=2$, the only tree is $K_{1,1}$, and
+L422: 
+L423:  | $$\Phi_{K_{1,1}}(z)=z(z+2).$$  |
+L424: 
+L425: Thus the unique nonzero root is $z=-2$, and $|z|=2=1+(2-1)^{1/(2-1)}$. Hence equality holds, as $n=2$ is even.
+L426: 
+L427: For $n=3$, the only tree is $K_{1,2}$, and
+L428: 
+L429:  | $$\Phi_{K_{1,2}}(z)=z(z^{2}+2z+3).$$  |
+L430: 
+L431: Its two nonzero roots have modulus $\sqrt{3}<1+\sqrt{2}$, so equality does not occur.
+L432: For $n=4$, the required radius is $1+\sqrt[3]{3}$. By Theorem cite29†1.1 , equality holds only for $K_{1,3}$. Moreover,
+L433: 
+L434:  | $$\Phi_{K_{1,3}}(z)=z\bigl((z+1)^{3}+3\bigr),$$  |
+L435: 
+L436: and hence $z=-1-\sqrt[3]{3}$ is the unique root satisfying
+L437: 
+L438:  | $$|z|=1+\sqrt[3]{3}.$$  |
+L439: 
+L440: Thus the conclusion holds for $n=2,3,4$. Now assume that $n\geq 5$.
+L441: 
+L442: Let $z\in\mathbb{C}$ satisfy $|z|=r>\gamma_{n}$, and choose any vertex $u\in V(T)$. Since $\gamma_{n}>2$, Lemma cite41†3.1 gives
+L443:  | $$|\Phi_{T-u}(z)|\leq B_{n}(r)|\Phi_{T,u}(z)|.$$  |
+L444: 
+L445: By Lemmas cite42†2.3 and cite43†2.6 ,
+L446: 
+L447:  | $$B_{n}(r)<B_{n}(\gamma_{n})=\frac{n-1}{a_{n}^{n-1}}=1.$$  |
+L448: 
+L449: Moreover, by Lemma cite40†2.1 , we have
+L450: 
+L451:  | $$|\Phi_{T,u}(z)|\geq r(r-1)^{n-1}>0.$$  |
+L452: 
+L453: Consequently,
+L454: 
+L455:  | $$|\Phi_{T-u}(z)|<|\Phi_{T,u}(z)|.$$  |
+L456: 
+L457: By Equation (cite44†2.1 ) and the reverse triangle inequality, we have
+L458: 
+L459:  | $$|\Phi_{T}(z)|\geq|\Phi_{T,u}(z)|-|\Phi_{T-u}(z)|>0.$$  |
+L460: 
+L461: Thus $\Phi_{T}(z)\neq 0$ whenever $|z|>\gamma_{n}$.
+L462: We next characterize the boundary case. Suppose that $T$ is a tree of order $n$ such that $\Phi_{T}(z)=0$ and $|z|=\gamma_{n}$. For any vertex $u\in V(T)$, let $T_{1},\dots,T_{d}$ be the components of $T-u$. Let $u_{i}$ be the unique neighbor of $u$ in $T_{i}$, and set $n_{i}=|V(T_{i})|$ and $L_{i}=\Phi_{T_{i},u_{i}}(z)$. Then
+L463: 
+L464:  | $$(n_{1},\dots,n_{d})\in\mathcal{C}(n-1).$$  |
+L465: 
+L466: By Lemma cite40†2.1 , we have $|L_{i}|\geq\lambda_{n_{i}}(\gamma_{n})>1$. Hence, by Equation (cite39†2.2 ), we have
+L467:  | $$|\Phi_{T,u}(z)|=\gamma_{n}\prod_{i=1}^{d}|1+L_{i}|\geq\gamma_{n}\prod_{i=1}^{d}(|L_{i}|-1)>0.$$  |
+L468: 
+L469: Since $\Phi_{T}(z)=0$, Equation (cite44†2.1 ) yields $\Phi_{T-u}(z)=-\Phi_{T,u}(z)$, and therefore
+L470: 
+L471:  | $$\frac{|\Phi_{T-u}(z)|}{|\Phi_{T,u}(z)|}=1.$$  |
+L472: 
+L473: By Lemma cite41†3.1 , for each $i$,
+L474: 
+L475:  | $$|\Phi_{T_{i}-u_{i}}(z)|\leq B_{n_{i}}(\gamma_{n})|\Phi_{T_{i},u_{i}}(z)|.$$  |
+L476: Replacing the induction-hypothesis Inequality (cite45†3.1 ) in the proof of Lemma cite41†3.1 by above inequalities and repeating the derivation of Inequality (cite46†3.2 ) with $r=\gamma_{n}$, we have
+L477: 
+L478:  | $$1=\frac{|\Phi_{T-u}(z)|}{|\Phi_{T,u}(z)|}\leq\frac{\sum_{i=1}^{d}\lambda_{n_{i}}(\gamma_{n})\bigl(1+B_{n_{i}}(\gamma_{n})\bigr)}{\gamma_{n}\prod_{i=1}^{d}\bigl(\lambda_{n_{i}}(\gamma_{n})-1\bigr)}\leq B_{n}(\gamma_{n})=1.$$  |
+L479: 
+L480: Hence
+L481:  | $$\frac{\sum_{i=1}^{d}\lambda_{n_{i}}(\gamma_{n})\bigl(1+B_{n_{i}}(\gamma_{n})\bigr)}{\gamma_{n}\prod_{i=1}^{d}\bigl(\lambda_{n_{i}}(\gamma_{n})-1\bigr)}=B_{n}(\gamma_{n}),$$  |
+L482: so the composition $(n_{1},\ldots,n_{d})\in\mathcal{C}(n-1)$ attains the maximum in the definition of $B_{n}(\gamma_{n})$. By the condition for equality in Lemma cite43†2.6 , we have $(n_{1},\dots,n_{d})=(1,\dots,1)$ or $(n_{1},\dots,n_{d})=(n-1)$, which implies that $d_{T}(u)\in\{1,n-1\}$. Since $u$ was arbitrary, every vertex of the tree $T$ has degree either $1$ or $n-1$. Thus $T\cong K_{1,n-1}$.
+L483: 
+L484: When $T\cong K_{1,n-1}$, we have
+L485: 
+L486:  | $$\Phi_{K_{1,n-1}}(z)=z\bigl((z+1)^{n-1}+n-1\bigr).$$  |
+L487: Hence, its nonzero subtree roots are
+L488: 
+L489:  | $$z_{k}=a_{n}\cos\left(\frac{2k-1}{n-1}\pi\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{2k-1}{n-1}\pi\right),\qquad k=1,2,\ldots,n-1.$$  |
+L490: 
+L491: Then
+L492: 
+L493:  | $$|z_{k}|^{2}=a_{n}^{2}+1-2a_{n}\cos\left(\frac{2k-1}{n-1}\pi\right).$$  |
+L494: 
+L495: Thus $|z_{k}|=1+a_{n}$ if and only if
+L496: 
+L497:  | $$\cos\left(\frac{2k-1}{n-1}\pi\right)=-1,$$  |
+L498: which is equivalent to $2k=n$. Consequently, there exists a nonzero subtree root of $K_{1,n-1}$ with modulus $1+a_{n}$ if and only if $n$ is even. In this case $k=n/2$, and hence the unique boundary root is $z_{n/2}=-1-a_{n}$. Conversely, if $n$ is even, then $k=n/2$ is an integer and $z_{n/2}=-1-a_{n}$ attains the upper bound.
+L499: 
+L500: This completes the proof. ∎
+L501: ## 4 A lower bound and sharpness results
+L502: 
+L503: To establish a lower bound on the modulus of nonzero subtree roots, the following result is essential.
+L504: 
+L505: ###### Lemma 4.1.
+L506: 
+L507: [cite13†8 ] Let $T$ be a tree of order $n$. Then $s_{1}(T)=n$ and for $k=2,\ldots,n$,
+L508: 
+L509:  | $$n-k+1\leq s_{k}(T)\leq\binom{n-1}{k-1}.$$  |
+L510: 
+L511: We now give the lower bound on the modulus of nonzero subtree roots.
+L512: ###### Theorem 4.2.
+L513: 
+L514: Let $T$ be a tree of order $n\geq 2$. Then every nonzero subtree root of $T$ satisfies
+L515: 
+L516:  | $$|z|>\sqrt[n-1]{n-1}-1.$$  |
+L517: ###### Proof.
+L518: 
+L519: The conclusion is immediate for $n=2$. We now assume that $n\geq 3$. It suffices to prove that for $0<|z|\leq\sqrt[n-1]{n-1}-1$,
+L520: 
+L521:  | $$\left|\frac{\varPhi_{T}(z)}{z}\right|\geq 2.$$  |
+L522: 
+L523: Note that $s_{1}(T)=n$ for any tree $T$ of order $n$. By the reverse triangle inequality and Lemma cite47†4.1 , we have
+L524:  | $\displaystyle\left|\frac{\varPhi_{T}(z)}{z}\right|$  | $\displaystyle=\left|s_{n}(T)z^{n-1}+s_{n-1}(T)z^{n-2}+\cdots+s_{2}(T)z+n\right|$  |
+L525:  |  | $\displaystyle\geq n-\left(s_{n}(T)|z|^{n-1}+s_{n-1}(T)|z|^{n-2}+\cdots+s_{2}(T)|z|\right)$  |
+L526:  |  | $\displaystyle\geq n-\left(\binom{n-1}{n-1}|z|^{n-1}+\binom{n-1}{n-2}|z|^{n-2}+\cdots+\binom{n-1}{1}|z|+1-1\right)$  |
+L527:  |  | $\displaystyle=n+1-(|z|+1)^{n-1}$  |
+L528:  |  | $\displaystyle\geq 2.$  |
+L529: 
+L530: This completes the proof. ∎
+L531: We examine the sharpness of the upper and lower bounds on the modulus of subtree roots. In this section, for any integer $n\geq 2$, define
+L532: 
+L533:  | $$a_{n}=(n-1)^{1/(n-1)}.$$  |
+L534: 
+L535: Recall that for the star $K_{1,n-1}$,
+L536: 
+L537:  | $$\Phi_{K_{1,n-1}}(z)=z\bigl((z+1)^{n-1}+n-1\bigr),$$  |
+L538: 
+L539: and its nonzero subtree roots are
+L540: 
+L541:  | $$z_{k}=a_{n}\cos\left(\frac{2k-1}{n-1}\pi\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{2k-1}{n-1}\pi\right),\qquad k=1,2,\ldots,n-1.$$  |
+L542: We first show that the upper bound in Theorem cite31†1.3 is asymptotically sharp as $n\to\infty$ through odd integers. Suppose that $n$ is odd, and set $k=(n-1)/2$. Then
+L543: 
+L544:  | $$\frac{(2k-1)\pi}{n-1}=\pi-\frac{\pi}{n-1},$$  |
+L545: 
+L546: and hence
+L547: 
+L548:  | $$z_{k}=-a_{n}\cos\left(\frac{\pi}{n-1}\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{\pi}{n-1}\right).$$  |
+L549: 
+L550: It follows that
+L551: 
+L552:  | $\displaystyle|z_{k}|^{2}=(1+a_{n})^{2}-2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right).$  |
+L553: 
+L554: Therefore,
+L555:  | $$\frac{|z_{k}|^{2}}{(1+a_{n})^{2}}=1-\frac{2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right)}{(1+a_{n})^{2}}.$$  |
+L556: 
+L557: Since $a_{n}\rightarrow 1$ and $1-\cos\left(\frac{\pi}{n-1}\right)\rightarrow 0$ as $n\to\infty$, we have
+L558: 
+L559:  | $$\lim_{\begin{subarray}{c}n\to\infty\\
+L560: n\ {\rm odd}\end{subarray}}\frac{|z_{k}|^{2}}{(1+a_{n})^{2}}=1,$$  |
+L561: 
+L562: and consequently
+L563: 
+L564:  | $$\lim_{\begin{subarray}{c}n\to\infty\\
+L565: n\ {\rm odd}\end{subarray}}\frac{|z_{k}|}{1+a_{n}}=1.$$  |
+L566: Thus the upper bound in Theorem 1.3 is asymptotically sharp as $n\to\infty$ through odd integers.
+L567: 
+L568: We next consider the lower bound in Theorem 4.2. Taking $k=1$, we have
+L569: 
+L570:  | $$z_{1}=a_{n}\cos\left(\frac{\pi}{n-1}\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{\pi}{n-1}\right).$$  |
+L571: 
+L572: Then
+L573: 
+L574:  | $\displaystyle|z_{1}|^{2}=(a_{n}-1)^{2}+2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right),$  |
+L575: 
+L576: and
+L577:  | $$\frac{|z_{1}|^{2}}{(a_{n}-1)^{2}}=1+\frac{2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right)}{(a_{n}-1)^{2}}.$$  |
+L578: 
+L579: Since $\frac{\ln(n-1)}{n-1}\rightarrow 0$ as $n\to\infty$, we have
+L580: 
+L581:  | $$a_{n}-1=e^{\frac{\ln(n-1)}{n-1}}-1\sim\frac{\ln(n-1)}{n-1}.$$  |
+L582: 
+L583: Moreover,
+L584: 
+L585:  | $$1-\cos\left(\frac{\pi}{n-1}\right)\sim\frac{\pi^{2}}{2(n-1)^{2}}.$$  |
+L586: 
+L587: Since $a_{n}\to 1$ as $n\to\infty$, it follows that
+L588:  | $$\lim_{n\to\infty}\frac{2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right)}{(a_{n}-1)^{2}}=\lim_{n\to\infty}\frac{2\cdot\dfrac{\pi^{2}}{2(n-1)^{2}}}{\left(\dfrac{\ln(n-1)}{n-1}\right)^{2}}=\lim_{n\to\infty}\left(\frac{\pi}{\ln(n-1)}\right)^{2}=0.$$  |
+L589: 
+L590: Therefore,
+L591: 
+L592:  | $$\lim_{n\to\infty}\frac{|z_{1}|^{2}}{(a_{n}-1)^{2}}=1,$$  |
+L593: 
+L594: and consequently
+L595: 
+L596:  | $$\lim_{n\to\infty}\frac{|z_{1}|}{a_{n}-1}=1.$$  |
+L597: 
+L598: Hence the lower bound in Theorem 4.2 is asymptotically sharp.
+L599: ## 5 Concluding remarks
+L600: 
+L601: In this paper, we prove the Brown-Mol conjecture on subtree roots and completely characterize the equality case. We also establish an asymptotically sharp lower bound for the moduli of nonzero subtree roots.
+L602: Brown and Mol observed numerically in [cite28†2 ] that the subtree roots appear to be distributed approximately around the point $-1/2$. They proposed the following conjecture, which strengthens Theorem cite31†1.3 , and verified it computationally for all trees of order at most $18$.
+L603: ###### Conjecture 5.1.
+L604: 
+L605: [cite28†2 ] If $T$ is a tree of order $n\geq 2$, then the subtree roots of $T$ are contained in the annulus
+L606: 
+L607:  | $$\left\{z\in\mathbb{C}:\frac{1}{2}\leq\left|z+\frac{1}{2}\right|\leq\frac{1}{2}+\sqrt[n-1]{n-1}\right\}.$$  |
+L608: cite48†Image: Refer to caption Figure 1: Subtree roots of all nonisomorphic trees of order $13$. Let $a_{13}=\sqrt[12]{12}\approx 1.2301$. The green circles $|z|=1+a_{13}$ and $|z|=a_{13}-1$ correspond to the bounds in Theorems cite31†1.3 and cite49†4.2 , respectively. The red circles $|z+1/2|=1/2$ and $|z+1/2|=1/2+a_{13}$ correspond to the two bounds in Conjecture cite50†5.1 , respectively.
+L609: For comparison, Figure cite51†1 shows the subtree roots of all nonisomorphic trees of order $13$, together with the boundary circles arising from Theorems cite31†1.3 and cite49†4.2 and those appearing in Conjecture cite50†5.1 . The figure is included to illustrate the relationship between the bounds proved in this paper and the stronger translated annulus conjectured by Brown and Mol. We emphasize that Brown and Mol [cite28†2 ] carried out more extensive computations for all trees of order at most $18$.
+L610: The method developed in this paper does not appear to extend directly to Conjecture cite50†5.1 . A different approach may therefore be required in the future.
+L611: ## Acknowledgements
+L612: 
+L613: Conjecture cite30†1.2 has been of sustained interest to the second author over the past several years. The ideas leading to this work were developed through discussions during the 13th Workshop on Matrix and Graph Spectra Theory held in Urumqi, Xinjiang, China, and the work was completed during subsequent discussions at Xinjiang Normal University.
+L614: This work is supported by the National Natural Science Foundation of China (Nos. 12571379, 12571360, 12571366), Scientific Research Start-Up Foundation of Jimei University (No. ZQ2024116), Fujian Provincial Department of Education (No. JAT251074) and Natural Science Foundation of Xiamen Municipality (No. 3502Z202673038).
+L615: ## Declarations
+L616: 
+L617: Conflict of interest The authors declare that they have no conflict of interest.
+L618: ## References
+L619:   * [2] J.I. Brown, L. Mol, On the roots of the subtree polynomial, European J. Combin. 89 (2020) 103181.
+L620:   * [3] S. Cambie, G. Chen, Y. Hao, N. Tokar, Decreasing the mean subtree order by adding $k$ edges, J. Graph Theory 105 (2024) 357–366.
+L621:   * [4] S. Cambie, S. Wagner, H. Wang, On the maximum mean subtree order of trees, European J. Combin. 97 (2021) 103388.
+L622:   * [5] B. Cameron, L. Mol, On the mean subtree order of graphs under edge addition, J. Graph Theory 96 (2021) 403–413.
+L623:   * [6] X. Chen, G. Wei, H. Lian, Solution to a conjecture on the mean subtree order of graphs under edge addition, J. Graph Theory 104 (2023) 645–658.
+L624:   * [7] J. Haslegrave, Extremal results on average subtree density of series-reduced trees, J. Combin. Theory Ser. B 107 (2014) 26–41.
+L625:   * [8] R.E. Jamison, On the average number of nodes in a subtree of a tree, J. Combin. Theory Ser. B 35 (1983) 207–223.
+L626:   * [9] R.E. Jamison, Monotonicity of the mean order of subtrees, J. Combin. Theory Ser. B 37 (1984) 70–78.
+L627:   * [10] Z. Luo, K. Xu, S. Wagner, H. Wang, On the mean subtree order of trees under edge contraction, J. Graph Theory 102 (2023) 535–551.
+L628:   * [11] D. Ralaivaosaona, S. Wagner, On the distribution of subtree orders of a tree, Ars Math. Contemp. 14 (2018) 129–156.
+L629:   * [12] A.V. Sills, H. Wang, The minimal number of subtrees of a tree, Graphs Combin. 31 (2015) 255–264.
+L630:   * [13] A. Vince, A lower bound on the average size of a connected vertex set of a graph, J. Combin. Theory Ser. B 152 (2022) 153–170.
+L631:   * [14] A. Vince, H. Wang, The average order of a subtree of a tree, J. Combin. Theory Ser. B 100 (2010) 161–170.
+L632:   * [15] R. Wang, On the difference of mean subtree orders under edge contraction, J. Combin. Theory Ser. B 169 (2024) 45–62.
+L633:   * [16] S. Wagner, H. Wang, On the local and global means of subtree orders, J. Graph Theory 81 (2016) 154–166.
+L634:   * [17] W. Yan, Y.-N. Yeh, Enumeration of subtrees of trees, Theoret. Comput. Sci. 369 (2006) 256–268.
+L635: Experimental support, please cite52†view the build logs for errors. Generated by cite53†L A T E xml†math.nist.gov .
+L636: ## Instructions for reporting errors
+L637: 
+L638: We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the methods listed below:
+L639: 
+L640:   * Click the "Report Issue" () button, located in the page header.
+L641: 
+L642: Tip: You can select the relevant text first, to include it in your report.
+L643: Our team has already identified cite54†the following issues†github.com . We appreciate your time reviewing and reporting rendering errors we may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability should not be a barrier to accessing research. Thank you for your continued support in championing open access for all.
+L644: Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a cite55†list of packages that need conversion†github.com , and welcome cite56†developer contributions†github.com .
+L645: 
+L646: We gratefully acknowledge support from our major funders, cite57†member institutions†info.arxiv.org , , and all contributors.
+L647: cite58†About†info.arxiv.org · cite59†Help†info.arxiv.org · cite60†Contact†info.arxiv.org · cite61†Subscribe†info.arxiv.org · cite62†Copyright†info.arxiv.org · cite63†Privacy†info.arxiv.org · cite64†Accessibility†info.arxiv.org · cite65†Operational Status (opens in new tab)†status.arxiv.org L648: 
+L649: Major funding support from
+

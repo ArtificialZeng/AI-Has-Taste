@@ -1,0 +1,19 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Let phi_q(e_j)=q^(j(j-1)/2)/j! and define J_lambda by phi_q(m_lambda)=(1-q)^(n-r) q^nu(lambda) J_lambda/((n-1)! product_j a_j(lambda)!), where n=|lambda|, r=l(lambda), nu(lambda)=sum_i(i-1)lambda_i and a_j(lambda) is the multiplicity of j. For all integers a>=2,b>=0, set K_(a,b)=J_(a,1^b)/b!, d=binom(a-1,2)+(a-1)b and D=binom(a-2,2). Then K_(a,b) is in Z[q], and [q^k]K_(a,b)>0 for every integer 0<=k<=min(d,2b+3). If b>=max(0,ceil((D-4)/2)), every coefficient from degree 0 through d is strictly positive. With the established one-row cases b=0, this covers all hooks with 2<=a<=6. No assertion of optimality, log-concavity, or full all-partition positivity is made.",
+  "contribution": "A uniform coefficient-prefix argument uses the established nonnegative row excess J_m-(m-1)J_(m-1) and its degree-one coefficient to control overlap in the hook recurrence. It establishes an initial positive range for every hook and an infinite two-parameter fully positive region, improving the local support-separation cutoff max(0,D-1). The recurrence and known row/column cases are prior results. No equivalent theorem was found in the bounded primary-source comparison; correctness and contribution await a fresh referee.",
+  "proposer_job_id": "primary-20260914-brugidou-positivity-research-cd617853de0e",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research/hook-prefix-proof.md",
+    "evidence/research/hook_prefix_check.py",
+    "evidence/research/hook_prefix_check.json",
+    "literature/research-pass1-screen.md",
+    "evidence/external/2306.15300v7.html",
+    "evidence/external/2306.15300v7.txt",
+    "evidence/external/2607.00940v2.html",
+    "evidence/triage/hook-route.md"
+  ]
+}

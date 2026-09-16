@@ -1,0 +1,273 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Geometric Lexicographic Max-Cut on $K_7$]{The Continuous $n=7$ Case of Geometrically Weighted Lexicographic Max-Cut}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{29 August 2026}
+\subjclass[2020]{05C70}
+\keywords{maximum cut, geometric edge weights, lexicographic order, Sturm sequence, exact certificate}
+\hypersetup{pdftitle={The Continuous n=7 Case of Geometrically Weighted Lexicographic Max-Cut},pdfauthor={Zijian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+For the complete graph $K_7$, order edges lexicographically and give the
+$i$th edge weight $r^{21-i}$, where $1<r<2$.  We prove the $n=7$ case of
+Mari\'c's global-optimality conjecture: throughout the full continuous
+parameter interval, a maximum cut is one of the three initial-block cuts
+$C_k=\{1,\ldots,k\}\mid\{k+1,\ldots,7\}$, $k=1,2,3$.  We isolate the two
+transition parameters as unique positive roots of explicit integer
+polynomials and classify all equality cases.  The proof is a finite exact
+certificate comprising 185 rational Sturm-chain root counts and four
+threshold identities.  A standard-library verifier independently
+reconstructs all 64 cut polynomials and all 189 comparisons.  The result is
+restricted to $n=7$ and does not establish the conjecture for larger $n$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Mari\'c introduced a geometrically weighted family of Max-Cut instances on
+$K_n$ in which earlier edges in lexicographic order receive larger powers of
+a parameter $r$~\cite{Maric2026}.  She proved an exact phase diagram within
+the family of initial-block (``isolated'') cuts and conjectured that these
+cuts are globally optimal for every $n\geq 7$ and $1<r<2$
+~\cite[Theorem~4.10 and Conjecture~5.1]{Maric2026}.  The reported global
+evidence exhausts all cuts for $n\leq21$ only on a grid of mesh $0.001$;
+additional tests through $n=100$ consider a targeted near-isolated class.
+The paper explicitly distinguishes this numerical evidence from a continuum
+proof~\cite[Sections~3 and 5.1]{Maric2026}.
+
+This note closes the first case, $n=7$, over the entire open interval
+$(1,2)$.  The proof is computer-assisted but exact.  It neither samples the
+parameter nor trusts a floating-point optimizer: all cut weights are integer
+polynomials, threshold roots are isolated by rational signs, and every other
+possible crossing is excluded by Sturm's theorem over rational arithmetic.
+The accompanying verifier uses only the Python standard library and derives
+the decisive quantities independently of the SymPy discovery program.
+
+The new contribution is therefore global rather than restricted-family
+optimality: we prove that the isolated cut selected by Mari\'c's phase diagram
+beats every one of the 64 cuts of $K_7$ throughout its full parameter region,
+and we classify all ties at the two algebraic transition points.
+
+A targeted search of arXiv, DOI metadata, bibliographic indexes, and the
+source paper's public code repository located no later public exact proof of the
+continuous $n=7$ case through 29 August 2026.  This is a bounded bibliographic
+report, not a claim about unpublished or unindexed work.
+
+\section{Definitions and reductions}
+
+Let $V=[7]$ and $N=\binom72=21$.  In lexicographic order the edges are
+\[
+(1,2),(1,3),\ldots,(1,7),(2,3),\ldots,(6,7),
+\]
+and the index of $(i,j)$, $i<j$, is
+\[
+ \operatorname{idx}(i,j)=7(i-1)-\binom{i}{2}+(j-i).
+\]
+The weight of $(i,j)$ is $r^{21-\operatorname{idx}(i,j)}$.  For a cut
+$S\mid(V\setminus S)$ set
+\[
+ W_S(r)=\sum_{\substack{i<j\\ |S\cap\{i,j\}|=1}}
+ r^{21-\operatorname{idx}(i,j)}.
+\]
+Complementary subsets give the same cut.  We therefore choose the unique
+representative containing vertex 1.  Its other six membership bits enumerate
+all $2^6=64$ cuts once, including the zero cut represented by $S=V$.
+
+For $k=1,2,3$, define
+\[
+ C_k=\{1,\ldots,k\}\mid\{k+1,\ldots,7\}.
+\]
+Direct edge enumeration gives
+\begin{align*}
+W_{C_1}&=r^{20}+r^{19}+r^{18}+r^{17}+r^{16}+r^{15},\\
+W_{C_2}&=r^{19}+r^{18}+r^{17}+r^{16}+r^{15}
+ +r^{14}+r^{13}+r^{12}+r^{11}+r^{10},\\
+W_{C_3}&=r^{18}+r^{17}+r^{16}+r^{15}+r^{13}+r^{12}
+ +r^{11}+r^{10}+r^9+r^8+r^7+r^6.
+\end{align*}
+Put
+\[
+ q_2(x)=x^{13}+x^8-x^3-x^2-x-1,
+ \qquad
+ q_1(x)=x^{10}-x^4-x^3-x^2-x-1.
+\]
+Then
+\begin{equation}\label{eq:threshold-identities}
+ W_{C_2}-W_{C_3}=x^6q_2(x),\qquad
+ W_{C_1}-W_{C_2}=x^{10}q_1(x).
+\end{equation}
+
+\begin{lemma}[Exact threshold isolation]\label{lem:thresholds}
+The polynomial $q_2$ has a unique positive root $\alpha$, the polynomial
+$q_1$ has a unique positive root $\beta$, and
+\[
+ 1<\frac{539}{500}<\alpha<\frac{1079}{1000}
+ <\frac{1229}{1000}<\beta<\frac{123}{100}<2.
+\]
+Both polynomials are negative before their positive root and positive after
+it.
+\end{lemma}
+
+\begin{proof}
+After zero coefficients are omitted, each polynomial has exactly one sign
+change.  Descartes' rule gives at most one positive root.  Exact Horner
+evaluation gives
+\begin{align*}
+500^{13}q_2(539/500)
+ &=-1739575093438045166309424945633781,\\
+1000^{13}q_2(1079/1000)
+ &=24875693887459384063874283190637866839,\\
+1000^{10}q_1(1229/1000)
+ &=-15462253037576785810943471799,\\
+100^{10}q_1(123/100)
+ &=3331268605189126649.
+\end{align*}
+The intermediate value theorem proves existence in each stated interval;
+Descartes' rule proves uniqueness.  Since each constant term is negative and
+each leading coefficient is positive, the final sign assertion follows.
+\end{proof}
+
+\section{Main result}
+
+\begin{theorem}[Continuous $n=7$ global optimality]\label{thm:main}
+For every real $r\in(1,2)$ and every cut $S\mid(V\setminus S)$,
+\[
+W_S(r)\le
+\begin{cases}
+W_{C_3}(r),&1<r\le\alpha,\\
+W_{C_2}(r),&\alpha\le r\le\beta,\\
+W_{C_1}(r),&\beta\le r<2.
+\end{cases}
+\]
+Up to complementation, $C_3$ is the unique maximizer on $(1,\alpha)$,
+$C_2$ and $C_3$ are the only maximizers at $\alpha$, $C_2$ is unique on
+$(\alpha,\beta)$, $C_1$ and $C_2$ are the only maximizers at $\beta$, and
+$C_1$ is unique on $(\beta,2)$.
+\end{theorem}
+
+\section{Certificate or computational verification}
+
+We record the exact finite proposition on which the theorem rests.  For a
+target $C_k$ and a canonical competitor mask $m$, let
+\[
+ D_{k,m}(x)=W_{C_k}(x)-W_m(x).
+\]
+
+\begin{proposition}[Finite exact certificate]\label{prop:certificate}
+For every nonadjacent competitor, the indicated difference is strictly
+positive on the rational superinterval in the following table.  In the first
+row, any exact $e$th-power factor of $x-1$ is removed before applying Sturm's
+theorem.
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+target & superinterval & Sturm cases & adjacent exceptions & $\#\{e>0\}$\\
+\midrule
+$C_3$ &$[1,1079/1000]$&62&$C_2$&34\\
+$C_2$ &$[539/500,123/100]$&61&$C_3,C_1$&0\\
+$C_1$ &$[1229/1000,2]$&62&$C_2$&0\\
+\bottomrule
+\end{tabular}
+\end{center}
+The 185 residual polynomials have degree at most 20, are positive at both
+rational endpoints, and have no real root in their listed superinterval.
+The only exceptional comparisons are the four directed forms of
+~\eqref{eq:threshold-identities}.
+\end{proposition}
+
+\begin{proof}[Exact verification of Proposition~\ref{prop:certificate}]
+All 189 directed difference polynomials are serialized coefficient by
+coefficient in the certificate.
+For each of the 185 nonexceptional residuals $f$, it constructs the rational
+Sturm chain
+\[
+ f_0=f,\qquad f_1=f',\qquad
+ f_{j+1}=-\operatorname{rem}(f_{j-1},f_j).
+\]
+If $V(t)$ is the number of sign changes at $t$ after zero entries are
+discarded, direct rational evaluation gives $V(a)-V(b)=0$ at the listed
+endpoints $a<b$.  Sturm's theorem gives no root in $(a,b)$; the positive
+endpoint signs therefore give positivity throughout $[a,b]$.  Every removed
+power of $x-1$ is positive on the theorem's domain $x>1$.
+
+The independent verifier reconstructs the 21 edge exponents, all 64 weight
+polynomials by two different evaluators, all 189 differences, every exact
+division, and every Sturm chain using rational arithmetic.  It rejects
+unknown fields, missing masks, altered coefficients, endpoint roots, and
+nonzero root counts.  A clean run reports 185 Sturm cases, four threshold
+identities, maximum residual degree 20, and maximum Sturm-chain length 21.
+Thus the computation is an exact finite proof, not numerical evidence.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemma~\ref{lem:thresholds} places the portion $1<x\leq\alpha$ inside the
+first certified superinterval, $[\alpha,\beta]$ inside the second, and the
+portion $\beta\leq x<2$ inside the third.
+Proposition~\ref{prop:certificate} makes every nonadjacent
+difference strictly positive there.
+
+For the adjacent cuts,~\eqref{eq:threshold-identities} and
+Lemma~\ref{lem:thresholds} show that
+$W_{C_3}-W_{C_2}=-x^6q_2$ is positive before $\alpha$ and zero only there;
+$W_{C_2}-W_{C_1}=-x^{10}q_1$ is positive before $\beta$ and zero only there.
+Their opposite directed forms handle the phases to the right.  Hence the
+claimed cut is globally optimal in each phase.  Strict positivity for every
+nonexceptional competitor and uniqueness of the two positive threshold roots
+give the equality classification.  Complementation only changes the chosen
+representative, not the cut or its weight.
+\end{proof}
+
+\section{Equality cases and limitations}
+
+The equality cases in Theorem~\ref{thm:main} are exhaustive among unordered
+cuts.  The excluded endpoint $r=1$ has additional balanced-cut equalities and
+is not part of the conjecture.  The certificate extends to $r=2$ for the
+nonboundary comparisons, but the theorem deliberately retains the source
+problem's open parameter range.
+
+This result proves only the finite case $n=7$.  It does not establish a
+factorization pattern or an induction capable of treating $n\geq8$; the
+number of cuts grows exponentially, so the present certificate should not be
+misrepresented as a proof of the mother conjecture.
+
+\section*{Data, code, and computational disclosure}
+
+The exact certificate is the file
+\begin{center}
+{\small\path{certificates/n7_sturm_certificate.json}.}
+\end{center}
+From the project root,
+the decisive check is
+\begin{verbatim}
+python3 scripts/verify_certificate.py
+\end{verbatim}
+The discovery generator uses SymPy 1.14.0; the independent verifier uses only
+Python's standard library.  No proof assistant was used.
+
+All decisive mathematical claims are encoded in exact integer or rational data
+and independently recomputed by the released verifier; no floating-point
+output is used as a theorem.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

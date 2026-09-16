@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={Exact Hurwitz Stability of Independence Polynomials for All Trees on 21 Vertices},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact computer-assisted tree enumeration and Routh--Hurwitz certification},
+  pdfkeywords={independence polynomial, tree, Hurwitz stability, Routh test, exhaustive enumeration}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\title{Exact Hurwitz Stability of Independence Polynomials\\
+for All Trees on 21 Vertices}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 7, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a tree $T$, let $I(T,z)=\sum_k i_k(T)z^k$ be its independence
+polynomial.  We give a computer-assisted exact proof that every zero of
+$I(T,z)$ has negative real part for every tree on exactly 21 vertices.
+The proof enumerates all $2{,}144{,}505$ unlabeled trees once, computes every
+coefficient vector by integer tree dynamic programming, and applies an
+integer-scaled Routh test.  Every Routh table is regular and has a strictly
+positive first column; no singular or unstable case occurs.  A lossless
+canonical-code census and a separately implemented systematic audit provide
+checks on enumeration, polynomial construction, and stability certification.
+Thus the closed-left-half-plane question at order 21 has an affirmative
+answer, in the stronger strict sense.
+\end{abstract}
+
+\section{Statement and context}
+
+For a finite simple graph $G$, an independent set is a vertex set containing
+no edge, and
+\[
+  I(G,z)=\sum_{k=0}^{\alpha(G)}i_k(G)z^k
+\]
+counts independent sets by cardinality.  This polynomial was introduced in
+this form by Gutman and Harary~\cite{GutmanHarary1983}.  Following Brown and
+Cameron~\cite{BrownCameron2018}, we call it \emph{stable} when every zero lies
+in the closed left half-plane.  We use \emph{strictly Hurwitz stable} when all
+zeros lie in the open left half-plane.
+
+Brown and Cameron proved stability for graphs of independence number at most
+three and exhibited trees with roots arbitrarily far into the open right
+half-plane.  They also reported a computation in which every tree of order at
+most 20 was stable~\cite{BrownCameron2018}.  More recently, Zhang and Tu proved
+that every spider is strictly Hurwitz stable~\cite{ZhangTu2026}.  Those results
+do not decide the census at the next order.  The result here is limited to the
+finite order-21 question and makes no general characterization or absolute
+priority claim.
+
+\begin{theorem}\label{thm:main}
+For every finite simple tree $T$ on exactly 21 vertices, every zero of
+$I(T,z)$ has strictly negative real part.  There are $2{,}144{,}505$ unlabeled
+isomorphism classes in the exhaustive census, and none has a singular or
+unstable Routh table.
+\end{theorem}
+
+The remainder gives the mathematical reductions and the exact finite
+certificate underlying Theorem~\ref{thm:main}.
+
+\section{Complete unlabeled-tree census}
+
+The enumeration uses the free-tree generator of Wright, Richmond, Odlyzko,
+and McKay~\cite{WrightRichmondOdlyzkoMcKay1986}.  Their algorithm extends the
+Beyer--Hedetniemi rooted-tree successor and generates all nonisomorphic free
+trees of a prescribed order without repetition.  Its objects are canonical
+level sequences.  In our implementation, every vertex after the root is
+joined to the nearest earlier vertex one level above it.  The resulting graph
+is connected and has 20 edges, hence is a 21-vertex tree.
+
+We added a generator-independent duplicate check.  Repeatedly remove leaves
+to find the center or the two centers of a tree.  A rooted tree is encoded by
+an opening bit, the recursively encoded child subtrees sorted by their
+$(\text{order},\text{code})$ pairs, and a closing bit.  For a bicentered tree,
+a virtual root is attached to the two center-rooted halves before the same
+construction is applied.  Balanced-parenthesis parsing recursively recovers
+the multiset of child encodings.  Consequently, equal codes are equivalent to
+rooted isomorphism at each recursion depth, and the center convention makes
+the final code injective on unrooted isomorphism classes.
+
+At order 21 every code fits losslessly in a 64-bit unsigned integer.  Sorting
+all emitted codes gave $2{,}144{,}505$ distinct values and no collision.  The
+same total is listed independently in OEIS A000055~\cite{OEISA000055}; this
+agreement is a cross-check, while enumeration completeness comes from the
+generator theorem and the explicit implementation.
+
+\section{Exact polynomial and Routh arithmetic}
+
+Root a generated tree at the first vertex.  For each vertex $v$, let $A_v$
+and $B_v$ denote the independence polynomials of the descendant subtree,
+conditional on excluding and including $v$, respectively.
+
+\begin{lemma}\label{lem:dp}
+If the children of $v$ are $w$, then
+\[
+ A_v=\prod_w(A_w+B_w),\qquad
+ B_v=z\prod_w A_w,
+ \qquad I(T,z)=A_r+B_r.
+\]
+Thus the complete coefficient vector of $I(T,z)$ is obtained using integer
+addition and multiplication only.
+\end{lemma}
+
+\begin{proof}
+When $v$ is excluded, each child may independently be included or excluded.
+When $v$ is included, every child is excluded, and the choice of $v$
+contributes one factor of $z$.  Disjoint child subtrees make the contributions
+multiplicative.  The root has no external condition, giving the last identity.
+\end{proof}
+
+As a universal low-degree check, every computed vector begins with
+\[
+  [i_0,i_1,i_2]=[1,21,\tbinom{21}{2}-20]=[1,21,190].
+\]
+
+For completeness, we describe the exact scaling used in the Routh tables.
+Write coefficients in descending order and let $U$ and $L$ be two successive
+Routh rows, with pivot $p=L_0$.  The ordinary next-row entry is
+\begin{equation}\label{eq:routh}
+  N_j=\frac{pU_{j+1}-U_0L_{j+1}}{p}.
+\end{equation}
+Instead of retaining rationals, the program stores
+\begin{equation}\label{eq:integerrow}
+  \operatorname{sgn}(p)
+  \bigl(pU_{j+1}-U_0L_{j+1}\bigr)
+\end{equation}
+and divides the entire row only by its positive greatest common divisor.
+
+\begin{lemma}\label{lem:scaling}
+Until a zero pivot or an all-zero row is encountered, every stored row is a
+positive scalar multiple of its ordinary rational Routh row.  In particular,
+the stored first-column signs are the ordinary Routh signs.
+\end{lemma}
+
+\begin{proof}
+The first two rows are unchanged.  Suppose the stored rows are positive
+multiples $aU^*$ and $bL^*$ of the ordinary rows.  Then $p=bL^*_0$, and the
+cross-product in~\eqref{eq:integerrow} is $ab$ times the corresponding
+ordinary cross-product.  Multiplication by $\operatorname{sgn}(p)$ changes
+division by $L^*_0$ into multiplication by the positive factor $|L^*_0|$.
+The optional row-gcd division is also by a positive number.  Induction proves
+the assertion.
+\end{proof}
+
+The Routh--Hurwitz criterion~\cite{Routh1877,Hurwitz1895} now gives an exact decision:
+for a regular table the first-column sign variations count the roots in the
+open right half-plane, while the singular cases that can signal an
+imaginary-axis root are explicitly reported.  The constant coefficient of an
+independence polynomial is 1, so zero itself cannot be a root.
+
+\section{Exhaustive result and checks}
+
+The exact run was divided into 43 committed chunks.  Each tree record entering
+a chunk commitment contains its canonical code, full integer coefficient
+vector, Routh status, and exact first-column signs.  The aggregate result is
+shown in Table~\ref{tab:census}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lr}
+\toprule
+Classification & Count\\
+\midrule
+generated unlabeled trees & $2{,}144{,}505$\\
+distinct canonical codes & $2{,}144{,}505$\\
+regular tables with positive first column & $2{,}144{,}505$\\
+regular unstable tables & $0$\\
+singular Routh tables & $0$\\
+\bottomrule
+\end{tabular}
+\caption{Exact order-21 census.}\label{tab:census}
+\end{table}
+
+Lemma~\ref{lem:scaling} and Table~\ref{tab:census} show that every polynomial
+has no right-half-plane root.  Because every table is regular, no
+imaginary-axis case occurs.  This proves Theorem~\ref{thm:main}.
+
+The primary run was checked in several different ways.
+\begin{itemize}
+  \item An integrity pass verified completion, contiguous chunk indices,
+  absence of exception records, the expected binary length, and global
+  uniqueness of all canonical codes.
+  \item A separate NetworkX~3.4.2 graph-object stream regenerated the full
+  count.  At the first and last indices and every multiple of 5,000---430
+  predetermined cases---it matched canonical codes, recomputed $I(T,z)$ from
+  the vertex-deletion recurrence
+  \[
+      I(G,z)=I(G-v,z)+zI(G-N[v],z),
+  \]
+  matched a separately rooted tree dynamic program, and found every leading
+  Hurwitz determinant positive by fraction-free Bareiss elimination.
+  \item A fresh complete execution reproduced all 43 chunk classifications
+  and the entire canonical-code stream.  Small-order attacks also compared
+  the generator with labeled Prüfer-sequence enumeration through order 7 and
+  compared the polynomial dynamic program with brute-force subsets through
+  order 12.
+\end{itemize}
+
+This separation between exhaustive production and reconstructing verification
+is also used in recent exact finite graph work: for example, Zeng certifies
+$6{,}021$ graph isomorphism classes with integer witnesses and a verifier that
+reconstructs the relevant matrices~\cite{Zeng2026Whiskered}.  We cite that
+paper as methodological context only; none of its mathematical conclusions is
+used here.
+
+\section*{Reproducibility and assistance disclosure}
+
+The accompanying archive contains the decisive Python program, the 43 chunk
+records, the complete canonical-code stream, the census integrity checker,
+and the independently implemented NetworkX/Bareiss checker.  The principal
+commands from the archive root are
+\begin{verbatim}
+python3 evidence/census21.py --order 21 --output evidence/census21
+python3 evidence/audit_census21.py
+python3 evidence/independent_checks.py
+\end{verbatim}
+The decisive polynomial and Routh computations use arbitrary-precision
+integers; floating-point root approximations play no role in the theorem.
+
+OpenAI Codex assisted with literature triage, implementation and manuscript
+drafting, and a separate audit pass.  The theorem rests on the stated
+mathematical reductions, exact machine-checkable computations, and reproduced
+checks; no language-model assertion or confidence score is treated as a
+mathematical certificate.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

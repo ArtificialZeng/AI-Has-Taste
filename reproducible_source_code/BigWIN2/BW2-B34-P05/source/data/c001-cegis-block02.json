@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "tool": "code/cegis_partition_counterexample.py",
+  "property_negated": "There is no partition V=A0 disjoint-union A1 disjoint-union B with A0,A1 independent, Delta(G[A0 union A1])<=2, and Delta(G[B])<=3.",
+  "attempted_reduction_refuted": "The attempted minimum-degree-five reduction is false as an induction step because insertion can over-saturate old neighbours. The exact fixed-partition obstruction is data/false-fixed-partition-extension.json. Only the trivial minimum-degree-at-least-two reduction remains proved.",
+  "common_graph_constraints": {
+    "finite_simple_labelled_graph": true,
+    "triangle_free": true,
+    "maximum_degree_at_most": 6
+  },
+  "environment": {
+    "z3": "4.15.3",
+    "python": "3"
+  },
+  "runs": [
+    {
+      "command": "python3 code/cegis_partition_counterexample.py 11 --minimum-degree 5 --timeout-ms 300000 --progress-every 100",
+      "order": 11,
+      "minimum_degree_at_least": 5,
+      "timeout_ms": 300000,
+      "elapsed_ms": 125294,
+      "graph_candidates_checked": 462,
+      "partition_blockers_added": 462,
+      "status": "unsat"
+    },
+    {
+      "command": "python3 code/cegis_partition_counterexample.py 12 --minimum-degree 5 --timeout-ms 300000 --progress-every 100",
+      "order": 12,
+      "minimum_degree_at_least": 5,
+      "timeout_ms": 300000,
+      "elapsed_ms": 302746,
+      "graph_candidates_checked": 430,
+      "partition_blockers_added": 430,
+      "status": "timeout"
+    },
+    {
+      "command": "python3 code/cegis_partition_counterexample.py 11 --minimum-degree 0 --timeout-ms 300000 --progress-every 100",
+      "order": 11,
+      "minimum_degree_at_least": 0,
+      "timeout_ms": 300000,
+      "elapsed_ms": 302910,
+      "graph_candidates_checked": 791,
+      "partition_blockers_added": 791,
+      "status": "timeout"
+    },
+    {
+      "command": "python3 code/cegis_partition_counterexample.py 11 --minimum-degree 2 --timeout-ms 300000 --progress-every 100",
+      "order": 11,
+      "minimum_degree_at_least": 2,
+      "timeout_ms": 300000,
+      "elapsed_ms": 303820,
+      "graph_candidates_checked": 808,
+      "partition_blockers_added": 808,
+      "status": "timeout"
+    },
+    {
+      "command": "python3 code/cegis_partition_counterexample.py 11 --minimum-degree 2 --degree-ordering --timeout-ms 300000 --progress-every 100",
+      "order": 11,
+      "minimum_degree_at_least": 2,
+      "degree_ordering": "d(0)>=d(1)>=...>=d(10); sound because every graph has a degree-sorted relabelling",
+      "timeout_ms": 300000,
+      "elapsed_ms": 300028,
+      "graph_candidates_checked": 354,
+      "partition_blockers_added": 354,
+      "status": "unknown",
+      "interpretation": "The solver did not finish within the fixed window; this is inconclusive."
+    }
+  ],
+  "cross_check": {
+    "command_lazy": "python3 code/cegis_partition_counterexample.py 6 --minimum-degree 0 --timeout-ms 30000 --progress-every 0",
+    "command_explicit": "python3 code/synthesize_partition_counterexample.py 6 --timeout-ms 30000",
+    "common_status": "unsat",
+    "lazy_graph_candidates_checked": 11,
+    "lazy_elapsed_ms": 130,
+    "explicit_assignments_blocked": 729,
+    "degree_ordered_lazy_command": "python3 code/cegis_partition_counterexample.py 6 --minimum-degree 0 --degree-ordering --timeout-ms 30000 --progress-every 0",
+    "degree_ordered_lazy_status": "unsat",
+    "degree_ordered_lazy_graph_candidates_checked": 4,
+    "degree_ordered_lazy_elapsed_ms": 57
+  },
+  "interpretation": "The order-11 UNSAT result excludes only the minimum-degree-at-least-five stratum at that order. The unrestricted order-11, both soundly reduced minimum-degree-two order-11 variants, and minimum-degree-five order-12 runs did not finish and are inconclusive. Prior exhaustive solver evidence therefore remains only through order 10.",
+  "limitation": "The restricted order-11 UNSAT result has no exported DRAT/LRAT or other independently checked proof trace. The attempted reduction justifying the degree-five restriction was refuted. None of the timeouts supplies evidence, and no unbounded conclusion follows."
+}

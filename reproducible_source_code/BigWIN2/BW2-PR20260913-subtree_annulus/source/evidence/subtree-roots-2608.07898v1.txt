@@ -1,0 +1,818 @@
+ 
+
+ A proof of a conjecture on subtree roots 
+
+ Report GitHub Issue
+
+ × 
+
+ Title: 
+
+ Content selection saved. Describe the issue below:
+
+ Description: 
+
+ Submit without GitHub 
+ Submit in GitHub 
+
+ arXiv is now an independent nonprofit! 
+ Learn more 
+ × 
+
+ Back to arXiv 
+
+ Why HTML? 
+
+ Report Issue 
+
+ Back to Abstract 
+
+ Download PDF 
+
+ Abstract 
+ 1 Introduction 
+ 2 Preliminaries 
+ 3 Proof of Theorem 
+ 4 A lower bound and sharpness results 
+ 5 Concluding remarks 
+ References 
+
+ License: arXiv.org perpetual non-exclusive license
+
+arXiv:2608.07898v1 [math.CO] 08 Aug 2026
+
+ A proof of a conjecture on subtree roots
+
+ Xian’an Jin a,b , Tianlong Ma c, , Yi Wang d 
+
+ a School of Mathematics and Statistics
+
+Qinghai Minzu University
+
+P. R. China
+ b School of Mathematical Sciences
+
+Xiamen University
+
+P. R. China
+ c School of Science
+
+Jimei University
+
+P. R. China
+ d School of Mathematical Sciences
+
+Anhui University
+
+P. R. China
+ Email: xajin@xmu.edu.cn, tianlongma@aliyun.com, wangy@ahu.edu.cn 
+
+ Note:  Corresponding author.
+
+ Abstract
+
+ The subtree polynomial of a tree is the generating function that
+enumerates its subtrees according to their orders. Brown and Mol
+conjectured that every subtree root of a tree of order n\geq 2
+lies in the disk
+
+ \left\{z\in\mathbb{C}:|z|\leq 1+\sqrt[n-1]{n-1}\right\}. 
+
+ We confirm this conjecture. We also show that every nonzero subtree
+root z satisfies
+
+ |z|>\sqrt[n-1]{n-1}-1. 
+
+ Consequently, all nonzero subtree roots lie in the annular region
+
+ \left\{z\in\mathbb{C}:\sqrt[n-1]{n-1}-1<|z|\leq 1+\sqrt[n-1]{n-1}\right\}. 
+
+ The upper bound is sharp for every even n and is
+asymptotically sharp as n\to\infty through odd integers.
+The lower bound is also asymptotically sharp as n\to\infty.
+
+ Keywords: 
+
+subtree polynomial; subtree root
+
+ 2020 MSC
+ 05C31
+
+ 1 Introduction
+
+ Let T be a tree of order n, and let s_{k}(T) denote the number of
+subtrees of T with k vertices.
+The subtree polynomial of T, introduced by Jamison in [ 2 ] ,
+is
+
+ \Phi_{T}(x)=\sum_{k=1}^{n}s_{k}(T)x^{k}. 
+
+ Subtree enumeration and the distribution of subtree orders have been studied
+from several perspectives, including extremal enumeration, average subtree
+order, and local subtree statistics; see, for example,
+ [ 2 , 3 , 5 , 6 , 7 , 8 , 9 , 10 ] .
+The zeros of \Phi_{T} are called subtree roots .
+
+ In [ 4 ] , Brown and Mol established a universal upper bound on the moduli
+of subtree roots.
+
+ Theorem 1.1 . 
+
+ [ 4 ] 
+The subtree roots of every tree T lie in the disk 
+
+ \{z\in\mathbb{C}:|z|\leq 1+\sqrt[3]{3}\}, 
+
+ and the only tree with a subtree root on the boundary of this disk is K_{1,3}. 
+
+ Brown and Mol further proposed an order-dependent refinement of Theorem 1.1 .
+
+ Conjecture 1.2 . 
+
+ [ 4 ] 
+Let T be a tree of order n\geq 2. Then the subtree roots of T lie in the disk 
+
+ \{z\in\mathbb{C}:|z|\leq 1+\sqrt[n-1]{n-1}\}. 
+
+ For n\geq 4, the radius in Conjecture 1.2 is strictly decreasing
+with n, so the
+inductive argument used for the universal disk cannot be applied directly:
+passing to a proper subtree changes the target radius in the wrong direction.
+To overcome this difficulty, we introduce a recursively defined quantity that
+controls, at a fixed modulus, the ratio between the subtree polynomial of a
+vertex-deleted forest and the local subtree polynomial at the deleted vertex.
+A sharp estimate for this ratio at the conjectured radius then yields the
+desired zero-free region.
+
+ Our main result confirms this conjecture.
+
+ Theorem 1.3 . 
+
+ Let T be a tree of order n\geq 2. Then the subtree roots of T lie in the disk 
+
+ \{z\in\mathbb{C}:|z|\leq 1+\sqrt[n-1]{n-1}\}. 
+
+ The remainder of the paper is organized as follows. In Section 2, we develop the
+local decomposition formulas and the recursive comparison estimate needed for
+the proof of Theorem  1.3 .
+In Section 3, we shall prove Theorem  1.3 . In Section 4, we provide a lower bound on the modulus of nonzero complex subtree roots and discuss the sharpness of our upper and lower bounds. In the final section, we recall a stronger conjecture of Brown and
+Mol that implies Conjecture 1.2 .
+
+ 2 Preliminaries
+
+ We first list several related definitions and observations on the subtree polynomial which have appeared in the literature. In [ 4 ] , the definition of subtree polynomial was extended to forests, as forests were regarded as vertex-deleted subgraphs of trees. If F is a forest with components T_{1},\ldots,T_{k}, then the subtree polynomial of F is given by
+
+ \varPhi_{F}(x)=\sum_{i=1}^{k}\varPhi_{T_{i}}(x). 
+
+ Let T be a tree of order n, and let v\in V(T).
+For each k\in\{1,\ldots,n\}, let s_{k}(T,v) denote the number of subtrees of T of order k containing v. Then the local subtree polynomial of T at v, introduced in [ 2 ] , is defined by
+
+ \varPhi_{T,v}(x)=\sum_{k=1}^{n}s_{k}(T,v)x^{k}. 
+
+ For any vertex u of a tree T, every subtree of T either contains u or is contained in T-u.
+Consequently,
+
+ \Phi_{T}(x)=\Phi_{T,u}(x)+\Phi_{T-u}(x). 
+
+ (2.1) 
+
+ Let T_{1},\dots,T_{d} be the components of T-u, where d is the degree of the vertex u in T, and let u_{i} be the
+unique neighbor of u in T_{i}. A subtree containing u is obtained by
+choosing, independently for each i, either no vertex of T_{i} or a
+subtree of T_{i} containing u_{i}. Hence
+
+ \Phi_{T,u}(x)=x\prod_{i=1}^{d}\bigl(1+\Phi_{T_{i},u_{i}}(x)\bigr). 
+
+ (2.2) 
+
+ We shall use the following lower bound given by Brown and Mol in [ 4 ] .
+
+ Lemma 2.1 . 
+
+ [ 4 ] 
+Let T be a tree of order n, and let z\in\mathbb{C} with |z|\geq 2. Then for every vertex v of T,
+|\Phi_{T,v}(z)|\geq|z|(|z|-1)^{n-1}. 
+
+ In order to estimate |\Phi_{T-u}(z)|/|\Phi_{T,u}(z)| in the next section, we introduce several auxiliary functions and establish the required
+monotonicity properties.
+
+ Let c_{1},\dots,c_{d}>0, and define
+
+ H_{\bm{c}}(x_{1},\dots,x_{d})=\frac{\sum_{i=1}^{d}c_{i}x_{i}}{\prod_{i=1}^{d}(x_{i}-1)}. 
+
+ Lemma 2.2 . 
+
+ If 1<x_{i}\leq y_{i} for every i=1,\dots,d, then 
+
+ H_{\bm{c}}(y_{1},\dots,y_{d})\leq H_{\bm{c}}(x_{1},\dots,x_{d}). 
+
+ Moreover, the inequality is strict if there exists an index j such that x_{j}<y_{j}. 
+
+ Proof.
+
+ For each j, since 
+
+ \frac{\partial H_{\bm{c}}}{\partial x_{j}}=-\frac{c_{j}+\sum_{i\neq j}c_{i}x_{i}}{(x_{j}-1)\prod_{i=1}^{d}(x_{i}-1)}<0, 
+
+ it follows that H_{\bm{c}}(x_{1},\dots,x_{d})
+is strictly decreasing in each variable x_{j} on (1,+\infty). 
+
+ Set 
+
+ \bm{w}_{0}=(x_{1},\dots,x_{d}), 
+
+ and, for j=1,\dots,d, define 
+
+ \bm{w}_{j}=(y_{1},\dots,y_{j},x_{j+1},\dots,x_{d}). 
+
+ Clearly, 
+
+ \bm{w}_{d}=(y_{1},y_{2},\dots,y_{d}). 
+
+ For each j, the vectors \bm{w}_{j-1} and
+\bm{w}_{j} differ only in their j-th coordinate, and x_{j}\leq y_{j}. Since H_{\bm{c}}(x_{1},\dots,x_{d})
+is strictly decreasing in each variable x_{j} on (1,\infty), we have 
+
+ H_{\bm{c}}\bigl(\bm{w}_{j}\bigr)\leq H_{\bm{c}}\bigl(\bm{w}_{j-1}\bigr) 
+
+ with strict inequality whenever x_{j}<y_{j}. Thus 
+
+ H_{\bm{c}}\bigl(\bm{w}_{d}\bigr)\leq H_{\bm{c}}\bigl(\bm{w}_{d-1}\bigr)\leq\ldots\leq H_{\bm{c}}\bigl(\bm{w}_{0}\bigr) 
+
+ This completes the proof.
+∎ 
+
+ For n\geq 1 and r\geq 2, define
+
+ \lambda_{n}(r)=r(r-1)^{n-1}. 
+
+ For a positive integer n, let \mathcal{C}(n) denote the set of all
+compositions of n into positive integers. Define B_{1}(r)=0, and
+for n\geq 2 define
+
+ B_{n}(r)=\max_{(n_{1},\dots,n_{d})\in\mathcal{C}(n-1)}\frac{\displaystyle\sum_{i=1}^{d}\lambda_{n_{i}}(r)\bigl(1+B_{n_{i}}(r)\bigr)}{\displaystyle r\prod_{i=1}^{d}\bigl(\lambda_{n_{i}}(r)-1\bigr)}. 
+
+ This recursion is well defined because every part n_{i} is
+smaller than n, the set \mathcal{C}(n-1) is finite, and
+\lambda_{n_{i}}(r)-1\geq 1>0
+for r\geq 2.
+For illustration, the first two nontrivial functions in this recursion can be computed explicitly:
+
+ B_{2}(r)=\frac{1}{r-1}, 
+
+ and
+
+ B_{3}(r)=\max\left\{\frac{r}{r^{2}-r-1},\frac{2}{(r-1)^{2}}\right\}=\begin{cases}\displaystyle\frac{2}{(r-1)^{2}},&2\leq r\leq 1+\sqrt{2},\\[8.61108pt]
+\displaystyle\frac{r}{r^{2}-r-1},&r\geq 1+\sqrt{2}.\end{cases} 
+
+ Lemma 2.3 . 
+
+ For every integer n\geq 2, the function B_{n}(r) is strictly decreasing in
+r on [2,+\infty). 
+
+ Proof.
+
+ We use induction on n.
+For n=2, 
+
+ B_{2}(r)=\frac{1}{r-1}, 
+
+ which is strictly decreasing for r\geq 2. 
+
+ Now let n\geq 3, and assume that B_{j}(r) is strictly decreasing for every
+2\leq j<n. Recall that B_{1}(r)=0, so B_{1}(r) is nonincreasing as well. 
+
+ Fix a composition 
+
+ \bm{n}=(n_{1},\dots,n_{d})\in\mathcal{C}(n-1), 
+
+ and define 
+
+ E_{\bm{n}}(r)=\frac{\displaystyle\sum_{i=1}^{d}\lambda_{n_{i}}(r)\left(1+B_{n_{i}}(r)\right)}{\displaystyle r\prod_{i=1}^{d}\left(\lambda_{n_{i}}(r)-1\right)}. 
+
+ We first prove that E_{\bm{n}}(r) is strictly decreasing. 
+
+ Take two real numbers such that 2\leq r_{1}<r_{2}. For j\in\{1,2\}, write 
+
+ x_{i}^{(j)}=\lambda_{n_{i}}(r_{j}), 
+
+ and 
+
+ c_{i}^{(j)}=1+B_{n_{i}}(r_{j}). 
+
+ Since, for every integer k\geq 1, the function \lambda_{k}(r)=r(r-1)^{k-1}
+is strictly increasing in r\in[2,\infty), we have x_{i}^{(1)}<x_{i}^{(2)}
+for every i. By the induction hypothesis and the fact that B_{1}=0 when n_{i}=1,
+we have c_{i}^{(2)}\leq c_{i}^{(1)}
+for every i. 
+
+ For a coefficient vector \bm{c}=(c_{1},\dots,c_{d}), write 
+
+ H_{\bm{c}}(x_{1},\dots,x_{d})=\frac{\sum_{i=1}^{d}c_{i}x_{i}}{\prod_{i=1}^{d}(x_{i}-1)}. 
+
+ Then 
+
+ E_{\bm{n}}(r_{j})=\frac{1}{r_{j}}H_{\bm{c}^{(j)}}\!\left(x_{1}^{(j)},\dots,x_{d}^{(j)}\right). 
+
+ Note that x_{i}>1 for 1\leq i\leq d. The function H_{\bm{c}}(x_{1},\dots,x_{d}) is strictly increasing in each coefficient
+c_{i}. Therefore 
+
+ \displaystyle H_{\bm{c}^{(2)}}\!\left(x_{1}^{(2)},\dots,x_{d}^{(2)}\right)\leq H_{\bm{c}^{(1)}}\!\left(x_{1}^{(2)},\dots,x_{d}^{(2)}\right). 
+
+ Since x_{i}^{(1)}<x_{i}^{(2)} for every i,
+by Lemma  2.2 , we have 
+
+ \displaystyle H_{\bm{c}^{(1)}}\!\left(x_{1}^{(2)},\dots,x_{d}^{(2)}\right)<H_{\bm{c}^{(1)}}\!\left(x_{1}^{(1)},\dots,x_{d}^{(1)}\right). 
+
+ Then 
+
+ H_{\bm{c}^{(2)}}\!\left(x_{1}^{(2)},\dots,x_{d}^{(2)}\right)<H_{\bm{c}^{(1)}}\!\left(x_{1}^{(1)},\dots,x_{d}^{(1)}\right). 
+
+ Since 1/r_{2}<1/r_{1}, H_{\bm{c}^{(2)}}\!\left(x_{1}^{(2)},\dots,x_{d}^{(2)}\right)\geq 0 and H_{\bm{c}^{(1)}}\!\left(x_{1}^{(1)},\dots,x_{d}^{(1)}\right)\geq 0, we have 
+
+ \displaystyle E_{\bm{n}}(r_{2})=\frac{1}{r_{2}}H_{\bm{c}^{(2)}}\!\left(x_{1}^{(2)},\dots,x_{d}^{(2)}\right)<\frac{1}{r_{1}}H_{\bm{c}^{(1)}}\!\left(x_{1}^{(1)},\dots,x_{d}^{(1)}\right)=E_{\bm{n}}(r_{1}). 
+
+ Thus, for every fixed composition
+\bm{n}\in\mathcal{C}(n-1), the function E_{\bm{n}} is strictly decreasing. 
+
+ Finally, choose a composition \bm{n}_{2}\in\mathcal{C}(n-1) for which
+B_{n}(r_{2})=E_{\bm{n}_{2}}(r_{2}). Then 
+
+ B_{n}(r_{1})\geq E_{\bm{n}_{2}}(r_{1})>E_{\bm{n}_{2}}(r_{2})=B_{n}(r_{2}). 
+
+ Hence B_{n}(r) is strictly decreasing in
+r on [2,+\infty).
+∎ 
+
+ For n\geq 5, define
+
+ a_{n}=(n-1)^{1/(n-1)} 
+
+ and
+
+ \gamma_{n}=1+a_{n}. 
+
+ We now establish two elementary inequalities involving a_{n}.
+
+ Lemma 2.4 . 
+
+ For every integer k with 2\leq k\leq n-1, one has a_{n}^{k}\leq k. 
+
+ Proof.
+
+ The function x^{1/x} is decreasing on [e,\infty). If
+3\leq k\leq n-1, then 
+
+ a_{n}=(n-1)^{1/(n-1)}\leq k^{1/k}, 
+
+ and hence a_{n}^{k}\leq k. For k=2, since n-1\geq 4, 
+
+ a_{n}=(n-1)^{1/(n-1)}\leq 4^{1/4}=\sqrt{2}, 
+
+ so again a_{n}^{2}\leq 2.
+∎ 
+
+ For 1\leq k\leq n-1, define
+
+ q_{k}=1+a_{n}^{-1}-a_{n}^{-k}. 
+
+ Then q_{k}\geq 1, and
+
+ (1+a)a_{n}^{k-1}-1=a_{n}^{k}q_{k}. 
+
+ (2.3) 
+
+ Lemma 2.5 . 
+
+ Let m_{1},\dots,m_{d} be positive integers such that
+m_{1}+\cdots+m_{d}=m\leq n-1. Then 
+
+ \sum_{i=1}^{d}\bigl(a_{n}^{m_{i}-1}+m_{i}-1\bigr)\leq m\prod_{i=1}^{d}q_{m_{i}}. 
+
+ Proof.
+
+ We first show that 
+
+ a_{n}^{k-1}+k-1\leq kq_{k}\qquad(1\leq k\leq n-1). 
+
+ For k=1, equality holds. For k\geq 2, Lemma  2.4 gives 
+
+ a_{n}^{k}\bigl(kq_{k}-a_{n}^{k-1}-k+1\bigr)=(k-a_{n}^{k})(a_{n}^{k-1}-1)\geq 0. 
+
+ Therefore, 
+
+ \sum_{i=1}^{d}\bigl(a_{n}^{m_{i}-1}+m_{i}-1\bigr)\leq\sum_{i=1}^{d}m_{i}q_{m_{i}}. 
+
+ Since every q_{m_{i}}\geq 1, we have 
+
+ \sum_{i=1}^{d}m_{i}q_{m_{i}}\leq\sum_{i=1}^{d}m_{i}\prod_{j=1}^{d}q_{m_{j}}=m\prod_{j=1}^{d}q_{m_{j}}. 
+
+ ∎ 
+
+ We now combine the preceding two elementary inequalities to obtain the required upper bound for B_{m}(\gamma_{n}).
+
+ Lemma 2.6 . 
+
+ Let n be an integer with n\geq 5. Then, for each integer m with 1\leq m\leq n, 
+
+ B_{m}(\gamma_{n})\leq\frac{m-1}{a_{n}^{m-1}}. 
+
+ Proof.
+
+ For a fixed n\geq 5, we use induction on m. The assertion is immediate for m=1. Let
+m\geq 2, and assume the result for all smaller indices. Fix a composition
+(m_{1},\dots,m_{d})\in\mathcal{C}(m-1). Since
+\lambda_{k}(\gamma_{n})=(1+a_{n})a_{n}^{k-1}, we, by the induction hypothesis, have 
+
+ \lambda_{m_{i}}(\gamma_{n})\bigl(1+B_{m_{i}}(\gamma_{n})\bigr)\leq(1+a_{n})\bigl(a_{n}^{m_{i}-1}+m_{i}-1\bigr). 
+
+ Therefore 
+
+ \sum_{i=1}^{d}\lambda_{m_{i}}(\gamma_{n})\bigl(1+B_{m_{i}}(\gamma_{n})\bigr)\leq(1+a_{n})\sum_{i=1}^{d}\bigl(a_{n}^{m_{i}-1}+m_{i}-1\bigr)\leq(1+a_{n})(m-1)\prod_{i=1}^{d}q_{m_{i}}, 
+
+ where the last inequality holds by Lemma 2.5 .
+By Equation ( 2.3 ) and the fact m_{1}+\cdots+m_{d}=m-1, 
+
+ \prod_{i=1}^{d}\bigl(\lambda_{m_{i}}(\gamma_{n})-1\bigr)=\prod_{i=1}^{d}\bigl((1+a_{n})a_{n}^{m_{i}-1}-1\bigr)=a_{n}^{m-1}\prod_{i=1}^{d}q_{m_{i}}. 
+
+ Therefore 
+
+ \frac{\displaystyle\sum_{i=1}^{d}\lambda_{m_{i}}(\gamma_{n})\bigl(1+B_{m_{i}}(\gamma_{n})\bigr)}{\displaystyle\gamma_{n}\prod_{i=1}^{d}\bigl(\lambda_{m_{i}}(\gamma_{n})-1\bigr)}\leq\frac{(1+a_{n})(m-1)\prod_{i=1}^{d}q_{m_{i}}}{(1+a_{n})a_{n}^{m-1}\prod_{i=1}^{d}q_{m_{i}}}\leq\frac{m-1}{a_{n}^{m-1}}. 
+
+ Taking the maximum over all compositions of m-1 proves the conclusion.
+∎ 
+
+ 3 Proof of Theorem 1.3 
+
+ The next lemma is the central comparison estimate.
+
+ Lemma 3.1 . 
+
+ Let T be a tree of order n, let u\in V(T), and let
+z\in\mathbb{C} satisfy |z|=r\geq 2. Then 
+
+ |\Phi_{T-u}(z)|\leq B_{n}(r)|\Phi_{T,u}(z)|. 
+
+ Proof.
+
+ We proceed by induction on n. If n=1, then T-u is empty and the
+left-hand side is zero. 
+
+ Assume n\geq 2. Let T_{1},\dots,T_{d} be the components of T-u, rooted
+at the corresponding neighbors u_{1},\dots,u_{d} of u, and let
+n_{i}=|V(T_{i})|. For convenience, set 
+
+ L_{i}=\Phi_{T_{i},u_{i}}(z) 
+
+ and 
+
+ F_{i}=\Phi_{T_{i}-u_{i}}(z). 
+
+ By the induction hypothesis, 
+
+ |F_{i}|\leq B_{n_{i}}(r)|L_{i}|. 
+
+ Since \Phi_{T_{i}}(z)=L_{i}+F_{i} and
+\Phi_{T-u}(z)=\sum_{i}\Phi_{T_{i}}(z), we obtain 
+
+ |\Phi_{T-u}(z)|\leq\sum_{i=1}^{d}\bigl(|F_{i}|+|L_{i}|\bigr)\leq\sum_{i=1}^{d}\bigl(1+B_{n_{i}}(r)\bigr)|L_{i}|. 
+
+ On the other hand, the product formula ( 2.2 ) and the
+reverse triangle inequality give 
+
+ |\Phi_{T,u}(z)|=r\prod_{i=1}^{d}|1+L_{i}|\geq r\prod_{i=1}^{d}\bigl(|L_{i}|-1\bigr). 
+
+ By Lemma  2.1 , we have 
+
+ |L_{i}|\geq\lambda_{n_{i}}(r)>1, 
+
+ and then |\Phi_{T,u}(z)|>0.
+Consequently, 
+
+ \frac{|\Phi_{T-u}(z)|}{|\Phi_{T,u}(z)|}\leq\frac{\sum_{i=1}^{d}|L_{i}|\bigl(1+B_{n_{i}}(r)\bigr)}{r\prod_{i=1}^{d}(|L_{i}|-1)}\leq\frac{\sum_{i=1}^{d}\lambda_{n_{i}}(r)\bigl(1+B_{n_{i}}(r)\bigr)}{r\prod_{i=1}^{d}(\lambda_{n_{i}}(r)-1)}, 
+
+ where the last inequality holds by Lemma  2.2 .
+By the definition of
+B_{n}(r), we have 
+
+ \frac{\sum_{i=1}^{d}\lambda_{n_{i}}(r)\bigl(1+B_{n_{i}}(r)\bigr)}{r\prod_{i=1}^{d}(\lambda_{n_{i}}(r)-1)}\leq B_{n}(r). 
+
+ Thus 
+
+ \frac{|\Phi_{T-u}(z)|}{|\Phi_{T,u}(z)|}\leq B_{n}(r). 
+
+ This completes the proof. ∎ 
+
+ We now prove Theorem  1.3 .
+
+ Proof of Theorem  1.3 .
+
+ For n=2, the only tree is P_{2}, and 
+
+ \Phi_{P_{2}}(z)=z(z+2), 
+
+ so the assertion is immediate. For n=3, the only tree is P_{3}, and 
+
+ \Phi_{P_{3}}(z)=z(z^{2}+2z+3). 
+
+ Its two nonzero roots have modulus \sqrt{3}<1+\sqrt{2}. For n=4, the
+required radius is 1+\sqrt[3]{3}, so the result follows from
+Theorem  1.1 . 
+
+ Now assume that n\geq 5.
+Let z\in\mathbb{C} satisfy |z|=r>\gamma_{n}, and choose any vertex
+u\in V(T). Since \gamma_{n}>2, Lemma  3.1 gives 
+
+ |\Phi_{T-u}(z)|\leq B_{n}(r)|\Phi_{T,u}(z)|. 
+
+ By Lemmas 2.3 and 2.6 , 
+
+ B_{n}(r)<B_{n}(\gamma_{n})\leq\frac{n-1}{a_{n}^{n-1}}=1. 
+
+ Consequently, 
+
+ |\Phi_{T-u}(z)|<|\Phi_{T,u}(z)|. 
+
+ By Equation ( 2.1 ) and the reverse triangle inequality, we have 
+
+ |\Phi_{T}(z)|\geq|\Phi_{T,u}(z)|-|\Phi_{T-u}(z)|>0. 
+
+ Thus \Phi_{T}(z)\neq 0 whenever |z|>\gamma_{n}.
+The proof is complete.
+∎ 
+
+ 4 A lower bound and sharpness results
+
+ To establish a lower bound on the modulus” of nonzero complex subtree roots, the following result is essential.
+
+ Lemma 4.1 . 
+
+ [ 2 ] 
+Let T be a tree of order n. Then s_{1}(T)=n and for k=2,\ldots,n, 
+
+ n-k+1\leq s_{k}(T)\leq\binom{n-1}{k-1}. 
+
+ We now give the lower bound on the modulus” of nonzero complex subtree roots.
+
+ Theorem 4.2 . 
+
+ Let T be a tree of order n\geq 3. Then every nonzero subtree root of T satisfies 
+
+ |z|>\sqrt[n-1]{n-1}-1. 
+
+ Proof.
+
+ It suffices to prove that for 0<|z|\leq\sqrt[n-1]{n-1}-1, 
+
+ \left|\frac{\varPhi_{T}(z)}{z}\right|\geq 2. 
+
+ Note that s_{1}(T)=n for any tree T of order n. By the reverse triangle inequality and Lemma 4.1 , we have 
+
+ \displaystyle\left|\frac{\varPhi_{T}(z)}{z}\right| 
+ \displaystyle=\left|s_{n}(T)z^{n-1}+s_{n-1}(T)z^{n-2}+\cdots+s_{2}(T)z+n\right| 
+
+ \displaystyle\geq n-\left(s_{n}(T)|z|^{n-1}+s_{n-1}(T)|z|^{n-2}+\cdots+s_{2}(T)|z|\right) 
+
+ \displaystyle\geq n-\left(\binom{n-1}{n-1}|z|^{n-1}+\binom{n-1}{n-2}|z|^{n-2}+\cdots+\binom{n-1}{1}|z|+1-1\right) 
+
+ \displaystyle=n+1-(|z|+1)^{n-1} 
+
+ \displaystyle\geq 2. 
+
+ This completes the proof.
+∎ 
+
+ We examine the sharpness of the upper and lower bounds on the modulus of subtree roots. In this section,
+for any integer n\geq 2, define
+
+ a_{n}=(n-1)^{1/(n-1)}. 
+
+ For the star K_{1,n-1}, we have
+
+ \Phi_{K_{1,n-1}}(z)=z\bigl((z+1)^{n-1}+n-1\bigr). 
+
+ Hence its nonzero subtree roots are
+
+ z_{k}=a_{n}\cos\left(\frac{2k-1}{n-1}\pi\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{2k-1}{n-1}\pi\right),\qquad k=1,2,\ldots,n-1. 
+
+ We first consider the upper bound in Theorem 1.3. If n is even,
+then k=n/2 is an integer and
+
+ z_{n/2}=-1-a_{n}. 
+
+ Clearly, the upper bound in Theorem  1.3 is sharp for every even n.
+Now suppose that n is odd, and set
+
+ k=\frac{n-1}{2}. 
+
+ Then
+
+ \frac{(2k-1)\pi}{n-1}=\pi-\frac{\pi}{n-1}, 
+
+ and hence
+
+ z_{k}=-a_{n}\cos\left(\frac{\pi}{n-1}\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{\pi}{n-1}\right). 
+
+ It follows that
+
+ \displaystyle|z_{k}|^{2} 
+ \displaystyle=a_{n}^{2}+1+2a_{n}\cos\left(\frac{\pi}{n-1}\right) 
+
+ \displaystyle=(1+a_{n})^{2}-2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right). 
+
+ Therefore,
+
+ \frac{|z_{k}|^{2}}{(1+a_{n})^{2}}=1-\frac{2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right)}{(1+a_{n})^{2}}. 
+
+ Since
+a_{n}\rightarrow 1 and
+1-\cos\left(\frac{\pi}{n-1}\right)\rightarrow 0 as n\to\infty,
+we obtain
+
+ \lim_{\begin{subarray}{c}n\to\infty\\
+n\ {\rm odd}\end{subarray}}\frac{|z_{k}|^{2}}{(1+a_{n})^{2}}=1, 
+
+ and consequently
+
+ \lim_{\begin{subarray}{c}n\to\infty\\
+n\ {\rm odd}\end{subarray}}\frac{|z_{k}|}{1+a_{n}}=1. 
+
+ Thus the upper bound in Theorem 1.3 is asymptotically sharp as
+n\to\infty through odd integers.
+
+ We next consider the lower bound in Theorem 4.2. Taking k=1, we
+have
+
+ z_{1}=a_{n}\cos\left(\frac{\pi}{n-1}\right)-1+\mathrm{i}\cdot a_{n}\sin\left(\frac{\pi}{n-1}\right). 
+
+ Then
+
+ \displaystyle|z_{1}|^{2} 
+ \displaystyle=a_{n}^{2}+1-2a_{n}\cos\left(\frac{\pi}{n-1}\right) 
+
+ \displaystyle=(a_{n}-1)^{2}+2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right), 
+
+ and
+
+ \frac{|z_{1}|^{2}}{(a_{n}-1)^{2}}=1+\frac{2a_{n}\left(1-\cos\left(\frac{\pi}{n-1}\right)\right)}{(a_{n}-1)^{2}}. 
+
+ A direct calculation gives
+
+ \lim_{n\to\infty}\frac{|z_{1}|^{2}}{(a_{n}-1)^{2}}=1, 
+
+ and consequently
+
+ \lim_{n\to\infty}\frac{|z_{1}|}{a_{n}-1}=1. 
+
+ Hence the lower bound in Theorem 4.2 is asymptotically sharp.
+
+ 5 Concluding remarks
+
+ In this paper, we confirm the conjecture proposed by Brown and Mol.
+We also give a lower bound on the modulus” of nonzero complex subtree roots.
+
+ Brown and Mol observed numerically in  [ 4 ] that the
+complex subtree roots appear to be distributed approximately around
+the point -1/2. They proposed the following conjecture, which
+strengthens Theorem 1.3 , and verified it computationally for all
+trees of order at most 18.
+
+ Conjecture 5.1 . 
+
+ [ 4 ] 
+If T is a tree of order n\geq 2, then the subtree roots of T are contained in the annulus 
+
+ \left\{z\in\mathbb{C}:\frac{1}{2}\leq\left|z+\frac{1}{2}\right|\leq\frac{1}{2}+\sqrt[n-1]{n-1}\right\}. 
+
+ Figure 1: Subtree roots of all nonisomorphic trees of order 13.
+Write a_{13}=\sqrt[12]{12}\approx 1.2301. The green circles
+|z|=1+a_{13} and
+|z|=a_{13}-1
+correspond to the bounds in
+Theorems  1.3 and  4.2 , respectively. The red circles |z+1/2|=1/2
+and
+|z+1/2|=1/2+a_{13}
+correspond to the two bounds in Conjecture 5.1 , respectively. 
+
+ For comparison, Figure  1 shows the subtree roots of
+all nonisomorphic trees of order 13, together with the boundary circles
+arising from Theorems  1.3 and  4.2 and those appearing in
+Conjecture  5.1 . The figure is included to illustrate the
+relationship between the bounds proved in this paper and the stronger
+translated annulus conjectured by Brown and Mol. We emphasize that
+Brown and Mol [ 4 ] carried out more extensive computations for all trees of
+order at most 18.
+
+ The method developed in this paper does not appear to extend
+directly to Conjecture 5.1 .
+A different approach may therefore be required in the future.
+
+ Acknowledgements
+
+ Conjecture 1.2 has been of sustained interest to the second author
+over the past several years. The ideas leading to this work were
+developed through discussions during the 13th Workshop on Matrix and
+Graph Spectra Theory held in Urumqi, Xinjiang, China, and the work was
+completed during subsequent discussions at Xinjiang Normal University.
+
+ This work is supported by the National Natural Science Foundation of China (Nos. 12571379, 12571360, 12571366), Scientific Research Start-Up Foundation of Jimei University (No. ZQ2024116), Fujian Provincial Department of Education (No. JAT251074) and Natural Science
+Foundation of Xiamen Municipality (No. 3502Z202673038).
+
+ Declarations
+
+ Conflict of interest 
+The authors declare that they have no conflict of interest.
+
+ References
+
+ [2] 
+
+R.E. Jamison, On the average number of nodes in a subtree of a tree, J. Combin. Theory Ser. B 35 (1983) 207–223.
+
+ [3] 
+
+R.E. Jamison, Monotonicity of the mean order of subtrees, J. Combin. Theory Ser. B 37 (1984) 70–78.
+
+ [4] 
+
+J.I. Brown, L. Mol, On the roots of the subtree polynomial, European J. Combin. 89 (2020) 103181.
+
+ [5] 
+
+J. Haslegrave, Extremal results on average subtree density of series-reduced trees, J. Combin. Theory Ser. B 107 (2014) 26–41.
+
+ [6] 
+
+D. Ralaivaosaona, S. Wagner, On the distribution of subtree orders of a tree, Ars Math. Contemp. 14 (2018) 129–156.
+
+ [7] 
+
+A.V. Sills, H. Wang, The minimal number of subtrees of a tree, Graphs Combin. 31 (2015) 255–264.
+
+ [8] 
+
+A. Vince, H. Wang, The average order of a subtree of a tree, J. Combin. Theory Ser. B 100 (2010) 161–170.
+
+ [9] 
+
+S. Wagner, H. Wang, On the local and global means of subtree orders, J. Graph Theory 81 (2016) 154–166.
+
+ [10] 
+
+W. Yan, Y.-N. Yeh, Enumeration of subtrees of trees, Theoret. Comput. Sci. 369 (2006) 256–268.
+
+ Experimental support, please
+ view the build logs 
+ for errors. Generated by
+
+ L
+ A 
+ T
+ E 
+
+ xml 
+
+ .
+
+ Instructions for reporting errors
+
+ We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+ support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+ methods listed below:
+
+ Click the "Report Issue" ( 
+
+ ) button, located in the page header. 
+
+ Tip: You can select the relevant text first, to include it in your report.
+
+ Our team has already identified the following issues . We appreciate your time reviewing and reporting rendering errors we
+ may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+ should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+ all.
+
+ Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion , and welcome developer contributions .
+
+ We gratefully acknowledge support from
+ our major funders ,
+ member institutions , ,
+ and all contributors.
+
+ About 
+ · 
+ Help 
+ · 
+ Contact 
+ · 
+ Subscribe 
+ · 
+ Copyright 
+ · 
+ Privacy 
+ · 
+ Accessibility 
+ · 
+ Operational Status (opens in new tab) 
+
+ Major funding support from
+

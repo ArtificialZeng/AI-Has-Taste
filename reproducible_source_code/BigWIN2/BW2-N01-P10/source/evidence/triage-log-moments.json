@@ -1,0 +1,66 @@
+{
+  "job_id": "newwin-00001-p10-triage-c547cde10837",
+  "observed_at_utc": "2026-09-12T10:18:13.633864+00:00",
+  "python": "3.10.12",
+  "arithmetic": "exact integers and Fractions; no numerical logarithms",
+  "counts": {
+    "tableau_checks": 3196,
+    "length_at_most_four_reductions": 1267,
+    "partitions": 7313,
+    "prefix_maximum_checks": 40496,
+    "exact_log_weight_samples": 76,
+    "complete_exact_log_moment_recoveries": 64
+  },
+  "baseline_domain": "All positive integer partitions N=2..24, length>=2",
+  "log_sample_domain": "Four deterministic integer log-coordinate lists for each length 2..20; not exhaustive",
+  "square_equation_checked_orders": [
+    1,
+    256
+  ],
+  "square_equation_solutions": [
+    {
+      "moment_order": 1,
+      "length": 1
+    },
+    {
+      "moment_order": 2,
+      "length": 2
+    },
+    {
+      "moment_order": 3,
+      "length": 4
+    },
+    {
+      "moment_order": 5,
+      "length": 14
+    }
+  ],
+  "coefficient_checked_lengths": [
+    2,
+    256
+  ],
+  "coefficient_failures": [
+    {
+      "length": 2,
+      "zero_orders": [
+        2
+      ]
+    },
+    {
+      "length": 4,
+      "zero_orders": [
+        3
+      ]
+    },
+    {
+      "length": 14,
+      "zero_orders": [
+        5
+      ]
+    }
+  ],
+  "source_sha256": "08e71a9e52f039251c1c05f8a22310eb23c909494da046a0a0ca716d20f1de10",
+  "script_sha256": "4b33b8fbdd2599fc0be696d543a00b32d1fcce57c44b23820a73981f6252a60a",
+  "imported_script_sha256": "9338b5af8235ce7ab236464e970ee45440cbfef4a58a29c6bc6fbe75f4ac40f2",
+  "limitations": "Calibration only. No all-N resolution, no exhaustive classification beyond stated bounds, and no novelty or referee certification."
+}

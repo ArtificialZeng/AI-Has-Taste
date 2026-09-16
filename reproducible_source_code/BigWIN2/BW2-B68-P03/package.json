@@ -1,0 +1,383 @@
+{
+  "original_id": "win-00068-p03",
+  "archive_id": "BW2-B68-P03",
+  "title": "A Conjectural Unary-Theta Formula for the 6n+1-Section of 18-Colored Generalized Frobenius Partitions",
+  "batch_label": "68",
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "scope": "Unproved conjecture in (Z/16Z)[[q]]: for Andrews's 18-colored generalized Frobenius partition function, sum_{m>=0} cphi_18(6m+1) q^m is congruent to 4*f_2*f_3^2/(f_1*f_6), equivalently 4*sum_{k in Z} q^{k(3k-1)/2}. The Jacobi-triple-product equality of the two right-hand expressions and their absence of exponents 3 or 4 modulo 5 are proved; the left-to-right congruence is not proved. Exact supporting computation covers 0<=m<=504, with 0<=m<=99 used for discovery and 100<=m<=504 held out.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": 68
+  },
+  "pdf": "pdfs/ai-conjecture/BW2-B68-P03_A_Conjectural_Unary_Theta_Formula_for_the_6n_1_Section_of_18_Colored_Generalized_Frobenius_Partitions.pdf",
+  "pdf_sha256": "3c43d56bd782ae7ca3b639ac12db3cafb0a4e95d236fad2c95deb2af4630ce6e",
+  "pages": 4,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B68-P03/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B68-P03/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B68-P03/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "numpy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim."
+  ],
+  "entrypoints": [],
+  "source_files": 20,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/terminal.json",
+      "sha256": "70684a61ff23b4e9c6da0830c4637370a77ddd0ef4fceb7f4182fd113f06840a",
+      "bytes": 641
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/release/manifest.json",
+      "sha256": "0179cacd22290e897c7d09095b7aba303fe768dcb0adfac33c7f32fe2efc5904",
+      "bytes": 1601
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/math.json",
+      "sha256": "5361e44ead906481ecb421cbcf44ec5648f55d35073d81eb761e88fd8a36fdb3",
+      "bytes": 194
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/citations.json",
+      "sha256": "e23af3e0c7062458a3ce149212f3a79f1875115ce7c158b49f4bdccf70cd0e1a",
+      "bytes": 1802
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/build.json",
+      "sha256": "19fe957a171c7d14ff9dd7fcf8aaa349d7e9d009936c9bd5e286c2493b4bb3b0",
+      "bytes": 654
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/visual.json",
+      "sha256": "28b355f7d5bc85d24bf89d89693447e074faeae37abf8177c9540912760b7f6e",
+      "bytes": 1326
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/snapshot.json",
+      "sha256": "f5b25d538a8d252d873e9148a5f633187c411dd076d06c1cd5421528f20859ca",
+      "bytes": 1816
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/manuscript-snapshot.json",
+      "sha256": "70ee1a30c06cf0280dee34a282bc2d79115f0faa411ab5fd3f9233c73f9f4923",
+      "bytes": 562
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/math.md",
+      "sha256": "39ff3e105a88504f54926d09106a7c67b3f32a4c4416f42affd010970cd63f4c",
+      "bytes": 5952
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/citations.md",
+      "sha256": "a202063f16bf56f7b38511065a488be403130688e4bcd58b2d0d3b46b15e2e3f",
+      "bytes": 7996
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/build.md",
+      "sha256": "170e42c96409212d5d2daf4be3ae248e3290b1f13e3b0ab9d1f9b89fffd54b20",
+      "bytes": 1564
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B68-P03/audit/visual.md",
+      "sha256": "88a65daba96eba552c52fa82caa04a4b184ea6b5b638a539493913c4dc3b522e",
+      "bytes": 1979
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "529f99387debf19b534a8eea0bc68c7c4af3b2a05f7d98fb27581aabb0a4c98f",
+      "original_bytes": 10814,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "529f99387debf19b534a8eea0bc68c7c4af3b2a05f7d98fb27581aabb0a4c98f",
+          "bytes": 10814
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/main.bbl",
+      "original_sha256": "520332323fb224a8c95fddcd99894ab7e68b7c091aab2b4e28e09df290f8a298",
+      "original_bytes": 1429,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.bbl",
+          "sha256": "520332323fb224a8c95fddcd99894ab7e68b7c091aab2b4e28e09df290f8a298",
+          "bytes": 1429
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "f73cef38701db556068cf4d31edcd0595ebec7e2aec456af6c8237ddc5c64238",
+      "original_bytes": 2262,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "f73cef38701db556068cf4d31edcd0595ebec7e2aec456af6c8237ddc5c64238",
+          "bytes": 2262
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/h_identity_dossier.md",
+      "original_sha256": "f413f0e195c7f6ec1f29df93bbe55fc1e26f4a49a052139836760d3258dda3f4",
+      "original_bytes": 4112,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/h_identity_dossier.md",
+          "sha256": "f413f0e195c7f6ec1f29df93bbe55fc1e26f4a49a052139836760d3258dda3f4",
+          "bytes": 4112
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/primary_source_audit.md",
+      "original_sha256": "7fa4a96a2321bf9c4a46b137b560143af199b81602f269098ea2e84f8018f32e",
+      "original_bytes": 1649,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/primary_source_audit.md",
+          "sha256": "7fa4a96a2321bf9c4a46b137b560143af199b81602f269098ea2e84f8018f32e",
+          "bytes": 1649
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/README.md",
+      "original_sha256": "211cc4573efa2a70156f5b529b7589cf9dcdee8e6387fb16b52e839dfbb726ee",
+      "original_bytes": 2552,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/README.md",
+          "sha256": "211cc4573efa2a70156f5b529b7589cf9dcdee8e6387fb16b52e839dfbb726ee",
+          "bytes": 2552
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/source_formula_metadata.json",
+      "original_sha256": "c1e282f0c24877aef44b5c5a115061f455fe3194ef6b115730d2d0cd0bb7521c",
+      "original_bytes": 808,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/source_formula_metadata.json",
+          "sha256": "c1e282f0c24877aef44b5c5a115061f455fe3194ef6b115730d2d0cd0bb7521c",
+          "bytes": 808
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/projection_term_audit.json",
+      "original_sha256": "e4a9dde7317ebb126d3d5cbb29c46b34a5690034844cb608a0dfac2d7aa4d040",
+      "original_bytes": 6620,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/projection_term_audit.json",
+          "sha256": "e4a9dde7317ebb126d3d5cbb29c46b34a5690034844cb608a0dfac2d7aa4d040",
+          "bytes": 6620
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/projection_term_audit.py",
+      "original_sha256": "acac9d227be6ffe03080bb5f6203640219ba1d456a9d9b29e448fe7e06eb9e37",
+      "original_bytes": 5737,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/projection_term_audit.py",
+          "sha256": "acac9d227be6ffe03080bb5f6203640219ba1d456a9d9b29e448fe7e06eb9e37",
+          "bytes": 5737
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/constant_term_mod16.py",
+      "original_sha256": "0d2ce4a6fa6520af0f8e8af310710925cc9788bc346954aa7168aa540e4dce3d",
+      "original_bytes": 4238,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/constant_term_mod16.py",
+          "sha256": "0d2ce4a6fa6520af0f8e8af310710925cc9788bc346954aa7168aa540e4dce3d",
+          "bytes": 4238
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/h_identity_metadata.json",
+      "original_sha256": "a1230d35a5b5d854d528a95d529ca66dd9f653362efdda144e1ce9311d62e37e",
+      "original_bytes": 918,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/h_identity_metadata.json",
+          "sha256": "a1230d35a5b5d854d528a95d529ca66dd9f653362efdda144e1ce9311d62e37e",
+          "bytes": 918
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/constant_term_targets_mod16.csv",
+      "original_sha256": "349401db1679bb608f4ca2be0c979b68744b2852db12eeb27cc32a9bdfc37384",
+      "original_bytes": 2776,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/constant_term_targets_mod16.csv",
+          "sha256": "349401db1679bb608f4ca2be0c979b68744b2852db12eeb27cc32a9bdfc37384",
+          "bytes": 2776
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/source_formula_targets_mod16.csv",
+      "original_sha256": "349401db1679bb608f4ca2be0c979b68744b2852db12eeb27cc32a9bdfc37384",
+      "original_bytes": 2776,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/source_formula_targets_mod16.csv",
+          "sha256": "349401db1679bb608f4ca2be0c979b68744b2852db12eeb27cc32a9bdfc37384",
+          "bytes": 2776
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/constant_term_metadata.json",
+      "original_sha256": "df7297cfcd24d24a51389709e91bd9bca769642451d6c9587192299ee293f770",
+      "original_bytes": 783,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/constant_term_metadata.json",
+          "sha256": "df7297cfcd24d24a51389709e91bd9bca769642451d6c9587192299ee293f770",
+          "bytes": 783
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/h_identity_mod16.py",
+      "original_sha256": "82d41cb209f58968914a871fd5666534b9e272e33d8411cc4f3e455437b4cd24",
+      "original_bytes": 3618,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/h_identity_mod16.py",
+          "sha256": "82d41cb209f58968914a871fd5666534b9e272e33d8411cc4f3e455437b4cd24",
+          "bytes": 3618
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/computation/source_formula_mod16.py",
+      "original_sha256": "ff1af69d70577e171d5c4bce9bcdedcfdfc46b1dc625f974f8e847fb3b77d49a",
+      "original_bytes": 6646,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/computation/source_formula_mod16.py",
+          "sha256": "ff1af69d70577e171d5c4bce9bcdedcfdfc46b1dc625f974f8e847fb3b77d49a",
+          "bytes": 6646
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "3d980d0709db3b09cc281dc755bc0195f75a88fdbd2c992fa9a145788ff8a877",
+      "original_bytes": 4913,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "3d980d0709db3b09cc281dc755bc0195f75a88fdbd2c992fa9a145788ff8a877",
+          "bytes": 4913
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "c32afa8a359b2f11f4103a65e5cf0351399960aee4f5f168d1a0071264c973fd",
+      "original_bytes": 4828,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "c32afa8a359b2f11f4103a65e5cf0351399960aee4f5f168d1a0071264c973fd",
+          "bytes": 4828
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "92742870553f77b92aaa7ad66e9a623956204b29969bf4ee4e39f4a7e0e0f500",
+      "original_bytes": 1880,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "92742870553f77b92aaa7ad66e9a623956204b29969bf4ee4e39f4a7e0e0f500",
+          "bytes": 1880
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "75980f4ea1fbd5dc799c18151c13a6b7053bfd669f85ad0988789d93497e67af",
+      "original_bytes": 415,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "75980f4ea1fbd5dc799c18151c13a6b7053bfd669f85ad0988789d93497e67af",
+          "bytes": 415
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B68-P03",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

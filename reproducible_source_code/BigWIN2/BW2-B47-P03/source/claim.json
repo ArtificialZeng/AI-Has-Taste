@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the ordinary 4 by 4 transversal achievement game exactly as frozen in source.md and formalized in problem.md, the minimax forced-win time is T_4=11. In particular, the exported positional O policy prevents X from completing a transversal through ply 9 against every legal X branch, while the recorded source strategy gives T_4 at most 11.",
+  "contribution": "An exact unsymmetrized AND-OR computation exports a replayable 6,861-choice O defense DAG. A separately implemented verifier reconstructs all 24 transversals and exhaustively checks every legal X successor in the reachable graph, supplying the previously missing universal fixed-board lower bound. The full-resolution and novelty claims remain subject to fresh referee review.",
+  "proposer_job_id": "win-00047-p03-research-eb66bd615331",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "checkpoint.md",
+    "evidence/horizon9_certificate.md",
+    "evidence/horizon9_policy.json",
+    "evidence/horizon9_solver.py",
+    "evidence/horizon9_solver_summary.json",
+    "evidence/verify_horizon9_policy.py",
+    "evidence/horizon9_verification.json"
+  ]
+}

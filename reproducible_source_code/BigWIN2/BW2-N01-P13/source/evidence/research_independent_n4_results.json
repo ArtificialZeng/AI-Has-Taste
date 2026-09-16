@@ -1,0 +1,64 @@
+{
+  "job_id": "newwin-00001-p13-research-75edfb64efc5",
+  "audit_status": "same worker, separate finite-evaluation algorithm",
+  "method": "connected-core and matching DP residues; explicit weight expansion; direct alternating inverse convolution",
+  "shared_dependency": "connected orbit polynomial table, independently reconstructed with minor ranks and extension fields",
+  "tests": [
+    {
+      "n": 1,
+      "boards": 2,
+      "quadratic_comparisons": 4,
+      "kernel_comparisons": 4,
+      "kernel_range": [
+        0,
+        0
+      ],
+      "quadratic_stream_sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+      "kernel_stream_sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+      "stream_format": "mask increasing then d; signed little-endian int64",
+      "elapsed_seconds": 0.001
+    },
+    {
+      "n": 2,
+      "boards": 16,
+      "quadratic_comparisons": 48,
+      "kernel_comparisons": 48,
+      "kernel_range": [
+        0,
+        1
+      ],
+      "quadratic_stream_sha256": "8676fb2899f5bacd6814a2da93373c403e2bc881bcde6e1297120cb58bf26a17",
+      "kernel_stream_sha256": "8676fb2899f5bacd6814a2da93373c403e2bc881bcde6e1297120cb58bf26a17",
+      "stream_format": "mask increasing then d; signed little-endian int64",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "n": 3,
+      "boards": 512,
+      "quadratic_comparisons": 2048,
+      "kernel_comparisons": 2048,
+      "kernel_range": [
+        0,
+        41
+      ],
+      "quadratic_stream_sha256": "359cc7ab2d152986c068b8b404c6cef14a43c5f8367bf3d7cff4cd6ddb79351f",
+      "kernel_stream_sha256": "4b35611ef69ee3d98096a63049459b6b78d60ba1bf31472ccd7cdbfaea95a688",
+      "stream_format": "mask increasing then d; signed little-endian int64",
+      "elapsed_seconds": 0.114
+    },
+    {
+      "n": 4,
+      "boards": 65536,
+      "quadratic_comparisons": 327680,
+      "kernel_comparisons": 327680,
+      "kernel_range": [
+        0,
+        162
+      ],
+      "quadratic_stream_sha256": "1b9dfc99f36eae5ec160d6c0ec62fdbaf52f51c134cb37b9946468da98e8f3c7",
+      "kernel_stream_sha256": "ec74936ef83f8d6fb5024cf0bc2f48a814d5cec77d551ace24b10d8400c2e872",
+      "stream_format": "mask increasing then d; signed little-endian int64",
+      "elapsed_seconds": 45.47
+    }
+  ]
+}

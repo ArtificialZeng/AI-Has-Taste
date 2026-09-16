@@ -1,0 +1,25 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For A={0,1,2} with operation table rows (0,0,0), (1,0,1), (1,1,1), and every finite nonempty fixed label set I, two full linear binary terms on I (each variable once, arbitrary order, no constants) induce the same function A^I -> A if and only if their leftmost-decomposition trees agree as rooted labelled trees with exactly one distinguished child at each nonleaf and all other children unordered. Every such decorated tree is realised. Hence for every n>=1 the number c_n of these term functions is (n-1)! times the sum, for k=0,...,n-1, of binom(n,k) k^(n-1-k)/(n-1-k)!, with 0^0=1. Equivalently T(x)=sum_{n>=1}c_n x^n/n! satisfies T=x(1+T exp(T)); a direct integer recurrence and a function-only recursive decoder are supplied. This resolves the exact all-n counting question in source.md at its frozen interpretation in problem.md.",
+  "contribution": "Proposed complete resolution of the SC229 associative-commutative spectrum question explicitly posed by Huang and Lehtonen (2024), Section 7. The new component is injective all-arity reconstruction of the root, distinguished child, and ordinary children from disjoint AND-prime factors of the term function, including singleton indicators. Earlier leftmost-tree methods and standard labelled enumeration are attributed, and no novelty is claimed for them in isolation. No equivalent SC229 result was found in the documented bounded primary-source search on 2026-09-12; universal priority is not claimed. This is a candidate requesting fresh mathematical review, not an acceptance.",
+  "proposer_job_id": "newwin-00001-p09-research-6b8b4cffaffd",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/decoder-proof.md",
+    "evidence/decoder-check.py",
+    "evidence/decoder-check.json",
+    "evidence/research-assessment.md",
+    "literature/research-screen.md",
+    "literature/triage-screen.md",
+    "evidence/triage-check.py",
+    "evidence/triage-check.json",
+    "evidence/p09-intake-check.json",
+    "evidence/external/huang-lehtonen-2024.pdf",
+    "evidence/external/huang-lehtonen-2024.txt",
+    "evidence/external/huang-lehtonen-2023.pdf",
+    "evidence/external/huang-lehtonen-2023.txt",
+    "evidence/external/source-bindings.json"
+  ]
+}

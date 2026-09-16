@@ -1,0 +1,59 @@
+{
+  "job_id": "primary-20260913-chen-ulc-failure-triage-085d5b98e601",
+  "path": "/home/ailab/4math-open-problems/registry/problems.jsonl",
+  "sha256": "d551363f403d959fcc25fbad2fc69805d2a4d53fcf08b78544b3056737d6e096",
+  "rows": 655,
+  "anchors": [
+    "2503.16296",
+    "chen-ulc",
+    "clasped",
+    "banana",
+    "ultra-log-concav",
+    "ultra log-concav"
+  ],
+  "matching_records": [
+    {
+      "id": "primary-20260913-chen-ulc-failure",
+      "batch": null,
+      "intake_origin": "authorized_primary_literature_fallback",
+      "browser_generated": false,
+      "batch_number_consumed": false,
+      "observed_at": "2026-09-12T21:19:04Z",
+      "title": "Higher-degree ULC failure for Chen recursion polynomials",
+      "source_id": "Chen arXiv2503.16296v2 Conjecture3.9 printedp16",
+      "object": "f_m=((s+1)^m-(-1)^m)/(s+2), h_m=f_m+(-1)^m, degree(m-1)",
+      "quantifiers": "Allintegerm>=4: bothnotULC; for every4<=j<=m-2, j(m-1-j)a_j² < (j+1)(m-j)a_(j-1)a_(j+1), ULC normalized bybinom(m-1,j).",
+      "nearest_result": "Prop3.8 already proves non-ULC existence and low-index signs; source finite m<=100.",
+      "proposed_delta": "Complete author-posed higher-index strict ULC failure pattern uniformlyallm, not a larger finite census; one theorem forboth families.",
+      "source_status": "open-supported inarXivv2 under bounded current source search; full laterjournal inaccessible, no global guarantee",
+      "status": "triage-running",
+      "original_status": "unresolved",
+      "candidate_kind": "none",
+      "mathematically_accepted": false,
+      "research_passes": 0,
+      "active_job": "primary-20260913-chen-ulc-failure-triage-085d5b98e601",
+      "source_path": "batches/inbox/primary-20260913-chen-ulc-failure-source.md",
+      "source_sha256": "35bf7999e659653cddadf84048b691931a7e0d0d3064a2f0020c7603c780731b",
+      "evidence_paths": [
+        "batches/normalized/primary-20260913-chen-ulc-failure-admission.md",
+        "supervisor/primary-intake-20260913/chen-ulc-dedup.md",
+        "supervisor/primary-intake-20260913/shape-polynomial-screen.md",
+        "projects/primary-20260913-chen-ulc-failure/literature/chen-2503.16296v2.pdf",
+        "projects/primary-20260913-chen-ulc-failure/literature/outer-calibration.json"
+      ],
+      "semantic_neighbors": [
+        "received-only-b05-s08",
+        "smallmac-00077-p03",
+        "lit-260910234-p01",
+        "win-00055-p06",
+        "win-00085-p10"
+      ],
+      "dedup_scope": "All2883Excel+652priorregistry; main reread5nearest stored originals and local55raw/85projectsource. Historical missing originals not invented. Actual target conversation unchecked.",
+      "next_test": "Verify source and derive uniform sign formula/recurrence for degree-(m-1) ULC minor, allm>=4 and4<=j<=m-2. Source finite100 is reproduced, not novel evidence.",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "max",
+      "final_usage": "unknown"
+    }
+  ],
+  "limitation": "Keyword pass only; semantic comparison of the five archived neighbors is in literature/outer-dedup.md."
+}

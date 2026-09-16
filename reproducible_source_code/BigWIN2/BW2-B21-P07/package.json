@@ -1,0 +1,149 @@
+{
+  "original_id": "legacy-b21-p07",
+  "archive_id": "BW2-B21-P07",
+  "title": "A Counterexample to the Proposed Last Occurrence in the Largest-Odd-Divisor Recurrence",
+  "batch_label": "21",
+  "kind": "historical-gated-manuscript",
+  "original_status": "disproved",
+  "scope": "Counterexample only; no next-hit or last-hit claim.",
+  "gate_basis": "Root rechecked proof/PDF/citation audits and batch final audit pass; current PDF and ZIP hashes match release manifest.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B21-P07_A_Counterexample_to_the_Proposed_Last_Occurrence_in_the_Largest_Odd_Divisor_Recurrence.pdf",
+  "pdf_sha256": "0c4cf7f61326bdd2c0d87dd40a4e31585b6f11f86d998a548ae22e33275a0429",
+  "pages": 2,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B21-P07/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B21-P07/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B21-P07/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Python 3 plus SymPy for the independent witness reconstruction; segmented search uses standard library."
+  ],
+  "limitations": [
+    "These four audit/breaker_artifacts files are mathematical code/data exceptions; exclude neighboring agent/role records and execution logs.",
+    "Original source ZIP flattened these files; use their actual project-relative locations.",
+    "Original entrypoints: ['python3 audit/breaker_artifacts/verify_witness_sympy.py audit/breaker_artifacts/witness.json']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 6,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B21-P07/audit/CITATION_AUDIT.md",
+      "sha256": "eb93f1260fb5a82d11db36e12d9287172ed93acb328b6b75132a061902e4f522",
+      "bytes": 717
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B21-P07/audit/PDF_AUDIT.md",
+      "sha256": "e205088cfc47ae9ec2edbbdb7b948948b85936bbdb550384e8345a7ab4cb8806",
+      "bytes": 643
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B21-P07/audit/PROOF_AUDIT.md",
+      "sha256": "e470c8b7a360756eb1209461e5e8df62db6a2baff3cd6ee021dfda5764c5661a",
+      "bytes": 814
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B21-P07/batch-level/final_audit.md",
+      "sha256": "b2096be6b19a9a5bf3e8353f793beec263eb17157e652cbb12e9415fea91c4fa",
+      "bytes": 3173
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B21-P07/results/release_manifest.json",
+      "sha256": "acbc90d85a7a086de3eb02109b7d16e61faedb7da237030ba91251f794cb693c",
+      "bytes": 10757
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "c47f3f1a9c40d0ba0f521aca0e3cba727980fc631e9b5d4c47aacee15df0e3c7",
+      "original_bytes": 4393,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "c47f3f1a9c40d0ba0f521aca0e3cba727980fc631e9b5d4c47aacee15df0e3c7",
+          "bytes": 4393
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "828e28c863accc88f96373cdfb11ea0c7d2c0c3f21d75c490ff2036c0877e1f4",
+      "original_bytes": 557,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "828e28c863accc88f96373cdfb11ea0c7d2c0c3f21d75c490ff2036c0877e1f4",
+          "bytes": 557
+        }
+      ]
+    },
+    {
+      "path": "source/audit/breaker_artifacts/witness.json",
+      "original_sha256": "5cb71efa93cc8e6cee6cceecd2305fb6474972e8dc9c2f7ac937f1270979beb9",
+      "original_bytes": 103,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/audit/breaker_artifacts/witness.json",
+          "sha256": "5cb71efa93cc8e6cee6cceecd2305fb6474972e8dc9c2f7ac937f1270979beb9",
+          "bytes": 103
+        }
+      ]
+    },
+    {
+      "path": "source/audit/breaker_artifacts/verify_witness_sympy.py",
+      "original_sha256": "802aa6acd4e5c0d42bb07b5bb395188f16a6b7c4a4680792315ef57f2f951d0f",
+      "original_bytes": 1252,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/audit/breaker_artifacts/verify_witness_sympy.py",
+          "sha256": "802aa6acd4e5c0d42bb07b5bb395188f16a6b7c4a4680792315ef57f2f951d0f",
+          "bytes": 1252
+        }
+      ]
+    },
+    {
+      "path": "source/audit/breaker_artifacts/search_segmented.py",
+      "original_sha256": "ebe0339d87c2fb2a344b05a5b199784be1c72686a55c403def36b620d0086d69",
+      "original_bytes": 2262,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/audit/breaker_artifacts/search_segmented.py",
+          "sha256": "ebe0339d87c2fb2a344b05a5b199784be1c72686a55c403def36b620d0086d69",
+          "bytes": 2262
+        }
+      ]
+    },
+    {
+      "path": "source/audit/breaker_artifacts/search_100000000_segmented.json",
+      "original_sha256": "9c5b8144edd710e051bb15eea40f8105719840dc44c12ca7f0aa91b1dad22ef3",
+      "original_bytes": 1669,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/audit/breaker_artifacts/search_100000000_segmented.json",
+          "sha256": "9c5b8144edd710e051bb15eea40f8105719840dc44c12ca7f0aa91b1dad22ef3",
+          "bytes": 1669
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B21-P07",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

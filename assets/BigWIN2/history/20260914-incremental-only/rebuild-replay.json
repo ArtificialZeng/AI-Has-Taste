@@ -1,0 +1,100 @@
+{
+  "status": "pass",
+  "scope": "Clean local LaTeX rebuild and replay of the original bounded exact checker only. This is not an independent proof or new literature audit. Original release/source files are unchanged.",
+  "toolchain": {
+    "python3": [
+      "Python 3.10.12"
+    ],
+    "latexmk": [
+      "",
+      "Latexmk, John Collins, 20 November 2021. Version 4.76"
+    ],
+    "pdflatex": [
+      "pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)",
+      "kpathsea version 6.3.4/dev"
+    ],
+    "bibtex": [
+      "BibTeX 0.99d (TeX Live 2022/dev/Debian)",
+      "kpathsea version 6.3.4/dev"
+    ],
+    "pdftoppm": []
+  },
+  "build": {
+    "returncode": 0,
+    "elapsed_seconds": 1.398,
+    "final_warnings": [],
+    "regenerated_bbl_matches_frozen": true,
+    "pages": 6,
+    "extracted_text_matches_original": true,
+    "original_pdf_sha256": "a0966dd2d7f0ae4465313fac6828dcc584637c136f7f96f29a054eb42a3c2b93"
+  },
+  "bounded_replay": {
+    "returncode": 0,
+    "elapsed_seconds": 0.825,
+    "data_objects_match_frozen": true,
+    "data_bytes_match_frozen": true,
+    "generated_sha256": "f349fa5f7167a15e1e9982482da68876ef364a937c4a7ece7d9927c58b9efccc",
+    "counts": {
+      "local_identities": 264,
+      "operator_identities": 225,
+      "subset_objects": 80011,
+      "word_tests": 17065,
+      "direct_cases": 3
+    }
+  },
+  "visual_inspection": {
+    "status": "passed",
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "scope": "All six 120 dpi PNG pages were opened and visually inspected during this packaging verification. The rebuilt render matches the original released PDF render byte-for-byte on every page.",
+    "observations": [
+      "Page 1: title, author information, abstract, definitions and numbered display equations are readable and within margins.",
+      "Page 2: theorem, lemmas and long operator equation fit within the text block; numbering is separated from content.",
+      "Page 3: proof continuation and subtree recurrences remain legible, with no clipped equations or overlaps.",
+      "Page 4: subtree induction and box-bijection proof are consistently typeset and unobstructed.",
+      "Page 5: proof completion, scope limitations and computational-assistance disclosure are fully visible.",
+      "Page 6: all six references and URLs are legible; the author-manuscript versus hosted-PDF qualification is visible."
+    ]
+  },
+  "original_input_hashes_unchanged": true,
+  "rendered_pages": [
+    {
+      "page": 1,
+      "render_matches_original": true,
+      "render_sha256": "52c7f4317515298f8175c58c12be3070404bd50483137e85fd873833d3f6e423"
+    },
+    {
+      "page": 2,
+      "render_matches_original": true,
+      "render_sha256": "c6674b9a2774918784f02bef799d6c38dc09aaa8ce3bbf7efdc62de769b0fe42"
+    },
+    {
+      "page": 3,
+      "render_matches_original": true,
+      "render_sha256": "b590f87899fcbe1be110a4cbb7aba037ec1b3b206095dfca437e3f909dc78dc4"
+    },
+    {
+      "page": 4,
+      "render_matches_original": true,
+      "render_sha256": "caa4d9363d3716eed5f34497c9fa566e6f09cfa1ae6732476fcc9da8d147ed93"
+    },
+    {
+      "page": 5,
+      "render_matches_original": true,
+      "render_sha256": "be6b694335493214237cf27460f9e1c162856a923c2aacd6db999606a7cdf966"
+    },
+    {
+      "page": 6,
+      "render_matches_original": true,
+      "render_sha256": "160f0699536780f4ac051ddb072dd7d7df7d1e2a1d4d10b8a027411faca346e4"
+    }
+  ],
+  "released_pdf_retained_unchanged": true,
+  "new_mathematics_or_literature_audit": false
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For each n>=0, let I_n consist of tuples (e_1,...,e_n) with 0<=e_i<i and with no i<j<k satisfying e_i>=e_k and e_j>=e_k; the empty tuple is counted once. Put F(z)=sum_{n>=0}|I_n|z^n. In formal series at z=0 define X=(1-2z-sqrt(1-4z))/(2z), with sqrt(1-4z)=1+O(z); q=X^2/(1+2X); b=X^3/((1+X)(1+2X)); H(u)=z(1+u)^2-u; R0(u)=-zu^2(1-z-zu)/(1-zu); R1(u)=u^2(1-z-zu)^2/(1-zu). For every j>=0 define t_j=z^j q/(1-q sum_{r=1}^j z^r), with the empty sum zero, and D_j=product_{i=0}^j H(t_i). Then A=sum_{j>=0}R0(t_j)/D_j and L=q+sum_{j>=0}R1(t_j)/D_j converge z-adically in Z[[z]], their summands having exact orders j+4 and j+3 respectively, and F=(b-A)/(zL). Here L=z^2+O(z^3) and b-A=z^3+O(z^4), so the quotient is well-defined. If A_m,L_m retain exactly j=0,...,m-1 and F_m=(b-A_m)/(zL_m), then for every integer m>=0, F_m belongs to Q(z,X) intersect Z[[z]] and F_m-F=z^(m+3)+O(z^(m+4)). This solves the explicit generating-function representation part only; no algebraicity, transcendence, analytic continuation, or asymptotic assertion is made.",
+  "contribution": "An explicit quotient with no unknown counting or boundary series solves the boundary left unsolved in Britt-Beaton, arXiv:2512.21943v2, Section 3.5. Subtracting the constant and linear terms justifies the vanishing tail and gives sharp coefficient contact for explicit algebraic approximants. The recurrence, auxiliary equation, and related Wilf equivalences are prior results. No equivalent solved expression was found in the documented bounded primary-source comparison; priority and substantive novelty await fresh review. The original non-algebraicity conjecture remains unresolved.",
+  "proposer_job_id": "primary-20260913-inversion214-research-aabee08e3bf3",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/quotient-proof.md",
+    "evidence/quotient-check.py",
+    "evidence/quotient-check.json",
+    "evidence/triage-kernel.md",
+    "evidence/triage-kernel-check.py",
+    "evidence/triage-kernel-check.json",
+    "evidence/research-provenance.json",
+    "literature/research-live-screen.md",
+    "evidence/external/britt-beaton-2512.21943v2.pdf",
+    "evidence/external/britt-beaton-2512.21943v2.txt"
+  ]
+}

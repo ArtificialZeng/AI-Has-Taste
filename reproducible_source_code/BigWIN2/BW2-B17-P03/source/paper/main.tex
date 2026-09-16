@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{The Exact Two-Row Pairwise-Coprime Grid Threshold Is $L_{41}=529$}
+\author{Zijian Zeng\\\small Institute of Computer Science and Digital Innovation, UCSI University\\\small Kuala Lumpur, 56000, MALAYSIA\\\small \texttt{zijianzeng@foxmail.com}; \texttt{1002266693@ucsiuniversity.edu.my}}
+\date{}
+\hypersetup{pdftitle={The Exact Two-Row Pairwise-Coprime Grid Threshold Is L41=529},pdfauthor={Zijian Zeng}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $L_n$ be the least integer $x$ for which there are an integer $d>0$
+and an $n$-element set $V\subseteq\{2,\ldots,x-d\}$ such that the $2n$
+integers $v,v+d$ ($v\in V$) are distinct and pairwise coprime.  We prove the
+exact finite result $L_{41}=529$.  The upper bound is an explicit integer
+witness with gap $42$.  The lower bound is a complete enumeration of all
+$263$ possible even gaps at $x=528$, implemented independently as a
+greatest-common-divisor compatibility-graph search and as prime-support set
+packing.  Both enumerators use an elementary, proved greedy-color upper bound,
+and are cross-checked against literal enumeration on small instances.
+\end{abstract}
+\section{Introduction}
+The two-row quantity considered here is a finite injective-grid specialization
+of a pairwise-coprime sumset question appearing in the problem collection of
+Erd\H{o}s and Graham~\cite[p.~85]{ErdosGraham1980}.  An unrefereed public
+computational working report gave the two-row thresholds through $L_{40}=509$
+and the precise normalization used below~\cite{White2026}.  We determine only
+the next finite cell.  The theorem makes no claim about the asymptotic density
+question for infinite sumsets.
+
+All searches recorded here are exact and deterministic.  The negative
+endpoint is reproduced by two standalone programs with distinct data
+representations; no floating-point calculation or optimizer status is used.
+\section{Definition and reduction}
+For an integer $n\ge1$, define $L_n$ to be the least integer $x$ such that
+there are integers $d\ge1$ and a set
+\[V\subseteq\{2,3,\ldots,x-d\},\qquad |V|=n,\]
+for which $S(d,V)=\bigcup_{v\in V}\{v,v+d\}$ has $2n$ distinct members and
+$\gcd(a,b)=1$ for every two distinct $a,b\in S(d,V)$.
+\begin{lemma}\label{lem:parity}
+If $n\ge2$ and $(d,V)$ is feasible, then $d$ is even.
+\end{lemma}
+\begin{proof}
+If $d$ were odd, each pair $v,v+d$ would contain an even integer.  Two
+different columns would therefore contribute two distinct even members of
+$S(d,V)$, which could not be coprime.
+\end{proof}
+Fix $x$ and an even $d$.  Define $G_{x,d}$ as follows.  Its vertices are the
+$v\in\{2,\ldots,x-d\}$ satisfying $\gcd(v,v+d)=1$.  Two distinct vertices
+$v,w$ are adjacent when $v,v+d,w,w+d$ are distinct and pairwise coprime.
+\begin{lemma}\label{lem:equiv}
+A feasible $k$-element set with fixed $(x,d)$ exists if and only if
+$G_{x,d}$ contains a $k$-clique.
+\end{lemma}
+\begin{proof}
+The vertex condition checks coprimality within each column, and adjacency
+checks distinctness and every cross-column gcd.  Thus all defining conditions
+hold exactly when every two selected vertices are adjacent.
+\end{proof}
+There is an equivalent set-packing representation.  Associate to a vertex
+$v$ the set $P(v)$ of prime divisors of $v(v+d)$.  Because all integers under
+consideration are at least $2$, two columns are compatible exactly when their
+prime-support sets are disjoint.
+\section{Exact endpoints}
+\begin{theorem}\label{thm:main}
+$L_{41}=529$.
+\end{theorem}
+\begin{proof}
+For the upper bound take $d=42$ and
+\begin{align*}
+V=\{&31,37,41,47,59,61,67,71,97,107,121,131,137,151,157,181,191,197,215,227,\\
+&241,251,271,281,307,311,317,331,337,367,377,389,397,401,421,449,457,461,\\
+&467,479,487\}.
+\end{align*}
+This set has $41$ members in $[2,529-42]$.  Direct Euclidean-algorithm
+evaluation of all $\binom{82}{2}=3321$ gcds among the resulting integers
+$v,v+42$ gives $1$ in every case, so $L_{41}\le529$.
+
+For the lower bound set $x=528$.  A nonempty $V$ forces
+$1\le d\le526$, and Lemma~\ref{lem:parity} leaves exactly the $263$ gaps
+$d=2,4,\ldots,526$.  For every such gap, the exact enumeration described in
+Section~\ref{sec:certificate} proves that $G_{528,d}$ has no $41$-clique.
+Lemma~\ref{lem:equiv} therefore gives $L_{41}>528$.  Combining the two
+inequalities proves the result.
+\end{proof}
+\section{Completeness certificate}\label{sec:certificate}
+The first enumerator constructs $G_{528,d}$ directly from gcd evaluations.
+At each recursion node it greedily partitions the remaining candidate
+vertices into independent color classes.  If the partial clique has size $r$
+and the partition uses $c$ colors, every extension has size at most $r+c$,
+since a clique uses at most one vertex from each independent class.  A branch
+is pruned only when $r+c<41$.  Otherwise include/exclude recursion selects a
+vertex and restricts the next candidate set to its neighbors.  Consequently
+every potential $41$-clique is visited or excluded by a proved upper bound.
+
+The second enumerator obtains prime supports by trial division and constructs
+the disjointness relation between column supports.  It then performs a
+separately implemented exact set-packing recursion with the same elementary
+color-bound lemma.  Thus it recomputes both candidate feasibility and the
+negative result from a representation independent of direct cross-column gcd
+tests.
+
+Both programs report nonexistence for each of the $263$ even gaps at $x=528$.
+As a small-instance validation, both were compared with literal combination
+enumeration for every even gap at every $8\le x\le30$ and every target through
+one more than the exact optimum, a total of $568$ decisions, with complete
+agreement.  A third short verifier reads the displayed witness and checks its
+bounds, distinctness, and all pairwise gcds.
+
+The archived source contains standalone programs, complete per-gap logs, the
+witness in machine-readable form, and reproduction instructions.  The full
+verification commands are
+\begin{verbatim}
+python3 computation/check_witness.py
+python3 computation/crosscheck_small.py
+python3 computation/clique_search.py 528 41 clique.log
+python3 computation/packing_verify.py 528 41 packing.log
+\end{verbatim}
+An exit status indicating nonexistence is expected from each negative-endpoint
+program; the retained logs end with \texttt{overall=UNSAT}.
+\section*{Computational disclosure}
+Computational tools assisted discovery, exact enumeration, cross-checking,
+and manuscript preparation.  Every mathematical endpoint is supported by
+the included deterministic integer-arithmetic source and can be checked
+without proprietary software.
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

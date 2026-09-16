@@ -1,0 +1,560 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{pdftitle={Quadratic positivity for finite-field q-hit residues},
+  pdfauthor={Xiaojian Zeng},
+  pdfkeywords={q-hit numbers, finite fields, rook theory, exact enumeration}}
+% URL wrapping uses package defaults.
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\DeclareMathOperator{\per}{per}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\NN}{\mathbb Z_{\geq0}}
+\newcommand{\hit}{\mathcal H}
+\newcommand{\invh}{h^{*-1}}
+\title{Quadratic positivity for finite-field $q$-hit residues}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The finite-field $q$-hit numbers of an arbitrary board need not be
+polynomials in $q$, but their residues modulo low powers of $q-1$ have
+well-defined integer coefficients. We prove that their quadratic residue
+coefficients are nonnegative for every square board and every hit index.
+The proof uses convolution over balanced row and column restrictions.
+After division by the classical hit family in this convolution algebra,
+the quadratic coefficient has a kernel supported on boards of size at most
+four. A patch decomposition of auxiliary permutations proves this
+locality bound. Exact enumeration verifies nonnegativity of all remaining
+kernel coefficients, with a separate implementation reconstructing the
+orbit data and the full finite certificate. The conclusion concerns the
+quadratic residue and makes no assumption of global polynomiality.
+\end{abstract}
+
+\section{The quadratic residue problem}
+
+Let $B\subseteq[n]\times[n]$, where $n\geq1$, and identify $B$ with its
+$0$--$1$ matrix. For a prime power $q$, let $m_i(B,q)$ count the matrices
+over $\FF_q$ of rank $i$ whose support is contained in $B$, and put
+$M_i(B,q)=m_i(B,q)/(q-1)^i$. Write
+\[
+ [r]!_q=\prod_{j=1}^{r}(1+q+\cdots+q^{j-1}),\qquad [0]!_q=1.
+\]
+The matrix $q$-hit numbers of Lewis and Morales
+\cite[Eq.~(1.3)]{LewisMorales2020} are defined by
+\begin{equation}\label{eq:hit}
+ \hit_n(B;q,t):=\sum_{d=0}^{n}H_d(B,q)t^d
+ =q^{\binom n2}\sum_{i=0}^{n}M_i(B,q)[n-i]!_q
+       \prod_{j=0}^{i-1}(tq^{-j}-1).
+\end{equation}
+All empty products equal $1$. The normalized counts $M_i$ are integers;
+this follows from the diagonal action recalled below, or from
+\cite[Proposition~5.1]{LewisEtAl2011}. The entire weight of $M_i$ in
+\eqref{eq:hit} is the integer polynomial
+\begin{equation}\label{eq:integralweight}
+ W_{n,i}(q,t)=q^{\binom n2-\binom i2}[n-i]!_q
+                         \prod_{j=0}^{i-1}(t-q^j).
+\end{equation}
+In particular, the negative powers in the original definition cause no
+congruence difficulty.
+
+Set $x=q-1$. Chen and Selover prove that both $M_i(B,x+1)$ and
+$H_d(B,x+1)$ have integer polynomial residues modulo $x^6$
+\cite[Corollary~3.13]{ChenSelover2026}. We use only their residues modulo
+$x^3$. Thus there are unique integers $c_a(B,d)$, $0\leq a\leq2$, such that
+\begin{equation}\label{eq:residue}
+ H_d(B,x+1)\equiv c_0(B,d)+c_1(B,d)x+c_2(B,d)x^2\pmod{x^3}
+\end{equation}
+for every $x=q-1$ with $q$ a prime power. This is an integer congruence on
+that unbounded set. It is not a Taylor expansion of an assumed polynomial
+counting function. To see uniqueness, divide the difference of two
+degree-at-most-two representatives by $x^3$. The quotient is an integer
+tending to zero along the set, so the difference vanishes at infinitely
+many points.
+
+Define $C_{a,n}(B;t)=\sum_{d=0}^{n}c_a(B,d)t^d$.
+For the auxiliary size-zero board take $\hit_0=h_0=1$, so
+$C_{1,0}=C_{2,0}=0$.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq1$, every board $B\subseteq[n]\times[n]$, and every
+$0\leq d\leq n$, the quadratic coefficient in \eqref{eq:residue} satisfies
+$c_2(B,d)\geq0$.
+\end{theorem}
+
+Chen and Selover establish universal linear positivity in their
+Theorem~4.10, formulate positivity of the available higher residue
+coefficients in Conjecture~4.1, and discuss the quadratic calculation in
+Section~5 of \cite{ChenSelover2026}. Theorem~\ref{thm:main} settles the
+quadratic case for the full prime-power domain. Its additional ingredient
+is a universal identity reducing the quadratic coefficient to kernels of
+sizes two, three and four, proved in Theorem~\ref{thm:locality} below.
+Positivity of higher residue coefficients is not established here.
+The distinction between residues and global polynomiality is necessary:
+Stembridge's Fano-board example exhibits characteristic-dependent matrix
+counts \cite[Section~7A]{Stembridge1998}.
+
+\section{Balanced restriction convolution}
+
+Put $z=t-1$. Let $J_n$ be the all-ones matrix and set
+\begin{equation}\label{eq:classical}
+ h_n(B;t)=\per(J_n+zB)
+   =\sum_{\pi\in\mathfrak S_n}t^{|\{j:(j,\pi(j))\in B\}|}
+   =\sum_{i=0}^{n}r_i(B)(n-i)!z^i,
+\end{equation}
+where $r_i(B)$ is the number of $i$-edge matchings in $B$. This is the
+classical rook--hit identity, also recalled in
+\cite[Eq.~(1.1)]{LewisMorales2020}. Indeed, after choosing the $i$ marked
+board entries in the permanent expansion, the remaining permutation has
+$(n-i)!$ choices. In particular, $h_n(B;t)\in\NN[t]$.
+
+For families $f,g$ of functions on square boards, define
+\begin{equation}\label{eq:convolution}
+ (f*g)_n(B)=
+ \sum_{\substack{R,C\subseteq[n]\\|R|=|C|}}
+ f_{|R|}(B[R,C])\,g_{n-|R|}(B[R^c,C^c]).
+\end{equation}
+Restrictions retain their induced orders. Associativity follows by
+partitioning the rows and columns into three corresponding blocks;
+commutativity follows by taking complements. The identity has value $1$
+in size zero and $0$ in positive sizes. The convolution inverse of $h$ is
+\begin{equation}\label{eq:inverse}
+ (\invh)_n(B;t)=(-1)^n h_n(B;t).
+\end{equation}
+For a fixed full permutation, the splittings with a first block of size
+$k$ correspond to choosing $k$ of its edges. Its coefficient in the
+convolution of the two sides is therefore multiplied by
+$\sum_{k=0}^{n}\binom nk(-1)^{n-k}$.
+
+We say $f$ is \emph{local of order at most $k$} if $f=h*A$, where
+$A_n=0$ for every $n>k$. For this intermediate definition we allow values
+in $\QQ(z)$. The kernel $A=\invh*f$ is unique and satisfies
+\begin{equation}\label{eq:recursion}
+ A_n(B)=f_n(B)-\sum_{j=0}^{n-1}
+ \sum_{\substack{R,C\subseteq[n]\\|R|=|C|=j}}
+ A_j(B[R,C])h_{n-j}(B[R^c,C^c]).
+\end{equation}
+
+Let $E$ multiply the size-$n$ part of a family by $n$, and let
+$L=z\,d/dz$. Both are derivations of \eqref{eq:convolution}.
+
+\begin{lemma}\label{lem:operators}
+If $f$ is local of order at most $k$, then $Ef$ and $Lf$ are local of
+order at most $k+1$. Multiplication by a scalar in $\QQ(z)$ does not
+increase the locality order.
+\end{lemma}
+\begin{proof}
+Marking one edge of a permutation in \eqref{eq:classical} gives
+$Eh=h*U$ and $Lh=h*V$, where the only nonzero parts of $U,V$ are
+\[
+ U_1([b])=1+zb,\qquad V_1([b])=zb\qquad(b\in\{0,1\}).
+\]
+Consequently $E(h*A)=h*(U*A+EA)$ and
+$L(h*A)=h*(V*A+LA)$. Convolution adds support-size bounds, whereas $EA$
+and $LA$ have the same support bound as $A$. Scalar multiplication can
+be applied directly to $A$.
+\end{proof}
+
+Thus a polynomial of total degree $d$ in the commuting operators $E,L$
+raises locality by at most $d$. In applications below, each rational
+scalar in $z$ is applied \emph{after} the indicated polynomial operator;
+it is never commuted through $L$.
+
+\section{Small support components and the patch decomposition}
+
+For an exact matrix support, form its bipartite graph on its nonisolated
+row and column vertices. On a connected component $G$ with $r$ rows and
+$c$ columns, the diagonal row and column action has a one-dimensional
+scalar stabilizer. Every orbit therefore has size $(q-1)^{r+c-1}$.
+If $O_D(G,q)$ denotes the number of these orbits of rank $D$, the
+component contributes to the normalized rank count the factor
+\begin{equation}\label{eq:defect}
+ x^e O_D(G,x+1),\qquad
+ e=r+c-D-1\geq\max(r,c)-1.
+\end{equation}
+Ranks and exponents add over components. This is the diagonal-orbit
+method of \cite[Section~5.1]{LewisEtAl2011}, in the component form
+of \cite[Eq.~(3.2)]{ChenSelover2026}.
+
+An isolated edge has $D=1$, $e=0$ and orbit count $1$; it is the only
+component of defect zero. Every other nonempty connected component has
+defect at least one. Hence components with more than three rows or more
+than three columns disappear modulo $x^3$. For the remaining components
+$O_D(G,x+1)$ is a polynomial: this is the small-board polynomiality
+consequence stated in Remark~2.3 and used in the proof of Theorem~3.12
+of \cite{ChenSelover2026}, based on Stembridge's analysis
+\cite{Stembridge1998}. We use polynomiality only for these small
+components.
+
+Write the normalized rook residue as
+\[
+ M_i(B,x+1)\equiv\sum_{a=0}^{2}R_{a,i}(B)x^a\pmod{x^3},
+ \qquad
+ F_{a,n}(B;z)=\sum_{i=0}^{n}R_{a,i}(B)(n-i)!z^i.
+\]
+The coefficients $R_{a,i}$ are defined by the same residue convention as
+\eqref{eq:residue}.
+
+\begin{lemma}\label{lem:rooklocality}
+For $a=0,1,2$, the family $F_a$ is local of order at most $2a$.
+Moreover, $F_0=h$.
+\end{lemma}
+\begin{proof}
+Fix an actual labelled collection $G$ of $k$ components other than
+isolated edges, with a rank specified on each component. Let $r,c,D$
+be its total row count, column count and rank. If its total defect is
+$e$, then
+\begin{equation}\label{eq:sizebound}
+ e=r+c-D-k,\qquad k\leq e,\qquad
+ s:=r+c-D=e+k\leq2a
+\end{equation}
+whenever this collection contributes to order $a$. Its coefficient is
+obtained from $x^e$ times the product of its orbit polynomials, and is
+independent of the ambient board. The collection is counted as a support,
+not as all isomorphisms from a representative, so no automorphism
+multiplicity is introduced.
+
+Fix such a support inside $B$, and let $B_{\mathrm{out}}$ be the
+rectangular restriction outside all its rows and columns. The rest of
+the support consists of an arbitrary matching there. Apart from the
+fixed orbit coefficient, its contribution to $F_{a,n}$ is
+\begin{equation}\label{eq:corecontribution}
+ z^D\sum_{j=0}^{n-D}r_j(B_{\mathrm{out}})(n-D-j)!z^j.
+\end{equation}
+The factorial arguments are nonnegative, since
+$j\leq\min(n-r,n-c)\leq n-D$.
+
+Choose and delete any $D$ core rows and any $D$ core columns. On the
+remaining $n-D$ rows and columns form a matrix $W$ whose entry is
+$1+zB_{ij}$ when both endpoints are outside $G$, and $1$ otherwise.
+The expression in \eqref{eq:corecontribution} equals $z^D\per(W)$,
+by expansion in marked entries outside $G$. The retained $r-D$ core
+rows and $c-D$ core columns will be called dummy vertices. The deleted
+vertices need not correspond to a matching of $G$.
+
+Given an auxiliary permutation in $\per(W)$, let $u$ count its edges
+from a dummy row to a dummy column. Its \emph{patch} consists of all
+vertices of $G$, together with every outside vertex adjacent in this
+permutation to a dummy vertex. The patch has equally many rows and
+columns, namely
+\begin{equation}\label{eq:patchsize}
+ r+(c-D-u)=c+(r-D-u)=s-u\leq s.
+\end{equation}
+Every permutation edge touching a dummy vertex has weight $1$.
+Every outside vertex added to the patch is already used by such an
+edge. Thus the remaining edges form a completely unrestricted weighted
+permutation on the complementary rows and columns, whose sum is the
+corresponding classical hit polynomial $h$.
+
+Conversely, the core, the deleted vertex sets, the partial permutation
+touching the dummy vertices, and a complementary permutation reconstruct
+the auxiliary permutation uniquely. There are no unused outside
+vertices in the patch. All core and partial-permutation data depend
+only on the board restricted to the patch; all other dependence is in
+the complementary $h$. Averaging over the
+$\binom rD\binom cD$ choices of deleted vertices makes this local rule
+invariant under row and column relabelling. Each deletion choice has
+the same expansion \eqref{eq:corecontribution}, so averaging preserves
+the identity. Rational local weights are allowed here.
+
+Summing these patches gives $h*A$ with $A$ supported in sizes at most
+$s\leq2a$. Even if $s>n$, only auxiliary permutations with
+$s-u\leq n$ can occur, so the argument still applies. At $a=0$ there
+are only matchings of isolated edges, with coefficient $1$; their
+transform is $h$ by \eqref{eq:classical}.
+\end{proof}
+
+The orbit coefficients in this argument can be signed. For example,
+the rank-two orbit polynomial of the full $2\times2$ support is $x-1$.
+Lemma~\ref{lem:rooklocality} is a locality statement, not a termwise
+positivity argument for the orbit expansion.
+
+\section{The locality bound for the quadratic hit coefficient}
+
+For $0\leq i\leq n$ put $m=n-i$, $N=\binom n2$, and define
+\begin{align*}
+ \alpha(m)&=\frac{m(m-1)}4,&
+ \beta(m)&=\frac{m(m-1)(m-2)(9m+13)}{288},\\
+ I(i)&=\frac{i(i-1)}2,&
+ J(i)&=\frac{i(i-1)(i+1)}6,\\
+ T(i)&=\frac{i(i-1)(i-2)(3i-1)}{24},&&\\[-2pt]
+ a(n,i)&=N+\alpha(n-i),&
+ b(n,i)&=\frac{N(N-1)}2+N\alpha(n-i)+\beta(n-i).
+\end{align*}
+Here $a$ has total degree at most two and $b$ has total degree at most
+four in $(n,i)$. Direct product expansion gives
+\[
+ [m]!_{1+x}=m!\bigl(1+\alpha(m)x+\beta(m)x^2\bigr)+O(x^3).
+\]
+For example, dividing the $j$th factor by $j$ gives the coefficients
+$(j-1)/2$ and $(j-1)(j-2)/6$; summing these and the cross products
+gives the displayed formula. Also,
+\[
+ t(1+x)^{-j}-1=z-tjx+\frac{tj(j+1)}2x^2+O(x^3).
+\]
+Consequently the constant, linear and quadratic coefficients of
+$W_{n,i}(1+x,t)$ are, respectively,
+\begin{align}
+ &m!z^i,\nonumber\\
+ &m!\bigl(a(n,i)z^i-tI(i)z^{i-1}\bigr),\label{eq:weights}\\
+ &m!\bigl(b(n,i)z^i+t(J(i)-a(n,i)I(i))z^{i-1}
+                       +t^2T(i)z^{i-2}\bigr).\nonumber
+\end{align}
+The sums used here are
+$\sum_{j=0}^{i-1}j=I(i)$,
+$\sum_{j=0}^{i-1}j(j+1)/2=J(i)$, and
+$\sum_{0\leq j<k<i}jk=T(i)$.
+Terms with negative powers of $z$ have zero multipliers at the relevant
+small values of $i$; alternatively, the computation takes place in
+$\QQ(z)$.
+
+Since $Lz^i=iz^i$, multiplication of the rook residues by
+\eqref{eq:weights} yields the family identity
+\begin{equation}\label{eq:operatoridentity}
+\begin{split}
+ C_2={}&F_2+\left(a(E,L)-\frac{t}{z}I(L)\right)F_1\\
+ &+\left(b(E,L)+\frac{t}{z}\bigl(J(L)-a(E,L)I(L)\bigr)
+                    +\frac{t^2}{z^2}T(L)\right)h.
+\end{split}
+\end{equation}
+The polynomial operators in the second term have degree at most two;
+those in the last term have degree at most four. Lemmas
+\ref{lem:operators} and \ref{lem:rooklocality} bound the locality orders
+of these three terms by $4$, $2+2$ and $0+4$.
+
+\begin{theorem}\label{thm:locality}
+Let $K_2=\invh*C_2$ for the convolution \eqref{eq:convolution}.
+Then $K_{2,n}(B;t)$ is an integer polynomial, vanishes for $n=0,1$ and
+for every $n>4$, and satisfies
+\begin{equation}\label{eq:universal}
+ C_{2,n}(B;t)=\sum_{k=2}^{\min(4,n)}
+  \sum_{\substack{R,C\subseteq[n]\\|R|=|C|=k}}
+  K_{2,k}(B[R,C];t)\,h_{n-k}(B[R^c,C^c];t).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Equation~\eqref{eq:operatoridentity} and the locality bounds prove
+$K_{2,n}=0$ for $n>4$. Both $C_2$ and $h$ have integer-polynomial
+values, so \eqref{eq:inverse} shows that their kernel does too.
+Thus the intermediate use of $\QQ(z)$ creates no problem at $t=1$.
+In size zero $C_2=0$, and in size one the hit polynomial is independent
+of $q$, so $K_{2,0}=K_{2,1}=0$. The equation $C_2=h*K_2$ is now
+exactly \eqref{eq:universal}.
+\end{proof}
+
+All residue manipulations above are valid on every prime power:
+\eqref{eq:integralweight} is an integer-polynomial weight, so replacing
+$M_i$ by its residue preserves the congruence. The vanishing above size
+four is therefore an algebraic conclusion, not an extrapolation from
+small boards.
+
+\section{The exact finite certificate}
+
+\begin{proposition}\label{prop:finite}
+For every board of size $k=2,3,4$, every coefficient of
+$K_{2,k}(B;t)$ is nonnegative.
+\end{proposition}
+\begin{proof}[Computer-assisted proof]
+We describe the exact finite calculation, including its reconstruction
+bound. Choose a spanning tree of a connected support $G$. Diagonal
+scaling makes its tree entries $1$, uniquely up to the common scalar
+which acts trivially. The remaining
+$\nu=|E(G)|-r-c+1$ entries range freely over $\FF_q^\times$. Hence
+\[
+ 0\leq O_D(G,x+1)\leq x^\nu.
+\]
+Small-board polynomiality, already invoked after \eqref{eq:defect},
+implies that this polynomial has degree at most $\nu$. In the range
+$r,c\leq3$ one has $\nu\leq4$. Accordingly $\nu+1$ exact counts at
+distinct field sizes determine it by rational interpolation; further
+field sizes check the result. This is interpolation with a proved
+degree bound, not an inference of polynomiality from samples.
+
+There are $253$ connected labelled supports with $1\leq r,c\leq3$
+and no isolated vertices. Independent row and column permutations
+reduce them to the $28$ classes in Appendix~\ref{app:orbits};
+transposition is not identified. All their rank-orbit polynomials are
+listed there. For a size-$n$ exact support $S$, its normalized rank
+residue, with $y$ recording rank, is computed as
+\begin{equation}\label{eq:supportproduct}
+ P_S(x,y)=\prod_{G\text{ component of }S}
+       \left(\sum_D y^D x^{r(G)+c(G)-D-1}O_D(G,x+1)\right)
+                  \pmod{x^3}.
+\end{equation}
+For the empty support the product is $1$. Components exceeding the
+size bound are discarded. For a board $B$, summing $P_S$ over
+$S\subseteq B$ gives $\sum_i M_i(B,x+1)y^i$ modulo $x^3$.
+We then apply the integral weights \eqref{eq:integralweight} and
+extract $C_{2,n}$, and apply \eqref{eq:recursion} to get $K_{2,n}$.
+
+Every board mask, and every coefficient from $t^0$ through $t^n$, is
+included. The resulting ranges are as follows.
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & Boards & Coefficients & Minimum & Maximum & Negative\\
+\midrule
+1 & 2 & 4 & 0 & 0 & 0\\
+2 & 16 & 48 & 0 & 1 & 0\\
+3 & 512 & 2,048 & 0 & 41 & 0\\
+4 & 65,536 & 327,680 & 0 & 162 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+The supplementary programs and full coefficient tables implement these
+formulas using exact integer and rational arithmetic. The reconstruction
+and comparison checks described next reproduce every entry.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By \eqref{eq:universal}, $C_{2,n}$ is a sum of products of the finite
+kernels in Proposition~\ref{prop:finite} and classical hit polynomials.
+Both factors have nonnegative coefficients in $t$. Therefore
+$C_{2,n}(B;t)\in\NN[t]$, which is the required assertion for every $d$.
+\end{proof}
+
+\subsection*{Enumeration and verification details}
+
+The support sum in \eqref{eq:supportproduct} is evaluated on the Boolean
+lattice of the $n^2$ cells by a subset zeta transform. If an array
+initially contains the exact-support values $P_S$, then for each cell
+$e$, and each mask $S$ containing $e$, replace its current value by the
+sum of that value and the value at $S\setminus\{e\}$. After all cells
+are processed the entry at $B$ is $\sum_{S\subseteq B}P_S$.
+This is the standard subset-lattice transform described in
+\cite[Section~2.2]{BjorklundEtAl2006}. The balanced row--column
+convolution used in the proof is defined separately in
+\eqref{eq:convolution}.
+
+A second complete evaluation uses embeddings of the small connected
+cores, matching dynamic programming on the remaining board, and
+\eqref{eq:weights}. It extracts the kernel by the direct alternating
+inverse \eqref{eq:inverse}, rather than by recursive subtraction.
+The two evaluations agree on all $329{,}780$ quadratic hit coefficients
+and all $329{,}780$ kernel coefficients for the $66{,}066$ boards of
+sizes one through four. These implementations share the initial orbit
+table, so agreement between them alone does not check that table.
+
+A separate verifier reconstructs all $253$ labelled connected supports
+without importing either implementation. It chooses its own spanning
+trees, computes ranks by explicit minors, and reconstructs the orbit
+polynomials by exact rational Vandermonde elimination. It enumerates
+$83{,}919$ normalized assignments over fields of sizes
+$2,3,4,5,7,8,11,13$. The extension fields use the irreducible polynomials
+$u^2+u+1$ and $u^3+u+1$. The resulting polynomials agree with every
+entry of the orbit table. Using the integral product weights and
+direct permutation enumeration for $h$, it recomputes all three
+residue coefficients and the quadratic kernels. All $989{,}340$
+residue entries and $329{,}780$ kernel entries agree with the stored
+tables, and the reconstructed kernels are checked for nonnegativity
+directly.
+
+As additional checks, this verifier compares $2{,}907$ coefficients in
+\eqref{eq:weights} with direct product expansion for
+$0\leq i\leq n\leq16$, and enumerates every square matrix of sizes
+one through three over $\FF_2,\FF_3,\FF_4$. The latter covers
+$282{,}701$ matrices and $6{,}300$ exact support--rank comparisons,
+using Gaussian elimination instead of the orbit calculation's minors.
+These checks concern exact counts, including at $q=2$, where a
+congruence modulo $(q-1)^3$ by itself would be vacuous.
+
+Using exact predicates and a separately implemented finite search is
+also a verification practice in Zeng, Liu, Ratnavelu and Ong's preprint
+on ternary Borsuk and kissing-code models
+\cite{ZengEtAl2026Certificates} (Section~4, Lemma~3 and Proposition~1).
+Their two clique implementations provide a methodological comparison
+for our integer enumeration and cross-checks. The mathematical input
+that extends our finite certificate to every board size is specifically
+the locality identity \eqref{eq:universal}.
+
+\subsection*{Reproducibility, scope and assistance}
+
+The accompanying \texttt{supplement.zip} contains the exact tables,
+the calculation programs, and the separate verifier, with a README
+giving commands and data formats. All computations use Python~3's
+standard library. No floating-point fitting or probabilistic search
+is part of the certificate. Board masks use bit $in+j$ for the cell
+$(i,j)$ in zero-based coordinates. The complete proof consists of the
+algebraic reduction and the finite certificate together.
+
+The result proves the universal quadratic inequality with the precise
+prime-power residue interpretation \eqref{eq:residue}. It does not
+establish the full higher-coefficient conjecture or polynomiality of
+$H_d(B,q)$ on arbitrary boards.
+
+OpenAI Codex assisted the proof development, programming, source
+comparison and preparation of this manuscript. A separate model
+context examined the argument and supplied the additional verifier.
+This does not constitute external peer review or formal proof-assistant
+certification. The deterministic checks share the stated polynomiality
+dependency.
+
+\clearpage
+\appendix
+\section{The connected orbit table}\label{app:orbits}
+
+For a support with $r$ rows and $c$ columns, the integer mask is
+$\sum_{(i,j)\in G}2^{ic+j}$, with zero-based indices. Entries below are
+$O_D(G,x+1)$; a zero is also shown when rank $D$ exceeds the dimensions.
+The table contains one representative under independent row and column
+permutations, with transposes retained as separate dimension classes.
+It supplies all component polynomials used in
+\eqref{eq:supportproduct}; high-defect ranks are removed by the power
+of $x$ there. The field reconstruction and degree bound are given in
+the proof of Proposition~\ref{prop:finite}.
+
+\begin{longtable}{ccrlll}
+\toprule
+$r$ & $c$ & Mask & $O_1$ & $O_2$ & $O_3$\\
+\midrule
+\endhead
+1 & 1 & 1 & $1$ & $0$ & $0$\\
+1 & 2 & 3 & $1$ & $0$ & $0$\\
+1 & 3 & 7 & $1$ & $0$ & $0$\\
+2 & 1 & 3 & $1$ & $0$ & $0$\\
+2 & 2 & 7 & $0$ & $1$ & $0$\\
+2 & 2 & 15 & $1$ & $x-1$ & $0$\\
+2 & 3 & 15 & $0$ & $1$ & $0$\\
+2 & 3 & 29 & $0$ & $1$ & $0$\\
+2 & 3 & 31 & $0$ & $x$ & $0$\\
+2 & 3 & 63 & $1$ & $x^{2}-1$ & $0$\\
+3 & 1 & 7 & $1$ & $0$ & $0$\\
+3 & 2 & 23 & $0$ & $1$ & $0$\\
+3 & 2 & 27 & $0$ & $1$ & $0$\\
+3 & 2 & 31 & $0$ & $x$ & $0$\\
+3 & 2 & 63 & $1$ & $x^{2}-1$ & $0$\\
+3 & 3 & 79 & $0$ & $1$ & $0$\\
+3 & 3 & 87 & $0$ & $0$ & $1$\\
+3 & 3 & 93 & $0$ & $0$ & $1$\\
+3 & 3 & 94 & $0$ & $0$ & $1$\\
+3 & 3 & 95 & $0$ & $0$ & $x$\\
+3 & 3 & 119 & $0$ & $1$ & $x-1$\\
+3 & 3 & 127 & $0$ & $x$ & $x^{2}-x$\\
+3 & 3 & 221 & $0$ & $1$ & $x-1$\\
+3 & 3 & 223 & $0$ & $x$ & $x^{2}-x$\\
+3 & 3 & 238 & $0$ & $1$ & $x-1$\\
+3 & 3 & 239 & $0$ & $x-1$ & $x^{2}-x+1$\\
+3 & 3 & 255 & $0$ & $x^{2}-x+1$ & $x^{3}-x^{2}+x-1$\\
+3 & 3 & 511 & $1$ & $x^{3}+2x-3$ & $x^{4}-x^{3}-2x+2$\\
+\bottomrule
+\end{longtable}
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

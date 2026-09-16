@@ -1,0 +1,21 @@
+Command: /usr/bin/time -f 'elapsed=%E maxrss_kb=%M' python3 evidence/research_factor_cycles_extended.py
+Date: 2026-09-06
+
+i=0 left_period=1 right_period=1 left_runs=() right_runs=()
+i=1 left_period=5 right_period=9 left_runs=((1, 1), (13, 1), (14, 1), (2, 1), (15, 1)) right_runs=((1, 1), (9, 2), (13, 1), (14, 1), (6, 2), (2, 1), (15, 1))
+i=2 left_period=21 right_period=41 left_runs=((1, 5), (9, 4), (13, 1), (14, 1), (6, 4), (2, 5), (15, 1)) right_runs=((1, 9), (9, 10), (13, 1), (14, 1), (6, 10), (2, 9), (15, 1))
+i=3 left_period=85 right_period=169 left_runs=((1, 21), (9, 20), (13, 1), (14, 1), (6, 20), (2, 21), (15, 1)) right_runs=((1, 41), (9, 42), (13, 1), (14, 1), (6, 42), (2, 41), (15, 1))
+i=4 left_period=341 right_period=681 left_runs=((1, 85), (9, 84), (13, 1), (14, 1), (6, 84), (2, 85), (15, 1)) right_runs=((1, 169), (9, 170), (13, 1), (14, 1), (6, 170), (2, 169), (15, 1))
+i=5 left_period=1365 right_period=2729 left_runs=((1, 341), (9, 340), (13, 1), (14, 1), (6, 340), (2, 341), (15, 1)) right_runs=((1, 681), (9, 682), (13, 1), (14, 1), (6, 682), (2, 681), (15, 1))
+i=6 left_period=5461 right_period=10921 left_runs=((1, 1365), (9, 1364), (13, 1), (14, 1), (6, 1364), (2, 1365), (15, 1)) right_runs=((1, 2729), (9, 2730), (13, 1), (14, 1), (6, 2730), (2, 2729), (15, 1))
+i=7 left_period=21845 right_period=43689 left_runs=((1, 5461), (9, 5460), (13, 1), (14, 1), (6, 5460), (2, 5461), (15, 1)) right_runs=((1, 10921), (9, 10922), (13, 1), (14, 1), (6, 10922), (2, 10921), (15, 1))
+i=8 left_period=87381 right_period=174761 left_runs=((1, 21845), (9, 21844), (13, 1), (14, 1), (6, 21844), (2, 21845), (15, 1)) right_runs=((1, 43689), (9, 43690), (13, 1), (14, 1), (6, 43690), (2, 43689), (15, 1))
+cached_local_windows=6084
+certificate=PASS scope=exact_factor_cycles_i_0_through_8
+elapsed=0:00.80 maxrss_kb=16300
+
+The terminal-run formulas were extracted from i<=6 and frozen before running
+the new held-out cases i=7,8.  Every factor state was evolved by the exact
+five-block local rule, validity was checked at every sample, equality with the
+initial factor was excluded at each earlier sample, and equality was checked
+at the displayed endpoint.  This is finite evidence, not an all-length proof.

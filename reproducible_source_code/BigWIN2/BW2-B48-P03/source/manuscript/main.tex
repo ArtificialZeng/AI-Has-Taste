@@ -1,0 +1,202 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+\newcommand{\AO}{\mathcal{AO}}
+\newcommand{\psia}{\psi}
+
+\title{A Modulo-Four Transfer Invariant for Acyclic Orientations of Width-Three Grid Strips}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\psia(G)$ denote the number of acyclic orientations of a finite simple
+graph $G$.  Mühlherr and Poullot conjectured that
+$\psia(P_n\times P_m)\equiv2\;(\bmod 4)$ whenever $m,n\geq3$ are odd,
+after verifying three width-three instances computationally.  We prove the
+complete width-three subfamily, and slightly more:
+$\psia(P_3\times P_m)\equiv2\;(\bmod 4)$ for every $m\geq2$.
+The proof is an elementary two-state transfer for the chromatic polynomial.
+At $q=-1$, its state reaches $(2,0)$ modulo four after one extension and then
+remains fixed.  The broader odd-by-odd conjecture is not addressed.
+\end{abstract}
+
+\section{Context and statement}
+
+For the path $P_m$ on $m$ vertices, the Cartesian product
+$P_3\times P_m$ is the usual $3$-by-$m$ rectangular grid.  If
+$\chi_G(q)$ is the chromatic polynomial, Stanley's evaluation gives
+\begin{equation}\label{eq:stanley}
+  \psia(G)=(-1)^{|V(G)|}\chi_G(-1).
+\end{equation}
+This identity turns the orientation count into an exact negative evaluation
+of a coloring invariant~\cite{Stanley1973}.
+
+Mühlherr and Poullot reported
+$\psia(P_3\times P_m)\equiv2\;(\bmod 4)$ for $m=3,5,7$ as computer
+experiments and included all odd-by-odd grids in their Conjecture~1(1)
+~\cite[Example~3.13(8) and Conjecture~1(1)]{MuehlherrPoullot2026}.
+Transfer matrices for chromatic polynomials of square-lattice strips of fixed
+width and arbitrary length have a substantial precedent; in particular,
+Salas and Sokal developed the Fortuin--Kasteleyn transfer framework for free
+strips of width at most eight~\cite{SalasSokal2001}.  Our proof needs only two
+proper-coloring equality types at the exposed column and then reduces the
+resulting matrix modulo four.
+
+Coloring invariants also carry structural information beyond the numerical
+evaluation used here.  For example, Zeng used the chromatic symmetric function
+to reconstruct a multiplicity-isolated class of proper trees
+~\cite{Zeng2026MultiplicityArxiv}.  That reconstruction problem is separate
+from the strip enumeration below; both use coloring-derived graph invariants,
+but for different questions.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\geq2$,
+\[
+  \psia(P_3\times P_m)\equiv2\;(\bmod 4).
+\]
+Consequently, for every integer $k\geq1$,
+\[
+  \psia(P_3\times P_{2k+1})\equiv2\;(\bmod 4).
+\]
+\end{theorem}
+
+The lower endpoint in the stronger assertion is necessary: $P_3$ has four
+acyclic orientations, so the conclusion fails at $m=1$.
+
+\section{The two-state transfer}
+
+We first take an integer $q\geq3$ and count proper $q$-colorings.  A proper
+coloring of the last three-vertex column has exactly one of the following two
+equality types:
+\[
+  A=(a,b,a)\quad(a\neq b),
+  \qquad
+  B=(a,b,c)\quad(a,b,c\text{ pairwise distinct}).
+\]
+Let $A_m(q)$ and $B_m(q)$ count the colorings of the first $m$ columns whose
+last column has type $A$ and $B$, respectively, and write the row vector
+$v_m=(A_m,B_m)$.  For one column,
+\begin{equation}\label{eq:initial}
+  v_1=\bigl(q(q-1),q(q-1)(q-2)\bigr).
+\end{equation}
+
+Fix representatives $(0,1,0)$ and $(0,1,2)$ for the old types.  Direct
+extension counting gives the old-type-by-new-type matrix
+\begin{equation}\label{eq:matrix}
+M(q)=
+\left(\begin{array}{cc}
+q^2-3q+3 &(q-2)(q^2-4q+5)\\
+q^2-4q+5&q^3-6q^2+14q-13
+\end{array}\right).
+\end{equation}
+Here every new vertex must differ both from its horizontal predecessor and
+from its vertical neighbor or neighbors in the new column.  We include the
+four counts for completeness.
+
+For $A\to A$, separate the case in which the repeated new endpoint color is
+$1$.  The count is
+\[
+ (q-1)+(q-2)^2=q^2-3q+3.
+\]
+For $B\to A$, the same separation gives
+\[
+ (q-1)+(q-3)(q-2)=q^2-4q+5.
+\]
+For $A\to B$, separate according as the new middle color is $0$ or is neither
+$0$ nor $1$.  The number of extensions is
+\[
+ (q-1)(q-2)+(q-2)^2(q-3)
+   =(q-2)(q^2-4q+5).
+\]
+Finally, for $B\to B$, start with all $q(q-1)(q-2)$ ordered distinct triples
+and exclude equality with the corresponding entry of $(0,1,2)$.  Inclusion--
+exclusion yields
+\[
+ q(q-1)(q-2)-3(q-1)(q-2)+3(q-2)-1
+ =q^3-6q^2+14q-13.
+\]
+Color symmetry makes each extension number depend only on the old type.
+Therefore
+\begin{equation}\label{eq:transfer}
+  v_{m+1}=v_mM(q),
+  \qquad
+  \chi_{P_3\times P_m}(q)=A_m(q)+B_m(q).
+\end{equation}
+Equations~\eqref{eq:initial}--\eqref{eq:transfer} hold for every integer
+$q\geq3$.  Both sides are polynomials in $q$, so they are polynomial
+identities and may legitimately be specialized at $q=-1$.
+
+\section{The modulo-four fixed state}
+
+At the required specialization,
+\[
+ M(-1)=\left(\begin{array}{cc}7&-30\\10&-34\end{array}\right)
+ \equiv\left(\begin{array}{cc}3&2\\2&2\end{array}\right)\;(\bmod 4),
+ \qquad
+ v_1(-1)=(2,-6)\equiv(2,2)\;(\bmod 4).
+\]
+One multiplication gives
+\[
+  v_2(-1)\equiv(2,0)\;(\bmod 4),
+\]
+and this state is fixed because
+\[
+  (2,0)M(-1)\equiv(2,0)\;(\bmod 4).
+\]
+Induction in~\eqref{eq:transfer} now gives, for every $m\geq2$,
+\[
+ \chi_{P_3\times P_m}(-1)
+ =A_m(-1)+B_m(-1)\equiv2\;(\bmod 4).
+\]
+Equation~\eqref{eq:stanley} changes this value by at most a sign, and
+$-2\equiv2\;(\bmod 4)$.  This proves Theorem~\ref{thm:main}.
+
+\begin{remark}
+The theorem settles only the width-three subfamily of the odd-by-odd grid
+conjecture.  No conclusion is claimed here for a fixed width at least five.
+For the original odd-length grid, the number of edges is even, so the modular
+criterion of Mühlherr and Poullot also gives the non-Hamiltonicity consequence
+for the associated graph of acyclic orientations
+~\cite[Lemma~3.2]{MuehlherrPoullot2026}.
+\end{remark}
+
+\section*{Exact checks and assistance disclosure}
+
+The symbolic transfer above proves the quantified statement.  As checks, an
+exact Python implementation enumerated all four transition types for
+$q=3,\ldots,12$, compared the complete two-state chromatic polynomial with an
+independent Fortuin--Kasteleyn connectivity transfer for $m=1,\ldots,9$, and
+verified the fixed residue state.  At the first length beyond those reported
+in~\cite{MuehlherrPoullot2026}, two independent exact programs---one using
+deletion--contraction and one using the full chromatic polynomial---both gave
+\[
+ \psia(P_3\times P_9)=514302841174\equiv2\;(\bmod 4).
+\]
+These finite computations are corroborating checks, not premises of the
+induction.
+
+OpenAI Codex assisted with proof development, exact-check scripting, and
+manuscript preparation.  The universal conclusion is supported by the
+displayed symbolic argument; the accompanying scripts use exact integer and
+polynomial arithmetic and introduce no floating-point assumptions.
+
+\paragraph{Data and code availability.}
+The accompanying supplement contains the width-three transfer certificate,
+an exact deletion--contraction counter, an independent Fortuin--Kasteleyn
+evaluator, and their saved outputs.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

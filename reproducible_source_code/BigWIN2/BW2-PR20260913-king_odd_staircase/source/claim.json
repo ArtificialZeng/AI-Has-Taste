@@ -1,0 +1,21 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every odd positive integer r and every positive integer k, let D_k be the nonempty partition consisting of r copies of kr, then r copies of (k-1)r, and so on down to r copies of r. A legal King move deletes its first row, its first column, or both, by exactly one unit, and is allowed only when the resulting partition is nonempty. Let G be its normal-play Sprague-Grundy value. If q is the unique integer with 0<=q<r+2 and q congruent to k modulo r+2, then G(D_k)=0 when q is odd, G(D_k)=1 when q is even and nonzero, and G(D_k)=2 when q=0. This is exactly the universal Conjecture 5.1 frozen in source.md, without restrictions to finite parameters or changes to empty-position conventions.",
+  "contribution": "A complete self-contained proposer-side proof of the frozen odd-block formula, using a stronger boundary classification and an explicit three-region parity array whose mex recurrence is checked by exhaustive symbolic cases. The induction includes the k=2 absent corner and both phase wraparounds, including r=1. This supplies the missing odd-block classification relative to the inspected arXiv v1. Current openness and priority are unverified: the later SSRN full text remains inaccessible and uncompared. This candidate requests fresh mathematical review, not acceptance or publication authorization.",
+  "proposer_job_id": "primary-20260913-king-odd-staircase-research-fd17b876b830",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research/proof.md",
+    "evidence/research/verify.py",
+    "evidence/research/verify.json",
+    "evidence/external/gkm-2501.14640v1.html",
+    "evidence/research/primary-check.txt",
+    "evidence/research/citation-extraction.md",
+    "literature/research-screen.md",
+    "evidence/triage/transfer.md",
+    "evidence/triage/phase-holdout.py",
+    "evidence/triage/phase-holdout.json"
+  ]
+}

@@ -1,0 +1,311 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\Q}{Q}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cU}{\mathcal U}
+
+\title{A Componentwise Repair of the Two-Layer Lemma\\
+in the Daykin--Frankl Argument}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 7, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Williams recently reduced the Daykin--Frankl width inequality for convex
+subsets of a Boolean lattice to a two-layer lemma for an arbitrary finite
+poset.  The posted proof of that lemma contains an undefined auxiliary set
+and checks only one of two proposed antichains.  We prove the lemma by a
+different construction: components of a bipartite comparison graph are
+assigned between two output antichains, with isolated vertices handled by
+the only possible boundary conflicts.  Both outputs are checked in every
+comparison direction.  This establishes the lemma for all finite posets and
+validates the stated induction, including empty sections.  We also give a
+three-element-chain example showing that the natural set-theoretic
+interpretation of the undefined auxiliary set does not repair the posted
+sorting argument; the example does not contradict the lemma.
+\end{abstract}
+
+\section{Context and statement}
+
+For a finite poset $S$, let $w(S)$ be the maximum size of an antichain in
+$S$, with $w(\varnothing)=0$.  Products are ordered coordinatewise, and
+$\Q_1=\{0<1\}$.  A subset of a poset is \emph{convex} if it contains every
+point lying between two of its points.
+
+Daykin and Frankl conjectured the Boolean-lattice width inequality now given
+in Corollary~\ref{cor:DF} below \cite{DaykinFrankl1983}.  Duffus, Howard and
+Leader proved it for initial segments of the binary order and developed
+related width results for downsets \cite{DuffusHowardLeader2019}.  Williams's
+recent preprint states the full inequality and reduces it to the following
+two-layer assertion \cite[Lemma~2]{Williams2026}.  In the proof posted as
+version~1, a set $C$ used in the sorting rules is not defined, and the second
+of two output sets is declared an antichain by symmetry rather than checked
+\cite[Section~3]{Williams2026}.  Our contribution is a complete replacement
+for that sorting step.  We make no claim here about priority beyond this
+specific repair.
+
+Let $R$ be a finite poset and let $P\subseteq R\times\Q_1$ be convex.  Write
+\[
+  P=(P_0\times\{0\})\cup(P_1\times\{1\}),
+  \qquad P_i=\{x\in R:(x,i)\in P\}.
+\]
+
+\begin{theorem}[Two-layer lemma]\label{thm:two-layer}
+For every such $R$ and $P$,
+\[
+  2w(P)\geq w(P_0\times\Q_1)+w(P_1\times\Q_1).
+\]
+No nonemptiness, rankedness, or lattice assumption is required.
+\end{theorem}
+
+\section{The component construction}
+
+Put $B=P_0\cap P_1$.  Convexity gives the elementary implication
+\begin{equation}\label{eq:convexity}
+ p\in P_0,\quad q\in P_1,\quad p\leq q
+ \quad\Longrightarrow\quad p,q\in B.
+\end{equation}
+Indeed, $(p,1)$ and $(q,0)$ both lie between $(p,0)$ and $(q,1)$.
+
+For $i\in\{0,1\}$, choose a maximum antichain of $P_i\times\Q_1$ and
+write it uniquely by layers as
+\[
+ \cA_i=(L_i\times\{0\})\cup(H_i\times\{1\}).
+\]
+Thus $L_i$ and $H_i$ are antichains in $R$, and
+\begin{equation}\label{eq:input-cross}
+ \ell\in L_i,\ h\in H_i\quad\Longrightarrow\quad \ell\not\leq h.
+\end{equation}
+
+Form a bipartite graph $G$.  Its left vertices are occurrence copies
+$L_1^*$ of the elements of $L_1$, its right vertices are occurrence copies
+$H_0^*$ of the elements of $H_0$, and two occurrences are adjacent exactly
+when their underlying values are comparable in $R$.  Occurrence copies keep
+the two roles distinct when a value belongs to $L_1\cap H_0$.
+
+\begin{lemma}[Uniform orientation]\label{lem:orientation}
+Every nontrivial component of $G$ is exactly one of the following types:
+\begin{enumerate}
+\item a single equality edge $\ell=h$;
+\item all its edges satisfy $\ell<h$ for $\ell\in L_1$ and $h\in H_0$;
+\item all its edges satisfy $h<\ell$ for $\ell\in L_1$ and $h\in H_0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+An equality edge is an isolated component: any further neighbor would be
+comparable with the equal value in one of the antichains $L_1$ or $H_0$.
+Suppose next that an edge satisfies $\ell<h$.  Any other $L_1$-neighbor
+$\ell'$ of $h$ must satisfy $\ell'<h$; the alternatives $h\leq\ell'$ and
+$h=\ell'$ would make $\ell$ and $\ell'$ comparable.  Any other
+$H_0$-neighbor $h'$ of $\ell'$ must then satisfy $\ell'<h'$; otherwise
+$h'\leq\ell'<h$ would make $h'$ and $h$ comparable.  Propagating along
+paths proves type~2.  Reversing the order proves type~3.
+\end{proof}
+
+We now assign every occurrence vertex to one of two sets of underlying
+values, denoted $U$ and $D$.
+\begin{itemize}
+\item In a type~1 or type~2 component, assign all $L_1^*$ occurrences to
+  $U$ and all $H_0^*$ occurrences to $D$ (the native assignment).
+\item In a type~3 component, assign all $L_1^*$ occurrences to $D$ and all
+  $H_0^*$ occurrences to $U$ (the swapped assignment).
+\item Assign an isolated $\ell^*\in L_1^*$ to $D$ if some $a\in L_0$
+  satisfies $a\leq\ell$, and otherwise to $U$.
+\item Assign an isolated $h^*\in H_0^*$ to $U$ if some $b\in H_1$
+  satisfies $h\leq b$, and otherwise to $D$.
+\end{itemize}
+
+Every layer move is legal.  In a type~3 component each vertex has an
+incident edge $h<\ell$ with $h\in P_0$ and $\ell\in P_1$, so
+\eqref{eq:convexity} puts both underlying values in $B$.  If an isolated
+$\ell^*$ or $h^*$ is swapped, its defining boundary comparison and
+\eqref{eq:convexity} again put its value in $B$.  Hence a swapped point
+belongs to the required opposite section.
+
+Define two subsets of $P$ by
+\begin{equation}\label{eq:outputs}
+ \cU=(L_0\times\{0\})\cup(U\times\{1\}),
+ \qquad
+ \cD=(D\times\{0\})\cup(H_1\times\{1\}).
+\end{equation}
+
+\begin{proof}[Proof of Theorem~\ref{thm:two-layer}]
+We first check $\cU$.  The set $L_0$ is an antichain.  Within $U$, values
+coming from $L_1^*$ are pairwise incomparable, as are values coming from
+$H_0^*$.  A comparable cross-family pair would be an edge of $G$, but the
+two sides of every component are assigned to opposite outputs.  Thus $U$ is
+an antichain.
+
+The only remaining possible comparison in $\cU$ has the form $a\leq u$
+with $a\in L_0$ and $u\in U$.  If $u$ comes from a swapped $H_0^*$
+occurrence, this is forbidden by \eqref{eq:input-cross} for $\cA_0$.  If it
+comes from a native isolated $L_1^*$ occurrence, the comparison is forbidden
+by the isolated-vertex rule.  If it comes from $L_1^*$ in a native equality
+component, its $H_0^*$ neighbor has the same value; if it comes from a
+type~2 component, it lies below an $H_0^*$ neighbor.  In either case
+$a\leq u$ would imply $a\leq h$ for some $h\in H_0$, again contradicting
+\eqref{eq:input-cross}.  These four cases exhaust $U$, so $\cU$ is an
+antichain.
+
+We check $\cD$ separately.  The graph argument just used shows that $D$ is
+an antichain, and $H_1$ is an antichain.  A remaining comparison would have
+the form $d\leq b$ with $d\in D$ and $b\in H_1$.  If $d$ comes from a
+swapped $L_1^*$ occurrence, this is forbidden by
+\eqref{eq:input-cross} for $\cA_1$.  If it comes from a native isolated
+$H_0^*$ occurrence, it is forbidden by the isolated-vertex rule.  In a
+native equality component, the value of $d$ equals that of its $L_1^*$
+neighbor; in a type~2 component, an $L_1^*$ neighbor lies below $d$.
+Thus either alternative would give $\ell\leq b$ for some $\ell\in L_1$,
+contradicting \eqref{eq:input-cross}.  Hence $\cD$ is also an antichain.
+
+Every occurrence in $L_1^*\sqcup H_0^*$ is assigned once.  No two
+occurrences in the same output have the same underlying value: the only
+possible cross-family equality is an equality edge, whose endpoints receive
+opposite assignments.  Therefore
+\[
+ |U|+|D|=|L_1|+|H_0|.
+\]
+Using \eqref{eq:outputs},
+\begin{align*}
+ |\cU|+|\cD|
+ &=|L_0|+|L_1|+|H_0|+|H_1|\\
+ &=w(P_0\times\Q_1)+w(P_1\times\Q_1).
+\end{align*}
+Both outputs have size at most $w(P)$, proving the assertion.  The argument
+also covers empty sections, isolated vertices, equality components, and a
+disconnected or empty comparison graph.
+\end{proof}
+
+\section{The Boolean-lattice consequence}
+
+Let $\Q_n=(2^{[n]},\subseteq)$, with $\Q_0$ the one-point poset.  The
+standard width formula is
+$w(\Q_m)=\binom{m}{\lfloor m/2\rfloor}$.
+
+\begin{corollary}[Daykin--Frankl inequality]\label{cor:DF}
+For all integers $n,k\geq0$ and every convex $P\subseteq\Q_n$,
+\[
+ w(P\times\Q_k)\geq w(\Q_{n+k})\,|P|\,2^{-n}.
+\]
+This includes $P=\varnothing$.
+\end{corollary}
+
+\begin{proof}
+Induct on $n$ simultaneously for every $k\geq0$.  When $n=0$, either
+$P=\varnothing$, giving zero on both sides, or $P=\Q_0$, giving
+$w(\Q_k)=w(\Q_k)$.
+
+Assume the assertion at $n$ for all $k$.  Identify
+$\Q_{n+1}=\Q_n\times\Q_1$, let $P\subseteq\Q_{n+1}$ be convex, and write
+its two sections as $P_0,P_1\subseteq\Q_n$.  Each section is convex.
+Moreover, $P\times\Q_k$ is convex, and after permuting product coordinates
+it is a convex subset of $\Q_{n+k}\times\Q_1$ with sections
+$P_0\times\Q_k$ and $P_1\times\Q_k$.  Theorem~\ref{thm:two-layer} gives
+\[
+ w(P\times\Q_k)
+ \geq\frac12\sum_{i=0}^1 w(P_i\times\Q_{k+1}).
+\]
+The induction hypothesis at the shifted parameter $k+1$ gives
+\[
+ w(P_i\times\Q_{k+1})
+ \geq w(\Q_{n+k+1})|P_i|2^{-n}.
+\]
+Since $|P|=|P_0|+|P_1|$, averaging produces
+$w(\Q_{n+k+1})|P|2^{-(n+1)}$, as required.
+\end{proof}
+
+\section{Why the natural undefined-set repair fails}
+
+The following example concerns only the sorting construction in
+\cite[Section~3]{Williams2026}, not Theorem~\ref{thm:two-layer}.
+
+\begin{proposition}\label{prop:source-failure}
+If the undefined set $C$ in that construction is interpreted as
+\[
+ C=(P_0\cup P_1)\setminus(P_0\cap P_1),
+\]
+then its first proposed output need not be an antichain, even when $R$ is a
+three-element chain.
+\end{proposition}
+
+\begin{proof}
+Let $R=\{0<1<2\}$, $P_0=\{0,1,2\}$, and $P_1=\{0,1\}$.  The resulting
+$P$ is $R\times\Q_1$ with only $(2,1)$ removed; it is a downset and hence
+convex.  Choose maximum input antichains
+\[
+ L_0=\{2\},\quad H_0=\{0\},\qquad
+ L_1=\{1\},\quad H_1=\{0\}.
+\]
+Both section products have width two: the displayed sets give lower bounds,
+and their two horizontal layers give chain covers of size two.
+
+Here $B=P_0\cap P_1=\{0,1\}$ and $C=\{2\}$.  Under the posted rules, the
+$L_1$ occurrence $1$ is sent to $L$ because no element of
+$L_0\cup(H_0\cap C)$ lies below it.  The $H_0$ occurrence $0$ is also sent
+to $L$, because the element $0\in H_1$ lies above it.  Consequently the
+first proposed output contains
+\[
+ (2,0),\ (0,1),\ (1,1),
+\]
+and $(0,1)<(1,1)$.  Thus that output is not an antichain.  On this example
+$w(P)=2$ and both section-product widths are two, so the two-layer inequality
+itself holds with equality.
+\end{proof}
+
+\section{Exact finite audit and limitations}
+
+As corroboration, an exact program enumerated every naturally labelled
+finite poset through five elements, every convex subset of its product with
+$\Q_1$, and all relevant widths by exact antichain dynamic programming.  It
+tested 180,102 convex instances and found no counterexample.  Every
+isomorphism class in this range occurs because every finite poset admits a
+linear extension and can therefore be naturally labelled.  A second exact
+program tested the component assignment for every pair of maximum input
+antichains in those instances: all 1,684,785 pairs satisfied legality, both
+antichain conditions, and cardinality preservation.  These finite checks do
+not prove the universal theorem; the proof above does.
+
+For methodological context only, the registered abstract of a separate
+finite-poset enumeration preprint describes integral arithmetic and independent
+evaluators for its stated endpoints \cite{Zeng2026SSRN7385118}.  That record
+does not support either our universal theorem or the particular finite census
+reported here; we cite it only as a nearby example of proof-oriented exact
+computation on finite posets.
+
+The argument establishes exactly the arbitrary-finite-poset lemma and the
+displayed induction.  Proposition~\ref{prop:source-failure} invalidates only
+one natural interpretation of the posted sorting rules.  We do not assert
+that no other repair exists, nor do we make a general priority claim for the
+Daykin--Frankl theorem.
+
+\section*{Computational and AI assistance}
+
+Language models assisted in discovering the comparison-graph construction,
+developing exact verification code, and drafting the exposition.  The
+universal proof was subsequently reconstructed and checked case by case in a
+separate review context.  Exact programs independently enumerated the stated
+finite ranges and reproduced the three-chain certificate.  No finite
+computation is used as a substitute for the universal argument.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

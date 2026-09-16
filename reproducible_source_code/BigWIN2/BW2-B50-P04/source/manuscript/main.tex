@@ -1,0 +1,305 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={Exact Counting Formulas for Two-Black-Square Crossword Rook Placements},pdfauthor={Xiaojian Zeng},pdfsubject={Combinatorics},pdfkeywords={crossword grids, rook placements, perfect matchings, permanents}}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\RP}{\operatorname{RP}}
+\newcommand{\permanent}{\operatorname{per}}
+
+\title{Exact Counting Formulas for Two-Black-Square\\
+Crossword Rook Placements}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an $n\times n$ crossword grid with exactly two black squares, we give
+coordinate-dependent factorial formulas for the number of complete
+non-attacking rook placements in every relative-position class.  The formulas
+distinguish the two order types of nonattacking interior squares and reduce the
+fixed-two-black-square extremal problem of Lewis and Won to an explicit integer
+optimization.  They also show that at $n=15$ a central edge-cross configuration
+has $2432\cdot12!$ placements, exceeding the opposite-corner value
+$2379\cdot12!$.  We do not determine the maximum for every $n$ or classify all
+of its equality cases; the original extremal problem remains unresolved.
+\end{abstract}
+
+\section{Setting and contribution}
+
+An \emph{across word} in a crossword grid is a maximal nonempty horizontal run
+of white squares, and a \emph{down word} is defined vertically.  A complete
+non-attacking rook placement meets every across and every down word exactly
+once.  These conventions include words of length one and impose none of the
+connectivity, symmetry, or minimum-word-length conditions of American
+crosswords.
+
+Lewis and Won introduced this model and proved that complete placements are
+perfect matchings of the bipartite word-intersection graph
+\cite[Section~2]{2609.03081}.  Thus, if $A_G$ is its $0$--$1$ biadjacency
+matrix, then $|\RP(G)|=\permanent(A_G)$; see also
+\cite[Chapter~7]{BrualdiRyser1991} for permanent background.  Lewis and Won
+count the grids with zero or one black square and ask for the maximizing
+arrangement at each fixed number of black squares
+\cite[Question~2.2]{2609.03081}.  The interval structure of the present
+$0$--$1$ matrices permits the exact matching decomposition below.
+
+Fix $n\geq3$ and an unordered pair $B$ of black squares.  Write $G_B$ for the
+resulting grid and
+\[
+   N(B)=|\RP(G_B)|.
+\]
+Coordinates are one-based.  A row or column coordinate is \emph{interior} if
+it lies in $\{2,\ldots,n-1\}$.  We adopt the convention
+\[
+       m! =0 \qquad\text{when }m<0                                      \tag{1}
+\]
+only in displayed sums where such a term represents an impossible matching
+case.
+
+For integers $a,c\geq1$ and $b\geq0$, define
+\begin{align*}
+ D(a,b,c)&=ac,\\
+ U(a,b,c)&=ac(a+b-1),\\
+ V(a,b,c)&=ac(b+c-1),\\
+ Q(a,b,c)&=ac\bigl(ab+ac-a+b^2+bc-3b-c+1\bigr).             \tag{2}
+\end{align*}
+If $x<y$ are interior coordinates, their \emph{profile} is
+\[
+       \pi_n(x,y)=(x-1,y-x-1,n-y).                           \tag{3}
+\]
+We append subscripts $r$ and $c$ to $D,U,V,Q$ when (2) is evaluated on
+row and column profiles, respectively.
+
+\section{The exhaustive formula}
+
+\begin{theorem}[Two-black-square counting classification]\label{thm:main}
+For every $n\geq3$ and every unordered two-square set $B$, the number $N(B)$
+is given by exactly one of the following cases, together with their reflections
+and transposes.  Every configuration not listed has $N(B)=0$.
+
+\begin{enumerate}
+\item If $B$ consists of opposite corners, then
+\[
+       N(B)=n!-2(n-1)!+(n-2)!.                               \tag{O}
+\]
+
+\item If $B=\{(1,1),(r,c)\}$ with $2\leq r,c\leq n-1$, then,
+for $n\geq4$,
+\[
+ N(B)=(n-c)(n-r)(n-4)!
+       \bigl((c-1)(r-1)(n-3)-(c-2)(r-2)\bigr).               \tag{C}
+\]
+For $n=3$, the unique such pair has $N(B)=1$.
+
+\item If $B=\{(1,c),(r,1)\}$ with $2\leq r,c\leq n-1$, then
+\[
+ N(B)=(n-c)(n-r)
+       \bigl((c-2)(r-2)(n-3)!+(n-2)!\bigr).                 \tag{E}
+\]
+
+\item Suppose both squares are interior and lie in distinct rows and
+columns.  Let $r_-<r_+$ and $c_-<c_+$ be their row and column coordinates,
+and evaluate (2) on $\pi_n(r_-,r_+)$ and $\pi_n(c_-,c_+)$.  Then
+\[
+ N(B)=Q_cQ_r(n-6)!+H(n-5)!+D_cD_r(n-4)!,                    \tag{I}
+\]
+where
+\[
+H=\begin{cases}
+ U_cV_r+V_cU_r,&B=\{(r_-,c_-),(r_+,c_+)\}\quad
+                  \text{(parallel order)},\\
+ U_cU_r+V_cV_r,&B=\{(r_-,c_+),(r_+,c_-)\}\quad
+                  \text{(crossed order)}.
+\end{cases}                                                  \tag{4}
+\]
+
+\item If both squares lie in one boundary row and their column pair is one
+of $\{1,2\}$, $\{1,n\}$, or $\{n-1,n\}$, then
+\[
+       N(B)=n!-2(n-1)!.                                      \tag{B}
+\]
+The transposed formula holds in a boundary column.
+
+\item If $B=\{(r,c_1),(r,c_2)\}$, where
+$2\leq r,c_1,c_2\leq n-1$ and $c_1+1<c_2$, then
+\begin{align*}
+N(B)={}&(c_1-1)(c_2-c_1-1)(n-c_2)\\
+ &\mathrel{}\cdot(r-1)(r-2)(n-r)(n-r-1)(n-5)!.              \tag{S}
+\end{align*}
+The transposed formula holds for a common interior column.
+\end{enumerate}
+\end{theorem}
+
+The theorem is a counting classification, not an extremal classification.
+In particular, formula (I) leaves a nontrivial discrete optimization in the
+row and column profiles.
+
+\section{Proof}
+
+We first show that the list of cases is exhaustive.
+
+\begin{lemma}[Word-count reduction]\label{lem:words}
+If the two black squares lie in distinct rows and columns, put
+\[
+ \alpha=\#\{\text{black squares in interior columns}\},\qquad
+ \delta=\#\{\text{black squares in interior rows}\}.
+\]
+The grid has $n+\alpha$ across words and $n+\delta$ down words.  Consequently
+$N(B)=0$ unless $\alpha=\delta$.
+
+If the squares share a row and have columns $c_1<c_2$, put
+\[
+s={\bf1}_{c_1>1}+{\bf1}_{c_2>c_1+1}+{\bf1}_{c_2<n}.          \tag{5}
+\]
+There are $n-1+s$ across words.  There are $n$ down words when the common row
+is a boundary row, and $n+2$ when it is interior.
+\end{lemma}
+
+\begin{proof}
+In a row containing one black square, the white cells form two words exactly
+when the black square is in an interior column; otherwise they form one word.
+Distinct black rows therefore give $n+\alpha$ across words.  The column
+argument is identical.  If the squares share a row, the other $n-1$ rows each
+give one across word, while the affected row has the number of nonempty white
+segments in (5).  Since the black squares occupy distinct columns, each of
+those columns is split into two down words precisely when the common row is
+interior.  This proves all assertions.
+\end{proof}
+
+A perfect matching requires equally many vertices in the two parts.  In the
+distinct-row-and-column setting, $\alpha=\delta=0$ forces opposite corners.
+When both equal one, either the same black square has its two coordinates
+interior, giving a corner--interior pair, or the interior row and interior
+column occur at different squares, giving an edge-cross pair.  When both equal
+two, both squares are interior.  In a common boundary row, equality requires
+$s=1$, whose solutions are precisely the three column pairs in case~(B).  In
+a common interior row, equality requires $s=3$, which is exactly the hypothesis
+of (S).  Transposition completes the exhaustion argument.
+
+We now count each surviving class.  The recurring device is to order the split
+interval words before the ordinary words in the word-biadjacency matrix.  Once
+a matching among split words is fixed, every unmatched split across word must
+be injected into an ordinary column, and every unmatched split down word into
+an ordinary row.  The unused ordinary rows and columns form an all-one square
+block, contributing a factorial.  Partitioning matchings by the chosen
+split-to-split edges makes this decomposition disjoint and exhaustive.
+
+For opposite corners, the word graph is $K_{n,n}$ with two vertex-disjoint
+edges deleted.  Inclusion--exclusion gives (O).  In case (B), the two deleted
+edges share a vertex, so no matching uses both; this gives (B).
+
+For (C), first ignore the forbidden edge created by the corner square.  The
+left and right across intervals at $(r,c)$ have respectively $c-1$ and $n-c$
+ordinary-column choices, while the upper and lower down intervals have
+$r-1$ and $n-r$ ordinary-row choices.  The remaining all-one core contributes
+$(n-3)!$, giving
+\[
+ (c-1)(n-c)(r-1)(n-r)(n-3)!.
+\]
+The matchings counted here that use the forbidden corner edge are obtained by
+first reserving that edge.  The four interval choices then contribute
+$(c-2)(n-c)(r-2)(n-r)$ and the core contributes $(n-4)!$.
+Subtracting and factoring proves (C).  Direct inspection gives the stated
+$n=3$ value.
+
+For (E), reflect so that the black squares are $(1,c)$ and $(r,1)$.  The sole
+split-to-split edge is the white corner $(1,1)$.  If it is not used, the four
+interval injections and the ordinary core contribute
+\[
+ (n-c)(n-r)(c-2)(r-2)(n-3)!.
+\]
+If it is used, the two remaining outer intervals have $(n-c)(n-r)$ choices
+and the ordinary core contributes $(n-2)!$.  Their sum is (E).
+
+For (S), the three horizontal intervals have disjoint sets of available
+ordinary columns, of respective sizes $c_1-1$, $c_2-c_1-1$, and $n-c_2$.
+The two upper vertical intervals require an ordered pair of distinct ordinary
+rows above $r$, giving $(r-1)(r-2)$ choices.  The lower pair similarly gives
+$(n-r)(n-r-1)$ choices.  The remaining core has size $n-5$, proving (S).
+
+It remains to establish (I).  Consider two split coordinates $x<y$, and set
+$(a,b,c)=\pi_n(x,y)$.  To inject all four interval words into ordinary
+coordinates, the two outer intervals first force choices in disjoint regions
+of sizes $a$ and $c$, giving $ac$ choices.  Conditional on this pair, the
+other two choices contribute
+\[
+     b(a+b-2)+(c-1)(a+b-1).                                  \tag{6}
+\]
+Expanding $ac$ times (6) gives $Q(a,b,c)$.  If respectively one or the other
+middle-facing interval word is removed, the same injection count is
+$U(a,b,c)$ or $V(a,b,c)$; if both are removed it is $D(a,b,c)$.
+
+For two black squares in distinct interior rows and columns, there are exactly
+two white cross-intersections between split across and split down words.  They
+are vertex-disjoint.  Selecting neither gives $Q_cQ_r(n-6)!$, and selecting
+both gives $D_cD_r(n-4)!$.  Selecting exactly one removes one middle-facing
+word on each side.  Tracking their orientations gives $U_cV_r+V_cU_r$ in
+parallel order and $U_cU_r+V_cV_r$ in crossed order.  The remaining core has
+size $n-5$.  This proves (I), and hence Theorem~\ref{thm:main}.
+
+\section{A concrete extremal obstruction}
+
+The opposite-corner formula agrees with the maximum in the small census
+described below, but it is not maximal for all $n$.  At $n=15$, take
+\[
+       B=\{(1,7),(7,1)\}.
+\]
+Formula (E) gives
+\[
+ N(B)=8^2\bigl(5^2+13\bigr)12!=2432\cdot12!.
+\]
+Opposite corners give, by (O),
+\[
+ 15!-2\cdot14!+13!=2379\cdot12!.
+\]
+Thus the edge-cross pair is larger by
+$53\cdot12!=25{,}387{,}084{,}800$.  This refutes only the provisional
+opposite-corner extrapolation; it neither supplies the global maximum nor
+classifies equality.
+
+\section{Exact regression evidence and limitations}
+
+Two independent exact counters were run on every unordered pair for
+$3\leq n\leq8$.  The first constructs the word graph and evaluates its
+permanent by row-ordered subset dynamic programming.  The second uses direct
+deletion recursion, branching on a minimum-degree across vertex.  A separate
+symmetry routine forms all eight images generated by horizontal reflection,
+vertical reflection, and transposition.  The two counters agree on all
+$4{,}278$ configurations, represented by $620$ symmetry orbits, and the orbit
+sizes recover the full labeled totals.  A separately coded evaluator of
+(O)--(S) agrees with every orbit record.  All arithmetic is integral; there is
+no floating-point or randomized step.  This architecture---symmetry-reduced
+exhaustion, reconstruction of the full action, and checking by a distinct
+exact implementation---also appears in finite combinatorial certification
+outside rook theory \cite[Sections~3, 4, and 6]{202608.1658}.
+
+This regression is evidence for the implementation, not a proof of the
+all-$n$ theorem; the proof is the case decomposition above.  It also stops at
+$n=8$, whereas the original extremal project requests a two-method census
+through $n=12$.  Most importantly, the discrete maximization of (I) and the
+comparison with the other classes remain undone.  Therefore this note does not
+determine $M_2(n)$ for all $n$, and it does not resolve Question~2.2 even in its
+full $k=2$ extremal form.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex was used to assist the organization of the case split, symbolic
+formula development, construction of the exact Python checks, and preparation
+of this manuscript.  The quantified mathematical argument is written out in
+the text.  The companion Python programs and JSON census permit deterministic
+recomputation of every finite check reported above.  Those computations do not
+replace any all-$n$ proof step.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

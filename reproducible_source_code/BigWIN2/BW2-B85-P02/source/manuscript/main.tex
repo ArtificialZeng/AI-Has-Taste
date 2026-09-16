@@ -1,0 +1,265 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+
+\title{The Exact Value of the Zero-Sum Constant $s_1(4)$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+For a positive integer $k$, consider sequences $a_1,\ldots,a_k$ of
+integers not divisible by $4$.  The constant $s_1(4)$ is the least $k$
+for which every such sequence has four distinct positions whose sum is
+divisible by $4$ but not by $16$.  We prove that $s_1(4)=9$.  The lower
+bound is witnessed by $(1,1,1,2,2,2,10,13)$.  For the upper bound, the
+problem is reduced without loss to the $167{,}960$ multiplicity vectors
+of size nine on the twelve allowed residue classes modulo $16$.  A
+bounded-multiplicity generating-function dynamic program computes the
+attainable four-term residues using exact Boolean arithmetic and finds no
+avoiding vector.  Two structurally different exact implementations give
+the same result.  This determines only the case $n=4$ and does not address
+the general conjecture for $s_1(n)$.
+\end{abstract}
+
+\section{Statement and context}
+
+Sun introduced $s_r(n)$ by requiring a subsequence of exactly $n$
+positions, rather than a nonempty subsequence or one having merely a
+bounded length \cite{Sun2026ZeroSum}.  Specializing the definition to
+$r=1$ and $n=4$, let $P(k)$ be the assertion that every ordered sequence
+$a_1,\ldots,a_k$ with $4\nmid a_i$ has distinct indices
+$i_1<i_2<i_3<i_4$ such that
+\[
+  4\mid a_{i_1}+a_{i_2}+a_{i_3}+a_{i_4}
+  \quad\text{and}\quad
+  16\nmid a_{i_1}+a_{i_2}+a_{i_3}+a_{i_4}.
+\]
+Then $s_1(4)=\min\{k\geq 1:P(k)\}$.  Equal integer values at different
+positions may all be selected; it is the positions that must be distinct.
+
+Sun proved $2nr+1\leq s_r(n)$ for $n>2$ and, using the equality
+$s(\Z_n^2)=4n-3$ established through the resolution of Kemnitz's
+conjecture \cite{Reiher2007Kemnitz}, obtained $s_1(n)\leq 4n-3$ for
+$n\geq4$ \cite{Sun2026ZeroSum}.  Thus the previously supplied bounds in
+the present case were
+\[
+  9\leq s_1(4)\leq13,
+\]
+and Sun conjectured $s_1(n)=2n+1$ for every $n>2$.  Gao, Jiang, and Mu
+subsequently determined related local constants in which one may choose
+some nonempty number of terms or at most $n$ terms
+\cite{GaoJiangMu2026Local}; those quantifiers do not give the
+exactly-four assertion considered here.
+
+The contribution below is a complete determination of the frozen
+$n=4$ case.  The lower bound is proved directly, independently of the
+general lower bound just cited, and the upper bound is an exact finite
+proof.
+
+\section{Exact reduction modulo 16}
+
+Put
+\[
+ A=\{1,2,3,5,6,7,9,10,11,13,14,15\}\subset\Z/16\Z,
+ \qquad T=\{4,8,12\}.
+\]
+
+\begin{lemma}[Residue and multiplicity reduction]\label{lem:reduction}
+The assertion $P(k)$ holds if and only if every multiplicity vector
+$(c_r)_{r\in A}\in\Z_{\geq0}^{12}$ with $\sum_{r\in A}c_r=k$ contains
+nonnegative integers $q_r\leq c_r$ such that
+\[
+  \sum_{r\in A}q_r=4
+  \quad\text{and}\quad
+  \sum_{r\in A}q_r r\pmod {16}\in T.
+\]
+There are $\binom{k+11}{11}$ such multiplicity vectors.
+\end{lemma}
+
+\begin{proof}
+An integer not divisible by $4$ has residue in $A$, and a residue modulo
+$16$ is divisible by $4$ but nonzero modulo $16$ precisely when it lies
+in $T$.  Thus both the hypothesis and the desired conclusion depend only
+on the entries modulo $16$; this also covers negative integers.
+
+Permuting the sequence positions does not affect whether a suitable set
+of four positions exists.  Each permutation orbit is represented by the
+unique vector of multiplicities of the twelve residues in $A$, and every
+such vector expands to an ordered sequence.  Selecting positions is
+equivalent to choosing bounded submultiplicities $0\leq q_r\leq c_r$.
+Finally, stars and bars gives $\binom{k+11}{11}$ vectors.
+\end{proof}
+
+At lengths eight and nine the respective domain sizes are
+\[
+ \binom{19}{11}=75{,}582,
+ \qquad
+ \binom{20}{11}=167{,}960.
+\]
+
+\section{The sharp lower bound}
+
+\begin{lemma}\label{lem:lower}
+The sequence
+\[
+  (1,1,1,2,2,2,10,13)
+\]
+has no four positions whose sum modulo $16$ belongs to $T$.
+Consequently $s_1(4)\geq9$.
+\end{lemma}
+
+\begin{proof}
+Suppose a four-position selection uses $a,b,c,d$ copies of
+$1,2,10,13$, respectively.  Then
+\[
+ a+b+c+d=4,\qquad a,b\leq3,\qquad c,d\leq1,
+\]
+and, after eliminating $a$, its sum is
+\[
+ a+2b+10c+13d\equiv4+b+9c+12d\pmod {16}.
+\]
+For $(c,d)=(0,0),(1,0),(0,1),(1,1)$, the complete attainable residue
+sets are, respectively,
+\[
+ \{5,6,7\},\quad
+ \{13,14,15,0\},\quad
+ \{0,1,2,3\},\quad
+ \{9,10,11\}.
+\]
+Their union omits $4,8,12$.  Hence $P(8)$ fails.  Since $P(k)$ implies
+$P(k+1)$ by applying $P(k)$ to any $k$ positions, the least valid length
+cannot be at most eight.
+\end{proof}
+
+\section{Exhaustive upper bound}
+
+For a fixed multiplicity vector $c$, order the elements of $A$ as
+$r_1,\ldots,r_{12}$.  Let $R_{i,j}$ be the set of residues modulo $16$
+obtainable by choosing exactly $j$ positions from the first $i$ residue
+classes, respecting their multiplicities.  Initialize
+\[
+ R_{0,0}=\{0\},\qquad R_{0,j}=\varnothing\quad(1\leq j\leq4),
+\]
+and update by
+\begin{equation}\label{eq:dp}
+ R_{i+1,j}=
+ \bigcup_{0\leq q\leq\min(c_{r_{i+1}},j)}
+ \bigl(R_{i,j-q}+q r_{i+1}\bigr)\pmod {16}.
+\end{equation}
+Only degrees $0,1,2,3,4$ are retained.  Each set is represented by a
+$16$-bit mask, so every operation and comparison is exact.
+
+\begin{lemma}[Exhaustive certificate]\label{lem:certificate}
+For every multiplicity vector $c\in\Z_{\geq0}^{12}$ with
+$\sum_{r\in A}c_r=9$, the final set $R_{12,4}$ intersects $T$.
+\end{lemma}
+
+\begin{proof}
+Induction on $i$ proves the invariant defining $R_{i,j}$.  Indeed, if
+exactly $q$ copies of residue $r_{i+1}$ are selected, the remaining
+$j-q$ terms contribute a member of $R_{i,j-q}$, and every bounded choice
+appears in exactly one of the corresponding cases of
+\eqref{eq:dp}.  Discarding degrees greater than four cannot affect degree
+four because selected cardinalities never decrease.
+
+It remains to cover the finite domain.  The primary verifier recursively
+assigns each of the first eleven coordinates every value from zero to the
+current remainder and forces the twelfth coordinate to equal the final
+remainder.  Each weak composition of nine has one and only one such
+root-to-leaf path.  The recursion visited $167{,}960=\binom{20}{11}$
+leaves.  Applying \eqref{eq:dp} at every leaf found zero vectors for which
+$R_{12,4}\cap T=\varnothing$.
+
+Two different implementations checked the finite conclusion.  A direct
+verifier enumerates nondecreasing residue multisets and tests their
+four-position subsets.  A third verifier generates multiplicity vectors
+through the separator form of stars and bars, independently generates
+the $274$ admissible four-term multiplicity patterns, and tests componentwise
+domination.  The following results were obtained with exact integer and
+Boolean arithmetic:
+\begin{center}
+\begin{tabular}{lrr|rr}
+\hline
+& \multicolumn{2}{c|}{length $8$} & \multicolumn{2}{c}{length $9$}\\
+verifier & tested & avoiders & tested & avoiders\\
+\hline
+multiplicity dynamic program & $75{,}582$ & $160$ & $167{,}960$ & $0$\\
+direct four-position enumeration & $75{,}582$ & $160$ & $167{,}960$ & $0$\\
+pattern-domination verifier & $75{,}582$ & $160$ & $167{,}960$ & $0$\\
+\hline
+\end{tabular}
+\end{center}
+The three routes use neither floating-point arithmetic nor randomized
+decisions.  The two frozen verifier sources and their recorded outputs
+accompany the paper; the third reconstruction is documented in the
+mathematical audit.  This establishes the claimed universal finite
+statement.
+\end{proof}
+
+\begin{theorem}
+Under the definition above,
+\[
+  s_1(4)=9.
+\]
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:lower} gives $s_1(4)\geq9$.  By
+Lemma~\ref{lem:reduction}, Lemma~\ref{lem:certificate} says that every
+allowed sequence of nine integers has the required four positions, so
+$s_1(4)\leq9$.
+\end{proof}
+
+\section{Reproducibility, scope, and limitations}
+
+The primary program implements weak-composition enumeration and the
+bounded-multiplicity recurrence \eqref{eq:dp}.  The second program instead
+uses sorted residue multisets and explicit four-position combinations;
+the third uses a separator bijection and pattern domination.  Each source
+reconstructs its own finite objects rather than accepting an externally
+generated list.  The primary run used Python 3.10.12 and only the standard
+library.  The decisive claims are the domain bijection, the recurrence
+invariant, and the exact exhaustive outputs, not a numerical fit or a
+successful heuristic search.
+
+This certificate architecture is comparable to the independently
+reconstructed integer certificates used for other finite combinatorial
+models in \cite{ZengEtAl2026FiniteCertificates}; that work is cited only
+for the reproducibility methodology and is not a premise of the theorem
+above.
+
+The computation proves a theorem about arbitrary integer sequences
+because Lemma~\ref{lem:reduction} is a lossless finite reduction.  By
+contrast, it supplies no conclusion for $s_1(n)$ when $n\neq4$, for ranks
+$r\neq1$, or for variants permitting fewer or more than four selected
+positions.  A bounded literature search through 10 September 2026 found
+Sun's conjecture and the distinct local constants of Gao, Jiang, and Mu,
+but no equivalent determination of this exact case.  This search record
+is not a claim of priority.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with literature searching, the design and
+implementation of the exhaustive checks, adversarial audit organization,
+and initial manuscript preparation.  Language-model output is not used as
+mathematical evidence.  The finite conclusion rests on the explicit
+reduction, exact deterministic programs, recorded outputs, and a separate
+reconstruction of the decisive computation.  No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

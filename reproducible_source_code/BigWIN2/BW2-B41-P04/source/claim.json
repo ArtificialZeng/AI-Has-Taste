@@ -1,0 +1,14 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the Lewis--Won permutation crossword grids under the definitions frozen in source.md and problem.md, max_{w in S_9} |RP(Grid(w))| = 28549. As a strengthening, equality holds exactly for the two one-line permutations 321456987 and 789654123.",
+  "contribution": "An exact, reproducible exhaustive computation over all 362880 permutations resolves the previously open-supported n=9 instance. It constructs each 16-by-16 word-incidence matrix, computes its permanent with an integer subset recurrence, reproduces all published maxima through n=8, and independently recounts both equality cases by direct perfect-matching backtracking.",
+  "proposer_job_id": "win-00041-p04-research-d63e0ab703a1",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/exhaustive-proof.md",
+    "evidence/exhaustive_numba.py",
+    "evidence/exhaustive-results.json"
+  ]
+}

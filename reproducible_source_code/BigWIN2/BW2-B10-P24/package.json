@@ -1,0 +1,131 @@
+{
+  "original_id": "legacy-b10-p24",
+  "archive_id": "BW2-B10-P24",
+  "title": "The Strict-Pair Product Extremal Value at 62 Is 31",
+  "batch_label": "10",
+  "kind": "historical-gated-manuscript",
+  "original_status": "certified finite result",
+  "scope": "Strict-pair finite equality F(62)=31; no asymptotic or higher-product resolution.",
+  "gate_basis": "ROOT_DELIVERY_AUDIT and SUBMISSION_AUDIT explicitly pass final proof, bibliography, three-page PDF and clean ZIP rebuild; manifest binds current artifacts.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B10-P24_The_Strict_Pair_Product_Extremal_Value_at_62_Is_31.pdf",
+  "pdf_sha256": "5a2df315c9d743adb5acc1e30584fd9a9009465538c4c6b7d4ef7b998a8567d8",
+  "pages": 3,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B10-P24/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B10-P24/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B10-P24/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Python 3 standard library; OR-Tools was used only for discovery and is not needed for this verifier."
+  ],
+  "limitations": [
+    "PDF_AUDIT.md has a stale trailing 'Status: not yet run'; later ROOT_DELIVERY_AUDIT.md is the terminal delivery authority.",
+    "Original LaTeX ZIP contains no computation; add both local verifier scripts.",
+    "Original entrypoints: ['python3 computation/verifiers/small_crosscheck.py', 'python3 computation/verifiers/exact_cover_verify.py']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 4,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/audit/CITATION_AUDIT.md",
+      "sha256": "095ede40bc8bc6d71c5e010bf5367191b1a7fdb6e12922072d3735f02f71f64e",
+      "bytes": 408
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/audit/PDF_AUDIT.md",
+      "sha256": "796f60a2afe3b78ecdc24a67053dd83411faab19b83e1583c161cf9c42988224",
+      "bytes": 507
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/audit/PROOF_AUDIT.md",
+      "sha256": "fd89dce103d92c0669c9abca6fcfce8628d0e78e0b5cdcfc5d4dfa3db51372bd",
+      "bytes": 492
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/audit/ROOT_DELIVERY_AUDIT.md",
+      "sha256": "0c7f85eba3037fff4e2400529f822a9d0e7aab4ef04051c3773a166122241b38",
+      "bytes": 2871
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/audit/SUBMISSION_AUDIT.md",
+      "sha256": "499f299bc4c02e199ae2a73072e9eaccfd69e0d83b5e2cb9ac6f55ddebc4107d",
+      "bytes": 1647
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/batch-level/BATCH_FINAL_AUDIT.md",
+      "sha256": "cac7e9168e06858bb505315ac8ade491cc5e17451701c3e09aa357323351d1f9",
+      "bytes": 3322
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B10-P24/release/manifest.json",
+      "sha256": "3a3a7fe249986097b5bdedd29afd53baf3abc4ee63d272ba3ae13393ff59e24c",
+      "bytes": 90302
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "84cf6c922002a5f6dba45ba92eb6e6b6a342bedafc8bd2e52334cbb259df8603",
+      "original_bytes": 6201,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "84cf6c922002a5f6dba45ba92eb6e6b6a342bedafc8bd2e52334cbb259df8603",
+          "bytes": 6201
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "e154b7ca08c3463330e5dd87d85cc3a310f01ce7e47fe0cb8cdf6e015fffd780",
+      "original_bytes": 1065,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "e154b7ca08c3463330e5dd87d85cc3a310f01ce7e47fe0cb8cdf6e015fffd780",
+          "bytes": 1065
+        }
+      ]
+    },
+    {
+      "path": "source/computation/verifiers/exact_cover_verify.py",
+      "original_sha256": "d90839af1a7486b8e9f182979fe745bb5fd25bc7deb306975d54e3c3b1d1644a",
+      "original_bytes": 5314,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/computation/verifiers/exact_cover_verify.py",
+          "sha256": "d90839af1a7486b8e9f182979fe745bb5fd25bc7deb306975d54e3c3b1d1644a",
+          "bytes": 5314
+        }
+      ]
+    },
+    {
+      "path": "source/computation/verifiers/small_crosscheck.py",
+      "original_sha256": "6d151676a7d4d9836adb900ede0f3d48683dcf15677590ba4475755b41d58dec",
+      "original_bytes": 1194,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/computation/verifiers/small_crosscheck.py",
+          "sha256": "6d151676a7d4d9836adb900ede0f3d48683dcf15677590ba4475755b41d58dec",
+          "bytes": 1194
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B10-P24",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

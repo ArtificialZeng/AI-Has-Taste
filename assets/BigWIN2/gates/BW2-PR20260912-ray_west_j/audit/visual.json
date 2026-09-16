@@ -1,0 +1,73 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260912-ray-west-j-release-868ef104b3ea",
+  "citation_attempt": 2,
+  "citation_release_launch_id": "ff8a352f-ad4d-4eb8-83f5-ae31f830433d",
+  "snapshot_digest": "35ef4ddb8305673591e7206c8fd904dc2c3189210aaafe52b3b7feed0ff83af1",
+  "manuscript_digest": "88064f2101397ed813a05ddc4ded0858ec9e9f132bb77e394ae666ca61024116",
+  "pdf_digest": "75f184f2ee498c46b38ff3ae7f05b92076719ba8dcc5034e43f8f20e0031d285",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "render_command": "pdftoppm -png -r 150 manuscript/build/main.pdf audit/release-pages/page",
+  "review_method": "Actually opened each newly rendered page 1 through 7 using view_image in this release context. Read mathematical notation, table and bibliography at image resolution; text extraction and font checks were supplemental.",
+  "checked_at": "2026-09-12T16:20:40.393944+00:00",
+  "findings": [
+    {
+      "page": 1,
+      "image": "audit/release-pages/page-1.png",
+      "sha256": "0aa996764b2213a8574888d5d0e90169c9e318fbc18d17e5d6b38d86fc83bfea",
+      "status": "pass",
+      "observation": "Title, abstract, author affiliation and email are readable. The polynomial, direct/skew definitions and component indicators are clear; footnote and page number remain within margins."
+    },
+    {
+      "page": 2,
+      "image": "audit/release-pages/page-2.png",
+      "sha256": "b6986c252c3bc580f49ed3c10599ba9379de48475100f3e592536d2c59aade65",
+      "status": "pass",
+      "observation": "Theorem 1.1 and prior-work comparison are readable. Insertion displays and the signed separation equations fit, and all cited theorem locators resolve visibly."
+    },
+    {
+      "page": 3,
+      "image": "audit/release-pages/page-3.png",
+      "sha256": "36e9746524ba4909896042f6b3f456cb9d93c809b7981480728128153b24027f",
+      "status": "pass",
+      "observation": "Track/support intervals and source equations are legible. The reflection discussion and restriction lemma retain primes and subscripts. The long clipping display fits; proof continuation is orderly."
+    },
+    {
+      "page": 4,
+      "image": "audit/release-pages/page-4.png",
+      "sha256": "172646f7400178bb1e4240b3dc896bbea5c38099071344fccc07c948c47d8087",
+      "status": "pass",
+      "observation": "Clipping counterexample and repaired triple are clearly distinct. Internal-gap proof and join necessity have intact displayed formulas and proof-end squares, with no overlap."
+    },
+    {
+      "page": 5,
+      "image": "audit/release-pages/page-5.png",
+      "sha256": "4803003029324c5fe76a468fb9bd4984ee74babeb267a2a995dcc0ade4139397",
+      "status": "pass",
+      "observation": "Join construction, ambient permutation, disjoint union and skew-law displays fit with separate equation numbers. The class-definition citation and ordered-tree paragraph are readable."
+    },
+    {
+      "page": 6,
+      "image": "audit/release-pages/page-6.png",
+      "sha256": "02a41422ff0109b2b65788db0479e24fc7929f388a4f9ed8e88f7f61d9247ad9",
+      "status": "pass",
+      "observation": "Tree/equality corollaries, deficit identity and all computational counts are readable. The library method citation is visible in ordinary body text, and the page continuation is intact."
+    },
+    {
+      "page": 7,
+      "image": "audit/release-pages/page-7.png",
+      "sha256": "55141013f31390e390cb122af2629ac472fd677dfa072545b73636815033f31a",
+      "status": "pass",
+      "observation": "All 18 table values are readable and match the exact evidence. Scope limits and assistance disclosure are intact. All five bibliography entries and wrapped URLs stay within the text block."
+    }
+  ]
+}

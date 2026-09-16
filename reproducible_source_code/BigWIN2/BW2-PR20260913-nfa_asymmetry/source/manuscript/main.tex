@@ -1,0 +1,414 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype,booktabs,cite}
+\usepackage[hidelinks,breaklinks]{hyperref}
+\hypersetup{
+  pdftitle={Exact directional NFA separation for binary words with one marker},
+  pdfauthor={Xiaojian Zeng},
+  pdfkeywords={word separation, nondeterministic finite automata, Boolean relations}
+}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\DeclareMathOperator{\nsep}{nsep}
+\DeclareMathOperator{\lcm}{lcm}
+\newcommand{\Aone}{A_{\mathrm{one}}}
+\newcommand{\Nzero}{\mathbb Z_{\geq 0}}
+\title{Exact directional NFA separation\\for binary words with one marker}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For distinct words \(w,x\), let \(\nsep(w,x)\) be the least number of
+states in a nondeterministic finite automaton accepting \(w\) and rejecting
+\(x\). We determine the largest possible value of this directional cost
+over equal-length binary words containing exactly one \(1\), when the
+opposite cost is at most \(q\). For every integer \(q\geq3\), the maximum is
+\((q-1)^2+2\), and it is attained. The upper bound combines the classical
+index bound for powers of binary relations with explicit separators.
+Sharpness follows by extending Nicol's cycle-insertion argument to an
+initial path that visits every state. Thus the entire one-marker class
+has a sharp quadratic bound. The asymptotic growth of the unrestricted
+directional extremal function remains unresolved.
+\end{abstract}
+
+\section{The restricted extremal problem}
+
+The word-separation problem asks how many states are needed to distinguish
+two specified words; its deterministic formulation appears in
+Goralčík and Koubek~\cite{goralcik1986}.
+Demaine, Eisenstat, Shallit and Wilson~\cite[Section~6]{demaine2011}
+introduced the directional quantity \(\nsep(w,x)\), exhibited its
+asymmetry, and asked whether the difference between the two orientations
+could be unbounded. Nicol~\cite[Theorem~6]{nicol2026} answered this question
+by constructing equal-length words with
+\(\nsep(u_s,v_s)>s^2\) and \(\nsep(v_s,u_s)\leq s+1\), for every \(s\geq2\).
+
+Throughout this note an NFA has a finite nonempty state set, alphabet
+\(\{0,1\}\), one initial state, any subset of accepting states, and a
+possibly partial transition relation. There are no \(\varepsilon\)-edges.
+Acceptance means the existence of a path from the initial state to an
+accepting state with the specified label. Only the acceptance of \(w\)
+and rejection of \(x\) enter the definition of \(\nsep(w,x)\); behavior on
+every other word is unrestricted. These are the conventions of
+\cite[Section~4]{nicol2026}.
+
+Nicol~\cite[Section~4.1]{nicol2026} defines
+\[
+ A(q)=\max\{\nsep(w,x): w,x\in\{0,1\}^*,\
+       |w|=|x|,\ w\ne x,\ \nsep(x,w)\leq q\}
+\]
+and records the bounds
+\begin{equation}\label{eq:prior}
+ (q-1)^2+1\leq A(q)\leq 2^q,\qquad q\geq3.
+\end{equation}
+The upper bound follows by determinizing a reverse separator by the
+subset construction~\cite[Definition~11 and Theorem~11]{rabin1959}
+and complementing it. The deterministic states are all subsets, including
+the empty subset, so the machine is complete and uses at most \(2^q\)
+states. This bound also ensures that the indicated integer maximum exists.
+The asymptotic growth question for \(A(q)\) remains unresolved here.
+
+We restrict both words to the language \(0^*10^*\). Explicitly, put
+\[
+ \Aone(q)=\max\left\{
+ \begin{array}{@{}l@{}}
+ \nsep(0^a1\,0^b,0^c1\,0^d):\
+ a,b,c,d\in\Nzero,\ a+b=c+d,\ a\ne c,\\[2pt]
+ \hfill \nsep(0^c1\,0^d,0^a1\,0^b)\leq q
+ \end{array}\right\}.
+\]
+All lengths are allowed, and the four zero blocks may be empty.
+
+\begin{theorem}\label{thm:main}
+For every integer \(q\geq3\),
+\[
+ \Aone(q)=(q-1)^2+2.
+\]
+The maximum is attained by a finite pair of equal-length words.
+\end{theorem}
+
+The restriction contains Nicol's quadratic witness family. The main
+contribution is a matching upper bound for every admissible one-marker
+pair, together with a sharpening of that family's hard-direction cost
+by one state. The consecutive-cycle constructions and unary-block
+indistinguishability arguments in
+\cite[Theorems~3--4]{demaine2011} are antecedents; those results do not
+bound one directional NFA cost as a function of the other.
+Neither \cite{demaine2011} nor \cite{nicol2026} states the restricted
+maximum in Theorem~\ref{thm:main}. The comparison is with these inspected
+sources, rather than a claim of exhaustive bibliographic priority.
+
+\begin{corollary}\label{cor:general}
+For every \(q\geq3\), \(A(q)\geq(q-1)^2+2\).
+No pair of equal-length words in \(0^*10^*\) can require more than
+\((q-1)^2+2\) states in one orientation while requiring at most \(q\)
+states in the other.
+\end{corollary}
+
+\section{Powers of the zero relation}
+
+For a binary relation \(R\) on \(n\) points, \(R^t\) records the endpoints
+of walks of length exactly \(t\); \(R^0\) is the identity relation.
+Composition is equivalently Boolean matrix multiplication, using OR and
+AND. Write
+\[
+ H_n=(n-1)^2+1,\qquad L_n=\lcm(1,\ldots,n).
+\]
+We use the following classical index theorem.
+
+\begin{proposition}[Schwarz's index bound]\label{prop:schwarz}
+If \(n>1\), the powers of every binary relation on \(n\) points are
+periodic from some index at most \(H_n\).
+\end{proposition}
+
+The precise all-relations statement is given in
+Schwarz~\cite[p.~167, proof of Theorem~3, Case~1]{schwarz1974}:
+the power \(R^{n^2-2n+2}\) lies in the periodic group of powers, defined
+on p.~161. This is the author's published account of an earlier result;
+we invoke the statement in that account. It applies to reducible as well
+as irreducible relations. The same index bound is reported in
+\cite[Theorem~1]{zajac2012}. We give the period consequence needed below
+directly, so no separate formula for the universal period is required.
+
+\begin{lemma}\label{lem:period}
+For \(n>1\), every binary relation \(R\) on \(n\) points satisfies
+\begin{equation}\label{eq:period}
+ R^{t+L_n}=R^t\qquad(t\geq H_n).
+\end{equation}
+\end{lemma}
+\begin{proof}
+A walk of length \(t\geq n\) has a repeated vertex and contains a simple
+directed cycle of length \(h\leq n\). Inserting \(L_n/h\) additional
+traversals of this cycle preserves the endpoints and increases the
+length by \(L_n\). Thus \(R^t\subseteq R^{t+L_n}\) whenever \(t\geq n\).
+
+Since \(H_n\geq n\), fix \(t\geq H_n\), and let \(e\geq1\) be a period
+valid from \(H_n\) onward, supplied by Proposition~\ref{prop:schwarz}.
+Then
+\[
+ R^t\subseteq R^{t+L_n}\subseteq\cdots
+       \subseteq R^{t+eL_n}=R^t.
+\]
+Every inclusion is therefore equality.
+\end{proof}
+
+Consequently, two exponents at least \(H_n\) that are congruent modulo
+\(L_n\) give equal powers. An NFA with fewer than \(n\) states can be
+padded by unreachable isolated states when applying this identity.
+
+\section{The uniform upper bound}
+
+Fix \(q\geq3\) and an admissible ordered pair
+\[
+ w=0^a1\,0^b,\qquad x=0^c1\,0^d.
+\]
+Set \(H=H_q\), \(L=L_q\), and \(\Delta=a-c\ne0\).
+Equal length gives \(b-d=-\Delta\). By admissibility some NFA with at
+most \(q\) states accepts \(x\) and rejects \(w\).
+
+\paragraph{A separating modulus.}
+Suppose \(L\nmid\Delta\). Then some \(r\in\{2,\ldots,q\}\) does not
+divide \(\Delta\). Take a directed zero-cycle on residues
+\(0,\ldots,r-1\), starting at \(0\). Add a separate accepting state \(f\)
+with a zero-loop, and one \(1\)-edge, from residue \(a\bmod r\) to \(f\).
+There are no other edges, and \(f\) is the sole accepting state.
+The machine accepts \(w\). It rejects \(x\), since the marker in \(x\)
+is read at a different residue. The state count is
+\[
+ r+1\leq q+1\leq H+1.
+\]
+
+\paragraph{A short block.}
+Suppose one of \(a,b,c,d\) is less than \(H\). First let
+\(k=\min(a,c)<H\). The words first differ immediately after the common
+prefix \(0^k\).
+
+If the word to be accepted has the earlier marker, use a zero-chain
+of \(k\) edges from the initial state to a state \(p\), a \(1\)-edge
+from \(p\) to a new accepting state \(f\), and a zero-loop at \(f\).
+All remaining transitions are absent. The later-marker word fails
+on its next zero at \(p\).
+If the word to be accepted has the later marker, use a zero-chain
+of \(k+1\) edges and put both symbol loops at its final state, which
+alone is accepting. The earlier-marker word fails on its \(1\).
+Both constructions have \(k+2\leq H+1\) states.
+
+If instead \(k=\min(b,d)<H\), apply these constructions to the two
+reversed words. Each constructed machine has a single accepting state.
+Reverse every edge and exchange its initial and accepting states.
+Path reversal proves that the resulting machine accepts \(w\) and
+rejects \(x\), with the same number of states and one initial state.
+This is the path-reversal principle used in
+\cite[Theorem~5]{demaine2011}, applied here to the explicit machines.
+Empty prefixes and suffixes are included.
+
+\paragraph{The remaining case is impossible.}
+It remains to consider \(L\mid\Delta\) and \(a,b,c,d\geq H\).
+Pad the assumed reverse separator to \(q\) states, and let \(B,C\)
+be its zero and one relations. Lemma~\ref{lem:period} gives
+\[
+ B^a=B^c,\qquad B^b=B^d,\qquad
+ B^aCB^b=B^cCB^d.
+\]
+The two words induce the same relation on the state set. Hence no
+initial state and accepting subset can distinguish them, contradicting
+the reverse separator.
+
+These cases exhaust the possibilities. Every admissible pair therefore
+has \(\nsep(w,x)\leq H+1\), proving
+\begin{equation}\label{eq:upper}
+ \Aone(q)\leq(q-1)^2+2.
+\end{equation}
+
+\section{An attaining pair}
+
+Fix \(q\geq3\) and set
+\begin{equation}\label{eq:parameters}
+ s=q-1,\qquad M=s^2,\qquad T=2^{M+1},
+ \qquad P=\lcm(1,\ldots,T).
+\end{equation}
+Consider
+\begin{equation}\label{eq:witness}
+ u=0^M1\,0^{T+P},\qquad v=0^{M+P}1\,0^T.
+\end{equation}
+The words are distinct and have common length \(M+T+P+1\).
+This adapts the pair in \cite[Theorem~6]{nicol2026}, replacing
+its value \(T=2^M\) by \(2^{M+1}\). The additional step below handles
+a prefix that has not repeated a vertex but has visited every state.
+
+\begin{lemma}\label{lem:hard}
+For the pair in \eqref{eq:witness}, \(\nsep(u,v)=M+2\).
+\end{lemma}
+\begin{proof}
+Suppose an \(m\)-state NFA, with \(m\leq M+1\), accepts \(u\).
+Choose an accepting path and mark its states adjacent to the marker:
+\[
+ i\overset{0^M}{\longrightarrow}p\overset{1}{\longrightarrow}z
+      \overset{0^{T+P}}{\longrightarrow}f.
+\]
+If the first segment repeats a vertex, it contains a simple zero-cycle.
+Otherwise it visits \(M+1\) different vertices, forcing \(m=M+1\)
+and visiting every state. The final segment has more than \(m\) edges,
+so it contains a simple zero-cycle, one of whose vertices also occurs
+on the first segment. In either case some vertex of the prefix supports
+a zero-cycle of length \(h\leq m\).
+Since \(h\leq M+1\leq T\), we have \(h\mid P\).
+Inserting \(P/h\) traversals of that cycle at its prefix vertex
+gives a path \(i\overset{0^{M+P}}{\longrightarrow}p\).
+The cycle need not have been traversed in the original prefix.
+
+Let \(S_j\) be the subset reachable from \(z\) after exactly \(j\) zeros.
+The update of these subsets is deterministic and there are at most
+\(2^m\leq T\) possible subsets. Thus \(S_\alpha=S_\beta\) for some
+\(0\leq\alpha<\beta\leq T\). The sequence is periodic from \(\alpha\)
+onward with period \(c=\beta-\alpha\leq T\).
+As \(c\mid P\) and \(T\geq\alpha\), this implies
+\[
+ S_T=S_{T+P}.
+\]
+In particular, the chosen final state \(f\) is reachable from \(z\)
+after \(T\) zeros. Joining this shorter suffix to the extended prefix
+and the same \(1\)-edge produces an accepting path on \(v\).
+No NFA with at most \(M+1\) states can therefore accept \(u\) and reject \(v\).
+
+Conversely, the earlier-marker chain from the upper-bound construction,
+with \(k=M\), accepts \(u\) and rejects \(v\) using \(M+2\) states.
+\end{proof}
+
+\begin{lemma}\label{lem:easy}
+For the same pair, \(\nsep(v,u)\leq q\).
+\end{lemma}
+\begin{proof}
+Use Nicol's graph~\cite[Figure~1]{nicol2026} on states \(0,1,\ldots,s\).
+Its zero-edges are
+\[
+ j\longrightarrow j+1\quad(0\leq j<s),\qquad
+ s\longrightarrow0,\quad s\longrightarrow1.
+\]
+The only \(1\)-edge is a loop at \(0\), which is both initial and
+the sole accepting state.
+
+The positive lengths of zero-walks from \(0\) back to \(0\) are exactly
+\begin{equation}\label{eq:returns}
+ \{\alpha s+\beta(s+1):\alpha,\beta\in\mathbb Z,\
+      \alpha\geq0,\ \beta\geq1\}.
+\end{equation}
+Indeed, each return traverses the \((s+1)\)-cycle, with any number of
+traversals of the \(s\)-cycle through \(1,\ldots,s\) inserted before
+returning; concatenating returns gives \eqref{eq:returns}.
+Every indicated combination can be realized.
+
+Represent residues modulo \(s\) by \(r=1,\ldots,s\).
+The least positive return length in residue \(r\) is \(r(s+1)\);
+all later lengths in that residue are obtained by adding multiples
+of \(s\). Therefore the largest excluded positive length is
+\[
+ \max_{1\leq r\leq s}\{r(s+1)-s\}=s^2=M.
+\]
+The empty return is also possible and does not affect this calculation.
+Thus \(M\) is not a return length, while every length greater than \(M\)
+is. The machine rejects \(u\), since after its first \(M\) zeros no path
+has reached the sole available marker transition.
+It accepts \(v\), since \(M+P>M\) and \(T>M\) are both return lengths.
+The graph has \(s+1=q\) states.
+\end{proof}
+
+Lemmas~\ref{lem:hard} and \ref{lem:easy} supply an admissible pair
+attaining \((q-1)^2+2\). Together with \eqref{eq:upper} they prove
+Theorem~\ref{thm:main} and Corollary~\ref{cor:general}.
+The attainment argument is elementary and does not use
+Proposition~\ref{prop:schwarz}.
+
+\section{Exact diagnostics and limitations}\label{sec:checks}
+
+The supplement checks relation powers by finite orbit indexing and
+simulates the explicit machines by exact subset propagation.
+Enumerating Boolean-matrix indices and periods is a classical
+computational problem studied by Zajac and J\'okay~\cite{zajac2012};
+our enumeration is smaller and also checks the mixed-symbol transfer
+used in the lower-bound argument.
+
+Two features matter for these checks: exact local predicates and explicit
+coverage of the enumerated domain. A related verification design appears
+in Zeng et al.~\cite[Sections~3, 4 and 6]{zeng2026finite}, where finite
+graph certificates are checked using integer predicates, reconstructed
+orbit coverage, and a separate list-based implementation alongside a
+bitset implementation. Here the development checks use Boolean row
+bitsets, while the separately written supplementary verifier uses sets
+of destinations and exact orbit tables. The connection is methodological;
+no geometric theorem from that paper is used in our proof.
+
+The supplementary run completed with no failed assertions.
+Its exhaustive relation domains are shown in Table~\ref{tab:coverage}.
+For every unary relation \(B\) it checks the index/period identity and
+\(B^T=B^{T+P}\), where \(T=2^n\) and \(P=\lcm(1,\ldots,T)\).
+For \(n\leq3\), it additionally enumerates every second relation \(C\)
+and checks the entrywise inclusion
+\begin{equation}\label{eq:diagnostic}
+ B^{n-1}CB^{T+P}\subseteq B^{n-1+P}CB^T.
+\end{equation}
+Entrywise inclusion covers every initial state and accepting subset.
+There is no complete binary-transition census for \(n=4\).
+
+\begin{table}[ht]
+\centering
+\caption{Exhaustive domains in the supplementary verifier.}\label{tab:coverage}
+\begin{tabular}{@{}rrr@{}}
+\toprule
+States \(n\) & Unary relations \(B\) & Binary pairs \((B,C)\)\\
+\midrule
+1 & 2 & 4\\
+2 & 16 & 256\\
+3 & 512 & 262,144\\
+4 & 65,536 & not enumerated\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The construction tests cover \(q=3,\ldots,12\): 16,480 prefix machines,
+16,480 reversed machines, and 8,000 modular machines.
+They include all short-block thresholds, both orientations, and empty
+blocks in the specified test families. Exact compressed witnesses for
+\(q=3,4\) are also checked. For example, \(q=3\) gives
+\(M=4\), \(T=32\), and \(P=144403552893600\).
+The checks verify the two explicit machines' behavior, not the six-state
+minimum; Lemma~\ref{lem:hard} supplies that minimum.
+As a negative control, a chain disjoint from a loop shows the failure
+of the overstrong insertion assertion at prefix length \(n-2\),
+for each \(n=2,\ldots,12\).
+The supplementary instructions specify the full test families.
+
+These finite computations are diagnostics for the symbolic proof.
+They do not prove the statement for untested numbers of states.
+The exact restricted optimum leaves the gap between quadratic and
+exponential growth in the unrestricted problem. In particular,
+any superquadratic lower-bound construction for \(A(q)\) must use
+pairs outside \(0^*10^*\). We make no claim about the shortest attaining
+word length, the least reverse cost of the displayed witnesses,
+or a classification of all attaining pairs.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with literature searches, proof development,
+exact verification code, a separate mathematical review pass, and
+manuscript preparation. The separate review pass was performed in a
+fresh model context and was not external peer review.
+The accompanying Python~3.10-compatible verifier uses only the standard
+library and exact finite-set and integer operations; no floating-point
+tolerance or random sampling is used.
+No proof assistant was used. The proof above and its stated classical
+dependency, rather than model output or a successful computation,
+support the all-size theorem.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

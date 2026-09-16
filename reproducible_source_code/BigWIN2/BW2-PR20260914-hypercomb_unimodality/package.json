@@ -1,0 +1,418 @@
+{
+  "original_id": "primary-20260914-hypercomb-unimodality",
+  "archive_id": "BW2-PR20260914-hypercomb_unimodality",
+  "title": "A two-step bound for the modes of uniform hypercomb summands",
+  "batch_label": "primary-20260914",
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "scope": "For every pair of integers n>=2 and ell>=3, let a=(1+(ell-2)x)(1+(ell-1)x), b=x(1+(ell-1)x), z0=1+ell*x, z1=(1+(ell-1)x)(a+2*x), F0=0, F1=1, and Fj=a*F_(j-1)+b*F_(j-2) for j>=2. Set Wn=z1*Fn and Yn=z0*b*F_(n-1), the Galvin-Sharpe Section 2.5 decomposition Cn=Wn+Yn. With zero-extended coefficients define P<=_lr Q by p_i*q_j>=p_j*q_i for all integers i<j. Then Wn<=_lr x^2*Yn and Yn<=_lr x*Wn. Hence the smallest coefficient-maximizing indices satisfy m(Yn)-1<=m(Wn)<=m(Yn)+2. In particular, Cn is nondecreasing up to r=min(m(Wn),m(Yn)) and nonincreasing from q=max(m(Wn),m(Yn)), where q-r<=2. The summand separation bound two is attained by unique modes 6 and 4 at n=3,ell=5. Full unimodality and log-concavity of Cn for all parameters remain unproved here.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": "primary-20260914"
+  },
+  "pdf": "pdfs/BigWIN2/BW2-PR20260914-hypercomb_unimodality_A_two_step_bound_for_the_modes_of_uniform_hypercomb_summands.pdf",
+  "pdf_sha256": "d149b905ea38690a91ca7576ad81ba4f943f0a0fc034ea3cf2d35ae4205ef7c9",
+  "pages": 6,
+  "latex": "reproducible_source_code/BigWIN2/BW2-PR20260914-hypercomb_unimodality/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-PR20260914-hypercomb_unimodality/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-PR20260914-hypercomb_unimodality/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim.",
+    {
+      "path": "/home/ailab/4math-open-problems/projects/primary-20260914-hypercomb-unimodality/evidence/triage-registry-check.json",
+      "indicators": [
+        "absolute-local-path"
+      ]
+    },
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 22,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/terminal.json",
+      "sha256": "492e2494b0a2feb7c718ce4f472c6ee592d394e37b6bef09990e6f46697f49f0",
+      "bytes": 711
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/release/manifest.json",
+      "sha256": "9ab5f111e673ccd3db49095f8922588fe535245551809f65be07dfabcc78e934",
+      "bytes": 1678
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/math.json",
+      "sha256": "731aaef0d8bc6e828d935ff25501075703f30e77fb687db06794bb9e881926e5",
+      "bytes": 219
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/citations.json",
+      "sha256": "4262af35428694a4e059e2c7000b991bb116e06e1e8a992770628222238d4f95",
+      "bytes": 1500
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/build.json",
+      "sha256": "8c17a20410dfcdfe2e05acc3aebf32b62f9f60df55c6f361debd0aa507a6b34b",
+      "bytes": 605
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/visual.json",
+      "sha256": "be63a0cbd478d47c2de4b50f7dd650a582861fc760033d8a0e4dff5fc71146b8",
+      "bytes": 1562
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/snapshot.json",
+      "sha256": "64a3d2711705f4fa743d79adef048bbae98334146ac7d11f53bebec6abed17cf",
+      "bytes": 1298
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/manuscript-snapshot.json",
+      "sha256": "a56e0fe28096442e33e23487b331b09fe35daae76c388b3abec4b8e7b6adfb0f",
+      "bytes": 837
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/math.md",
+      "sha256": "77aa12d51a5ab18d1a386817a65fa231dee70937cd152205070df62c53f84275",
+      "bytes": 12331
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/citations.md",
+      "sha256": "566115cf2afaf8e314f80be07d37e722eb7d58bda11e62a68252cba7aa10ae38",
+      "bytes": 16775
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/build.md",
+      "sha256": "a9450b11499a4f2d103147175effea001767fd56b4ba2a72507fb5b53d54ea13",
+      "bytes": 2919
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-hypercomb_unimodality/audit/visual.md",
+      "sha256": "3aebd1f201f1bf1d831e4746a11248cc0bdbe625de3ed3be0d9ca1eacb1abe2d",
+      "bytes": 2473
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "39932396bf895ccaa77828abd8dc803661506cd30fa9401ca56368e8d93a9172",
+      "original_bytes": 16039,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "39932396bf895ccaa77828abd8dc803661506cd30fa9401ca56368e8d93a9172",
+          "bytes": 16039
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "5a45cf5892e9d89ac97eb6458819d2051899f05f046324cdf5e8279b9260eb5e",
+      "original_bytes": 2757,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "5a45cf5892e9d89ac97eb6458819d2051899f05f046324cdf5e8279b9260eb5e",
+          "bytes": 2757
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/page-5.png",
+      "original_sha256": "7ed35c1af1532a430ac6c6336d13cc049dab1a97e7842c6aa37ac29a0fbf4745",
+      "original_bytes": 202549,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/page-5.png",
+          "sha256": "7ed35c1af1532a430ac6c6336d13cc049dab1a97e7842c6aa37ac29a0fbf4745",
+          "bytes": 202549
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/page-1.png",
+      "original_sha256": "7066951e8223407cc907804b1ec50b0d02c4b900289e62296987dd13bd8e9315",
+      "original_bytes": 174386,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/page-1.png",
+          "sha256": "7066951e8223407cc907804b1ec50b0d02c4b900289e62296987dd13bd8e9315",
+          "bytes": 174386
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/page-4.png",
+      "original_sha256": "abe08b45f32d2c851752e3e0d8968fbc6b61a6fbb00ae80f29b1df571f6ce866",
+      "original_bytes": 219261,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/page-4.png",
+          "sha256": "abe08b45f32d2c851752e3e0d8968fbc6b61a6fbb00ae80f29b1df571f6ce866",
+          "bytes": 219261
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/page-2.png",
+      "original_sha256": "6886c137f5038b4632776293fc08adab8437bf76bd19193b6fc4eb6cd6d733d5",
+      "original_bytes": 208570,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/page-2.png",
+          "sha256": "6886c137f5038b4632776293fc08adab8437bf76bd19193b6fc4eb6cd6d733d5",
+          "bytes": 208570
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/main.bbl",
+      "original_sha256": "675467f6788e9b719c15d84e4e26758c27c080aedcaa4af39638cf84bc1f10a5",
+      "original_bytes": 2175,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/main.bbl",
+          "sha256": "675467f6788e9b719c15d84e4e26758c27c080aedcaa4af39638cf84bc1f10a5",
+          "bytes": 2175
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/page-3.png",
+      "original_sha256": "46d796e3e2612987f7d9a762dfb1cb747cb8f10860764a74f73bee9a963bdb7f",
+      "original_bytes": 217806,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/page-3.png",
+          "sha256": "46d796e3e2612987f7d9a762dfb1cb747cb8f10860764a74f73bee9a963bdb7f",
+          "bytes": 217806
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/page-6.png",
+      "original_sha256": "74d7f3d092c8fbdcf1f2a0dc0d3be19f714ae7d1d734ff8d43838179f7b93093",
+      "original_bytes": 121284,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/page-6.png",
+          "sha256": "74d7f3d092c8fbdcf1f2a0dc0d3be19f714ae7d1d734ff8d43838179f7b93093",
+          "bytes": 121284
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_checks.py",
+      "original_sha256": "a09dabbb552a6ec60845d7175f30b2a76509e90fa9f8f12931debc4f97398d0e",
+      "original_bytes": 5050,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_checks.py",
+          "sha256": "a09dabbb552a6ec60845d7175f30b2a76509e90fa9f8f12931debc4f97398d0e",
+          "bytes": 5050
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/primary-statement-extract.txt",
+      "original_sha256": "468b177713ec31a33210aa51cae662a774e25f7360fe9c63764d813f6ba8392d",
+      "original_bytes": 4969,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/primary-statement-extract.txt",
+          "sha256": "468b177713ec31a33210aa51cae662a774e25f7360fe9c63764d813f6ba8392d",
+          "bytes": 4969
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-assessment.md",
+      "original_sha256": "87792b4904ebf7f3c340711e53d714abbce9573a7468e865e1afd9c259e8b49c",
+      "original_bytes": 3286,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-assessment.md",
+          "sha256": "87792b4904ebf7f3c340711e53d714abbce9573a7468e865e1afd9c259e8b49c",
+          "bytes": 3286
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-registry-check.json",
+      "original_sha256": "fef15d61472530982be3b91a4cc2ee22f6372595080f5b0363e03db7d56e2b50",
+      "original_bytes": 27138,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-registry-check.json",
+          "sha256": "fef15d61472530982be3b91a4cc2ee22f6372595080f5b0363e03db7d56e2b50",
+          "bytes": 27138
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-checks.json",
+      "original_sha256": "08fc0ee9ff366d985cb32ba8a5d2ad731e0bd1440af53fe45cdf69a15393f504",
+      "original_bytes": 5320,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-checks.json",
+          "sha256": "08fc0ee9ff366d985cb32ba8a5d2ad731e0bd1440af53fe45cdf69a15393f504",
+          "bytes": 5320
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/primary-section-2-5-extract.txt",
+      "original_sha256": "9aac023c0b891b9c0f946d56d5621d96ce38b67ba03e66bf8068cdeba6871f4a",
+      "original_bytes": 26678,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/primary-section-2-5-extract.txt",
+          "sha256": "9aac023c0b891b9c0f946d56d5621d96ce38b67ba03e66bf8068cdeba6871f4a",
+          "bytes": 26678
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/two-step-mode-proof.md",
+      "original_sha256": "0a985584e82f4c93454a80c2d294c5d69e90686f643788a8a9b006df90a19dac",
+      "original_bytes": 9171,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/two-step-mode-proof.md",
+          "sha256": "0a985584e82f4c93454a80c2d294c5d69e90686f643788a8a9b006df90a19dac",
+          "bytes": 9171
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/two-step-checks.json",
+      "original_sha256": "ba2fff17ee860d05974292b815f984e4dd6e4e35d160af8468a9f04736e697fd",
+      "original_bytes": 2277,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/two-step-checks.json",
+          "sha256": "ba2fff17ee860d05974292b815f984e4dd6e4e35d160af8468a9f04736e697fd",
+          "bytes": 2277
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/two_step_checks.py",
+      "original_sha256": "6400677b9cf38dcc4d1c08e970dcae05e48655401a6b95908b4d39c71403d49b",
+      "original_bytes": 8903,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/two_step_checks.py",
+          "sha256": "6400677b9cf38dcc4d1c08e970dcae05e48655401a6b95908b4d39c71403d49b",
+          "bytes": 8903
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "66bd66f1a94163be3cb7f8929629c0f122d7f7490759017615c0d690a842773c",
+      "original_bytes": 3165,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "66bd66f1a94163be3cb7f8929629c0f122d7f7490759017615c0d690a842773c",
+          "bytes": 3165
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "bb8bf2800d770c8d9de6f8836e356ebb0677bd58e8df36b293612ca222534ea7",
+      "original_bytes": 5461,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "bb8bf2800d770c8d9de6f8836e356ebb0677bd58e8df36b293612ca222534ea7",
+          "bytes": 5461
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "532300910be452b8dd8f85ca20742d59980aea5d54ab47c9029b2d3376d0802d",
+      "original_bytes": 1972,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "532300910be452b8dd8f85ca20742d59980aea5d54ab47c9029b2d3376d0802d",
+          "bytes": 1972
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "f42007fd2eb0cc550fb8a714918a98e9665e949f643d1b7bb294cd774d1fb365",
+      "original_bytes": 208,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "f42007fd2eb0cc550fb8a714918a98e9665e949f643d1b7bb294cd774d1fb365",
+          "bytes": 208
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-PR20260914-hypercomb_unimodality",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

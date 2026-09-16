@@ -1,0 +1,326 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Subfield-Coefficient Root Distribution for a Seventh-Degree Unit-Circle Polynomial},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={A root-count distribution over finite fields of characteristic two},
+  pdfkeywords={finite fields, unit circle, additive characters, Artin--Schreier curve}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\title{The Subfield-Coefficient Root Distribution for a\\
+Seventh-Degree Unit-Circle Polynomial}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 9, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $q=2^m$ and let $U_{q+1}$ be the norm-one subgroup of
+$\F_{q^2}^{\times}$.  For $a\in\F_q$, write $N_m(a)$ for the number of
+distinct roots in $U_{q+1}$ of
+\[
+ x^7+a x^4+a x^3+1.
+\]
+We determine the distribution of $N_m(a)$ for every $m\geq1$.  If
+$c_1=1$, $c_2=-3$, $c_m=c_{m-1}-2c_{m-2}$, and
+$d_m=-2+(-1)^m+c_m$, then the respective frequencies of five, three,
+and one roots are
+\[
+ \frac{2^m+d_m}{8},\qquad
+ \frac{2^m-d_m}{4},\qquad
+ \frac{5\cdot2^m+d_m}{8}.
+\]
+The proof reduces the distribution to an ordered collision count, cancels
+two additive-character sums, and identifies the remaining sum with the
+point count of the genus-one curve
+$(t^2+t)(w^2+w+1)=1$ over $\F_2$.  All exceptional fibres are included
+explicitly.
+\end{abstract}
+
+\section{Statement and context}
+
+Put $q=2^m$ and
+\[
+ U_{q+1}=\{x\in\F_{q^2}^{\times}:x^{q+1}=1\}.
+\]
+For $a\in\F_q$, let
+\[
+ N_m(a)=\#\{x\in U_{q+1}:x^7+a x^4+a x^3+1=0\},
+ \qquad
+ M_j(m)=\#\{a\in\F_q:N_m(a)=j\}.
+\]
+Roots are counted without multiplicity.  The following is the result proved
+in this note.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\geq1$, define
+\[
+ c_1=1,\qquad c_2=-3,\qquad
+ c_m=c_{m-1}-2c_{m-2}\quad(m\geq3),
+\]
+and $d_m=-2+(-1)^m+c_m$.  Then
+\[
+ M_5(m)=\frac{2^m+d_m}{8},\qquad
+ M_3(m)=\frac{2^m-d_m}{4},\qquad
+ M_1(m)=\frac{5\cdot2^m+d_m}{8}.
+\]
+\end{theorem}
+
+Xiong and Yan study the ambient family
+$x^7+a x^4+\bar a x^3+1$ with $a\in\F_{q^2}$ and determine its complete
+root-count distribution on $U_{q+1}$ \cite{XiongYan2026}.  The specialization
+considered here imposes $a=\bar a$, hence $a\in\F_q$.  An ambient
+$q^2$-parameter distribution does not determine this conditional
+$q$-parameter distribution; Theorem~\ref{thm:main} evaluates the latter.
+No priority claim is made.
+
+Every algebraic reduction below is specific to characteristic two.  The
+importance of recording the ground-field hypothesis is also visible in other
+algebraic problems: for example, a canonical Bézout map studied by Zeng is
+generically reversible in characteristic zero but loses information on an
+explicit positive-characteristic family \cite{Zeng2026Bezout}.  That paper is
+only a comparison concerning characteristic dependence and supplies no input
+to the present proof.
+
+We use the absolute trace $\Tr=\Tr_{\F_q/\F_2}$ and its canonical additive
+character $\psi(u)=(-1)^{\Tr(u)}$.  Standard background on trace criteria and
+additive characters over finite fields may be found in
+\cite{LidlNiederreiter1996}.
+
+\section{Reduction to collisions}
+
+Define
+\[
+ S=\{y\in\F_q^{\times}:\Tr(1/y)=1\}.
+\]
+
+\begin{lemma}\label{lem:unit-circle}
+The map $x\mapsto x+x^{-1}$ is two-to-one from
+$U_{q+1}\setminus\{1\}$ onto $S$.  Moreover, if
+\[
+ R(a)=\#\{y\in S:y^3+y^2+1=a\},
+\]
+then $N_m(a)=1+2R(a)$ and $R(a)\leq2$.
+\end{lemma}
+
+\begin{proof}
+In characteristic two,
+\begin{equation}\label{eq:factor}
+ x^7+a x^4+a x^3+1
+ =(x+1)\bigl(x^6+x^5+x^4+(a+1)x^3+x^2+x+1\bigr).
+\end{equation}
+Thus $x=1$ is always a root.  If
+$x\in U_{q+1}\setminus\{1\}$ and $y=x+x^{-1}$, then
+$y\in\F_q^{\times}$.  Dividing the degree-six factor in
+\eqref{eq:factor} by $x^3$ gives
+\begin{equation}\label{eq:cubic}
+ y^3+y^2=a+1.
+\end{equation}
+
+Conversely, the inverse fibre over $y\in\F_q^{\times}$ consists of the
+roots of $X^2+yX+1$.  After scaling, the usual characteristic-two quadratic
+criterion says that this polynomial is irreducible over $\F_q$ precisely when
+\[
+ \Tr(1/y^2)=\Tr(1/y)=1.
+\]
+In that event its two roots are Frobenius conjugates with product one, so
+they lie in $U_{q+1}$.  This proves the asserted two-to-one map and, together
+with \eqref{eq:cubic}, the identity $N_m(a)=1+2R(a)$.
+
+It remains to bound the fibre size.  If three distinct members
+$y_1,y_2,y_3$ of $S$ were roots of
+$Y^3+Y^2+(a+1)$, their product would be nonzero and Vieta's relations would
+give
+\[
+ \frac1{y_1}+\frac1{y_2}+\frac1{y_3}=0.
+\]
+Taking absolute traces would give $0=1+1+1=1$ in $\F_2$, a contradiction.
+When $a+1=0$, the polynomial is $Y^2(Y+1)$ and has only one distinct
+nonzero root.  Hence $R(a)\leq2$ in all cases.
+\end{proof}
+
+Let $D_m$ be the number of ordered pairs $(y,z)\in S^2$ such that
+$y\ne z$ and $y^3+y^2=z^3+z^2$.  Since every fibre of $R$ has size at
+most two,
+\begin{equation}\label{eq:D-fibres}
+ D_m=2\#\{a\in\F_q:R(a)=2\}.
+\end{equation}
+Cancellation of $y+z\ne0$ shows that the collision equation is
+\begin{equation}\label{eq:collision}
+ y^2+yz+z^2+y+z=0.
+\end{equation}
+
+\section{The character sum}
+
+Set $T=\F_q\setminus\{0,1\}$.  In \eqref{eq:collision}, put $t=z/y$.
+For an actual collision,
+\begin{equation}\label{eq:param}
+ y=\frac{1+t}{1+t+t^2},\qquad
+ z=\frac{t(1+t)}{1+t+t^2},
+\end{equation}
+where $t\in T$ and $1+t+t^2\ne0$.  The two reciprocal trace arguments are
+\begin{equation}\label{eq:AB}
+ A(t)=\frac1y=t+\frac1{t+1},\qquad
+ B(t)=\frac1z=1+\frac1t+\frac1{t+1}.
+\end{equation}
+If $1+t+t^2=0$, both expressions in \eqref{eq:AB} are zero.  Such a
+parameter contributes zero to the simultaneous trace-one indicator, so it
+may be included without changing the count.  Therefore
+\begin{equation}\label{eq:indicator}
+ D_m=\frac14\sum_{t\in T}
+       (1-\psi(A(t)))(1-\psi(B(t))).
+\end{equation}
+
+Translation $t\mapsto t+1$ permutes $T$, and
+\[
+ A(t+1)=t+1+\frac1t=A(t)+B(t).
+\]
+Consequently, in the expansion of \eqref{eq:indicator}, the $A$-sum
+cancels the $(A+B)$-sum.  Writing
+\begin{equation}\label{eq:sigma}
+ \Sigma_m=\sum_{t\in T}
+ \psi\!\left(1+\frac1{t(t+1)}\right),
+\end{equation}
+we obtain the exact identity
+\begin{equation}\label{eq:D-sigma}
+ D_m=\frac{q-2-\Sigma_m}{4}.
+\end{equation}
+
+\section{A genus-one point count}
+
+Consider the projective closure $E$ in
+$\mathbb P^1_t\times\mathbb P^1_w$ of
+\begin{equation}\label{eq:curve}
+ (t^2+t)(w^2+w+1)=1
+\end{equation}
+over $\F_2$.  We verify the geometry needed for its point count rather than
+leaving exceptional fibres implicit.
+
+\begin{lemma}\label{lem:curve}
+The curve $E$ is smooth and geometrically integral of genus one.  It has
+exactly two $\F_2$-rational points, and
+\begin{equation}\label{eq:E-count}
+ \#E(\F_{2^m})=2^m+1-c_m,
+\end{equation}
+where $(c_m)$ is the recurrence in Theorem~\ref{thm:main}.
+\end{lemma}
+
+\begin{proof}
+On the affine chart, put $P=t^2+t$ and $Q=w^2+w+1$.  The two partial
+derivatives of $PQ+1$ are $Q$ and $P$, and they cannot vanish on the curve.
+Near $t=\infty$, with $s=1/t$, the equation becomes
+\[
+ (1+s)Q=s^2;
+\]
+at $s=0$ its derivative with respect to $w$ is one.  Near $w=\infty$,
+with $v=1/w$, it becomes
+\[
+ P(1+v+v^2)=v^2;
+\]
+at $v=0$ its derivative with respect to $t$ is one.  The chart where both
+coordinates are infinite contains no point of $E$.  Thus $E$ is smooth.
+
+The Artin--Schreier presentation
+\begin{equation}\label{eq:AS}
+ w^2+w=1+\frac1{t(t+1)}
+\end{equation}
+also proves geometric integrality.  Indeed, its right-hand side has simple
+poles at $t=0,1$, whereas every pole of $h^2+h$ has even order.  Hence the
+right-hand side is not of that form over $\overline{\F}_2(t)$, so the
+Artin--Schreier polynomial is irreducible.  Since $E$ is a smooth integral
+curve of bidegree $(2,2)$, the adjunction formula gives
+$g(E)=(2-1)(2-1)=1$.  These Artin--Schreier and function-field facts are
+standard; see \cite{Stichtenoth2009}.
+
+The two points of $E(\F_2)$ are the points with $w=\infty$ over $t=0$ and
+$t=1$.  There is no point above $t=\infty$, because that fibre requires
+$w^2+w+1=0$, which has no root in $\F_2$.  Hence
+$\#E(\F_2)=2$, and the Frobenius trace is $2+1-2=1$.  The Frobenius
+polynomial is therefore
+\[
+ X^2-X+2.
+\]
+If its roots are $\alpha,\beta$, then the point-count formula for curves over
+finite fields \cite{Weil1948} gives
+\[
+ \#E(\F_{2^m})=2^m+1-(\alpha^m+\beta^m).
+\]
+Now $\alpha+\beta=1$ and $\alpha\beta=2$, so
+$\alpha^m+\beta^m$ has initial values $1,-3$ and satisfies
+$c_m=c_{m-1}-2c_{m-2}$.  This proves \eqref{eq:E-count}.
+\end{proof}
+
+We count the same points directly from \eqref{eq:AS}.  For each finite
+$t\in T$, the number of $w$ is
+\[
+ 1+\psi\!\left(1+\frac1{t(t+1)}\right).
+\]
+The poles $t=0,1$ contribute the two rational points with $w=\infty$.
+Above $t=\infty$, the equation is $w^2+w+1=0$; this contributes two
+points if $m$ is even and none if $m$ is odd, namely $1+(-1)^m$ points.
+Thus
+\begin{align}
+ \#E(\F_q)
+  &=(q-2)+\Sigma_m+2+1+(-1)^m \notag\\
+  &=q+1+(-1)^m+\Sigma_m.\label{eq:fibres}
+\end{align}
+Comparing \eqref{eq:E-count} and \eqref{eq:fibres} yields
+\begin{equation}\label{eq:sigma-value}
+ \Sigma_m=-(-1)^m-c_m.
+\end{equation}
+Together with \eqref{eq:D-sigma}, this gives
+\begin{equation}\label{eq:D-value}
+ D_m=\frac{q-2+(-1)^m+c_m}{4}=\frac{q+d_m}{4}.
+\end{equation}
+
+\section{Recovery of the frequencies}
+
+Let $n_r=\#\{a\in\F_q:R(a)=r\}$ for $r=0,1,2$.  Inversion is a
+bijection of $\F_q^{\times}$, and exactly $q/2$ field elements have absolute
+trace one.  Consequently,
+\[
+ n_0+n_1+n_2=q,\qquad n_1+2n_2=q/2.
+\]
+Equations \eqref{eq:D-fibres} and \eqref{eq:D-value} now give
+\[
+ n_2=\frac{q+d_m}{8},\qquad
+ n_1=\frac{q-d_m}{4},\qquad
+ n_0=\frac{5q+d_m}{8}.
+\]
+Finally $N_m(a)=1+2R(a)$, so $(n_2,n_1,n_0)$ is
+$(M_5(m),M_3(m),M_1(m))$.  This proves Theorem~\ref{thm:main}, including
+$m=1$.
+
+\section*{Computational and AI assistance}
+
+OpenAI Codex assisted with proof development, exact finite-field checks,
+literature searches, and preparation of the manuscript.  Package-free exact
+verifiers independently check the reduced fibre distribution, the collision
+count, the character sum, and the curve point count for every
+$1\leq m\leq15$.  These finite calculations are corroborating diagnostics;
+the all-$m$ conclusion rests on the symbolic argument above.  The verifier
+source and captured output are available with the accompanying project
+materials.  Responsibility for any use of this manuscript remains with the
+named author.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

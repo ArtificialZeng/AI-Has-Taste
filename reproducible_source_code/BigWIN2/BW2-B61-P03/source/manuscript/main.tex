@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Aut}{\operatorname{Aut}}
+
+\title{The Minimum 2-Circuit Decomposition of an
+18-Triangle Torus}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\hypersetup{
+  pdftitle={The Minimum 2-Circuit Decomposition of an 18-Triangle Torus},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the nine-vertex triangulated torus displayed by Harlander and
+Quatrone, we prove that the minimum number of 2-circuits in a facet-exact
+decomposition is three.  The proof reduces every possible circuit to an orbit
+of a forced transition permutation on the 108 ordered facet states.  The
+transition orbits give exactly nine circuits up to rotation and reversal, and
+their disjointness graph gives exactly three labeled minimum decompositions.
+An exhaustive calculation of the automorphism group shows that these three
+decompositions form one orbit.  The finite enumeration is supplied with a
+standard-library verifier that independently reconstructs all incidence,
+transition, exact-cover, and automorphism calculations.
+\end{abstract}
+
+\section{The finite problem and result}
+
+Let $V=\{0,1,\ldots,8\}$, and let $S$ be the abstract simplicial complex
+whose facets, in the order used below, are
+\begin{equation}\label{eq:facets}
+\begin{split}
+F(S)=\{&105,053,537,374,741,410,\\
+       &216,165,658,587,872,721,\\
+       &023,236,364,648,480,802\}.
+\end{split}
+\end{equation}
+Each three-digit string denotes an unordered triple.  This is the torus in
+Figure~1 of Harlander and Quatrone~\cite{HarlanderQuatrone2026}.  That figure
+gives the three 2-circuits
+\begin{equation}\label{eq:source-cover}
+105374,\qquad 216587,\qquad 023648
+\end{equation}
+and leaves the nonexistence of a single Euler 2-circuit to the reader.  It does
+not give an exclusion of a two-circuit decomposition or the census below.
+
+A \emph{2-circuit} in the present finite complex is a cyclic word
+$W=(v_i)_{i\in\mathbb Z/n\mathbb Z}$ such that every cyclic window
+$\{v_i,v_{i+1},v_{i+2}\}$ is a facet and these $n$ facets are pairwise
+distinct.  A \emph{2-circuit decomposition} is an unordered collection of
+such words whose facet sets partition $F(S)$.  Write $c(S)$ for the minimum
+number of circuits in such a decomposition.
+
+This consecutive-window viewpoint is part of the theory of universal
+cycles, developed by Chung, Diaconis, and Graham for families of
+combinatorial objects~\cite{ChungDiaconisGraham1992}.  In hypergraph
+language, Glock, Joos, K\"uhn, and Osthus proved the existence of tight Euler
+tours in quasirandom uniform hypergraphs under the natural divisibility
+condition; their complete-hypergraph case settles the corresponding
+universal-cycle conjecture for fixed-size subsets~\cite{GlockEtAl2020}.
+The facet hypergraph in \eqref{eq:facets} is instead one fixed sparse surface
+triangulation.  Those general existence results neither determine its minimum
+number of circuits nor give its exact decomposition census.
+
+Two words representing the same circuit are identified under cyclic rotation
+and reversal.  Decompositions are also identified under permutation of their
+circuits.  For the final quotient, $\Aut(S)$ acts diagonally by relabeling
+vertices.
+
+\begin{theorem}\label{thm:main}
+For the complex in \eqref{eq:facets},
+\[
+c(S)=3.
+\]
+The words in \eqref{eq:source-cover} form a minimum decomposition.  Up to
+rotation and reversal of the individual circuits and permutation of the
+circuits, there are exactly three labeled minimum decompositions.  The group
+$\Aut(S)$ has order $108$ and is transitive on the three decompositions;
+hence there is exactly one minimum-decomposition orbit after quotienting by
+$\Aut(S)$.
+\end{theorem}
+
+The theorem concerns only the fixed complex \eqref{eq:facets}; it makes no
+claim about arbitrary triangulated tori.
+
+\section{A complete transition reduction}
+
+Let
+\[
+\Omega=\{(a,b,c):\{a,b,c\}\in F(S)\}.
+\]
+Thus every facet contributes its six orderings and $|\Omega|=108$.  Directly
+from \eqref{eq:facets}, $S$ has $27$ edges and every edge lies in exactly two
+facets.  Define $P:\Omega\to\Omega$ by
+\begin{equation}\label{eq:transition}
+P(a,b,c)=(b,c,d),
+\end{equation}
+where $\{b,c,d\}$ is the other facet containing the edge $\{b,c\}$.
+This is a permutation.  Indeed, its inverse sends $(x,y,z)$ to $(w,x,y)$,
+where $\{w,x,y\}$ is the other facet at $\{x,y\}$.
+
+\begin{lemma}[Orbit completeness]\label{lem:complete}
+The 2-circuits in $S$ are precisely the $P$-orbits whose projections to
+unordered facets are injective.
+\end{lemma}
+
+\begin{proof}
+Let $W=(v_i)$ be a 2-circuit and put
+$s_i=(v_i,v_{i+1},v_{i+2})$.  The unordered facets represented by $s_i$ and
+$s_{i+1}$ are distinct and share $\{v_{i+1},v_{i+2}\}$.  Since exactly two
+facets contain this edge, \eqref{eq:transition} forces
+$s_{i+1}=P(s_i)$.  Cyclic closure gives $P^n(s_0)=s_0$.  The word cannot stop
+before the state orbit closes, and it cannot traverse an orbit more than once
+without repeating a facet.  Hence its states form one complete $P$-orbit.
+Conversely, the overlapping entries along a $P$-orbit form a cyclic word; if
+its facet projection is injective, that word is a 2-circuit.
+\end{proof}
+
+This lemma is the step that turns the computation into a complete search:
+there is no unbounded word length or unexplored prefix after the 108 states
+have been exhausted.
+
+\section{Exact circuit and cover enumeration}
+
+Index the facets in \eqref{eq:facets} from $0$ through $17$.  Iterating $P$
+gives 18 directed orbits, all of length six and all with injective facet
+projection.  Reversal pairs them into the nine circuits in
+Table~\ref{tab:circuits}.  The table is also a compact checkable certificate:
+for each displayed cyclic word, its six length-three windows and the six
+windows of its reversal are two $P$-orbits.  Across the nine rows these are
+108 distinct ordered states, so the list exhausts $\Omega$.
+
+\begin{table}[ht]
+\centering
+\caption{All circuits modulo cyclic rotation and reversal.}
+\label{tab:circuits}
+\begin{tabular}{@{}cll@{}}
+\toprule
+Index & Cyclic word & Facet indices \\
+\midrule
+$C_1$ & $014735$ & $0,1,2,3,4,5$ \\
+$C_2$ & $015684$ & $0,5,7,8,15,16$ \\
+$C_3$ & $023648$ & $12,13,14,15,16,17$ \\
+$C_4$ & $028753$ & $1,2,9,10,12,17$ \\
+$C_5$ & $032615$ & $0,1,6,7,12,13$ \\
+$C_6$ & $041728$ & $4,5,10,11,16,17$ \\
+$C_7$ & $126347$ & $3,4,6,11,13,14$ \\
+$C_8$ & $127856$ & $6,7,8,9,10,11$ \\
+$C_9$ & $346857$ & $2,3,8,9,14,15$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The disjointness graph of the rows in Table~\ref{tab:circuits} is the disjoint
+union of three triangles,
+\[
+\{C_1,C_3,C_8\},\qquad
+\{C_2,C_4,C_7\},\qquad
+\{C_5,C_6,C_9\}.
+\]
+Each triangle partitions all 18 facets, so the three labeled decompositions
+are
+\begin{align*}
+&\{014735,023648,127856\},\\
+&\{015684,028753,126347\},\\
+&\{032615,041728,346857\}.
+\end{align*}
+Every possible circuit has six facets.  Consequently, one or two circuits can
+cover at most 12 of the 18 facets, while the first displayed decomposition is
+equivalent under rotation and reversal to \eqref{eq:source-cover}.  This proves
+$c(S)=3$ and proves the labeled census.
+
+For the automorphism quotient, every one of the $9!$ permutations of $V$ was
+tested against the facet set \eqref{eq:facets}; exactly 108 preserve it.  Their
+induced action on the three covers realizes each element of $S_3$ exactly 18
+times.  In particular, the automorphisms written as images of
+$012345678$ by
+\[
+012854763 \quad\text{and}\quad 034125768
+\]
+send the first cover to the second and third, respectively.  Thus the action
+is transitive.  Equivalently, the Burnside fixed-point sum is 108 and the
+number of orbits is $108/108=1$.
+
+\section{Independent finite verification}
+
+The ancillary file \texttt{circuit\_certificate.json} records the edge
+incidence table, the transition orbits, the nine unoriented circuits, the
+three exact covers, all 108 automorphisms, and their action on the covers.
+The program \texttt{replay\_certificate.py} does not import the program that
+generated this file.  Starting only from the 18 facets, it independently
+rebuilds the edge incidences and transition permutation, walks from every
+ordered facet, tests all $2^9=512$ circuit subcollections with exact facet
+multiplicities, exhausts all $9!$ vertex permutations, and compares the
+result with the certificate.  It uses only integer and finite-set operations
+from the Python standard library.
+
+A related certificate architecture---exact finite predicates, exhaustive
+symmetry calculations, and a separate verifier that reconstructs the
+theorem-bearing objects---is documented by Zeng, Liu, Ratnavelu, and
+Huat~\cite{ZengEtAl2026}.  Here the human-readable orbit-completeness lemma is
+essential: successful execution alone is not used as a substitute for the
+mathematical reduction.
+
+To replay the present calculation from the project root, run
+\begin{verbatim}
+python3 evidence/replay_certificate.py
+\end{verbatim}
+The expected terminal line is \texttt{REPLAY OK}.  No floating-point
+arithmetic, random seed, or numerical tolerance occurs in the proof.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex assisted with literature search, finite search design, draft
+code, adversarial audit organization, and initial manuscript preparation.
+The mathematical claims rest on the explicit reduction above and the exact
+ancillary certificate and verifier, not on language-model output.  No proof
+assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

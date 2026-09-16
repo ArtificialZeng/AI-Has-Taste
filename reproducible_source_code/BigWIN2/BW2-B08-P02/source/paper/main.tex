@@ -1,0 +1,147 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\title[A Preorder Support-Polynomial Counterexample]{An Eight-Element Counterexample to Real-Rootedness of Preorder Support Polynomials}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com}\email{1002266693@ucsiuniversity.edu.my}
+\date{August 31, 2026}
+\hypersetup{pdftitle={An Eight-Element Counterexample to Real-Rootedness of Preorder Support Polynomials},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+We independently certify a recently posted eight-element counterexample to the
+real-rootedness conjecture for the support polynomial of a preorder polytope.
+The witness is an ordinary height-two poset. Its support polynomial is computed
+from all order-ideal inequalities, and non-real-rootedness is proved by a
+rational Laguerre-inequality certificate, with an independent Sturm-chain
+check. Thus the computational frontier at size eight is negative.
+\end{abstract}\maketitle
+
+\section{Introduction}
+Athanasiadis and Chapoton introduced preorder polytopes and conjectured that
+their lattice-point support polynomials have only real roots
+\cite[Conjecture~5.3]{chapoton2026polytopesposetsassociatedpreorders}. They reported computer verification for every
+preorder of size at most seven and every arbor of size at most ten
+\cite[p.~16]{chapoton2026polytopesposetsassociatedpreorders}. This support polynomial is not the Ehrhart
+$h^*$-polynomial.
+
+A candidate eight-element counterexample was subsequently posted publicly on
+MathDB \cite{Patel2026}. This note gives a self-contained exact verification
+from the defining inequalities, together with two algebraic certificates of
+non-real-rootedness. A later work of Dai, Hou, Liu, Thawinrak and Wang proves
+the separate duality conjecture for preorder support polynomials, not the
+real-rootedness conjecture \cite{dai2026countinglatticepointsminkowski}.
+
+\section{Definitions and the witness}
+Let $P$ be a finite poset. An order ideal $I\subseteq P$ satisfies $x\in I$
+and $y\le x$ only if $y\in I$. Following \cite{chapoton2026polytopesposetsassociatedpreorders}, set
+\begin{align*}
+ Q_P&=\left\{x\in\mathbb R_{\ge0}^{P}:\sum_{v\in I}x_v\le |I|
+ \text{ for every order ideal }I\right\},\\
+ h_P(t)&=\sum_{x\in Q_P\cap\mathbb Z^P}t^{|\{v:x_v>0\}|}.
+\end{align*}
+Consider the height-two poset with lower elements $a_1,a_2,a_3,d$, upper
+elements $b_0,b_1,b_2,b_3$, and strict relations
+\begin{equation}\label{eq:relations}
+ a_i<b_0,\qquad a_i<b_i,\qquad d<b_i\qquad(1\le i\le3).
+\end{equation}
+There are no other strict relations. This is an ordinary poset, hence a
+preorder of size eight.
+
+\section{Exact support enumeration}
+\begin{proposition}\label{prop:h}
+For the poset in \eqref{eq:relations},
+\[
+h_P(t)=1+17t+106t^2+303t^3+427t^4+303t^5+106t^6+17t^7+t^8.
+\]
+\end{proposition}
+\begin{proof}
+Each lower coordinate is $0$ or $1$, because its singleton is an order ideal.
+Fix the subset $Z$ of lower elements having coordinate zero, and put
+\[r=|Z\cap\{a_1,a_2,a_3\}|,\qquad
+\epsilon=\boldsymbol1_{d\in Z}.\]
+There are $\binom3r$ choices of this type. By symmetry take the zero $a_i$'s
+to be $a_1,\ldots,a_r$. Write $y_i=x_{b_i}$ and
+$e_i=\max(y_i-1,0)$. For an upper subset $S$, the least ideal containing it is
+$S\cup N(S)$, where $N(S)$ is its lower neighbourhood. Any larger ideal only
+adds lower coordinates $x_v\le1$ and gives no stronger inequality.
+Consequently the order-ideal inequalities are equivalent to
+\[
+0\le e_0\le r,\qquad
+\sum_{i=1}^3(e_i-\boldsymbol1_{i\le r})_+\le\epsilon,\qquad
+e_0+e_1+e_2+e_3\le r+\epsilon.
+\]
+Let $F_{r,\epsilon}(u)$ enumerate these vectors by excess support. Bounded
+counting gives
+\[
+\begin{array}{c|c@{\quad}c|c}
+(r,\epsilon)&F_{r,\epsilon}(u)&(r,\epsilon)&F_{r,\epsilon}(u)\\ \hline
+(0,0)&1 &(0,1)&1+3u\\
+(1,0)&1+2u &(1,1)&1+5u+5u^2\\
+(2,0)&1+4u+3u^2 &(2,1)&1+7u+13u^2+4u^3\\
+(3,0)&1+6u+9u^2+4u^3 &(3,1)&1+9u+24u^2+16u^3+u^4.
+\end{array}
+\]
+For an excess vector with $s$ positive coordinates, every zero-excess upper
+coordinate is independently $0$ or $1$. Hence
+\[
+h_P(t)=\sum_{r=0}^3\sum_{\epsilon=0}^1\binom3r
+t^{4-r-\epsilon}(1+t)^4F_{r,\epsilon}\!\left(\frac{t}{1+t}\right).
+\]
+Expansion proves the formula. Separately, enumeration of all 44 order ideals
+and bounded integer vectors gives the same coefficients and $h_P(1)=1281$.
+\end{proof}
+
+\section{Non-real-root certificate}
+\begin{lemma}\label{lem:laguerre}
+If a real polynomial $q$ has only real roots, then
+$(q'(s))^2-q(s)q''(s)\ge0$ for every real $s$.
+\end{lemma}
+\begin{proof}
+Away from the roots, logarithmic differentiation of
+$q(s)=c\prod_j(s-\rho_j)$ gives
+\[(q')^2-qq''=q(s)^2\sum_j(s-\rho_j)^{-2}\ge0.\]
+At roots the result follows by continuity; multiplicities cause no change.
+\end{proof}
+\begin{theorem}\label{thm:main}
+The polynomial $h_P(t)$ in Proposition~\ref{prop:h} has non-real roots.
+Consequently Conjecture~5.3 of \cite{chapoton2026polytopesposetsassociatedpreorders} is false, already for an ordinary
+poset of size eight.
+\end{theorem}
+\begin{proof}
+Coefficient comparison gives
+\begin{equation}\label{eq:gamma}
+h_P(t)=(1+t)^8G\!\left(\frac{t}{(1+t)^2}\right),\quad
+G(z)=1+9z+24z^2+16z^3+z^4.
+\end{equation}
+At $s=-1/4$,
+\[G(s)=\frac1{256},\quad G'(s)=-\frac1{16},\quad G''(s)=\frac{99}{4},\]
+and therefore $G'(s)^2-G(s)G''(s)=-95/1024<0$.
+Lemma~\ref{lem:laguerre} implies that $G$ has a non-real root $z$. Let $t$
+be either root of $z(1+t)^2-t=0$. Such a $t$ is not $-1$, and
+\eqref{eq:gamma} gives $h_P(t)=0$. If $t$ were real, then
+$z=t/(1+t)^2$ would be real, a contradiction.
+\end{proof}
+\begin{remark}[Independent Sturm check]
+A Sturm chain for $G$ is
+\[
+\begin{aligned}
+S_0&=z^4+16z^3+24z^2+9z+1,&S_1&=4z^3+48z^2+48z+9,\\
+S_2&=144z^2+165z+32,&S_3&=651z+160,&S_4&=-1.
+\end{aligned}
+\]
+The successive negative remainders are $1/4$, $7/1728$ and $6848/47089$
+times the next polynomial. There are three sign variations at $-\infty$ and
+one at $+\infty$, so $G$ has exactly two real roots and one non-real pair.
+\end{remark}
+
+\section*{Data and computational disclosure}
+The relation data, exact verifier, independent branch-count implementation,
+Sturm verifier, tests and logs accompany this article. Decisive calculations
+use integer or rational arithmetic; floating-point roots are not used.
+\bibliographystyle{amsplain}\bibliography{references}
+\end{document}

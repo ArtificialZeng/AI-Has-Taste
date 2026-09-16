@@ -1,0 +1,109 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\title{Nonexistence of a Rational Antipodal 34-Point 7-Design for the Chebyshev Measure}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{August 31, 2026}
+\hypersetup{pdftitle={Nonexistence of a Rational Antipodal 34-Point 7-Design for the Chebyshev Measure},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+Mishima, Lu, Sawa, and Uchida proved that rational antipodal $7$-designs
+for the Chebyshev measure do not exist with $2N$ points for
+$1\leq N\leq16$, and posed the existence problem starting at $N=17$.
+We settle the first case negatively. In fact, the three required rational
+moment equations in seventeen variables have no solution, even without the
+distinctness and interval conditions. The proof is an elementary $2$-adic
+argument using a primitive common denominator.
+\end{abstract}
+\maketitle
+\section{Introduction and formulation}
+Let $d\mu(t)=dt/(\pi\sqrt{1-t^2})$ be the Chebyshev probability measure on
+$(-1,1)$. An antipodal rational $7$-design with $34$ points would be a set
+$X=\{\pm x_i:1\leq i\leq17\}$ of distinct rational points in $(-1,1)$
+such that
+\[
+ \frac1{34}\sum_{x\in X}f(x)=\int_{-1}^{1}f(t)\,d\mu(t)
+ \qquad (\deg f\leq7).
+\]
+The even moments are $\int t^{2k}\,d\mu(t)=\binom{2k}{k}/4^k$.
+Antipodality cancels the odd moments, so the condition is equivalent to
+\begin{equation}\label{eq:moments}
+ \sum_{i=1}^{17}x_i^2=\frac{17}{2},\qquad
+ \sum_{i=1}^{17}x_i^4=\frac{51}{8},\qquad
+ \sum_{i=1}^{17}x_i^6=\frac{85}{16}.
+\end{equation}
+This equivalence and the prior nonexistence result appear in
+\cite[Section~8, preceding Theorem~8.4; Theorem~8.4 and Problem~8.5]{Mishima2026}.
+\section{The obstruction}
+\begin{theorem}\label{thm:main}
+There is no tuple $(x_1,\ldots,x_{17})\in\mathbb Q^{17}$ satisfying
+\eqref{eq:moments}.
+\end{theorem}
+\begin{proof}
+Choose a positive common denominator $q$, minimal so that $x_i=a_i/q$ with
+$a_i\in\mathbb Z$. Thus $\gcd(q,a_1,\ldots,a_{17})=1$. Clearing
+denominators gives
+\begin{equation}\label{eq:cleared}
+ 2\sum a_i^2=17q^2,\qquad 8\sum a_i^4=51q^4,\qquad
+ 16\sum a_i^6=85q^6.
+\end{equation}
+The first equality makes $q$ even. Put $s=v_2(q)\geq1$. Minimality ensures
+that at least one $a_i$ is odd.
+
+First suppose $s=1$ and write $q=2Q$, where $Q$ is odd. The last two
+equalities yield
+\[
+ \sum a_i^4=102Q^4\equiv2\pmod4,
+ \qquad \sum a_i^6=340Q^6\equiv4\pmod8.
+\]
+If $r$ is the number of odd $a_i$, reduction gives
+$r\equiv2\pmod4$ and $r\equiv4\pmod8$, which is impossible.
+
+Now suppose $s\geq2$. The fourth-power equality gives
+$v_2(\sum a_i^4)=4s-3\geq5$. Every odd fourth power is $1$ modulo $16$,
+and every even fourth power is $0$ modulo $16$. Hence
+$r\equiv0\pmod{16}$. Since $1\leq r\leq17$, we have $r=16$; denote the
+unique even numerator by $b$.
+
+The square equality gives $8\mid\sum a_i^2$. The sixteen odd squares
+contribute $16\equiv0\pmod8$, so $b^2\equiv0\pmod8$ and $4\mid b$.
+For the odd numerators write $a_i^2=1+8u_i$, and set $U=\sum u_i$.
+The terms $b^4$ and $b^6$ vanish modulo $64$. Since the sixth-power sum is
+divisible by $2^{6s-4}$, it vanishes modulo $64$, and
+\[
+ 0\equiv\sum a_i^6\equiv16+24U\pmod{64}.
+\]
+Thus $U\equiv2\pmod8$. But then
+\[
+ \sum a_i^4\equiv16+16U\equiv48\pmod{64},
+\]
+so this sum has $2$-adic valuation exactly $4$, contradicting
+$v_2(\sum a_i^4)=4s-3\geq5$.
+\end{proof}
+\begin{corollary}
+There is no rational antipodal $7$-design with $34$ points for $\mu$.
+\end{corollary}
+\begin{proof}
+Such a design would supply a rational solution of \eqref{eq:moments},
+contrary to Theorem~\ref{thm:main}.
+\end{proof}
+\begin{remark}
+The theorem is stronger than the design statement: it does not use node
+distinctness, nonzero nodes, or the restrictions $|x_i|<1$.
+\end{remark}
+\section*{Data and computational verification}
+The proof is self-contained and does not depend on computation. Accompanying
+source files include a short exhaustive check of the residue alternatives and
+independent exact checks used during discovery. These are supplementary
+checks, not proof premises.
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

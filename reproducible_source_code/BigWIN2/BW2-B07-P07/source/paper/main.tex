@@ -1,0 +1,250 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\LG}{\operatorname{LG}}
+\newcommand{\Z}{\mathbb Z}
+
+\title{Links--Gould positivity for two-block alternating
+$2$-bridge knots}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation,
+UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{57K14, 57K10}
+\keywords{Links--Gould polynomial, alternating knot, $2$-bridge knot,
+coefficient positivity, Ishii conjecture}
+\hypersetup{
+  pdftitle={Links--Gould positivity for two-block alternating 2-bridge knots},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Ishii conjectured that the coefficients of the Links--Gould polynomial of
+an alternating knot have signs determined, up to one global sign, by total
+degree parity.  We prove the positive normalization of this conjecture for
+the two-block alternating $2$-bridge knots $D(p,q)$, with $p,q\geq1$, in
+Kohli's notation.  More precisely, we give an explicit factorization of
+$\LG(D(p,q);-x,-y)$ as a sum of products of Laurent polynomials with
+nonnegative integer coefficients.  The proof is symbolic and uses Kohli's
+three-term skein recurrence; exact computations serve only as independent
+checks.  The result does not assert hole-freeness or log-concavity, and the
+conjecture for arbitrary alternating knots remains open.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Write the two-variable Links--Gould invariant in Ishii's normalization as
+\[
+  \LG(K;t_0,t_1)=\sum_{i,j}a_{ij}t_0^it_1^j.
+\]
+Ishii conjectured that, for every alternating knot $K$, coefficients whose
+total degrees have the same parity have the same weak sign, while those of
+opposite parity have opposite weak signs \cite{Ishii2006}.  Equivalently,
+all nonzero coefficients of $\LG(K;-t_0,-t_1)$ have one global sign.
+
+Ishii checked prime knots through ten crossings.  Harper, Kohli, Song, and
+Tahar subsequently formulated stronger positivity and support conjectures,
+reported verification of the weak sign statement through sixteen crossings,
+and proved their conjectures for $(2,n)$-torus links and twist knots
+\cite{HKST2025}.  Garoufalidis, Li, and Yu have since verified a still
+stronger positivity, hole-free, and log-concavity statement for all
+$51{,}280{,}976$ alternating knots with at most nineteen crossings
+\cite{GLY2026}.  These are finite certifications and do not supply a proof
+for arbitrary alternating knots.
+
+Our result treats the two-block part of Kohli's alternating $2$-bridge
+family.  Let $D(b_1,\ldots,b_m)$ denote the oriented $2$-bridge diagram of
+\cite[Figures~3 and~4]{Kohli2018}.  When all $b_i$ are positive the diagram
+is alternating, and it represents a knot precisely when $m$ is even
+\cite[Remark~2.13]{Kohli2018}.  Thus $D(p,q)$ is an alternating knot for
+all $p,q\geq1$.  The boundary subfamilies meet the previously studied twist
+knots, while allowing both parameters to vary gives the full two-block
+family.
+
+\begin{theorem}\label{thm:main}
+For every $p,q\geq1$,
+\[
+  \LG(D(p,q);-x,-y)\in\Z_{\geq0}[x^{\pm1},y^{\pm1}].
+\]
+Consequently the coefficients of $\LG(D(p,q);t_0,t_1)$ satisfy Ishii's
+alternating-sign conjecture.
+\end{theorem}
+
+The proof converts the apparent rational coefficients in Kohli's recurrence
+into positive finite sums.  No specialization, limit, or numerical sign
+decision is involved.
+
+\section{The two-block recurrence}
+
+We use $\LG(\bigcirc)=1$.  Define
+\begin{align*}
+ a_1(n)&=\frac{(t_0t_1)^n-1}{t_0t_1-1},\\
+ a_2(n)&=\frac{2n(t_0-1)(t_1-1)}{t_0t_1-1}
+ -a_1(n)\left(
+ \frac{(t_0t_1+1)(t_0-1)(t_1-1)}{t_0t_1-1}+1\right),\\
+ a_3(n)&=(t_0-1)(t_1-1)a_1(n)+1.
+\end{align*}
+For a Laurent polynomial $f$, set
+$\widetilde f(t_0,t_1)=f(t_0^{-1},t_1^{-1})$.  Corollary~2.12 and the proof
+of Theorem~2.15 in \cite{Kohli2018} give
+\begin{align}
+ \LG(D(p))&=\widetilde a_1(p)+\widetilde a_2(p),
+ \label{eq:oneblock}\\
+ \LG(D(p,q))&=a_1(q)\LG(D(p-1))
+ +a_2(q)\LG(D(p))+a_3(q).                 \label{eq:twoblock}
+\end{align}
+Here $D(0)$ is the split diagram and $\LG(D(0))=0$; the last term of
+\eqref{eq:twoblock} uses the unknot normalization.  Although the displayed
+definitions contain quotients, each $a_i(n)$ is a Laurent polynomial.
+
+\section{Positive finite sums}
+
+Set
+\[
+ U=xy,\qquad H^+=(1+x)(1+y),\qquad
+ H^-=(1+x^{-1})(1+y^{-1}).
+\]
+For $n\geq0$, with an empty sum interpreted as zero, put
+\[
+ A_n^\pm=\sum_{k=0}^{n-1}U^{\pm k},\qquad
+ E_n^\pm=\sum_{k=0}^{n-1}(2(n-k)-1)U^{\pm k}.
+\]
+
+\begin{lemma}\label{lem:sums}
+For $n\geq1$, substitution $(t_0,t_1)=(-x,-y)$ gives
+\begin{align}
+ a_1(n)&=A_n^+,&
+ -a_2(n)&=A_n^++H^+E_n^+,&
+ a_3(n)&=1+H^+A_n^+ .                    \label{eq:ai-positive}
+\end{align}
+Moreover,
+\begin{equation}
+ E_n^--E_{n-1}^-=U^{-(n-1)}+2A_{n-1}^- .
+ \label{eq:E-difference}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The formulas for $a_1$ and $a_3$ follow immediately.  For $a_2$, the only
+needed quotient identity is
+\begin{equation}
+ \frac{(U+1)A_n^+-2n}{U-1}=E_n^+.
+ \label{eq:quotient}
+\end{equation}
+Indeed, multiplication by $U-1$ turns the right side into
+\[
+ U^n+2\sum_{k=1}^{n-1}U^k-(2n-1)
+ =(U+1)\sum_{k=0}^{n-1}U^k-2n,
+\]
+which proves \eqref{eq:quotient} as a polynomial identity.  Substitution in
+the definition of $a_2$ proves \eqref{eq:ai-positive}.  Finally,
+\eqref{eq:E-difference} follows directly by subtracting the two finite sums.
+\end{proof}
+
+In \eqref{eq:ai-positive}, the arguments $(-x,-y)$ have been suppressed.
+Inverting $x$ and $y$ gives the corresponding formulas with superscript
+minus.
+
+\section{Proof of the main theorem}
+
+Let
+\[
+ G_p=-\LG(D(p);-x,-y).
+\]
+Equation \eqref{eq:oneblock} and Lemma~\ref{lem:sums} yield
+\begin{equation}
+ G_p=H^-E_p^- .                            \label{eq:one-positive}
+\end{equation}
+This also matches the boundary $p=0$, because both sides vanish.
+
+Substitute \eqref{eq:ai-positive} and \eqref{eq:one-positive} into
+\eqref{eq:twoblock}.  Before simplification the result is
+\[
+ -A_q^+H^-E_{p-1}^-
+ +(A_q^++H^+E_q^+)H^-E_p^-
+ +1+H^+A_q^+.
+\]
+Using \eqref{eq:E-difference} gives the exact factorization
+\begin{equation}
+\boxed{\begin{aligned}
+\LG(D(p,q);-x,-y)={}&
+A_q^+H^-\bigl(U^{-(p-1)}+2A_{p-1}^-\bigr)\\
+&+H^+E_q^+H^-E_p^-+1+H^+A_q^+.
+\end{aligned}}                             \label{eq:factorization}
+\end{equation}
+Every factor and every summand on the right belongs to
+$\Z_{\geq0}[x^{\pm1},y^{\pm1}]$.  This proves the first assertion of
+Theorem~\ref{thm:main}, including $p=1$ and $q=1$ by the empty-sum
+convention.
+
+Finally, if
+$\LG(D(p,q);t_0,t_1)=\sum a_{ij}t_0^it_1^j$, coefficientwise positivity
+after substituting $(-x,-y)$ says $(-1)^{i+j}a_{ij}\geq0$ for every
+$i,j$.  Coefficients of equal total-degree parity therefore have
+nonnegative products and coefficients of opposite parity have nonpositive
+products, exactly as conjectured by Ishii.  \qed
+
+\begin{remark}
+For $p=q=1$, formula \eqref{eq:factorization} gives the figure-eight knot
+and expands to
+\begin{align*}
+&2xy+3x+x/y+3y+7+3/y\\
+&\hspace{35mm}+y/x+3/x+2/(xy),
+\end{align*}
+providing a convenient normalization check.
+\end{remark}
+
+\section{Exact verification and limitations}
+
+The proof above is uniform in $p$ and $q$ and does not depend on computer
+experiments.  For error detection, the ancillary archive contains two
+independently written exact checks.  The first constructs
+\eqref{eq:factorization} using integer dictionaries indexed by Laurent
+exponent pairs.  The second starts from the rational definitions of
+$a_1,a_2,a_3$, performs symbolic cancellation, reconstructs
+\eqref{eq:oneblock}--\eqref{eq:twoblock}, and compares the result with
+\eqref{eq:factorization}.  Two further implementations of the published
+$R$-matrix, one in a quadratic Laurent quotient and one using the
+radical-free $V_1$ matrix of \cite{Skein2026}, agree on the figure-eight
+case.  All arithmetic in these checks is exact.
+
+The result proves only the coefficient-sign part of the current conjectural
+picture.  It does not prove that the support has no holes, nor either form of
+log-concavity in \cite{HKST2025,GLY2026}.  It also does not settle Ishii's
+conjecture for alternating knots outside the two-block $2$-bridge family.
+
+\section*{Data and code availability}
+
+The accompanying source archive includes the proof record and all exact
+checkers.  From the archive root, the principal checks are run with
+\begin{verbatim}
+python3 certificate/double_twist_certificate.py 5 7
+python3 certificate/verify_double_twist_sympy.py 5 7 \
+  --max-identity-n 20
+python3 code/lg_exact.py --self-test
+python3 code/lg_v1_sympy.py --self-test
+\end{verbatim}
+The finite range in the symbolic regression test checks the implementation;
+the all-parameter proof is Lemma~\ref{lem:sums} and
+\eqref{eq:factorization}.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

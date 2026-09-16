@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={Sextic characters and idempotents in prime-order Alexander quandle rings},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Sextic character criterion for idempotents in prime-order Alexander quandle rings},
+  pdfkeywords={Alexander quandle, quandle ring, idempotent, sextic character, cyclotomic number, Jacobi sum}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Fp}{\mathbb F_p}
+\newcommand{\eps}{\varepsilon}
+
+\title{Sextic characters and idempotents in prime-order Alexander quandle rings}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a prime $p\equiv1\;(\mathrm{mod}\ 12)$, we count parameters $a\in
+\mathbb F_p\setminus\{0,1\}$ for which a multiplicative character takes the
+two values $\zeta_6$ and $\zeta_6^{-1}$ at $a$ and $1-a$.  The canonical
+sextic character gives a subcount $S_p$ satisfying
+\[
+ S_p\geq \frac{p+1-14\sqrt p}{18}.
+\]
+This proves existence for $p\geq194$.  Exact discrete-log certificates cover
+all remaining primes $p\geq37$, while an exhaustive certificate gives
+$N_{13}=0$.  By the fixed-parameter character criterion of
+Elhamdadi--Ta--Virgin, it follows that for every prime $p\geq37$ with
+$p\equiv1\;(\mathrm{mod}\ 12)$, some prime-order Alexander quandle has a nontrivial
+idempotent in its integral quandle ring; $13$ is the unique prime congruent to
+$1$ modulo $12$ without such a parameter.
+\end{abstract}
+
+\section{Statement and context}
+
+For $a\in\Fp\setminus\{0,1\}$, let $Q_{p,a}$ be the latin Alexander
+quandle with operation
+\[
+ x*y=ax+(1-a)y.
+\]
+Its integral quandle ring is the free $\mathbb Z$-module on symbols $e_x$
+with the bilinear multiplication $e_xe_y=e_{x*y}$.  A nontrivial idempotent
+is an element $u\neq e_x$ satisfying $u^2=u$.
+
+Fix $\zeta_6=e^{2\pi i/6}$ and define
+\[
+N_p=\#\left\{a\in\Fp\setminus\{0,1\}:\begin{array}{l}
+\text{there is a nontrivial multiplicative character }\chi\text{ with}\\[-2pt]
+\chi(-1)=1,\quad
+\{\chi(a),\chi(1-a)\}=\{\zeta_6,\zeta_6^{-1}\}
+\end{array}\right\}.
+\]
+Elhamdadi, Ta, and Virgin prove that, for each fixed admissible pair $(p,a)$,
+the character condition in this definition is equivalent to the existence of
+a nontrivial idempotent in $\mathbb Z[Q_{p,a}]$; it also forces
+$p\equiv1\;(\mathrm{mod}\ 12)$ \cite[Lemma~6.2 and Theorem~6.3]{ETV2026}.
+Their Corollary~6.4 handles primes outside this congruence class, and their
+introduction records the example $(p,a)=(37,18)$.  The result below supplies
+the universal existence statement for the remaining congruence class.
+
+\begin{theorem}\label{thm:main}
+If $p\geq37$ is prime and $p\equiv1\;(\mathrm{mod}\ 12)$, then $N_p>0$.
+Moreover $N_{13}=0$.  Consequently, among primes congruent to $1$ modulo
+$12$, the prime $13$ is the unique one for which no parameter $a$ produces a
+nontrivial idempotent in $\mathbb Z[Q_{p,a}]$.
+\end{theorem}
+
+The proof uses order-six cyclotomic numbers.  These numbers go back to the
+classical study of cyclotomy \cite{Dickson1935}.  Rong, Li, and Li recall the
+same definition and explicit order-six evaluations for primes
+$p\equiv1\;(\mathrm{mod}\ 24)$ \cite[Section~2]{RongLiLi2023}.  Those evaluations are
+not needed here and, as stated there, do not cover the second residue class
+$p\equiv13\;(\mathrm{mod}\ 24)$.  A direct Jacobi-sum estimate treats both classes
+uniformly.
+
+\section{A uniform Jacobi-sum bound}
+
+Let $p\equiv1\;(\mathrm{mod}\ 12)$ and choose a primitive root $g$ modulo $p$.
+Take the sextic character $\chi$ defined by $\chi(g)=\zeta_6$, and put
+\[
+ C_i=g^i\langle g^6\rangle\quad(0\leq i<6),\qquad
+ (i,j)_6=\#\{x\in C_i:1+x\in C_j\}.
+\]
+Since $(p-1)/2$ is divisible by $6$, we have $-1\in C_0$ and
+$\chi(-1)=1$.  Under the substitution $x=-a$, multiplication by $-1$
+preserves every $C_i$.  Hence
+\[
+ S_p:=(1,5)_6+(5,1)_6
+\]
+is exactly the number of parameters witnessed by this fixed character.  In
+particular, $N_p\geq S_p$.
+
+Extend every multiplicative character, including the principal character
+$\eps$, by zero at zero.  Character orthogonality gives
+\[
+ 1_{C_i}(t)=\frac16\sum_{r=0}^{5}\zeta_6^{-ir}\chi^r(t).
+\]
+For $J(\alpha,\beta)=\sum_{t\in\Fp}\alpha(t)\beta(1-t)$, expansion of the
+two cyclotomic numbers after $t=-x$ gives
+\begin{equation}\label{eq:expansion}
+ 36S_p=\sum_{r,s=0}^{5}c_{r-s}J(\chi^r,\chi^s),
+ \qquad
+ c_d=\zeta_6^d+\zeta_6^{-d}=(2,1,-1,-2,-1,1)_d.
+\end{equation}
+
+We use the elementary identities
+\[
+ J(\eps,\eps)=p-2,\qquad
+ J(\eps,\alpha)=J(\alpha,\eps)=-1,\qquad
+ J(\alpha,\alpha^{-1})=-\alpha(-1)=-1
+\]
+for nonprincipal $\alpha$.  If $\alpha$, $\beta$, and $\alpha\beta$ are all
+nonprincipal, then
+\begin{equation}\label{eq:jacobi-modulus}
+ |J(\alpha,\beta)|=\sqrt p.
+\end{equation}
+For completeness, choose a nontrivial additive character and form the Gauss
+sum $G(\gamma)$.  Grouping pairs of nonzero variables by their sum proves
+$G(\alpha)G(\beta)=J(\alpha,\beta)G(\alpha\beta)$, while grouping by their
+ratio proves $|G(\gamma)|^2=p$ for nonprincipal $\gamma$; taking absolute
+values yields \eqref{eq:jacobi-modulus}.
+
+We now partition \eqref{eq:expansion}.  The $(0,0)$ term is $2(p-2)$.
+On each principal axis,
+\[
+ \sum_{r=1}^{5}c_r=-2,
+\]
+so the two axes contribute $4$.  For the five nonprincipal pairs with
+$r+s\equiv0\;(\mathrm{mod}\ 6)$, the coefficient sum is
+\[
+ c_2+c_4+c_0+c_2+c_4=-2,
+\]
+and their contribution is $2$.  The remaining $20$ pairs have
+$r,s,r+s\not\equiv0\;(\mathrm{mod}\ 6)$; the sum of the absolute values of their
+coefficients is $28$.  Therefore
+\[
+ 36S_p=2p+2+E_p,\qquad |E_p|\leq28\sqrt p,
+\]
+and consequently
+\begin{equation}\label{eq:bound}
+ S_p\geq\frac{p+1-14\sqrt p}{18}.
+\end{equation}
+For every integer $p\geq194$ the numerator is positive.  Indeed,
+$(p+1)^2-196p=p^2-194p+1$ is positive at $194$ and strictly increasing
+thereafter.  Thus $S_p$, which is an integer, is at least $1$ throughout the
+analytic range.
+
+\section{Exact finite certificates}
+
+The integers congruent to $1$ modulo $12$ in $[37,194)$ are
+\[
+37,49,61,73,85,97,109,121,133,145,157,169,181,193.
+\]
+Factoring the six composite entries leaves precisely the eight primes in
+Table~\ref{tab:cert}.  In each row, $g$ is a primitive root and the last two
+columns give the discrete logarithms modulo $6$.  Thus the two entries are
+$1$ and $5$ in some order, which is an exact sextic-character certificate.
+
+\begin{table}[ht]
+\centering
+\caption{Finite certificates below the analytic cutoff.}
+\label{tab:cert}
+\begin{tabular}{rrrrr}
+$p$ & $g$ & $a$ & $\log_g(a)\bmod6$ & $\log_g(1-a)\bmod6$\\
+37  & 2 & 18 & 5 & 1\\
+61  & 2 & 18 & 1 & 5\\
+73  & 5 & 15 & 1 & 5\\
+97  & 5 & 14 & 5 & 1\\
+109 & 6 & 11 & 5 & 1\\
+157 & 5 & 61 & 1 & 5\\
+181 & 2 & 18 & 5 & 1\\
+193 & 5 & 45 & 1 & 5\\
+\end{tabular}
+\end{table}
+
+For reproducibility, the accompanying integer-only program
+\texttt{jacobi\_bound\_check.py} trial-divides to obtain the complete prime
+list, certifies each primitive root using the prime divisors of $p-1$, builds
+the full discrete-log table, and recomputes every row.  It also verifies from
+the six exact integers $c_d$ that there are $20$ generic pairs and that their
+absolute coefficient mass is $28$.  No floating-point arithmetic or random
+sampling is used.
+
+This certificate architecture follows the proof-carrying finite-classification
+pattern in which a released verifier reconstructs the finite search space and
+checks exact integer predicates; compare the explicitly documented verifier
+design in \cite{202608.1658}.  The cited application concerns finite geometric
+models, not quandles or character sums, and is used here only for this
+methodological comparison.
+
+It remains to prove the boundary assertion.  With primitive root $2$ modulo
+$13$, write
+\[
+ \chi_k(2)=e^{2\pi i k/12}.
+\]
+The nontrivial characters satisfying $\chi_k(-1)=1$ are exactly those with
+$k=2,4,6,8,10$.  The characters with $k=4,6,8$ cannot take the values
+$\zeta_6^{\pm1}$.  For $k=2$ or $10$, the required logarithm classes modulo
+$6$ are $1$ and $5$.  Their elements are
+\[
+ C_1=\{2,11\},\qquad C_5=\{6,7\}.
+\]
+But
+\[
+ 1-C_1=\{12,3\},\qquad 1-C_5=\{8,7\},
+\]
+so neither class contains an element whose complement lies in the other.
+This exhausts all allowed nontrivial characters and proves $N_{13}=0$.
+Together with \eqref{eq:bound}, Table~\ref{tab:cert}, and the
+fixed-parameter equivalence of \cite{ETV2026}, this proves
+Theorem~\ref{thm:main}.
+
+\section*{Computational and AI assistance disclosure}
+
+The coefficient partition and finite discrete-log certificates were checked
+by the accompanying deterministic Python~3 program, which uses only integer
+arithmetic.  A generative AI system assisted with proof organization,
+development of the checker, bibliography lookup, and manuscript drafting.
+The mathematical argument and exact certificates are presented above so that
+they can be checked independently of that assistance.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

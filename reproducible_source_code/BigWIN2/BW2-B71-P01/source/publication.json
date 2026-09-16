@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "candidate_kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "Real stability for the all-one odd-length two-bridge family",
+  "main_tex": "manuscript/main.tex",
+  "pdf": "manuscript/main.pdf",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "tex_inputs": [
+    "manuscript/main.tex"
+  ],
+  "bibtex_inputs": [
+    "manuscript/references.bib"
+  ],
+  "figure_inputs": [],
+  "supplementary_files": [
+    "evidence/verify_odd_family.py",
+    "evidence/sturm_counts.txt"
+  ],
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+    "engine": "pdfLaTeX with BibTeX via latexmk"
+  }
+}

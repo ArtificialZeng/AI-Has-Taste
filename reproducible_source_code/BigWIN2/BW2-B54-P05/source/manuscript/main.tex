@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Z}{\mathbb Z}
+
+\title{The Adjacent-Vertex-Distinguishing Total Chromatic Number of
+$C_3\mathbin{\square}C_3$ Is Six}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the adjacent-vertex-distinguishing total chromatic number of the
+nine-vertex Cartesian product $C_3\square C_3$.  A local cardinality argument
+excludes every palette of at most five colors.  We then give a six-color total
+coloring, expand all of its local color sets, and supply a deterministic
+verifier.  Together these establish
+$\chi''_a(C_3\square C_3)=6$.  This note makes no priority claim for the value.
+\end{abstract}
+
+\section{Statement and context}
+
+For a proper total coloring $f$ of a graph, put
+\[
+ C_f(u)=\{f(u)\}\cup\{f(e):e\text{ is incident with }u\}.
+\]
+The coloring is adjacent-vertex-distinguishing (AVD) if
+$C_f(u)\ne C_f(v)$ for every edge $uv$.  The least size of a palette
+admitting such a coloring is denoted by $\chi''_a(G)$.  This is the convention
+used in the recent graph-products formulation of Banerjee, Geetha, and
+Somasundaram~\cite{BanerjeeGeethaSomasundaram2026} and in the earlier study of
+Cartesian products by Tian et al.~\cite{TianChenShaoWang2014}.
+
+The publisher abstract of Tian et al.~\cite{TianChenShaoWang2014} announces
+exact values for several broad Cartesian-product classes, including products
+of regular graphs.  We do not use or interpret an unquoted theorem from that
+paper here.  The contribution below is instead a self-contained proof for one
+specified graph, together with a directly checkable witness.
+
+Identify
+\[
+G=C_3\square C_3=K_3\square K_3
+\]
+with vertex set $\Z_3^2$, where two distinct vertices are adjacent precisely
+when one coordinate agrees.  Thus $G$ is $4$-regular, with nine vertices and
+eighteen edges.
+
+\begin{theorem}
+For $G=C_3\square C_3$,
+\[
+\chi''_a(G)=6.
+\]
+\end{theorem}
+
+\section{Lower bound}
+
+\begin{lemma}
+Every AVD proper total coloring of a nonempty $r$-regular graph whose adjacent
+vertices all have degree $r$ uses at least $r+2$ colors.
+\end{lemma}
+
+\begin{proof}
+At a vertex $u$, its color and the colors of its $r$ incident edges are
+pairwise distinct, so $|C_f(u)|=r+1$.  Fewer than $r+1$ colors are therefore
+impossible.  With exactly $r+1$ colors, $C_f(u)$ is the entire palette at every
+vertex.  The two endpoints of any edge then have equal local color sets,
+contrary to the AVD condition.
+\end{proof}
+
+Applying the lemma with $r=4$ gives $\chi''_a(G)\geq 6$.  Notice that the
+argument simultaneously excludes every palette size below six; it does not
+depend on an exhaustive search.
+
+\section{A six-color witness}
+
+Write a vertex $(i,j)$ as $ij$.  On the palette $\{1,2,3,4,5,6\}$, assign the
+vertex colors
+\[
+\begin{array}{c|ccc}
+ &j=0&j=1&j=2\\ \hline
+i=0&1&4&5\\
+i=1&5&1&6\\
+i=2&3&2&4
+\end{array}
+\]
+and the following edge colors:
+\[
+\begin{array}{c|ccccccccc}
+e&00\!-
+01&00\!-
+02&00\!-
+10&00\!-
+20&01\!-
+02&01\!-
+11&01\!-
+21&02\!-
+12&02\!-
+22\\ \hline
+f(e)&2&3&4&5&6&5&1&2&1
+\end{array}
+\]
+\[
+\begin{array}{c|ccccccccc}
+e&10\!-
+11&10\!-
+12&10\!-
+20&11\!-
+12&11\!-
+21&12\!-
+22&20\!-
+21&20\!-
+22&21\!-
+22\\ \hline
+f(e)&6&1&2&4&3&3&4&6&5
+\end{array}
+\]
+The line breaks inside the edge labels are typographical spacing only.
+
+For a transparent check, the next table lists the vertex color followed by
+the four incident-edge colors.  The last column is the unique palette color
+missing from the resulting local set.
+\[
+\begin{array}{c|c|c}
+u& f(u)\ ;\ \{f(e):e\ni u\}&[6]\setminus C_f(u)\\ \hline
+00&1\ ;\ 2,3,4,5&6\\
+01&4\ ;\ 2,6,5,1&3\\
+02&5\ ;\ 3,6,2,1&4\\
+10&5\ ;\ 4,6,1,2&3\\
+11&1\ ;\ 5,6,4,3&2\\
+12&6\ ;\ 2,1,4,3&5\\
+20&3\ ;\ 5,2,4,6&1\\
+21&2\ ;\ 1,3,4,5&6\\
+22&4\ ;\ 1,3,6,5&2
+\end{array}
+\]
+Every row contains five distinct colors.  Hence at every vertex the four
+incident edges have different colors and none has the vertex color.  The
+vertex-color array has pairwise distinct entries in each coordinate row and
+column, so adjacent vertices also have different colors.  The displayed
+assignment is therefore a proper total coloring.
+
+The array of missing colors is
+\[
+\begin{pmatrix}
+6&3&4\\
+3&2&5\\
+1&6&2
+\end{pmatrix}.
+\]
+Each row and each column has pairwise distinct entries.  Adjacent vertices of
+$G$ lie in a common coordinate row or column, so they have different missing
+colors.  Since every $C_f(u)$ is a five-element subset of the six-color
+palette, different missing colors are equivalent to different local color
+sets.  Thus the coloring is AVD and gives $\chi''_a(G)\leq6$.  The lower bound
+proves the theorem.
+
+\section{Reproducibility and scope}
+
+The ancillary files \texttt{certificate.json} and
+\texttt{verify\_coloring.py} serialize the same assignment.  The verifier uses
+only the Python standard library: it reconstructs $\Z_3^2$ and all eighteen
+edges, checks the palette and coverage, verifies every proper-total constraint,
+recomputes every local set, and tests the AVD inequality on every edge.  It is
+run from the manuscript directory with
+\begin{verbatim}
+python3 verify_coloring.py
+\end{verbatim}
+and prints a single \texttt{PASS} line on success.  Exact finite certificate
+and verifier designs are also used for substantially larger finite graph
+problems; for a user-library example involving distance-graph colorings and
+maximum-clique certificates, see Zeng et al.~\cite{ZengEtAl2026Certificates}.
+That paper is cited only for this methodological comparison, not for the
+mathematics of the present theorem.
+
+The argument here resolves the stated nine-vertex instance.  It does not
+assert a new general product theorem, nor does it assert that the numerical
+value or this proof has priority over all prior literature.
+
+\paragraph{Computational and AI assistance.}
+An exact finite search in an AI-assisted research workflow produced the
+six-color witness.  AI tools also assisted with constraint checking,
+literature screening, and manuscript preparation.  The mathematical claim in
+this note is exposed in the tables and elementary proof above; the independent
+deterministic verifier supplies a reproducible check of the finite witness.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

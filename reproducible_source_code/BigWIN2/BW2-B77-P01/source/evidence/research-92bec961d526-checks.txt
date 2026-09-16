@@ -1,0 +1,17 @@
+Job: win-00077-p01-research-92bec961d526
+Date: 2026-09-09
+
+Command: python3 evidence/research_independent_check.py
+
+PASS: independent labelled-embedding checks for every m in [3,18]
+red fork count = 2*m*(m-1)*(m-2), and every one uses both apices
+blue fork count = 0; neither colour contains fork union disjoint edge
+boundary m=3 is K5 minus the apex edge; face certificates pass
+
+Input/evidence hashes:
+195d6e7979e2465a1d6a0334001284d485928e5bf712ae5babc96bf0c8fa818f  evidence/research_independent_check.py
+ef4deb03316a06cb4b8699266a906a00debafda77612ab28e69225e58465ca92  evidence/research-92bec961d526-audit.md
+d2c05952bb165545210571a572678338e7766162141549adbf62411e3cf881b2  evidence/external/2609.05268.pdf
+
+The finite range checks the encoding and the directed boundary/embedding
+attacks.  The all-m conclusion rests on the uniform proof in the audit.

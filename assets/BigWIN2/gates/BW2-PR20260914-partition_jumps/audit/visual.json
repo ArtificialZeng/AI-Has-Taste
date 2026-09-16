@@ -1,0 +1,79 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260914-partition-jumps-release-53b5e2a5c417",
+  "snapshot_digest": "fce4053e5a3907860b747c9542daeb32f9d40fbb83dae61c32423ee9941797aa",
+  "manuscript_digest": "6a77b9ab481ab6d3d7560adb2a14429616d35e351ddc1b733579ad606bd36ea0",
+  "pdf_digest": "407292477df86d3d20d3536ae5001cbe99c2ba30ebd67f2214dffa3be1a8a451",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "generated_at": "2026-09-14T02:13:11.328575+00:00",
+  "render_command": [
+    "pdftoppm",
+    "-png",
+    "-r",
+    "130",
+    "manuscript/build/main.pdf",
+    "audit/release-53b5e2a5c417/pages/page"
+  ],
+  "inspection_method": "Each of the seven fresh page PNGs was actually opened with view_image and inspected in this release context. Text extraction was an additional check only.",
+  "page_observations": [
+    {
+      "page": 1,
+      "image": "audit/release-53b5e2a5c417/pages/page-1.png",
+      "image_sha256": "389e8a247865332fadafc8bdc966e7fcec1b0093450fc9f26147203a5cd986d2",
+      "viewed": true,
+      "observation": "Title, author/affiliation/email and abstract are readable. Graph definition, citations and D_delta cases have intact symbols and margins. Theorem 1 continues naturally on page 2."
+    },
+    {
+      "page": 2,
+      "image": "audit/release-53b5e2a5c417/pages/page-2.png",
+      "image_sha256": "f3232b7c8c746ddbd449d61e40b9519c892eeba80c5fdd1236573f80101c2826",
+      "viewed": true,
+      "observation": "Theorem 1 continuation and Theorem 2 are complete. Degree and two-capacity dimension formulas, endpoint conventions and the three-case display fit within margins; citation locators and equation numbers are resolved."
+    },
+    {
+      "page": 3,
+      "image": "audit/release-53b5e2a5c417/pages/page-3.png",
+      "image_sha256": "1feb582a0485c4e9c78fc9ec50cb7f2c0adbc5731244713121b84a4c18a015db",
+      "viewed": true,
+      "observation": "The staircase and two-birth lemmas, proof endings, signed-jump case split and initial witness family are readable. No clipped formulas, overlapping proof marks or missing symbols."
+    },
+    {
+      "page": 4,
+      "image": "audit/release-53b5e2a5c417/pages/page-4.png",
+      "image_sha256": "2d33304f85d16ab5a8a6c786b006af60688c736b27fbd4dfa90c1e448fff1f30",
+      "viewed": true,
+      "observation": "Every cell of the twelve-row four-column table was read and compared with fresh verifier output. Column headings and integer values are clear. The degree-correction inequality, indicator formulas and lower-page equation remain inside the margins."
+    },
+    {
+      "page": 5,
+      "image": "audit/release-53b5e2a5c417/pages/page-5.png",
+      "image_sha256": "b5b1be1bd970edb5141ba10d49415eab44d7f1e15b684e96a2a12c53568e0757",
+      "viewed": true,
+      "observation": "The all-n degree witnesses and support triples are legible. The library citation and exact finite coverage numbers are readable. Residual-scope and computational/AI-assistance paragraphs remain complete."
+    },
+    {
+      "page": 6,
+      "image": "audit/release-53b5e2a5c417/pages/page-6.png",
+      "image_sha256": "bd00e4cb5b58a19943cd1ba1df6420ea1807beee4c45ce7be40e8d332bb54ad4",
+      "viewed": true,
+      "observation": "The appendix explanation and framed Python listing are readable, including indentation, comparisons, subset enumeration and expected rows. The listing continues across the page break without clipping."
+    },
+    {
+      "page": 7,
+      "image": "audit/release-53b5e2a5c417/pages/page-7.png",
+      "image_sha256": "77270f1d0cabde1c8be06bd20ae47cd3e34bf9201bbcc18601ecdee60640b086",
+      "viewed": true,
+      "observation": "The final two code lines and closing frame are visible. All seven bibliography entries, authors, arXiv version identifiers and the library DOI were read. Wrapped URLs and the DOI remain legible with no margin collision; lower-page whitespace is harmless."
+    }
+  ],
+  "substantive_defects": []
+}

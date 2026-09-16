@@ -1,0 +1,73 @@
+{
+  "job_id": "win-00085-p02-research-1374d8ae701f",
+  "run_at": "2026-09-10T03:25:41+08:00",
+  "command": "python3 evidence/multiplicity_dp_check.py",
+  "python": "3.10.12",
+  "source_md_sha256": "8dea57f4ed625562f4d0ff3d6ee46d2ad0a89dd86bfbc37f472166aead93d5f9",
+  "problem_md_sha256": "444f3661c5a3875e6a9fec7893351854385e44e1da34cfdf51e0f788ebf4e524",
+  "checker_sha256": "23cf4dba5c80b445d9cc0bc9573a5cce36240a058a0352b6bb5b7fe7afd066a9",
+  "algorithm": {
+    "domain": "recursive weak compositions (multiplicity vectors)",
+    "predicate": "degree-4 Boolean generating-function DP modulo 16",
+    "lower_witness_cross_check": "separate bounded-submultiplicity recursion",
+    "uses_combinations_with_replacement": false,
+    "uses_position_subsets": false
+  },
+  "arithmetic": "exact integer and Boolean bit-mask arithmetic",
+  "allowed_residues_mod_16": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15],
+  "target_four_sum_residues_mod_16": [4, 8, 12],
+  "lower_witness": [1, 1, 1, 2, 2, 2, 10, 13],
+  "lower_witness_counts": [3, 3, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+  "lower_witness_four_sum_residues_mod_16": [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15],
+  "scans": [
+    {
+      "length": 8,
+      "expected_weak_compositions": 75582,
+      "tested_multiplicity_vectors": 75582,
+      "avoiding_multiplicity_vectors": 160,
+      "first_avoiding_counts": [0, 0, 0, 0, 0, 0, 0, 1, 3, 3, 1, 0],
+      "target_signature_histogram": {
+        "0": 160,
+        "1": 1903,
+        "2": 2958,
+        "3": 5706,
+        "4": 1903,
+        "5": 5804,
+        "6": 5706,
+        "7": 51442
+      },
+      "counts_and_target_signature_sha256": "a412d5d0c275cdb37f8d9ca33b8092c731faa270b4452c78b28a5f369a008a6e",
+      "avoiding_counts_sha256": "8acb3100702ac148c5043fd1e787f65eff837a77385cb0f499850b7522bb88ed"
+    },
+    {
+      "length": 9,
+      "expected_weak_compositions": 167960,
+      "tested_multiplicity_vectors": 167960,
+      "avoiding_multiplicity_vectors": 0,
+      "first_avoiding_counts": null,
+      "target_signature_histogram": {
+        "0": 0,
+        "1": 1500,
+        "2": 3228,
+        "3": 7720,
+        "4": 1500,
+        "5": 7776,
+        "6": 7720,
+        "7": 138516
+      },
+      "counts_and_target_signature_sha256": "e1ea938b23ab49e04666a0495e15fceda29df1c204bacfeb8b4122c8943eba35",
+      "avoiding_counts_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "cross_implementation_reconciliation": {
+    "prior_checker": "evidence/exact_residue_check.py",
+    "independent_checker": "evidence/multiplicity_dp_check.py",
+    "length_8_domain_counts_agree_at": 75582,
+    "length_8_avoider_counts_agree_at": 160,
+    "length_9_domain_counts_agree_at": 167960,
+    "length_9_avoider_counts_agree_at": 0,
+    "displayed_lower_witness_sum_supports_agree": true
+  },
+  "conclusion": "Every size-9 multiplicity vector on the twelve allowed residues has a four-submultiset summing to 4, 8, or 12 modulo 16; the displayed size-8 vector does not.",
+  "epistemic_status": "Exact exhaustive computation by an implementation independent in domain representation and predicate evaluation from the triage checker; candidate for fresh mathematical referee audit, not yet accepted."
+}

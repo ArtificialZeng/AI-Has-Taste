@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Four-Dimensional Witness for the Modular-Balance Gap},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\h}{\mathfrak{h}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{A Four-Dimensional Witness for the Modular-Balance Gap}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give an exact four-dimensional real Lie algebra with a bracket-generating
+hyperplane (V) that admits a complement \(q\) satisfying the vertical
+trace condition \(\kappa_{\q}|_V=0\), although no complement of the same
+\(V\) is modularly balanced.  Every complement is parametrized by three real
+numbers, and the two balance conditions reduce respectively to
+\(x=y=0\) and \(1+x+y=0\).  Thus the construction proves the bounded
+dimension-at-most-four existence assertion and answers the existence clause
+of Question~1 of Nicolussi Golo, Pinamonti, and Warhurst affirmatively.  It
+does not address the question about normal harmonic maps, classify such
+examples, or assert minimality of the dimension.
+\end{abstract}
+
+\section{Context and statement}
+
+The classical theory of harmonic morphisms includes the foundational
+characterizations of Fuglede and Ishihara~\cite{Fuglede1978,Ishihara1979}.  In the
+sub-Riemannian Lie-group setting, Nicolussi Golo, Pinamonti, and
+Warhurst introduced a modular mismatch attached to a polarized Lie algebra
+and a vector-space complement~\cite{NicolussiGoloPinamontiWarhurst2026}.
+We recall only the algebraic definitions needed here.
+
+Let \(\h\) be a finite-dimensional real Lie algebra, let \(V\leq\h\) be a
+linear subspace that Lie-generates \(\h\), and fix a vector-space splitting
+\(\h=V\oplus\q\).  Write \(\pi_V\) and \(\pi_{\q}\) for the associated
+projections and use \(\ad_B(X)=[B,X]\).  The two projected trace characters
+are
+\begin{equation}\label{eq:characters}
+ \kappa_V^{\q}(B)=\tr\!\left(\pi_V\ad_B|_V\right),
+ \qquad
+ \kappa_{\q}(B)=\tr\!\left(\pi_{\q}\ad_B|_{\q}\right).
+\end{equation}
+The complement \(\q\) is modularly balanced precisely when
+\begin{equation}\label{eq:balance}
+ \kappa_V^{\q}|_{\q}=0
+ \qquad\text{and}\qquad
+ \kappa_{\q}|_V=0.
+\end{equation}
+These are Definition~8.2 and equation~(60) of
+\cite{NicolussiGoloPinamontiWarhurst2026}.  Theorems~10.5 and~10.7 there
+isolate a gap between the simultaneous condition \eqref{eq:balance} and the
+necessary vertical condition \(\kappa_{\q}|_V=0\).  Their Question~1 asks
+whether the latter can hold for some complement while no complement is
+modularly balanced.
+
+\begin{theorem}\label{thm:main}
+Let \(\h\) have ordered real basis \((e_1,e_2,r,z)\), with the only nonzero
+brackets, up to skew-symmetry,
+\begin{equation}\label{eq:brackets}
+ [e_1,e_2]=e_1+z,
+ \qquad [e_1,r]=-r,
+ \qquad [z,r]=r.
+\end{equation}
+Then \eqref{eq:brackets} defines a Lie algebra.  For
+\[
+ V=\operatorname{span}(e_1,e_2,r)
+ \quad\text{and}\quad
+ \q_0=\R z,
+\]
+the subspace \(V\) Lie-generates \(\h\), and
+\(\kappa_{\q_0}|_V=0\).  Nevertheless, no vector-space complement of this
+same \(V\) is modularly balanced.
+\end{theorem}
+
+In particular, Theorem~\ref{thm:main} supplies a dimension-four witness for
+the existence clause of Question~1 in
+\cite{NicolussiGoloPinamontiWarhurst2026}.
+
+\section{Proof}
+
+First we verify that \eqref{eq:brackets} is a Lie bracket.  For a
+skew-symmetric bilinear bracket the Jacobiator is alternating, so it is
+enough to check the four triples of distinct basis vectors.  The possibly
+nonzero terms reduce to
+\begin{align*}
+ J(e_1,e_2,r)&=[r,e_1+z]=r-r=0,\\
+ J(e_1,e_2,z)&=[z,e_1+z]=0,\\
+ J(e_1,r,z)&=[e_1,-r]+[z,-r]=r-r=0,\\
+ J(e_2,r,z)&=0.
+\end{align*}
+Thus Jacobi holds.  Moreover,
+\[
+ z=[e_1,e_2]-e_1,
+\]
+so \(V\) Lie-generates all of \(\h\).  The displayed decomposition
+\(\h=V\oplus\R z\) is direct.  For every \(B\in V\), the bracket
+\([B,z]\) lies in \(V\).  Hence the endomorphism induced by \(\ad_B\) on
+the one-dimensional complement has trace zero, proving
+\(\kappa_{\q_0}|_V=0\).
+
+It remains to rule out every balanced complement.  Since \(V\) is a
+hyperplane, every complement is a line with a unique normalized generator
+\begin{equation}\label{eq:w}
+ w=z-p,
+ \qquad p=xe_1+ye_2+tr,
+ \qquad (x,y,t)\in\R^3.
+\end{equation}
+Denote this complement by \(\q_p=\R w\).  This is the codimension-one form
+of the graph chart for complements used in Lemma~10.6 of
+\cite{NicolussiGoloPinamontiWarhurst2026}; directly, normalization is
+possible and unique because any vector outside \(V\) has nonzero
+\(z\)-coordinate.
+
+On the one-dimensional space \(\q_p\), the projected trace of \(\ad_B\)
+is the coefficient of \(w\) in \([B,w]\).  Since \(w\) has
+\(z\)-coordinate one, this coefficient is also the \(z\)-coordinate in the
+original basis.  Expanding \eqref{eq:brackets} gives
+\begin{equation}\label{eq:vertical}
+ \bigl(\kappa_{\q_p}(e_1),
+       \kappa_{\q_p}(e_2),
+       \kappa_{\q_p}(r)\bigr)=(-y,x,0).
+\end{equation}
+Consequently the vertical half of \eqref{eq:balance} holds exactly when
+\begin{equation}\label{eq:xyzero}
+ x=y=0,
+\end{equation}
+with \(t\) unrestricted.
+
+For the horizontal half, project \(\ad_w|_V\) onto \(V\) along
+\(\q_p\).  In the ordered basis \((e_1,e_2,r)\), its matrix is
+\begin{equation}\label{eq:matrix}
+ \begin{pmatrix}
+ y(1+x) & -x(1+x) & 0\\
+ y^2 & -xy & 0\\
+ t(y-1) & -xt & 1+x
+ \end{pmatrix}.
+\end{equation}
+Therefore
+\begin{equation}\label{eq:horizontal}
+ \kappa_V^{\q_p}(w)
+ =\tr\!\left(\pi_V\ad_w|_V\right)
+ =1+x+y.
+\end{equation}
+If \(\q_p\) were modularly balanced, \eqref{eq:vertical} would force
+\eqref{eq:xyzero}, while \eqref{eq:horizontal} would then equal \(1\), a
+contradiction.  The parametrization \eqref{eq:w} covers every complement,
+so this proves Theorem~\ref{thm:main}. \qed
+
+\section{Exact verification and scope}
+
+An accompanying Python script recomputes the bracket tensor with exact
+SymPy arithmetic~\cite{MeurerEtAl2017}.  It checks all \(4^3=64\) ordered
+basis triples, verifies that \(V\) together with \([e_1,e_2]\) has rank
+four, derives \eqref{eq:vertical} and \eqref{eq:horizontal}, and reduces
+\(1+x+y\) modulo the vertical balance ideal \(\langle x,y\rangle\) to the
+nonzero remainder \(1\).  No floating-point approximation or randomized
+search enters these checks.  Exact rational certificates have likewise
+been used to separate a proposed matrix bound from an attained value without
+relying on decimal evidence~\cite{ZengLiuRatnavelu2026}; here the
+computer calculation is only a reproducible cross-check of the displayed
+proof.
+
+The result is existential.  It does not show that four is the least possible
+dimension, classify lower-dimensional polarizations, or address the second
+part of Question~1 concerning normal harmonic maps.  The literature
+comparison made here is limited to the cited source question and its nearest
+stated results; no broader priority claim is made.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the construction search, symbolic derivations,
+literature retrieval, verification, and drafting.  SymPy~1.14.0 was used for
+the exact cross-check described above.  Neither tool is invoked as a source
+of mathematical authority: the complete argument establishing the claim is
+given in the proof.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

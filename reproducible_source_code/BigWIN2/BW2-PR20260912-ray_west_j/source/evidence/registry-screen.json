@@ -1,0 +1,781 @@
+{
+  "date": "2026-09-12",
+  "registry_path": "/home/ailab/4math-open-problems/registry/problems.jsonl",
+  "registry_sha256": "b40ac7d5cb9d60abe2faaf4a733c9b6c5f2f58a4e7703e92ad33ac9c9b0f7147",
+  "rows": 628,
+  "query": "permut|Wilf|排列",
+  "retrieved_records": [
+    {
+      "id": "win-00036-p12",
+      "batch": 36,
+      "source_id": "Win36-12",
+      "title": "随机置换互异循环长度概率的最早单调阈值",
+      "object": "probability that a uniform random permutation has all cycle lengths distinct",
+      "quantifiers": "find the least N with p_(n+1)<p_n for all n>=N",
+      "nearest_result": "user bibliography row 40 proves strict decrease after 30",
+      "proposed_delta": "sharpen the finite cutoff exactly",
+      "status": "parked",
+      "reason": "may be a direct table lookup rather than a substantive contribution",
+      "source_path": "batches/inbox/Win-36.raw.md",
+      "semantic_neighbors": [
+        "user-bibliography-row-40"
+      ]
+    },
+    {
+      "id": "win-00041-p04",
+      "batch": 41,
+      "source_id": "DW41-04",
+      "title": "九阶 permutation grid 的最大 rook-placement 数",
+      "object": "maximum number r(9) of non-attacking rook placements over permutation crossword grids",
+      "quantifiers": "r(9)=28549",
+      "nearest_result": "Lewis--Won enumerate n<=8; Proposition 3.15 gives the n=9 lower bound 28549 from layered shape (3,1,1,1,3)",
+      "proposed_delta": "complete the next S_9 layer exactly and, if possible, classify maximizers",
+      "status": "released",
+      "result": "proved r(9)=28549 and classified the two maximizers by complete exact S9 enumeration",
+      "source_path": "batches/inbox/win-00041-p04-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-41.raw.md",
+        "batches/normalized/Win-41.md",
+        "batches/inbox/bigWin-41-materials/2609.03081.pdf",
+        "projects/win-00041-p04/release/main.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00043-p06",
+      "batch": 43,
+      "source_id": "DW43-06",
+      "title": "permutation Hilton–Milner 极值的完整参数范围",
+      "object": "HM(n,s) for permutation families with matching number below s and covering number at least s",
+      "quantifiers": "all n>=2 and 2<=s<=n",
+      "nearest_result": "arXiv:2609.03904 Problem 5.1; the H_n,s formula is known only in a sparse-s range",
+      "proposed_delta": "locate and decide the first parameter outside the proven range",
+      "status": "parked",
+      "reason": "the first genuinely unknown finite parameter requires a separate literature boundary check",
+      "source_path": "batches/inbox/bigWin-43.raw.md",
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00044-p07",
+      "batch": 44,
+      "source_id": "DW44-07",
+      "title": "八元素 connected matroid base polytope 的 Taylor positivity",
+      "object": "vanishing Taylor negativity radius rho for base polytopes of connected eight-element matroids",
+      "quantifiers": "every connected matroid on eight elements",
+      "nearest_result": "arXiv:2609.03327 proves rho=0 for integral generalized permutohedra through dimension six and gives a negative connected-matroid example in dimension nineteen",
+      "proposed_delta": "complete an exact eight-element census or exhibit a negative coefficient",
+      "status": "parked",
+      "reason": "requires a verified complete matroid census and a broader novelty check before freezing the finite frontier",
+      "source_path": "batches/inbox/bigWin-44.raw.md",
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00044-p13",
+      "batch": 44,
+      "source_id": "DW44-13",
+      "title": "两集合 AP-free-permutable 问题的密度门槛",
+      "object": "two AP-free-permutable subsets whose lower-density contribution reaches the necessary unit threshold",
+      "quantifiers": "infinite subsets of the positive integers, including the full two-set partition question",
+      "nearest_result": "arXiv:2609.02939 eliminates the canonical dyadic partition but leaves Erdos-Graham problem 197 open",
+      "proposed_delta": "construct a genuinely different infinite partition or prove a stronger density obstruction",
+      "status": "parked",
+      "reason": "the full infinite problem is much broader than the selected local order-gadget question p03",
+      "source_path": "batches/inbox/bigWin-44.raw.md",
+      "semantic_neighbors": [
+        "win-00044-p03"
+      ]
+    },
+    {
+      "id": "win-00045-p03",
+      "batch": 45,
+      "source_id": "DW45-03",
+      "title": "重复字母二元轨道的 canon permutation 枚举",
+      "object": "uniform enumeration of canon permutations avoiding O(122221) via three-chain lattice words",
+      "quantifiers": "all integers n>=3 at multiplicity five",
+      "nearest_result": "Laudone arXiv:2608.21351 Question 5.12 lists initial values and asks for this orbit; later work treats different orbits",
+      "proposed_delta": "prove an exact recurrence, formula, or generating function for the full sequence",
+      "status": "admitted",
+      "source_path": "batches/inbox/win-00045-p03-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-45.recovery.md",
+        "batches/normalized/Win-45.md",
+        "batches/inbox/bigWin-45-materials/2608.21351.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00048-p01",
+      "batch": 48,
+      "source_id": "DW48-01",
+      "title": "3×3 Birkhoff polytope 的精确 facial distance 与极小面轨道",
+      "object": "exact facial distance Phi(B_3) and symmetry orbits of all minimizing proper faces",
+      "quantifiers": "all nonempty proper faces of B_3 under row permutations, column permutations and transposition",
+      "nearest_result": "arXiv:2608.28971v1 Definition 2.1 and Example 6.4 give Phi(B_n)>=1/sqrt(n^2-1), but no exact n=3 value or minimizing-face classification",
+      "proposed_delta": "determine Phi(B_3) exactly and classify every minimizing face orbit with exact KKT certificates",
+      "status": "admitted",
+      "source_path": "batches/inbox/win-00048-p01-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-48.raw.md",
+        "batches/normalized/bigWin-48.md",
+        "batches/inbox/bigWin-48-materials/2608.28971.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00049-p02",
+      "batch": 49,
+      "source_id": "DW49-02",
+      "title": "双色 Permutation Wordle 在 n=3 的逐 horizon 强最优性",
+      "object": "optimal cumulative success curve for adaptive two-color permutation guesses on the 48 secrets S_3 times {0,1}^3",
+      "quantifiers": "every deterministic adaptive legal colored-permutation strategy and every horizon until all 48 secrets are solved",
+      "nearest_result": "arXiv:2609.01874v1 proves strong optimality only for monochrome Permutation Wordle; arXiv:2408.00903v1 defines multicolor CircularShift and states its general optimality conjecture",
+      "proposed_delta": "prove or disprove strong optimality of multicolor CircularShift for the first nontrivial instance n=3,s=2 by a complete decision-tree certificate",
+      "status": "admitted",
+      "source_path": "batches/inbox/win-00049-p02-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-49.raw.md",
+        "batches/normalized/bigWin-49.md",
+        "batches/inbox/bigWin-49-materials/2609.01874.pdf",
+        "batches/inbox/bigWin-49-materials/2408.00903.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00049-p15",
+      "batch": 49,
+      "source_id": "DW49-15",
+      "title": "双色 n=3 Wordle 的任意字符串猜测松弛",
+      "object": "whether repeated-rank colored string guesses improve the optimal cumulative success curve over colored-permutation guesses",
+      "quantifiers": "all adaptive length-three two-color string strategies against the same 48 permutation secrets",
+      "nearest_result": "arXiv:2609.01874v1 proves arbitrary strings do not beat CircularShift in the monochrome game; arXiv:2408.00903v1 leaves the multicolor relaxation open",
+      "proposed_delta": "settle the smallest finite multicolor relaxed-guess instance",
+      "status": "parked",
+      "reason": "it depends on the admitted base-game computation and should not be split before that result",
+      "source_path": "batches/normalized/bigWin-49.md",
+      "semantic_neighbors": [
+        "win-00049-p02"
+      ]
+    },
+    {
+      "id": "win-00050-p05",
+      "batch": 50,
+      "source_id": "DW50-05",
+      "title": "permutation grids 不出现 rook-placement count 4",
+      "object": "exclusion of the value four from the perfect-matching counts of permutation crossword grids",
+      "quantifiers": "every n>=1 and every permutation w in S_n",
+      "nearest_result": "arXiv:2609.03081v1 Conjecture 3.10 and exact computations through n=8; win-00041-p04 computed the n=9 maximum layer",
+      "proposed_delta": "settle only the forbidden value four",
+      "status": "parked",
+      "reason": "the all-order matching-exchange argument is less bounded than DW50-04 and substantially reuses the prior S9 asset",
+      "source_path": "batches/normalized/bigWin-50.md",
+      "semantic_neighbors": [
+        "win-00041-p04",
+        "win-00050-p04"
+      ]
+    },
+    {
+      "id": "win-00051-p10",
+      "batch": 51,
+      "source_id": "DW51-10",
+      "title": "permutation Hilton-Milner 的首个未知有限 cell",
+      "object": "HM(n,s) for the first parameter pair outside all verified sharpness ranges",
+      "quantifiers": "all permutation families in S_n with matching number below s and covering number at least s for one literature-minimal pair",
+      "nearest_result": "arXiv:2609.03904v1 Problem 5.1 gives the general problem and a proven sparse-s range",
+      "proposed_delta": "freeze and solve the first genuinely uncovered finite parameter cell",
+      "status": "parked",
+      "reason": "semantic neighbour win-00043-p06 already records the general problem and the first-unknown boundary still needs a separate literature audit",
+      "source_path": "batches/normalized/bigWin-51.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-51.raw.md",
+        "batches/inbox/bigWin-51-materials/2609.03904.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00043-p06"
+      ]
+    },
+    {
+      "id": "win-00053-p08",
+      "batch": 53,
+      "source_id": "DW53-08",
+      "title": "skew-merged permutations 与唯一 rook placement",
+      "object": "equivalence between skew-merged permutations and permutation grids having exactly one complete rook placement",
+      "quantifiers": "all finite permutations",
+      "nearest_result": "arXiv:2609.03081v1 Conjecture 3.9",
+      "proposed_delta": "proof or explicit counterexample",
+      "status": "parked",
+      "reason": "adjacent to released win-00041-p04 and the source gives no short missing lemma",
+      "source_path": "batches/normalized/bigWin-53.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-53.raw.md",
+        "batches/inbox/bigWin-53-materials/2609.03081.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00041-p04",
+        "win-00050-p04"
+      ]
+    },
+    {
+      "id": "win-00053-p09",
+      "batch": 53,
+      "source_id": "DW53-09",
+      "title": "permutation-grid rook counts 的取值谱",
+      "object": "positive integers attained as complete rook-placement counts of permutation grids",
+      "quantifiers": "all positive integers and all permutation grids",
+      "nearest_result": "arXiv:2609.03081v1 Conjecture 3.10 and Question 3.11",
+      "proposed_delta": "classification of the count spectrum",
+      "status": "parked",
+      "reason": "semantic neighbour of win-00050-p05 and too broad",
+      "source_path": "batches/normalized/bigWin-53.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-53.raw.md",
+        "batches/inbox/bigWin-53-materials/2609.03081.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00050-p05"
+      ]
+    },
+    {
+      "id": "win-00053-p10",
+      "batch": 53,
+      "source_id": "DW53-10",
+      "title": "permutation-grid rook count 的极值形状",
+      "object": "maximum complete rook-placement count among n by n permutation grids and its extremizers",
+      "quantifiers": "every positive integer n",
+      "nearest_result": "arXiv:2609.03081v1 Conjectures 3.14 and 3.17",
+      "proposed_delta": "prove the conjectured extremizer and closed maximum formula",
+      "status": "parked",
+      "reason": "released n=9 atlas win-00041-p04 already occupies the finite boundary; another n is a parameter increment",
+      "source_path": "batches/normalized/bigWin-53.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-53.raw.md",
+        "batches/inbox/bigWin-53-materials/2609.03081.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00041-p04",
+        "win-00050-p06"
+      ]
+    },
+    {
+      "id": "win-00053-p15",
+      "batch": 53,
+      "source_id": "DW53-15",
+      "title": "Erdos-Graham 两集合可排列问题",
+      "object": "partition of positive integers into two sets each admitting an order-type-omega permutation avoiding monotone three-term arithmetic progressions",
+      "quantifiers": "existence of such a partition of all positive integers",
+      "nearest_result": "arXiv:2609.02939v1 Theorem 21 excludes the canonical dyadic partition but leaves Problem 197 open",
+      "proposed_delta": "construction or general impossibility proof",
+      "status": "parked",
+      "reason": "famous global problem and semantic neighbour of win-00044-p13; the admitted gadget residue class is the bounded delta",
+      "source_path": "batches/normalized/bigWin-53.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-53.raw.md",
+        "batches/inbox/bigWin-53-materials/2609.02939.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00044-p13",
+        "win-00053-p03"
+      ]
+    },
+    {
+      "id": "win-00056-p13",
+      "batch": 56,
+      "source_id": "DW56-13",
+      "title": "Strict equality classification for generalized Chui minimizers",
+      "object": "all minimizers for positive radial weight and strictly convex even integrand",
+      "quantifiers": "every n and every parameter tuple in Theorem 1 under the strengthened strictness hypotheses",
+      "nearest_result": "arXiv:2609.03134v1 Theorem 1 proves the equispaced configuration is a minimizer but does not state the full general equality set",
+      "proposed_delta": "derive uniqueness up to rotation and permutation, or identify every exceptional equality family",
+      "status": "parked",
+      "reason": "may be an immediate equality-case extraction from the source proof and needs novelty review",
+      "source_path": "batches/normalized/bigWin-56.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-56.raw.md",
+        "batches/inbox/bigWin-56-materials/2609.03134.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00059-p08",
+      "batch": 59,
+      "source_id": "DW59-08",
+      "title": "Orbit-compressed collision atlas for a characteristic-two permutation theorem",
+      "object": "permutation behavior of (x^2+x+delta)^(-2^k)+x over F_(2^n)",
+      "quantifiers": "n<=14, every trace-one delta and 0<=k<n",
+      "nearest_result": "arXiv:2609.03353v1 proves permutation iff k is zero or one",
+      "proposed_delta": "canonical smallest collision witnesses for every k>=2 and a possible uniform collision construction",
+      "status": "parked",
+      "reason": "finite verification of an existing iff theorem is not yet a new contribution",
+      "source_path": "batches/normalized/bigWin-59.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-59.raw.md"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00059-p11",
+      "batch": 59,
+      "source_id": "DW59-11",
+      "title": "First complete partially symmetric HHL finite atlas",
+      "object": "the source's parabolic fixed-point Laurent polynomials and partial-Dyck-path formula",
+      "quantifiers": "all partitions and allowed partial permutations at n=4,k=2",
+      "nearest_result": "arXiv:2609.03840v1 Theorem 3.2 proves the general identity",
+      "proposed_delta": "independent localization/path-enumeration equality with a structural finite corollary",
+      "status": "parked",
+      "reason": "without a new corollary this is a finite replay of an existing theorem",
+      "source_path": "batches/normalized/bigWin-59.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-59.raw.md"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00063-p08",
+      "batch": 63,
+      "source_id": "DW63-08",
+      "title": "Algebraicity test for the two remaining length-four involution classes",
+      "object": "generating functions for Av^I(1324) and Av^I(4231)",
+      "quantifiers": "extended exact coefficient prefixes and bounded candidate algebraic equations",
+      "nearest_result": "arXiv:2609.04352v1 derives algebraic functions for two other Wilf classes and extends counts for these two",
+      "proposed_delta": "discover and prove an algebraic equation or a structural obstruction",
+      "status": "parked",
+      "reason": "finite series fitting is not proof and no cheap structural lemma is available",
+      "source_path": "batches/normalized/bigWin-63.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-63.raw.md",
+        "batches/inbox/bigWin-63-materials/2609.04352.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00065-p03",
+      "batch": 65,
+      "source_id": "DW65-03",
+      "title": "The first historically unverified binary X-ray order n=21",
+      "object": "binary diagonal X-rays realizable by doubly stochastic matrices versus permutation matrices at order 21",
+      "quantifiers": "every binary x in {0,1}^41 at the fixed matrix order n=21",
+      "nearest_result": "arXiv:2608.01442v2 Conjecture 5.1 leaves the general realization problem open; Nordh arXiv:math/0506155v1 reports perfect-Skolem verification through cardinality 20 and arXiv:1707.03928v1 supplies the X-ray equivalence chain",
+      "proposed_delta": "certify the complete first uncovered order or give an exact order-21 counterexample",
+      "status": "blocked",
+      "candidate_kind": "none",
+      "original_status": "unresolved",
+      "result": "Exact incremental SAT with model checking proves every one of the 404019 admissible order-21 supports having minimum at least 8 has a Skolem pairing; therefore any counterexample must have minimum at most 7. The original universal problem remains unresolved.",
+      "reason": "All three permitted substantive research passes are exhausted. The remaining 915291083 supports are too many for the current exhaustive method; no fourth pass or counter reset is allowed.",
+      "source_path": "batches/inbox/win-00065-p03-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-65.raw.md",
+        "batches/normalized/bigWin-65.md",
+        "batches/inbox/bigWin-65-materials/2608.01442.pdf",
+        "batches/inbox/bigWin-65-materials/math0506155.pdf",
+        "batches/inbox/bigWin-65-materials/1707.03928.pdf",
+        "projects/win-00065-p03/checkpoint.md",
+        "projects/win-00065-p03/evidence/order21_incremental.py",
+        "projects/win-00065-p03/evidence/pass3-incremental-validation-through13.json",
+        "projects/win-00065-p03/evidence/order21-bmin8-full-incremental-cadical195.json"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00065-p13",
+      "batch": 65,
+      "source_id": "DW65-13",
+      "title": "Equality classification for two-transitive MDS length",
+      "object": "MDS codes with a two-transitive permutation automorphism group at length q+1",
+      "quantifiers": "all fields and dimensions in the source range with n=q+1",
+      "nearest_result": "arXiv:2609.05292v1 proves n<=q+1 for the class",
+      "proposed_delta": "classify equality cases",
+      "status": "parked",
+      "reason": "requires substantial finite two-transitive group and MDS classification machinery",
+      "source_path": "batches/normalized/bigWin-65.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-65.raw.md",
+        "batches/inbox/bigWin-65-materials/2609.05292.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00066-p15",
+      "batch": 66,
+      "source_id": "DW66-15",
+      "title": "Next certified Av(1324) growth lower bound",
+      "object": "rigorous lower bounds for the Stanley-Wilf limit of Av(1324)",
+      "quantifiers": "an explicit source-compatible construction with certified parameter optimization",
+      "nearest_result": "arXiv:2608.20292v3 proves the lower bound 10.412263 after earlier-version corrections",
+      "proposed_delta": "a strictly larger certified lower bound or a proof that the current ansatz is locally optimal",
+      "status": "parked",
+      "reason": "high proof and interval-certification risk relative to the selected finite problems",
+      "source_path": "batches/inbox/bigWin-66.raw.md",
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00081-p03",
+      "batch": 81,
+      "source_id": "ARXIV-2609.06717-B81",
+      "title": "Defect-eleven inversion monotonicity for Av(1324)",
+      "object": "the first unproved fixed-defect line of inversion-count monotonicity for 1324-avoiding permutations",
+      "quantifiers": "every integer n>=1 on the line k=2n+4, with out-of-range counts interpreted as zero",
+      "nearest_result": "arXiv:2609.06717v1 Corollary 5.19 proves a(n,k)<=a(n+1,k) for all k<=2n+3; the next line is defect eleven and the source supplies a proof-bearing enumeration framework through defect ten",
+      "proposed_delta": "prove or disprove a(n,2n+4)<=a(n+1,2n+4) for all n using a complete defect-eleven residual catalogue and analytic continuation of the finite result",
+      "status": "queued",
+      "reason": "natural next theorem boundary with primary-source code/data and exact finite enumeration certificates, not merely a symbolic rephrasing",
+      "source_path": "batches/inbox/win-00081-p03-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-81.raw.md",
+        "batches/normalized/bigWin-81.md",
+        "batches/inbox/bigWin-81-materials/2609.06717.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00081-p04",
+      "batch": 81,
+      "source_id": "ARXIV-2609.06096-B81",
+      "title": "Uniform real-rootedness in the Ehrhart open interval",
+      "object": "negative real-rootedness of the Ehrhart h-star polynomials of the (132,213)-avoiding permutation polytopes",
+      "quantifiers": "every integer dimension 1001<=d<2^72",
+      "nearest_result": "arXiv:2609.06096v1 Theorems 1.3 and 1.4 prove the property through d=1000 and for every d>=2^72; Conjecture 10.1 asks for all d>=3",
+      "proposed_delta": "substantially lower the analytic threshold, find a broader repair cone, or give an exact counterexample",
+      "status": "parked",
+      "reason": "extending the exact frontier by a few dimensions is mechanical and low-value, while no short-cycle bridge across the huge interval was identified",
+      "source_path": "batches/inbox/bigWin-81.raw.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-81.raw.md",
+        "batches/normalized/bigWin-81.md",
+        "batches/inbox/bigWin-81-materials/2609.06096.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00036-p05",
+        "win-00065-p09"
+      ]
+    },
+    {
+      "id": "win-00085-p01",
+      "batch": 85,
+      "source_id": "ARXIV-2607.26214-B85",
+      "title": "Product-local-unitary inequivalence for two stabilizer-code pairs",
+      "object": "the two five- and six-qubit stabilizer-code pairs in Mahmoud Theorem 5.3(ii),(iii)",
+      "quantifiers": "for each pair, every qubit permutation and every tensor product of arbitrary one-qubit unitaries",
+      "nearest_result": "arXiv:2607.26214v1 Question 5.4 explicitly asks product-unitary-plus-permutation equivalence; quant-ph/0404106v2 supplies the prior support-dimension local invariant",
+      "proposed_delta": "decide both concrete pairs and publish complete Pauli-support and reduced-rank incidence certificates without claiming invention of the invariant",
+      "status": "queued",
+      "reason": "explicit source question, tiny independently replayable certificate, no semantic duplicate, and desktop precheck separates both pairs",
+      "source_path": "batches/inbox/win-00085-p01-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-85.raw.md",
+        "batches/inbox/bigWin-85.capture.json",
+        "batches/normalized/bigWin-85.md",
+        "batches/inbox/win-00085-p01-source.md"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00085-p06",
+      "batch": 85,
+      "source_id": "ARXIV-2607.19566-B85",
+      "title": "All-parameter extinction depth for the limited-permutation corridor",
+      "object": "bidirectional correction dynamics for the two parameterized binary blocks a_k and b_k",
+      "quantifiers": "every integer k>=3 has extinction depth 2k^2+4k-1 in both directions",
+      "nearest_result": "arXiv:2607.19566v1 Theorem 13 verifies 3<=k<=60 and Conjecture 14 states the all-k formula",
+      "proposed_delta": "prove the parameterized corridor formula or find an exact counterexample",
+      "status": "parked",
+      "reason": "testing k=61 is only one-sided: a failure disproves but success gives no material progress on the universal proof",
+      "source_path": "batches/inbox/bigWin-85.raw.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-85.raw.md",
+        "batches/inbox/bigWin-85.capture.json",
+        "batches/normalized/bigWin-85.md"
+      ],
+      "semantic_neighbors": [
+        "win-00084-p02"
+      ]
+    },
+    {
+      "id": "win-00086-p02",
+      "batch": 86,
+      "source_id": "ARXIV-2407.19745-B86",
+      "title": "Full automorphism group of the disconnected graph A(4,4,3)",
+      "object": "the Cayley graph of S4 generated by permutations with exactly one fixed point",
+      "quantifiers": "all graph automorphisms of the fixed 24-vertex graph and the resulting truth value of Pan Conjecture 3.1 at n=4,t=1",
+      "nearest_result": "arXiv:2407.19745v1 proves only two extreme parameter families and conjectures the stated automorphism group for every n>2 and 0<=t<=n-2",
+      "proposed_delta": "prove A(4,4,3) is two disjoint copies of K4,4,4 and derive its full wreath-product automorphism group, thereby disproving the conjecture at the first uncovered parameter",
+      "status": "queued",
+      "reason": "explicit source conjecture, short structural proof, independently replayable adjacency certificate, substantial group-order separation, and no semantic duplicate",
+      "source_path": "batches/inbox/win-00086-p02-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-86.raw.md",
+        "batches/inbox/bigWin-86.capture.json",
+        "batches/normalized/bigWin-86.md",
+        "batches/inbox/win-00086-p02-source.md"
+      ],
+      "semantic_neighbors": [
+        "win-00052-p03",
+        "win-00066-p02"
+      ]
+    },
+    {
+      "id": "win-00086-p03",
+      "batch": 86,
+      "source_id": "ARXIV-2510.04675-B86",
+      "title": "Projective equivalence without CCZ equivalence over F_11",
+      "object": "the graph codes of the functions x maps to x^4 and x maps to x^8 over the field F_11",
+      "quantifiers": "every affine permutation of F_11 squared, contrasted with one explicit projectivity of the projective closures",
+      "nearest_result": "arXiv:2510.04675v2 Example 2.11 proves this pair projectively equivalent and not EA-equivalent, while Open Problem 4 asks for a projectively equivalent but non-CCZ pair",
+      "proposed_delta": "use the exact projective-direction multiplicity distribution of graph differences to exclude every CCZ affine graph equivalence",
+      "status": "queued",
+      "reason": "directly answers a numbered open problem for an explicit source pair, has a tiny exact certificate and no semantic duplicate; priority language remains conditional on a fresh novelty audit",
+      "source_path": "batches/inbox/win-00086-p03-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-86.raw.md",
+        "batches/inbox/bigWin-86.capture.json",
+        "batches/normalized/bigWin-86.md",
+        "batches/inbox/win-00086-p03-source.md"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00087-p05",
+      "batch": 87,
+      "source_id": "ARXIV-2602.13566-B87",
+      "title": "First multiset-permutation instability for consecutive pattern 21435",
+      "object": "the occurrence-count generating polynomial of consecutive pattern 21435 over words with permuted multiplicities",
+      "quantifiers": "all positive multiplicity vectors of total length at most nine, with a complete classification at the first unstable length",
+      "nearest_result": "arXiv:2602.13566v2 Conjecture 6.1 asks whether only monotone consecutive patterns are stable, and Remark 4.13 explains that its existing shortest-overlap criterion does not handle 21435",
+      "proposed_delta": "prove all types stable through length eight and classify {2,1^7} as the unique unstable type at length nine, including the two exact distributions and a combinatorial minimality proof",
+      "status": "released",
+      "reason": "fresh mathematical referee accepted the exact first-instability classification; six claim-driven references, bibliography, clean build, metadata, fonts, cross-references, and all five rendered pages passed the independent release audit and release gate",
+      "source_path": "batches/inbox/win-00087-p05-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-87.raw.md",
+        "batches/inbox/bigWin-87.capture.json",
+        "batches/normalized/bigWin-87.md",
+        "batches/inbox/bigWin-87.certificates.zip",
+        "batches/inbox/bigWin-87-materials/05_pattern/verify.py",
+        "batches/inbox/win-00087-p05-source.md",
+        "projects/win-00087-p05/claim.json",
+        "projects/win-00087-p05/audit/math.json",
+        "projects/win-00087-p05/audit/citations.json",
+        "projects/win-00087-p05/audit/build.json",
+        "projects/win-00087-p05/audit/visual.json",
+        "projects/win-00087-p05/release/main.pdf",
+        "projects/win-00087-p05/release/manifest.json"
+      ],
+      "semantic_neighbors": [
+        "win-00045-p03"
+      ],
+      "result": "proved stability through length eight and the unique first unstable type {2,1^7} at length nine for consecutive pattern 21435",
+      "reference_count": 6
+    },
+    {
+      "id": "newwin-00001-p03",
+      "batch": "新WIN-1批次",
+      "source_id": "新WIN-1-03",
+      "title": "可改变单调方向的贪心栈：最坏排序轮数的奇偶公式",
+      "object": "Permutations S_n; greedy stack remains monotone in either direction; first identity hitting time under t",
+      "quantifiers": "For every integer n>=3, max over all pi in S_n is 2n-3 if n odd and 2n-4 if n even",
+      "nearest_result": "Mi-Xu-Yang ECA2025 S2R22, Thm4.2 eventual sorting; Lemmas4.6-4.7 matching lower bounds; Conj4.1 sharp upper bound",
+      "proposed_delta": "Prove full all-parameter parity-dependent upper bound or give exact violating trajectory; no finite-range substitution",
+      "status": "parked",
+      "source_path": "/home/ailab/4math-open-problems/batches/inbox/newwin-00001-p03-source.md",
+      "source_sha256": "d4b18609e9150ccfd1f29f25b8986b7508b50b3414bca01630c5f3edf0d787f6",
+      "evidence_paths": [
+        "batches/normalized/newwin-00001-desktop-screen.md",
+        "batches/normalized/newwin-00001-dedup.md",
+        "batches/normalized/newwin-00001-manifest.json",
+        "batches/normalized/newwin-00001-p03-p04-prescreen.md",
+        "batches/normalized/newwin-00001-p03-admission.md",
+        "projects/newwin-00001-p03/literature/intake-screen.md",
+        "projects/newwin-00001-p03/checkpoint.md"
+      ],
+      "semantic_neighbors": [
+        "smallmac69p07",
+        "smallmac81p01",
+        "received-only-b03-s11",
+        "win-00084-p02",
+        "win-00085-p06",
+        "win-00087-p05",
+        "newwin-00001-p04"
+      ],
+      "dedup_scope": "All2883 Excel rows keyword-screened; six distinct neighbors inspected. b03-s11 original transcript reread but underdefined; equivalence uncertain. Live conversation unavailable.",
+      "intake_origin": "user_authorized_local_file",
+      "observed_at": "2026-09-12",
+      "status_observed_at": "2026-09-12",
+      "status_authority": "runner queue and referenced job/artifact records; supervisor report only"
+    },
+    {
+      "id": "newwin-00001-p04",
+      "batch": "新WIN-1批次",
+      "source_id": "新WIN-1-04",
+      "title": "单调栈接普通栈：所有最慢排列的结构分类",
+      "object": "F=s composed with variable-monotonicity greedy stack t; first identity hitting time and full extremizer class",
+      "quantifiers": "All n>=4 and all permutations; maximum2n-5, iff2 sigma1n with sigma avoiding213",
+      "nearest_result": "Primary-source verification pending; raw generator claim unaccepted",
+      "proposed_delta": "Original full maximum-time and extremizer-classification statement; no substitute auxiliary disproof",
+      "status": "parked_next_test_gap",
+      "source_path": "/home/ailab/4math-open-problems/batches/inbox/newwin-00001-p04-source.md",
+      "source_sha256": "c6d293c625bb7221d163b5ebf12c1c029554f348491245f8bb8b05656a42bf37",
+      "evidence_paths": [
+        "batches/normalized/newwin-00001-desktop-screen.md",
+        "batches/normalized/newwin-00001-dedup.md",
+        "batches/normalized/newwin-00001-manifest.json",
+        "batches/normalized/newwin-00001-p04-block-route-screen.md",
+        "batches/literature/newwin-00001/p04-two-step-check.json",
+        "batches/literature/newwin-00001/p04-block-witness.json",
+        "batches/literature/newwin-00001/verify-p04-block-witness.py"
+      ],
+      "semantic_neighbors": [],
+      "dedup_scope": "Not independently deduplicated yet",
+      "intake_origin": "user_authorized_local_file",
+      "observed_at": "2026-09-12",
+      "status_observed_at": "2026-09-12T18:18:18+08:00",
+      "reason": "Proposed two-step low-block growth fails even on F^2-images atn7, with independently checked preimage and complete first-hit paths; no replacement sharp amortized invariant yet. Does not refute original problem.",
+      "status_authority": "Supervisor bounded intake failure evidence only; no admission or mathematical referee"
+    },
+    {
+      "id": "newwin-00001-p06",
+      "batch": "新WIN-1批次",
+      "source_id": "新WIN-1-06",
+      "title": "排列本身避免 \\(312,54321\\)，平方避免 \\(132\\) 的递推",
+      "object": "Permutations avoiding 312 and 54321 whose composition square avoids 132",
+      "quantifiers": "Original recurrence for every n>=6; exact first failure n=11",
+      "nearest_result": "Archer-Bourne 2505.05218v3 §5",
+      "proposed_delta": "Accepted complete disproof: a_11=1265 while the proposed recurrence gives1266; complete finite endpoint certificate and exact reduction",
+      "status": "released",
+      "source_path": "/home/ailab/4math-open-problems/batches/inbox/newwin-00001-p06-source.md",
+      "source_sha256": "51c5a2d559d1c8a858630d9de8afe0fb10e5b862ee0f2f5b544c8d7868fe9a75",
+      "evidence_paths": [
+        "batches/normalized/newwin-00001-desktop-screen.md",
+        "batches/normalized/newwin-00001-dedup.md",
+        "batches/normalized/newwin-00001-manifest.json",
+        "batches/normalized/newwin-00001-p06-admission.md",
+        "batches/literature/newwin-00001/check-p06-small.py",
+        "batches/literature/newwin-00001/p06-intake-check.json",
+        "projects/newwin-00001-p06/literature/doi-recovery-evidence-20260912.md",
+        "supervisor/pending-recovery-newwin-00001-p06.json",
+        "projects/newwin-00001-p06/claim.json",
+        "projects/newwin-00001-p06/audit/math.md",
+        "projects/newwin-00001-p06/release/manifest.json",
+        "batches/normalized/newwin-00001-deliveries.md"
+      ],
+      "semantic_neighbors": [
+        "smallmac-00060-p14"
+      ],
+      "dedup_scope": "Bounded Excel+local-registry no collision found; live conversation not available",
+      "intake_origin": "user_authorized_local_file",
+      "observed_at": "2026-09-12",
+      "next_test": "Original recurrence disproved; no corrected all-n recurrence claimed. Current publication passed fresh recovery release and check-active.",
+      "status_observed_at": "2026-09-12T17:26:00+08:00",
+      "status_authority": "Actual runner queue/job and referenced gate observation; supervisor registry report only"
+    },
+    {
+      "id": "newwin-00001-p07",
+      "batch": "新WIN-1批次",
+      "source_id": "新WIN-1-07",
+      "title": "排列立方避免 \\(2143\\)：与“至多一个例外部件”的合成双射",
+      "object": "Permutations avoiding 312 and 321 with cube avoiding 2143; compositions with all but at most one part in {1,3}",
+      "quantifiers": "all n>=0, counts including empty permutation/composition",
+      "nearest_result": "Archer-Bourne 2505.05218v3 §5",
+      "proposed_delta": "Exact original source only; no weakened replacement claim",
+      "status": "released",
+      "source_path": "/home/ailab/4math-open-problems/batches/inbox/newwin-00001-p07-source.md",
+      "source_sha256": "f55a25a1a14dbeef692d590d1d55513ad3e234065d61da1ae130416417c7a59e",
+      "evidence_paths": [
+        "batches/normalized/newwin-00001-desktop-screen.md",
+        "batches/normalized/newwin-00001-dedup.md",
+        "batches/normalized/newwin-00001-manifest.json",
+        "batches/normalized/newwin-00001-deliveries.md",
+        "projects/newwin-00001-p07/release/manifest.json"
+      ],
+      "semantic_neighbors": [
+        "smallmac-00070-p04",
+        "win-00087-p05"
+      ],
+      "dedup_scope": "Bounded Excel+local-registry no collision found; live conversation not available",
+      "intake_origin": "user_authorized_local_file",
+      "observed_at": "2026-09-12",
+      "status_observed_at": "2026-09-12",
+      "status_authority": "runner queue and referenced job/artifact records; supervisor report only"
+    },
+    {
+      "id": "newwin-00001-p09",
+      "batch": "新WIN-1批次",
+      "source_id": "新WIN-1-09",
+      "title": "三元代数 SC229 的结合—交换谱：全部项函数的精确计数",
+      "object": "SC229 table 000/101/111, distinct full linear term functions under arbitrary variable permutations",
+      "quantifiers": "All n>=1, each variable appears once, equality on every assignment in {0,1,2}^n",
+      "nearest_result": "Huang-Lehtonen ECA2024 Section7 p17 leaves general ac-spectrum open, gives1,2,12,108,1340;2023 leftmost tree tools are prior",
+      "proposed_delta": "Accepted all-n SC229 term-function/tree classification and exact spectrum. Finite n<=6 census corroborates, not replaces, the general proof.",
+      "status": "done",
+      "source_path": "/home/ailab/4math-open-problems/batches/inbox/newwin-00001-p09-source.md",
+      "source_sha256": "519346c2f2624980063eb32e4a79d4df5ed7583e05944a6f25eb984e0590f6de",
+      "evidence_paths": [
+        "batches/normalized/newwin-00001-desktop-screen.md",
+        "batches/normalized/newwin-00001-dedup.md",
+        "batches/normalized/newwin-00001-manifest.json",
+        "batches/normalized/newwin-00001-p09-source-screen.md",
+        "batches/literature/newwin-00001/p09-structural-route.md",
+        "batches/literature/newwin-00001/p09-intake-check.json",
+        "batches/normalized/newwin-00001-p09-admission.md",
+        "projects/newwin-00001-p09/jobs/newwin-00001-p09-triage-d9fd6bb8283b/result.json",
+        "projects/newwin-00001-p09/claim.json",
+        "projects/newwin-00001-p09/evidence/decoder-proof.md",
+        "projects/newwin-00001-p09/audit/math.md",
+        "projects/newwin-00001-p09/audit/math.json",
+        "projects/newwin-00001-p09/jobs/newwin-00001-p09-write-ba5b4f416b7f/result.json",
+        "projects/newwin-00001-p09/publication.json",
+        "projects/newwin-00001-p09/audit/manuscript-snapshot.json",
+        "projects/newwin-00001-p09/release/manifest.json",
+        "projects/newwin-00001-p09/release/main.pdf",
+        "projects/newwin-00001-p09/audit/citations.md",
+        "projects/newwin-00001-p09/audit/visual.md",
+        "batches/normalized/newwin-00001-deliveries.md"
+      ],
+      "semantic_neighbors": [
+        "newwin-00001-p02"
+      ],
+      "dedup_scope": "All2883 bound Excel titles/descriptions and registry screened; closest SC258 p02 source read and distinct table/fixed-order scope. Live conversation unavailable; bounded no-collision not universal priority.",
+      "intake_origin": "user_authorized_local_file",
+      "observed_at": "2026-09-12",
+      "status_observed_at": "2026-09-12T18:41:00+08:00",
+      "status_authority": "Actual runner queue/process and referenced artifacts; supervisor registry only, not a manually assigned audit acceptance",
+      "candidate_review_status": "Current full-scope resolution-paper released, 6pages/5refs; pure active-release validator passed; 64 copied files and actual six returned PNG byte hashes verified. No external submission.",
+      "delivery_path": "C:/Users/87510/Documents/ChatGPT/math_WIN/outputs/newwin-00001/newwin-00001-p09-cf142e53197b"
+    },
+    {
+      "id": "primary-20260912-ray-west-j",
+      "batch": null,
+      "source_id": "Vatter2602.16355v2-Problem3.7",
+      "title": "Ray-West correction statistic: Vatter Problem 3.7",
+      "object": "Distinct length m+2 permutations containing beta in S_m as a classical pattern; correction j in the Ray-West formula",
+      "quantifiers": "All integers m>=1 and beta in S_m; seek a meaningful intrinsic or generalized-pattern statistic determining j",
+      "nearest_result": "Ray-West2003 Prop8.5 Cor8.6 Thm8.7 pp80-83 already define j via active pattern-C tracks, bound it, and realize every value0..m-1 for m>=5; Vatter2026 Problem3.7 asks a statistic description",
+      "proposed_delta": "A genuinely simpler structural statistic with proof and demonstrated benefit; not renaming tracks, exhaustive residuals or known extremizers",
+      "status": "triage-running",
+      "source_status": "open-supported by the actual2026 author's problem statement; bounded subsequent search found no solution, not exhaustive",
+      "source_path": "/home/ailab/4math-open-problems/batches/inbox/primary-20260912-ray-west-j-source.md",
+      "source_sha256": "92f387c6551ae42e866ea2561665abf78b80baa018f1808f81a0d899ea4b7bf2",
+      "evidence_paths": [
+        "supervisor/primary-intake-20260912/README.md",
+        "supervisor/primary-intake-20260912/vatter-2602.16355v2.html",
+        "supervisor/primary-intake-20260912/ray-west-2003.pdf",
+        "projects/primary-20260912-ray-west-j/problem.md"
+      ],
+      "semantic_neighbors": [
+        "smallmac-00061-p02",
+        "smallmac-00063-p01",
+        "smallmac-00053-p08",
+        "win-00087-p05",
+        "win2::win-00087-p05",
+        "smallmac-00069-p05",
+        "smallmac-00069-p06",
+        "smallmac-00069-p07"
+      ],
+      "dedup_scope": "All2883 bound Excel rows plus native registry searched; full retrieved neighbor originals compared. Not exhaustive semantic equivalence; target browser conversation unavailable and unchecked.",
+      "intake_origin": "authorized_primary_literature_fallback",
+      "browser_generated": false,
+      "batch_number_consumed": false,
+      "observed_at": "2026-09-12T22:05:03+08:00",
+      "status_authority": "Actual runner running job and PGID310751 argv observed22:05:03: gpt-6-astra/max, started22:04:27, deadline22:12:27; no mathematical acceptance inferred",
+      "active_job": "primary-20260912-ray-west-j-triage-b0b8b2bcc0bf"
+    }
+  ],
+  "scope": "Read-only registry screen. Full Excel and browser coverage inherited only from intake report, not rerun."
+}

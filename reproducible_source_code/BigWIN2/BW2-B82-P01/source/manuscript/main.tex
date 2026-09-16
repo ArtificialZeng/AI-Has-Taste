@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\ind}{\mathbf 1}
+
+\title{Nonexistence of a Cyclic Incidence Ordering\\
+for the Complete $4$-Uniform Hypergraph on Eight Vertices}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let the seventy $4$-subsets of an eight-element set be placed in a cyclic
+order.  We prove that their eight binary incidence columns cannot all be
+cyclic shifts of one common column, even when the shift of each column is
+chosen independently and no adjacency condition is imposed on consecutive
+$4$-sets.  In the notation of Zhou, this says that $\mathsf E(8,4)$ is false.
+The coordinate-count identity from Zhou's work first confines the eight
+shifts to a translate of the subgroup $7\Z_{70}$.  Seven residue slices then
+give height-four factorizations on $\Z_{10}$.  Passing to the two-point
+complement turns each factorization into a onefold translational tiling, whose
+elementary classification permits at most sixteen distinct attendee sets,
+rather than the required seventy.  A complete exact enumeration of
+all $11{,}340$ reduced slice pairs is included as a reproducibility check but
+is not used in place of the proof.
+\end{abstract}
+
+\section{Context and result}
+
+Single-track Gray codes arrange binary words so that the coordinate columns
+are cyclic shifts of one track, together with a prescribed adjacency rule
+between consecutive words; this terminology goes back to Hiltgen, Paterson,
+and Brandestini~\cite{hiltgen1996}.  For fixed-weight words, Gregor, Merino,
+and M\"utze proved that if $\gcd(n,k)=1$, then the Johnson graph $J_{n,k}$ has
+a balanced one-track Hamilton cycle~\cite[Theorem~4.5]{gregor2024}.  In
+particular, coprimality supplies an ordering even with the extra requirement
+that consecutive $k$-sets differ by one exchange.
+
+Zhou~\cite{zhou2026} isolated the weaker, adjacency-free property in which
+the shifts are independent.  Write $N=\binom nk$ and let all indices lie in
+$\Z_N$.  The property $\mathsf E(n,k)$ is the existence of a bijection
+\[
+ e:\Z_N\longrightarrow \binom{[n]}k,
+\]
+a set $D\subseteq\Z_N$, and shifts $s_v\in\Z_N$ such that
+\[
+ \{t\in\Z_N:v\in e(t)\}=D+s_v\qquad(v\in[n]).             \tag{1}
+\]
+Zhou proved the necessity of coprimality for uniformities two and three and
+formulated the general coprimality criterion as a conjecture.  The pair
+$(n,k)=(8,4)$ is the first middle-layer instance not decided by those
+classifications and complement symmetry.  We settle exactly this instance.
+
+\begin{theorem}\label{thm:main}
+There are no bijection
+$e:\Z_{70}\to\binom{[8]}4$, set $D\subseteq\Z_{70}$ of size $35$, and
+shifts $s_v\in\Z_{70}$ satisfying \emph{(1)}.  Equivalently,
+$\mathsf E(8,4)$ is false.
+\end{theorem}
+
+The comparison above is limited to the cited sources and the literature
+screened there; it is not a general priority claim.  The proof below adds to
+Zhou's torsion-coset reduction a complete classification of the resulting
+two-point tilings.  Its quotient-and-slice organization is also related in
+spirit to coset and fiber constructions used for a different finite-abelian
+problem by Zeng~\cite{zeng2026rainbow}; no result from that paper is needed
+here.
+
+\section{The coordinate-count identity}
+
+For functions on a finite abelian group $G$, use
+\[
+ (F*H)(t)=\sum_{y\in G}F(y)H(t-y),
+\]
+and write $F^-(x)=F(-x)$.  We first record the part of
+\cite[Lemma~2.2]{zhou2026} used in the proof, including its short argument so
+that the reduction is self-contained.
+
+\begin{lemma}[reflected balance]\label{lem:reflection}
+If $F,H:G\to\mathbb R$ satisfy $F*H=r\ind_G$, then
+$F^-*H=F*H^-=r\ind_G$.
+\end{lemma}
+
+\begin{proof}
+At every nontrivial character $\chi$ of $G$,
+$\widehat F(\chi)\widehat H(\chi)=0$.  Since $F$ and $H$ are real-valued,
+reflection complex-conjugates their Fourier transforms and therefore
+preserves their zero sets.  At the trivial character the masses are
+unchanged.  Fourier inversion proves both identities.
+\end{proof}
+
+\begin{lemma}[coordinate count]\label{lem:coordinate}
+Let $S,D\subseteq G$, with $|S|=m$, satisfy
+$\ind_S*\ind_D=r\ind_G$.  Suppose also that
+\[
+ |(D+b)\cap(D+c)|=\lambda
+ \qquad\text{for distinct }b,c\in S.
+\]
+If $T=\sum_{c\in S}c$ in $G$, then
+\[
+ \lambda(T-mb)=0\qquad(b\in S).                         \tag{2}
+\]
+\end{lemma}
+
+\begin{proof}
+Fix $b\in S$ and index all pairs $(c,t)$ with $c\in S\setminus\{b\}$
+and $t\in(D+b)\cap(D+c)$.  Attach the two coordinates
+$x=t-b\in D$ and $y=t-c\in D$.  For a fixed $x\in D$, balance at $b+x$
+shows that $x$ occurs exactly $r-1$ times: the omitted representation is
+the one with $c=b$.  For a fixed $y\in D$, the identity
+$\ind_S*\ind_{-D}=r\ind_G$ from Lemma~\ref{lem:reflection}, evaluated at
+$b-y$, gives the same multiplicity $r-1$ for $y$.
+
+Thus the sum of $x-y$ over all indexed pairs is zero.  On the other hand,
+$x-y=c-b$, and each $c\ne b$ indexes $\lambda$ pairs.  Hence
+\[
+ 0=\lambda\sum_{c\in S\setminus\{b\}}(c-b)
+  =\lambda(T-mb),
+\]
+which is (2).
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+Suppose that data as in the theorem exist.  Two vertices cannot have the
+same shift: their incidence supports would then agree, whereas some
+$4$-subset contains either one and excludes the other.  Consequently
+\[
+ S=\{s_v:v\in[8]\}\subseteq\Z_{70}
+\]
+has eight elements.  At each time exactly four vertices occur, so
+\[
+ \ind_S*\ind_D=4\ind_{\Z_{70}}.                          \tag{3}
+\]
+For two distinct shifts, the corresponding supports meet once for every
+$4$-set containing the associated pair of vertices.  Therefore
+\[
+ |(D+b)\cap(D+c)|=\binom62=15\qquad(b\ne c\text{ in }S). \tag{4}
+\]
+Lemma~\ref{lem:coordinate}, with $m=8$, gives
+\[
+ 15(T-8b)=0\qquad(b\in S).
+\]
+Subtracting the relations for $b,b'\in S$ yields
+\[
+ 120(b-b')=0\pmod {70}.                                  \tag{5}
+\]
+The kernel of multiplication by $120$ on $\Z_{70}$ is exactly
+$7\Z_{70}$: it has $\gcd(120,70)=10$ elements, namely the multiples of
+$7$.  In particular, no nonunit has been cancelled in (5).
+
+Fix $b_0\in S$.  Replacing $S$ by $S-b_0$ and $D$ by $D+b_0$ preserves
+each individual support because
+\[
+ (D+b_0)+(s-b_0)=D+s.
+\]
+After this support-preserving normalization, (5) lets us write
+\[
+ S=7A,\qquad A\subseteq\Z_{10},\qquad |A|=8.             \tag{6}
+\]
+Relabel the vertices by the corresponding elements of $A$.
+
+Every time has a unique expression $j+7x$, with $0\le j<7$ and
+$x\in\Z_{10}$.  Define
+\[
+ D_j=\{x\in\Z_{10}:j+7x\in D\}.
+\]
+At time $j+7x$, the vertex labelled $a\in A$ occurs precisely when
+\[
+ j+7x\in D+7a
+ \quad\Longleftrightarrow\quad x-a\in D_j.
+\]
+Thus its four-element attendee set is
+\[
+ C_{j,x}=A\cap(x-D_j),                                   \tag{7}
+\]
+and (3), restricted to the slice $j$, becomes
+\[
+ \ind_A*\ind_{D_j}=4\ind_{\Z_{10}}.                     \tag{8}
+\]
+Summing (8) over $x$ gives $8|D_j|=40$, so
+\[
+ |D_j|=5\qquad(0\le j<7).                               \tag{9}
+\]
+
+Let $B=\Z_{10}\setminus A$.  Then $B$ has two elements.  Since
+$\ind_{\Z_{10}}*\ind_{D_j}=5\ind_{\Z_{10}}$, subtracting (8) gives the
+onefold tiling equation
+\[
+ \ind_B*\ind_{D_j}=\ind_{\Z_{10}}.                     \tag{10}
+\]
+This is a particularly small finite-cyclic instance of a translational
+tiling equation; for broader structural results on integer tiles, see
+Coven and Meyerowitz~\cite{coven1999}.
+
+Write $B=\{b,b+d\}$ with $d\ne0$, and let $f=\ind_{D_j}$.  After replacing
+$x$ by $z+b$, equation (10) reads
+\[
+ f(z)+f(z-d)=1\qquad(z\in\Z_{10}).                       \tag{11}
+\]
+The values of $f$ must alternate around every orbit of translation by
+$d$.  Such an alternation closes only when the order of $d$ is even.  In
+$\Z_{10}$ this happens exactly when $d$ is odd.
+
+If $d\ne5$ is odd, then $d$ generates $\Z_{10}$.  Equation (11) has only
+the two parity classes as solutions for $D_j$.  The two points of $B$ have
+opposite parity, so $A$ contains four elements of each parity.  For every
+$x$, the translate-reflection $x-D_j$ is a parity class; hence (7) is one
+of only two fixed $4$-subsets of $A$.  Already the ten times in one slice
+therefore repeat attendee sets, contradicting injectivity of $e$.
+
+It remains to consider $d=5$.  Put $H=\{0,5\}$.  The complement $B$ is one
+$H$-coset and $A$ is the union of the other four.  Equation (11) says that
+each $D_j$ chooses one point from every one of the five $H$-cosets.  The
+same is true of every $x-D_j$.  Consequently (7) chooses one point from
+each of the four fixed $H$-cosets comprising $A$.  Across all seven slices
+there are therefore at most
+\[
+ 2^4=16
+\]
+different attendee sets.  A bijection onto $\binom A4$ would require all
+$\binom84=70$ attendee sets.  This is the final contradiction.  Even
+differences make (11) impossible, and the two odd-difference cases above
+are exhaustive.  The theorem follows.
+
+\section{Exact reproducibility check}
+
+The accompanying script \texttt{verify\_slices.py} separately enumerates
+all
+\[
+ \binom{10}{8}\binom{10}{5}=11{,}340
+\]
+pairs $(A,D_j)$.  For each pair it checks every value of the convolution in
+(8) and reconstructs every set in (7), using only finite sets and integer
+arithmetic.  It finds twenty complements with no valid template, twenty
+non-antipodal odd-difference complements with two templates and two accessible
+attendee sets each, and five antipodal complements with thirty-two templates
+and sixteen accessible attendee sets each.  Thus there are exactly $200$
+valid reduced slice pairs, and no fixed $A$ can access all seventy
+$4$-subsets.  The deterministic check can be repeated with
+\begin{verbatim}
+python3 verify_slices.py
+\end{verbatim}
+There is no random sampling or floating-point calculation.  This enumeration
+corroborates the two cases in the proof; the quantified theorem follows from
+the symbolic argument above.
+
+\paragraph{Computational and AI assistance.}
+OpenAI language-model tools, including Codex, were used extensively in proof
+development, checking intermediate arguments, locating and comparing
+literature, preparing the exact enumeration, and drafting the exposition.
+The author reviewed the mathematical argument and citations and takes
+responsibility for the final text.  The exact Python enumeration was used
+only as the corroborating check described above.
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

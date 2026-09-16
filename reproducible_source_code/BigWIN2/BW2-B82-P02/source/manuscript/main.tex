@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\PsiHG}{\Psi_{H,g}}
+\newcommand{\coeff}[2]{[#1]#2}
+
+\title{Loopy-Polynomial Injectivity for Rooted Trees\\of Height at Most Two}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an integer $g\geq 3$, a specialization of the rooted
+$U$-polynomial records the order of the root component by replacing its
+marker with the ordinary variable indexed by $g-1$ plus that order.  We
+prove that this specialization distinguishes all rooted trees of root
+height at most two, for every order and without a restriction on branch
+sizes.  The proof extracts the elementary symmetric functions of the
+numbers of depth-two leaves in the root branches, together with the root
+degree, from two explicit families of coefficients.  This resolves only
+the height-at-most-two specialization of the root-injectivity conjecture;
+the conjecture for unrestricted rooted trees is not addressed.
+\end{abstract}
+
+\section{Introduction}
+
+Let $(H,\rho)$ be a finite rooted tree and let $g\geq 3$.  For
+$J\subseteq E(H)$, write $c(J)$ for the components of the spanning forest
+$(V(H),J)$ and $R_J$ for the component containing $\rho$.  Define
+\begin{equation}\label{eq:def}
+ \PsiHG(\mathbf z)=
+ \sum_{J\subseteq E(H)}
+ z_{g-1+|V(R_J)|}
+ \prod_{\substack{D\in c(J)\\D\neq R_J}}z_{|V(D)|},
+\end{equation}
+where $z_1,z_2,\ldots$ are commuting indeterminates.
+
+Kirillov, Nenashev, Shapiro, and Vaintrob introduced this polynomial in a
+reduction for unicyclic graphs and conjectured that, for every $g\geq3$,
+it distinguishes all rooted trees of each fixed order
+\cite[Conjecture~9.10]{KirillovEtAl2026}.  They verified the conjecture
+through order $13$, observed that the range $g\geq |V(H)|$ is automatic,
+and obtained an unconditional result when the relevant branches are
+smaller than $g$ \cite[Remark~9.12 and Theorem~9.14]{KirillovEtAl2026}.
+The fully pointed precursor records the root-component order in a separate
+variable.  It is the rooted $U$-polynomial of Aliste-Prieto, de Mier, and
+Zamora, which reconstructs every rooted tree
+\cite[Theorem~9]{AlistePrietoDeMierZamora2021}.
+
+Component-order data also appear in reconstruction from other graph
+polynomials.  For example, Zeng uses leading star-basis coefficient layers
+to recover weighted cores under a multiplicity-isolation condition and
+gives an integer-partition encoding of height-two rooted branches in a
+diameter-six setting \cite[Sections~2--4]{Zeng2026Multiplicity}.  The
+argument here is independent of those results: the height-two normal form
+allows the coefficients of \eqref{eq:def} itself to recover the complete
+branch multiset, with repetitions allowed.
+
+Our contribution is the following exact restricted case of the cited
+root-injectivity conjecture.  It removes every branch-size restriction
+within the class of root height at most two.  It makes no assertion for
+larger root height and no claim of priority beyond the bounded comparison
+above.
+
+\begin{theorem}\label{thm:main}
+Let $g\geq3$ and $N\geq1$.  If $(H,\rho)$ and $(H',\rho')$ are rooted
+trees on $N$ vertices, both of root height at most two, then
+\[
+ \Psi_{H,g}=\Psi_{H',g}
+ \quad\Longrightarrow\quad
+ (H,\rho)\cong(H',\rho').
+\]
+\end{theorem}
+
+\section{Coefficient extraction and reconstruction}
+
+For $N\geq2$, deleting $\rho$ leaves $r=\deg_H(\rho)$ components.
+The height assumption and the fact that $H$ is a tree imply that each is
+a star centered at its unique neighbor of $\rho$.  Write their orders as
+$b_1,\ldots,b_r$, and put
+\begin{equation}\label{eq:normal}
+ d_i=b_i-1\geq0,
+ \qquad \sum_{i=1}^r b_i=N-1.
+\end{equation}
+Thus $d_i$ is the number of depth-two leaves in branch $i$.  Conversely,
+the multiset $\{\!\{b_1,\ldots,b_r\}\!\}$ determines the rooted
+isomorphism type.
+
+\begin{lemma}\label{lem:coefficients}
+For $0\leq k\leq\lfloor(N-1)/2\rfloor$, let
+\[
+ A_k=\coeff{z_gz_2^kz_1^{N-1-2k}}{\PsiHG}.
+\]
+Then
+\begin{equation}\label{eq:Ak}
+ A_k=e_k(d_1,\ldots,d_r).
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:B}
+ \coeff{z_{g+1}z_1^{N-2}}{\PsiHG}=r.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+In every summand of \eqref{eq:def}, the root-component factor has index
+at least $g$.  The target monomial defining $A_k$ has exactly one factor
+whose index is at least $g$, namely $z_g$; here the hypothesis $g\geq3$
+also covers the endpoint $g=3$.  Thus the root component is a singleton,
+so every root edge is absent, and the factor $z_g$ has already been
+accounted for.
+
+Consider the detached star in branch $i$.  If $q$ of its $d_i$ leaf
+edges are selected, its center lies in a component of order $q+1$ and
+each unselected leaf is isolated.  The remaining target factors have
+indices only $1$ and $2$, so $q$ is either zero or one.  Selecting one
+leaf edge in branch $i$ can be done in $d_i$ ways.  A contributing forest
+is therefore specified uniquely by choosing $k$ distinct branches and
+one leaf edge in each, giving
+\[
+ A_k=\sum_{\substack{S\subseteq\{1,\ldots,r\}\\|S|=k}}
+      \prod_{i\in S}d_i=e_k(d_1,\ldots,d_r).
+\]
+This includes $k=0$, for which the empty forest is the unique
+contributor.  It also excludes a hidden commutative-monomial collision:
+an additional component of order $g$ would contribute a second $z_g$,
+and any order outside $\{1,2\}$ would contribute a factor absent from the
+target.
+
+For \eqref{eq:B}, the target's only factor with index at least $g$ is
+$z_{g+1}$.  Hence the root component has order two.  Every other vertex
+is isolated, so the selected edge set consists of exactly one of the $r$
+edges incident with the root.  Conversely, each such one-edge set gives
+the target monomial.  Its coefficient is therefore $r$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The case $N=1$ is immediate: there is one rooted tree and its polynomial
+is $z_g$.  Suppose $N\geq2$ and set
+$L=\lfloor(N-1)/2\rfloor$.  If
+\[
+ m=|\{i:d_i>0\}|,
+\]
+then every branch counted by $m$ has at least two vertices.  Hence
+$2m\leq N-1$, so $m\leq L$.  Lemma~\ref{lem:coefficients} consequently
+recovers the entire polynomial
+\begin{equation}\label{eq:Q}
+ Q_H(t)=\sum_{k=0}^{L}A_kt^k
+       =\prod_{i=1}^{r}(1+d_it).
+\end{equation}
+The multiset of positive $d_i$ is determined, with multiplicity, by the
+roots $-1/d_i$ of $Q_H$ (equivalently, by unique factorization of its
+normalized nonconstant linear factors).  Equation \eqref{eq:B} determines
+$r$, so appending exactly $r-m$ zeros recovers the full multiset of the
+$d_i$.  Adding one to every entry recovers the branch-order multiset in
+\eqref{eq:normal}, and hence the rooted tree.
+
+If $\Psi_{H,g}=\Psi_{H',g}$ for the same $g$ and $N$, all coefficients
+used above agree.  Thus the two branch-order multisets agree and the
+rooted trees are isomorphic.
+\end{proof}
+
+\section{Exact finite audit}
+
+An ancillary Python program independently checks the coefficient formulas
+and injectivity over a finite range.  For every $1\leq N\leq14$, it
+enumerates every integer partition of $N-1$, constructs the corresponding
+height-two rooted tree, enumerates all $2^{N-1}$ edge subsets, and computes
+\eqref{eq:def} from the resulting forest components using exact integer
+arithmetic.  For every $3\leq g\leq14$, all tested instances satisfy
+\eqref{eq:Ak}, \eqref{eq:B}, and full-polynomial injectivity.  From the
+project root the committed output is reproduced by
+\begin{verbatim}
+python3 evidence/audit_height_two.py --max-n 14 --max-g 14
+\end{verbatim}
+This audit is finite corroboration only.  No computational output is used
+to infer any untested case; the quantified theorem rests on the proof
+above.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex language models assisted with mathematical exploration,
+proof drafting, exact-program development, and checks of the argument and
+manuscript.  A fresh model context reconstructed the proof from the
+definition and reran the committed finite audit.  The author reviewed the
+result and takes responsibility for the claims.  Neither model output nor
+finite computation is a premise of Theorem~\ref{thm:main}.
+
+\section*{Data and code availability}
+
+The exact Python verifier and its committed JSON output accompany this
+article in the evidence directory, under the filenames
+\texttt{audit\_height\_two.py} and \texttt{audit\_height\_two.json}.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Modulo-Five Congruence for Overcolored Partition 4-Tuples Restricted by Parity of the Parts},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Partition congruences and modular forms},
+  pdfkeywords={overcolored partitions, congruences, eta quotients, Sturm bound}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Ffive}{\mathbb F_5}
+\newcommand{\ord}{\operatorname{ord}}
+
+\title{A Modulo-Five Congruence for Overcolored Partition\
+       $4$-Tuples Restricted by Parity of the Parts}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $f_j=(q^j;q^j)_\infty$ and define $a(N)$ by
+\[
+ \frac{f_4^8}{f_1^{16}f_2^8}=\sum_{N\geq0}a(N)q^N.
+\]
+We prove that $a(5n)\equiv0\pmod 5$ for every $n\geq1$, resolving the
+first displayed congruence in Conjecture~7.1 of Thejitha and Fathima.
+The proof places a holomorphic eta quotient in
+$M_{52}(\Gamma_0(20))$, applies $U_5$, and uses Sturm's theorem to reduce
+the required identity to 181 exact coefficient comparisons over
+$\mathbb F_5$.
+\end{abstract}
+
+\section{Statement and context}
+
+For $j\geq1$, put
+\[
+ f_j=(q^j;q^j)_\infty=\prod_{m\geq1}(1-q^{jm}).
+\]
+The overcolored partition $k$-tuples restricted by parity studied by
+Thejitha and Fathima have generating function
+\begin{equation}\label{eq:general-gf}
+ \sum_{N\geq0}\bar b^k_{r,s}(N)q^N
+ =\frac{f_2^{(3s-2r)k}}{f_1^{2sk}f_4^{(s-r)k}}.
+\end{equation}
+Their Conjecture~7.1 records several congruences supported there by
+computation~\cite{ThejithaFathima2026}.  The specialization
+$(r,s,k)=(4,2,4)$ in \eqref{eq:general-gf} gives
+\begin{equation}\label{eq:F}
+ F(q):=\frac{f_4^8}{f_1^{16}f_2^8}
+      =\sum_{N\geq0}a(N)q^N,
+ \qquad a(N)=\bar b^4_{4,2}(N).
+\end{equation}
+Related generating-function congruences for the overcubic specialization
+were obtained by Chac\'on and Sellers~\cite{ChaconSellers2026}; their
+families do not contain the specialization in \eqref{eq:F}.
+
+\begin{theorem}\label{thm:main}
+For every integer $n\geq1$,
+\[
+ \bar b^4_{4,2}(5n)\equiv0\pmod5.
+\]
+\end{theorem}
+
+The theorem concerns all $n\geq1$; a finite coefficient search alone would
+not prove it.  We use the finite comparison only after a modular-form
+reduction makes Sturm's bound applicable.
+
+\section{Eta-quotient reduction}
+
+Write $q=e^{2\pi iz}$ and let
+\[
+ U_5\!\left(\sum_{N\geq0}c(N)q^N\right)
+   =\sum_{n\geq0}c(5n)q^n.
+\]
+Since $a(0)=1$, Theorem~\ref{thm:main} is equivalent to
+\begin{equation}\label{eq:target}
+ U_5(F)\equiv1\pmod5.
+\end{equation}
+
+Consider
+\begin{equation}\label{eq:A}
+ A(z)=\frac{\eta(4z)^8\eta(5z)^{120}}
+             {\eta(z)^{16}\eta(2z)^8}.
+\end{equation}
+At level $20$, its nonzero eta exponents are
+\[
+ (r_1,r_2,r_4,r_5)=(-16,-8,8,120).
+\]
+The eta-quotient modularity conditions originating with Newman, together
+with the cusp-order criterion of Ligozat, will be used in their standard
+form~\cite{Newman1959,Ligozat1975}.  Here the weight is
+$\frac12\sum r_\delta=52$, and
+\[
+ \sum_{\delta\mid20}\delta r_\delta=600\equiv0\pmod{24},
+ \qquad
+ \sum_{\delta\mid20}\frac{20}{\delta}r_\delta
+ =120\equiv0\pmod{24}.
+\]
+Moreover,
+\[
+ \prod_{\delta\mid20}\delta^{r_\delta}=2^8 5^{120}
+\]
+is a square, so the associated quadratic character is trivial.  For a
+cusp of denominator $d\mid20$, the invariant order is
+\begin{equation}\label{eq:cusp-order}
+ v_d(A)=\frac{20}{24\gcd(d,20/d)}
+ \sum_{\delta\mid20}
+ \frac{\gcd(d,\delta)^2r_\delta}{d\delta}.
+\end{equation}
+Direct substitution gives
+\[
+\begin{array}{c|rrrrrr}
+ d&1&2&4&5&10&20\\ \hline
+ v_d(A)&5&0&5&97&24&25.
+\end{array}
+\]
+All cusp orders are nonnegative.  Consequently
+\begin{equation}\label{eq:modularity-A}
+ A\in M_{52}(\Gamma_0(20))
+\end{equation}
+with trivial character.  Since $5\mid20$, the standard $U_5$ operator
+preserves this space~\cite{AtkinLehner1970}; hence
+$U_5(A)\in M_{52}(\Gamma_0(20))$.
+
+\section{Sturm comparison and proof}
+
+Let
+\[
+ E_4(z)=1+240\sum_{n\geq1}\sigma_3(n)q^n,
+ \qquad
+ \Delta(z)=\eta(z)^{24}=qf_1^{24},
+\]
+and define
+\begin{equation}\label{eq:C}
+ C(z)=E_4(z)^2U_5(A)(z)-\Delta(z)^5.
+\end{equation}
+Both summands have weight $60$, level dividing $20$, trivial character,
+and integral Fourier coefficients.  Thus
+\[
+ C\in M_{60}(\Gamma_0(20))\cap\mathbb Z[[q]].
+\]
+The index and the resulting Sturm bound are
+\begin{equation}\label{eq:sturm-bound}
+ [\mathrm{SL}_2(\mathbb Z):\Gamma_0(20)]
+ =20\left(1+\frac12\right)\left(1+\frac15\right)=36,
+ \qquad
+ \frac{60}{12}\,36=180.
+\end{equation}
+Sturm's congruence theorem~\cite{Sturm1987} therefore shows that
+$C\equiv0\pmod5$ once its coefficients through degree $180$ vanish modulo
+$5$.
+
+This finite check was carried out directly in $\Ffive[[q]]$.  Expanding
+the defining Euler products through degree $900=5\cdot180$ gives
+\[
+ [q^{5n}]A=[q^n]\Delta^5,
+ \qquad 0\leq n\leq180.
+\]
+For completeness, the accompanying verifier starts with the appropriate
+monomial shift and processes each factor $(1-q^{jm})^e$ by coefficient
+updates: for $e>0$ it performs $e$ descending subtraction passes, while
+for $e<0$ it performs $-e$ ascending addition passes.  All entries are
+reduced modulo $5$.  It constructs $A$ through degree $900$ and
+$\Delta^5=q^5f_1^{120}$ through degree $180$, then compares precisely the
+181 displayed pairs.  The failure list is empty.  Since
+$E_4^2\equiv1\pmod5$, these comparisons are exactly the coefficients of
+\eqref{eq:C} required by \eqref{eq:sturm-bound}.  Hence
+\begin{equation}\label{eq:Czero}
+ C\equiv0\pmod5.
+\end{equation}
+
+It remains to recover the original series.  Put
+$D(q)=q^5f_1^{120}=\Delta(q)^5$.  The eta shifts give the exact
+formal-power-series identity
+\begin{equation}\label{eq:factorization}
+ A(q)=q^{25}f_5^{120}F(q)=D(q^5)F(q).
+\end{equation}
+For arbitrary formal series $D$ and $G$, coefficient convolution yields
+\begin{equation}\label{eq:u-factorization}
+ U_5\bigl(D(q^5)G(q)\bigr)=D(q)U_5(G(q)).
+\end{equation}
+Equations \eqref{eq:factorization} and \eqref{eq:u-factorization} imply
+\[
+ U_5(A)=D(q)U_5(F)=\Delta^5U_5(F).
+\]
+Reducing \eqref{eq:Czero} modulo $5$ and again using
+$E_4^2\equiv1\pmod5$, we obtain
+\[
+ 0\equiv\Delta^5\bigl(U_5(F)-1\bigr)\pmod5.
+\]
+The series $\Delta^5=q^5f_1^{120}$ is nonzero in the integral domain
+$\Ffive[[q]]$ (indeed, $f_1^{120}$ is a unit), so it can be cancelled.
+This proves \eqref{eq:target}, and hence Theorem~\ref{thm:main}.
+
+\section*{Computational reproducibility and assistance}
+
+The accompanying file \texttt{modular\_sturm\_certificate.py} uses only
+exact integer arithmetic reduced modulo $5$ and requires no random seed or
+numerical tolerance.  Its role is limited to the Sturm-prescribed finite
+comparison above.  The broader practice of separating a mathematical
+reduction from a small deterministic verifier also appears in an unrelated
+finite-geometric setting in Zeng et al.~\cite{ZengEtAl2026}; the present
+certificate uses Euler-product arithmetic rather than enumeration or
+optimization.
+
+OpenAI Codex assisted with literature search, proof organization, exact
+coefficient verification, and manuscript preparation.  Language-model
+output is not used as mathematical evidence: the proof is given above and
+the finite step is reproducible by the exact verifier.  No proof assistant
+was used.
+
+\begingroup
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+\endgroup
+
+\end{document}

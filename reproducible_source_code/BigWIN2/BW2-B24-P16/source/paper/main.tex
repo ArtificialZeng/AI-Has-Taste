@@ -1,0 +1,114 @@
+\documentclass[10pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\title{A Counterexample to the Positivity Conjecture for OEIS A071532}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{September 2, 2026}
+\hypersetup{pdftitle={A Counterexample to the Positivity Conjecture for OEIS A071532},pdfauthor={Xiaojian Zeng}}
+\begin{document}
+\begin{abstract}
+Let $S_n=-\sum_{k=1}^n(-1)^{\lfloor(3/2)^k\rfloor}$.
+The recorded conjecture that $S_n>0$ for every $n>2$ is false. Exact
+integer enumeration gives $S_{331522}=0$; moreover, $331522$ is the first
+violating index. We give the elementary binary-digit reduction and a small,
+independently rerunnable verifier that checks every prefix through $10^6$.
+No floating-point arithmetic or unverified solver output is used.
+\end{abstract}
+\maketitle
+\section{Statement and provenance}
+OEIS A071532 records
+\begin{equation}\label{eq:def}
+ S_n=-\sum_{k=1}^n(-1)^{\lfloor(3/2)^k\rfloor}
+\end{equation}
+and asks whether $S_n>0$ \cite{oeis71532}. Since its displayed values include
+$S_2=0$, the precise version is the assertion for every integer $n>2$.
+The pinned Formal Conjectures source states exactly this endpoint, but leaves
+the theorem unproved \cite{formal71532}. Our searches through the cutoff date
+found no earlier published resolution; this is a bounded literature statement,
+not a claim that every possible source has been exhausted.
+
+One comment in the current OEIS record has a harmless indexing error. If
+$c(n)$ counts odd quotients over $0\leq k\leq n$, then the $k=0$ quotient is
+odd, and hence $S_n=2c(n)-n-2$, rather than $2c(n)-n$. The defining formula
+\eqref{eq:def} and the conjecture are unaffected.
+
+\section{Exact reduction and counterexample}
+Put $q_k=\lfloor3^k/2^k\rfloor$. Euclidean division gives
+\[
+ 3^k=2^kq_k+r_k,\qquad 0\leq r_k<2^k.
+\]
+Consequently $q_k\bmod2$ is precisely bit $k$ (numbering the least
+significant bit as zero) of the integer $3^k$. Thus $S_0=0$ and the exact
+recurrence is
+\begin{equation}\label{eq:update}
+ S_k=S_{k-1}+\begin{cases}1,&((3^k\mathbin{\mathrm{div}}2^k)\bmod2)=1,\\
+ -1,&((3^k\mathbin{\mathrm{div}}2^k)\bmod2)=0.
+ \end{cases}
+\end{equation}
+\begin{theorem}\label{thm:counterexample}
+The assertion $S_n>0$ for every integer $n>2$ is false. In fact,
+\[
+ S_{331522}=0,
+\]
+and $S_n>0$ for $3\leq n<331522$.
+\end{theorem}
+\begin{proof}
+Starting with $p=1$ and $S=0$, for each $k=1,\ldots,331522$ replace
+$p$ by $3p$, extract the integer bit $(p\mathbin{\mathrm{div}}2^k)\bmod2$,
+and update $S$ by \eqref{eq:update}. This is a complete enumeration using
+only integer multiplication, division by powers of two, parity, and addition.
+The supplied verifier recomputes every update and reports the first
+nonpositive target prefix as $331522$, with value zero. A second evaluator
+checks the first $10000$ bits from $3^k\bmod2^{k+1}$ and from a fresh direct
+quotient. Since all earlier target indices are visited and tested, the first
+claim follows; the exact equality at $331522$ disproves strict positivity.
+\end{proof}
+
+For local inspectability, the last eleven updates around the first failure are
+\begingroup\scriptsize\setlength{\arraycolsep}{2.2pt}
+\[
+\begin{array}{c|rrrrrrrrrrr}
+k&331515&331516&331517&331518&331519&331520&331521&331522&331523&331524&331525\\\hline
+S_k&7&6&5&4&3&2&1&0&-1&-2&-3.
+\end{array}
+\]
+\endgroup
+In each of these eleven steps the extracted bit is zero. This short table is
+illustrative; the rerun, rather than the table, certifies all preceding steps.
+
+\begin{proposition}
+The same exact run certifies all prefixes through $10^6$. It gives
+$S_{10^6}=580$ and a minimum value $-359$, attained at $n=371843$, over
+$3\leq n\leq10^6$.
+\end{proposition}
+
+\section{Reproducibility and limitations}
+From the source root the certificate is rerun by
+\begin{quote}\small
+\texttt{python3 certificate/certifier\_verify.py}\\
+\texttt{\phantom{python3 }certificate/certifier\_claim.json}
+\end{quote}
+The recorded run used CPython 3.10.12 and only its standard library. There is
+no randomness, floating-point arithmetic, SAT/SMT solver, or proof assistant.
+The code rejects malformed claims and independently recomputes every update
+and all stated statistics. The finite behavior after the first
+failure is not needed for Theorem~\ref{thm:counterexample}; it is reported only
+as an additional reproducibility check. The computation does not address the
+separate square-root or log-squared asymptotic questions on the OEIS page.
+
+The exact enumeration, certificate generation, source build, and document
+checks were performed with standard programmatic tools. All mathematical
+claims needed for the disproof reduce to the displayed integer recurrence and
+can be rerun from the archived source and data.
+\bibliographystyle{amsplain}
+\begingroup\sloppy
+\bibliography{references}
+\endgroup
+\end{document}

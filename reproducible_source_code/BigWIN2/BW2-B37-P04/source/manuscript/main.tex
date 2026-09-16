@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={Exact Exclusion of A114216 Hits from Index 78,493,253 through 100,000,000},pdfauthor={Xiaojian Zeng},pdfsubject={Certified finite computation for OEIS A114216},pdfkeywords={integer sequence, segmented sieve, exact computation, OEIS A114216}}
+\usepackage{doi}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Exact Exclusion of A114216 Hits from Index\\
+  $78{,}493{,}253$ through $100{,}000{,}000$}
+\author{Xiaojian Zeng\\
+  PBC School of Finance, Tsinghua University, 100190\\
+  \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $p_n$ be the $n$th prime, let $a_0=0$, and define
+$a_n=\operatorname{oddpart}(a_{n-1}+p_n)$.  We prove by exhaustive exact
+computation that $a_n\ne1$ for
+$78{,}493{,}252<n\le100{,}000{,}000$.  Two separately implemented segmented
+prime sieves replay the recurrence from $a_0=0$, record every hit, and agree
+on the complete hit list and on 100 periodic checkpoints.  The calculation
+resolves this finite interval only; it makes no assertion about any later
+index or about the existence of a last occurrence.
+\end{abstract}
+
+\section{Statement and context}
+
+For a positive integer $m$, write
+\[
+ v_2(m)=\max\{e\ge0:2^e\mid m\},\qquad
+ \operatorname{oddpart}(m)=\frac{m}{2^{v_2(m)}}.
+\]
+The OEIS entry A114216 gives the recurrence considered here
+\cite{oeisA114216}.  Zeng's unrefereed preprint reported the occurrence at
+$78{,}493{,}252$ and reconstructed its prime and preceding recurrence state
+with two exact-integer implementations \cite{Zeng2026SSRN7395098}.  The
+companion entry A114217 now records this index in its occurrence list
+\cite{oeisA114217}, but a displayed list alone is not an exhaustive
+certificate for a later interval.  Our contribution is the following finite
+statement.
+
+\begin{theorem}\label{thm:main}
+Let $p_n$ be the $n$th prime, with $p_1=2$, and define $a_0=0$ and
+\[
+ a_n=\operatorname{oddpart}(a_{n-1}+p_n)\qquad(n\ge1).
+\]
+Then
+\[
+ a_n\ne1
+ \qquad\text{for every }78{,}493{,}252<n\le100{,}000{,}000.
+\]
+\end{theorem}
+
+Since $a_{n-1}+p_n>0$, the recurrence is always defined.  Moreover,
+\begin{equation}\label{eq:hit}
+ a_n=1\quad\Longleftrightarrow\quad
+ a_{n-1}+p_n\text{ is a power of }2.
+\end{equation}
+Thus each hit can be tested with exact integer arithmetic.
+
+\section{Exhaustive certificate}
+
+Both programs enumerate primes below the exclusive bound
+\[
+U=2{,}100{,}000{,}000
+\]
+and stop only after processing the $100{,}000{,}000$th prime.  Segmentation is
+a standard memory-saving form of the sieve of Eratosthenes
+\cite{baysHudson1977}.  A published large-scale precedent used this same
+algorithmic family for exhaustive finite verification and prime-gap
+computation \cite{oliveiraSilvaHerzogPardi2014}; that work does not certify the
+calculation reported here.  Here the sieve is implemented in two deliberately
+different ways.
+
+Path A constructs the base primes by a dense sieve, treats 2 separately, and
+sieves odd-only segments stored as NumPy Boolean arrays.  It computes the
+odd part of a positive unsigned integer $s$ as $s/(s\mathbin{\&}(-s))$.
+Path B constructs the base primes by trial division, sieves consecutive
+full-integer segments in scalar compiled loops, and removes factors of 2 by
+repeated division.  The implementations use NumPy and Numba
+\cite{harris2020numpy,lam2015numba}, but share no executable source code.
+
+\begin{lemma}\label{lem:sieve}
+Each path enumerates, in increasing order and without omission, all primes it
+processes through $p_{100000000}$.
+\end{lemma}
+
+\begin{proof}
+For each path the base-prime set is complete through
+$\lfloor\sqrt{U-1}\rfloor=45{,}825$: it contains 4,746 primes and ends at
+45,823.  In a segment, the progression for a base prime $q$ begins at the
+larger of $q^2$ and the first multiple of $q$ in that segment.  Hence no prime
+is marked.  Conversely, every composite $m<U$ has a prime divisor
+$q\le\sqrt m\le\sqrt{U-1}$ and satisfies $m\ge q^2$, so it is marked in its
+unique segment.  The survivors traversed in increasing segment order are
+therefore exactly the primes.  Both enumerations reach
+\[
+ p_{100000000}=2{,}038{,}074{,}743<U.
+\]
+\end{proof}
+
+Starting from $(n,a_n)=(0,0)$, each enumerated prime is fed once into the
+recurrence.  Path A divides by the low bit and Path B repeatedly divides by
+2; both operations give exactly $s/2^{v_2(s)}$.  Induction on the enumerated
+prime index therefore identifies each computed state with the defined
+$a_n$.  Both programs check for unsigned 64-bit overflow before every
+addition.  The maximum state encountered was $2{,}037{,}477{,}755$, and all
+processed primes are below $U$, so the arithmetic used in the recorded runs
+is far within the unsigned 64-bit range.
+
+The hit test is executed after every recurrence step, not merely at
+checkpoints.  Independently, both paths produce the complete hit list
+\begin{equation}\label{eq:hits}
+ 1,\ 2,\ 5,\ 12,\ 14,\ 20,\ 75,\ 33{,}900,\ 78{,}493{,}252
+\end{equation}
+through index $100{,}000{,}000$.  At the final hit they reconstruct
+\[
+ p_{78493252}=1{,}579{,}691{,}809,\qquad
+ a_{78493251}=567{,}791{,}839,
+\]
+whose sum is $2{,}147{,}483{,}648=2^{31}$.  There is no member of the target
+interval in \eqref{eq:hits}, proving Theorem~\ref{thm:main}.
+
+As additional cross-checks, the paths agree at every millionth index, giving
+100 checkpoint tuples, and agree on the terminal value
+\[
+ a_{100000000}=1{,}626{,}692{,}547.
+\]
+They also apply 64-bit FNV-1a to the byte stream formed by concatenating, at
+each step, the little-endian unsigned 64-bit encodings of $(n,p_n,a_n)$
+\cite{nollEtAl2026FNV}, and obtain the same final digest.  This digest is used
+only as provenance and integrity metadata to detect an accidental mismatch;
+it is not treated as a proof.  Reruns with altered and unequal segment sizes
+reproduce the same mathematical outputs.
+
+\section{Reproduction and limitations}
+
+From the project directory, the decisive records can be regenerated and
+compared by
+\begin{verbatim}
+python3 evidence/path_a_numpy.py --target 100000000 \
+  --output /tmp/a114216_full_a.json
+python3 evidence/path_b_numba.py --target 100000000 \
+  --output /tmp/a114216_full_b.json
+python3 evidence/compare_exact_runs.py \
+  /tmp/a114216_full_a.json /tmp/a114216_full_b.json \
+  --output /tmp/a114216_full_comparison.json
+\end{verbatim}
+The recorded build used Python 3.10.12, NumPy 2.2.6, and Numba 0.67.0.  The
+comparison requires equality of every complete hit record, every checkpoint,
+the maximum and terminal states, and the per-step stream digest; it also
+reports the hits in the requested interval separately.
+
+The proof is an exhaustive finite calculation.  It neither establishes nor
+suggests that $78{,}493{,}252$ is the last hit, and it provides no information
+about indices greater than $100{,}000{,}000$.
+
+\paragraph{Computational and AI assistance.}
+AI assistance was used in developing the replay programs, organizing the
+correctness argument, and drafting this article.  The conclusion rests on the
+disclosed exact algorithms and records, not on an AI confidence assessment.
+The source code, complete hit records, checkpoint records, altered-segment
+runs, and comparison program are supplied with the project for inspection and
+reproduction.
+
+\footnotesize
+\bibliographystyle{plainurl}\bibliography{references}
+
+\end{document}

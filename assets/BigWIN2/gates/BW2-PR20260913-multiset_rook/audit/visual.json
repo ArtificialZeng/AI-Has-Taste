@@ -1,0 +1,49 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260913-multiset-rook-release-f279096f79ec",
+  "snapshot_digest": "504145184b080ede72dcc81b550b2532dd2735ee8c192cc934b26a38d9154ba3",
+  "manuscript_digest": "74fbbb0c497af6bd1255b7f61e16c5253f52d7ae3d006fdd771b7086b395a280",
+  "pdf_digest": "217ceb7dd07098a9789777a0485f3c16c7107bfa23d6399cfdac0351f6b8dee1",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "inspection_tool": "functions.exec -> tools.view_image -> image, actual native image inspection in this release context",
+  "render_command": "pdftoppm -r 130 -png manuscript/build/main.pdf audit/rendered/page",
+  "page_images": [
+    {
+      "page": 1,
+      "path": "audit/rendered/page-1.png",
+      "sha256": "4e44208244ac4b0911e0f727bcae3299aca8d62796b6ae2e8d1c55544f9ec423",
+      "observation": "Title, author, date and footnote are legible. Definitions and equations (1)-(3), including subscripts and root order, fit within the page. The abstract preserves the unresolved total clause."
+    },
+    {
+      "page": 2,
+      "path": "audit/rendered/page-2.png",
+      "sha256": "ca74b85517d2883c184282bc48f8f6f7499026e3d5ff91490649d12489e8d15d",
+      "observation": "Theorem 1, all three factorizations, total polynomial, contextual citations [1]-[4], insertion bijection and indicator sums are legible and unclipped."
+    },
+    {
+      "page": 3,
+      "path": "audit/rendered/page-3.png",
+      "sha256": "eaa3b52ee26ee251bc2374cb9c9f24333f215c4e95d19e73f50ab79a625b4e24",
+      "observation": "The six contribution polynomials and five cubic evaluations are legible and match the exact replay. Root sets, the strict inequality, citation [5], unresolved-scope paragraph and appendix introduction show no overlap."
+    },
+    {
+      "page": 4,
+      "path": "audit/rendered/page-4.png",
+      "sha256": "f6dbf179d4abe8fea611503f8de8697ed87d0bc4e319aaba273e67dc75901e2f",
+      "observation": "All 30 base words and 60 ascent-count entries are visible in the two-block table. Code indentation, coefficient assertions and assistance disclosure are legible; no truncated lines or glyphs."
+    },
+    {
+      "page": 5,
+      "path": "audit/rendered/page-5.png",
+      "sha256": "2ed424e774684d199d167a3640c88d2586fdf8122df75a5c21c517b65e0c99b8",
+      "observation": "All five references are resolved. Author names, protected capital M and Sturm, years, versions, journal data and full URL strings are legible without clipping."
+    }
+  ]
+}

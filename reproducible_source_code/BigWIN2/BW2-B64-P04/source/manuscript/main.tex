@@ -1,0 +1,328 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{Exact Algebraic Degree of Complete Raw Finite-Field Inversion}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\hypersetup{
+  pdftitle={Exact Algebraic Degree of Complete Raw Finite-Field Inversion},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={A uniform exact algebraic-degree theorem for complete raw finite-field inversion},
+  pdfkeywords={Boolean functions, algebraic normal form, finite fields, inversion, algebraic degree}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $p\in\F_2[t]$ be any irreducible polynomial of degree $n\geq 3$,
+let $J_n$ denote inversion in $\F_2[t]/(p)$ in the associated polynomial
+basis (with $0^{-1}=0$), and regard the entries of
+$P\in\F_2^{n\times n}$ and $u\in\F_2^n$ as independent Boolean variables.
+For the complete raw full-domain map
+\[
+        f_{\rm raw}(P,u)=\adj(P)J_n(Pu),
+\]
+including singular $P$, we prove
+$\deg f_{\rm raw}=3(n-1)$.  The lower bound is witnessed by an explicit
+top-degree ANF coefficient.  Its value is an off-diagonal entry of the
+inverse trace Gram matrix, while its matrix-variable support is a disjoint
+edge together with an alternating spanning path.  This closes the
+algebraic-degree half of a two-part question posed by Zhang and Zhang.  It
+does not prove the conjectured value of the joint ANF leap, so the original
+two-part problem remains unresolved.
+\end{abstract}
+
+\section{Context and statement}
+
+Algebraic normal form (ANF) is the unique multilinear polynomial
+representation of a Boolean function; algebraic degree is the largest
+cardinality of a monomial support with nonzero coefficient.  We use these
+standard notions also coordinatewise for vectorial Boolean maps; see
+Carlet's Chapter~2 \cite{Carlet2021}.  Standard background on finite fields,
+trace, and dual bases may be found in Chapter~2, Section~3 of
+\cite{LidlNiederreiter1997}.
+
+Definition~11 of Zhang and Zhang \cite{ZhangZhang2026} introduced the
+complete raw polynomial extension above on the full Boolean matrix space.
+Their Proposition~12 and Theorem~17 prove the bounds
+\[
+ \deg f_{\rm raw}\leq 3(n-1),\qquad
+ L_{\rm ANF}^{\rm joint}(f_{\rm raw})\geq n,
+\]
+and Section~4.2 reports exhaustive calculations attaining both bounds for
+$n=3,4$.  Their definition is a polynomial extension to every matrix $P$,
+not merely the restriction to $P\in\operatorname{GL}_n(\F_2)$.  The contribution here is a
+uniform nonzero coefficient that turns the first bound into an equality for
+every permitted polynomial reference basis.  No matching upper bound for
+the joint ANF leap is asserted.
+
+The witness is obtained by coefficient extraction through two matching
+expansions.  Nonzero coefficient extraction over finite fields also appears,
+in a different setting, in the permanent-rank argument of Zeng, Liu, and
+Ratnavelu \cite{202608.1194}, whose Section~3 combines it with the
+Combinatorial Nullstellensatz; that work is cited here
+as a related coefficient-certificate method, not as prior work on Boolean
+inversion.  The comparison with prior results on the present problem is
+limited to the very recent source \cite{ZhangZhang2026}; no global priority
+claim is made.
+
+Fix $n\geq3$ and an irreducible $p\in\F_2[t]$ of degree $n$.  Write
+\[
+ F=\F_2[t]/(p),\qquad \alpha=t\bmod p,
+ \qquad E=(e_0,\ldots,e_{n-1})=(1,\alpha,\ldots,\alpha^{n-1}).
+\]
+Coordinates in $E$ identify $F$ with $\F_2^n$.  Let
+\[
+ J_n([x]_E)=[x^{-1}]_E,\qquad 0^{-1}=0,
+\]
+and define $f_{\rm raw}:\F_2^{n\times n}\times\F_2^n\to\F_2^n$ by
+\[
+ f_{\rm raw}(P,u)=\adj(P)J_n(Pu).
+\]
+All $n^2+n$ entries of $(P,u)$ are independent Boolean variables.  Thus
+the statement concerns the full domain, including singular $P$.
+
+Put
+\[
+ G_{ij}=\Tr_{F/\F_2}(e_i e_j),\qquad B=G^{-1}.
+\]
+The trace pairing is nondegenerate, so $G$ and $B$ are nonsingular.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq3$ and every irreducible $p\in\F_2[t]$ of degree $n$,
+the complete raw full-domain map satisfies
+\[
+                         \deg f_{\rm raw}=3(n-1).
+\]
+More precisely, choose distinct indices $a,r$ with $B_{ar}=1$, and choose
+distinct column indices $s,k$.  List the columns other than $s$ as
+\[
+ c_0=k,c_1,\ldots,c_{n-2}
+\]
+and the rows other than $r$ as
+\[
+ \rho_0,\ldots,\rho_{n-2}=a.
+\]
+For
+\[
+ Q=\{(\rho_i,c_i):0\leq i\leq n-2\}
+   \cup\{(r,s)\}
+   \cup\{(\rho_i,c_{i+1}):0\leq i<n-2\},                 \tag{1}
+\]
+the coefficient of
+\[
+ \left(\prod_{(i,j)\in Q}p_{ij}\right)
+ \left(\prod_{j\ne s}u_j\right)                         \tag{2}
+\]
+in output coordinate $k$ is $B_{ar}=1$.
+\end{theorem}
+
+The existence of the off-diagonal entry used in the theorem is proved
+below; its location may depend on $p$.
+
+\section{The top layer of coordinate inversion}
+
+Let $(\lambda_0,\ldots,\lambda_{n-1})$ be trace-dual to $E$:
+\[
+                   \Tr(\lambda_r e_i)=\delta_{ri}.
+\]
+Since $G$ is symmetric, the coordinate column of $\lambda_r$ is the
+$r$th column of $B$:
+\[
+                         \lambda_r=\sum_a B_{ar}e_a.       \tag{3}
+\]
+
+\begin{lemma}\label{lem:top}
+The homogeneous degree-$(n-1)$ part of the ANF of $J_n$ is
+\[
+ (J_n)_{[n-1]}(x)
+   =\sum_{r=0}^{n-1}[\lambda_r]_E\prod_{i\ne r}x_i.       \tag{4}
+\]
+There is no degree-$n$ term.
+\end{lemma}
+
+\begin{proof}
+For a Boolean map $H:\F_2^n\to\F_2^m$, Mobius inversion gives the
+coefficient vector of $\prod_{i\in A}x_i$ as
+\[
+                         \sum_{C\subseteq A}H(1_C),        \tag{5}
+\]
+where the sum is in $\F_2^m$.  Hence the field element corresponding to
+the coefficient of $\prod_{i\ne r}x_i$ in $J_n$ is
+\[
+ \sum_{x\in H_r}x^{-1},\qquad
+ H_r=\operatorname{span}_{\F_2}\{e_i:i\ne r\}
+    =\ker\bigl(x\mapsto\Tr(\lambda_r x)\bigr).            \tag{6}
+\]
+
+Let $H_0=\ker\Tr$.  The monic polynomials
+\[
+ \prod_{h\in H_0}(z+h)
+ \quad\hbox{and}\quad
+ \Tr(z)=z+z^2+z^4+\cdots+z^{2^{n-1}}
+\]
+have the same degree and the same $2^{n-1}$ roots, so they are equal.
+After division by $z$, comparison of the constant and linear coefficients
+gives
+\[
+                 \sum_{h\in H_0\setminus\{0\}}h^{-1}=1.  \tag{7}
+\]
+Indeed, the constant coefficient is the product of the nonzero elements of
+$H_0$, and the linear coefficient is that product times the sum in (7);
+both coefficients in $\Tr(z)/z$ are $1$.
+
+Equation (6) gives $H_r=\lambda_r^{-1}H_0$.  Scaling (7) therefore shows
+that (6) is $\lambda_r$, proving all coefficients in (4).  Finally, the
+degree-$n$ coefficient corresponds to
+\[
+  \sum_{x\in F}x^{-1}=\sum_{x\in F}x=0,
+\]
+because inversion permutes $F\setminus\{0\}$ and the sum of all elements of
+$F$ is zero for $n\geq2$.  This proves the lemma.
+\end{proof}
+
+\section{An off-diagonal trace-dual coefficient}
+
+\begin{lemma}\label{lem:offdiag}
+For a polynomial basis of length $n\geq3$, the inverse trace Gram matrix
+$B$ has a nonzero off-diagonal entry.
+\end{lemma}
+
+\begin{proof}
+If $B$ had no nonzero off-diagonal entry, its nonsingularity over $\F_2$
+would force $B=I$, and hence $G=I$.  Let $M$ be the matrix of
+multiplication by $\alpha$ in the basis $E$.  Invariance of the trace
+pairing under moving the factor $\alpha$ gives
+\[
+                              M^T G=GM.                   \tag{8}
+\]
+Thus $G=I$ would make $M$ symmetric.  On the other hand,
+$\alpha e_0=e_1$ gives $M_{1,0}=1$, while $\alpha e_1=e_2$ (available
+because $n\geq3$) gives $M_{0,1}=0$.  This contradiction proves the claim.
+\end{proof}
+
+This argument applies separately to the polynomial basis determined by
+every irreducible $p$; it does not assume that the location of the nonzero
+off-diagonal entry is basis-invariant.
+
+\section{The alternating-path coefficient}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Choose $a\ne r$ with $B_{ar}=1$ using Lemma~\ref{lem:offdiag}, and form
+$Q$ as in (1).  The target (2) has $2(n-1)$ distinct matrix variables and
+$n-1$ distinct vector variables, hence degree $3(n-1)$.
+
+By Lemma~\ref{lem:top}, the top-degree contribution to output coordinate
+$k$ is
+\[
+ \sum_{a',r'} B_{a'r'}\,\adj(P)_{k a'}
+                  \prod_{i\ne r'}(Pu)_i.                 \tag{9}
+\]
+In a term of $\prod_{i\ne r'}(Pu)_i$, the coefficient of a squarefree
+$u$-monomial of degree $n-1$ comes from assigning distinct $u$-columns to
+the $n-1$ rows other than $r'$.  Thus a term producing
+$\prod_{j\ne s}u_j$ selects a perfect matching from the rows other than
+$r'$ to the columns other than $s$.  Likewise, the determinant expansion
+of $\adj(P)_{k a'}$ selects a perfect matching from the rows other than
+$a'$ to the columns other than $k$.  Signs disappear over $\F_2$.
+
+To produce all $2(n-1)$ distinct matrix variables in (2), these two
+matchings must be edge-disjoint and have union $Q$.  Regard $Q$ as a
+bipartite row--column graph.  It is the disjoint union of the edge $s-r$
+and the path
+\[
+ k=c_0-\rho_0-c_1-\rho_1-\cdots-c_{n-2}-\rho_{n-2}=a.    \tag{10}
+\]
+The matching arising from $J_n(Pu)$ cannot use column $s$, so the isolated
+edge $s-r$ must lie in the adjugate matching.  The adjugate matching cannot
+use column $k$, so the first edge of (10) must lie in the inversion
+matching.  The matching constraints then force alternation along the whole
+path.  Consequently the decomposition is unique.  The inversion matching
+is
+\[
+                    \{(\rho_i,c_i):0\leq i\leq n-2\},
+\]
+which omits row $r$, and the adjugate matching is
+\[
+       \{(r,s)\}\cup\{(\rho_i,c_{i+1}):0\leq i<n-2\},
+\]
+which omits row $a$.  The coefficient of (2) in (9) is therefore exactly
+$B_{ar}=1$.
+
+No lower ANF layer of $J_n$ can contribute to (2): a degree-$d$ ANF
+monomial has degree at most $2d$ after the bilinear substitution $x=Pu$,
+and multiplication by an adjugate entry adds at most $n-1$.  When
+$d<n-1$, this is strictly less than $3(n-1)$.  Hence (2) is genuinely a
+nonzero ANF monomial of degree $3(n-1)$.
+
+Conversely, every adjugate entry has degree at most $n-1$, and $J_n$ has
+degree $n-1$ (also immediate from Lemma~\ref{lem:top}).  Substitution of
+the bilinear coordinates of $Pu$ at most doubles the latter degree, so
+\[
+                  \deg f_{\rm raw}\leq(n-1)+2(n-1).
+\]
+The displayed coefficient supplies the reverse inequality and completes
+the proof.
+\end{proof}
+
+\begin{remark}[Dependence on the reference polynomial]
+If a second basis is expressed in the first by $T\in\operatorname{GL}_n
+(\F_2)$, then
+\[
+                  G'=T^TGT,\qquad B'=T^{-1}BT^{-T}.
+\]
+Thus the particular witness location $(a,r)$ need not survive a basis
+change.  Uniformity means instead that Lemma~\ref{lem:offdiag} applies in
+each allowed polynomial basis, after which the witness is reselected.
+\end{remark}
+
+\begin{remark}[Unresolved part]
+The source \cite{ZhangZhang2026} defines the joint ANF leap using an
+optimal ordering of the joint monomial support.  The coefficient family
+above proves no ordering that introduces at most $n$ new variables at each
+step.  Hence it does not establish
+$L_{\rm ANF}^{\rm joint}(f_{\rm raw})\leq n$; the equality for general
+$n$ and the original conjunction remain unresolved.
+\end{remark}
+
+\section{Exact finite checks and assistance disclosure}
+
+A deterministic Python verifier computes the coefficient in (2) directly
+from the Boolean Mobius formula (5).  It enumerates every monic irreducible
+binary polynomial of degrees $3$, $4$, and $5$: respectively $2$, $3$, and
+$6$ polynomials.  All eleven computed coefficients are $1$.  These are
+exact finite checks of the displayed certificate, not evidence replacing
+the quantified proof.  The same proof-versus-verifier separation is made
+explicit in the related coefficient-certificate workflow of
+\cite{202608.1194}.
+
+An OpenAI Codex language model assisted with organizing the proof, checking
+its scope against the supplied source and referee report, drafting the
+manuscript, and preparing the exact verification workflow.  The author is
+responsible for the mathematical claims.  The uniform theorem rests on the
+symbolic argument above; the finite computations cover only the stated
+degrees.
+
+\begingroup
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+\endgroup
+
+\end{document}

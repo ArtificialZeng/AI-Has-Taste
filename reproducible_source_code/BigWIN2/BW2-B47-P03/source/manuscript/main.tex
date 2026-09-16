@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Tfour}{T_4}
+
+\title{The Exact Forced-Win Time on the $4\times4$\\
+Transversal Achievement Board}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\hypersetup{
+  pdftitle={The Exact Forced-Win Time on the 4 x 4 Transversal Achievement Board},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact minimax analysis of a finite positional game},
+  pdfkeywords={transversal achievement game, positional game, exact certificate, minimax}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Two players alternately claim empty cells of a $4\times4$ board, with X
+moving first, and the first player to own four cells in distinct rows and
+columns wins.  We prove that X can force a win by ply $11$, but not by ply
+$9$.  Thus the minimax forced-win time is $\Tfour=11$.  The upper bound is
+Guan's explicit strategy.  For the lower bound we give an exact positional O
+policy with $6{,}861$ choices.  A separately implemented verifier reconstructs
+the $24$ winning transversals, branches over every legal X move, checks every
+certified O reply and every terminal position, and finds no X win through ply
+$9$.  The result concerns only the fixed $4\times4$ game; it does not settle
+the proposed general formula for all board sizes.
+\end{abstract}
+
+\section{Context and statement}
+
+Erickson posed the transversal achievement game for an $n\times n$ grid
+\cite{Erickson2010}.  A transversal contains one cell in every row and every
+column.  Ranđelović proved that the first player wins for $n\geq4$
+\cite{Randjelovic2025}.  Guan subsequently gave a fully specified strategy
+that wins by ply $2n+3$ for every $n\geq4$ \cite{Guan2026}.  For $n=4$ this
+gives an upper bound of $11$ plies.  Guan's exhaustive search shows that this
+bound is attained against that particular strategy for $n=4,5,6$, and
+Conjecture~14 of \cite{Guan2026} proposes that $2n+3$ is the optimal-play
+length.  As emphasized there, checking the replies to one X strategy does not
+exclude a different, faster X strategy.
+
+We determine the complete minimax value for $n=4$.  Let
+\[
+ B=[4]\times[4],\qquad
+ \mathcal T=\bigl\{\{(i,\pi(i)):i\in[4]\}:\pi\in S_4\bigr\}.
+\]
+Players X and O alternately claim a free cell, X on odd plies and O on even
+plies, and play stops as soon as the mover's claimed set contains a member of
+$\mathcal T$.  For pure strategies $\sigma_X,\sigma_O$, let
+$\tau_X(\sigma_X,\sigma_O)$ be X's winning ply and set it to $\infty$ when O
+wins or the game is drawn.  Define
+\[
+ \Tfour=\min_{\sigma_X}\max_{\sigma_O}
+ \tau_X(\sigma_X,\sigma_O).
+\]
+
+\begin{theorem}\label{thm:main}
+For the $4\times4$ transversal achievement game, $\Tfour=11$.
+\end{theorem}
+
+The only contribution claimed here is this fixed-board determination.  In
+particular, no conclusion is drawn for Guan's conjecture when $n>4$.
+
+\section{The horizon-nine defense certificate}
+
+Index the cells by $4r+c$, where $0\leq r,c<4$, and encode each player's
+claimed cells by a $16$-bit integer.  For $\pi\in S_4$, the corresponding
+winning mask is
+\[
+ W_\pi=\sum_{r=0}^{3}2^{4r+\pi(r)}.
+\]
+There are exactly $4!=24$ such masks.  A position is a pair $(x,o)$ of
+disjoint ownership masks.  Because legal moves, terminal status and future
+winning conditions depend only on $(x,o)$, histories that reach the same pair
+may be merged.
+
+The ancillary file \texttt{horizon9\_policy.json} has one record
+\[
+ (\texttt{x\_mask},\texttt{o\_mask},\texttt{move})
+\]
+for every nonterminal O-to-move position reachable while the policy is
+followed.  Its move is a cell index.  The implicit directed graph starts at
+$(0,0)$, contains every free-cell successor at each X node, and contains the
+single recorded successor at each O node.  Each edge claims one cell, so the
+graph is acyclic.
+
+The following elementary certificate lemma isolates the logical content of
+the computation.
+
+\begin{lemma}\label{lem:certificate}
+Suppose a finite policy graph rooted at the empty position has the following
+properties through ply $9$:
+\begin{enumerate}
+ \item every state has disjoint in-board masks with the ownership counts
+ required by alternating play;
+ \item wins are tested before a state is treated as a horizon leaf;
+ \item every legal X move is represented at every reachable nonterminal X
+ node;
+ \item every reachable nonterminal O node has one represented legal O move;
+ and
+ \item no reachable terminal state is an X win.
+\end{enumerate}
+Then O has a strategy that prevents X from winning through ply $9$.
+\end{lemma}
+
+\begin{proof}
+Order the graph by decreasing ply.  At a safe ply-$9$ leaf, X has not won.  An
+earlier O win also prevents an X win.  At an O node, the represented legal
+move leads to a safe successor.  At an X node, every legal move leads to a
+safe successor.  Backward induction therefore marks the root safe against
+every sequence of X moves.  The recorded choices define O on all positions
+reachable under this policy and can be extended arbitrarily on unreachable O
+positions, giving a strategy in the usual game-theoretic sense.
+\end{proof}
+
+The independent verifier \texttt{verify\_horizon9\_policy.py} checks precisely
+these hypotheses without importing the policy generator.  It reconstructs
+the $24$ masks $W_\pi$, rejects duplicate or unreachable policy records,
+checks mask bounds, disjointness, move legality and turn counts, and branches
+over every free cell at X nodes.  It tests both players' wins before accepting
+a horizon leaf.  Its exhaustive replay gives the counts in
+Table~\ref{tab:counts}.
+
+\begin{table}[ht]
+\centering
+\caption{Exhaustive replay of the certified O policy.}
+\label{tab:counts}
+\begin{tabular}{lr}
+Quantity & Count\\
+Reachable positions & $28{,}604$\\
+Exhaustively branched X positions & $4{,}911$\\
+Checked legal X edges & $41{,}768$\\
+O positions with a checked policy choice & $6{,}861$\\
+Checked O edges & $6{,}861$\\
+Terminal O-win positions & $111$\\
+Safe ply-$9$ positions & $16{,}721$\\
+Terminal X-win positions & $0$\\
+\end{tabular}
+\end{table}
+
+Thus Lemma~\ref{lem:certificate} supplies the universal quantifier absent
+from a search tied to a prescribed X strategy: one O policy answers every
+legal X branch through the relevant horizon.  No symmetry quotient is used;
+all masks and moves refer to the original labelled board.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The verified policy and Lemma~\ref{lem:certificate} show that X cannot force a
+win by ply $9$.  Hence $\Tfour>9$.  X moves only on odd plies, while Guan's
+strategy gives $\Tfour\leq11$ \cite{Guan2026}.  Therefore $\Tfour=11$.
+\end{proof}
+
+\section{Reproduction, checks and limitations}
+
+From the directory containing the ancillary \texttt{evidence} folder, the
+certificate can be regenerated and then checked with
+\begin{verbatim}
+python3 evidence/horizon9_solver.py \
+  evidence/horizon9_policy.json evidence/horizon9_solver_summary.json
+python3 evidence/verify_horizon9_policy.py \
+  evidence/horizon9_policy.json evidence/horizon9_verification.json
+\end{verbatim}
+The generator is an exact unsymmetrized AND--OR search on two $16$-bit masks.
+It evaluated $148{,}787$ distinct states and exported the policy used above.
+The second program is the proof checker: its acceptance, together with the
+finite reduction in Lemma~\ref{lem:certificate}, is the evidence for the
+lower bound.  This separation between discovery and independently replayable
+certification is also used in other exact finite computations; a recent
+finite-geometry example reconstructs the relevant objects and constraints
+before checking stored certificates \cite{ZengEtAl2026}.
+
+As a further cross-check, a separate implementation reconstructed the
+transversal masks and policy graph and also ran direct exact minimax.  The
+root assertions that X can force a win by horizons $7,9,11$ were respectively
+false, false and true.  This cross-check is consistent with the replayable
+certificate but is not needed for the proof of the lower bound.
+
+The certificate makes no assertion about boards larger than $4\times4$.
+Moreover, the result is an exact finite computation rather than a structural
+description of an optimal O strategy.  Finding a compact human-readable
+defense, or extending the lower bound to arbitrary $n$, remains outside the
+present result.
+
+\paragraph{Data and computational disclosure.}
+The policy, generator, independent verifier, verification reports and run
+instructions accompany this article.  All decisive state and win tests use
+integer arithmetic; no numerical tolerance or random seed is involved.
+OpenAI Codex assisted with literature search, exact-search and verifier code
+development, adversarial audit organization, and manuscript preparation.
+Language-model output is not used as mathematical evidence: the lower bound
+rests on the explicit finite reduction, the exported policy and its exact
+verifier.  No proof assistant was used for the result reported here.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

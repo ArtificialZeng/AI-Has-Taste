@@ -1,0 +1,236 @@
+{
+  "original_id": "legacy-b17-p13",
+  "archive_id": "BW2-B17-P13",
+  "title": "The Exact Finite Sumset Value s(12,38)=65",
+  "batch_label": "17",
+  "kind": "historical-gated-manuscript",
+  "original_status": "certified finite result",
+  "scope": "Exact finite value only; no maximizing-set classification or asymptotic consequence.",
+  "gate_basis": "Independent root proof, submission and batch final audit pass; current PDF/ZIP match batch and project manifests despite stale audit footer text.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B17-P13_The_Exact_Finite_Sumset_Value_s_12_38_65.pdf",
+  "pdf_sha256": "a8fbbe6c5840f04a50d2010664e958ff0dcfa8a6793fe5990414bc212e8acb3d",
+  "pages": 3,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B17-P13/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B17-P13/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B17-P13/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Witness: Python 3 stdlib. Encoding cross-check: python-sat 1.8.dev24. Full replay: external drat-trim."
+  ],
+  "limitations": [
+    "PROOF_AUDIT.md and PDF_AUDIT.md retain stale 'Status: not yet run' footers; ROOT_PROOF_AUDIT.md, SUBMISSION_AUDIT.md and BATCH_FINAL_AUDIT.md record completed checks.",
+    "The .drup certificate is mandatory proof data; do not exclude by extension.",
+    "Exclude bundled third_party binaries; replace their README command with external drat-trim.",
+    "Original entrypoints: ['python3 code/verify_witness.py certificates/witness_65.json --n 38 --k 12 --minimum 65', 'python3 code/crosscheck_small.py', 'drat-trim certificates/no_66.cnf certificates/no_66.drup']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 11,
+  "compressed_inputs": 1,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/audit/CITATION_AUDIT.md",
+      "sha256": "af53cc2edc622262dcf8ee43939e226ea555005bfd276fba47924b9a9d61bb54",
+      "bytes": 1556
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/audit/PDF_AUDIT.md",
+      "sha256": "4ce7157c5c219f8484565a60ec74a4b64196ac5c22d347e20b7cfe118188722a",
+      "bytes": 700
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/audit/PROOF_AUDIT.md",
+      "sha256": "eb11a8c40ba63658e16b1091a424f9f5c0276c09cf44a72c0b7e5986cb7f25aa",
+      "bytes": 758
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/audit/ROOT_PROOF_AUDIT.md",
+      "sha256": "a6c407ef435b60433327363ef2433f22b6a4b3b74a2a3c942db91877382f21a2",
+      "bytes": 1188
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/audit/SUBMISSION_AUDIT.md",
+      "sha256": "d78b0cd22a5c47a070515a7c9882dc58c33712e459eb3cf77c85a422620ed417",
+      "bytes": 862
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/batch-level/BATCH_FINAL_AUDIT.md",
+      "sha256": "a7fa17401c75934f9240c61428869e6023439c57b32169902b14b084d4eed70c",
+      "bytes": 2873
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/results/release_manifest.json",
+      "sha256": "66ef470100cdcd20c88518a9e46cc0ded3644513de61c6670325490845e9672c",
+      "bytes": 22578
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P13/batch-level/batch_release_manifest.json",
+      "sha256": "e4df68c5b3959a76406a099b7ee8c329b98f2d2b35b4645e7929613502deddbf",
+      "bytes": 3467
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "473bae55d280d136b36458e304ce1ed5d47a56b5714a525c07475a3e8bb3216d",
+      "original_bytes": 5829,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "473bae55d280d136b36458e304ce1ed5d47a56b5714a525c07475a3e8bb3216d",
+          "bytes": 5829
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "1d4074c40a7fd2064fde0096a4995cdedb21dedb78dc4e18e08090da48b5c112",
+      "original_bytes": 1489,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "1d4074c40a7fd2064fde0096a4995cdedb21dedb78dc4e18e08090da48b5c112",
+          "bytes": 1489
+        }
+      ]
+    },
+    {
+      "path": "source/REPRODUCE.md",
+      "original_sha256": "fbc836c9bdac8086517781db7241303fe35869f2e690cc606407bace4ce63ad3",
+      "original_bytes": 993,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/REPRODUCE.md",
+          "sha256": "fbc836c9bdac8086517781db7241303fe35869f2e690cc606407bace4ce63ad3",
+          "bytes": 993
+        }
+      ]
+    },
+    {
+      "path": "source/code/crosscheck_small.py",
+      "original_sha256": "bb76278731743bbc2344e8e915dbe112b923be7f2a7e3b4f0f7190205af155d4",
+      "original_bytes": 1085,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/crosscheck_small.py",
+          "sha256": "bb76278731743bbc2344e8e915dbe112b923be7f2a7e3b4f0f7190205af155d4",
+          "bytes": 1085
+        }
+      ]
+    },
+    {
+      "path": "source/code/discover_cpsat.py",
+      "original_sha256": "6a4b8a54574825e4f994776d66d21da96c3e2c7ddec886d397e13cf808ffbf83",
+      "original_bytes": 2773,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/discover_cpsat.py",
+          "sha256": "6a4b8a54574825e4f994776d66d21da96c3e2c7ddec886d397e13cf808ffbf83",
+          "bytes": 2773
+        }
+      ]
+    },
+    {
+      "path": "source/code/discover_local.py",
+      "original_sha256": "37f26a2348af3ce633d727a3ded115722cffd0315dd1bf85e8b6e7a1ffa2607a",
+      "original_bytes": 1467,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/discover_local.py",
+          "sha256": "37f26a2348af3ce633d727a3ded115722cffd0315dd1bf85e8b6e7a1ffa2607a",
+          "bytes": 1467
+        }
+      ]
+    },
+    {
+      "path": "source/code/sat_decision.py",
+      "original_sha256": "4d59a70b301f9212e8274e282ffe73d1860ce8d5b241c42516fb8eb298da86b8",
+      "original_bytes": 2491,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/sat_decision.py",
+          "sha256": "4d59a70b301f9212e8274e282ffe73d1860ce8d5b241c42516fb8eb298da86b8",
+          "bytes": 2491
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_witness.py",
+      "original_sha256": "ecae86988ccc6a03a3e1980814fe2099bc2b40f68daabfc7ebbf0ee6e17e59a7",
+      "original_bytes": 1645,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_witness.py",
+          "sha256": "ecae86988ccc6a03a3e1980814fe2099bc2b40f68daabfc7ebbf0ee6e17e59a7",
+          "bytes": 1645
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/witness_65.json",
+      "original_sha256": "429f42fd83718fc0fb9529a756fcf346af3487afa388fbe8985a877c679380cc",
+      "original_bytes": 85,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/witness_65.json",
+          "sha256": "429f42fd83718fc0fb9529a756fcf346af3487afa388fbe8985a877c679380cc",
+          "bytes": 85
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/no_66.cnf",
+      "original_sha256": "10f3a767ab3b0b236c3ec776a87b7c26a6d3d0bf039613fa8164ff894a2521e9",
+      "original_bytes": 71609,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/no_66.cnf",
+          "sha256": "10f3a767ab3b0b236c3ec776a87b7c26a6d3d0bf039613fa8164ff894a2521e9",
+          "bytes": 71609
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/no_66.drup",
+      "original_sha256": "f3545a103d00c6eb498c8eed5ffcd43f0415a807e2b1c82fec19d98cd4748467",
+      "original_bytes": 35331788,
+      "role": "historical-publication-source",
+      "storage": "gzip",
+      "stored_files": [
+        {
+          "path": "compressed/certificates/no_66.drup.gz",
+          "sha256": "9a67956f9328e1319c92d72aab0f3eed42a7cbc20c8c9ae92b58f9f9f00d3c8d",
+          "bytes": 10044735
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "original_title_source": "The Exact Finite Sumset Value \\(s(12,38)=65\\)",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B17-P13",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

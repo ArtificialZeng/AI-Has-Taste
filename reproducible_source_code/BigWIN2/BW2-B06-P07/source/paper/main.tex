@@ -1,0 +1,481 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\mdim}{\operatorname{md}}
+\newcommand{\diam}{\operatorname{diam}}
+
+\title[Starlike trees and multiset dimension]{Starlike Trees and the Diameter Conjecture\\for Multiset Dimension}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation\\
+UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{05C05, 05C12, 05C35}
+\keywords{multiset dimension, multiset resolving set, ID-coloring, tree, starlike tree, diameter}
+\hypersetup{
+  pdftitle={Starlike Trees and the Diameter Conjecture for Multiset Dimension},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+For a vertex set \(W\) in a graph, the multiset representation of \(v\) is the
+multiset of its distances to the vertices of \(W\).  A conjecture of Hafidh
+et al. states that every \(n\)-vertex tree of finite multiset dimension
+satisfies \(\mdim(T)\le n-\diam(T)+1\).  We prove the conjecture for every
+starlike tree.  More precisely, if the ordered arm lengths are
+\(l_1\le\cdots\le l_m\), we show that the tree has finite multiset dimension
+if and only if at most \(2^r\) arms have length at most \(r\), for every
+\(r\ge1\).  The sufficiency proof assigns to the arms canonical binary
+landmark patterns.  An odd-modulus distance-sum argument recovers vertex
+depth, and a shell-count polynomial recovers the arm.  A binary-weight
+estimate then places this resolving set within the conjectured diameter
+budget.  Independently, two exact implementations verify the conjecture for
+all 13,188 nonisomorphic trees of order at most 15.  The conjecture for
+arbitrary trees remains open.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let \(G\) be a finite connected graph and \(W\subseteq V(G)\).  The multiset
+representation of \(v\in V(G)\) with respect to \(W\) is
+\[
+ r_m(v\mid W)=\{\!\{d(v,w):w\in W\}\!\}.
+\]
+If these multisets are pairwise distinct, then \(W\) is a multiset resolving
+set.  The minimum cardinality of such a set is the multiset dimension
+\(\mdim(G)\); if no such set exists, \(\mdim(G)=\infty\).  This parameter was
+introduced by Simanjuntak, Siagian, and Vetr\'ik~\cite{Simanjuntak2017}.
+It is equivalent to the ID-number defined through distance-shell counts
+\cite{HakanenYero2024}.
+
+Hafidh et al.~\cite{Hafidh2019} proved that an \(n\)-vertex tree \(T\) of
+diameter at least two and finite multiset dimension satisfies
+\(\mdim(T)\le n-2\).  They proposed the sharper conjecture
+\begin{equation}
+ \mdim(T)\le n-\diam(T)+1,                                  \tag{C}
+\end{equation}
+and exhibited an infinite equality family.  The conjecture is still listed
+as open in a 2026 survey~\cite{Albejani2026}.  The general-graph extremal
+problem has moved in a different direction: finite multiset dimension can
+equal the order of a graph~\cite{Allikvere2026}.
+
+A \emph{starlike tree} has exactly one vertex of degree greater than two; its
+components after deleting that vertex are paths.  Kono and Zhang
+\cite[Proposition~2.1]{KonoZhang2021} proved a necessary capacity condition
+for such a tree to admit an ID-coloring, and supplied several sufficient
+families.  Our main result proves that their capacity condition is also
+sufficient and, at the same time, proves (C) for the entire class.
+
+\begin{theorem}\label{thm:intro}
+Let \(T\) be a starlike tree with \(m\ge3\) arms of ordered lengths
+\(1\le l_1\le\cdots\le l_m\).  Then the following are equivalent.
+\begin{enumerate}
+\item \(\mdim(T)<\infty\).
+\item For every \(r\ge1\), at most \(2^r\) arms have length at most \(r\).
+\end{enumerate}
+Whenever these conditions hold,
+\[
+ \mdim(T)\le |V(T)|-\diam(T)+1.
+\]
+\end{theorem}
+
+The proof is constructive and uses neither probabilistic choices nor
+asymptotic estimates.  We also report an exact finite verification through
+order 15.  These results are partial progress on (C), not a solution for
+trees with several branching vertices.
+
+\section{Shell counts and short-arm capacity}
+
+For \(W\subseteq V(G)\), let
+\[
+ c_j(v;W)=|\{w\in W:d(v,w)=j\}|.
+\]
+The multiset \(r_m(v\mid W)\) and the sequence
+\((c_0(v;W),c_1(v;W),\ldots)\) contain exactly the same information.  The
+distance-zero coordinate can also be omitted without changing whether
+vertices are resolved, since
+\[
+ c_0(v;W)=|W|-\sum_{j\ge1}c_j(v;W).
+\]
+This gives directly the convention-level equivalence with ID-colorings.
+
+Let the center of a starlike tree be \(o\).  On arm \(i\), write \(v_{i,s}\)
+for the vertex at depth \(s\), where \(1\le s\le l_i\).
+
+\begin{lemma}[short-arm capacity]\label{lem:capacity}
+If a starlike tree has a multiset resolving set, then for every \(r\ge1\) it
+has at most \(2^r\) arms of length at most \(r\).  Consequently,
+\[
+ l_i\ge\lceil\log_2 i\rceil\qquad(2\le i\le m).
+\]
+\end{lemma}
+
+\begin{proof}
+Fix a resolving set \(W\).  Encode each arm of length at most \(r\) by the
+binary word \((b_1,\ldots,b_r)\), where \(b_s=1\) exactly when its depth-\(s\)
+vertex belongs to \(W\), and put \(b_s=0\) beyond the end of the arm.
+
+Suppose that two arms have the same word.  For their depth-one vertices, the
+distances to selected vertices on these two arms are exchanged: a selected
+depth-\(s\) vertex on the same arm is at distance \(s-1\), and its counterpart
+on the other arm is at distance \(s+1\).  Distances to the center and to every
+selected vertex on all remaining arms are identical.  Hence the two
+depth-one vertices have the same multiset representation, a contradiction.
+Thus the short arms have distinct words, of which there are \(2^r\).
+The ordered-length inequality follows by taking \(r=l_i\).
+\end{proof}
+
+\section{Canonical binary landmark patterns}
+
+For a nonnegative integer \(q\), define
+\[
+ S_q=\{a\ge1:\text{the bit of weight }2^{a-1}\text{ in }q\text{ is }1\}.
+\]
+Thus \(S_0=\varnothing,S_1=\{1\},S_2=\{2\},S_3=\{1,2\}\), and so on.
+Put
+\[
+ k_m=\sum_{q=0}^{m-1}|S_q|,
+ \qquad
+ K_m=k_m+\mathbf 1_{\{k_m\text{ is even}\}}.
+\]
+In particular, \(K_m\) is odd.
+
+Assume the capacity inequalities of Lemma~\ref{lem:capacity}.  On arm \(i\),
+select the vertices at the depths in \(S_{i-1}\).  This is feasible because
+\(\max S_{i-1}=\lceil\log_2i\rceil\) when \(i\ge2\).  If \(k_m\) is even,
+also select the center \(o\).  Denote the resulting \(K_m\)-vertex set by
+\(W_m\).
+
+\begin{lemma}\label{lem:binary-resolves}
+The set \(W_m\) resolves \(T\).
+\end{lemma}
+
+\begin{proof}
+Put
+\[
+ A=\sum_{q=0}^{m-1}\sum_{a\in S_q}a,
+ \qquad
+ G_q(s)=\sum_{a\in S_q}\min\{s,a\}.
+\]
+For a vertex \(v_{q+1,s}\) at depth \(s\ge1\) on the arm carrying \(S_q\),
+the sum of the entries of its multiset representation is
+\begin{equation}
+ F(q,s):=\sum_{w\in W_m}d(v_{q+1,s},w)
+       =K_ms+A-2G_q(s).                                    \label{eq:sum}
+\end{equation}
+Indeed, treating every selected arm vertex as if it were on another arm
+gives \(K_ms+A\); for a selected vertex at depth \(a\) on the same arm, the
+distance changes from \(s+a\) to \(|s-a|=s+a-2\min\{s,a\}\).
+
+We need the strict estimate
+\begin{equation}
+ 0\le G_q(s)\le\sum_{a\in S_q}a\le q\le m-1<K_m.            \label{eq:G}
+\end{equation}
+The middle inequality uses \(a\le2^{a-1}\).  Moreover,
+\(k_m\ge m-1\), since each of \(1,\ldots,m-1\) has a set bit.  When \(m=3\),
+\(k_m=2\) and the center is added.  When \(m\ge4\), the number \(3<m\) has
+two set bits, so \(k_m>m-1\).  This proves the last inequality in
+\eqref{eq:G}.
+
+If two noncentral vertices have equal representations, then their distance
+sums are equal.  By \eqref{eq:sum},
+\[
+ K_m(s-t)=2\bigl(G_q(s)-G_{q'}(t)\bigr).
+\]
+Because \(K_m\) is odd, it divides the difference in parentheses.  Its
+absolute value is less than \(K_m\) by \eqref{eq:G}; hence the difference is
+zero and \(s=t\).
+
+It remains to distinguish arms at a common depth \(s\).  Encode a multiset of
+distances by its counting polynomial.  Define
+\[
+ P(z)=\sum_{q=0}^{m-1}\sum_{a\in S_q}z^a.
+\]
+Apart from the common term \(z^s\) when the center is selected, the counting
+polynomial for \(v_{q+1,s}\) is
+\begin{equation}
+ z^sP(z)+\sum_{a\in S_q}\bigl(z^{|s-a|}-z^{s+a}\bigr).
+                                                               \label{eq:poly}
+\end{equation}
+For fixed \(s\), the polynomials
+\(z^{|s-a|}-z^{s+a}\), \(a\ge1\), are linearly independent.  In a nonzero
+finite linear combination, choose the largest \(a\) with nonzero coefficient.
+The term of degree \(s+a\) can be produced neither by a smaller negative term
+nor by any positive term \(z^{|s-b|}\).  Thus \eqref{eq:poly} determines
+\(S_q\), and the sets \(S_q\) are pairwise distinct.
+
+Finally, the distance sum at the center is \(A\).  Equality with
+\eqref{eq:sum} would give \(K_ms=2G_q(s)\).  Oddness and \eqref{eq:G} would
+force \(G_q(s)=0\), and then \(s=0\), a contradiction.  The center is also
+resolved.
+\end{proof}
+
+Lemma~\ref{lem:capacity} and Lemma~\ref{lem:binary-resolves} already prove the
+finiteness equivalence in Theorem~\ref{thm:intro}.  The next section controls
+the number of selected vertices.
+
+\section{The diameter budget}
+
+The two longest arms form a diametral path, so
+\begin{equation}
+ |V(T)|-\diam(T)+1=2+\sum_{i=1}^{m-2}l_i.                  \label{eq:budget}
+\end{equation}
+
+\begin{lemma}[binary-weight budget]\label{lem:weight}
+For \(m=3\) or \(m\ge5\),
+\[
+ K_m\le 2+\sum_{i=1}^{m-2}\max\{1,\lceil\log_2i\rceil\}.
+\]
+\end{lemma}
+
+\begin{proof}
+The assertion for \(m=3\) is \(3\le3\).  Let \(m\ge5\), and put
+\[
+ b(m)=2+\sum_{i=1}^{m-2}\max\{1,\lceil\log_2i\rceil\}.
+\]
+For \(L\ge2\), grouping the integers \(i\le L\) by binary length gives, with
+\(h=\lceil\log_2L\rceil\),
+\begin{equation}
+ \sum_{i=1}^{L}\max\{1,\lceil\log_2i\rceil\}
+ =2+hL-2^h.                                                \label{eq:blocksum}
+\end{equation}
+
+Let \(H=\lceil\log_2m\rceil\).  In the initial binary words
+\(0,\ldots,m-1\), each bit is 1 no more often than it is 0: its periodic
+pattern consists of an equally long zero block followed by a one block, and
+every incomplete period starts with zeroes.  Hence
+\begin{equation}
+ k_m\le \frac{mH}{2}.                                      \label{eq:popbound}
+\end{equation}
+
+First suppose \(m\ge2^{H-1}+3\), so that
+\(\lceil\log_2(m-2)\rceil=H\).  By
+\eqref{eq:blocksum}--\eqref{eq:popbound}, it is enough that
+\[
+ \frac{mH}{2}+1\le4+H(m-2)-2^H.
+\]
+For \(H\ge4\), the difference is increasing in \(m\), and at
+\(m=2^{H-1}+3\) it is
+\[
+ 2^{H-2}(H-4)-\frac H2+3\ge0.
+\]
+
+It remains to treat the first two integers in a binary block.  If
+\(m=2^{H-1}+1\), then
+\(k_m=(H-1)2^{H-2}+1\), and \(b(m)-(k_m+1)\) equals
+\((H-3)(2^{H-2}-1)\).  If \(m=2^{H-1}+2\), then
+\(k_m=(H-1)2^{H-2}+3\), and the difference is
+\((H-3)2^{H-2}\).  The remaining block \(H=3\), namely
+\(m=5,6,7,8\), gives
+\[
+ (k_m+1,b(m))=(6,6),(8,8),(10,11),(13,14).
+\]
+Since \(K_m\le k_m+1\), the lemma follows.
+\end{proof}
+
+The exceptional value \(m=4\) needs a smaller construction than the parity
+adjustment in \(W_m\).
+
+\begin{lemma}\label{lem:four}
+If \(m=4\) and the capacity condition holds, then \(T\) has a resolving set of
+size at most \(l_1+l_2+2\).
+\end{lemma}
+
+\begin{proof}
+Name the arms \(A,B,C,D\) in nondecreasing order of length.  The capacity
+condition gives \(l_3\ge2\).  If \(l_4\ge3\), take
+\[
+ W=\{A_1,C_2,D_3\}.
+\]
+Temporarily denote the arms containing landmarks at depths \(1,2,3\) by
+\(X,Y,Z\), and the remaining arm by \(Q\).  For the sum \(F\) of distances to
+\(W\),
+\[
+\begin{array}{c|c@{\qquad}c|c}
+x&F(x)&x&F(x)\\ \hline
+o&6&X_i&3i+4\\
+Y_1&7&Y_i\ (i\ge2)&3i+2\\
+Z_1&7&Z_2&8\\
+Z_i\ (i\ge3)&3i&Q_i&3i+6.
+\end{array}
+\]
+The only equal-sum groups are \(X_1,Y_1,Z_1\), the pair \(Y_2,Z_2\), and the
+pairs \(Z_{i+2},Q_i\).  Their representations are, respectively,
+\[
+ \{0,3,4\},\ \{1,2,4\},\ \{2,2,3\};
+\]
+\[
+ \{0,3,5\},\ \{1,3,4\};
+\]
+and
+\[
+ \{i-1,i+3,i+4\},\ \{i+1,i+2,i+3\}.
+\]
+Thus \(W\) resolves.
+
+If \(l_4\le2\), the ordered tuple is one of
+\((1,1,2,2),(1,2,2,2),(2,2,2,2)\).  Resolving sets are
+\[
+ \{A_1,C_1,C_2,D_2\},\qquad
+ \{A_1,B_1,B_2,C_2\},\qquad
+ \{A_1,A_2,B_1,C_2\},                                    \tag{8}
+\]
+respectively.  A direct listing of the representations in the same order is
+\[
+\begin{array}{c|l}
+(1,1,2,2)&
+1122;\ 0233;\ 2233;\ 0123,0134;\ 1223,0334\\
+(1,2,2,2)&
+1122;\ 0233;\ 0123,0134;\ 1223,0334;\ 2233,3344\\
+(2,2,2,2)&
+1122;\ 0123,0134;\ 0233,1344;\ 1223,0334;\ 2233,3344.
+\end{array}
+\]
+Here, for example, \(0233\) denotes the multiset
+\(\{\!\{0,2,3,3\}\!\}\).  Every row contains pairwise distinct entries.
+The sets in (8) have four vertices, while \(l_1+l_2+2\ge4\).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:intro}]
+The equivalence follows from Lemmas~\ref{lem:capacity} and
+\ref{lem:binary-resolves}.  If \(m=3\), Lemma~\ref{lem:weight} and
+\eqref{eq:budget} bound the three-vertex canonical set.  If \(m\ge5\), combine
+Lemma~\ref{lem:capacity}, Lemma~\ref{lem:weight}, and \eqref{eq:budget}.  The
+case \(m=4\) is Lemma~\ref{lem:four}.
+\end{proof}
+
+\begin{corollary}[sharpness within the class]\label{cor:sharp}
+For every \(n\ge5\), subdivide one edge of \(K_{1,3}\) exactly \(n-4\) times.
+The resulting tree \(B_n\) satisfies
+\[
+ \mdim(B_n)=3=|V(B_n)|-\diam(B_n)+1.
+\]
+\end{corollary}
+
+\begin{proof}
+The arm lengths are \(1,1,n-3\), so Theorem~\ref{thm:intro} gives an
+upper bound of 3.  A nonpath graph cannot have multiset dimension 1, and no
+graph has multiset dimension 2~\cite{Simanjuntak2017}; hence the value is 3.
+The diameter is \(n-2\).
+\end{proof}
+
+\section{Independent exact verification through order 15}
+
+We used two exact implementations with different tree generators, distance
+algorithms, and representation evaluators.
+
+The discovery implementation uses NetworkX 3.4.2 to generate nonisomorphic
+trees, computes integer distances by breadth-first search, and examines every
+vertex subset in increasing cardinality.  Every reported witness is checked
+both by literal sorting of its distances and by counting selected vertices in
+exact-distance spheres.
+
+The independent implementation uses no graph library and imports no discovery
+code.  It recursively generates rooted unlabeled trees: a rooted tree is
+represented by the sorted multiset of the codes of the rooted components
+below its root.  After forgetting the root, free trees are deduplicated by the
+standard center-based parenthesis encoding used in tree isomorphism
+\cite{AhoHopcroftUllman1974}.  Distances are recomputed by Floyd--Warshall,
+and every subset is checked through literal sorted distance multisets.  Thus
+neither a timeout nor failure to find a witness is interpreted as a proof.
+
+For the one-vertex tree we use the literal convention
+\(\mdim(K_1)=0\), witnessed by the empty set.  The two programs agree on the
+number of free trees and the complete multiset dimension distribution at every
+order.  The result is shown in Table~\ref{tab:enumeration}; a dash means zero.
+
+\begin{table}[ht]
+\centering
+\caption{Exact multiset dimensions of all trees through order 15.}
+\label{tab:enumeration}
+\small
+\setlength{\tabcolsep}{3.7pt}
+\begin{tabular}{r r r r r r r r r r r}
+\toprule
+\(n\)&trees&\(\infty\)&0&1&3&4&5&6&7&9\\
+\midrule
+1&1&--&1&--&--&--&--&--&--&--\\
+2&1&--&--&1&--&--&--&--&--&--\\
+3&1&--&--&1&--&--&--&--&--&--\\
+4&2&1&--&1&--&--&--&--&--&--\\
+5&3&1&--&1&1&--&--&--&--&--\\
+6&6&2&--&1&3&--&--&--&--&--\\
+7&11&4&--&1&5&1&--&--&--&--\\
+8&23&9&--&1&11&2&--&--&--&--\\
+9&47&20&--&1&23&3&--&--&--&--\\
+10&106&48&--&1&53&2&2&--&--&--\\
+11&235&109&--&1&110&6&9&--&--&--\\
+12&551&261&--&1&235&22&31&1&--&--\\
+13&1301&636&--&1&500&74&82&7&1&--\\
+14&3159&1595&--&1&1093&224&211&27&7&1\\
+15&7741&4038&--&1&2389&662&523&99&27&2\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+In total, both implementations check all 13,188 nonisomorphic trees of order
+at most 15 and find no counterexample to (C).  This is an exact finite result,
+but it is not evidence sufficient to settle the unbounded conjecture.
+
+As a separate check on the construction in
+Lemma~\ref{lem:binary-resolves}, an implementation sharing neither finite-tree
+enumerator tested all 90,311 capacity-valid ordered arm-length tuples with
+3 through 12 arms and lengths at most 8.  It reconstructed every graph,
+checked literal representations, and verified the diameter budget.  The
+symbolic proof, rather than this bounded check, is the certificate for the
+infinite family.
+
+\section{Discussion}
+
+Theorem~\ref{thm:intro} closes the gap between the necessary short-arm
+capacity condition of Kono and Zhang~\cite{KonoZhang2021} and existence of an
+ID-coloring for starlike trees.  It also verifies the diameter conjecture on a
+class whose degree is unbounded and in which known constructions have
+unbounded ID-number~\cite{KonoZhang2021}.  The key feature is that all branches
+meet at one center: the distance-sum congruence recovers depth before the
+shell polynomial recovers the branch word.
+
+This separation no longer holds verbatim at a second branching vertex.
+Indeed, simple landmark rules based only on a diametral path fail even for a
+four-arm starlike tree, although the binary construction repairs that case.
+For general trees, repeated rooted branches at several vertices interact, and
+no global construction of size \(n-\diam(T)+1\) is presently obtained here.
+The full conjecture therefore remains open.
+
+\section*{Data, code, and computational disclosure}
+
+The accompanying supplementary archive contains the LaTeX source, the two
+independent finite enumerators, the fail-closed comparison program, the
+independent starlike checker, and the JSON reports used for
+Table~\ref{tab:enumeration}.  The computations used Python 3.10.12; only the
+discovery implementation requires NetworkX 3.4.2.  All distances and subset
+tests use exact integers.
+
+Generative-AI tools assisted with code prototyping and language editing.  The
+author independently checked the mathematical arguments, computations,
+citations, and final manuscript and takes responsibility for them.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

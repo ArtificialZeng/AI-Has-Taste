@@ -1,0 +1,470 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,microtype}
+\usepackage{url}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\PP}{\mathrm{P}}
+\newcommand{\QQ}{\mathrm{Q}}
+\newcommand{\Lang}[1]{\mathcal{#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Av}{Av}
+\title{A direct first-return enumeration of\\$(2,2)$-stack-sortable permutations}\hypersetup{pdfauthor={Xiaojian Zeng},pdftitle={A direct first-return enumeration of (2,2)-stack-sortable permutations}}
+\author{Xiaojian Zeng\\[2pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{September 12, 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A $(2,2)$-stack permits insertion and removal at either of its first
+two available positions. We derive the generating function of its sortable
+input permutations directly from these operations, answering Problem~5.11
+of Vatter. An eager deterministic sorter chooses one operation word for each
+sortable input. The comparisons imposed by its pushes form an ordered
+forest, and a leaf/nonleaf bit on each live token preserves every remaining
+comparison obligation. The resulting bit-stack language has an unambiguous
+first-return decomposition with two endpoint states. Its equations give
+$F=1+xAF$ and $A=1+xA(4A-2F-1)$, and hence the previously known cubic
+$2xF^3-(2x+3)F^2-(x-7)F-4=0$, with $F(0)=1$.
+The contribution is the operation-level bijection and decomposition;
+the polynomial and counting sequence were already known. Exact finite
+checks accompany the proof, which applies to every input length.
+\end{abstract}
+
+\section{Model and contribution}
+
+An input permutation of $[n]=\{1,\ldots,n\}$ is read from left to right.
+The stack and output are initially empty. Reading the stack from top to
+bottom, a push inserts the next unread entry at position~1 or~2, when that
+position is available, and a pop removes the entry at position~1 or~2,
+when present, and appends it to the output. In particular, an empty stack
+has only the first insertion position. An input is \emph{sortable} if some
+legal operation sequence consumes it and produces $1,\ldots,n$, leaving
+the stack empty. Let $u_n$ count sortable inputs once each, regardless of
+how many sequences sort them, and set
+\[
+ F(x)=\sum_{n\geq0}u_nx^n\in\Z[[x]],\qquad u_0=1.
+\]
+We write $\PP_j$ and $\QQ_j$ for a push and a pop at rank~$j$.
+
+Atkinson studied the more general $(r,s)$-stacks, with insertion in the
+first $r$ positions and removal from the first $s$ positions, including
+forbidden-subsequence characterizations for $r=s=2$~\cite{Atkinson1998}.
+Vatter~\cite[Theorem~5.9 and the paragraph before Problem~5.11]{Vatter2026}
+records the eight-element basis and attributes a derivation of the cubic
+below to Pantone, using Combinatorial Exploration from that basis.
+The framework of Albert et al.~\cite{AlbertEtAl2026} derives counting
+equations from combinatorial specifications. Vatter's Problem~5.11 asks
+instead for a derivation from the stack's structure. We provide such a
+derivation through the comparisons required by a canonical sorting run.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq0$, sortable input permutations of $[n]$ are in bijection
+with complete words having $n$ pushes in the following bit-stack machine,
+subject to exclusion of the adjacent factor $\PP_2\QQ_1$:
+\begin{equation}\label{eq:bits}
+\begin{array}{rcll}
+ \PP_1:&\eps\longmapsto0,&\quad aT\longmapsto1aT,\\
+ \PP_2:&aT\longmapsto10T,\\
+ \QQ_1:&aT\longmapsto T,\\
+ \QQ_2:&0bT\longmapsto0T.
+\end{array}
+\end{equation}
+Here $a,b\in\{0,1\}$, $T$ is any bit suffix, and complete words start and
+end with the empty stack. Labeling tokens by increasing pop order and
+reading their labels in push order gives the corresponding input.
+The first-return specification in Section~\ref{sec:grammar} is complete
+and unambiguous. Its generating functions satisfy
+\begin{equation}\label{eq:reduced}
+ F=1+xAF,\qquad A=1+xA(4A-2F-1),
+\end{equation}
+where $A$ counts the positive-floor paths defined there. Consequently,
+$F$ is the unique formal power series with constant term~1 satisfying
+\begin{equation}\label{eq:cubic}
+ 2xF^3-(2x+3)F^2-(x-7)F-4=0.
+\end{equation}
+\end{theorem}
+
+Equation~\eqref{eq:cubic} and its coefficients are known; they also appear
+in the source-author OEIS entry A393395~\cite{OEIS393395}. No pattern basis
+or preassigned polynomial enters the proof below. We work throughout
+with sorting an arbitrary input into increasing order, so no change from
+sorting to generation, or associated permutation symmetry, is needed.
+
+\section{A canonical sorting word}
+
+At any state of a successful run, let $k$ be the next required output.
+We first establish two exchange observations for the original machine.
+
+\begin{lemma}\label{lem:eager}
+If a state admits a successful continuation and $k$ is in one of the
+first two stack positions, popping $k$ immediately preserves this property.
+\end{lemma}
+\begin{proof}
+Before its pop of $k$, a successful continuation consists entirely of
+pushes. Pop $k$ now and replay those pushes with $k$ absent. For an original
+insertion slot $j$, use $j-1$ if $k$ lay strictly before that slot, and
+use $j$ otherwise. The new slot is available and is at most~2. The only
+possible reduction is from slot~2 to slot~1, so slot~0 never occurs.
+After omitting the original pop of $k$, the two stacks, unread inputs,
+and outputs coincide. The remaining continuation is unchanged.
+\end{proof}
+
+\begin{lemma}\label{lem:pair}
+Fix an unread input and stack suffix $T$. For $a<b$, a successful
+continuation from stack $(b,a,T)$ implies one from $(a,b,T)$, with the
+same output already produced.
+\end{lemma}
+\begin{proof}
+Follow a successful continuation from $(b,a,T)$ until it removes $a$,
+interchanging $a$ and $b$ in the second run. Neither token is removed
+earlier, because output is increasing. Every operation on another token
+has the same rank in both stacks. The relative order of surviving tokens
+is unchanged by rank operations, so $b$ still precedes $a$ in the first
+stack. Since $a$ is accessible when removed, that stack must then begin
+with $(b,a)$. Remove $a$ at rank~1 in the second run, instead of rank~2
+in the first. The remaining stacks agree, and the continuation can be
+copied without further change.
+\end{proof}
+
+Define the deterministic sorter $G$ as follows. Pop $k$ whenever it is
+in the first two positions. Otherwise push the next unread input $a$,
+using rank~1 if the stack is empty or $a$ is smaller than the old top $b$,
+and rank~2 if $b<a$. If no such pop or push is possible, accept only if
+both the input and stack are exhausted, and reject otherwise.
+
+\begin{proposition}\label{prop:canonical}
+The sorter $G$ accepts exactly the sortable inputs. Every accepted input
+has exactly one $G$ word, and complete $G$ words determine their inputs
+uniquely.
+\end{proposition}
+\begin{proof}
+Soundness follows from the legal operations and the increasing output.
+For completeness, induct on the number of operations remaining in a
+successful continuation. If an eager pop is possible, Lemma~\ref{lem:eager}
+preserves success. Otherwise a push is forced. On a nonempty stack its
+two possible ranks create the two orders of the same top pair, and
+Lemma~\ref{lem:pair} shows that the smaller-top order chosen by $G$
+preserves success. On an empty stack the push is unique. This proves
+completeness, including the terminal state.
+
+More generally, take any complete legal rank word, assigning a distinct
+token to each push. Label the token removed at the $j$th pop by~$j$.
+Reading these labels in push order gives the unique permutation for which
+the word produces increasing output. Restricting this reconstruction to
+$G$ words is injective because $G$ is deterministic, and it is surjective
+onto the sortable inputs by completeness. Each push accounts for exactly
+one input entry.
+\end{proof}
+
+\section{Comparisons, forests, and bits}\label{sec:forest}
+
+Use the reconstructed labels of a complete rank word. A nonempty-stack
+$\PP_1$ is the greedy choice precisely when its new token is output
+before the old top; $\PP_2$ is the greedy choice precisely when the old
+top is output before the new token. Record this obligation as a directed
+edge from the upper token of the new top pair to the lower token.
+An empty-stack push creates no edge. Call a word \emph{comparison-valid}
+if the source of every edge is popped before its target.
+
+\begin{lemma}[Peak criterion]\label{lem:peak}
+A comparison-valid complete word is a $G$ word if and only if each
+adjacent push-pop pair is $\PP_1\QQ_1$.
+\end{lemma}
+\begin{proof}
+In a $G$ run, consider a push immediately followed by a pop. The required
+token was inaccessible before the push. Insertion cannot move an old
+token closer to the top, so the pop removes the new token. This token
+is the next required output and is smaller than every resident token;
+it was therefore pushed at rank~1 and is popped there.
+
+Conversely, consider a moment immediately before any push in a complete
+word satisfying the criterion. The next pop follows a nonempty run of
+pushes. Its last push and first pop form $\PP_1\QQ_1$, so the token
+removed was not yet present at the chosen moment. Under reconstruction
+it is precisely the next required output. Thus an eager pop was not
+available. Comparison-validity supplies $G$'s push choice. At every pop,
+reconstruction makes the removed token the next required output.
+Every operation therefore agrees with $G$.
+\end{proof}
+
+The comparison graph can be maintained using only the unpopped tokens.
+When a token is removed, delete it and all its incident edges. An ordered
+rooted forest is read in preorder, visiting a root and then its ordered
+child subtrees, before moving to the next root.
+
+\begin{lemma}\label{lem:forest}
+After any prefix whose pops respect the comparison edges, the live
+graph is an ordered rooted forest whose preorder is the stack order.
+The first stack token is always a root. The second token, when present,
+is a root exactly when the first token is a leaf.
+\end{lemma}
+\begin{proof}
+The initial forest is empty. A push into an empty stack creates a
+singleton tree. A nonempty $\PP_1$ creates a root whose only child is
+the previous first root; later trees are unchanged. A $\PP_2$ adds a new
+first child to the first root. Both updates preserve the claimed preorder.
+
+The first token is a root, so $\QQ_1$ removes it and promotes its children
+to roots in their existing order. If that root is a leaf, the second
+token is the next root, and $\QQ_2$ removes the latter and promotes its
+children after the surviving first root. If the first root is not a leaf,
+the second token is its first child. Removing that child would violate
+the edge from the first root. These are all available pop ranks, proving
+the invariant by induction.
+\end{proof}
+
+This argument gives necessity and sufficiency: a comparison-valid word
+cannot make the forbidden second-rank pop, and removing only roots
+respects every comparison ever created. Store bit~0 on a leaf and bit~1
+on a nonleaf. A surviving vertex cannot lose a child, since a child has
+an unmet incoming edge until its parent is removed. Thus one never needs
+to count the children or change a surviving token's bit from~1 to~0.
+The forest updates are exactly~\eqref{eq:bits}. In particular, $\PP_2$
+marks the old top as a nonleaf and inserts a new leaf in second position.
+
+A push into a nonempty stack leaves top bit~1, which prevents a following
+$\QQ_2$. A push into an empty stack leaves only one token, so again
+$\QQ_2$ cannot follow it. The bit rules therefore prohibit
+$\PP_1\QQ_2$ and $\PP_2\QQ_2$ automatically. Excluding the single factor
+$\PP_2\QQ_1$ leaves exactly the peaks in Lemma~\ref{lem:peak}.
+Together with Proposition~\ref{prop:canonical}, this proves the bijection
+asserted in Theorem~\ref{thm:main}.
+
+\section{The first-return specification}\label{sec:grammar}
+
+We now enumerate rank words of the abstract bit machine, always excluding
+$\PP_2\QQ_1$. Height means the number of stack tokens. A
+\emph{positive-floor path} starts at positive height with top bit $a$ and
+suffix $T$, ends at the same height, and never goes below that height.
+A \emph{first-return excursion} is nonempty and stays strictly above
+its initial height except at its endpoints.
+
+The suffix $T$ is protected throughout such paths. During a first-return
+excursion, before its closing step there are at least two tokens above
+$T$. No permitted rank can reach $T$ without ending the excursion first.
+After the opening push, the second token and $T$ are similarly protected
+throughout the interior, whose floor is one unit higher. Pushes inspect
+or modify only the active top bit. It follows inductively over successive
+excursions that the language and final top bit do not depend on the
+contents of $T$. The initial top token may nevertheless be replaced.
+The interface must therefore record its bit, not its identity.
+
+Opening $\PP_1$ from top bit $a$ creates active top bit~1 and stores $a$
+second. Opening $\PP_2$ creates active top bit~1 and stores~0 second.
+The interior is a positive-floor path starting at bit~1. Closing $\QQ_1$
+restores the stored bit. Closing $\QQ_2$ requires the interior to end at
+bit~0; it deletes the stored token and retains that~0. An empty interior
+with opening $\PP_2$ and closing $\QQ_1$ is excluded.
+
+\begin{lemma}\label{lem:endpoint}
+A positive-floor path starting at bit~0 can end only at bit~0. With
+the endpoint languages
+\[
+ \Lang A:0\longrightarrow0,\qquad
+ \Lang B:1\longrightarrow0,\qquad
+ \Lang C:1\longrightarrow1,
+\]
+where $\Lang A,\Lang C$ contain $\eps$ and $\Lang B$ does not, define
+\begin{align}
+ \Lang E&=\PP_1(\Lang B\sqcup\Lang C)\QQ_1,\label{eq:E}\\
+ \Lang D&=\PP_1\Lang B\QQ_2
+ \sqcup\PP_2\Lang B\QQ_1
+ \sqcup\PP_2(\Lang C\setminus\{\eps\})\QQ_1
+ \sqcup\PP_2\Lang B\QQ_2.\label{eq:D}
+\end{align}
+Then all positive-floor paths have the unambiguous specification
+\begin{align}
+ \Lang A&=\{\eps\}\sqcup\Lang E\Lang A\sqcup\Lang D\Lang A,
+       \label{eq:A}\\
+ \Lang C&=\{\eps\}\sqcup\Lang E\Lang C,\label{eq:C}\\
+ \Lang B&=\Lang E\Lang B\sqcup\Lang D\Lang A.\label{eq:B}
+\end{align}
+If $\Lang L$ is the complete empty-stack language, then
+\begin{equation}\label{eq:L}
+ \Lang L=\{\eps\}\sqcup\PP_1\Lang A\QQ_1\Lang L.
+\end{equation}
+Here $\sqcup$ denotes disjoint union and products mean concatenation.
+\end{lemma}
+\begin{proof}
+The assertion about an initial~0 follows by induction on path length
+from the opening and closing cases just described. For one excursion,
+a closing $\QQ_1$ restores either the initial~0 or the~0 stored by
+$\PP_2$, and a closing $\QQ_2$ retains~0. Apply the induction hypothesis
+to the shorter remainder after this first excursion.
+
+For initial bit~1, excursions of type $\Lang E$ preserve~1, while the
+four alternatives of $\Lang D$ return~0. For initial bit~0 both types
+return~0. More explicitly, the exhaustive split is
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Opening and closing & Interior & Final bit\\
+\midrule
+$\PP_1\ \cdots\ \QQ_1$ & $\Lang B\sqcup\Lang C$ & initial bit\\
+$\PP_1\ \cdots\ \QQ_2$ & $\Lang B$ & $0$\\
+$\PP_2\ \cdots\ \QQ_1$ & $\Lang B\sqcup(\Lang C\setminus\{\eps\})$ & $0$\\
+$\PP_2\ \cdots\ \QQ_2$ & $\Lang B$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every nonempty path splits into its first-return excursion and remaining
+path. This gives~\eqref{eq:A}--\eqref{eq:B}. A nonempty empty-stack path
+starts with $\PP_1$, creating bit~0. Its first component ends with
+$\QQ_1$, the only pop available at height~1, and has interior in
+$\Lang A$. This proves~\eqref{eq:L}.
+
+For unambiguity, the height profile determines the first-return time,
+the interior, and the remaining suffix uniquely. The first and last
+operation ranks distinguish every excursion alternative except the two
+$\PP_2\cdots\QQ_1$ terms in~\eqref{eq:D}. Their interior endpoint,
+which is uniquely determined by the bit transitions, distinguishes
+$\Lang B$ from $\Lang C$. Induction gives a unique parse.
+Conversely, every production obeys the bit transitions, floor restriction,
+and forbidden-factor condition. Joining nonempty excursions creates only
+a pop-push boundary. The only problematic empty interior was expressly
+removed in~\eqref{eq:D}. Thus no extra words or multiple parses arise.
+\end{proof}
+
+\begin{remark}
+Auxiliary initial bit~1 is a state of the abstract bit machine; it need
+not be realized by a physical forest consisting of a single nonleaf.
+Its suffix can be supplied without changing its path language. The
+complete language starts at the actual empty state, where the forest
+correspondence already proves realizability. The bit stack has unbounded
+height; the finite interface above is a boundary description, not a
+claim that the entire sorter has finitely many states.
+\end{remark}
+
+\section{Formal power series}\label{sec:series}
+
+Weight each push by $x$, and give pops weight~1. Use $A,B,C$ for the
+ordinary generating functions of $\Lang A,\Lang B,\Lang C$, and let
+$e,d$ count the first-return languages $\Lang E,\Lang D$. The translation
+of disjoint unions and unambiguous products into sums and products is
+the symbolic method~\cite[Chapter~I]{FlajoletSedgewick2009}; the role of
+productivity in recursive specifications is treated explicitly by
+Albert et al.~\cite[Sections~3.3, 4 and~5.2]{AlbertEtAl2026}.
+Here the translation can be read directly from the displayed grammar:
+\begin{align}
+ e&=x(B+C),& d&=x(3B+C-1),\label{eq:ed}\\
+ A&=1+(e+d)A,& C&=1+eC,\label{eq:AC}\\
+ B&=eB+dA,& F&=1+xAF.\label{eq:BF}
+\end{align}
+The subtraction of~1 in $d$ removes precisely the excluded empty
+$\Lang C$ interior. Every excursion contributes at least one push;
+thus, with $A(0)=C(0)=F(0)=1$ and $B(0)=0$, coefficient $n$ in these
+equations depends only on smaller-size coefficients. This supplies
+productivity and finite coefficients directly in this instance.
+
+Since $e(0)=d(0)=0$, all the following inverses exist in $\Z[[x]]$:
+\[
+ A=\frac1{1-e-d},\qquad C=\frac1{1-e},\qquad
+ B=dAC=A-C.
+\]
+Hence $B+C=A$, so $e=xA$ and
+\[
+ C=\frac1{1-xA}=F.
+\]
+Substituting $B=A-F$ into~\eqref{eq:ed}--\eqref{eq:BF} gives
+exactly~\eqref{eq:reduced}.
+
+For an elimination without division by $x$, set
+\[
+ R_1=F-1-xAF,\qquad R_2=A-1-xA(4A-2F-1).
+\]
+Direct expansion yields
+\begin{align*}
+ &2xF^3-(2x+3)F^2-(x-7)F-4\\
+ &\qquad=xF^2R_2+
+ \bigl(-4xAF+2xF^2+xF-3F+4\bigr)R_1.
+\end{align*}
+Both residuals vanish, proving~\eqref{eq:cubic}. To check the branch
+uniquely, write $F=1+H$ with $H(0)=0$. The left side becomes
+\[
+ H-3H^2+x(-1+H+4H^2+2H^3).
+\]
+At each positive degree the next coefficient of $H$ occurs with
+multiplier~1, and every other term depends only on earlier coefficients.
+Thus there is at most one formal solution with $F(0)=1$, and the grammar
+constructs it. This completes the proof of Theorem~\ref{thm:main}.
+
+\section{Exact checks and scope}\label{sec:checks}
+
+The accompanying programs use exact integers and finite word sets.
+To check the compression against the original machine, a separate
+implementation reconstructs the unrestricted legal sorting search without
+using either exchange lemma. Separately rebuilding the finite structure
+in an exact verifier is also used by Zeng et al.~\cite{ZengEtAl2026}
+for ternary codes (Section~4, Proposition~1): their two implementations
+construct the compatibility graph independently. In the present problem,
+the unrestricted machine and the bit language play those distinct
+verification roles.
+
+The unrestricted search and a separately implemented $G$ agree on all
+$46\,234$ permutations across $0\leq n\leq8$. In that range, complete
+bit words agree objectwise with canonical words, reconstruction gives
+the same input, and every complete word has exactly one grammar parse.
+The initial counts are
+\begin{center}
+\small
+\begin{tabular}{c*{10}{r}}
+\toprule
+$n$ & 0&1&2&3&4&5&6&7&8&9\\
+\midrule
+$u_n$ &1&1&2&6&24&116&628&3636&21956&136428\\
+\bottomrule
+\end{tabular}
+\end{center}
+These agree with A393395~\cite{OEIS393395}. The $n=9$ check compares $G$
+on all $362\,880$ inputs with all $136\,428$ complete bit words, including
+reconstructed inputs and multiplicities. It does not extend the
+separately implemented unrestricted sorting search beyond $n=8$.
+
+The recursive word generator also checks all auxiliary endpoint languages
+through eight pushes. A separate parser and bit implementation check the
+positive-floor languages through seven pushes. Through five pushes,
+$13\,860$ replays test every protected bit suffix of lengths zero through
+three, including preservation of its token identities. An additional
+attack includes rejected words: it enumerates all legal rank words at
+floor~0 through six pushes and at floor~1 through five pushes, totaling
+$107\,848$ words. The grammar's parse multiplicity always equals the
+appropriate bit-language membership indicator. No discrepancy occurs in
+these stated ranges. Independent coefficient recursions agree through
+degree~40, and exact polynomial expansion checks the residual identity.
+
+These checks detect finite implementation errors; the forest invariant,
+endpoint argument, and unambiguous grammar establish the result at all
+lengths. The result concerns only the $(2,2)$-stack. In particular, it
+makes no assertion about general $(r,s)$-stacks or the novelty of the
+elementary greedy normalization by itself. The inspected primary
+comparison identifies the basis-derived enumeration as the closest
+documented result. A bounded literature search completed on September~12,
+2026 found no equivalent direct derivation; it does not establish global
+priority. The historical account of Pantone's enumeration is Vatter's
+report, rather than an inspection of Pantone's computation.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, literature searches,
+implementation of the exact checks, a separate model-based mathematical
+review, and manuscript preparation. The review was a separate model
+context, not external peer review. Language-model output and finite
+agreement are not substitutes for the proofs above. The symbolic check
+used SymPy; the combinatorial checks used Python integer arithmetic.
+No proof assistant was used. The supplementary documentation specifies
+the programs, finite ranges, and reproducible commands.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

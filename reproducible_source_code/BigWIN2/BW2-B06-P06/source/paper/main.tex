@@ -1,0 +1,396 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array,microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\Var}{Var}
+\newcommand{\Cpath}[1]{\mathbf C_{P_{#1}}}
+\newcommand{\one}{\mathbf 1}
+
+\title[The sharp variation constant on $P_{11}$]
+{The sharp variation constant for the centered Hardy--Littlewood maximal operator on $P_{11}$}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\hypersetup{
+  pdftitle={The sharp variation constant for the centered Hardy--Littlewood maximal operator on P11},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+For the path graph $P_n$, let $\mathbf C_{P_n}$ be the optimal constant in
+the $1$-variation inequality for the centered graph Hardy--Littlewood maximal
+operator.  It has been conjectured that $\mathbf C_{P_n}=1-1/n$ for every
+$n\geq3$.  We prove the next finite case
+\[
+\mathbf C_{P_{11}}=\frac{10}{11}.
+\]
+The upper bound is reduced to a finite family of signed edge-flux
+certificates.  An exact, independently checked enumeration covers
+$5{,}874{,}849$ chambers and uses only rational arithmetic at the
+verification stage.  The matching lower bound is attained by a point mass at
+an endpoint.  No assertion is made for arbitrary $n$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $G=(V,E)$ be a finite connected undirected graph.  The centered graph
+Hardy--Littlewood maximal operator averages the absolute value of a function
+over graph-distance balls.  Liu and Xue studied sharp variation constants for
+this operator on finite graphs~\cite{LiuXue2021}.  González-Riquelme, Kovač,
+and Madrid subsequently determined further sharp constants and posed the
+path-graph conjecture~\cite[Conjecture~5]{GKM2026}:
+\begin{equation}\label{eq:path-conjecture}
+  \Cpath n=1-\frac1n\qquad(n\geq3).
+\end{equation}
+Their paper proves the case $P_4$ by finite linear programming and reports
+numerical evidence through $n=10$~\cite[Section~3.2 and Conjecture~5]{GKM2026}.
+
+A directly adjacent infinite-lattice development is Raghava's conditional
+Abel-summation edge-flux reduction for centered maximal variation on
+$\mathbb Z$~\cite[Abstract and Sections~9--10]{Raghava2026}.  It leaves a
+residual packing principle conjectural and supplies no $P_{11}$ certificate.
+Its peak-based conditional reduction on the infinite lattice is distinct
+from the complete finite rational chamber certificate constructed here.
+
+The purpose of this paper is to determine the next finite parameter.
+
+\begin{theorem}\label{thm:main}
+For every real-valued function $f$ on the eleven-vertex path,
+\[
+  \Var(M_{P_{11}}f)\leq\frac{10}{11}\Var(f).
+\]
+The constant $10/11$ is optimal and is attained by a point mass at either
+endpoint.  Consequently,
+\[
+  \boxed{\Cpath{11}=\frac{10}{11}}.
+\]
+\end{theorem}
+
+The proof separates a general, human-checkable chamber lemma from a finite
+exact certificate.  After quotienting vertical translations, a function is
+represented by its ten edge differences.  The variation of the maximal
+function is the maximum of $2^{10}$ signed linear expressions.  Once one
+active ball is fixed at each positive coefficient, negative coefficients can
+be bounded by convex combinations of centered ball averages.  The resulting
+signed measure has total mass zero, and its cumulative masses are precisely
+edge-flux coefficients.  Bounding their magnitudes by $10/11$ proves the
+desired chamber inequality.
+
+The finite certificate is not a floating-point optimization result.  Its
+independent verifier reconstructs rational vertex measures, checks all mass
+constraints, and checks every cumulative edge coefficient exactly.  The
+complete conjecture~\eqref{eq:path-conjecture} remains open.
+
+\section{Definitions and exact reductions}
+
+Write
+\[
+  V_n=\{1,\ldots,n\},\qquad
+  E_n=\bigl\{\{i,i+1\}:1\leq i<n\bigr\}
+\]
+for the path $P_n$.  Its graph distance is $d(i,j)=|i-j|$, and
+\[
+  B_n(i,r)=\{j\in V_n:|i-j|\leq r\}.
+\]
+Only the integer radii
+$0\leq r\leq\max\{i-1,n-i\}$ give distinct balls.  For
+$f:V_n\to\mathbb R$, define
+\begin{equation}\label{eq:maximal-def}
+  (M_{P_n}f)(i)=
+  \max_{r\geq0}\frac1{|B_n(i,r)|}
+  \sum_{j\in B_n(i,r)}|f(j)|
+\end{equation}
+and
+\begin{equation}\label{eq:variation-def}
+  \Var(f)=\sum_{i=1}^{n-1}|f(i+1)-f(i)|.
+\end{equation}
+The optimal constant is equivalently
+\[
+  \Cpath n=
+  \sup_{\Var(f)>0}\frac{\Var(M_{P_n}f)}{\Var(f)}.
+\]
+Constant inputs cause no ambiguity: both variations vanish.
+
+For arbitrary real $z$, let $\mathcal A_n z$ denote the same maximum of
+centered averages as in~\eqref{eq:maximal-def}, but without putting absolute
+values around the entries of $z$.
+
+\begin{lemma}[Translation quotient]\label{lem:quotient}
+For $n\geq2$,
+\begin{equation}\label{eq:quotient}
+  \Cpath n=
+  \max_{\substack{z(1)=0\\ \Var(z)=1}}
+  \Var(\mathcal A_n z).
+\end{equation}
+The maximum on the right is attained.
+\end{lemma}
+
+\begin{proof}
+Since $M_{P_n}f=M_{P_n}|f|$ and
+$\Var(|f|)\leq\Var(f)$, it is enough to optimize over nonnegative inputs
+$x$.  For such inputs, $M_{P_n}x=\mathcal A_nx$.  Every centered average
+commutes with addition of a constant, and therefore
+\[
+  \mathcal A_n(z+c\one)=\mathcal A_nz+c\one.
+\]
+Thus a nonnegative $x$ can be replaced by $z=x-x(1)\one$ without changing
+either variation.  Conversely, if $z(1)=0$, then choosing
+$c\geq-\min_i z(i)$ makes $x=z+c\one$ nonnegative and again preserves both
+variations.  Positive homogeneity gives the normalization $\Var(z)=1$.
+
+If $d_k=z(k+1)-z(k)$, then $z(1)=0$ and $\sum_k|d_k|=1$ imply
+$|z(i)|\leq1$.  Hence the normalized feasible set is compact, and continuity
+of the finite maximum of linear functions proves attainment.
+\end{proof}
+
+For $1\leq i\leq n$ and an admissible radius $r$, let $\mu_{i,r}$ be the
+uniform probability measure on $B_n(i,r)$, and write
+\[
+  A_{i,r}z=\sum_{j=1}^n\mu_{i,r}(j)z(j).
+\]
+Then $(\mathcal A_nz)(i)=\max_r A_{i,r}z$.
+
+\section{The chamber certificate lemma}
+
+Fix signs $s=(s_1,\ldots,s_{n-1})\in\{-1,1\}^{n-1}$ and define
+\begin{equation}\label{eq:c-def}
+  c_1=s_1,\qquad c_i=s_i-s_{i-1}\ (2\leq i<n),
+  \qquad c_n=-s_{n-1}.
+\end{equation}
+Thus $\sum_i c_i=0$.  The nonzero $c_i$ alternate in sign; internal nonzero
+coefficients are $\pm2$, while endpoint coefficients are $\pm1$.
+
+\begin{lemma}[Signed edge-flux certificate]\label{lem:certificate}
+Let $z:V_n\to\mathbb R$ and put $y=\mathcal A_nz$.  Fix $s$ and the
+coefficients~\eqref{eq:c-def}.  For every $i$ with $c_i>0$, choose a radius
+$r_i$ satisfying $y(i)=A_{i,r_i}z$.  Suppose that, for every $i$ with
+$c_i<0$, there are nonnegative rational weights $\lambda_{i,r}$ such that
+\begin{equation}\label{eq:mass-constraint}
+  \sum_r\lambda_{i,r}=-c_i.
+\end{equation}
+Define the signed measure
+\begin{equation}\label{eq:nu-def}
+  \nu=
+  \sum_{c_i>0}c_i\mu_{i,r_i}
+  -\sum_{c_i<0}\sum_r\lambda_{i,r}\mu_{i,r}
+\end{equation}
+and its edge fluxes
+\[
+  \Gamma_k=\sum_{j=1}^k\nu(j),\qquad 1\leq k<n.
+\]
+If $|\Gamma_k|\leq C$ for every $k$, then
+\begin{equation}\label{eq:chamber-bound}
+  \sum_{i=1}^n c_i y(i)\leq C\Var(z).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For a positive coefficient the chosen active radius gives equality.  If
+$c_i=-w_i<0$, then $A_{i,r}z\leq y(i)$ for every $r$, so
+\[
+  c_i y(i)=-w_i y(i)
+  \leq-\sum_r\lambda_{i,r}A_{i,r}z
+\]
+by~\eqref{eq:mass-constraint}.  Summing these estimates yields
+\begin{equation}\label{eq:nu-majorant}
+  \sum_i c_i y(i)\leq\sum_j\nu(j)z(j).
+\end{equation}
+The measure $\nu$ has total mass zero because $\sum_i c_i=0$ and every
+$\mu_{i,r}$ is a probability measure.  With
+$d_k=z(k+1)-z(k)$, Abel summation gives
+\[
+  \sum_{j=1}^n\nu(j)z(j)
+  =-\sum_{k=1}^{n-1}\Gamma_kd_k.
+\]
+Combining this identity with~\eqref{eq:nu-majorant} proves
+\[
+  \sum_i c_i y(i)
+  \leq\sum_k|\Gamma_k|\,|d_k|
+  \leq C\Var(z).
+\]
+\end{proof}
+
+\begin{corollary}\label{cor:finite-reduction}
+Suppose that for every sign vector $s$ and every choice of one radius at each
+vertex with $c_i(s)>0$, weights satisfying Lemma~\ref{lem:certificate} exist
+with a common bound $C$.  Then $\Cpath n\leq C$.
+\end{corollary}
+
+\begin{proof}
+For any real sequence $y$,
+\[
+  \Var(y)=\max_{s\in\{-1,1\}^{n-1}}
+  \sum_{k=1}^{n-1}s_k\bigl(y(k)-y(k+1)\bigr)
+  =\max_s\sum_i c_i(s)y(i).
+\]
+For a fixed $z$ and $s$, select any maximizing radius at each positive
+coefficient.  This choice occurs in the assumed finite family, including
+when active radii are tied.  Lemma~\ref{lem:certificate}, followed by
+Lemma~\ref{lem:quotient}, proves the claim.
+\end{proof}
+
+\section{The exact certificate for \texorpdfstring{$P_{11}$}{P11}}
+
+At the eleven vertices the numbers of distinct centered balls are
+\begin{equation}\label{eq:radius-counts}
+  (R_1,\ldots,R_{11})=(11,10,9,8,7,6,7,8,9,10,11).
+\end{equation}
+We order sign vectors lexicographically with $-1$ before $+1$, and for each
+sign vector order the positive active radii lexicographically from radius
+zero.  The number of chambers is therefore the independently reproducible
+integer
+\begin{equation}\label{eq:chamber-count}
+  \sum_{s\in\{-1,1\}^{10}}
+  \prod_{\{i:c_i(s)>0\}}R_i
+  =5{,}874{,}849.
+\end{equation}
+
+Most chamber certificates have an especially small form.  List the nonzero
+coefficients $c_i$ from left to right.  Each consecutive pair contains one
+positive and one negative coefficient.  For each such pair, the certificate
+chooses one centered ball at the negative vertex and assigns it weight one.
+An internal negative coefficient $-2$ belongs to two consecutive pairs, and
+a negative endpoint coefficient $-1$ belongs to one, so the mass
+constraint~\eqref{eq:mass-constraint} holds automatically.  The serialized
+certificate contains one radius byte per pair.  Across all chambers there
+are
+\begin{equation}\label{eq:slot-count}
+  45{,}011{,}088
+\end{equation}
+such radius choices.
+
+Ten chambers use rational mixtures instead.  For completeness,
+Table~\ref{tab:exceptions} lists all of them.  Chamber indices are zero-based
+in the canonical order above; vertices are one-based.  The notation
+$v:r[w]$ assigns weight $w$ to the centered ball of radius $r$ at vertex $v$.
+
+\begin{longtable}{@{}r>{\raggedright\arraybackslash}p{0.78\textwidth}@{}}
+\caption{The ten rational-mixture exceptions.}\label{tab:exceptions}\\
+\toprule
+Index & Nonzero negative mixtures \\
+\midrule
+\endfirsthead
+\toprule
+Index & Nonzero negative mixtures \\
+\midrule
+\endhead
+50143 & $1:3[44/45]+7[1/45]$; $5:1[2]$; $7:1[2]$; $11:3[44/45]+7[1/45]$.\\
+716190 & $1:7[1]$; $3:1[11/10]+5[9/10]$; $5:1[2]$; $7:1[2]$; $9:1[11/10]+5[9/10]$.\\
+756109 & As at 716190, together with $11:7[1]$.\\
+763791 & $1:7[1]$; $3:1[17/10]+5[3/10]$; $5:1[2]$; $7:1[2]$; $9:1[17/10]+5[3/10]$; $11:7[1]$.\\
+1855862 & $2:2[44/45]+6[46/45]$; $5:1[2]$; $7:1[2]$; $10:2[44/45]+6[46/45]$.\\
+1860087 & The same mixtures as at 1855862.\\
+1864312 & $2:2[152/135]+6[118/135]$; $5:1[2]$; $7:1[2]$; $10:2[152/135]+6[118/135]$.\\
+1872762 & $2:2[664/495]+6[326/495]$; $5:1[2]$; $7:1[2]$; $10:2[664/495]+6[326/495]$.\\
+5206386 & $3:1[11/10]+5[9/10]$; $5:1[2]$; $7:1[2]$; $9:1[11/10]+5[9/10]$.\\
+5250145 & As at 5206386, together with $11:7[1]$.\\
+\bottomrule
+\end{longtable}
+
+The complete pure-radius data and the exceptional mixtures are supplied as
+ancillary files.  The following proposition records exactly what the
+independent verifier checks.
+
+\begin{proposition}[Exact finite verification]\label{prop:verification}
+For each of the $5{,}874{,}849$ chambers in~\eqref{eq:chamber-count}, the
+ancillary certificate satisfies the mass constraints
+\eqref{eq:mass-constraint} and the exact edge-flux inequalities
+\[
+  |\Gamma_k|\leq\frac{10}{11},\qquad 1\leq k\leq10.
+\]
+\end{proposition}
+
+\begin{proof}
+The verifier independently regenerates the sign vectors by bit masks and the
+positive-radius tuples by an integer odometer.  It parses exactly the number
+of pair radii prescribed by the nonzero coefficients and rejects an invalid
+radius, missing data, or trailing data.  In the ten exceptional chambers it
+parses positive rational weights and verifies their sum separately at every
+negative vertex.
+
+For every chamber it constructs the signed rational vertex measure
+\eqref{eq:nu-def}, verifies that its total mass is zero, and computes each
+$\Gamma_k$ directly as a rational prefix sum.  It then compares
+$|\Gamma_k|$ with $10/11$ by exact integer arithmetic.  The completed run
+regenerated all $5{,}874{,}849$ chambers, consumed all
+$45{,}011{,}088$ radius slots, verified all ten rational exceptions, and
+accepted every edge inequality.  The same verification was repeated from a
+fresh temporary directory containing only the verifier and the three
+certificate files.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Proposition~\ref{prop:verification} supplies the hypotheses of
+Corollary~\ref{cor:finite-reduction} with $n=11$ and $C=10/11$.  Hence
+$\Cpath{11}\leq10/11$.
+
+For the reverse inequality, let $e_1$ be one at vertex $1$ and zero
+elsewhere.  Its variation is one.  At vertex $i$, the smallest centered ball
+containing vertex $1$ has radius $i-1$ and cardinality
+$\min\{11,2i-1\}$; every larger such ball has at least that cardinality.
+Consequently,
+\[
+  (M_{P_{11}}e_1)(i)=\frac1{\min\{11,2i-1\}}.
+\]
+This sequence is nonincreasing from $1$ to $1/11$, so its variation is
+$10/11$.  Thus $\Cpath{11}\geq10/11$, completing the proof.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The decisive verification requires Python~3 and only its standard library.
+From the root of the ancillary archive, it is run by
+\begin{verbatim}
+python3 code/verify_radius_certificate.py \
+  certificates/p11_radius_certificate.json \
+  certificates/p11_radius_certificate.bin
+\end{verbatim}
+The exceptional-mixture file named by the certificate header is read from the
+same directory.  The verifier fails closed on malformed rational data,
+invalid radii, incorrect mixture masses, incomplete or surplus payload data,
+and inconsistent file bindings.  Deliberate corruptions of each of these
+types were rejected.
+
+The certificate generator used linear programming only to locate supports
+for the ten rational exceptions.  The displayed weights and every decisive
+inequality were subsequently recomputed exactly, and the independent
+verifier does not import the generator or any numerical optimization
+library.
+
+Theorem~\ref{thm:main} is a finite result.  The enumeration does not provide a
+uniform rule for all $n$, so it neither proves the full path conjecture nor
+the sharp centered variation inequality on the integer lattice.  The point
+masses at the two endpoints show attainment, but we do not classify all
+extremizers.
+
+\section*{Data, code, and computational disclosure}
+
+The exact certificate, generator, independent verifier, corruption tests,
+and reproduction instructions accompany this manuscript.  Computational
+and AI-assisted tools were used for proof discovery, code development,
+literature checking, and manuscript preparation.  The mathematical endpoint
+depends on the exact rational certificate and the independently executable
+verifier described above.  No proof assistant was used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,380 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Area}{\operatorname{Area}}
+\newcommand{\CY}{\mathcal C}
+
+\title[Exact optimization of a ten-point Heilbronn family]
+{Exact Optimization of the Comellas--Yebra Three-Parameter Family for Ten Points in the Square}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\hypersetup{
+  pdftitle={Exact Optimization of the Comellas--Yebra Three-Parameter Family for Ten Points in the Square},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+For the Heilbronn problem in the unit square, the best known ten-point
+construction is a three-parameter configuration introduced by Comellas and
+Yebra.  We determine the maximum of the minimum triangle area over the entire
+parameter cube, including unordered and degenerate parameter values.  If
+$z_0$ is the root in $(3/10,1/3)$ of
+$12z^3-27z^2+20z-4$, the exact maximum is
+\[
+ A_0=\frac{5z_0^2-4z_0^3}{8}
+ =0.04653741958254177256\ldots.
+\]
+The proof combines a one-variable envelope on an ordered cell, an elementary
+product inequality on a second cell, and an exact rational dyadic certificate
+on the remaining cell.  The certificate has 2,893 nodes and is independently
+checked using local Bernstein bounds.  We also classify the four parameter
+triples attaining equality.  This is a partial result: it does not give an
+upper bound for arbitrary ten-point configurations, so the unrestricted value
+$\Delta_{10}$ remains open.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For a ten-point configuration $P\subset[0,1]^2$, let
+\[
+ a(P)=\min_{\{p,q,r\}\subset P}\Area(pqr),\qquad
+ \Delta_{10}=\max_{|P|=10}a(P).
+\]
+The boundary of the square is allowed, and collinear triples have area zero.
+Compactness gives existence after the objective is extended to ordered
+ten-tuples, since a tuple with a repeated point has value zero.
+
+Comellas and Yebra~\cite{ComellasYebra2002} found the best known ten-point
+construction by simulated annealing followed by exact local refinement.
+Recent global-optimization work certifies the square problem through nine
+points but leaves the unrestricted ten-point case open
+\cite{MonjiModirKocuk2025,SudermannMerx2026}.  Sudermann--Merx also reproduces
+the exact ten-point coordinates in its appendix
+\cite[Appendix~A]{SudermannMerx2026}.
+
+The source paper analyzes three active areas locally.  Its literal displayed
+formulas for two of them on page~4 appear inconsistent with the point table;
+the determinant formulas used below are derived directly from the coordinates
+on page~6.  A later public research record gives an exact argument on the
+ordered cell $0\le x\le y\le z\le1/2$ but does not cover the whole parameter
+cube~\cite{TheoremDB2026}.  The contribution here is an exact theorem on all
+$(x,y,z)\in[0,1]^3$, including the complementary order cells, together with an
+independently checked finite certificate and an equality classification.
+
+A dated search of arXiv, publisher records, and exact-formula web results on
+August~30, 2026 found no earlier source stating the full-cube theorem.  This
+novelty statement is limited to those searches.  Most importantly, the family
+is a proper three-dimensional subset of the unrestricted twenty-coordinate
+configuration space; no reduction from arbitrary configurations is claimed.
+
+\section{The parameter family and the result}
+
+For $x,y,z\in[0,1]$, define the ordered ten-tuple
+\begin{equation}\label{eq:family}
+\begin{split}
+\CY(x,y,z)=(&(x,0),(1-y,0),(0,x),(1,y),(1-z,z),(z,1-z),\\
+ &(0,1-y),(1,1-x),(y,1),(1-x,1)).
+\end{split}
+\end{equation}
+Let $\delta(x,y,z)$ be the least unsigned area among its $\binom{10}{3}=120$
+triangles.  Repetitions are allowed in this parametrized statement and then
+give $\delta=0$.
+
+Let $z_0$ denote the root in $(3/10,1/3)$ of
+\begin{equation}\label{eq:cubic}
+ f(z)=12z^3-27z^2+20z-4,
+\end{equation}
+and set
+\begin{equation}\label{eq:target}
+ x_0=\frac{z_0}{2},\qquad
+ y_0=(1-z_0)(1-2z_0),\qquad
+ A_0=\frac{5z_0^2-4z_0^3}{8}.
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+The full Comellas--Yebra parameter cube has exact optimum
+\[
+ \max_{(x,y,z)\in[0,1]^3}\delta(x,y,z)=A_0.
+\]
+The number $A_0$ is the unique real root of
+\[
+ 3456A^3-1764A^2+268A-9=0.
+\]
+The equality triples are exactly
+\[
+ (x_0,y_0,z_0),\quad (1-y_0,1-x_0,z_0),\quad
+ (x_0,y_0,1-z_0),\quad (1-y_0,1-x_0,1-z_0).
+\]
+\end{theorem}
+
+The theorem gives a sharp result for an infinite family, not the unrestricted
+identity $\Delta_{10}=A_0$.
+
+\section{Exact preliminaries and normalization}
+
+On $[0,1/2]$, the derivative
+$f'(z)=36z^2-54z+20$ is positive.  Moreover,
+\begin{equation}\label{eq:root-bracket}
+ f(31/100)=-4651/125000<0,
+ \qquad f(8/25)=444/15625>0.
+\end{equation}
+Thus $31/100<z_0<8/25$.  For the doubled target
+\[
+ t_0=2A_0=\frac{5z_0^2-4z_0^3}{4},
+\]
+monotonicity of $(5z^2-4z^3)/4$ on $[0,1/2]$ and evaluation at the endpoints
+in~\eqref{eq:root-bracket} give
+\begin{equation}\label{eq:t-bracket}
+ \frac9{100}<t_0<\frac1{10}.
+\end{equation}
+
+Two elementary point-multiset identities normalize the entire cube:
+\begin{equation}\label{eq:involutions}
+ \CY(x,y,z)=\CY(1-y,1-x,z),\qquad
+ \CY(x,y,z)=\CY(x,y,1-z).
+\end{equation}
+The first exchanges four boundary pairs; the second exchanges the two
+nonboundary points.  Hence it suffices to consider
+\begin{equation}\label{eq:normalized}
+ 0\le z\le\frac12,
+ \qquad x+y\le1.
+\end{equation}
+We cover this normalized cell by
+\begin{equation}\label{eq:split}
+ x\ge y;\qquad x\le y\le z;\qquad
+ x\le y\ \text{and}\ z\le y.
+\end{equation}
+
+\section{The ordered cell}
+
+Assume $0\le x\le y\le z\le1/2$.  Direct determinants of triangles
+$012$, $145$, and $058$ give the nonnegative doubled areas
+\begin{equation}\label{eq:PQR}
+ P=x(1-x-y),\qquad Q=y(1-2z),\qquad
+ R=z(1-x+y)-y.
+\end{equation}
+Here \(R\ge z(1-x+z)-z=z(z-x)\ge0\); the other two signs are immediate.
+Put $t=\min(P,Q,R)$.
+
+\begin{lemma}\label{lem:ordered}
+On the ordered cell, $t\le t_0$.
+\end{lemma}
+
+\begin{proof}
+Suppose $t\ge t_0$; then $0<z<1/2$.  Write
+\[
+ d=1-2z,
+ \qquad L=\frac{t}{d}.
+\]
+The inequality $Q\ge t$ gives $L\le y$.  Lowering $y$ to $L$ increases both
+$P$ and $R$, so $P(x,L)\ge t$ and $R(x,L,z)\ge t$.  The latter yields
+\[
+ x\le U=1-\frac{t+(1-z)L}{z}.
+\]
+The vertex of $P(x,L)=x(1-x-L)$ is $(1-L)/2$, and
+\begin{equation}\label{eq:vertex}
+ \frac{1-L}{2}-U=
+ \frac{N}{2z(1-2z)},\qquad N=t(4-7z)+2z^2-z.
+\end{equation}
+Because $4-7z>0$ and $t\ge t_0$,
+\[
+ N\ge 2z^2-(1+7t_0)z+4t_0.
+\]
+The discriminant of the quadratic on the right satisfies, by
+\eqref{eq:t-bracket},
+\[
+49t_0^2-18t_0+1
+<49(1/10)^2-18(9/100)+1=-13/100<0.
+\]
+Thus $U$ lies strictly before the vertex.  From $x\le U$ and
+$P(x,L)\ge t$, monotonicity up to the vertex gives $P(U,L)\ge t$.
+Direct simplification gives
+\begin{equation}\label{eq:H}
+ P(U,L)-t=\frac{tH}{z^2(1-2z)},\quad
+ H=(6z-4)t+2z^3-5z^2+2z.
+\end{equation}
+Consequently $H\ge0$.  Since $6z-4<0$,
+\begin{equation}\label{eq:envelope}
+ t\le h(z):=\frac{2z^3-5z^2+2z}{4-6z}.
+\end{equation}
+Finally,
+\[
+ h'(z)=-\frac{f(z)}{2(3z-2)^2}.
+\]
+The polynomial $f$ is strictly increasing and changes sign once on
+$[0,1/2]$, so $h$ has its unique maximum at $z_0$.  Reduction using
+$f(z_0)=0$ gives $h(z_0)=t_0$.
+\end{proof}
+
+The equality chain in the proof is rigid.  Equality in the envelope forces
+$z=z_0$; the strict vertex inequality in~\eqref{eq:vertex} then forces
+$x=U$, and strict decrease under the $y$ substitution forces $y=L$.
+Reducing by~\eqref{eq:cubic} gives $x=x_0$ and $y=y_0$.
+
+\section{The cell \texorpdfstring{\(x\ge y\)}{x greater than or equal to y}}
+
+Under~\eqref{eq:normalized} and $x\ge y$, both $y$ and $z$ lie in
+$[0,1/2]$.  Triangles $145$, $014$, and $149$ have doubled areas
+\begin{equation}\label{eq:product-witnesses}
+ q=y(1-2z),\qquad w=z(1-x-y),\qquad |q-w|.
+\end{equation}
+
+\begin{lemma}\label{lem:reverse-order}
+This cell contains a triangle of area at most $9/200<A_0$.
+\end{lemma}
+
+\begin{proof}
+Let $T=9/100$.  If all three quantities in
+\eqref{eq:product-witnesses} exceeded $T$, then one of $q,w$ would exceed
+$2T$, and hence $qw>2T^2$.  On the other hand,
+\[
+ qw=yz(1-2z)(1-x-y)
+ \le y(1-2y)z(1-2z)\le\frac1{64},
+\]
+because $u(1-2u)\le1/8$ for $u\in[0,1/2]$.  This contradicts
+$2T^2=81/5000>1/64$.  Divide the determinant threshold by two and use
+\eqref{eq:t-bracket}.
+\end{proof}
+
+\section{The remaining cell and its exact certificate}
+
+The last cell is
+\begin{equation}\label{eq:D}
+D=\{(x,y,z):0\le x,y\le1,\ 0\le z\le1/2,
+x\le y,\ z\le y,\ x+y\le1\}.
+\end{equation}
+
+\begin{proposition}[Exact dyadic cover]\label{prop:cover}
+For every $(x,y,z)\in D$, one of the 120 triangle determinants of
+$\CY(x,y,z)$ has absolute value at most $9/100$.  Hence
+$\delta(x,y,z)\le9/200<A_0$.
+\end{proposition}
+
+\begin{proof}
+The serialized proof tree starts with
+$[0,1]\times[0,1]\times[0,1/2]$ and repeatedly bisects a normalized widest
+coordinate.  Its leaf data are summarized in Table~\ref{tab:cover}.
+
+\begin{table}[ht]
+\centering
+\caption{Exact finite-cover statistics.}\label{tab:cover}
+\begin{tabular}{lr}
+\toprule
+Quantity & Count\\
+\midrule
+Binary-tree nodes & 2,893\\
+Leaves & 1,447\\
+Triangle-witness leaves & 1,169\\
+Domain-infeasible leaves & 278\\
+Maximum depth & 20\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At a domain-infeasible leaf, one of
+\[
+ \underline x>\overline y,
+ \qquad \underline z>\overline y,
+ \qquad \underline x+\underline y>1
+\]
+holds.  Every other leaf names a literal triangle whose signed determinant is
+bounded in $[-9/100,9/100]$ by exact rational arithmetic.  Completeness of the
+binary prefix tree proves that these leaves cover the root box.
+
+An independent checker reconstructs every box from its path, re-derives the
+named determinant from the shoelace formula, changes to local box coordinates,
+and bounds it by the minimum and maximum of its exact tensor-product Bernstein
+coefficients.  Thus the checker uses neither the generator's determinant
+decomposition nor its termwise interval evaluator.  The commands and files
+are given in Section~\ref{sec:repro}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The involutions~\eqref{eq:involutions} reduce the cube to
+\eqref{eq:normalized}.  The three cells in~\eqref{eq:split} are covered by
+Lemma~\ref{lem:reverse-order}, Lemma~\ref{lem:ordered}, and
+Proposition~\ref{prop:cover}.  Since $P,Q,R$ are actual doubled triangle
+areas, Lemma~\ref{lem:ordered} gives $\delta\le A_0$ there, while the other
+two cells have the strict bound $9/200<A_0$.
+
+At $(x_0,y_0,z_0)$, exact enumeration of all 120 determinants gives minimum
+$A_0$, attained by 16 triples.  Hence the bound is sharp.  Equality must
+normalize to the unique ordered equality point; undoing the two involutions
+gives precisely the four listed parameter triples.  Eliminating $z_0$ from
+\eqref{eq:cubic} and~\eqref{eq:target} gives the displayed cubic for $A_0$.
+Its discriminant is negative, so it has only one real root.
+\end{proof}
+
+\section{Reproducibility}\label{sec:repro}
+
+The ancillary archive contains the exact input, proof tree, generator, two
+independent incumbent verifiers, the analytic-identity audit, and the
+independent cover checker.  From the archive root, run
+\begin{verbatim}
+python3 certificates/verify_incumbent_stdlib.py
+python3 certificates/verify_incumbent_sympy.py
+python3 certificates/verify_analytic_identities.py
+python3 certificates/verify_family_cover.py
+\end{verbatim}
+All four commands print a compact record with status \texttt{PASS}.  The
+cover can be regenerated deterministically by
+\begin{verbatim}
+python3 certificates/generate_family_cover.py \
+  certificates/family_cover.json
+\end{verbatim}
+The standard-library incumbent checker works in the cubic number field using
+rational root intervals.  The second incumbent checker uses SymPy and the
+shoelace formula.  The cover generator and cover checker require only the
+Python standard library.  The reported clean run used CPython~3.10.12 and
+SymPy~1.14.0.
+
+A separate 340-start floating-point search probed uniform, five-boundary,
+eight-boundary, and scale-separated asymmetric starts.  It found no value
+above the incumbent.  This experiment is a diagnostic and is not used in any
+proof.
+
+\section{Limitations and disclosure}
+
+No theorem in this paper reduces an arbitrary ten-point configuration to
+\eqref{eq:family}.  The exact certificate covers three parameters, whereas the
+unrestricted problem has twenty coordinates before symmetries.  Consequently
+this paper neither proves a matching unrestricted upper bound nor determines
+$\Delta_{10}$.
+
+Computer algebra and custom exact programs were used for symbolic
+cross-checks and code development.  The mathematical claims are supported by
+the displayed proof and independently executable exact checkers; the author
+reviewed the sources, scope, code, and final manuscript and takes
+responsibility for the result.
+
+\section*{Data and code availability}
+
+The LaTeX source, exact certificates, verification programs, search log, and
+machine-readable proof tree accompany this manuscript in the source archive.
+No proof assistant was used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

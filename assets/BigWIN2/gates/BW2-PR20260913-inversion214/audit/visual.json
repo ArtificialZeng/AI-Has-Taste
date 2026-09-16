@@ -1,0 +1,57 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260913-inversion214-release-94470355a3b8",
+  "snapshot_digest": "b44e0e7599a74c68005fc585f9c801baada464c68476c4faa22d309c11848719",
+  "manuscript_digest": "d55ad7f160a9be90f7346fc4e63592c327ccf69e82d6d4dcd6747631f854f38e",
+  "pdf_digest": "699f3ced30b254d80a8aed66a274fad3b040cd9b981dcce08b8dd0f8d865e2bf",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "render_command": "pdftoppm -r 120 -png manuscript/build/main.pdf audit/release-pages/page",
+  "inspection_method": "Actually opened and visually inspected all final rendered page images with view_image after the last rebuild",
+  "rendered_pages": [
+    {
+      "page": 1,
+      "path": "audit/release-pages/page-1.png",
+      "sha256": "aa505b5be60ebfefb3ee07736ea006bf4dea3a78e2fae8860812818ca13aadb0",
+      "observation": "Title, author, affiliation and abstract legible. The exact class definition, corrected pattern list, prior-work citations, and small-root formula fit the page; no clipping or overlaps."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-pages/page-2.png",
+      "sha256": "a4b72f377dd6bc55e61501c88b3e7c0f10219a5a207f658194567772051d45bc",
+      "observation": "Rational functions, orbit, all-orders theorem, unboxed quotient (8), approximants and contact (10) are clear. Initial coefficients are legible. No formula-number collision or margin spill."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-pages/page-3.png",
+      "sha256": "e6affb00fc112a48f5611cad53cca1851a213f3fed24fa9038092c56e4d6d869",
+      "observation": "Growth-rule ranges, boundary extraction, denominator-cleared equation (13), kernel calculation and F=c/z fit cleanly. Subscripts, signs and equation labels are readable."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-pages/page-4.png",
+      "sha256": "bbb8d500a0c2925afeb9568b304bd2b2b5d73d2c999531ab1016c14465317d2c",
+      "observation": "Regularization, summand orders, finite iteration and exact tail display correctly. The denominator D_(m-1), exponent m+6 and finite-error identity are visible without collisions."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-pages/page-5.png",
+      "sha256": "a48188436e5348276c65d956cdc2393aa39419be551b1636c601a7fd9989957e",
+      "observation": "Uniqueness proof and Lagrange formula (22) are legible; finite verification ranges 40,48,120,9,45,47 are clear. The library citation, exact coefficient 5/16 and both factorial bases are readable. The paragraph continues normally onto page 6."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-pages/page-6.png",
+      "sha256": "32cef03b8215d394b46e73e548b9672cc0702a9a96bbbb209a14e1d074b420ec",
+      "observation": "The continuation explicitly limits the library comparison. AI assistance disclosure is readable. All six references and their URLs fit; the local-author date and unverified hosted-version disclaimer are visible. No missing glyph, overlap or cropped URL."
+    }
+  ],
+  "checked_at_utc": "2026-09-12T23:40:58.291544+00:00"
+}

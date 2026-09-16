@@ -1,0 +1,189 @@
+{
+  "job_id": "primary-20260914-bigdescent-logconcavity-research-6ff0786c2423",
+  "arithmetic": "exact symbolic polynomials and Python integers",
+  "matrix_identity": "R1^8 = xy R1^6 + xy(x+y)R1^5 + 5(xy)^2 R1^4 + 2(xy)^2(x+y)R1^3 + (xy)^2(x^2+xy+y^2)R1^2 + (xy)^3(x+y)R1",
+  "identity_verified_entrywise": true,
+  "vanishing_profile_blocks": [
+    [
+      2,
+      2,
+      2
+    ],
+    [
+      2,
+      1,
+      2
+    ]
+  ],
+  "all_one_block_boundary_bases_Schur_coefficients": {
+    "0,0": [
+      [
+        1
+      ],
+      [
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        9
+      ],
+      [
+        0,
+        0,
+        5,
+        23
+      ],
+      [
+        0,
+        0,
+        0,
+        39
+      ]
+    ],
+    "0,1": [
+      [
+        4
+      ],
+      [
+        2
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        3,
+        21
+      ],
+      [
+        0,
+        0,
+        29
+      ],
+      [
+        0,
+        0,
+        17,
+        63
+      ],
+      [
+        0,
+        0,
+        5,
+        105
+      ]
+    ],
+    "1,0": [
+      [
+        4
+      ],
+      [
+        2
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        3,
+        21
+      ],
+      [
+        0,
+        0,
+        29
+      ],
+      [
+        0,
+        0,
+        17,
+        63
+      ],
+      [
+        0,
+        0,
+        5,
+        105
+      ]
+    ],
+    "1,1": [
+      [
+        4
+      ],
+      [
+        6
+      ],
+      [
+        2,
+        16
+      ],
+      [
+        0,
+        21
+      ],
+      [
+        0,
+        12,
+        50
+      ],
+      [
+        0,
+        3,
+        81
+      ],
+      [
+        0,
+        0,
+        61,
+        163
+      ],
+      [
+        0,
+        0,
+        25,
+        295
+      ]
+    ]
+  },
+  "all_one_generating_function": {
+    "numerator": "x**2*y**2*z**6*(x**2 + x*y + y**2) + 2*x**2*y**2*z**5*(x + y) + 3*x**2*y**2*z**4 + 2*x*y*z**3*(x + y) + x*y*z**2 + 1",
+    "denominator": "-x**3*y**3*z**7*(x + y) - x**2*y**2*z**6*(x**2 + x*y + y**2) - 2*x**2*y**2*z**5*(x + y) - 5*x**2*y**2*z**4 - x*y*z**3*(x + y) - x*y*z**2 + 1"
+  },
+  "diagonal_state_counterexample": {
+    "profile": [
+      1,
+      0,
+      1
+    ],
+    "CC": "x^2+y^2",
+    "CC_s_(1,1)_coefficient": -1,
+    "accepted_scalar": "2(x^2+xy+y^2)"
+  },
+  "qualification": "Proves the contextual run reduction and all singleton-block boundary families at every run length. Does not prove arbitrary mixed profiles or original LC.",
+  "source_sha256": "03ad82cdbcbee83701695f50050dcb184d5b934b99b6e53aeb2818a8da1c517f",
+  "script_sha256": "abca724d73b3264c9b2413ad96cae45110bda1744d92561ce3fb0abccca871c5"
+}

@@ -1,0 +1,350 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Odd-parameter periods for RESOCA 115]{Exact odd-parameter periods for reversible elementary second-order cellular automaton rule 115}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{29 August 2026}
+\hypersetup{
+  pdftitle={Exact odd-parameter periods for reversible elementary second-order cellular automaton rule 115},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Formenti and Kamilya conjectured an exact period formula for the family
+\(1{(01)}^k\) under reversible elementary second-order cellular automaton rule
+115.  We prove their odd-parameter conjecture.  The proof encodes each pair of
+consecutive time layers by four symbols, removes the uniform period-three
+background, and conjugates the remaining dynamics to a phase-driven walk on
+a finite properly three-edge-coloured tree.  A leaf-deletion argument shows
+that this walk is one cycle, which supplies exact minimality rather than only
+a return-time bound.  Consequently, for every \(i\geq0\),
+\[
+P(2i+1)=2^{4i+6}-1=4^{2i+3}-1.
+\]
+Independent exact computations verify the local conjugacy and small instances,
+but the quantified conclusion follows from the symbolic proof.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Formenti and Kamilya introduced and studied the reversible elementary
+second-order cellular automaton induced by Wolfram rule~115
+~\cite{FormentiKamilya2026}.  They proved that every finite initial pair is
+periodic and investigated period functions for several structured families.
+For the family whose current word is \(1{(01)}^k\) and whose memory is a single
+central spike, their Conjecture~2 states that
+\(P(2i+1)=4^{2i+3}-1\) for every \(i\geq0\).
+
+We prove this conjecture by a nonlinear combinatorial conjugacy.  The natural
+configuration coordinates do not give a linear map over \(\mathbb F_2\): the
+local rule has algebraic normal form
+\(1+x+\ell x+\ell xr\).  Instead, a phase-normalised two-layer symbol word
+has the form \(3^{N-|v|}v\), where \(v\) is a reduced word over three colours.
+The cellular update deletes or prepends one selected colour.  The allowed
+words form a tree, and the three phases trace a single contour cycle around
+that tree.
+
+The source paper has a harmless endpoint typo in its generic word-placement
+formula: a word of length \(|w|\) is indexed by
+\(0,\ldots,|w|-1\), not through \(|w|\).  We make the centred initial
+configuration explicit below.  We also use the standard least positive
+return convention; without positivity, time zero would trivialise a period
+definition.
+
+\section{Rule and exact finite reduction}
+
+All arithmetic in the cellular rule is over \(\mathbb F_2\).  Put
+\[
+\delta(\ell,x,r)=1+x+\ell x+\ell xr.
+\]
+Its Wolfram table is
+\[
+\begin{array}{c@{\quad}cccccccc}
+(\ell x r)&111&110&101&100&011&010&001&000\\
+\delta(\ell,x,r)&0&1&1&1&0&0&1&1,
+\end{array}
+\]
+so this is rule 115.
+
+For two configurations \(m,c\colon\mathbb Z\to\mathbb F_2\), define
+\[
+F(m,c)=(c,c'),\qquad
+c'_j=m_j+\delta(c_{j-1},c_j,c_{j+1}).                 \tag{2.1}
+\]
+Let \(u_0=1\) and \(u_j=0\) for \(j\neq0\).  For \(k\geq0\), let
+\[
+c^{(k)}_j=
+\begin{cases}
+1,&-k\leq j\leq k\ \text{and}\ j+k\equiv0\pmod2,\\
+0,&\text{otherwise}.
+\end{cases}
+\]
+Thus sites \(-k,\ldots,k\) read as \(1{(01)}^k\).  The period is
+\[
+P(k)=\min\{p>0:F^p(u,c^{(k)})=(u,c^{(k)})\}.          \tag{2.2}
+\]
+
+Write the time layers as
+\[
+d^{-1}=u,\qquad d^0=c^{(k)},\qquad
+d^{t+1}_j=d^{t-1}_j+
+ \delta(d^t_{j-1},d^t_j,d^t_{j+1}).                  \tag{2.3}
+\]
+Let \(\beta_t=1\) for \(t\equiv1\pmod3\) and \(\beta_t=0\) otherwise,
+also for \(t=-1\).  The uniform background pair cycles as
+\[
+(\beta_{t-1},\beta_t)=(0,0),(0,1),(1,0),(0,0),\ldots. \tag{2.4}
+\]
+
+\begin{lemma}[Exact exterior]\label{lem:exterior}
+For \(k\geq1\) and every \(t\geq-1\),
+\[
+d^t_j=\beta_t\quad\text{if }j>k\text{ or }j\leq-k-2. \tag{2.5}
+\]
+Consequently a full return is equivalent to phase zero and return of both
+layers on
+\[
+W_k=[-k-1,k].                                         \tag{2.6}
+\]
+\end{lemma}
+
+\begin{proof}
+Set \(a=-k\) and \(b=k\).  At the right receiver \(b+1\), the identities
+\[
+\delta(s,0,0)=1,\qquad \delta(s,1,1)=0
+\]
+are independent of the possibly non-background left neighbour \(s\).
+Induction therefore proves (2.5) for \(j>b\).
+
+For the left side put \(e_t=d^t_{a-1}\).  A simultaneous three-phase
+induction gives
+\[
+e_{3q+1}=1,\qquad e_{3q}=e_{3q-1}\qquad(q\geq0),      \tag{2.7}
+\]
+starting from \(e_{-1}=e_0=0\).  At phase zero,
+\(\delta(0,x,r)=1+x\) and the second identity in (2.7) give
+\(e_{3q+1}=1\).  At phase two the same local identity gives
+\(e_{3q+3}=e_{3q+2}\), which is the next instance of the second identity.
+
+At site \(a-2\), the only phase at which the right neighbour can affect the
+background update is phase one.  There the neighbourhood has centre and left
+bits equal to one, while (2.7) gives the right bit one; hence
+\(\delta(1,1,1)=0\), as required for the next background bit.  In the other
+two phases, \(\delta(0,0,r)=1\), independently of \(r\).  This closes the
+simultaneous induction at \(a-2\), and ordinary induction propagates the
+background to every site further left.
+
+Only the two background ghost cells \(a-2\) and \(b+1\) enter the update on
+\(W_k\).  Conversely, at any site to the right of \(W_k\), the pair
+\((\beta_{p-1},\beta_p)\) equals the initial pair \((0,0)\) exactly when
+\(p\equiv0\pmod3\).  This proves the return equivalence.
+\end{proof}
+
+\section{A reduced-word tree}
+
+Encode the two bits at site \(j\) and time \(t\) by
+\[
+q^t_j=2d^{t-1}_j+d^t_j\in Q=\{0,1,2,3\}.             \tag{3.1}
+\]
+Let \(\tau=(0\ 1\ 2)\) and fix \(\tau(3)=3\).  By (2.4), the exterior
+symbol at phase \(p=t\bmod3\) is \(p\).  The site-symbol update is
+\[
+g(L,X,R)=2(X\bmod2)+
+ \bigl(\lfloor X/2\rfloor+
+ \delta(L\bmod2,X\bmod2,R\bmod2)\bigr)\bmod2.       \tag{3.2}
+\]
+
+Put \(N=2k+2=|W_k|\).  Let \(V_N\) contain the words
+\(v=v_1\cdots v_m\) over \(\{0,1,2\}\) such that
+\[
+0\leq m\leq N,\qquad v_j\neq v_{j+1},\qquad
+m>0\Rightarrow v_m\neq0,\qquad
+m=N\Rightarrow v_1=0.                                \tag{3.3}
+\]
+The empty word is included.  Its normalised padded word is
+\[
+z(v)=3^{N-|v|}v.                                      \tag{3.4}
+\]
+
+For a colour \(a\in\{0,1,2\}\), define \(s_a\) by deleting the first
+letter when it is \(a\), and otherwise attempting to prepend \(a\).  Perform
+the operation if its result belongs to \(V_N\); if not, fix \(v\).  A valid
+prepend is reversed by deletion, while an invalid prepend is a fixed point,
+so \(s_a\) is an involution.
+
+Join \(v\) to \(s_a(v)\) by an edge of colour \(a\) whenever the two words
+differ.  Every nonempty word has the unique shorter neighbour obtained by
+deleting its first letter, and repeated deletion reaches the empty word.
+Thus the graph is connected.  On a hypothetical cycle, a word of maximal
+length would need two shorter neighbours, contradicting uniqueness.  The graph
+is therefore a tree, and at most one edge of any colour meets a vertex.
+
+\begin{proposition}[Exact one-step conjugacy]\label{prop:conjugacy}
+Let
+\[
+(a_0,a_1,a_2)=(1,0,2),                                \tag{3.5}
+\]
+and define
+\[
+\Psi(v,p)=\tau^p(z(v)).                                \tag{3.6}
+\]
+With exterior ghost symbol \(p\), one cellular step on \(W_k\) satisfies
+\[
+F_{W_k}(\Psi(v,p))=
+\Psi(s_{a_p}(v),p+1\bmod3).                            \tag{3.7}
+\]
+\end{proposition}
+
+\begin{proof}
+For normalised symbols define
+\[
+h_p(L,X,R)=\tau^{-(p+1)}
+g(\tau^{p}L,\tau^{p}X,\tau^{p}R).
+\]
+The normalised ghost is 0.  Direct substitution of rule 115 in (3.2) gives,
+for every \((L,X,R)\in Q^3\),
+\[
+h_p(L,X,R)=
+\begin{cases}
+3,&X=a_p,\ L\in\{a_p,3\},\
+     R\in\{0,1,2\}\setminus\{a_p\},\\
+a_p,&X=3,\ L\in\{a_p,3\},\
+     R\in\{0,1,2\}\setminus\{a_p\},\\
+X,&\text{otherwise}.
+\end{cases}                                           \tag{3.8}
+\]
+Thus only the boundary of the leading run of 3s can change, and the change is
+\(a_p\leftrightarrow3\).
+
+If the reduced word begins with \(a_p\), its first letter becomes 3 and is
+deleted from the reduced word.  Otherwise the last leading 3 becomes \(a_p\)
+and is prepended whenever the result satisfies (3.3).  Formula (3.8) also
+handles every missing-edge stratum: an empty word accepts colours 1 and 2 but
+not 0; a full word can only delete its forced first letter 0; and at length
+\(N-1\), a prepend is possible exactly for colour 0.  These are precisely the
+fixed cases in the definition of \(s_{a_p}\), proving (3.7).
+\end{proof}
+
+\section{The contour cycle and exact period}
+
+\begin{lemma}[Three-colour contour]\label{lem:contour}
+Let \(T\) be a finite tree with a proper edge colouring by three colours.  Let
+\(s_a\) cross the incident edge of colour \(a\), or fix the vertex when that
+edge is missing.  If \((a_0,a_1,a_2)\) is any ordering of the colours, then
+\[
+\Phi(v,p)=(s_{a_p}(v),p+1\bmod3)                      \tag{4.1}
+\]
+is one cycle on \(V(T)\times\mathbb Z/3\mathbb Z\).
+\end{lemma}
+
+\begin{proof}
+Induct on \(|V(T)|\).  For one vertex, (4.1) is its phase 3-cycle.  Remove a
+leaf \(u\), attached to \(v\) by the edge of colour \(a_p\).  In the smaller
+tree the missing-edge transition is
+\((v,p)\to(v,p+1)\).  Restoring \(u\) replaces exactly this transition by
+\[
+(v,p)\to(u,p+1)\to(u,p+2)\to(u,p)\to(v,p+1).          \tag{4.2}
+\]
+The two intermediate selected colours differ from \(a_p\), so the
+corresponding moves fix the leaf.  Hence the three new phase states are
+spliced into the unique old cycle, and the result is again one cycle.
+\end{proof}
+
+It remains to count the tree and identify the initial state.  For
+\(1\leq m<N\), there are \(2^m\) words of length \(m\) satisfying (3.3):
+choose the final nonzero letter in two ways and each preceding unequal letter
+in two ways.  For length \(N\), the first letter is 0.  The number ending
+nonzero is
+\[
+A_N=\frac{2^N+2{(-1)}^N}{3},                           \tag{4.3}
+\]
+as follows from the two-state recurrence according to whether the last letter
+is zero or nonzero.  Since \(N=2k+2\) is even,
+\[
+|V_N|=1+\sum_{m=1}^{N-1}2^m+A_N
+=\frac{2^{N+2}-1}{3}.                                 \tag{4.4}
+\]
+
+\begin{theorem}\label{thm:main}
+For every integer \(i\geq0\), the least positive full two-layer return time of
+the memory \(u\) and current word \(1{(01)}^{2i+1}\) under RESOCA rule 115 is
+\[
+P(2i+1)=2^{4i+6}-1=4^{2i+3}-1.
+\]
+\end{theorem}
+
+\begin{proof}
+Let \(k=2i+1\).  At phase zero the symbol word on \([-k-1,k]\) begins with
+0 and ends with 1.  Away from the origin it follows the alternating current
+word.  Since \(k\) is odd, the current bit at site zero is 0, while the memory
+spike changes its symbol to 2.  Thus adjacent symbols remain unequal, and the
+entire length-\(N\) word is a vertex of \(V_N\).
+
+By Proposition~\ref{prop:conjugacy} and
+Lemma~\ref{lem:contour}, every phase-tagged tree state has least period
+\(3|V_N|\).  The physical encoding is injective: the exterior background
+recovers the phase, inverse rotation recovers \(z(v)\), and deleting its
+leading run of 3s recovers \(v\).  Lemma~\ref{lem:exterior} therefore makes
+the tree period equal to the full-lattice period.  Using (4.4),
+\[
+P(k)=3|V_N|=2^{N+2}-1=2^{2k+4}-1.
+\]
+Substitution of \(k=2i+1\) gives the formula.  The one-cycle conclusion also
+shows directly that no smaller positive time returns.
+\end{proof}
+
+\section{Independent computational verification}
+
+The proof above is all-parameter and does not infer a theorem from finite
+data.  Exact computations were nevertheless used to attack its fragile local
+and boundary claims.  One implementation reconstructs (3.2) from the integer
+115 and checks every vertex and phase through \(N=12\).  A separately written
+implementation uses a literal truth table and exhausts all
+\(3\cdot4^3=192\) normalised local contexts and every tree state through
+\(N=14\).  At \(N=14\) it finds 21,845 vertices and one cycle on 65,535 phase
+states.
+
+Two further simulators enumerate positive times until the first full return on
+the exact window.  One uses dense tuples and the truth table, while the other
+uses bit-packed layers and the algebraic normal form.  Both give
+\[
+P(1)=63,\quad P(3)=1023,\quad P(5)=16383,\quad
+P(7)=262143.
+\]
+The serialized certificate validates the formal statement and fixed
+implementation files, rejects malformed input, and reruns these verification
+layers with one command.  These computations certify the displayed finite
+checks, not the inductive passage to arbitrary \(i\).
+
+\section*{Data and code availability}
+
+The accompanying research archive contains the formal statement, human proof,
+exact certificate, independent verifier, and deterministic tests.  The
+principal verification command is
+\begin{center}
+\texttt{python3 src/verify\_tree\_certificate.py}.
+\end{center}
+No floating-point arithmetic, randomness, or proof assistant is used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,61 @@
+{
+  "certificate": "evidence/q4_strategy.json.gz",
+  "certificate_sha256": "40ff6a4fa5b25e754257d6f538d66f14af76e6c0291d0f4eddb06c0c428aec80",
+  "checks": [
+    "independent graph reconstruction",
+    "independent graph-automorphism enumeration",
+    "direct color-permutation canonicalization",
+    "proper positions and legal moves",
+    "terminal conditions",
+    "canonical child reconstruction",
+    "complete adversary raw-move branching",
+    "winner strategy induction"
+  ],
+  "graph": {
+    "automorphisms_independently_enumerated": 6,
+    "color_permutations_checked_per_automorphism": 24,
+    "degree_multiset": [
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "edges": 24,
+    "vertices": 13
+  },
+  "status": "verified",
+  "strategy_dag": {
+    "adversary_edges": 45761,
+    "edges": 61173,
+    "nodes": 22071,
+    "nodes_by_colored_vertices": {
+      "0": 1,
+      "1": 1,
+      "2": 14,
+      "3": 7,
+      "4": 128,
+      "5": 92,
+      "6": 1171,
+      "7": 793,
+      "8": 5267,
+      "9": 2853,
+      "10": 7021,
+      "11": 2513,
+      "12": 1810,
+      "13": 400
+    },
+    "terminal_nodes": {
+      "alice": 400
+    }
+  },
+  "winner": "alice"
+}

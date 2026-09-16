@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks,pdfauthor={Xiaojian Zeng},pdftitle={Polynomial Solvability of a Two-Machine Unit-Time Resource-Constrained Job Shop with at Most Three Operations per Job},pdfsubject={Scheduling complexity and dynamic programming},pdfkeywords={job shop scheduling, resource constraints, unit processing times, dynamic programming}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Cmax}{C_{\max}}
+\newcommand{\N}{\mathbb{N}}
+
+\title{Polynomial Solvability of a Two-Machine Unit-Time Resource-Constrained Job Shop with at Most Three Operations per Job}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We consider two dedicated machines, nonpreemptive unit-time operations, at
+most three operations per job in an alternating prescribed route, and one
+unit-capacity auxiliary resource.  Every operation of a job has the same
+binary resource demand.  We prove that minimum makespan is polynomial-time
+solvable.  After an integral-slot normalization, a job is characterized by
+one of twelve route--demand types and by the number of operations it has
+completed.  A shortest-path dynamic program over the counts in these prefix
+classes exactly represents all feasible schedules.  Its state space has at
+most $(n+3)^{24}$ states, and an optimal labeled schedule can be recovered.
+This settles the at-most-three-operation boundary under the stated model; it
+does not settle the corresponding problem with unbounded route length, and
+the exponent is not intended as a practical running-time bound.
+\end{abstract}
+
+\section{Context and contribution}
+
+Tellache and Azerine study a job shop with a conflict graph and its
+equivalent formulation using unit-capacity auxiliary resources whose demands
+are constant over each job \cite{TellacheAzerine2026}.  In the two-machine,
+unit-processing-time setting they prove polynomial solvability when every job
+has at most two operations, and they leave the version with unrestricted
+numbers of operations unresolved.  The result here treats the intervening
+boundary of at most three operations per job.
+
+It is important not to infer hardness at this boundary from the
+resource-free problem with arbitrary processing times.  The classical
+two-machine, at-most-three-operation NP-completeness construction of Lenstra,
+Rinnooy Kan, and Brucker uses processing times derived from a \textsc{Knapsack}
+instance \cite{LenstraRinnooyKanBrucker1977}.  It therefore does not apply to
+the all-unit-time restriction.  Conversely, without the auxiliary resource,
+the two-machine unit-operation-time job shop is solvable in linear time
+\cite{HefetzAdiri1982}.  The demand-one jobs in the present problem form an
+additional clique of pairwise nonoverlap constraints, so that resource-free
+algorithm does not itself resolve the model considered here.
+
+The proof below is self-contained.  Its contribution relative to
+\cite{TellacheAzerine2026} is a finite-type, aggregate-prefix dynamic program
+that advances the printed bound from two operations to three.  A bounded
+search of exact notation and equivalent conflict-graph formulations did not
+locate the same at-most-three-operation statement.  This observation is only
+a description of the sources inspected, not a claim of priority.
+
+\section{Model and main result}
+
+There are two dedicated machines, denoted $A$ and $B$, and a finite set of
+jobs $J=\{J_1,\ldots,J_n\}$.  Job $J_j$ consists of a chain
+\[
+ O_{1j}\prec O_{2j}\prec\cdots\prec O_{m_jj},
+ \qquad 1\leq m_j\leq 3.
+\]
+Each operation is nonpreemptive, has processing time one, and is assigned to
+one of the two machines.  Consecutive operations of a job use different
+machines; a machine may be revisited.  Each job has a demand bit
+$r_j\in\{0,1\}$, and every one of its operations has that same demand for a
+single renewable auxiliary resource of capacity one.
+
+A schedule assigns a real start time $s_{ij}\geq0$ to every operation.
+Intervals are taken half-open.  The operations of a job respect their chain,
+operations assigned to the same machine do not overlap, and no two operations
+with demand one overlap.  There are no release dates, setup times, or further
+resources.  The objective is to minimize
+\[
+ \Cmax=\max_{i,j}(s_{ij}+1).
+\]
+
+\begin{theorem}\label{thm:main}
+For every instance of the model above, an optimal makespan and an optimal
+labeled schedule can be computed in polynomial time.  In particular, a
+shortest-path dynamic program with at most $(n+3)^{24}$ states solves
+\[
+ J2\mid \mathrm{res}^{t}111,\ p_{ij}=1,\ m_j\leq3\mid \Cmax.
+\]
+\end{theorem}
+
+The superscript $t$ records that the resource demand is constant over all
+operations of a job.  We first justify the discrete time model used by the
+dynamic program.
+
+\section{Integral-slot normalization}
+
+\begin{lemma}[Integral slots]\label{lem:integral}
+Every feasible schedule has a feasible schedule with integer start times and
+no larger makespan.  Moreover, an optimal integer schedule can be chosen so
+that every unit slot before its completion contains at least one operation.
+\end{lemma}
+
+\begin{proof}
+Start from an arbitrary feasible schedule and make one vertex for every
+operation.  Include all prescribed job-precedence arcs.  For every pair of
+operations that cannot overlap---because they use the same machine, both
+have demand one, or belong to the same job---orient the pair in the temporal
+order realized by the schedule.  Thus every resulting arc $u\to v$ satisfies
+\[
+ s_v\geq s_u+1.
+\]
+The digraph is acyclic: a directed cycle of $q>0$ arcs would imply
+$s_u\geq s_u+q$ for one of its vertices.
+
+For a vertex $v$, let $h(v)$ be the maximum number of arcs on a directed path
+ending at $v$; a source has value zero.  If $u\to v$, then
+$h(v)\geq h(u)+1$.  Hence assigning the new start time $h(v)$ preserves every
+precedence and nonoverlap constraint.  These start times are nonnegative
+integers.  A path of $h(v)$ arcs ending at $v$ already implies
+$s_v\geq h(v)$ in the original schedule, and consequently
+\[
+ h(v)+1\leq s_v+1\leq \Cmax.
+\]
+The new makespan is therefore no larger.
+
+Finally, if an integer schedule has a globally empty slot, shift every
+operation strictly after that slot one unit to the left.  Unit processing
+times and integral starts imply that no operation crosses the empty slot, so
+the shift preserves all constraints.  Repeating this deletion removes every
+empty slot without increasing the makespan.
+\end{proof}
+
+\section{Aggregate-prefix dynamic program}
+
+Because consecutive machines alternate, the possible routes are
+\[
+ A,\quad B,\quad AB,\quad BA,\quad ABA,\quad BAB.
+\]
+Crossing these six routes with $r\in\{0,1\}$ gives a fixed set $T$ of twelve
+types.  For $t\in T$, let $\ell_t\in\{1,2,3\}$ be the route length and let
+$n_t$ be the number of jobs of that type.
+
+A state is the vector
+\[
+ x=(x_{t,k}:t\in T,\ 0\leq k\leq\ell_t),
+\]
+where $x_{t,k}$ is the number of type-$t$ jobs that have completed exactly
+$k$ operations.  Thus $\sum_{k=0}^{\ell_t}x_{t,k}=n_t$.  Initially
+$x_{t,0}=n_t$ for every $t$; at the terminal state
+$x_{t,\ell_t}=n_t$.
+
+A prefix class $(t,k)$ is ready when $k<\ell_t$ and $x_{t,k}>0$.  Its next
+operation has the machine specified by position $k+1$ of the route and the
+demand bit of $t$.  A slot action selects either one ready class or two
+distinct ready classes.  In the latter case the two next operations must use
+different machines and the sum of their demand bits must be at most one.  For
+each selected class, a transition decreases $x_{t,k}$ by one and increases
+$x_{t,k+1}$ by one.  Every transition has cost one.  The state graph is
+acyclic because the total number of completed operations increases at every
+transition.
+
+\begin{lemma}[Exact quotient]\label{lem:quotient}
+There is a path of $q$ transitions from the initial state if and only if
+there is a realizable sequence of $q$ nonempty integer slots reaching the
+same aggregate state.  Both implications preserve the length.
+\end{lemma}
+
+\begin{proof}
+Consider first a transition.  Choose an arbitrary labeled job from every
+selected prefix class and run its next operation in the new slot.  Distinct
+prefix classes contain disjoint sets of jobs, the chosen machines are
+different, and at most one chosen operation has demand one.  All job,
+machine, and resource constraints therefore hold.  Induction realizes every
+DP path as a labeled schedule of the same length.
+
+Conversely, consider a feasible nonempty integer slot and the aggregate state
+immediately before it.  At most one operation runs on each of the two
+machines.  Every running operation is the ready next operation of its job,
+the operations use distinct machines, and at most one has demand one.  The
+slot therefore selects exactly an allowed set of one or two prefix classes
+and induces the corresponding transition.  Reading the slots in order gives
+a DP path.  The aggregate vector loses only the identities of interchangeable
+jobs: type and completed prefix determine all information relevant to their
+next operation.
+\end{proof}
+
+\begin{proof}
+By Lemma~\ref{lem:integral}, some optimum is an integer schedule with no
+empty slot.  Lemma~\ref{lem:quotient} maps this schedule to a DP path of the
+same length.  Its reverse direction realizes every DP path as a feasible
+schedule.  A shortest initial-to-terminal path therefore has length equal to
+the optimal makespan.
+
+For a fixed type $t$, the number of nonnegative prefix distributions is
+\[
+ \binom{n_t+\ell_t}{\ell_t}
+ \leq (n+3)^{\ell_t}.
+\]
+The sum of the route lengths over all twelve types is
+\[
+ \sum_{t\in T}\ell_t
+ =2(1+1+2+2+3+3)=24.
+\]
+Hence the total number of states is at most $(n+3)^{24}$.  There are at most
+24 ready prefix classes, so a state has fewer than
+$24+\binom{24}{2}$ candidate actions.  State generation and shortest-path
+optimization therefore take polynomial time in the explicit input size.
+To recover labels, maintain a list of jobs in each prefix class and record the
+chosen job whenever a transition moves one list element to the next class.
+\end{proof}
+
+\section{The zero-demand inclusion and the boundary of the result}
+
+The printed resource convention in \cite{TellacheAzerine2026} permits zero
+demands and explicitly uses both zero- and one-demand jobs.  Given an instance
+$I$ of the resource-free two-machine unit-time job shop with the same route
+bound, retain all jobs, routes, and processing times and set $r_j=0$ for every
+job.  A schedule is feasible before this map if and only if it is feasible
+after it: the auxiliary-resource load is identically zero.  The map preserves
+all start times, makespans, and optima.
+
+If an additional convention requires a nonempty instance to contain at least
+one demand-one job, no dummy job is needed.  Select one existing job, give it
+demand one, and leave every other demand at zero.  That job's own operations
+are already sequential, and no other job uses the resource, so the added
+resource condition remains vacuous.  This constant-overhead map again
+preserves every schedule and its makespan.  By contrast, adding a new
+one-operation dummy can consume a machine slot and need not preserve the
+optimum, even though the dummy has bounded size.
+
+This inclusion does not furnish hardness.  In the reduction of
+\cite{LenstraRinnooyKanBrucker1977}, the relevant two-machine jobs have
+variable processing times such as values taken from the \textsc{Knapsack}
+instance and the quantities $b$ and $A-b$.  Thus the reduction neither
+applies to $p_{ij}=1$ nor proves strong NP-hardness of the unit-time
+restriction.  The polynomial result of \cite{HefetzAdiri1982} is consistent
+with this distinction.
+
+Theorem~\ref{thm:main} relies essentially on a constant set of route--prefix
+classes.  When route length is unbounded, the number of such classes is not
+fixed and the exponent in the state-count argument is no longer constant.
+The theorem consequently makes no complexity claim for the unrestricted
+operation-count problem posed in \cite{TellacheAzerine2026}.  Even in the
+three-operation case, the exponent 24 is deliberately crude; the result is a
+complexity classification, not a claim of practical efficiency.
+
+\section{Exact check and assistance disclosure}
+
+As a diagnostic, two separately coded exact recursions were compared.  One
+uses only the aggregate prefix counts above; the other retains every job
+label.  The program exhausts all
+\[
+ \binom{6+12}{12}=18{,}564
+\]
+weak twelve-type count vectors containing at most six jobs, including the
+empty vector.  The two recursions returned equal optimal makespans in every
+case.  The calculation uses exact integer states, no random choices, and no
+floating-point comparisons.  From the research-artifact directory, it can be
+reproduced with
+\begin{center}
+\texttt{python3 evidence/aggregate\_dp\_check.py -{}-max-jobs 6}.
+\end{center}
+
+Independent exact implementations are useful for reducing implementation
+risk in finite verification; for a recent example using integer predicates
+and two exact maximum-clique implementations, see
+\cite{ZengEtAl2026Certificates}.  In the present paper the finite comparison
+has the more limited role of a sanity check.  It is not a premise of
+Theorem~\ref{thm:main}; the integral-slot lemma and the two directions of
+Lemma~\ref{lem:quotient} carry the proof for arbitrary $n$.
+
+OpenAI Codex assisted with the bounded literature search, implementation of
+the two exact recursions, adversarial proof checking, and preparation of the
+manuscript.  Language-model output is not treated as mathematical evidence.
+No proof assistant was used.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

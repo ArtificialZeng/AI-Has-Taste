@@ -1,0 +1,472 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\CSF}{X}
+\newcommand{\cycle}{C}
+
+\title[Two transforms for unicyclic chromatic symmetric functions]
+{Two structural transforms for chromatic symmetric functions of unicyclic graphs}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University,
+Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\hypersetup{
+  pdftitle={Two structural transforms for chromatic symmetric functions of unicyclic graphs},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Let \(G\) be a connected unicyclic graph with cycle length \(c\).  We give
+two linear transforms of the power-sum coefficients of its chromatic
+symmetric function.  The first expresses a cycle-corrected degree polynomial;
+the second expresses a cycle-corrected edge endpoint-degree polynomial.  If
+two such graphs have the same chromatic symmetric function, their degree
+polynomial difference is divisible by \(z(1-z)^c\), and by
+\(z^2(1-z)^c\) when their leaf counts agree.  Combining this with known hook
+coefficients proves the structural-data conjecture of Bingham, Johnston,
+Lawson, Orellana, Pan, and Sato whenever the maximum degree is at most \(c\),
+and throughout the infinite range \(c\geq4\), \(n\leq2c\).  Deterministic
+canonical enumeration and independent exact modular evaluations also extend
+the finite verification from order at most 16 through orders 17 and 18.  The
+unrestricted conjecture remains open.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Stanley's chromatic symmetric function \(\CSF_G\) refines the chromatic
+polynomial by recording the color multiplicities of proper colorings
+\cite{Stanley1995}.  Its ability to recover graph structure is particularly
+subtle outside forests: nonisomorphic unicyclic graphs with equal chromatic
+symmetric functions are known \cite{OrellanaScott2014}, including recent
+examples of every cycle length at least four \cite{Bingham2026Girth}.
+
+Bingham, Johnston, Lawson, Orellana, Pan, and Sato developed hook and leading
+coefficient formulas for connected unicyclic graphs
+\cite{BinghamEtAl2026}.  They conjectured that, for a triangle and odd order,
+or for cycle length \(c\geq4\), equality of chromatic symmetric functions
+forces equality of the degree sequence, the number of nontrivial rooted
+trees attached to the cycle, and the number of internal edges.  The
+version of record calls this Conjecture~63 and reports verification through
+order 16.  (It is Conjecture~9.1 in the first arXiv version.)
+
+Our main device is a binomial transform of the power-sum coefficients weighted
+by the number of singleton parts.  For a tree, the transform is the ordinary
+degree polynomial.  For a unicyclic graph it separates vertices on the cycle
+from vertices off the cycle by the universal kernel
+\(1-(1-z)^{c-1}\).  This yields a high-multiplicity zero at \(z=1\) for
+the difference of degree polynomials of equal-CSF graphs.  A companion
+transform weighted by the number of parts of size two gives an analogous
+formula for the edge endpoint-degree polynomial.
+
+The resulting consequences are genuine partial results rather than a proof
+of Conjecture~63.  The remaining obstruction has two aspects: degree
+multiplicities above the cycle length can support a nonzero divisible
+difference, and the known hook formulas leave an exceptional alternative
+with one nontrivial rooted tree on one graph and \(c\) on the other.
+
+\section{Definitions and published reductions}
+
+All graphs are finite, undirected, and simple.  A connected graph is
+\emph{unicyclic} if it has exactly one cycle.  Let \(G=(V,E)\) be such a
+graph, let \(n=|V|=|E|\), and let \(\cycle\) be its unique cycle, of length
+\(c\).  Deleting the cycle edges leaves a rooted tree \(T_v\) at each
+\(v\in V(\cycle)\).  Write
+\[
+r(G)=\#\{v\in V(\cycle): |V(T_v)|>1\}
+    =\#\{v\in V(\cycle):\deg_G(v)\geq3\}.
+\]
+An edge is \emph{internal} if both endpoints have degree at least two; let
+\(k(G)\) be the number of internal edges.  If \(L(G)\) is the number of
+leaves, then every non-internal edge is incident with a unique leaf, and
+therefore
+\begin{equation}\label{eq:k-leaves}
+k(G)=n-L(G).
+\end{equation}
+
+Write the power-sum expansion as
+\[
+\CSF_G=\sum_{\lambda\vdash n}a_\lambda(G)p_\lambda.
+\]
+For a partition \(\lambda\), let \(m_j(\lambda)\) be the multiplicity of
+the part \(j\), and let \(\ell(\lambda)\) be its length.  We use Stanley's
+all-subsets formula
+\begin{equation}\label{eq:stanley}
+\CSF_G=\sum_{F\subseteq E}(-1)^{|F|}p_{\lambda(V,F)},
+\end{equation}
+where \(\lambda(V,F)\) records the component orders of \((V,F)\)
+\cite[Theorem~2.5]{Stanley1995}.
+
+We use two results from \cite{BinghamEtAl2026}.  First, equal chromatic
+symmetric functions of connected unicyclic graphs have the same cycle length.
+Second, their hook coefficients force either
+\begin{equation}\label{eq:hookordinary}
+(r(G),k(G))=(r(H),k(H)),
+\end{equation}
+or, after interchanging the graphs,
+\begin{equation}\label{eq:hookexceptional}
+r(G)=1,\qquad r(H)=c,\qquad k(G)=k(H)+1.
+\end{equation}
+This is Proposition~16 of that paper.
+
+\section{The degree transform}
+
+Define
+\[
+s_b(G)=(-1)^{n-b}\sum_{\lambda\vdash n}a_\lambda(G)
+m_1(\lambda)\binom{n-\ell(\lambda)}{n-b},
+\qquad
+\mathcal S_G(z)=\sum_{b=0}^{n}s_b(G)z^b,
+\]
+where an out-of-range binomial coefficient is zero.  Separate the degree
+polynomial into its cycle and off-cycle parts:
+\begin{align*}
+A_G(z)&=\sum_{v\in V(\cycle)}z^{\deg(v)},&
+O_G(z)&=\sum_{v\notin V(\cycle)}z^{\deg(v)},\\
+D_G(z)&=A_G(z)+O_G(z).&&
+\end{align*}
+
+\begin{theorem}[Degree transform]\label{thm:degree-transform}
+For every connected unicyclic graph \(G\),
+\begin{equation}\label{eq:degree-transform}
+\mathcal S_G(z)=A_G(z)+\bigl(1-(1-z)^{c-1}\bigr)O_G(z).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Substitute \eqref{eq:stanley} into the definition of \(s_b\).
+The factor \(m_1(\lambda(V,F))\) permits a double count over isolated
+vertices.  Fix such a vertex \(v\), put \(q=n-b\), and let
+\(\kappa(F)\) be the number of components.  Its contribution is
+\begin{equation}\label{eq:fixed-vertex}
+\sum_{F\subseteq E(G-v)}(-1)^{|F|+q}
+\binom{n-\kappa(F)}q.
+\end{equation}
+
+We first dispose of \(q=0\), or \(b=n\).  The fixed-vertex contribution is
+\(\sum_{F\subseteq E(G-v)}(-1)^{|F|}=0\), because \(G-v\) has at least one
+edge: deleting a cycle vertex leaves an edge of the broken cycle, while
+deleting an off-cycle vertex leaves the whole cycle.  The right side of
+\eqref{eq:degree-transform} also has degree at most \(n-1\).  Hence assume
+\(q\geq1\) below.
+
+Suppose first that \(v\in V(\cycle)\).  Every \(F\subseteq E(G-v)\) is a
+forest, so \(n-\kappa(F)=|F|\).  Since
+\(|E(G-v)|=n-\deg(v)\), binomial inversion gives
+\[
+\sum_{F\subseteq E(G-v)}(-1)^{|F|+q}\binom{|F|}q
+=\boldsymbol 1_{\{\deg(v)=b\}}.
+\]
+Thus \(v\) contributes \(z^{\deg(v)}\).
+
+Now suppose that \(v\notin V(\cycle)\), put \(d=\deg(v)\), and let
+\(h=n-d-c\) be the number of non-cycle edges in \(G-v\).  The same forest
+calculation supplies the base term, but is wrong precisely for edge sets
+containing all of \(E(\cycle)\).  For such a set,
+\(n-\kappa(F)=|F|-1\).  The correction to
+\eqref{eq:fixed-vertex} is
+\begin{align*}
+&-(-1)^{c+q}\sum_{j=0}^{h}(-1)^j\binom hj
+  \binom{c+j-1}{q-1}\\
+&\qquad=(-1)^{b+d+1}\binom{c-1}{d+c-b-1},
+\end{align*}
+where the last equality uses
+\[
+\sum_{j=0}^{h}(-1)^j\binom hj\binom{u+j}{q}
+=(-1)^h\binom u{q-h}.
+\]
+The \(j=0\) correction cancels the forest base term.  The remaining
+polynomial contribution of \(v\) is
+\[
+z^d\sum_{j=1}^{c-1}(-1)^{j+1}\binom{c-1}{j}z^j
+=z^d\bigl(1-(1-z)^{c-1}\bigr).
+\]
+Summing over all vertices proves the identity.
+\end{proof}
+
+\begin{corollary}\label{cor:degree-divisibility}
+If \(G\) and \(H\) are connected unicyclic graphs with
+\(\CSF_G=\CSF_H\), and their common cycle length is \(c\), then
+\begin{equation}\label{eq:degree-divisibility}
+D_G(z)-D_H(z)=(1-z)^{c-1}\bigl(O_G(z)-O_H(z)\bigr)
+\end{equation}
+and
+\begin{equation}\label{eq:basic-divisibility}
+z(1-z)^c\mid D_G(z)-D_H(z).
+\end{equation}
+If \(L(G)=L(H)\), then
+\begin{equation}\label{eq:leaf-divisibility}
+z^2(1-z)^c\mid D_G(z)-D_H(z).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Equality in \eqref{eq:degree-transform} yields
+\eqref{eq:degree-divisibility}.  The polynomial \(O_G-O_H\) has zero
+constant term and vanishes at \(z=1\), since both graphs have \(n-c\)
+off-cycle vertices.  This proves \eqref{eq:basic-divisibility}.  If the leaf
+counts agree, then its coefficient of \(z\) is also zero, which proves
+\eqref{eq:leaf-divisibility}.
+\end{proof}
+
+The coefficient of \(z^2\) in Theorem~\ref{thm:degree-transform} recovers
+the invariant \((c-1)L+I_\cycle\) of Orellana and Scott, where
+\(I_\cycle\) counts degree-two cycle vertices
+\cite[Proposition~4.1]{OrellanaScott2014}.  The full polynomial identity
+retains every degree.
+
+\section{Structural consequences}
+
+\begin{theorem}\label{thm:structural-range}
+Let \(G,H\) be connected unicyclic graphs with equal chromatic symmetric
+functions and common cycle length \(c\).
+\begin{enumerate}
+\item If \(\max\{\Delta(G),\Delta(H)\}\leq c\), then \(G,H\) have the same
+degree sequence, the same number of nontrivial rooted trees, and the same
+number of internal edges.
+\item Conjecture~63 holds for every \(c\geq4\) and \(n\leq2c\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For the first assertion, a nonzero polynomial divisible by
+\(z(1-z)^c\) has degree at least \(c+1\).  Thus
+\eqref{eq:basic-divisibility} forces \(D_G=D_H\).  Equation
+\eqref{eq:k-leaves} gives equal internal-edge counts, and the published hook
+formula then gives equal rooted-tree counts (with the cycle case detected
+separately by its hook coefficient).
+
+For the second assertion, first suppose \(n\leq2c-1\).  The exceptional
+alternative \eqref{eq:hookexceptional} is impossible: \(r(H)=c\) requires
+at least one off-cycle vertex at each cycle vertex and hence \(n\geq2c\).
+Thus \eqref{eq:hookordinary} holds, so the leaf counts agree by
+\eqref{eq:k-leaves}.  Every connected \(c\)-unicyclic graph satisfies
+\begin{equation}\label{eq:max-degree}
+\Delta(G)\leq n-c+2\leq c+1.
+\end{equation}
+Indeed, a vertex has at most all \(n-c\) off-cycle incidences together with
+two cycle incidences.  Since a nonzero polynomial divisible by
+\(z^2(1-z)^c\) has degree at least \(c+2\),
+\eqref{eq:leaf-divisibility} gives \(D_G=D_H\).
+
+It remains to treat \(n=2c\).  In the ordinary hook alternative, the leaf
+counts again agree, and \eqref{eq:max-degree} gives degree at most \(c+2\).
+Therefore
+\[
+D_G-D_H=a z^2(1-z)^c
+\]
+for some integer \(a\).  If \(c\geq5\) and \(a\ne0\), the coefficient
+\(\ell^1\)-norm is at least \(2^c>4c=2n\), but the difference of two
+\(n\)-vertex degree polynomials has norm at most \(2n\), a contradiction.
+For \(c=4\), only \(|a|=1\) survives the norm bound.  Equality in that bound
+would force, on one side, the degree multiset
+\((6,4,4,4,4,4,4,2)\), whose degree sum is 32 rather than \(2n=16\).
+
+Finally assume the exceptional alternative.  The graph \(H\) with \(r(H)=c\)
+has exactly one off-cycle vertex at each cycle vertex, so it is the
+\(c\)-sun.  The graph \(G\) has \(c-1\) leaves and a unique off-cycle
+internal vertex.  That internal vertex needs a neighbor other than the cycle
+root, so the root is incident with at most \(c-2\) leaves and
+\(\Delta(G)\leq c+1\).  Divisibility, the degree bound, and the coefficient
+of \(z\) force
+\[
+D_G-D_H=-z(1-z)^c.
+\]
+Comparison at \(z^2\) forces the off-cycle internal vertex to have degree
+two and the unique nontrivial cycle root to have degree \(c+1\).  The actual
+difference is then
+\[
+-z+cz^2-cz^3+z^{c+1}.
+\]
+Equality with \(-z(1-z)^c\) would imply \(\binom c2=c\), hence \(c=3\),
+contrary to \(c\geq4\).  This completes the proof.
+\end{proof}
+
+\begin{remark}
+The excluded value \(c=3,n=6\) is not an artifact: the last two displayed
+polynomials then agree, matching the known even-order triangle phenomenon.
+\end{remark}
+
+\section{The edge endpoint-degree transform}
+
+Define
+\[
+t_b(G)=(-1)^{n-b}\sum_{\lambda\vdash n}a_\lambda(G)
+m_2(\lambda)\binom{n-\ell(\lambda)}{n-b},
+\qquad \mathcal T_G(z)=\sum_{b=0}^{n}t_b(G)z^b.
+\]
+Let
+\[
+P_G(z)=\sum_{uv\in E(G)}z^{\deg(u)+\deg(v)-2},
+\]
+and let \(Q_G(z)\) be the same sum restricted to edges with both endpoints
+off \(\cycle\).
+
+\begin{theorem}[Edge transform]\label{thm:edge-transform}
+For every connected unicyclic graph \(G\),
+\begin{equation}\label{eq:edge-transform}
+\mathcal T_G(z)=(1-z)P_G(z)-(1-z)^{c}Q_G(z).
+\end{equation}
+Consequently, equal-CSF connected unicyclic graphs of cycle length \(c\)
+satisfy
+\begin{equation}\label{eq:edge-divisibility}
+z(1-z)^{c-1}\mid P_G(z)-P_H(z).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+In \eqref{eq:stanley}, \(m_2(\lambda(V,F))\) counts two-vertex components.
+Fix such a component on an edge \(e=uv\), put
+\(d_e=\deg(u)+\deg(v)-2\), and select an arbitrary edge set \(R\) in
+\(G-\{u,v\}\).  All other edges incident with \(u\) or \(v\) must be
+absent.  There are \(M=n-d_e-1\) available edges.
+
+If \(R\) is a forest, its contribution for \(q=n-b\) is
+\((-1)^{|R|+1+q}\binom{|R|+1}{q}\).  The identity
+\[
+\sum_{r=0}^{M}(-1)^r\binom Mr(1+x)^{r+1}=(1+x)(-x)^M
+\]
+shows that the fixed edge contributes \(z^{d_e}(1-z)\).
+If \(u\) or \(v\) is on \(\cycle\), all relevant \(R\) are forests.  If
+both are off \(\cycle\), the edge sets containing the whole cycle require a
+correction.  With \(h=n-d_e-c-1\), finite differences give
+\[
+\sum_{j=0}^{h}(-1)^{c+j+q}\binom hj\binom{c+j}{q-1}
+=(-1)^{b+d_e+1}\binom c{d_e+c-b},
+\]
+whose generating polynomial is \(-z^{d_e}(1-z)^c\).  Summing over edges
+proves \eqref{eq:edge-transform}.
+
+The quotient \(\mathcal T_G/(1-z)\) is determined by \(\CSF_G\).  Thus
+\[
+P_G-P_H=(1-z)^{c-1}(Q_G-Q_H).
+\]
+An edge entirely off the cycle cannot have two degree-one endpoints in a
+connected unicyclic graph, so \(Q_G(0)=Q_H(0)=0\).  This proves
+\eqref{eq:edge-divisibility}.
+\end{proof}
+
+For trees, the generalized degree polynomial determined by the chromatic
+symmetric function recovers richer edge-degree information
+\cite{AlistePrietoEtAl2024}.  Theorem~\ref{thm:edge-transform} is instead a
+direct unicyclic formula with an explicit cycle correction.
+
+\section{Finite verification at orders 17 and 18}
+
+We used \texttt{geng} from nauty~2.7r3 to generate one representative of each
+isomorphism class of connected simple graphs on \(n\) vertices and exactly
+\(n\) edges \cite{McKayPiperno2014}.  Such a graph is unicyclic.  The totals
+agree with the independent enumeration A001429 \cite{OEISA001429}.
+
+For a graph decomposed into rooted trees at its cycle, choose fixed values
+\(x_1,\ldots,x_q\) and put \(B=J-I\).  We evaluated
+\begin{equation}\label{eq:trace-eval}
+\CSF_G(x_1,\ldots,x_q)=
+\operatorname{tr}(D_0B D_1B\cdots D_{c-1}B),
+\end{equation}
+where the diagonal matrix \(D_i\) contains the rooted-tree coloring weights
+at the \(i\)-th cycle vertex.  All arithmetic was exact modulo fixed primes.
+Equal symmetric functions necessarily give equal values in every such
+specialization, so unequal values are deterministic certificates of
+inequality.  Equal values were treated only as collisions, never as proofs of
+CSF equality.
+
+Two implementations were used.  The discovery implementation has a custom
+graph6 parser, leaf-pruned cycle extraction, and a start-color recurrence.  A
+separate verifier uses NetworkX parsing and cycle bases
+\cite{HagbergEtAl2008}, recursive rooted-tree messages, a matrix-trace
+aggregation, and disjoint moduli and evaluation points.  A prospective pair
+with different structural data surviving all evaluations would be passed to
+two full integer power-sum implementations: direct spanning-subset
+enumeration and vertex-weighted deletion--contraction.
+
+\begin{proposition}\label{prop:finite}
+No two connected unicyclic graphs of order 17 have the same chromatic
+symmetric function.  At order 18, Conjecture~63 holds for every graph in its
+stated domain.
+\end{proposition}
+
+\begin{proof}[Computational certificate]
+The coverage and collision counts are as follows.
+\begin{center}
+\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+\(n\) & generated & included & collisions & survivors\\
+\midrule
+17 & 880,840 & 880,840 & 0 & 0\\
+18 & 2,497,405 & 1,671,621 & 1 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+At order 17 every primary signature is distinct, proving the first statement.
+At order 18 the sole primary collision also matched at the independent
+refinement value, but the two records had the same degree sequence,
+rooted-tree count, and internal-edge count.  Thus no equal-CSF pair can have
+different structural data.  We make no claim that this same-data evaluation
+collision represents equal chromatic symmetric functions.
+
+At order 18 the conjecture domain omits the even-order triangle class.  The
+cycle-length subtotals for the 1,671,621 included graphs sum over
+\(c=4,\ldots,18\), and the generator's complete total is 2,497,405.  These
+checks, together with the canonical-generation guarantee, establish the
+claimed coverage.
+\end{proof}
+
+Combining Proposition~\ref{prop:finite} with the verification through order
+16 reported in \cite{BinghamEtAl2026} verifies Conjecture~63 through order 18.
+
+\section{Limitations and further questions}
+
+For equal-CSF graphs, Corollary~\ref{cor:degree-divisibility} writes
+\(D_G-D_H\) as a high-order finite difference.  When degrees exceed \(c\),
+the quotient need not vanish on purely algebraic grounds.  Even when the
+published hook coefficients give equal leaf counts, the possible factor
+\(z^2(1-z)^{c}R(z)\) has room for a nonconstant integer polynomial once
+\(n>2c\).  The edge transform adds a different necessary condition but does
+not yet force this quotient to vanish.
+
+The other unresolved branch is \eqref{eq:hookexceptional}.  Feasibility alone
+forces \(n\geq2c\), and Theorem~\ref{thm:structural-range} eliminates its
+endpoint for \(c\geq4\), but no contradiction is known here for general
+\(n>2c\).  A transform based on components of size three or a more local use
+of the leading coefficient may provide the next constraint.  Exhaustive
+search beyond order 18 remains evidence only, not a substitute for such an
+argument.
+
+\section*{Data, code, and computational disclosure}
+
+The accompanying archive contains the literal source statement, the formal
+statement, proofs, search records, exact test programs, the two independent
+stream evaluators, fixed finite-result files, and commands for reproduction.
+The principal fast tests compare three exact CSF computations and check both
+transform identities.  A full small-order regression covers all 1,040
+connected unicyclic graphs of orders 3 through 10.
+
+Computer algebra and custom exact programs were used during exploratory
+algebra and implementation.  All proofs were checked from definitions, and
+all finite claims were reproduced by deterministic exact computation.  The
+author takes responsibility for the results and exposition.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

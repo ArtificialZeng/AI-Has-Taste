@@ -1,0 +1,17 @@
+Triage smoke computation, 2026-09-07
+Command: python3 evidence/triage-smoke.py
+Software: Python 3; NetworkX 3.4.2
+
+Output:
+networkx 3.4.2
+domain {2: 1, 3: 2, 4: 6, 5: 21, 6: 112} total 142
+K2 (1, 2, 1, 0)
+P3 (2, 4, 4, 0)
+K3 (3, 6, 6, 0)
+C4 (4, 14, 24, 2)
+K6 (15, 720, 1800, 0)
+
+Each sample tuple is (number of original edges, number of acyclic
+orientations, number of flip-graph edges, absolute acyclic signature).  The
+script enumerates all 2^m orientations exactly.  It does not decide
+Hamiltonicity and is not evidence for any unsolved atlas entry.

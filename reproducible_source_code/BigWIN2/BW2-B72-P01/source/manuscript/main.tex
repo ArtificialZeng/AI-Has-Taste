@@ -1,0 +1,264 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The Least Positive Layer of the P4--Paw Blow-Up Coefficient System},pdfauthor={Xiaojian Zeng},pdfsubject={Exact least-layer classification for a distance-cospectral blow-up coefficient system},pdfkeywords={distance spectrum, graph blow-up, exact enumeration, SMT, positive integer solutions}}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Zpos}{\mathbb Z_{>0}}
+\newcommand{\Pfour}{P_4}
+
+\title{The Least Positive Layer of the $P_4$--Paw
+Blow-Up Coefficient System}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{8 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Gong, Wang, and Wang exhibited a positive-integer solution of common sum
+$61$ to the coefficient system that makes an independent-set blow-up of
+$P_4$ distance-cospectral with a blow-up of the paw graph.  We determine the
+first nonempty layer of that fixed system.  Its least common sum is $61$, and
+the complete ordered layer consists of four solutions, forming one orbit
+under the two system-preserving involutions.  The proof is computer-assisted
+but exact: an exhaustive signature join covers all $521855$ positive ordered
+quadruples on each side through sum $61$, and a separate bounded bit-vector
+encoding confirms both the empty lower layers and the exhausted equality
+layer.  This result concerns only the stated coefficient system; it neither
+determines the least order among all connected distance-cospectral graph
+pairs of opposite bipartiteness nor classifies higher solution layers.
+\end{abstract}
+
+\section{Context and scope}
+
+For a connected graph, its distance spectrum is the spectrum of its distance
+matrix.  Gong, Wang, and Wang used nonuniform independent-set blow-ups of
+$\Pfour$ and the paw graph to construct connected distance-cospectral graphs
+of opposite bipartiteness \cite{GongWangWang2026}.  Coefficientwise comparison
+of their reduced distance characteristic polynomials gives the four equations
+studied below.  Their displayed multiplicities yield one solution of common
+sum $61$, but their paper does not exclude smaller positive solutions or
+classify the solutions at sum $61$ \cite[Eq.~(3.3), Thm.~3.1 and
+Conclusion]{GongWangWang2026}.
+
+The distinction between an exact finite-domain theorem and its ambient
+problem is important.  For comparison, exact finite-library results for
+ternary Borsuk and kissing-code models are explicitly separated from the
+corresponding unrestricted questions in \cite{ZengEtAl2026FiniteCertificates}.
+Here the domain is likewise fixed: ordered positive-integer solutions of one
+coefficient system, only through its first nonempty common-sum layer.  A
+targeted search of primary arXiv records through 8 September 2026 found no
+later version of \cite{GongWangWang2026} and no separate treatment of this
+least layer.  This bounded search is not a claim of priority.
+
+\section{Statement of the result}
+
+Let $b=(b_0,b_1,b_2,b_3)$ and $a=(a_0,a_1,a_2,a_3)$ belong to
+$\Zpos^4$.  The coefficient system is
+\begin{align}
+ b_0+b_1+b_2+b_3
+   &=a_0+a_1+a_2+a_3,                                      \label{eq:sum}\\
+ 3b_0b_1-5b_0b_3+3b_1b_2+3b_2b_3
+   &=3(a_0a_1+a_0a_2+a_0a_3+a_1a_2),                      \label{eq:quad}\\
+ 8b_0b_3(b_1+b_2)
+   &=2a_1a_2(a_3-2a_0),                                    \label{eq:cubic}\\
+ 4b_0b_1b_2b_3
+   &=a_0a_1a_2a_3.                                         \label{eq:quartic}
+\end{align}
+Write $s=\sum_i b_i=\sum_i a_i$.  Define the signatures
+\begin{align*}
+ \sigma_b(b)={}&\bigl(
+  \textstyle\sum_i b_i,
+  3b_0b_1-5b_0b_3+3b_1b_2+3b_2b_3,
+  8b_0b_3(b_1+b_2),
+  4b_0b_1b_2b_3\bigr),\\
+ \sigma_a(a)={}&\bigl(
+  \textstyle\sum_i a_i,
+  3(a_0a_1+a_0a_2+a_0a_3+a_1a_2),
+  2a_1a_2(a_3-2a_0),
+  a_0a_1a_2a_3\bigr).
+\end{align*}
+
+\begin{theorem}\label{thm:main}
+The least common sum of an ordered positive-integer solution of
+\eqref{eq:sum}--\eqref{eq:quartic} is $61$.  At that sum the complete ordered
+solution set is
+\begin{equation}\label{eq:solutions}
+ \begin{split}
+ b&\in\{(1,16,8,36),(36,8,16,1)\},\\
+ a&\in\{(4,9,16,32),(4,16,9,32)\},
+ \end{split}
+\end{equation}
+with all four Cartesian combinations present.  Each has common signature
+\[
+ (61,1116,6912,18432).
+\]
+Moreover, the four ordered pairs form one orbit under precisely the two
+allowed involutions
+\[
+ (b_0,b_1,b_2,b_3)\longmapsto(b_3,b_2,b_1,b_0),\qquad
+ (a_0,a_1,a_2,a_3)\longmapsto(a_0,a_2,a_1,a_3).
+\]
+\end{theorem}
+
+\section{Exact exhaustive proof}
+
+\begin{lemma}[Signature equivalence]\label{lem:signature}
+An ordered pair $(b,a)\in\Zpos^4\times\Zpos^4$ satisfies
+\eqref{eq:sum}--\eqref{eq:quartic} if and only if
+$\sigma_b(b)=\sigma_a(a)$.
+\end{lemma}
+
+\begin{proof}
+Equality of the first signature coordinates is exactly \eqref{eq:sum};
+equality of the next three coordinates is, in order,
+\eqref{eq:quad}, \eqref{eq:cubic}, and \eqref{eq:quartic}.  Thus the
+signature test is equivalent to the system, not a relaxation of it.
+\end{proof}
+
+For $s\geq4$, let
+\[
+ \mathcal C_s=\{x\in\Zpos^4:x_0+x_1+x_2+x_3=s\}.
+\]
+Choosing three cut points among $1,\ldots,s-1$ is a bijection with
+$\mathcal C_s$, and hence
+\begin{equation}\label{eq:counts}
+ |\mathcal C_s|=\binom{s-1}{3},\qquad
+ \sum_{s=4}^{61}|\mathcal C_s|=\binom{61}{4}=521855.
+\end{equation}
+
+\begin{proposition}[Exhaustive signature join]\label{prop:join}
+Exact enumeration of $\mathcal C_s$ separately for the $a$- and $b$-side
+signatures gives no equality $\sigma_b(b)=\sigma_a(a)$ for
+$4\leq s\leq60$.  At $s=61$ it gives exactly the four pairs in
+\eqref{eq:solutions}.
+\end{proposition}
+
+\begin{proof}[Certificate proof]
+The accompanying program \texttt{enumerate\_signatures.py} generates a
+quadruple by the nested ranges
+\[
+ \begin{gathered}
+  1\leq x_0\leq s-3,\\
+  1\leq x_1\leq s-x_0-2,\\
+  1\leq x_2\leq s-x_0-x_1-1,\\
+  x_3=s-x_0-x_1-x_2.
+ \end{gathered}
+\]
+These ranges are another form of the cut-point bijection, so every member of
+$\mathcal C_s$ occurs once and no other tuple occurs.  The program makes
+separate passes over the two sides, evaluates the displayed signatures using
+arbitrary-precision integers, and joins equal keys without pruning or
+floating-point comparisons.
+
+The report checks the count $\binom{s-1}{3}$ on every layer.  Its aggregate
+results are summarized in Table~\ref{tab:join}.  The four reported pairs are
+listed in Theorem~\ref{thm:main}; direct integer substitution gives their
+common signature there.
+
+\begin{table}[ht]
+ \centering
+ \caption{Exact signature-join coverage.}
+ \label{tab:join}
+ \begin{tabular}{@{}lrrr@{}}
+  \toprule
+  sums & $a$-tuples & $b$-tuples & ordered matches \\
+  \midrule
+  $4$--$60$ & $487635$ & $487635$ & $0$ \\
+  $61$      & $34220$  & $34220$  & $4$ \\
+  \midrule
+  $4$--$61$ & $521855$ & $521855$ & $4$ \\
+  \bottomrule
+ \end{tabular}
+\end{table}
+\end{proof}
+
+The join was checked by a structurally separate solver encoding.  This second
+program does not import the tuple generator or its signature tables: it
+asserts the eight coordinates and equations \eqref{eq:sum}--
+\eqref{eq:quartic} directly in quantifier-free bit-vector logic and uses Z3
+\cite{deMouraBjorner2008}.  Each coordinate is a six-bit unsigned integer in
+$[1,58]$.  This cap is lossless, because four positive coordinates with sum
+at most $61$ have each coordinate at most $58$.  Coordinates are zero-extended
+to $32$ bits before arithmetic.
+
+It remains to justify that modular arithmetic introduces no solutions.  On
+$1\leq x_i\leq58$, the absolute differences between the two integer sides of
+the sum, quadratic, cubic, and quartic equations are bounded respectively by
+\[
+ \begin{split}
+  8\cdot58&=464<465,\\
+  (14+12)58^2&=87464,\\
+  (16+6)58^3&=4292464,\\
+  (4+1)58^4&=56582480.
+ \end{split}
+\]
+Here the coefficient sums come from taking absolute values term by term on
+the two sides.  Every displayed bound is less than $2^{32}$.
+Consequently, equality modulo $2^{32}$ is equivalent to ordinary integer
+equality throughout the encoded domain, including the subtraction in
+\eqref{eq:cubic}.
+
+With common sum at most $60$, Z3 returned \texttt{unsat}.  With common sum at
+most $61$, it returned the four pairs in \eqref{eq:solutions}; after a clause
+blocking each complete ordered eight-tuple, the next result was
+\texttt{unsat}.  Exact host-integer substitution checked every returned
+model.  Thus the second route independently confirms both the empty lower
+range and exhaustion after the fourth model.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemma~\ref{lem:signature} and Proposition~\ref{prop:join} exclude every
+positive solution below $61$ and exhibit exactly four at $61$.  Hence $61$ is
+the least common sum and \eqref{eq:solutions} is the complete ordered layer.
+
+Reversing $b$ preserves every component of $\sigma_b$, and interchanging
+$a_1,a_2$ preserves every component of $\sigma_a$.  The two involutions
+commute.  Applied to the displayed representative
+\[
+ ((1,16,8,36),(4,9,16,32)),
+\]
+they produce the four distinct Cartesian combinations in
+\eqref{eq:solutions}.  Completeness of that list therefore proves that the
+layer is one permitted orbit.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The ancillary evidence consists of the exact enumeration program and its
+JSON report, the independent bit-vector verifier and replayable SMT-LIB
+instances, and a fail-closed comparison of the two model lists.  The recorded
+run used CPython 3.10.12; the solver route used Z3 4.15.3 with random seed zero.
+Neither route samples inputs, and no numerical tolerance occurs.  The scripts
+\texttt{enumerate\_signatures.py}, \texttt{verify\_z3\_bv.py}, and
+\texttt{compare\_verifiers.py} reproduce the three reports when run from the
+project root in that order.
+
+Theorem~\ref{thm:main} determines only the first positive layer of the fixed
+$\Pfour$/paw coefficient system.  It does not classify solutions at sums
+above $61$.  More importantly, exclusion within this ansatz is not exclusion
+over all connected graphs: the least possible order of an arbitrary connected
+distance-cospectral pair of opposite bipartiteness is not determined here.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with targeted literature searching, implementation and
+cross-check organization, and preparation of the manuscript.  Language-model
+output is not used as mathematical evidence.  The theorem-bearing finite
+claims are supported by the explicit domain reduction, exact programs,
+machine-readable reports, and the independently implemented solver encoding.
+The author takes responsibility for the statement and argument.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "candidate_kind": "resolution-paper",
+  "original_status": "disproved",
+  "tex": "manuscript/main.tex",
+  "pdf": "manuscript/main.pdf",
+  "bibliography": [
+    "manuscript/references.bib"
+  ],
+  "figures": [],
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "inputs": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex"
+}

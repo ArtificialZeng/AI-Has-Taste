@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{Nonexistence of an $\operatorname{SDS}(9,8,1)$ in $C_3^2$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $G=C_3^2$.  We prove that there is no signed group-ring element
+$D=\sum_{x\in G}a_x[x]$, with $a_x\in\{0,1,-1\}$ and exactly eight
+nonzero coefficients, satisfying
+\[
+ DD^{(-1)}=7[0]+\sum_{x\in G}[x].
+\]
+The principal character and two elementary normalizations reduce every
+candidate to a pair of negative nonzero vectors.  Such a pair is either an
+opposite pair or a basis of $\F_3^2$.  In the two cases an explicitly chosen
+nonprincipal character has squared modulus $25$ or $13$, respectively,
+whereas the defining identity requires squared modulus $7$.  The argument
+covers every zero placement and sign assignment.  Exact exhaustive
+enumeration is supplied only as an independent check of the proof.
+\end{abstract}
+
+\section{Context and statement}
+
+Signed difference sets were introduced by Gordon as a signed extension of
+the usual group-ring formulation of difference sets
+\cite{Gordon2023}.  We use additive notation.  For a finite abelian group
+$G$, write
+\[
+ D=\sum_{x\in G}a_x[x]\in\Z[G],\qquad
+ D^{(-1)}=\sum_{x\in G}a_x[-x],
+\]
+where $a_x\in\{0,1,-1\}$.  The element $D$ is a
+$(v,k,\lambda)$ signed difference set when $|G|=v$,
+$|\supp(D)|=k$, and
+\begin{equation}
+ DD^{(-1)}=(k-\lambda)[0]+\lambda\sum_{x\in G}[x].
+\end{equation}
+
+He and Wu developed several character and support-refined nonexistence
+criteria for signed difference sets and provided a fixed database snapshot
+with reproducibility code \cite{HeRepository2026,HeWu2026}.  Their
+principal- and nonprincipal-character equations are precisely the
+necessary equations used below.  Their near-full-support condition does not
+decide the present parameters: with the subgroup order $h=3$, its left-hand
+side is
+\[
+ 9-1+1(3-1)=10\equiv 2\pmod 8,
+\]
+which is one of the allowed residues.  The contribution here is a direct
+character obstruction tailored to this group-specific case.  No
+claim about other parameter triples or other groups of order nine is made.
+
+\begin{theorem}
+There is no function $a\colon\F_3^2\to\{0,1,-1\}$ with exactly eight
+nonzero values for which, on putting $D=\sum_x a_x[x]$,
+\begin{equation}
+ DD^{(-1)}=7[0]+\sum_{x\in\F_3^2}[x].
+\end{equation}
+Equivalently, $\operatorname{SDS}(9,8,1,C_3^2)$ does not exist.
+\end{theorem}
+
+\begin{proof}
+Suppose that $D$ satisfies (2).  Applying the principal character gives
+\begin{equation}
+ \left(\sum_xa_x\right)^2=7+9=16.
+\end{equation}
+If $p$ and $n$ denote the numbers of coefficients $+1$ and $-1$, then
+$p+n=8$ and $p-n=\pm4$.  Replacing $D$ by $-D$ if necessary, which leaves
+$DD^{(-1)}$ unchanged, we may assume
+\begin{equation}
+ p=6,\qquad n=2.
+\end{equation}
+
+There is a unique zero coefficient.  If it occurs at $z$, multiplication by
+$[-z]$ translates it to $0$ and leaves the product unchanged, since the
+translating factors $[-z]$ and $[z]$ cancel in $DD^{(-1)}$.  Thus, for
+distinct $a,b\in\F_3^2\setminus\{0\}$, every normalized candidate is
+\begin{equation}
+ D=\sum_{x\ne0}[x]-2([a]+[b]).
+\end{equation}
+
+Let $\omega$ be a primitive cube root of unity, so that
+$\omega^2+\omega+1=0$.  For $u\in\F_3^2$ define
+\[
+ \chi_u(x)=\omega^{u\cdot x},
+\]
+where the dot product is taken in $\F_3$.  If $u\ne0$, then $\chi_u$ is
+nonprincipal; extend it linearly to the group ring.  Then
+$\sum_x\chi_u(x)=0$.  Applying $\chi_u$ to (2), and using
+$\chi_u(D^{(-1)})=\overline{\chi_u(D)}$, yields
+\begin{equation}
+ |\chi_u(D)|^2=7.
+\end{equation}
+Moreover, $\sum_{x\ne0}\chi_u(x)=-1$, so (5) gives
+\begin{equation}
+ \chi_u(D)=-1-2\bigl(\chi_u(a)+\chi_u(b)\bigr).
+\end{equation}
+
+There are two exhaustive cases.  If $a$ and $b$ are linearly dependent,
+then their being distinct and nonzero over $\F_3$ forces $b=-a$.  The
+orthogonal complement of $a$ contains a nonzero vector $u$.  For this choice,
+$u\cdot a=u\cdot b=0$, and hence (7) gives
+\[
+ \chi_u(D)=-5,\qquad |\chi_u(D)|^2=25,
+\]
+contrary to (6).
+
+If $a$ and $b$ are linearly independent, the map
+\[
+ u\longmapsto(u\cdot a,u\cdot b)
+\]
+is invertible.  There is therefore a unique $u$ for which both coordinates
+equal $1$; this $u$ is nonzero.  Equation (7) now gives
+\[
+ \chi_u(D)=-1-4\omega.
+\]
+Its squared modulus is the exact Eisenstein norm
+\[
+ (-1-4\omega)(-1-4\omega^2)
+ =1+4(\omega+\omega^2)+16=13,
+\]
+again contradicting (6).  The two cases exhaust all distinct nonzero pairs,
+so no $D$ satisfying (2) exists.
+\end{proof}
+
+\section{Coverage and exact verification}
+
+The proof does not rely on selecting unproved orbit representatives.  After
+translation and global sign normalization, the four unordered opposite
+pairs are the one-dimensional subspaces of $\F_3^2$, while the remaining
+$\binom{8}{2}-4=24$ pairs are bases.  These are also the two
+$\operatorname{GL}(2,3)$ orbits.  More importantly, the proof constructs a
+contradicting character separately for every pair of either type.
+Translation covers all nine positions of the zero, and global sign covers
+both possible sign-count orientations from (3).  Thus all
+$9\cdot2^8=2304$ raw coefficient assignments are within the quantified
+scope; assignments not satisfying (3) are already excluded by the principal
+character.
+
+Three short Python 3 programs independently check this finite accounting.
+One enumerates all 2,304 raw assignments using integer periodic
+autocorrelations and finds no solution.  A second enumerates all 28 normalized
+pairs, all 48 matrices in $\operatorname{GL}(2,3)$, and every nonprincipal
+character using arithmetic in $\Z[\omega]$, with
+$\omega^2+\omega+1=0$.  A third implementation reconstructs all
+normalizations and the character selected in the proof without importing the
+other programs; it obtains orbit sizes $4$ and $24$ and exact witness norms
+$25$ and $13$.  The mathematical proof above is independent of these
+computations.
+
+Exact integer predicates, exhaustive orbit coverage, and an independently
+implemented verifier are also used in the finite-certificate methodology of
+Zeng, Liu, Ratnavelu, and Ong \cite{ZengEtAl2026Certificates}.  Their
+geometric finite models are unrelated to signed difference sets; the relevant
+comparison here is only the separation of a finite computation from its
+exact reconstruction.  In the present nine-element problem the complete
+enumeration is small enough to serve as a transparent cross-check rather than
+as a proof dependency.
+
+\paragraph{Data and code availability.}
+{\raggedright
+The ancillary files include the standard-library verification programs
+\path{full_assignment_check.py}, \path{exact_character_check.py}, and
+\linebreak\path{research_independent_audit.py}.  No numerical tolerance or
+random seed is used.\par
+}
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the bounded literature search, preparation and
+cross-checking of the exact Python verifiers, adversarial review of the
+normalizations, and initial manuscript drafting.  Language-model output is
+not used as mathematical evidence.  The theorem is supported by the
+self-contained proof above; the programs use exact arithmetic and provide
+only independent corroboration.  No proof assistant was used.
+
+\small
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

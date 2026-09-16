@@ -1,0 +1,300 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A 1/226 Adjacent-Interval Edit Gap in a Fixed Ternary Brinkhuis Framework},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Ternary synchronization strings and exact finite certificates}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\ED}{\operatorname{ED}}
+\newcommand{\LCS}{\operatorname{LCS}}
+
+\title{A $1/226$ Adjacent-Interval Edit Gap\\
+in a Fixed Ternary Brinkhuis Framework}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Xu, Fu, Qiao, and Tao recently used a special $54$-uniform Brinkhuis
+$952$-triple, exact deletion-event volumes, and an asymmetric Lov\'asz local
+lemma to certify a non-strict normalized adjacent-interval
+insertion--deletion gap of $1/227$ over the ternary alphabet.  We keep their
+codebook, event and dependency construction, and charges
+$\alpha=51/100000$ and $\beta=3/10$ fixed, and certify the sharper gap
+$1/226$.  The denominator change creates two new low-deletion shells: total
+length $227$ at edit distance one and total length $454$ at edit distance
+two.  Exact exhaustive checks show that both shells are empty; a recomputed
+exact-rational local-lemma envelope then has positive margins.  Thus, within
+this fixed framework, every length admits a ternary word with weak gap
+$1/226$, and hence an $\varepsilon$-synchronization string for every
+$\varepsilon>225/226$.  No denominator below $226$ is tested here, so the
+least denominator in the fixed framework remains unresolved.
+\end{abstract}
+
+\section{Scope and statement}
+
+Synchronization strings were introduced as deterministic index strings for
+insertion and deletion channels \cite{HaeuplerShahrasbi2017}.  Cheng,
+Haeupler, Li, Shahrasbi, and Wu showed that four symbols suffice for a fixed
+parameter while two symbols do not suffice for arbitrarily long strings
+\cite{ChengEtAl2019}.  Xu, Fu, Qiao, and Tao subsequently settled the ternary
+alphabet question and, in the quantitative part of their paper, certified a
+weak adjacent-interval gap $1/227$ using a computer-assisted $54$-uniform
+Brinkhuis construction \cite{XuEtAl2026}.  The present note concerns only a
+one-step improvement of that quantitative certificate.  A bounded search of
+the literature located no treatment of this exact $1/226$ refinement, but
+that search is not a claim of priority.
+
+For finite words $X,Y$, let
+\[
+  \ED(X,Y)=|X|+|Y|-2\LCS(X,Y)
+\]
+be insertion--deletion edit distance.  If $S$ has length $n$, put
+\[
+ g(S)=\min_{1\leq i<j<k\leq n+1}
+ \frac{\ED(S[i,j),S[j,k))}{k-i}.
+\]
+Here intervals are half open, and both adjacent factors are nonempty.
+
+\begin{theorem}\label{thm:main}
+Fix the canonical special $54$-Brinkhuis $952$-triple and the exact event,
+dependency, and conditional-mass construction of Xu--Fu--Qiao--Tao, with
+charges
+\[
+             \alpha=\frac{51}{100000},\qquad \beta=\frac3{10}.
+\]
+For every integer $n\geq1$, there exists $S\in\{0,1,2\}^n$ such that
+\[
+ \ED(S[i,j),S[j,k))\geq\frac{k-i}{226}
+ \quad(1\leq i<j<k\leq n+1).
+\]
+Equivalently, $g(S)\geq1/226$.  This theorem does not assert that $226$ is
+the least denominator for which the fixed framework works.
+\end{theorem}
+
+The strict synchronization-string convention asks for
+$\ED(S[i,j),S[j,k))>(1-\varepsilon)(k-i)$.  Therefore
+Theorem~\ref{thm:main} supplies an $\varepsilon$-synchronization string for
+every $\varepsilon>225/226$, but makes no assertion at equality.
+
+\section{The fixed framework}
+
+We recall only the ingredients needed to identify what changes when the
+denominator is lowered.  Sollami, Douglas, and Liebmann constructed the
+special $54$-Brinkhuis $952$-triple used here \cite{SollamiEtAl2016}.  For a
+ternary square-free outer word $T=T_1\cdots T_N$, independently choose one of
+the $952$ length-$54$ images of each occurrence.  Every resulting word is
+square-free.  The image family for one outer letter is closed under reversal,
+and the other two image families are its cyclic alphabet shifts.
+
+For adjacent lengths $a,b\geq1$, write $s=a+b$.  A direct bad event for
+denominator $D$ is relevant when $s\geq D+1$ and
+$D|a-b|<s$.  If $e=\ED(X,Y)$, introduce deletion counts
+$u=a-\LCS(X,Y)$ and $v=b-\LCS(X,Y)$, so that
+\[
+ v-u=b-a,\qquad e=u+v,
+\]
+and the bad-event volume sums over the integer pairs satisfying $De<s$.
+The two directional raw volumes are
+\[
+ \binom au\binom bv3^u
+ \quad\text{and}\quad
+ \binom au\binom bv3^v.
+\]
+Multiplying by the appropriate fragment-aware conditional point masses and
+taking the smaller directional estimate gives the exact bound $p_D(a,b)$ of
+\cite[Appendices D--E]{XuEtAl2026}.  A retained ordered type receives charge
+\[
+             x_D(a,b)=p_D(a,b)e^{\alpha s+\beta}.
+\]
+
+The asymmetric local-lemma criterion used in the source paper
+\cite{ErdosLovasz1975,XuEtAl2026} is the following fixed implication.  Put
+\[
+ R_0(D)=\sum_{a,b}\frac{x_D(a,b)}{1-x_D(a,b)},\qquad
+ R_1(D)=\sum_{a,b}s\frac{x_D(a,b)}{1-x_D(a,b)},
+\]
+where the sums run over retained ordered types and include the certified
+analytic tail.  If every omitted event is separately proved empty, every
+charge is in the prescribed range, and
+\begin{equation}\label{eq:lll}
+             R_0(D)<\alpha,\qquad 109R_0(D)+R_1(D)<\beta,
+\end{equation}
+then the local lemma simultaneously avoids all direct bad events.  Together
+with square-freeness and the separately empty shells, this yields words of
+every length by taking prefixes.  We do not alter this implication, its
+constant $109$, or its conditional probabilities.
+
+\section{The two new shells}
+
+\begin{lemma}[Shell difference]\label{lem:difference}
+For deletion total $e$, a volume term present at denominator $226$ but absent
+at denominator $227$ has
+\[
+       226e<s\leq227e,\qquad s\equiv e\pmod 2.
+\]
+Consequently the only newly relevant shell with $e=1$ is $s=227$, and the
+only one with $e=2$ is $s=454$.
+\end{lemma}
+
+\begin{proof}
+The first two inequalities are exactly the respective strict event-volume
+conditions.  Since $e=s-2\LCS(X,Y)$, $e$ and $s$ have the same parity.  The
+two stated conclusions follow by inspecting the integer in the indicated
+interval for $e=1,2$.
+\end{proof}
+
+Terms newly admitted for $e\geq3$ are not discarded: they remain in the
+recomputed exact charge sum or its denominator-dependent analytic tail.  The
+published empty shells for denominator $227$ remain statements about the
+fixed codebook.  Thus the complete exclusion set used below is
+\begin{equation}\label{eq:exclusions}
+ \{227,229,231,\ldots,463\}\cup\{454,456,462,464\}.
+\end{equation}
+Only $227$ and $454$ in this set require new certificates.
+
+The one-deletion verifier covers the two orientations with lengths $114$ and
+$113$, all $54$ macroblock offsets, every deletion position, and all
+normalized square-free outer contexts.  Every one of the $132{,}240$ cases
+contains a local codebook incompatibility; there is no residual constraint
+instance.  Its first incompatible-edge histogram is
+\[
+                 (99{,}804,\ 32{,}022,\ 414).
+\]
+As a control, the same implementation at the published total $229$ reproduces
+all $135{,}240$ empty cases and the published histogram
+$(100{,}219,27{,}077,7{,}944)$.
+
+At total $454$, the possible length modes for edit distance two are
+\[
+                 (228,226),\quad(226,228),\quad(227,227).
+\]
+The verifier checks all offsets and all deletion pairs.  The exact number of
+patterns is
+\[
+  2\cdot54\binom{228}{2}+54\cdot227^2=5{,}577{,}390.
+\]
+The three mode counts are respectively
+$1{,}397{,}412$, $1{,}397{,}412$, and $2{,}782{,}566$.  Every pattern has a
+local macroblock relation incompatible with each of the three possible outer
+alphabet differences; hence all are universal kills and there are no outer-
+context or constraint-satisfaction residuals.  At the published control total
+$456$, the same code reproduces the expected $5{,}626{,}584$ universal kills,
+split as $1{,}409{,}724$, $1{,}409{,}724$, and $2{,}807{,}136$.
+
+These are finite exact statements, not statistical tests.  The implementation
+uses integer equality relations.  Its compressed diagonal-run representation
+was also expanded and compared with direct survivor-coordinate pairing on
+$614{,}088$ patterns covering every mode, offset, and deletion pattern in the
+tested half-length range, with no discrepancy.
+
+\section{Exact envelope and proof}
+
+With the exclusions in \eqref{eq:exclusions}, bilateral conditioning, and the
+fixed charges, the denominator-$226$ calculation retains $34{,}946$ finite
+ordered event types over totals $227$ through $4000$.  Exact rational
+arithmetic gives the following outward-rounded decimal displays:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+quantity & certified bound \\
+\midrule
+$\max x_{226}(a,b)$ & $\leq0.000068906109636061649419<1/6000$ \\
+$R_0(226)$ & $\leq0.000509381931109708656752$ \\
+$R_1(226)$ & $\leq0.240748491924150728186391$ \\
+$\alpha-R_0(226)$ & $\geq0.000000618068890291343247$ \\
+$\beta-(109R_0(226)+R_1(226))$
+ & $\geq0.003728877584891028227619$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The tail beyond the finite range is recomputed for $D=226$.  Its rational
+decay exponent satisfies
+\[
+      c=\frac{100417}{4237500}>\frac1{43},
+      \qquad e^{-c}<\frac{43}{44},
+\]
+and its first possible charge obeys
+\[
+             2\cdot952^2\left(\frac{43}{44}\right)^{4001}<\frac1{6000}.
+\]
+The corresponding geometric zeroth- and first-moment sums are included in
+$R_0$ and $R_1$.  A second, range-reduced exact implementation independently
+reproduces both positive margins.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemma~\ref{lem:difference} and the exhaustive calculations prove that the two
+new low-deletion shells are empty.  The other totals in
+\eqref{eq:exclusions} are the denominator-independent empty codebook shells
+proved in \cite[Appendix D]{XuEtAl2026}.  Every newly admitted term of higher
+deletion total is retained in the recomputed finite sum or tail.  The displayed
+strict margins verify \eqref{eq:lll}, so the fixed asymmetric local-lemma
+criterion avoids all remaining direct bad events.
+
+It remains to check that the case division covers every adjacent pair.  If
+$s\leq226$ and $a\ne b$, then
+$\ED(X,Y)\geq|a-b|\geq1\geq s/226$.  If $a=b$, square-freeness rules out
+$\ED(X,Y)=0$; parity then gives $\ED(X,Y)\geq2\geq s/226$.  At an excluded
+odd total up to $463$, a violation can only have edit distance one and is
+excluded by the one-deletion shells.  At an excluded even total in
+$\{454,456,462,464\}$, a violation can only have edit distance zero or two;
+square-freeness excludes zero and the two-deletion shells exclude two.  Length
+imbalance handles the non-relevant ordered types, and all other bad events are
+among those avoided by the local lemma.
+
+For a requested $n$, take an outer square-free word of length
+$\lceil n/54\rceil$, choose a local-lemma-admissible vector of Brinkhuis
+images, and take the length-$n$ prefix of the resulting word.  Every adjacent
+pair in the prefix is an adjacent pair in the full word, so the required
+inequality is inherited.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The supplementary calculation consists of the canonical $952$-word codebook,
+exact one- and two-deletion shell verifiers, machine-readable result records,
+and two exact-rational local-lemma implementations.  The shell controls at
+totals $229$ and $456$ reproduce the source artifact's records.  Python
+$3.10.12$ was used for the reported runs.  Node.js was unavailable, so the
+two-deletion checker was translated from the source JavaScript verifier; the
+pairing-equivalence comparisons and the reproduced $456$ control address that
+translation risk.  No floating-point comparison is proof-critical.
+
+Separating discovery code from exact certificate checking is also used in a
+recent finite ternary-model study, where decisive comparisons are integer or
+rational and a standard-library verifier reconstructs the finite objects
+\cite{ZengEtAl2026}.  That work is cited only for this reproducibility design;
+its geometric theorems and finite libraries play no role here.
+
+The exact conclusion is restricted to the fixed codebook, event volumes,
+dependency construction, and charges in Theorem~\ref{thm:main}.  No value
+$D<226$ was tested or ruled out.  In particular, this note neither determines
+the least working denominator in the fixed framework nor claims a globally
+optimal ternary synchronization parameter.
+
+\paragraph{Computational and AI assistance.}
+The shell enumerations and local-lemma bounds were performed by deterministic
+programs using exact integer or rational arithmetic, and the decisive claim
+was separately audited before manuscript preparation.  AI assistance was used
+for code inspection, literature screening, and drafting.  The mathematical
+conclusion depends on the stated proofs and reproducible exact computations,
+not on model output or confidence scores.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

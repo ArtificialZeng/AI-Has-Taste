@@ -1,0 +1,15 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the four matrices X_i(delta) frozen in source.md and problem.md, for every 0<delta<=1 all four are nonsingular and their spectral condition numbers have exact asymptotic pairs (p_i,K_i) defined by kappa_2(X_i(delta)) ~ K_i delta^{-p_i}: (p_1,K_1)=(2,27); (p_2,K_2)=(1,sqrt(778752/(57905-5*sqrt(132562057)))); (p_3,K_3)=(0,sqrt(rho_3/rho_1)), where rho_1<rho_2<rho_3 are the three roots of 45542974464 z^3-13786630308 z^2+429202697 z-330625, uniquely isolated respectively in (1/1300,1/1200), (1/30,1/29), and (1/4,1/3); and (p_4,K_4)=(0,13/3). Moreover, case 1 obeys |kappa_2/(27 delta^-2)-1|<=121 delta/243 on (0,1]; case 2 obeys the explicit algebraic linear relative-error bound with M_2 and delta_2 defined in evidence/exact_asymptotics.md; case 3 obeys the explicit algebraic linear relative-error bound with M_3 there for 0<delta<=1/10; and case 4 satisfies kappa_2=13/(3+delta) and relative error at most delta/3 on (0,1].",
+  "contribution": "This supplies exact leading exponents and constants, exact finite limits in the bounded cases, and rigorous quantified error control for all four frozen examples. It upgrades the cited paper's finite floating-point order observations to a complete exact resolution of the stated four-case refinement; no priority claim beyond the documented limited literature screen is made.",
+  "proposer_job_id": "win-00056-p02-research-b535fdb40002",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/exact_asymptotics.md",
+    "evidence/verify_asymptotics.py",
+    "evidence/triage.md",
+    "evidence/external/2609.04050.pdf"
+  ]
+}

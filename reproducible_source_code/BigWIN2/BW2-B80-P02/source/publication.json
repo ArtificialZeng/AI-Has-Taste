@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "candidate_kind": "resolution-paper",
+  "title": "The Center and Ozone Group of U_q^+(B_2) at a Primitive Cube Root",
+  "pdf": "manuscript/main.pdf",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "evidence/verify_cubic_rewrites.py"
+  ],
+  "build_command": "cd manuscript && pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex && bibtex main && pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex && pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex"
+}

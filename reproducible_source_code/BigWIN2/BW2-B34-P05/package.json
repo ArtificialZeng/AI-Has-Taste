@@ -1,0 +1,293 @@
+{
+  "original_id": "Win34-p05",
+  "archive_id": "BW2-B34-P05",
+  "title": "A Conjectural Bipartite-(2)/Subcubic Partition for Triangle-Free Graphs of Maximum Degree Six",
+  "batch_label": "34",
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "scope": "",
+  "gate_basis": "Current old-framework released gate, manuscript/PDF manifest hashes and citation/build/PDF audits agree.",
+  "provenance": {
+    "attribution_status": "legacy-bigWin-workflow",
+    "registry_batch_preserved": 34
+  },
+  "pdf": "pdfs/ai-conjecture/BW2-B34-P05_A_Conjectural_Bipartite_2_Subcubic_Partition_for_Triangle_Free_Graphs_of_Maximum_Degree_Six.pdf",
+  "pdf_sha256": "d930f697884f12400add6fde7323dc002e7f3d2c71d067f2ce42bdd12c9a7217",
+  "pages": 7,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B34-P05/source/conjecture-note/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B34-P05/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B34-P05/source/",
+  "main_tex": "conjecture-note/main.tex",
+  "dependencies": [
+    "networkx",
+    "z3"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim."
+  ],
+  "entrypoints": [],
+  "source_files": 16,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P05/decision/release_gate.json",
+      "sha256": "db7bd2989fb105df6ead9fa42fffb8799d3623ace89de5da1be607d3e108f478",
+      "bytes": 471
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P05/audit/RELEASE_CITATION_AUDIT.json",
+      "sha256": "cd9efd21e2c24da8315beea120a0d7cdcab7e2db8777000bf6295383bad6a3a3",
+      "bytes": 626
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P05/audit/RELEASE_BUILD_AUDIT.json",
+      "sha256": "133f0fae0ae272a7dd3b86f30075a836e3ea429503fba94f4d3a17a86387cb8a",
+      "bytes": 882
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P05/audit/RELEASE_PDF_AUDIT.json",
+      "sha256": "02d94200d636f3c9caf615956e9f155c37fe4c1e381cbf53a348bc1686fd26bd",
+      "bytes": 1402
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P05/decision/conjecture_note_gate.json",
+      "sha256": "96c2b76aa1eabeff4aef8bf4a66b0c40cfa37a15e1ee24c08c1662aa953d637b",
+      "bytes": 3502
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/conjecture-note/main.tex",
+      "original_sha256": "119bde9333aae70c4cec752ae03b2bdba73c179d3a93d2a478352a4715674aa9",
+      "original_bytes": 18621,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/conjecture-note/main.tex",
+          "sha256": "119bde9333aae70c4cec752ae03b2bdba73c179d3a93d2a478352a4715674aa9",
+          "bytes": 18621
+        }
+      ]
+    },
+    {
+      "path": "source/conjecture-note/references.bib",
+      "original_sha256": "0eb92a9b208c84628064ed9b0cd7501ef6d04a2399d4a3459fc3b4e195ea7bb6",
+      "original_bytes": 2354,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/conjecture-note/references.bib",
+          "sha256": "0eb92a9b208c84628064ed9b0cd7501ef6d04a2399d4a3459fc3b4e195ea7bb6",
+          "bytes": 2354
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_false_independent_2dom.py",
+      "original_sha256": "091859093c54849dd39f022b58671b4c77ea21875f9be84e68aea19bf65e9094",
+      "original_bytes": 2335,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_false_independent_2dom.py",
+          "sha256": "091859093c54849dd39f022b58671b4c77ea21875f9be84e68aea19bf65e9094",
+          "bytes": 2335
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_false_fixed_partition_extension.py",
+      "original_sha256": "9750e51448f3d75e6ff180d3c40465edf775f675ae3702ad26c84a57eee1fc2d",
+      "original_bytes": 1748,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_false_fixed_partition_extension.py",
+          "sha256": "9750e51448f3d75e6ff180d3c40465edf775f675ae3702ad26c84a57eee1fc2d",
+          "bytes": 1748
+        }
+      ]
+    },
+    {
+      "path": "source/code/partition_probe.py",
+      "original_sha256": "342a85bee77aa741e1985fc93e7a566a23357791652e93a51ff95ac70f0207e2",
+      "original_bytes": 6351,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/partition_probe.py",
+          "sha256": "342a85bee77aa741e1985fc93e7a566a23357791652e93a51ff95ac70f0207e2",
+          "bytes": 6351
+        }
+      ]
+    },
+    {
+      "path": "source/code/synthesize_partition_counterexample.py",
+      "original_sha256": "1fd73177cd5cf92da960815dd4d729d0562cbe3e7e64cc90207a344d61388166",
+      "original_bytes": 3160,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/synthesize_partition_counterexample.py",
+          "sha256": "1fd73177cd5cf92da960815dd4d729d0562cbe3e7e64cc90207a344d61388166",
+          "bytes": 3160
+        }
+      ]
+    },
+    {
+      "path": "source/code/cegis_partition_counterexample.py",
+      "original_sha256": "92a5497f571bbdc540cfdadb77bac8b596fd7f8d42f5003567a2dbca1cd8ae5d",
+      "original_bytes": 5806,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/cegis_partition_counterexample.py",
+          "sha256": "92a5497f571bbdc540cfdadb77bac8b596fd7f8d42f5003567a2dbca1cd8ae5d",
+          "bytes": 5806
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_partition_data.py",
+      "original_sha256": "dbc39254811e0ffdc89f6c197bb217e74a9628e249771d95537f3c440ccd9939",
+      "original_bytes": 1663,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_partition_data.py",
+          "sha256": "dbc39254811e0ffdc89f6c197bb217e74a9628e249771d95537f3c440ccd9939",
+          "bytes": 1663
+        }
+      ]
+    },
+    {
+      "path": "source/code/audit_c001_families.py",
+      "original_sha256": "6e7a5677298d9e77c0a38fba0525e924a2cd17b7e23f83318968402a2690d4d5",
+      "original_bytes": 4679,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/audit_c001_families.py",
+          "sha256": "6e7a5677298d9e77c0a38fba0525e924a2cd17b7e23f83318968402a2690d4d5",
+          "bytes": 4679
+        }
+      ]
+    },
+    {
+      "path": "source/data/false-independent-2dom.json",
+      "original_sha256": "f053d4788fd43b02f056e6b74315a01303a3adfadd696a19507bf3d18b62b5e6",
+      "original_bytes": 906,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/false-independent-2dom.json",
+          "sha256": "f053d4788fd43b02f056e6b74315a01303a3adfadd696a19507bf3d18b62b5e6",
+          "bytes": 906
+        }
+      ]
+    },
+    {
+      "path": "source/data/partition-synthesis-n8-n10.json",
+      "original_sha256": "93b8470abec34383edfc6a80ed3988b1f07fed9dbf67e5923c01dde2ffe01664",
+      "original_bytes": 1428,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/partition-synthesis-n8-n10.json",
+          "sha256": "93b8470abec34383edfc6a80ed3988b1f07fed9dbf67e5923c01dde2ffe01664",
+          "bytes": 1428
+        }
+      ]
+    },
+    {
+      "path": "source/data/false-fixed-partition-extension.json",
+      "original_sha256": "be7f32c92f757aeb14cd2d0535e1793384fad06092adb791f76c7649ef02a5b0",
+      "original_bytes": 935,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/false-fixed-partition-extension.json",
+          "sha256": "be7f32c92f757aeb14cd2d0535e1793384fad06092adb791f76c7649ef02a5b0",
+          "bytes": 935
+        }
+      ]
+    },
+    {
+      "path": "source/data/c001-cegis-block02.json",
+      "original_sha256": "ab29ce96e91d352c5723ce44e667890015fd8ffc3ec3cec11ca5df4779427382",
+      "original_bytes": 4111,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/c001-cegis-block02.json",
+          "sha256": "ab29ce96e91d352c5723ce44e667890015fd8ffc3ec3cec11ca5df4779427382",
+          "bytes": 4111
+        }
+      ]
+    },
+    {
+      "path": "source/data/partition-probe-seed3405.json",
+      "original_sha256": "b0e3fe8c23315fbb5725d23f4fc8923647d5984bb1d5008a7086594af6e0b9ce",
+      "original_bytes": 1940961,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/partition-probe-seed3405.json",
+          "sha256": "b0e3fe8c23315fbb5725d23f4fc8923647d5984bb1d5008a7086594af6e0b9ce",
+          "bytes": 1940961
+        }
+      ]
+    },
+    {
+      "path": "source/proof/gap_ledger.md",
+      "original_sha256": "26fc8722a600aa5adb5bada6edd445f9677630f6f7ad3b466bce62c03da20550",
+      "original_bytes": 1625,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/gap_ledger.md",
+          "sha256": "26fc8722a600aa5adb5bada6edd445f9677630f6f7ad3b466bce62c03da20550",
+          "bytes": 1625
+        }
+      ]
+    },
+    {
+      "path": "source/proof/proof_dag.md",
+      "original_sha256": "d5a4f8560fb353e3a3afbd39db3cea7ae1e155d04b48bac372275a7fced67fe8",
+      "original_bytes": 6067,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/proof_dag.md",
+          "sha256": "d5a4f8560fb353e3a3afbd39db3cea7ae1e155d04b48bac372275a7fced67fe8",
+          "bytes": 6067
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B34-P05",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

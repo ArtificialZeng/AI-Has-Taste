@@ -1,0 +1,57 @@
+2                  YU. MISHURA, K. RALCHENKO, AND R.L. SCHILLING
+
+
+along the columns of the triangular matrix in the Cholesky decomposition of fBm
+itself; this property, in turn, ensures the convergence of a wide class of discrete-time
+schemes to a fractional Brownian motion. We will see in Section 2.1 below, that the
+coefficients of the predictor can be found as the solution to a system of linear equa-
+tions, whose coefficient matrix coincides with the covariance matrix of fGn. This
+enables us to reduce the monotonicity problem for the Cholesky decomposition to
+proving the positivity of the solution to a linear system of equations. However,
+see Section 2, even in the particular case of a 3 × 3-matrix, an analytic proof of
+positivity of all coefficients is a non-trivial problem. For the moment, we have only
+a partial solution. Therefore, we formulate the following conjecture:
+Conjecture (A). If H > 1/2, then the coefficients of the projection of any element
+of fractional Gaussian noise onto any finite number of its subsequent elements are
+strictly positive.
+    Due to stationarity, it is sufficient to establish (A) for
+                             E (∆1 | ∆2 , . . . , ∆n ) ,     n ≥ 3,
+where B H denotes fBM and ∆k = BkH − Bk−1        H
+                                                   . Having computational evidence
+but lacking an analytical proof for conjecture (A), we provide in this paper a wide
+range of associated properties of coefficients, some with an analytic proof, and some
+obtained using various computational tools. It is, in particular, interesting to study
+the asymptotic behaviour of the coefficients as H ↑ 1. This is particularly interest-
+ing since H = 1 fractional Brownian motion B 1 is degenerate, i.e. Bt1 = tξ, where
+ξ ∼ N (0, 1), and N (0, 1) denotes the standard normal distribution. Consequently,
+∆k ∼ N (0, 1) for all k ≥ 1, and
+                                                    n
+                                                    X
+                      E (∆1 | ∆2 , . . . , ∆n ) =         αk ∆k ∼ N (0, 1)
+                                                    k=2
+                                         Pn
+for any convex combination αk ≥ 0,          k=2 αk = 1. This shows that in the case
+H = 1 the values of the coefficients are indefinite, and therefore they cannot define
+the asymptotic behaviour of the prelimit coefficients as H ↑ 1. It will be very
+‘elegant’ if all coefficients tend to (n − 1)−1 , however, in reality their asymptotic
+behaviour is different, see Section 2.3. Another interesting question are the relations
+between the coefficients. It is natural to assume that they decrease as k increases,
+but the situation here is also more involved, essentially depending on the value of H.
+In Section 2.4 we prove some recurrence relations between the coefficients. These
+relations lead to a computational algorithm which is more efficient than solving
+the system of equations as described in Section 2.1. Finally, it turns out that the
+positivity of the first coefficient can be proven analytically for all values of n; this
+result is established in Section 2.5.
+   We close the paper with a few numerical examples, supporting our theoretical
+results and conjectures. In particular, we compute the coefficients for all n ≤
+10 and for various values of H, and discuss their behaviour. Also, we compare
+different calculation methods for the coefficients in terms of computing time, and
+we demonstrate the advantage of the approach via recurrence formulae in most
+cases.
+   The paper is organized as follows: Section 2 contains almost all properties of
+the predictor’s coefficients that can be established analytically, and it introduces
+the system of linear equations for these coefficients and some properties of the
+coefficients of this system. We consider in detail two particular cases: n = 3 and
+n = 4. In these cases we prove the positivity of all coefficients, establish some
+relations between them, and study the asymptotic behaviour as H ↑ 1. We also
+

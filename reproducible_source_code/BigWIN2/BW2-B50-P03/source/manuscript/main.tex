@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdftitle={The Game Chromatic Number of the Thirteen-Vertex Graph M3(C3)},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact computer-assisted determination of a finite graph-coloring game}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\Zthree}{\mathbb Z/3\mathbb Z}
+\newcommand{\chig}{\chi_{\mathrm g}}
+
+\title{The Game Chromatic Number of the Thirteen-Vertex Graph
+$M_{3}(C_{3})$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the game chromatic number of the fixed generalized-Mycielski
+graph $M_{3}(C_{3})$.  An elementary propagation argument excludes three
+colors.  For four colors, an exact minimax computation produces a complete
+Alice-strategy directed acyclic graph, and a separately implemented checker
+reconstructs the graph and its symmetries, replays every stored move, exhausts
+every raw Bob reply, checks both terminal conditions, and performs backward
+induction.  The certificate has $22{,}071$ canonical positions and proves
+that Alice wins.  Consequently
+\[
+                 \chig\bigl(M_{3}(C_{3})\bigr)=4.
+\]
+The result is only for the layer parameter $3$ and makes no assertion about
+the remaining generalized layers.
+\end{abstract}
+
+\section{The fixed graph and the coloring game}
+
+The graph-coloring game was introduced in graph form by
+Bodlaender~\cite{Bodlaender1991}.  Alice and Bob alternately color a previously
+uncolored vertex from a common palette, with Alice moving first and every
+intermediate coloring required to be proper.  Alice wins if the whole graph
+is colored.  Bob wins as soon as an uncolored vertex has no legal color.  The
+game chromatic number $\chig(G)$ is the least palette size for which Alice has
+a winning strategy.
+
+We use the generalized-Mycielski notation of Mou, Sun, and
+Zhang~\cite{MouSunZhang2026}.  For the present paper it is enough to define the
+target graph directly.  Let $H=M_{3}(C_{3})$ have vertex set
+\[
+ V(H)=\{v_i^m:i\in\Zthree,\ 0\leq m\leq3\}\cup\{\omega\}.
+\]
+Its edges are
+\begin{align*}
+ &v_i^0v_j^0 &&(i\ne j),\\
+ &v_i^mv_j^{m+1} &&(0\leq m\leq2,\ i\ne j),\\
+ &v_i^3\omega &&(i\in\Zthree).
+\end{align*}
+Thus $H$ has $13$ vertices and $24$ edges.  The nine vertices in layers
+$0,1,2$ have degree $4$, while the three vertices in layer $3$ and $\omega$
+have degree $3$.
+
+Theorem~5.1(1) of Mou--Sun--Zhang gives
+$4\leq\chig(M_k(C_3))\leq5$ for every $k\geq2$, but does not choose between
+the two values for $k=3$~\cite{MouSunZhang2026}.  The contribution here is the
+exact value for that one thirteen-vertex instance.  In particular, we do not
+claim that the source paper explicitly posed this individual instance as an
+open problem.
+
+\begin{theorem}\label{thm:main}
+For the graph $H=M_3(C_3)$ defined above,
+\[
+                         \chig(H)=4.
+\]
+\end{theorem}
+
+\section{The lower bound}
+
+\begin{lemma}\label{lem:lower}
+The graph $H$ is not three-colorable.  Hence $\chig(H)\geq4$.
+\end{lemma}
+
+\begin{proof}
+Suppose that a proper three-coloring exists.  The base layer is a triangle, so
+write $c_i$ for the color of $v_i^0$; the three colors $c_0,c_1,c_2$ are
+distinct.  The vertex $v_i^1$ is adjacent to the two base vertices whose
+indices differ from $i$, and therefore its only available color is $c_i$.
+The same argument propagates: if $v_i^{m-1}$ has color $c_i$ for every $i$,
+then $v_i^m$ is adjacent to the other two colors and must have color $c_i$.
+Consequently the three neighbors $v_0^3,v_1^3,v_2^3$ of $\omega$ use all
+three colors, leaving no color for $\omega$.  This contradiction proves
+$\chi(H)\geq4$, and $\chi(H)\leq\chig(H)$ gives the assertion.
+\end{proof}
+
+\section{A proof-carrying four-color strategy}
+
+We now describe the exact finite certificate for the upper bound.  Order the
+vertices as
+\[
+ v_0^0,v_1^0,v_2^0,v_0^1,\ldots,v_2^3,\omega
+\]
+and encode a position by a length-$13$ word over
+$\{0,1,2,3,4\}$, where $4$ denotes an uncolored vertex.  All comparisons in
+the search and replay are integer and exact.
+
+Every permutation of the three indices, applied simultaneously in all four
+layers and fixing $\omega$, is an automorphism.  These are all the
+automorphisms of $H$.  Indeed, $\omega$ is the unique degree-$3$ vertex having
+three degree-$3$ neighbors, so it is fixed.  Distance from $\omega$ then fixes
+each layer set.  Between two consecutive layers, the unique missing partner
+of $v_i^m$ is $v_i^{m+1}$; hence a permutation of the base indices forces the
+same permutation in each later layer.  The automorphism group therefore has
+order $6$.
+
+The search identifies positions under these six automorphisms and under the
+$24$ global permutations of the four color names.  Its canonical
+representative is the lexicographically least word in the resulting orbit.
+The certificate is a directed acyclic graph of canonical positions.  At an
+Alice position it stores one legal move.  At a Bob position it stores every
+raw legal vertex--color pair, even when several such pairs have the same
+canonical child.  A stored terminal position is accepted only if all thirteen
+vertices are properly colored; a position with an uncolored vertex seeing all
+four colors is instead a Bob terminal.
+
+The following elementary observation is the logical core of the
+computer-assisted proof.
+
+\begin{lemma}[certificate soundness]\label{lem:soundness}
+Suppose a finite directed acyclic graph rooted at the empty position has the
+properties just stated: every terminal is a fully colored Alice win; every
+nonterminal Alice node has a stored legal edge; and every nonterminal Bob node
+contains every raw legal reply.  If every edge leads to the canonical orbit
+representative of the position obtained by its move, then the root is winning
+for Alice.
+\end{lemma}
+
+\begin{proof}
+Induct downward on the number of uncolored vertices.  A terminal node is an
+Alice win.  At an Alice node she takes its stored edge, while at a Bob node
+every move available to Bob occurs among the stored edges.  Thus, if all
+children are already certified for Alice, so is the parent; the induction
+reaches the root.
+
+Canonicalization does not change this conclusion.  A graph automorphism and
+a global color permutation preserve properness, legal moves, whose turn it
+is, and both terminal conditions.  At an actual position Alice transports the
+stored move from its canonical representative back through the same symmetry.
+After either player's move, the resulting position can again be transported
+to the stored canonical child.  Hence the backward induction on orbit
+representatives defines a strategy in the original game.
+\end{proof}
+
+Separating discovery code from a reconstruction-based checker is a standard
+proof-carrying pattern for large exact finite computations; for a recent
+example using exhaustive symmetry reduction and an independently replayed
+certificate, see Zeng, Liu, Ratnavelu, and Ong~\cite{ZengEtAl2026Certificates}.
+Here the generator uses first-occurrence color normalization after applying
+each graph automorphism.  The checker does not import the generator.  It
+reconstructs the graph from the displayed edge formula, enumerates graph
+automorphisms using NetworkX's isomorphism machinery~\cite{HagbergSchultSwart2008},
+and obtains exactly six.  Independently of the generator's normalization, it
+then tries all $6\cdot24$ graph/color symmetries to canonicalize every child.
+
+The checker verifies the following conditions throughout the certificate:
+\begin{itemize}
+  \item every stored position is proper and canonical;
+  \item every edge is a legal move, colors exactly one new vertex, and names
+        the correct canonical child;
+  \item every Bob node contains each raw legal vertex--color pair exactly
+        once, without orbit deduplication;
+  \item terminal labels agree with the two game-ending conditions; and
+  \item bottom-up evaluation certifies Alice at the empty root.
+\end{itemize}
+The resulting counts are recorded in Table~\ref{tab:certificate}.  As a small
+boundary check, the prescribed first move colors $v_0^0$ with color $0$; the
+next node contains all $44$ legal raw replies available to Bob.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lr}
+\toprule
+quantity & value\\
+\midrule
+canonical positions in the strategy DAG & $22{,}071$\\
+directed edges & $61{,}173$\\
+raw Bob-response edges & $45{,}761$\\
+terminal positions & $400$\\
+graph automorphisms independently enumerated & $6$\\
+color permutations tested per automorphism & $24$\\
+\bottomrule
+\end{tabular}
+\caption{Exact certificate and replay counts.  All $400$ stored terminals are
+fully colored Alice wins.}
+\label{tab:certificate}
+\end{table}
+
+The successful replay establishes every hypothesis of
+Lemma~\ref{lem:soundness}; therefore Alice wins with four colors and
+$\chig(H)\leq4$.  Combining this with Lemma~\ref{lem:lower} proves
+Theorem~\ref{thm:main}.
+
+\section{Reproducibility, scope, and assistance}
+
+The supplementary files are \texttt{solve\_game.py},
+\texttt{q4\_strategy.json.gz}, \texttt{verify\_q4\_strategy.py}, and the
+machine-readable report \texttt{q4\_verification.json}.  From the project
+root the certificate and replay report are regenerated by
+\begin{verbatim}
+python3 evidence/solve_game.py --output evidence/q4_strategy.json.gz
+python3 evidence/verify_q4_strategy.py evidence/q4_strategy.json.gz \
+  --report evidence/q4_verification.json
+\end{verbatim}
+The generator is deterministic and the verifier performs no floating-point
+comparisons.  The proof determines only $M_3(C_3)$.  It does not generalize
+the four-color strategy to $M_k(C_3)$ for any other $k$, nor does it establish
+a priority claim beyond the specific literature comparison made above.
+
+Python programs were used for exact minimax search, certificate generation,
+graph-isomorphism enumeration, and exhaustive replay.  Generative-AI systems
+assisted with problem triage, program development, audit-oriented proof
+organization, literature searching, and manuscript drafting.  No theorem is
+accepted on the basis of model output: the finite upper bound is carried by
+the explicit certificate and exact replay checks, and the author is
+responsible for the statement, scope, and presentation.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

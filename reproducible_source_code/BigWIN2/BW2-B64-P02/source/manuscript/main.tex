@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Exact Dimension Threshold for Local Lewis-Weight Acceleration},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Diag}{\operatorname{Diag}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{The Exact Dimension Threshold for Local Lewis-Weight Acceleration}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $p>2$ and consider the row-wise $\ell_p$-Lewis fixed-point iteration for a
+full-column-rank matrix $A\in\R^{m\times n}$ with positive Lewis weights.
+Padmanabhan's local-rate formula involves
+$K=W^{-1}(P\circ P)$, where $P$ is the rank-$n$ projection at the fixed point.
+We prove that if $m>n(n+1)/2$, then $K$ has least eigenvalue zero, so the
+predicted local contraction factor is exactly the global factor $1-2/p$.
+The dimension threshold is sharp in the full Lewis-weight setting: for every
+$n\leq m\leq n(n+1)/2$ and every $p>2$, we construct an admissible $A$ for
+which all eigenvalues of $K$ are positive.  The proof identifies $P\circ P$
+as a Gram matrix of rank-one symmetric tensors, whitens an explicit frame,
+and verifies the converse Lewis fixed-point constraint.
+\end{abstract}
+
+\section{Statement and context}
+
+Put $\gamma=1-2/p$.  For a full-column-rank matrix
+$A\in\R^{m\times n}$ with no zero rows, its row-wise $\ell_p$-Lewis weights
+are the unique positive vector $w$ satisfying
+\[
+ w_i=\sigma_i(W^{\gamma/2}A),\qquad W=\Diag(w),
+\]
+where $\sigma_i$ denotes the $i$th leverage score.  Existence and uniqueness
+originate in Lewis's work~\cite{Lewis1978}; we use the fixed-point formulation
+and notation of Padmanabhan~\cite[Definition~1.1]{Padmanabhan2026}.
+
+At a fixed point, define
+\begin{equation}\label{eq:PK}
+ P=W^{\gamma/2}A(A^T W^\gamma A)^{-1}A^T W^{\gamma/2},
+ \qquad K=W^{-1}(P\circ P),
+\end{equation}
+where $\circ$ is the Hadamard product.  Padmanabhan proves that the Jacobian
+in logarithmic coordinates is $J=\gamma(I-K)$, that the eigenvalues of $K$
+belong to $[0,1]$, and that the predicted local contraction factor is
+\begin{equation}\label{eq:rate}
+ \rho(J)=\left(1-\frac{2}{p}\right)
+          \bigl(1-\lambda_{\min}(K)\bigr)
+ \quad\text{\cite[Lemma~3.1]{Padmanabhan2026}}.
+\end{equation}
+The question addressed here is when the second factor in~\eqref{eq:rate} can
+be strictly smaller than one.
+
+The frame-theoretic ingredients have close precedents.  Rank-one real POVMs
+are precisely Parseval frames, and an arbitrary frame can be converted to one
+by whitening; Edidin, Gonzalez, and Tamo use this observation and the endpoint
+family $\{e_i,e_i+e_j:i<j\}$ in a sharp construction for a different
+tomography problem~\cite[Sections~2.2, 2.5, and~3.2]{EdidinGonzalezTamo2025}.
+Section~2.2 of recent work on rank-constrained permanent inequalities likewise
+realizes Hadamard squares of Gram matrices through symmetric tensors
+\cite{ZengLiuRatnavelu2026}.  Here these ingredients are applied
+to the nonsingularity of~\eqref{eq:PK}, including every intermediate $m$, and
+the resulting Parseval frames are explicitly converted back to genuine
+Lewis-weight instances.  No priority claim beyond this precise resolution is
+made.
+
+\begin{theorem}\label{thm:main}
+Let $p>2$, let $A\in\R^{m\times n}$ have full column rank and strictly
+positive row-wise $\ell_p$-Lewis weights, and define $P$ and $K$ by
+\eqref{eq:PK}.
+\begin{enumerate}
+\item If $m>n(n+1)/2$, then $\lambda_{\min}(K)=0$.  Consequently the
+predicted local contraction factor in~\eqref{eq:rate} is exactly $1-2/p$.
+\item Conversely, for every pair $n\leq m\leq n(n+1)/2$ and every real
+$p>2$, there is such a matrix $A$ for which all eigenvalues of $K$ are
+positive.
+\end{enumerate}
+\end{theorem}
+
+Although $K$ need not be symmetric, its eigenvalues are real: it is similar
+to $W^{-1/2}(P\circ P)W^{-1/2}$.  Thus ``positive'' in the second assertion
+means positive spectrum, equivalently positive definiteness of this symmetric
+similar matrix.
+
+\section{Tensor reduction}
+
+At a Lewis fixed point, $P$ is an orthogonal projection of rank $n$, and
+$P_{ii}=w_i>0$.  Factor $P=UU^T$ with $U\in\R^{m\times n}$ and
+$U^TU=I_n$, and write $u_i^T$ for the $i$th row of $U$.  Then
+\begin{equation}\label{eq:gram}
+ w_i=\lVert u_i\rVert_2^2,
+ \qquad
+ (P\circ P)_{ij}=\langle u_i,u_j\rangle^2
+ =\langle u_i u_i^T,u_j u_j^T\rangle_F.
+\end{equation}
+Consequently $P\circ P$ is exactly the Gram matrix of the $m$ elements
+$u_i u_i^T$ in the $d$-dimensional real inner-product space $\Sym_n$, where
+\[
+ d=\dim\Sym_n=\frac{n(n+1)}{2}.
+\]
+Moreover,
+\begin{equation}\label{eq:similar}
+ K=W^{-1}(P\circ P)
+ \sim W^{-1/2}(P\circ P)W^{-1/2}.
+\end{equation}
+It follows that $K$ has positive spectrum exactly when the tensors
+$u_i u_i^T$ are linearly independent.
+
+\section{Proof of the threshold and its sharpness}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose first that $m>d$.  The $m$ tensors $u_i u_i^T\in\Sym_n$ are linearly
+dependent, so their Gram matrix $P\circ P$ is singular.  By
+\eqref{eq:similar}, $K$ is similar to a singular positive-semidefinite matrix.
+Hence $\lambda_{\min}(K)=0$, and substitution in~\eqref{eq:rate} gives
+$\rho(J)=1-2/p$.
+
+For the converse, fix $n\leq m\leq d$ and set $r=m-n$.  Choose any $r$
+distinct unordered pairs from $\{\{i,j\}:1\leq i<j\leq n\}$, and form the
+list
+\begin{equation}\label{eq:rawframe}
+ v_1,\ldots,v_m:
+ \qquad e_1,\ldots,e_n,
+ \quad e_i+e_j\quad\text{for the chosen pairs }\{i,j\}.
+\end{equation}
+The rank-one matrices $v_a v_a^T$ are linearly independent.  Indeed, in a
+relation
+\[
+ \sum_{i=1}^n a_i e_i e_i^T
+ +\sum_{\{i,j\}}b_{ij}(e_i+e_j)(e_i+e_j)^T=0,
+\]
+the $(i,j)$ entry belonging to a chosen pair occurs in exactly one pair
+tensor.  Thus every $b_{ij}$ is zero, after which the diagonal entries force
+every $a_i$ to be zero.
+
+Let $S=\sum_{a=1}^m v_a v_a^T$.  The first $n$ terms in~\eqref{eq:rawframe}
+sum to $I_n$, so $S$ is positive definite.  Set
+\[
+ R=S^{-1/2},\qquad u_a=Rv_a.
+\]
+All $u_a$ are nonzero and
+\[
+ \sum_{a=1}^m u_a u_a^T=RSR=I_n.
+\]
+Hence the matrix $U$ with rows $u_a^T$ is Parseval: $U^TU=I_n$.  The
+congruence map $X\mapsto RXR$ is invertible on $\Sym_n$, and
+$u_a u_a^T=R(v_a v_a^T)R$.  Therefore the whitened tensors remain linearly
+independent.  For $P=UU^T$, equation~\eqref{eq:gram} now gives
+$P\circ P\succ0$.
+
+It remains to impose, rather than relax, the Lewis-weight constraint.  Define
+\begin{equation}\label{eq:reconstruct}
+ w_a=\lVert u_a\rVert_2^2>0,\qquad
+ W=\Diag(w),\qquad A=W^{-\gamma/2}U.
+\end{equation}
+Positive row scaling preserves column rank, so $A$ has rank $n$ and no zero
+rows.  Furthermore,
+\[
+ W^{\gamma/2}A=U,
+ \qquad A^T W^\gamma A=U^TU=I_n.
+\]
+The leverage score of row $a$ of $W^{\gamma/2}A$ is consequently
+$u_a^T(U^TU)^{-1}u_a=\lVert u_a\rVert_2^2=w_a$.  Thus $w$ satisfies the
+Lewis fixed-point equation and, by uniqueness, is the Lewis-weight vector of
+$A$.  Its associated projection is the constructed $UU^T$.  Since
+$P\circ P\succ0$ and $W\succ0$, equation~\eqref{eq:similar} shows that every
+eigenvalue of $K$ is positive.
+
+The boundary cases are included: if $m=n$, no pair vector is chosen and
+$U=I_n$; if $m=d$, all pairs are chosen; and if $n=1$, necessarily $m=1$.
+The construction is valid separately for every real $p>2$, with only the
+positive row scaling in~\eqref{eq:reconstruct} depending on $p$.
+\end{proof}
+
+\section*{Computational and AI assistance disclosure}
+
+The proof is deductive and does not rely on numerical computation.  An
+OpenAI Codex language model assisted with proof organization, bibliographic
+search, linear-algebra checks, and preparation of the \LaTeX{} manuscript.
+A separate model-context audit also performed exact finite rank checks for
+$1\leq n\leq7$; those checks were corroborative and are not used in the
+proof.  The author is responsible for the mathematical statements and final
+text.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

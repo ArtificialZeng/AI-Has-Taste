@@ -1,0 +1,142 @@
+Fractal Fract. 2025, 9, 428                                                                                                                                 5 of 26
+
+
+
+                              It is straightforward to check that ρ̂( H ) = 0 when H = 1/2 and H = 1.
+                                     Note that the expression (8) involves several distinct exponential functions, namely, 22H , 42H ,
+                              6 , 82H , and 92H , which makes an analytic investigation of its sign and behavior particularly
+                                2H
+
+                              challenging.
+
+                              Proposition 1. ρ̂( H ) > 0 for all H ∈ (1/2, 1).
+
+                              Proof. Based on the observations in Remark 1, we provide a combined analytical
+                                                                                                         and
+                                                                                                                                                        1
+                              numerical proof. Specifically, we analytically show that ρ̂( H ) > 0 for H ∈                                              2 , H0     ,
+                              where H0 ≈ 0.874958 is such that ρ3 ( H ) = 12 . Furthermore, we prove that ρ̂( H ) > 0 in a
+                              neighborhood of H = 1. Although we are unable to confirm analytically that H1 ≤ H0
+                              (which would provide a complete analytical proof), we supplement the argument with a
+                              numerical
+                                      verification that clearly demonstrates ρ̂( H ) > 0 throughout the entire interval
+                               1
+                               2, 1 .
+                                   Step 1. It was shown in [18] (Lemma 1) that
+
+                                                                                        1
+                                                                           ρ2 − ρ21 =     ( ρ − ρ3 ).
+                                                                                        2 1
+                              Therefore,
+                                                                                                                           
+                                           ρ̂ = ρ2 + ρ22 − ρ21 − ρ1 ρ3 =            1
+                                                                                    2 + ρ1       ( ρ2 − ρ3 ) +       1
+                                                                                                                     2 − ρ2       ( ρ1 − ρ2 ).                 (9)
+
+                              Moreover, according to [18] (Corollary 1),
+
+                                                                                ρ1 > ρ2 > ρ3 .
+
+                              Hence, if ρ2 ≤ 21 , it follows directly that ρ̂ > 0.
+                                  Now, suppose ρ2 > 12 . If ρ3 < 21 , then (9) yields:
+                                                                                                       
+                                                    1
+                                         ρ̂ >       2 + ρ1        ρ2 − 21 + 12 − ρ2 (ρ1 − ρ2 ) = ρ2 − 21 21 + ρ2 > 0.
+                                                                                                                                                       
+                              Note that the condition ρ3 ( H ) < 21 is equivalent to H < H0 , where H0 ∈                                         1
+                                                                                                                                                 2, 1       is the
+                              solution of the equation
+                                                               42H − 2 · 32H + 22H = 1.
+                                                                                                                                                                  
+                                                                                                                                                            1
+                              We now show that this equation indeed admits a unique solution in the interval                                                2, 1       .
+                              Consider the function
+                                                                                         2H    
+                                        f ( H ) := 42H − 2 · 32H + 22H = 22H 22H − 2 · 32     + 1 =: 22H g( H ).
+                                                                     
+                              It is straightforward to verify that f 12 = 0 and f (1) = 1. Therefore, to establish the
+                              existence and uniqueness
+                                                       of the solution in the given interval, it suffices to show that f is
+                              strictly increasing on 12 , 1 . Evidently, it is enough to prove that g( H ) is strictly increasing.
+                              The derivative of g is given by
+
+                                                                                                      3 2H
+                                                                                                                     
+                                                                  g′ ( H ) = 2 22H log 2 − 2 ·             log 23
+                                                                                                        
+                                                                                                      2                   .
+
+                              Hence, to show that g′ ( H ) > 0, we need to verify the inequality
+
+                                                                                                 3 2H
+                                                                        22H log 2 > 2 ·               log 32 ,
+                                                                                                   
+                                                                                                 2
+Fractal Fract. 2025, 9, 428                                                                                              6 of 26
+
+
+
+                              which is equivalent to
+                                                                       2H
+                                                                        4            2 log 32
+                                                                        3        >            .
+                                                                                      log 2
+                              Since the left-hand side of this inequality is strictly increasing with respect to H, it suffices
+                              to verify it at H = 12 . In this case, the inequality reduces to
+
+                                                                            4   2 log 32
+                                                                              >          .
+                                                                            3    log 2
+
+                              This can be further rewritten as log 4 > log 27
+                                                                              
+                                                                            8 , which clearly holds.
+                                   A numerical approximation of the solution yields H0 ≈ 0.874958.
+                                   Step 2. We now prove that ρ̂( H ) > 0 in a neighborhood of H = 1. From (9), this is
+                              equivalent to
+                                                                    1
+                                                                    2 + ρ1   ρ − ρ2
+                                                                           > 1       .                            (10)
+                                                                   ρ2 − 12   ρ2 − ρ3
+
+                              As H → 1, both ρ1 → 1 and ρ2 → 1, and thus
+
+                                                                    1
+                                                                    2 + ρ1
+                                                                            → 3,        H → 1.
+                                                                    ρ2 − 12
+
+                              We now apply l’Hôpital’s rule to the right-hand side of (10). First, observe that
+
+                                                     1 2H       1                     1
+                                         ρ1 − ρ2 =     (2 − 2) − (32H − 2 · 22H + 1) = (3 · 22H − 3 − 32H ),
+                                                     2          2                     2
+                              and
+                                                         1 2H                 1
+                                                ρ2 − ρ3 =  (3 − 2 · 22H + 1) − (42H − 2 · 32H + 22H )
+                                                         2                    2
+                                                         1
+                                                        = (3 · 3 − 3 · 2 + 1 − 42H ).
+                                                                2H      2H
+                                                         2
+                              Clearly, both ρ1 − ρ2 and ρ2 − ρ3 tend towards zero as H → 1. Therefore, by l’Hôpital’s
+                              rule,
+
+                                                  ρ1 − ρ2                3 · 22H − 3 − 32H
+                                              lim           = lim
+                                             H →1 ρ 2 − ρ 3   H →1 3 · 32H − 3 · 22H + 1 − 42H
+
+                                                                               6 · 22H log 2 − 2 · 32H log 3
+                                                            = lim
+                                                                H →1 6 · 32H log 3 − 6 · 22H log 2 − 2 · 42H log 4
+                                                                 12 log 2 − 9 log 3
+                                                            =                       ≈ 1.882 ≪ 3.
+                                                                27 log 3 − 44 log 2
+
+                              Therefore, inequality (10) holds for H sufficiently close to 1, and thus ρ̂( H ) > 0 in a
+                              neighborhood of H = 1.
+                                                                                       ρ̂(H ), shown in Figure 1, which
+                                  Step 3. Finally, we refer to the graph of the function
+                                                                                                  1
+                              confirms that ρ̂( H ) > 0 throughout the entire interval            2, 1   .
+

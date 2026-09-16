@@ -1,0 +1,19 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Let D(n,k) count paths from (0,0) to (n-k,k) using steps (1,0), (0,1), and (1,1), with D(n,k)=0 outside 0<=k<=n and the empty path counted once. For the ordinary matrix square define G_n(x)=sum_{k=0}^n sum_{i=k}^n D(n,i)D(i,k)x^k. Then G_0=1, and for every integer n>=1, G_n is monic of degree n and has n distinct real roots, all in the open interval (-4-3*sqrt(2), -3+2*sqrt(2)). This claim concerns only D^2; it does not assert the A^2 part of the frozen original or consecutive interlacing.",
+  "contribution": "A proposed uniform proof of the Delannoy-square component of Mao and Wang, The Narayana transformation, Conjecture 4.1, strengthened by simplicity and a uniform negative-root enclosure. The proof combines a quadratic divided difference with alternating signs on two adjacent real intervals. The full original conjunction remains unresolved. No equivalent result was found in the bounded primary-source comparison recorded in literature/research_review.md; fresh mathematical review is requested.",
+  "proposer_job_id": "primary-20260914-triangular-square-roots-research-8c4db654213f",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/delannoy_phase_proof.md",
+    "evidence/phase_checks.py",
+    "evidence/phase_checks.json",
+    "evidence/replay_phase_certificates.py",
+    "evidence/phase_replay.json",
+    "literature/research_review.md",
+    "evidence/external/2607.01572v1.pdf",
+    "evidence/external/2607.01572v1.txt"
+  ]
+}

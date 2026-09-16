@@ -1,0 +1,20 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every finite nonempty S subset of the positive integers, put m=max S and, for 1<=k<=m, let a_k(S;q) be the sum of q^inv(pi) over permutations pi in Sym(m+k) with Des(pi)=S and {m+1,...,m+k} contained in the first m values; set a_0=a_(m+1)=0. Every a_k for 1<=k<=m is nonzero, and a_i*a_j-a_(i-1)*a_(j+1) has nonnegative integer coefficients for all 1<=i<=j<=m. This proves the frozen literal original with i<j and, separately, the disclosed additional diagonal cases i=j. The same proof establishes the directed strengthening of frozen Target K: for every m>=1, every 1<=i<=j<=m, and independently every 1<=r,s<=m, K(m;i,r)*K(m;j,s)-K(m;i-1,r)*K(m;j+1,s) is in Z_>=0[q], where K(m;k,r)=q^(k^2)([m choose k]_q-[m-r choose k]_q) for 1<=k<=m, Gaussian coefficients are zero outside their natural range, and K(m;0,r)=K(m;m+1,r)=0. The complete proposed proof, including a weight-preserving injection, explicit left inverse, reversal and direct original-definition reduction, is in evidence/research/protected-minimum-proof.md.",
+  "contribution": "A complete combinatorial proof candidate for the frozen Gaetz--Gao coefficient conjecture and its conventional diagonal strengthening, obtained from a stronger directed Gaussian-difference inequality. The subset transfer explicitly adapts Krattenthaler's classical last-maximum construction by protecting the minimum of the larger subset, making two independent minimum cutoffs survive. The original permutation reduction is proved directly. The classical construction and Bencs's q=1 theorem are attributed as prior work. This candidate requests a fresh referee; finite computations are verification only. No global priority/current-open claim is made: later-source comparison, especially Liu--Xiao full text, remains incomplete as recorded in the literature screen.",
+  "proposer_job_id": "primary-20260913-qdescent-logconcavity-research-8293ab93d85b",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research/protected-minimum-proof.md",
+    "evidence/research/protected-minimum-check.py",
+    "evidence/research/protected-minimum-check.json",
+    "evidence/intake/triage-kernel-reduction.md",
+    "evidence/external/gaetz-gao-1912.04933v2.html",
+    "evidence/external/krattenthaler-q-log-1989.web.txt",
+    "evidence/external/bencs-1806.00689v2-section4.web.txt",
+    "evidence/external/liang-sagan-2026-q-ideal-excerpt.web.txt",
+    "literature/research-pass-1-screen.md"
+  ]
+}

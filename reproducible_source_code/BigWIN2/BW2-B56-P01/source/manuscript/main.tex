@@ -1,0 +1,290 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\linf}{\ell_\infty}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title{A Factor-Two Stability Bound for\\Maximal Relative Projection Constants}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For integers $n\ge r\ge1$, let $\lambda(r,n)$ be the maximal relative
+projection constant of an $r$-dimensional subspace of $\ell_\infty^n$, and
+let $\lambda(r)$ be the maximal absolute projection constant in real
+dimension $r$.  Kumar, Mohar, Mojallal, and Pragada recently proved that
+$\lambda(r,n)=\lambda(r)$ whenever
+$n\ge 2^r\binom{r+1}{2}$.  We prove the same conclusion under the
+factor-two smaller threshold
+\[
+ n\ge 2^{r-1}\binom{r+1}{2}.
+\]
+The additional observation is projective: the rows in the maximizing
+matrix formulation may be independently multiplied by signs without
+changing feasibility or the objective.  Normalizing one coordinate
+therefore leaves only half of the coordinate orthants.  We verify that the
+normalization is compatible with the cloning argument, including rows on
+orthant boundaries and zero rows.
+\end{abstract}
+
+\section{Statement and context}
+
+All spaces below are real.  If $Y$ is a subspace of a normed space $X$, set
+\[
+ \lambda(Y,X)=\inf\{\lVert P\rVert:P:X\to Y\text{ is a projection}\}.
+\]
+For a finite-dimensional normed space $Y$, its absolute projection constant
+is
+\[
+ \lambda(Y)=\sup\{\lambda(TY,X):T:Y\to X\text{ is a linear isometry}\}.
+\]
+Projection constants in this sense go back at least to
+Grünbaum~\cite{Grunbaum1960}.  For integers $n\ge r\ge1$, define
+\[
+ \lambda(r,n)=\sup\{\lambda(Y,\ell_\infty^n):
+       Y\subseteq\ell_\infty^n,\ \dim Y=r\},
+ \qquad
+ \lambda(r)=\sup_{\dim Y=r}\lambda(Y).
+\]
+The sequence $\lambda(r,n)$ is nondecreasing in $n$ and has supremum
+$\lambda(r)$; see, for example, the discussion and references in
+\cite{FoucartSkrzypek2017,KumarEtAl2026}.  Basso's proposed general
+stabilization argument~\cite{Basso2019} was subsequently shown to be
+incomplete in the corresponding corrigendum~\cite{Basso2024}.
+
+Kumar, Mohar, Mojallal, and Pragada~\cite{KumarEtAl2026} proved stability
+for $n\ge2^r\binom{r+1}{2}$ by combining a maximizing-pair formulation with
+a cloning reduction over all $2^r$ coordinate orthants.  Their paper is the
+closest prior result to the theorem below.  It notes that minor improvements
+may be possible, but does not state the factor-two bound.
+
+\begin{theorem}\label{thm:main}
+For every integer $r\ge1$ and every integer
+\[
+ n\ge 2^{r-1}\binom{r+1}{2},
+\]
+one has $\lambda(r,n)=\lambda(r)$.
+\end{theorem}
+
+The proof exploits the fact that the optimization depends only on absolute
+inner products: each row vector can be reoriented independently.  Sign
+switching of Gram vectors also occurs in other sharp Gram-matrix problems,
+for example in the equality classification for rank-two correlation
+matrices in~\cite{ZengLiuRatnavelu2026}; that result concerns permanents and
+does not imply a statement about projection constants.  Here the reorientation
+halves an orthant count while preserving every part of the maximizing-pair
+argument.
+
+\section{Maximizing pairs and cloning}
+
+We recall the finite optimization used in the preceding stability proof.
+For $U\in\R^{n\times r}$, write $x_i^T$ for its $i$th row.  Let
+$\mathcal Q_n$ be the set of symmetric $n\times n$ sign matrices with
+diagonal entries equal to one, and let $D_w=\operatorname{diag}(w)$.
+Set
+\[
+ \mathcal W_n=\{w\in\R_{\ge0}^n:\lVert w\rVert_2=1\},
+ \qquad
+ \mathcal U_{n,r}=\{U\in\R^{n\times r}:U^TU=I_r\}.
+\]
+The Chalmers--Lewicki characterization, in the form used in
+\cite[Theorem~2.1]{KumarEtAl2026} (see also
+\cite{ChalmersLewicki2010,FoucartSkrzypek2017}), gives the two equal maxima
+\begin{align}
+ \lambda(r,n)
+ &=\max_{w\in\mathcal W_n,\ Q\in\mathcal Q_n}
+      \sum_{k=1}^r\lambda_k(D_wQD_w) \label{eq:eigen-optimization}\\
+ &=\max_{U\in\mathcal U_{n,r},\ w\in\mathcal W_n}
+   \sum_{i,j=1}^n w_iw_j\lvert\ip{x_i}{x_j}\rvert .
+   \label{eq:optimization}
+\end{align}
+Call a feasible pair $(U,w)$ \emph{maximizing} if it attains this maximum,
+and denote the displayed objective by $\sigma(U,w)$.
+
+For completeness, we record the precise cloning fact needed later.  This is
+the content of the cloning argument in~\cite[Claims~2.1--2.4]{KumarEtAl2026},
+with the preservation details included.
+
+\begin{lemma}[Cloning]\label{lem:cloning}
+Let $(U,w)$ be a maximizing pair in \eqref{eq:optimization}.  Suppose
+$C\subseteq\{1,\ldots,n\}$ satisfies
+\[
+ \ip{x_i}{x_j}\ge0\quad(i,j\in C),
+\]
+and suppose $c\in\R_{\ge0}^n$ satisfies $c_i=1$ for $i\notin C$ and
+\begin{equation}\label{eq:moment-preserve}
+ \sum_{i\in C}c_i x_ix_i^T=\sum_{i\in C}x_ix_i^T.
+\end{equation}
+Then the rows $\widetilde x_i^T=\sqrt{c_i}\,x_i^T$ and weights
+$\widetilde w_i=\sqrt{c_i}\,w_i$ form another maximizing pair.
+\end{lemma}
+
+\begin{proof}
+Let $B=(\lvert\ip{x_i}{x_j}\rvert)_{i,j}$.  Maximization first in $w$,
+together with Perron--Frobenius, gives
+\begin{equation}\label{eq:B-eigenvector}
+ Bw=\lambda(r,n)w,
+ \qquad \lambda_1(B)=\lambda(r,n).
+\end{equation}
+Choose the sign matrix $Q$ by $Q_{ij}=1$ if
+$\ip{x_i}{x_j}\ge0$ and $Q_{ij}=-1$ otherwise, and put
+$M=D_wQD_w$.  For this choice,
+$\operatorname{tr}(U^TMU)=\sigma(U,w)=\lambda(r,n)$.  The Ky--Fan maximum
+principle and \eqref{eq:eigen-optimization} show that both intervening
+inequalities are equalities.  Hence the columns of $U$ span an invariant
+subspace of $M$.  Thus there is a symmetric $H\in\R^{r\times r}$ with
+$MU=UH$.  Taking the inner product of row $i$ of this identity with $x_i$,
+and using \eqref{eq:B-eigenvector}, yields
+\begin{equation}\label{eq:quadratic-identity}
+ x_i^THx_i=\lambda(r,n)w_i^2\qquad(1\le i\le n).
+\end{equation}
+
+Equation \eqref{eq:moment-preserve} gives
+$\widetilde U^T\widetilde U=U^TU=I_r$.  Taking its trace after
+multiplication by $H$ and using \eqref{eq:quadratic-identity} gives
+\[
+ \lambda(r,n)(\lVert\widetilde w\rVert_2^2-\lVert w\rVert_2^2)
+ =\operatorname{tr}\!\left(
+ H\sum_{i\in C}(c_i-1)x_ix_i^T\right)=0.
+\]
+Since $\lambda(r,n)\ge\lambda(r,r)=1$, the new weights are again unit.
+
+Finally, expanding the change in the objective gives
+\begin{align*}
+ \sigma(\widetilde U,\widetilde w)-\sigma(U,w)
+ &=2\sum_{i\in C}(c_i-1)w_i
+       \sum_{j=1}^n w_j\lvert\ip{x_i}{x_j}\rvert\\
+ &\quad+\sum_{i,j\in C}(c_i-1)(c_j-1)w_iw_j
+       \lvert\ip{x_i}{x_j}\rvert.
+\end{align*}
+The first term is zero by \eqref{eq:B-eigenvector} and the already proved
+identity $\lVert\widetilde w\rVert_2=\lVert w\rVert_2$.  Because inner
+products within $C$ are nonnegative, the second term equals
+\[
+ \left\lVert\sum_{i\in C}(c_i-1)w_ix_i\right\rVert_2^2\ge0.
+\]
+Thus $\sigma(\widetilde U,\widetilde w)\ge\lambda(r,n)$.  Feasibility and
+\eqref{eq:optimization} force equality.
+\end{proof}
+
+\section{Half-orthant reduction}
+
+Put
+\[
+ d=\dim\mathbb S^r=\binom{r+1}{2},
+ \qquad N_r'=2^{r-1}d,
+\]
+where $\mathbb S^r$ is the space of real symmetric $r\times r$ matrices.
+Fix any $n\ge r$ and a maximizing pair $(U,w)$.  For each row $x_i^T$ set
+\[
+ \varepsilon_i=\left\{
+ \begin{array}{ll}
+  1,&(x_i)_1\ge0,\\
+  -1,&(x_i)_1<0,
+ \end{array}\right.
+ \qquad D=\operatorname{diag}(\varepsilon_1,\ldots,\varepsilon_n),
+ \qquad V=DU.
+\]
+Writing $y_i^T=\varepsilon_i x_i^T$ for the rows of $V$, we have
+\begin{equation}\label{eq:sign-invariance}
+ V^TV=U^TD^2U=I_r,
+ \qquad
+ \lvert\ip{y_i}{y_j}\rvert=\lvert\ip{x_i}{x_j}\rvert.
+\end{equation}
+Therefore $(V,w)$ is still maximizing, and $(y_i)_1\ge0$ for all $i$.
+
+Use the convention $\operatorname{sgn}(t)=1$ for $t\ge0$ and
+$\operatorname{sgn}(t)=-1$ for $t<0$.  The normalized rows occupy only the
+$2^{r-1}$ sign cells
+\[
+ \mathcal S_+=\{s\in\{\pm1\}^r:s_1=1\}.
+\]
+For $s\in\mathcal S_+$ let $C_s$ consist of the indices whose current rows
+have sign vector $s$.  If $i,j\in C_s$, every coordinatewise product is
+nonnegative; hence $\ip{y_i}{y_j}\ge0$, including when one or more
+coordinates vanish.
+
+Consider the moment matrix
+\[
+ A_s=\sum_{i\in C_s}y_iy_i^T\in\mathbb S^r.
+\]
+The conic form of Carathéodory's theorem (see, e.g.,
+\cite[Corollary~7.1i]{Schrijver1986}) represents $A_s$ as
+\begin{equation}\label{eq:caratheodory}
+ A_s=\sum_{i\in I_s}\beta_i y_iy_i^T,
+ \qquad I_s\subseteq C_s,\quad |I_s|\le d,\quad\beta_i\ge0.
+\end{equation}
+Zero generators may be omitted, and when $A_s=0$ we use the empty sum.
+Set $c_i=\beta_i$ on $I_s$, $c_i=0$ on $C_s\setminus I_s$, and
+$c_i=1$ off $C_s$.  Equations \eqref{eq:caratheodory} and
+Lemma~\ref{lem:cloning} replace the current maximizing pair by one having at
+most $d$ nonzero rows in this cell.
+
+Repeat the operation for every $s\in\mathcal S_+$.  This iteration needs a
+minor boundary check.  Multiplication by a positive scalar preserves the
+complete sign vector of a nonzero row.  Multiplication by zero creates only
+the zero row, which belongs to the all-positive cell under our convention
+but remains zero under all later cloning operations.  Thus a later step
+cannot create a nonzero row in an already processed cell.  Moreover, after
+every step the pair is maximizing, so the graph, the invariant subspace, and
+the matrix $H$ used in Lemma~\ref{lem:cloning} may be reconstructed for the
+new pair.  At the end there is a maximizing pair
+$(\widehat U,\widehat w)$ whose nonzero-row support $J$ satisfies
+\begin{equation}\label{eq:support}
+ |J|\le 2^{r-1}d=N_r'.
+\end{equation}
+
+A zero row in any maximizing pair has zero weight.  Indeed, its row in the
+absolute Gram matrix $B$ is zero, while
+\eqref{eq:B-eigenvector} and $\lambda(r,n)\ge1$ imply that the corresponding
+weight is zero.  We may consequently delete all indices outside $J$ without
+changing feasibility, the weight norm, or the objective.  If $k=|J|$, rank
+gives $k\ge r$, and the resulting $k$-row pair gives
+\begin{equation}\label{eq:finite-reduction}
+ \lambda(r,n)\le\lambda(r,k)\le\lambda(r,N_r'),
+\end{equation}
+where the last inequality is monotonicity.  Equivalently, one may pad the
+$k$-row pair with zero rows and zero weights.
+
+Taking the supremum of \eqref{eq:finite-reduction} over all $n\ge r$ gives
+\[
+ \lambda(r)\le\lambda(r,N_r')\le\lambda(r),
+\]
+and hence equality.  Monotonicity then yields
+$\lambda(r,n)=\lambda(r)$ for every $n\ge N_r'$.  Finally,
+$N_r'\ge r$ for all $r\ge1$; at $r=1$ the argument has one sign cell and
+$N_1'=1$.  This proves Theorem~\ref{thm:main}.
+
+\section*{Scope and assistance disclosure}
+
+The theorem improves the explicit universal stability threshold in
+\cite{KumarEtAl2026}; it does not determine the least stability index in any
+dimension, nor does it address whether that index is polynomial in $r$.
+No claim of literature priority beyond the cited comparison is made.
+
+An AI-assisted workflow was used in proof exploration, manuscript drafting,
+and consistency checks against the cited maximizing-pair and cloning
+arguments.  A separate AI-assisted mathematical review checked the quantified
+statement and the preservation, boundary, deletion, and supremum steps; this
+does not constitute independent peer review.  No numerical experiment or
+computer-generated mathematical certificate is used in the proof.  The author
+reviewed the final argument and assumes responsibility for its content.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

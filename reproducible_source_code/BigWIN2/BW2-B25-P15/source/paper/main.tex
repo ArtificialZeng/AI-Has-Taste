@@ -1,0 +1,74 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage{amsmath,amssymb,amsthm}\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}
+\title{A Certified Prime Factor of \texorpdfstring{$a_{20}$}{a(20)} in the Recurrence \texorpdfstring{$a_{n+1}=a_n^2+2$}{a(n+1)=a(n) squared plus 2}}
+\author{Xiaojian Zeng}\address{PBC School of Finance, Tsinghua University, 100190}\email{xiaojianzeng@foxmail.com}
+\date{September 2, 2026}
+\hypersetup{pdftitle={A Certified Prime Factor of a(20) in the Recurrence a(n+1)=a(n) squared plus 2},pdfauthor={Xiaojian Zeng}}
+\begin{document}
+\begin{abstract}
+Let $a_0=1$ and $a_{n+1}=a_n^2+2$. The OEIS record A102847 reports
+$a_8,\ldots,a_{19}$ composite and the primality of $a_{20}$ unknown. We give
+the exact certificate $7\,795\,379\mid a_{20}$. The divisor is prime. Together
+with an elementary congruence for odd indices, this proves that every $a_n$ with
+$5\le n\le21$ is composite. Thus a next prime after $a_4=15131$, if one
+exists, has index at least $22$. No assertion is made for $n\ge22$.
+\end{abstract}\maketitle
+\section{Statement and prior frontier}
+The integer sequence A102847 is defined by
+\begin{equation}\label{eq:rec}a_0=1,\qquad a_{n+1}=a_n^2+2\quad(n\ge0).\end{equation}
+The OEIS record lists prime indices $1,2,4$, reports indices $8$ through $19$
+composite, and records the primality of $a_{20}$ as unknown \cite{OEIS102847}.
+A Formal Conjectures repository source repeats the definition and poses the
+next-prime question as open \cite{Formal102847}.
+\begin{theorem}\label{thm:main}
+For \eqref{eq:rec}, $a_n$ is composite for every $5\le n\le21$. In particular,
+if there is a least prime term after $a_4$, its index is at least $22$.
+\end{theorem}
+\section{Proof and exact certificate}
+\begin{lemma}\label{lem:odd}For every odd $n\ge1$, $3\mid a_n$.\end{lemma}
+\begin{proof}Modulo $3$, the recurrence begins $1,0,2,0,2,0,\ldots$.
+A zero is sent to $2$, and $2$ is sent to $0$; induction proves the claim.\end{proof}
+\begin{proof}[Proof of Theorem \ref{thm:main}]
+For $5\le n\le20$, the table gives one prime divisor of $a_n$:
+\[
+\begin{array}{c|rrrrrrrr}n&5&6&7&8&9&10&11&12\\ \hline
+p&3&19&3&41&3&612304337&3&19\\[2pt]
+n&13&14&15&16&17&18&19&20\\ \hline
+p&3&182094337&3&43&3&19&3&7795379\end{array}
+\]
+Each entry is checked by iterating \eqref{eq:rec} modulo $p$. For the new
+endpoint, the complete residue chain modulo $7\,795\,379$, from $a_0$ through
+$a_{20}$, is
+\begin{align*}
+&1,3,11,123,15131,2881172,1108687,3707872,2390415,906816,\\
+&4113285,7318869,5775969,4541074,3143408,4589153,1945093,\\
+&920928,2327502,7240778,0.
+\end{align*}
+Trial division through $\lfloor\sqrt{7\,795\,379}\rfloor=2792$ proves the
+new divisor prime. Every divisor in the table is proper: for $n=5$ this is
+$3<a_5=228\,947\,163$, while for $6\le n\le20$ it follows from
+\[
+  p\le 612\,304\,337<a_6=52\,416\,803\,445\,748\,571\le a_n.
+\]
+Lemma \ref{lem:odd} covers $n=21$.\end{proof}
+\section{Reproducibility and limitation}
+The accompanying JSON contains the index--divisor pairs. The independent
+verifier checks primality by deterministic trial division, recomputes every
+modular recurrence, and checks properness from the increasing exact recurrence.
+It uses Python 3 exact integer arithmetic and no external primality oracle.
+The discovery search tested prime divisors at most $20\,000\,000$ for indices
+through $22$; finding none for $a_{22}$ is not evidence of primality and is not
+used in the theorem.
+
+This is a certified finite extension only. It neither produces a prime term
+after $a_4$ nor proves that none exists. The literature search was limited to
+the recorded sources and queries through September 2, 2026.
+\section*{Data and computational disclosure}
+The source archive includes the exact certificate, verifier, and raw logs.
+Exact integer computation was used to discover and verify the
+factor and prepare the reproducibility files. The theorem can be checked from
+the displayed recurrence and finite integer certificate.
+\bibliographystyle{amsplain}\bibliography{references}
+\end{document}

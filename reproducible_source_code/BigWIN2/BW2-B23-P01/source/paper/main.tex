@@ -1,0 +1,176 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[A022030 Satisfies Its Linear Recurrence]{The Alternating Extremal-Ratio Sequence A022030 Satisfies Its Conjectured Linear Recurrence}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{September 2, 2026}
+\hypersetup{pdftitle={The Alternating Extremal-Ratio Sequence A022030 Satisfies Its Conjectured Linear Recurrence},pdfauthor={Xiaojian Zeng}}
+
+\begin{document}
+\begin{abstract}
+Let $a_0=4,a_1=16$.  For even $n$, let $a_{n+2}$ be the greatest integer
+whose ratio to $a_{n+1}$ is strictly smaller than $a_{n+1}/a_n$; for odd
+$n$, use the least integer with the reverse strict inequality.  We prove
+$a_n=4a_{n-1}-a_{n-3}+a_{n-4}$ for every $n\ge4$.  The proof turns the
+strict-rounding condition into a signed determinant bound.  A
+positive-coefficient recurrence proves the required sign, while a factor-$3$
+growth estimate proves the upper remainder bound.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+The current definition and data of OEIS A022030 are recorded in
+\cite{oeisA022030}.  The same alternating rule and recurrence conjecture
+appear in the fixed Formal Conjectures source \cite{formalConjectures22030}.
+The OEIS history also records an older, nonalternating definition.  A recent
+proof summary \cite[Table~1, A022030 row]{adamczewski2026} concerns that older
+sequence, not the alternating sequence treated here.
+
+We prove the current conjecture.  The main point is not finite agreement but a
+uniform remainder estimate for the candidate linear recurrence.
+
+\section{The rounding criterion}
+For positive integers $x,y$, the greatest integer $m$ satisfying $m/y<y/x$
+is $\lceil y^2/x\rceil-1$, including when $x$ divides $y^2$.  The least
+integer satisfying the reverse strict inequality is $\lfloor y^2/x\rfloor+1$.
+
+Let
+\begin{equation}\label{eq:Lrec}
+ \begin{gathered}
+ L_0=4,\quad L_1=16,\quad L_2=63,\quad L_3=249,\\
+ L_n=4L_{n-1}-L_{n-3}+L_{n-4}\quad(n\ge4),
+ \end{gathered}
+\end{equation}
+and set
+\begin{equation}\label{eq:defect}
+ d_n=L_{n+1}^2-L_nL_{n+2},\qquad e_n=(-1)^n d_n.
+\end{equation}
+
+\begin{lemma}\label{lem:rounding}
+If $L_n>0$ and $1\le e_n\le L_n$ for all $n\ge0$, then the sequence
+defined by the alternating extremal-ratio rule is $L$.
+\end{lemma}
+\begin{proof}
+For even $n$,
+\[
+ \frac{L_{n+1}^2}{L_n}=L_{n+2}+\frac{e_n}{L_n},
+ \qquad 0<\frac{e_n}{L_n}\le1,
+\]
+hence $\lceil L_{n+1}^2/L_n\rceil-1=L_{n+2}$.  For odd $n$ the sign is
+reversed, so $\lfloor L_{n+1}^2/L_n\rfloor+1=L_{n+2}$.  Induction from
+$L_0,L_1$ identifies the sequences.
+\end{proof}
+
+\section{The defect recurrence}
+\begin{lemma}\label{lem:growth}
+The sequence $L$ is positive and satisfies $L_n>3L_{n-1}$ for every $n\ge2$.
+Consequently $L_{n-j}<L_n/3^j$ whenever $1\le j\le n$.
+\end{lemma}
+\begin{proof}
+The assertion is direct for $n=2,3$.  If the terms through $L_{n-1}$ are
+positive and strictly increasing, then, for $n\ge4$,
+\[
+ L_n-3L_{n-1}=L_{n-1}-L_{n-3}+L_{n-4}>0.
+\]
+This simultaneously preserves positivity and proves the induction step.  The
+last assertion follows by iteration.
+\end{proof}
+
+\begin{lemma}\label{lem:defectrec}
+The signed defects begin
+\[
+(e_0,\ldots,e_9)=(4,15,9,105,241,405,2275,4530,12186,46605)
+\]
+and, for every $n\ge10$, satisfy
+\begin{equation}\label{eq:positive-rec}
+\begin{split}
+231e_n={}&460e_{n-2}+3435e_{n-3}+3585e_{n-5}\\
+&+215e_{n-8}+30e_{n-9}+6e_{n-10}.
+\end{split}
+\end{equation}
+In particular, every $e_n$ is a positive integer.
+\end{lemma}
+\begin{proof}
+Direct substitution of \eqref{eq:Lrec} into \eqref{eq:defect} gives
+\begin{equation}\label{eq:six-rec}
+ e_n=3e_{n-2}+15e_{n-3}-3e_{n-4}+e_{n-6}\qquad(n\ge6).
+\end{equation}
+Thus
+\[
+ E(x):=\sum_{n\ge0}e_nx^n
+ =\frac{4+15x-3x^2+x^4}{1-3x^2-15x^3+3x^4-x^6}.
+\]
+The exact polynomial identities
+\begin{align*}
+&(1-3x^2-15x^3+3x^4-x^6)(231+233x^2+30x^3+6x^4)\\
+&\quad=231-460x^2-3435x^3-3585x^5-215x^8-30x^9-6x^{10},\\
+&(4+15x-3x^2+x^4)(231+233x^2+30x^3+6x^4)\\
+&\quad=924+3465x+239x^2+3615x^3+6x^4+215x^6+30x^7+6x^8
+\end{align*}
+give \eqref{eq:positive-rec} by coefficient comparison.  Its coefficients and
+the first ten values are positive, so strong induction gives $e_n>0$.
+\end{proof}
+
+\section{Main theorem}
+\begin{theorem}\label{thm:main}
+Let $a_0=4,a_1=16$.  For each $n\ge0$, if $n$ is even, let $a_{n+2}$ be the
+greatest integer satisfying
+\[
+ \frac{a_{n+2}}{a_{n+1}}<\frac{a_{n+1}}{a_n};
+\]
+if $n$ is odd, let $a_{n+2}$ be the least integer satisfying the reverse
+strict inequality.  Then all terms are positive and
+\[
+ a_n=4a_{n-1}-a_{n-3}+a_{n-4}\qquad(n\ge4).
+\]
+\end{theorem}
+\begin{proof}
+We prove $e_n\le L_n$.  This holds directly for $0\le n\le9$.  Suppose
+$n\ge10$ and the claim holds at smaller indices.  The preceding lemmas give
+\[
+\begin{split}
+231e_n&\le L_n\left(\frac{460}{3^2}+\frac{3435}{3^3}
++\frac{3585}{3^5}+\frac{215}{3^8}+\frac{30}{3^9}+\frac6{3^{10}}\right)\\
+&=L_n\frac{3801197}{19683}<231L_n,
+\end{split}
+\]
+where $3801197<231\cdot19683=4546773$.  Strong induction gives
+$1\le e_n\le L_n$ for all $n$, because each $e_n$ is a positive integer.
+Lemma \ref{lem:rounding} identifies $a=L$, and \eqref{eq:Lrec} proves the
+claim.  Positivity follows from Lemma \ref{lem:growth}.
+\end{proof}
+
+\begin{remark}
+The endpoint $e_n=L_n$ is harmless: it corresponds to an integral quotient
+one unit beyond $L_{n+2}$, and the strict ceiling/floor convention still
+selects $L_{n+2}$.  Equality occurs at $n=0$ among the base cases; the
+induction above is strict for $n\ge10$.
+\end{remark}
+
+\section*{Reproducibility and computational disclosure}
+The proof is exact and does not depend on finite sampling.  One accompanying
+script uses symbolic polynomial expansion to check the universal defect
+identity and the displayed generating-function identities.  A separate
+standard-library Python program generates the linear and nonlinear sequences
+by integer arithmetic, checks the first 2000 terms, and verifies the
+certificate recurrence and coefficient comparison.  These computations audit
+the algebra and base data; the infinite conclusion is the induction above.
+Automated language tools assisted with source discovery, verification-script
+drafting, and prose revision.  The author independently checked the cited
+sources and all decisive exact identities and is responsible for the
+mathematical claims.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

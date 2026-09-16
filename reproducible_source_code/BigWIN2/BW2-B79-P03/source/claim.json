@@ -1,0 +1,14 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every sufficiently large integer n, with epsilon=2^(-n), L=Z^n, A=I_n, r=k=n^2, alpha=1/2, m=3n^5, every integer M>m*2^(n log(log n)/log n), c=2M*1_n, delta=e_1/4, and y=c+delta, the displayed data satisfy the smoothing, constellation/parameter, effective-noise, BDD-distance, and uniqueness promises used by the Dean--Goldsmith Lemma 7 sample construction. For N=n^8 independent resulting samples, the test that declares constructed exactly when D=sum_i(sum_j a_ij)^2 is positive and (sum_i (sum_j a_ij)b_i)/D>3/2 distinguishes the constructed law from every fixed legal D_(M,beta,k) law, uniformly over s in [0,M)^n intersect Z^n and 0<beta<=1/2. Under either hypothesis its error is at most 2n^9 exp(-pi n^2)+2n^2 exp(-exp(-2pi)n^2/1280000)+2 exp(-49 pi exp(-pi)n^13/1600), hence negligible; D=0 is classified as legal.",
+  "contribution": "A complete positive resolution of the frozen explicit-family assertion. The new finite-sample step gives a uniform empirical-covariance event for iid D_(Z^n,n^2) public vectors, controls the random and zero denominator, bounds legal noiseless slopes by 51/49 and the constructed noiseless slope below by 7/4, and finishes with conditional Gaussian tails. This advances the cited nearest result from exact distributional mismatch to an explicit uniform polynomial-sample overwhelming-probability separator for this family; it makes no claim about general MIMO decoding or the full lattice reduction.",
+  "proposer_job_id": "win-00079-p03-research-b3550b99116e",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/finite_sample_separator.md",
+    "evidence/external/1310.1861.pdf",
+    "evidence/external/2609.05013.pdf"
+  ]
+}

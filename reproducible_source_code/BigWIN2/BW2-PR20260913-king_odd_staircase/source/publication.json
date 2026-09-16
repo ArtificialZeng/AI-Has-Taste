@@ -1,0 +1,22 @@
+{
+  "source_files": [
+    "manuscript/REPRODUCE.md",
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/reproduce.py"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "writer_job_id": "primary-20260913-king-odd-staircase-write-8cfe9b4ce46c",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex"
+  },
+  "supplementary_evidence": [
+    "evidence/research/proof.md",
+    "evidence/research/verify.py",
+    "evidence/research/verify.json",
+    "audit/referee-verify.py",
+    "audit/referee-verify.json"
+  ],
+  "scope": "Exact mathematically accepted resolution of the arXiv v1 Conjecture 5.1; current priority remains unverified because the later SSRN full text is uncompared."
+}

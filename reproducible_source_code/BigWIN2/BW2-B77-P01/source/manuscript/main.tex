@@ -1,0 +1,137 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+
+\title{An Every-Order Bipyramid Disproof for\\
+$S_{2,1,1}\sqcup K_2$ in Maximal Planar Graphs}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Baldacchino, Caro, and Mifsud ask which disconnected planar graphs are
+eventually unavoidable under red--blue edge-colourings of maximal planar
+graphs.  We settle one specialization negatively.  Let $S_{2,1,1}$ be the
+five-vertex fork, and put $H=S_{2,1,1}\sqcup K_2$.  For every $m\geq 3$, the
+bipyramid $\overline{K_2}+C_m$ has a colouring in which all apex--rim edges
+are red and all rim edges are blue.  We prove that this is a maximal planar
+graph and that it has no monochromatic, not necessarily induced, copy of
+$H$.  Since these bipyramids realize every order at least five, no eventual
+unavoidability threshold exists.  The broader classification of disconnected
+graphs remains unresolved.
+\end{abstract}
+
+\section{Context and statement}
+
+Axenovich, Schade, Thomassen, and Ueckerdt call a graph planar unavoidable
+when it has some planar Ramsey host~\cite{AxenovichEtAl2019}.  Baldacchino,
+Caro, and Mifsud study a stronger eventual notion relative to a class
+$\mathcal K$: every sufficiently large member of $\mathcal K$ must be a
+Ramsey host~\cite{BaldacchinoCaroMifsud2026}.  We use precisely their latter
+notion with $\mathcal K=\mathcal K_{\mathrm{MP}}$, the class of finite simple
+maximal planar graphs (that is, edge-maximal planar graphs).
+
+This edge-colouring notion should also be distinguished from small Ramsey
+degrees for embeddings of ordered structures.  For example, the ordered edge
+has small Ramsey degree three in the class of linearly ordered split graphs
+with induced order-preserving embeddings~\cite{Zeng2026SmallRamsey}.  No such
+ordered or induced-embedding parameter is used here: all target copies below
+are ordinary, injective subgraph copies.
+
+Let $F=S_{2,1,1}$ have distinct vertices $s,x,y,z,w$ and edge set
+\[
+ E(F)=\{sx,sy,sz,zw\}.
+\]
+Thus $s$ is the degree-three centre and $s$--$z$--$w$ is the arm of length
+two.  Let $H=F\sqcup K_2$.  A monochromatic copy of $H$ therefore consists of
+a monochromatic copy of $F$ and a same-colour edge whose two endpoints are
+outside the five fork vertices; extra host edges are irrelevant.
+
+The connected graph $F$ is eventually unavoidable in
+$\mathcal K_{\mathrm{MP}}$: in fact,
+$r_{\mathrm{MP}}(F,F)=9$~\cite[Theorem~12]{BaldacchinoCaroMifsud2026}.
+The same paper asks for the disconnected diagonal classification
+\cite[Problem~2]{BaldacchinoCaroMifsud2026}.  The following theorem shows that
+adjoining just one disjoint edge reverses the conclusion for this fork.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\geq 3$, let
+\[
+ B_m=\overline{K_2}+C_m,
+\]
+where the two vertices $a,b$ of $\overline{K_2}$ are called the apices.
+Colour every apex--cycle edge red and every cycle edge blue.  Then $B_m$ is
+maximal planar and contains neither a red nor a blue copy of
+$S_{2,1,1}\sqcup K_2$.  Consequently, an avoiding maximal planar graph exists
+at every order $n\geq 5$, and $H$ is not eventually unavoidable in
+$\mathcal K_{\mathrm{MP}}$.
+\end{theorem}
+
+\section{Proof}
+
+Write the rim cycle as $v_0v_1\dots v_{m-1}v_0$, with subscripts modulo $m$.
+Embed this cycle as a Jordan curve on the sphere, put $a$ and $b$ in its two
+complementary discs, and join each apex to every rim vertex within its own
+disc.  The resulting embedding has the $2m$ triangular faces
+\[
+ av_iv_{i+1}\quad\text{and}\quad bv_iv_{i+1}
+ \qquad (0\leq i<m).
+\]
+In particular, $B_m$ is planar and simple.  It has $m+2$ vertices and
+$2m+m=3m=3(m+2)-6$ edges.  The planar edge bound shows that adding any missing
+edge would destroy planarity, so $B_m$ is maximal planar.  This argument also
+covers $m=3$, when $B_3$ is the triangular bipyramid $K_5-ab$.
+
+The red spanning subgraph is exactly $K_{2,m}$, with parts
+$\{a,b\}$ and $\{v_0,\ldots,v_{m-1}\}$.  Consider any injective red copy of
+the fork $F$.  The image of its centre $s$ has at least three distinct red
+neighbours.  Every rim vertex has red degree two, so $s$ must map to an apex.
+Its three fork neighbours $x,y,z$ consequently map to distinct rim vertices.
+The rim vertex receiving $z$ has only the two apices as red neighbours.  One
+is already the image of $s$; injectivity therefore forces the distal vertex
+$w$ to map to the other apex.  Hence every red fork uses both apices.  Every
+red edge is incident with an apex, so no red edge has both endpoints outside
+the vertices of a red fork.  Thus there is no red copy of $H$.
+
+The blue spanning subgraph is exactly $C_m$ and has maximum degree two.  It
+contains no copy of the fork, whose centre has three distinct neighbours, and
+therefore contains no blue copy of $H$ either.  This proves the asserted
+avoidance.
+
+Finally, $|V(B_m)|=m+2$.  Given any proposed threshold $N$, take
+$n=\max\{N,5\}$ and $m=n-2$.  The preceding construction gives an
+$n$-vertex maximal planar graph with an avoiding colouring, which is exactly
+the negation of eventual unavoidability.  This completes the proof of
+Theorem~\ref{thm:main}. \qed
+
+\section{Scope and assistance}
+
+The theorem resolves only the graph $S_{2,1,1}\sqcup K_2$; it does not
+classify disconnected planar targets.  The exact augmentation is not stated
+separately in the inspected first version of
+\cite{BaldacchinoCaroMifsud2026}.  Our comparison is limited to the cited
+primary literature and bounded exact-case searches, and no exhaustive
+priority claim is made.
+
+A dependency-free program exhaustively checked labelled fork embeddings for
+$3\leq m\leq18$, and a separate audit checked the construction through
+$m=40$.  These computations were sanity checks for the encoding and the
+boundary case; the universal conclusion rests only on the proof above.  An
+AI system assisted with literature discovery, organization of proof audits,
+and editorial work.  The mathematical argument was rederived from the stated
+definitions and separately audited at the definition and quantifier level.
+No proof assistant was used.
+
+\bibliographystyle{abbrvurl}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,23 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let b=(b0,b1,b2,b3) and a=(a0,a1,a2,a3) be ordered elements of Z_{>0}^4 satisfying the four-equation P4/Paw coefficient system (3.3) reproduced verbatim in source.md, and let s=sum_i b_i=sum_i a_i. Then the least possible s is 61. At s=61 the complete ordered solution set is the four Cartesian combinations b in {(1,16,8,36),(36,8,16,1)} and a in {(4,9,16,32),(4,16,9,32)}. All four have signature (61,1116,6912,18432), and they constitute one orbit under exactly the two allowed involutions b -> (b3,b2,b1,b0) and a -> (a0,a2,a1,a3). The scope is only the least positive layer of this fixed coefficient system; it does not determine the minimum order among all connected distance-cospectral graph pairs or classify solutions above sum 61.",
+  "contribution": "This completely resolves the frozen least-layer problem that the cited source's order-61 witness leaves open: two exact, structurally different finite verifiers establish absence through sum 60 and completeness of the four ordered solutions at 61. One verifier exhaustively joins arbitrary-precision integer signatures over all 521855 positive ordered quadruples per side; the other directly exhausts a sound bounded QF_BV encoding and terminates UNSAT after blocking its four models. A dated targeted primary-literature search found no equivalent result, but no claim of priority is made beyond that limited search.",
+  "proposer_job_id": "win-00072-p01-research-05bf82e55ace",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/proof_of_least_layer.md",
+    "evidence/enumerate_signatures.py",
+    "evidence/signature_join_61.json",
+    "evidence/verify_z3_bv.py",
+    "evidence/z3_bv_verification_61.json",
+    "evidence/z3_bv_below_61.smt2",
+    "evidence/z3_bv_at_most_61.smt2",
+    "evidence/z3_bv_at_most_61_blocked.smt2",
+    "evidence/compare_verifiers.py",
+    "evidence/independent_verifier_comparison.json",
+    "literature/literature_search_2026-09-08.md",
+    "evidence/external/2608.17311v1.pdf"
+  ]
+}

@@ -1,0 +1,473 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\DeclareMathOperator{\dist}{dist}
+
+\title{A Covariance Separator for an Explicit\\
+Dean--Goldsmith Lemma~7 Sample Family}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We analyze one explicit family of samples produced by the
+bounded-distance-decoding construction in Lemma~7 of Dean and Goldsmith.
+For every sufficiently large dimension \(n\), take
+\(L=\Z^n\), \(A=I_n\), \(r=k=n^2\), \(\alpha=1/2\),
+\(m=3n^5\), any admissible constellation size \(M\), and the target
+\(y=2M\one+e_1/4\).  We verify all relevant parameter and
+bounded-distance promises.  We then prove that \(N=n^8\) independent
+constructed samples are separated from every fixed legal discrete-MIMO
+law, uniformly over its secret and every noise scale at most \(1/2\), by
+thresholding one empirical covariance ratio.  An explicit negligible
+upper bound is given for both classification errors.  The proof controls
+the unbounded discrete-Gaussian public vectors, the empirical denominator,
+and response noise on the same finite-sample event.  This resolves the
+stated explicit family; it is neither an attack on general MIMO decoding
+nor a hardness result.
+\end{abstract}
+
+\section{Context and statement}
+
+Dean and Goldsmith proposed a reduction from lattice problems to decoding
+in a massive-MIMO model \cite{DeanGoldsmith2017}.  Their construction
+adapts the lattice and learning-with-errors framework of Regev
+\cite{Regev2009}; discrete Gaussian measures and their smoothing
+parameter are central to the worst-case/average-case theory of
+Micciancio and Regev \cite{MicciancioRegev2007}.  Attacks on related
+parameter choices and constructions were subsequently given by Steinfeld
+and Sakzad \cite{SteinfeldSakzad2015,SakzadSteinfeld2020}.
+
+Li's proof-level analysis \cite{Li2026} identifies a separate issue in the
+Lemma~7 sample constructor.  Proposition~5.1 there proves exact
+non-membership in the legal discrete-MIMO family when the BDD coefficient
+is outside the constellation or the BDD offset is nonzero.  Exact
+non-membership alone does not imply efficient statistical
+distinguishability; Remark~5.3 of \cite{Li2026} explicitly leaves this
+question dependent on the instance.  The result below closes that
+finite-sample gap for one completely specified family.  We make no
+priority claim beyond this bounded comparison with the cited sources.
+
+The scope of an explicit certificate matters: resolving one quantified
+family need not resolve its ambient problem.  The same discipline appears,
+in a different setting, when an exact matrix counterexample is presented
+together with the parameter regimes that survive it
+\cite{ZengLiuRatnavelu2026}.  Here the certificate is probabilistic rather
+than algebraic, and its scope remains the family defined next.
+
+For \(s>0\) and \(z\in\Z^n\), write
+\[
+ D_{\Z^n,s}(z)=
+ \frac{\exp(-\pi\lVert z\rVert_2^2/s^2)}{\rho_s(\Z^n)},
+ \qquad
+ \rho_s(\Z^n)=\sum_{w\in\Z^n}
+ \exp(-\pi\lVert w\rVert_2^2/s^2).
+\]
+Let \(\nu_\gamma\) denote the centered real Gaussian distribution with
+variance \(\gamma^2/(2\pi)\).  A function is \emph{negligible} if, for
+every constant \(C>0\), it is eventually smaller than \(n^{-C}\).
+
+Throughout, \(\log\) is the natural logarithm.  Set
+\[
+ \epsilon=2^{-n},\quad L=\Z^n,\quad A=I_n,\quad
+ r=k=n^2,\quad \alpha=\frac12,\quad m=3n^5,
+ \tag{1}
+\]
+and let \(M\) be an arbitrary integer satisfying
+\[
+ M>mF(n),
+ \qquad
+ F(n)=2^{\,n\log\log n/\log n}.
+ \tag{2}
+\]
+Put \(c=2M\one\), \(\delta=e_1/4\), and \(y=c+\delta\).
+Substitution in the sample formula of Dean--Goldsmith Lemma~7 gives the
+constructed law \(P_{n,M}\):
+\[
+ a\sim D_{\Z^n,n^2},\qquad
+ b=2\sum_{j=1}^n a_j+\frac{a_1}{4M}+e,
+ \qquad e\sim\nu_{1/2},
+ \tag{3}
+\]
+with \(a\) and \(e\) independent.
+
+A legal comparison law \(Q_{n,M,s,\beta}\) has a fixed secret
+\[
+ s\in{[0,M)}^n\cap\Z^n,
+ \qquad 0<\beta\le\frac12,
+ \tag{4}
+\]
+and samples
+\[
+ a\sim D_{\Z^n,n^2},\qquad
+ b=\frac{\langle a,s\rangle}{M}+e_\beta,
+ \qquad e_\beta\sim\nu_\beta,
+ \tag{5}
+\]
+again independently.  Both laws below are product laws across samples.
+
+For \(N=n^8\), define
+\[
+ X_i=\langle a_i,\one\rangle,\qquad
+ D=\sum_{i=1}^N X_i^2,\qquad
+ \widehat\theta=\frac{\sum_{i=1}^N X_i b_i}{D}
+ \quad(D>0).
+ \tag{6}
+\]
+The test declares \emph{constructed} precisely when
+\(D>0\) and \(\widehat\theta>3/2\); it declares \emph{legal}
+otherwise.
+
+\begin{theorem}[Explicit-family separator]\label{thm:main}
+For every sufficiently large integer \(n\), every integer \(M\)
+satisfying \emph{(2)}, and the data in \emph{(1)}, the target
+\(y=2M\one+e_1/4\) satisfies the smoothing, parameter, constellation,
+effective-noise, BDD-distance, and uniqueness promises used by the
+Dean--Goldsmith Lemma~7 sample construction.
+
+Moreover, the test in \emph{(6)} uses \(O(Nn)\) arithmetic operations
+and, for every such \(M\), obeys
+\begin{align*}
+ \Prob_{P_{n,M}^{\otimes N}}(\text{test declares legal})
+   &\le \mu(n),\\
+ \sup_{\substack{s\in{[0,M)}^n\cap\Z^n\\0<\beta\le1/2}}
+ \Prob_{Q_{n,M,s,\beta}^{\otimes N}}
+   (\text{test declares constructed})
+   &\le \mu(n),
+\end{align*}
+where
+\begin{align}
+ \mu(n)={}&2n^9\exp(-\pi n^2)
+ +2n^2\exp\!\left(
+ -\frac{\exp(-2\pi)}{1{,}280{,}000}n^2\right)
+ \notag\\
+ &\quad+2\exp\!\left(
+ -\frac{49\pi\exp(-\pi)}{1600}n^{13}\right).
+ \tag{7}
+\end{align}
+In particular, \(\mu\) is negligible, so the separation holds with
+overwhelming probability uniformly over all legal laws in \emph{(4)}.
+\end{theorem}
+
+\section{Audit of the construction promises}
+
+\begin{proposition}\label{prop:promises}
+The deterministic assertion in the first paragraph of
+Theorem~\ref{thm:main} holds.
+\end{proposition}
+
+\begin{proof}
+For \(L=\Z^n\), the dual lattice is \(\Z^n\) and
+\(\lambda_1(L)=1\).  The least eigenvalue parameter of \(A^TA\) is
+\(\sigma=1\).  Claim~2 of \cite{DeanGoldsmith2017} gives
+\[
+ \eta_{2^{-n}}(\Z^n)\le\sqrt n.
+\]
+Consequently \(r=n^2>\sqrt2\,\eta_{2^{-n}}(L)\) for \(n\ge2\).
+The other displayed parameter inequality used by the construction is
+\[
+ \frac{m\alpha}{k^2}
+ =\frac{3n^5/2}{n^4}
+ =\frac32n>\sqrt n.
+ \tag{8}
+\]
+All of \(r,k,m\) are positive, \(0<\alpha<1\), and (2) is exactly
+the required constellation lower bound; it also implies \(M\ge2\)
+eventually.  The scaled independent response noise has parameter
+\(k\alpha/r=1/2\le\alpha\).  On the orthogonal lattice used here,
+the discrete Gaussian is a product of one-dimensional discrete
+Gaussians, so the sample required by the constructor is available in
+its standard large-width regime.
+
+The BDD offset has norm \(\lVert\delta\rVert_2=1/4<r\).  Choose the
+fixed decoding radius \(d_0=3/8\).  The distance ceiling in Lemma~7 is
+\[
+ \frac{M\sigma\alpha}{k^2r\sqrt2}
+ =\frac{M}{2\sqrt2\,n^6}
+ >\frac{3}{2\sqrt2}\frac{F(n)}{n}.
+ \tag{9}
+\]
+Now
+\[
+ \log F(n)=(\log2)\frac{n\log\log n}{\log n},
+\]
+which dominates \(C\log n\) for every fixed \(C\).  Hence
+\(F(n)/n\to\infty\), and the right side of (9) eventually exceeds
+\(d_0\).
+
+Finally, \(c=2M\one\in\Z^n\) and
+\[
+ \dist(y,\Z^n)=\lVert y-c\rVert_2=\frac14<d_0<\frac12
+ =\frac{\lambda_1(L)}2.
+\]
+Coordinatewise nearest-integer inspection shows that \(c\) is the unique
+closest lattice vector.  Thus the target meets the distance and
+uniqueness promises.  Substituting \(A=I_n\) and \(k=r=n^2\) into
+the constructor gives (3), so the audit concerns the stated law rather
+than a modified one.
+\end{proof}
+
+\section{Discrete-Gaussian estimates}
+
+Let \(r=n^2\) and let \(Z\sim D_{\Z,r}\).  Its coordinates are
+centered, symmetric, and independent in \(D_{\Z^n,r}\).  Write
+\[
+ V=\E Z^2,\qquad v_0=\frac{\exp(-\pi)}8.
+\]
+
+\begin{lemma}[Moment and tail bounds]\label{lem:dg}
+For every real \(t\) and every \(u\ge0\),
+\begin{align}
+ \E\exp(tZ)&\le
+   \exp\!\left(\frac{r^2t^2}{4\pi}\right),
+ \tag{10}\\
+ \Prob(|Z|>u)&\le
+   2\exp\!\left(-\frac{\pi u^2}{r^2}\right).
+ \tag{11}
+\end{align}
+For integer \(r\ge1\),
+\[
+ V\ge v_0r^2.
+ \tag{12}
+\]
+\end{lemma}
+
+\begin{proof}
+Completing the square gives
+\[
+ \E\exp(tZ)
+ =\exp\!\left(\frac{r^2t^2}{4\pi}\right)
+ \frac{\rho_r(\Z-r^2t/(2\pi))}{\rho_r(\Z)}.
+\]
+Poisson summation writes a shifted Gaussian mass as
+\[
+ \rho_r(\Z-x)
+ =r\sum_{k\in\Z}\exp(-\pi r^2k^2)\exp(2\pi i kx).
+\]
+The triangle inequality bounds this nonnegative real quantity by its
+value at \(x=0\).  This proves (10).  Chernoff's bound on each tail,
+optimized at \(t=2\pi u/r^2\), proves (11).
+
+For (12), monotonicity and integration yield
+\[
+ \rho_r(\Z)=1+2\sum_{k\ge1}\exp(-\pi k^2/r^2)
+ \le1+r\le2r.
+\]
+There are at least \(r/2\) positive integers in \([r/2,r]\).
+Counting these integers and their negatives shows that the unnormalized
+second moment is at least
+\[
+ 2\left(\frac r2\right)\left(\frac{r^2}{4}\right)\exp(-\pi)
+ =\frac{\exp(-\pi)}4r^3.
+\]
+Division by \(\rho_r(\Z)\le2r\) gives (12).
+\end{proof}
+
+For independent public vectors \(a_1,\ldots,a_N\), define their
+empirical second-moment matrix
+\[
+ C=\frac1N\sum_{i=1}^N a_i a_i^T.
+ \tag{13}
+\]
+Thus \(\E C=VI_n\) and \(D=N\one^TC\one\).
+
+\begin{lemma}[A common covariance event]\label{lem:cov}
+For \(N=n^8\) and \(n\ge3\),
+\[
+ \lVert C-VI_n\rVert_{\mathrm{op}}\le\frac V{50}
+ \tag{14}
+\]
+except on an event of probability at most
+\[
+ \mu_C(n)=2n^9\exp(-\pi n^2)
+ +2n^2\exp\!\left(
+ -\frac{\exp(-2\pi)}{1{,}280{,}000}n^2\right).
+ \tag{15}
+\]
+\end{lemma}
+
+\begin{proof}
+Set \(T=rn\).  For \(1\le p,q\le n\), truncate the product in
+entry \((p,q)\) by
+\[
+ W_i^{pq}=a_{ip}a_{iq}
+ \mathbf1_{\{|a_{ip}|\le T,\ |a_{iq}|\le T\}}.
+\]
+Its range has length at most \(2T^2\).  Tail integration applied to
+(11) gives
+\begin{align*}
+ \E[Z^2;|Z|>T]
+ &\le 2T^2\exp(-\pi n^2)
+   +4\int_T^\infty x\exp(-\pi x^2/r^2)\,dx\\
+ &\le3r^2n^2\exp(-\pi n^2),\\
+ \E[|Z|;|Z|>T]
+ &\le r\left(2n+\frac1{\pi n}\right)\exp(-\pi n^2),
+ \qquad \E|Z|\le r.
+\end{align*}
+Independence and symmetry therefore imply, for every \(p,q\),
+\[
+ \left|\E W_i^{pq}-V\mathbf1_{p=q}\right|
+ \le6r^2n^2\exp(-\pi n^2).
+ \tag{16}
+\]
+For \(n\ge3\), (12) makes the right side at most \(V/(100n)\).
+Indeed, it is enough that
+\(4800n^3\exp[-\pi(n^2-1)]\le1\), which holds at \(n=3\) and
+decreases thereafter.
+
+Put \(u=V/(100n)\).  Hoeffding's inequality
+\cite{Hoeffding1963} and the range bound give
+\begin{align}
+ \Prob\left(\left|\frac1N\sum_iW_i^{pq}
+ -\E W_i^{pq}\right|>u\right)
+ &\le2\exp\!\left(-\frac{Nu^2}{2T^4}\right)\notag\\
+ &\le2\exp\!\left(
+ -\frac{N\exp(-2\pi)}{1{,}280{,}000n^6}\right).
+ \tag{17}
+\end{align}
+By (11), the probability that any of the \(Nn\) sampled coordinates
+has absolute value greater than \(T\) is at most
+\(2Nn\exp(-\pi n^2)\).  Outside that event, truncated and original
+empirical products agree.  Union-bound (17) over the \(n^2\) pairs
+and use (16).  With \(N=n^8\), every entry of \(C-VI_n\) then has
+absolute value at most \(V/(50n)\), with failure probability (15).
+The matrix is symmetric, so its operator norm is at most its maximum
+absolute row sum, which is \(V/50\).
+\end{proof}
+
+\section{Uniform separation}
+
+We now prove the probabilistic part of Theorem~\ref{thm:main}.  Work
+first on the event (14), and write \(C=VI_n+E\).  The denominator in
+(6) satisfies
+\[
+ D=N\one^TC\one\ge\frac{49}{50}NVn>0.
+ \tag{18}
+\]
+Thus every division below occurs only after a deterministic lower bound
+on the empirical denominator.
+
+For a legal secret, put \(t=s/M\in{[0,1)}^n\).  Its noiseless
+empirical slope is
+\[
+ R_Q=\frac{\one^TCt}{\one^TC\one}.
+\]
+Since \(\one^Tt\le n\), \(\lVert t\rVert_2\le\sqrt n\), and
+\(\lVert E\rVert_{\mathrm{op}}\le V/50\),
+\[
+ R_Q\le
+ \frac{Vn+(V/50)\sqrt n\sqrt n}{Vn-(V/50)n}
+ =\frac{51}{49},
+ \qquad
+ \frac32-R_Q\ge\frac{45}{98}>\frac14.
+ \tag{19}
+\]
+This is simultaneous for every \(t\) in the full legal cube.
+
+Under the constructed law, the noiseless empirical slope is
+\[
+ R_P=2+\frac1{4M}
+ \frac{\one^TCe_1}{\one^TC\one}.
+\]
+The same operator-norm event gives
+\[
+ \left|\frac{\one^TCe_1}{\one^TC\one}\right|
+ \le\frac{V+(V/50)\sqrt n}{(49/50)Vn}
+ =\frac{50+\sqrt n}{49n}\le1
+ \tag{20}
+\]
+for \(n\ge2\).  Since \(M\ge1\),
+\[
+ R_P\ge\frac74,
+ \qquad R_P-\frac32\ge\frac14.
+ \tag{21}
+\]
+
+It remains to control the response noise.  Conditional on the public
+vectors, if the independent errors have law \(\nu_\gamma\), then for
+\(D>0\)
+\[
+ \frac{\sum_iX_ie_i}{D}
+ \sim N\!\left(0,\frac{\gamma^2}{2\pi D}\right).
+ \tag{22}
+\]
+Here \(\gamma=1/2\) for \(P_{n,M}\) and
+\(0<\gamma=\beta\le1/2\) for every legal law.  A two-sided Gaussian
+tail bound, (19), and (21) show that either classification error,
+conditional on (14), is at most
+\[
+ 2\exp(-\pi D/4)
+ \le2\exp\!\left(
+ -\frac{49\pi\exp(-\pi)}{1600}n^{13}\right),
+ \tag{23}
+\]
+where (12), (18), \(r=n^2\), and \(N=n^8\) were used.  Adding
+(15) proves (7).  The constants do not depend on \(M\), \(s\), or
+\(\beta\).  Every term in (7) is a polynomial factor times
+\(\exp(-cn^2)\), or \(\exp(-cn^{13})\), for a fixed \(c>0\);
+hence their sum is negligible.
+
+If \(D=0\), the prescribed convention declares the sample legal.  Under
+the constructed law, (18) shows that this event is contained in the
+covariance failure event.  Under a legal law it cannot cause a false
+declaration of constructed.  This covers the zero denominator and
+completes the proof of Theorem~\ref{thm:main}.
+
+\section{What the result does and does not show}
+
+The population version of the covariance ratio already exposes the
+mechanism.  With \(X=\sum_j a_j\) and \(V=\E a_1^2\),
+\[
+ \frac{\E_{P}[Xb]}{\E[X^2]}
+ =2+\frac1{4Mn}>2,
+ \qquad
+ \frac{\E_{Q}[Xb]}{\E[X^2]}
+ =\frac1{Mn}\sum_js_j<1.
+\]
+The proof above is needed because a ratio of expectations does not
+control the random empirical ratio.  Lemma~\ref{lem:cov} supplies one
+event that uniformly controls every legal secret, keeps the denominator
+positive, and retains a constant margin under both hypotheses;
+conditioning then handles the Gaussian response noise.
+
+This advances Li's exact distributional mismatch for the single family
+(1)--(3) to an explicit polynomial-sample, overwhelming-probability
+separator.  It does not show that every invalid oracle call in the
+Dean--Goldsmith reduction is efficiently detectable, does not give a
+decoder for arbitrary MIMO instances, and does not establish or refute
+the security of physical-layer cryptography in general.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex assisted with literature navigation, adversarial checking of
+the argument, algebraic organization, and manuscript preparation.  A
+separate model context reconstructed and audited the stated mathematical
+claim before manuscript preparation; that audit is not formal
+verification or peer review.  No numerical experiment, computer-algebra
+output, or floating-point calculation is used as proof: the complete
+certificate is the analytic argument and explicit inequalities above.
+The author is responsible for every claim and for compliance with any
+venue's disclosure and authorship policies.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,473 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\NN}{\mathbb Z_{\ge0}}
+\newcommand{\RR}{\mathbb R_{\ge0}}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cI}{\mathcal I}
+\DeclareMathOperator{\cone}{cone}
+\title{Conditional Schur positivity for binary-word events\\with at most four free positions}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For binary words ending in $1$, mark the ending positions of the consecutive
+factors $10$ and $011$. We prove that fixing every event indicator except at
+most four positions gives a Schur-positive two-variable antipodal polynomial,
+uniformly in word length, the number of fixed events, and the distances between
+free positions. Consequently the conditioned counting polynomial is
+coefficientwise log-concave in arbitrary weights on the free positions.
+The two-position inequality has sharp factor $2$. The antipodal conclusion
+also holds for arbitrarily many free positions separated into blocks of size
+at most four by adjacent fixed events. The proof reduces arbitrary transfer
+matrix words to five separate families and a complete exact certificate of
+$695\,500$ parameter coefficients. This is a restricted result for the
+binary-word model associated with big descents in three pattern-avoidance
+classes; the original log-concavity conjecture remains unresolved by this work.
+\end{abstract}
+
+\section{The event model and the conditional theorem}
+
+For $n\ge1$, let $\mathcal W_n$ be the binary words of length $n$ ending in $1$.
+For $w=w_1\cdots w_n\in\mathcal W_n$, define
+\[
+ E(w)=\{i\in\{2,\ldots,n\}:w_{i-1}w_i=10
+       \text{ or }(i\ge3\text{ and }w_{i-2}w_{i-1}w_i=011)\}.
+\]
+The two alternatives cannot occur at the same position. Write
+\[
+ a_n(A)=\#\{w\in\mathcal W_n:E(w)=A\}
+ \qquad(A\subseteq\{2,\ldots,n\}).
+\]
+Thus $a_n(A)$ specifies the \emph{entire} event set; unattainable sets have
+count zero.
+
+This model comes from Elizalde, Rivera, and Zhuang
+\cite[Theorems~3.5 and~3.8; Lemmas~3.6 and~3.9]{ERZ}.
+A big descent of a permutation $\pi$ is a position $i$ with
+$\pi_i>\pi_{i+1}+1$. Their bijections identify the number of big descents in
+the avoidance classes
+\[
+ \{123,132\},\qquad \{123,213\},\qquad \{132,213\}
+\]
+with $|E(w)|$, and give the corresponding univariate generating function.
+Our coordinates are event-ending positions in $w$; we do not identify them
+with big-descent positions in $\pi$.
+The source conjectures log-concavity of $b_{n,k}(\Pi)$, the number of
+$\Pi$-avoiding permutations with $k$ big descents, for all $n\ge0$ and
+all $21$ singleton or doubleton subsets $\Pi\subseteq\mathfrak S_3$
+\cite[Conjecture~4.6]{ERZ}. The results here do not resolve that assertion,
+or even its unrestricted specialization to the three classes above.
+
+For integers $a\ge b\ge0$, the two-variable Schur polynomial is
+\begin{equation}\label{eq:schur}
+ s_{(a,b)}(x,y)=(xy)^b\sum_{q=0}^{a-b}x^q y^{a-b-q}.
+\end{equation}
+A symmetric homogeneous polynomial is \emph{Schur-positive} if its expansion
+in this basis has nonnegative coefficients; the zero polynomial is included.
+For disjoint $S,J\subseteq\{2,\ldots,n\}$, with $m=|J|$, set
+\begin{align}
+ H_{S,J}(x,y)&=\sum_{T\subseteq J}a_n(S\cup T)
+        a_n(S\cup(J\setminus T))x^{|T|}y^{m-|T|},\label{eq:H}\\
+ h_j(S,J)&=\sum_{\substack{T\subseteq J\\|T|=j}}
+       a_n(S\cup T)a_n(S\cup(J\setminus T)).\label{eq:h}
+\end{align}
+All event indicators outside $J$ are fixed: positions in $S$ are present
+and positions outside $S\cup J$ are absent. Complementation gives
+$h_j=h_{m-j}$. With $h_{-1}=0$, equation~\eqref{eq:schur} gives
+\begin{equation}\label{eq:delta}
+ H_{S,J}=\sum_{j=0}^{\lfloor m/2\rfloor}
+       (h_j-h_{j-1})s_{(m-j,j)}.
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For every $n\ge1$ and disjoint $S,J\subseteq\{2,\ldots,n\}$ with
+$|J|\le4$, the polynomial $H_{S,J}$ is Schur-positive. There is no bound
+on $n$, on $|S|$, or on the spacing of $J$.
+
+The same conclusion holds for arbitrary $|J|$ if, in its natural order,
+$J$ is partitioned into nonempty blocks of at most four positions and,
+between every two successive blocks, there are two adjacent positions
+belonging to $S$.
+\end{theorem}
+
+\begin{corollary}\label{cor:lc}
+Under the first part of Theorem~\ref{thm:main}, define
+\begin{equation}\label{eq:G}
+ G(t;\boldsymbol z)=\sum_{T\subseteq J}a_n(S\cup T)t^{|T|}
+              \prod_{i\in T}z_i=\sum_{k=0}^m g_k(\boldsymbol z)t^k.
+\end{equation}
+With $g_k=0$ outside $0\le k\le m$, every
+$g_k^2-g_{k-1}g_{k+1}$ has nonnegative monomial coefficients.
+In particular, the coefficient sequence of $G$ is log-concave for every
+nonnegative real assignment to the $z_i$.
+\end{corollary}
+
+\begin{corollary}\label{cor:sharp}
+For distinct $i,j\notin S$ in $\{2,\ldots,n\}$,
+\begin{equation}\label{eq:sharp}
+ a_n(S)a_n(S\cup\{i,j\})
+ \le2a_n(S\cup\{i\})a_n(S\cup\{j\}).
+\end{equation}
+The constant $2$ cannot be decreased uniformly.
+\end{corollary}
+
+The conditional refinement is the contribution beyond the source's
+univariate enumeration. It is related to, but weaker in normalization than,
+the antipodal-pairs property of Kahn and Neiman
+\cite[equation~(1) and Theorem~1]{KN}. They divide the degree-$j$
+antipodal sum by $\binom mj$ and show that their conditional property,
+together with absence of internal zeros, implies ultra-log-concavity.
+For two free coordinates, writing the four weights as $A,B,C,D$ in
+subset order, their hypothesis requires $AD\le BC$.
+The actual-word example proving sharpness below has $(A,B,C,D)=(2,1,1,1)$,
+so that criterion does not apply. Our result fixes indicators and uses
+unnormalized sums; it does not assert conditional negative correlation.
+
+\section{Transfer matrices and arbitrary gaps}
+
+We use the transfer-matrix interpretation of weighted walks
+\cite[Section~4.7, Theorem~4.7.1]{StanleyEC1}, with suffix states
+$A=$ ending in $0$, $B=$ ending in $01$, and
+$C=$ ending in $1$ but not in $01$.
+Appending a letter without an event acts on column vectors by $P$;
+appending a letter creating an event acts by $Q$, where
+\begin{equation}\label{eq:PQ}
+ P=\begin{pmatrix}1&0&0\\1&0&0\\0&0&1\end{pmatrix},\qquad
+ Q=\begin{pmatrix}0&1&1\\0&0&0\\0&1&0\end{pmatrix}.
+\end{equation}
+For example, both continuations of state $B$ create an event, whereas
+neither continuation of state $A$ does. In state $C$, appending $0$
+creates $10$ and appending $1$ is event-free. Thus, with
+$v=(1,0,1)^{\mathsf T}$ and $u=(0,1,1)$,
+\begin{equation}\label{eq:count}
+ a_n(A)=uU_n\cdots U_2v,\qquad
+ U_i=\begin{cases}Q&i\in A,\\P&i\notin A.\end{cases}
+\end{equation}
+The empty product for $n=1$ gives $uv=1$.
+
+The boundary cones needed below are generated by the row vectors
+\[
+ o_0=(1,0,0),\quad o_1=(0,1,0),\quad
+ o_2=(1,0,1),\quad o_3=(0,1,1)
+\]
+and the column vectors
+\[
+ r_0=(1,0,0)^{\mathsf T},\quad r_1=(1,1,0)^{\mathsf T},\quad
+ r_2=(1,0,1)^{\mathsf T},\quad r_3=(1,1,1)^{\mathsf T}.
+\]
+Write $\cO=\cone(o_0,o_1,o_2,o_3)$ and
+$\cI=\cone(r_0,r_1,r_2,r_3)$, using nonnegative real combinations.
+
+\begin{lemma}\label{lem:cones}
+The cones have the descriptions
+\begin{align*}
+ \cO&=\{(a,b,c):a,b,c\ge0,\ c\le a+b\},\\
+ \cI&=\{(a,b,c)^{\mathsf T}:a,b,c\ge0,\ b\le a,\ c\le a\}.
+\end{align*}
+Right multiplication by $P,Q$ preserves $\cO$, and left multiplication
+by $P,Q$ preserves $\cI$.
+\end{lemma}
+\begin{proof}
+For a vector in the displayed row cone, split $c=c_1+c_2$ with
+$0\le c_1\le a$ and $0\le c_2\le b$. Its ray coefficients are
+$(a-c_1,b-c_2,c_1,c_2)$.
+For the column cone choose
+$\max(0,b+c-a)\le d\le\min(b,c)$; the coefficients are
+$(a-b-c+d,b-d,c-d,d)$. These intervals are nonempty under the respective
+inequalities. Conversely every listed ray satisfies those inequalities.
+Finally,
+\begin{align*}
+ (a,b,c)P&=(a+b,0,c),& (a,b,c)Q&=(0,a+c,a),\\
+ P(a,b,c)^{\mathsf T}&=(a,a,c)^{\mathsf T},&
+ Q(a,b,c)^{\mathsf T}&=(b+c,0,b)^{\mathsf T},
+\end{align*}
+and these formulas preserve the stated inequalities.
+\end{proof}
+
+Write $[m]=\{1,\ldots,m\}$, with $[0]=\varnothing$.
+Fix $\ell\in\cO$, $r\in\cI$ and words $M_1,\ldots,M_{m-1}$
+in the matrices $P,Q$, allowing empty words. For $T\subseteq[m]$, put
+\begin{equation}\label{eq:AT}
+ A_T=\ell U_1M_1U_2\cdots M_{m-1}U_mr,
+ \qquad U_i=\begin{cases}Q&i\in T,\\P&i\notin T.\end{cases}
+\end{equation}
+For $m=0$, put $A_\varnothing=\ell r$.
+We prove Schur positivity of
+\begin{equation}\label{eq:matrixH}
+ \mathcal H=\sum_{T\subseteq[m]}A_TA_{[m]\setminus T}x^{|T|}y^{m-|T|}
+\end{equation}
+when $m\le4$. This implies the first part of Theorem~\ref{thm:main}:
+split \eqref{eq:count} at the free positions, listed in reverse order
+to match matrix multiplication. The exterior factors give permitted
+boundaries by Lemma~\ref{lem:cones}, since $u=o_3$ and $v=r_2$.
+Reversing the order preserves cardinalities and complementation.
+
+\begin{lemma}\label{lem:gaps}
+Every word in $P,Q$ either has a factorization $ab$ with $a\in\cI$
+a column and $b\in\cO$ a row, or belongs to one of the five separate families
+\begin{equation}\label{eq:families}
+ \cone(I),\quad \cone(P,PQP),\quad \cone(Q,QPQ),\quad
+ \cone(PQ,(PQ)^2),\quad \cone(QP,(QP)^2).
+\end{equation}
+Every word containing $Q^2$ has the former factorization.
+\end{lemma}
+\begin{proof}
+Direct multiplication gives $P^2=P$ and
+\begin{equation}\label{eq:rankone}
+ Q^2=e_0e_1^{\mathsf T},\qquad
+ e_0=(1,0,0)^{\mathsf T}\in\cI,\quad
+ e_1^{\mathsf T}=(0,1,0)\in\cO.
+\end{equation}
+Consequently $LQ^2R=(Le_0)(e_1^{\mathsf T}R)$ has the required factors
+by cone invariance, even if one factor vanishes.
+Delete repeated $P$'s from any remaining word. If a $QQ$ occurs, use
+the same argument. Otherwise the word is alternating, or empty.
+The identities
+\begin{align}
+ PQPQP&=PQP+P,& QPQPQ&=QPQ+Q,\label{eq:odd}\\
+ (PQ)^3&=(PQ)^2+PQ,& (QP)^3&=(QP)^2+QP\label{eq:even}
+\end{align}
+show that each alternating sequence with fixed initial and final letters
+satisfies a Fibonacci recurrence as its length increases by two.
+Its first two words are exactly the generators in the corresponding
+family in \eqref{eq:families}. The empty word is $I$.
+All recurrence coefficients are nonnegative, proving the claim for
+every length. We do not replace these five families by their joint cone.
+\end{proof}
+
+For a gap $M_i=ab$, the scalar in \eqref{eq:AT} factors into two scalars
+depending on disjoint free-site sets, with new boundaries $a$ and $b$.
+Summing over the two subsets gives
+\begin{equation}\label{eq:factorH}
+ \mathcal H=\mathcal H_{\mathrm L}\mathcal H_{\mathrm R}.
+\end{equation}
+Products preserve two-variable Schur positivity: for $a\ge b$ and $c\ge d$,
+\begin{equation}\label{eq:product}
+ s_{(a,b)}s_{(c,d)}=
+ \sum_{i=0}^{\min(a-b,c-d)}s_{(a+c-i,b+d+i)}.
+\end{equation}
+This follows directly from \eqref{eq:schur}: after removing $(xy)^{b+d}$,
+the coefficient of each monomial on either side counts the same possible
+splittings between two finite geometric sums. For $m=0$, $\mathcal H=(\ell r)^2$;
+for $m=1$, $\mathcal H=(\ell Pr)(\ell Qr)(x+y)$. Both are Schur-positive.
+Strong induction therefore handles all rank-one internal gaps once the
+separate-family cases are proved.
+
+\section{The finite parameter certificate}
+
+The remaining calculation concerns entire nonnegative parameter cones,
+not selected word lengths or sampled parameter values.
+Choose one family in \eqref{eq:families} for each gap and write its
+generators as $F_{i,0},\ldots,F_{i,d_i-1}$, where $d_i\in\{1,2\}$.
+Expand the boundaries and gaps with independent parameters:
+\[
+ \ell=\sum_{a=0}^3\lambda_a o_a,\qquad
+ r=\sum_{b=0}^3\rho_b r_b,\qquad
+ M_i=\sum_{c=0}^{d_i-1}\mu_{i,c}F_{i,c}.
+\]
+Each $A_T$ is multilinear in the $m+1$ groups
+$(\lambda,\rho,\mu_1,\ldots,\mu_{m-1})$.
+Hence, writing $h_j=\sum_{|T|=j}A_TA_{[m]\setminus T}$,
+each $\delta_j=h_j-h_{j-1}$ is homogeneous of degree two in every group.
+
+\begin{lemma}[Exact finite certificate]\label{lem:certificate}
+For $m=2,3,4$, every choice of the $m-1$ gap families, and
+$0\le j\le\lfloor m/2\rfloor$, every parameter coefficient of
+$\delta_j$ is nonnegative.
+\end{lemma}
+\begin{proof}[Computational proof]
+Here is a complete specification of the finite computation.
+The group sizes are $\boldsymbol d=(4,4,d_1,\ldots,d_{m-1})$.
+For a multilinear index $p=(a,b,c_1,\ldots,c_{m-1})$, calculate the integer
+\[
+ v_T(p)=o_aU_1F_{1,c_1}U_2\cdots F_{m-1,c_{m-1}}U_mr_b.
+\]
+A quadratic index $q$ is one unordered pair $(a_g,b_g)$, with
+$0\le a_g\le b_g<(\boldsymbol d)_g$, for each parameter group $g$.
+Let $\mathcal P(q)$ be the ordered pairs $(p,p')$ of multilinear indices
+whose entries in each group form the multiset $\{a_g,b_g\}$.
+The coefficient at $q$ in $\delta_j$ is exactly
+\begin{equation}\label{eq:coefficient}
+ \sum_{(p,p')\in\mathcal P(q)}\left(
+ \sum_{|T|=j}v_T(p)v_{[m]\setminus T}(p')
+ -\sum_{|T|=j-1}v_T(p)v_{[m]\setminus T}(p')\right),
+\end{equation}
+where the second sum is empty for $j=0$.
+Repeated indices contribute one ordering, and distinct indices contribute
+two. Thus no multiplicity or zero coefficient is omitted.
+
+Evaluate \eqref{eq:coefficient} with integer matrix multiplication for
+every family choice, every $q$, and every stated $j$.
+The exact coefficient arrays supplied in \texttt{coefficients.json}
+give Table~\ref{tab:certificate}; all entries are nonnegative.
+The table includes the $j=0$ row and zero coefficients.
+For each boundary there are $\binom{4+1}{2}=10$ quadratic indices.
+Summing over the five choices for one gap gives
+$1+4\binom{2+1}{2}=13$ indices. The total number of positions is therefore
+\begin{equation}\label{eq:coverage}
+ N_m=(\lfloor m/2\rfloor+1)\,100\,13^{m-1}.
+\end{equation}
+This independently fixes the full domain of the calculation.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{rrrrr}
+\toprule
+$m$ & Family choices & Coefficient positions & Positive & Negative\\
+\midrule
+2 & 5   & $2\,600$   & $1\,597$   & 0\\
+3 & 25  & $33\,800$  & $15\,633$  & 0\\
+4 & 125 & $659\,100$ & $240\,445$ & 0\\
+\bottomrule
+\end{tabular}
+\caption{Complete parameter-coefficient certificate. Every remaining
+position is zero.}\label{tab:certificate}
+\end{table}
+
+The supplied verifier reconstructs these arrays by a different calculation.
+For a homogeneous quadratic polynomial $f$ in one parameter group,
+its diagonal coefficient is $f(e_a)$, and its mixed coefficient is
+\begin{equation}\label{eq:polarization}
+ [\theta_a\theta_b]f=f(e_a+e_b)-f(e_a)-f(e_b)\quad(a<b).
+\end{equation}
+Hold the other groups formal and apply this identity successively to every
+group. The verifier evaluates all Cartesian products of these points,
+performs the finite differences, and compares every resulting integer
+with the stored array. It also reconstructs the family-choice domain and
+checks \eqref{eq:coverage}. It agrees on all $695\,500$ positions.
+Both descriptions, \eqref{eq:coefficient} and \eqref{eq:polarization},
+recover exact coefficients, rather than infer signs from evaluations.
+Nonnegative coefficients imply $\delta_j\ge0$ for every nonnegative
+real parameter assignment, proving the lemma.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+We first prove the matrix statement \eqref{eq:matrixH} by strong induction
+for $0\le m\le4$. The cases $m=0,1$ were given above.
+For $m\ge2$, a gap with the factorization in Lemma~\ref{lem:gaps}
+yields \eqref{eq:factorH}; both factors have
+fewer free sites and valid boundary cones, so induction and
+\eqref{eq:product} apply. If no such gap occurs, Lemma~\ref{lem:gaps}
+places each gap in one of the five families. Lemma~\ref{lem:certificate}
+and \eqref{eq:delta} give Schur positivity.
+Equation~\eqref{eq:count} then gives the asserted word statement.
+
+For the extension, between each two successive blocks choose adjacent
+positions $q,q+1\in S$. These positions lie in an internal gap and
+give a $Q^2$ factor there. Cut at all chosen factors using
+\eqref{eq:rankone}. Each component has at most four free sites and
+boundaries in the required cones. Repeated use of
+\eqref{eq:factorH} and \eqref{eq:product} proves the conclusion for
+arbitrarily many blocks. No division is involved, including for zero factors.
+\end{proof}
+
+\section{Log-concavity, sharpness, and scope}
+
+\begin{proof}[Proof of Corollary~\ref{cor:lc}]
+Every monomial that can occur in $g_k^2-g_{k-1}g_{k+1}$ has exponents
+$0,1,2$ and total degree $2k$. Let $D$ be its exponent-two positions
+and $E$ its exponent-one positions. Set $r=k-|D|$, so $|E|=2r$.
+Both factors must contain $D$ and must partition $E$.
+For $r\ge1$, the coefficient in question is
+\[
+ h_r(S\cup D,E)-h_{r-1}(S\cup D,E).
+\]
+Positions outside $D\cup E$ in the original free set are now fixed absent.
+Since $|E|\le |J|\le4$, Theorem~\ref{thm:main} makes this coefficient
+nonnegative. For $r=0$ it is the square $a_n(S\cup D)^2$.
+Monomials of other degrees or with other exponent patterns have coefficient
+zero. This proves every coefficientwise inequality. Evaluation at
+nonnegative $\boldsymbol z$ preserves it. Impossible conditionings and
+zero weights require no separate normalization.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:sharp}]
+For $J=\{i,j\}$, put
+$A=a_n(S)$, $B=a_n(S\cup\{i\})$, $C=a_n(S\cup\{j\})$,
+and $D=a_n(S\cup\{i,j\})$. Then
+\[
+ H_{S,J}=AD(x^2+y^2)+2BCxy
+        =ADs_{(2,0)}+(2BC-AD)s_{(1,1)},
+\]
+giving \eqref{eq:sharp}. For $n=4$, $S=\varnothing$ and $J=\{2,4\}$,
+the exact word lists are
+\[
+ \begin{array}{c|cccc}
+ T&\varnothing&\{2\}&\{4\}&\{2,4\}\\\hline
+ \{w:E(w)=T\}&\{0001,1111\}&\{1001\}&\{0011\}&\{1011\}.
+ \end{array}
+\]
+Thus $(A,B,C,D)=(2,1,1,1)$, which forces the uniform factor to be at least $2$.
+\end{proof}
+
+The extension beyond two positions uses additional structure of the word
+matrices. To see why the face inequalities alone are insufficient, give the
+empty and full subsets of $\{1,2,3\}$ weight $2$, and every other subset
+weight $1$. On each of the six two-dimensional faces, $AD=2BC$.
+The three-position antipodal coefficients are nevertheless $(4,3,3,4)$,
+whose Schur difference is $3-4=-1$. This example concerns general Boolean
+weights and is not a counterexample in the binary-word model.
+
+The theorem leaves arbitrary gaps and fixed-event counts unrestricted,
+but not arbitrary free-site counts without the stated cuts.
+In particular, setting \emph{all} event positions free eventually exceeds
+its scope. The four-position cutoff is a proved range, with no claim that
+it is optimal. The two-variable polynomial used here is also different
+from the quasisymmetric functions of permutation big-descent sets considered
+in \cite[Section~4.3]{ERZ}. The comparison with the inspected sources
+identifies a conditional refinement; it is not an exhaustive priority claim.
+
+\section{Reproducibility and computational assistance}
+
+The ancillary directory contains \texttt{coefficients.json},
+\texttt{verify\_certificate.py}, and a \texttt{README.md}.
+Run
+\begin{center}
+\texttt{python3 manuscript/supplement/verify\_certificate.py}
+\end{center}
+from the supplied source package, or invoke the script by its absolute path.
+It uses Python~3 and NumPy with \texttt{dtype=object}, so all matrix entries,
+finite differences, and sign comparisons are arbitrary-precision integers.
+No floating-point tolerance or random sample is used.
+Besides the coefficient reconstruction, it derives $P,Q$ from suffix
+transitions and checks the displayed matrix identities and cone images.
+
+The separation of a stored certificate from reconstruction of its complete
+domain also appears in the exact finite-certificate computations of
+Zeng, Liu, Ratnavelu, and Huat \cite{ZengCertificates}.
+Here the finite objects are parameter monomials, and formula~\eqref{eq:coverage}
+ensures complete coverage. No geometric theorem from that work is used.
+
+Direct enumeration additionally checks all $198\,399$ conditionings with
+at most four free positions through $n=12$, including $433\,405$ Schur
+coefficient positions. It checks $383\,073$ monomial positions in the
+log-concavity differences through $n=10$. These finite word checks test
+the interpretation and implementation. Uniformity in $n$ follows from
+the cone argument, the gap reduction, and the exact polynomial certificate.
+
+OpenAI Codex assisted with proof exploration, literature searches,
+code generation, separate proof and implementation checks, and manuscript
+preparation. The original coefficient calculation used integer convolution;
+a separately written tensor calculation and a later finite-difference
+implementation reproduced it. The ancillary verifier is a portable version
+of the finite-difference implementation. Separate model contexts do not
+constitute external peer review or statistically independent evidence.
+The mathematical support is the reduction and reproducible exact arithmetic;
+no proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

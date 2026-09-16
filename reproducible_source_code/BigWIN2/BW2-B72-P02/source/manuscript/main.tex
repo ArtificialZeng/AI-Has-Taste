@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={No Reversible Gray Representative in a Specified Orbit of a Length-34 Quaternary Legendre Pair},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\PAF}{\operatorname{PAF}}
+
+\title{No Reversible Gray Representative in a Specified Orbit\\
+of a Length-$34$ Quaternary Legendre Pair}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Lebedev exhibited an explicit quaternary Legendre pair of length $34$ and
+observed that its printed orientation is not reversible under the Gray map,
+while leaving an orbit argument unperformed.  We decide a precisely specified
+finite-orbit question for that pair.  The allowed operations are independent
+fourth-root phases and cyclic shifts, a common unit decimation, simultaneous
+complex conjugation, and exchange of the two words.  No member of the resulting
+set has four reversible Gray rows.  The proof reduces every permitted transform
+of one fixed word to reflection about one of $17$ even cyclic axes, and a
+literal mismatch excludes each axis.  A separate exact census of all
+$1{,}183{,}744$ parameter tuples corroborates the paper proof.  The conclusion
+is only about the displayed set of operations: it neither identifies a full
+quaternary-Legendre-pair equivalence group nor excludes reversible
+representatives under operations outside that set.
+\end{abstract}
+
+\section{Context and the specified orbit}
+
+For a complex word $X=(X_j)_{j\in\Z_n}$, write
+\[
+  \PAF(X,h)=\sum_{j\in\Z_n}X_j\overline{X_{j+h}}.
+\]
+A quaternary Legendre pair (qLP) of length $n$ is a pair
+$A,B\in\{1,i,-1,-i\}^n$ such that
+\[
+  \PAF(A,h)+\PAF(B,h)=-2\qquad(0\ne h\in\Z_n).
+  \tag{1}
+\]
+Kotsireas and Winterhof introduced qLPs and related them to quaternary and
+binary Hadamard matrices~\cite{KotsireasWinterhof2024}.  The explicit pair
+studied below already supplies the existence needed here; our question concerns
+only its reversible representatives under specified operations.
+
+Lebedev~\cite{Lebedev2026} printed the following length-$34$ pair.  We encode
+$1,i,-1,-i$ by the digits $0,1,2,3$, respectively, and fix
+\[
+\begin{split}
+ A&=2202202000022020222202000220200020,\\
+ B&=1133303133112311101113211331303331.
+\end{split}
+\tag{2}
+\]
+Lebedev checked that the displayed orientation is not reversible and noted
+that an orbit argument would be needed for a conclusion about equivalence
+classes.  We now freeze the particular set of operations to be tested.
+
+All indices henceforth lie in $\Z_{34}$.  For $r\in\Z_{34}$ and
+$k\in\Z_{34}^{\times}$, define
+\[
+ (c_rX)_j=X_{j-r},\qquad (d_kX)_j=X_{jk^{-1}}.
+ \tag{3}
+\]
+Let $s(X,Y)=(Y,X)$, and put $X^0=X$ and $X^1=\overline X$.  The set studied
+in this note is exactly
+\[
+ \Gamma_{34}(A,B)=
+ \left\{
+ s^e\!\left(\alpha c_r d_k(A^\varepsilon),
+             \beta c_t d_k(B^\varepsilon)\right):
+ \begin{array}{l}
+ \alpha,\beta\in\{1,i,-1,-i\},\quad r,t\in\Z_{34},\\
+ k\in\Z_{34}^{\times},\quad \varepsilon,e\in\{0,1\}
+ \end{array}
+ \right\}.
+ \tag{4}
+\]
+The phrase ``specified orbit'' below is shorthand for the displayed finite
+set (4).  In particular, it is not a claim that these are all qLP-preserving
+operations.
+
+For comparison, the binary Legendre-pair equivalence studied by Bulutoglu,
+Baczkowski, and Yauney~\cite{BulutogluBaczkowskiYauney2026} includes formulas
+with both common and opposite decimations.  Equation~(4) deliberately uses
+only a common decimation; the opposite-decimation alternative is not imported
+from the binary setting without a qLP argument.
+
+\begin{proposition}
+Every pair in $\Gamma_{34}(A,B)$ satisfies the qLP equations (1).
+\end{proposition}
+
+\begin{proof}
+For a fourth-root phase $\alpha$, direct reindexing gives
+\[
+\begin{aligned}
+ \PAF(\alpha X,h)&=\PAF(X,h),&
+ \PAF(c_rX,h)&=\PAF(X,h),\\
+ \PAF(d_kX,h)&=\PAF(X,hk^{-1}),&
+ \PAF(\overline X,h)&=\overline{\PAF(X,h)}.
+\end{aligned}
+\tag{5}
+\]
+Independent phases and shifts preserve the two summands separately.  A
+common decimation permutes the nonzero lags, simultaneous conjugation
+conjugates their sum (which is the real number $-2$), and exchange swaps the
+summands.  Hence (1) is preserved by every operation in (4).
+\end{proof}
+
+\section{The reflection obstruction}
+
+For $p,q\in\{\pm1\}^{34}$, the Gray decoding used here is
+\[
+ X=\frac{p+q}{2}+i\frac{p-q}{2}.
+ \tag{6}
+\]
+A binary row $x$ is \emph{reversible} when
+$x_j=x_{-j}$ for every $j\in\Z_{34}$.
+
+\begin{lemma}[Gray reversibility]
+The two Gray rows of a quaternary word $X$ are both reversible if and only if
+\[
+ X_j=X_{-j}\qquad(j\in\Z_{34}).
+ \tag{7}
+\]
+\end{lemma}
+
+\begin{proof}
+On $1,i,-1,-i$, the Gray map has respective values
+$(1,1),(1,-1),(-1,-1),(-1,1)$.  It is therefore bijective onto
+$\{\pm1\}^2$.  Equality of both Gray coordinates at $j$ and $-j$ is
+equivalent to equality of the quaternary symbols there.
+\end{proof}
+
+\begin{theorem}
+No ordered pair in $\Gamma_{34}(A,B)$ has all four Gray rows reversible.
+Equivalently, the existential assertion for the specified set (4) is false.
+\end{theorem}
+
+\begin{proof}
+Every member of (4), whether exchanged or not, contains in one coordinate a
+word
+\[
+ Z=\alpha c_r d_k(A^\varepsilon).
+ \tag{8}
+\]
+Suppose its two Gray rows were reversible.  By the lemma, $Z_j=Z_{-j}$ for
+all $j$.  Cancelling the nonzero phase and, if $\varepsilon=1$, conjugating
+both sides yields
+\[
+ A_{(j-r)k^{-1}}=A_{(-j-r)k^{-1}}\qquad(j\in\Z_{34}).
+ \tag{9}
+\]
+Set $u=(j-r)k^{-1}$.  As $j$ varies, so does $u$, and (9) becomes
+\[
+ A_u=A_{a-u}\qquad(u\in\Z_{34}),
+ \qquad a=-2rk^{-1}\pmod {34}.
+ \tag{10}
+\]
+The residue $a$ is even.  Table~\ref{tab:axes} lists, for every possible even
+$a$, an index $u$ at which (10) fails.  Its entries are read directly from
+the literal word $A$ in (2).
+
+\begin{table}[ht]
+\centering
+\caption{A mismatch for every possible reflection axis.}
+\label{tab:axes}
+\begin{tabular}{rrrrr}
+\toprule
+$a$ & $u$ & $A_u$ & $a-u\pmod {34}$ & $A_{a-u}$\\
+\midrule
+ 0& 1&2&33&0\\
+ 2& 0&2& 2&0\\
+ 4&10&0&28&2\\
+ 6& 1&2& 5&0\\
+ 8& 0&2& 8&0\\
+10& 0&2&10&0\\
+12& 3&2& 9&0\\
+14& 1&2&13&0\\
+16& 1&2&15&0\\
+18& 2&0&16&2\\
+20& 0&2&20&0\\
+22& 0&2&22&0\\
+24& 0&2&24&0\\
+26& 3&2&23&0\\
+28& 1&2&27&0\\
+30& 0&2&30&0\\
+32& 1&2&31&0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Thus no permitted transform of $A$ has two reversible Gray rows.  The choices
+involving $B$ cannot repair that coordinate, and exchange merely changes its
+position.  Consequently no pair in (4) has four reversible Gray rows.
+\end{proof}
+
+\section{Exact census and scope of the result}
+
+The preceding proof needs only the $17$ literal comparisons in
+Table~\ref{tab:axes}.  An exact exhaustive computation was retained as an
+independent corroboration.  The parameter domain in (4) has
+\[
+ 4^2\cdot34^2\cdot16\cdot2\cdot2=1{,}183{,}744
+ \tag{11}
+\]
+tuples.  The primary census represents fourth roots by exponents modulo $4$,
+enumerates all tuples, and tests the four reflection identities.  It obtains
+$1{,}183{,}744$ distinct ordered images and no fully reversible image.  For
+each image it stores the first failing Gray row and the least failing index.
+
+A second verifier imports none of the census implementation.  It reconstructs
+the parameter domain by separately composed literal-string operations,
+rebuilds the ordered images, and recomputes every stored failure witness.  It
+reproduces all counts.  This separation between a short mathematical proof and
+reconstructible finite evidence is also used in other bounded exact
+classifications; for example, Zeng et al.~\cite{ZengEtAl2026Finite} use
+symmetry-reduced exhaustive enumeration and explicitly distinguish their
+finite-library conclusions from the corresponding unrestricted questions.
+
+The present conclusion has the same kind of strict boundary.  It settles
+reversibility only inside (4), for the single pair (2).  It says nothing about
+other length-$34$ qLPs and nothing about a larger equivalence relation.  In
+particular, the result should not be read as showing that the pair has no
+reversible representative under every conceivable qLP-preserving operation.
+
+\paragraph{Data and computational disclosure.}
+The exact census, the independent verifier, their machine-readable summaries,
+and the complete failure-witness archive accompany the paper.  Both programs
+use exact integer and string operations; no random choices, floating-point
+tolerances, or external solver enter their acceptance conditions.  From the
+project root they are run as
+\begin{verbatim}
+python3 evidence/orbit_census.py
+python3 evidence/verify_orbit_census.py
+\end{verbatim}
+The exhaustive computation is corroborative: Theorem~3 follows from the
+displayed proof without executing either program.
+
+OpenAI Codex assisted with literature search, exact-code preparation and
+checking, adversarial organization of the computational audit, and manuscript
+preparation.  Language-model output was not used as mathematical evidence.
+The theorem-bearing argument is given above, and the retained computations are
+reconstructible by the independent verifier.  No proof assistant was used.
+
+\raggedright
+\bibliographystyle{abbrvurl}
+\bibliography{references}
+
+\end{document}

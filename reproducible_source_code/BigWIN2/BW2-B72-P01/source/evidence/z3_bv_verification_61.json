@@ -1,0 +1,170 @@
+{
+  "at_most_61_query": {
+    "base_smt2_file": "evidence/z3_bv_at_most_61.smt2",
+    "base_smt2_sha256": "411f4beeb0f09d890c71a721ff7bb8583d9b95257324f4e27c5285ec03652c8f",
+    "blocked_smt2_file": "evidence/z3_bv_at_most_61_blocked.smt2",
+    "blocked_smt2_sha256": "73fd871f3eb9cb592b3f6c45ce73f486069990787b745f3bee1e23f6632be29a",
+    "checks": [
+      {
+        "elapsed_seconds": 30.21128,
+        "result": "sat"
+      },
+      {
+        "elapsed_seconds": 42.287694,
+        "result": "sat"
+      },
+      {
+        "elapsed_seconds": 28.982103,
+        "result": "sat"
+      },
+      {
+        "elapsed_seconds": 30.396256,
+        "result": "sat"
+      },
+      {
+        "elapsed_seconds": 10.012317,
+        "result": "unsat"
+      }
+    ],
+    "first_matching_layer": 61,
+    "matching_layers": [
+      61
+    ],
+    "maximum_sum": 61,
+    "model_count": 4,
+    "models": [
+      {
+        "a": [
+          4,
+          9,
+          16,
+          32
+        ],
+        "b": [
+          1,
+          16,
+          8,
+          36
+        ],
+        "signature": [
+          61,
+          1116,
+          6912,
+          18432
+        ]
+      },
+      {
+        "a": [
+          4,
+          16,
+          9,
+          32
+        ],
+        "b": [
+          1,
+          16,
+          8,
+          36
+        ],
+        "signature": [
+          61,
+          1116,
+          6912,
+          18432
+        ]
+      },
+      {
+        "a": [
+          4,
+          9,
+          16,
+          32
+        ],
+        "b": [
+          36,
+          8,
+          16,
+          1
+        ],
+        "signature": [
+          61,
+          1116,
+          6912,
+          18432
+        ]
+      },
+      {
+        "a": [
+          4,
+          16,
+          9,
+          32
+        ],
+        "b": [
+          36,
+          8,
+          16,
+          1
+        ],
+        "signature": [
+          61,
+          1116,
+          6912,
+          18432
+        ]
+      }
+    ],
+    "terminal_result": "unsat"
+  },
+  "code_version": "1.0.0",
+  "domain": {
+    "common_sum_maximum": 61,
+    "common_sum_minimum": 4,
+    "coordinate_bounds": [
+      1,
+      58
+    ],
+    "domain_count_each_side": 521855,
+    "domain_count_identity": "sum_{s=4}^{61} binom(s-1,3) = binom(61,4)",
+    "objects": "ordered positive integer quadruple pairs (b,a)",
+    "pruning": "none beyond positivity, common sum, and the stated maximum sum"
+  },
+  "elapsed_seconds": 185.778685,
+  "encoding": {
+    "arithmetic_width_bits": 32,
+    "coordinate_extension": "unsigned zero extension before every arithmetic expression",
+    "coordinate_width_bits": 6,
+    "equations": "the four frozen equations are asserted literally",
+    "logic": "QF_BV",
+    "modular_soundness": {
+      "bounds_using_1_le_coordinate_le_58": {
+        "cubic_difference_abs_le": 4292464,
+        "quadratic_difference_abs_le": 87464,
+        "quartic_difference_abs_le": 56582480,
+        "sum_difference_abs_lt": 465
+      },
+      "conclusion": "bit-vector equality iff ordinary integer equality on the encoded domain",
+      "criterion": "for each equality, the absolute integer difference of its sides is less than 2^32",
+      "modulus": 4294967296
+    }
+  },
+  "program": "evidence/verify_z3_bv.py",
+  "program_sha256": "bbad5ec2a03acd90c5ae609e88fce9ca9c2523be360122b787e9fa09a8db9cd4",
+  "randomness": "Z3 random_seed=0; no generated or sampled inputs",
+  "runtime": {
+    "implementation": "CPython",
+    "python": "3.10.12",
+    "z3": "4.15.3"
+  },
+  "schema": "p4-paw-independent-z3-bv-verifier-v1",
+  "source_sha256": "8d8a6f5be118d806bdf9f54d67f6449d423a1d80b50779c1567b7c3d66262300",
+  "status": "complete",
+  "sub_61_query": {
+    "elapsed_seconds": 43.867428,
+    "maximum_sum": 60,
+    "reason_unknown": null,
+    "result": "unsat",
+    "smt2_file": "evidence/z3_bv_below_61.smt2",
+    "smt2_sha256": "a9677d3488b4008786bdd5fd871a621aa3eaff11a6094957efccca8f11b0fbcd"
+  }
+}

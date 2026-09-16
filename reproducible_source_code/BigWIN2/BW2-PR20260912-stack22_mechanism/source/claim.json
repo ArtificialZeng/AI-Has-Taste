@@ -1,0 +1,22 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every integer n>=0, in the frozen (2,2)-stack input-sorting model of source.md and problem.md, the sortable permutations of [n] are in size-preserving bijection with the following canonical rank words: words with n pushes and n pops that start and end with an empty bit stack, obey P1: empty -> 0 and aT -> 1aT; P2: aT -> 10T; Q1: aT -> T; Q2: 0bT -> 0T, where a,b are bits and T is any suffix, and avoid the adjacent factor P2 Q1. Token labeling by increasing pop order reconstructs the unique input. The complete unambiguous first-return specification proved in evidence/first_return_proof.md derives F=1+xAF and A=1+xA(4A-2F-1) directly from these operations. Hence the ordinary generating function F(x)=sum_{n>=0}u_n x^n, with each sortable input counted once and F(0)=1, is the unique such formal series satisfying 2xF^3-(2x+3)F^2-(x-7)F-4=0. This supplies the requested mechanism-level derivation for all n, without using the forbidden pattern basis or presupposing the polynomial.",
+  "contribution": "A proposed complete resolution of Vatter Problem 5.11 by an ordered comparison forest, an exact leaf/nonleaf bit encoding, and an unambiguous first-return grammar. The polynomial and counting sequence are previously known; the proposed contribution is the direct mechanism derivation, not their rediscovery or finite verification. Correctness and the substantive method-level distinction await a fresh referee; the bounded primary comparison does not establish global priority.",
+  "proposer_job_id": "primary-20260912-stack22-mechanism-research-897e72adb69b",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/first_return_proof.md",
+    "evidence/first_return_exact.py",
+    "evidence/first_return_exact.json",
+    "evidence/first_return_grammar.py",
+    "evidence/first_return_grammar.json",
+    "evidence/first_return_holdout.py",
+    "evidence/first_return_holdout.json",
+    "evidence/first_return_algebra.py",
+    "evidence/first_return_algebra.json",
+    "literature/research.md",
+    "evidence/external/vatter-2602.16355v2.html"
+  ]
+}

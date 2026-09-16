@@ -1,0 +1,343 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage[backend=biber,style=numeric,sorting=nyt]{biblatex}
+\addbibresource{references.bib}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Sph}{\mathbb{S}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\hypersetup{
+  pdftitle={The Optimal High-SNR Leading Coefficient for Seven Spherical Codewords in Four Dimensions},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\title{The Optimal High-SNR Leading Coefficient for Seven\\
+Spherical Codewords in Four Dimensions}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a labeled seven-point unit spherical code
+$C=(c_1,\ldots,c_7)$ in $\R^4$, consider the ordered Gaussian
+soft-packing energy
+\[
+  G_\gamma(C)=\sum_{i\neq j}\exp\!\bigl(\gamma c_i^{\mathsf T}c_j\bigr).
+\]
+We prove
+\[
+ \lim_{\gamma\to\infty}\min_{C\in(\Sph^3)^7}G_\gamma(C)=24.
+\]
+This resolves the $(n,k)=(4,3)$ instance of the intermediate
+orthoplex-range leading-coefficient conjecture for AWGN spherical codes.
+The converse classifies every bounded-energy limit into three dependent
+negative-correlation components.  Three affine balances persist under
+perturbation, and a cost-weighted AM--GM argument isolates their cross-block
+contributions without assuming a convergence rate for the codewords.
+\end{abstract}
+
+\section{Statement and context}
+
+Let
+\[
+ \mathcal M=(\Sph^3)^7,
+ \qquad \Sph^3=\{x\in\R^4:\norm{x}=1\},
+\]
+where tuples are labeled and all $42$ ordered pairs of distinct indices are
+counted.  Put
+\begin{equation}\label{eq:objective}
+ V_\gamma(7,4)=\min_{C\in\mathcal M}
+ \sum_{i\neq j}\exp\!\bigl(\gamma c_i^{\mathsf T}c_j\bigr).
+\end{equation}
+The minimum exists by compactness and continuity.  Rankin's orthoplex bound
+implies that the least possible maximal correlation is nonnegative once there
+are more than five points in $\R^4$; seven vertices of the four-dimensional
+cross-polytope show that the optimum is zero~\cite{Rankin1955}.
+
+High-SNR error asymptotics for fixed multidimensional constellations are
+governed by nearest-neighbor geometry~\cite{AlvaradoAgrellBrannstrom2018}.
+Zlatanov introduced the SNR-wise optimized leading coefficient
+$K^*_{M,n}$ and characterized it through the limiting minimum of a Gaussian
+soft-packing energy~\cite{Zlatanov2026}.  In dimension $n=4$ the exponent in
+that energy is exactly the exponent in~\eqref{eq:objective}.  For the
+orthoplex range $M=n+k$, the same work proves
+\[
+ K^*_{n+k,n}\le 4k(k-1)
+\]
+by an SNR-dependent construction and conjectures equality when
+$n\ge4$ and $3\le k\le n-1$.  Thus $(n,k)=(4,3)$ is the smallest instance:
+the cited construction gives $K^*_{7,4}\le24$, whereas the missing direction
+is a global lower bound over all SNR-dependent families.  Our contribution is
+that converse for this one instance.  This comparison is limited to the cited
+literature and is not a broader priority claim.
+
+\begin{theorem}\label{thm:main}
+For seven unit vectors in $\R^4$, with ordered off-diagonal correlations,
+\[
+ \lim_{\gamma\to\infty}V_\gamma(7,4)=24.
+\]
+Equivalently, $K^*_{7,4}=24$ in the Gaussian soft-packing formulation.
+\end{theorem}
+
+The proof is analytic.  Exact finite coordinate-library searches provide a
+complementary certification regime in related spherical-code questions; for
+example, Zeng, Liu, Ratnavelu, and Huat use integer predicates and two exact
+maximum-clique computations for a normalized ternary code in dimension
+five~\cite{ZengEtAl2026}.  That work does not concern AWGN asymptotics,
+Gaussian soft-packing energy, or $K^*_{7,4}$, and is cited here only to
+distinguish the verification regimes.
+
+\section{An explicit upper-bound family}
+
+Let $e_1,\ldots,e_4$ be the standard basis of $\R^4$ and set
+\[
+ q_\gamma=\frac{\log(4\gamma)}{4\gamma},
+ \qquad r_\gamma=(1-q_\gamma^2)^{1/2}.
+\]
+For all sufficiently large $\gamma$, take
+\begin{equation}\label{eq:construction}
+ x_{a,s}=-q_\gamma e_4+s r_\gamma e_a
+ \quad(1\le a\le3,\ s\in\{-1,1\}),
+ \qquad y=e_4.
+\end{equation}
+These are seven unit vectors.  Ordered pairs of shifted vectors on different
+axes have correlation $q_\gamma^2$ and number $24$; opposite shifted vectors
+on one axis have correlation $2q_\gamma^2-1$ and number $6$; ordered pairs
+incident with $y$ have correlation $-q_\gamma$ and number $12$.  Hence
+\begin{equation}\label{eq:upperenergy}
+ G_\gamma(C_\gamma)
+ =24e^{\gamma q_\gamma^2}
+  +6e^{\gamma(2q_\gamma^2-1)}
+  +12e^{-\gamma q_\gamma}\longrightarrow24,
+\end{equation}
+because $\gamma q_\gamma\to\infty$ and
+$\gamma q_\gamma^2\to0$.  Therefore
+$\limsup_{\gamma\to\infty}V_\gamma(7,4)\le24$.
+
+\section{A weighted balance inequality}
+
+We first record the inequality that will isolate a cross-block of the energy.
+
+\begin{lemma}[Cost-weighted balance]\label{lem:balance}
+Let $(z_i)_{i\in P}$ and $(z_j)_{j\in N}$ be unit vectors.  Let
+$\alpha=(\alpha_i)_{i\in P}$ and $\beta=(\beta_j)_{j\in N}$ be positive
+probability vectors with a common barycenter
+\[
+ \sum_{i\in P}\alpha_i z_i
+ =\sum_{j\in N}\beta_j z_j=\mu.
+\]
+For arbitrary positive costs $d_{ij}$ and $\gamma>0$,
+\begin{equation}\label{eq:weighted}
+ \sum_{i\in P,\,j\in N}d_{ij}e^{\gamma z_i^{\mathsf T}z_j}
+ \ge
+ \frac{e^{\gamma\norm{\mu}^2}
+       \prod_{i,j}d_{ij}^{\alpha_i\beta_j}}
+ {\prod_i\alpha_i^{\alpha_i}\prod_j\beta_j^{\beta_j}}.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:maxweight}
+ \prod_i\alpha_i^{\alpha_i}\le\norm{\alpha}_\infty,
+ \qquad
+ \prod_j\beta_j^{\beta_j}\le\norm{\beta}_\infty.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Apply weighted AM--GM with weights
+$w_{ij}=\alpha_i\beta_j$ to
+\[
+ \frac{d_{ij}e^{\gamma z_i^{\mathsf T}z_j}}
+      {\alpha_i\beta_j}.
+\]
+The weighted average of the correlations is
+\[
+ \sum_{i,j}\alpha_i\beta_j z_i^{\mathsf T}z_j
+ =\norm{\mu}^2,
+\]
+and
+\[
+ \prod_{i,j}(\alpha_i\beta_j)^{\alpha_i\beta_j}
+ =\prod_i\alpha_i^{\alpha_i}\prod_j\beta_j^{\beta_j},
+\]
+which proves~\eqref{eq:weighted}.  Since every $\alpha_i$ is at most
+$\norm{\alpha}_\infty$ and the $\alpha_i$ sum to one,
+$\prod_i\alpha_i^{\alpha_i}\le\norm{\alpha}_\infty$; the proof for
+$\beta$ is identical.
+\end{proof}
+
+\section{Structure of bounded-energy limits}
+
+Consider any sequence $\gamma_m\to\infty$ and codes
+$C_m=(c_1^{(m)},\ldots,c_7^{(m)})$ whose ordered energies are bounded by a
+constant $B$.  Passing to a subsequence, suppose that every codeword converges
+to $c_i^{(0)}$.  If $\rho_m$ is the largest correlation in $C_m$, its two
+ordered orientations give
+\[
+ 2e^{\gamma_m\rho_m}\le B.
+\]
+It follows that $\rho_m=O(1/\gamma_m)$, so every off-diagonal entry of the
+limiting Gram matrix $G_0$ is nonpositive.
+
+Make a graph on the seven indices by joining $i$ and $j$ exactly when
+$(c_i^{(0)})^{\mathsf T}c_j^{(0)}<0$.  Correlations between distinct
+connected components are zero, and consequently $G_0$ is block diagonal.
+
+\begin{lemma}\label{lem:components}
+The negative-correlation graph has exactly three dependent connected
+components $B_1,B_2,B_3$.  Each corresponding Gram block has a
+one-dimensional kernel generated by a strictly positive vector.  The three
+component sizes are either $(2,2,2)$, with one singleton left over, or
+$(3,2,2)$.
+\end{lemma}
+
+\begin{proof}
+Let $H$ be the Gram matrix of a connected component.  Then $I-H$ is
+nonnegative and irreducible.  If $H$ is singular, $1$ is an eigenvalue of
+$I-H$.  Positive semidefiniteness of $H$ rules out an eigenvalue of $I-H$
+larger than $1$, so $1$ is its spectral radius.  Perron--Frobenius therefore
+shows that the eigenvalue is simple and has a strictly positive eigenvector.
+Thus every component block has nullity either zero or one, and every dependent
+component has a positive one-dimensional kernel.
+
+The $7\times7$ matrix $G_0$ has rank at most four, so its nullity is at least
+three.  At least three components are therefore dependent.  Each dependent
+component contains at least two vertices, so seven vertices allow at most
+three such components.  There are exactly three; their combined nullity is
+three, and $G_0$ has rank four.  At most one additional vertex remains, which
+gives precisely the two listed size patterns.
+\end{proof}
+
+For $a\in\{1,2,3\}$, extend the positive kernel generator of the $B_a$ block
+by zero to all seven coordinates, normalize its coordinate sum to one, and
+call the resulting vector $u^a$.  Then
+\begin{equation}\label{eq:zerobalance}
+ \sum_{i\in B_a}u_i^a c_i^{(0)}=0.
+\end{equation}
+For each $i\in B_a$, the triangle inequality and unit norms give
+\[
+ u_i^a
+ =\norm{-\sum_{h\in B_a\setminus\{i\}}u_h^a c_h^{(0)}}
+ \le1-u_i^a.
+\]
+Hence
+\begin{equation}\label{eq:half}
+ \norm{u^a}_\infty\le\frac12.
+\end{equation}
+
+\section{Persistence and separation of the balances}
+
+Let $X_m$ be the $4\times7$ matrix with columns $c_i^{(m)}$, and let $A_m$
+be the $5\times7$ matrix obtained by appending a bottom row of ones.  By
+Lemma~\ref{lem:components},
+$\ker X_0=\operatorname{span}\{u^1,u^2,u^3\}$.  Intersecting with the
+coordinate-sum-zero hyperplane gives
+\begin{equation}\label{eq:affinekernel}
+ \ker A_0=
+ \left\{\theta_1u^1+\theta_2u^2+\theta_3u^3:
+ \theta_1+\theta_2+\theta_3=0\right\}.
+\end{equation}
+Thus $A_0$ has full row rank five.  The same is true for all sufficiently
+large $m$, and the two-dimensional spaces $L_m=\ker A_m$ converge to
+$L_0=\ker A_0$.  One explicit description is furnished by the convergent
+orthogonal projectors
+\[
+ \Pi_m=I-A_m^{\mathsf T}(A_mA_m^{\mathsf T})^{-1}A_m.
+\]
+
+Fix an unordered component pair $\{a,b\}$.  Project $u^a-u^b$ onto $L_m$:
+\[
+ \ell_m^{ab}=\Pi_m(u^a-u^b)\longrightarrow u^a-u^b.
+\]
+The coordinates of $\ell_m^{ab}$ sum to zero, and
+$\sum_i(\ell_m^{ab})_i c_i^{(m)}=0$.  Normalize its positive and negative
+parts by their common total mass.  On their respective supports these give
+positive probability vectors $\alpha_m^{ab}$ and $\beta_m^{ab}$ with a
+common barycenter.  Strict positivity of $u^a$ on $B_a$ and of $u^b$ on
+$B_b$ makes the signs stable there, while all other coordinates carry total
+mass tending to zero.  In particular,
+\begin{equation}\label{eq:weightconvergence}
+ \alpha_m^{ab}\longrightarrow u^a,
+ \qquad \beta_m^{ab}\longrightarrow u^b,
+ \qquad
+ \limsup_m\norm{\alpha_m^{ab}}_\infty,
+ \limsup_m\norm{\beta_m^{ab}}_\infty\le\frac12.
+\end{equation}
+
+Write the unordered energy as
+\[
+ U_m=\sum_{i<j}e^{\gamma_m(c_i^{(m)})^{\mathsf T}c_j^{(m)}}.
+\]
+It is bounded because the ordered energy equals $2U_m$.  Let $\delta_m$ be
+the $\alpha_m^{ab}\otimes\beta_m^{ab}$ mass outside $B_a\times B_b$.
+By~\eqref{eq:weightconvergence}, $\delta_m\to0$.  Set
+\begin{equation}\label{eq:eta}
+ \epsilon_m=\max\{\delta_m,1/m\},
+ \qquad \eta_m=\exp(-1/\sqrt{\epsilon_m}).
+\end{equation}
+Then $\eta_m\to0$, while
+\[
+ \eta_m^{\delta_m}
+ =\exp(-\delta_m/\sqrt{\epsilon_m})\longrightarrow1.
+\]
+
+Apply Lemma~\ref{lem:balance} to the positive and negative supports with cost
+$1$ on $B_a\times B_b$ and cost $\eta_m$ elsewhere.  Since
+$e^{\gamma_m\norm{\mu_m}^2}\ge1$, equations
+\eqref{eq:maxweight} and~\eqref{eq:weightconvergence} show that the costed
+sum is at least $4-o(1)$.  On the other hand, that sum is at most
+\[
+ S_{ab,m}+\eta_m U_m,
+ \qquad
+ S_{ab,m}=\sum_{i\in B_a,\,j\in B_b}
+ e^{\gamma_m(c_i^{(m)})^{\mathsf T}c_j^{(m)}}.
+\]
+Because $U_m$ is bounded and $\eta_m\to0$, we obtain
+\begin{equation}\label{eq:crosslower}
+ S_{ab,m}\ge4-o(1).
+\end{equation}
+
+The three rectangles belonging to the component pairs
+$\{1,2\}$, $\{1,3\}$, and $\{2,3\}$ are disjoint sets of unordered pairs.
+Summing~\eqref{eq:crosslower} gives
+\[
+ U_m\ge S_{12,m}+S_{13,m}+S_{23,m}\ge12-o(1).
+\]
+Every bounded-energy sequence therefore has ordered liminf at least $24$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The construction~\eqref{eq:construction} proves the upper bound.  For the
+lower bound, suppose $\gamma_m\to\infty$ realizes
+$\liminf_{\gamma\to\infty}V_\gamma(7,4)$, and choose an exact minimizer at
+each $\gamma_m$.  Equation~\eqref{eq:upperenergy} makes these minimum energies
+bounded.  The preceding bounded-sequence argument, after passage to a
+convergent subsequence, gives liminf at least $24$.  Thus the limsup and
+liminf agree and equal $24$.
+\end{proof}
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex assisted with proof development, literature search, adversarial
+checking, and manuscript preparation.  Language-model output is not used as
+mathematical evidence: the result rests on the explicit argument above.  No
+numerical optimization, computer-assisted exhaustive search, or proof
+assistant is used in the proof.
+
+\printbibliography
+
+\end{document}

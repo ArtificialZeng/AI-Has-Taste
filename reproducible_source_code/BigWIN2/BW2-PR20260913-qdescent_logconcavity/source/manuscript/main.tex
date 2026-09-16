@@ -1,0 +1,366 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=28mm]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Des}{Des}
+\DeclareMathOperator{\inv}{inv}
+\newcommand{\NN}{\mathbb Z_{\geq0}}
+\newcommand{\Sym}{\mathfrak S}
+% Gaussian binomials use explicit standard matrix notation.
+\newcommand{\wt}{\mathrm w}
+\title{Strong $q$-log-concavity of $q$-descent coefficients}
+\author{Xiaojian Zeng\\[2pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove the strong coefficientwise $q$-log-concavity conjectured by
+Gaetz and Gao for the coefficients of their $q$-descent expansion.
+The proof establishes a directed inequality for Gaussian-binomial
+differences with two independently chosen cutoffs. After coefficient
+reversal, these kernels enumerate subsets whose minimum satisfies a
+prescribed upper bound. We adapt Krattenthaler's shifted-set injection by
+protecting the minimum of the larger subset, and give an explicit inverse
+on the image. A direct decomposition of the defining permutations then
+proves all the desired inequalities, including the diagonal cases, and
+shows that every coefficient polynomial in the stated range is nonzero.
+\end{abstract}
+
+\section{The coefficients and the result}
+
+Write $[n]=\{1,\ldots,n\}$, and let $q$ be an indeterminate. For
+$\pi\in\Sym_n$, put
+\[
+ \Des(\pi)=\{h\in[n-1]:\pi_h>\pi_{h+1}\},\qquad
+ \inv(\pi)=\#\{(h,\ell):h<\ell,\ \pi_h>\pi_\ell\}.
+\]
+For a finite nonempty $S\subset\mathbb Z_{>0}$, let $m=\max S$.
+Following Gaetz--Gao \cite[Theorem 5]{GaetzGao}, define, for $1\leq k\leq m$,
+\begin{equation}\label{eq:a-def}
+ a_k(S;q)=
+ \sum_{\substack{\pi\in\Sym_{m+k},\ \Des(\pi)=S\\
+ [m+k]\setminus[m]\ \subseteq\ \{\pi_1,\ldots,\pi_m\}}}
+ q^{\inv(\pi)},
+ \qquad a_0(S;q)=a_{m+1}(S;q)=0.
+\end{equation}
+These are the coefficients in their expansion
+\[
+ \sum_{\substack{\pi\in\Sym_n\\\Des(\pi)=S}}q^{\inv(\pi)}
+   =\sum_{k=1}^{m}a_k(S;q)\left[\begin{smallmatrix}n-m\\k\end{smallmatrix}\right]_{q}\qquad(n\geq m).
+\]
+Here $\left[\begin{smallmatrix}n\\k\end{smallmatrix}\right]_{q}$ is the Gaussian binomial coefficient, with value zero
+outside $0\leq k\leq n$. We write $f\geq_q g$ when $f-g\in\NN[q]$.
+A sequence has no internal zero polynomials if the indices of its
+nonzero terms form an interval.
+
+\begin{theorem}\label{thm:main}
+For every finite nonempty $S\subset\mathbb Z_{>0}$, with $m=\max S$,
+all the polynomials $a_k(S;q)$, $1\leq k\leq m$, are nonzero, and
+\begin{equation}\label{eq:main}
+ a_i(S;q)a_j(S;q)\geq_q a_{i-1}(S;q)a_{j+1}(S;q)
+ \qquad(1\leq i\leq j\leq m).
+\end{equation}
+\end{theorem}
+
+This proves the coefficient conjecture in
+\cite[Conjecture 7]{GaetzGao}. The definition in Section 1.2 of the
+consulted arXiv version prints $i<j$, while the nearby discussion also
+uses $i=j$. Theorem~\ref{thm:main} proves the literal strict-index
+statement and, explicitly, the additional diagonal inequalities.
+
+Bencs proved the ordinary coefficient log-concavity at $q=1$
+\cite[arXiv version, Proposition 4.3 and Corollary 4.4]{Bencs}.
+Gaetz--Gao established strong $q$-log-concavity for a different
+coefficient sequence, denoted $b_k(S;q)$ in their Theorem 6.
+Their following remark shows that a general transformation of arbitrary
+strongly $q$-log-concave $b$ sequences does not suffice for the $a$
+conjecture \cite{GaetzGao}.
+Our proof instead uses a decomposition into kernels for which a directed
+inequality holds for every ordered pair of cutoffs.
+
+The underlying transfer comes from Krattenthaler's proof of Gaussian
+$q$-log-concavity \cite[Section 2]{Krattenthaler}. We retain its shifted
+sets and last-maximum rule, but protect the minimum of the larger subset
+before computing the prefix counts. This additional property permits
+the two cutoff restrictions needed below.
+Related work of Liang--Sagan proves log-concavity of descent counts
+indexed by permutation length \cite[Theorem 6.6]{LiangSagan}; the index
+in Theorem~\ref{thm:main} is instead the expansion index $k$.
+
+\section{A directed inequality for cutoff kernels}
+
+For $m\geq1$ and $1\leq k,r\leq m$, set
+\begin{equation}\label{eq:K}
+ K_{k,r}=q^{k^2}\left(\left[\begin{smallmatrix}m\\k\end{smallmatrix}\right]_{q}-\left[\begin{smallmatrix}m-r\\k\end{smallmatrix}\right]_{q}\right),
+ \qquad K_{0,r}=K_{m+1,r}=0.
+\end{equation}
+The parameter $m$ is suppressed in this notation.
+
+\begin{theorem}\label{thm:kernel}
+For every $m\geq1$, $1\leq i\leq j\leq m$, and independently
+$1\leq r,s\leq m$, one has
+\begin{equation}\label{eq:kernel}
+ K_{i,r}K_{j,s}-K_{i-1,r}K_{j+1,s}\in\NN[q].
+\end{equation}
+In particular, no ordering assumption on $r$ and $s$ is required.
+\end{theorem}
+
+For a $k$-subset $U$ of $[m]$, write
+\[
+ \wt_k(U)=\sum_{u\in U}u-\frac{k(k+1)}2,
+ \qquad 0\leq\wt_k(U)\leq k(m-k).
+\]
+Let
+\[
+ \mathcal P_k(r)=\{U\subseteq[m]:|U|=k,\ \min U\leq r\},
+ \qquad H_{k,r}(q)=\sum_{U\in\mathcal P_k(r)}q^{\wt_k(U)}
+\]
+for $1\leq k\leq m$. Define
+$\mathcal P_0(r)=\mathcal P_{m+1}(r)=\varnothing$ and
+$H_{0,r}=H_{m+1,r}=0$; no minimum of the empty subset is used.
+The subset definition
+\[
+ \left[\begin{smallmatrix}n\\k\end{smallmatrix}\right]_{q}=\sum_{\substack{U\subseteq[n]\\|U|=k}}
+ q^{\sum_{u\in U}u-k(k+1)/2}
+\]
+gives
+\begin{equation}\label{eq:H}
+ H_{k,r}(q)=\left[\begin{smallmatrix}m\\k\end{smallmatrix}\right]_{q}-q^{kr}\left[\begin{smallmatrix}m-r\\k\end{smallmatrix}\right]_{q}
+ \qquad(1\leq k\leq m),
+\end{equation}
+since the excluded subsets are translations by $r$ of $k$-subsets of
+$[m-r]$. Reflecting each element $u$ to $n+1-u$ proves Gaussian
+reciprocity. Substituting it in \eqref{eq:H} yields
+\begin{equation}\label{eq:reverse}
+ q^{mk}H_{k,r}(q^{-1})=K_{k,r}(q).
+\end{equation}
+The equality also holds at the two zero boundaries. There are no negative
+powers on its left. Moreover, $U=[k]$ gives the constant term $1$ in
+$H_{k,r}$, so every interior kernel is nonzero.
+
+\begin{lemma}[Transfer preserving a minimum]\label{lem:transfer}
+Fix $1\leq i\leq j<m$ and put $\delta=j-i+1$. There is an injection
+from pairs $(A,B)$ of subsets of $[m]$ of sizes $i-1,j+1$ to pairs
+$(C,D)$ of sizes $i,j$ such that
+\begin{align}
+ \sum_{c\in C}c+\sum_{d\in D}d
+   &=\sum_{a\in A}a+\sum_{b\in B}b-\delta,\label{eq:sum}\\
+ \min D&=\min B,\qquad
+ \min C\leq\min A\quad\text{if }A\ne\varnothing.\label{eq:min}
+\end{align}
+The two subsets in a pair need not be disjoint.
+\end{lemma}
+
+\begin{proof}
+Protect $b=\min B$ by setting $B_0=B\setminus\{b\}$, and let
+$A_\delta=\{a+\delta:a\in A\}$. For integer
+$\delta\leq t\leq m+\delta$, define
+\[
+ f(t)=\#(A_\delta\cap[t])-\#(B_0\cap[t]).
+\]
+Every element of $A_\delta$ exceeds $\delta$, and $1\notin B_0$.
+Consequently
+\begin{equation}\label{eq:endpoint}
+ f(\delta)\geq1-\delta>-\delta.
+\end{equation}
+For $t\geq m$, every element of $B_0$ has been counted, so
+$f(t)\leq(i-1)-j=-\delta$.
+Let $M$ be the maximum of $f$ on the indicated integer interval, and
+let $L$ be the \emph{last} position at which this maximum is attained.
+Then \eqref{eq:endpoint} implies $L<m$. Put $e=L+1$.
+The increments of $f$ belong to $\{-1,0,1\}$; since $f(e)<f(L)$,
+\[
+ \delta<e\leq m,\qquad e\in B_0\setminus A_\delta,
+ \qquad f(e)=M-1.
+\]
+Define
+\begin{equation}\label{eq:map}
+ C=A\cup\{e-\delta\},\qquad D=B\setminus\{e\}.
+\end{equation}
+The added element is in $[m]\setminus A$, and the removed element is
+not $b$. Thus the sizes, \eqref{eq:sum}, and \eqref{eq:min} hold.
+
+It remains to recover the input from an output in the image.
+Recover $b$ as $\min D$, and on the same integer interval define
+\[
+ g(t)=\#\bigl((C+\delta)\cap[t]\bigr)
+       -\#\bigl((D\setminus\{b\})\cap[t]\bigr).
+\]
+Equation~\eqref{eq:map} implies
+\[
+ g(t)=f(t)+2\,\mathbf1_{\{t\geq e\}}.
+\]
+For $t<e$, one has $g(t)\leq M$. For $t\geq e$, the definition of
+the last maximum gives $f(t)\leq M-1$, hence $g(t)\leq M+1$;
+equality holds at $t=e$. Therefore $e$ is the \emph{first} position
+of the maximum of $g$. We recover
+$A=C\setminus\{e-\delta\}$ and $B=D\cup\{e\}$.
+This left inverse proves injectivity.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:kernel}]
+Suppose first that $2\leq i\leq j<m$. Apply Lemma~\ref{lem:transfer}
+to $A\in\mathcal P_{i-1}(r)$ and
+$B\in\mathcal P_{j+1}(s)$. The minimum properties give
+$C\in\mathcal P_i(r)$ and $D\in\mathcal P_j(s)$ independently
+of the ordering of $r,s$. The normalization constants satisfy
+\[
+ \frac{(i-1)i}2+\frac{(j+1)(j+2)}2
+ -\frac{i(i+1)}2-\frac{j(j+1)}2=\delta.
+\]
+Together with \eqref{eq:sum}, this shows that
+\[
+ \wt_i(C)+\wt_j(D)=\wt_{i-1}(A)+\wt_{j+1}(B).
+\]
+The injection is therefore weight preserving, and its image complement
+enumerates the coefficients of
+\begin{equation}\label{eq:H-ineq}
+ H_{i,r}(q)H_{j,s}(q)-H_{i-1,r}(q)H_{j+1,s}(q)\in\NN[q].
+\end{equation}
+If $i=1$ or $j=m$, the subtracted product is zero by convention,
+so \eqref{eq:H-ineq} holds in those cases as well, including $m=1$.
+Apply $q^{m(i+j)}$ times substitution $q\mapsto q^{-1}$ to
+\eqref{eq:H-ineq}. All exponents in both products are at most
+$m(i+j)$, so this operation only reverses a finite coefficient list.
+Equation~\eqref{eq:reverse} gives \eqref{eq:kernel}.
+\end{proof}
+
+\begin{remark}
+The protection step has a concrete role. With $m=4$, $i=j=2$,
+$A=\{2\}$ and $B=\{2,3,4\}$, the unmodified classical transfer
+\cite[Section 2]{Krattenthaler} gives
+$C=\{1,2\}$, $D=\{3,4\}$, losing the second minimum cutoff at $2$.
+The map in Lemma~\ref{lem:transfer} gives $C=D=\{2,3\}$.
+This is a distinction between maps, not a negative instance of a
+polynomial inequality.
+\end{remark}
+
+\section{Recovering the descent coefficients}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $T=S\setminus\{m\}$. For $1\leq r\leq m$, define
+\[
+ x_r(q)=\sum_{\substack{\sigma\in\Sym_m\\
+                   \Des(\sigma)=T,\ \sigma_m=r}}q^{\inv(\sigma)}.
+\]
+We prove directly from \eqref{eq:a-def} that
+\begin{equation}\label{eq:reduction}
+ a_k(S;q)=\sum_{r=1}^m x_r(q)K_{k,r}(q)
+ \qquad(0\leq k\leq m+1).
+\end{equation}
+For $1\leq k\leq m$, a permutation counted in \eqref{eq:a-def} has
+an increasing suffix $U=\{u_1<\cdots<u_k\}\subseteq[m]$.
+Its prefix consists of $[m+k]\setminus U$; standardizing this prefix
+gives a unique $\sigma\in\Sym_m$ with $\Des(\sigma)=T$.
+If $\sigma_m=r$, then the descent at position $m$ is equivalent to
+$r\geq u_1$, because exactly $u_1-1$ prefix values are smaller than
+$u_1$. Conversely, any such $(\sigma,U)$ reconstructs one permutation
+in \eqref{eq:a-def}: place the complement of $U$ in the relative order
+$\sigma$, then append $U$ increasingly. Thus this is a bijection.
+
+The prefix contributes $\inv(\sigma)$ inversions and the suffix
+contributes none. For $u_t$, the number of larger prefix values is
+$(m+k-u_t)-(k-t)=m-u_t+t$. Hence the cross inversions total
+\[
+ mk-\sum_{u\in U}u+\frac{k(k+1)}2=mk-\wt_k(U).
+\]
+Summing the weights and applying \eqref{eq:reverse} proves
+\eqref{eq:reduction} for interior $k$. At the two boundaries it follows
+from the zero conventions.
+
+For $1\leq i\leq j\leq m$, expanding \eqref{eq:reduction} now gives
+\begin{align*}
+ a_i(S;q)a_j(S;q)&-a_{i-1}(S;q)a_{j+1}(S;q)\\
+ &=\sum_{r,s=1}^m x_r(q)x_s(q)
+       \bigl(K_{i,r}K_{j,s}-K_{i-1,r}K_{j+1,s}\bigr)\geq_q0
+\end{align*}
+by Theorem~\ref{thm:kernel} and $x_r\in\NN[q]$.
+
+Finally, every $T\subseteq[m-1]$ is a descent set. To see this,
+partition the positions into blocks joined by the edges in $T$,
+assign consecutive value intervals to the blocks in increasing order,
+and reverse the entries within each block. The resulting permutation
+has descents exactly at $T$. Thus some $x_r$ is nonzero. For that $r$,
+$U=[k]$ belongs to $\mathcal P_k(r)$ for every $1\leq k\leq m$.
+Equation~\eqref{eq:reduction} therefore makes every interior $a_k$
+nonzero, which also establishes the no-internal-zero condition.
+\end{proof}
+
+\section{Exact checks and scope of comparison}
+
+The proof is uniform in all its parameters. The accompanying Python
+verifier provides finite checks using integer arithmetic. It rebuilds
+the subset families and defining permutations, and checks the transfer,
+its inverse, and coefficient signs. This use of reconstructed integer
+predicates and separate implementations has a methodological parallel
+in the finite certificates of Zeng et al.
+\cite[Sections 3--4]{ZengEtAl}: their verifier reconstructs the finite
+graphs and crosschecks exact searches. Here the finite calculations
+corroborate the displayed uniform proof.
+
+The completed checks cover the following ranges:
+\begin{center}
+\begin{tabular}{@{}p{0.43\textwidth}p{0.49\textwidth}@{}}
+\toprule
+Check & Exhaustive range and count\\
+\midrule
+Transfer and inverse & All $1\leq i\leq j<m\leq11$;
+  $1{,}444{,}125$ input pairs\\[3pt]
+Directed kernel inequalities & All $1\leq i\leq j\leq m\leq16$,
+  $1\leq r,s\leq m$; $112{,}676$ strict and $18{,}496$ diagonal
+  cases for each of $H$ and $K$\\[3pt]
+Original coefficient identities & Every nonempty $S$ with
+  $\max S\leq5$ and every $1\leq k\leq\max S$; $129$ identities
+  from $4{,}084{,}856$ enumerated permutations\\
+\bottomrule
+\end{tabular}
+\end{center}
+The kernel stage also checks $1{,}496$ pairs of the two subset/kernel
+identities. Ordinary coefficient convolution crosschecks all $2{,}730$
+directed $H$ inequalities through $m=7$.
+
+For the larger checks, coefficient lists are packed into integers by
+standard Kronecker substitution \cite[Section 3.1]{Harvey}.
+Each factor counts at most $2^m$ subsets, so each product coefficient
+is at most $4^m$. With base $B=2^{2m+4}$, adding a guard $B/2$ in
+every digit before subtracting the two products leaves every digit
+strictly between $0$ and $B$. There is no carry or borrow across digits;
+the guard bit in a digit survives exactly when the corresponding
+coefficient difference is nonnegative. This is a coefficient test,
+not just a sign test at a positive value of $q$.
+The source package includes the verifier, its results, and reproduction
+instructions. These finite ranges do not by themselves establish an
+inequality beyond the enumerated cases.
+
+The closest inspected proof method is the shifted-set construction
+in \cite{Krattenthaler}; the specific additional ingredient here is
+preservation of the larger subset's minimum. Liang--Sagan's
+$q$-order-ideal lemma \cite[Lemma 8.10]{LiangSagan} supplies another
+general framework, but a specialization to the present cutoff kernels
+has not been established here. The comparison with the full results of
+Liu--Xiao on transformations preserving log-concavity \cite{LiuXiao}
+remains incomplete because their full text was not accessible during
+the source check of 13 September 2026. No first-proof or exhaustive
+priority claim is made.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, literature searches,
+programming, separate exact checks, and manuscript preparation.
+No formal proof assistant was used. The mathematical justification is
+the explicit injection and permutation bijection given above; the
+computations supply reproducible finite corroboration.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

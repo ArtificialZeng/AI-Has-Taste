@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Zthirteen}{\mathbb Z/13\mathbb Z}
+\newcommand{\one}{\mathbf 1}
+
+\title{An Exact One-High-Boundary Obstruction for\\
+       Cyclic 13-Layer $K_7$-Free Weighted Graphs}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a restricted periodic layered model motivated by the $k=6$ case of a
+conjectured diameter bound for $K_7$-free graphs that is not decided by the
+counterexamples discussed below.  Consider a
+cyclic weighted graph with 13 nonempty layers, at most four vertices per
+layer, and edges only within a layer or between consecutive layers.  Suppose
+that all weights are nonnegative, every weighted open neighborhood has weight
+at least one, the graph is $K_7$-free, and exactly one consecutive pair of
+layers has total cardinality at least seven.  We prove, by a symmetry-reduced
+exact computation, that the total weight is at least
+\[
+   \frac{4154}{851}=\frac{39}{8}+\frac{43}{6808}.
+\]
+The reduction leaves 480 linear programs.  A numerical solver is used only to
+find candidate dual vectors; every retained vector and every comparison is
+then checked over the rational numbers.  Thus a four-slot period capable of
+beating the critical mass $39/8$ must have at least two high boundaries.  This
+is a result about the stated layered model only; it does not decide the
+unrestricted $K_7$-free diameter problem.
+\end{abstract}
+
+\section{Context and contribution}
+
+For a connected graph $G$, write $n=|V(G)|$, $\delta(G)$ for its minimum
+degree, and $\operatorname{diam}(G)$ for its diameter.  Erd\H{o}s, Pach,
+Pollack, and Tuza initiated the relevant clique-free refinements of the
+classical order--minimum-degree diameter bounds
+\cite{ErdosPachPollackTuza1989}.  Czabarka, Singgih, and Sz\'ekely later
+formulated the following unified conjecture: for fixed integers $k\geq 3$ and
+$\delta\geq \lceil 3k/2\rceil-1$, every connected $K_{k+1}$-free graph of
+order $n$ and minimum degree at least $\delta$ should satisfy
+\begin{equation}\label{eq:diameter-conjecture}
+ \operatorname{diam}(G)
+ \leq \left(3-\frac{2}{k}\right)\frac{n}{\delta}+O_{k,\delta}(1).
+\end{equation}
+See Conjecture~2 of \cite{CzabarkaSinggihSzekely2021}.  Chen and Chen recently
+constructed counterexamples for every $k\geq7$ and sufficiently large minimum
+degree; their even-case theorem has
+$k=2r$ and assumes $r\geq4$ \cite{ChenChen2026}.  Consequently that
+construction does not decide the first even boundary $k=6$, where
+\eqref{eq:diameter-conjecture} asks for coefficient $8/3$ and threshold
+$\delta\geq8$.
+
+Weighted layered graphs are useful because, for integral weights (or rational
+weights after a common scaling), replacing a vertex of weight $a$ by an
+independent set of $a$ twins turns weighted open-neighborhood bounds into
+ordinary degree bounds; this is the clump-graph viewpoint used in
+\cite{CzabarkaSinggihSzekely2021,ChenChen2026}.  In the cyclic 13-layer
+periodic template considered here, after normalizing the minimum weighted
+degree to one, a period of total mass $M$ advances the eventual diameter by
+13 while contributing $M\delta$ vertices after scaling and blow-up.  Beating
+the coefficient $8/3$ within that template therefore requires
+$13>(8/3)M$, or
+\begin{equation}\label{eq:critical-mass}
+ M<\frac{39}{8}.
+\end{equation}
+
+Our contribution is an exact obstruction to \eqref{eq:critical-mass} in the
+one-high-boundary, four-slot submodel.  It does not address periods with two
+or more high boundaries, layers of cardinality greater than four, nonlocal
+edges, or arbitrary $K_7$-free graphs.
+
+\section{The weighted cyclic model}
+
+Let $H$ be a finite simple graph whose vertex set is partitioned into 13
+nonempty layers
+\[
+ V(H)=\bigsqcup_{i\in\Zthirteen}L_i,
+ \qquad 1\leq c_i:=|L_i|\leq4.
+\]
+Edges are permitted only within one layer or between cyclically consecutive
+layers.  A weight is a map $w:V(H)\to\mathbb R_{\geq0}$.  Its weighted open
+degree at $v$ is
+\[
+ d_w(v)=\sum_{u\in N_H(v)}w(u),
+\]
+and its total mass is $M(w)=\sum_{v\in V(H)}w(v)$.  Call the boundary
+$\{i,i+1\}$ \emph{high} when $c_i+c_{i+1}\geq7$.
+
+\begin{theorem}\label{thm:main}
+Suppose that $H$ is $K_7$-free, exactly one boundary is high, and
+$d_w(v)\geq1$ for every $v\in V(H)$.  Then
+\[
+ M(w)\geq\frac{4154}{851}
+       =\frac{39}{8}+\frac{43}{6808}>\frac{39}{8}.
+\]
+In particular, any graph in this four-slot cyclic model having total mass
+strictly below $39/8$ has at least two high boundaries.
+\end{theorem}
+
+Allowing zero weights makes the statement at least as strong as the
+positive-weight formulation used for literal blow-ups.  The zero weights are
+also convenient in the monotonicity reduction below.
+
+\section{Reduction to 480 cases}
+
+Rotate the unique high boundary to $\{0,1\}$.  Reflection permits us to take
+$(c_0,c_1)=(3,4)$ or $(4,4)$.  Every other adjacent sum is at most six.
+
+\begin{lemma}[Edge completion]\label{lem:completion}
+It is enough to consider graphs in which every permitted edge outside
+$L_0\cup L_1$ is present and the graph induced by $L_0\cup L_1$ is an
+edge-maximal $K_7$-free graph.
+\end{lemma}
+
+\begin{proof}
+Every clique in a 13-layer cyclic-local graph lies in one layer or in two
+consecutive layers.  Away from $\{0,1\}$, each such two-layer union has at
+most six vertices, so adding all permitted edges there cannot create a
+$K_7$.  Within $L_0\cup L_1$, add edges only until the induced graph is
+edge-maximal subject to being $K_7$-free.  Adding edges can only increase
+weighted open degrees.  Hence the feasible set for the completed graph
+contains the feasible set for the original graph, and a mass lower bound for
+every completion is also a lower bound for the original graph.
+\end{proof}
+
+For a $3+4$ junction, an edge-maximal completion is $K_7$ with one edge
+deleted.  Up to permutations inside the two layers, the deleted edge is
+inside the 3-layer, inside the 4-layer, or crossing, giving three types.
+
+For a $4+4$ junction, let $F$ be the set of edges missing from $K_8$.  The
+graph is $K_7$-free exactly when, for each vertex $v$, some edge of $F$ avoids
+$v$.  Equivalently, the edges in $F$ have empty common intersection.  Every
+inclusion-minimal family of 2-subsets with empty common intersection is either
+two disjoint edges or the three edges of a triangle: if no two edges are
+disjoint, pairwise intersection together with empty total intersection forces
+the triangle.  Direct orbit enumeration under $S_4\times S_4$ gives ten
+types.  The verifier regenerates all 266 labelled minimal families of these
+two forms and checks that the ten stored representatives are exhaustive.
+
+It remains to reduce the possible layer-cardinality vectors.  Order vectors
+coordinatewise, holding $c_0,c_1$ fixed and retaining the condition that no
+other boundary is high.
+
+\begin{lemma}[Cardinality dominance]\label{lem:dominance}
+It suffices to check coordinatewise-maximal admissible cardinality vectors.
+Such a vector is maximal exactly when every ordinary coordinate $c_i<4$
+with $i\notin\{0,1\}$ is incident with an ordinary boundary whose endpoint
+sum is six.
+\end{lemma}
+
+\begin{proof}
+Suppose an ordinary layer can be enlarged while preserving admissibility.
+Give each added vertex weight zero.  Existing weighted degrees do not
+decrease.  A new vertex has the old neighborhood of any old vertex in its
+layer, together with that old vertex itself, so its weighted degree is at
+least one.  Thus enlarging a layer cannot increase the minimum feasible mass.
+Checking a maximal vector therefore lower-bounds every vector below it.
+
+An ordinary coordinate below four can be increased precisely when neither of
+its incident ordinary boundaries has sum six.  This proves the stated
+characterization.
+\end{proof}
+
+Exhaustive integer enumeration gives 60 anchored maximal $3+4$ vectors and
+51 anchored maximal $4+4$ vectors.  Reflection fixing the high boundary
+reduces the latter to 30 representatives.  The topology types are closed
+under this reflection.  The number of remaining cases is therefore
+\[
+ 60\cdot3+30\cdot10=480.
+\]
+
+\section{Exact linear-program certificates}
+
+Fix one completed graph from the preceding reduction and let $A$ be its
+adjacency matrix.  Its minimum feasible mass is the optimum of the covering
+linear program
+\begin{equation}\label{eq:primal}
+ \min\ \one^{\mathsf T}w
+ \quad\text{subject to}\quad Aw\geq\one,\quad w\geq0.
+\end{equation}
+The dual packing program is
+\begin{equation}\label{eq:dual}
+ \max\ \one^{\mathsf T}y
+ \quad\text{subject to}\quad A^{\mathsf T}y\leq\one,\quad y\geq0.
+\end{equation}
+Thus any rational vector feasible for \eqref{eq:dual} is, by weak duality, an
+exact lower-bound certificate for \eqref{eq:primal}.
+
+The accompanying verifier constructs every cardinality vector, every
+junction orbit, and every adjacency matrix.  SciPy's interface to HiGHS
+\cite{VirtanenEtAl2020,HuangfuHall2018} is used only to discover a candidate
+dual vector.  Each coordinate is then reconstructed as a
+\texttt{fractions.Fraction}; the verifier checks nonnegativity, every one of
+the inequalities $A^{\mathsf T}y\leq\one$, and the objective over
+$\mathbb Q$.  If reconstruction or an exact inequality fails, execution
+aborts.  This separation of search from exact checking follows the same
+proof-carrying principle used in other symmetry-reduced finite graph
+certificates, for example \cite{202608.1658}.
+
+All 480 cases have a checked dual objective at least $4154/851$.  The least
+objective among the generated certificates occurs for
+\[
+ (c_0,\ldots,c_{12})=(3,4,2,3,3,3,3,3,3,3,3,3,3)
+\]
+with the missing junction edge inside $L_0$.  One certificate, grouped by
+layers and with a common denominator 851, has numerator blocks
+\begin{align*}
+ &(98,0,98);\ (153,153,153,153);\ (98,98);\ (47,47,47);\\
+ &(187,187,187);\ (112,112,112);\ (22,22,22);\\
+ &(157,157,157);\ (157,157,157);\ (22,22,22);\\
+ &(112,112,112);\ (187,187,187);\ (47,47,47).
+\end{align*}
+Its coordinates sum to $4154/851$.  The exact verifier checks its dual
+inequalities as part of the same uniform run.  Since every reduced case has a
+rational dual of value at least this number, weak duality proves
+Theorem~\ref{thm:main}.
+
+\section{Reproducibility, limitations, and disclosure}
+
+Run the ancillary program from the project root with
+\begin{center}
+\texttt{python3 evidence/one\_high\_junction.py}.
+\end{center}
+The audited run used Python 3.10.12, NumPy 2.2.6, and SciPy 1.15.3.  It
+reports the 60 and 30 cardinality representatives, the three and ten junction
+types, all 480 exact certificate checks, and the least certified value above.
+The floating-point optimizer is outside the proof's trust boundary: only the
+subsequent rational inequalities are used as evidence.
+
+The theorem leaves untouched all configurations with two or more high
+boundaries.  Missing edges at multiple high boundaries can interact through
+shared layers, so their topology and dominance reductions require a separate
+analysis.  The theorem also says nothing about larger layers, edges outside
+the cyclic locality rule, or general $K_7$-free graphs.  In particular, it
+neither proves nor disproves the $k=6$ instance of
+\eqref{eq:diameter-conjecture}.
+
+OpenAI Codex assisted with literature search, the initial search-space and
+code design, exact-computation organization, adversarial review, and
+manuscript preparation.  Language-model output is not mathematical evidence.
+The stated finite theorem rests on the human-readable reductions above and
+the accompanying exact verifier; no proof assistant was used.
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

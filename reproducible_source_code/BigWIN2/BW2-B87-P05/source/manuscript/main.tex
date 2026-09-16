@@ -1,0 +1,337 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.12in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={The First Multiset-Permutation Instability for the Consecutive Pattern 21435},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\W}{\mathcal W}
+\newcommand{\one}{\mathbf 1}
+
+\title{The First Multiset-Permutation Instability\\
+for the Consecutive Pattern $21435$}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a positive multiplicity vector $\alpha=(\alpha_1,\ldots,\alpha_m)$,
+let $F_\alpha(t)$ enumerate words of content $\alpha$ by occurrences of the
+consecutive pattern $21435$.  We prove that $F_\alpha$ is invariant under
+permuting the coordinates of $\alpha$ whenever the total length is at most
+eight.  At length nine, the unique unstable unordered content is
+$\{2,1^7\}$.  If the repeated letter has rank $1,2,3,$ or $4$, its polynomial
+is
+\[
+  176026+5368t+46t^2,
+\]
+whereas ranks $5,6,7,$ and $8$ give
+\[
+  176025+5370t+45t^2.
+\]
+The proof classifies the four possible overlaps, evaluates the first two
+binomial occurrence moments, and uses binomial inversion.  Exact exhaustive
+enumeration through length nine is supplied only as a reproducibility check.
+This result concerns one boundary case and does not resolve the general
+classification of stable consecutive patterns.
+\end{abstract}
+
+\section{Context and statement}
+
+The cluster method organizes consecutive occurrences by their overlaps
+\cite{GouldenJackson1979}; in the permutation setting, overlap constraints can
+be encoded by posets and their linear extensions
+\cite{ElizaldeNoy2012}.  Generating functions for occurrences of consecutive
+patterns in permutations and words have also been studied through symmetric
+functions \cite{MendesRemmel2006}.  For multiset permutations, an earlier
+symmetry result for classical pattern avoidance is due to Savage and Wilf
+\cite{SavageWilf2006}.
+
+Chen, Fang, and Kitaev recently formalized \emph{stability}: the full
+occurrence distribution of a pattern is stable when it is unchanged by every
+permutation of the multiplicities \cite{ChenFangKitaev2026}.  They proved a
+broad sufficient criterion for instability.  Their Remark~4.13 singles out
+$\underline{21435}$ because its minimal standard extension is the
+all-distinct word $2143657$, so that criterion does not decide this pattern.
+They conjectured that a consecutive pattern is stable exactly when it is
+monotone.  The theorem below settles only the exact finite boundary for this
+one pattern.  In particular, it does not settle their general conjecture.
+
+Let $\alpha=(\alpha_1,\ldots,\alpha_m)\in\mathbb Z_{>0}^m$, put
+$N=\sum_j\alpha_j$, and let $\W_\alpha$ be the words in which the letter $j$
+appears $\alpha_j$ times.  For $w=w_1\cdots w_N$, define
+\[
+ c(w)=\#\{i: w_{i+1}<w_i<w_{i+3}<w_{i+2}<w_{i+4}\}
+\]
+and
+\[
+ F_\alpha(t)=\sum_{w\in\W_\alpha}t^{c(w)}.
+\]
+We call the unordered multiplicity type of $\alpha$ stable if
+$F_\alpha=F_{\sigma\alpha}$ for every permutation $\sigma$ of the
+coordinates.
+
+\begin{theorem}\label{thm:main}
+The consecutive pattern $21435$ has the following exact classification.
+\begin{enumerate}
+\item Every positive multiplicity vector with $N\leq 8$ has stable type.
+\item At $N=9$, the only unstable unordered type is $\{2,1^7\}$.
+\item For that type, let $\alpha^{(r)}$ denote the content on eight ordered
+  letters in which the letter of rank $r$ occurs twice.  Then
+  \[
+  F_{\alpha^{(r)}}(t)=
+  \begin{cases}
+  176026+5368t+46t^2,&1\leq r\leq4,\\
+  176025+5370t+45t^2,&5\leq r\leq8.
+  \end{cases}
+  \]
+  No word of either content has three or more occurrences.
+\end{enumerate}
+\end{theorem}
+
+The elementary symmetric functions entering the proof below are not an
+asymptotic device: they are finite certificates that the marked-occurrence
+counts are invariant under coordinate permutations.  For a distinct
+coefficient-recovery setting in which elementary symmetric functions play an
+algorithmic role, see \cite{Zeng2026Bezout}; we use no complexity result from
+that work.
+
+\section{The overlap posets}
+
+An occurrence beginning at position $i$ imposes the strict chain
+\begin{equation}\label{eq:one-occ}
+ w_{i+1}<w_i<w_{i+3}<w_{i+2}<w_{i+4}.
+\end{equation}
+For two starts at distance $s\in\{1,2,3,4\}$, superimpose the two translated
+copies of \eqref{eq:one-occ}.  This gives the complete overlap information
+needed through length nine.
+
+\begin{lemma}\label{lem:overlaps}
+Two occurrences at start separation $1$ or $3$ are incompatible.  At
+separation $2$, their relations form the seven-element chain
+\begin{equation}\label{eq:shift2}
+ w_{i+1}<w_i<w_{i+3}<w_{i+2}<w_{i+5}<w_{i+4}<w_{i+6}.
+\end{equation}
+At separation $4$, write
+\[
+\begin{aligned}
+ a_1&=w_{i+1},&a_2&=w_i,&a_3&=w_{i+3},&a_4&=w_{i+2},\\
+ c&=w_{i+4},&b&=w_{i+5},&d_1&=w_{i+7},&d_2&=w_{i+6},
+ &d_3&=w_{i+8}.
+\end{aligned}
+\]
+The resulting nine-element poset is
+\begin{equation}\label{eq:shift4}
+ a_1<a_2<a_3<a_4<c<d_1<d_2<d_3,
+ \qquad b<c,
+\end{equation}
+and its only incomparable pairs are $\{b,a_j\}$ for $1\leq j\leq4$.
+\end{lemma}
+
+\begin{proof}
+Use zero-based local positions.  A copy of \eqref{eq:one-occ} has value order
+$1<0<3<2<4$.  At shift $1$, the union contains the directed cycle
+\[
+ 2<1<0<3<2,
+\]
+and at shift $3$ it contains $3<2<4<3$.  At shift $2$, taking transitive
+closure gives the position order
+\[
+ 1,0,3,2,5,4,6,
+\]
+which is \eqref{eq:shift2}.  At shift $4$, writing the two chains explicitly
+gives \eqref{eq:shift4}.  The element $b$ lies below $c$ but has no relation
+to the four-element chain below $c$; all other pairs are comparable.
+\end{proof}
+
+\begin{lemma}\label{lem:degree}
+If $N\leq9$ and the content of $w$ has a repeated letter, then $c(w)\leq2$.
+\end{lemma}
+
+\begin{proof}
+Among words of length at most nine, two distinct occurrence starts differ by
+at most four.  Lemma~\ref{lem:overlaps} shows that all pairwise differences
+among three starts would have to lie in $\{2,4\}$.  The only possible
+three-start set is therefore $\{i,i+2,i+4\}$, and it requires $N=9$.
+Superimposing its three occurrence chains gives the strict total order
+\[
+ w_{i+1}<w_i<w_{i+3}<w_{i+2}<w_{i+5}<w_{i+4}
+ <w_{i+7}<w_{i+6}<w_{i+8}.
+\]
+Thus its nine letters are distinct, contradicting the assumed repetition.
+\end{proof}
+
+\section{Binomial moments and stability}
+
+Set
+\[
+ D(\alpha)=\prod_{j=1}^m\alpha_j!,
+ \qquad
+ e_k(\alpha)=\sum_{\substack{S\subseteq[m]\\|S|=k}}
+                    \prod_{j\in S}\alpha_j,
+\]
+with $e_k=0$ when $m<k$.  Marking subsets of occurrences leads to the
+binomial moments
+\[
+ B_k(\alpha)=\sum_{w\in\W_\alpha}\binom{c(w)}k.
+\]
+
+\begin{lemma}\label{lem:moments}
+For $N\leq9$,
+\begin{align}
+ B_1(\alpha)
+   &=\one_{N\geq5}\,(N-4)(N-5)!\frac{e_5(\alpha)}{D(\alpha)},
+       \label{eq:B1}\\
+ B_2(\alpha)
+   &=\one_{N\geq7}\,(N-6)(N-7)!\frac{e_7(\alpha)}{D(\alpha)}
+     +\one_{N=9}\,Q(\alpha),                         \label{eq:B2}
+\end{align}
+where $Q(\alpha)$ counts assignments of content $\alpha$ to the
+shift-$4$ poset \eqref{eq:shift4}.  For repeated contents,
+\[
+ Q(\alpha)=0
+ \quad\text{unless the unordered type is }\{2,1^7\}.
+\]
+For $\alpha^{(r)}$ of that type,
+\begin{equation}\label{eq:Q}
+ Q(\alpha^{(r)})=
+ \begin{cases}1,&1\leq r\leq4,\\0,&5\leq r\leq8.
+ \end{cases}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Fix one start.  Choose the five distinct ranks used in
+\eqref{eq:one-occ}.  A chosen five-set $S$ has a unique placement in the
+chain, and the remaining positions can be filled in
+\[
+ \frac{(N-5)!}{\prod_j(\alpha_j-\one_{j\in S})!}
+ =\frac{(N-5)!}{D(\alpha)}\prod_{j\in S}\alpha_j
+\]
+ways.  Sum over $S$ and over the $N-4$ starts to obtain \eqref{eq:B1}.
+
+For a fixed pair of starts at separation $2$, the seven-chain
+\eqref{eq:shift2} gives in the same way
+\[
+ (N-7)!\frac{e_7(\alpha)}{D(\alpha)}.
+\]
+There are $N-6$ such start pairs.  Separations $1$ and $3$ are impossible,
+and within $N\leq9$ a separation-$4$ pair occurs only at $N=9$.  Its count is
+$Q(\alpha)$, proving \eqref{eq:B2}.  Because these are counts of marked sets
+of occurrences, a word having further unmarked occurrences creates no
+overcounting issue.
+
+It remains to analyze $Q$.  Equal labels in a strict poset assignment can
+occupy only incomparable elements.  In \eqref{eq:shift4}, every incomparable
+pair is $\{b,a_j\}$, and all such pairs share $b$.  Hence a non-injective
+assignment of all nine positions can have exactly one repeated rank, of
+multiplicity two.  This proves the vanishing assertion for every other
+repeated content.
+
+For $\alpha^{(r)}$, the equal positions must be $b$ and one $a_j$.  The lower
+five positions $a_1,a_2,a_3,a_4,b$ consequently use four distinct ranks, all
+below the four distinct ranks at $c,d_1,d_2,d_3$.  They must therefore be
+ranks $1,2,3,4$.  The chain fixes their placement, and $b$ can equal the
+specified repeated rank in exactly one way.  This is possible precisely when
+$r\leq4$, giving \eqref{eq:Q}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The cases $N<5$ or $m<5$ are immediate: no occurrence is possible.  Now
+suppose the content has a repeated letter.  By Lemma~\ref{lem:degree}, for
+$N\leq9$ we may write
+\[
+ F_\alpha(t)=A_0+A_1t+A_2t^2.
+\]
+Since $|\W_\alpha|=N!/D(\alpha)$, binomial inversion is simply
+\begin{equation}\label{eq:inversion}
+ A_2=B_2,
+ \qquad A_1=B_1-2B_2,
+ \qquad A_0=\frac{N!}{D(\alpha)}-B_1+B_2.
+\end{equation}
+
+For $N\leq8$, every expression on the right of
+\eqref{eq:B1}, \eqref{eq:B2}, and \eqref{eq:inversion} is symmetric in the
+coordinates of $\alpha$.  Thus every repeated content has stable type.  An
+all-distinct content has a singleton coordinate orbit, so it is stable as
+well.
+
+At $N=9$, the same argument applies to every repeated unordered type other
+than $\{2,1^7\}$, because Lemma~\ref{lem:moments} makes its $Q$ term zero.
+The all-distinct type again has a singleton coordinate orbit.  It remains to
+evaluate the exceptional type.  For every $r$,
+\[
+ D(\alpha^{(r)})=2,
+ \qquad |\W_{\alpha^{(r)}}|=\frac{9!}{2}=181440,
+\]
+and
+\[
+ e_5(\alpha^{(r)})=2\binom74+\binom75=91,
+ \qquad
+ e_7(\alpha^{(r)})=2\binom76+\binom77=15.
+\]
+Consequently
+\[
+ B_1=5\cdot4!\frac{91}{2}=5460,
+ \qquad
+ B_2=3\cdot2!\frac{15}{2}+Q(\alpha^{(r)})
+     =45+Q(\alpha^{(r)}).
+\]
+Substitution of \eqref{eq:Q} into \eqref{eq:inversion} gives the two stated
+polynomials.  They differ, so $\{2,1^7\}$ is unstable.  The degree assertion
+is Lemma~\ref{lem:degree}.
+\end{proof}
+
+\section{Reproducibility and scope}
+
+The accompanying standard-library Python program
+\texttt{overlap\_moment\_check.py} reconstructs the transitive closures in
+Lemma~\ref{lem:overlaps} and enumerates every word for all $511$ ordered
+positive contents of total length at most nine.  It checks the two moment
+formulas using exact integers over $7{,}685{,}705$ words, verifies that the
+maximum occurrence count for repeated contents is two, and reproduces the
+eight exceptional polynomials.  Its frozen plain-text output is included as
+\texttt{overlap\_moment\_check.out}.  These computations corroborate the
+argument; they are not used as a proof of the theorem.
+
+The closest source comparison made here is to the cited version of
+Chen--Fang--Kitaev.  That source states neither the length-nine classification
+nor the two coefficient lists proved above.  This limited comparison is not a
+claim of priority.  The broader conjecture that all non-monotone consecutive
+patterns are unstable remains outside the present result.
+
+\paragraph{Computational and AI assistance.}
+A generative-AI system assisted with proof exposition, bibliography screening,
+and drafting the exact verification program.  The displayed mathematical
+argument was checked against the explicit overlap relations and integer moment
+identities, and the deterministic computations were replayed during a separate
+internal mathematical audit, which does not constitute peer review.  The
+verification uses no floating-point arithmetic and no external mathematical
+software.  Neither the AI output nor the successful computation is treated as
+mathematical proof.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

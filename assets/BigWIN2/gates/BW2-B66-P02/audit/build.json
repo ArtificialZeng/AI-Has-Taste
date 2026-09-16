@@ -1,0 +1,18 @@
+{
+  "verdict": "accept",
+  "job_id": "win-00066-p02-release-7cbcf9ae4463",
+  "snapshot_digest": "78f13812c20c2932e4184a64e78a3fb00f12c84685f6657c142f022a218613ce",
+  "manuscript_digest": "451c5965a016ce02a554d92dada0b5943be51ea527facb125a80195cf272a217",
+  "pdf_digest": "e76c56343931f5a2023ec69e9b98447c3b0a9987c1dd61adebd80435f0ab1ec6",
+  "report": "audit/build.md",
+  "build_log": "manuscript/main.log",
+  "build_log_digest": "5088748354a75fa6766b638951491e968c0098f906736e8a5dd54a14e31531b1",
+  "clean_build": true,
+  "command": "cd manuscript && latexmk -C main.tex && pdflatex -interaction=nonstopmode -halt-on-error main.tex && bibtex main && pdflatex -interaction=nonstopmode -halt-on-error main.tex && pdflatex -interaction=nonstopmode -halt-on-error main.tex",
+  "pages": 4,
+  "all_fonts_embedded": true,
+  "pdf_metadata_checked": true,
+  "diagnostics": [
+    "One 1.50 pt overfull hbox and nonfatal underfull hboxes were visually checked and do not cross margins or impair legibility."
+  ]
+}

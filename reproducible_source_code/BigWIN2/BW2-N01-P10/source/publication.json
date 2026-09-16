@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "writer_job_id": "newwin-00001-p10-write-fc6954943241",
+  "source_files": [
+    "manuscript/README.md",
+    "manuscript/check-coefficient-certificate.py",
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex",
+    "engine": "pdfLaTeX",
+    "bibliography": "BibTeX with installed amsplain.bst"
+  },
+  "user_library_entries": [
+    {
+      "registry_row": 17,
+      "bibtex_key": "Zeng2026MultiplicityArxiv",
+      "primary_record": "https://arxiv.org/abs/2608.18179v1"
+    }
+  ]
+}

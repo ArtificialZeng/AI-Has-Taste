@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amsthm,amssymb,booktabs,hyperref,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\title{A Counterexample to the Proposed Last Occurrence in the Largest-Odd-Divisor Recurrence}
+\author{Xiaojian Zeng\\PBC School of Finance, Tsinghua University, 100190\\\texttt{xiaojianzeng@foxmail.com}}
+\date{September 2, 2026}
+\hypersetup{pdftitle={A Counterexample to the Proposed Last Occurrence in the Largest-Odd-Divisor Recurrence},pdfauthor={Xiaojian Zeng},colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $p_n$ be the $n$th prime and let $a_0=0$, with $a_n$ equal to the largest odd divisor of $a_{n-1}+p_n$. The OEIS entry A114216 asks whether $a_{33900}=1$ is the last occurrence of $1$. We give the exact counterexample $n=78{,}493{,}252$. At this index, $p_n=1{,}579{,}691{,}809$ and $a_{n-1}=567{,}791{,}839$, whose sum is $2^{31}$. Two independent exact-integer implementations reconstruct the prime index and the recurrence state.
+\end{abstract}
+\section{Statement and counterexample}
+For a positive integer $m$, write $\operatorname{odd}(m)=m/2^{v_2(m)}$. With one-based prime indexing, define
+\[
+ a_0=0,\qquad a_n=\operatorname{odd}(a_{n-1}+p_n)\quad(n\geq1).
+\]
+The sequence and the question whether the occurrence at $33900$ is last are recorded in OEIS A114216~\cite{oeis114216}. The question has also been encoded as an open Lean statement in the Formal Conjectures repository~\cite{formalconjectures114216}; that encoding is a statement, not a proof.
+\begin{theorem}
+The assertion that $a_n\ne1$ for every $n>33900$ is false. Specifically, $a_{78{,}493{,}252}=1$.
+\end{theorem}
+\begin{proof}
+Exact reconstruction of the recurrence gives
+\[
+ p_{78{,}493{,}252}=1{,}579{,}691{,}809,\qquad
+ a_{78{,}493{,}251}=567{,}791{,}839.
+\]
+Consequently
+\[
+ a_{78{,}493{,}251}+p_{78{,}493{,}252}=2{,}147{,}483{,}648=2^{31}.
+\]
+The largest odd divisor of $2^{31}$ is $1$. Since $78{,}493{,}252>33900$, this disproves the proposed last occurrence.
+\end{proof}
+This theorem does not assert that the displayed index is the first occurrence after $33900$, nor does it make a claim about later occurrences.
+\section{Exact verification}
+The serialized certificate consists of the five integers in Table~\ref{tab:w}.
+\begin{table}[h]\centering
+\begin{tabular}{lr}\toprule field & value\\ \midrule
+$n$ & $78{,}493{,}252$\\
+$p_n$ & $1{,}579{,}691{,}809$\\
+$a_{n-1}$ & $567{,}791{,}839$\\
+$a_{n-1}+p_n$ & $2{,}147{,}483{,}648$\\
+exponent & $31$\\ \bottomrule\end{tabular}
+\caption{Exact counterexample certificate.}\label{tab:w}
+\end{table}
+The discovery computation used an odd-only segmented sieve of Eratosthenes and repeated exact division by two, scanning through $10^8$ recurrence terms. An independent verifier did not import the discovery code: it used SymPy 1.14.0's prime iterator, counted primes through the asserted $p_n$, and recomputed all recurrence states with a binary-valuation formula. It checked separately the prime index and preceding state, and the exact power-of-two identity. Both computations used CPython 3.10.12 and exited successfully. Code, the literal JSON certificate, raw logs, and environment records accompany this note. No floating-point value enters the recurrence or the decisive equality. No proof assistant was used.
+\section{Source and novelty scope}
+OEIS reports the earlier occurrence through $123729+400559=2^{19}$ and no subsequent occurrence below $10^7$~\cite{oeis114216}. Searches of the OEIS entry, its linked records, the Formal Conjectures source, and identifier/exact-phrase web queries through September 2, 2026 located no prior resolution. This is a bounded search statement, not a claim that an exhaustive search of all literature is possible. OEIS attributes the sequence to Zak Seidov and records later correction of its definition and offset~\cite{oeis114216}.
+\section*{Data, code, and computational disclosure}
+The exact certificate, both verification implementations, and the recorded
+commands accompany this note. Automated language assistance was used during
+drafting and adversarial checking; the exact computation, mathematical claim,
+and final manuscript were independently checked and remain the author's
+responsibility.
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

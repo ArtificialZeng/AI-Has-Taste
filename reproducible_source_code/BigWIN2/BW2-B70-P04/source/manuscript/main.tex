@@ -1,0 +1,475 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\geometry{margin=1in}
+\setlength{\emergencystretch}{2em}
+\hypersetup{
+  pdftitle={A Certified Zero Count in a Finite Fibonacci-Zeta Rectangle},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ZF}{Z_F}
+\newcommand{\real}{\operatorname{Re}}
+\newcommand{\imag}{\operatorname{Im}}
+
+\title{A Certified Zero Count in a Finite Fibonacci-Zeta Rectangle}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190, China. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{8 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $F_1=F_2=1$, $F_{n+2}=F_{n+1}+F_n$, and
+$\ZF(s)=\sum_{n\geq 1}F_n^{-s}$ for $\real s>0$.  We prove, with zeros
+counted with analytic multiplicity, that
+\[
+ \#\{\rho:\ZF(\rho)=0,\ \real\rho\geq0.73,\
+                 0<\imag\rho\leq8596696\}=1.
+\]
+Moreover, the closed disk of radius $10^{-6}$ centered at
+$0.730178633163+8596695.206382\ii$ contains exactly one distinct zero,
+and that zero is simple.  The proof combines a published phase-locking
+necessity with an exhaustive outward-rounded ordinate cover, uniform
+Fibonacci-series tail bounds, a closed-box nonvanishing cover, and a strict
+Rouch\'e comparison.  The argument treats every boundary included in the
+count; it is not an extrapolation from a targeted zero search.
+\end{abstract}
+
+\section{Statement and context}
+
+The Dirichlet series $\ZF$ converges absolutely in $\real s>0$.  Mantovanelli
+determined the right edge of the closure of its zero real parts
+\cite{Mantovanelli2026}.  In particular, there is a number
+\[
+ \sigma_F=0.743163398726901648\ldots
+\]
+such that $\ZF$ has no zero in $\real s\geq\sigma_F$.  The same work gives
+quantitative necessary phase-locking conditions below this edge and reports
+a zero numerically near
+$0.730178633163+8596695.206382\ii$.  That reported search is explicitly
+targeted rather than exhaustive \cite[Section~7]{Mantovanelli2026}; hence it
+does not determine the number of zeros in the finite region considered here.
+
+For $T>0$, set
+\[
+ N_{0.73}(T)=\#\{\rho:\ZF(\rho)=0,\ \real\rho\geq0.73,\
+                                  0<\imag\rho\leq T\},
+\]
+where analytic multiplicity is used.  Let
+\[
+ c=0.730178633163+8596695.206382\ii,
+ \qquad r=10^{-6},
+ \qquad D=\{s\in\C:|s-c|\leq r\}.
+\]
+
+\begin{theorem}\label{thm:main}
+One has $N_{0.73}(8596696)=1$.  The closed disk $D$ contains exactly one
+distinct zero of $\ZF$, and that zero is simple.
+\end{theorem}
+
+This is a finite census only.  It makes no assertion about zeros above the
+stated height, an exact first-hitting function, or the shrinking-target
+heuristic in \cite{Mantovanelli2026}.  The proof is computer-assisted, but
+all numerical predicates below are strict interval predicates and the
+complete finite covers are serialized with the accompanying programs.
+
+\section{The phase-lock input}
+
+We first record exactly what is imported from \cite{Mantovanelli2026}.  For
+$\sigma\geq\tfrac12$, write
+\begin{align*}
+ A&=2^{-\sigma},&B&=3^{-\sigma},&C&=8^{-\sigma},&D_0&=144^{-\sigma},\\
+ L(\sigma)&=2-A-B-C+D_0,
+ &R(\sigma)&=\sum_{\substack{n\geq5\\n\neq6,12}}F_n^{-\sigma},
+ &H(\sigma)&=R(\sigma)-L(\sigma),\\
+ K(\sigma)&=72^{-\sigma}+18^{-\sigma}+4\,48^{-\sigma}.
+\end{align*}
+Theorem~1.1 and Lemma~2.1 of that paper state that $\sigma_F\in(0.7,0.75)$,
+$H$ is decreasing with $H(\sigma_F)=0$, and $\ZF(s)\neq0$ for
+$\real s\geq\sigma_F$.  Its Proposition~7.1 states the following.  If
+$\rho=\sigma+\ii t$ is a zero and $\tfrac12\leq\sigma<\sigma_F$, then
+\begin{equation}\label{eq:17}
+ A|2^{-\ii t}+1|^2+B|3^{-\ii t}+1|^2
+       \leq \frac{2H(\sigma)}{1-K(\sigma)}.
+\end{equation}
+If
+\[
+ E(\rho)=\sum_{\substack{n\geq5\\n\neq6,12}}F_n^{-\sigma}F_n^{-\ii t},
+ \qquad \omega=\frac{E(\rho)}{|E(\rho)|},
+\]
+then
+\begin{align}
+ \sum_{\substack{n\geq5\\n\neq6,12}}
+ F_n^{-\sigma}|F_n^{-\ii t}-\omega|^2&\leq2H(\sigma),
+                                                        \label{eq:18}\\
+ |\omega+1|^2&\leq\frac{2H(\sigma)}{L(\sigma)+H(\sigma)},
+                                                        \label{eq:19}\displaybreak[0]\\
+ |F_n^{-\ii t}+1|&\leq
+ \sqrt{2H(\sigma)F_n^\sigma}
+ +\sqrt{\frac{2H(\sigma)}{L(\sigma)+H(\sigma)}}
+                                                        \label{eq:20}
+\end{align}
+for every $n\geq5$ with $n\neq6,12$.  These are necessary conditions; no
+existence conclusion is inferred from them.
+
+\section{An exhaustive ordinate cover}
+
+\begin{lemma}[Certified phase cover]\label{lem:phase-cover}
+If $\ZF(\sigma+\ii t)=0$ with
+\[
+ 0.73\leq\sigma<\sigma_F,
+ \qquad 0<t\leq8596696,
+\]
+then $t$ belongs to one of the eight closed intervals in
+Table~\ref{tab:phase-intervals}.
+\end{lemma}
+
+\begin{table}[ht]
+\centering
+\caption{The certified necessary cover of possible ordinates.}
+\label{tab:phase-intervals}
+\begin{tabular}{r@{\qquad}l}
+\toprule
+$j$ & $I_j$\\
+\midrule
+1 & $[893451.166593898,\ 893451.296590004]$\\
+2 & $[1045810.765660011,\ 1045810.914566694]$\\
+3 & $[1292959.408434021,\ 1292959.524502041]$\\
+4 & $[1431405.026953860,\ 1431405.066784306]$\\
+5 & $[2302570.625261012,\ 2302570.893936211]$\\
+6 & $[2396445.266260887,\ 2396445.372661887]$\\
+7 & $[2688164.836889199,\ 2688164.901257748]$\\
+8 & $[8596695.022433829,\ 8596695.288582920]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proof}
+We give both the mathematical reduction and the finite certification rule.
+Throughout $0.73\leq\sigma<\sigma_F<0.75$, monotonicity and directed ball
+evaluation give the strict bounds
+\begin{equation}\label{eq:phase-constants}
+\begin{gathered}
+ H(\sigma)<0.045602822,\qquad K(\sigma)<0.402314890,\\
+ 2^{-\sigma}>0.594603557,\qquad
+ 3^{-\sigma}>0.438691337,\qquad
+ R(\sigma)>0.75746608.
+\end{gathered}
+\end{equation}
+For the last inequality it suffices to use the terms through $F_{90}$ at
+$\sigma=3/4$.  All terminating decimals in \eqref{eq:phase-constants} are
+exact rationals on the safe side of the indicated inequality.
+
+If $|e^{-\ii x}+1|\leq q<2$, then the distance of $x$ from an odd multiple
+of $\pi$, modulo $2\pi$, is at most $2\arcsin(q/2)$.  Applying this observation
+to \eqref{eq:17} and \eqref{eq:20}, using
+\eqref{eq:phase-constants}, gives odd-$\pi$ windows for the bases shown in
+Table~\ref{tab:angular-bounds}.  The displayed numbers are the exact rational
+upper bounds used for their angular radii.  The bound from \eqref{eq:20}
+first becomes vacuous at $F_{13}=233$ and is increasing thereafter, so the
+listed free indices are all the nonvacuous ones.
+
+\begin{table}[ht]
+\centering
+\caption{Outward upper bounds $\delta_b$ in
+$\operatorname{dist}(t\log b,(2\mathbb Z+1)\pi)\leq\delta_b$.}
+\label{tab:angular-bounds}
+\small
+\begin{tabular}{r@{\quad}l r@{\quad}l}
+\toprule
+$b$&$\delta_b$&$b$&$\delta_b$\\
+\midrule
+2  &$0.512174793486796593149426$&3  &$0.598687998441899467344934$\\
+5  &$0.932674913662750792270648$&13 &$1.209611441366676873107514$\\
+21 &$1.405838206058152966984497$&34 &$1.666472314236621336794858$\\
+55 &$2.039987021672562880879150$&89 &$2.810571796660721292073878$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Here is the endpoint certification.  Given outward rational enclosures
+$\pi^-<\pi<\pi^+$ and $\ell_b^-<\log b<\ell_b^+$, the window belonging to
+an odd positive integer $m$ is contained in
+\begin{equation}\label{eq:periodic-window}
+ \left[
+   \frac{m\pi^- -\delta_b}{\ell_b^+},
+   \frac{m\pi^+ +\delta_b}{\ell_b^-}
+ \right].
+\end{equation}
+The program checks 24-decimal enclosures for $\pi$ and every logarithm by
+192-bit ball arithmetic, rounds both endpoints of \eqref{eq:periodic-window}
+outward to the $10^{-9}$ grid, and intersects the eight sorted periodic
+covers using integer arithmetic.  After the bases $2,3$ there are $425784$
+intervals; after successively imposing the bases $5,13,21,34,55,89$, the
+counts are $194823,107363,62843,41004,31269,31425$.  At this stage the total
+width is $4193.521920257$.
+
+It remains to describe the certified joint pruning, which is essential for
+obtaining the short final list.  Put
+\[
+ w_n=F_n^{-3/4},\qquad
+ S(t)=\sum_{\substack{5\leq n\leq30\\n\neq6,12}}w_nF_n^{-\ii t},
+ \qquad W=\sum_{\substack{5\leq n\leq30\\n\neq6,12}}w_n.
+\]
+Because $w_n\leq F_n^{-\sigma}$, equation \eqref{eq:18} implies
+\begin{equation}\label{eq:joint-necessary}
+ W-\real\bigl(\overline\omega S(t)\bigr)\leq H(\sigma).
+\end{equation}
+Equation \eqref{eq:19} and \eqref{eq:phase-constants} allow us to write
+$\omega=-e^{\ii\alpha}$ with
+$|\alpha|\leq0.348764756$.  Consequently both
+\begin{equation}\label{eq:joint-tests}
+ W-|S(t)|\leq0.045602822,
+ \qquad
+ W-\max_{|\alpha|\leq0.348764756}
+ \real\bigl(-e^{-\ii\alpha}S(t)\bigr)\leq0.045602822
+\end{equation}
+are necessary.
+
+Each current ordinate interval is bisected until its width is at most
+$0.005$.  On each box, the sines and cosines in $S(t)$ are evaluated as
+balls.  The $\alpha$-range is covered by 24 closed subintervals, and an
+interval upper bound is taken for every projection in the second part of
+\eqref{eq:joint-tests}.  A box is discarded only if a strict interval
+comparison disproves a necessary inequality in \eqref{eq:joint-tests}; every
+inconclusive terminal box is retained in full.  There are $59741$ interval
+tests: $42763$ boxes are excluded by the first test and $2476$ additional
+boxes by the restricted-$\alpha$ test.  Merging the retained closed boxes
+gives exactly the eight intervals in Table~\ref{tab:phase-intervals}, with
+total width $1.140395094$.  Since every rounding is outward and every
+discarded box violates a necessary condition, this is a cover rather than a
+sample.
+\end{proof}
+
+\section{Analytic bounds and the closed-box certificate}
+
+Let
+\[
+ P_N(s)=\sum_{n=1}^N F_n^{-s},\qquad N=140,
+ \qquad \varphi=\frac{1+\sqrt5}{2}.
+\]
+
+\begin{lemma}[Uniform series bounds]\label{lem:analytic-bounds}
+For $\real s\geq0.73$,
+\begin{equation}\label{eq:uniform-bounds}
+ |\ZF(s)-P_N(s)|<10^{-20},\qquad
+ |\ZF'(s)-P_N'(s)|<10^{-18},
+\end{equation}
+and
+\begin{equation}\label{eq:derivative-bounds}
+ |\ZF'(s)|<3.79,\qquad |\ZF''(s)|<16.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The elementary inequalities
+\[
+ \varphi^{n-2}\leq F_n\leq\varphi^{n-1}\qquad(n\geq2)
+\]
+follow by induction from $\varphi^2=\varphi+1$.  With
+$q=\varphi^{-0.73}$ and $k_0=N-1=139$, they give
+\begin{align*}
+ \sum_{n>N}F_n^{-0.73}
+ &\leq\frac{q^{k_0}}{1-q}
+   <2.101\times10^{-21}<10^{-20},\\
+ \sum_{n>N}(\log F_n)F_n^{-0.73}
+ &\leq(\log\varphi)\frac{q^{k_0}
+       ((k_0+1)-k_0q)}{(1-q)^2}
+   <1.440\times10^{-19}<10^{-18}.
+\end{align*}
+This proves \eqref{eq:uniform-bounds}.  Directed evaluation of the first
+$140$ positive terms at $\sigma=0.73$, plus the second displayed tail,
+gives the strict upper bound $3.789075$ for $|\ZF'|$.  Finally,
+\[
+ |\ZF''(s)|
+ \leq(\log\varphi)^2\sum_{k\geq1}(k+1)^2q^k
+ = (\log\varphi)^2\frac{q(4-3q+q^2)}{(1-q)^3}
+ <14.947983<16.
+\]
+All four final comparisons were evaluated with 256-bit balls.
+\end{proof}
+
+For a closed axis-parallel box
+\[
+ B=[\sigma_-,\sigma_+] + \ii[t_-,t_+],
+\]
+let $m(B)$ be its center and put
+\[
+ r_1(B)=\frac{(\sigma_+-\sigma_-)+(t_+-t_-)}2.
+\]
+Every $s\in B$ satisfies $|s-m(B)|\leq r_1(B)$.  Lemma
+\ref{lem:analytic-bounds} therefore yields the following checkable
+nonvanishing criterion:
+\begin{equation}\label{eq:box-test}
+ |P_N(m(B))|>10^{-20}+3.79r_1(B)
+ \quad\Longrightarrow\quad
+ \ZF(s)\neq0\quad(s\in B).
+\end{equation}
+Indeed, integrate $\ZF'$ along the segment from $m(B)$ to $s$ and use the
+value-tail bound at the center.
+
+\begin{lemma}[Closed-box cover]\label{lem:box-cover}
+Every point in
+\[
+ \bigcup_{j=1}^8\bigl([0.73,0.75]+\ii I_j\bigr)
+\]
+either belongs to $D$ or lies in a closed box on which the strict test
+\eqref{eq:box-test} holds.
+\end{lemma}
+
+\begin{proof}
+Start with the eight closed rectangles in the statement.  For a current box,
+first test whether all four corners lie in $D$; this is an exact rational
+comparison, and convexity then places the whole box in $D$.  Otherwise,
+evaluate $P_N$ at its rational center with 256-bit complex ball arithmetic.
+If \eqref{eq:box-test} is certified strictly, retain the box with the label
+``nonzero.''  If neither test succeeds, bisect the longer side at its exact
+rational midpoint and repeat.  Closed children cover their parent, including
+the common boundary.
+
+The recursion visits $246$ boxes and terminates with the complete leaf counts
+in Table~\ref{tab:leaf-counts}.  Thus $122$ leaves satisfy
+\eqref{eq:box-test}, while the remaining five lie wholly in $D$.  The exact
+rational endpoints and the strict lower modulus, upper error, and gap balls
+for every leaf are recorded in the accompanying table.  This serialized
+bisection tree also checks that no region between leaves is omitted.
+
+\begin{table}[ht]
+\centering
+\caption{Leaves in the certified box cover.}
+\label{tab:leaf-counts}
+\begin{tabular}{rrrr}
+\toprule
+$j$ & nonzero leaves & leaves in $D$ & maximum depth\\
+\midrule
+1&1&0&0\\
+2&1&0&0\\
+3&1&0&0\\
+4&1&0&0\\
+5&4&0&3\\
+6&1&0&0\\
+7&1&0&0\\
+8&112&5&36\\
+\midrule
+Total&122&5&36\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{proof}
+
+\section{The disk certificate and completion of the count}
+
+\begin{lemma}[Rouch\'e certificate]\label{lem:rouche}
+The disk $D$ contains exactly one zero of $\ZF$, counted with multiplicity,
+and $\ZF$ has no zero on $\partial D$.
+\end{lemma}
+
+\begin{proof}
+Define the linear function
+\[
+ \mathcal L(s)=P_N(c)+P_N'(c)(s-c).
+\]
+The 256-bit ball evaluations at the exact rational center $c$ certify
+\begin{align}
+ |P_N(c)|&<1.500649\times10^{-6},&
+ |P_N'(c)|&>3.272560,\label{eq:center-bounds}\\
+ \frac{|P_N(c)|}{|P_N'(c)|}
+   &<4.58555\times10^{-7}<r.&\label{eq:linear-zero}
+\end{align}
+Thus the unique zero of $\mathcal L$ lies in the interior of $D$.  On
+$|s-c|=r$, the reverse triangle inequality gives the certified lower bound
+\begin{equation}\label{eq:linear-boundary}
+ |\mathcal L(s)|
+ \geq |P_N'(c)|r-|P_N(c)|
+ >1.7719116\times10^{-6}.
+\end{equation}
+
+Apply Taylor's formula to the full function $\ZF$ at $c$.  Equations
+\eqref{eq:uniform-bounds}--\eqref{eq:derivative-bounds} give, on the same
+circle,
+\begin{align}
+ |\ZF(s)-\mathcal L(s)|
+ &\leq10^{-20}+10^{-18}r+\frac{16}{2}r^2\\
+ &<8.000000011\times10^{-12}.
+                                                        \label{eq:rouche-error}
+\end{align}
+The upper bound in \eqref{eq:rouche-error} is strictly smaller than the lower
+bound in \eqref{eq:linear-boundary}.  Rouch\'e's theorem therefore gives the
+same number of zeros, counted with multiplicity, for $\ZF$ and $\mathcal L$
+inside the boundary.  That number is one.  The strict comparison also
+excludes a boundary zero.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Mantovanelli's zero-free theorem excludes $\real s\geq\sigma_F$.  By
+Lemma~\ref{lem:phase-cover}, every remaining zero counted by
+$N_{0.73}(8596696)$ has its ordinate in one of the $I_j$.  Lemma
+\ref{lem:box-cover} excludes every point of the corresponding closed
+rectangles outside $D$, while Lemma~\ref{lem:rouche} counts one zero in $D$.
+
+Finally,
+\[
+ \real c-r>0.73,\qquad 0<\imag c-r,\qquad
+ \imag c+r<8596696,
+\]
+so $D$ lies strictly inside the region being counted.  The phase and box
+covers are closed, hence include $\real s=0.73$, all retained ordinate
+endpoints, and any possible point on the top boundary.  It follows that the
+full multiplicity-weighted count is one.  Total multiplicity one also means
+that the disk contains one distinct zero and that this zero is simple.
+\end{proof}
+
+\section{Reproducibility and assistance disclosure}
+
+The accompanying file \texttt{phase\_cover.py} certifies Lemma
+\ref{lem:phase-cover} and writes the eight intervals and a machine-readable
+report.  The file \texttt{zero\_count\_certificate.py} certifies Lemmas
+\ref{lem:analytic-bounds}--\ref{lem:rouche} and writes the complete leaf
+table and report.  From the project root, the deterministic commands are
+\begin{verbatim}
+python3 evidence/phase_cover.py
+python3 evidence/zero_count_certificate.py
+\end{verbatim}
+The recorded environment used Python~3.10.12, python-flint~0.9.0, and
+FLINT~3.6.0.  Transcendental and complex enclosures use Arb midpoint-radius
+ball arithmetic \cite{Johansson2017Arb}; rational grid endpoints and box
+bisections are exact.  Every theorem-bearing branch is fail-closed: a box is
+removed only after a strict interval comparison, and otherwise it is retained
+or subdivided.
+
+For another explicit example of separating a finite reduction, exhaustive
+coverage, boundary handling, and exact reconstruction of local checks, see
+the certificate architecture in \cite{ZengEtAl2026FiniteCertificates}.  The
+mathematical objects there are different; the relevant methodological point
+is that coverage rather than a targeted search carries the universal finite
+conclusion.
+
+OpenAI Codex assisted with literature search, verification-program drafting
+and auditing, LaTeX organization, and initial manuscript preparation.
+Language-model output is not used as mathematical evidence.  The mathematical
+claims above rest on the stated reductions, strict ball enclosures, and
+serialized exhaustive covers.  Responsibility for any disseminated version
+remains with the author.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

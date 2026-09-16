@@ -1,0 +1,12 @@
+{
+  "baseline": "VERIFIED",
+  "corruption_tests": [
+    {"test": "digest_mismatch", "status": "REJECTED", "reason": "payload digest differs from header"},
+    {"test": "illegal_radius_with_matching_digest", "status": "REJECTED", "reason": "certificate radius is invalid"},
+    {"test": "truncated_payload_with_matching_digest", "status": "REJECTED", "reason": "truncated payload"},
+    {"test": "trailing_payload_with_matching_digest", "status": "REJECTED", "reason": "trailing payload bytes"},
+    {"test": "wrong_fractional_mass_with_matching_digest", "status": "REJECTED", "reason": "fractional mixture has wrong total weight"}
+  ],
+  "status": "PASS",
+  "command": "python3 code/test_verifier_fail_closed.py"
+}

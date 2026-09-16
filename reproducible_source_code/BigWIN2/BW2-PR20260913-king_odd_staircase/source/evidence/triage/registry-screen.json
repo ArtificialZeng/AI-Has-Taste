@@ -1,0 +1,73 @@
+{
+  "registry_path": "/home/ailab/4math-open-problems/registry/problems.jsonl",
+  "sha256": "46e0557179d280f94a5f3b7b7d152ba3bfa13b4686581628835b98a1dc652140",
+  "rows": 660,
+  "screen": "impartial|sprague|grundy|staircase|chess|2501.14640",
+  "hits": [
+    {
+      "id": "win-00065-p01",
+      "batch": 65,
+      "source_id": "DW65-01",
+      "title": "Exact preperiod on an even-parameter subtraction-game boundary family",
+      "object": "least preperiod and eventual period of the Sprague-Grundy sequence for S_K={4,6,10K+1}",
+      "quantifiers": "every integer K>=1, with claimed least preperiod 20K+7 and least eventual period 5",
+      "nearest_result": "arXiv:2609.05358v1 Theorem 32 and Conjecture 50 leave this even-a non-admissible boundary family open; the cited ultimately-bipartite family covers odd a",
+      "proposed_delta": "prove the exact uniform preperiod and period formulas or give the least exact counterexample",
+      "status": "admitted",
+      "source_path": "batches/inbox/win-00065-p01-source.md",
+      "correction_path": "batches/inbox/win-00065-p01-source-correction.md",
+      "correction_sha256": "6cee3d9219c04b11b56fe113bbda4738f788ca859d02c3ff523cac7881bbee08",
+      "evidence_paths": [
+        "batches/inbox/bigWin-65.raw.md",
+        "batches/normalized/bigWin-65.md",
+        "batches/inbox/bigWin-65-materials/2609.05358.pdf"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00067-p04",
+      "batch": 67,
+      "source_id": "DW67-04",
+      "title": "Conjecture 50 for all three-move games of shape (2,5)",
+      "object": "Sprague-Grundy words of subtraction sets S={2,5,c}",
+      "quantifiers": "every integer c>5 with c!=7, with new proof obligations for c mod 7 in {0,4}",
+      "nearest_result": "arXiv:2609.05358v1 Table 1 and Theorem 32 settle several zones and Conjecture 50 predicts eventual-period behavior for the remaining admissible residues",
+      "proposed_delta": "close the entire smallest (2,5) shape, prove or disprove exact parameterized words for both remaining residue classes, and certify minimal preperiods",
+      "status": "admitted",
+      "source_path": "batches/inbox/win-00067-p04-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-67.raw.md",
+        "batches/normalized/bigWin-67.md",
+        "batches/inbox/bigWin-67-materials/2609.05358.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00065-p01"
+      ],
+      "semantic_difference": "win-00065-p01 treats shape (4,6) with a different gcd reduction; this item closes the full (2,5) shape in the b>2a and a-not-dividing-b regime"
+    },
+    {
+      "id": "win-00084-p08",
+      "batch": 84,
+      "source_id": "ARXIV-2609.05358-B84-38",
+      "title": "Complete residue classification for subtraction games of shape (3,8)",
+      "object": "pure periodicity of Sprague-Grundy words for subtraction sets {3,8,c}",
+      "quantifiers": "every integer c>8 other than the additive value 11",
+      "nearest_result": "arXiv:2609.05358v1 Example 1, Theorem 32, Conjecture 50, and Proposition 53 prove the admissible direction and leave residues 0,1,6,7 modulo 11",
+      "proposed_delta": "prove positive least preperiod in all four remaining residue classes or give a purely periodic counterexample",
+      "status": "parked",
+      "reason": "strong source-supported reserve, but this would be a third close specialization after two completed projects from the same conjecture and is not preferred over four semantically independent admissions",
+      "source_path": "batches/inbox/bigWin-84.raw.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-84.raw.md",
+        "batches/normalized/bigWin-84.md",
+        "batches/inbox/bigWin-84-materials/2609.05358v1.pdf"
+      ],
+      "semantic_neighbors": [
+        "win-00065-p01",
+        "win-00067-p04"
+      ],
+      "semantic_difference": "the full (3,8) residue shape is not equivalent to the prior (4,6) and (2,5) shapes, but shares the same source conjecture and symbolic-block method"
+    }
+  ],
+  "limit": "Lexical screen only; human semantic comparison follows. Consolidated payloads named in outer intake are not under the available outputs path."
+}

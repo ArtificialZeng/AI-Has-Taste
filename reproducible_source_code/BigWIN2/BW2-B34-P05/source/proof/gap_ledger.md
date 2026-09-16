@@ -1,0 +1,8 @@
+# Gap ledger
+
+| ID | Proposition/location | Missing step | Severity | Test/repair | Status |
+|---|---|---|---|---|---|
+| G01 | `proof/proof_dag.md`, step 12 (C001) | Prove that a Lovasz-type \((2,3)\) decomposition can eliminate every odd-cycle component on the degree-2 side, or give an exact counterexample. | fatal | Repair the refuted fixed-partition induction with a multi-vertex exchange; run proof-producing unrestricted SAT/QBF synthesis at order 11+. | open |
+| G02 | Original disproof route | No exact triangle-free 6-chromatic graph with maximum degree six is known; the search space from order 33 upward was not exhaustively generated. | major | Generate target-near 6-vertex-critical degree-\(\{5,6\}\) graphs using the distance-two low-vertex and Kempe constraints, then attach a proof-producing 5-colour SAT solver. | open |
+| G03 | Candidate C001 finite evidence | Z3 UNSAT at orders 8--10 has no independently checkable proof trace; the order-11 UNSAT result covers only the minimum-degree-five stratum, both sound minimum-degree-two order-11 variants and the restricted order-12 run failed to finish, and random tests cover no unbounded family. | major | Re-encode unrestricted order 11 in a proof-producing SAT/QBF solver and verify its trace; do not infer universality from the current data. | open |
+| G04 | Independent 2-domination route H2 | Universal lemma is false even for a 16-vertex triangle-free graph with degrees five and six. | fatal to H2, not to F1 | Exact witness and exhaustive verifier in `data/false-independent-2dom.json` and `code/verify_false_independent_2dom.py`. | closed-refuted |

@@ -1,0 +1,236 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\hypersetup{
+  pdftitle={The Induced Abelian Cayley Embedding Number of P3 x P4 Is 19},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Cay}{\operatorname{Cay}}
+
+\title{The Induced Abelian Cayley Embedding Number of
+$P_3\mathbin{\square}P_4$ Is 19}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite graph $H$, let $\eta(H)$ be the least order of a finite
+abelian group whose Cayley graph contains $H$ as an induced subgraph.
+Fokam Souop and Bitjoka proved the product bound
+$\eta(G_1\square G_2)\leq \eta(G_1)\eta(G_2)$, which gives an explicit
+order-$20$ host for $P_3\square P_4$.  We determine the exact value
+\[
+  \eta(P_3\square P_4)=19.
+\]
+The upper bound is the elementary labelling
+$f(i,j)=-i-4j\pmod {19}$.  The lower bound uses regularity and edge
+deletion through order $15$, followed by an exact exhaustive enumeration
+of every abelian group type and every possible connection set at orders
+$16$, $17$, and $18$.
+\end{abstract}
+
+\section{Context and statement}
+
+Write $P_m$ for the path on $\{0,\ldots,m-1\}$.  If $\Gamma$ is a
+finite abelian group and $S\subseteq\Gamma\setminus\{0\}$ satisfies
+$S=-S$, then $\Cay(\Gamma,S)$ joins distinct $x,y$ exactly when
+$y-x\in S$.  An \emph{induced abelian Cayley embedding} of $H$ is an
+injection $f:V(H)\to\Gamma$ for which
+\[
+ uv\in E(H) \quad\Longleftrightarrow\quad f(v)-f(u)\in S
+ \qquad (u\ne v).
+\]
+The least possible $|\Gamma|$ is denoted by $\eta(H)$.
+
+These definitions, and the exact difference-separation criterion behind
+them, were introduced in this form by Fokam Souop and Bitjoka
+\cite[Definition~1 and Proposition~3]{FokamSouopBitjoka2026}.  Their
+Theorem~14 and Corollary~15 imply
+$\eta(P_3\square P_4)\leq\eta(P_3)\eta(P_4)=4\cdot5=20$.
+In the inspected version of that paper the construction at order $20$ is
+verified, while the adjacent value $\eta(P_3\square P_3)=15$ is the only
+exact path-grid value in its Table~1
+\cite[Section~5.1 and Table~1]{FokamSouopBitjoka2026}.  The result below
+improves that particular upper bound and proves optimality.  It makes no
+priority claim beyond this comparison.
+
+Let
+\[
+ G=P_3\square P_4,
+ \qquad V(G)=\{0,1,2\}\times\{0,1,2,3\},
+\]
+where two vertices are adjacent when their Manhattan distance is one.
+Thus $G$ has $12$ vertices, $17$ edges, and degree multiset
+$(2^4,3^6,4^2)$.
+
+\begin{theorem}\label{thm:main}
+The induced abelian Cayley embedding number of the rectangular grid is
+\[
+  \eta(P_3\square P_4)=19.
+\]
+\end{theorem}
+
+\section{An order-19 certificate}
+
+Take $\Gamma=\mathbb Z_{19}$ and
+\[
+ S=\{\pm1,\pm4\}=\{1,4,15,18\},\qquad
+ f(i,j)=-i-4j\pmod {19}.
+\]
+In row-major order the twelve labels are
+\[
+ (0,15,11,7,\;18,14,10,6,\;17,13,9,5).
+\]
+They are distinct.  Indeed, a difference $\Delta i+4\Delta j$ has
+absolute value at most $14$, so congruence to zero modulo $19$ is
+equality over the integers; since $|\Delta i|\leq2$, this equality forces
+$\Delta j=\Delta i=0$.
+
+A grid edge has label difference $\pm1$ or $\pm4$.  Conversely, if two
+labels have difference in $S$, the integer
+$\Delta i+4\Delta j\in[-14,14]$ equals one of $\pm1,\pm4$.  With
+$|\Delta i|\leq2$ and $|\Delta j|\leq3$, these four equations have only
+the grid-edge solutions
+\[
+ (\Delta i,\Delta j)=(\pm1,0),(0,\pm1).
+\]
+Thus $f$ is an induced embedding.  A companion exact verifier checks all
+$\binom{12}{2}=66$ unordered pairs: $17$ edges and $49$ nonedges.  This
+proves $\eta(G)\leq19$ without using the search that found the labelling.
+
+\section{Lower bounds through order 15}
+
+Orders below $12$ are excluded by injectivity.  At order $12$ the image
+would be the entire Cayley graph, but every Cayley graph is regular and
+$G$ is not.
+
+Suppose now that an order-$n$ Cayley host has degree $d=|S|$, and that
+$U$ is the set of omitted host vertices.  At order $13$, deleting the
+single vertex in $U$ leaves every retained degree equal to $d$ or $d-1$.
+This is incompatible with the three distinct grid degrees $2,3,4$.
+
+At order $14$, deletion of two vertices and the extreme grid degrees
+force $d=4$: the maximum degree gives $d\geq4$, whereas every retained
+degree is at least $d-2$, so the minimum degree gives $d\leq4$.  The host
+has $14d/2=28$ edges, and deletion of two vertices removes at most
+$2d=8$, leaving at least $20$ rather than $17$ edges.
+
+At order $15$, the same degree comparison gives $4\leq d\leq5$.
+The handshake lemma excludes $d=5$.  If $d=4$, the host has $30$ edges
+and deletion of three vertices removes at most $3d=12$, again leaving at
+least $18$ edges.  Hence no host of order at most $15$ works.
+
+\section{The exact enumeration at orders 16--18}
+
+It remains to exclude finitely many abelian groups.  We first reduce the
+possible connection-set sizes without computation.  If $|U|=n-12$ and
+$e(U)$ is the number of host edges induced by $U$, deletion gives
+\begin{equation}\label{eq:deletion}
+  17=\frac{nd}{2}-(n-12)d+e(U).
+\end{equation}
+Since $G$ has a vertex of degree $4$, necessarily $d\geq4$.  Equation
+\eqref{eq:deletion} gives the complete list
+\[
+\begin{array}{c|c}
+n&(d,e(U))\\ \hline
+16&(4,1)\\
+17&(4,3)\\
+18&(4,5),(5,2).
+\end{array}
+\]
+For $n=17$, $d$ is even because a nonzero inverse-closed subset of an
+odd-order group is a union of two-element inverse orbits.  For $n=18$,
+the equation itself rules out $d\geq6$.
+
+The finite abelian group classification leaves precisely
+\begin{align*}
+n=16:\quad &\mathbb Z_{16},\ \mathbb Z_2\times\mathbb Z_8,
+\ \mathbb Z_4^2,\ \mathbb Z_2^2\times\mathbb Z_4,
+\ \mathbb Z_2^4;\\
+n=17:\quad &\mathbb Z_{17};\\
+n=18:\quad &\mathbb Z_{18},\ \mathbb Z_3\times\mathbb Z_6.
+\end{align*}
+
+For completeness, we describe the exhaustive test.  Translate a
+hypothetical labelling so that the fixed corner $(0,0)$ has label zero.
+Translation preserves every group difference.  For each group above the
+enumerator performs the following finite steps.
+\begin{enumerate}
+\item Enumerate every omitted $(n-12)$-subset $U$ avoiding zero.
+\item Partition the nonzero group elements into negation orbits and
+      enumerate every union of orbits having one of the forced sizes $d$.
+      These are exactly the legal connection sets of that size.
+\item Retain only pairs $(S,U)$ with the forced $e(U)$, then only those
+      for which the induced graph on $\Gamma\setminus U$ has degree
+      multiset $(2^4,3^6,4^2)$ and zero has degree two.
+\item Test every surviving graph for an isomorphism from $G$ that maps
+      $(0,0)$ to zero.  The backtracking rejects a partial bijection only
+      after an exact degree or adjacency/nonadjacency mismatch with an
+      already assigned vertex.
+\end{enumerate}
+The normalization is lossless, the inverse-orbit construction lists
+every symmetric $S$, and the final bijection search lists every injection
+onto a fixed image.  Therefore a genuine embedding cannot be omitted or
+pruned.
+
+Table~\ref{tab:counts} records the terminal counts.  All group arithmetic
+and graph tests use exact integers; there are no randomized or
+floating-point steps.
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}cclrrr@{}}
+\toprule
+$n$ & group types & connection sets & $(S,U)$ pairs & rooted tests & hits\\
+\midrule
+16 & 5 & $21+33+33+125+1365$ & 2,152,605 & 137,792 & 0\\
+17 & 1 & $28$ & 122,304 & 3,552 & 0\\
+18 & 2 & $56$ per type & 1,386,112 & 11,028 & 0\\
+\bottomrule
+\end{tabular}
+\caption{Exact exhaustive-search counts.  A rooted test is a final
+corner-fixed isomorphism check after all structural filters.}
+\label{tab:counts}
+\end{table}
+
+The scripts serialize the group-by-group counts and the first witness, if
+any.  As an audit of the principal false-negative risk, a separate pass
+replayed every enumeration while replacing the custom final backtracker
+by NetworkX~3.4.2's rooted \texttt{GraphMatcher}
+\cite{HagbergSchultSwart2008}; it obtained the same terminal counts and
+no isomorphisms.  This use of explicit reductions, replayable
+counts, and an independent terminal check is comparable in methodology
+to a separate certified-search project that independently verifies its
+enumeration without discovery caches \cite{Zeng2026Figshare33318282}; that
+work supplies no mathematical premise for the present theorem.
+
+Consequently no abelian Cayley host of order $16$, $17$, or $18$ contains
+$G$ as an induced subgraph.  Together with the elementary exclusions at
+smaller orders and the order-$19$ certificate, this proves
+Theorem~\ref{thm:main}.
+
+\section*{Computational and AI assistance}
+
+The exhaustive enumerators and pair verifier were written in Python and
+use exact finite-group and integer arithmetic.  A separate audit pass
+recomputed the certificates and used an alternative graph-isomorphism
+implementation.  OpenAI Codex assisted with proof organization, code and
+LaTeX drafting, and audit workflow.  The theorem depends on the explicit
+arguments and reproducible finite certificates described above, not on
+language-model output as evidence; responsibility for the manuscript and
+its claims remains with the author.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

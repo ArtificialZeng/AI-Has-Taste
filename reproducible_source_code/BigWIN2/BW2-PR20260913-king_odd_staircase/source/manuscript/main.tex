@@ -1,0 +1,397 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+% Standard article section numbering.
+
+
+\hypersetup{pdftitle={King on generalized staircases with equal odd blocks},
+            pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\mex}{mex}
+\newcommand{\N}{\mathbb{Z}_{\geq0}}
+\newcommand{\parity}[1]{\overline{#1}}
+\title{King on generalized staircases with equal odd blocks}
+\author{Xiaojian Zeng\\[2pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $D_k=((kr)^r,((k-1)r)^r,\ldots,r^r)$, where exponents denote
+repeated parts and $r$ is positive and odd. In the impartial King game,
+a move deletes the first row, the first column, or both, and must leave
+a nonempty partition. We prove Conjecture 5.1 of the January 2025 arXiv
+version of Gottlieb, Krnc and Mur\v si\v c: writing $q=k\bmod(r+2)$,
+the Sprague--Grundy value of $D_k$ is $0$ for odd $q$, $1$ for positive
+even $q$, and $2$ for $q=0$. The proof determines an entire boundary
+word by a square transfer. An explicit array with three parity regions
+satisfies the local mex recurrence, including the exceptional corner
+and both alternating phase transitions. The argument is uniform in $r$
+and $k$ and has no computational premise. The later SSRN text has not
+been compared; no priority claim is made.
+\end{abstract}
+
+\section{The game and the assertion}
+
+For a nonempty partition $\lambda=(\lambda_1\geq\cdots\geq\lambda_\ell>0)$,
+let $\lambda[i,j]$ be the tuple
+$(\lambda_{i+1}-j,\ldots,\lambda_\ell-j)$ with all nonpositive entries
+removed. Following Gottlieb, Krnc and Mur\v si\v c
+\cite[Definitions 2.1 and 3.1]{gkm2025}, the King moves are
+\[
+ K=\{(0,1),(1,0),(1,1)\},
+\]
+and a move is legal only if its destination is nonempty. We use normal
+play: the player with no legal move loses. In the Sprague--Grundy
+framework, the recursive value is the least nonnegative integer absent
+from the successor values; see Sprague \cite[Section 6, Satz I]{sprague1935}.
+Thus
+\begin{equation}\label{eq:game}
+ G(\lambda)=\mex\{G(\lambda[i,j]):(i,j)\in K,
+                                      \ \lambda[i,j]\ne\varnothing\}.
+\end{equation}
+In particular $\mex\varnothing=0$. Every move decreases the number of
+cells, so the recursion is well defined, and $0\leq G(\lambda)\leq3$.
+The empty partition is neither a position nor an option.
+
+For positive integers $r,k$, write
+\[
+ D_k=((kr)^r,((k-1)r)^r,\ldots,r^r),
+\]
+where each exponent indicates repetition of a part. Throughout the
+proof $r$ is fixed and odd.
+
+\begin{theorem}\label{thm:main}
+For every positive odd integer $r$ and every positive integer $k$, let
+$q$ be the residue of $k$ modulo $r+2$, with $0\leq q<r+2$. Then
+\begin{equation}\label{eq:main}
+ G(D_k)=
+ \begin{cases}
+ 0,&q\text{ is odd},\\
+ 1,&q\text{ is even and nonzero},\\
+ 2,&q=0.
+ \end{cases}
+\end{equation}
+\end{theorem}
+
+This is exactly \cite[Conjecture 5.1]{gkm2025}. The same source gives
+the rectangle formula in Theorem 3.8, attributed there to Berlekamp;
+Lemma 3.13 gives $G(D_k)=(k-1)\bmod3$ when $r=1$ and $k\geq1$;
+and Lemma 3.14 gives value $2$ at $k=1$ and $1$ at $k\geq2$ for
+equal even blocks. The contribution here is a uniform proof of the
+odd-block assertion, with an explicit boundary and square-interior
+description. These comparisons refer to the inspected arXiv version
+\cite{gkm2025}. A later SSRN posting \cite{gkmssrn2025} was identified,
+but its full text has not been compared. Accordingly, the result is
+identified by its precise source statement, without a claim of priority
+or of the conjecture's current status elsewhere.
+
+\section{Boundary data and square transfer}
+
+Set
+\begin{equation}\label{eq:parameters}
+\begin{gathered}
+ p=r+2,\qquad t=1+((k-1)\bmod p),\qquad
+ h=\left\lfloor\frac{k-1}{p}\right\rfloor\bmod2,\\
+ L=p-t,\qquad x=L\bmod2=(t+1)\bmod2,\qquad y=1-x,\\
+ a=3-h,\qquad b=2+h.
+\end{gathered}
+\end{equation}
+The parameters $t,h,L,x,y,a,b$ depend on $k$. For $0\leq j<r$, define
+\begin{equation}\label{eq:word}
+ W_k(j)=
+ \begin{cases}
+ 2,&j=0\text{ and }L=0,\\
+ x,&j<L\text{ and }j\text{ is even},\\
+ a,&j<L\text{ and }j\text{ is odd},\\
+ b,&j\geq L,\ j\text{ is even},\ (j,L)\ne(0,0),\\
+ y,&j\geq L\text{ and }j\text{ is odd}.
+ \end{cases}
+\end{equation}
+We will prove the stronger assertion
+\begin{equation}\label{eq:boundary}
+ B_k(j):=G(D_k[0,j])=W_k(j)\qquad(0\leq j<r).
+\end{equation}
+The extra phase $h$ is needed for the boundary: for $r=3$ the formula
+gives $B_1=(0,3,0)$ and $B_6=(0,2,0)$, although the root values agree.
+
+Transposing a Young diagram exchanges the row and column moves and
+preserves the diagonal move. Induction on the number of cells therefore
+shows that conjugate partitions have equal $G$-values. Since $D_k$ is
+self-conjugate, write $A_k(i,j)=G(D_k[i,j])$ whenever the indicated
+partition is nonempty; then $A_k(i,j)=A_k(j,i)$.
+
+Direct deletion of complete blocks gives
+\begin{equation}\label{eq:shapes}
+\begin{aligned}
+ D_k[r,0]=D_k[0,r]&=D_{k-1}&& (k\geq2),\\
+ D_k[r,r]&=D_{k-2}&& (k\geq3).
+\end{aligned}
+\end{equation}
+These are shape identities, not additional legal moves. Deletions compose,
+so the first $r\times r$ square has prescribed edges
+\begin{equation}\label{eq:edges}
+\begin{aligned}
+ A_k(r,s)=A_k(s,r)&=B_{k-1}(s)&& (0\leq s<r),\\
+ A_k(r,r)&=B_{k-2}(0)&& (k\geq3).
+\end{aligned}
+\end{equation}
+For $k=2$ the corner $(r,r)$ is absent. Every cell with $0\leq i,j<r$
+exists. Its options are its right, down and diagonal neighbors that
+exist. Descending induction on $i+j$ uniquely determines all interior
+values from \eqref{eq:edges}. It suffices, therefore, to exhibit values
+with these edges and the correct mex at every interior cell.
+
+\section{A local mex array}
+
+The following construction is algebraic; it does not define an infinite
+game. For any $L\in\N$, put $x=L\bmod2$ and $y=1-x$, and choose
+$(a,b)$ to be either $(3,2)$ or $(2,3)$. For $i,j\in\N$ let
+$m=\min(i,j)$, $n=\max(i,j)$. Define $F(i,j)$ by the following tables,
+with rows indexed by the parity of $m$ and columns by the parity of $n$,
+in the order even, odd:
+\begin{equation}\label{eq:array}
+\begin{array}{c@{\qquad}c@{\qquad}c}
+ n<L&m\leq L\leq n&L<m\\[2pt]
+ P=\begin{pmatrix}x&a\\b&y\end{pmatrix}&
+ C=\begin{pmatrix}b&y\\x&a\end{pmatrix}&
+ T=\begin{pmatrix}y&b\\a&x\end{pmatrix}.
+\end{array}
+\end{equation}
+At the single point $(L,L)$ override the table by $F(L,L)=2$.
+
+\begin{lemma}\label{lem:array}
+For all $i,j,L\in\N$ and both choices of $(a,b)$,
+\begin{equation}\label{eq:local}
+ F(i,j)=\mex\{F(i+1,j),F(i,j+1),F(i+1,j+1)\}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+By symmetry suppose $i\leq j$. Successor triples below are ordered
+as (down, right, diagonal); repeated entries do not affect mex.
+If $i<j$ and all four cells use $P$, the cases are
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$i$ parity&$j$ parity&$F(i,j)$&Successor triple\\
+\midrule
+even&even&$x$&$(b,a,y)$\\
+even&odd&$a$&$(y,x,b)$\\
+odd&even&$b$&$(x,y,a)$\\
+odd&odd&$y$&$(a,b,x)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $\{x,y\}=\{0,1\}$ and $\{a,b\}=\{2,3\}$, so each row
+has the required mex. On an ordinary $P$ diagonal the value and triple
+are $x$ and $(a,a,y)$ for even $i$, or $y$ and $(b,b,x)$ for odd $i$.
+The $T$ cases follow by exchanging $x$ with $y$ and $a$ with $b$.
+If all four cells use $C$, they contain all four values, so the
+successor values have mex equal to the current value.
+
+The remaining off-diagonal cases are listed in Table~\ref{tab:seams}.
+Each row is used only when its coordinate conditions are feasible.
+The two exceptional diagonal cases are
+\[
+\begin{array}{c|c|c}
+ \text{location}&F(i,j)&\text{successor triple}\\\hline
+ i=j=L-1\quad(L\geq1)&1&(0,0,2)\\
+ i=j=L&2&(1,1,0).
+\end{array}
+\]
+Again every displayed triple has the asserted mex for both choices
+of $(a,b)$.
+
+To check exhaustiveness, for $i<j$ the range $j\leq L-2$ is ordinary
+$P$, and $j=L-1$ is the first group in Table~\ref{tab:seams}. For
+$j=L$, the range $i\leq L-2$ is ordinary $C$, leaving $(L-1,L)$.
+For $j>L$, the three cases $i<L$, $i=L$, $i>L$ give ordinary $C$,
+the last group of the table, and ordinary $T$, respectively. On the
+diagonal only $L-1$ and $L$ are exceptional. This also covers $L=0,1$
+by omitting infeasible cases.
+\end{proof}
+
+\begin{table}[tb]
+\centering
+\caption{The off-diagonal cases meeting a region boundary in
+\eqref{eq:array}.}\label{tab:seams}
+\begin{tabular}{llccc}
+\toprule
+Location&$L$ parity&Other parity&$F(i,j)$&Successor triple\\
+\midrule
+$j=L-1,\ i<j$&even&$i$ even&$a$&$(1,b,0)$\\
+&even&$i$ odd&$1$&$(a,0,b)$\\
+&odd&$i$ even&$1$&$(b,0,a)$\\
+&odd&$i$ odd&$b$&$(1,a,0)$\\
+\midrule
+$i=L-1,\ j=L$&even&---&$0$&$(2,a,1)$\\
+&odd&---&$0$&$(2,b,1)$\\
+\midrule
+$i=L,\ j>L$&even&$j$ odd&$1$&$(0,b,a)$\\
+&even&$j$ even&$b$&$(a,1,0)$\\
+&odd&$j$ even&$1$&$(0,a,b)$\\
+&odd&$j$ odd&$a$&$(b,1,0)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Closing the transfer}
+
+\subsection*{The rectangle base}
+For positive side lengths $u,v$, the King value of a rectangle is
+\begin{equation}\label{eq:rectangle}
+ R(u,v)=
+ \begin{cases}
+ 0,&u,v\text{ both odd},\\
+ 2,&u,v\text{ both even},\\
+ 1,&u,v\text{ of opposite parity and }\min(u,v)\text{ odd},\\
+ 3,&u,v\text{ of opposite parity and }\min(u,v)\text{ even}.
+ \end{cases}
+\end{equation}
+This is \cite[Theorem 3.8]{gkm2025}; a short verification makes the
+base self-contained. A unit side gives a path with alternating values
+$0,1$, starting with $R(1,1)=0$. For $u,v\geq2$, use induction on
+$u+v$ and symmetry to take $u\geq v$. If $u>v$, the successor sets
+are, in the parity order odd--odd, even--even, odd--even, even--odd,
+\[
+ \{1,2,3\},\quad\{0,1,3\},\quad\{0,1,2\},\quad\{0,2,3\}.
+\]
+For $u=v$ odd or even they are $\{2,3\}$ or $\{0,1\}$,
+respectively. Their mex values give \eqref{eq:rectangle}.
+
+Now $D_1[0,j]$ is an $r$-by-$(r-j)$ rectangle. Its value is $0$
+for even $j$ and $3$ for odd $j$. Since $k=1$ gives
+$L=r+1$, $x=0$, $a=3$, this proves \eqref{eq:boundary} at $k=1$.
+We do not assert the $F$-interior formula at this base case.
+
+\subsection*{Ordinary phases and the absent corner}
+Assume $k\geq2$ and \eqref{eq:boundary} for all smaller positive
+indices. Form $F$ using the current parameters \eqref{eq:parameters}.
+First suppose $2\leq t\leq p$. The preceding index has parameter
+$t-1$, the same $h$, threshold $L+1$, and interchanged low values $x,y$.
+Since $r$ is odd, substitution into \eqref{eq:array} gives
+\begin{equation}\label{eq:ordinaryedge}
+ F(r,s)=F(s,r)=
+ \begin{cases}
+ y,&s\leq L\text{ and }s\text{ even},\\
+ a,&s\leq L\text{ and }s\text{ odd},\\
+ b,&s>L\text{ and }s\text{ even},\\
+ x,&s>L\text{ and }s\text{ odd},
+ \end{cases}\qquad(0\leq s<r).
+\end{equation}
+These are precisely $W_{k-1}(s)$.
+
+If $t\geq3$, then $L<r$ and the odd--odd entry of $T$ gives
+$F(r,r)=x$. The parameter of $k-2$ is $t-2$, so
+$W_{k-2}(0)=(t-1)\bmod2=x$. If $t=2$, then $L=r$ and the
+override gives $F(r,r)=2$; when $k>2$, the parameter of $k-2$ is $p$
+and its root is also $2$. Thus in these cases the entire prescribed
+boundary agrees with $F$. Lemma~\ref{lem:array} and backward uniqueness
+give the actual values throughout the first square.
+
+At $k=2$, the corner $(r,r)$ is absent. Only $(r-1,r-1)$ has it
+as an option. The two remaining options both have value
+$W_1(r-1)=0$, since $r-1$ is even, and the proposed interior value
+is $1$. Removing the fictitious corner value $2$ changes the option
+set from $\{0,2\}$ to $\{0\}$; both have mex $1$. Every other
+interior identity is unchanged. This handles $k=2$, including $r=1$,
+without assigning a value to the empty partition.
+
+\subsection*{Both phase transitions}
+It remains to consider $t=1$ and $k>1$. Write $k=\ell p+1$,
+$\ell\geq1$. Here $L=r+1$ is even, $x=0$, $y=1$, and
+$h=\ell\bmod2$. Every point of $[0,r]^2$ uses $P$.
+The preceding boundary has parameter $p$ and phase $1-h$; for $s>0$
+its values are $a$ at even $s$ and $1$ at odd $s$. These agree with
+$F(r,s)$. At $s=0$, however, the preceding root is $2$, whereas
+$F(r,0)=F(0,r)=a$. The corner satisfies $F(r,r)=1$, as required:
+the parameter of $k-2$ is the positive even integer $p-1$.
+
+If $h=1$, then $a=2$, and all prescribed boundary entries already
+agree with $F$. If $h=0$, then $a=3$, $b=2$. Replace the two
+boundary entries $(r,0),(0,r)$ by $2$. For $r\geq3$ the only affected
+interior cells are $(r-1,0),(0,r-1)$. At the latter cell the proposed
+value is $0$ and the successor triple after replacement is $(2,2,1)$,
+whose mex is still $0$. Symmetry treats the other cell. For $r=1$,
+these interior cells coincide at $(0,0)$ and the same triple applies.
+Thus the corrected boundary preserves every interior recurrence in
+both phases.
+
+We have proved, for every $k\geq2$,
+\begin{equation}\label{eq:interior}
+ G(D_k[i,j])=F(i,j)\qquad(0\leq i,j<r).
+\end{equation}
+At $i=0$, \eqref{eq:array} gives exactly \eqref{eq:word}, including
+the override when $L=0$. Together with the rectangle base, this proves
+\eqref{eq:boundary} by induction on $k$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Take $j=0$ in \eqref{eq:boundary}. If $t=p$, the value is $2$.
+Otherwise it is $x=(t+1)\bmod2$. The parameter $t$ represents
+$k\bmod p$, with its zero residue represented by $p$. These are
+exactly the three cases of \eqref{eq:main}.
+\end{proof}
+
+\section{Exact checks and reproducibility}
+
+The proof above is symbolic. Exact computation was used to detect
+transcription errors and to check the treatment of phase changes and
+missing destinations. The accompanying verification files contain a
+block-transfer implementation, a direct evaluation on entire Young
+diagrams, and a separately implemented recursive evaluator that forms
+the partition tuples after each legal deletion. No floating-point
+arithmetic is used for game values.
+
+The independent direct implementation checks all
+$1\leq k\leq3(r+2)+2$ for $r\in\{1,3,5,7,9\}$, and
+\[
+ k\in\{1,2,p-1,p,p+1,2p,2p+1\},\qquad p=r+2,
+\]
+for $r\in\{15,37,39\}$. Its saved output records 136 boards,
+27,464,908 evaluated cells, and 26,800 comparisons in the first squares,
+with no mismatch. The tuple evaluator checks 245 subpartitions, namely
+all first-square entries for $r\in\{1,3,5\}$ and $1\leq k\leq7$.
+These are exact finite observations, with precisely the stated coverage.
+
+The local identities were also encoded as 14 counterexample queries
+over unbounded integers in the SMT solver Z3 \cite{demoura2008}; each
+returned \texttt{unsat}. They test the mex array, edges, corners,
+phase transitions, rectangle recurrence, and extraction of the stated
+formula. This checks the encoded identities; the interpretation of
+partitions and the complete induction remain the written proof above.
+No formal proof-assistant certification of the full theorem is claimed.
+
+Exact predicates and separately implemented verifiers also appear in
+the finite-library certification of Zeng et al.\ \cite{zeng2026finite}.
+There exhaustive computations establish assertions within specified
+ternary libraries. In the present problem, the finite game evaluations
+corroborate a proof valid for all positive odd $r$ and all positive $k$.
+This distinction determines what each computation can certify.
+
+The supplied reproduction guide identifies the self-contained scripts,
+saved integer-query files and their execution commands. The checks used
+Python 3.10.12 and, for the symbolic queries, Z3 4.15.3. The proof does
+not address unequal block dimensions or other chess movesets.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the boundary description, proof development,
+verification code, source searches, and preparation of this manuscript.
+A separate model context reconstructed the argument and implemented
+additional checks. That separation is a review procedure, not statistical
+independence or external peer review. The mathematical argument is given
+in full, and the exact computations and their limits are disclosed above.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

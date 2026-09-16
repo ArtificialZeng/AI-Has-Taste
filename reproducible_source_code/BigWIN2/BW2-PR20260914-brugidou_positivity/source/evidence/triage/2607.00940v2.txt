@@ -1,0 +1,1211 @@
+The Schur positivity of ∇{𝑚_𝜇}
+// Restore the saved color scheme preference, or
+// enact the browser preference if "automatic",
+// without expecting DOM load to have completed.
+//
+// Also restore any saved readingmode and ToC display preferences.
+function initializeReadingPreferences() {
+let saved_theme = localStorage.getItem("ar5iv_theme") || "automatic";
+if (saved_theme === "automatic") {
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+saved_theme = "dark";
+}
+}
+if (saved_theme == "dark") {
+document.documentElement.setAttribute("data-theme", "dark");
+} else {
+document.documentElement.setAttribute("data-theme", "light");
+}
+const tocDisplay = localStorage.getItem('arxiv_html_paper_toc_display');
+if (tocDisplay) {
+document.documentElement.setAttribute("data-toc-display", tocDisplay);
+}
+const readingMode = localStorage.getItem('arxiv_html_paper_reading_mode');
+if (readingMode) {
+document.documentElement.setAttribute("data-reading-mode", readingMode);
+}
+// Pre-apply spinout-banner dismissal here, before the banner paints, so it
+// never flashes in only to be hidden later by the deferred arxiv-header.js.
+// Key matches arxiv-header.js: "arxiv-banner-dismissed:" + data-banner-name.
+if (localStorage.getItem('arxiv-banner-dismissed:spinout-nonprofit')) {
+document.documentElement.setAttribute("data-banner-dismissed", "");
+}
+}
+// Run as soon as JS starts, to minimize repainting
+initializeReadingPreferences();
+/* Banner pre-dismissal (set above before paint -> no flash-then-hide) and
+reading-mode chrome hiding. */
+html[data-banner-dismissed] .ds-announcement { display: none; }
+html[data-reading-mode="enabled"] .ds-announcement,
+html[data-reading-mode="enabled"] .ds-site-footer { display: none; }
+/* Keep the announcement text dark on the Open-Blue band in both colour themes
+(otherwise it inherits the paper's warm-wash text in dark mode and washes out). */
+.ds-announcement-text { color: var(--arxiv-ink, #1c1a17); }
+Report GitHub Issue
+×
+Title:
+Content selection saved. Describe the issue below:
+Description:
+Submit without GitHub
+Submit in GitHub
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+Why HTML?
+Report Issue
+Back to Abstract
+Download PDF
+Abstract.
+1 Introduction
+2 Background
+2.1 Symmetric functions
+2.2 The $C$ operators
+2.3 Schur positivity of $\nabla^{r}C_{\alpha}(1)$
+3 Labelled multisets
+4 Main results
+4.1 Main theorems
+4.2 Proof of Theorem
+5 Concluding remarks
+5.1 An extension to the Schiffmann algebra
+5.2 Conjectures
+References
+License: arXiv.org perpetual non-exclusive license
+arXiv:2607.00940v2 [math.CO] 21 Jul 2026
+The Schur positivity of $\nabla m_{\mu}$ Thanks: Dun Qiu is supported in part by the Fundamental Research Funds for the Central Universities (105-63263093), the National Natural Science Foundation of China (12271023 and 12171034),
+and the Natural Science Foundation of Tianjin (24JCZDJC01390). We thank Jaeseong Oh for his valuable comments on an initial version of this paper.
+Dun Qiu
+Address: Center for Combinatorics, LPMC, Nankai University, Tianjin 300071, P. R. China
+Email address: qiudun@nankai.edu.cn
+and
+Minhao Zhang
+Address: Center for Combinatorics, LPMC, Nankai University, Tianjin 300071, P. R. China
+Email address: carpentercheungmath@gmail.com
+Date: August 24, 2026
+Abstract.
+Bergeron, Garsia, Haiman and Tesler conjectured in 1999 that, for all partitions
+$\mu,\lambda\vdash n$ , the polynomial
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla m_{\mu},s_{\lambda}\rangle$ has nonnegative
+integer coefficients, where $\nabla$ is the Bergeron–Garsia nabla operator,
+which acts diagonally on the modified Macdonald basis, and
+$m_{\mu}$ is the monomial symmetric function. In this article, we prove this conjecture, and more
+generally that
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle\in\mathbb{N}[q,t]$
+for all $r\geq 1$ .
+We establish a recursion showing that $(-1)^{|\mu|-\ell(\mu)}m_{\mu}$
+has an expansion with coefficients in $\mathbb{Q}_{\geq 0}[q]$
+in the symmetric functions $C_{\alpha}(1)$ , where $C_{a}$ denotes the
+operator introduced by Haglund, Morse and Zabrocki.
+Combining this
+expansion with the compositional shuffle theorems of Carlsson–Mellit and
+Mellit, and with the Schur positivity of LLT polynomials, completes the proof.
+The same method, using the $e$ -positivity of column LLT polynomials after the
+substitution $q\mapsto q+1$ , also gives an $e$ -positive analogue.
+Key words and phrases: symmetric functions, Schur positivity, parking functions, LLT polynomials, Macdonald polynomials, diagonal harmonics
+2020 Mathematics Subject Classification
+05E05,
+05E10,
+20C30
+1. Introduction
+In 1988, Macdonald introduced a two-parameter basis of the ring of symmetric
+functions, now known as the Macdonald polynomials [31]. Garsia and
+Haiman introduced the modified Macdonald polynomials
+$\widetilde{H}_{\mu}[X;q,t]$ and constructed the Garsia–Haiman modules, a
+family of bigraded $S_{n}$ -modules, conjecturing that their Frobenius
+characteristics are the modified Macdonald polynomials
+[16, 18]. This conjectural representation-theoretic interpretation
+was proved by Haiman through his work on Hilbert schemes and the
+$n!$ -theorem [24].
+Garsia and Haiman also introduced the space of diagonal harmonics and
+conjectured that its bigraded Frobenius characteristic is
+$\nabla e_{n}$ [17], where $\nabla$ is the Bergeron–Garsia
+nabla operator introduced in [3].
+Haiman proved the diagonal harmonics conjecture in [25].
+Consequently,
+$\langle\nabla e_{n},s_{\lambda}\rangle\in\mathbb{N}[q,t]$
+for every partition $\lambda\vdash n$ .
+In 2005, Haglund, Haiman, Loehr, Remmel and Ulyanov conjectured a positive
+combinatorial LLT polynomial expansion for $\nabla e_{n}$ [22].
+Haglund, Morse and Zabrocki introduced the operators $C_{a}$ and formulated a
+compositional refinement of this conjecture [23], the compositional
+shuffle theorem, proved by Carlsson and Mellit [11]. Gorsky and Negut
+[19] and Bergeron, Garsia, Leven and Xin [5]
+generalized it to the rational $(km,kn)$ -setting, proved by Mellit
+[33]. For recent developments, see
+[7, 9, 6, 28, 26, 27]. Combining the
+resulting compositional $(km,kn)$ -shuffle theorem with the Schur positivity of LLT
+polynomials proved by Grojnowski and Haiman [20], one
+obtains
+$\langle\nabla^{r}C_{\alpha}(1),s_{\lambda}\rangle\in\mathbb{N}[q,t]$
+for every composition $\alpha$ , partition $\lambda$ , and integer
+$r\geq 1$ . Since we could not locate this exact statement for $r\geq 2$
+in the literature, we give a proof in Proposition 2.3.
+The present paper concerns the signed Schur positivity of $\nabla m_{\mu}$ .
+Bergeron, Garsia, Haiman and Tesler made the following conjecture.
+Conjecture 1.1 ([4], Conjecture IV).
+For any partitions $\mu,\lambda\vdash n$ ,
+$(-1)^{|\mu|-\ell(\mu)}\left\langle\nabla m_{\mu},s_{\lambda}\right\rangle\in\mathbb{N}[q,t].$
+When $\mu=(1^{n})$ , we have $m_{(1^{n})}=e_{n}$ , so this case follows from
+Haiman’s theorem on diagonal harmonics [25]. The case
+$\mu=(n)$ , where $m_{(n)}=p_{n}$ , is related to the square paths
+theorem, conjectured by Loehr and Warrington [29] and proved by
+Sergel [35]. Sergel also proved the cases where $\mu$ is a hook, and
+conjectured a more general combinatorial model for $\nabla m_{\mu}$ in
+[36]. More recently, Qu and Xin proved the cases
+$\mu=(2^{k},1^{\ell})$ in [34], by establishing a recursion which
+implies that $(-1)^{k}m_{(2^{k},1^{\ell})}$ has a positive expansion in the
+symmetric functions $C_{\alpha}(1)$ . Recursive arguments of this type originate
+from the calculus of the operators $C_{a}$ introduced by Haglund, Morse
+and Zabrocki [23]. This is the same calculus that underlies the
+compositional shuffle theorem of Carlsson and Mellit [11] and its
+$(km,kn)$ -extension, conjectured by Bergeron, Garsia, Leven and
+Xin [5] and proved by Mellit [33]. The present paper extends this
+recursive approach to arbitrary partitions; all operator identities we need
+are derived from the definition of the $C_{a}$ and the basic identities of
+Haglund, Morse and Zabrocki [23] recalled in Section 2.
+Bergeron, Garsia, Haiman and Tesler also proved the following integrality
+statement in [4]:
+$(-1)^{|\mu|-\ell(\mu)}\left\langle\nabla m_{\mu},s_{\lambda}\right\rangle\in\mathbb{Z}[q,t].$
+In [8], Blasiak, Haiman, Morse, Pun and
+Seelinger proved the Loehr–Warrington conjecture [30] by giving an
+LLT expansion of $\nabla^{r}s_{\lambda}$ with integral coefficients.
+Combining this with the Schur positivity of LLT polynomials due to
+Grojnowski and Haiman [20] and the integrality of the
+inverse Kostka matrix established by Eğecioğlu and Remmel
+[13], one obtains
+(1)
+$(-1)^{|\mu|-\ell(\mu)}\left\langle\nabla^{r}m_{\mu},s_{\lambda}\right\rangle\in\mathbb{Z}[q,t]\qquad\text{for all }r\geq 1.$
+The main result of this paper is the following positivity theorem.
+Theorem 1.2.
+For any partitions $\mu,\lambda\vdash n$ and any integer $r\geq 1$ ,
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle\in\mathbb{N}[q,t].$
+In particular, Theorem 1.2 resolves Conjecture 1.1
+in full generality.
+For a labelled multiset $A$ with $\mu(A)=\mu$ , the symmetric function
+$\widetilde{F}_{A}$ is a positive integer multiple of $(-1)^{|\mu|-\ell(\mu)}m_{\mu}$ .
+We prove that it admits a $C$ expansion, an expansion in the symmetric
+functions $C_{\alpha}(1)$ , with coefficients in $\mathbb{N}[q]$ (Theorem 4.2);
+this expansion is produced by a new recursion for the $\widetilde{F}_{A}$
+(Theorem 4.1). By the Schur positivity of $\nabla^{r}C_{\alpha}(1)$
+(Proposition 2.3), it follows that
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle$ has
+nonnegative rational coefficients. Combined with the integrality
+statement (1), this yields Theorem 1.2.
+The same method yields an $e$ -positive analogue. By the integrality
+(1), together with the integral transition between the Schur and
+elementary symmetric functions and the fact that the substitution
+$q\mapsto q+1$ preserves $\mathbb{Z}[q,t]$ , we have
+(2)
+$(-1)^{|\mu|-\ell(\mu)}\left\langle(\nabla^{r}m_{\mu})[X;q+1],\omega(m_{\lambda})\right\rangle\in\mathbb{Z}[q,t]\qquad\text{for all }r\geq 1.$
+Here and below, for $f\in\Lambda$ , the notation $f[X;q+1]$ means that the
+parameter $q$ in $f$ is replaced by $q+1$ . An explicit $e$ -positive
+expansion of column LLT polynomials after this substitution was conjectured
+independently by Alexandersson [1] and by Garsia,
+Haglund, Qiu and Romero [15]; the $e$ -positivity was proved by
+D’Adderio [12], and the conjectured expansion was established by
+Alexandersson and Sulzgruber [2]. Since $\nabla^{r}C_{\alpha}(1)$ is a nonnegative integer combination of
+column LLT polynomials by Mellit’s compositional $(km,kn)$ -shuffle theorem [33],
+D’Adderio’s $e$ -positivity yields the following companion to
+Theorem 1.2.
+Theorem 1.3.
+For any partitions $\mu,\lambda\vdash n$ and any integer $r\geq 1$ ,
+$(-1)^{|\mu|-\ell(\mu)}\left\langle(\nabla^{r}m_{\mu})[X;q+1],\omega(m_{\lambda})\right\rangle\in\mathbb{N}[q,t].$
+The paper is organized as follows. In Section 2, we recall the
+$C$ operators and their basic properties, and establish two positivity
+properties of $\nabla^{r}C_{\alpha}(1)$ : Schur positivity, and $e$ -positivity
+after the substitution $q\mapsto q+1$ (Proposition 2.3). In Section 3,
+we introduce labelled multisets and the symmetric functions $\widetilde{F}_{A}$ , and establish several auxiliary lemmas. In Section 4, we establish
+a recursion for $\widetilde{F}_{A}$ (Theorem 4.1), derive from it a
+$C$ expansion with coefficients in $\mathbb{N}[q]$ (Theorem 4.2),
+and use this expansion to prove Theorems 1.2 and 1.3.
+2. Background
+In this section, we recall the $C$ operators introduced by Haglund, Morse
+and Zabrocki [23], and fix notation used throughout the paper. We
+follow the notation of Macdonald [32] and Haglund [21].
+2.1. Symmetric functions
+A partition is a sequence of positive integers
+$\lambda=(\lambda_{1},\ldots,\lambda_{\ell})$ with
+$\lambda_{1}\geq\lambda_{2}\geq\cdots\geq\lambda_{\ell}$ .
+If $|\lambda|=\lambda_{1}+\cdots+\lambda_{\ell}=n$ , we write
+$\lambda\vdash n$ . We denote by $\ell(\lambda)$ the length of
+$\lambda$ , and by $m_{i}(\lambda)$ the multiplicity of $i$ among the
+parts of $\lambda$ . A composition of $n$ is a sequence
+$\alpha=(\alpha_{1},\ldots,\alpha_{m})$ of positive integers with
+$\alpha_{1}+\cdots+\alpha_{m}=n$ ; in this case we write $\alpha\vDash n$ .
+We regard the empty sequence $\emptyset$ as the unique composition of
+$0$ .
+Let $\Lambda=\bigoplus_{n\geq 0}\Lambda^{n}$ be the ring of symmetric
+functions over $\mathbb{Q}(q,t)$ , where $\Lambda^{n}$ denotes the space
+of homogeneous symmetric functions of degree $n$ . We use the standard
+bases of $\Lambda$ : the monomial, elementary, complete homogeneous,
+power-sum, and Schur symmetric functions, denoted $m_{\mu},e_{\mu},h_{\mu},p_{\mu}$ , and $s_{\mu}$ , respectively.
+The involutory automorphism $\omega:\Lambda\to\Lambda$ is defined by
+$\omega(e_{n})=h_{n}$ . The bilinear inner product, called the Hall inner
+product, is defined by
+$\langle s_{\lambda},s_{\mu}\rangle=\delta_{\lambda,\mu}.$
+By the duality properties of the Hall inner product, the coefficient of
+$s_{\lambda}$ in a symmetric function $f$ is $\langle f,s_{\lambda}\rangle$ ,
+whereas the coefficient of $e_{\lambda}$ in $f$ is
+$\langle f,\omega(m_{\lambda})\rangle$ .
+For convenience, we write $F_{\mu}:=(-1)^{|\mu|-\ell(\mu)}m_{\mu}$ ; when
+$\mu=(n)$ consists of a single part, we abbreviate
+$F_{n}:=F_{(n)}=(-1)^{n-1}p_{n}=\omega(p_{n})$ . (The letter $F$ is unrelated to Gessel’s fundamental quasisymmetric functions,
+which are not assigned a symbol in this paper.)
+We use the Newton identity
+$nh_{n}=\sum_{i=1}^{n}p_{i}h_{n-i}.$
+Let $\widetilde{H}_{\mu}[X;q,t]$ denote the modified Macdonald polynomial.
+The nabla operator $\nabla$ is defined as the diagonal operator on the
+modified Macdonald basis by
+$\nabla\widetilde{H}_{\mu}[X;q,t]=T_{\mu}\,\widetilde{H}_{\mu}[X;q,t],\qquad\text{where}\qquad T_{\mu}=\prod_{c\in\mu}q^{a^{\prime}(c)}t^{\ell^{\prime}(c)}.$
+Here $a^{\prime}(c)$ and $\ell^{\prime}(c)$ denote the coarm and coleg of the cell
+$c\in\mu$ , respectively; see Haglund [21].
+We use plethystic notation throughout the paper. Let
+$X=x_{1}+x_{2}+\cdots$ . For a symmetric function $f\in\Lambda$ and an
+expression $A$ in some variables and parameters, the plethystic evaluation
+$f[A]$ is defined by first writing $f$ as a polynomial in the power-sum
+functions $p_{k}$ , and then replacing each $p_{k}$ by $p_{k}[A]$ , where
+$p_{k}[A]$ is obtained from $A$ by raising every monomial in $A$
+to the $k$ -th power.
+A symmetric function $f\in\Lambda$ is called Schur positive if
+$f=\sum_{\mu}c_{\mu}(q,t)s_{\mu}\qquad\text{with}\qquad c_{\mu}(q,t)\in\mathbb{N}[q,t],$
+equivalently, if $\langle f,s_{\mu}\rangle\in\mathbb{N}[q,t]$ for every $\mu$ .
+Similarly, a symmetric function $f\in\Lambda$ is called $e$ -positive if
+$f=\sum_{\mu}c_{\mu}(q,t)e_{\mu}\qquad\text{with}\qquad c_{\mu}(q,t)\in\mathbb{N}[q,t],$
+equivalently, if $\langle f,\omega(m_{\mu})\rangle\in\mathbb{N}[q,t]$ for every $\mu$ .
+By convention, $[n]_{q}=1+q+\cdots+q^{n-1}$ denotes the $q$ -integer.
+2.2. The $C$ operators
+In [23], Haglund, Morse and Zabrocki introduced the operators
+$C_{a}$ , defined by
+(3)
+$C_{a}(f)[X]=\left(-\frac{1}{q}\right)^{a-1}\left\langle z^{a}\right\rangle f\left[X-\frac{1-1/q}{z}\right]\sum_{r\geq 0}h_{r}[X]z^{r},$
+where $\langle z^{a}\rangle G(z)$ denotes the coefficient of $z^{a}$ in
+the formal Laurent series $G(z)$ .
+For any symmetric function $f$ and any composition
+$\alpha=(\alpha_{1},\ldots,\alpha_{m})$ , we write
+(4)
+$C_{\alpha}(f)=C_{\alpha_{1}}\bigl(C_{\alpha_{2}}(\cdots C_{\alpha_{m}}(f)\cdots)\bigr).$
+For the empty composition we use the convention $C_{\emptyset}(f)=f$ , so
+$C_{\emptyset}(1)=1$ . Note that $C_{a}$ sends $\Lambda^{n}$ to
+$\Lambda^{n+a}$ , so that $C_{\alpha}(1)\in\Lambda^{|\alpha|}$ . We also
+recall the following identity of Haglund, Morse and Zabrocki [23]:
+(5)
+$e_{n}=\sum_{\alpha\vDash n}C_{\alpha}(1).$
+The following two lemmas, which we use repeatedly in Sections 3
+and 4, are derived from the definition (3).
+Lemma 2.1.
+For every positive integer $n$ ,
+(6)
+$F_{n}=\sum_{j=1}^{n-1}q^{j-1}C_{j}(F_{n-j})+[n]_{q}C_{n}(1).$
+Proof.
+Fix $1\leq j\leq n-1$ , and set $m=n-j$ . By the definition
+(3) of $C_{j}$ ,
+$\displaystyle q^{j-1}C_{j}(F_{m})$
+$\displaystyle=q^{j-1}\left(-\frac{1}{q}\right)^{j-1}\left\langle z^{j}\right\rangle F_{m}\left[X-\frac{1-1/q}{z}\right]\sum_{r\geq 0}h_{r}[X]z^{r}$
+$\displaystyle=(-1)^{j-1}\left\langle z^{j}\right\rangle(-1)^{m-1}p_{m}\left[X-\frac{1-1/q}{z}\right]\sum_{r\geq 0}h_{r}[X]z^{r}$
+$\displaystyle=(-1)^{m+j-2}\left\langle z^{j}\right\rangle\left(p_{m}[X]-\frac{1-q^{-m}}{z^{m}}\right)\sum_{r\geq 0}h_{r}[X]z^{r}$
+$\displaystyle=(-1)^{n}\left(p_{m}[X]h_{j}[X]-(1-q^{-m})h_{m+j}[X]\right)$
+$\displaystyle=(-1)^{n}p_{m}[X]h_{j}[X]+(-1)^{n-1}(1-q^{-m})h_{n}[X].$
+Since $C_{n}(1)=(-1/q)^{\,n-1}h_{n}[X]$ directly from (3),
+substituting $m=n-j$ and summing over $j=1,\ldots,n-1$ gives
+$\displaystyle\quad\quad\sum_{j=1}^{n-1}q^{j-1}C_{j}(F_{n-j})+[n]_{q}C_{n}(1)$
+$\displaystyle=(-1)^{n}\sum_{j=1}^{n-1}p_{n-j}[X]h_{j}[X]+(-1)^{n-1}\sum_{j=1}^{n-1}\left(1-q^{-(n-j)}\right)h_{n}[X]+(-1)^{n-1}\left(\sum_{m=0}^{n-1}q^{-m}\right)h_{n}[X]$
+$\displaystyle=(-1)^{n}\sum_{j=1}^{n-1}p_{n-j}[X]h_{j}[X]+(-1)^{n-1}h_{n}[X]\left(\sum_{m=1}^{n-1}(1-q^{-m})+\sum_{m=0}^{n-1}q^{-m}\right)$
+$\displaystyle=(-1)^{n}\sum_{j=1}^{n-1}p_{n-j}[X]h_{j}[X]+(-1)^{n-1}nh_{n}[X].$
+By the Newton identity,
+$p_{n}[X]=nh_{n}[X]-\sum_{i=1}^{n-1}p_{i}[X]h_{n-i}[X].$
+Reindexing via $i=n-j$ turns the Newton identity into
+$(-1)^{n-1}p_{n}[X]=(-1)^{n}\sum_{j=1}^{n-1}p_{n-j}[X]h_{j}[X]+(-1)^{n-1}nh_{n}[X],$
+so
+$\sum_{j=1}^{n-1}q^{j-1}C_{j}(F_{n-j})+[n]_{q}C_{n}(1)=(-1)^{n-1}p_{n}[X]=F_{n}.\qed$
+Lemma 2.2.
+For all positive integers $a$ and $i$ , and for any symmetric
+function $G$ ,
+(7)
+$F_{a}C_{i}(G)=C_{i}(F_{a}G)+(1-q^{a})C_{a+i}(G).$
+Proof.
+By the definition (3) of $C_{i}$ ,
+$\displaystyle F_{a}C_{i}(G)-C_{i}(F_{a}G)$
+$\displaystyle=\left(-\frac{1}{q}\right)^{i-1}\left\langle z^{i}\right\rangle\left(F_{a}[X]-F_{a}\left[X-\frac{1-1/q}{z}\right]\right)$
+$\displaystyle\qquad G\left[X-\frac{1-1/q}{z}\right]\sum_{r\geq 0}h_{r}[X]z^{r}.$
+Since $F_{a}=(-1)^{a-1}p_{a}$ and
+$p_{a}\bigl[\frac{1-1/q}{z}\bigr]=(1-q^{-a})z^{-a}$ ,
+$F_{a}[X]-F_{a}\left[X-\frac{1-1/q}{z}\right]=(-1)^{a-1}(1-q^{-a})z^{-a}.$
+Therefore,
+$\displaystyle F_{a}C_{i}(G)-C_{i}(F_{a}G)$
+$\displaystyle=\left(-\frac{1}{q}\right)^{i-1}(-1)^{a-1}(1-q^{-a})\left\langle z^{i+a}\right\rangle G\left[X-\frac{1-1/q}{z}\right]\sum_{r\geq 0}h_{r}[X]z^{r}$
+$\displaystyle=(1-q^{a})\left(-\frac{1}{q}\right)^{i+a-1}\left\langle z^{i+a}\right\rangle G\left[X-\frac{1-1/q}{z}\right]\sum_{r\geq 0}h_{r}[X]z^{r}$
+$\displaystyle=(1-q^{a})C_{a+i}(G).\qed$
+2.3. Schur positivity of $\nabla^{r}C_{\alpha}(1)$
+The following result is used in the proof of Theorem 1.2. For
+$r=1$ it is an immediate consequence of the compositional shuffle theorem
+of Carlsson and Mellit [11] and the Schur positivity of LLT
+polynomials proved by Grojnowski and Haiman [20]. For
+general $r\geq 1$ it follows from Mellit’s compositional
+$(km,kn)$ -shuffle theorem [33]. As this
+exact formulation does not appear explicitly in the literature, we include
+a short derivation for completeness.
+Proposition 2.3.
+For every integer $r\geq 1$ , every composition $\alpha\vDash n$ , and
+every partition $\lambda\vdash n$ ,
+$\langle\nabla^{r}C_{\alpha}(1),s_{\lambda}\rangle\in\mathbb{N}[q,t]\quad\text{and}\quad\langle(\nabla^{r}C_{\alpha}(1))[X;q+1],\omega(m_{\lambda})\rangle\in\mathbb{N}[q,t].$
+Proof.
+Mellit’s compositional $(km,kn)$ -shuffle theorem [33] states that
+for every coprime pair $(m,n_{0})$ of positive integers, every integer
+$k\geq 1$ , and every composition $\beta\vDash k$ , the symmetric function
+$(-1)^{k(n_{0}+1)}\,C^{(\beta)}_{km,kn_{0}}\cdot 1$ is a sum of column LLT
+polynomials with coefficients in $\mathbb{N}[q,t]$ ; here
+$C^{(\beta)}_{km,kn_{0}}$ is the operator constructed from $C_{\beta}(1)$ by
+Bergeron, Garsia, Leven and Xin
+[5, Algorithm 3.1 and Conjecture 3.3], and the LLT expansion of
+the combinatorial side is given in [5, eqs. (6.2)–(6.3)].
+We specialize to $(m,n_{0})=(r,1)$ , $k=n$ and $\beta=\alpha$ , so that
+the sign $(-1)^{k(n_{0}+1)}=(-1)^{2n}$ equals $1$ . By Theorem 5.1,
+Remark 5.1 and Proposition 5.1 of Bergeron, Garsia, Leven and Xin
+[5], we have
+$C^{(\alpha)}_{rn,n}\cdot 1=\nabla^{r-1}\bigl(\nabla\,\underline{C_{\alpha}(1)}\,\nabla^{-1}\bigr)\nabla^{-(r-1)}\cdot 1=\nabla^{r}\,\underline{C_{\alpha}(1)}\,\nabla^{-r}\cdot 1=\nabla^{r}C_{\alpha}(1),$
+where $\underline{C_{\alpha}(1)}$ denotes the operator of multiplication by
+$C_{\alpha}(1)$ , and the last equality uses that $\nabla^{-r}$ fixes
+constants. Consequently, $\nabla^{r}C_{\alpha}(1)$ is a sum of column LLT
+polynomials with coefficients in $\mathbb{N}[q,t]$ . Since every LLT
+polynomial is Schur positive by Grojnowski and Haiman
+[20], it follows that $\nabla^{r}C_{\alpha}(1)$ is
+Schur positive.
+By the $e$ -positivity of column LLT polynomials after the substitution
+$q\mapsto q+1$ , proved by D’Adderio [12], the symmetric
+function
+$(\nabla^{r}C_{\alpha}(1))[X;q+1]$ is $e$ -positive.
+∎
+3. Labelled multisets
+In this section, we introduce labelled multisets and the symmetric functions
+$\widetilde{F}_{A}$ , and establish the auxiliary lemmas needed in
+Section 4.
+A labelled multiset $A$ is a finite multiset of positive integers
+in which equal values are distinguished by labels: when a value occurs more
+than once, we label its copies by subscripts $1,2,\ldots$ , and when a value
+occurs only once, we write it without a subscript. For
+instance, $A=\{1,2_{1},2_{2}\}$ has three pairwise distinct elements, one of
+value $1$ and two of value $2$ . Because its elements are pairwise
+distinct, a labelled multiset may be treated as a finite set: subsets,
+unions, differences and set partitions of labelled multisets are taken in
+the ordinary sense.
+Whenever an element of a labelled multiset appears in a formula, it stands
+for its integer value; for instance, $2_{1}$ and $2_{2}$ both stand for
+the integer $2$ in sums and inequalities. With this convention, we set
+$S_{A}:=\sum_{x\in A}x,\qquad\ell(A):=|A|,$
+so that $S_{A}$ is the sum of the values of the elements of $A$ (with $S_{\emptyset}=0$ ), and
+$\ell(A)$ is the number of elements of $A$ .
+Let $\mu(A)$ be the partition whose parts are the values of the elements
+of $A$ , arranged in weakly decreasing order. We define
+$F_{A}:=F_{\mu(A)}=(-1)^{|\mu(A)|-\ell(\mu(A))}m_{\mu(A)}.$
+Since $|\mu(A)|=S_{A}$ and $\ell(\mu(A))=\ell(A)$ , we have
+$F_{A}=(-1)^{S_{A}-\ell(A)}m_{\mu(A)}$ . In particular, for a singleton
+$A=\{n\}$ we have $F_{\{n\}}=F_{(n)}=F_{n}=(-1)^{n-1}p_{n}$ .
+We further define
+$\widetilde{F}_{A}:=\left(\prod_{i\geq 1}m_{i}(A)!\right)F_{A},$
+where $m_{i}(A)$ denotes the multiplicity of $i$ in $A$ , so that
+$m_{i}(A)=m_{i}(\mu(A))$ . Subsets and set partitions of $A$ treat
+elements with equal values as distinct, while the symmetric functions
+$F_{A}$ and $\widetilde{F}_{A}$ depend only on the partition $\mu(A)$ .
+Accordingly, for a partition $\mu$ we also write $\widetilde{F}_{\mu}:=\widetilde{F}_{A}$ for
+any labelled multiset $A$ with $\mu(A)=\mu$ ; explicitly,
+$\widetilde{F}_{\mu}=\bigl(\prod_{i\geq 1}m_{i}(\mu)!\bigr)F_{\mu}=(-1)^{|\mu|-\ell(\mu)}\,\widetilde{m}_{\mu}$ , where
+$\widetilde{m}_{\mu}:=\bigl(\prod_{i\geq 1}m_{i}(\mu)!\bigr)m_{\mu}$ is the
+augmented monomial symmetric function, which appears for instance in
+Stanley’s work on chromatic symmetric functions [37]. We use the
+convention $F_{\emptyset}=\widetilde{F}_{\emptyset}=1$ .
+It will also be useful to keep the labelled version of the augmented monomial
+function visible. For a labelled multiset $A=\{a_{1},\ldots,a_{k}\}$ , set
+$M_{A}:=\sum_{\begin{subarray}{c}i_{1},i_{2},\ldots,i_{k}\\
+\mathrm{distinct}\end{subarray}}x_{i_{1}}^{a_{1}}x_{i_{2}}^{a_{2}}\cdots x_{i_{k}}^{a_{k}},$
+with $M_{\emptyset}=1$ . Then $M_{A}=\widetilde{m}_{\mu(A)}$ , and hence
+$\widetilde{F}_{A}=(-1)^{S_{A}-\ell(A)}M_{A}.$
+We illustrate these definitions with an example.
+Example 3.1.
+If $A=\{1,2_{1},2_{2},3_{1},3_{2},3_{3}\}$ , then
+$S_{A}=14,\qquad\ell(A)=6,\qquad\mu(A)=(3,3,3,2,2,1),$
+so that
+$F_{A}=(-1)^{14-6}m_{(3,3,3,2,2,1)}=m_{(3,3,3,2,2,1)}\qquad\text{and}\qquad\widetilde{F}_{A}=3!\,2!\,1!\,F_{A}=12\,m_{(3,3,3,2,2,1)}.$
+We begin with several auxiliary lemmas. The first is the augmented,
+labelled form of the Eğecioğlu–Remmel brick-tabloid formula for the
+transition from the monomial basis to the power-sum basis [14]. We
+recall the form of the formula that we need, using the notation of
+Eğecioğlu and Remmel. For partitions $\lambda,\mu\vdash n$ , let
+$B_{\lambda,\mu}$ be the set of $\lambda$ -brick tabloids of shape
+$\mu$ , that is, tilings of the Young diagram of shape $\mu$ by horizontal
+bricks whose lengths are the parts of $\lambda$ , with bricks of the same
+length regarded as indistinguishable. If $\tau\in B_{\lambda,\mu}$ , let
+$\operatorname{wt}(\tau)$ be the product of the lengths of the rightmost bricks
+in the rows of $\tau$ , and set
+$\operatorname{wt}(B_{\lambda,\mu})=\sum_{\tau\in B_{\lambda,\mu}}\operatorname{wt}(\tau)$ . Then
+Eğecioğlu and Remmel’s formula gives
+$m_{\lambda}=\sum_{\mu\vdash n}(-1)^{\ell(\lambda)-\ell(\mu)}\frac{\operatorname{wt}(B_{\lambda,\mu})}{z_{\mu}}\,p_{\mu},\qquad\text{where}\qquad z_{\mu}=\prod_{r\geq 1}r^{m_{r}(\mu)}m_{r}(\mu)!.$
+Lemma 3.2.
+For any labelled multiset $A$ , we have
+(8)
+$\widetilde{F}_{A}=\sum_{\pi\in\Pi(A)}\prod_{B\in\pi}(|B|-1)!\,F_{S_{B}},$
+where $\Pi(A)$ denotes the set of set partitions of $A$ , and the
+product runs over the blocks $B$ of $\pi$ . Informally, $\pi$ groups the
+elements of $A$ into blocks, each block $B$ contributing a single part
+$S_{B}$ to a coarser partition, and the weight $(|B|-1)!$ counts the cyclic
+orderings of the elements of $B$ .
+Proof.
+The case $A=\emptyset$ is immediate. Assume $A\neq\emptyset$ , and put
+$\lambda=\mu(A)$ and $n=S_{A}$ . For $\pi\in\Pi(A)$ ,
+let $\operatorname{sh}(\pi)$ be the partition obtained by rearranging the
+block sums $S_{B}$ , $B\in\pi$ , in weakly decreasing order. By the
+Eğecioğlu–Remmel formula,
+(9)
+$\widetilde{F}_{A}=(-1)^{n-\ell(\lambda)}\left(\prod_{i\geq 1}m_{i}(A)!\right)m_{\lambda}=\sum_{\mu\vdash n}(-1)^{n-\ell(\mu)}\left(\prod_{i\geq 1}m_{i}(A)!\right)\frac{\operatorname{wt}(B_{\lambda,\mu})}{z_{\mu}}\,p_{\mu}.$
+Thus it remains only to translate the coefficient into labelled-multiset
+notation. We claim that, for each $\mu\vdash n$ ,
+$\left(\prod_{i\geq 1}m_{i}(A)!\right)\operatorname{wt}(B_{\lambda,\mu})=z_{\mu}\sum_{\begin{subarray}{c}\pi\in\Pi(A)\\
+\operatorname{sh}(\pi)=\mu\end{subarray}}\prod_{B\in\pi}(|B|-1)!.$
+The factor $\prod_{i}m_{i}(A)!$ is the number of ways to label the bricks by
+the distinct elements of $A$ ; hence the left-hand side is the sum of
+$\operatorname{wt}(T)$ over all labelled brick tabloids $T$ of shape
+$\mu$ . Such a labelled brick tabloid may be built by first choosing a set
+partition $\pi$ of $A$ , whose blocks are the sets of bricks lying in the
+rows, then assigning the blocks with sum $r$ to the $m_{r}(\mu)$ rows of
+length $r$ , and finally linearly ordering the bricks inside each row. For a
+fixed block $B$ , the sum of the rightmost-brick lengths over all linear
+orders of $B$ is
+$\sum_{\text{linear orders of }B}\text{(length of the last brick)}=S_{B}(|B|-1)!,$
+because each element of $B$ appears last in exactly $(|B|-1)!$ orders.
+Hence a fixed $\pi$ with $\operatorname{sh}(\pi)=\mu$ contributes total
+weight
+$\left(\prod_{r\geq 1}m_{r}(\mu)!\right)\prod_{B\in\pi}S_{B}(|B|-1)!=\left(\prod_{r\geq 1}r^{m_{r}(\mu)}m_{r}(\mu)!\right)\prod_{B\in\pi}(|B|-1)!=z_{\mu}\prod_{B\in\pi}(|B|-1)!,$
+which proves the claim. Substituting it into the Eğecioğlu–Remmel
+expansion (9) gives
+$\widetilde{F}_{A}=\sum_{\pi\in\Pi(A)}(-1)^{n-|\pi|}\left(\prod_{B\in\pi}(|B|-1)!\right)\prod_{B\in\pi}p_{S_{B}}.$
+Absorbing the sign $(-1)^{n-|\pi|}=\prod_{B\in\pi}(-1)^{S_{B}-1}$ into the
+factors $p_{S_{B}}$ proves the lemma.
+∎
+Lemma 3.3.
+Let $A$ be a labelled multiset, and let $c$ be a positive integer, regarded as a new labelled element. Then
+(10)
+$\widetilde{F}_{A\cup\{c\}}=\sum_{T\subseteq A}|T|!\,\widetilde{F}_{A\setminus T}F_{c+S_{T}}.$
+Proof.
+By Lemma 3.2,
+$\widetilde{F}_{A\cup\{c\}}=\sum_{\pi\in\Pi(A\cup\{c\})}\prod_{B\in\pi}(|B|-1)!\,F_{S_{B}}.$
+We group the set partitions $\pi\in\Pi(A\cup\{c\})$ according to the
+block containing $c$ . This block is $T\cup\{c\}$ for a unique subset
+$T\subseteq A$ , and the remaining blocks form a set partition of
+$A\setminus T$ . The block $T\cup\{c\}$ contributes the factor
+$(|T\cup\{c\}|-1)!\,F_{c+S_{T}}=|T|!\,F_{c+S_{T}}$ , while the product over the
+remaining blocks, summed over all set partitions of $A\setminus T$ ,
+equals $\widetilde{F}_{A\setminus T}$ by Lemma 3.2 applied to
+$A\setminus T$ . Summing the resulting contributions
+$|T|!\,\widetilde{F}_{A\setminus T}F_{c+S_{T}}$ over $T\subseteq A$ gives
+(10).
+∎
+Lemma 3.4.
+Let $B$ be a labelled multiset, let $r$ be a positive integer, and let
+$G$ be a symmetric function. For $U\subseteq B$ , set
+(11)
+$K_{U}:=\begin{cases}|U|!-(|U|-1)!\sum_{x\in U}q^{x},&U\neq\emptyset,\\[4.30554pt]
+1,&U=\emptyset.\end{cases}$
+Then
+(12)
+$\widetilde{F}_{B}\,C_{r}(G)=\sum_{U\subseteq B}K_{U}\,C_{r+S_{U}}(\widetilde{F}_{B\setminus U}G).$
+Proof.
+By Lemma 3.2, we have
+$\widetilde{F}_{B}=\sum_{\pi\in\Pi(B)}\prod_{D\in\pi}(|D|-1)!\,F_{S_{D}}.$
+Claim.
+For every set partition $\pi\in\Pi(B)$ ,
+$\left(\prod_{D\in\pi}F_{S_{D}}\right)C_{r}(G)=\sum_{\mathcal{U}\subseteq\pi}\left(\prod_{D\in\mathcal{U}}(1-q^{S_{D}})\right)C_{r+S_{\mathcal{U}}}\left(\prod_{D\in\pi\setminus\mathcal{U}}F_{S_{D}}G\right),$
+where $S_{\mathcal{U}}:=\sum_{D\in\mathcal{U}}S_{D}$ .
+We argue by induction on the number of blocks $m=|\pi|$ .
+By Lemma 2.2, moving a single factor past the operator gives
+$F_{a}\,C_{i}(H)=C_{i}(F_{a}H)+(1-q^{a})\,C_{a+i}(H)$ : the factor $F_{a}$ either
+passes inside the operator, leaving $C_{i}(F_{a}H)$ , or is absorbed into it,
+raising the subscript by $a$ and producing the scalar $1-q^{a}$ . When
+$m=0$ the product is empty and both sides equal $C_{r}(G)$ . For the
+inductive step, fix a block $D_{0}\in\pi$ and set $\pi^{\prime}=\pi\setminus\{D_{0}\}$ .
+By the induction hypothesis,
+$\left(\prod_{D\in\pi^{\prime}}F_{S_{D}}\right)C_{r}(G)=\sum_{\mathcal{V}\subseteq\pi^{\prime}}\left(\prod_{D\in\mathcal{V}}(1-q^{S_{D}})\right)C_{r+S_{\mathcal{V}}}\left(\prod_{D\in\pi^{\prime}\setminus\mathcal{V}}F_{S_{D}}G\right).$
+We multiply the induction hypothesis by $F_{S_{D_{0}}}$ , obtaining
+$\bigl(\prod_{D\in\pi}F_{S_{D}}\bigr)C_{r}(G)$ on the left. On the right,
+Lemma 2.2 (with $a=S_{D_{0}}$ and $i=r+S_{\mathcal{V}}$ ) splits the
+$\mathcal{V}$ -summand in two: $F_{S_{D_{0}}}$ either passes inside the
+operator, producing the $\mathcal{U}=\mathcal{V}$ summand for $\pi$ , or is
+absorbed, producing the $\mathcal{U}=\mathcal{V}\cup\{D_{0}\}$ summand. As
+$\mathcal{V}$ ranges over the subsets of $\pi^{\prime}$ , these summands exhaust the
+subsets $\mathcal{U}\subseteq\pi$ , each exactly once, proving the claim.
+For $\mathcal{U}\subseteq\pi$ , set $U=\bigcup_{D\in\mathcal{U}}D$ , so that
+$S_{\mathcal{U}}=S_{U}$ . Substituting the claim, we reorganize the resulting
+double sum over $\pi\in\Pi(B)$ and $\mathcal{U}\subseteq\pi$ by the set
+$U\subseteq B$ : the absorbed blocks form a set partition $\rho\in\Pi(U)$ ,
+and the remaining blocks form a set partition $\sigma\in\Pi(B\setminus U)$ .
+Hence
+$\displaystyle\widetilde{F}_{B}C_{r}(G)$
+$\displaystyle=\sum_{\pi\in\Pi(B)}\left(\prod_{D\in\pi}(|D|-1)!\right)\left(\prod_{D\in\pi}F_{S_{D}}\right)C_{r}(G)$
+$\displaystyle=\sum_{\pi\in\Pi(B)}\left(\prod_{D\in\pi}(|D|-1)!\right)\sum_{\mathcal{U}\subseteq\pi}\left(\prod_{D\in\mathcal{U}}(1-q^{S_{D}})\right)C_{r+S_{\mathcal{U}}}\left(\prod_{D\in\pi\setminus\mathcal{U}}F_{S_{D}}G\right)$
+$\displaystyle=\sum_{U\subseteq B}\sum_{\rho\in\Pi(U)}\sum_{\sigma\in\Pi(B\setminus U)}\left(\prod_{D\in\rho}(|D|-1)!(1-q^{S_{D}})\right)C_{r+S_{U}}\left(\prod_{E\in\sigma}(|E|-1)!\,F_{S_{E}}G\right)$
+$\displaystyle=\sum_{U\subseteq B}\sum_{\rho\in\Pi(U)}\left(\prod_{D\in\rho}(|D|-1)!(1-q^{S_{D}})\right)C_{r+S_{U}}(\widetilde{F}_{B\setminus U}G)$
+$\displaystyle=\sum_{U\subseteq B}L_{U}\,C_{r+S_{U}}(\widetilde{F}_{B\setminus U}G),$
+where
+(13)
+$L_{U}:=\sum_{\rho\in\Pi(U)}\prod_{D\in\rho}(|D|-1)!(1-q^{S_{D}}).$
+It suffices to show that $L_{U}=K_{U}$ . Both sides equal $1$ when $U=\emptyset$ , so we may assume $U\neq\emptyset$ and show that $\sum_{\rho\in\Pi(U)}\prod_{D\in\rho}(|D|-1)!(1-q^{S_{D}})=|U|!-(|U|-1)!\sum_{x\in U}q^{x}$ . Since $\prod_{D\in\rho}(|D|-1)!$ is
+the number of permutations of $U$ whose cycles are the blocks of $\rho$ ,
+grouping the permutations $\sigma\in\mathfrak{S}_{U}$ by their cycle partition
+gives
+$L_{U}=\sum_{\rho\in\Pi(U)}\Bigl(\prod_{D\in\rho}(|D|-1)!\Bigr)\prod_{D\in\rho}\bigl(1-q^{S_{D}}\bigr)=\sum_{\sigma\in\mathfrak{S}_{U}}\prod_{c\in\Cyc(\sigma)}\bigl(1-q^{S_{c}}\bigr),$
+where $\Cyc(\sigma)$ is the set of cycles of $\sigma$ and $S_{c}$ is
+the sum of the elements of $c$ . Expanding each product and grouping the
+terms by the $\sigma$ -invariant union $W\subseteq U$ of the cycles that
+contribute a factor $-q^{S_{c}}$ gives
+$L_{U}=\sum_{W\subseteq U}q^{S_{W}}\,|U\setminus W|!\sum_{\tau\in\mathfrak{S}_{W}}(-1)^{|\Cyc(\tau)|}.$
+Since the numbers of even and odd permutations of a set of size at least
+$2$ are equal, we have
+$\sum_{\tau\in\mathfrak{S}_{W}}(-1)^{|\Cyc(\tau)|}=(-1)^{|W|}\sum_{\tau\in\mathfrak{S}_{W}}\operatorname{sgn}(\tau)=\begin{cases}1,&W=\emptyset,\\
+-1,&|W|=1,\\
+0,&|W|\geq 2.\end{cases}$
+Hence $L_{U}=|U|!-(|U|-1)!\sum_{x\in U}q^{x}=K_{U}$ , and (12) follows.
+∎
+Lemma 3.5.
+Let $B$ be a labelled multiset, and let $b$ be a positive integer, regarded as a new labelled element. Then
+(14)
+$\widetilde{F}_{B}F_{b}=\widetilde{F}_{B\cup\{b\}}-\sum_{x\in B}\widetilde{F}_{(B\setminus\{x\})\cup\{x+b\}}.$
+Proof.
+By definition,
+$\widetilde{F}_{B}F_{b}=(-1)^{S_{B}-|B|}M_{B}\cdot(-1)^{b-1}p_{b}=(-1)^{S_{B}+b-|B|-1}M_{B}p_{b}.$
+We claim that
+(15)
+$M_{B}p_{b}=M_{B\cup\{b\}}+\sum_{x\in B}M_{(B\setminus\{x\})\cup\{x+b\}}.$
+In the product $M_{B}p_{b}$ with $p_{b}=\sum_{i}x_{i}^{b}$ , each term is obtained by multiplying a monomial of $M_{B}$ by some $x_{i}^{b}$ . The index $i$ either does not occur in that monomial, or is the index of exactly one labelled element $x\in B$ . The first case contributes $M_{B\cup\{b\}}$ , while the second case contributes
+$M_{(B\setminus\{x\})\cup\{x+b\}}$ .
+Multiplying (15) by $(-1)^{S_{B}+b-|B|-1}$ , and using the definitions of $\widetilde{F}_{B\cup\{b\}}$ and $\widetilde{F}_{(B\setminus\{x\})\cup\{x+b\}}$ , yields
+$\widetilde{F}_{B}F_{b}=\widetilde{F}_{B\cup\{b\}}-\sum_{x\in B}\widetilde{F}_{(B\setminus\{x\})\cup\{x+b\}}.$
+This proves the lemma.
+∎
+4. Main results
+The main results of this section are Theorem 4.1, which gives a
+recursion for $\widetilde{F}_{A}$ , and Theorem 4.2, which derives
+from it a positive $C$ expansion of $\widetilde{F}_{A}$ . We then use this
+expansion to prove our main results, Theorems 1.2 and 1.3.
+4.1. Main theorems
+We regard $c$ , as well as the integers $c-j$ and $b$ appearing in (16), as new labelled elements when they are adjoined to a labelled multiset. For a labelled multiset $A$ of positive integers and an integer $c\geq 1$ , we set
+(16)
+$\Theta_{A,c}:=\widetilde{F}_{A\cup\{c\}}-\sum_{j=1}^{c-1}q^{j-1}C_{j}(\widetilde{F}_{A\cup\{c-j\}}).$
+Theorem 4.1.
+Let $A$ be a labelled multiset of positive integers, and let $c\geq 1$ be an integer such that $x\geq c$ for every $x\in A$ . Then
+(17)
+$\Theta_{A,c}=\sum_{T\subseteq A}\left(\sum_{b=1}^{S_{T}}\alpha_{T,b}\,C_{c+S_{T}-b}(\widetilde{F}_{(A\setminus T)\cup\{b\}})+\beta_{T}\,C_{c+S_{T}}(\widetilde{F}_{A\setminus T})\right),$
+where
+(18)
+$\alpha_{T,b}=\begin{cases}(|T|-1)!\displaystyle\sum_{\begin{subarray}{c}x\in T\\
+b\leq x\end{subarray}}q^{\,(c+x-b-1)\bmod x},&T\neq\emptyset,\\[11.99998pt]
+0,&T=\emptyset,\end{cases}$
+and
+(19)
+$\beta_{T}=(|T|+1)![c]_{q}+|T|!\sum_{x\in T}\left(q^{c}+q^{c+1}+\cdots+q^{x-1}\right).$
+Here $(c+x-b-1)\bmod x$ denotes the least nonnegative residue of $c+x-b-1$ modulo $x$ , so that all coefficients $\alpha_{T,b}$ and $\beta_{T}$ lie in $\mathbb{N}[q]$ .
+The proof of Theorem 4.1 is given in Section 4.2. Using
+Theorem 4.1, we now prove the following theorem.
+Theorem 4.2.
+For any labelled multiset $A$ of positive integers, we have
+$\widetilde{F}_{A}\in\sum_{\alpha\vDash S_{A}}\mathbb{N}[q]\,C_{\alpha}(1),$
+where the sum ranges over all compositions $\alpha$ of $S_{A}$ .
+Proof.
+Let $\mathcal{C}^{+}$ be the set of all $\mathbb{N}[q]$ -linear combinations of the $C_{\alpha}(1)$ , where $\alpha$ ranges over all compositions.
+Each $C_{j}$ is linear and satisfies $C_{j}(C_{\alpha}(1))=C_{(j,\alpha_{1},\ldots,\alpha_{m})}(1)$ , so $\mathcal{C}^{+}$ is stable under every operator $C_{j}$ with $j\geq 1$ . Moreover, $\widetilde{F}_{A}$ is homogeneous of degree $S_{A}$ while $C_{\alpha}(1)$ is homogeneous of degree $|\alpha|$ , so any expansion of $\widetilde{F}_{A}$ in $\mathcal{C}^{+}$ involves only compositions of $S_{A}$ .
+The empty multiset gives $\widetilde{F}_{\emptyset}=1=C_{\emptyset}(1)$ , which settles
+this case. For nonempty $A$ , we argue by induction on the pair
+$(\ell(A),\min(A))$ , ordered lexicographically, where $\min(A)$ is the
+smallest value in $A$ .
+Let $c=\min(A)$ , choose one labelled element of value $c$ , and let $A^{\prime}=A\setminus\{c\}$ . Then
+$A=A^{\prime}\cup\{c\}$ and $x\geq c$ for all $x\in A^{\prime}$ .
+By the definition (16) of $\Theta_{A^{\prime},c}$ ,
+(20)
+$\widetilde{F}_{A}=\Theta_{A^{\prime},c}+\sum_{j=1}^{c-1}q^{j-1}C_{j}(\widetilde{F}_{A^{\prime}\cup\{c-j\}}).$
+We first show that $\Theta_{A^{\prime},c}\in\mathcal{C}^{+}$ . By Theorem 4.1,
+$\Theta_{A^{\prime},c}=\sum_{T\subseteq A^{\prime}}\left(\sum_{b=1}^{S_{T}}\alpha_{T,b}\,C_{c+S_{T}-b}(\widetilde{F}_{(A^{\prime}\setminus T)\cup\{b\}})+\beta_{T}\,C_{c+S_{T}}(\widetilde{F}_{A^{\prime}\setminus T})\right).$
+The coefficients $\alpha_{T,b}$ and $\beta_{T}$ lie in $\mathbb{N}[q]$ , and the operator subscripts $c+S_{T}-b\geq c\geq 1$ and $c+S_{T}\geq 1$ are positive integers. Moreover, every $\widetilde{F}$ term occurring with a nonzero coefficient has length less than $\ell(A)$ : for $\widetilde{F}_{A^{\prime}\setminus T}$ we have $\ell(A^{\prime}\setminus T)=\ell(A)-1-|T|<\ell(A)$ , while a nonzero $\alpha_{T,b}$ forces $T\neq\emptyset$ and hence $\ell\bigl((A^{\prime}\setminus T)\cup\{b\}\bigr)=\ell(A)-|T|<\ell(A)$ . By the induction hypothesis these terms lie in $\mathcal{C}^{+}$ , and since $\mathcal{C}^{+}$ is stable under each $C_{j}$ , it follows that $\Theta_{A^{\prime},c}\in\mathcal{C}^{+}$ .
+It remains to consider the terms $q^{j-1}C_{j}(\widetilde{F}_{A^{\prime}\cup\{c-j\}})$ in (20), for $1\leq j\leq c-1$ . The multiset $A^{\prime}\cup\{c-j\}$ has the same length as $A$ and smaller minimum $c-j<c$ , so the induction hypothesis gives $\widetilde{F}_{A^{\prime}\cup\{c-j\}}\in\mathcal{C}^{+}$ and hence $q^{j-1}C_{j}(\widetilde{F}_{A^{\prime}\cup\{c-j\}})\in\mathcal{C}^{+}$ . Therefore every term on the right-hand side of (20) lies in $\mathcal{C}^{+}$ , and the theorem follows.
+∎
+Remark 4.3.
+The proof of Theorem 4.2 is effective: iterating the recursion
+in (16) and (17) produces an explicit expansion. For
+instance, writing $C_{(a_{1},\ldots,a_{m})}(1)=C_{a_{1}}C_{a_{2}}\cdots C_{a_{m}}(1)$ ,
+the recursion gives
+$\displaystyle-m_{(2)}$
+$\displaystyle=C_{(1,1)}(1)+(1+q)\,C_{(2)}(1),$
+$\displaystyle-m_{(2,1)}$
+$\displaystyle=2\,C_{(1,1,1)}(1)+(2+2q)\,C_{(1,2)}(1)+q\,C_{(2,1)}(1)+(2+q)\,C_{(3)}(1).$
+For $\mu=(1^{n})$ we have $\widetilde{F}_{(1^{n})}=n!\,e_{n}$ , and for all $n\leq 7$
+the expansion produced by the recursion is
+$\widetilde{F}_{(1^{n})}=n!\sum_{\alpha\vDash n}C_{\alpha}(1)$ , recovering the identity
+(5) of Haglund, Morse and Zabrocki [23].
+Remark 4.4.
+Using SageMath, we verified Theorem 4.2 symbolically over $\mathbb{Q}(q)$
+for all $272$ partitions $\mu$ with $|\mu|\leq 12$ . In each case, iterating
+the recursion of Theorem 4.1 gives coefficients
+$b_{\mu,\alpha}\in\mathbb{N}[q]$ with
+$\sum_{\alpha}b_{\mu,\alpha}C_{\alpha}(1)=\widetilde{F}_{\mu}=(-1)^{|\mu|-\ell(\mu)}\widetilde{m}_{\mu}$ .
+We are now ready to prove Theorem 1.2.
+Proof of Theorem 1.2.
+The idea is that $(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle$
+is at once an integer polynomial, by (1), and a nonnegative rational
+one, by Theorem 4.2 and Proposition 2.3; being both, it lies
+in $\mathbb{N}[q,t]$ . We now give the details.
+Let $\mu\vdash n$ , and choose any labelled multiset $A$ with
+$\mu(A)=\mu$ . By Theorem 4.2,
+$\widetilde{F}_{A}=\Bigl(\prod_{i\geq 1}m_{i}(\mu)!\Bigr)\,(-1)^{|\mu|-\ell(\mu)}m_{\mu}=\sum_{\alpha\vDash n}b_{\mu,\alpha}\,C_{\alpha}(1),\qquad b_{\mu,\alpha}\in\mathbb{N}[q].$
+Dividing by $\prod_{i\geq 1}m_{i}(\mu)!$ , the signed monomial symmetric
+function has a nonnegative $C$ expansion:
+$(-1)^{|\mu|-\ell(\mu)}m_{\mu}=\sum_{\alpha\vDash n}a_{\mu,\alpha}\,C_{\alpha}(1),\qquad a_{\mu,\alpha}\in\Bigl(\prod_{i\geq 1}m_{i}(\mu)!\Bigr)^{-1}\mathbb{N}[q]\subset\mathbb{Q}_{\geq 0}[q].$
+Applying $\nabla^{r}$ and taking the Hall inner product with $s_{\lambda}$ , we obtain
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle=\sum_{\alpha\vDash n}a_{\mu,\alpha}\langle\nabla^{r}C_{\alpha}(1),s_{\lambda}\rangle.$
+By Proposition 2.3, each coefficient
+$\langle\nabla^{r}C_{\alpha}(1),s_{\lambda}\rangle$ lies in
+$\mathbb{N}[q,t]$ . Hence the left-hand side belongs to
+$\mathbb{Q}_{\geq 0}[q,t]$ .
+On the other hand, by (1),
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle\in\mathbb{Z}[q,t].$
+Both conditions hold, so
+$(-1)^{|\mu|-\ell(\mu)}\langle\nabla^{r}m_{\mu},s_{\lambda}\rangle\in\mathbb{N}[q,t].\qed$
+Proof of Theorem 1.3.
+The proof is parallel to that of Theorem 1.2. By Theorem 4.2,
+$(-1)^{|\mu|-\ell(\mu)}m_{\mu}=\sum_{\alpha\vDash n}a_{\mu,\alpha}\,C_{\alpha}(1),\qquad a_{\mu,\alpha}\in\mathbb{Q}_{\geq 0}[q].$
+Applying $\nabla^{r}$ , substituting $q\mapsto q+1$ , and taking the Hall inner
+product with $\omega(m_{\lambda})$ , we obtain
+$(-1)^{|\mu|-\ell(\mu)}\left\langle(\nabla^{r}m_{\mu})[X;q+1],\omega(m_{\lambda})\right\rangle=\sum_{\alpha\vDash n}a_{\mu,\alpha}(q+1)\left\langle(\nabla^{r}C_{\alpha}(1))[X;q+1],\omega(m_{\lambda})\right\rangle.$
+Since $a_{\mu,\alpha}\in\mathbb{Q}_{\geq 0}[q]$ , we have $a_{\mu,\alpha}(q+1)\in\mathbb{Q}_{\geq 0}[q]$ ,
+so by Proposition 2.3 the left-hand side lies in $\mathbb{Q}_{\geq 0}[q,t]$ .
+On the other hand, it lies in $\mathbb{Z}[q,t]$ by (2). Hence it lies in
+$\mathbb{N}[q,t]$ , as desired.
+∎
+4.2. Proof of Theorem 4.1
+Throughout this subsection, $A$ and $c$ are as in Theorem 4.1; in
+particular $x\geq c\geq 1$ for every $x\in A$ , and $K_{\emptyset}=1$ .
+Lemma 4.5.
+Under the same assumptions and notation, we have
+(21)
+$\displaystyle\Theta_{A,c}$
+$\displaystyle=\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\left(\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,q^{c+S_{S}-b-1}K_{T\setminus S}\right)C_{c+S_{T}-b}\left(\widetilde{F}_{A\setminus T}F_{b}\right)$
+$\displaystyle+\sum_{T\subseteq A}\left(\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}\right)C_{c+S_{T}}(\widetilde{F}_{A\setminus T}).$
+Proof.
+By (16), $\Theta_{A,c}=\widetilde{F}_{A\cup\{c\}}-\sum_{j=1}^{c-1}q^{j-1}C_{j}(\widetilde{F}_{A\cup\{c-j\}})$ .
+We expand the two terms on the right-hand side in turn, starting with
+$\widetilde{F}_{A\cup\{c\}}$ . By Lemmas 3.3 and 2.1,
+$\displaystyle\widetilde{F}_{A\cup\{c\}}$
+$\displaystyle=\sum_{S\subseteq A}|S|!\,\widetilde{F}_{A\setminus S}F_{c+S_{S}}$
+$\displaystyle=\sum_{S\subseteq A}\sum_{b=1}^{c+S_{S}-1}|S|!\,q^{c+S_{S}-b-1}\widetilde{F}_{A\setminus S}C_{c+S_{S}-b}(F_{b})+\sum_{S\subseteq A}|S|!\,[c+S_{S}]_{q}\,\widetilde{F}_{A\setminus S}C_{c+S_{S}}(1),$
+where in the second line we applied (6) with $n=c+S_{S}$ and
+reindexed the sum by $b=n-j$ .
+We now apply Lemma 3.4 with $B=A\setminus S$ to move each
+factor $\widetilde{F}_{A\setminus S}$ past the $C$ operator. If the subset
+absorbed in this step is $T\setminus S$ for some
+$S\subseteq T\subseteq A$ , then the operator subscript increases by
+$S_{T\setminus S}$ , becoming $c+S_{T}-b$ (respectively $c+S_{T}$ ), and a
+factor $K_{T\setminus S}$ is introduced. Thus
+(22)
+$\displaystyle\widetilde{F}_{A\cup\{c\}}$
+$\displaystyle=\sum_{T\subseteq A}\sum_{b\geq 1}\left(\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,q^{c+S_{S}-b-1}K_{T\setminus S}\right)C_{c+S_{T}-b}\left(\widetilde{F}_{A\setminus T}F_{b}\right)$
+$\displaystyle+\sum_{T\subseteq A}\left(\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}\right)C_{c+S_{T}}(\widetilde{F}_{A\setminus T}).$
+The second sum of (22) is unchanged by the subtraction in
+(16) and gives the second sum of (21). We now
+expand the second term in (16). Again by Lemma 3.3,
+(23)
+$\displaystyle\sum_{j=1}^{c-1}q^{j-1}C_{j}(\widetilde{F}_{A\cup\{c-j\}})$
+$\displaystyle=\sum_{j=1}^{c-1}\sum_{S\subseteq A}q^{j-1}|S|!\,C_{j}\left(\widetilde{F}_{A\setminus S}F_{c-j+S_{S}}\right)$
+$\displaystyle=\sum_{S\subseteq A}\sum_{b=S_{S}+1}^{c+S_{S}-1}|S|!\,q^{c+S_{S}-b-1}C_{c+S_{S}-b}\left(\widetilde{F}_{A\setminus S}F_{b}\right).$
+Here the second equality results from setting $b=c-j+S_{S}$ (equivalently
+$j=c+S_{S}-b$ ) to match the form of (22).
+It remains to treat the first sum of (22). Fix
+$T\subseteq A$ and $b\geq 1$ . The coefficient
+$\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,q^{c+S_{S}-b-1}K_{T\setminus S}$
+of $C_{c+S_{T}-b}(\widetilde{F}_{A\setminus T}F_{b})$ is nonzero only for
+$b\leq c+S_{T}-1$ , and the summand indexed by $S=T$ is
+$|T|!\,q^{c+S_{T}-b-1}$ , since $K_{\emptyset}=1$ . Let $S\subsetneq T$ .
+Since $T\setminus S\neq\emptyset$ and every element of $A$ is at least
+$c$ , we have $S_{T\setminus S}\geq c$ . Hence for $b\geq S_{T}+1$ ,
+$c+S_{S}=c+S_{T}-S_{T\setminus S}\leq S_{T}<b,$
+which contradicts the requirement $c+S_{S}>b$ ; the summand indexed by $S$ is
+then absent, and the coefficient reduces to the summand indexed by $S=T$ .
+The part of the first sum of (22) with $b\geq S_{T}+1$ is
+therefore
+$\sum_{T\subseteq A}\sum_{b=S_{T}+1}^{c+S_{T}-1}|T|!\,q^{c+S_{T}-b-1}\,C_{c+S_{T}-b}\left(\widetilde{F}_{A\setminus T}F_{b}\right),$
+which is (23) after renaming the summation variable $S$ as
+$T$ . Subtracting (23) from the first sum of
+(22) removes its part with $b\geq S_{T}+1$ , leaving the terms
+with $b\leq S_{T}$ .
+Combining these surviving terms with the second sum of (22)
+gives
+$\displaystyle\Theta_{A,c}$
+$\displaystyle=\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\left(\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,q^{c+S_{S}-b-1}K_{T\setminus S}\right)C_{c+S_{T}-b}\left(\widetilde{F}_{A\setminus T}F_{b}\right)$
+$\displaystyle\quad+\sum_{T\subseteq A}\left(\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}\right)C_{c+S_{T}}(\widetilde{F}_{A\setminus T}).\qed$
+Lemma 4.6.
+With the notation above, for every $T\subseteq A$ we have
+$\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}=(|T|+1)![c]_{q}+|T|!\sum_{x\in T}\left(q^{c}+q^{c+1}+\cdots+q^{x-1}\right)=\beta_{T}.$
+Proof.
+Recall from (11) that
+$K_{T\setminus S}=|T\setminus S|!-(|T\setminus S|-1)!\sum_{y\in T\setminus S}q^{y}.$
+Let $|T|=k$ . We compare the coefficients of $q^{d}$ on both sides.
+First suppose that $d<c$ . Since $x\geq c$ for every $x\in T$ , the definition of $K_{T\setminus S}$ shows that $K_{T\setminus S}$ contains no term of degree $d$ other than its constant term $|T\setminus S|!$ . Hence the coefficient of $q^{d}$ on the left-hand side is
+$\sum_{S\subseteq T}|S|!\,|T\setminus S|!=\sum_{i=0}^{k}\binom{k}{i}i!(k-i)!=(k+1)!.$
+This agrees with the coefficient of $q^{d}$ on the right-hand side.
+Now suppose that $d\geq c$ . We write
+$\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}=\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}\,|T\setminus S|!-\sum_{\begin{subarray}{c}S\subseteq T\\
+y\in T\setminus S\end{subarray}}|S|!\,[c+S_{S}]_{q}(|T\setminus S|-1)!\,q^{y}.$
+Since $[c+S_{S}]_{q}=1+q+\cdots+q^{c+S_{S}-1}$ has coefficient $1$ at $q^{d}$
+when $d<c+S_{S}$ and $0$ otherwise, the positive contribution to the
+coefficient of $q^{d}$ is
+$\sum_{\begin{subarray}{c}S\subseteq T\\
+d<c+S_{S}\end{subarray}}|S|!\,|T\setminus S|!=\sum_{\begin{subarray}{c}\emptyset\neq S\subseteq T\\
+d<c+S_{S}\end{subarray}}\,\sum_{y\in S}(|S|-1)!\,|T\setminus S|!=\sum_{\begin{subarray}{c}\emptyset\neq R\subseteq T,\ y\in R\\
+d<c+S_{R}\end{subarray}}(|R|-1)!\,(|T|-|R|)!.$
+The first equality drops the $S=\emptyset$ term, which vanishes as
+$d\geq c$ , and expands $|S|!=\sum_{y\in S}(|S|-1)!$ ; the second relabels
+$S$ as $R$ , putting the positive contribution in the same form as the
+negative one below so that the two can be subtracted.
+For the negative contribution, set $R=S\cup\{y\}$ , where $y$ is the element chosen from $T\setminus S$ . The term
+$q^{y}[c+S_{S}]_{q}$ contains $q^{d}$ if and only if $y\leq d<c+S_{S}+y=c+S_{R}$ .
+Hence the negative contribution is
+$\sum_{\begin{subarray}{c}\emptyset\neq R\subseteq T,\ y\in R\\
+y\leq d<c+S_{R}\end{subarray}}(|R|-1)!(|T|-|R|)!.$
+After subtracting the negative contribution from the positive contribution, only the terms with $d<y$ remain. Moreover, if $d<y$ , then $d<c+S_{R}$ automatically. Therefore the coefficient of $q^{d}$ on the left-hand side is
+$\sum_{\begin{subarray}{c}y\in T\\
+d<y\end{subarray}}\sum_{\begin{subarray}{c}R\subseteq T\\
+y\in R\end{subarray}}(|R|-1)!(|T|-|R|)!.$
+For each fixed $y\in T$ , we have
+$\sum_{\begin{subarray}{c}R\subseteq T\\
+y\in R\end{subarray}}(|R|-1)!(|T|-|R|)!=\sum_{W\subseteq T\setminus\{y\}}|W|!(k-1-|W|)!=\sum_{i=0}^{k-1}\binom{k-1}{i}i!(k-1-i)!=k!.$
+Thus, for $d\geq c$ , the coefficient of $q^{d}$ on the left-hand side is $k!\,\#\{y\in T:d<y\}$ .
+On the other hand, $[c]_{q}$ has degree less than $c$ , so for $d\geq c$
+the coefficient of $q^{d}$ on the right-hand side is
+$\left\langle q^{d}\right\rangle k!\sum_{x\in T}\left(q^{c}+q^{c+1}+\cdots+q^{x-1}\right)=k!\,\#\{x\in T:d<x\}.$
+This matches the left-hand side, so the coefficients of $q^{d}$ agree for
+$d\geq c$ as well, proving the lemma.
+∎
+In the remainder of this section the coefficient of
+$C_{c+S_{T}-b}(\widetilde{F}_{A\setminus T}F_{b})$ in the first sum of (21)
+appears repeatedly, so we let
+$L_{T,b}:=\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,q^{c+S_{S}-b-1}K_{T\setminus S}.$
+Lemma 4.7.
+With the notation above, for every $T\subseteq A$ and every integer $b$ , we have
+(24)
+$L_{T,b}=\chi(b<c)\,|T|!\,q^{c-b-1}+\sum_{\emptyset\neq R\subseteq T}(|R|-1)!(|T|-|R|)!\sum_{\begin{subarray}{c}y\in R\\
+c+S_{R}-y\leq b<c+S_{R}\end{subarray}}q^{c+S_{R}-b-1}.$
+Proof.
+Using the definition of $K_{T\setminus S}$ , we obtain
+$L_{T,b}=\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,|T\setminus S|!\,q^{c+S_{S}-b-1}-\sum_{\begin{subarray}{c}S\subseteq T,\ c+S_{S}>b\\
+y\in T\setminus S\end{subarray}}|S|!\,(|T\setminus S|-1)!\,q^{c+S_{S}+y-b-1}.$
+We first rewrite the positive part. The contribution from $S=\emptyset$ is
+$\chi(b<c)\,|T|!\,q^{c-b-1}$ .
+For $S\neq\emptyset$ , we use $|S|!=\sum_{y\in S}(|S|-1)!$ .
+Thus the positive part becomes
+(25)
+$\chi(b<c)\,|T|!\,q^{c-b-1}+\sum_{\begin{subarray}{c}\emptyset\neq R\subseteq T,\ y\in R\\
+b<c+S_{R}\end{subarray}}(|R|-1)!(|T|-|R|)!\,q^{c+S_{R}-b-1}.$
+We now rewrite the negative part. Set $R=S\cup\{y\}$ ,
+where $y\in T\setminus S$ . Then
+$S_{R}=S_{S}+y,\qquad|S|!=(|R|-1)!,\qquad(|T\setminus S|-1)!=(|T|-|R|)!.$
+Moreover, the condition $c+S_{S}>b$ becomes
+$b<c+S_{R}-y$ .
+Hence the negative part is
+(26)
+$\sum_{\begin{subarray}{c}\emptyset\neq R\subseteq T,\ y\in R\\
+b<c+S_{R}-y\end{subarray}}(|R|-1)!(|T|-|R|)!\,q^{c+S_{R}-b-1}.$
+After subtracting the negative part (26) from the positive part
+(25), only the range
+$c+S_{R}-y\leq b<c+S_{R}$ remains for each fixed pair $(R,y)$ . Therefore
+$L_{T,b}=\chi(b<c)\,|T|!\,q^{c-b-1}+\sum_{\emptyset\neq R\subseteq T}(|R|-1)!(|T|-|R|)!\sum_{\begin{subarray}{c}y\in R\\
+c+S_{R}-y\leq b<c+S_{R}\end{subarray}}q^{c+S_{R}-b-1}.\qed$
+Furthermore, we have the following lemma.
+Lemma 4.8.
+With the notation above, we have
+(27)
+$\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}L_{T,b}\,C_{c+S_{T}-b}\left(\widetilde{F}_{A\setminus T}F_{b}\right)=\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\alpha_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{(A\setminus T)\cup\{b\}}\bigr).$
+Proof.
+Recall that
+$L_{T,b}=\sum_{\begin{subarray}{c}S\subseteq T\\
+c+S_{S}>b\end{subarray}}|S|!\,q^{c+S_{S}-b-1}K_{T\setminus S}.$
+By Lemma 3.5 with $B=A\setminus T$ , we have
+(28)
+$\widetilde{F}_{A\setminus T}F_{b}=\widetilde{F}_{(A\setminus T)\cup\{b\}}-\sum_{x\in A\setminus T}\widetilde{F}_{(A\setminus(T\cup\{x\}))\cup\{x+b\}}.$
+Applying (28) to each summand on the left-hand side of
+(27) and using the linearity of $C_{c+S_{T}-b}$ , we obtain
+(29)
+$\begin{split}\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}L_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{A\setminus T}F_{b}\bigr)&=\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}L_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{(A\setminus T)\cup\{b\}}\bigr)\\
+&\quad-\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\sum_{x\in A\setminus T}L_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{(A\setminus(T\cup\{x\}))\cup\{x+b\}}\bigr).\end{split}$
+Reindex the triple sum by substituting $T\setminus\{x\}$ for $T$ and
+$b-x$ for $b$ , keeping $x$ : the condition $x\in A\setminus T$ becomes
+$x\in T$ , and $1\leq b\leq S_{T}$ becomes
+$1\leq b-x\leq S_{T\setminus\{x\}}=S_{T}-x$ , i.e., $x<b\leq S_{T}$ . Since
+$c+S_{T\setminus\{x\}}-(b-x)=c+(S_{T}-x)-(b-x)=c+S_{T}-b$
+and $\bigl(A\setminus((T\setminus\{x\})\cup\{x\})\bigr)\cup\{(b-x)+x\}=(A\setminus T)\cup\{b\}$ ,
+the triple sum equals
+$\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\biggl(\,\sum_{\begin{subarray}{c}x\in T\\
+x<b\end{subarray}}L_{T\setminus\{x\},\,b-x}\biggr)C_{c+S_{T}-b}\bigl(\widetilde{F}_{(A\setminus T)\cup\{b\}}\bigr).$
+Substituting this into (29), the left-hand side of
+(27) equals
+(30)
+$\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\gamma_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{(A\setminus T)\cup\{b\}}\bigr),$
+where $\gamma_{T,b}:=L_{T,b}-\sum_{\begin{subarray}{c}x\in T\\
+x<b\end{subarray}}L_{T\setminus\{x\},\,b-x}$ .
+Comparing (30) with the right-hand side of
+(27), it suffices to prove that $\gamma_{T,b}=\alpha_{T,b}$
+for all $T\subseteq A$ and $b\leq S_{T}$ , where, by (18) and
+$T\neq\emptyset$ ,
+$\alpha_{T,b}=(|T|-1)!\sum_{\begin{subarray}{c}x\in T\\
+b\leq x\end{subarray}}q^{\,(c+x-b-1)\bmod x}.$
+By (24),
+(31)
+$L_{T,b}=\chi(b<c)\,|T|!\,q^{c-b-1}+\sum_{\emptyset\neq R\subseteq T}(|R|-1)!(|T|-|R|)!\sum_{\begin{subarray}{c}y\in R\\
+c+S_{R}-y\leq b<c+S_{R}\end{subarray}}q^{c+S_{R}-b-1},$
+and
+(32)
+$L_{T\setminus\{x\},\,b-x}=\chi(b-x<c)\,(|T|-1)!\,q^{c+x-b-1}\\
++\sum_{\emptyset\neq R^{\prime}\subseteq T\setminus\{x\}}(|R^{\prime}|-1)!(|T|-1-|R^{\prime}|)!\sum_{\begin{subarray}{c}y\in R^{\prime}\\
+c+S_{R^{\prime}}-y\leq b-x<c+S_{R^{\prime}}\end{subarray}}q^{c+S_{R^{\prime}}-(b-x)-1}.$
+Sum (32) over $x\in T$ with $x<b$ . Its first term, supported
+on $b<c+x$ , gives
+(33)
+$\sum_{\begin{subarray}{c}x\in T\\
+x<b\end{subarray}}\chi(b-x<c)\,(|T|-1)!\,q^{c+x-b-1}=\sum_{\begin{subarray}{c}x\in T\\
+x<b<c+x\end{subarray}}(|T|-1)!\,q^{c+x-b-1},$
+and its double sum, under $R=R^{\prime}\cup\{x\}$ and then summation over
+$x\in R\setminus\{y\}$ , gives
+$\displaystyle\sum_{\begin{subarray}{c}x\in T\\
+x<b\end{subarray}}\sum_{\emptyset\neq R^{\prime}\subseteq T\setminus\{x\}}(|R^{\prime}|-1)!(|T|-1-|R^{\prime}|)!\sum_{\begin{subarray}{c}y\in R^{\prime}\\
+c+S_{R^{\prime}}-y\leq b-x<c+S_{R^{\prime}}\end{subarray}}q^{c+S_{R^{\prime}}-(b-x)-1}$
+$\displaystyle\qquad\overset{R=R^{\prime}\cup\{x\}}{=}\sum_{\begin{subarray}{c}R\subseteq T,\ |R|>1\\
+y\in R,\ x\in R\setminus\{y\}\\
+c+S_{R}-y\leq b<c+S_{R}\end{subarray}}(|R|-2)!(|T|-|R|)!\,q^{c+S_{R}-b-1}$
+(34)
+$\displaystyle\qquad\overset{\phantom{R=R^{\prime}\cup\{x\}}}{=}\sum_{\begin{subarray}{c}R\subseteq T,\ |R|>1\\
+y\in R\\
+c+S_{R}-y\leq b<c+S_{R}\end{subarray}}(|R|-1)!(|T|-|R|)!\,q^{c+S_{R}-b-1}.$
+The right-hand side of (34) is the $|R|>1$ part of
+(31), whose $|R|=1$ part ( $R=\{x\}$ , $S_{R}=x$ ) is
+$\sum_{x\in T,\ c\leq b<c+x}(|T|-1)!\,q^{c+x-b-1}$ . Hence
+$\displaystyle\gamma_{T,b}$
+$\displaystyle=L_{T,b}-\sum_{\begin{subarray}{c}x\in T\\
+x<b\end{subarray}}L_{T\setminus\{x\},\,b-x}$
+$\displaystyle=\chi(b<c)\,|T|!\,q^{c-b-1}+\sum_{\begin{subarray}{c}x\in T\\
+c\leq b<c+x\end{subarray}}(|T|-1)!\,q^{c+x-b-1}-\sum_{\begin{subarray}{c}x\in T\\
+x<b<c+x\end{subarray}}(|T|-1)!\,q^{c+x-b-1}$
+(35)
+$\displaystyle=\chi(b<c)\,(|T|-1)!\sum_{x\in T}q^{c-b-1}+\sum_{\begin{subarray}{c}x\in T\\
+c\leq b\leq x\end{subarray}}(|T|-1)!\,q^{c+x-b-1}.$
+It remains to rewrite the exponents as residues modulo $x$ . If $b<c$ ,
+then $b\leq x$ for every $x\in T$ since $x\geq c$ ; from
+$0\leq c-b-1<c\leq x$ and $c-b-1\equiv c+x-b-1\pmod{x}$ we obtain
+$c-b-1=(c+x-b-1)\bmod x$ . If $c\leq b\leq x$ , then
+$0\leq c+x-b-1<x$ , so $c+x-b-1=(c+x-b-1)\bmod x$ . In either case the
+exponent in (35) equals $(c+x-b-1)\bmod x$ , and therefore
+$\gamma_{T,b}=(|T|-1)!\sum_{\begin{subarray}{c}x\in T\\
+b\leq x\end{subarray}}q^{\,(c+x-b-1)\bmod x}=\alpha_{T,b}.\qed$
+We are now ready to prove Theorem 4.1.
+Proof of Theorem 4.1.
+By Lemma 4.5,
+(36)
+$\Theta_{A,c}=\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}L_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{A\setminus T}F_{b}\bigr)+\sum_{T\subseteq A}\biggl(\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}\biggr)C_{c+S_{T}}(\widetilde{F}_{A\setminus T}).$
+By Lemma 4.6, $\sum_{S\subseteq T}|S|!\,[c+S_{S}]_{q}K_{T\setminus S}=\beta_{T}$ , and by
+Lemma 4.8,
+(37)
+$\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}L_{T,b}\,C_{c+S_{T}-b}\bigl(\widetilde{F}_{A\setminus T}F_{b}\bigr)=\sum_{T\subseteq A}\sum_{b=1}^{S_{T}}\alpha_{T,b}\,C_{c+S_{T}-b}(\widetilde{F}_{(A\setminus T)\cup\{b\}}).$
+This proves Theorem 4.1.
+∎
+5. Concluding remarks
+In this paper, we resolve Conjecture 1.1 and prove its
+higher-power analogue.
+5.1. An extension to the Schiffmann algebra
+We can extend the Schur positivity statement to the Schiffmann algebra
+setting, as well as the $e$ -positivity argument. Let $M=(1-q)(1-t)$ . For
+coprime positive integers $r,k$ , we write $f[-MX^{r,k}]\cdot 1$ for the
+action of the Schiffmann algebra on symmetric functions, introduced by Burban and Schiffmann
+[10]. Here we follow the notation of Blasiak, Haiman, Morse, Pun and Seelinger
+[6, 7, 8]. In particular,
+$f[-MX^{r,1}]\cdot 1=\nabla^{r}f$ .
+Theorem 5.1.
+Let $r,k$ be coprime positive integers and $\mu\vdash n,\lambda\vdash kn$ . Then we have
+(38)
+$(-1)^{|\mu|-\ell(\mu)}\left\langle m_{\mu}\bigl[-MX^{r,k}\bigr]\cdot 1,s_{\lambda}\right\rangle\in\mathbb{N}[q,t].$
+Moreover, after the substitution $q\mapsto q+1$ , we have
+(39)
+$(-1)^{|\mu|-\ell(\mu)}\left\langle\left(m_{\mu}\bigl[-MX^{r,k}\bigr]\cdot 1\right)[X;q+1],\omega(m_{\lambda})\right\rangle\in\mathbb{N}[q,t].$
+Proof.
+By Theorem 4.2, $(-1)^{|\mu|-\ell(\mu)}m_{\mu}$ has a $C$ expansion
+$(-1)^{|\mu|-\ell(\mu)}m_{\mu}=\sum_{\alpha\vDash n}a_{\mu,\alpha}\,C_{\alpha}(1),\qquad a_{\mu,\alpha}\in\mathbb{Q}_{\geq 0}[q].$
+Via $|\mu|=|\alpha|=n$ , applying the Schiffmann algebra action gives
+$(-1)^{|\mu|-\ell(\mu)}m_{\mu}[-MX^{r,k}]\cdot 1=\sum_{\alpha\vDash n}a_{\mu,\alpha}\,C_{\alpha}(1)[-MX^{r,k}]\cdot 1.$
+By Mellit’s compositional $(km,kn)$ -shuffle theorem [33], each
+$C_{\alpha}(1)[-MX^{r,k}]\cdot 1$ is a nonnegative $\mathbb{N}[q,t]$ -linear
+combination of column LLT polynomials. Since LLT polynomials are Schur
+positive, we have
+$(-1)^{|\mu|-\ell(\mu)}\left\langle m_{\mu}[-MX^{r,k}]\cdot 1,s_{\lambda}\right\rangle\in\mathbb{Q}_{\geq 0}[q,t].$
+Since $\langle s_{\mu}[-MX^{r,k}]\cdot 1,s_{\lambda}\rangle\in\mathbb{N}[q,t]$ by Blasiak, Haiman, Morse, Pun and Seelinger
+[8] and the integrality of the inverse
+Kostka matrix established by Eğecioğlu and Remmel [13], we have
+$(-1)^{|\mu|-\ell(\mu)}\left\langle m_{\mu}[-MX^{r,k}]\cdot 1,s_{\lambda}\right\rangle\in\mathbb{Z}[q,t].$
+Hence we obtain (38).
+For the $e$ -positivity statement, we use the same expansion after the
+substitution $q\mapsto q+1$ . The shifted $e$ -positivity of the corresponding
+column LLT polynomials gives
+$\left\langle\left(C_{\alpha}(1)[-MX^{r,k}]\cdot 1\right)[X;q+1],\omega(m_{\lambda})\right\rangle\in\mathbb{N}[q,t].$
+Hence
+$(-1)^{|\mu|-\ell(\mu)}\left\langle\left(m_{\mu}[-MX^{r,k}]\cdot 1\right)[X;q+1],\omega(m_{\lambda})\right\rangle\in\mathbb{Q}_{\geq 0}[q,t].$
+Since (38) holds, the substitution $q\mapsto q+1$
+preserves $\mathbb{Z}[q,t]$ , and the transition matrix from the Schur basis
+to the elementary basis has integer entries, we obtain
+$(-1)^{|\mu|-\ell(\mu)}\left\langle\left(m_{\mu}[-MX^{r,k}]\cdot 1\right)[X;q+1],\omega(m_{\lambda})\right\rangle\in\mathbb{Z}[q,t].$
+Thus we obtain (39).
+∎
+5.2. Conjectures
+Nevertheless, our proof expresses
+$(-1)^{|\mu|-\ell(\mu)}\nabla^{r}m_{\mu}$ only as a nonnegative rational combination
+of column LLT polynomials, not as a nonnegative integral one; in particular,
+it does not yield a direct parking function formula. Two natural questions arise.
+First, Theorem 4.2 gives a $C$ expansion of $\widetilde{F}_{\mu}$ , that is,
+of $F_{\mu}=(-1)^{|\mu|-\ell(\mu)}m_{\mu}$ multiplied by $\prod_{i}m_{i}(\mu)!$ ,
+with coefficients in $\mathbb{N}[q]$ . It is natural to ask whether
+$F_{\mu}$ itself admits such an expansion. The expansion produced by our
+recursion, after dividing by $\prod_{i}m_{i}(\mu)!$ , can have non-integral
+coefficients; the smallest example is $\mu=(2,2)$ , where the coefficient
+of $C_{(1,2,1)}(1)$ equals $q/2$ . However, since the functions
+$C_{\alpha}(1)$ , $\alpha\vDash n$ , do not form a basis, the $C$ expansion
+of a symmetric function need not be unique, and we make the following
+conjecture.
+Conjecture 5.2.
+For every partition $\mu$ , the symmetric function
+$F_{\mu}=(-1)^{|\mu|-\ell(\mu)}m_{\mu}$ admits a $C$ expansion with
+coefficients in $\mathbb{N}[q]$ .
+This holds whenever $\mu$ has distinct parts, since then
+$\prod_{i}m_{i}(\mu)!=1$ and the expansion of Theorem 4.2 already has
+coefficients in $\mathbb{N}[q]$ . For partitions with repeated parts we have
+verified Conjecture 5.2 using SageMath for all $\mu$ with
+$|\mu|\leq 12$ ; for example,
+$m_{(2,2)}=C_{(1,1,1,1)}(1)+(q^{3}+q^{2}+q+1)\,C_{(1,1,2)}(1)+(q+1)\,C_{(1,3)}(1)\\
++(q^{2}+2q)\,C_{(2,2)}(1)+(q+1)\,C_{(4)}(1),$
+and
+$\displaystyle m_{(3,3)}={}$
+$\displaystyle C_{(1,1,1,1,1,1)}(1)+C_{(1,1,1,1,2)}(1)+C_{(1,1,1,2,1)}(1)+C_{(1,1,1,3)}(1)$
+$\displaystyle+C_{(1,1,2,1,1)}(1)+C_{(1,1,2,2)}(1)+C_{(1,1,3,1)}(1)+C_{(1,1,4)}(1)$
+$\displaystyle+(1+q^{2})\,C_{(1,2,1,1,1)}(1)+(1+q^{3}+q^{4})\,C_{(1,2,1,2)}(1)+(1+q)\,C_{(1,2,2,1)}(1)$
+$\displaystyle+(1+q^{3}+q^{4})\,C_{(1,2,3)}(1)+C_{(1,3,1,1)}(1)+(1+q)\,C_{(1,3,2)}(1)+C_{(1,4,1)}(1)$
+$\displaystyle+(1+q^{2})\,C_{(1,5)}(1)+C_{(2,1,1,1,1)}(1)+C_{(2,1,1,2)}(1)+C_{(2,1,2,1)}(1)$
+$\displaystyle+C_{(2,1,3)}(1)+C_{(2,2,1,1)}(1)+C_{(2,2,2)}(1)+C_{(2,3,1)}(1)+C_{(2,4)}(1)$
+$\displaystyle+(1+q+q^{2})\,C_{(3,1,1,1)}(1)+(1+q+q^{2}+2q^{3})\,C_{(3,1,2)}(1)$
+$\displaystyle+(1+q+q^{3})\,C_{(3,2,1)}(1)+(1+q+2q^{2}+q^{3}+q^{4})\,C_{(3,3)}(1)$
+$\displaystyle+C_{(4,1,1)}(1)+(1+q^{2})\,C_{(4,2)}(1)+C_{(5,1)}(1)+(1+q+q^{2})\,C_{(6)}(1).$
+By Mellit’s compositional $(km,kn)$ -shuffle theorem [33],
+$\nabla^{r}C_{\alpha}(1)$ is a nonnegative integer combination of column LLT
+polynomials. Conjecture 5.2 would therefore imply that
+$(-1)^{|\mu|-\ell(\mu)}\nabla^{r}m_{\mu}$ is also such a combination, refining
+Theorem 1.2 from Schur positivity to LLT positivity.
+Second, one would like a combinatorial formula for
+$(-1)^{|\mu|-\ell(\mu)}\nabla^{r}m_{\mu}$ , ideally in terms of parking
+functions. A natural route is to find a $C$ expansion of $F_{\mu}$ with
+coefficients in $\mathbb{N}[q]$ whose coefficients admit a combinatorial
+description. The compositional $(km,kn)$ -shuffle theorem of Mellit [33] gives a
+parking function formula for each $\nabla^{r}C_{\alpha}(1)$ . Such a
+description would then yield the desired formula, extending those of Sergel
+[36] for hooks and of Qu and Xin [34] for
+$\mu=(2^{k},1^{\ell})$ .
+References
+[1]
+P. Alexandersson,
+LLT polynomials, elementary symmetric functions and melting lollipops,
+J. Algebraic Combin. 53 (2021), no. 2, 299–325.
+[2]
+P. Alexandersson and R. Sulzgruber,
+A combinatorial expansion of vertical-strip LLT polynomials in the basis of elementary symmetric functions,
+Adv. Math. 400 (2022), Paper No. 108256.
+[3]
+F. Bergeron and A. M. Garsia,
+Science fiction and Macdonald’s polynomials,
+in Algebraic methods and $q$ -special functions (Montréal, QC, 1996),
+CRM Proc. Lecture Notes 22, Amer. Math. Soc., Providence, RI, 1999,
+1–52.
+[4]
+F. Bergeron, A. M. Garsia, M. Haiman, and G. Tesler,
+Identities and positivity conjectures for some remarkable operators in the theory of symmetric functions,
+Methods Appl. Anal. 6 (1999), no. 3, 363–420.
+[5]
+F. Bergeron, A. M. Garsia, E. Sergel Leven, and G. Xin,
+Compositional $(km,kn)$ -shuffle conjectures,
+Int. Math. Res. Not. IMRN 2016, no. 14, 4229–4270.
+[6]
+J. Blasiak, M. Haiman, J. Morse, A. Pun, and G. H. Seelinger,
+A shuffle theorem for paths under any line,
+Forum Math. Pi 11 (2023), e5.
+[7]
+J. Blasiak, M. Haiman, J. Morse, A. Pun, and G. H. Seelinger,
+LLT polynomials in the Schiffmann algebra,
+J. Reine Angew. Math. 811 (2024), 93–133.
+[8]
+J. Blasiak, M. Haiman, J. Morse, A. Pun, and G. H. Seelinger,
+Dens, nests and the Loehr–Warrington conjecture,
+J. Amer. Math. Soc. 38 (2025), no. 4, 1049–1106.
+[9]
+J. Blasiak, M. Haiman, J. Morse, A. Pun, and G. H. Seelinger,
+A raising operator formula for Macdonald polynomials,
+Forum Math. Sigma 13 (2025), e47.
+[10]
+I. Burban and O. Schiffmann,
+On the Hall algebra of an elliptic curve, I,
+Duke Math. J. 161 (2012), 1171–1231.
+[11]
+E. Carlsson and A. Mellit,
+A proof of the shuffle conjecture,
+J. Amer. Math. Soc. 31 (2018), no. 3, 661–697.
+[12]
+M. D’Adderio,
+$e$ -positivity of vertical strip LLT polynomials,
+J. Combin. Theory Ser. A 172 (2020), Art. 105212.
+[13]
+Ö. Eğecioğlu and J. B. Remmel,
+A combinatorial interpretation of the inverse Kostka matrix,
+Linear Multilinear Algebra 26 (1990), no. 1–2, 59–84.
+[14]
+Ö. Eğecioğlu and J. B. Remmel,
+Brick tabloids and the connection matrices between bases of symmetric
+functions,
+Discrete Appl. Math. 34 (1991), 107–120.
+[15]
+A. M. Garsia, J. Haglund, D. Qiu, and M. Romero,
+$e$ -Positivity results and conjectures,
+arXiv:1904.07912, 2019.
+[16]
+A. M. Garsia and M. Haiman,
+A graded representation model for Macdonald’s polynomials,
+Proc. Natl. Acad. Sci. USA 90 (1993), no. 8, 3607–3610.
+[17]
+A. M. Garsia and M. Haiman,
+A remarkable $q,t$ -Catalan sequence and $q$ -Lagrange inversion,
+J. Algebraic Combin. 5 (1996), 191–244.
+[18]
+A. M. Garsia and M. Haiman,
+Some natural bigraded $S_{n}$ -modules and $q,t$ -Kostka coefficients,
+Electron. J. Combin. 3 (1996), no. 2, Research Paper 24.
+[19]
+E. Gorsky and A. Negut,
+Refined knot invariants and Hilbert schemes,
+J. Math. Pures Appl. (9) 104 (2015), no. 3, 403–435.
+[20]
+I. Grojnowski and M. Haiman,
+Affine Hecke algebras and positivity of LLT and Macdonald polynomials,
+preprint, 2007.
+[21]
+J. Haglund,
+The $q,t$ -Catalan numbers and the space of diagonal harmonics,
+University Lecture Series, vol. 41,
+Amer. Math. Soc., Providence, RI, 2008.
+[22]
+J. Haglund, M. Haiman, N. Loehr, J. B. Remmel, and A. Ulyanov,
+A combinatorial formula for the character of the diagonal coinvariants,
+Duke Math. J. 126 (2005), no. 2, 195–232.
+[23]
+J. Haglund, J. Morse, and M. Zabrocki,
+A compositional shuffle conjecture specifying touch points of the Dyck path,
+Canad. J. Math. 64 (2012), no. 4, 822–844.
+[24]
+M. Haiman,
+Hilbert schemes, polygraphs and the Macdonald positivity conjecture,
+J. Amer. Math. Soc. 14 (2001), no. 4, 941–1006.
+[25]
+M. Haiman,
+Vanishing theorems and character formulas for the Hilbert scheme of points in the plane,
+Invent. Math. 149 (2002), 371–407.
+[26]
+D. Kim, S. J. Lee, and J. Oh,
+Shuffle formula in science fiction for Macdonald polynomials,
+Compos. Math. 161 (2025), no. 5, 1075–1127.
+[27]
+D. Kim and J. Oh,
+Extending the science fiction and the Loehr–Warrington formula,
+arXiv:2409.01041, 2024.
+[28]
+D. Kim and J. Oh,
+Shuffle theorem for torus link homology,
+arXiv:2602.06338, 2026.
+[29]
+N. A. Loehr and G. S. Warrington,
+Square $q,t$ -lattice paths and $\nabla(p_{n})$ ,
+Trans. Amer. Math. Soc. 359 (2007), no. 2, 649–669.
+[30]
+N. A. Loehr and G. S. Warrington,
+Nested quantum Dyck paths and $\nabla(s_{\lambda})$ ,
+Int. Math. Res. Not. IMRN 2008, Art. ID rnm157.
+[31]
+I. G. Macdonald,
+A new class of symmetric functions,
+Publ. I.R.M.A. Strasbourg 372/S-20, Actes 20e Séminaire Lotharingien,
+131–171, 1988.
+[32]
+I. G. Macdonald,
+Symmetric functions and Hall polynomials,
+2nd ed.,
+Oxford Mathematical Monographs,
+Oxford University Press, Oxford, 1995.
+[33]
+A. Mellit,
+Toric braids and $(m,n)$ -parking functions,
+Duke Math. J. 170 (2021), no. 18, 4123–4169.
+[34]
+M. Qu and G. Xin,
+A parking function interpretation for $(-1)^{k}\nabla m_{2^{k}1^{\ell}}$ ,
+J. Algebraic Combin. 61 (2025), Art. 45.
+[35]
+E. Sergel,
+A proof of the square paths conjecture,
+J. Combin. Theory Ser. A 152 (2017), 363–379.
+[36]
+E. Sergel,
+A combinatorial model for $\nabla m_{(n,1^{k})}$ ,
+Sém. Lothar. Combin. 80B (2018), Art. 69.
+[37]
+R. P. Stanley,
+A symmetric function generalization of the chromatic polynomial of a
+graph,
+Adv. Math. 111 (1995), 166–194.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+methods listed below:
+Click the "Report Issue" (
+) button, located in the page header.
+Tip: You can select the relevant text first, to include it in your report.
+Our team has already identified the following issues. We appreciate your time reviewing and reporting rendering errors we
+may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion, and welcome developer contributions.
+We gratefully acknowledge support from
+our major funders,
+member institutions, ,
+and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status (opens in new tab)
+Major funding support from

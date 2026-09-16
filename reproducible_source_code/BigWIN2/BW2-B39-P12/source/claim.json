@@ -1,0 +1,17 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Let P be any unsigned 7 by 7 permutation matrix having exactly one diagonal 1, exactly one antidiagonal 1, and no eigenvalue -1. Then P has cycle type 1+3+3. Let {s} be its singleton cycle and C1,C2 its 3-cycles. For arbitrary u,v in C1 and w,t in C2, let F_ab be the elementary skew matrix on the unordered edge {a,b}, put S_P=(I-P)(I+P)^(-1), S(x,y,z)=S_P+x F_su+y F_vw+z F_st, and Q(x,y,z)=(I-S)(I+S)^(-1). The origin is an isolated real common zero of D(Q)-1 and A(Q)-1 in this affine three-coordinate family. Consequently, no nonconstant real-continuous solution germ passes through the anchor, and no rational parametrization defined over R can map a real parameter value to the anchor while parametrizing nearby Euler points. This is only a local obstruction for the stated families; it does not exclude a rational algebraic component having the anchor as an isolated real point, and it does not resolve whether a proper Euler magic matrix of order seven exists.",
+  "contribution": "This gives an exact, exhaustive obstruction to a natural minimal enlargement of the known sparse permutation-seed route: all 112 qualifying unsigned permutation anchors and all 81 component-triangle edge choices per anchor are locally rigid for the two Euler diagonal equations. The decisive tangent coefficients were recomputed by a separate standard-library Fraction implementation. The original order-seven existence problem remains unresolved. Targeted current arXiv comparison found no equivalent result in the three directly relevant primary papers recorded in problem.md; this bounded search is not a claim of priority.",
+  "proposer_job_id": "win-00039-p12-research-1d5deca179b2",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "checkpoint.md",
+    "evidence/cayley_100_slices.py",
+    "evidence/cayley_triangle_slices.py",
+    "evidence/cayley_triangle_slices.json",
+    "evidence/verify_cayley_triangle_tangents.py",
+    "evidence/cayley_triangle_fraction_check.json"
+  ]
+}

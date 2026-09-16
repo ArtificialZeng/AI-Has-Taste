@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Four-Color Game on M2(C3): An Exact Strategy Certificate},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Game chromatic number of a generalized Mycielski graph},
+  pdfkeywords={graph coloring game, game chromatic number, generalized Mycielski graph, exact certificate}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\gamechi}{\chi_{\mathrm g}}
+
+\title{The Four-Color Game on $M_2(C_3)$:\\An Exact Strategy Certificate}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the game chromatic number of the ten-vertex generalized
+Mycielski graph $M_2(C_3)$.  An elementary forced-color argument gives the
+lower bound four.  For the upper bound, we give a complete machine-readable
+Alice strategy for the four-color game.  After quotienting by simultaneous
+permutations of the three indices and by permutations of the four colors, the
+strategy is a directed acyclic graph with $1020$ states and $2467$ edges.  A
+separately implemented verifier reconstructs the graph and the full symmetry
+action, checks the strategy move at every Alice state, and checks every raw
+legal reply at every Bob state.  Backward induction on the number of uncolored
+vertices therefore proves
+\[
+  \gamechi\bigl(M_2(C_3)\bigr)=4.
+\]
+\end{abstract}
+
+\section{Context and statement}
+
+In the vertex-coloring game, Alice and Bob alternately color an uncolored
+vertex from a fixed palette while maintaining a proper coloring; Alice moves
+first.  Alice wins if every vertex is eventually colored, and Bob wins if an
+uncolored vertex has no available color.  The game chromatic number
+$\gamechi(G)$ is the least palette size for which Alice has a winning
+strategy.  Bodlaender's 1991 paper formulated graph-coloring games and
+studied their algorithmic questions~\cite{Bodlaender1991}.
+
+Mou, Sun, and Zhang use the generalized-Mycielski notation adopted here and
+proved
+\[
+  4\leq \gamechi\bigl(M_k(C_3)\bigr)\leq 5
+  \qquad (k\geq 2)
+\]
+\cite[Theorem~5.1(1)]{MouSunZhang2026}.  Their result leaves open which
+endpoint occurs for the fixed two-layer instance.  For comparison, the
+classical one-layer Mycielski graph of $C_3$ has game chromatic number four
+\cite[p.~262]{AlagammaiVijayalakshmi2019}.  Our contribution is exactly the
+two-layer endpoint; no claim of priority beyond the literature comparison
+just stated is made.
+
+Write $[3]=\{1,2,3\}$ and
+\[
+ V=\{v_i^m:i\in[3],\ m\in\{0,1,2\}\}\cup\{\omega\}.
+\]
+The graph studied below has edge set
+\begin{align*}
+E={}&\{v_i^0v_j^0:1\leq i<j\leq3\}\\
+ &\cup\{v_i^m v_j^{m+1}:m\in\{0,1\},\ i,j\in[3],\ i\neq j\}\\
+ &\cup\{v_i^2\omega:i\in[3]\}.
+\end{align*}
+Thus it has ten vertices and eighteen edges.  Only the base layer has
+within-layer edges; consecutive layers are joined at unequal indices; and the
+root is adjacent exactly to the three vertices in the top layer.
+
+\begin{theorem}\label{thm:main}
+Alice wins the four-color game on the graph $M_2(C_3)$ defined above.
+Consequently,
+\[
+  \gamechi\bigl(M_2(C_3)\bigr)=4.
+\]
+\end{theorem}
+
+\section{Lower bound}
+
+The ordinary chromatic number is already at least four.  Indeed, in any
+proper three-coloring the triangle $v_1^0v_2^0v_3^0$ uses all three colors.
+For a fixed $j$, the vertex $v_j^1$ is adjacent to the two base vertices
+$v_i^0$ with $i\neq j$, so it is forced to have the color of $v_j^0$.
+Similarly, $v_j^2$ is forced to have the color of $v_j^1$.  The three
+neighbors $v_1^2,v_2^2,v_3^2$ of $\omega$ therefore use all three colors,
+leaving no color for $\omega$.  Hence
+\[
+  4\leq\chi\bigl(M_2(C_3)\bigr)
+  \leq\gamechi\bigl(M_2(C_3)\bigr).
+\]
+
+\section{The exact strategy certificate}
+
+We encode a partial coloring as a ten-tuple in the vertex order
+\[
+(v_1^0,v_2^0,v_3^0,v_1^1,v_2^1,v_3^1,
+  v_1^2,v_2^2,v_3^2,\omega),
+\]
+using $0$ for uncolored and $1,2,3,4$ for colors.  The group
+$S_3\times S_4$ acts by applying one index permutation simultaneously in all
+three layers and by permuting the four color names.  Both actions preserve
+the graph, legality, terminal status, and the player to move.  Each orbit is
+represented by its lexicographically least tuple.
+
+The file \texttt{strategy.json} contains the strategy directed acyclic graph.
+At every nonterminal Alice node it records one legal vertex--color move.  At
+every nonterminal Bob node it records the complete ordered list of all raw
+legal vertex--color moves, before deduplication of symmetry-equivalent
+successors.  The target of an edge is the canonical representative obtained
+after making its move.  Terminal nodes are labeled either \texttt{all} or
+\texttt{dead} according as the coloring is complete or an uncolored vertex
+has no available color.
+
+\begin{lemma}\label{lem:certificate}
+Suppose a finite strategy graph has the preceding semantics, every Alice node
+has a recorded legal move, every Bob node contains every legal reply, every
+edge increases the number of colored vertices by one, and every reachable
+leaf is labeled \texttt{all}.  Then the recorded strategy wins for Alice from
+the initial state.
+\end{lemma}
+
+\begin{proof}
+The number of uncolored vertices strictly decreases along every edge, so the
+graph is well founded.  At a leaf Alice has already won.  Induct backward on
+the number of uncolored vertices.  At an Alice node the recorded move reaches
+a winning child; at a Bob node every move reaches a winning child because all
+legal replies are present.  Symmetry does not change any of these properties,
+so a move prescribed at a canonical representative transports to every state
+in its orbit.  The initial empty state is therefore winning for Alice.
+\end{proof}
+
+The separately implemented program \path{verify_strategy.py} checks the
+hypotheses of Lemma~\ref{lem:certificate} without importing the minimax solver.
+It reconstructs the eighteen graph edges and explicitly enumerates all
+$6\cdot24=144$ index--color actions to canonicalize each state.  It then
+checks properness, move legality, terminal labels, turn parity, successor
+states, the unique strategy move at each nonterminal Alice node, and exact
+ordered equality between the listed and independently generated Bob moves.
+The verified counts are
+\[
+\begin{array}{c|r}
+\text{reachable canonical states} & 1020\\
+\text{directed edges replayed} & 2467\\
+\text{raw legal Bob replies covered} & 1809\\
+\text{Alice strategy moves checked} & 658\\
+\text{complete terminal states} & 36\\
+\text{dead terminal states} & 0.
+\end{array}
+\]
+Thus every hypothesis of Lemma~\ref{lem:certificate} holds, proving the
+four-color upper bound in Theorem~\ref{thm:main}.  Together with the lower
+bound from the preceding section, this proves the asserted equality.
+
+The certificate architecture---a symmetry-reduced exhaustive object checked
+by a reconstruction-oriented implementation---is also used in other exact
+finite graph computations; for a recent example with independent orbit and
+color-certificate reconstruction, see Zeng et
+al.~\cite{ZengLiuRatnaveluOng2026}.  That paper is methodological context only;
+the present proof depends on the certificate and verifier described above.
+
+\section{Reproducibility and limitations}
+
+From the project root, the decisive replay is
+\begin{verbatim}
+python3 evidence/verify_strategy.py evidence/strategy.json \
+  --report evidence/verification.json
+\end{verbatim}
+The certificate can independently be regenerated by
+\begin{verbatim}
+python3 evidence/minimax_solver.py --output evidence/strategy.json
+\end{verbatim}
+Regeneration is not part of the proof's trust boundary: acceptance of the
+upper bound rests on replay of the complete certificate.  All state and graph
+operations are finite integer or symbolic operations; there are no random
+choices, floating-point tolerances, or statistical inferences.
+
+This theorem concerns only the fixed graph $M_2(C_3)$.  It does not determine
+$\gamechi(M_k(C_3))$ for $k>2$, nor does it replace the general bounds in
+\cite{MouSunZhang2026}.
+
+\paragraph{Computational and AI assistance.}
+Python programs performed the exact minimax search, produced the strategy
+certificate, and replayed the certificate.  OpenAI Codex assisted with the
+literature search, search-space and verifier design, adversarial audit
+organization, and initial manuscript preparation.  Language-model output is
+not mathematical evidence; the claimed upper bound is supported by the
+explicit finite reduction and the independently implemented exact verifier.
+No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,130 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\title[A 201-Point Folkman Finite-Sums Colouring]{A 201-Point Two-Colouring for the Four-Generator Folkman Finite-Sums Problem}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{September 1, 2026}
+\hypersetup{pdftitle={A 201-Point Two-Colouring for the Four-Generator Folkman Finite-Sums Problem},pdfauthor={Zijian Zeng}}
+
+\begin{document}
+\begin{abstract}
+Let $F(k)$ be the least $N$ such that every two-colouring of $[N]$ has a
+$k$-element set whose nonempty subset sums lie in $[N]$ and are all one
+colour.  We give an explicit two-colouring of $[201]$ with no such
+four-element set.  Two independent exhaustive verifiers check all
+$2{,}587{,}336$ eligible generator sets using exact integer arithmetic.  Thus
+$F(4)\geq202$, disproving the proposed equality $F(4)=201$.  We do not
+determine $F(4)$.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+For a finite set $A$ of positive integers, put
+\[
+ \operatorname{FS}(A)=\left\{\sum_{a\in B}a:\varnothing\ne B\subseteq A\right\}.
+\]
+Folkman's theorem ensures that the parameter in the abstract is finite.  The
+standard quantitative formulation appears explicitly in
+\cite{BaloghEtAl2017}; later work records the lower bound of that paper and
+Taylor's tower-type upper bound as the then-known asymptotic frontier
+\cite[p.~5]{BaloghLavrovShakanWagner2019}.
+
+A public computational report dated July 26, 2026 gave an explicit colouring
+of $[200]$. It checked $2{,}535{,}064$ eligible generator sets and thereby
+proved $F(4)\geq201$ \cite{WorkingReport531}.  We extend that concrete
+finite record by one point.  Searches recorded with the accompanying data
+found no earlier primary or official record of the bound below as of
+September 1, 2026; this is a bounded literature statement, not a claim about
+uncatalogued work.
+
+\section{The finite reduction}
+Let $H(N,4)$ be the hypergraph with vertex set $[N]$ and edges
+\[
+ \operatorname{FS}(A),\qquad A\in\binom{[N]}4,\quad \sum_{a\in A}a\leq N.
+\]
+The sum condition is equivalent to $\operatorname{FS}(A)\subseteq[N]$ because
+the generators are positive.  Subset-sum collisions are deduplicated: edges
+are sets and may have fewer than $15$ vertices.  Directly from the definition,
+$F(4)$ is the first $N$ for which $H(N,4)$ is not two-colourable.
+
+\section{The colouring}
+Concatenate the following five lines and read the resulting bits as the colours
+of $1,\ldots,201$:
+\begin{verbatim}
+01110111101101100001110011000000100100000100011100
+10011010001011110101000110010100000101111101101010
+10011110001111110100100110111010101011111110101001
+10100010100100101111110000100011100011001010000011
+1
+\end{verbatim}
+
+\begin{theorem}\label{thm:main}
+The displayed word properly two-colours $H(201,4)$.  Consequently
+$F(4)\geq202$; in particular, $F(4)\ne201$.
+\end{theorem}
+
+\begin{proof}
+The exact finite check is summarized in Proposition~\ref{prop:verification}.
+Every eligible edge meets both colour classes, which is precisely proper
+two-colourability of $H(201,4)$.  Hence the universal forcing property fails
+at $N=201$, so the integer $F(4)$ is at least $202$.
+\end{proof}
+
+The construction is especially transparent relative to the $200$-point
+prefix.  There are $52{,}272$ new generator sets with total exactly $201$.
+Under the old prefix, only $\{38,41,43,79\}$ has all its other subset sums in
+one colour, namely colour $0$; no new set gives the opposite requirement.
+Thus colour $1$ at $201$ extends the prefix.  The theorem nevertheless rests
+on the full verification below, not on trusting the prefix.
+
+\section{Independent exhaustive verification}
+\begin{proposition}\label{prop:verification}
+Two independent definition-level enumerations both check all $2{,}587{,}336$
+eligible sets and find no monochromatic finite-sums edge.  Their common
+edge-size histogram is
+\[
+\begin{array}{c|rrrrrr}
+|\operatorname{FS}(A)|&10&11&12&13&14&15\\ \hline
+\#A&20&1585&2952&151189&61964&2369626.
+\end{array}
+\]
+\end{proposition}
+\begin{proof}
+The first verifier iterates over all four-combinations of $[201]$ and obtains
+each edge by enumerating every nonempty subcombination.  The second uses four
+explicit strictly ordered loops with independent upper bounds and obtains the
+edge by iterative sumset expansion, starting from $\{0\}$ and adjoining one
+generator at a time.  Each program parses exactly $201$ binary digits, rejects
+malformed input, constructs mathematical sets to handle collisions, and stops
+on the first monochromatic edge.  Both terminate successfully with the counts
+shown above.  These exhaustive integer computations constitute a directly
+checkable finite certificate.
+\end{proof}
+
+\section{Reproducibility and limitations}
+From the source archive, run
+\begin{verbatim}
+python3 code/verify_witness_a.py
+python3 code/verify_witness_b.py
+\end{verbatim}
+with Python 3.10 or later.  The certificate is stored as
+\url{certificate/f4_n201_coloring.txt}; neither verifier requires a SAT
+solver or a nonstandard Python package.  Discovery and verification design
+are separated from the theorem check.  The mathematical claim is bound to the
+displayed exact data and independently executable source; no uncheckable
+solver verdict is used.
+
+This result settles only the stated finite cell and rules out one proposed
+exact value.  It gives no upper bound at $202$ and does not determine $F(4)$.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

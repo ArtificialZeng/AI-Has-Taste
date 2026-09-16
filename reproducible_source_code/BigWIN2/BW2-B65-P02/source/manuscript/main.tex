@@ -1,0 +1,218 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\geometry{margin=1in}
+\hypersetup{
+  pdftitle={The Order-Seven Degree-Square Turan Problem for the Regular Five-Vertex Tournament},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={An exact computer-assisted result in extremal digraph theory},
+  pdfkeywords={degree-square Turan problem, regular tournament, exact enumeration, extremal digraph}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Reg}{\operatorname{Reg}_5}
+\newcommand{\exout}{\operatorname{ex}^{+}_{L_2}}
+
+\title{The Order-Seven Degree-Square Tur\'an Problem\\
+for the Regular Five-Vertex Tournament}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\Reg$ be the regular tournament on five vertices, and allow digraphs to
+contain antiparallel arcs.  An exhaustive exact computation proves that the
+largest value of $\sum_v d^+(v)^2$ over $\Reg$-free digraphs on seven labeled
+vertices is $186$.  There are exactly $105$ labeled maximizers, all balanced
+complete bidirected four-partite graphs, with part sizes $2,2,2,1$.  The
+certificate checks all $7{,}377{,}595$ digraphs whose objective is at least the
+claimed value and is replayed by a differently organized enumeration of all
+$6{,}937{,}603$ strict candidates.  This is an order-seven result only: the
+all-order conjecture remains unresolved for $m\geq 8$.
+\end{abstract}
+
+\section{Statement and context}
+
+A digraph here is loopless, has at most one arc in each ordered direction,
+and may have both arcs between a pair of vertices.  A forbidden copy need not
+be induced.  For a fixed digraph $F$, write
+\[
+ \exout(m,F)=\max\left\{\sum_{v\in V(D)}d_D^+(v)^2:
+ |V(D)|=m,\ D\text{ is }F\text{-free}\right\}.
+\]
+This is the one-sided degree-square Tur\'an number used by Ai, Chen, Chen,
+Yan and Zhao~\cite{AiEtAl2026}; for self-converse tournaments it also equals a
+natural finite palette extremal quantity.
+
+Identify the vertices of $\Reg$ with $\mathbb Z/5\mathbb Z$ and put an arc
+$i\to j$ when $j-i\pmod 5$ belongs to $\{1,2\}$.  Thus $\Reg$ is the regular
+five-vertex tournament.  Let $T_4(m)$ denote the balanced complete bidirected
+four-partite graph: there are no arcs within a part and both arcs occur between
+different parts.
+
+I\v lkovi\v c~\cite[Conjecture~3.3]{Ilkovic2026} conjectured that
+\[
+ \exout(m,\Reg)=\lVert d^+_{T_4(m)}\rVert_2^2
+ \qquad(m\geq 1).
+\]
+That work reports small-order computation as motivation, but does not give an
+order-seven certificate or an equality-case census.  The result below supplies
+such a finite certification.  It neither proves nor disproves the conjecture at
+any $m\geq 8$.
+
+\begin{theorem}\label{thm:main}
+Among loopless digraphs on the labeled vertex set $\{0,\ldots,6\}$, with
+antiparallel arcs allowed, every $\Reg$-free digraph $D$ satisfies
+\[
+  \sum_{v=0}^6 d_D^+(v)^2\leq 186.
+\]
+Equality holds for exactly $105$ labeled digraphs.  They are precisely the
+copies of $T_4(7)$ whose part sizes are $2,2,2,1$.  In particular,
+$\exout(7,\Reg)=186$.
+\end{theorem}
+
+\section{Lower bound}
+
+The graph $T_4(7)$ has one vertex of out-degree $6$ and six vertices of
+out-degree $5$.  Hence
+\[
+ \lVert d^+_{T_4(7)}\rVert_2^2=6^2+6\cdot5^2=186.
+\]
+It is $\Reg$-free: any five selected vertices contain two in the same one of
+the four parts, and that pair has no arc, whereas every pair in a tournament
+has an arc.  This proves the lower bound without computation.
+
+\section{Exhaustive upper-bound certificate}
+
+All computations described below use integer arithmetic and bit-subset tests.
+The two complete programs and their saved outputs are
+\texttt{reg5\_m7\_enum.py}, \texttt{reg5\_m7\_enum.log},
+\texttt{replay\_reg5\_m7.py}, and \texttt{reg5\_m7\_replay.log} in the
+ancillary \texttt{evidence} directory.
+
+\subsection{Primary threshold enumeration}
+
+The six possible outgoing arcs from each vertex form a six-bit row.  Seven
+independent rows therefore give a bijection between $42$-bit words and all
+$2^{42}$ loopless labeled digraphs on seven vertices.  A row of popcount $d$
+contributes $d^2$ to the objective.
+
+The depth-first traversal stores a partial score $s$ after $i$ rows.  It prunes
+a branch only if
+\[
+ s+36(7-i)<186.\tag{1}\label{eq:prune}
+\]
+Since $36$ is the largest possible contribution of one remaining row, every
+digraph of score at least $186$ reaches a leaf.  As an exact count check, let
+\[
+ P(z)=\sum_{d=0}^{6}\binom{6}{d}z^{d^2}.
+\]
+The coefficient of $z^t$ in $P(z)^7$ is the number of row words of score $t$.
+An integer coefficient recurrence gives
+\[
+ [z^{186}]P(z)^7=439{,}992,
+ \qquad \sum_{t>186}[z^t]P(z)^7=6{,}937{,}603.
+\]
+The traversal visits their sum, $7{,}377{,}595$, and its score-by-score
+histogram agrees with the recurrence.
+
+It remains to describe the forbidden-pattern test.  On each of the
+$\binom75=21$ five-vertex supports, the program generates every labeling of
+the cyclic representative of $\Reg$ and deduplicates the resulting arc sets.
+The cyclic tournament has five automorphisms, so this produces
+\[
+ \binom75\frac{5!}{5}=21\cdot24=504
+\]
+distinct ten-arc masks.  A digraph contains $\Reg$ exactly when one of these
+masks is a subset of its arc mask.  In particular, no restriction is imposed
+on reverse arcs, so the test is for a not-necessarily-induced copy.
+
+Every one of the $6{,}937{,}603$ candidates of score greater than $186$
+contains a forbidden mask.  At score $186$, exactly $105$ candidates contain
+no forbidden mask.  Together with the lower bound, this proves the numerical
+part of Theorem~\ref{thm:main}.
+
+\subsection{Differently organized replay}
+
+The replay does not use the score-pruned traversal or its dense forbidden
+masks.  It first enumerates the vectors
+\[
+ (d_0,\ldots,d_6)\in\{0,\ldots,6\}^7,
+ \qquad \sum_{i=0}^6d_i^2>186.
+\]
+There are exactly $2{,}647$ such vectors.  For a fixed vector it takes the
+Cartesian product of the $\binom6{d_i}$ row subsets having the prescribed
+degrees.  Summing these product sizes gives $6{,}937{,}603$ digraphs, agreeing
+with the strict coefficient count above.  Each forbidden copy is represented
+instead as ten positions in a $7\times7$ adjacency array.  This replay again
+finds a forbidden copy in every strict candidate.
+
+The equality masks saved by the primary computation are then parsed rather
+than regenerated.  The replay recomputes score $186$ and $\Reg$-freeness for
+each of the $105$ masks.  This separation is not a formal verification of the
+runtime, but it detects errors tied to the primary traversal, its dense mask
+layout, or its strict-level accounting.  Similar use of exhaustive integer
+search together with a separate exact replay has supported other deliberately
+finite-scope results; see, for example, Zeng, Liu, Ratnavelu and Huat
+\cite{ZengEtAl2026}.
+
+\section{Equality classification}
+
+For each of the $105$ equality masks, the replay checks every unordered pair
+$\{u,v\}$.  The pair is either bidirected or has neither arc.  The graph formed
+by the pairs of the second kind has exactly three edges, three components of
+size two, and one isolated vertex.  Its components are therefore four
+independent parts of sizes $2,2,2,1$, and all pairs in different components
+are bidirected.  Thus every enumerated equality case is $T_4(7)$.
+
+Conversely, the number of partitions of seven labeled vertices into three
+unlabeled pairs and one singleton is
+\[
+ \frac{7!}{(2!)^3 3!}=105.
+\]
+Each partition defines one labeled copy of $T_4(7)$, and the lower-bound
+argument shows that it is $\Reg$-free with score $186$.  Hence the equality
+census is complete.
+
+\section{Reproducibility and limitations}
+
+From the project root, the decisive artifacts can be regenerated and checked
+with
+\begin{verbatim}
+python3 evidence/reg5_m7_enum.py > evidence/reg5_m7_enum.log
+python3 evidence/replay_reg5_m7.py > evidence/reg5_m7_replay.log
+sha256sum -c evidence/reg5_m7_SHA256SUMS
+\end{verbatim}
+The programs use Numba to compile the exhaustive loops, but every score,
+coefficient, adjacency entry, and containment comparison is integral.  There
+is no random sampling, floating-point comparison, or numerical tolerance.
+The trusted computational base still includes the Python and Numba runtimes,
+the hardware, and faithful execution of the supplied code.
+
+The theorem exhausts only the seven-vertex domain.  It supplies no structural
+upper bound for $m\geq8$ and should not be read as evidence that finite
+enumeration alone will settle the all-order conjecture.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, exact-search design, draft
+code, adversarial audit organization, and initial manuscript preparation.
+Language-model output is not used as mathematical evidence: the finite claim
+rests on the explicit reduction and the released exact programs and logs.  No
+proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

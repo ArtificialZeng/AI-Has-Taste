@@ -1,0 +1,24 @@
+{
+  "certificate_id": "AS-C1-5-RECTPYR-20260830",
+  "claim": "Atiyah C1 holds for every centered nondegenerate rectangular pyramid",
+  "variables": {
+    "A": "A > 0",
+    "S": "S > 0 and S^2 = A^2 + 1",
+    "w": "0 < w < 1",
+    "H": "S(1-w^2)/(2w)",
+    "R": "S(1+w^2)/(2w)"
+  },
+  "points": [
+    ["1", "A", "0"],
+    ["-1", "A", "0"],
+    ["-1", "-A", "0"],
+    ["1", "-A", "0"],
+    ["0", "0", "H"]
+  ],
+  "linear_factor": "-(r-Z)U + (X+iY)V for displacement (X,Y,Z)",
+  "identity": "w^4 Delta = -2^16 A^4 S^5 (A^2+A*S+S+1) (S(1+w^2)+2w(A+1)) Q",
+  "Q": "(A^4+1)(w^3+1)^2 + S(w^6+w^5+w+1)(A^3+A^2+A+1) + 2(w^5+w)(A^3+A) + 2A^2(w^3-1)^2",
+  "certificate_ring": "ZZ[i,A,S,w]/(S^2-A^2-1)",
+  "discovery_checker": "code/certify_rectangular_pyramid.py",
+  "independent_checker": "code/verify_rectangular_pyramid_identity.py"
+}

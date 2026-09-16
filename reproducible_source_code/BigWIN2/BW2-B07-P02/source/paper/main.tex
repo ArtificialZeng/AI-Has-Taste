@@ -1,0 +1,455 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Distinct cycle lengths]{The distinct-cycle-length probability is strictly decreasing after 30}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{Primary 05A16; Secondary 60C05, 05A17}
+\keywords{random permutation, distinct cycle lengths, coefficient monotonicity, infinite product, exact computation}
+\hypersetup{
+  pdftitle={The distinct-cycle-length probability is strictly decreasing after 30},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Let \(q_n\) be the probability that the cycle lengths of a uniformly random
+permutation in \(S_n\) are pairwise distinct. We prove
+\(q_{n+1}<q_n\) for every \(n\ge30\). The proof factors the difference
+generating function \((1-z)\prod_{k\ge1}(1+z^k/k)\) as \(W(z^2)J(z)\).
+An elementary recurrence gives a uniform coefficient estimate for \(W\),
+while absolute moment and pointwise bounds for \(J\) preserve a parity
+cancellation at \(z=-1\). Explicit constants make every difference negative
+from degree 5000 onward. The remaining finite comparisons are certified by
+exact integer arithmetic and independently by outward-rounded rational
+intervals.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For \(n\ge0\), let \(q_n\) denote the probability that no two cycles of a
+uniformly random permutation in \(S_n\) have the same length, with \(q_0=1\).
+The cycle index gives the ordinary generating function
+\begin{equation}\label{eq:Q}
+ Q(z):=\sum_{n\ge0}q_nz^n
+ =\prod_{k\ge1}\left(1+\frac{z^k}{k}\right).
+\end{equation}
+Equivalently, \(q_n\) is the sum of \(1/\prod_{a\in A}a\) over sets \(A\)
+of distinct positive integers whose sum is \(n\). This is the
+distinct-part reciprocal-weight model studied in the classical literature;
+see Lehmer~\cite{Lehmer1972}, Greene and Knuth~\cite{GreeneKnuth1981}, and
+OEIS A007838~\cite{OEISA007838}.
+
+Greene and Knuth proved
+\[
+ q_n=e^{-\gamma}\left(1+\frac1n\right)
+      +O\!\left(\frac{\log n}{n^2}\right).
+\]
+Flajolet, Fusy, Gourdon, Panario, and Pouyanne later obtained a full
+root-of-unity expansion with logarithmic and periodic terms
+\cite[Section~3 and Proposition~1]{FlajoletEtAl2006}. Those qualitative
+expansions do not by themselves provide a numerical threshold for the sign
+of one-step differences. The problem of proving
+\begin{equation}\label{eq:target}
+ q_{n+1}<q_n\qquad(n\ge30)
+\end{equation}
+was recorded as open, together with an exact computation through 5000, in
+TheoremDB~\cite{TheoremDBP2540}.
+
+Our proof does not require an effective version of the full asymptotic
+expansion. Instead, it isolates the only coefficient tail of order
+\(n^{-2}\), keeps the cancellation between the two parity classes, and
+bounds everything else in elementary coefficient norms.
+
+\begin{theorem}\label{thm:main}
+For every integer \(n\ge30\), the probability that a uniformly random
+permutation in \(S_{n+1}\) has pairwise distinct cycle lengths is strictly
+smaller than the corresponding probability in \(S_n\); that is,
+\[
+q_{n+1}<q_n.
+\]
+\end{theorem}
+
+\section{The difference factorization}
+
+Put
+\[
+ F(z):=(1-z)Q(z)=\sum_{m\ge0}f_mz^m,
+ \qquad f_m=q_m-q_{m-1},
+\]
+where \(q_{-1}:=0\). Thus Theorem~\ref{thm:main} is equivalent to
+\(f_m<0\) for every \(m\ge31\).
+
+Define
+\begin{align}
+ W(t)&:=\exp\!\left(-\frac12\sum_{k\ge2}\frac{t^k}{k^2}\right),
+                                                        \label{eq:W}\\
+ R(z)&:=\sum_{r\ge3}\frac{(-1)^{r-1}}r
+              \sum_{k\ge2}\frac{z^{rk}}{k^r},          \label{eq:R}\\
+ K(z)&:=e^{R(z)},\qquad
+ J(z):=(1+z)e^{-z}K(z).                                 \label{eq:J}
+\end{align}
+
+\begin{lemma}[Difference factorization]\label{lem:factor}
+As an identity of formal power series,
+\begin{equation}\label{eq:factor}
+ F(z)=W(z^2)J(z).
+\end{equation}
+Moreover, all series involved are absolutely convergent at the boundary
+points used below, and
+\begin{equation}\label{eq:boundary}
+ W(1)J(1)=e^{-\gamma},\qquad J(-1)=0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Expanding the logarithm in~\eqref{eq:Q}, first separate the factor with
+\(k=1\), and then combine the terms linear in \(z^k/k\):
+\begin{align*}
+ \log F(z)
+ &=\log(1-z^2)+\sum_{k\ge2}\log\left(1+\frac{z^k}{k}\right)\\
+ &=\log(1+z)-z
+   -\frac12\sum_{k\ge2}\frac{z^{2k}}{k^2}+R(z).
+\end{align*}
+Exponentiation proves~\eqref{eq:factor}. The absolute coefficient bounds in
+Sections~\ref{sec:W} and~\ref{sec:J} justify evaluation at \(z=\pm1\).
+The factor \(1+z\) gives \(J(-1)=0\). At \(z=1\), the classical Euler
+product
+\[
+ e^{-\gamma}=\prod_{k\ge1}\left(1+\frac1k\right)e^{-1/k}
+\]
+is exactly the value of the right side of~\eqref{eq:factor}, proving the
+first identity in~\eqref{eq:boundary}.
+\end{proof}
+
+Write \(J(z)=\sum_{b\ge0}j_bz^b\). Once absolute convergence is known,
+Lemma~\ref{lem:factor} gives the crucial parity identity
+\begin{equation}\label{eq:parity}
+ \sum_{b\equiv m\;({\rm mod}\,2)}j_b
+ =\frac{J(1)+(-1)^mJ(-1)}2=\frac{J(1)}2.
+\end{equation}
+
+\section{The principal factor}\label{sec:W}
+
+Let
+\[
+ W(t)=1-\sum_{a\ge2}v_at^a,
+ \qquad
+ \eta:=W(1)=\exp\!\left(-\frac{\zeta(2)-1}{2}\right).
+\]
+
+\begin{lemma}\label{lem:Wsign}
+For every \(a\ge2\),
+\begin{equation}\label{eq:vbasic}
+ 0<v_a\le\frac1{2a^2}.
+\end{equation}
+For every \(a\ge4\),
+\begin{equation}\label{eq:Wapprox}
+ \left|v_a-\frac{\eta}{2a^2}\right|
+ \le\frac{\log a+1}{2a^3}.
+\end{equation}
+Finally,
+\begin{equation}\label{eq:Wnorm}
+ \sum_{a\ge0}|[t^a]W(t)|<\frac32.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Logarithmic differentiation of~\eqref{eq:W} gives
+\begin{equation}\label{eq:vrec}
+ a v_a=\frac1{2a}-\frac12\sum_{b=2}^{a-2}\frac{v_b}{a-b}.
+\end{equation}
+The claim~\eqref{eq:vbasic} is immediate for \(a=2,3\). Suppose it holds
+below \(a\). Partial fractions give
+\[
+ \sum_{b=2}^{a-2}\frac1{b^2(a-b)}
+ =\frac1a\sum_{b=2}^{a-2}\frac1{b^2}
+  +\frac2{a^2}\sum_{b=2}^{a-2}\frac1b<\frac2a.
+\]
+Here we used
+\(\sum_{b\ge2}b^{-2}<\sum_{b\ge2}[b(b-1)]^{-1}=1\) and
+\(\sum_{b=2}^{a-2}b^{-1}<(a-3)/2\). Therefore the right side of
+\eqref{eq:vrec} is positive. Dropping its subtracted sum then gives the
+upper bound in~\eqref{eq:vbasic}, completing the induction.
+
+Since \(\eta=1-\sum_{b\ge2}v_b\), equation~\eqref{eq:vrec} can be rewritten
+as
+\[
+ v_a=\frac{\eta}{2a^2}
+ +\frac1{2a^2}\sum_{b\ge a-1}v_b
+ -\frac1{2a^2}\sum_{b=2}^{a-2}\frac{bv_b}{a-b}.
+\]
+The integral estimate for the tail of \(\sum b^{-2}\), together with
+\[
+ \sum_{b=2}^{a-2}\frac1{b(a-b)}
+ =\frac2a\sum_{b=2}^{a-2}\frac1b\le\frac{2\log a}{a},
+\]
+now gives
+\[
+ \left|v_a-\frac{\eta}{2a^2}\right|
+ \le\frac{\log a}{2a^3}+\frac1{4a^2(a-2)}.
+\]
+For \(a\ge4\), the last summand is at most \(1/(2a^3)\), proving
+\eqref{eq:Wapprox}. Finally, coefficientwise majorization of the exponential
+in~\eqref{eq:W} yields
+\[
+ \sum|[t^a]W(t)|
+ \le\exp\!\left(\frac{\zeta(2)-1}{2}\right)<e^{1/3}<\frac32.
+\]
+For instance, \(\zeta(2)<5/3\) follows by summing through 5 and bounding the
+remaining decreasing tail by \(\int_5^\infty x^{-2}\,dx\).
+\end{proof}
+
+\section{Norms and a pointwise bound for the remainder factor}\label{sec:J}
+
+Write \(R(z)=\sum_{m\ge1}\rho_mz^m\) and
+\(K(z)=\sum_{m\ge0}\kappa_mz^m\).
+
+\begin{lemma}\label{lem:Rbounds}
+The coefficients of \(R\) satisfy
+\begin{equation}\label{eq:Rpoint}
+ |\rho_m|\le\frac{19}{m^3}\quad(m\ge1),
+\end{equation}
+and
+\begin{equation}\label{eq:Rmoments}
+ A_0:=\sum_m|\rho_m|<\frac18,
+ \qquad
+ A_1:=\sum_m m|\rho_m|\le1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For a term in~\eqref{eq:R} with \(m=rk\), multiplication by \(m^3\)
+turns its absolute value into \(r^2/k^{r-3}\). For \(6\le m<100\), exact
+rational enumeration of the divisors gives maximum \(113/6\), attained at
+\(m=12\). For \(m\ge100\), the term with \(r=3\) is at most 9, the term
+with \(r=4\) is at most \(16/25\), and the terms with \(r\ge5\) and
+\(k\ge3\) total at most
+\[
+ \sum_{r\ge5}\frac{r^2}{3^{r-3}}=\frac{31}{6}.
+\]
+There is at most one term with \(k=2\); it is bounded by
+\(50^2/2^{47}<1/100\). The resulting sum is below 15. This proves
+\eqref{eq:Rpoint}; the short finite enumeration is independently executable
+from the accompanying source.
+
+For~\eqref{eq:Rmoments}, reverse the two nonnegative majorant sums. First,
+\[
+ A_0\le\sum_{r\ge3}\frac{\zeta(r)-1}{r}
+ \le\frac13\sum_{k\ge2}\frac1{k^2(k-1)}
+ =\frac{2-\zeta(2)}3<\frac18.
+\]
+The last inequality follows from
+\[
+ \zeta(2)>\sum_{k=1}^5\frac1{k^2}
+ +\int_6^\infty\frac{dx}{x^2}
+ =\frac{5869}{3600}>\frac{13}{8}.
+\]
+Second,
+\[
+ A_1\le\sum_{k\ge2}\sum_{r\ge3}\frac1{k^{r-1}}
+ =\sum_{k\ge2}\frac1{k(k-1)}=1.
+\]
+\end{proof}
+
+\begin{lemma}\label{lem:Jbounds}
+The coefficients of \(J\) satisfy
+\begin{equation}\label{eq:Jmoments}
+ \sum_m|j_m|<\frac{16}{7},
+ \qquad
+ \sum_m m|j_m|<\frac{40}{7},
+\end{equation}
+and the pointwise estimate
+\begin{equation}\label{eq:Jpoint}
+ |j_m|<\frac{88}{m^3}\qquad(m\ge2000).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Equation~\eqref{eq:Rmoments} and exponential majorization give
+\begin{equation}\label{eq:Kmoments}
+ \sum_m|\kappa_m|<\frac87,
+ \qquad
+ \sum_m m|\kappa_m|<\frac87.
+\end{equation}
+For the pointwise estimate, consider the coefficient of \(R(z)^s\). At
+least one member of every ordered \(s\)-tuple of positive indices summing to
+\(m\) is at least \(m/s\). Thus Lemma~\ref{lem:Rbounds} gives
+\[
+ |[z^m]R(z)^s|\le\frac{19s^4A_0^{s-1}}{m^3}.
+\]
+The exponential generating identity
+\[
+ \sum_{s\ge1}\frac{s^4a^{s-1}}{s!}
+ =e^a(a^3+6a^2+7a+1)
+\]
+and \(A_0<1/8\) show that this sum is below \(9/4\). For completeness,
+\[
+ e^{1/8}<1+\frac18+\frac1{128}+\frac1{2976}
+ =\frac{13489}{11904}<\frac{17}{15},
+\]
+where \(k!\ge6\cdot4^{k-3}\) bounds the exponential series from the cubic
+term onward. Therefore
+\begin{equation}\label{eq:Kpoint}
+ |\kappa_m|<\frac{43}{m^3}.
+\end{equation}
+
+Let \(B(z)=(1+z)e^{-z}=\sum b_mz^m\). Then \(b_0=1,b_1=0\) and
+\[
+ b_m=\frac{(-1)^m(1-m)}{m!}\quad(m\ge2),
+\]
+so \(\sum|b_m|=2\) and \(\sum m|b_m|=e<3\). Convolution with
+\eqref{eq:Kmoments} proves~\eqref{eq:Jmoments}.
+
+For \(m\ge2000\), split \(j_m=\sum_i b_i\kappa_{m-i}\) at \(i=m/2\).
+Convexity gives \((1-i/m)^{-3}\le1+14i/m\) on \([0,1/2]\), so
+\eqref{eq:Kpoint} bounds the first part by
+\[
+ \frac{43}{m^3}\left(2+\frac{42}{m}\right)<\frac{87}{m^3}.
+\]
+The remaining part is less than \(m^{-3}\): if
+\(s=\lfloor m/2\rfloor\), its absolute value is at most
+\((8/7)s/(s+1)!<(8/7)/s!\), and
+\(s!\ge2^{s-1}>(216/7)s^3> (8/7)m^3\) for \(s\ge1000\).
+This proves~\eqref{eq:Jpoint}.
+\end{proof}
+
+\section{The uniform tail}
+
+\begin{proposition}\label{prop:tail}
+For every integer \(m\ge5000\), \(f_m<0\).
+\end{proposition}
+
+\begin{proof}
+Write \(w_a=[t^a]W(t)\), so that \(w_0=1,w_1=0\), and
+\(w_a=-v_a\) for \(a\ge2\). From~\eqref{eq:factor},
+\begin{equation}\label{eq:conv}
+ f_m=\sum_{\substack{0\le b\le m\\b\equiv m\;({\rm mod}\,2)}}
+ j_bw_{(m-b)/2}.
+\end{equation}
+Split the sum at \(b=m/2\). In the first half put \(x=m-b\); then
+\(x\ge m/2\), and Lemma~\ref{lem:Wsign} replaces \(w_{x/2}\) by
+\(-2\eta/x^2\). Extend the resulting constant main term across the full
+parity sum. Equations~\eqref{eq:boundary} and~\eqref{eq:parity} make it
+exactly
+\begin{equation}\label{eq:mainterm}
+ -\frac{2\eta}{m^2}\frac{J(1)}2=-\frac{e^{-\gamma}}{m^2}.
+\end{equation}
+
+We bound the four errors explicitly. First, the derivative of
+\(-2\eta/x^2\) has absolute value at most \(32/m^3\) on
+\([m/2,m]\). The first moment in~\eqref{eq:Jmoments} therefore bounds its
+variation by \(1280/(7m^3)\). Second,~\eqref{eq:Wapprox}, \(x\ge m/2\),
+and the zeroth moment in~\eqref{eq:Jmoments} bound the
+coefficient-approximation error by
+\(512(\log m+1)/(7m^3)\). Third, in the half-tail \(b>m/2\),
+equation~\eqref{eq:Jpoint} gives \(|j_b|<704/m^3\); summing the matching
+\(W\)-coefficients with~\eqref{eq:Wnorm} costs less than \(1056/m^3\).
+Finally, \(\sum_{b>m/2}|j_b|<176/m^2\), so extending the main parity sum
+across that tail costs less than \(352/m^4<m^{-3}\). Combining these
+estimates with~\eqref{eq:mainterm},
+\begin{equation}\label{eq:tailbound}
+ f_m\le-\frac{e^{-\gamma}}{m^2}
+ +\frac1{m^3}\left[
+ \frac{1280}{7}+1057+\frac{512}{7}(\log m+1)\right].
+\end{equation}
+
+It remains to check the explicit endpoint. Since \(H_n-\log n\) decreases
+to \(\gamma\), the positive series for the inverse hyperbolic tangent give
+\[
+ \log2>\frac{56}{81}>\frac23,
+ \qquad
+ \log3>\frac{263}{240},
+\]
+and hence
+\[
+ \gamma<\frac{49}{20}-\log6<\frac23.
+\]
+Thus \(e^{-\gamma}>1/2\). Also \(\log5000<9\), because
+\(e>8/3\) and \((8/3)^9>5000\). At \(m=5000\), the bracket in
+\eqref{eq:tailbound} is therefore below
+\[
+ \frac{13799}{7}<2500=\frac m2.
+\]
+The derivative of the bracket is \(512/(7m)<1/2\) throughout
+\(m\ge5000\), so the strict comparison persists for all larger \(m\).
+Equation~\eqref{eq:tailbound} is consequently negative.
+\end{proof}
+
+\section{The finite certificate and completion of the proof}
+
+For the finite range we used two independent rigorous representations.
+First set \(D=5000!\) and expand~\eqref{eq:Q} with descending updates. Every
+scaled coefficient \(c_m=Dq_m\) is an integer: a summand indexed by a set
+\(A\) of distinct parts has denominator \(\prod_{a\in A}a\), and
+if \(\sum_{a\in A}a=m\le5000\), then
+\[
+ \frac{m!}{\prod_{a\in A}a}
+ =\frac{m!}{\prod_{a\in A}a!}\prod_{a\in A}(a-1)!
+\]
+is an integer, since the first factor on the right is a multinomial
+coefficient.  As \(m!\) divides \(D\), it follows that
+\(D/\prod_{a\in A}a\) is an integer as well.  Equivalently, for each part
+\(k\), the program applies the descending exact update
+\(c_d\leftarrow c_d+c_{d-k}/k\); it rejects the run if any displayed division
+has a nonzero remainder. Exact integer comparison gives
+\begin{equation}\label{eq:finite}
+ c_m<c_{m-1}\qquad(31\le m\le5000).
+\end{equation}
+
+Independently, a fixed-point checker encloses every coefficient of each
+partial product between integer multiples of \(10^{-30}\), rounding every
+division outward. It accepts~\eqref{eq:finite} only if the upper endpoint for
+\(q_m\) lies strictly below the lower endpoint for \(q_{m-1}\). A second run
+at scale \(10^{-40}\) gives the same comparisons. At scale \(10^{-30}\),
+the smallest separating gap is
+\[
+ 22282582258338445775491\times10^{-30},
+\]
+at \(m=4998\), while the largest interval width is only
+\(12408\times10^{-30}\). These integers are diagnostic summaries; the
+verifier recomputes every enclosure from the product.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The exact certificate proves \(f_m<0\) for \(31\le m\le5000\), and
+Proposition~\ref{prop:tail} proves it for every \(m\ge5000\). Hence
+\(f_m=q_m-q_{m-1}<0\) for all \(m\ge31\). Taking \(m=n+1\) proves
+\(q_{n+1}<q_n\) for every \(n\ge30\).
+\end{proof}
+
+\section*{Data, code, and computational disclosure}
+
+The accompanying source contains the exact common-denominator program, the
+independent outward-rounded interval checker, an exact rational checker for
+the constants in Lemmas~\ref{lem:Rbounds}--\ref{lem:Jbounds}, and an exact
+low-degree reconstruction of~\eqref{eq:factor}. All use only the Python 3
+standard library. A fast command runs the interval, constant, and structural
+checks; a full command additionally repeats the \(5000!\)-denominator
+expansion.
+
+Computer algebra and language-model assistance were used during proof
+discovery, adversarial checking, code review, and manuscript preparation.
+All theorem statements, derivations, citations, and certificate logic were
+subsequently checked by the author. No proof assistant was used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

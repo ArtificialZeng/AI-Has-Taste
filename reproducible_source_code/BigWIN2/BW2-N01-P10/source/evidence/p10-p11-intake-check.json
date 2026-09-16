@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "observed_at_utc": "2026-09-12T08:20:31.458457+00:00",
+  "python": "3.10.12",
+  "arithmetic": "exact integers",
+  "seed": "none; deterministic exhaustive enumeration",
+  "p10_domain": "Every positive integer partition of each N=2..24 with length >=2; repeated parts retained",
+  "p10_algorithms": [
+    "monomial expansion m22+m211+2*m1111",
+    "dual Jacobi-Trudi e2^2-e1*e3",
+    "independent semistandard tableaux when length<=6"
+  ],
+  "p10_partitions_checked": 7313,
+  "p10_three_method_checks": 3196,
+  "p10_results": [
+    {
+      "N": 2,
+      "partitions_checked": 1,
+      "collisions": []
+    },
+    {
+      "N": 3,
+      "partitions_checked": 2,
+      "collisions": []
+    },
+    {
+      "N": 4,
+      "partitions_checked": 4,
+      "collisions": []
+    },
+    {
+      "N": 5,
+      "partitions_checked": 6,
+      "collisions": []
+    },
+    {
+      "N": 6,
+      "partitions_checked": 10,
+      "collisions": []
+    },
+    {
+      "N": 7,
+      "partitions_checked": 14,
+      "collisions": []
+    },
+    {
+      "N": 8,
+      "partitions_checked": 21,
+      "collisions": []
+    },
+    {
+      "N": 9,
+      "partitions_checked": 29,
+      "collisions": []
+    },
+    {
+      "N": 10,
+      "partitions_checked": 41,
+      "collisions": []
+    },
+    {
+      "N": 11,
+      "partitions_checked": 55,
+      "collisions": []
+    },
+    {
+      "N": 12,
+      "partitions_checked": 76,
+      "collisions": []
+    },
+    {
+      "N": 13,
+      "partitions_checked": 100,
+      "collisions": []
+    },
+    {
+      "N": 14,
+      "partitions_checked": 134,
+      "collisions": []
+    },
+    {
+      "N": 15,
+      "partitions_checked": 175,
+      "collisions": []
+    },
+    {
+      "N": 16,
+      "partitions_checked": 230,
+      "collisions": []
+    },
+    {
+      "N": 17,
+      "partitions_checked": 296,
+      "collisions": []
+    },
+    {
+      "N": 18,
+      "partitions_checked": 384,
+      "collisions": []
+    },
+    {
+      "N": 19,
+      "partitions_checked": 489,
+      "collisions": []
+    },
+    {
+      "N": 20,
+      "partitions_checked": 626,
+      "collisions": []
+    },
+    {
+      "N": 21,
+      "partitions_checked": 791,
+      "collisions": []
+    },
+    {
+      "N": 22,
+      "partitions_checked": 1001,
+      "collisions": []
+    },
+    {
+      "N": 23,
+      "partitions_checked": 1254,
+      "collisions": []
+    },
+    {
+      "N": 24,
+      "partitions_checked": 1574,
+      "collisions": []
+    }
+  ],
+  "p11_known_source_example": {
+    "source": "Thomas-Tung arXiv:2606.19796v1 Example 3.1, not a new discovery",
+    "a": [
+      40,
+      16,
+      16,
+      16,
+      5,
+      5
+    ],
+    "b": [
+      32,
+      32,
+      10,
+      10,
+      10,
+      4
+    ],
+    "N": 98,
+    "common_E3": {
+      "400": 3,
+      "1000": 1,
+      "1280": 6,
+      "3200": 6,
+      "4096": 1,
+      "10240": 3
+    },
+    "appending_one_preserves_collision": false
+  },
+  "limitations": "Finite observations do not prove p10 for arbitrary N. Known p11 scaling examples do not prove eventual coverage, and padding both partitions by 1 breaks this particular collision.",
+  "script_sha256": "9338b5af8235ce7ab236464e970ee45440cbfef4a58a29c6bc6fbe75f4ac40f2",
+  "elapsed_seconds": 0.698488043010002
+}

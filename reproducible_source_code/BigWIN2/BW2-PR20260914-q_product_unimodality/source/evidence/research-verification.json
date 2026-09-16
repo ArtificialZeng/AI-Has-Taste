@@ -1,0 +1,46 @@
+{
+  "job_id": "primary-20260914-q-product-unimodality-research-ba86ac9fff54",
+  "arithmetic": "exact Python integers; no floating point",
+  "python": "3.10.12",
+  "script_sha256": "3aa93fc3655036389e924678e0dbf88b5946a282da076acdb317b749c61a952a",
+  "proof_file": "evidence/k2-characterization.md",
+  "domains": {
+    "small_grid": "All r=2..11, 1<=a<=c<=18, b=1..10.",
+    "held_out": "r in {13,17,31,64,97}; a<=c from {r,2r} union {rA+s:A in {0,1,3},s in distinct {1,2,floor(r/2),r-1}}; b in distinct {1,max(1,M),M+1,M+2,M+5}, M=floor(a/r)+floor(c/r). All dense coefficients are checked.",
+    "large_integer": "r in {2,3,5,17,97,1000000007}; ordered quotient pairs (0,0),(0,10^6),(1,10^6),(10^6,10^6),(10^30,10^30+1); all residue pairs from distinct valid {1,2,floor(r/2),r-1}; then sort a,c. B in distinct {0,max(0,M-1),M} for the finite index selection in this script; B in {M+1,M+2,M+10^10} for negative witnesses. No dense enumeration in this large domain."
+  },
+  "counts": {
+    "closed_formula_dense_comparisons": 133204,
+    "dense_difference_checks": 1555771,
+    "dense_negative_witnesses": 8924,
+    "floor_step_checks": 31135,
+    "held_out_tuples": 2425,
+    "large_integer_negative_witnesses": 930,
+    "large_integer_sufficient_indices": 3342,
+    "nonunimodal_tuples": 8924,
+    "small_grid_tuples": 17100,
+    "unimodal_tuples": 10601
+  },
+  "floor_case_coverage": {
+    "e=0,h=<M": 14822,
+    "e=1,h=<M": 5861,
+    "e=1,h=M": 2959,
+    "e=2,h=<M": 3913,
+    "e=2,h=M": 3580
+  },
+  "dense_coefficients_signature_sha256": "3adf56059725a75764be41ec91043ae2f39e32e09b9cc25a3ba5e755e07508df",
+  "large_exact_examples": [
+    {
+      "r": 1000000007,
+      "a": 1000000007000000000000000000000000000001,
+      "c": 1000000007000000000000000000002000000013,
+      "b": 2000000000000000000000000000003,
+      "D": 4000000028000000000000000000004000000026,
+      "nstar": 2000000014000000000000000000002000000013,
+      "before": 1000000007000000000000000000002000000014000000000000000000000000000002,
+      "after": 1000000007000000000000000000002000000014000000000000000000000000000001
+    }
+  ],
+  "failures": [],
+  "limitations": "Only the specified finite domains are checked. Dense convolution is independent of the interval expression, but all code and proof were prepared in the same research context. These computations are neither a universal proof, a fresh referee report, nor a novelty certificate."
+}

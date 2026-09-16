@@ -1,0 +1,365 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\eps}{\varepsilon}
+
+\title{A Boundary-Word Classification of Losing Positions in CRIM}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University,
+Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 29, 2026}
+\keywords{combinatorial games, integer partitions, Young diagrams, boundary words}
+\hypersetup{
+  pdftitle={A Boundary-Word Classification of Losing Positions in CRIM},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Column--Row Impartial Merge (CRIM) is the normal-play impartial game in
+which a move deletes an arbitrary row or column of a Young diagram and
+reattaches the remaining pieces.  Ba\v{s}i\'c, Gottlieb, and Krnc conjectured
+that every losing position has even absolute Dyson rank.  We prove a stronger
+classification.  Encode a partition by its southeast boundary word
+$0^{a_1}1^{b_1}\cdots0^{a_k}1^{b_k}$.  Let $L$ count the initial pairs with
+$a_i=1$ and $b_i$ odd, let $R$ count the terminal pairs with $a_i$ odd and
+$b_i=1$, and put $M=\min(k,L+R)$.  The position is losing if and only if both
+the boundary length and $M$ are even.  Since the boundary length is the sum
+of the number of rows and columns, the even-rank conjecture follows.  The
+proof is exact and combinatorial.  Deterministic exhaustive computations,
+implemented independently in three representations, are included only as
+checks of the theorem and its auxiliary lemmas.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Column--Row Impartial Merge (CRIM) is an impartial game on integer
+partitions.  From a Young diagram, a player removes any one row or any one
+column; if the removal disconnects the diagram, the remaining pieces are
+reattached to form a partition.  Under normal play, a position from which the
+next player loses is a $\cP$-position, and all other positions are
+$\cN$-positions.
+
+Ba\v{s}i\'c, Gottlieb, and Krnc analyzed CRIM and proved outcome
+classifications for several families of partitions
+\cite{BasicGottliebKrnc2026}.  Their Conjecture~1 states that every
+$\cP$-position has even rank, where the rank of
+$\lambda=(\lambda_1,\ldots,\lambda_r)$ is
+$|r-\lambda_1|$ \cite[Sections~2.1 and~5]{BasicGottliebKrnc2026}.  This is
+not the Durfee length.
+
+We settle the conjecture by proving a complete outcome classification.  The
+essential reduction replaces a partition by a binary boundary word.  In this
+model, a move deletes one letter and then removes any leading 1s and trailing
+0s.  Only two endpoint moves can preserve word-length parity.  Their iterated
+availability is measured by an end-peeling statistic $M$.
+
+\begin{theorem}[Boundary-word classification]\label{thm:classification}
+Let $w$ be the canonical boundary word of a CRIM position, and let $M(w)$ be
+the end-peeling statistic of Definition~\ref{def:M}.  Then
+\[
+ w\in\cP
+ \quad\Longleftrightarrow\quad
+ |w|\equiv0\pmod 2
+ \quad\text{and}\quad
+ M(w)\equiv0\pmod 2.
+\]
+\end{theorem}
+
+\begin{corollary}[Even-rank conjecture]\label{cor:rank}
+Every $\cP$-position in CRIM has even rank.
+\end{corollary}
+
+The converse to Corollary~\ref{cor:rank} is false: Theorem~\ref{thm:classification}
+also identifies the even-rank $\cN$-positions.  The result determines only
+normal-play outcomes, not all Sprague--Grundy values.
+
+The source paper was a version-one arXiv preprint at the time of writing.
+Searches of arXiv, DataCite, Crossref, OpenAlex, and the public web through
+August~29, 2026 found no later proof, counterexample, or boundary-word
+classification.  This is a bounded literature statement, not a claim that an
+unindexed result cannot exist.
+
+\section{Partitions and canonical boundary words}\label{sec:words}
+
+Let $\mathbb Y$ denote the set of integer partitions, including the empty
+partition $\varnothing$.  For a nonempty partition
+$\lambda=(\lambda_1,\ldots,\lambda_r)$, let
+\[
+ v_1>v_2>\cdots>v_k>0
+\]
+be its distinct row lengths, and let $a_i$ be the multiplicity of $v_i$.
+Set $v_{k+1}=0$ and $b_i=v_i-v_{i+1}$.  Thus $a_i,b_i$ are positive integers.
+
+\begin{definition}\label{def:word}
+The \emph{canonical boundary word} of $\lambda$ is
+\[
+ W(\lambda)=0^{a_1}1^{b_1}\cdots0^{a_k}1^{b_k}.
+\]
+We put $W(\varnothing)=\eps$.  A binary word is \emph{canonical} if it is
+empty or begins with 0 and ends with 1.
+\end{definition}
+
+Every nonempty canonical word has a unique alternating-run expression as in
+Definition~\ref{def:word}.  Conversely, its pairs determine the partition in
+which
+\[
+ v_i=\sum_{j=i}^k b_j
+\]
+occurs $a_i$ times.  Hence $W$ is a bijection.  It also gives the parity
+statistic of interest:
+\begin{equation}\label{eq:length}
+ |W(\lambda)|=\sum_{i=1}^k a_i+\sum_{i=1}^k b_i
+ =r+\lambda_1.
+\end{equation}
+
+For any binary word $x$, let $C(x)$ remove its maximal prefix of 1s and its
+maximal suffix of 0s.  If all letters are removed, set $C(x)=\eps$.
+
+\begin{lemma}[Move correspondence]\label{lem:moves}
+Under $W$, the CRIM followers of a position are precisely the distinct words
+\[
+ C(w\setminus x),
+\]
+where one occurrence $x\in\{0,1\}$ is deleted from $w$.
+\end{lemma}
+
+\begin{proof}
+A row whose length is $v_i$ corresponds to one of the $a_i$ zeros in the
+$i$th 0-run.  If $a_i>1$, deleting it decrements $a_i$.  If $a_i=1$ and the
+run is internal, the adjacent 1-runs merge; algebraically, the gaps
+$v_{i-1}-v_i$ and $v_i-v_{i+1}$ add when the sole row of length $v_i$ is
+removed.  If the first 0-run disappears, its following 1-run becomes a
+leading run and is stripped, recording the drop from $v_1$ to $v_2$.
+
+The column argument is dual.  The $b_i$ columns of a fixed height correspond
+to the $i$th 1-run.  Deleting a singleton internal 1-run merges its adjacent
+0-runs, while deleting the last 1-run causes zero-length bottom rows to be
+stripped.  These are exactly the operations described by $C$.
+\end{proof}
+
+Thus CRIM is isomorphic to the normal-play game on canonical binary words in
+which a move deletes one letter and canonicalizes.  Every move strictly
+shortens the word.
+
+\section{The end-peeling statistic}
+
+Fix a nonempty canonical word
+\begin{equation}\label{eq:runs}
+ w=0^{a_1}1^{b_1}\cdots0^{a_k}1^{b_k},
+ \qquad a_i,b_i\ge1.
+\end{equation}
+
+\begin{definition}\label{def:M}
+A run pair $(a_i,b_i)$ is \emph{A-good} if $a_i=1$ and $b_i$ is odd.  It is
+\emph{B-good} if $a_i$ is odd and $b_i=1$.  Let $L(w)$ be the number of
+pairs in the maximal A-good prefix, and let $R(w)$ be the number of pairs in
+the maximal B-good suffix.  Define
+\[
+ M(w)=\min\{k,L(w)+R(w)\},
+ \qquad M(\eps)=0.
+\]
+Equivalently, $M(w)$ is the size of the union of those two sets of pairs.
+\end{definition}
+
+The terminology comes from the parity-preserving moves.
+
+\begin{lemma}[Even followers]\label{lem:even-followers}
+If $|w|$ is even, its even-length followers are exactly the following:
+\begin{enumerate}
+\item if the first pair is A-good, delete its sole leading 0 and strip the
+following 1-run;
+\item if the last pair is B-good, delete its sole trailing 1 and strip the
+preceding 0-run.
+\end{enumerate}
+Each such end-peel reduces $M$ by exactly one.
+\end{lemma}
+
+\begin{proof}
+Unless the sole leading 0 or sole trailing 1 is deleted, canonicalization
+strips nothing and exactly one letter is lost.  Deleting the sole leading 0
+removes $1+b_1$ letters, preserving parity exactly when $b_1$ is odd.  The
+right-end calculation removes $a_k+1$ letters and is dual.
+
+The A-good prefix and B-good suffix are sets of intrinsically good run pairs.
+An eligible end-peel removes exactly one pair from their union.  All remaining
+pairs retain their A/B status.  Therefore the union size $M$ falls by one,
+including when the two regions overlap.
+\end{proof}
+
+We next prove the domination statement needed for odd words.
+
+\begin{lemma}[Odd-word domination]\label{lem:odd}
+Every odd-length canonical word has a follower $u$ for which both $|u|$ and
+$M(u)$ are even.
+\end{lemma}
+
+\begin{proof}
+Write $L=L(w)$ and $R=R(w)$.  Every A-good or B-good pair has even total
+length.  Hence $L+R<k$: otherwise their union covers every pair and $|w|$ is
+even.  The nonempty interval of pairs from $L+1$ through $k-R$ will be called
+the \emph{core}.  In particular,
+\begin{equation}\label{eq:oddM}
+ M(w)=L+R.
+\end{equation}
+
+Suppose first that the core contains at least two pairs.  If $L+R$ is odd and
+$L>0$, delete a 1 from the last A-good prefix pair.  A nonsingleton 1-run
+becomes even; a singleton 1-run disappears and its 0 merges with the first
+core 0-run.  In either case the A-good prefix loses one pair.  A second core
+pair remains as the right barrier, so the B-good suffix is unchanged.  The
+new value of $M$ is $L+R-1$, which is even.  If $L=0$, then $R>0$, and the
+symmetric deletion of a 0 from the first B-good suffix pair applies.
+
+Now let $L+R$ be even, and write $(a,b)$ for the first core pair.  Except in
+two cases, a one-letter deletion can leave this pair non-A-good: delete a 0,
+unless $a=2$ and $b$ is odd, in which case delete a 1.  Since a second core
+pair remains, the B-good suffix is unchanged, so $M$ stays even.
+
+The first exception is $(a,b)=(2,1)$.  Delete its sole 1.  The pair merges
+with the next core pair, adding 2 to that pair's 0-run.  The result is still
+non-A-good, and adding 2 preserves whether the next pair is B-good; thus $M$
+again stays even.
+
+For the other exception, $a=1$ and $b$ is even.  Let $t$ be the number of
+consecutive A-good pairs immediately following this core pair and set
+$X=L+t+R$.  Deleting its sole 0 removes or absorbs the pair and gives
+\[
+ M_0=\min(k-1,X),
+\]
+whereas deleting one of its 1s makes the pair A-good and gives
+\[
+ M_1=\min(k,X+1).
+\]
+If $X\le k-2$, these values are $X$ and $X+1$; if $X\ge k-1$, they are
+$k-1$ and $k$.  Thus they are consecutive, and one of the two legal
+followers has even $M$.
+
+It remains to consider a one-pair core $(a,b)$.  Its length is odd and it is
+neither A-good nor B-good.  The following exhaustive table gives a suitable
+move.  ``Reduce A'' means delete a 1 from the last A-good prefix pair;
+``reduce B'' is its symmetric operation.
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Core type & $L+R$ even & $L+R$ odd \\
+\midrule
+$a=1$, $b$ even
+  & delete the core 0
+  & delete a core 1 \\
+$a$ even, $b=1$
+  & delete the core 1
+  & delete a core 0 \\
+$a\ge3$ odd, $b$ even
+  & delete a core 0
+  & reduce B if $R>0$, otherwise reduce A \\
+$a$ even, $b\ge3$ odd
+  & delete a core 1
+  & reduce A if $L>0$, otherwise reduce B \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For completeness, in the first two odd cases the changed core becomes good,
+so all $k=L+R+1$ pairs are covered and the new $M$ is even.  In the final two
+even cases, the core becomes an even--even barrier and $M$ is unchanged.  In
+the final two odd cases, the indicated adjacent good region loses one pair.
+If that adjacent run is a singleton, it merges into an even core run and does
+not expose the opposite region.  Hence $M$ changes from $L+R$ to $L+R-1$.
+All selected moves yield even word length, proving the lemma.
+\end{proof}
+
+\section{Outcome classification and rank parity}
+
+\begin{proof}[Proof of Theorem~\ref{thm:classification}]
+We use strong induction on $|w|$.  The empty word is a $\cP$-position and
+satisfies the displayed criterion.  There is no nonempty canonical word of
+length one.
+
+Let $|w|$ be even.  By Lemma~\ref{lem:even-followers}, all odd-length
+followers are $\cN$ by induction, and every even-length follower is an
+end-peel whose $M$-value is $M(w)-1$.  If $M(w)$ is even, each such follower
+has odd $M$ and is $\cN$ by induction; hence $w\in\cP$.  If $M(w)$ is odd,
+an end-peel exists and leads to an even word with even $M$, which is $\cP$ by
+induction.  Thus $w\in\cN$.
+
+If $|w|$ is odd, Lemma~\ref{lem:odd} gives an even-length follower with even
+$M$.  It is $\cP$ by induction, so $w\in\cN$.  This proves both directions.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:rank}]
+By Theorem~\ref{thm:classification}, a $\cP$-position has even boundary
+length.  Equation~\eqref{eq:length} and
+\[
+ |r-\lambda_1|\equiv r+\lambda_1\pmod2
+\]
+show that its rank is even.  We set the rank of the empty partition to zero;
+equivalently, the nontrivial statement may be restricted to nonempty
+partitions.
+\end{proof}
+
+\begin{remark}
+For example, the unexplained losing partition $(4,2,2,2)$ listed in the
+source paper has word $01100011$, boundary length $8$, and $M=0$, so the
+classification declares it $\cP$.  The staircase $(3,2,1)$ has word
+$010101$, for which $M=3$; it is therefore $\cN$ despite having even rank.
+\end{remark}
+
+\section{Independent computational verification}\label{sec:computation}
+
+The proof above is independent of computation.  We nevertheless used three
+deterministic exact implementations to attack the statement and its lemmas.
+
+The first program enumerates partitions by size, constructs column moves by
+direct column-height subtraction, and computes full Sprague--Grundy values by
+mex.  The second constructs column moves by literal conjugation and computes
+only the Boolean $\cP/\cN$ recursion.  On every partition of size at most 50,
+the two programs produced the same losing set.
+
+\begin{proposition}[Finite verification]
+There are 1,295,971 partitions of size at most 50, including the empty
+partition.  Of these, 365,327 are $\cP$-positions, and none has odd rank.
+\end{proposition}
+
+A third program works only with canonical words.  It compares direct outcome
+recursion with Theorem~\ref{thm:classification}.  It separately tests
+Lemma~\ref{lem:odd} and the case-selected witnesses used in its proof.  All
+2,097,152 canonical words of perimeter at most 22, including the empty word,
+passed with no discrepancy between the exact recursion and the predicted
+outcome.
+
+The computations used Python~3.10.12 on x86-64 Linux.  They use no randomness
+and no floating-point arithmetic.  Commands, per-level counts, and
+machine-readable results accompany the source distribution.
+
+\section*{Data and code availability}
+
+The source archive contains the three exact programs, their machine-readable
+outputs, regression tests, and commands for both the fast tests and the full
+finite verifications.  The programs use only the Python standard library.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

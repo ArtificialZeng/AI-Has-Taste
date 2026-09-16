@@ -1,0 +1,342 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A small-component bound for odd primitive non-deficient numbers with five distinct prime factors},pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\rad}{rad}
+\newcommand{\ph}{\varphi}
+\title{A small-component bound for odd primitive\protect\\
+non-deficient numbers with five distinct prime factors}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+Beijing 100190, China. Email: \texttt{xiaojianzeng@foxmail.com}.}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $n=\prod_{i=1}^{5}p_i^{a_i}$ be odd and primitive non-deficient,
+where the $p_i$ are distinct primes and every $a_i$ is positive.
+We prove that $\min_i p_i^{a_i+1}<2\rad(n)$, establishing the
+five-prime case of Zelinsky's small-component conjecture.
+A quotient estimate reduces a hypothetical counterexample, uniformly in
+the exponents, to the radical gaps $R-2\ph(R)=1$ or $3$.
+A congruence excludes the first gap. The second is excluded by a complete
+thirteen-row divisor certificate, whose six remaining ordered integral
+pairs each contain a composite number. No bound on the primes or
+exponents is assumed.
+\end{abstract}
+
+\section{Statement and context}
+
+Write $\sigma(m)=\sum_{d\mid m}d$ and $h(m)=\sigma(m)/m$.
+A positive integer is \emph{deficient} if $h(m)<2$ and
+\emph{non-deficient} if $h(m)\ge2$. It is \emph{primitive
+non-deficient} if it is non-deficient and every positive proper divisor
+is deficient. This definition includes perfect numbers.
+A component of $n$ means a full prime power $p^a\parallel n$.
+
+Zelinsky conjectures that every primitive non-deficient number
+$n=\prod_{i=1}^{k}p_i^{a_i}$ has an index $i$ satisfying
+$p_i^{a_i+1}<2\rad(n)$ \cite[Conjecture~1]{Zelinsky2026}.
+His Theorem~2 proves the bound $2k\rad(n)$, and his Lemma~4 establishes
+the conjectured bound for odd numbers with three or four distinct prime
+divisors. We establish the next case.
+
+\begin{theorem}\label{thm:main}
+Let $3\le p_1<p_2<p_3<p_4<p_5$ be primes, let
+$a_1,\ldots,a_5$ be positive integers, and put
+\[
+ n=\prod_{i=1}^{5}p_i^{a_i},\qquad R=\prod_{i=1}^{5}p_i.
+\]
+If $\sigma(n)\ge2n$ and $\sigma(d)<2d$ for every positive proper
+divisor $d\mid n$, then
+\[
+ \min_{1\le i\le5}p_i^{a_i+1}<2R.
+\]
+\end{theorem}
+
+Thus the general bound $10R$ in this case can be replaced by $2R$.
+The proof uses the deficiency of $n/3$ to reduce all exponent choices
+to two equations for the square-free integer $R$. The substantive step
+is the complete exclusion of those equations; a classification of all
+eligible $n$ is unnecessary.
+
+The broader setting has a long history. Dickson proved finiteness of
+the odd primitive non-deficient numbers with a fixed number of distinct
+prime divisors \cite{Dickson1913}. Cohen relates primitivity to the
+excess of the divisor sum and the sizes of components
+\cite[Theorem~1 and Remark~1]{Cohen1983}; his Lemma~1 also records
+the strict increase of $h$ under proper divisibility.
+Amato, Hasler, Melfi and Parton give algorithms enumerating primitive
+abundant numbers with a fixed number $\Omega$ of prime factors counted
+with multiplicity \cite{AmatoEtAl2019}.
+Here $\Omega=\sum_i a_i$ is unbounded, whereas the radical has exactly
+five prime factors. The product estimate used below already appears in
+Zelinsky's proof of Lemma~9 \cite{Zelinsky2026}; neither that elementary
+inequality nor the divisor-pair factorization is claimed as a separate
+methodological advance.
+
+\section{The quotient estimate}
+
+Put
+\[
+ D=\prod_{i=1}^{5}(p_i-1)=\ph(R),\qquad
+ E=R-2D,\qquad b_i=p_i^{a_i+1}.
+\]
+The prime-power divisor-sum formula gives
+\begin{equation}\label{eq:abundancy}
+ h(n)=\frac{R}{D}\prod_{i=1}^{5}\left(1-\frac1{b_i}\right)
+ <\frac{R}{D}.
+\end{equation}
+Consequently $E$ is a positive odd integer. Since $t/(t-1)$ decreases
+for $t>1$, the assumption $p_1\ge5$ would give
+\[
+ \frac{R}{D}\le
+ \frac{5\cdot7\cdot11\cdot13\cdot17}{4\cdot6\cdot10\cdot12\cdot16}
+ =\frac{85085}{46080}<2,
+\]
+contrary to \eqref{eq:abundancy} and $h(n)\ge2$. Thus $p_1=3$.
+
+Suppose that $b_i\ge2R$ for all five indices. Directly computing the
+prime-power factors of the proper divisor $n/3$ yields
+\begin{equation}\label{eq:quotient}
+ h(n/3)=\frac{R}{D}\left(1-\frac3{b_1}\right)
+                   \prod_{i=2}^{5}\left(1-\frac1{b_i}\right).
+\end{equation}
+This formula remains valid when $a_1=1$: the local contribution is
+$(3/2)(1-3/9)=1$, as required when the prime $3$ disappears.
+
+For $0\le u_j\le1$ one has
+\begin{equation}\label{eq:loss}
+ \prod_j(1-u_j)\ge1-\sum_j u_j.
+\end{equation}
+Indeed, if $P$ is the product of the preceding factors, then
+$0\le P\le1$ and $1-P(1-u)=1-P+Pu\le1-P+u$; induction applies.
+The five losses in \eqref{eq:quotient} sum to at most $7/(2R)$.
+Primitivity therefore implies
+\begin{equation}\label{eq:gap}
+ 2>h(n/3)\ge\frac{R-7/2}{D}
+             =2+\frac{E-7/2}{D}.
+\end{equation}
+It follows that $E<7/2$, so $E\in\{1,3\}$.
+
+The value $E=1$ is impossible modulo $3$. If some $p_i$, $i\ge2$,
+is $1$ modulo $3$, then $D\equiv E\equiv0\pmod3$.
+Otherwise all four such primes are $2$ modulo $3$, whence
+$D\equiv2\pmod3$ and $E\equiv-2D\equiv2\pmod3$.
+The following lemma excludes the remaining value.
+
+\section{Excluding the radical gap three}
+
+\begin{lemma}\label{lem:radical}
+No product $R$ of five distinct odd primes satisfies
+$R-2\ph(R)=3$.
+\end{lemma}
+
+\begin{proof}
+Such a product satisfies $R/\ph(R)>2$, so the preceding comparison
+again forces $p_1=3$.
+For an initial segment of the prime factors write
+$A=\prod p$, $B=\prod(p-1)$ and $g=A-2B$.
+Adjoining a prime $q$ changes the gap to
+\begin{equation}\label{eq:prefix}
+ Aq-2B(q-1)=qg+2B.
+\end{equation}
+If a nonempty proper initial segment has positive gap, then $g\ge1$
+and $B\ge2$, so its next extension has gap greater than $3$.
+Further extensions increase a positive gap. A zero gap is impossible
+because $A$ is odd. Every proper initial segment must therefore have
+$A<2B$.
+
+If $p_2\ge15$, then
+\[
+ \frac{R}{\ph(R)}\le\frac32\left(\frac{15}{14}\right)^4<2,
+ \qquad 3\cdot15^4=151875<153664=4\cdot14^4.
+\]
+Hence $p_2\in\{5,7,11,13\}$. For $p_2=p$ and $p_3\ge t$,
+\begin{equation}\label{eq:cutoff}
+ \frac{R}{\ph(R)}\le
+ \frac{3p}{2(p-1)}\left(\frac{t}{t-1}\right)^3.
+\end{equation}
+Table~\ref{tab:prefixes} gives values of $t$ for which this upper
+bound is below $2$, together with every retained prime $p_3$.
+For $p_2=5$, the omitted possibilities $p_3=7,11,13$ have positive
+three-prime gaps $9,5,3$, respectively, and are excluded by
+\eqref{eq:prefix}. There are exactly thirteen remaining triples.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Complete initial-segment bounds. All primes $p_3\ge t$ are excluded.}
+\label{tab:prefixes}
+\begin{tabular}{@{}rrrrl@{}}
+\toprule
+$p_2$ & $t$ & $3p_2t^3$ & $4(p_2-1)(t-1)^3$ & Retained $p_3$\\
+\midrule
+5 &47&1557345&1557376&17,19,23,29,31,37,41,43\\
+7 &23&255507&255552&11,13,17,19\\
+11&17&162129&163840&13\\
+13&15&131625&131712&none\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Fix one retained triple, and put $c=2B-A>0$, $x=p_4$, $y=p_5$.
+Expanding the equation $Axy-2B(x-1)(y-1)=3$ gives the equivalence
+\begin{equation}\label{eq:factor}
+ (cx-2B)(cy-2B)=2AB-3c=:N.
+\end{equation}
+The four-prime initial segment has negative gap, so
+$2B-cx<0$. Consequently
+\[
+ u=cx-2B>0,\qquad v=cy-2B>u.
+\]
+Every possible solution thus comes from a positive divisor $u\mid N$
+with $u^2<N$, by setting
+\begin{equation}\label{eq:recover}
+ x=\frac{u+2B}{c},\qquad
+ y=\frac{N/u+2B}{c}.
+\end{equation}
+Conversely, any such pair of integral primes with $p_3<x<y$ gives a
+solution of the original equation. This also excludes zero and negative
+factor branches, while $u^2=N$ would force $x=y$.
+
+\begin{table}[htbp]
+\centering\small
+\caption{The complete gap-three factor calculation. Pairs are integral and satisfy $p_3<x<y$.}
+\label{tab:factors}
+\begin{tabular}{@{}lrrl p{4.05cm}@{}}
+\toprule
+$(p_1,p_2,p_3)$ & $B$ & $c$ & $N$ (prime factorization) & All ordered pairs $(x,y)$\\
+\midrule
+$(3,5,17)$ & 128 & 1 & $65277=3^{2}\cdot7253$ & $(257,65533)$; $(259,22015)$; $(265,7509)$\\
+$(3,5,19)$ & 144 & 3 & $82071=3^{2}\cdot11\cdot829$ & $(97,9215)$; $(107,925)$\\
+$(3,5,23)$ & 176 & 7 & $121419=3^{4}\cdot1499$ & none\\
+$(3,5,29)$ & 224 & 13 & $194841=3^{2}\cdot21649$ & none\\
+$(3,5,31)$ & 240 & 15 & $223155=3^{4}\cdot5\cdot19\cdot29$ & none\\
+$(3,5,37)$ & 288 & 21 & $319617=3^{2}\cdot17\cdot2089$ & none\\
+$(3,5,41)$ & 320 & 25 & $393525=3^{3}\cdot5^{2}\cdot11\cdot53$ & none\\
+$(3,5,43)$ & 336 & 27 & $433359=3^{2}\cdot179\cdot269$ & none\\
+$(3,7,11)$ & 120 & 9 & $55413=3^{2}\cdot47\cdot131$ & $(27,2079)$\\
+$(3,7,13)$ & 144 & 15 & $78579=3^{2}\cdot8731$ & none\\
+$(3,7,17)$ & 192 & 27 & $137007=3^{2}\cdot13\cdot1171$ & none\\
+$(3,7,19)$ & 216 & 33 & $172269=3^{2}\cdot19141$ & none\\
+$(3,11,13)$ & 240 & 51 & $205767=3^{3}\cdot7621$ & none\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:factors} gives the complete calculation. Each displayed
+factorization is into primes; the largest factor is $21649$, and trial
+division through $147$ suffices to verify all the primality assertions.
+Expanding the factorizations yields all positive divisors, so the
+integrality conditions in \eqref{eq:recover} are finite exact checks.
+For transparency, Appendix~\ref{app:divisors} lists all $95$ divisors
+with $u^2\le N$. Exactly six ordered integral pairs survive. They fail
+primality because, in the order displayed,
+\begin{align*}
+ 65533&=13\cdot5041, &259&=7\cdot37, &265&=5\cdot53,\\
+ 9215&=5\cdot1843, &925&=5\cdot185, &27&=3\cdot9.
+\end{align*}
+The only further integral pair is $(25,5375)$ for the triple
+$(3,5,43)$, which violates $x>43$. There are therefore no five-prime
+solutions of the gap-three equation.
+\end{proof}
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:main}]
+If all five $p_i^{a_i+1}$ were at least $2R$, then
+\eqref{eq:gap} would force $E=1$ or $E=3$. The congruence excludes
+$E=1$ and Lemma~\ref{lem:radical} excludes $E=3$.
+This contradiction proves the asserted strict inequality.
+\end{proof}
+
+\section{Verification and scope}
+
+The arithmetic in Table~\ref{tab:factors} uses exact integer operations.
+A finite certificate needs both exhaustive coverage and verification of
+its individual witnesses. For a methodological comparison, the finite
+geometric certificates of Zeng, Liu, Ratnavelu and Ong Seng Huat
+\cite{ZengEtAl2026} (Section~3) separately reconstruct the enumerated
+configurations and check the stored colorings. Here the initial-segment
+bounds and divisor lists establish coverage, while congruences and
+explicit proper factors reject each candidate.
+A verifier can check each factorization by multiplication and trial
+division, expand its divisors, and test whether both $u+2B$ and
+$N/u+2B$ are divisible by $c$. The proof of completeness is supplied
+by \eqref{eq:prefix}--\eqref{eq:recover}, rather than by a chosen
+upper bound on the search.
+
+A separate calculation checks the table without factoring $N$.
+Solving for the last prime gives
+\begin{equation}\label{eq:direct}
+ y=\frac{2B(x-1)-3}{cx-2B}.
+\end{equation}
+Since the denominator is positive and $y>x$, it follows that
+$cx^2<4Bx-2B-3<4Bx$, hence $x<4B/c$.
+Testing \eqref{eq:direct} for positive denominator, integral $y$ and
+$y>x$ at every integer in $p_3<x<4B/c$ involves $937$ possible
+fourth values over the thirteen triples and gives the same six
+ordered integral pairs. As a control outside the five-prime scope,
+$3\cdot7\cdot13\cdot19=5187$ has totient $2592$ and gap $3$.
+Thus Lemma~\ref{lem:radical} would be false with four in place of five.
+
+The theorem includes $\sigma(n)=2n$ and places no upper bound on any
+$a_i$, $p_i$, or $n$. The argument does not settle the conjecture for
+six or more distinct prime divisors, nor a bound with $R$ in place of
+$2R$. No covering proof of the five-prime assertion was identified in
+the primary literature inspected through 12 September 2026; this is a
+bounded literature assessment, not a claim of exhaustive historical
+coverage or priority.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, exact-integer program
+construction, source comparison and manuscript preparation.
+An additional AI-assisted verification pass reconstructed the finite
+enumeration using a separate program. The calculations use Python~3
+integer arithmetic, with rational arithmetic for auxiliary identity
+checks, and involve no floating-point tests or random sampling.
+The checks are not a formal proof-assistant verification or journal
+peer review. The mathematical argument and its complete finite
+certificate are given above and in the appendix.
+
+\appendix
+\section{Complete divisor lists}\label{app:divisors}
+
+For each row of Table~\ref{tab:factors}, the following table lists
+every positive divisor $u\mid N$ with $u^2\le N$.
+An entry yields an integral pair precisely when
+$u\equiv N/u\equiv-2B\pmod c$.
+These lists can be reconstructed by independently ranging each prime
+exponent from zero to its multiplicity in the factorization of $N$.
+They contain $95$ entries in total.
+
+\small
+\begin{longtable}[c]{@{}l p{11.4cm}@{}}
+\toprule
+Initial triple & All small divisors $u$\\
+\midrule
+\endhead
+$(3,5,17)$ & 1, 3, 9\\[3pt]
+$(3,5,19)$ & 1, 3, 9, 11, 33, 99\\[3pt]
+$(3,5,23)$ & 1, 3, 9, 27, 81\\[3pt]
+$(3,5,29)$ & 1, 3, 9\\[3pt]
+$(3,5,31)$ & 1, 3, 5, 9, 15, 19, 27, 29, 45, 57, 81, 87, 95, 135, 145, 171, 261, 285, 405, 435\\[3pt]
+$(3,5,37)$ & 1, 3, 9, 17, 51, 153\\[3pt]
+$(3,5,41)$ & 1, 3, 5, 9, 11, 15, 25, 27, 33, 45, 53, 55, 75, 99, 135, 159, 165, 225, 265, 275, 297, 477, 495, 583\\[3pt]
+$(3,5,43)$ & 1, 3, 9, 179, 269, 537\\[3pt]
+$(3,7,11)$ & 1, 3, 9, 47, 131, 141\\[3pt]
+$(3,7,13)$ & 1, 3, 9\\[3pt]
+$(3,7,17)$ & 1, 3, 9, 13, 39, 117\\[3pt]
+$(3,7,19)$ & 1, 3, 9\\[3pt]
+$(3,11,13)$ & 1, 3, 9, 27\\[3pt]
+\bottomrule
+\end{longtable}
+\normalsize
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

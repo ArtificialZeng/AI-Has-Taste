@@ -1,0 +1,464 @@
+                                                                             Further Remarks on Separating Words
+
+                                                                                                    John W. Nicol∗
+
+
+
+
+                        Abstract
+                        We revisit questions on separating words raised by Demaine, Eisenstat, Shallit, and Wilson, together with Ebrahimnejad’s follow-up
+                        to their reversal problem. For length-n pairs whose difference word has d runs, we prove an O(d log n) bound, extending the
+                        Hamming-distance theorem of Demaine et al. For conjugate words, we give bounds controlled by the arithmetic of the shift.
+                        We resolve Demaine et al.’s Open Problem 2 by showing that the order of two words can change nondeterministic separation by
+arXiv:2608.30928v1 [cs.FL] 31 Aug 2026
+
+
+
+
+                        an unbounded factor. Our reversal construction addresses Ebrahimnejad’s follow-up to Open Problem 1: forward and reversed
+                        deterministic separation can differ by an unbounded factor. Since nondeterministic separation is invariant under reversal, the same
+                        construction also improves the lower bound in Open Problem 3.
+
+
+                         1. Introduction                                                                     that the difference is unbounded and asked whether there is a
+                                                                                                             good upper bound on the corresponding ratio [7]. We rule out a
+                             A deterministic finite automaton (DFA) separates two dis-                       constant upper bound by constructing pairs for which forward
+                        tinct words if it accepts one and rejects the other.                                 separation needs more than N states while reversed separation
+                             The problem was introduced by Goralčı́k and Koubek [1].                        needs only O(log N) states.
+                        Robson obtained the long-standing O(n2/5 (log n)3/5 )-state upper                        Open Problem 3 asks for better bounds on the ratio between
+                        bound and also studied separation by automata whose transition                       deterministic and nondeterministic separation as a function of
+                        monoids are groups [2, 3]. A 2011 paper of Demaine, Eisenstat,                       the common word length. Since nondeterministic separation
+                        Shallit, and Wilson surveyed the subject and posed questions for                     is unchanged by reversal,
+                        several restrictions and variants [4]. Subsequent lower-bound                                               p the same construction improves its
+                                                                                                             lower bound from Ω( log L) to Ω(log L/(log log L)2 ) for every
+                        work developed the connection with identities in finite transfor-                    sufficiently large L.
+                        mation semigroups and symmetric groups [5]. More recently,                               We state the reversal theorem in Section 4.2, where it is
+                        Chase [6] improved the upper bound to O(n1/3 (log n)7 ) states.                      used for nondeterministic separation, and defer its proof to the
+                             We organize this paper around the questions in [4]. Sec-                        final section. We write sep(w, x) for the number of states in the
+                        tions 2 and 3 revisit its results and questions for words with                       smallest DFA separating words w and x. Unless stated otherwise,
+                        additional structure: runs of differences and cyclic shifts. Sec-                    all words are binary and all DFAs are complete. All logarithms
+                        tions 4 and 5 address its three open problems, together with                         are to base 2.
+                        Ebrahimnejad’s follow-up question to Open Problem 1 [7].
+                             Theorem 2 of [4] shows that h differing positions (a Ham-
+                        ming distance of h) can be detected with O(h log n) states. We                       2. Hamming distance and runs of differences
+                        generalize this to detecting d runs of differences in O(d log n)                        For equal-length binary words w, x ∈ {0, 1}n , let ∆ = w⊕ x be
+                        states, regardless of how many positions differ. This also ad-                      their difference word. Here ∆i = 1 exactly where wi , xi . A run
+                        dresses a remark in [6].                                                            of differences is a maximal run of 1’s in ∆. Put ∆0 = ∆n+1 = 0,
+                             Section 5.2 of [4] asks whether conjugate words, which are                     and call i ∈ {1, . . . , n + 1} a boundary if ∆i−1 , ∆i . A difference
+                        related by a cyclic shift, are easier to separate. We show that a                   word with d runs has exactly 2d boundaries.
+                        shift with large greatest common divisor contains an arbitrary                          The proof applies the Hamming-distance argument from
+                        shorter separating-words instance, while a shift with small great-                  Theorem 2 of [4] to the boundaries instead of all differing posi-
+                        est common divisor can be handled by a small fingerprint.                           tions.
+                             Open Problem 2 asks whether swapping the accepted and
+                        rejected words can change nondeterministic separation by an                         Theorem 1. If w , x and their difference word has d runs, then
+                        unbounded amount. We show that both the difference and the
+                                                                                                                                  sep(w, x) = O(d log n).
+                        ratio can be arbitrarily large, even for equal-length binary words
+                        that differ in only two positions.                                                   Proof. Let B be the set of boundaries, choose b ∈ B, and put
+                             Open Problem 1 asks whether reversal can change determin-                                             Y
+                        istic separation by an unbounded amount. Ebrahimnejad proved                                        M=          |i − b| ≤ (n + 1)2d−1 .
+                                                                                                                                   i∈B\{b}
+
+                                         ∗ Corresponding author                                             By the prime number theorem, the product of the primes up to
+                                         Email address: jnicol1994@alumni.cmu.edu (John W. Nicol)           Cd log n exceeds M for a suitable constant C. Thus some prime
+                         Preprint submitted to Elsevier                                                                                                          September 1, 2026
+p = O(d log n) does not divide M, making b the only boundary               Proposition 3. S (g) ≤ R(n, k).
+in its residue class modulo p.
+     For a binary word u and a residue c modulo p, define the              Proof. Write r = k/g and s = (n − k)/g, so r + s = n/g. Take
+parity fingerprint                                                         any distinct binary words x, y of length g, and form
+                            X                                                                          W = xr y s .
+                a p,c (u) =        u j (mod 2).
+                              j≡c (mod p)
+                                                                           Shifting by k = rg gives ρk (W) = y s xr . These words are distinct
+Each 1 at position j in ∆ contributes to the two possible bound-           because their first length-g blocks are x and y.
+aries j and j + 1; adjacent contributions cancel modulo 2. The                 If a DFA separates these two words, the transformations
+parity of the boundaries congruent to b is                                 induced by x and y differ on some state q; otherwise the two long
+                                                                           products would induce the same transformation. Starting the
+                         a p,b−1 (∆) ⊕ a p,b (∆).                          same transition graph at q and choosing one of these two target
+                                                                           states to be accepting gives a DFA of the same size separating x
+This parity is 1, so a p,c (∆) = 1 for c = b − 1 or c = b. Since           from y. Maximizing over x, y proves the claim.
+∆ = w ⊕ x, a p,c (w) , a p,c (x). As in that argument, a DFA with
+                                                                           Proposition 4. R(n, k) = O g log2 (n/g) .
+                                                                                                                      
+two rings of p states computes a p,c : it records the input position
+modulo p and switches rings whenever it reads a 1 in residue
+                                                                           Proof. Fix W , ρk (W), and put
+class c. Choosing the appropriate ring as accepting separates w
+and x with 2p = O(d log n) states.                                                                   k                n−k
+                                                                                                r=     ,     ℓ=           .
+    The Hamming-distance result follows: if w and x differ in                                        g                 g
+h positions, then their difference word has at most h runs, so             Consider the positions in one fixed residue class modulo g, which
+sep(w, x) = O(h log n).                                                    form a binary word of length n/g. The shift moves each symbol
+    Chase [6, Section 2] mentioned the Thue–Morse word and                 backward by r positions modulo n/g. Since W , ρk (W), at least
+its complement, each with padding, as self-similar examples                one of these g words is nonconstant; fix such a word.
+that were not then known how to handle for separating words,                  Let a be the number of its 1’s that move backward without
+trace reconstruction, or reconstruction from subsequences. Since           wrapping, and let b be the number that wrap around. The former
+those words differ by one complemented middle interval, d = 1,             move by −r positions, while the latter move by ℓ positions. The
+and Theorem 1 gives an O(log n)-state separator.                           sum of the positions of the 1’s changes by
+
+3. Conjugate words                                                                                   ∆ = ℓb − ra.
+
+    Two words are conjugates if one is a cyclic shift of the other.        Suppose ∆ = 0. Then gcd(r, ℓ) = 1 implies that ℓ | a and r | b.
+For a length-n word W = W0 W1 · · · Wn−1 , let ρk (W) be its left          Since there are only ℓ nonwrapping positions and r wrapping po-
+shift by k positions:                                                      sitions, this would make the chosen word constant, contradicting
+                                                                           its choice.
+                        ρk (W)i = W(i+k) mod n .                                Since 0 < |∆| < (n/g)2 , some prime p = O log(n/g) does
+                                                                                                                                    
+                                                                           not divide ∆. Modulo p, the sum of the positions of the 1’s is
+For n ≥ 1, put                                                             determined by the numbers of 1’s in the p residue classes of
+                                                                           positions. Thus one residue class has different counts modulo p
+                    S (n) =       max          sep(w, x).
+                              w,x, |w|=|x|=n                               before and after the shift.
+                                                                                In the full words, this is one residue class modulo gp. A
+This is the exact-length convention; some earlier work instead             DFA tracks the input position modulo gp and counts modulo
+maximizes over pairs whose lengths are at most n. For 0 < k < n,           p the 1’s in that class. It has gp2 = O g log2 (n/g) states and
+                                                                                                                               
+define                                                                     separates W and ρk (W).
+                R(n, k) = max sep(W, ρk (W)).
+                               |W|=n
+                              W,ρk (W)                                     Proposition 5. R(n, k) = O(min{k, n − k}).
+Put g = gcd(n, k).                                                         Proof. Since ρn−k is the inverse of ρk and sep is symmetric,
+Theorem 2. For every 0 < k < n,                                                                  R(n, k) = R(n, n − k).
+                 S (g) ≤ R(n, k),
+                                                                           It is enough to prove the explicit bound R(n, k) ≤ 2k + 1.
+             R(n, k) = O min{g log2 (n/g), k, n − k} .                          Fix W , ρk (W), and write
+                                                    
+
+    The lower bound embeds the ordinary separating-words                                              V = ρk (W).
+problem at length g, while the upper bounds give O(log2 n)
+states when g = 1 and O(1) states when k or n − k is fixed.                Let U be the infinite k-periodic word obtained by repeating the
+    Combining the three propositions below proves the theorem.             first k symbols of W.
+                                                                       2
+   Suppose that W first differs from U at position L. Then                    These words have the same length and differ in two positions.
+L ≥ k, and for every i < L − k,                                                  Suppose an NFA with m ≤ M states accepts u s . Some
+                                                                              accepting path has the form
+                        Vi = Wi+k = Ui+k = Ui ,
+                                                                                                           0M     1        0T +P
+whereas                                                                                                 i −−→ p →
+                                                                                                                − q −−−→ f.
+                      VL−k = WL , U L = U L−k .
+                                                                              Since M ≥ m, the first segment contains a loop of some length
+The first difference between V and U occurs at position L − k.                d ≤ m. Since d | P, repeating this loop P/d additional times
+If W never differs from U, then V must differ from U, since                   gives a path from i to p labeled 0 M+P .
+otherwise both words would equal the length-n prefix of U.                        On the final segment, let S j be the set of states reachable
+    A DFA can follow U using k states to track the input position             from q by 0 j . There are at most 2m ≤ T possible sets S j , and
+modulo k. At the first difference, it switches to a cycle of k + 1            S j+1 is determined by S j . Thus S T lies on a cycle of some length
+states that counts the remaining input length modulo k + 1. If                c ≤ T . Since c | P, it reaches the same subset after T + P zeros.
+only one of W and V differs from U, one finishes among the first              Hence f is reachable from q by 0T as well. The resulting path
+k states and the other on the (k +1)-cycle. If both differ, their first       accepts v s . Hence
+differing positions are k apart, so they finish at different positions
+on that cycle. A DFA with 2k + 1 states therefore separates W                                          nsep(u s , v s ) > M = s2 .
+and V. The symmetry above gives
+                                                                                 For the opposite orientation, use the (s + 1)-state NFA in
+        R(n, k) ≤ 2 min{k, n − k} + 1 = O(min{k, n − k}).                     Figure 1.
+
+                                                                                           1
+                                                                                                                                   0
+                                                                                         q0       0   q1    0     q2       0            0 q         0   qs
+4. Nondeterministic separation                                                                                                  ···         s−1
+
+
+    An NFA has one initial state, an arbitrary set of accepting
+                                                                                                                       0
+states, and a possibly partial transition relation. It accepts a word
+if some path labeled by that word leads from the initial state
+to an accepting state. We do not use ε-transitions; they can be                         Figure 1: The (s + 1)-state NFA separating v s from u s .
+eliminated without adding states. We write nsep(w, x) for the
+number of states in the smallest NFA accepting w and rejecting                    For ℓ > 0, the NFA accepts 0ℓ exactly when
+x; the order of the two words matters.
+                                                                                               ℓ = as + b(s + 1),              a ≥ 0,      b ≥ 1.
+4.1. The order of the two words
+    Open Problem 2 of [4] asks whether the difference                         Every return to q0 uses the (s + 1)-cycle once, while before such
+                                                                              a return the path may traverse the s-cycle any number of times.
+                       | nsep(w, x) − nsep(x, w)|                             Modulo s, we have ℓ ≡ b. Taking 1, . . . , s as representatives
+                                                                              modulo s, the smallest possible b ≥ 1 in residue class r is r;
+between the two orientations can be unbounded. We show that it                taking a = 0 gives the least accepted length r(s + 1) in that class,
+can; moreover, the corresponding ratio can be unbounded, even                 and increasing a gives every later length. Since lengths in a
+when the two words differ in only two positions.                              fixed residue class differ by s, the largest nonaccepted length in
+   The proof adapts the consecutive-cycle construction from                   residue class r is r(s + 1) − s. Thus the largest ℓ for which 0ℓ
+Theorem 3 of [4].                                                             does not take q0 back to q0 is
+Theorem 6. For every integer s ≥ 2, there are equal-length                              max r(s + 1) − s = s(s + 1) − s = s2 = M.
+                                                                                                        
+binary words u s , v s such that                                                        1≤r≤s
+
+
+           nsep(u s , v s ) > s2 ,   nsep(v s , u s ) ≤ s + 1.                Since P > 0 and T = 2 M > M, both blocks of zeros in v s are
+                                                                              longer than M. Hence the NFA accepts v s . No path labeled 0 M
+Both the difference and the ratio between the two orientations                returns from q0 to q0 . Since q0 is the only state with a transition
+are unbounded.                                                                labeled 1, the NFA rejects u s . Thus
+
+Proof. Put                                                                                              nsep(v s , u s ) ≤ s + 1.
+
+        M = s2 ,         T = 2M ,      P = lcm(1, 2, . . . , T ),
+
+and define                                                                        Define
+
+               u s = 0 M 1 0T +P ,
+                                                                                                         n                          o
+                                      v s = 0 M+P 1 0T .                                       A(q) = max nsep(w, x) : |w|=|x|,
+                                                                                                                        nsep(x,w)≤q .
+                                                                                                                                w,x,
+
+
+                                                                          3
+For q ≥ 3, Theorem 6 with s = q − 1 gives the lower bound,                    The same construction also shows that the exponential cost
+while determinizing and complementing gives the upper bound:              of determinization is unavoidable. For the resulting pairs, let
+                                                                          q = nsep(w, x). The reversed separator and invariance under
+                    (q − 1)2 + 1 ≤ A(q) ≤ 2q .                            reversal give q = O(log N), while sep(w, x) > N. Together with
+                                                                          the determinization bound sep(w, x) ≤ 2q , this gives
+The exact growth of A(q) remains open.
+                                                                                           sep(w, x) = 2Θ(q) = 2Θ(nsep(w,x)) .
+4.2. Deterministic versus nondeterministic separation
+    Open Problem 3 of [4] asks for better bounds on the ratio
+                                                                          5. Reversals
+of deterministic to nondeterministic separation as a function of
+word length. For the exact common-length convention, define                   This section proves Theorem 7.
+                    (                                  )                      Like Ebrahimnejad’s construction [7], ours uses a language
+                       sep(w, x)
+       H(L) = max                : |w| = |x| = L, w , x .                 Ck whose reversal has a small DFA, together with a diagonaliza-
+                      nsep(w, x)                                          tion over all DFAs with at most N states. The diagonalization
+                                                                          produces equal-length words uN ∈ Ck and vN < Ck that have
+    For a word w, write wR for its reversal.
+                                                                          the same effect on every state of every such DFA. Thus the
+    We first use the following reversal theorem proved in Sec-
+                                                                          forward pair requires more than N states to separate, whereas
+tion 5 to improve the lower bound on H(L), and then use the
+                                                                          the reversed pair has an O(log N)-state separator. Finally, we
+NFA size itself as the parameter.
+                                                                          encode the pair in binary and pad it to every sufficiently large
+Theorem 7. There is an absolute constant c0 > 0 such that,                length.
+for every N ≥ 2 and every integer L ≥ N c0 N , there are distinct
+words xN,L , yN,L ∈ {0, 1}L such that                                     5.1. The delimiter language
+                                                                              For k ≥ 1, let Γ = {1, 2, #} and put
+                   sep(xN,L , yN,L ) > N,
+                   sep(xRN,L , yRN,L ) = O(log N).                                 Gk = {1, 2}∗ 1{1, 2}k−1 # + ,      Gk = Γ∗ \ Gk .
+                                                                                                            
+
+   It was observed in [4] that nondeterministic separation is             Thus Gk consists of one or more blocks ending in #, with 1 as
+unchanged by reversal:                                                    the kth symbol before each #. Over Σ = Γ ∪ {@}, define
+
+                   nsep(w, x) = nsep(wR , xR ).                                                     Ck = (@Gk )∗ .
+
+To see this, take an NFA accepting w and rejecting x, and fix an          The two delimiters have different roles: # ends the inner blocks,
+accepting path on w ending at a state f . Reverse every transition,       while @ separates them. The two delimiters make the decom-
+use f as the initial state, and make the old initial state the sole       position unique: every word in Ck is a concatenation of blocks
+accepting state. This NFA accepts wR , while an accepting path            @h with h ∈ Gk . In particular, @z@ < Ck for z ∈ Gk , whereas
+on xR would reverse to a path on x ending at f , contradicting            @h@ ∈ Ck for h ∈ Gk .
+rejection of x. The construction preserves the state set, and                Reversing the definition gives
+applying it in the other direction proves equality.
+                                                                               CkR = (Γ∗ \ GRk )@ ∗ ,       GRk = #{1, 2}k−1 1{1, 2}∗ + .
+                                                                                                                                    
+    Apply this observation to the words in Theorem 7. The small
+DFA for the reversed pair gives nondeterministic separation
+O(log N). In the other direction, determinizing any separating            Lemma 8 (A small automaton for the delimiter language). The
+q-state NFA gives at most 2q states. Since the deterministic              language CkR has an O(k)-state DFA.
+separation is greater than N, the nondeterministic separation is          Proof. Complete and complement the DFA in Figure 2 to recog-
+Θ(log N).                                                                 nize Γ∗ \ GRk . Since @ < Γ, recognizing (Γ∗ \ GRk )@ ∗ requires
+                                                                                                                                  
+    For each sufficiently large L, choose N to be a sufficiently          only a constant number of additional states: check each Γ-word
+small constant multiple of                                                when its terminating @ is read, and restart after each successful
+                               log L                                      check. A new initial accepting state is used both at the beginning
+                                       .                                  of the input and after each successful check, while a rejecting
+                             log log L
+                                                                          sink handles failed checks. Thus an @ returns to the new initial
+Then L ≥ N c0 N , where c0 is the constant in Theorem 7. The              state exactly when the preceding Γ-word is outside GRk , and other-
+resulting length-L pair gives                                             wise enters the rejecting sink. All other states are nonaccepting.
+                                            !                             Thus CkR has an O(k)-state DFA.
+                                  log L
+                     H(L) = Ω                 .
+                               (log log L)2
+
+This improves the Ω( log L) lower bound in [4] and holds for
+                       p
+
+every sufficiently large L.
+                                                                      4
+                                                    #                 1, 2            The # symbols force this block decomposition, so z ∈ Gk and h ∈
+                                                                                      Gk , with |h| = |z|. The equalities obtained at stage j persist after
+                          #          1, 2
+                                            ···
+                                                   1, 2         1                     appending the common suffix x j+1 · · · xm , giving the required
+                                                                                      equalities for z and h. Finally, there are m = N O(N) stages, each
+                                                                                      adding O(k) symbols, so |z| = N O(N) .
+                                    (k − 1) times
+                                                                                          Fix the word z from Lemma 9, and put
+Figure 2: A partial DFA for GRk . When k = 1, the part under the brace consists
+of a single state. All undisplayed transitions are undefined.                                           Rz = { @h : h ∈ Gk , |h| = |z| }.
+                                                                                      Then Rz∗ ⊆ Ck . In particular,
+5.2. Replacement and a common suffix
+                                                                                                                   @1|z| ∈ Rz ,
+     Fix N ≥ 2, and let k be the least integer such that 2k > N 2 .
+Thus k = O(log N). Put Q = {1, . . . , N}, and let DN be the set of                   because 1|z| has no #, so 1|z| ∈ Gk . Every replacement h supplied
+all complete transition tables                                                        by Lemma 9 satisfies @h ∈ Rz .
+
+                              δD : Q × Σ −→ Q.                                        Lemma 10 (A common suffix). There is a word w ∈ Rz∗ , begin-
+                                                                                      ning with @ and of length N O(N) , such that, for every D ∈ DN
+We use the same notation for the extension of δD to words and                         and every c ∈ Rz∗ ,
+to sets of states. The set DN has size N |Σ|N = N O(N) . Any DFA
+with at most N states can be padded with unreachable states, so                                            |δD (Q, w)| = |δD (Q, wc)|.
+it is enough to make the construction work for every D ∈ DN .                         Proof. For each D ∈ DN , first minimize |δD (Q, c)| over c ∈ Rz∗ .
+Lemma 9 (Universal replacement word). There is a nonempty                             Among the words attaining this minimum, choose a shortest one
+word z ∈ Gk of length N O(N) such that, for every D ∈ DN and                          and call it eD . It is a concatenation of fewer than 2N words from
+p, q ∈ Q, some h ∈ Gk with |h| = |z| satisfies                                        Rz . Otherwise, the initial image Q and the images after each of
+                                                                                      the first 2N words in the concatenation would give 2N + 1 subsets
+                           δD (p, z) = δD (p, h),                                     of Q. Two would be equal. If the same subset is reached after
+                            δD (q, z) = δD (q, h).                                    i < j words, delete the portion of eD read between those two
+                                                                                      points. The remaining suffix then starts from the same subset
+Proof. Enumerate the m = |DN |N 2 triples as                                          as before, giving a shorter word with the same final image, a
+                                                                                      contradiction.
+                    (D1 , p1 , q1 ), . . . , (Dm , pm , qm ).                              Fix an ordering of DN , and put
+                                                                                                                           Y
+We recursively construct pairs xi , yi of equal length and put                                                   w = @1|z|      eD ,
+zi = x1 · · · xi , starting with z0 = ε. At stage i, the word xi will                                                      D∈DN
+belong to Gk , while yi will not, and replacing the final block xi                    where the product is taken in that order. Then w ∈ Rz∗ and w
+in zi = zi−1 xi by yi will preserve the action of the whole prefix                    begins with @.
+on pi and qi in Di .                                                                      Fix D ∈ DN and write w = aeD b. Since δD (Q, a) ⊆ Q, and
+    Suppose that zi−1 has been constructed. Consider the 2k pairs                     reading b cannot increase the size of an image,
+             δDi (pi , zi−1 s), δDi (qi , zi−1 s) , s ∈ {1, 2}k .
+                                                 
+                                                                                                |δD (Q, w)| ≤ |δD (δD (Q, a), eD )| ≤ |δD (Q, eD )|.
+There are only N 2 possible pairs, so two distinct words si , ti                      Since w ∈ Rz∗ and eD minimizes the image size, the reverse
+give the same pair. Choose a position ℓi , numbered from the                          inequality also holds, and
+left, where they differ, interchanging them if necessary so that
+(si )ℓi = 1 and (ti )ℓi = 2. Put                                                                           |δD (Q, w)| = |δD (Q, eD )|.
+                                                                                      For any c ∈ Rz∗ , we have wc ∈ Rz∗ . By the choice of eD ,
+                    xi = si 2ℓi −1 #,             yi = ti 2ℓi −1 #.
+                                                                                                   |δD (Q, wc)| ≥ |δD (Q, eD )| = |δD (Q, w)|.
+Their kth symbols before the sole # are 1 and 2, respectively.
+Hence xi ∈ Gk , yi ∈ Gk , and |xi | = |yi | = O(k). Reading the                       Reading c cannot increase the size of an image, so the reverse
+common suffix 2ℓi −1 # preserves equality of the state pairs, so,                     inequality also holds. Hence
+with zi = zi−1 xi ,
+                                                                                                           |δD (Q, wc)| = |δD (Q, w)|.
+                       δDi (pi , zi ) = δDi (pi , zi−1 yi ),
+                                                                                          Every word in Rz has length |z| + 1, and every eD is a con-
+                       δDi (qi , zi ) = δDi (qi , zi−1 yi ).                          catenation of fewer than 2N such words. Hence
+    At the end, put z = zm . For the triple (D j , p j , q j ), take                                |w| ≤ 1 + 2N |DN | (|z| + 1) = N O(N) .
+                                                                                                                      
+
+                      h = x1 · · · x j−1 y j x j+1 · · · xm .
+                                                                                  5
+5.3. Completing the construction                                              Lemma 12 (Reduction to binary words). For every pair of
+Lemma 11 (A hard pair over the delimiter alphabet). There are                 distinct equal-length words r, s ∈ Σ∗ , there are equal-length
+equal-length words uN , vN ∈ Σ∗ of length N O(N) such that                    binary words br, b
+                                                                                               s of length O(|r|) such that
+                                                                                                     sep(r, s) ≤ sep(b
+                                                                                                                     r, b
+                                                                                                                        s)
+          sep(uN , vN ) > N,       uN ∈ C k ,     vN < C k .
+                                                                              and
+Proof. Take z from Lemma 9 and w from Lemma 10. Define                                              rR , b
+                                                                                                sep(b    sR ) = O(sep(rR , sR )).
+the equal-length words
+                                                                              Proof. As in Proposition 2 of [4], use the fixed-length palin-
+                    g = @1|z| w,       b = @zw.                               dromic binary code
+
+Since @1|z| ∈ Rz and w ∈ Rz∗ , we have g ∈ Rz∗ .                                                 γ(@) = 000,        γ(1) = 010,
+    Fix D ∈ DN and put P = δD (Q, w). Since both g and b end                                      γ(2) = 101,       γ(#) = 111,
+in w, they map P into itself:
+                                                                              extended to words by concatenation, and put b r = γ(r) and
+                 δD (P, g) ⊆ P,       δD (P, b) ⊆ P.                          s = γ(s). These are binary words of length 3|r|. Since every
+                                                                              b
+                                                                              codeword is a palindrome,
+Since g ∈ Rz∗ , Lemma 10 gives
+                                                                                                          γ(t)R = γ(tR )
+           |δD (P, g)| = |δD (Q, wg)| = |δD (Q, w)| = |P|.                    for every t ∈ Σ∗ .
+                                                                                  Suppose that a binary DFA E separates b     r and bs. For each
+Hence δD (P, g) = P.                                                          σ ∈ Σ, define its transition to be the transition that E makes on
+    We now prove the same equality for b. For any distinct states             the three-bit word γ(σ). With the same states, initial state, and
+p, q ∈ P, apply Lemma 9 to δD (p, @) and δD (q, @). It gives                  accepting states as E, this gives a DFA over Σ separating r and
+an h ∈ Gk with |h| = |z| and the same action as z on both states.             s. Thus encoding cannot decrease separation.
+Thus, for r = p, q,                                                               Conversely, let D be a q-state DFA over Σ that separates rR
+                                                                              and sR . A binary DFA reads the input in blocks of three bits. It
+                      δD (r, b) = δD (r, @hw).
+                                                                              records the current state of D together with the one or two bits
+Since @h ∈ Rz , the word @hw belongs to Rz∗ . Lemma 10 gives                  already read from the current block. When a complete block
+                                                                              equals γ(σ), it applies the σ-transition of D and begins a new
+              |δD (P, @hw)| = |δD (Q, w@hw)| = |P|.                           block. Any other three-bit block enters a rejecting sink. The
+                                                                              accepting states are those reached at the end of a block when the
+Thus, the distinct states p and q have distinct images under                  corresponding state of D is accepting. This uses O(q) states and
+@hw, and hence also under b. As this holds for every distinct                 separates γ(rR ) = b
+                                                                                                 rR from γ(sR ) = bsR .
+p, q ∈ P, |δD (P, b)| = |P|. Together with δD (P, b) ⊆ P, this gives
+δD (P, b) = P, and both g and b act as permutations of P.                     Lemma 13 (Padding to every target length). Let x, y be distinct
+    Put                                                                       equal-length binary words. For every L ≥ |x|, there are binary
+                    uN = wgN! ,      vN = wbN! .                              words X, Y of length L such that
+
+Since |P| ≤ N, both gN! and bN! act as the identity on P. After                                     sep(X, Y) ≥ sep(x, y)
+reading w, the state lies in P, so, for every q ∈ Q,                          and
+                                                                                               sep(X R , Y R ) ≤ sep(xR , yR ) + 1.
+                δD (q, uN ) = δD (q, w) = δD (q, vN ).
+                                                                              Proof. Put d = L − |x|. If d = 0, take X = x and Y = y; both
+Since D was arbitrary, no DFA with at most N states separates                 conclusions are immediate. Assume that d > 0, and take
+uN and vN .
+    Since w, g ∈ Rz∗ , we have uN ∈ Rz∗ ⊆ Ck . Since w is also                                 X = x10d−1 ,          Y = y10d−1 .
+nonempty, b = @zw contains the substring @z@; since N! ≥ 1,                   Appending a common suffix cannot decrease deterministic sepa-
+so does vN . As z ∈ Gk , this gives vN < Ck . Finally, |g| = |b|, so uN       ration: a DFA separating the extended words must already be in
+and vN have the same length. Since N! ≤ N N and |z|, |w| = N O(N) ,           different states after reading x and y, and those two states can be
+the length of uN and vN is N O(N) .                                           declared accepting and rejecting. Hence sep(X, Y) ≥ sep(x, y).
+    Lemma 11 gives a pair over the four-letter alphabet Σ at a                    Let D be a smallest DFA separating xR and yR . Add one
+construction-dependent length. The next two lemmas convert it                 new initial state that loops on 0 and, on reading 1, enters the old
+to a binary pair while preserving the needed separation bounds,               initial state of D. With all old transitions and accepting states
+and then pad it to any larger prescribed length.                              unchanged, the resulting DFA separates
+                                                                                         X R = 0d−1 1xR       and          Y R = 0d−1 1yR .
+                                                                              It has one more state than D.
+                                                                          6
+      We can now prove Theorem 7.                                          References
+Proof of Theorem 7. Take uN , vN from Lemma 11. The O(k)-                  [1] P. Goralčı́k, V. Koubek, On discerning words by automata, in: Automata,
+state DFA for CkR from Lemma 8 separates uRN and vRN . Applying                Languages and Programming, Vol. 226 of Lecture Notes in Computer
+                                                                               Science, Springer, 1986, pp. 116–122.
+Lemma 12 gives equal-length binary words xN , yN such that                 [2] J. M. Robson, Separating strings with small automata, Information Process-
+                                                                               ing Letters 30 (4) (1989) 209–214.
+            sep(xN , yN ) > N,      sep(xRN , yRN ) = O(k).                [3] J. M. Robson, Separating words with machines and groups, RAIRO Infor-
+                                                                               matique Théorique et Applications 30 (1) (1996) 81–86.
+Since |xN | = N O(N) , there is an absolute constant c0 such that          [4] E. D. Demaine, S. Eisenstat, J. O. Shallit, D. A. Wilson, Remarks on
+                                                                               separating words, in: Descriptional Complexity of Formal Systems, Vol.
+                            |xN | ≤ N c0 N                                     6808 of Lecture Notes in Computer Science, Springer, 2011, pp. 147–157.
+                                                                           [5] A. A. Bulatov, O. Karpova, A. M. Shur, K. Startsev, Lower bounds on
+for every N ≥ 2.                                                               words separation: Are there short identities in transformation semigroups?,
+    For any L ≥ N c0 N , apply Lemma 13 to xN , yN . It gives binary           Electronic Journal of Combinatorics 24 (3) (2017) P3.35.
+                                                                           [6] Z. Chase, Separating words and trace reconstruction, in: Proceedings of the
+words xN,L , yN,L of length L with                                             53rd Annual ACM SIGACT Symposium on Theory of Computing, ACM,
+                                                                               2021, pp. 21–31.
+                        sep(xN,L , yN,L ) > N                              [7] F. Ebrahimnejad, On the gap between separating words and separating their
+                                                                               reversals, Theoretical Computer Science 711 (2018) 79–91.
+and
+               sep(xRN,L , yRN,L ) = O(k) = O(log N).
+
+
+
+6. Conclusion
+    The results above give answers or refinements to the ques-
+tions from Demaine et al. that motivated the paper. For structured
+deterministic pairs, their Hamming-distance method extends
+from differing positions to d runs of differences, while the com-
+plexity of conjugate words depends on the arithmetic of the shift.
+Open Problem 2 is resolved by an unbounded difference and ra-
+tio between the two orientations of nondeterministic separation.
+The reversal construction addresses Ebrahimnejad’s follow-up to
+Open Problem 1 by giving an unbounded ratio between forward
+and reversed deterministic separation. Since nondeterministic
+separation is invariant under reversal, that same construction
+also improves the lower bound in Open Problem 3.
+    Several questions remain open. The optimal worst-case
+bound in terms of the number of runs and the word length is
+unknown, as is the correct order of the separation complexity
+of conjugate words. The function A(q) measuring the effect of
+exchanging the accepted and rejected words remains between
+quadratic and exponential. For Open Problem 3, determining
+the correct asymptotic order and reducing the length threshold
+in the reversal construction remain open.
+
+7. Acknowledgments
+   We thank Jeffrey Shallit and Zachary Chase for helpful dis-
+cussions regarding some of these problems.
+
+8. Declaration of generative AI and AI-assisted technologies
+   in the manuscript preparation process
+    During the preparation of this work the author used ChatGPT
+5.6 Pro for editing and review, and to generate initial proofs for
+Theorem 6 and an earlier, weaker version of Theorem 7. The
+author reviewed and checked all arguments, substantially revised
+and simplified the proofs, and takes full responsibility for the
+content of the article.
+                                                                       7
+

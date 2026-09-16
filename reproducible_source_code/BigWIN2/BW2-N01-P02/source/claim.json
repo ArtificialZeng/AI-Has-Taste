@@ -1,0 +1,21 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let A={0,1,2} with binary operation whose rows, indexed by the left operand 0,1,2 and columns by the right operand 0,1,2, are (0,0,0), (1,1,0), (1,0,1). For every n>=1 let a_n count the distinct functions A^n -> A induced by all fully binary bracketings of x_1,...,x_n in that fixed order, using each variable exactly once and comparing on all inputs. Then a_1=a_2=1, a_3=2, and for every n>=4, a_n=3a_(n-1)-2a_(n-2)+a_(n-3). Equivalently, sum_(n>=1)a_n z^n=z(1-z)^2/(1-3z+2z^2-z^3). The proof also establishes that two such bracketings induce the same function exactly when their pruned labeled trees coincide, where pruning recursively deletes the right child of a node with two composite children and otherwise retains the node and prunes its children, without renumbering leaves.",
+  "contribution": "Proposed complete resolution of the original SC258 ordered associative-spectrum recurrence. The closest inspected primary paper, Huang-Lehtonen (2024), Section 7, reports nine finite values and their agreement with a Padovan trisection without an all-arity result. The proposed proof reconstructs ordered combs from variable restrictions and enumerates attainable pruned forms by their largest retained label. No later equivalent resolution was found in the documented bounded current search; no exhaustive priority claim is made. Fresh mathematical review is required.",
+  "proposer_job_id": "newwin-00001-p02-research-0e4a4dc1b1e3",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/pruning-proof.md",
+    "evidence/verify_pruning.py",
+    "evidence/pruning-verification.json",
+    "evidence/exact_spectrum.py",
+    "evidence/exact-spectrum.json",
+    "evidence/research-literature.md",
+    "evidence/triage-literature.md",
+    "evidence/external/huang-lehtonen-2024.pdf",
+    "evidence/external/huang-lehtonen-2024.txt",
+    "evidence/external/provenance.json"
+  ]
+}

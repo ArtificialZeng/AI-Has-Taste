@@ -1,0 +1,93 @@
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121             99
+
+
+for n ≥ 3 (with initial conditions P0,` (x) = 1, P1,` (x) = 1 + `x and P2,` (x) =
+1+(2`−1)x+(`−1)2 x2 ) from which (4) follows immediately by equating coefficients of
+xk on both sides. Observe that we could have chosen instead to declare P0,` (x) = 1+x.
+This would extend the validity of (5) to n ≥ 2, but at the cost of introducing a
+very unnatural initial condition (there is no `-uniform hypergraph for ` ≥ 3 with
+independence polynomial 1 + x).
+
+Note 1.6. In a draft of this paper [15, version 1] we derived (4) algebraically but
+left a combinatorial explanation as a problem, since we had been unable to find one.
+After we posted the draft on the arXiv preprint server Ferenc Bencs communicated
+to us the combinatorial proof that we present in Section 2.4.
+
+    Towards the goal of making plausible the speculation that linear hypertrees have
+unimodal independent set sequences, we also consider another infinite family of
+hypertrees, one for which the results of Chudnovsky and Seymour and of Hamidoune
+alluded to in Note 1.4 cannot be applied. This is the family of uniform linear
+hypercombs. For n ≥ 1 the uniform linear hypercomb Cn,` is the hypergraph obtained
+from Pn,` by adding,
+
+   • for each vertex v that is in two edges of Pn,` , an edge of size ` that includes v
+     and ` − 1 new vertices, and also
+
+   • for one vertex w in the first edge of Pn,` but not in any other edges, and for
+     one vertex w0 in the last edge of Pn,` but not in any other edges, adding an
+     edge of size ` that includes w and ` − 1 new vertices, and an edge of size ` that
+     includes w0 and ` − 1 new vertices. If n ≥ 2 then necessarily w 6= w0 ; if n = 1
+     then we enforce that w 6= w0 .
+
+See Figure 2, which also shows an auxiliary hypergraph that will be defined later.
+When ` = 2 this graph is referred to as a centipede or a comb. That the centipede
+has unimodal independent set sequence was first established by Levit and Mandrescu
+in [22], and later Zhu [27] showed that the sequence is real-rooted.
+    We have observed computationally that the independent set sequence of Cn,` is
+unimodal for all n ≤ 500 and ` ≤ 12. Here we √     establish that for all n and ` the
+sequence is unimodal expect (possibly) for an O( n) portion. In Theorem 1.7 and
+Corollary 1.8 below we denote by ckn,` the number of independent sets in Cn,` of size k.
+
+Theorem 1.7. For ` ≥ 3, the independence polynomial Cn,` (x) of Cn,` satisfies the
+recurrence
+
+   • C0,` (x) = 1 + `x (an initial condition),
+   • C1,` (x) = 1 + (3` − 2)x + (2(` − 1)(` − 2) + (` − 1)2 + 2(` − 1))x2 + (` − 1)2 (` − 2)x3 ,
+     and
+   • for n ≥ 2
+
+              Cn,` (x) = (1 + (` − 1)x) ((1 + (` − 2)x)Cn−1,` (x) + xCn−2,` (x)) .          (6)
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121      100
+
+
+
+
+    Figure 2: The linear uniform hypercomb C6,5 (top) and the auxiliary hypercomb
+    D6,5 (bottom).
+
+
+   The proof of Theorem 1.7, and of Corollary 1.8 below, are given in Section 2.5.
+
+Corollary 1.8. For each ` ≥ 3 there are constants K` , L` > 0 such that the      √ inde-
+pendent set sequence (ckn,` )2n+1
+                             k=0√ of C n,` is weakly increasing up to K ` n − L ` n (i.e.,
+  k−1     k
+                                                                                 √
+cn,` ≤ cn,` for k ≤ K` n − L` n) and is weakly decreasing from K` n + L` n (i.e.,
+                               √
+ckn,` ≥ ck+1
+         n,` for k ≥ K` n + L` n).
+
+Note 1.9. In a draft of this paper [15, version 3] we claimed that the independent
+set sequence of Cn,` is unimodal (in fact, log concave) for all n and `. During the
+refereeing process we discovered an error in our proof, which has led us to the weaker
+statement. Our approach to Corollary 1.8 was partly inspired by ideas presented
+in [26], one of the references in [5]; we thank Ferenc Bencs for bringing [5] to our
+attention.
+
+   In proving Theorem 1.7 and Corollary 1.8 we work in a more general setting,
+attaching a copy of the same fixed hypergraph G to the first vertex of Pn,` , the last
+vertex of Pn,` , and all vertices that are in two edges of Pn,` (for Cn,` , G is a single
+edge of order `). Our approach to studying the independent set sequence of this
+family of hypergraphs is very much in the spirit of [26, Theorem 3.1 and subsequent
+applications]. We defer the details to Section 2.5.
+   We end with some questions for further consideration.
+
+Question 1.10. X
+
+   1. Is the strong independent set sequence of a linear hypertree unimodal?
+   2. If not, then what about a linear uniform hypertree?
+   3. What if “strong independent set” is replaced by “weak independent set”?
+                               √
+   4. Can the gap of length O( n) in Corollary 1.8 be shortened or eliminated?
+

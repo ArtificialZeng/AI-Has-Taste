@@ -1,0 +1,309 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Exact Cut-Uniform Ghost-Penalty Thresholds in the Aligned Two-Cell CutFEM Model for Degrees One Through Five},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\R}{\mathbb R}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\eps}{\varepsilon}
+
+\title{Exact Cut-Uniform Ghost-Penalty Thresholds in the Aligned
+Two-Cell CutFEM Model for Degrees One Through Five}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the aligned two-element CutFEM model of Wichrowski, with polynomial
+degree $p\in\{1,2,3,4,5\}$ and Nitsche parameter
+$\gamma_D=5p(p+1)$, we determine the least cut-uniform ghost weight.
+It is
+\[
+ \Gamma_p=\frac{1}{p(4p+5)};
+\]
+hence the five values are $1/9,1/26,1/51,1/84,1/125$.  The supremum is
+not attained at an interior cut fraction: in every degree its unique
+limiting maximizer is $\kappa\to0^+$, while $\kappa\to1^-$ is not
+maximizing.  The proof is an exact congruence reduction.  At the claimed
+weight the remaining Schur matrix has fraction-free leading minors whose
+polynomial coefficients have certified positive signs.  A rank-one
+downdate at the vanishing cut proves necessity.  This resolves the finite
+two-cell question; it does not determine the stability threshold of an
+assembled CutFEM operator.
+\end{abstract}
+
+\section{Context and result}
+
+Ghost penalties were introduced to make unfitted finite element methods
+robust with respect to the position of the physical boundary relative to
+the background mesh \citep{Burman2010}; for CutFEM context see
+\citet{BurmanEtAl2015}.  More recent designs relate stabilized functionals
+to discrete finite element extensions \citep{BurmanHansboLarson2026}.
+Wichrowski's aligned two-cell model isolates an exact finite-dimensional
+question inside this setting \citep[Proposition~5 and Appendix~B]
+{Wichrowski2026}.  That source proved the vanishing-cut threshold and a
+global lower bound, but left equality with the full cut-uniform threshold
+unproved.  Exact rational sign certificates have also been used for other
+parameterized Hermitian positivity problems \cite{ZengEtAl2026}; the
+certificate here is specialized to the polynomial matrices of the
+two-cell form.
+
+Let $\PP_p$ denote the real polynomials of degree at most $p$.  For
+$0<\kappa<1$, $\gamma>0$, and $(u,q)\in\PP_p^2$, set
+\begin{align}
+a^{(2)}_{\kappa,\gamma}(u,q)
+={}&\int_{-1}^{0}(u')^2\,dx+\int_0^\kappa(q')^2\,dx
+-2q'(\kappa)q(\kappa)+Dq(\kappa)^2 \notag\\
+&+\gamma\sum_{r=1}^p
+ \frac{\bigl(q^{(r)}(0)-u^{(r)}(0)\bigr)^2}{(r!)^2},
+ \qquad D:=5p(p+1).                                      \label{eq:form}
+\end{align}
+This is exactly the dimensionless one-dimensional reduction in
+\citet[Eq.~(60)]{Wichrowski2026}.  Define
+\[
+ \tau_p(\kappa):=\inf\{\gamma>0:
+ a^{(2)}_{\kappa,\gamma}\text{ is positive semidefinite on }\PP_p^2\},
+ \qquad
+ \Gamma_p:=\sup_{0<\kappa<1}\tau_p(\kappa).
+\]
+
+\begin{theorem}\label{thm:main}
+For every $p\in\{1,2,3,4,5\}$,
+\[
+ \Gamma_p=\frac1{D-p^2}=\frac1{p(4p+5)}.
+\]
+For every fixed $\kappa\in(0,1)$ one has
+$\tau_p(\kappa)<\Gamma_p$.  Moreover,
+\[
+ \lim_{\kappa\to0^+}\tau_p(\kappa)=\Gamma_p,
+ \qquad
+ \limsup_{\kappa\to1^-}\tau_p(\kappa)<\Gamma_p.
+\]
+Thus there is no interior maximizer and the only one-sided limiting
+maximizer is $\kappa\to0^+$.
+\end{theorem}
+
+\section{Congruence reduction}
+
+Write
+\[
+ u(x)=u_0+\sum_{i=1}^p\alpha_i x^i,
+ \qquad q(x)=q_0+\sum_{i=1}^p\beta_i x^i,
+\]
+and put $\alpha=(\alpha_1,\ldots,\alpha_p)^T$ and
+$\beta=(\beta_1,\ldots,\beta_p)^T$.  The coefficient $u_0$ is an
+unused null direction.  Replacing $q_0$ by the independent coordinate
+$y=q(\kappa)$ is invertible for every $\kappa$.  Define
+\begin{equation}
+ U_{ij}=\frac{ij(-1)^{i+j-2}}{i+j-1},\qquad
+ K_{ij}(\kappa)=\frac{ij\kappa^{i+j-1}}{i+j-1},\qquad
+ v_i(\kappa)=i\kappa^{i-1}.                              \label{eq:UKv}
+\end{equation}
+Direct integration, using the factorial normalization in
+\eqref{eq:form}, and completion of the boundary square give the exact
+identity
+\begin{align}
+a^{(2)}_{\kappa,\gamma}
+={}&D\left(y-\frac{v^T\beta}{D}\right)^2
++\alpha^TU\alpha+\gamma\|\beta-\alpha\|^2
++\beta^T\left(K-\frac{vv^T}{D}\right)\beta .             \label{eq:firstsquare}
+\end{align}
+The matrix $U$ is the Gram matrix of the derivative monomials
+$ix^{i-1}$ on $(-1,0)$ and is therefore positive definite.
+
+Set
+\[
+ g_*:=\frac1{D-p^2},\qquad P:=U+g_*I,
+\]
+so $P\succ0$.  A second exact completion gives
+\begin{align}
+\alpha^TU\alpha+g_*\|\beta-\alpha\|^2
++\beta^T\left(K-\frac{vv^T}{D}\right)\beta
+={}&(\alpha-g_*P^{-1}\beta)^TP(\alpha-g_*P^{-1}\beta)
++\beta^TS_p(\kappa)\beta,                                \label{eq:secondsquare}\\
+S_p(\kappa):={}&K(\kappa)-\frac{v(\kappa)v(\kappa)^T}{D}
++g_*I-g_*^2P^{-1}.                                        \label{eq:schur}
+\end{align}
+
+\begin{lemma}[Exact Schur certificates]\label{lem:cert}
+For $p=1,\ldots,5$, $S_p(\kappa)\succeq0$ for every
+$\kappa\ge0$ and $S_p(\kappa)\succ0$ for every $\kappa>0$.
+\end{lemma}
+
+\begin{proof}
+For $p=1$, direct substitution in \eqref{eq:schur} gives
+$S_1(\kappa)=\kappa$.  For $p=2$, $g_*=1/26$ and exact arithmetic gives
+\[
+S_2(\kappa)=
+\begin{pmatrix}
+\dfrac{2870\kappa+1}{2870}&
+\dfrac{4305\kappa^2-287\kappa-15}{4305}\\[5pt]
+\dfrac{4305\kappa^2-287\kappa-15}{4305}&
+\dfrac{2(2870\kappa^3-287\kappa^2+75)}{4305}
+\end{pmatrix}
+\]
+and
+\[
+ \det S_2(\kappa)=
+ \frac{\kappa(4305\kappa^3+6\kappa^2+32\kappa+444)}{12915}.
+\]
+Its first leading minor is positive for $\kappa\ge0$, while its
+determinant is nonnegative there and positive for $\kappa>0$.
+
+For $p=3,4,5$, let $\Delta_{p,j}$ be the leading $j\times j$ principal
+minor of $S_p$.  The exact coefficient data in Appendix~\ref{app:data}
+have the form
+\[
+ \Delta_{p,j}(\kappa)=d_{p,j}^{-1}
+ \sum_{r=0}^{j^2}c_{p,j,r}\kappa^r,
+ \qquad d_{p,j}>0.
+\]
+For $j<p$, every listed coefficient is strictly positive.  For $j=p$,
+the constant coefficient is zero and every coefficient of positive
+degree is strictly positive.  Fraction-free Gaussian elimination
+therefore has positive first $p-1$ pivots and a nonnegative last pivot
+on $\kappa\ge0$; the last is positive exactly when $\kappa>0$.
+This proves the two assertions by congruence.
+\end{proof}
+
+Equations \eqref{eq:firstsquare}--\eqref{eq:secondsquare} and
+Lemma~\ref{lem:cert} show that the form at $g_*$ is positive
+semidefinite for the full interval $0\le\kappa\le1$.  On all effective
+coordinates it is positive definite when $\kappa>0$.
+
+\section{Endpoint necessity and maximizers}
+
+It remains to prove that the preceding upper bound is sharp.  At
+$\kappa=0$ and an arbitrary $g>0$, complete the $\alpha$-square in
+\eqref{eq:firstsquare}.  The remaining $\beta$-matrix is
+\begin{equation}
+ S_{p,g}(0)=A_g-\frac{e_1e_1^T}{D},\qquad
+ A_g=gI-g^2(U+gI)^{-1}=gU(U+gI)^{-1}\succ0,               \label{eq:downdate}
+\end{equation}
+where $e_1=(1,0,\ldots,0)^T$.  Since
+\begin{equation}
+ A_g^{-1}=g^{-1}I+U^{-1},                                 \label{eq:ainv}
+\end{equation}
+the rank-one downdate criterion says that \eqref{eq:downdate} is
+positive semidefinite exactly when
+\begin{equation}
+ g^{-1}+(U^{-1})_{11}\le D.                              \label{eq:rankonecriterion}
+\end{equation}
+
+For completeness, $(U^{-1})_{11}=p^2$ follows without a matrix
+inversion.  It is the squared norm of endpoint evaluation on
+$\PP_{p-1}$ in $L^2(-1,0)$.  The shifted Legendre basis has endpoint
+values with squared norms $2m+1$, and hence its reproducing kernel at
+the endpoint is
+\[
+ \sum_{m=0}^{p-1}(2m+1)=p^2.
+\]
+Thus \eqref{eq:rankonecriterion} is equivalent to $g\ge g_*$.  If
+$g<g_*$, choose $\beta=A_g^{-1}e_1$ and take $\alpha,y$ to minimize the
+two completed squares.  With $t=e_1^TA_g^{-1}e_1>D$, the remaining
+value is the exact negative number
+\[
+ t-\frac{t^2}{D}<0.
+\]
+Continuity in $\kappa$ preserves this negative direction for all
+sufficiently small positive cuts.  Since this holds for every $g<g_*$,
+while Lemma~\ref{lem:cert} gives the global upper bound,
+\[
+ \lim_{\kappa\to0^+}\tau_p(\kappa)=g_*,
+ \qquad \Gamma_p=g_*.
+\]
+
+For every fixed $\kappa>0$, the effective matrix at $g_*$ is positive
+definite.  Its entries depend continuously on $(\kappa,g)$, so $g$ can
+be decreased slightly while retaining positive semidefiniteness.  Hence
+$\tau_p(\kappa)<g_*$ at every interior cut.  The same strictness at
+$\kappa=1$, together with compact-neighborhood continuity, gives a
+single weight below $g_*$ valid throughout a one-sided neighborhood of
+$1$.  Therefore
+$\limsup_{\kappa\to1^-}\tau_p(\kappa)<g_*$, completing the proof of
+Theorem~\ref{thm:main}.
+
+\section*{Computational and AI assistance disclosure}
+
+Exact symbolic arithmetic in Python~3/SymPy was used to reconstruct
+\eqref{eq:firstsquare}--\eqref{eq:schur}, to compute the fraction-free
+leading minors, and to check every integer in Appendix~\ref{app:data}.
+All computations used rational arithmetic; floating-point evidence is
+not part of the proof.  OpenAI Codex assisted with symbolic checking,
+proof auditing, and manuscript preparation.  A separate model-assisted
+audit recomputed the decisive identities, but this is not a formal proof
+assistant check or external peer review.  The author reviewed the
+arguments and retains responsibility for the article.
+
+\appendix
+\section{Leading-minor coefficient certificate}\label{app:data}
+
+For each line below, the positive integer before the semicolon is
+$d_{p,j}$ and the parenthesized vector is
+$(c_{p,j,0},c_{p,j,1},\ldots)$; omitted trailing coefficients are zero.
+All entries are integers, so the sign verification is exact.
+
+\begingroup\scriptsize
+\allowdisplaybreaks
+\paragraph{Degree $3$.}
+\begin{align*}
+(d_{3,1};\mathbf c_{3,1})={}&(288030;\ 307,288030),\\
+(d_{3,2};\mathbf c_{3,2})={}&(5184540;\ 25,61422,23211,7368,1728180),\\
+(d_{3,3};\mathbf c_{3,3})={}&(34563600;\ 0,5880,2840,2120,181635,143000,\\
+&\hspace{35mm}310954,46422,5526,576060).
+\end{align*}
+
+\paragraph{Degree $4$.}
+\begin{align*}
+(d_{4,1};\mathbf c_{4,1})={}&(48007300;\ 51771,48007300),\\
+(d_{4,2};\mathbf c_{4,2})={}&(3600547500;\ 24375,27996320,7713468,5177100,1200182500),\\
+(d_{4,3};\mathbf c_{4,3})={}&(72010950000;\ 875,1739100,975540,1337000,114382590,\\
+&\hspace{31mm}258434400,436320220,46280808,11648475,1200182500),\\
+(d_{4,4};\mathbf c_{4,4})={}&(630095812500;\ 0,61000,62400,94500,6815025,23373000,\\
+&\hspace{25mm}48129900,42105980,24482475,103345560,146389600,\\
+&\hspace{25mm}175877940,193087755,135333240,7713468,1035420,60009125).
+\end{align*}
+
+\paragraph{Degree $5$.}
+\begin{align*}
+(d_{5,1};\mathbf c_{5,1})={}&(6916071394725;\ 6278291156,6916071394725),\\
+(d_{5,2};\mathbf c_{5,2})={}&(20748214184175;\ 84567189,106874255547,28461576147,\\
+&\hspace{39mm}25113164624,6916071394725),\\
+(d_{5,3};\mathbf c_{5,3})={}&(414964283683500;\ 2668344,4810393332,2672153712,4198766224,\\
+&\hspace{24mm}474811709205,1020581506614,1660048955862,\\
+&\hspace{24mm}170769456882,56504620404,6916071394725),\\
+(d_{5,4};\mathbf c_{5,4})={}&(72618749644612500;\ 333396,832077540,684736080,1293181680,\\
+&\hspace{20mm}122210625915,462292088538,1214092038530,1612891692510,\\
+&\hspace{20mm}1347981905385,3856221165605,10764841802388,\\
+&\hspace{20mm}17921277398340,15187050676180,10287912491580,\\
+&\hspace{20mm}569231522940,100452658496,6916071394725),\\
+(d_{5,5};\mathbf c_{5,5})={}&(5123978974923858000;\ 0,32450544,55714176,139878144,12001478076,\\
+&\hspace{15mm}85474806984,315059491656,646065363384,811064107476,\\
+&\hspace{15mm}1531206650484,4815423196416,10864703913504,16644420401196,\\
+&\hspace{15mm}19355277131064,17235330280896,12474909886544,\\
+&\hspace{15mm}10263697225341,9027379754694,9240770097776,11347738287144,\\
+&\hspace{15mm}8917299321651,4238179481074,1640073302706,56923152294,\\
+&\hspace{15mm}6278291156,276642855789).
+\end{align*}
+\endgroup
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

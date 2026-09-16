@@ -1,0 +1,269 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Lyn}{\mathcal{L}}
+\newcommand{\ov}{\operatorname{ov}}
+\newcommand{\pre}{\operatorname{pre}}
+\newcommand{\suf}{\operatorname{suf}}
+
+\title[Shortest superstring of length-eight Lyndon words]{The shortest common superstring of the length-eight binary Lyndon words has length 94}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\hypersetup{
+  pdftitle={The shortest common superstring of the length-eight binary Lyndon words has length 94},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+There are 30 binary Lyndon words of length eight.  We determine the minimum
+length of a binary word containing all of them as contiguous factors.  The
+answer is 94.  The lower bound orders selected target occurrences and relaxes
+the resulting maximum-overlap Hamilton path to a 31-node assignment problem.
+An integer assignment dual of value 146 proves the lower bound
+$30\cdot8-146=94$, while an explicit 94-bit word attains it.  The finite dual,
+all target occurrences, and two independent exact verification procedures are
+provided.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+A Lyndon word is the lexicographically least word in a primitive cyclic
+rotation class.  We consider the following finite shortest-common-superstring
+problem: determine the shortest binary word containing every binary Lyndon
+word of length eight as a contiguous factor.  In the notation below, its
+minimum length is $L_8$.
+
+The reviewed TheoremDB packet for this problem recorded the rigorous interval
+$49\le L_8\le94$: a direct Boolean satisfiability computation excluded length
+48, and a replayable 94-bit word supplied the upper bound
+\cite{TheoremDBP2600}.  That packet did not retain a proof-producing SAT trace
+and listed the exact value as open.  The classical Lyndon-concatenation
+construction produces a de Bruijn sequence for a larger target family
+\cite{FredricksenMaiorana1978}; it does not settle this restricted instance.
+The standard reduction from shortest superstrings to maximum-overlap
+asymmetric paths is described, for example, by Mucha
+\cite{Mucha2013}.
+
+We prove that the recorded upper endpoint is optimal.  The main point is that
+the assignment relaxation of the 30-target maximum-overlap path is already
+tight.  Its optimum is bounded above by a short integer dual certificate of
+value 146, and a target order attains that value.  The proof therefore needs
+neither a floating-point optimizer nor a solver's uncheckable status report.
+
+Our exact-title, endpoint, and full-witness searches found no public exact
+solution in the sources searched through August 30, 2026.  This is a
+search-bounded statement, not a claim about inaccessible or unpublished work.
+
+\section{Definitions and the occurrence-order bound}
+
+Let $\Sigma=\{0,1\}$ with $0<1$.  For
+$x=x_0x_1\cdots x_7\in\Sigma^8$, put
+\[
+ \rho_j(x)=x_jx_{j+1}\cdots x_7x_0\cdots x_{j-1}
+ \qquad(1\le j\le7).
+\]
+The target set is
+\[
+ \Lyn_8=\{x\in\Sigma^8:x<\rho_j(x)\text{ for every }1\le j\le7\}.
+\]
+All superstrings in this paper are finite linear words; there is no cyclic
+wraparound.
+
+The number of primitive binary words of length eight is, by M\"obius
+inversion,
+\[
+ \sum_{d\mid8}\mu(d)2^{8/d}=2^8-2^4=240.
+\]
+Each primitive rotation orbit has size eight and a unique lexicographically
+least representative.  Thus $|\Lyn_8|=240/8=30$.
+
+For distinct $x,y\in\Sigma^8$, define their directed overlap by
+\[
+ \ov(x,y)=\max\{k\in\{0,\ldots,7\}:\suf_k(x)=\pre_k(y)\}.
+\]
+
+\begin{lemma}[Occurrence-order bound]\label{lem:occurrence}
+For every word $W$ containing every member of $\Lyn_8$, there is an ordering
+$x_1,\ldots,x_{30}$ of $\Lyn_8$ such that
+\[
+ |W|\ge 240-\sum_{r=1}^{29}\ov(x_r,x_{r+1}).
+\]
+\end{lemma}
+
+\begin{proof}
+Choose one occurrence of each target and sort their starting positions:
+$p_1<\cdots<p_{30}$.  Distinct length-eight factors cannot have the same
+starting position, so this gives an ordering $x_1,\ldots,x_{30}$.
+If $p_{r+1}-p_r<8$, the two occurrences force a suffix-prefix match of length
+$8-(p_{r+1}-p_r)$; if the displacement is at least eight, the same inequality
+is immediate.  Hence
+\[
+ p_{r+1}-p_r\ge8-\ov(x_r,x_{r+1}).
+\]
+Finally, $|W|\ge p_{30}+8\ge p_{30}-p_1+8$.  Summing the 29 displacement
+inequalities proves the claim.
+\end{proof}
+
+\section{The exact assignment certificate}
+
+Adjoin a dummy node $*$ to $\Lyn_8$.  For distinct nodes $i,j$, define
+\[
+ c_{ij}=\begin{cases}
+ \ov(i,j),&i,j\in\Lyn_8,\\
+ 0,&i= *\text{ or }j= *.
+ \end{cases}
+\]
+An ordered target path $x_1,\ldots,x_{30}$, together with the arcs
+$*\to x_1$ and $x_{30}\to *$, is a permutation assignment on the 31 nodes.
+Consequently, any vectors $(u_i)$ and $(v_j)$ satisfying
+\begin{equation}\label{eq:dual}
+ u_i+v_j\ge c_{ij}\qquad(i\ne j)
+\end{equation}
+bound every target-path overlap sum by $\sum_i u_i+\sum_jv_j$.  This statement
+does not require the assignment itself to be connected; allowing disconnected
+assignments only relaxes the maximization problem.
+
+Table~\ref{tab:certificate} lists a feasible integer dual.  It also lists a
+zero-based occurrence position $p$ for every target in the word used for the
+upper bound.  The dummy has $(u_*,v_*)=(0,0)$.  Direct suffix-prefix comparison
+checks all $31\cdot30=930$ inequalities in \eqref{eq:dual}.  The row sums are
+\[
+ \sum_i u_i=45,\qquad \sum_jv_j=101.
+\]
+
+\begin{table}[ht]
+\centering
+\caption{Integer assignment-dual values and target occurrence positions.
+The two halves continue one lexicographically ordered list.}
+\label{tab:certificate}
+\scriptsize
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{@{}lrrr@{\qquad}lrrr@{}}
+\toprule
+target & $u$ & $v$ & $p$ & target & $u$ & $v$ & $p$\\
+\midrule
+\texttt{00000001}&6&0&80 & \texttt{00100101}&0&0&68 \\
+\texttt{00000011}&6&1&81 & \texttt{00100111}&0&3&15 \\
+\texttt{00000101}&6&0&45 & \texttt{00101011}&0&7&36 \\
+\texttt{00000111}&6&1&82 & \texttt{00101101}&0&5&71 \\
+\texttt{00001001}&6&0&13 & \texttt{00101111}&0&7&48 \\
+\texttt{00001011}&1&1&46 & \texttt{00110101}&0&0&5 \\
+\texttt{00001101}&6&0&57 & \texttt{00110111}&0&7&59 \\
+\texttt{00001111}&1&1&83 & \texttt{00111011}&0&7&27 \\
+\texttt{00010011}&4&1&14 & \texttt{00111101}&0&5&18 \\
+\texttt{00010101}&0&0&35 & \texttt{00111111}&0&7&85 \\
+\texttt{00010111}&0&6&47 & \texttt{01010111}&0&7&37 \\
+\texttt{00011001}&3&0&0 & \texttt{01011011}&0&7&72 \\
+\texttt{00011011}&0&1&58 & \texttt{01011111}&0&7&49 \\
+\texttt{00011101}&0&0&26 & \texttt{01101111}&0&7&60 \\
+\texttt{00011111}&0&6&84 & \texttt{01111111}&0&7&86 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For completeness, one target order attaining overlap 146 is
+\begin{align*}
+&\texttt{00011001},\texttt{00110101},\texttt{00001001},
+\texttt{00010011},\texttt{00100111},\texttt{00111101},\\
+&\texttt{00011101},\texttt{00111011},\texttt{00010101},
+\texttt{00101011},\texttt{01010111},\texttt{00000101},\\
+&\texttt{00001011},\texttt{00010111},\texttt{00101111},
+\texttt{01011111},\texttt{00001101},\texttt{00011011},\\
+&\texttt{00110111},\texttt{01101111},\texttt{00100101},
+\texttt{00101101},\texttt{01011011},\texttt{00000001},\\
+&\texttt{00000011},\texttt{00000111},\texttt{00001111},
+\texttt{00011111},\texttt{00111111},\texttt{01111111}.
+\end{align*}
+Appending each target after deleting its maximal overlap with its predecessor
+gives the witness below.
+
+\section{Exact value}
+
+\begin{theorem}\label{thm:main}
+The minimum length of a binary word containing all 30 binary Lyndon words of
+length eight as contiguous factors is
+\[
+ \boxed{L_8=94}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:occurrence}, every common superstring has length at least
+$240$ minus the overlap weight of some target path.  Completing that path
+with the dummy gives an assignment.  Summing \eqref{eq:dual} over its 31 arcs
+and using Table~\ref{tab:certificate} bounds the overlap by $45+101=146$.
+Therefore every common superstring has length at least
+\[
+ 240-146=94.
+\]
+
+For the reverse inequality, concatenate the following two displayed lines
+without a separator:
+\begin{center}
+\small\ttfamily
+00011001101010000100111101000111011000101011100\\
+00010111110000110111100100101101100000001111111
+\end{center}
+Each line has 47 bits, so the resulting word has length 94.  The positions in
+Table~\ref{tab:certificate} verify that every target occurs.  Hence $L_8\le94$,
+which matches the lower bound.
+\end{proof}
+
+\section{Exact verification and limitations}
+
+The supplementary certificate stores the witness, the attaining target order,
+and the integer dual.  A standard-library Python verifier regenerates the
+targets from strict rotation comparisons, checks all occurrences, rebuilds
+the witness from the target order, and checks all 930 dual inequalities.
+A second standard-library program uses a different target generator based on
+cyclic orbits, verifies coverage by rolling windows, ignores the stored dual
+and order, and recomputes the assignment optimum with an integer Hungarian
+algorithm.  The latter implementation was also compared with exhaustive
+permutation search on deterministic small test matrices.  No proof assistant
+was used.
+
+The result is confined to the specified finite parameter $n=8$.  It does not
+give a formula for other word lengths, nor does it establish that the
+assignment relaxation remains tight for another target family.
+
+\section*{Data, code, and exact verification}
+
+The accompanying source archive includes the JSON certificate, both exact
+checkers, regression tests, and a diagnostic discovery script.  From the
+archive root the exact checks are run as follows:
+\begin{center}
+\begin{minipage}{0.92\linewidth}
+\ttfamily\small
+python3 verify/verify\_certificate.py\\
+python3 verify/independent\_checker.py\\
+python3 verify/test\_verifiers.py
+\end{minipage}
+\end{center}
+The proof depends only on integer and string operations in the exact checkers.
+A mixed-integer optimizer was used to locate a candidate path, but no
+floating-point objective, optimizer status, or timeout is used in the proof.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

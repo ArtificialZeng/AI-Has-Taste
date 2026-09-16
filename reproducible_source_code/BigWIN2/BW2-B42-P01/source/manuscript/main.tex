@@ -1,0 +1,367 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\hypersetup{
+  pdftitle={Total positivity of order four for the Eulerian triangle: an exact computer-assisted proof},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\coeff}[2]{[x^{#1}]#2}
+\newcommand{\cD}{\mathcal{D}}
+
+\title{Total positivity of order four for the Eulerian triangle:\\
+an exact computer-assisted proof}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $A(n,k)$ count permutations of $[n+1]$ with $k$ descents, with
+$A(n,k)=0$ outside $0\leq k\leq n$.  We prove that the infinite matrix
+$[A(n,k)]_{n,k\geq0}$ is totally positive of order four.  More strongly,
+every admissible minor of order at most four is strictly positive, and every
+nonadmissible minor is zero.  The order-four argument expands every
+consecutive minor into nonnegative Toeplitz minors with 126 canonical
+symmetric-polynomial templates.  Exact integer computation shows that 120
+templates are coefficientwise nonnegative; the remaining six are certified
+by 18 explicit Muirhead transfers.  The complete coverage, coefficient, and
+inequality certificates are reproducible from the accompanying source files.
+This settles the order-four assertion, not the conjecture of total positivity
+in all orders.
+\end{abstract}
+
+\section{Statement and context}
+
+For $n\geq0$ and $0\leq k\leq n$, let $A(n,k)$ be the number of
+permutations of $[n+1]$ with exactly $k$ descents; put $A(n,k)=0$ otherwise.
+The resulting Eulerian triangle is lower triangular.  A minor with row set
+$n_1<\cdots<n_s$ and column set $k_1<\cdots<k_s$ is called
+\emph{admissible} when $k_i\leq n_i$ for every $i$.
+
+Brenti's 1995 article developed the broader systematic connection between
+combinatorics and total positivity \cite{Brenti1995}.  The conjecture that the
+Eulerian triangle is totally positive was formulated in Brenti's 1996 chapter
+\cite[Conjecture~6.10]{Brenti1996}, as Mao records in the introduction to his
+preprint \cite[p.~1]{Mao2026}.  Mao proved total positivity of order three,
+including strict positivity of all admissible minors of orders at most three
+\cite[Theorem~1.1]{Mao2026}.  Mao also reported a symbolic reduction of the
+order-four problem to 126 minors, while explicitly withholding a proof because
+that computation had not been independently verified
+\cite[Remark~1.2]{Mao2026}.  Our contribution is an exhaustive reconstruction
+of those 126 parameter templates together with exact universal sign
+certificates.  The closest inspected work is Mao's preprint; this comparison is
+bounded and makes no broader priority claim.
+
+\begin{theorem}\label{thm:main}
+For every $1\leq s\leq4$ and all strictly increasing nonnegative tuples
+$n_1<\cdots<n_s$ and $k_1<\cdots<k_s$,
+\[
+  \det\bigl[A(n_i,k_j)\bigr]_{i,j=1}^s\geq0.
+\]
+In fact, this determinant is positive when the selected minor is admissible,
+and it is zero otherwise.
+\end{theorem}
+
+The full total-positivity conjecture, which quantifies over minors of arbitrary
+order, is not addressed here.
+
+\section{Reduction of consecutive fourth-order minors}
+
+Write
+\[
+ A_n(x)=\sum_k A(n,k)x^k.
+\]
+Frobenius proved that $A_n(x)$ has only negative zeros
+\cite{Frobenius1910}.  Hence, for $n\geq1$,
+\[
+ A_n(x)=\prod_{i=1}^n(1+r_i x),\qquad r_i>0,
+\]
+and for $n=0$ we use the empty product.  Products of the factors
+$1+r_i x$ have totally nonnegative upper coefficient-Toeplitz matrices; this
+is also the finite-polynomial case of the Aissen--Edrei--Schoenberg--Whitney
+criterion \cite{AissenEtAl1951}.
+
+For $I\subseteq[n]$, define
+\[
+ f_I(x)=\prod_{i\notin I}(1+r_i x),\qquad
+ c_I=\prod_{i\in I}(1+r_i),\qquad
+ G_j(x)=\sum_{\substack{I\subseteq[n]\\|I|=j}}c_I f_I(x).
+\]
+Thus $G_0=A_n$.  We use the identity
+\begin{equation}\label{eq:Gidentity}
+ (1-x)G_j'(x)=(j+1)G_{j+1}(x)-(n-j)G_j(x),
+\end{equation}
+proved in \cite[Lemma~2.6]{Mao2026}.  The Eulerian recurrence gives
+\begin{equation}\label{eq:eulerrec}
+ A_{N+1}(x)=\bigl(1+(N+1)x\bigr)A_N(x)+x(1-x)A_N'(x).
+\end{equation}
+
+For polynomials $P_0,\ldots,P_3$ and an ordered four-set
+$K=\{k_0<\cdots<k_3\}$, put
+\[
+ \cD_K(P_0,P_1,P_2,P_3)
+   =\det\bigl[\coeff{k_j}{P_i}\bigr]_{i,j=0}^3.
+\]
+Applying \eqref{eq:eulerrec} to a formal term $x^aG_j$ and using
+\eqref{eq:Gidentity} replaces that term, at the step from $n+t$ to
+$n+t+1$, by
+\begin{equation}\label{eq:formalstep}
+ (a+1)x^aG_j+(t+1-a+j)x^{a+1}G_j
+       +(j+1)x^{a+1}G_{j+1}.
+\end{equation}
+Three iterations of \eqref{eq:formalstep}, followed by
+determinant-preserving lower-triangular row operations, give the following
+identity.
+
+\begin{lemma}\label{lem:rowreduction}
+For $K=\{k,k+1,k+2,k+3\}$,
+\begin{align}
+ \cD_K(A_n,A_{n+1},A_{n+2},A_{n+3})
+ =\cD_K(G_0,xQ_1,xG_0+x^2Q_2,x^2H_2+x^3Q_3),\label{eq:rowreduction}
+\end{align}
+where
+\[
+ \begin{aligned}
+ Q_1&=G_0+G_1,&
+ Q_2&=G_0+3G_1+2G_2,\\
+ H_2&=7G_0+10G_1+4G_2,&
+ Q_3&=G_0+7G_1+12G_2+6G_3.
+ \end{aligned}
+\]
+\end{lemma}
+
+\begin{proof}
+Equation \eqref{eq:formalstep} is an equality in the formal basis
+$\{x^aG_j\}$.  Applying it successively for $t=0,1,2$ produces the four
+rows in \eqref{eq:rowreduction}; subtracting the appropriate multiples of
+earlier rows gives the displayed form.  The exact formal-basis calculation is
+also performed by \texttt{verify\_row\_reduction()} in the accompanying file
+\texttt{evidence/reconstruct\_126.py}.
+\end{proof}
+
+We now give an exact finite description of every coefficient in the
+Toeplitz--Cauchy--Binet expansion.  For $U\subseteq[n]$, let
+\[
+ g_U(x)=\prod_{i\in U}(1+r_i x).
+\]
+Expanding the last two rows of \eqref{eq:rowreduction} yields four determinant
+terms.  Their three variable subset choices, their weights by subset size, and
+their row shifts are as follows:
+\[
+\begin{array}{c|c|c|c|c}
+ &I&J&H&(a_0,a_1,a_2,a_3)\\ \hline
+1& |I|\leq1&J=\varnothing&|H|\leq2&(0,1,1,2)\\
+2& |I|\leq1&J=\varnothing&|H|\leq3&(0,1,1,3)\\
+3& |I|\leq1&|J|\leq2&|H|\leq2&(0,1,2,2)\\
+4& |I|\leq1&|J|\leq2&|H|\leq3&(0,1,2,3)
+\end{array}
+\]
+The corresponding size-weight vectors are
+\[
+ w^{(1)}=(1,1),\quad w^{(2)}=(1,3,2),\quad
+ h^{(2)}=(7,10,4),\quad w^{(3)}=(1,7,12,6).
+\]
+Thus row two always uses $w^{(1)}$; row three uses weight $1$ in terms
+1--2 and $w^{(2)}$ in terms 3--4; row four uses $h^{(2)}$ in terms 1 and 3
+and $w^{(3)}$ in terms 2 and 4.
+
+For one of these four terms, choose $I,J,H$ subject to its caps and set
+$S_0=\varnothing,S_1=I,S_2=J,S_3=H$ and
+$U=I\cup J\cup H$.  Since
+\[
+ f_{S_q}=f_U g_{U\setminus S_q},
+\]
+coefficient-matrix multiplication and Cauchy--Binet give
+\begin{equation}\label{eq:master}
+ D(n,k)=
+ \sum_{\substack{U\subseteq[n]\\ |U|\leq6}}
+ \ \sum_{\substack{L\subseteq\{0,\ldots,6\}\\|L|=4}}
+ \Psi_U(L)\det T_{f_U}(L,K),
+\end{equation}
+where $D(n,k)=\cD_K(A_n,A_{n+1},A_{n+2},A_{n+3})$.  Explicitly,
+$\Psi_U(L)$ is the sum over the four terms and all choices with union exactly
+$U$ of
+\begin{equation}\label{eq:Psidef}
+ \left(\prod_{q=1}^3 w_q(|S_q|)c_{S_q}\right)
+ \det\!\left[\coeff{\ell_j}{x^{a_q}g_{U\setminus S_q}}\right]_{q,j=0}^3,
+\end{equation}
+with $L=\{\ell_0<\cdots<\ell_3\}$ and with the term-specific weights just
+listed.  Formula \eqref{eq:Psidef} is a direct finite definition, not a
+sampling rule.
+
+The size caps show $|U|\leq6$, and the four local row degrees show that no
+$\ell_j>6$ occurs.  Relabeling $U$ permutes the variables $r_i$, so
+$\Psi_U(L)$ is symmetric and depends only on $m=|U|$ and $L$; write it as
+$\Psi_m(L)$.  Exact support enumeration gives the following counts.
+\begin{equation}\label{eq:counts}
+\begin{array}{c|rrrrrrr}
+m&0&1&2&3&4&5&6\\ \hline
+\#\{L:\Psi_m(L)\ne0\}&1&3&9&19&25&34&35
+\end{array}
+\end{equation}
+They sum to 126.  Among the other 119 of the $7\binom74$ possible pairs,
+118 have no support-perfect-matching in the local determinant; the remaining
+pair $(m,L)=(5,\{3,4,5,6\})$ cancels as an exact polynomial identity.  This
+proves exhaustive coverage of the consecutive fourth-order family.
+
+\section{Universal sign certificates}
+
+It remains to prove that all 126 polynomials in \eqref{eq:counts} are
+nonnegative on nonnegative variables.  The proof is finite but sufficiently
+large that its exact certificate is supplied electronically.
+
+For a partition $\lambda=(\lambda_1,\ldots,\lambda_m)$, let $m_\lambda$ be
+the sum of the distinct monomials in the orbit of
+$r_1^{\lambda_1}\cdots r_m^{\lambda_m}$, let $N_\lambda$ be the orbit size,
+and set $M_\lambda=m_\lambda/N_\lambda$.  The sparse exact expansion has the
+form
+\[
+ \Psi_m(L)=\sum_\lambda c_{m,L,\lambda}m_\lambda,
+ \qquad c_{m,L,\lambda}\in\mathbb Z.
+\]
+
+\begin{proposition}\label{prop:signs}
+Every one of the 126 polynomials $\Psi_m(L)$ is nonnegative on
+$\mathbb R_{\geq0}^m$.
+\end{proposition}
+
+\begin{proof}
+The exact sparse expansion yields 120 templates for which every
+$c_{m,L,\lambda}\geq0$.  The remaining six have 18 negative orbits.
+Muirhead's inequality \cite{Muirhead1902} states that
+$M_\lambda\geq M_\mu$ on nonnegative variables whenever $\lambda$ majorizes
+$\mu$ and both have equal total degree.  The following table lists the entire
+transfer certificate.  Partitions are written without commas, and each amount
+is measured in the normalized $M$-basis.
+
+\begin{center}
+\small
+\begin{tabular}{llllr}
+\toprule
+$m$ & $L$ & positive $\lambda$ & negative $\mu$ & amount\\
+\midrule
+4&1234&2110&1111&984\\
+4&2345&3320&3311&72\\
+4&2345&4320&4311&144\\
+4&2345&4420&4411&72\\
+4&2345&4430&4421&72\\
+4&2345&4431&4422&72\\
+5&1234&21100&11110&1440\\
+5&1234&21110&11111&1200\\
+5&1235&21110&11111&720\\
+5&1345&32110&31111&240\\
+5&1345&42110&41111&240\\
+5&1345&43221&42222&240\\
+5&2345&32210&32111&600\\
+5&2345&42210&42111&600\\
+5&2345&33210&33111&600\\
+5&2345&43210&43111&600\\
+5&2345&43221&42222&600\\
+5&2345&43321&43222&600\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For every row, the positive partition majorizes the negative partition.  Each
+positive orbit coefficient $c_\lambda$ supplies
+$c_\lambda N_\lambda M_\lambda$ and each negative coefficient requires the
+corresponding absolute amount.  The listed transfers exhaust every negative
+demand and do not exceed any positive supply.  Therefore each allocated pair
+is a nonnegative multiple of $M_\lambda-M_\mu$, and every unallocated term is
+nonnegative.
+
+For completeness, the coefficient generator enforces the condition
+$I\cup J\cup H=U$ by inclusion--exclusion over subsets of $U$, forms each
+four-row determinant over $\mathbb Z$, and only then combines monomials into
+permutation orbits.  Each row is multiaffine, so an exponent is at most four;
+base-five integer encoding of exponent vectors is consequently collision-free.
+The verifier checks orbit-size divisibility, all equal-degree and majorization
+conditions, complete demand coverage, and the supply bounds.  These exact
+checks establish both the asserted coefficient list and the conclusion of the
+table.
+\end{proof}
+
+Since every Toeplitz minor in \eqref{eq:master} is nonnegative,
+Proposition~\ref{prop:signs} proves $D(n,k)\geq0$ for all $0\leq k\leq n$.
+
+\section{Strictness and completion of the proof}
+
+In \eqref{eq:master}, the term $U=\varnothing$ and
+$L=\{0,1,2,3\}$ has $\Psi_0(L)=1$.  Its Toeplitz minor is
+\[
+ \det\bigl[e_{k+j-i}(r_1,\ldots,r_n)\bigr]_{i,j=1}^4
+   =s_{(4^k)}(r_1,\ldots,r_n)
+\]
+by the dual Jacobi--Trudi identity.  If $0\leq k\leq n$, the tableau with
+entry $i$ throughout row $i$ of the shape $(4^k)$ contributes the positive
+monomial $(r_1\cdots r_k)^4$.  Hence the Schur polynomial is positive.  When
+$n=k=0$, it is the empty Schur polynomial, equal to one.  Every other summand
+in \eqref{eq:master} is nonnegative, so every admissible consecutive
+fourth-order minor is strictly positive.
+
+Mao's lower-triangular criterion
+\cite[Theorem~2.5]{Mao2026}, applied inside a finite leading principal
+truncation containing a selected minor, now implies strict positivity of every
+admissible fourth-order minor.  Orders at most three follow from
+\cite[Theorem~1.1]{Mao2026}.  Finally, if $k_i>n_i$ for some aligned index,
+then the first $i$ selected rows have zero entries in the last $s-i+1$
+selected columns and the determinant vanishes.  This proves
+Theorem~\ref{thm:main}.
+
+\section{Reproducibility and assistance disclosure}
+
+The proof-critical supplementary files are
+\begin{itemize}
+\item \texttt{evidence/reconstruct\_126.py} and
+      \texttt{evidence/template\_manifest.json} for the row reduction,
+      exhaustive coverage, and 126-template count;
+\item \texttt{evidence/audit\_template\_coefficients.py} and
+      \texttt{evidence/template\_coefficients.json} for all exact sparse
+      coefficients;
+\item \texttt{evidence/verify\_muirhead\_certificate.py} and
+      \texttt{evidence/muirhead\_certificate.json} for all 18 transfers.
+\end{itemize}
+From the project root, the three certificates are regenerated by
+\begin{verbatim}
+python3 evidence/reconstruct_126.py --output evidence/template_manifest.json
+python3 evidence/audit_template_coefficients.py \
+  --output evidence/template_coefficients.json
+python3 evidence/verify_muirhead_certificate.py \
+  --output evidence/muirhead_certificate.json
+\end{verbatim}
+The computations use exact integer arithmetic except for one exact SymPy
+polynomial-identity check of the exceptional zero template; no floating-point
+calculation is proof-critical.  They were run with Python 3.10.12 and SymPy
+1.14.0 \cite{MeurerEtAl2017}.
+
+This proof-carrying pattern---reconstructing a finite object family and checking
+exact integer predicates with an independently replayable verifier---also
+appears in a separate finite-geometry classification \cite{202608.1658}.
+That paper's geometric results imply nothing about Eulerian total positivity;
+the comparison concerns only certificate architecture.
+
+OpenAI Codex language-model systems assisted with derivation of the template
+decomposition, implementation and execution of the exact checks,
+bibliographic lookup, proof auditing, and manuscript preparation.  A separate
+model context regenerated all three certificate files and checked the proof's
+boundary cases; this is an AI review pass, not independent peer review.  All
+mathematical claims rest on the displayed argument and reproducible exact
+artifacts, and the author takes responsibility for the manuscript.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

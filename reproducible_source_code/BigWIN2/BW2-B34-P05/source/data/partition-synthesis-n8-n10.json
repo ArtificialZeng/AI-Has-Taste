@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "tool": "code/synthesize_partition_counterexample.py",
+  "solver": "Z3 4.15.3",
+  "property_negated": "There is no partition V=A0 disjoint-union A1 disjoint-union B with A0,A1 independent, Delta(G[A0 union A1])<=2, and Delta(G[B])<=3.",
+  "common_graph_constraints": {
+    "finite_simple_labelled_graph": true,
+    "triangle_free": true,
+    "maximum_degree_at_most": 6
+  },
+  "runs": [
+    {
+      "command": "python3 code/synthesize_partition_counterexample.py 8 --timeout-ms 300000",
+      "order": 8,
+      "assignments_explicitly_blocked": 6561,
+      "status": "unsat"
+    },
+    {
+      "command": "python3 code/synthesize_partition_counterexample.py 9 --timeout-ms 300000",
+      "order": 9,
+      "assignments_explicitly_blocked": 19683,
+      "status": "unsat"
+    },
+    {
+      "command": "python3 code/synthesize_partition_counterexample.py 10 --timeout-ms 300000",
+      "order": 10,
+      "assignments_explicitly_blocked": 59049,
+      "status": "unsat"
+    }
+  ],
+  "interpretation": "The explicit Boolean/cardinality encodings found no labelled counterexample at orders 8, 9, or 10. Together with the same direct property on smaller orders, this is exhaustive solver evidence through order 10.",
+  "limitation": "No DRAT/LRAT or other independently checkable UNSAT proof was emitted. These results are reproduced solver evidence, not a proof of the unbounded candidate conjecture."
+}

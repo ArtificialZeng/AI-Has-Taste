@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Frac}{\operatorname{Frac}}
+
+\title{The Exact Six-Term Eliminant in a Two-State Affine-Linear Differential-Input System}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+For the generic dense two-state affine-linear system with one differential
+input and an affine-linear output, we determine the input--output eliminant
+over independent, derivation-constant coefficient indeterminates.  On an
+explicit nonempty Zariski-open coefficient locus, its order is two and its
+exact support is
+\(\{1,u,u',y,y',y''\}\).  Thus, in the first differential-parameter row
+reported by Jeronimo and Lanciano, the missing one of the seven support-bound
+candidates is \(u''\), and the additional exact support equality is
+\(\ell_2=0\).  The proof identifies the full defining ideal of the
+order-two input--output image, rather than inferring genericity from
+finite-field samples.  The result is confined to this affine-linear,
+two-state, characteristic-zero row.
+\end{abstract}
+
+\section{Context and statement}
+
+Input--output elimination replaces hidden states of a polynomial dynamical
+system by differential relations among its measured inputs and outputs; this
+is also a basic operation in structural-identifiability computations
+\cite{DongEtAl2023}.  Recent support bounds make evaluation--interpolation
+reconstruction possible first for coordinate projections and systems with
+constant symbolic parameters \cite{MukhinaPogudin2025Projection,MukhinaPogudin2026},
+and then for freely varying differential inputs \cite{JeronimoLanciano2026}.
+
+Theorem~3.7 of \cite{JeronimoLanciano2026} gives a finite candidate support.
+For two states, one input, and degree data
+\[
+ [D_x,D_u,D]=[1,1,1],\qquad [d_x,d_u,d]=[1,0,1],
+\]
+the first differential-input row of that paper reports seven candidates but
+six stable terms in finite-field experiments.  We give the corresponding
+coefficient-generic calculation and explain the discrepancy exactly.  Here
+``generic'' always refers to an explicitly exhibited nonempty Zariski-open
+set, not to a finite sample.  This same distinction between a generic
+characteristic-zero statement and its exceptional algebraic locus is useful
+in other exact polynomial computations; see, for example,
+\cite{Zeng2026Bezout}.  That work concerns algebraic complexity rather than
+differential elimination and is cited only for this methodological parallel.
+
+Let
+\[
+ R=\mathbb{Q}[a_{11},a_{12},a_{21},a_{22},b_1,b_2,c_1,c_2,p_1,p_2,q],
+ \qquad F=\Frac(R),
+\]
+where every generator of \(R\) is a derivation constant.  Set
+\[
+ A=\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix},\quad
+ b=\binom{b_1}{b_2},\quad c=\binom{c_1}{c_2},\quad
+ p^T=(p_1,p_2),
+\]
+and consider
+\begin{equation}\label{eq:system}
+ x'=Ax+bu+c,\qquad y=p^Tx+q.
+\end{equation}
+Put
+\[
+ \tau=\operatorname{tr}(A),\qquad \delta=\det(A),\qquad
+ \Omega=\det\!\begin{pmatrix}p^T\\p^TA\end{pmatrix}
+\]
+and
+\begin{equation}\label{eq:P}
+ P=\Omega\,\tau\,\delta\,(p^Tb)
+ \bigl(p^T(\tau I-A)b\bigr)
+ \bigl(p^T(\tau I-A)c-\delta q\bigr).
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+The polynomial \(P\) is nonzero.  On the nonempty Zariski-open locus
+\(P\ne0\), the input--output eliminant of \eqref{eq:system} has order two
+and, normalized to be monic in \(y''\), equals
+\begin{equation}\label{eq:E}
+ E=y''-\tau y'+\delta y
+   +p^T(\tau I-A)b\,u-p^Tb\,u'
+   +p^T(\tau I-A)c-\delta q.
+\end{equation}
+It is primitive and irreducible, and
+\[
+ \supp(E)=\{1,u,u',y,y',y''\}.
+\]
+The seven nonnegative integer points allowed by the specialized
+Theorem~3.7 inequalities of \cite{JeronimoLanciano2026} correspond to
+\(\{1,u,u',u'',y,y',y''\}\).  Hence the missing monomial is \(u''\), and
+every exponent vector in \(\supp(E)\) satisfies
+\[
+ \ell_2=0,
+ \qquad\text{equivalently}\qquad \deg_{u''}E=0.
+\]
+\end{theorem}
+
+The quantifier in Theorem~\ref{thm:main} may be read over any algebraically
+closed characteristic-zero extension field.  Its scope does not include
+nonlinear or sparse systems, time-varying model coefficients, positive
+characteristic, or additional states or inputs.
+
+\section{Proof of the exact eliminant}
+
+Differentiating the output after substituting the state equation gives
+\begin{align}
+ y'  &=p^TAx+p^Tb\,u+p^Tc,\label{eq:yp}\\
+ y'' &=p^TA^2x+p^TAb\,u+p^TAc+p^Tb\,u'.\label{eq:ypp}
+\end{align}
+The two-by-two Cayley--Hamilton identity
+\(A^2-\tau A+\delta I=0\) converts \eqref{eq:ypp} into
+\eqref{eq:E}.  Thus \(E\) vanishes identically over the independent
+coefficient ring; no specialization has been used.
+
+We next prove that this identity is the defining eliminant and has minimal
+order.  Direct expansion gives
+\begin{equation}\label{eq:omega}
+ \Omega=p_1^2a_{12}+p_1p_2(a_{22}-a_{11})-p_2^2a_{21},
+\end{equation}
+which is a nonzero element of \(R\).  Over
+\(L=\Frac(F\{u\})\), equations \eqref{eq:system} and \eqref{eq:yp} yield
+\begin{equation}\label{eq:obs}
+ \binom{y-q}{y'-p^Tb\,u-p^Tc}
+ =\begin{pmatrix}p^T\\p^TA\end{pmatrix}x.
+\end{equation}
+Since \(\Omega\ne0\) in \(F\), this is an invertible affine change of
+coordinates over \(L\).  Consequently \(y,y'\) are algebraically independent
+over \(L\), while \eqref{eq:E} makes \(y,y',y''\) dependent.  The generic
+order is therefore exactly two.
+
+For the defining-ideal assertion, set \(B=F[u_0,u_1,u_2]\) and let
+\[
+ \psi:B[Y_0,Y_1,Y_2]\longrightarrow B[x_1,x_2]
+\]
+send \(Y_i\) to the evaluated \(i\)-th output derivative and fix the
+\(u_i\).  Equation \eqref{eq:obs} shows that the restriction
+\(B[Y_0,Y_1]\to B[x_1,x_2]\) is an isomorphism.  Write
+\[
+ \alpha=p^T(\tau I-A)b,\qquad \beta=p^Tb,\qquad
+ \gamma=p^T(\tau I-A)c.
+\]
+Under this isomorphism, \(Y_2\) is the affine-linear function
+\[
+ \tau Y_1-\delta Y_0-\alpha u_0+\beta u_1-\gamma+\delta q.
+\]
+Division in the monic variable \(Y_2\) proves that
+\(\ker(\psi)=(E)\).  Hence the image is the closed graph cut out by
+\(E\), not merely a subset on which \(E\) happens to vanish.  Its
+\(Y_2\)-coefficient is one, so \(E\) is primitive; being monic and linear in
+\(Y_2\), it is irreducible.  This is precisely the normalized eliminant in
+the sense used by \cite{JeronimoLanciano2026}.
+
+It remains to establish support equality, rather than only containment.  The
+six coefficients, in the order
+\[
+ y'',\ y',\ y,\ u',\ u,\ 1,
+\]
+are
+\begin{equation}\label{eq:coefficients}
+ 1,\quad-\tau,\quad\delta,\quad-p^Tb,\quad
+ p^T(\tau I-A)b,\quad p^T(\tau I-A)c-\delta q.
+\end{equation}
+At the exact specialization
+\[
+ A=\begin{pmatrix}1&1\\1&2\end{pmatrix},\quad
+ p^T=(1,0),\quad b=(1,1)^T,\quad c=(1,0)^T,\quad q=0,
+\]
+the factors in \eqref{eq:P}, including \(\Omega\), take the values
+\[
+ (\Omega,\tau,\delta,p^Tb,p^T(\tau I-A)b,
+ p^T(\tau I-A)c-\delta q)=(1,3,1,1,1,2).
+\]
+Thus \(P\) is not the zero polynomial.  On \(P\ne0\), every coefficient in
+\eqref{eq:coefficients} is nonzero, proving the asserted six-term support.
+
+Finally, use the exponent vector
+\[
+ (\ell_0,\ell_1,\ell_2,e_0,e_1,e_2)
+\]
+for the variables \(u,u',u'',y,y',y''\), in that order.  The specialized
+support inequalities are
+\begin{align*}
+ \ell_0+\ell_1+\ell_2+e_0+e_1+e_2&\le1,&
+ e_0+e_1+e_2&\le1,\\
+ \ell_0+\ell_1+\ell_2+e_1+2e_2&\le3,&
+ \ell_1+e_1+2e_2&\le3,\\
+ \ell_2+e_2&\le1.&&
+\end{align*}
+The first inequality leaves only the origin and the six unit vectors, and
+each satisfies the remaining inequalities.  Hence the candidate monomials
+are exactly \(1,u,u',u'',y,y',y''\).  Formula \eqref{eq:E} contains all but
+\(u''\), completing the proof of Theorem~\ref{thm:main}. \qed
+
+\begin{remark}
+Corollary~3.11 of \cite{JeronimoLanciano2026} observes that, when the output
+is a function of one distinguished state coordinate, the eliminant does not
+depend on the highest input derivative.  On \(\Omega\ne0\), an invertible
+linear state-coordinate change can make the affine output in
+\eqref{eq:system} the distinguished coordinate.  Thus the absence of
+\(u''\) is consistent with that general structural observation.  The
+calculation above additionally supplies the normalized eliminant, proves its
+minimality and defining-ideal property, and establishes generic nonvanishing
+of all six remaining coefficients for the reported row.
+\end{remark}
+
+\section{Exact verification and limitations}
+
+An accompanying SymPy script expands the Cayley--Hamilton relation and checks
+the inverse-coordinate identity after multiplication by \(\Omega\).  It also
+verifies the graph equation, enumerates the seven integer points, and
+evaluates the open-set witness using exact arithmetic.  These checks are
+reproducibility aids; the proof is the coefficient-ring argument above and
+does not rest on numerical or finite-field agreement.
+
+This row-wise calculation does not sharpen the general support polytope for
+nonlinear systems with differential inputs.  In particular, it does not address
+the broader problem, identified in \cite{JeronimoLanciano2026}, of obtaining
+more accurate support descriptions in that setting.
+
+\paragraph{Computational and AI assistance.}
+SymPy was used for exact expansion, integer-point enumeration, and replay of
+the displayed specialization.  OpenAI Codex assisted with the symbolic proof
+workflow, source screening, and manuscript preparation.  The author reviewed
+the mathematical argument and cited-source statements and takes
+responsibility for the contents.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

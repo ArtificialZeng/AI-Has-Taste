@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "title": "Total positivity of order four for the Eulerian triangle: an exact computer-assisted proof",
+  "tex": "manuscript/main.tex",
+  "pdf": "manuscript/main.pdf",
+  "bibliography": [
+    "manuscript/references.bib"
+  ],
+  "figures": [],
+  "inputs": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "supplementary_files": [
+    "evidence/reconstruct_126.py",
+    "evidence/template_manifest.json",
+    "evidence/audit_template_coefficients.py",
+    "evidence/template_coefficients.json",
+    "evidence/verify_muirhead_certificate.py",
+    "evidence/muirhead_certificate.json"
+  ],
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+}

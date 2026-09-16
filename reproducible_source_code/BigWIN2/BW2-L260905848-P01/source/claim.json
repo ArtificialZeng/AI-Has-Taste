@@ -1,0 +1,28 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let V = F_2^5. For i = 1,2,3 let F_i be a family of 3-dimensional linear subspaces of V, and suppose dim(U_1 intersection U_2 intersection U_3) >= 1 for every choice U_i in F_i. Then |F_1||F_2||F_3| <= 35^3 = 42875. Equality holds if and only if there is a 1-dimensional subspace L <= V such that, for every i, F_i is the full star of all 3-subspaces containing L.",
+  "contribution": "A complete exact computer-assisted resolution of the frozen finite instance, including equality classification. The finite domain and lossless GL(5,2) reductions are exhaustively audited, and separate product-bound and non-star-equality CNFs have independently checked binary DRAT refutations. No priority, separate open-status, or broader-parameter claim is made.",
+  "proposer_job_id": "lit-260905848-p01-research-ae16a9d4e158",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/proof_dossier.md",
+    "evidence/build_rref_hypergraph.py",
+    "evidence/rref_hypergraph_summary.json",
+    "evidence/forbidden_triples_u8.bin",
+    "evidence/verify_reductions.py",
+    "evidence/reduction_audit.json",
+    "evidence/cnf_product_threshold.py",
+    "evidence/product_above_bound.cnf",
+    "evidence/run_drat_solver.py",
+    "evidence/product_above_bound.bdrat",
+    "evidence/drat_solver_result.json",
+    "evidence/drat_check_result.json",
+    "evidence/cnf_equality_classification.py",
+    "evidence/nonstar_equality.cnf",
+    "evidence/nonstar_equality.bdrat",
+    "evidence/equality_drat_solver_result.json",
+    "evidence/equality_drat_check_result.json"
+  ]
+}

@@ -1,0 +1,356 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={An Ehrhart--word identity for arbor polytopes},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\N}{\mathbb Z_{\geq0}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\des}{\operatorname{des}}
+\newcommand{\Tle}{T_{\leq}}
+\newcommand{\Tge}{T_{\geq}}
+\title{An Ehrhart--word identity for arbor polytopes}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove the conjecture of Athanasiadis, Xiao and Yan expressing the
+Ehrhart numerator of every arbor polytope as the non-descent enumerator
+of words satisfying descendant-set multiplicity conditions. The main step
+is a polynomial transformation relating upper bounds on lattice-point
+coordinates to lower bounds on binomially weighted word contents at every
+subtree. Extracting one coefficient gives an identity for every nonnegative
+integer dilation. A decreasing-box construction then yields the word
+formula. The argument allows arbitrary nonempty blocks, labels, depth,
+and branching.
+\end{abstract}
+
+\section{Statement and context}
+
+An \emph{arbor} on $[n]=\{1,\ldots,n\}$ is a rooted tree whose vertices
+are the nonempty blocks of a partition of $[n]$ \cite{Chapoton}.
+Throughout, $n\geq1$. Write $B_v$ for the block at a vertex $v$, and let
+$D_v$ be the union of the blocks in the subtree rooted at $v$, including
+$B_v$ itself. Set $b_v=|B_v|$ and $N_v=|D_v|$. The arbor polytope is
+\begin{equation}\label{eq:polytope}
+ Q_\tau=\left\{x\in\R_{\geq0}^n:
+          \sum_{i\in D_v}x_i\leq N_v\text{ for every vertex }v\right\}.
+\end{equation}
+It contains $[0,1]^n$ and is bounded by the root inequality. It is a
+lattice polytope by \cite[Lemma~1.2]{Chapoton}. In particular, its
+dimension is $n$. Put $L_\tau(m)=|mQ_\tau\cap\Z^n|$ for $m\in\N$, with
+$0Q_\tau=\{0\}$, and define its Ehrhart numerator by
+\begin{equation}\label{eq:ehrhart}
+ \sum_{m\geq0}L_\tau(m)t^m=
+       \frac{h^*(Q_\tau,t)}{(1-t)^{n+1}}.
+\end{equation}
+
+Let $W_\tau$ consist of the length-$n$ words $w=w_1\cdots w_n$ over $[n]$
+such that
+\[
+ |\{j:w_j\in D_v\}|\geq N_v\qquad\text{for every vertex }v.
+\]
+Letters may repeat or be absent. With the usual order on $[n]$, put
+\[
+ \des(w)=|\{j:1\leq j<n,\ w_j>w_{j+1}\}|,
+ \qquad d(w)=n-1-\des(w).
+\]
+Thus $d(w)$ counts weak rises, including adjacent equal letters.
+The set of admissible contents is
+\begin{equation}\label{eq:contents}
+ A_\tau=\left\{a\in\N^n:\sum_{i=1}^n a_i=n,\quad
+         \sum_{i\in D_v}a_i\geq N_v\text{ for every vertex }v\right\}.
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For every arbor $\tau$ on $[n]$ and every integer $m\geq0$,
+\begin{equation}\label{eq:binomial}
+ L_\tau(m)=\sum_{a\in A_\tau}\prod_{i=1}^n\binom{m+1}{a_i},
+\end{equation}
+where $\binom{m+1}{a_i}=0$ when $a_i>m+1$. Consequently,
+\begin{equation}\label{eq:word}
+ h^*(Q_\tau,t)=\sum_{w\in W_\tau}t^{n-1-\des(w)}.
+\end{equation}
+\end{theorem}
+
+Equation~\eqref{eq:word} is Conjecture~5.2 of Athanasiadis, Xiao and
+Yan \cite{AXY}. Their Theorem~1.5 proves the case of a root block with
+singleton leaves. Athanasiadis and Chapoton \cite[Conjecture~4.4]{AC}
+formulate the corresponding assertion for arbitrary preorders; their
+Remark~7.3 gives the binomial-content reformulation
+\eqref{eq:binomial}. These identities and the fixed-content word identity
+used below are therefore prior formulations.
+
+Our contribution is the compatibility of a polynomial transformation with
+the two subtree recurrences in Section~\ref{sec:subtrees}. The upper
+recurrence is Chapoton's height-counting recurrence
+\cite[Proposition~2.1]{Chapoton}. Its relation to a lower-truncation
+recurrence proves the asserted identities for every arbor. All algebra
+below concerns formal series and finite polynomials.
+
+\section{A truncation identity}
+
+For a series $P$, write $T_{\leq k}P$ for its terms of degrees at most
+$k$. For a polynomial $P$, write $T_{\geq k}P$ for its terms of degrees
+at least $k$. We first establish the elementary identity that will
+intertwine these two operations.
+
+\begin{lemma}\label{lem:local}
+For integers $b\geq1$ and $K\geq0$,
+\begin{equation}\label{eq:local}
+ y^b\sum_{q=0}^{K}\binom{q+b-1}{b-1}(1+y)^{K-q}
+       =T_{\geq b}(1+y)^{K+b}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Both sides have degrees between $b$ and $K+b$. For $0\leq j\leq K$,
+the coefficient of $y^{b+j}$ on the left is
+\begin{align*}
+ \sum_{q=0}^{K-j}\binom{q+b-1}{b-1}\binom{K-q}{j}
+   &=[z^{K-j}](1-z)^{-b}(1-z)^{-j-1}\\
+   &=\binom{K+b}{b+j}.
+\end{align*}
+The first equality follows by multiplying the two binomial series.
+These are exactly the coefficients on the right, including when $K=0$.
+\end{proof}
+
+\begin{lemma}\label{lem:operator}
+Let $m\geq0$ and $N\geq b\geq1$ be integers. For any polynomial $R(x)$
+of degree at most $m(N-b)$, define
+\[
+ H(x)=T_{\leq mN}\bigl((1-x)^{-b}R(x)\bigr).
+\]
+Then
+\begin{equation}\label{eq:operator}
+ \begin{split}
+ y^N(1+y)^{mN}H\bigl((1+y)^{-1}\bigr)
+   =T_{\geq N}\!\left(
+       y^{N-b}(1+y)^{mN+b}R\bigl((1+y)^{-1}\bigr)\right).
+ \end{split}
+\end{equation}
+No sign condition on the coefficients of $R$ is required.
+\end{lemma}
+
+\begin{proof}
+Expand $R(x)=\sum_s r_s x^s$. For each term put $K=mN-s$; the degree
+bound ensures $K\geq mb\geq0$. Its contribution to the left side of
+\eqref{eq:operator} is
+\begin{align*}
+ r_s y^N\sum_{q=0}^{K}\binom{q+b-1}{b-1}(1+y)^{K-q}
+   &=r_s y^{N-b}T_{\geq b}(1+y)^{K+b}\\
+   &=T_{\geq N}\bigl(r_s y^{N-b}(1+y)^{mN+b-s}\bigr),
+\end{align*}
+by Lemma~\ref{lem:local}. Summing over $s$ proves the identity.
+Every truncated expression on the right is a polynomial. On the left,
+$H$ is truncated before substitution and has degree at most $mN$.
+Thus the displayed powers clear all denominators; no substitution into
+the untruncated infinite series is used.
+\end{proof}
+
+\section{Upper and lower subtree counts}\label{sec:subtrees}
+
+Fix $m\in\N$ for this section. Let $C(v)$ be the set of children of $v$.
+The structural property of an arbor used in the proof is the disjoint union
+\begin{equation}\label{eq:disjoint}
+ D_v=B_v\sqcup\bigsqcup_{c\in C(v)}D_c,
+ \qquad \sum_{c\in C(v)}N_c=N_v-b_v.
+\end{equation}
+
+Define $F_v(x)$ by summing $x^{\sum_{i\in D_v}z_i}$ over the vectors
+$z\in\N^{D_v}$ satisfying
+\[
+ \sum_{i\in D_u}z_i\leq mN_u
+ \quad\text{for every descendant }u\text{ of }v,\text{ including }v.
+\]
+The inequality at $v$ gives $\deg F_v\leq mN_v$. The unrestricted
+coordinates in $B_v$ contribute $(1-x)^{-b_v}$. Independence of the child
+subtrees in \eqref{eq:disjoint}, followed by the bound at $v$, gives
+\begin{equation}\label{eq:F}
+ F_v(x)=T_{\leq mN_v}\!\left((1-x)^{-b_v}
+                                 \prod_{c\in C(v)}F_c(x)\right).
+\end{equation}
+This is the upper height recurrence credited above. At the root $r$,
+\begin{equation}\label{eq:rootF}
+ F_r(1)=L_\tau(m).
+\end{equation}
+This also holds for $m=0$, since the root bound forces every coordinate
+to be zero.
+
+Independently define $G_v(y)$ by summing
+\[
+ y^{\sum_{i\in D_v}a_i}\prod_{i\in D_v}\binom{m+1}{a_i}
+\]
+over $a\in\{0,\ldots,m+1\}^{D_v}$ satisfying
+\[
+ \sum_{i\in D_u}a_i\geq N_u
+ \quad\text{for every descendant }u\text{ of }v,\text{ including }v.
+\]
+The binomial theorem and \eqref{eq:disjoint} give
+\begin{equation}\label{eq:G}
+ G_v(y)=T_{\geq N_v}\!\left((1+y)^{(m+1)b_v}
+                                 \prod_{c\in C(v)}G_c(y)\right).
+\end{equation}
+The truncation here imposes the lower bound at $v$; all other required
+bounds have already been imposed in the child factors.
+
+\begin{proposition}\label{prop:transform}
+For every vertex $v$,
+\begin{equation}\label{eq:transform}
+ G_v(y)=y^{N_v}(1+y)^{mN_v}F_v\bigl((1+y)^{-1}\bigr).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Induct from the leaves toward the root. At a vertex $v$, abbreviate
+$N=N_v$, $b=b_v$, and $R(x)=\prod_{c\in C(v)}F_c(x)$. The empty product
+for a leaf is $1$. In every case,
+\[
+ \deg R\leq m\sum_{c\in C(v)}N_c=m(N-b).
+\]
+Using the child identities, or the empty family of identities at a leaf,
+we obtain
+\begin{align*}
+ (1+y)^{(m+1)b}\prod_{c\in C(v)}G_c(y)
+   &=y^{N-b}(1+y)^{(m+1)b+m(N-b)}R\bigl((1+y)^{-1}\bigr)\\
+   &=y^{N-b}(1+y)^{mN+b}R\bigl((1+y)^{-1}\bigr).
+\end{align*}
+Apply $T_{\geq N}$ and use Lemma~\ref{lem:operator}. Equations
+\eqref{eq:F} and \eqref{eq:G} identify the result as
+\eqref{eq:transform}. This proves both the leaf step and the induction.
+\end{proof}
+
+At the root, $N_r=n$. The coefficient of $y^n$ in the right side of
+\eqref{eq:transform} is the constant term of
+$(1+y)^{mn}F_r((1+y)^{-1})$, namely $F_r(1)$. The definition of $G_r$
+and \eqref{eq:rootF} therefore imply
+\[
+ L_\tau(m)=[y^n]G_r(y)
+          =\sum_{a\in A_\tau}\prod_{i=1}^n\binom{m+1}{a_i}.
+\]
+Vectors outside $\{0,\ldots,m+1\}^n$ contribute zero by the binomial
+convention. This proves \eqref{eq:binomial} for all $m\geq0$.
+
+\section{From contents to words}
+
+We give the fixed-content conversion explicitly. Its generating-function
+form is used in \cite[Section~4]{AXY} and \cite[Remark~7.3]{AC}.
+
+\begin{lemma}\label{lem:words}
+Let $a\in\N^n$ with $\sum_i a_i=n$, and let $\mathfrak S_a$ denote the
+words containing $a_i$ copies of each letter $i$. Then
+\begin{equation}\label{eq:fixedcontent}
+ \sum_{m\geq0}\left(\prod_{i=1}^n\binom{m+1}{a_i}\right)t^m
+     =\frac{\sum_{w\in\mathfrak S_a}t^{d(w)}}{(1-t)^{n+1}}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For each letter $i$, choose a subset $S_i$ of size $a_i$ of the $m+1$
+ordered boxes $0,\ldots,m$. Place $i$ once in each chosen box. Read the
+letters in each box in strictly decreasing order, retaining one bar between
+consecutive boxes. This produces $n$ letters and exactly $m$ bars.
+Empty boxes give initial, final, or adjacent bars. Conversely, split such
+a barred word at its bars and record the indices of the boxes containing
+each letter. Strict decrease ensures that each letter occurs at most once
+per box. The two constructions are inverse.
+
+Fix the unbarred word $w$. A bar is necessary in each gap with
+$w_j\leq w_{j+1}$; these are the $d(w)$ required gaps. This condition
+is also sufficient, since each resulting box is then strictly decreasing.
+After reserving one bar in each required gap, the remaining $m-d(w)$
+bars can be placed freely in the $n+1$ gaps, including both ends. Thus
+the number of choices above $w$ is zero if $m<d(w)$ and otherwise equals
+\[
+ \binom{m-d(w)+n}{n}.
+\]
+Its generating series is
+\[
+ \sum_{m\geq d(w)}\binom{m-d(w)+n}{n}t^m
+       =\frac{t^{d(w)}}{(1-t)^{n+1}}.
+\]
+Summing over $w\in\mathfrak S_a$ proves \eqref{eq:fixedcontent}.
+\end{proof}
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:main}]
+Sum \eqref{eq:fixedcontent} over the finite set $A_\tau$ and use
+\eqref{eq:binomial}. The disjoint union of $\mathfrak S_a$ over
+$a\in A_\tau$ is exactly $W_\tau$. Comparing with \eqref{eq:ehrhart}
+gives \eqref{eq:word}.
+\end{proof}
+
+The proof includes $n=1$, arbitrary leaf-block sizes, and interleaved
+labels. At $m=0$ one has $F_v=1$ and $G_v=y^{N_v}$. On the word side
+the unique term of degree zero is the decreasing permutation
+$n(n-1)\cdots1$, whose content satisfies every lower bound.
+
+\section{Relation to further results and scope}
+
+The associated arbor preorder has the root as its maximum vertex. Each
+order ideal is a disjoint union of descendant subtrees. Summing their
+inequalities shows that the subtree formulation agrees with the
+order-ideal formulation of \cite[Conjecture~4.4]{AC} in this case.
+The product decomposition \eqref{eq:disjoint} is essential to the present
+proof; the argument does not establish that conjecture for arbitrary
+preorders.
+
+For composition polytopes, Athanasiadis \cite[Proposition~4.2]{Athanasiadis}
+gives an interpretation using modified ascents, with an initial letter
+$w_0=1$. The corresponding minimum-vertex extension appears in
+\cite[Proposition~4.5]{AC}. Those statistics differ from the ordinary
+non-descents in Theorem~\ref{thm:main}. Yan
+\cite[Corollary~5.4]{Yan} gives a word formula for the related reflexive
+polytope $Q_\tau+\Delta_E-\mathbf1$, where
+$\Delta_E=\operatorname{conv}(0,e_i:i\in E)$; that formula uses an
+auxiliary letter. It concerns a different polytope. These comparisons
+identify the precise assertion proved here without a claim of exhaustive
+priority. No equivalent proof was found in the primary passages inspected
+through 14 September 2026.
+
+Theorem~\ref{thm:main} also makes no assertion about real-rootedness or
+about the support enumerator
+$\sum_{x\in Q_\tau\cap\Z^n}t^{|\{i:x_i>0\}|}$, which counts points
+in a single undilated polytope. For general preorder polytopes, the
+real-rootedness of this support enumerator was proposed in
+\cite[Conjecture~5.3]{AC}. Zijian Zeng
+\cite[Proposition~3.1 and Theorem~4.2]{ZengSupport} certifies an
+eight-element height-two poset counterexample using exact support
+enumeration and a rational non-real-root certificate. We use the author
+manuscript dated 31 August 2026 for this comparison. That result concerns
+the support enumerator, and is not a counterexample to
+Theorem~\ref{thm:main}.
+
+\paragraph{Exact checks and computational assistance.}
+The proof is independent of computation. Two separately implemented
+Python programs using exact integer arithmetic checked the truncation
+identities, the box construction, and direct coordinate and word counts.
+The direct enumeration includes all rooted trees on the blocks of every
+partition of $[n]$ for $1\leq n\leq4$, with $0\leq m\leq n$:
+153 arbors and 740 arbor--dilation pairs. Three specified six-label arbors
+and one seven-label arbor were also checked for $m=0,1,2,3$.
+These finite checks test conventions and formulas; they are not an
+extension of the previously reported size-seven preorder tests
+\cite[Section~4.3]{AC}, and do not replace the proof.
+OpenAI language-model assistance was used in developing the argument,
+writing the verification programs, checking primary-source comparisons,
+and preparing this manuscript. A separate model context reviewed the
+argument and supplied a separate enumeration implementation. This is not
+formal proof-assistant certification or journal peer review.
+
+\bibliographystyle{amsplain}
+
+\raggedright
+\bibliography{references}
+
+\end{document}

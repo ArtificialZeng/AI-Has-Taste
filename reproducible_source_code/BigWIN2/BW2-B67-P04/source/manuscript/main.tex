@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\mex}{\operatorname{mex}}
+
+\title{Exact Sprague--Grundy Words for the\\
+Three-Move Subtraction Games $\{2,5,c\}$}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the normal-play subtraction game with move set $\{2,5,c\}$, where
+$c>5$ and $c\ne7$, Manabe's pure-periodicity criterion leaves the residue
+classes $c\equiv0,4\;(\mathrm{mod}\;7)$ as the only cases of his Conjecture~50 not
+covered by proved results.  We determine the complete Sprague--Grundy words
+in those two classes.  Writing $A=0011021$, for $K\ge1$ we prove
+\[
+ g_{7K+4}=A^K0011223(021021A^K)^\infty,
+ \qquad(q,p)=(7K+7,7K+6),
+\]
+and for $K\ge2$ we prove
+\[
+ g_{7K}=A^K32203103(1A^{K-1}02102102)^\infty,
+ \qquad(q,p)=(7K+8,7K+2).
+\]
+Here $q$ is the minimal preperiod and $p$ the least eventual period.
+The proof is a parameter-independent finite mex certificate: one seven-row
+interior calculation and finitely many seam rows verify the words, while
+cyclic gaps between occurrences of the digit $2$ prove period primitivity.
+Together with Manabe's results for the other residues, this proves his
+Conjecture~50 for the entire shape $(a,b)=(2,5)$.
+\end{abstract}
+
+\section{Statement and context}
+
+For $S_c=\{2,5,c\}$ and $n\ge0$, define
+\[
+ g_c(n)=\mex\{g_c(n-s):s\in S_c,\ s\le n\},
+ \qquad g_c(0)=0,
+\]
+where $\mex$ denotes the least nonnegative integer outside a finite set.
+This is the usual Sprague--Grundy recursion for a normal-play impartial
+game~\cite{Grundy1939}; one-dimensional take-away games were treated by
+Golomb~\cite{Golomb1966}.
+Write $g_c=g_c(0)g_c(1)\cdots$ as a one-sided word.  Its minimal preperiod is
+\[
+ q_c=\min\{q\ge0:\exists p\ge1\text{ such that }
+ g_c(n+p)=g_c(n)\text{ for every }n\ge q\},
+\]
+and $p_c$ is the least such $p$ at $q=q_c$.
+
+Manabe~\cite{Manabe2026} gives an explicit sufficient criterion for pure
+periodicity of three-move subtraction games and conjectures its necessity.
+For $(a,b)=(2,5)$, his Theorems~28, 32, and~57 give pure periodicity in the
+residue classes $1,2,3,5,6\;(\mathrm{mod}\;7)$; the two remaining classes are $0$ and
+$4\;(\mathrm{mod}\;7)$.  Our contribution is the following exact resolution of those
+classes.
+
+\begin{theorem}\label{thm:main}
+Put $A=0011021$.  For every integer $K\ge1$,
+\[
+ g_{7K+4}=A^K0011223(021021A^K)^\infty,
+ \qquad (q_{7K+4},p_{7K+4})=(7K+7,7K+6).
+\]
+For every integer $K\ge2$,
+\[
+ g_{7K}=A^K32203103(1A^{K-1}02102102)^\infty,
+ \qquad (q_{7K},p_{7K})=(7K+8,7K+2).
+\]
+Consequently both families have positive minimal preperiod.
+\end{theorem}
+
+\section{A finite mex certificate}
+
+Subscripts on a finite word are read cyclically only when explicitly stated.
+
+\begin{lemma}\label{lem:certificate}
+Let $X$ be a proposed Sprague--Grundy word with a prefix of length $q$
+followed by repetitions of a word $P$ of length $p=c+2$.  To prove that
+$X=g_c$, it is enough to check the game recursion in the ranges
+\[
+ 0\le n<c,\qquad c\le n<c+q,
+\]
+and to check, for every $r\;(\mathrm{mod}\;p)$, the cyclic identity
+\begin{equation}\label{eq:cyclic}
+ P_r=\mex\{P_{r-5},P_{r-2},P_{r+2}\}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The first two ranges check every index below $c+q$.  If $n\ge c+q$, then
+$n-5,n-2,n-c$ all lie in the periodic tail.  Since $p=c+2$, the index
+$n-c=n+2-p$ has the same tail phase as $n+2$.  Thus
+\eqref{eq:cyclic} is exactly the game recursion for every remaining index.
+Forward uniqueness of the mex recursion proves the claim.
+\end{proof}
+
+Below $c$, the move $c$ is unavailable.  Direct calculation at
+$n=0,\ldots,6$ gives $0011021$.  Thereafter the two-move recursion repeats
+$A=0011021$.  The following table records the calculation; the duplicate
+third entry is included because $i-5\equiv i+2\;(\mathrm{mod}\;7)$.  In this and all
+later tables, each current digit is the mex of the set of digits in its
+displayed triple.
+\begin{equation}\label{eq:base}
+\begin{array}{c|ccccccc}
+i&0&1&2&3&4&5&6\\ \hline
+A_i&0&0&1&1&0&2&1\\
+(A_{i-5},A_{i-2},A_{i+2})&121&111&000&202&111&010&000
+\end{array}
+\end{equation}
+
+\section{The two missing residue classes}
+
+\subsection{The class c=7K+4}
+
+Set $B=0011223$, $C=021021$, $q=7K+7$, and $p=7K+6$.
+The proposed word is $X=A^KB(CA^K)^\infty$, with period block $P=CA^K$.
+For $n<c$, the word is the required prefix of $A^\infty$: the first four
+letters of $B$ are $0011$, the first four letters of $A$.
+
+The exceptional cyclic rows of \eqref{eq:cyclic} are the following.
+All unlisted rows $11\le r\le p-3$ are interior rows of the $A$-run and
+reduce to \eqref{eq:base}, with $i\equiv r-6\;(\mathrm{mod}\;7)$; this interval is empty when $K=1$.
+\[
+\begin{array}{c|rrrrrrrrrrrrr}
+r&0&1&2&3&4&5&6&7&8&9&10&p-2&p-1\\ \hline
+P_r&0&2&1&0&2&1&0&0&1&1&0&2&1\\
+\text{triple}&121&110&002&221&110&000&221&111&000&202&111&010&002
+\end{array}
+\]
+
+It remains to check $n=c+m$ for $0\le m<q$.  The predecessor triple is
+\begin{equation}\label{eq:transient-triple}
+ (X_{c+m-5},X_{c+m-2},X_m).
+\end{equation}
+For $K\ge2$, the first fourteen rows are
+\[
+\begin{array}{c|rrrrrrrrrrrrrr}
+m&0&1&2&3&4&5&6&7&8&9&10&11&12&13\\ \hline
+X_{c+m}&2&2&3&0&2&1&0&2&1&0&0&1&1&0\\
+\text{triple}&110&010&021&121&130&202&221&310&000&221&111&000&202&111
+\end{array}
+\]
+For $K=1$, this same table is the complete transient check after replacing
+the triples at $m=11$ and $m=13$ by $002$ and $113$, respectively.  For
+$K\ge2$, the final seven rows, written $m=7K+t$, are
+\[
+\begin{array}{c|rrrrrrr}
+t&0&1&2&3&4&5&6\\ \hline
+X_{c+m}&2&1&0&0&1&1&0\\
+\text{triple}&010&000&121&111&002&202&113
+\end{array}
+\]
+The remaining range $14\le m\le7K-1$ is empty for $K=2$; otherwise each
+row is \eqref{eq:base} with $i\equiv m-2\;(\mathrm{mod}\;7)$.  Indeed, the current letter is
+$A_{m-2}$ and the entries of \eqref{eq:transient-triple} have phases
+$i-5,i-2,i+2$.  Lemma~\ref{lem:certificate} now proves the asserted word
+for every $K\ge1$.
+
+\subsection{The class c=7K}
+
+Here set $D=32203103$, $E=02102102$, $q=7K+8$, and $p=7K+2$.
+The proposed word is $X=A^KD(1A^{K-1}E)^\infty$, with
+$P=1A^{K-1}E$.  Its first $c$ letters are $A^K$, so the initial check again
+follows from \eqref{eq:base}.
+
+The two cyclic seams of $P$ are
+\[
+\begin{array}{c|rrrrrr}
+r&0&1&2&3&4&5\\ \hline
+P_r&1&0&0&1&1&0\\
+\text{triple}&000&221&111&000&202&111
+\end{array}
+\]
+and, on writing $r=c-8+t$,
+\[
+\begin{array}{c|rrrrrrrrrr}
+t&0&1&2&3&4&5&6&7&8&9\\ \hline
+P_r&2&1&0&2&1&0&2&1&0&2\\
+\text{triple}&010&002&121&110&002&221&110&002&221&110
+\end{array}.
+\]
+Every row $6\le r\le c-9$ reduces to \eqref{eq:base}, with
+$i\equiv r-1\;(\mathrm{mod}\;7)$.  This range is empty for $K=2$, when (6) and (7) are
+adjacent and exhaustive.
+
+For the transient, the first fourteen rows of
+\eqref{eq:transient-triple} are
+\[
+\begin{array}{c|rrrrrrrrrrrrrr}
+m&0&1&2&3&4&5&6&7&8&9&10&11&12&13\\ \hline
+X_{c+m}&3&2&2&0&3&1&0&3&1&0&0&1&1&0\\
+\text{triple}&120&110&031&221&120&302&231&210&000&331&111&000&302&111
+\end{array}
+\]
+and, writing $m=c+t$, the final eight rows are
+\[
+\begin{array}{c|rrrrrrrr}
+t&0&1&2&3&4&5&6&7\\ \hline
+X_{c+m}&2&1&0&2&1&0&2&1\\
+\text{triple}&013&002&122&110&003&221&110&003
+\end{array}.
+\]
+The intervening range $14\le m\le c-1$ is empty for $K=2$ and otherwise
+reduces to \eqref{eq:base}, again with $i\equiv m-2\;(\mathrm{mod}\;7)$.  Thus
+Lemma~\ref{lem:certificate} proves the second word of
+Theorem~\ref{thm:main}.
+
+\section{Minimal period and preperiod}
+
+We now show that the displayed parameters are minimal, rather than merely
+valid.  In $P=CA^K$, the occurrences of the digit $2$ are at positions
+\[
+1,4,11,18,\ldots,7K+4.
+\]
+Their cyclic gap word is $3\,7^K\,3$.  In $P=1A^{K-1}E$, the cyclic gap
+word is, up to rotation, $7^{K-1}3^3$.  Each gap word has exactly one
+nonempty cyclic run of $3$'s and one of $7$'s.  If the underlying period
+block were a proper power $W^d$, $d\ge2$, then its cyclic gap word between
+the $2$'s would repeat the gap word contributed by $W$ and hence would have
+at least two runs of each of the two present gap sizes.  This is impossible.
+Both period blocks are therefore primitive, including $K=1$ in the first
+family and $K=2$ in the second.
+
+It follows that their right-infinite repetitions have least periods
+$7K+6$ and $7K+2$, respectively: any period induces a rotation fixing the
+finite block, and primitivity forces that rotation to be trivial.
+
+Finally, in both families the letter at $q-1$ is the terminal $3$ of the
+transient block.  One period later its phase has letter $1$ for $c=7K+4$
+and letter $2$ for $c=7K$.  Suppose periodicity began at some $q'<q$ with
+period $d$.  Restriction to the already established tail would force the
+least tail period $p$ to divide $d$.  Periodicity at $q-1$ would then equate
+the stated unequal letters, a contradiction.  Hence the asserted $q$ is
+minimal in both cases, completing the proof of Theorem~\ref{thm:main}.
+
+\section{Completion of the (2,5) shape}
+
+We briefly identify the exact scope inherited from the source.  Specializing
+Manabe's notation to $(a,b)=(2,5)$ gives $a+b=7$, $\delta=3$, $\eta=1$,
+and $\epsilon=1$.  His Lemma~14, Theorems~28 and~57, and main Theorem~32
+prove pure periodicity in precisely the residue classes
+\[
+ c\equiv1,2,3,5,6\;(\mathrm{mod}\;7).
+\]
+The two uncovered classes are $0$ and $4$.  Theorem~\ref{thm:main} covers
+every admissible member of them: $c=7K$ with $K\ge2$ and $c=7K+4$ with
+$K\ge1$, and it proves positive minimal preperiod in both.  The excluded
+value $c=7$ is the additive point, while the only smaller boundary $c=6$
+belongs to the source-proved residue-$6$ class.  Thus for every $c>5$,
+$c\ne7$, the game is purely periodic exactly in the source's admissible
+residue classes.  This proves Conjecture~50 of~\cite{Manabe2026} for the
+entire shape $(2,5)$, with the exact words above strengthening the required
+non-pure-periodicity conclusion in the two complementary classes.
+
+\section*{Computational and AI assistance disclosure}
+
+An exact-integer Python implementation independently checked the mex
+recurrence, primitive period blocks, and preperiod-boundary mismatches for
+$K=1,\ldots,1000$ in the $7K+4$ family and $K=2,\ldots,1000$ in the $7K$
+family.  These finite computations are diagnostic only; the quantified
+claims follow from the symbolic range partitions and tables above.  An AI
+assistant helped organize the case tables, run the exact checks, and prepare
+the manuscript.  The mathematical proof was subjected to a separate audit,
+but neither the computation nor the audit is presented as a substitute for
+the displayed proof.  This separation between a human-readable reduction
+and exact diagnostic verification also appears in finite discrete-geometry
+certificates based on integer predicates and independent
+implementations~\cite{ZengEtAl2026Certificates}; that work is methodological
+context only and is not used in our proof.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

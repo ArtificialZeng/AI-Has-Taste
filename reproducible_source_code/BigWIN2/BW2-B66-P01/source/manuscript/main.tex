@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks,pdftitle={A Uniform Upper Bound for the Diagonal Maximal-Planar Ramsey Number of K1,3 disjoint union K2},pdfauthor={Xiaojian Zeng}]{hyperref}
+\usepackage[nameinlink,capitalise]{cleveref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\MP}{\mathrm{MP}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\sqcupdot}{\mathbin{\dot\cup}}
+
+\title{A Uniform Upper Bound for the Diagonal Maximal-Planar\\
+Ramsey Number of $K_{1,3}\sqcupdot K_2$}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $H=K_{1,3}\sqcupdot K_2$, with the two components on disjoint
+vertex sets.  We prove that every red--blue edge-colouring of every finite
+simple maximal planar graph on at least $21$ vertices contains a
+monochromatic (not necessarily induced) copy of $H$.  Thus the diagonal
+maximal-planar Ramsey threshold exists and satisfies
+$r_{\MP}(H,H)\leq 21$.  The proof reduces each $H$-free colour graph to
+maximum degree at most two or to a four-vertex edge cover, and then uses a
+planar bipartite count.  The least threshold is not determined, so the
+original exact-value problem remains unresolved.
+\end{abstract}
+
+\section{Context and statement}
+
+Several inequivalent Ramsey notions arise when the host graphs are
+restricted.  In the weak planar-witness formulation, one asks for a single
+planar graph whose every two-edge-colouring contains the target
+\cite{AxenovichEtAl2019}; iterated triangulations have also been studied in
+that formulation \cite{MaTangYu2020}.  Small Ramsey degree is a different
+embedding-colouring invariant: for example, the ordered edge has small
+Ramsey degree three in the class of finite linearly ordered split graphs
+\cite{Zeng2026SmallRamsey}.  Here we instead use the strong convention of
+Baldacchino, Caro and Mifsud \cite{BaldacchinoCaroMifsud2026}: a pair is
+unavoidable when every sufficiently large graph in the host class has the
+required Ramsey property.
+
+Let $\cK_{\MP}$ be the class of finite simple maximal planar graphs.  For
+graphs $A,B$, write $r_{\MP}(A,B)$ for the least integer $N$, when it
+exists, such that every red--blue edge-colouring of every
+$G\in\cK_{\MP}$ with $|V(G)|\geq N$ has a red copy of $A$ or a blue copy
+of $B$.  Copies throughout are ordinary subgraphs, not necessarily induced.
+In particular, a copy of
+\[
+H=K_{1,3}\sqcupdot K_2
+\]
+consists of a claw and a vertex-disjoint edge of the same colour; extra host
+edges among the six selected vertices do not matter.
+
+Baldacchino, Caro and Mifsud classified the connected graphs in the
+diagonal maximal-planar problem and asked for a classification of the
+disconnected graphs \cite[Theorem~2 and Problem~2]{BaldacchinoCaroMifsud2026}.
+The present graph is outside their connected classification.  Our contribution
+is the following uniform bound, not an exact evaluation.
+
+\begin{theorem}\label{thm:main}
+Let $H=K_{1,3}\sqcupdot K_2$.  Every red--blue edge-colouring of every
+$G\in\cK_{\MP}$ with $|V(G)|\geq21$ contains a monochromatic copy of $H$.
+Consequently, $r_{\MP}(H,H)$ exists and $r_{\MP}(H,H)\leq21$.
+\end{theorem}
+
+The proof is self-contained apart from the standard Euler consequences that
+a simple maximal planar graph of order $n\geq3$ has $3n-6$ edges and
+minimum degree at least three, and that a simple planar bipartite graph on
+$q\geq3$ vertices has at most $2q-4$ edges.
+
+\section{A one-colour reduction}
+
+\begin{lemma}[Claw-cover dichotomy]\label{lem:dichotomy}
+If a finite simple graph $F$ contains no copy of $H$, then either
+$\Delta(F)\leq2$, or the four vertices of every chosen claw in $F$ form a
+vertex cover of $F$.
+\end{lemma}
+
+\begin{proof}
+If $F$ has no claw, then $\Delta(F)\leq2$.  Otherwise, fix any claw $C$.
+An edge with both endpoints outside $V(C)$, together with $C$, is a copy of
+$K_{1,3}\sqcupdot K_2$.  Hence every edge meets $V(C)$.
+\end{proof}
+
+The dichotomy can be sharpened around a maximum-degree vertex.
+
+\begin{lemma}\label{lem:maxdegree}
+Let $F$ be $H$-free and let $v$ have maximum degree $d\geq3$ in $F$.
+Then the following hold.
+\begin{enumerate}
+  \item If $d=3$, the four-set $\{v\}\cup N_F(v)$ covers every edge of
+  $F$.
+  \item If $d=4$, every edge not incident with $v$ has both endpoints in
+  $N_F(v)$.  In particular, every nonisolated vertex of $F$ belongs to
+  $\{v\}\cup N_F(v)$.
+  \item If $d\geq5$, every edge of $F$ is incident with $v$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The first assertion is \cref{lem:dichotomy}, applied to the claw formed by
+$v$ and its three neighbours.  Suppose next that $d=4$ and that an edge
+$xy$ is not incident with $v$.  If at most one of $x,y$ lies in $N_F(v)$,
+then three neighbours of $v$ avoid $x$ and $y$; they form with $v$ a claw
+disjoint from $xy$, a contradiction.  Thus both endpoints lie in $N_F(v)$.
+Finally, if $d\geq5$, the endpoints of any edge not incident with $v$
+exclude at most two neighbours of $v$.  Three remaining neighbours form a
+claw with $v$ disjoint from that edge, again a contradiction.
+\end{proof}
+
+\section{Proof of the bound}
+
+\begin{proof}[Proof of \cref{thm:main}]
+Let $G\in\cK_{\MP}$ have order $n$, and suppose that a red--blue
+edge-colouring of $G$ contains no monochromatic $H$.  Let $F_R$ and $F_B$
+be the spanning red and blue colour graphs.  Call a colour type L if its
+maximum degree is at most two, and type C otherwise.  By
+\cref{lem:dichotomy}, every type-C colour contains a claw whose four
+vertices cover all edges of that colour.  We bound $n$ in all possible
+type pairs.
+
+If both colours are type L, then each has at most $n$ edges.  Hence
+\[
+3n-6=e(G)=e(F_R)+e(F_B)\leq2n,
+\]
+which is impossible for $n\geq7$.
+
+Suppose next, after interchanging the colours if necessary, that red is
+type L and blue is type C.  Choose a maximum-degree vertex $v$ of $F_B$,
+and write $d=d_{F_B}(v)$.
+
+If $d=3$, put $S=\{v\}\cup N_{F_B}(v)$.  By
+\cref{lem:maxdegree}, $S$ covers every blue edge.  Every vertex outside
+$S$ has degree at least three in $G$ but red degree at most two, so it is
+incident with a blue edge.  That edge meets $S$.  Distinct outside
+vertices give distinct such cross-edges, while
+\[
+e_{F_B}(S,V(G)\setminus S)
+   \leq \sum_{x\in S}d_{F_B}(x)\leq12.
+\]
+Therefore $n\leq4+12=16$.
+
+If $d=4$, \cref{lem:maxdegree} says that every vertex outside the
+five-set $\{v\}\cup N_{F_B}(v)$ is blue-isolated.  Such a vertex would
+have at least three red incident edges, contrary to red being type L.
+Thus $n\leq5$.
+
+If $d\geq5$, every blue edge is incident with $v$.  All edges of $G-v$
+are consequently red.  Since $d_G(v)\leq n-1$,
+\[
+e(G-v)=3n-6-d_G(v)\geq2n-5.
+\]
+On the other hand, the red graph on the $n-1$ vertices of $G-v$ has
+maximum degree at most two and hence at most $n-1$ edges.  The inequalities
+are incompatible for $n\geq5$.  This completes both mixed type cases.
+
+It remains to consider two type-C colours.  Choose a red claw with
+four-vertex set $S_R$ and a blue claw with four-vertex set $S_B$.  Each
+set covers all edges of its own colour.  Put
+\[
+S=S_R\cup S_B,\qquad T=V(G)\setminus S,
+\qquad s=|S|\leq8,\quad t=|T|.
+\]
+There is no edge inside $T$: an edge of either colour would miss the
+corresponding cover.  Every vertex of $T$ therefore sends all of its at
+least three host edges to $S$.  The simple planar bipartite graph consisting
+of the $S$--$T$ edges gives
+\[
+3t\leq e_G(S,T)\leq2(s+t)-4.
+\]
+Thus $t\leq2s-4$, and
+\[
+n=s+t\leq3s-4\leq20.
+\]
+
+Every $H$-avoiding colouring therefore has order at most $20$.  This proves
+the asserted conclusion for every $n\geq21$.
+\end{proof}
+
+\section{Scope and limitations}
+
+The argument proves existence and the explicit upper bound $21$, but gives
+no avoiding colouring at order $20$ and no lower bound beyond the trivial
+requirement $|V(H)|=6$.  It therefore does not determine the least value of
+$r_{\MP}(H,H)$.  Nor does it classify other disconnected graphs in the
+broader problem of Baldacchino, Caro and Mifsud.  The comparison above is
+limited to the cited literature; no global priority claim is made.
+
+AI assistance was used in literature screening, proof organization,
+consistency checking, and editing.  The mathematical argument was checked
+separately at the definition and quantifier level.  No exhaustive search,
+computer algebra, numerical experiment, or proof assistant is used in the
+proof of \cref{thm:main}.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

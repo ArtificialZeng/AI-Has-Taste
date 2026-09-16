@@ -1,0 +1,145 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\title{Strict Domination Growth from $J(8,4)$ to $J(9,4)$}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\author{Jianming Wang}
+\address{Shanghai Siqiang Intelligent Control Robot Engineering Co., Ltd}
+\email{847017136@qq.com}
+\date{September 2, 2026}
+\hypersetup{pdftitle={Strict Domination Growth from J(8,4) to J(9,4)},pdfauthor={Xiaojian Zeng; Jianming Wang}}
+
+\begin{document}
+\begin{abstract}
+We prove $\gamma(J(8,4))<\gamma(J(9,4))$, the first parameter pair in the
+$r=4$ case of the strict-monotonicity conjecture for domination numbers of
+Johnson graphs.  An explicit six-vertex family dominates $J(8,4)$.  On the
+other hand, a six-vertex dominating family in $J(9,4)$ would partition the
+graph into radius-one balls and thereby induce a $2$-$(9,4,1)$ design.  The
+latter is impossible by the point-replication equation $3r_x=8$.  Thus the
+proof needs neither exact domination numbers nor a solver optimality claim.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+For positive integers $n\ge r$, the Johnson graph $J(n,r)$ has vertex set
+$\binom{[n]}r$, with two distinct vertices adjacent when their intersection
+has size $r-1$.  A set $D$ of vertices dominates a graph when every vertex is
+in $D$ or adjacent to a member of $D$; the minimum possible size is denoted by
+$\gamma$.
+
+Cornet, Dravec, and Torres conjectured that
+\[
+ \gamma(J(n,r))<\gamma(J(n+1,r))\qquad(r\ge3,\ n\ge2r)
+\]
+\cite[Conjecture~14]{CornetDravecTorres2025}.  Together with the even-$n$
+result of Cornet, Dravec, and Torres, Lee and Oh completed the case $r=3$
+and recorded in June 2026 that the cases $r\ge4$ remained open
+\cite[Concluding remarks]{LeeOh2026}.  We settle the boundary parameter pair
+$(r,n)=(4,8)$.
+
+\begin{theorem}\label{thm:main}
+One has
+\[
+ \gamma(J(8,4))\le6<7\le\gamma(J(9,4)).
+\]
+In particular, $\gamma(J(8,4))<\gamma(J(9,4))$.
+\end{theorem}
+
+The theorem intentionally does not assert either domination number exactly.
+The separated bounds are enough, and their proof is elementary apart from a
+small explicit witness.
+
+\section{A radius-one obstruction}
+For $A\in\binom{[n]}4$, write
+\[
+ B(A)=\{X\in\tbinom{[n]}4:|A\cap X|\ge3\}
+\]
+for its closed neighbourhood.  Replacing no element or exactly one element of
+$A$ gives
+\begin{equation}\label{eq:ballsize}
+ |B(A)|=1+4(n-4).
+\end{equation}
+
+\begin{lemma}\label{lem:intersection}
+If $A,C\in\binom{[n]}4$ and $|A\cap C|\ge2$, then
+$B(A)\cap B(C)\ne\varnothing$.
+\end{lemma}
+\begin{proof}
+If $|A\cap C|\ge3$, one of the centres itself belongs to both closed
+neighbourhoods.  If $A\cap C=Q$ has size two, choose
+$a\in A\setminus C$ and $c\in C\setminus A$.  Then the four-set
+$Q\cup\{a,c\}$ meets each centre in three points.
+\end{proof}
+
+\begin{lemma}\label{lem:lower}
+$\gamma(J(9,4))\ge7$.
+\end{lemma}
+\begin{proof}
+There are $\binom94=126$ vertices, while \eqref{eq:ballsize} gives
+$|B(A)|=21$.  Fewer than six balls cannot cover all vertices.  If six balls
+did cover them, equality in
+\[
+ \left|\bigcup_{A\in D}B(A)\right|\le\sum_{A\in D}|B(A)|=6\cdot21=126
+\]
+would force the balls to be pairwise disjoint.  Lemma~\ref{lem:intersection}
+then implies that the six centre four-sets meet pairwise in at most one point.
+
+Consequently, the six centres contain $6\binom42=36$ distinct unordered
+pairs.  Since $\binom92=36$, every pair of points of $[9]$ occurs in exactly
+one centre.  Fix a point $x$ and let $r_x$ be the number of centres containing
+$x$.  Each such centre accounts for three of the eight pairs containing $x$,
+and every such pair is accounted for exactly once.  Hence $3r_x=8$, an
+impossibility.  Thus six balls cannot dominate, proving the claim.
+\end{proof}
+
+\section{The explicit upper bound}
+\begin{lemma}\label{lem:upper}
+$\gamma(J(8,4))\le6$.
+\end{lemma}
+\begin{proof}
+Consider the following family:
+\begin{align*}
+\mathcal D=\{&1256,\ 1348,\ 1678,\\
+             &2347,\ 2568,\ 3457\},
+\end{align*}
+where, for example, $1256$ abbreviates $\{1,2,5,6\}$.  Direct enumeration of
+the $\binom84=70$ four-sets shows that each meets a member of $\mathcal D$ in
+at least three points.  For completeness, the accompanying verifier performs
+this check twice: once by the intersection predicate and once by explicitly
+generating all one-element replacements.  Therefore $\mathcal D$ dominates
+$J(8,4)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Combine Lemmas~\ref{lem:lower} and~\ref{lem:upper}.
+\end{proof}
+
+\section{Reproducibility and limitations}
+The witness is stored as a literal JSON list, and a short Python verifier
+checks its syntax, both evaluations of its coverage, all closed-ball sizes,
+and the local intersection lemma for every pair of centres in $J(9,4)$.  The
+command is \texttt{python3 code/verify\_certificate.py}.  All arithmetic is
+integer and deterministic.  CP-SAT was used only to discover the six-set
+witness; no solver status, floating-point value, or uncheckable search output
+is used in the proof.
+
+The result proves only the strict inequality at $(n,r)=(8,4)$.  It neither
+determines the two domination numbers individually nor addresses later
+$r=4$ instances.  Literature and priority searches were conducted through
+September 2, 2026.  The mathematical certificate and every logical
+implication needed for the theorem are included in the source package for
+independent checking.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

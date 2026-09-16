@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\geometry{margin=1in}
+\hypersetup{
+  pdftitle={The Connectivity-Code Number of C3 square C4 Is 16},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\F}{\mathbb F}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\bits}[1]{\ensuremath{\mathtt{#1}}}
+
+\title{The Connectivity-Code Number of $C_3\mathbin{\square}C_4$ Is $16$}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite graph $H$, a connectivity code is a family of edge subsets
+whose pairwise symmetric differences are connected spanning subgraphs of
+$H$.  We determine the exact maximum for the first fixed non-diagonal
+product of cycles considered here:
+\[
+  m(C_3\mathbin{\square}C_4)=16.
+\]
+The degree-four restriction bound gives the upper bound for arbitrary,
+possibly nonlinear families.  For the lower bound we give four explicit
+24-bit generators.  A compact table supplies an ordered spanning tree in
+each of the 15 nonzero generated words, and therefore certifies all 120
+pairwise differences of the resulting 16-word linear code.
+\end{abstract}
+
+\section{Context and statement}
+
+Let $H$ be a finite simple graph.  Following Alon~\cite{Alon2024}, a
+\emph{connectivity code} for $H$ is a family $\cC\subseteq 2^{E(H)}$ such
+that $(V(H),A\mathbin{\triangle}B)$ is connected for every two distinct
+$A,B\in\cC$.  Write $m(H)$ for the maximum cardinality of such a family.
+The standard cut-restriction argument gives
+$m(H)\leq 2^{k'(H)}\leq 2^{\delta(H)}$~\cite{Alon2024}.
+
+Bai, Gao, Ma, and Wu proved that
+$m(C_m\mathbin{\square}C_n)\leq 16$ for $m,n\geq3$ and obtained equality
+for $m=n=3$~\cite[Proposition~1.7]{BaiEtAl2024}.  Tian's subsequent work
+constructs extremal connectivity codes in infinitely many regular graphs
+of every degree at least four, and explicitly records determination of
+products of cycles as a remaining general problem~\cite[Section~6(d)]{Tian2026}.
+The result below concerns only the single graph $C_3\mathbin{\square}C_4$;
+it makes no claim about all products of cycles or about absolute priority
+beyond those sources.
+
+\begin{theorem}\label{thm:main}
+Let $H=C_3\mathbin{\square}C_4$ on
+$\mathbb Z_3\times\mathbb Z_4$.  If $m(H)$ is maximized over all families
+of edge subsets, not only linear families, then
+\[
+  m(H)=16.
+\]
+\end{theorem}
+
+\section{Upper bound and explicit construction}
+
+Fix a vertex $v$ of $H$.  The restriction map
+\[
+  \cC\longrightarrow 2^{\delta_H(v)},\qquad
+  A\longmapsto A\cap\delta_H(v)
+\]
+is injective on every connectivity code $\cC$.  Indeed, if two distinct
+codewords had the same restriction, their symmetric difference would
+contain no edge incident with $v$, so $v$ would be isolated.  The graph
+$H$ is four-regular; hence $|\cC|\leq 2^4=16$.  Notice that this argument
+does not assume linearity.
+
+It remains to attain the bound.  Number the vertex $(i,j)$ by $4i+j$.
+Number the 24 edges by
+\begin{align*}
+ e_{4i+j}&=\{(i,j),(i+1\bmod 3,j)\},\\
+ e_{12+4i+j}&=\{(i,j),(i,j+1\bmod 4)\},
+ \qquad 0\leq i<3,\quad 0\leq j<4.
+\end{align*}
+We identify an edge set with a 24-bit integer, with $e_r$ represented by
+bit $r$ (the least significant bit is bit $0$).  In $\F_2^{24}$ set
+\[
+ g_0=\bits{470c7f},\qquad g_1=\bits{296bf4},\qquad
+ g_2=\bits{fb304a},\qquad g_3=\bits{17e0e8},
+\]
+where the displayed strings are hexadecimal.  For
+$a=\sum_{r=0}^3 a_r2^r\in\{0,\ldots,15\}$ define
+\[
+  W_a=\bigtriangleup_{r:a_r=1}g_r,
+  \qquad
+  \cC=\{W_a:0\leq a<16\}.
+\]
+
+Table~\ref{tab:certificate} is a directly checkable certificate.  In each
+row the mask is $W_a$, and all listed edge indices have bit $1$ in that
+mask.  Moreover, the edge indices are ordered so that the first edge has
+two vertices and every later edge has exactly one endpoint among the
+vertices already reached.  Each row therefore lists an 11-edge spanning
+tree on all 12 vertices.
+
+\begin{table}[htbp]
+\centering
+\caption{A spanning-tree certificate for every nonzero generated word.}
+\label{tab:certificate}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}ccl@{}}
+\toprule
+$a$ (hex) & $W_a$ (hex) & ordered spanning-tree edge indices \\
+\midrule
+$1$ & \bits{470c7f} & $0,4,16,1,5,17,2,6,18,22,3$ \\
+$2$ & \bits{296bf4} & $8,4,16,19,5,7,9,21,11,13,6$ \\
+$3$ & \bits{6e678b} & $0,8,19,3,7,18,14,22,17,13,21$ \\
+$4$ & \bits{fb304a} & $12,1,13,16,17,19,6,3,21,22,20$ \\
+$5$ & \bits{bc3c35} & $0,12,4,19,13,20,23,18,10,5,11$ \\
+$6$ & \bits{d25bbe} & $8,12,4,20,23,1,7,11,22,17,14$ \\
+$7$ & \bits{9557c1} & $0,8,12,16,20,23,7,18,6,10,14$ \\
+$8$ & \bits{17e0e8} & $15,3,14,7,18,13,6,17,5,16,20$ \\
+$9$ & \bits{50ec97} & $0,15,4,11,14,20,7,22,2,13,1$ \\
+$a$ & \bits{3e8b1c} & $8,15,4,20,3,11,9,21,18,2,17$ \\
+$b$ & \bits{798763} & $0,8,15,16,19,20,1,21,6,10,22$ \\
+$c$ & \bits{ecd0a2} & $12,15,1,14,5,21,22,7,23,18,19$ \\
+$d$ & \bits{abdcdd} & $0,12,15,4,16,19,11,14,17,10,21$ \\
+$e$ & \bits{c5bb56} & $8,12,15,4,23,1,9,13,22,2,18$ \\
+$f$ & \bits{82b729} & $0,8,12,15,23,9,13,3,5,10,17$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Consequently every nonzero $W_a$ is connected and nonempty.  The 16 words
+are distinct: if $W_a=W_b$ for $a\neq b$, then
+$W_{a\mathbin{\mathrm{XOR}}b}=0$, contrary to the table.  Finally,
+\[
+  W_a\mathbin{\triangle}W_b=W_{a\mathbin{\mathrm{XOR}}b},
+\]
+which is connected whenever $a\neq b$.  Thus $\cC$ is a 16-word
+connectivity code.  Together with the upper bound, this proves
+Theorem~\ref{thm:main}.
+
+\section{Exact replay and scope}
+
+The displayed table is sufficient for a manual finite verification, but
+the construction was also replayed from serialized data.  A verifier
+regenerates $C_3\mathbin{\square}C_4$ from its coordinates, reconstructs
+all 16 words, checks the 15 displayed spanning trees, and independently
+runs graph traversal on all $\binom{16}{2}=120$ pairwise differences.
+Every test uses integer and bit operations; floating-point comparisons are
+absent.  The four generators were discovered with an OR-Tools CP-SAT
+model imposing local rank and integral-flow connectivity constraints, but
+the solver is outside the proof's trust boundary: the theorem follows
+from the generators and the spanning-tree table alone.
+
+This separation of discovery from exact certification is also used in
+recent work on finite code and clique problems, where generated objects
+are reconstructed with integer predicates and checked by independent
+implementations~\cite[Sections~4 and 6]{ZengEtAl2026}.  Here the finite
+certificate establishes only the lower bound for the specified graph;
+the unrestricted upper bound is the deductive restriction argument above.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, the formulation and
+implementation of the discovery computation, certificate extraction,
+independent exact replay, adversarial audit organization, and manuscript
+preparation.  OR-Tools CP-SAT was used only to discover the four displayed
+generators.  Language-model output and solver status are not mathematical
+evidence for Theorem~\ref{thm:main}; its proof is the restriction argument
+and the explicit spanning-tree certificate above.  No proof assistant was
+used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks,pdftitle={The 4 x 4 Torus Has Unbounded-Speed Robber Cop Number Four},pdfauthor={Xiaojian Zeng}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{The $4\times4$ Torus Has Unbounded-Speed Robber Cop Number Four}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In the fast-robber game on a graph, the cops move simultaneously by at most
+one edge and the robber then moves to any vertex reachable along a cop-free
+path.  We determine the exact cop number of the smallest even square torus not
+covered by the available asymptotic torus bounds:
+\[
+  c_{1,\infty}(C_4\mathbin{\square}C_4)=4.
+\]
+The proof is an exhaustive finite attractor certificate.  For four cops, a
+rank-decreasing policy covers all 48,960 legal multiset states and forces
+capture in at most four cop moves.  For three cops, a closed set of 4,576
+states supplies an infinite evasion strategy.  A separately implemented
+checker expands the multiset certificate to labelled cops and verifies every
+ordered simultaneous move using exact integer and bit-mask operations.
+\end{abstract}
+
+\section{Context and result}
+
+The fast-robber variant of Cops and Robbers was studied systematically for
+bounded robber speed by Fomin, Golovach, Kratochv\'{\i}l, Nisse, and
+Suchan~\cite{FominEtAl2010}.  We use the infinite-speed convention of
+Kinnersley and Townsend~\cite{KinnersleyTownsend2022}: the cops choose their
+initial vertices first, the robber then chooses an unoccupied vertex, and each
+round consists of one simultaneous cop step followed, unless capture has
+already occurred, by an arbitrarily long cop-free robber move.
+
+For square tori, Kinnersley and Townsend proved
+\[
+  2m-24\leq c_{1,\infty}(C_m\mathbin{\square}C_m)\leq 2m
+  \qquad(m\geq18)
+\]
+\cite[Theorem~2.7]{KinnersleyTownsend2022}.  Biswas's later
+quotient-sweeping bound gives
+\(c_{1,\infty}(C_m^{\square k})\leq2m^{k-1}\) for \(m\geq4\),
+and restates the preceding two-dimensional estimate~\cite[Section~5.2]
+{Biswas2026}.  Thus the cited results give the non-exact upper bound $8$ when
+\(m=4\).  The contribution here is the exact value for this single
+16-vertex graph.  It makes no assertion about larger tori and no priority
+assertion beyond this bounded comparison with the cited literature.
+
+Exact finite certificates have also been used to delimit small discrete
+models in other settings, with the discovery computation separated from an
+exact verifier that reconstructs the instance~\cite[Sections~6--7]
+{ZengEtAl2026Certificates}.  We follow that reproducibility pattern here, but
+the reachability-game reduction and all quantified checks needed for the
+present theorem are stated below.
+
+Let $G=C_4\mathbin{\square}C_4$, with vertex set $\Z_4^2$.  Distinct
+vertices $(x,y)$ and $(x',y')$ are adjacent when exactly one coordinate is
+equal and the other differs by $1$ modulo $4$.  Repeated cop positions,
+cop collisions, swaps, and stays are allowed.  After the cops move to a set of
+occupied vertices $S$, capture is tested immediately.  If the robber has not
+been captured, its possible endpoints are exactly the vertices in the
+component of $G-S$ containing its current vertex.  Vacated cop vertices may
+therefore be used on that move.
+
+\begin{theorem}\label{thm:main}
+Under the preceding placement, move-order, and capture convention,
+\[
+  c_{1,\infty}(C_4\mathbin{\square}C_4)=4.
+\]
+\end{theorem}
+
+\section{Finite attractor and certificates}
+
+We first give the mathematical semantics of the computation.  A $k$-cop
+configuration $C$ is a multiset of $k$ vertices.  Write $C\leadsto D$ if
+the occurrences in $C$ can be matched bijectively to those in $D$ so that
+each matched pair is equal or adjacent.  This is precisely a legal
+simultaneous cop move, including moves between configurations with repeated
+positions.  A legal state at the start of a cop turn is a pair $(C,r)$ with
+$r\notin\supp(C)$.  If $r\notin\supp(D)$, let $R_D(r)$ be the vertex set
+of the component of $r$ in $G-\supp(D)$.
+
+Set $W_0=\varnothing$, and for $t\geq0$ define
+\begin{align*}
+W_{t+1}=W_t\ \cup\ 
+\bigl\{(C,r):{}&\text{ there is a }D\text{ with }C\leadsto D\text{ such that}\\
+&r\in\supp(D)\text{, or }(D,r')\in W_t
+  \text{ for every }r'\in R_D(r)\bigr\}.
+\end{align*}
+This is the least reachability attractor: the cops choose $D$, after which
+every legal robber response must lie in the earlier set.
+
+\begin{lemma}\label{lem:rank}
+If $(C,r)\in W_t$, the cops can force capture in at most $t$ cop moves.
+If $L$ is a set of legal states such that every cop configuration has a
+state in $L$, and for each $(C,r)\in L$ and each $D$ with
+$C\leadsto D$ there is an $r'\in R_D(r)$ for which $(D,r')\in L$, then
+the robber can evade $k$ cops forever.
+\end{lemma}
+
+\begin{proof}
+The first assertion is induction on the least $t$ for which the state enters
+the attractor.  A witnessing move either captures immediately or leaves only
+responses of smaller rank.  For the second assertion, the robber initially
+chooses a certified state in $L$, then uses the closure condition after each
+cop move.  Induction over the rounds keeps the state in $L$, so capture never
+occurs.
+\end{proof}
+
+The certificate represents a cop configuration by its lexicographically
+ordered multiset.  It does not quotient by any graph automorphism; the only
+quotient is permutation of cop labels.  Coordinates are encoded by
+$(x,y)\mapsto4x+y$, for $x,y\in\{0,1,2,3\}$.  The 32 undirected edges are
+stored as sorted integer pairs.  For an unambiguous graph check, the compact
+JSON serialization
+\[
+\texttt{\{"vertices":[0,...,15],"edges":[...sorted pairs...]\}}
+\]
+has SHA-256 digest
+\begin{center}
+\small\nolinkurl{dc5ff1ba83c901714eae763d51d3c87d763524cff2a1b8c4a57929254d106d5e}
+\end{center}
+The accompanying compact JSON attractor certificate has SHA-256 digest
+\begin{center}
+\small\nolinkurl{a544375352b451c4f703477b9ea88c3dfad6096573cb3c1b4e2cc80dbb8bc779}
+\end{center}
+
+For four cops there are 3,876 multiset configurations and 48,960 legal states.
+Every legal state belongs to $W_4$.  For each state, the certificate records
+its first-entry rank and a witnessing destination $D$.  The rank histogram is
+\[
+\begin{array}{c|rrrr}
+\text{rank}&1&2&3&4\\ \hline
+\text{states}&32{,}944&9{,}344&6{,}496&176.
+\end{array}
+\]
+The verifier checks that each stored destination lifts to a legal move of the
+labelled cops.  It then checks either immediate capture or, for every vertex
+in $R_D(r)$, a positive rank strictly smaller than the source rank.  Thus
+Lemma~\ref{lem:rank} supplies a replayable four-cop strategy from every
+placement and guarantees capture within four cop moves.
+
+For three cops there are 816 multiset configurations and 10,880 legal states.
+The fixed attractor contains 6,304 states, and its complement $L$ contains
+4,576.  The certificate verifies that $L$ is nonempty above every one of the
+816 initial configurations.  For each $(C,r)\in L$ and every distinct
+destination multiset $D$, it stores a vertex $r'\in R_D(r)$ with
+$(D,r')\in L$.  In particular, no such cop move captures $r$.  The second
+part of Lemma~\ref{lem:rank} therefore gives a robber strategy against three
+cops.
+
+The separately implemented checker constructs adjacency directly from
+modular coordinate differences and imports no search or exporter code.  It
+expands the certificate to all 810,000 legal ordered four-cop states.  For the
+lower bound it checks 2,662,000 ordered cop moves from the 21,296 labelled
+states represented by $L$, including all $5^3$ stays-or-steps from each
+labelled three-cop tuple.  All comparisons use integers, finite sets, and bit
+masks.  Combining the verified upper and lower bounds proves
+Theorem~\ref{thm:main}.
+
+\section{Reproducibility and disclosure}
+
+The ancillary files include the certificate exporter, the compact certificate,
+the separately written labelled-cop checker, and its deterministic report.
+From the project root, the decisive checks are reproduced by
+\begin{verbatim}
+python3 evidence/export_attractor_certificate.py
+python3 evidence/check_labelled_certificate.py
+\end{verbatim}
+The first command reconstructs the certificate from the game definition; the
+second checks the certificate after reconstructing the graph and all labelled
+moves independently.  Neither command uses floating-point arithmetic, random
+seeds, numerical tolerances, or an external solver.
+
+OpenAI Codex assisted with literature searching, finite-state design, draft
+code, adversarial audit organization, and initial manuscript preparation.
+Language-model output is not used as mathematical evidence.  The theorem is
+supported by the explicit attractor argument, the exact certificate, and the
+deterministic verifier described above.  No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

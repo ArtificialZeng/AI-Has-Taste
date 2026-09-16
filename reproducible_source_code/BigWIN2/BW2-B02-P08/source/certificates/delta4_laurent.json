@@ -1,0 +1,95 @@
+{
+  "certificate_type": "exact Laurent-polynomial obstruction",
+  "claim": "The Chang--Fuchs component-graph EGF for RV_{ell,4} has nonzero coefficient 5/16 at X^3, X=sqrt(1-2z).",
+  "source_basis": {
+    "chang_fuchs_arxiv": "2401.08958v2",
+    "chang_fuchs_pdf_sha256": "9acca535cfefcd597cc7d85fcd03f6c26034f5dc542ac111888490fef601b457",
+    "batle_arxiv": "2606.24325v2",
+    "batle_pdf_sha256": "53ef64b65dd7764cc5b066f22e6ec9d523ae79233fe64f71f08eeb7c2be2be02"
+  },
+  "one_component_seeds_M_ell_4_for_ell_4_to_11": [
+    6249,
+    97182,
+    1701855,
+    33121890,
+    709428825,
+    16587636030,
+    420498508815,
+    11489311483650
+  ],
+  "N4_coefficients_ascending_z": [
+    6249,
+    3447,
+    2475,
+    -2370,
+    4215,
+    -4968,
+    3216,
+    -960
+  ],
+  "D5": {
+    "labelled_with_root_fixed": 1587,
+    "fully_vertex_labelled_sink_row_recurrence": 7935,
+    "unlabelled_rooted_isomorphism_classes": 79,
+    "automorphism_order_histogram": {
+      "1": 56,
+      "2": 19,
+      "4": 1,
+      "6": 2,
+      "24": 1
+    },
+    "completeness_checks": [
+      "all parent-multiset choices followed by an acyclicity test",
+      "all topological orders followed by exact deduplication",
+      "sink-row inclusion-exclusion recurrence gives 7935 = 5*1587"
+    ],
+    "published_figure_discrepancy": "Cardona--Zhang (2020), Figure 9, says 82 classes, but its 82 displayed orbit sizes sum to 7905 fully labelled objects; the exact recurrence gives 7935 and canonical enumeration gives 79 distinct classes. The figure is not used as certificate input."
+  },
+  "rv4_laurent_coefficients": {
+    "-15": "45045/128",
+    "-14": "-480",
+    "-13": "-45045/64",
+    "-12": "1045",
+    "-11": "45835/128",
+    "-10": "-586",
+    "-9": "-319/4",
+    "-8": "385/8",
+    "-7": "4487/128",
+    "-6": "-19/8",
+    "-5": "1111/64",
+    "-4": "-17/8",
+    "-3": "-331/128",
+    "-2": "13/8",
+    "-1": "45/32",
+    "0": "-4",
+    "1": "97/32",
+    "2": "-5/4",
+    "3": "5/16"
+  },
+  "decisive_coefficient": {
+    "exponent": 3,
+    "coefficient": "5/16"
+  },
+  "corrected_closed_form_for_ell_at_least_5": {
+    "identity": "Delta_4(ell)=A0(ell)(2ell-3)!!+(15/16)(2ell-5)!!-B0(ell)2^(ell-3)ell!",
+    "A0": "8*ell^7+(110/3)*ell^6-(1027/105)*ell^5-(34739/210)*ell^4-(1088/5)*ell^3-(7831/140)*ell^2+(48467/840)*ell+309/16",
+    "A0_degree": 7,
+    "A0_leading_coefficient": "8",
+    "B0": "64*ell^5+82*ell^4-(985/6)*ell^3-(1091/2)*ell^2-(1633/3)*ell-194",
+    "B0_degree": 5,
+    "B0_leading_coefficient": "64",
+    "nonpolynomial_equivalent": "(A0(ell)+15/(16*(2ell-3)))(2ell-3)!!-B0(ell)2^(ell-3)ell!"
+  },
+  "finite_degree_bound_cross_check": {
+    "unknowns": "8 coefficients of deg(A)<=7 and 6 coefficients of deg(B)<=5",
+    "fit_leaf_range": "5..18",
+    "test_leaf": 19,
+    "delta4_at_19": "618911914073871797682864561000",
+    "predicted_from_unique_fit": "618911914073871699607286961000",
+    "strict_integer_residual_actual_minus_predicted": "98075577600000",
+    "fitted_A": "(376049120*l^7+1723183700*l^6-501115006*l^5-8948989651*l^4-20292779689*l^3-25130654731*l^2+2684675127*l+8131364010)/47006190",
+    "fitted_B": "(516089*l^5+659393*l^4-1423835*l^3-5982737*l^2-12072222*l-10513296)/8064"
+  },
+  "exact_consequence": "No polynomials A,B over a characteristic-zero field can represent RV_{ell,4}, or Delta_4 after subtraction of the proven TC_{ell,4} polynomial-basis formula, as A(ell)(2ell-3)!!-B(ell)2^(ell-3)ell! for all sufficiently large ell.",
+  "generated_utc": "2026-08-29T10:55:00Z"
+}

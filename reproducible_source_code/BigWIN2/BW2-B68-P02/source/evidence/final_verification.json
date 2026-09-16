@@ -1,0 +1,108 @@
+{
+  "canonizer_binary_sha256": "06e4aeccf03e35d27bb74dda6d2c5309d959f3819345168fbd6a98cb92669850",
+  "canonizer_source_sha256": "36664048dcdf3d1c1edb626c3602c86b759a4246312ce52c03274b28d613621b",
+  "census_total": 45982,
+  "classified_graphs_through_order_16": 4681,
+  "drat_checker_binary_sha256": "9d9c6f706cc5ad81f569ac429faf0c3269c5806c7be0ac936af9c2d1daa7260f",
+  "drat_checker_source_sha256": "d834b649f437e091597f5347f259b9f681087f89ca0844d0cee250a1a1a0c2ee",
+  "generator_sha256": "1060a28fdd58062fe3e50fc853f5a7535515be35a251772f622fb6c4fab21ac5",
+  "job_id": "win-00068-p02-research-5cb899a40f40",
+  "least_counterexample_classes": 16,
+  "least_counterexample_order": 16,
+  "networkx_version": "3.4.2",
+  "positive_colorings_checked": 4368,
+  "primary_cnf_bindings_checked": 329,
+  "primary_drat_proofs_replayed": 329,
+  "pysat_version": "1.8.dev24",
+  "python_version": "3.10.12",
+  "scope": "Rebuild and byte-reproduce the complete n=4,6,...,18 cubic census; independently prove census completeness/nonisomorphism; verify every positive coloring through n=16; bind and replay 329 primary DRAT certificates; and bind and replay a second encoding for all 16 least-order counterexamples.",
+  "script": "evidence/scripts/final_verify.py",
+  "second_encoding_bindings_checked": 16,
+  "second_encoding_drat_proofs_replayed": 16,
+  "seconds": 61.651293714000076,
+  "source_sha256": "6ce58a7ef27abff3de2371ca219430179879b43f26e8da5e94927a140aa70a75",
+  "status": "pass",
+  "steps": [
+    {
+      "command": [
+        "bash",
+        "tools/build_geng.sh"
+      ],
+      "last_line": "1060a28fdd58062fe3e50fc853f5a7535515be35a251772f622fb6c4fab21ac5  /home/ailab/4math-open-problems/projects/win-00068-p02/tools/nauty-root/geng.rebuilt",
+      "output_sha256": "cf0fd0fd5cec764e8a5192711d20800ff1a19f23328b0007f120d6707b971758",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "bash",
+        "tools/build_checkers.sh"
+      ],
+      "last_line": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/regenerate_census.py"
+      ],
+      "last_line": "{\"status\": \"pass\", \"total\": 45982, \"orders\": 8}",
+      "output_sha256": "279b4a1bf771b7ec08bbfc88323a9021ee06167c8cc92fe184efd6e542c5bc9d",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/verify_census.py"
+      ],
+      "last_line": "{\"checker\": \"evidence/scripts/verify_census.py\", \"checks\": [\"graph6 decode/re-encode\", \"order and edge count\", \"simplicity and looplessness\", \"3-regularity\", \"connectedness\", \"literal canonical-code uniqueness\", \"expected order-by-order counts\"], \"combined_order\": \"n=4,6,...,18; within each file geng -l traversal/output order\", \"combined_sha256\": \"91781c09a687e69fab0719e58a3dff3585aa25d1199960c585a494d07ddb99b6\", \"limitation\": \"Literal uniqueness is decisive only conditional on geng -l producing canonical labels; this checker is not an independent canonizer.\", \"networkx_version\": \"3.4.2\", \"orders\": [{\"count\": 1, \"first_graph6\": \"C~\", \"last_graph6\": \"C~\", \"n\": 4, \"sha256\": \"62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b\"}, {\"count\": 2, \"first_graph6\": \"Es\\\\o\", \"last_graph6\": \"E{Sw\", \"n\": 6, \"sha256\": \"ba21a6e2d7d66e9a1f87dc625de77b1a40a624c9d4c7ea323c225d028d0b038a\"}, {\"count\": 5, \"first_graph6\": \"Gs@ipo\", \"last_graph6\": \"GtP@Ww\", \"n\": 8, \"sha256\": \"8e99bbe0d82a1c4aa946adea55cf3b13b9ed4aaf264931ae1ffb0adcca151066\"}, {\"count\": 19, \"first_graph6\": \"Is?AXW[[?\", \"last_graph6\": \"It?IQScDG\", \"n\": 10, \"sha256\": \"90b5fc4c0d570031df68c7473358874923ad3772f92ce9e5d79bbb14b961eb31\"}, {\"count\": 85, \"first_graph6\": \"Ks?GGGRCrOL?\", \"last_graph6\": \"Kt?GWK@OI@f?\", \"n\": 12, \"sha256\": \"ab1707a4c7b004582b444351104013d593ad037c6c4f4c6831dc97aeaa5d94bd\"}, {\"count\": 509, \"first_graph6\": \"Ms??GOKB?eCESOW_?\", \"last_graph6\": \"Ms??W\\\\?CI@CAH@EA?\", \"n\": 14, \"sha256\": \"c0a97be1aa900640a651ce7fd68e9dc81d0465c3f910ee50ac1ecba5b03c4cd3\"}, {\"count\": 4060, \"first_graph6\": \"Os?GGG???FDACKCKGWBO?\", \"last_graph6\": \"Ot?GGGA?gA?HOKOBD??o@\", \"n\": 16, \"sha256\": \"6b8bbbe66a6f8c110f3f289194b1c097e7f92c2a27cef5a9b4f73d4110956ea3\"}, {\"count\": 41301, \"first_graph6\": \"Qs??GG???D_M@?E?b?P@_Oo@g??\", \"last_graph6\": \"Qt?GW???G@_E@oA?G?I?BGQ?PC?\", \"n\": 18, \"sha256\": \"840a9c0925044b435d99337694f145309f8412db03066381c46972e0371c101b\"}], \"status\": \"pass\", \"total\": 45982}",
+      "output_sha256": "6a84f7a8f936ac99ae798e1ee8a8eb344fc6a63a1b5fc266597fd31e2ab7554f",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/independent_census.py"
+      ],
+      "last_line": "{\"n\": 18, \"count\": 41301, \"unique_isomorphism_classes\": 41301, \"census_sha256\": \"840a9c0925044b435d99337694f145309f8412db03066381c46972e0371c101b\", \"canonical_table\": \"evidence/canonical_n18.tsv\", \"canonical_table_sha256\": \"211d5b84c6b01594542d655c738acd714d9a5d80125867ea072b145970452d47\", \"orbit_weighted_labeled_count\": 187663723374359232000, \"independent_connected_labeled_count\": 187663723374359232000, \"independent_all_labeled_count\": 187747837889699887800, \"relabelings_checked\": 41301, \"max_search_nodes\": 3567, \"max_leaves\": 1792}",
+      "output_sha256": "889550f003468141527a65bafd7acd18275893b1c26064e714fabbe32e560a23",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/verify_witnesses.py"
+      ],
+      "last_line": "{\"candidate_graph6\": [\"Os?GOCF@O??ACBCBL?B?O\", \"Ot?GOCA?WB@?ODOBC_?g@\", \"Os?GO?C?_MAECKOOCGJO?\", \"Os?GOKE??@`?CDCBKABA?\", \"Os?GGOB@OO?OGBCBGEB_?\", \"Ot?GOKFA??_A?B?BK?Q_A\", \"Ov?GW?@?OM?E?KA?G?h?E\", \"Os?GOGA?AOgoGWGWAA?_`\", \"Os??WWK?@CaGCGOCCAI?K\", \"Ov?GO???WB?k?c?a?_ZO?\", \"Os??WWA?W@?ACBCBL?BG?\", \"Os??WOB?OW?ACBCDKCBG?\", \"Os??WOC?@@cEOSQOAO?g@\", \"Os???[AAGH@_C@GEIOB?C\", \"Os?GG???WBD_CcCaGKBO?\", \"Os?GW?@?OMA?E@OKCEB?G\"], \"input\": \"evidence/coloring_witnesses.jsonl\", \"input_sha256\": \"56253560e01bf122eec25b56f9b52e3989726f406eb29f9a910be76d4e3960b5\", \"script\": \"evidence/scripts/verify_witnesses.py\", \"status\": \"all positive witnesses pass\", \"unverified_unsat_observations\": 313, \"verified_equitable_witnesses\": 4352, \"verified_proper_nonequitable_witnesses\": 16}",
+      "output_sha256": "b3cd25face4ef2ee51e7f25788671c88df403fc038a5b8395f96b88102df2c60",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/check_cnf_bindings.py"
+      ],
+      "last_line": "{\"status\": \"pass\", \"checked_cnf_graph_bindings\": 329, \"script\": \"evidence/scripts/check_cnf_bindings.py\", \"note\": \"Formula-by-formula regeneration supplements independent mathematical inspection of encoding semantics.\", \"input_sha256\": \"1c893f8f321f1c204cafebdfe9a00d25f8b40489389744b252368d5345b1b5d5\"}",
+      "output_sha256": "e8838069ddff8ad0da0250b401e78ab9d306ca493d237ee7ff451aa356cf4bce",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/audit_resolution.py"
+      ],
+      "last_line": "{\"candidate_count\": 16, \"candidate_graph6\": [\"Os?GOCF@O??ACBCBL?B?O\", \"Ot?GOCA?WB@?ODOBC_?g@\", \"Os?GO?C?_MAECKOOCGJO?\", \"Os?GOKE??@`?CDCBKABA?\", \"Os?GGOB@OO?OGBCBGEB_?\", \"Ot?GOKFA??_A?B?BK?Q_A\", \"Ov?GW?@?OM?E?KA?G?h?E\", \"Os?GOGA?AOgoGWGWAA?_`\", \"Os??WWK?@CaGCGOCCAI?K\", \"Ov?GO???WB?k?c?a?_ZO?\", \"Os??WWA?W@?ACBCBL?BG?\", \"Os??WOB?OW?ACBCDKCBG?\", \"Os??WOC?@@cEOSQOAO?g@\", \"Os???[AAGH@_C@GEIOB?C\", \"Os?GG???WBD_CcCaGKBO?\", \"Os?GW?@?OMA?E@OKCEB?G\"], \"candidate_order\": 16, \"census_counts\": {\"4\": 1, \"6\": 2, \"8\": 5, \"10\": 19, \"12\": 85, \"14\": 509, \"16\": 4060, \"18\": 41301}, \"census_total\": 45982, \"classification_counts\": {\"n10_A_unsat_observed\": 10, \"n10_E_sat\": 9, \"n12_A_unsat_observed\": 25, \"n12_E_sat\": 60, \"n14_A_unsat_observed\": 48, \"n14_E_sat\": 461, \"n16_A_sat_E_unsat_observed\": 16, \"n16_A_unsat_observed\": 227, \"n16_E_sat\": 3817, \"n4_A_unsat_observed\": 1, \"n6_A_unsat_observed\": 1, \"n6_E_sat\": 1, \"n8_A_unsat_observed\": 1, \"n8_E_sat\": 4}, \"conclusion\": \"Conditional on the documented census completeness and CNF semantics, all 16 listed graphs are Type 1 without equitable 4-total colorings, and none exists at smaller order.\", \"proofs_replayed\": 329, \"result_rows_through_order_16\": 4681, \"script\": \"evidence/scripts/audit_resolution.py\", \"source_sha256\": \"6ce58a7ef27abff3de2371ca219430179879b43f26e8da5e94927a140aa70a75\", \"status\": \"pass\"}",
+      "output_sha256": "691c9470f59c3ad69e6575309cbdbeea21618ea2947801ef937f9d3d30c441c6",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "evidence/scripts/verify_second_encoding.py"
+      ],
+      "last_line": "{\"candidate_bindings_checked\": 16, \"checker\": \"tools/drat-trim\", \"checker_sha256\": \"9d9c6f706cc5ad81f569ac429faf0c3269c5806c7be0ac936af9c2d1daa7260f\", \"drat_proofs_replayed\": 16, \"encoding_basis\": \"At order 16, a proper 4-total coloring is equitable iff each color is used on exactly four vertices: at every cubic vertex its own color and the colors of its three incident edges are all four colors, so a color class has size (16+|S_c|)/2. The CNF enforces |S_c|<=4 for all c; the 16 exactly-one vertex colors force equality.\", \"generation_report_sha256\": \"81e698823a2dfb8cecf8ced654619283d9b36c72f3be811d8de185445872ec32\", \"script\": \"evidence/scripts/verify_second_encoding.py\", \"status\": \"pass\"}",
+      "output_sha256": "96241065cb2724abec497995666c3b2f45e806453e5ca389974512331606321f",
+      "returncode": 0
+    }
+  ]
+}

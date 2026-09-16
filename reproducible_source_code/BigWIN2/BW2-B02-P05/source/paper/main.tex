@@ -1,0 +1,248 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Shifted-Golomb Prefix Identity]{A Shifted-Golomb Identity for the Full-Memory Prefix of Run-Constructed Almost Golomb Sequences}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{2026-08-29}
+\hypersetup{pdftitle={A Shifted-Golomb Identity for the Full-Memory Prefix of Run-Constructed Almost Golomb Sequences},pdfauthor={Zijian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+For the earliest, run-constructed almost Golomb sequence $a_r$ of order
+$r\geq3$, we prove the stronger prefix identity
+$a_r(n)=G(n-1)$ for every $3\leq n\leq r$, where $G$ is the classical
+Golomb sequence.  In particular, this proves the Prefix Conjecture
+$a_r(r)=G(r-1)$.  The proof identifies the exact conjugacy between the
+cumulative run endpoints of the two sequences.  We also make explicit a
+necessary interpretive repair: the pointwise minimality sentence in the
+original definition is inconsistent at $n=2$ if read literally as a
+condition on the completed sequence, so our theorem uses the run
+construction stated in the source's existence theorem.  Exact computations
+with two independent implementations are reported only as diagnostics.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Golomb's self-describing sequence $G$ is the unique nondecreasing sequence
+of positive integers in which the value $m$ occurs exactly $G(m)$ times
+\cite{Golomb1966}.  Cloitre introduced finite-memory analogues by replacing
+the full cumulative sum with a sliding window of length $r$ and selecting an
+earliest monotone solution \cite{Cloitre2026Almost}.  If $a_r(k)=0$ for
+$k\leq0$, the implicit equation is
+\begin{equation}\label{eq:implicit}
+ a_r\!\left(\sum_{j=0}^{r-1}a_r(n-j)\right)=n.
+\end{equation}
+The source conjectures that
+\begin{equation}\label{eq:source-conjecture}
+ a_r(r)=G(r-1)\qquad(r\geq3)
+\end{equation}
+and reports a computational verification for $r\leq200$
+\cite[Conjecture~9.3]{Cloitre2026Almost}.
+
+We prove more: every term from index $3$ through index $r$ has the same
+shifted-Golomb form.  The proof is a run-endpoint conjugacy.  The only
+subtlety is definitional.  As explained in Section~\ref{sec:definition}, the
+pointwise formula used to express minimality in the source cannot be read
+literally at $n=2$.  We therefore take the source's run construction
+\cite[Theorem~2.2]{Cloitre2026Almost} as the precise normalization.  This
+also excludes nongreedy solutions of the bare implicit equation, whose
+existence is studied separately in \cite{Cloitre2026Beatty}.
+
+\section{Definition repair and the run normalization}\label{sec:definition}
+
+The source supplements \eqref{eq:implicit} by saying that no smaller
+candidate $m$ in a specified interval satisfies the same equation.  If this
+is interpreted as a condition on the completed sequence, then
+\eqref{eq:implicit} forces $a_r(1)=1$ and $a_r(2)=2$, while the smaller
+candidate $m=1$ at $n=2$ gives
+
+\[
+ a_r(m+a_r(1))=a_r(2)=2.
+\]
+
+Thus the literal pointwise reading is inconsistent.  The intended object is
+nevertheless clear from the run construction in the source.  We record it
+non-circularly.
+
+\begin{definition}\label{def:run}
+Fix $r\geq3$, put $a_r(k)=0$ for $k\leq0$, and initialize
+\[
+ a_r(1)=1,\qquad a_r(2)=a_r(3)=a_r(4)=2,\qquad P_3=5.
+\]
+At stage $m\geq3$, set
+\begin{align*}
+ L_m&=a_r(m+1)-a_r(m+1-r),\\
+ a_r(q)&=m\quad(P_m\leq q<P_m+L_m),\\
+ P_{m+1}&=P_m+L_m.
+\end{align*}
+\end{definition}
+
+\begin{lemma}\label{lem:well-founded}
+Definition~\ref{def:run} is well founded and defines an infinite
+nondecreasing sequence.  At stage $m$ one has $P_m\geq m+2$ and
+$1\leq L_m\leq r$.
+\end{lemma}
+
+\begin{proof}
+At stage $3$, the defined prefix is $(1,2,2,2)$, so the assertion follows
+from $P_3=5$ and $r\geq3$.  Suppose the assertion holds at stage $m$.
+Then $m+1<P_m$, so $a_r(m+1)$ is already defined.  The extended sequence,
+with value zero at nonpositive indices, has increments in $\{0,1\}$.
+Consequently $0\leq L_m\leq r$.
+
+If $L_m=0$, monotonicity makes $a_r$ constant on the $r+1$ consecutive
+indices from $m+1-r$ through $m+1$.  The left endpoint cannot be
+nonpositive, because its value would then be zero while $a_r(m+1)>0$.
+Hence these $r+1$ positions lie in one previously completed run, contrary
+to the inductive bound that every such run has length at most $r$.
+Thus $1\leq L_m\leq r$.  Appending $L_m$ copies of $m$ preserves unit
+increments, completes the next run, and gives
+$P_{m+1}=P_m+L_m\geq m+3$.  Induction proves the claim, and the positive
+run lengths imply $P_m\to\infty$.
+\end{proof}
+
+For later use put
+\[
+ S_m^{(r)}=\sum_{j=0}^{r-1}a_r(m-j).
+\]
+
+\begin{lemma}\label{lem:endpoints}
+For every $m\geq3$, $P_m=S_m^{(r)}$.  Hence the run of $m$ in $a_r$ is
+exactly
+\[
+ [S_m^{(r)},S_{m+1}^{(r)}-1].
+\]
+\end{lemma}
+
+\begin{proof}
+The base identity is $S_3^{(r)}=2+2+1=5=P_3$.  Moreover,
+\[
+ S_{m+1}^{(r)}-S_m^{(r)}
+ =a_r(m+1)-a_r(m+1-r)=L_m=P_{m+1}-P_m.
+\]
+The result follows by induction and Definition~\ref{def:run}.
+\end{proof}
+
+\section{Shifted Golomb endpoints}
+
+Set
+\[
+ H(0)=0,\qquad H(m)=\sum_{j=1}^{m}G(j)\quad(m\geq1).
+\]
+The defining multiplicity property says exactly that the run of $m$ in $G$
+is $[H(m-1)+1,H(m)]$.  Define the shifted sequence
+\[
+ b(1)=1,\qquad b(2)=2,\qquad b(n)=G(n-1)\quad(n\geq3)
+\]
+and let $T_m=\sum_{j=1}^{m}b(j)$.
+
+\begin{lemma}\label{lem:shift}
+For every $m\geq3$,
+\[
+ T_m=H(m-1)+2,
+\]
+and the run of $m$ in $b$ is $[T_m,T_{m+1}-1]$.
+\end{lemma}
+
+\begin{proof}
+The sum identity is
+\[
+ T_m=1+2+\sum_{j=2}^{m-1}G(j)=H(m-1)+2.
+\]
+The condition $b(q)=m$ is equivalent to $G(q-1)=m$.  Shifting the Golomb
+run by one therefore gives
+\[
+ [H(m-1)+2,H(m)+1]=[T_m,T_{m+1}-1].
+\]
+\end{proof}
+
+\section{The strong prefix theorem}
+
+\begin{theorem}\label{thm:main}
+For every integer $r\geq3$ and every $3\leq n\leq r$,
+\[
+ a_r(n)=G(n-1).
+\]
+In particular, the Prefix Conjecture \eqref{eq:source-conjecture} holds.
+\end{theorem}
+
+\begin{proof}
+We prove $a_r(n)=b(n)$ by strong induction.  The definitions agree through
+position $4$: both prefixes are $(1,2,2,2)$.
+
+Suppose $5\leq n\leq r$ and equality holds at all smaller positive indices.
+Put $m=b(n)=G(n-1)$.  We have $m\geq3$ because $G(4)=3$.  Moreover,
+$m\leq n-2$: the nondecreasing sequence $G$ cannot skip a positive integer,
+and its value $2$ is repeated at positions $2$ and $3$, so
+$G(k)\leq k-1$ for every $k\geq3$.  Thus $m+1<n$.
+
+Since $m+1\leq n-1<r$, both relevant sliding windows contain every positive
+index through their endpoints.  Every term involved also has index below
+$n$, so the induction hypothesis gives
+\begin{align*}
+ S_m^{(r)}&=\sum_{j=1}^{m}a_r(j)
+            =\sum_{j=1}^{m}b(j)=T_m,\\
+ S_{m+1}^{(r)}&=T_{m+1}.
+\end{align*}
+Lemma~\ref{lem:shift} places $n$ in $[T_m,T_{m+1}-1]$, while
+Lemma~\ref{lem:endpoints} identifies that same interval as the run of $m$ in
+$a_r$.  Hence $a_r(n)=m=b(n)$, completing the induction.
+\end{proof}
+
+\section{Exact computational diagnostics}
+
+The preceding theorem is entirely symbolic.  As an adversarial indexing
+check, we also used two exact-integer implementations.  The first constructs
+$a_r$ from the telescoped run lengths and constructs $G$ by self-describing
+run expansion; it checks every pair $(r,n)$ with $3\leq r\leq2000$ and
+$3\leq n\leq r$.  The second recomputes both sliding sums directly and
+constructs $G$ from its scalar recurrence; it checks through $r=500$.
+Together they evaluate 2,121,252 prefix pairs, with no counterexample.
+A separate verifier recomputes both outputs from the serialized finite
+record.  These finite calculations are diagnostics, not proof of
+Theorem~\ref{thm:main}.
+
+\section{Equality cases and limitations}
+
+The theorem covers every order in the source conjecture.  The cases $r=3$
+and $r=4$ are contained in the explicit base prefix; the first inductive case
+is $n=5$, where $m=3$ and both required endpoint indices are already known.
+There are no limiting or zero-denominator cases.
+
+The result concerns only the earliest/run-constructed branch.  It is not a
+classification of all monotone solutions of \eqref{eq:implicit}, and it does
+not address the separate Domination Conjecture or the global maximal
+multiplicity proposed in \cite{Cloitre2026Almost}.
+
+\section*{Data, code, and computational disclosure}
+
+The accompanying source archive contains the two exact Python
+implementations, the serialized finite diagnostic, and an independent
+verifier.  They use Python 3.10.12, exact integers, no randomness, and no
+external package.  The author reviewed the proof and takes responsibility
+for all claims.  No proof assistant was used.
+
+\begingroup
+\raggedright
+\bibliographystyle{amsplain}
+\bibliography{references}
+\endgroup
+
+\end{document}

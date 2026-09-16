@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Exact Determination of r(9) for Permutation Crossword Grids},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact enumeration of non-attacking rook placements},
+  pdfkeywords={rook placements, crossword grids, permutation grids, permanent, exact enumeration}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\RP}{\operatorname{RP}}
+\newcommand{\Grid}{\operatorname{Grid}}
+\newcommand{\perm}{\operatorname{perm}}
+
+\title{Exact Determination of $r(9)$ for Permutation Crossword Grids}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Lewis and Won defined complete non-attacking rook placements on crossword
+grids and asked for the largest number admitted by a permutation grid.  They
+reported the answer through order eight and gave a layered permutation of
+order nine with 28549 placements.  We give an exact exhaustive computation of
+the missing upper bound.  Every one of the $9!=362880$ permutations is
+visited, its $16\times16$ word-incidence matrix is constructed, and its
+permanent is evaluated by an integer subset recurrence.  The result is
+$r(9)=28549$.  The same exhaustive pass also shows that the only maximizing
+permutations in one-line notation are $321456987$ and $789654123$.
+\end{abstract}
+
+\section{Statement and context}
+
+For $w\in S_n$, let $\Grid(w)$ be the $n\times n$ array in which square
+$(i,j)$ is black exactly when $j=w(i)$.  An \emph{across word} is a maximal
+nonempty contiguous run of white squares in a row; a \emph{down word} is
+defined analogously in a column.  A complete non-attacking rook placement is
+a set of white squares meeting every across word and every down word exactly
+once.  Write $\RP(G)$ for the set of these placements and
+\[
+  r(n)=\max_{w\in S_n}|\RP(\Grid(w))|.
+\]
+These definitions and the maximization question are due to Lewis and
+Won~\cite{LewisWon2026}.  They computed
+\[
+  r(1),\ldots,r(8)=1,1,1,5,17,73,469,3493
+\]
+and conjectured that a maximizer is always layered of shape
+$(m,1,\ldots,1,m)$ for a suitable $m$.
+
+Their formula for the number of placements on such a layered grid gives, for
+$n=9$ and $m=3$,
+\[
+ \sum_{k=1}^{3}\bigl(S(3,k)k^3k!\bigr)^2
+ =1+48^2+162^2=28549,
+\]
+where $S(a,b)$ is a Stirling number of the second kind
+\cite[Proposition~3.15]{LewisWon2026}.  Thus 28549 was already a rigorous
+lower bound.  The contribution here is the exhaustive exact upper bound,
+together with classification of the equality cases at order nine.
+
+\begin{theorem}\label{thm:main}
+For permutation crossword grids of order nine,
+\[
+  \max_{w\in S_9}|\RP(\Grid(w))|=28549.
+\]
+Moreover, equality holds exactly for the two one-line permutations
+\[
+  321456987\qquad\text{and}\qquad789654123.
+\]
+\end{theorem}
+
+The two displayed grids are related by reflection; each is itself invariant
+under a half-turn.  The classification is a strengthening of the numerical
+equality and is not used to infer the upper bound.
+
+\section{Exact counting}
+
+There are $2n-2$ across words in a permutation grid: a black square in an
+interior column splits its row into two nonempty words, while the unique black
+square in each edge column leaves only one.  The same argument gives $2n-2$
+down words.
+
+Let $B_w$ be the zero-one matrix whose rows are indexed by across words and
+whose columns are indexed by down words, with an entry equal to one when the
+two words intersect.  Every white square belongs to exactly one word of each
+kind, and an across--down pair intersects in at most one square.  Consequently
+a complete rook placement is precisely a perfect matching in this incidence
+graph, as observed in~\cite[Section~2]{LewisWon2026}, and hence
+\begin{equation}\label{eq:permanent}
+  |\RP(\Grid(w))|=\perm(B_w).
+\end{equation}
+For $n=9$, the matrix has order 16.
+
+We next describe the construction implemented in the accompanying program.
+Use zero-based indices temporarily and let $q_j=w^{-1}(j)$ be the row of the
+black square in column $j$.  Assign a distinct down-word label to the run
+above that square when $q_j>0$, and another to the run below it when
+$q_j<n-1$.  In row $i$, visit the nonempty white run to the left of $w(i)$
+and the nonempty run to its right.  For every white square $(i,j)$ in one of
+these runs, its down-word label is the upper label if $i<q_j$ and the lower
+label if $i>q_j$.  Equality is impossible for a white square.  Recording
+these labels as a bit mask constructs exactly the corresponding row of
+$B_w$.
+
+The permanent is evaluated by the following subset recurrence.  Order the
+across words as $A_1,\ldots,A_m$, where $m=2n-2$, and let $D$ be the set of
+down words.  For $S\subseteq D$, define $F_i(S)$ to be the number of
+injective assignments of the first $i$ across words onto exactly $S$, using
+only incidences.  Initialize
+\[
+  F_0(\varnothing)=1,
+  \qquad F_0(S)=0\quad(S\neq\varnothing),
+\]
+and, whenever $d\notin S$ intersects $A_{i+1}$, update
+\begin{equation}\label{eq:dp}
+  F_{i+1}(S\cup\{d\})\leftarrow F_{i+1}(S\cup\{d\})+F_i(S).
+\end{equation}
+
+\begin{lemma}\label{lem:exact}
+After processing $i$ rows, $F_i(S)$ has the stated assignment-counting
+interpretation.  In particular, $F_m(D)=\perm(B_w)$.
+\end{lemma}
+
+\begin{proof}
+The assertion is immediate for $i=0$.  Given an assignment counted by
+$F_i(S)$, choosing an unused incident down word $d$ for $A_{i+1}$ produces
+exactly one assignment counted by the update in~\eqref{eq:dp}.  Conversely,
+deleting the image of $A_{i+1}$ from any assignment counted at stage $i+1$
+recovers a unique predecessor.  Induction proves the invariant, and the
+full-set state counts the perfect matchings.
+\end{proof}
+
+All recurrence states are unsigned 64-bit integers.  At order nine, every
+state is bounded by the number of partial injections between sets of size at
+most 16, hence by
+\[
+  16!=20922789888000<2^{64}.
+\]
+Thus no arithmetic used for an individual permanent can overflow.  Sorting
+the matrix rows by degree before applying~\eqref{eq:dp} changes neither the
+permanent nor this argument.
+
+\section{Exhaustive coverage and result}
+
+The enumeration starts with the increasing permutation.  For each
+nonfinal permutation, it finds the rightmost ascent, swaps its first entry
+with the least larger entry in the suffix, and reverses the remaining
+decreasing suffix.  This is the immediate lexicographic successor.  The
+procedure stops only at the decreasing permutation, so it visits every
+element of $S_n$ exactly once and uses no symmetry reduction.
+
+For every visited permutation, the program constructs the incidence masks,
+applies~\eqref{eq:dp}, compares the exact count with the current maximum, and
+retains all equality cases.  The output is summarized in Table~\ref{tab:all}.
+The values through $n=8$ reproduce those reported by Lewis and
+Won~\cite[Section~3.4]{LewisWon2026}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Exact exhaustive maxima and numbers of maximizers.}
+  \label{tab:all}
+  \begin{tabular}{@{}rrrr@{}}
+    $n$ & permutations visited & maximum & maximizers \\
+    1 & 1      & 1     & 1 \\
+    2 & 2      & 1     & 2 \\
+    3 & 6      & 1     & 6 \\
+    4 & 24     & 5     & 2 \\
+    5 & 120    & 17    & 2 \\
+    6 & 720    & 73    & 2 \\
+    7 & 5040   & 469   & 2 \\
+    8 & 40320  & 3493  & 2 \\
+    9 & 362880 & 28549 & 2 \\
+  \end{tabular}
+\end{table}
+
+At $n=9$ the retained equality cases are exactly $321456987$ and
+$789654123$.  The coverage argument and recorded total $362880=9!$ prove
+that no permutation is omitted.  Lemma~\ref{lem:exact} proves that every
+comparison is between exact rook-placement counts.  Therefore all
+permutations have count at most 28549, while either retained permutation
+attains 28549.  This proves Theorem~\ref{thm:main}.
+
+As implementation checks, the program also records the sum of all order-nine
+counts, $157952552$, and a deterministic checksum of the complete
+permutation--count stream.  These are diagnostics rather than ingredients of
+the proof.  A separate plain-Python incidence constructor followed by direct
+recursive perfect-matching enumeration, without subset memoization or row
+sorting, recounts 28549 placements for each maximizer.  Two complete runs of
+the main computation produced identical serialized output.
+
+\section{Reproducibility and scope}
+
+The accompanying files \texttt{exhaustive\_numba.py} and
+\texttt{exhaustive-results.json} contain the complete program and its exact
+output.  From the project root, the computation is reproduced by
+\begin{center}
+\texttt{python3 evidence/exhaustive\_numba.py evidence/exhaustive-results.json}.
+\end{center}
+The recorded environment used Python 3.10, NumPy 2.2.6, and Numba 0.67.0.
+NumPy supplies the fixed-width integer arrays, while Numba compiles the
+displayed integer algorithm for speed; neither changes the recurrence
+\cite{HarrisEtAl2020,LamPitrouSeibert2015}.
+
+A recent exact graph-classification study illustrates the same broad
+proof-carrying pattern of complete enumeration accompanied by independently
+implemented verification~\cite{Zeng2026SSRN7374858}.  That work concerns
+neither crossword grids nor rook placements and supplies none of the values,
+coverage claims, or equality cases proved here.
+
+Theorem~\ref{thm:main} resolves only the order-nine value and classifies its
+maximizers.  It does not prove the Lewis--Won conjecture for general $n$ and
+makes no asymptotic claim.  Relative to the inspected version of their
+preprint, the mathematical delta is exactly the exhaustive upper bound at
+$n=9$ and the associated equality classification.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex was used in developing and reviewing the enumeration, organizing
+the proof, checking source claims, and preparing the manuscript.  The
+mathematical conclusion rests on the explicit finite-coverage argument, the
+integer recurrence, and the accompanying reproducible code and output, not on
+an unverified model response.  All decisive counts are exact integers; no
+floating-point or probabilistic inference is used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

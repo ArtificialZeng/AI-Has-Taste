@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\RP}{\mathrm{RP}}
+\newcommand{\RN}{\mathrm{RN}}
+
+\title{The Exact Resistance-Positivity Threshold for a Subdivided-Clique Join}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For integers $m\geq2$ and $\ell\geq1$, let $H_m$ be obtained from the
+complete graph on $\{a,b_1,\ldots,b_m\}$ by subdividing every edge $ab_i$
+once, and put $J_{m,\ell}=K_\ell\vee H_m$.  Wang proved that
+$J_{m,\ell}$ is not resistance-nonnegative when $m\geq2\ell+4$.
+We prove the complementary positive range: $J_{m,\ell}$ is
+resistance-positive whenever $m\leq2\ell+3$.  Below the boundary we give
+Hamiltonian cycles.  At $m=2\ell+3$ we give seven rational edge-orbit
+marginals in the relative interior of the spanning-tree polytope, with every
+vertex incident sum strictly below two.  Thus
+$J_{m,\ell}$ is resistance-positive exactly when $m\leq2\ell+3$.
+\end{abstract}
+
+\section{Context and statement}
+
+All graphs are finite, simple, undirected, and connected.  Given positive
+edge conductances $c_e$, write $r_e(c)$ for the relative resistance of an
+edge $e$.  The resistance curvature at a vertex is
+\[
+ p_v(c)=1-\frac12\sum_{e\ni v}r_e(c).
+\]
+A graph is resistance-positive (\(\RP\)) if some positive conductances make
+all $p_v(c)$ positive, and resistance-nonnegative (\(\RN\)) if they make all
+of them nonnegative.  Devriendt introduced these graph classes and proved a
+spanning-tree-distribution characterization of them
+\cite{Devriendt2026}.  Recent work has developed further structural and
+polyhedral aspects of \(\RP\) and \(\RN\) graphs
+\cite{AgrahariEtAl2026}.
+
+Let
+\[
+ B=\{b_1,\ldots,b_m\},\qquad X=\{x_1,\ldots,x_m\},
+ \qquad U=\{u_1,\ldots,u_\ell\}.
+\]
+The graph $H_m$ has vertex set $\{a\}\cup B\cup X$ and edge set
+\[
+ \{b_ib_j:1\leq i<j\leq m\}\cup
+ \{ax_i,x_ib_i:1\leq i\leq m\}.
+\]
+The graph $J_{m,\ell}=K_\ell\vee H_m$ additionally has every edge within
+$U$ and every edge between $U$ and $V(H_m)$.  Wang introduced this join
+family, proved $\tau(J_{m,\ell})=1+\ell/m$, and proved that it is not \(\RN\)
+for $m\geq2\ell+4$ \cite[Propositions 15--16]{Wang2026}.
+Our contribution is the complementary assertion in the following theorem.
+
+\begin{theorem}\label{thm:main}
+For all integers $m\geq2$ and $\ell\geq1$,
+\[
+ J_{m,\ell}\text{ is \(\RP\)}\quad\Longleftrightarrow\quad
+ m\leq2\ell+3.
+\]
+\end{theorem}
+
+The negative implication is Wang's Proposition~16.  We prove the positive
+implication.  The boundary $m=2\ell+3$ is the only part not covered by the
+Hamiltonian constructions below.
+
+\section{The polyhedral criterion}
+
+For a connected graph $G=(V,E)$, let $P(G)$ be the convex hull in
+$\mathbb R^E$ of the indicator vectors of its spanning trees.  For
+$x\in\mathbb R^E$ and $F\subseteq E$, write $x(F)=\sum_{e\in F}x_e$; for
+$S\subseteq V$, let $E[S]$ be the edges with both endpoints in $S$ and let
+$E(v)$ be the edges incident with $v$.  The graphic-matroid base-polytope
+description goes back to Edmonds \cite{Edmonds1971}.  Combined with
+Devriendt's spanning-tree characterization, it gives the following criterion;
+see also the explicit resistance-curvature formulation in
+\cite{Devriendt2026,AgrahariEtAl2026}.
+
+\begin{lemma}\label{lem:criterion}
+Let $G=(V,E)$ be $2$-connected.  If $x\in\mathbb R^E$ satisfies
+\begin{align*}
+ x_e&>0 &&(e\in E),\\
+ x(E)&=|V|-1,\\
+ x(E[S])&<|S|-1 &&(2\leq |S|\leq |V|-1),\\
+ x(E(v))&<2 &&(v\in V),
+\end{align*}
+then $G$ is \(\RP\).
+\end{lemma}
+
+\begin{proof}
+The first three lines say precisely that $x$ lies in the relative interior
+of $P(G)$.  Hence $x$ is the edge-marginal vector of a positive distribution
+on all spanning trees.  Under that distribution, the expected degree of
+$v$ is $x(E(v))<2$.  Devriendt's characterization now gives \(\RP\).
+\end{proof}
+
+\section{Hamiltonian cycles below the boundary}
+
+Put $L=\ell$ and consider the cyclic list
+\[
+ c_0=a,c_1=u_1,\ldots,c_L=u_L,c_{L+1}=c_0.
+\]
+It has $L+1$ cyclic positions.  When $L=1$, the two positions are the two
+oriented arcs between $a$ and $u_1$.
+
+Suppose first that $m=2r$.  Since $m\leq2L+2$, we have $r\leq L+1$.
+For $j=1,\ldots,r$, replace the position $c_{j-1}c_j$ by
+\begin{equation}\label{eq:pairblock}
+ c_{j-1},x_{2j-1},b_{2j-1},b_{2j},x_{2j},c_j,
+\end{equation}
+and retain all other positions.  Every consecutive pair is adjacent and
+every vertex occurs exactly once, so the resulting cyclic list is a
+Hamiltonian cycle.
+
+Now suppose that $m=2r+1$.  Then $r\leq L$.  If $L=1$, necessarily $m=3$,
+and a Hamiltonian cycle is
+\[
+ a,x_1,b_1,b_2,b_3,x_3,u_1,x_2,a.
+\]
+If $L\geq2$, replace $c_0c_1$ by
+\[
+ c_0,x_1,b_1,b_2,b_3,x_3,c_1,
+\]
+replace $c_1c_2$ by $c_1,x_2,c_2$.  Put $r-1$ further blocks of the form
+\eqref{eq:pairblock} into any $r-1$ of the remaining $L-1$ positions,
+using the index pairs
+\[
+ (4,5),(6,7),\ldots,(2r,2r+1).
+\]
+Again this is a Hamiltonian cycle.
+
+For completeness, every Hamiltonian graph is \(\RP\).  If its Hamiltonian
+cycle has $n$ vertices, uniformly delete one cycle edge.  The resulting
+random spanning path has expected degree $2-2/n$ at each vertex.  Mixing
+this distribution with a sufficiently small positive multiple of the
+uniform distribution on all spanning trees gives full support while
+preserving every strict expected-degree bound.  Thus the preceding cycles
+prove \(\RP\) for $m\leq2L+2$.
+
+\section{An exact boundary certificate}
+
+Assume $m=2L+3$ and set
+\[
+ A=3L+4,\qquad D=(L+2)(3L+4).
+\]
+Assign a common marginal to every edge in each of the seven edge orbits as
+follows:
+\begin{equation}\label{eq:orbits}
+\begin{array}{c|ccccccc}
+\text{orbit}&BB&aX&b_ix_i&UU&Ua&UB&UX\\ \hline
+x_e&\dfrac{3L^2+9L+8}{2(L+1)D}&
+\dfrac{3L+5}{D}&1-\dfrac1D&
+\dfrac1D&\dfrac1D&\dfrac1D&\dfrac1{L+2}.
+\end{array}
+\end{equation}
+Here $BB$ denotes an edge between two vertices of $B$, and the other orbit
+names have the analogous meaning.  All seven numbers are positive.  Counting
+the edges in each orbit gives
+\begin{equation}\label{eq:total}
+ x(E)=2m+L=|V(J_{m,L})|-1.
+\end{equation}
+The incident sums at $a$, at any $b_i$, at any $x_i$, and at any $u_j$ are,
+respectively,
+\begin{equation}\label{eq:incidence}
+ 2-\frac1D,\qquad 2-\frac1D,\qquad
+ 2-\frac1{L+2},\qquad 2-\frac1D.
+\end{equation}
+It remains to verify all rank inequalities strictly.
+
+Let $S$ be a proper vertex subset with $|S|\geq2$, and encode it by
+\[
+ \alpha=\boldsymbol 1_{a\in S},\quad k=|S\cap B|,\quad
+ h=|S\cap X|,\quad z=|S\cap U|,
+\]
+together with the number $d$ of indices $i$ for which both $b_i,x_i\in S$.
+Then
+\begin{align}
+x(E[S])={}&\frac{3L^2+9L+8}{2(L+1)D}\binom{k}{2}
+ +\frac{3L+5}{D}\alpha h+\left(1-\frac1D\right)d \notag\\
+&+\frac1D\left[\binom{z}{2}+z\alpha+zk\right]
+ +\frac1{L+2}zh.                                      \label{eq:internal}
+\end{align}
+For fixed $\alpha,k,h,z$, the right-hand side is largest at
+$d=\min(k,h)$, and that value is attainable.  Put
+\[
+ P=\frac{3L^2+9L+8}{2(L+1)},\qquad
+ \Phi=D\bigl(|S|-1-x(E[S])\bigr)
+\]
+after this worst-case substitution.  If $k\leq h$, then
+\begin{align}
+\Phi={}&D(\alpha+h+z-1)-P\binom{k}{2}-(A+1)\alpha h
+-\binom{z}{2}-z\alpha-zk-Azh+k,                    \label{eq:phi1}
+\end{align}
+whereas if $h\leq k$, then
+\begin{align}
+\Phi={}&D(\alpha+k+z-1)-P\binom{k}{2}-(A+1)\alpha h
+-\binom{z}{2}-z\alpha-zk-Azh+h.                    \label{eq:phi2}
+\end{align}
+
+We give the endpoint reduction, including the size and full-set exceptions.
+In \eqref{eq:phi1}, the coefficient of $h$ is
+\[
+ D-(A+1)\alpha-Az\geq A-1>0,
+\]
+so the minimum occurs at $h=k$, except where the lower constraint $|S|=2$
+forces an adjacent value.  In \eqref{eq:phi2}, the coefficient of $h$ is
+$1-(A+1)\alpha-Az$.  Thus $h=0$ when $\alpha=z=0$, and $h=k$ otherwise,
+apart from the point adjacent to the excluded full vertex set.  On the
+diagonal $h=k$, and also on the branch $\alpha=z=h=0$, the resulting
+expression is concave in $k$.  After taking the interval endpoints in $k$,
+it is concave in $z$.  Consequently only endpoint values and the stated
+adjacent lattice points remain.  After duplicates are removed, they are
+listed below; the row $(0,0,m,0)$ is included although it is dominated by
+the displayed $k=2$ endpoint.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+$(\alpha,z,k,h)$ or family & condition & $\Phi$ \\
+\midrule
+$(0,0,1,1)$ && $1$\\
+$(0,0,0,2)$ && $D$\\
+$(0,0,2,0)$ && $\dfrac{6L^3+23L^2+27L+8}{2(L+1)}$\\
+$(0,0,m,0)$ && $\dfrac{6L^3+25L^2+29L+8}{2}$\\
+$(1,0,0,1)$ && $3L^2+7L+3$\\
+$(0,1,0,1),(0,1,1,1),(1,0,1,1)$ && $(L+1)(3L+4)$\\
+$k=0,z=2,\alpha=0$ & $L\geq2$ & $D-1$\\
+$k=0,z=L,\alpha=0$ & $L\geq2$ & $\dfrac{(L-1)(6L^2+19L+16)}2$\\
+$k=0,z=1,\alpha=1$ && $D-1$\\
+$k=0,z=L,\alpha=1$ && $\dfrac{L(2L+3)(3L+5)}2$\\
+$k=h=m,z=0,\alpha=0$ && $\dfrac{(L+1)(L+2)(6L+7)}2$\\
+$k=h=m,z=L,\alpha=0$ && $(L+1)(3L+7)$\\
+$k=h=m,z=0,\alpha=1$ && $\dfrac{L(2L+3)(3L+5)}2$\\
+$k=h=m,z=L-1,\alpha=1$ && $(L+1)(3L+7)$\\
+$\alpha=1,z=L;(k,h)=(m-1,m-1),(m,m-1)$
+&& $(L+1)(3L+4)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every entry is at least one for $L\geq1$ (the two indicated rows occur only
+for $L\geq2$).  Therefore every proper $S$ with $|S|\geq2$ satisfies
+\begin{equation}\label{eq:slack}
+ x(E[S])\leq |S|-1-\frac1D<|S|-1.
+\end{equation}
+The graph $J_{2L+3,L}$ is $2$-connected.  Equations
+\eqref{eq:orbits}, \eqref{eq:total}, and \eqref{eq:slack} place $x$ in the
+relative interior of its spanning-tree polytope, while
+\eqref{eq:incidence} gives all strict incident bounds.  Lemma
+\ref{lem:criterion} proves that $J_{2L+3,L}$ is \(\RP\).  Together with the
+Hamiltonian range and Wang's complementary obstruction, this proves
+Theorem~\ref{thm:main}.
+
+\section*{Computational and AI assistance}
+
+An accompanying Python script uses exact rational arithmetic to verify
+\eqref{eq:orbits}--\eqref{eq:internal} and to enumerate every feasible subset
+descriptor for $1\leq L\leq30$.  In that regression the minimum rank slack
+is $1/D$, attained at $S=\{b_i,x_i\}$.  This finite computation is a check,
+not the proof of the infinite family; the proof is the endpoint reduction
+above.  For a separate finite graph-classification project explicitly framed
+in terms of proof-carrying reductions, see \cite{Zeng2026SSRN7374858}; that
+work does not concern resistance curvature, spanning-tree polytopes, or the
+threshold proved here.
+
+OpenAI Codex assisted with proof development, exact symbolic and finite
+checks, literature screening, independent mathematical review, and drafting
+of the manuscript.  The author reviewed and finalized the arguments and
+takes responsibility for the content.  The literature comparison is bounded
+to the cited sources and is not a claim of priority.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

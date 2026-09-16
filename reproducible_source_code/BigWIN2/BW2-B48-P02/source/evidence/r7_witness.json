@@ -1,0 +1,402 @@
+{
+  "balance_tails_by_step": {
+    "1": [
+      0,
+      7,
+      10,
+      17
+    ],
+    "2": [
+      3,
+      13,
+      18,
+      24
+    ],
+    "3": [
+      11,
+      14,
+      20,
+      25
+    ],
+    "4": [
+      2,
+      8,
+      21,
+      27
+    ],
+    "5": [
+      4,
+      5,
+      19,
+      22
+    ],
+    "6": [
+      1,
+      15,
+      16,
+      26
+    ],
+    "7": [
+      6,
+      9,
+      12,
+      23
+    ]
+  },
+  "beta_rows_j_0_to_3_columns_s_1_to_7": [
+    [
+      0,
+      6,
+      5,
+      2,
+      1,
+      4,
+      3
+    ],
+    [
+      4,
+      3,
+      6,
+      5,
+      1,
+      0,
+      2
+    ],
+    [
+      2,
+      4,
+      3,
+      0,
+      5,
+      6,
+      1
+    ],
+    [
+      1,
+      0,
+      2,
+      6,
+      4,
+      3,
+      5
+    ]
+  ],
+  "claim_scope": "Explicit existence witnesses only; no enumeration or uniqueness claim.",
+  "colour_calculations": [
+    {
+      "base_tail_plus_4_colour_mod_28": 0,
+      "beta_j_s": 0,
+      "check": "0-0 = 0 (mod 7)",
+      "colour": 0,
+      "j": 0,
+      "step": 1,
+      "t": 0,
+      "tail": 0
+    },
+    {
+      "base_tail_plus_4_colour_mod_28": 1,
+      "beta_j_s": 4,
+      "check": "0-4 = 3 (mod 7)",
+      "colour": 3,
+      "j": 1,
+      "step": 1,
+      "t": 0,
+      "tail": 1
+    },
+    {
+      "base_tail_plus_4_colour_mod_28": 2,
+      "beta_j_s": 2,
+      "check": "0-2 = 5 (mod 7)",
+      "colour": 5,
+      "j": 2,
+      "step": 1,
+      "t": 0,
+      "tail": 2
+    },
+    {
+      "base_tail_plus_4_colour_mod_28": 3,
+      "beta_j_s": 1,
+      "check": "0-1 = 6 (mod 7)",
+      "colour": 6,
+      "j": 3,
+      "step": 1,
+      "t": 0,
+      "tail": 3
+    },
+    {
+      "base_tail_plus_4_colour_mod_28": 4,
+      "beta_j_s": 0,
+      "check": "1-0 = 1 (mod 7)",
+      "colour": 1,
+      "j": 0,
+      "step": 1,
+      "t": 1,
+      "tail": 4
+    },
+    {
+      "base_tail_plus_4_colour_mod_28": 5,
+      "beta_j_s": 4,
+      "check": "1-4 = 4 (mod 7)",
+      "colour": 4,
+      "j": 1,
+      "step": 1,
+      "t": 1,
+      "tail": 5
+    },
+    {
+      "base_tail_plus_4_colour_mod_28": 6,
+      "beta_j_s": 6,
+      "check": "1-6 = 2 (mod 7)",
+      "colour": 2,
+      "j": 2,
+      "step": 6,
+      "t": 1,
+      "tail": 6
+    }
+  ],
+  "cycle_vertices_including_return": [
+    0,
+    1,
+    7,
+    8,
+    12,
+    19,
+    24,
+    26,
+    4,
+    9,
+    16,
+    22,
+    27,
+    3,
+    5,
+    10,
+    11,
+    14,
+    17,
+    18,
+    20,
+    23,
+    2,
+    6,
+    13,
+    15,
+    21,
+    25,
+    0
+  ],
+  "cyclic_step_word_from_0": [
+    1,
+    6,
+    1,
+    4,
+    7,
+    5,
+    2,
+    6,
+    5,
+    7,
+    6,
+    5,
+    4,
+    2,
+    5,
+    1,
+    3,
+    3,
+    1,
+    2,
+    3,
+    7,
+    4,
+    7,
+    2,
+    6,
+    4,
+    3
+  ],
+  "direct_verification": {
+    "cycle_has_28_distinct_tails": true,
+    "cycle_returns_to_zero": true,
+    "each_step_has_one_tail_in_each_mod_4_class": true,
+    "path_colours_are_exactly_0_to_6": true,
+    "path_has_8_distinct_vertices": true
+  },
+  "model": {
+    "constraints": [
+      "exactly one selected outgoing allowed arc at each x",
+      "for every j mod 4 and s, exactly one selected tail x congruent to j uses s",
+      "OR-Tools AddCircuit on all 196 allowed labelled arcs",
+      "safe translation normalization y[0,1]=1"
+    ],
+    "variables": "y[x,s] for x in Z_28 and s in {1,...,7}",
+    "warning": "Solver feasibility is only how the witness was found; the serialized witness is checked directly below."
+  },
+  "parameters": {
+    "n": 28,
+    "r": 7,
+    "steps": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "rainbow_path": {
+    "arcs": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        12
+      ]
+    ],
+    "development_colours": [
+      0,
+      3,
+      5,
+      6,
+      1,
+      4,
+      2
+    ],
+    "steps": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      6
+    ],
+    "vertices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      12
+    ]
+  },
+  "selected_arc_from_each_developed_cycle_H_k_k_0_to_6": [
+    [
+      0,
+      1
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ]
+  ],
+  "step_at_tail_0_to_27": [
+    1,
+    6,
+    4,
+    2,
+    5,
+    5,
+    7,
+    1,
+    4,
+    7,
+    1,
+    3,
+    7,
+    2,
+    3,
+    6,
+    6,
+    1,
+    2,
+    5,
+    3,
+    4,
+    5,
+    7,
+    2,
+    3,
+    6,
+    4
+  ],
+  "successor_0_to_27": [
+    1,
+    7,
+    6,
+    5,
+    9,
+    10,
+    13,
+    8,
+    12,
+    16,
+    11,
+    14,
+    19,
+    15,
+    17,
+    21,
+    22,
+    18,
+    20,
+    24,
+    23,
+    25,
+    27,
+    2,
+    26,
+    0,
+    4,
+    3
+  ],
+  "truth_values_established": {
+    "C_7": true,
+    "E_7": true
+  }
+}

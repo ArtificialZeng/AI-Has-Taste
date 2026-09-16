@@ -1,0 +1,249 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Orb}{\operatorname{Orb}}
+\newcommand{\Stab}{\operatorname{Stab}}
+
+\title{All Minimum Bondage Sets of the Truncated-Octahedral Graph, up to Automorphism}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $T$ be the $24$-vertex truncated-octahedral graph in the recent
+construction of Srivastava.  That construction establishes
+$\gamma(T)=8$ and bondage number $b(T)=5$, and exhibits one five-edge
+bondage set.  We classify all of them.  Exactly $276$ five-edge sets $F$
+satisfy $\gamma(T-F)>\gamma(T)$.  The full abstract automorphism group of
+$T$ has order $48$, and the $276$ sets form eight orbits, of sizes
+$24,48,12,48,48,24,48,24$.  The corresponding stabilizer orders are
+$2,1,4,1,1,2,1,2$, and $\gamma(T-F)=9$ in every orbit.  In particular,
+every minimum bondage set contains the full three-edge star at a vertex.
+The classification is certified by exhaustive integer-mask enumeration;
+a separate automorphism backtracker independently reproduces the family
+and orbit data.
+\end{abstract}
+
+\section{Statement and context}
+
+A vertex set $D$ in a finite simple graph $G$ is \emph{dominating} if
+every vertex outside $D$ has a neighbor in $D$, and $\gamma(G)$ is the
+least cardinality of such a set.  Fink, Jacobson, Kinch, and Roberts
+introduced the bondage number
+\[
+ b(G)=\min\{|F|:F\subseteq E(G),\ \gamma(G-F)>\gamma(G)\}
+\]
+as a measure of the sensitivity of domination to edge deletion
+\cite{Fink1990Bondage}.
+
+Srivastava proved that the truncated-octahedral graph $T$ below has
+$\gamma(T)=8$ and $b(T)=5$ \cite{Srivastava2026Truncated}.  The proof
+enumerates the $1{,}767$ dominating eight-sets, checks all $58{,}905$
+four-edge deletions, and gives one five-edge witness.  It does not count
+all five-edge bondage sets or classify them under graph automorphisms.
+The result here supplies exactly that finite classification; it makes no
+claim of a broader bondage theorem or of literature-wide priority.
+
+For a textual specification, let $V(T)=\{0,1,\ldots,23\}$ and
+\begin{align*}
+E(T)=\{& (0,1),(0,2),(0,3),(1,4),(1,5),(2,6),(2,7),(3,4),(3,8),\\
+       &(4,9),(5,10),(5,11),(6,11),(6,12),(7,12),(7,13),(8,13),(8,14),\\
+       &(9,15),(9,16),(10,16),(10,17),(11,17),(12,18),(13,19),\\
+       &(14,15),(14,19),(15,20),(16,20),(17,21),(18,21),(18,22),\\
+       &(19,22),(20,23),(21,23),(22,23)\}.
+\end{align*}
+All pairs denote unordered edges.  Put
+\[
+ \mathcal M(T)=\{F\subseteq E(T): |F|=5,
+              \ \gamma(T-F)>\gamma(T)\}.
+\]
+The full abstract group $\Aut(T)$ acts on $\mathcal M(T)$.  Within an
+orbit, an edge is written with its smaller endpoint first, the five
+edges are sorted lexicographically, and the least resulting tuple is
+called the canonical representative.
+
+\begin{theorem}\label{thm:classification}
+The family $\mathcal M(T)$ has cardinality $276$, and $\Aut(T)$ has
+order $48$.  There are exactly eight orbits, whose canonical
+representatives and invariants are listed in Table~\ref{tab:orbits}.
+For every $F\in\mathcal M(T)$ one has $\gamma(T-F)=9$, and $F$ contains
+all three edges incident with some vertex.
+\end{theorem}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}llllr r r@{}}
+\toprule
+&\multicolumn{4}{c}{canonical representative $F_i$}
+&$|\Orb(F_i)|$&$|\Stab(F_i)|$\\
+\cmidrule(lr){2-5}
+$i$&\multicolumn{4}{l}{five unordered edges}& &\\
+\midrule
+1&$(0,1),(0,2),(0,3)$&$(1,4)$&$(1,5)$&&24&2\\
+2&$(0,1),(0,2),(0,3)$&$(1,4)$&$(4,9)$&&48&1\\
+3&$(0,1),(0,2),(0,3)$&$(2,6)$&$(2,7)$&&12&4\\
+4&$(0,1),(0,2),(0,3)$&$(2,6)$&$(8,14)$&&48&1\\
+5&$(0,1),(0,2),(0,3)$&$(5,10)$&$(5,11)$&&48&1\\
+6&$(0,1),(0,2),(0,3)$&$(5,10)$&$(8,14)$&&24&2\\
+7&$(0,1),(0,2),(0,3)$&$(6,11)$&$(6,12)$&&48&1\\
+8&$(0,1),(0,2),(0,3)$&$(6,11)$&$(7,13)$&&24&2\\
+\bottomrule
+\end{tabular}
+\caption{The eight orbits in $\mathcal M(T)$.  In every row
+$\gamma(T-F_i)=9$.}
+\label{tab:orbits}
+\end{table}
+
+\section{The exact finite certificate}
+
+The proof uses only finite iteration and integer bit operations.  We
+give the criterion underlying the enumeration before reporting its
+output.
+
+\begin{lemma}[bundle criterion]\label{lem:bundle}
+Let $\mathcal D_8$ be the family of dominating eight-sets of $T$.  For
+$D\in\mathcal D_8$ and $x\notin D$, define
+\[
+ B(D,x)=\{xy\in E(T):y\in D\}.
+\]
+For $F\subseteq E(T)$, the set $D$ fails to dominate $T-F$ if and only
+if $B(D,x)\subseteq F$ for some $x\notin D$.  Consequently, a five-edge
+set $F$ is in $\mathcal M(T)$ if and only if
+\[
+ \forall D\in\mathcal D_8\quad
+ \exists x\notin D\quad B(D,x)\subseteq F.
+ \tag{1}\label{eq:criterion}
+\]
+\end{lemma}
+
+\begin{proof}
+A vertex of $D$ remains dominated by itself after any edge deletion.
+An outside vertex $x$ ceases to be dominated by $D$ precisely when all
+edges from $x$ to $D$ have been deleted, which is the stated bundle
+condition.  Since $\gamma(T)=8$, an edge-deleted subgraph has domination
+number greater than eight exactly when none of the sets in
+$\mathcal D_8$ survives.  Any set that dominates $T-F$ also dominates
+the supergraph $T$, so no other eight-set has been omitted.
+\end{proof}
+
+The verifier encodes every closed neighborhood by a $24$-bit integer.
+It first checks directly that the displayed edge list is simple,
+connected, and $3$-regular.  It enumerates every vertex subset of sizes
+$0$ through $8$ and obtains the numbers of dominating sets
+\[
+ (0,0,0,0,0,0,0,0,1767).
+ \tag{2}\label{eq:domcounts}
+\]
+Thus it independently recovers $\gamma(T)=8$ and $|\mathcal D_8|=1767$.
+It then iterates through all
+\(\binom{36}{5}=376{,}992\) five-edge masks and evaluates
+\eqref{eq:criterion} exactly.  Precisely $276$ masks pass.  For each of
+the other $376{,}716$ masks, the exact loop finds a
+surviving dominating eight-set; every passing mask is replayed against
+all $1{,}767$ sets.  This proves both inclusions in the reported family
+census.
+
+The first implementation enumerates self-isomorphisms with NetworkX
+$3.4.2$ \cite{Hagberg2008NetworkX}, whose graph matcher implements the
+VF2 approach \cite{Cordella2004VF2}.  Every returned map is separately
+checked for bijectivity and for equality of the complete image edge set
+with $E(T)$.  It returns $48$ maps.  The following three permutations,
+in disjoint-cycle notation, generate all $48$ of them:
+\begin{align*}
+g_1={}&(1\ 3)(5\ 8)(6\ 7)(10\ 14)(11\ 13)(15\ 16)(17\ 19)(21\ 22),\\
+g_2={}&(0\ 1)(2\ 5)(3\ 4)(6\ 11)(7\ 10)(8\ 9)(12\ 17)(13\ 16)\\
+     &\qquad(14\ 15)(18\ 21)(19\ 20)(22\ 23),\\
+g_3={}&(0\ 2)(1\ 6)(3\ 7)(4\ 12)(5\ 11)(8\ 13)(9\ 18)(10\ 17)\\
+     &\qquad(14\ 19)(15\ 22)(16\ 21)(20\ 23).
+\end{align*}
+
+Completeness of the group computation was checked by a separately
+implemented backtracker, without a graph-isomorphism library.  It tries
+all $24$ images of vertex $0$ and all six bijections from its three
+neighbors to the neighbors of the image.  It then exhaustively extends
+each partial map, pruning only on adjacency and graph-distance
+conditions that every automorphism must preserve.  Every automorphism
+determines one of these initial seeds, so this search covers the full
+abstract automorphism group.  Each completed map is checked against all
+$36$ edges.  The independent search also returns exactly $48$ maps.
+
+Acting with these maps on the $276$ accepted masks yields the eight
+disjoint orbits of Table~\ref{tab:orbits}.  Their sizes sum to $276$, and
+each row satisfies
+\[
+ |\Orb(F_i)|\,|\Stab(F_i)|=48.
+\]
+Lexicographic minimization over every orbit gives exactly the displayed
+representatives.  This proves the orbit count, representatives, and
+stabilizers.  Since each representative contains the three-edge star
+$\{(0,1),(0,2),(0,3)\}$, automorphism invariance proves the final
+structural assertion of Theorem~\ref{thm:classification}.
+
+It remains to certify the post-deletion domination numbers.  By
+Lemma~\ref{lem:bundle}, each accepted mask has domination number at least
+nine.  For the representatives $F_1,\ldots,F_8$, respectively, the
+following sets dominate after the indicated five edges are deleted:
+\begin{align*}
+W_1&=\{0,1,2,3,6,10,15,19,21\},\\
+W_2&=\{0,1,2,3,6,9,16,19,21\},\\
+W_3&=\{0,1,2,3,4,12,17,19,20\},\\
+W_4=W_5=W_6=W_7=W_8
+   &=\{0,1,2,3,4,12,17,19,20\}.
+\end{align*}
+The verifier checks the union of the nine closed-neighborhood masks in
+each case against the all-vertices mask.  Hence
+$\gamma(T-F_i)\leq 9$, and the lower bound gives equality.
+Automorphisms carry these witnesses throughout their orbits, completing
+the proof of Theorem~\ref{thm:classification}.
+
+Canonical encodings coupled with exact supplementary evaluators also
+occur in recent finite graph-reconstruction work, for example the
+integer-partition model and cut-partition implementation for
+diameter-six trees in \cite{Zeng2026MultiplicityArxiv}.  Here the
+canonical objects are instead five-edge sets under $\Aut(T)$, and the
+decisive membership test is the bundle criterion \eqref{eq:criterion}.
+
+\section{Reproducibility and limitations}
+
+The supplementary certificate contains the labeled edge list, the
+complete $276$-line family, the eight canonical representatives and
+nine-vertex witnesses, and the deterministic verifier.  A second
+verifier independently reconstructs the dominating sets, all
+$376{,}992$ five-edge cases, the full $48$-element automorphism group,
+the orbit partition, and the witnesses.  Both computations use exact
+integers; no random choice, floating-point comparison, heuristic
+symmetry assumption, or untested orbit reduction enters the reported
+census.
+
+The result is deliberately finite.  It classifies minimum bondage sets
+only for the explicitly displayed graph.  The literature comparison is
+bounded: the closest inspected source is \cite{Srivastava2026Truncated},
+whose displayed theorem and verifier provide the baseline and one
+five-edge example, but not this orbit classification.  No assertion of
+global bibliographic priority is needed for the theorem.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex was used interactively in developing and checking the exact
+enumeration, designing the independent verification, and editing the
+manuscript.  All central enumerations were independently recomputed
+using a separately written verifier.  The claims are replayable from
+the explicit finite data described above, and the author takes
+responsibility for the content.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the fixed 18-vertex, 27-edge labelled graph G and lexicographic canonical convention frozen in source.md and problem.md, the family B_5(G)={F in binom(E(G),5): gamma(G-F)>gamma(G)=6} consists of exactly the 801 labelled five-edge sets serialized in evidence/bondage5_classification.json. Every such deletion has gamma(G-F)=7. Under the complete six-element group Aut(G), the family has exactly the 140 canonical orbits serialized in that file: 127 orbits have size 6 and setwise stabilizer order 1, and 13 have size 3 and setwise stabilizer order 2; each record gives the canonical representative and the complete stabilizer permutation list.",
+  "contribution": "This is a complete exact computational classification in the full scope of the frozen problem, refining the cited paper's proof that b(G)=5. Two standard-library implementations independently exhaust all 80,730 deletion sets and independently enumerate the automorphism group; no broader literature-priority claim is asserted.",
+  "proposer_job_id": "win-00066-p03-research-1d17df4405c5",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/result.md",
+    "evidence/enumerate_bondage5.py",
+    "evidence/bondage5_classification.json",
+    "evidence/verify_bondage5.py",
+    "evidence/bondage5_verification.json",
+    "evidence/triage.md",
+    "evidence/external/2609.04257.pdf"
+  ]
+}

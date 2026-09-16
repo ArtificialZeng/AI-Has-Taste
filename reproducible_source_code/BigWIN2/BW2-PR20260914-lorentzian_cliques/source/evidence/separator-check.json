@@ -1,0 +1,3516 @@
+{
+  "job_id": "primary-20260914-lorentzian-cliques-research-d50fb585b2a3",
+  "exact_arithmetic": true,
+  "exhaustive_domain": "Every labeled fixed-part bipartite graph, k=2,3,4; no symmetry reduction",
+  "prefilter": "Minimum degree at least two, necessary by the proved strict expansion lemma",
+  "hypothesis_check": "Every vertex subset enumerated for independent sets; connectedness checked",
+  "target": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "target_characteristic_polynomial": "(lambda+1)(lambda^2-2lambda-1)",
+  "exhaustive_summary": [
+    {
+      "k": 2,
+      "all_labeled_fixed_part_graphs": 16,
+      "minimum_degree_two": 1,
+      "satisfying_original_independent_set_hypothesis": 1,
+      "two_cut_strict_cases": 1,
+      "no_two_cut_equality_cases": 0,
+      "excess_histogram": {
+        "4": 1
+      },
+      "ordered_verified_records_sha256": "71cc38792ac702417ea63ecc7b0e5f48f1a9fd6b29fb0aa6bbabb8757f282632"
+    },
+    {
+      "k": 3,
+      "all_labeled_fixed_part_graphs": 512,
+      "minimum_degree_two": 34,
+      "satisfying_original_independent_set_hypothesis": 34,
+      "two_cut_strict_cases": 33,
+      "no_two_cut_equality_cases": 1,
+      "excess_histogram": {
+        "0": 1,
+        "4": 9,
+        "10": 18,
+        "18": 6
+      },
+      "ordered_verified_records_sha256": "d8193d4887387c7fe92b027e5bdfac664fc86f60339005a74efe1c1ed7ded6b2"
+    },
+    {
+      "k": 4,
+      "all_labeled_fixed_part_graphs": 65536,
+      "minimum_degree_two": 7343,
+      "satisfying_original_independent_set_hypothesis": 6785,
+      "two_cut_strict_cases": 6576,
+      "no_two_cut_equality_cases": 209,
+      "excess_histogram": {
+        "0": 209,
+        "2": 624,
+        "4": 1008,
+        "6": 1224,
+        "10": 1728,
+        "14": 288,
+        "16": 864,
+        "18": 192,
+        "24": 576,
+        "40": 72
+      },
+      "ordered_verified_records_sha256": "bf360f9ca329f651a83285c436d7f5ae6c3708a5dcdb636390c3ded50d13f070"
+    }
+  ],
+  "representatives_by_k_and_excess": [
+    {
+      "label": "k=2,mask=15",
+      "k": 2,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "coefficient": 12,
+      "excess": 4,
+      "cross_component_histogram": {
+        "1": 4
+      },
+      "same_component_histogram": {
+        "2": 2
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          8,
+          8
+        ],
+        [
+          8,
+          0,
+          8
+        ],
+        [
+          8,
+          8,
+          24
+        ]
+      ],
+      "normalized_determinant": "-1",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=3,mask=238",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "coefficient": 36,
+      "excess": 18,
+      "cross_component_histogram": {
+        "1": 6,
+        "2": 3
+      },
+      "same_component_histogram": {
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          288
+        ]
+      ],
+      "normalized_determinant": "-2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=3,mask=239",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "coefficient": 28,
+      "excess": 10,
+      "cross_component_histogram": {
+        "1": 8,
+        "2": 1
+      },
+      "same_component_histogram": {
+        "1": 2,
+        "2": 4
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          224
+        ]
+      ],
+      "normalized_determinant": "-10/9",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=3,mask=255",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "coefficient": 22,
+      "excess": 4,
+      "cross_component_histogram": {
+        "1": 9
+      },
+      "same_component_histogram": {
+        "1": 4,
+        "2": 2
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          176
+        ]
+      ],
+      "normalized_determinant": "-4/9",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=3,mask=511",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "coefficient": 18,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 9
+      },
+      "same_component_histogram": {
+        "1": 6
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          144
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "k=4,mask=13726",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 50,
+      "excess": 18,
+      "cross_component_histogram": {
+        "1": 15,
+        "3": 1
+      },
+      "same_component_histogram": {
+        "1": 6,
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          3600
+        ]
+      ],
+      "normalized_determinant": "-9/8",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=13740",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 72,
+      "excess": 40,
+      "cross_component_histogram": {
+        "1": 8,
+        "2": 8
+      },
+      "same_component_histogram": {
+        "2": 12
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          5184
+        ]
+      ],
+      "normalized_determinant": "-5/2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=13741",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 56,
+      "excess": 24,
+      "cross_component_histogram": {
+        "1": 12,
+        "2": 4
+      },
+      "same_component_histogram": {
+        "1": 4,
+        "2": 8
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          4032
+        ]
+      ],
+      "normalized_determinant": "-3/2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=13743",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 48,
+      "excess": 16,
+      "cross_component_histogram": {
+        "1": 14,
+        "2": 2
+      },
+      "same_component_histogram": {
+        "1": 6,
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          3456
+        ]
+      ],
+      "normalized_determinant": "-1",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=13758",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 42,
+      "excess": 10,
+      "cross_component_histogram": {
+        "1": 15,
+        "2": 1
+      },
+      "same_component_histogram": {
+        "1": 8,
+        "2": 4
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          3024
+        ]
+      ],
+      "normalized_determinant": "-5/8",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=13806",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 46,
+      "excess": 14,
+      "cross_component_histogram": {
+        "1": 14,
+        "2": 2
+      },
+      "same_component_histogram": {
+        "1": 7,
+        "2": 5
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          3312
+        ]
+      ],
+      "normalized_determinant": "-7/8",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=13807",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 38,
+      "excess": 6,
+      "cross_component_histogram": {
+        "1": 16
+      },
+      "same_component_histogram": {
+        "1": 9,
+        "2": 3
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          2736
+        ]
+      ],
+      "normalized_determinant": "-3/8",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=14302",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 36,
+      "excess": 4,
+      "cross_component_histogram": {
+        "1": 16
+      },
+      "same_component_histogram": {
+        "1": 10,
+        "2": 2
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          2592
+        ]
+      ],
+      "normalized_determinant": "-1/4",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=15855",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "coefficient": 34,
+      "excess": 2,
+      "cross_component_histogram": {
+        "1": 16
+      },
+      "same_component_histogram": {
+        "1": 11,
+        "2": 1
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          2448
+        ]
+      ],
+      "normalized_determinant": "-1/8",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "k=4,mask=31710",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "coefficient": 32,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 16
+      },
+      "same_component_histogram": {
+        "1": 12
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          2304
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "structured_checks": [
+    {
+      "label": "cycle,k=2",
+      "k": 2,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "coefficient": 12,
+      "excess": 4,
+      "cross_component_histogram": {
+        "1": 4
+      },
+      "same_component_histogram": {
+        "2": 2
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          8,
+          8
+        ],
+        [
+          8,
+          0,
+          8
+        ],
+        [
+          8,
+          8,
+          24
+        ]
+      ],
+      "normalized_determinant": "-1",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_bipartite,k=2",
+      "k": 2,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "coefficient": 12,
+      "excess": 4,
+      "cross_component_histogram": {
+        "1": 4
+      },
+      "same_component_histogram": {
+        "2": 2
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          8,
+          8
+        ],
+        [
+          8,
+          0,
+          8
+        ],
+        [
+          8,
+          8,
+          24
+        ]
+      ],
+      "normalized_determinant": "-1",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "cycle,k=3",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "coefficient": 36,
+      "excess": 18,
+      "cross_component_histogram": {
+        "1": 6,
+        "2": 3
+      },
+      "same_component_histogram": {
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          288
+        ]
+      ],
+      "normalized_determinant": "-2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_bipartite,k=3",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "coefficient": 18,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 9
+      },
+      "same_component_histogram": {
+        "1": 6
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          144
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "odd_theta,k=3",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "coefficient": 36,
+      "excess": 18,
+      "cross_component_histogram": {
+        "1": 6,
+        "2": 3
+      },
+      "same_component_histogram": {
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          288
+        ]
+      ],
+      "normalized_determinant": "-2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_minus_matching,k=3",
+      "k": 3,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "coefficient": 36,
+      "excess": 18,
+      "cross_component_histogram": {
+        "1": 6,
+        "2": 3
+      },
+      "same_component_histogram": {
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          72,
+          72
+        ],
+        [
+          72,
+          0,
+          72
+        ],
+        [
+          72,
+          72,
+          288
+        ]
+      ],
+      "normalized_determinant": "-2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "cycle,k=4",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "coefficient": 72,
+      "excess": 40,
+      "cross_component_histogram": {
+        "1": 8,
+        "2": 8
+      },
+      "same_component_histogram": {
+        "2": 12
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          5184
+        ]
+      ],
+      "normalized_determinant": "-5/2",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_bipartite,k=4",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "coefficient": 32,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 16
+      },
+      "same_component_histogram": {
+        "1": 12
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          2304
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "odd_theta,k=4",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "coefficient": 50,
+      "excess": 18,
+      "cross_component_histogram": {
+        "1": 15,
+        "3": 1
+      },
+      "same_component_histogram": {
+        "1": 6,
+        "2": 6
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          3600
+        ]
+      ],
+      "normalized_determinant": "-9/8",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_minus_matching,k=4",
+      "k": 4,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "coefficient": 32,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 16
+      },
+      "same_component_histogram": {
+        "1": 12
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          1152,
+          1152
+        ],
+        [
+          1152,
+          0,
+          1152
+        ],
+        [
+          1152,
+          1152,
+          2304
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "cycle,k=5",
+      "k": 5,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "coefficient": 120,
+      "excess": 70,
+      "cross_component_histogram": {
+        "1": 10,
+        "2": 15
+      },
+      "same_component_histogram": {
+        "2": 20
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          28800,
+          28800
+        ],
+        [
+          28800,
+          0,
+          28800
+        ],
+        [
+          28800,
+          28800,
+          138240
+        ]
+      ],
+      "normalized_determinant": "-14/5",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_bipartite,k=5",
+      "k": 5,
+      "edges": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "coefficient": 50,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 25
+      },
+      "same_component_histogram": {
+        "1": 20
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          28800,
+          28800
+        ],
+        [
+          28800,
+          0,
+          28800
+        ],
+        [
+          28800,
+          28800,
+          57600
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "odd_theta,k=5",
+      "k": 5,
+      "edges": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "coefficient": 80,
+      "excess": 30,
+      "cross_component_histogram": {
+        "1": 24,
+        "4": 1
+      },
+      "same_component_histogram": {
+        "1": 12,
+        "2": 8
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          28800,
+          28800
+        ],
+        [
+          28800,
+          0,
+          28800
+        ],
+        [
+          28800,
+          28800,
+          92160
+        ]
+      ],
+      "normalized_determinant": "-6/5",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_minus_matching,k=5",
+      "k": 5,
+      "edges": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ]
+      ],
+      "coefficient": 50,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 25
+      },
+      "same_component_histogram": {
+        "1": 20
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          28800,
+          28800
+        ],
+        [
+          28800,
+          0,
+          28800
+        ],
+        [
+          28800,
+          28800,
+          57600
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "cycle,k=6",
+      "k": 6,
+      "edges": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "coefficient": 180,
+      "excess": 108,
+      "cross_component_histogram": {
+        "1": 12,
+        "2": 24
+      },
+      "same_component_histogram": {
+        "2": 30
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1036800,
+          1036800
+        ],
+        [
+          1036800,
+          0,
+          1036800
+        ],
+        [
+          1036800,
+          1036800,
+          5184000
+        ]
+      ],
+      "normalized_determinant": "-3",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_bipartite,k=6",
+      "k": 6,
+      "edges": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "coefficient": 72,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 36
+      },
+      "same_component_histogram": {
+        "1": 30
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          1036800,
+          1036800
+        ],
+        [
+          1036800,
+          0,
+          1036800
+        ],
+        [
+          1036800,
+          1036800,
+          2073600
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "odd_theta,k=6",
+      "k": 6,
+      "edges": [
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "coefficient": 122,
+      "excess": 50,
+      "cross_component_histogram": {
+        "1": 35,
+        "5": 1
+      },
+      "same_component_histogram": {
+        "1": 20,
+        "2": 10
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          1036800,
+          1036800
+        ],
+        [
+          1036800,
+          0,
+          1036800
+        ],
+        [
+          1036800,
+          1036800,
+          3513600
+        ]
+      ],
+      "normalized_determinant": "-25/18",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_minus_matching,k=6",
+      "k": 6,
+      "edges": [
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          10
+        ]
+      ],
+      "coefficient": 72,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 36
+      },
+      "same_component_histogram": {
+        "1": 30
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          1036800,
+          1036800
+        ],
+        [
+          1036800,
+          0,
+          1036800
+        ],
+        [
+          1036800,
+          1036800,
+          2073600
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "cycle,k=7",
+      "k": 7,
+      "edges": [
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          13
+        ]
+      ],
+      "coefficient": 252,
+      "excess": 154,
+      "cross_component_histogram": {
+        "1": 14,
+        "2": 35
+      },
+      "same_component_histogram": {
+        "2": 42
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          50803200,
+          50803200
+        ],
+        [
+          50803200,
+          0,
+          50803200
+        ],
+        [
+          50803200,
+          50803200,
+          261273600
+        ]
+      ],
+      "normalized_determinant": "-22/7",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_bipartite,k=7",
+      "k": 7,
+      "edges": [
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          13
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          13
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          3,
+          12
+        ],
+        [
+          3,
+          13
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          4,
+          13
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          6,
+          13
+        ]
+      ],
+      "coefficient": 98,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 49
+      },
+      "same_component_histogram": {
+        "1": 42
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          50803200,
+          50803200
+        ],
+        [
+          50803200,
+          0,
+          50803200
+        ],
+        [
+          50803200,
+          50803200,
+          101606400
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "label": "odd_theta,k=7",
+      "k": 7,
+      "edges": [
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          12
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          13
+        ]
+      ],
+      "coefficient": 184,
+      "excess": 86,
+      "cross_component_histogram": {
+        "1": 48,
+        "6": 1
+      },
+      "same_component_histogram": {
+        "1": 30,
+        "2": 12
+      },
+      "has_two_vertex_cut": true,
+      "hessian": [
+        [
+          0,
+          50803200,
+          50803200
+        ],
+        [
+          50803200,
+          0,
+          50803200
+        ],
+        [
+          50803200,
+          50803200,
+          190771200
+        ]
+      ],
+      "normalized_determinant": "-86/49",
+      "inertia_positive_negative_zero": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "complete_minus_matching,k=7",
+      "k": 7,
+      "edges": [
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          13
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          13
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          3,
+          12
+        ],
+        [
+          3,
+          13
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          4,
+          13
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "coefficient": 98,
+      "excess": 0,
+      "cross_component_histogram": {
+        "1": 49
+      },
+      "same_component_histogram": {
+        "1": 42
+      },
+      "has_two_vertex_cut": false,
+      "hessian": [
+        [
+          0,
+          50803200,
+          50803200
+        ],
+        [
+          50803200,
+          0,
+          50803200
+        ],
+        [
+          50803200,
+          50803200,
+          101606400
+        ]
+      ],
+      "normalized_determinant": "0",
+      "inertia_positive_negative_zero": [
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "scope": "Finite verification of the self-contained theorem; no proof from enumeration and no referee acceptance",
+  "source_sha256": "42cb787665ee3c401f92b773101e4d4daa27d30c0430cb71bae2e410a2393400"
+}

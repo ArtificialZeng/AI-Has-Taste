@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Q}{\mathcal Q}
+
+\title{The Least Frobenius Alexander Quandle\\
+Isogeny-Detection Prime over $\F_5$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\hypersetup{
+  pdftitle={The Least Frobenius Alexander Quandle Isogeny-Detection Prime over F\_5},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an elliptic curve $E/\F_5$ and a prime $\ell\ne5$, let the
+$\ell$-torsion Frobenius Alexander quandle have operation
+$x*y=F_E x+(1-F_E)y$.  We prove that the least prime $\ell$ for which
+isomorphism of these quandles uniformly forces two elliptic curves over
+$\F_5$ to be isogenous is $11$.  The sufficient bound at $11$ and a
+counterexample at $3$ follow from recent general work of Hwang.  We complete
+the sharp determination by giving exact nonisogenous counterexamples at
+$2$ and $7$, and record point counts, integral Frobenius polynomials, and
+rational canonical forms for all three smaller primes.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $E/\F_5$ be an elliptic curve, let $F_E$ denote the $5$-power
+Frobenius on $E[\ell](\overline{\F}_5)$, and write
+\[
+ \Q_\ell(E)=\Q(E[\ell](\overline{\F}_5),F_E),\qquad
+ x*y=F_E(x)+(1-F_E)(y).
+\]
+Hwang introduced these Frobenius Alexander quandles and proved that an
+abstract quandle isomorphism $\Q_\ell(A)\cong\Q_\ell(B)$ is equivalent to
+similarity of the two Frobenius operators over $\F_\ell$
+\cite[Theorem~4.2 and Corollary~4.3]{Hwang2026}.  This rigidity result builds
+on the finite Alexander-quandle classification of Nelson
+\cite{Nelson2003}.  Hwang's general coefficient bound implies sufficiency
+for $\ell>4\sqrt5$, hence for $\ell=11$, and his Example~4.9 shows failure
+at $\ell=3$ \cite[Corollary~4.5 and Example~4.9]{Hwang2026}.
+
+For $E/\F_5$, put
+\[
+ N_E=\#E(\F_5),\qquad a_E=6-N_E,\qquad
+ P_E(T)=T^2-a_ET+5.
+\]
+Hasse's theorem gives $|a_E|\le 2\sqrt5$, hence $a_E\in[-4,4]\cap\mathbb Z$
+\cite{Hasse1936}.  Equality of the integral Frobenius polynomials is
+equivalent to $\F_5$-isogeny by Tate's theorem
+\cite[Theorem~1(c)]{Tate1966}.
+
+\begin{theorem}\label{thm:main}
+The least rational prime $\ell\ne5$ with the following property is $11$:
+for every pair of elliptic curves $A,B/\F_5$, an isomorphism
+$\Q_\ell(A)\cong\Q_\ell(B)$ implies that $A$ and $B$ are
+$\F_5$-isogenous.
+\end{theorem}
+
+\section{Uniform sufficiency at eleven}
+
+Suppose $\Q_{11}(A)\cong\Q_{11}(B)$.  Hwang's rigidity theorem makes the
+two Frobenius operators similar over $\F_{11}$, so their characteristic
+polynomials are equal modulo $11$.  In particular,
+$a_A\equiv a_B\pmod {11}$.  Since $a_A,a_B\in[-4,4]$, we have
+$|a_A-a_B|\le8<11$, and therefore $a_A=a_B$.  Thus
+$P_A(T)=P_B(T)$ in $\mathbb Z[T]$, and Tate's criterion shows that $A$ and
+$B$ are $\F_5$-isogenous.  This proves the required uniform implication.
+
+\section{Exact certificates below eleven}
+
+For $a,b\in\F_5$, write $E_{a,b}:y^2=x^3+ax+b$.  Nonsingularity is
+equivalent to $4a^3+27b^2\ne0$.  In Table~\ref{tab:counts}, the vectors
+$r$ and $m$ list, for $x=0,1,2,3,4$, respectively the values of
+$x^3+ax+b$ and the numbers of $y\in\F_5$ whose squares equal those values.
+Consequently $N_E=1+\sum_i m_i$, including the point at infinity.  The
+table is therefore a directly checkable point-count certificate.
+
+\begin{table}[ht]
+\centering
+\caption{Exact curve and Frobenius data over $\F_5$.  The column $d$ is
+$4a^3+27b^2$ modulo $5$.}
+\label{tab:counts}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}clccccccl@{}}
+\toprule
+label & equation & $d$ & $r$ & $m$ & cubic roots & $N_E$ & $a_E$ & $P_E(T)$\\
+\midrule
+$E_{-4}$ & $y^2=x^3+3x$   & $3$ & $(0,4,4,1,1)$ & $(1,2,2,2,2)$ & $\{0\}$     & $10$ & $-4$ & $T^2+4T+5$\\
+$E_0$    & $y^2=x^3+1$    & $2$ & $(1,2,4,3,0)$ & $(2,0,2,0,1)$ & $\{4\}$     & $6$  & $0$  & $T^2+5$\\
+$E_1$    & $y^2=x^3+3x+2$ & $1$ & $(2,1,1,3,3)$ & $(0,2,2,0,0)$ & $\varnothing$& $5$  & $1$  & $T^2-T+5$\\
+$E_{-2}$ & $y^2=x^3+4x$   & $1$ & $(0,0,1,4,0)$ & $(1,1,2,2,1)$ & $\{0,1,4\}$ & $8$  & $-2$ & $T^2+2T+5$\\
+$E_3$    & $y^2=x^3+4x+2$ & $4$ & $(2,2,3,1,2)$ & $(0,0,0,2,0)$ & $\varnothing$& $3$  & $3$  & $T^2-3T+5$\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+All five values of $d$ are nonzero, so every displayed equation defines an
+elliptic curve.  For $\ell\ne5$, the characteristic polynomial of Frobenius
+on $E[\ell]$ is the reduction of $P_E(T)$ modulo $\ell$.  We now certify
+similarity, rather than merely equality of characteristic polynomials.
+
+\paragraph{$\ell=2$.}
+Take $E_{-4}$ and $E_0$.  Both reduced Frobenius polynomials are
+\[
+ T^2+1=(T+1)^2\in\F_2[T].
+\]
+Each defining cubic has exactly one root in $\F_5$, as shown in the table.
+Thus each curve has exactly two rational $2$-torsion points, including the
+identity, and the fixed subspace of Frobenius on $E[2]$ has dimension one.
+Frobenius is consequently not the identity; its minimal polynomial is
+$(T+1)^2$.  Both rational canonical forms are the single companion block
+\[
+ C_2=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ \det(TI-C_2)=T^2+1.
+\]
+
+\paragraph{$\ell=3$.}
+Take $E_1$ and $E_{-2}$, the pair in Hwang's Example~4.9
+\cite[Example~4.9]{Hwang2026}.  Their common
+reduced polynomial is
+\[
+ T^2+2T+2\in\F_3[T].
+\]
+Its values at $0,1,2$ are $2,2,1$, so it is irreducible and is the minimal
+polynomial of either Frobenius.  The common rational canonical form is
+\[
+ C_3=\begin{pmatrix}0&1\\1&1\end{pmatrix},\qquad
+ \det(TI-C_3)=T^2+2T+2.
+\]
+
+\paragraph{$\ell=7$.}
+Take $E_{-4}$ and $E_3$.  Their common reduced polynomial is
+\[
+ T^2+4T+5\in\F_7[T].
+\]
+Its discriminant is $3$, a nonsquare modulo $7$, so again it is irreducible
+and minimal.  The common rational canonical form is
+\[
+ C_7=\begin{pmatrix}0&2\\1&3\end{pmatrix},\qquad
+ \det(TI-C_7)=T^2+4T+5.
+\]
+
+In each of the three pairs, the common rational canonical form proves
+Frobenius similarity and hence quandle isomorphism.  The integral traces are
+different: $-4\ne0$, $1\ne-2$, and $-4\ne3$, respectively.  Tate's
+criterion therefore proves that the paired curves are not
+$\F_5$-isogenous.  Thus the uniform implication fails for $2$, $3$, and
+$7$.  These are exactly the primes below $11$ other than $5$, completing
+the proof of Theorem~\ref{thm:main}.
+
+\section{Scope and verification}
+
+The conclusion is specific to elliptic curves over $\F_5$; it does not
+assert sharpness of Hwang's bound for other finite fields or higher
+dimensions.  Relative to the inspected prior source, the mathematical delta
+is the treatment of $\ell=2$ and $7$, together with full canonical-form
+certificates for all smaller primes.  A bounded literature search found no
+separate treatment of this exact finite delta, but this is not a claim of
+absolute priority.
+
+An accompanying standard-library Python verifier reconstructs every affine
+fiber and checks all displayed reductions, irreducibility tests, and
+companion-matrix polynomials using exact integer arithmetic.  This separation
+of a human-readable proof from exact executable checks parallels the
+certificate architecture described by Zeng, Liu, Ratnavelu, and Ong
+\cite[Section~6]{ZengEtAl2026Certificates}; the cited work is methodological
+context, not evidence for the present theorem.  The verifier uses neither
+floating-point arithmetic nor randomized tests, and the proof above does not
+depend on trusting its output.
+
+OpenAI Codex assisted with literature searching, exact-enumeration code,
+adversarial audit organization, and initial manuscript preparation.  No
+language-model output is used as mathematical evidence: the decisive
+arguments are given above and the computations are replayable in exact
+arithmetic.  No proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

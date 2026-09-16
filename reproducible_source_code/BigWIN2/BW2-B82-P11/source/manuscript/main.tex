@@ -1,0 +1,329 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\mass}{\operatorname{m}}
+
+\title{The Rank-One Mass-Three Radius for Five-Letter Additive Models Is 33}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an increasing real five-letter alphabet, let $M_3$ be the least
+diameter of an increasing integer alphabet preserving exactly all equalities
+between two equal-length sums of at most three letters.  We prove that
+$M_3\leq 33$ whenever the rational span of the short relations has rank one
+and its primitive generator has mass three.  The bound is sharp.  Moreover,
+up to changing the sign of the generator, equality occurs only for the
+relation directions
+\[
+  (1,-3,0,0,2)\quad\text{and}\quad(2,0,0,-3,1).
+\]
+The proof reduces the real problem to an exact finite classification.  There
+are 160 primitive mass-three directions modulo sign, 65 of which meet the
+strict order cone.  A complete census of the $\binom{33}{4}=40{,}920$
+normalized integer alphabets of diameter at most 33 supplies an exact-profile
+model for every feasible direction.  A second implementation regenerates
+the relation domain and repeats the census.  A separate 165-core census
+establishes the sharp lower bound.
+\end{abstract}
+
+\section{Introduction}
+
+An order-preserving Freiman model retains the order of the letters and the
+specified additive equalities.  The order-two formulation was studied by
+Amirkhanyan, Bush and Croot~\cite{AmirkhanyanBushCroot2016}; the equality-only
+higher-order invariant used here is the zero-profile formulation of
+Zhang~\cite{Zhang2026Sharp}.  In contrast with a sign-preserving addition
+table, signs of unequal sums are allowed to change.
+
+Zhang's mass-sensitive rank-one estimate gives diameter at most
+$\mu q(q+1)$ for a primitive relation of mass $\mu$~\cite[Proposition
+6.5]{Zhang2026Sharp}.  At $(q,\mu)=(3,3)$ this is 36.  On the other hand, the
+cluster profile in~\cite[Corollary 9.2]{Zhang2026Sharp} has exact diameter
+$3L_4(3)=33$.  The value $L_4(3)=11$ is the $q=3$ instance of Shin's exact
+four-mark relation-free formula~\cite[Theorem 10.3]{Shin2026Spectra}.
+Zhang's Question 12.3 asks for the rank-one maxima by primitive
+mass~\cite[Question 12.3]{Zhang2026Sharp}.  The following theorem determines
+the case $(q,\mu)=(3,3)$.
+
+\begin{theorem}\label{thm:main}
+Let $T=(t_0<t_1<t_2<t_3<t_4)$ be a real alphabet.  Suppose that the rational
+span of its balanced mass-at-most-three zero relations has rank one and that
+the primitive generator of this span has mass three.  Then
+\[
+                         M_3(T)\leq 33.
+\]
+The maximum over all such alphabets is exactly 33.  Up to replacing the
+primitive generator by its negative, the only relation directions attaining
+33 are
+\[
+  \delta_{\mathrm c}=(1,-3,0,0,2)
+  \quad\text{and}\quad
+  \delta_{\mathrm c}^{\mathrm{rev}}=(2,0,0,-3,1).
+\]
+\end{theorem}
+
+The comparison above is with the cited versions inspected in September
+2026.  Because the originating preprint appeared immediately before this
+work, the theorem is not accompanied by a claim of global priority.
+
+\section{Profiles and the order cone}
+
+For $a=(a_0,\ldots,a_4)\in\Z^5$ with $\sum_i a_i=0$, define its mass by
+\[
+ \mass(a)=\sum_i\max(a_i,0)
+          =\sum_i\max(-a_i,0)=\frac12\sum_i|a_i|.
+\]
+The mass-at-most-three zero profile of $T$ is
+\[
+ Z_3(T)=\left\{a\in\Z^5:\ \sum_i a_i=0,\ \mass(a)\leq3,
+                         \ a\cdot T=0\right\}.
+\]
+An increasing integer alphabet $S=(s_0<\cdots<s_4)$ is a $3$-model of $T$
+when $Z_3(S)=Z_3(T)$.  Its diameter is $s_4-s_0$, and $M_3(T)$ is the least
+such diameter.  Thus equality must be preserved in both directions; no
+condition is imposed on the signs of nonzero sum differences.
+
+\begin{lemma}[Rank-one reduction]\label{lem:profile}
+Under the hypotheses of Theorem~\ref{thm:main}, if $\delta$ is the primitive
+balanced generator of the relation line, then
+\[
+                         Z_3(T)=\{0,\delta,-\delta\}.
+\]
+\end{lemma}
+
+\begin{proof}
+Primitivity gives $\Q\delta\cap\Z^5=\Z\delta$.  Since the relation line is
+spanned by $Z_3(T)$, it contains a nonzero member $k\delta$ of the profile,
+where $k\in\Z\setminus\{0\}$.  Homogeneity of mass and
+$\mass(\delta)=3$ force $|k|=1$.  The same argument applies to every nonzero
+member of the profile.
+\end{proof}
+
+For a balanced row $a$, put
+\[
+                         A_j(a)=\sum_{i=j}^4a_i
+                         \qquad(1\leq j\leq4).
+\]
+
+\begin{lemma}[Tail-sum criterion]\label{lem:tails}
+For a nonzero balanced row $a$, the hyperplane $a\cdot T=0$ contains a strictly increasing real alphabet if
+and only if the four tail sums $A_1(a),\ldots,A_4(a)$ contain both a positive
+and a negative value.
+\end{lemma}
+
+\begin{proof}
+Set $g_j=t_j-t_{j-1}$.  Balance gives the exact summation-by-parts identity
+\[
+                         a\cdot T=\sum_{j=1}^4 A_j(a)g_j.
+\]
+If all $g_j>0$ and the right side is zero, the nonzero tail row must have both
+signs.  Conversely, let
+\[
+ P=\sum_{A_j>0}A_j,
+ \qquad N=-\sum_{A_j<0}A_j.
+\]
+Both are positive.  Choose $g_j=N$ when $A_j>0$, $g_j=P$ when $A_j<0$, and
+$g_j=1$ when $A_j=0$.  Then every gap is positive and the displayed sum is
+$PN-NP=0$.
+\end{proof}
+
+The criterion concerns intersection with the strict order cone.  It also
+gives realizability as a rank-one short profile: inside the resulting
+relative open set, avoid the finitely many hyperplanes belonging to short
+rows not proportional to $a$.  None of them contains the whole set.  When
+$a$ is primitive of mass three, the only proportional integral short rows
+are $\pm a$.
+
+\section{The exact finite classification}
+
+Fix the sign of every nonzero integer row by requiring its first nonzero
+coordinate to be positive.  For a feasible primitive mass-three direction
+$\delta$, let $D(\delta)$ be the least diameter of an increasing integer
+alphabet whose canonical nonzero profile is the singleton $\{\delta\}$.
+
+\begin{proposition}[Finite classification]\label{prop:census}
+There are 160 primitive balanced mass-three directions modulo sign.  Exactly
+65 satisfy the tail-sum criterion.  Every one of these 65 directions has
+$D(\delta)\leq33$, and
+\[
+ \max_{\delta}D(\delta)=33.
+\]
+The directions attaining this maximum are exactly
+$\delta_{\mathrm c}$ and $\delta_{\mathrm c}^{\mathrm{rev}}$.
+\end{proposition}
+
+\begin{proof}[Exact certificate proof]
+Every coordinate of a balanced row of mass at most three lies in
+$[-3,3]$.  Hence the coefficient box $[-3,3]^5$, together with balance and
+the mass test, is a complete domain.  For reference, the number of oriented
+rows of exact mass $p$ is
+\[
+ N_p=\sum_{\substack{r,s\geq1\\r+s\leq5}}
+   \binom5r\binom{5-r}s
+   \binom{p-1}{r-1}\binom{p-1}{s-1}.
+\]
+This gives $(N_1,N_2,N_3)=(20,110,340)$, so there are
+$(20+110+340)/2=235$ nonzero short rows modulo sign.  The only nonprimitive
+mass-three rows have the form $3(e_i-e_j)$; removing their 20 orientations
+leaves $(340-20)/2=160$ primitive directions modulo sign.
+
+For each of these 160 rows, the four integer tail sums are evaluated
+literally.  Sixty-five have both signs.  For the model census, translation
+reduces every integer alphabet of diameter $D$ to
+\[
+                 S=(0<s_1<s_2<s_3<D).
+\]
+The complete domain through diameter 33 therefore has size
+\[
+ \sum_{D=4}^{33}\binom{D-1}{3}=\binom{33}{4}=40{,}920.
+\]
+For each tuple, all 235 canonical short rows are evaluated with integer
+arithmetic.  The tuple is assigned to $\delta$ precisely when its entire
+canonical nonzero zero profile is $\{\delta\}$.  Diameters are traversed in
+increasing order, so the first assigned tuple is a minimum model.  Every one
+of the 65 feasible directions is assigned; the largest first diameter is 33,
+and the complete list at that diameter consists of the two stated rows.
+
+The accompanying producer performs exactly this coefficient-box census.  A
+separate checker does not import its generators: it reconstructs all short
+rows as differences of unordered multisets of one, two, or three labels, and
+it reconstructs mass-three directions from pairs of disjoint weak
+compositions of 3.  It then repeats all 40,920 model tests and checks every
+stored minimum and occurrence count.  Both implementations use only exact
+integers.  This separation of the mathematical reduction, stored output,
+and independent exact verification is also used in other finite
+combinatorial certificate work; see, for example,
+Zeng, Liu, Ratnavelu and Ong~\cite{ZengEtAl2026FiniteCertificates}.
+\end{proof}
+
+\begin{corollary}\label{cor:upper}
+Every alphabet in Theorem~\ref{thm:main} has a $3$-model of diameter at most
+33.  Moreover, if its primitive direction is not one of the two directions
+in Theorem~\ref{thm:main}, its minimum diameter is at most 32.
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:profile}, the profile is determined by its primitive
+direction.  Lemma~\ref{lem:tails} places that direction among the 65 feasible
+rows.  Proposition~\ref{prop:census} supplies an integer alphabet with
+exactly the same profile and gives the stated minima.
+\end{proof}
+
+\section{Sharpness from a four-letter core}
+
+The complete census already records the minimum of the cluster direction.
+For clarity, we isolate a smaller certificate proving its lower bound.
+
+\begin{lemma}[Cluster reduction]\label{lem:cluster}
+An increasing integer alphabet beginning at zero has canonical profile
+$\{\delta_{\mathrm c}\}$ if and only if it has the form
+\[
+ S=(0,2c,2c+a,2c+b,3c),\qquad 0<a<b<c,
+\]
+and the four-letter core $U=(0,a,b,c)$ has no nonzero balanced relation of
+mass at most three.
+\end{lemma}
+
+\begin{proof}
+The relation $\delta_{\mathrm c}\cdot S=0$ is
+$-3s_1+2s_4=0$.  Since $\gcd(2,3)=1$, this forces $s_1=2c$ and $s_4=3c$;
+strict order gives the displayed form.  Equal-length relations supported on
+the last four letters are unchanged when $2c$ is subtracted from every
+letter, so they are exactly the relations on $U$.
+
+It remains to examine a reduced relation that uses the initial zero.  Orient
+it so that $z\geq1$ zeros occur on one side, and let its mass be $p\leq3$.
+After cancellation the other side has $p$ nonzero terms, each at least
+$2c$, while the zero side has only $p-z$ nonzero terms, each at most $3c$.
+Equality would require
+\[
+                         3c(p-z)\geq2cp,
+\]
+or $p\geq3z$.  Hence $p=3$ and $z=1$.  Equality throughout forces the two
+remaining terms on the zero side to be $3c$ and all three terms on the other
+side to be $2c$.  This is precisely $0+2s_4=3s_1$, the cluster relation.
+Thus no additional relation involving zero is possible.
+\end{proof}
+
+Because $U$ begins at zero, it is relation-free through mass three exactly
+when its 20 unordered three-term sums are pairwise distinct: any shorter
+equality can be padded with zeros, and a collision gives a short balanced
+relation after cancellation.
+
+\begin{proposition}[Core census]\label{prop:core}
+No integer core $(0,a,b,c)$ with $0<a<b<c\leq10$ is relation-free through
+mass three.  At $c=11$, the complete list of relation-free cores is
+\[
+ (0,1,7,11),\quad(0,1,8,11),\quad
+ (0,3,10,11),\quad(0,4,10,11).
+\]
+\end{proposition}
+
+\begin{proof}[Exact certificate proof]
+For each $3\leq c\leq11$, enumerate the $\binom{c-1}{2}$ choices
+$1\leq a<b<c$ and test the 20 integer triple sums for a collision.  The
+domain contains
+\[
+                    \sum_{c=3}^{11}\binom{c-1}{2}
+                    =\binom{11}{3}=165
+\]
+cores.  Direct enumeration gives zero successes through $c=10$ and the four
+displayed successes at $c=11$.  The independent checker regenerates the
+four-coordinate relation rows and repeats the test.
+\end{proof}
+
+For $\delta_{\mathrm c}$, Lemma~\ref{lem:cluster} and
+Proposition~\ref{prop:core} imply $c\geq11$, so every exact-profile model has
+diameter $3c\geq33$.  The first core in Proposition~\ref{prop:core} yields
+\[
+                         (0,22,23,29,33),
+\]
+which has exactly the cluster profile.  A real representative is
+$(0,2,2+\theta,2+\eta,3)$, where $0<\theta<\eta<1$ and
+$1,\theta,\eta$ are linearly independent over $\Q$; its only nonzero short
+relations are the two signs of $\delta_{\mathrm c}$.  Reflection gives the
+reversal direction.  Together with Corollary~\ref{cor:upper} and the complete
+extremal list in Proposition~\ref{prop:census}, this proves all assertions of
+Theorem~\ref{thm:main}.
+
+\section*{Data, code, and assistance disclosure}
+
+The ancillary evidence consists of the producer
+\texttt{enumerate\_mass3.py}, its JSON classification, the independently
+written checker \texttt{check\_mass3\_certificate.py}, and the checker's JSON
+audit.  The programs use the Python standard library and exact integer
+arithmetic; no floating-point comparison, random seed, or numerical tolerance
+enters a theorem-bearing calculation.  Their finite domains and acceptance
+predicates are stated in the proof above.
+
+OpenAI Codex assisted with the bounded literature search, finite-search
+design and implementation, organization of a separate mathematical audit,
+and initial manuscript preparation.  Language-model output is not used as
+mathematical evidence: the result rests on the displayed reductions and the
+replayable exact enumerations.  No proof assistant was used.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

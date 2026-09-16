@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Two-vertex cuts and a Lorentzian obstruction for bistable bipartite graphs},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\N}{\mathbb{N}_0}
+\newcommand{\R}{\mathbb{R}}
+\title{Two-vertex cuts and a Lorentzian obstruction\newline
+for bistable bipartite graphs}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $F$ be a connected bipartite graph whose only maximum independent sets
+are its two parts, each of size $k\ge2$. For the three-spin model in which
+spins 1 and 2 must each occupy an independent set and spin 3 is unrestricted,
+we express the coefficient of $x_1^{k-1}x_2^{k-1}x_3^2$ exactly in terms of
+the connected components left by two-vertex deletions. The coefficient is
+at least $2k^2$, with equality precisely when $F$ has no two-vertex cut.
+The corresponding quadratic derivative has two positive Hessian eigenvalues
+precisely when $F$ is not 3-connected. This gives one fixed antiferromagnetic
+target witnessing non-Lorentzianity for all such sources of vertex
+connectivity two, including every even cycle. For 3-connected sources the
+same derivative has a zero eigenvalue and supplies no obstruction.
+The general connected-clique characterization remains unresolved.
+\end{abstract}
+
+\section{Partition functions and the separator formula}
+
+For a finite simple graph $F=(V,E)$ and a real symmetric matrix $A$ indexed
+by a finite nonempty spin set $I$, define
+\begin{equation}\label{eq:partition}
+ Z_{F,A}(\mathbf{x})=
+ \sum_{\sigma:V\to I}
+ \left(\prod_{uv\in E}A_{\sigma(u),\sigma(v)}\right)
+ \prod_{v\in V}x_{\sigma(v)}.
+\end{equation}
+Assignments are labeled, all vertices use the same variables, and there is
+no factorial normalization. Following Lee, Oh and Seo~\cite{LOS}, call $A$
+\emph{antiferromagnetic} if it is entrywise nonnegative and has at most one
+positive eigenvalue, counted with multiplicity. Diagonal entries are allowed.
+Their Theorem~3.1 proves that $Z_{K_n,A}$ is Lorentzian for every such $A$
+and $n\ge2$; the case $n=1$ is immediate.
+Their Conjecture~7.1 proposes a converse. We use the explicitly connected
+formulation in Lee and Seo~\cite[Section~6]{LS}: a finite connected source
+$F$ has Lorentzian $Z_{F,A}$ for every finite antiferromagnetic target $A$
+if and only if $F$ is a clique. The result below treats a restricted class
+in the unresolved direction of this characterization.
+
+We recall the convention for Lorentzianity. A set $S\subseteq\N^I$ of
+constant coordinate sum is \emph{M-convex} if, for $a,b\in S$ and
+$a_i>b_i$, there is $j$ with $a_j<b_j$ and $a-e_i+e_j\in S$.
+A nonzero homogeneous polynomial $f$ of degree $d\ge2$ with nonnegative
+coefficients is Lorentzian precisely when $\supp(f)$ is M-convex and
+\begin{equation}\label{eq:necessary}
+ \Hess(\partial^\gamma f)\text{ has at most one positive eigenvalue}
+ \quad\text{for every }\gamma\in\N^I,\quad |\gamma|=d-2.
+\end{equation}
+This is the characterization following Theorem~2.25 of
+Br\"and\'en and Huh~\cite{BH}. The zero polynomial and nonnegative
+homogeneous linear polynomials are included in the closed convention.
+We will only need the necessary condition~\eqref{eq:necessary}.
+
+A connected bipartite graph is \emph{bistable} when its two parts are its
+only maximum independent sets, as in de Berg, Jansen and
+Mukherjee~\cite{BJM}. The parts necessarily have the same size. Biconnectivity
+of this class is known~\cite{BJM}; we rederive it below to make the proof
+self-contained. A \emph{two-vertex cut} is an unordered pair whose deletion
+disconnects the graph. Components consisting of one vertex are counted.
+
+Throughout the theorem, fix
+\begin{equation}\label{eq:target}
+ A_\star=\begin{pmatrix}0&1&1\\1&0&1\\1&1&1\end{pmatrix}.
+\end{equation}
+Thus the first two spin classes are independent sets, while the third
+class is unrestricted. Every allowed assignment has weight one.
+
+\begin{theorem}\label{thm:main}
+Let $F=(L\cup R,E)$ be a finite connected simple bipartite graph, with
+$|L|=|R|=k\ge2$, whose only maximum independent sets are $L$ and $R$.
+Put
+\[
+ f=Z_{F,A_\star},\qquad \beta=(k-1,k-1,0),\qquad
+ c=[x_1^{k-1}x_2^{k-1}x_3^2]f.
+\]
+For distinct $u,v$, let $q(u,v)$ be the number of components of
+$F-\{u,v\}$, and let
+\[
+ s=\#\bigl\{D\in\tbinom{L}{2}\cup\tbinom{R}{2}:F-D
+       \text{ is disconnected}\bigr\}.
+\]
+Then
+\begin{align}
+ c&=\sum_{u\in L,\,v\in R}2^{q(u,v)}+2s,\label{eq:coefficient}\\
+ \Hess(\partial^\beta f)
+   &=2(k!)^2\begin{pmatrix}0&1&1\\1&0&1\\1&1&c/k^2\end{pmatrix}.
+       \label{eq:hessian}
+\end{align}
+In particular, $F$ is 2-connected and $c\ge2k^2$, with equality exactly
+when $F$ has no two-vertex cut. The matrix in~\eqref{eq:hessian} has
+two positive eigenvalues exactly when $F$ is not 3-connected; in that
+case $f$ is not Lorentzian. The target $A_\star$ is antiferromagnetic,
+with spectrum $-1,1-\sqrt2,1+\sqrt2$.
+
+If $F$ is 3-connected, this Hessian has one positive, one negative and
+one zero eigenvalue. This last assertion does not imply that $f$ is Lorentzian.
+\end{theorem}
+
+The coefficient formula and its equality criterion connect a specific
+quadratic derivative to vertex connectivity. They are the contribution
+beyond the known clique sufficiency and bistability facts above. For
+comparison, when $A$ is the adjacency matrix of a loopless complete graph,
+\eqref{eq:partition} is a finite-variable specialization of Stanley's
+chromatic symmetric function~\cite{Stanley}. Matherne, Morales and
+Selover~\cite[Theorem~1.5]{MMS} prove Lorentzianity of these proper-coloring
+polynomials for indifference graphs of abelian Dyck paths. Our target
+allows adjacent vertices in spin 3, so their theorem concerns a different
+polynomial. A related use of coloring coefficients to recover graph
+structure appears in Zijian Zeng's reconstruction of proper trees with
+multiplicity-isolated weighted cores~\cite[Theorem~1.1]{Zeng}: leading
+star-basis data and the next coefficient layer recover the tree under
+that hypothesis. Here a monomial coefficient of the three-spin partition
+function detects two-vertex cuts under bistability. These comparisons
+concern the cited sources and do not establish a global priority claim.
+
+\section{Proof of the theorem}
+
+Write $N(S)$ for the neighborhood of a vertex set in $F$.
+
+\begin{lemma}\label{lem:expansion}
+Under the hypotheses of Theorem~\ref{thm:main}, every nonempty proper
+subset $S$ of either part satisfies
+\begin{equation}\label{eq:expansion}
+ |N(S)|\ge |S|+1.
+\end{equation}
+Consequently, every vertex has degree at least two, and $F$ is 2-connected.
+\end{lemma}
+\begin{proof}
+Suppose $\varnothing\ne S\subsetneq L$ and $|N(S)|\le |S|$.
+Then $S\cup(R\setminus N(S))$ is independent and has size at least $k$.
+A larger size contradicts the maximum size of the two parts. Equality gives
+a maximum independent set distinct from both $L$ and $R$, again a
+contradiction. Interchanging the parts proves~\eqref{eq:expansion} on
+both sides. Applying it to singletons gives the degree bound.
+
+Delete $u\in L$. Each component of $F-u$ has a nonempty $R$-part:
+any remaining $L$-vertex retains all its neighbors. If there were several
+components, write their parts as $L_i,R_i$. Each $R_i$ is then a nonempty
+proper subset of $R$, and
+\[
+ |R_i|+1\le |N(R_i)|\le |L_i|+1.
+\]
+Summing would give $k\le k-1$. Thus $F-u$ is connected. The argument
+for $u\in R$ is symmetric. Since $|V|\ge4$, the graph is 2-connected.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+To count $c$, choose the unordered pair $D$ assigned spin 3. The other
+vertices must be properly colored by spins 1 and 2, with $k-1$ vertices
+of each color. We distinguish the two possible positions of $D$.
+
+If $D=\{u,v\}$ with $u\in L$ and $v\in R$, every remaining vertex
+retains a neighbor by Lemma~\ref{lem:expansion}. Each component of $F-D$
+therefore has nonempty parts $L_i,R_i$, both proper in the original parts.
+Its neighborhoods in $F$ lie respectively in $R_i\cup\{v\}$ and
+$L_i\cup\{u\}$. Applying~\eqref{eq:expansion} gives
+\[
+ |L_i|+1\le |R_i|+1,\qquad |R_i|+1\le |L_i|+1.
+\]
+Thus every component is balanced. Its two color orientations are
+independent of the other components, and either orientation preserves
+the required totals. This pair contributes $2^{q(u,v)}$.
+
+Next suppose $D\subset L$. If $F-D$ is connected, its bipartition
+has sizes $k-2,k$ and it has no balanced proper coloring. If it is
+disconnected, each component has a nonempty proper $R$-part $R_i$.
+Since $N(R_i)\subseteq L_i\cup D$, expansion gives
+$|R_i|\le |L_i|+1$. When $L_i\ne\varnothing$, it is a proper
+subset of $L$ and $N(L_i)\subseteq R_i$, so expansion also gives
+$|R_i|\ge |L_i|+1$. When $L_i=\varnothing$, the component is
+one isolated $R$-vertex, and the same equality holds. Hence every
+component satisfies
+\[
+ |R_i|-|L_i|=1.
+\]
+The total imbalance is two, so there are exactly two components.
+Exactly two of their four orientation choices cancel the imbalances
+and yield $k-1$ vertices of each color. Thus each such cut contributes
+two. Deletion within $R$ is symmetric. This proves~\eqref{eq:coefficient},
+including singleton components and the case $k=2$.
+
+Every remainder has at least two vertices, so $q(u,v)\ge1$.
+Each of the $k^2$ cross-part terms is at least two, and a term exceeds
+two precisely for a cross-part cut. The term $2s$ is positive precisely
+when there is a same-part cut. This proves $c\ge2k^2$ and its equality
+criterion. By Lemma~\ref{lem:expansion}, absence of a two-vertex cut is
+equivalent here to 3-connectivity.
+
+It remains to compute the Hessian without changing normalization.
+The independence number is $k$, so the coefficients with exponents
+$(k+1,k-1,0)$ and $(k-1,k+1,0)$ vanish. Connectedness gives
+\[
+ [x_1^kx_2^k]f=2.
+\]
+If the spin-1 class has size $k$, it must be $L$ or $R$. Choosing
+one of the $k$ vertices of the other part for spin 3 gives
+\[
+ [x_1^kx_2^{k-1}x_3]f=2k,
+ \qquad [x_1^{k-1}x_2^kx_3]f=2k.
+\]
+For $\alpha\in\N^3$, write $\alpha!=\alpha_1!\alpha_2!\alpha_3!$.
+Since $|\beta|=2k-2$, the constant $(i,j)$ entry of
+$\Hess(\partial^\beta f)$ is
+\[
+ (\beta+e_i+e_j)!\,[\mathbf{x}^{\beta+e_i+e_j}]f.
+\]
+These coefficients give~\eqref{eq:hessian}; in particular, the $(3,3)$
+entry is $2((k-1)!)^2c$, with the factor two coming from $2!$.
+
+Set $t=c/k^2\ge2$ and divide the Hessian by the positive number
+$2(k!)^2$. The vector $(1,-1,0)$ is an eigenvector of eigenvalue $-1$.
+On its orthogonal complement, in the orthonormal basis
+$(1,1,0)/\sqrt2,(0,0,1)$, the matrix is
+\[
+ B_t=\begin{pmatrix}1&\sqrt2\\\sqrt2&t\end{pmatrix},
+ \qquad \det B_t=t-2,\quad \operatorname{tr}B_t=1+t.
+\]
+For $t>2$, both eigenvalues of $B_t$ are positive. For $t=2$, they
+are $3$ and $0$. This proves the asserted Hessian inertias. Finally,
+\[
+ \det(\lambda I-A_\star)=(\lambda+1)(\lambda^2-2\lambda-1),
+\]
+so the target is entrywise nonnegative with exactly one positive
+eigenvalue. If $F$ has a two-vertex cut, the order-$2k-2$ derivative
+just computed violates~\eqref{eq:necessary}, proving non-Lorentzianity.
+\end{proof}
+
+\section{Even cycles and the equality boundary}
+
+\begin{corollary}\label{cor:examples}
+For $F=C_{2k}$, $k\ge2$, the coefficient in Theorem~\ref{thm:main} is
+$c=6k(k-1)$, and $Z_{F,A_\star}$ is not Lorentzian.
+For $F=K_{k,k}$, $k\ge3$, it is $c=2k^2$.
+For $K_{2,2}=C_4$ it is instead $c=12$.
+\end{corollary}
+\begin{proof}
+An independent set in $C_{2k}$ has at most $k$ vertices. If it has
+$k$, its $k$ cyclic gaps all have length at least two and sum to $2k$,
+so each gap has length two. The maximum independent sets are therefore
+the two parts. Of the $k^2$ cross-part pairs, $2k$ are adjacent and
+leave one component; each of the other $k^2-2k$ pairs leaves two.
+All $2\binom{k}{2}=k(k-1)$ same-part pairs are cuts. Thus
+\[
+ c=4k+4(k^2-2k)+2k(k-1)=6k(k-1)>2k^2.
+\]
+In $K_{k,k}$ every independent set lies in one part. For $k\ge3$,
+deleting any two vertices leaves a connected complete bipartite graph,
+so Theorem~\ref{thm:main} gives equality. For $k=2$, the two same-part
+pairs each leave two isolated vertices, giving $c=8+4=12$.
+\end{proof}
+
+Equality is a limitation of the selected derivative, not a criterion for
+Lorentzianity of the partition function. Other derivatives, or other
+antiferromagnetic targets, may still provide an obstruction on a
+3-connected bistable source. The theorem makes no assertion for arbitrary
+bipartite sources lacking the maximum-independent-set hypothesis, and it
+does not resolve the connected-clique characterization.
+
+\section{Exact computational checks}
+
+The proof above is independent of computation. As a finite check, two
+separately implemented Python programs examined every labeled bipartite
+graph with fixed parts of size $k=2,3,4$. All $2^{k^2}$ edge sets were
+considered, with minimum degree two used only as the necessary prefilter
+proved in Lemma~\ref{lem:expansion}. The first program tests all vertex
+subsets for the independent-set hypothesis and counts disjoint independent
+color classes. The second tests all $k$-subsets and counts assignments
+directly from $A_\star$ by vertex recursion; its component computation
+uses a separate breadth-first search. Testing $k$-subsets suffices because
+an independent set larger than $k$ contains a $k$-subset different from
+both parts. The computations use exact integer or rational arithmetic.
+
+The programs agree on all six coefficients needed for the Hessian,
+the separator identity and its strict/equality criterion. The exhaustive
+coverage is as follows; graphs are counted with their fixed labels, without
+quotienting by isomorphism.
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$k$ & Edge sets & Bistable graphs & $c>2k^2$ & $c=2k^2$\\
+\midrule
+2 & 16 & 1 & 1 & 0\\
+3 & 512 & 34 & 33 & 1\\
+4 & 65\,536 & 6\,785 & 6\,576 & 209\\
+\bottomrule
+\end{tabular}
+\end{center}
+There are 6\,820 qualifying graphs in total. A further 22 structured
+records through $k=7$ and 15 representative records from the exhaustive
+domain were checked from explicit edge lists by the second program.
+These records are not all distinct and do not constitute exhaustive
+larger-order coverage. The cube, represented as $K_{4,4}$ minus a perfect
+matching, is a checked equality example with $c=32$.
+The accompanying computational dossier contains the programs and exact
+outputs. The computations corroborate the all-$k$ proof; the eigenvalue
+signs used in the theorem follow from the displayed $2\times2$ reduction.
+
+\paragraph{Computational and AI assistance.}
+OpenAI's Codex was used to develop the counting argument, generate Python
+verification programs, inspect primary literature and prepare the manuscript.
+A separate model context reconstructed the argument and implemented the
+second finite verifier. This was an additional checking pass, not a
+formal proof-assistant verification or journal peer review. The mathematical
+justification is the explicit proof above, with computation serving as
+finite corroboration.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

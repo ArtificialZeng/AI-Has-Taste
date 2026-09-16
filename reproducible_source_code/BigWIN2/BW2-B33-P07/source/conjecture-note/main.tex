@@ -1,0 +1,478 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Conjectural Binary-Kernel Rank]{Conjectural Infinite Binary-Kernel Rank for Three Subsequences of A182510\\
+(Original Eight-Zero Problem Unresolved)}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{2026-09-04}
+\hypersetup{pdftitle={Conjectural Infinite Binary-Kernel Rank for Three Subsequences of A182510 (Original Eight-Zero Problem Unresolved)},pdfauthor={Xiaojian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+The original problem remains unresolved: it asks whether the OEIS A182510
+recurrence has exactly eight zero terms.  The binary-kernel conjecture
+formulated here is also unproved.  We study the integer
+recurrence
+\[
+ a_0=0,\qquad a_1=1,\qquad
+ a_n=(a_{n-1}\mathbin{\mathrm{XOR}}n)-a_{n-2},
+\]
+where XOR has infinite-width two's-complement semantics.  Exact reductions
+connect its zero set to three unit-value subsequences.  Their canonical
+binary-kernel evaluation matrices are nonsingular in every tested case
+$3\leq d\leq11$, reaching dimension $2047$, and independent exact
+implementations reproduce the certificates.  Separate adversarial work finds
+large forced powers of two in these determinants and invalidates two naive
+proof mechanisms without producing a dependence.  This evidence motivates
+Conjecture~\ref{conj:C002}, which predicts nonsingularity at every depth.  It
+does not imply the original eight-zero assertion.  No case $d\geq12$ has been
+tested, no determinant recurrence is known, and neither finite computation
+nor the recorded bounded literature search supplies a proof.
+\end{abstract}
+
+\maketitle
+
+\section{Original problem and verified frontier}
+
+For $x\in\mathbb Z$ and $n\in\mathbb N$, infinite-width two's-complement
+XOR is fixed by
+\[
+x\mathbin{\mathrm{XOR}}n=
+\begin{cases}
+x\mathbin{\mathrm{xor}}n,&x\geq0,\\
+-1-\bigl((-1-x)\mathbin{\mathrm{xor}}n\bigr),&x<0,
+\end{cases}
+\]
+where the operation on the right is ordinary finite binary XOR.  There is no
+word-size truncation or unsigned coercion.  The original problem asks whether
+\begin{equation}\label{eq:original-target}
+ \{n\in\mathbb N:a_n=0\}=\{0,6,11,23,36,42,48,54\}.
+\end{equation}
+The live OEIS entry gives the same recurrence and labels the assertion that
+the sequence has eight zeros as a conjecture; its linked table covers indices
+$0$ through $10000$ \cite{OEISA182510}.  A targeted search on 2026-09-04
+found no accepted proof or counterexample.  This is a bounded open-status
+check, not an exhaustive survey: the OEIS entry is a curated database record,
+not a peer-reviewed proof; the indexed web searches performed here cannot be
+exhaustive; and a supplied
+commit-pinned formalization could not be inspected.
+Accordingly, \eqref{eq:original-target} remains unresolved in this note.
+
+Two exact finite frontiers are useful but do not settle the problem.  First,
+independent recurrence implementations find precisely the eight displayed
+zeros through $n=5\cdot10^{10}$.  Second, at dyadic level $33$, any integer
+zero must occupy one of $354$ completely enumerated residue classes modulo
+$3\cdot2^{33}$; the least additional representative is $123{,}064{,}307$.
+Both statements concern finite, reproducible computations and make no claim
+about the infinite tail.
+
+The closest literature located for the method is the theory of
+$k$-regular sequences.  It characterizes $k$-regularity by finite generation
+of the module spanned by the $k$-kernel
+\cite{AlloucheShallit1992,AlloucheShallit2003}; the 1992 paper also uses
+nonvanishing finite evaluation determinants for a different sequence.  Work
+on compatible $2$-adic dynamics supplies broader context for arithmetic and
+bitwise maps \cite{Anashin2002}.  None of the inspected sources states the
+recurrence-specific conjecture below or classifies its three derived
+subsequences.
+
+\section{Research routes and failure diagnosis}
+
+The investigation kept proof and counterexample routes separate.  The main
+outcomes, including failures, are as follows.
+
+\begin{enumerate}
+\item A signed-size route gives
+\(
+ |(x\mathbin{\mathrm{XOR}}n)-x|\leq n
+\)
+and hence $|a_n|\leq n(n+1)/2$.  It cannot exclude zeros: the homogeneous
+recurrence has a six-periodic impulse response, so absolute-value
+accumulation discards the sign and low-bit data needed for a lower bound.
+
+\item A modular route succeeds in proving a universal period modulo every
+power of two (Section~\ref{sec:partial}), but it leaves a binary forest of
+compatible zero residues.  At level $33$ there are $346$ non-known residue
+classes in addition to the eight known zeros.  No height function, finite
+automaton, or uniform escape argument classifies their infinite lifts.
+
+\item A direct counterexample search uses two different exact update formulas
+and guarded signed arithmetic.  The implementations agree through
+$5\cdot10^{10}$ and find no ninth zero.  The stopping point is a computational
+budget boundary, not evidence for a universal tail statement.
+
+\item Three fixed-window lift predictors were attacked on parent levels
+$1$ through $24$, for every window width $1$ through $12$.  All $36$
+feature/width combinations contain exact collisions: identical retained
+features can lead to different child masks.  This rules out those particular
+static representations, but not a level-dependent state or a state carrying
+the propagated borrow.
+
+\item Exact three-step and bit-stripping identities reduce zeros to unit
+values in three residue-class subsequences.  Low-dimensional linear
+binary-kernel closure then fails: each of the three relevant rational
+$2$-kernels has dimension at least $2047$.  This finite obstruction suggests
+the conjecture in Section~\ref{sec:conjecture}, but it neither gives infinite
+rank nor classifies unit hits.
+
+\item A second stripping isolates an internal subtraction and its borrow.
+For every fixed low-bit window there are same-window, same-phase integer
+states requiring different corrections.  This eliminates an all-state static
+affine ansatz; it does not eliminate a bit-serial transducer or a closure
+specific to the distinguished orbit.
+
+\item Binary-parent column differences prove substantial all-depth
+$2$-adic divisibility of the conjectured determinants.  Exact prime factors
+present at one depth can disappear at the next, refuting a naive recursion
+that retains the preceding determinant as a factor.  Divisibility by a large
+power of two is compatible with both a zero and a nonzero determinant.
+\end{enumerate}
+
+The smallest explicit unresolved kernel for the original problem is the
+following lift-tree classification.  Let
+\[
+ Z_k=\{0\leq r<3\cdot2^k:a_r\equiv0\pmod{2^k}\}.
+\]
+Each node has only the possible children $r$ and $r+3\cdot2^k$.
+Ordinary integer zeros are exactly the infinite paths whose representatives
+eventually remain constant.  It remains to exclude every eventually constant
+path except those stabilizing at the eight indices in
+\eqref{eq:original-target}.  This finite-at-each-level reformulation is more
+testable than an undirected tail search, but it is still equivalent to the
+missing universal assertion rather than a solution.
+
+\section{Verified partial results}\label{sec:partial}
+
+This section records only identities with complete elementary derivations or
+exact finite certificates.  None resolves the original problem or the
+conjecture in Section~\ref{sec:conjecture}.
+
+\subsection{Universal modular period and the zero-lift tree}
+
+Put $M=2^k$ and, on $(\mathbb Z/M\mathbb Z)^2$, define
+\[
+ T_j(x,y)=\bigl(y,(y\mathbin{\mathrm{XOR}}j)-x\bigr),\qquad
+ P_M=T_{M-1}\cdots T_0.
+\]
+A high-bit translation induction gives
+\begin{equation}\label{eq:period}
+ P_M^3=\operatorname{id},\qquad
+ a_{n+3\cdot2^k}\equiv a_n\pmod{2^k}
+ \quad(k,n\geq0).
+\end{equation}
+For completeness, at the lift from $M$ to $2M$ let
+$H_{(\alpha,\beta)}(x,y)=(x+\alpha M,y+\beta M)$,
+$e=(0,1)$, and $A(\alpha,\beta)=(\beta,\alpha+\beta)$ over
+$\mathbb F_2$.  Direct separation of the lower and upper bits gives
+\[
+ T_{j+M}=H_eT_j,\qquad T_jH_v=H_{Av}T_j,\qquad
+ A^3=I,\qquad I+A+A^2=0.
+\]
+If $Q=T_{M-1}\cdots T_0$, commuting the translations through the upper
+half of the word yields $P_{2M}=H_sQ^2$ with
+$s=\sum_{i=0}^{M-1}A^ie$.  Cubing, the translation part vanishes by
+$I+A+A^2=0$.  The induction hypothesis makes $Q^3$ a translation on each
+four-point fiber over modulus $M$, and every such translation has square
+equal to the identity.  Thus $Q^6=I$ and the induction closes, including
+$M=1$.  Cyclically rotated time words are conjugate, which gives the second
+identity in \eqref{eq:period} for every starting phase.
+
+Reduction of \eqref{eq:period} from level $k+1$ to $k$ gives the parent map
+for $Z_k$.  A path eventually fixed at $n$ lies in $Z_k$ for arbitrarily
+large $k$, so $2^k\mid a_n$ for arbitrarily large $k$ and hence $a_n=0$.
+The converse is immediate.  This proves the lift-tree equivalence used above,
+but supplies no classification of non-known paths.
+
+\subsection{Local zero tests and unit-value coordinates}
+
+XOR is an involution, so for every $n\geq2$,
+\begin{equation}\label{eq:adjacent-xor}
+ a_n=0
+ \quad\Longleftrightarrow\quad
+ a_{n-2}\mathbin{\mathrm{XOR}}a_{n-1}=n.
+\end{equation}
+Consequently the two preceding values have the same sign, agree above the
+highest set bit of $n$, and differ by at most $n$.  Modulo two, the parity
+word is $(0,1,1,1,0,0)^\infty$, so a zero index is congruent to $0$, $4$,
+or $5$ modulo $6$.
+
+Eliminating adjacent recurrence terms and using the last binary carry gives
+the exact equivalent unit-value classifications
+\begin{align}
+ \{q\geq0:a_{6q+3}=-1\}&=\{0,1,6,7,8,9\},\label{eq:unit-w}\\
+ \{q\geq0:a_{6q+1}=1\}&=\{0\},\label{eq:unit-u}\\
+ \{q\geq0:a_{6q+2}=1\}&=\{1,3\}.
+ \label{eq:unit-v}
+\end{align}
+Their conjunction is equivalent to \eqref{eq:original-target}; it is not a
+proof of any of the three equalities.  The proved period modulo four makes
+the following integer-valued coordinates natural:
+\begin{equation}\label{eq:uvw}
+ U_q=\frac{a_{6q+1}-1}{4},\qquad
+ V_q=\frac{a_{12q+8}-1}{4},\qquad
+ W_q=\frac{a_{6q+3}+1}{4}.
+\end{equation}
+These isolate the nontrivial unit hits in
+\eqref{eq:unit-w}--\eqref{eq:unit-v} and expose their binary descendants.
+
+\subsection{Finite kernel-rank certificates and forced divisibility}
+
+For $S\in\{U,V,W\}$, evaluating the first $2^d-1$ standard binary-kernel
+subsequences at $j=0,\ldots,2^d-2$ gives the matrix $K_d^S$ used below.
+At $d=11$, exact modular elimination gives
+\begin{align*}
+ \det K_{11}^U&\equiv329819\pmod{1000003},\\
+ \det K_{11}^V&\equiv646456\pmod{1000003},\\
+ \det K_{11}^W&\equiv520101\pmod{1000003}.
+\end{align*}
+Each residue is nonzero.  Therefore the corresponding integer determinant is
+nonzero, and the first $2047$ binary-kernel subsequences of each sequence are
+linearly independent over $\mathbb Q$.  This proves only the finite lower
+bound $2047$.
+
+There is also an all-depth obstruction to a simple odd-determinant argument.
+Writing $D_E(S)=\det K_{E+1}^S$, binary-parent column differences followed by
+a parity-rank estimate give, for every $E\geq2$,
+\begin{align}
+ 2^{(4E-2)2^E-3E+1}&\mid D_E(V),\label{eq:div-v}\\
+ 2^{(4E-4)2^E-3E+3}&\mid D_E(U),D_E(W).
+ \label{eq:div-uw}
+\end{align}
+The normalized parity after the column differences depends only on row depth
+and column scale.  Factoring the forced powers of two and applying the
+elementary fact that an $m$-square integer matrix of rank at most $\rho$
+modulo two has determinant divisible by $2^{m-\rho}$ gives
+\eqref{eq:div-v}--\eqref{eq:div-uw}.  Since zero is divisible by every power
+of two, these formulas do not imply nonsingularity.
+
+\section{Robust candidate conjecture}\label{sec:conjecture}
+
+The following item passed a fresh independent conjecture audit as a
+precise, reproducible, adversarially tested candidate.  It remains unproved.
+Its mathematical scope is stated precisely below.
+
+\begin{conjecture}[Registry C002]\label{conj:C002}
+For every $q\in\mathbb{N}$, define
+\begin{align*}
+ U_q&=(a_{6q+1}-1)/4,&
+ V_q&=(a_{12q+8}-1)/4,&
+ W_q&=(a_{6q+3}+1)/4.
+\end{align*}
+For every $S\in\{U,V,W\}$ and every integer $d\ge 3$, let $K_d^S$ be
+the $(2^d-1)\times(2^d-1)$ integer matrix whose rows are indexed, in
+lexicographic level order, by pairs $(e,r)$ satisfying
+\[
+ 0\le e<d,
+ \qquad 0\le r<2^e,
+\]
+whose columns are indexed by integers $j$ satisfying $0\le j<2^d-1$, and
+whose entries are
+\[
+ K_d^S[(e,r),j]=S_{2^e j+r}.
+\]
+Then $\det K_d^S\ne0$.
+\par\smallskip
+\noindent\emph{Canonical source formulation.}
+{\footnotesize\ttfamily\sloppy
+\detokenize{For every q\in\mathbb{N}, define U_q=(a_{6q+1}-1)/4, V_q=(a_{12q+8}-1)/4, and W_q=(a_{6q+3}+1)/4. For every S\in\{U,V,W\} and every integer d\ge 3, let K_d^S be the (2^d-1)\times(2^d-1) integer matrix with rows indexed, in lexicographic level order, by pairs (e,r) satisfying 0\le e<d and 0\le r<2^e, columns indexed by integers j satisfying 0\le j<2^d-1, and entries K_d^S[(e,r),j]=S_{2^e j+r}. Then \det K_d^S\ne0.}\par}
+\par\smallskip
+\noindent\emph{Plain-language statement.} For every nonnegative integer $q$,
+define
+\begin{align*}
+ U(q)&=(a(6q+1)-1)/4,\\
+ V(q)&=(a(12q+8)-1)/4,\quad\text{and}\\
+ W(q)&=(a(6q+3)+1)/4.
+\end{align*}
+Choose any $S$ among $U$, $V$, and $W$ and any integer $d$ at least $3$.
+Form the square integer matrix of dimension $2^d-1$ whose rows are indexed
+by all pairs $(e,r)$ with $0\le e<d$ and $0\le r<2^e$, whose columns are
+$j=0,\ldots,2^d-2$, and whose $((e,r),j)$ entry is $S(2^e j+r)$.  The
+conjecture says that this matrix has nonzero determinant for every such $S$
+and $d$.
+\end{conjecture}
+
+The conjecture is nontrivial already at its boundary: all three $d=1$
+matrices are singular, while the $d=2$ matrices for $V$ and $W$ are
+singular.  Thus $d\geq3$ is the smallest uniform threshold for the three
+sequences.  It is also not a reformulation of the original problem.
+Conjecture~\ref{conj:C002} does not classify the zeros of $U,V,W$ and does
+not imply \eqref{eq:original-target}.
+
+If the conjecture is true, the rational $2$-kernel of each of $U,V,W$ has
+infinite dimension, so none is $2$-regular.  It would rule out every
+finite-dimensional linear binary-kernel description of these unit-hit
+coordinates and redirect the original structural search toward nonlinear or
+unbounded carry data.  If the conjecture is false, a singular canonical minor
+would not by itself imply finite kernel rank: an exact null relation should be
+tested on additional columns to distinguish a whole-subsequence dependence
+from failure of this chosen family of minors.  Alternative square minors
+could still witness unbounded rank.
+
+\section{Exact evidence and reproducibility}
+
+All decisive computations use integer or finite-field arithmetic; no
+floating-point inference is used.  For $3\leq d\leq10$, every matrix for
+$S\in\{U,V,W\}$ has a nonzero determinant modulo both $1000003$ and
+$1000033$.  For $d=11$, all three determinants are nonzero modulo $1000003$.
+The corresponding dimensions are $2^d-1$, culminating at $2047$.  The
+smallest claimed matrices were also computed over the integers:
+\begin{align*}
+ \det K_3^U&=4029874176,\\
+ \det K_3^V&=-146688001966080,\\
+ \det K_3^W&=73891840.
+\end{align*}
+
+The producer generates the recurrence using direct signed XOR and performs
+unnormalized modular elimination.  The independent checker regenerates every
+sequence value from
+\[
+ x\mathbin{\mathrm{XOR}}n=x+n-2(x\mathbin{\mathrm{AND}}n)
+\]
+and uses a separately normalized elimination.  It reconstructs every matrix
+and recomputes every determinant residue.  The largest recurrence frontier is
+$25{,}153{,}532$; a conservative operation bound remains below the signed
+$64$-bit limit.  A third, arbitrary-precision implementation with exact
+domain determinants checks the boundary and small claimed levels.
+
+The determinant evidence, adversarial normalized-layer evidence, and their
+independent checkers are stored in
+\begin{center}
+\begin{minipage}{0.94\textwidth}
+\small
+\path{experiments/kernel-rank-evidence.json},
+\path{experiments/kernel-rank-d11-evidence.json},
+\path{experiments/handoff-extensions-evidence.json},
+\path{experiments/verify_kernel_rank.py}, and
+\path{experiments/verify_handoff_extensions.py}.
+\end{minipage}
+\end{center}
+From the project root, the principal replay commands are
+\begin{verbatim}
+python3 experiments/verify_kernel_rank.py \
+  experiments/kernel-rank-evidence.json
+python3 experiments/verify_kernel_rank.py \
+  experiments/kernel-rank-d11-evidence.json
+python3 experiments/verify_handoff_extensions.py \
+  experiments/handoff-extensions-evidence.json
+python3 experiments/verify_structural_hints.py \
+  experiments/structural-hints-evidence.json
+\end{verbatim}
+The saved kernel-rank environment records Python $3.10.12$.  It also records
+NumPy $2.2.6$.  The handoff checker additionally uses exact SymPy domain
+determinants.  Successful replay certifies only the serialized finite scope.
+
+For context, the separate original-problem computations cover the direct
+sequence through $5\cdot10^{10}$, the full distinguished modular orbit through
+$k=33$, all initial states through $k=8$, all phases through $k=5$, and
+$748{,}980$ exhaustive plus $100{,}000$ seeded high-bit lift tests.  They are
+exact within their declared finite ranges but are not evidence for an
+unbounded quantifier.
+
+\section{Adversarial falsification and literature boundary}
+
+The dedicated adversarial route differs from merely extending the positive
+rank table.  It included the following attacks.
+
+\begin{itemize}
+\item The excluded levels $d=1,2$ were evaluated.  Their singularities show
+that the threshold in Conjecture~\ref{conj:C002} cannot be lowered uniformly.
+
+\item Searches tested duplicate or linearly dependent low-level rows and
+forced congruence degeneracy.  They also tested exact rational dependence in
+every claimed finite case.  No dependence was found.
+
+\item Binary-parent differences were normalized through depth $E=8$, for
+$781{,}828$ exact entries.  Exact integer determinants through $E=4$ were
+computed by both fraction-free Bareiss elimination and an independent SymPy
+implementation.  These tests confirm the forced divisibility
+\eqref{eq:div-v}--\eqref{eq:div-uw} without converting it into
+nonsingularity.
+
+\item Prime factors of $D_2(U)$, $D_2(V)$, and $D_2(W)$ disappear from the
+corresponding $D_3$ in explicit examples.  This refutes a naive nested
+determinant factorization.  The propagated-borrow analysis separately refutes
+an all-state affine correction based on any fixed low-bit window.
+
+\item Optimization extremizers and random input search are inapplicable:
+each pair $(S,d)$ determines a single integer matrix.  Multiple modular primes
+are useful exact prefilters, not randomized counterexamples.
+\end{itemize}
+
+The fastest future falsifier is concrete.  Generate a specified $K_d^S$,
+use several modular determinants as inexpensive singularity prefilters, then
+reconstruct a nonzero rational or integer null vector and independently check
+that its product with the serialized integer matrix is exactly zero.  A zero
+determinant modulo one prime, or even several primes, is not a refutation.
+
+The novelty search used the exact OEIS identifier and recurrence, the terms
+``$2$-kernel'', ``$2$-regular'', determinant, nonsingularity, canonical
+evaluation minor, and the patterns $a(6n+1)$ and $a(12n+8)$.  It also checked
+the primary Allouche--Shallit papers and their determinant precedent
+\cite{AlloucheShallit1992,AlloucheShallit2003}.  No equivalent of the fully
+specified matrix statement was found in that recorded search as of
+2026-09-04.  This wording is deliberately bounded: incomplete indexing and
+the inaccessible pinned formalization preclude an absolute priority or
+novelty claim.
+
+\section{Limitations, unsearched scope, and research agenda}
+
+Conjecture~\ref{conj:C002} is unproved, and the original eight-zero problem
+remains unresolved.  The finite determinant data stop at $d=11$; every
+$d\geq12$ is untested.  No exact determinant recurrence, higher normalized
+quotient-layer argument, or universal odd residual has been obtained.  Exact
+null-vector searches after a multi-prime modular singularity, alternative
+evaluation minors, and tests for whole-subsequence dependence also remain to
+be done.  Nonlinear finite-carry automata and level-dependent state
+descriptions lie outside the conjecture.
+
+For the original problem, no argument excludes a zero beyond
+$5\cdot10^{10}$, and no theorem classifies all compatible zero-residue paths.
+The longest observed non-known run of lower lift edges through level $33$ is
+$11$, but no uniform bound follows.  The most direct structural next step is
+to propagate the exact borrow through another bit-stripping layer on the
+distinguished orbit and test whether a conflict-free bit-serial state closes.
+For Conjecture~\ref{conj:C002}, the corresponding next step is to derive or
+falsify a recurrence for the next normalized determinant quotient.
+
+The literature review is current only to the recorded 2026-09-04 search and
+does not guarantee exhaustive novelty.  The computational certificates test
+large but finite objects.  Neither those certificates, the independent
+conjecture audit, nor the robust-candidate designation is a probability or a
+truth certificate.  No proof assistant was used.
+
+\section*{Data, code, and computational disclosure}
+
+The project dossier contains the frozen problem statement, route registry,
+gap ledger, failure report, exact JSON evidence, producer programs, and
+independent checkers.  The large direct search uses guarded signed arithmetic;
+the determinant work uses integer and prime-field arithmetic; and the
+independent implementations use a distinct XOR identity and elimination
+normalization.
+
+AI systems assisted with proposing and attacking research routes, writing and
+checking computational code, organizing derivations, performing a fresh
+conjecture audit in a context separate from the owner, and drafting this note.
+Every reported mathematical claim is tied to an explicit derivation or exact
+reproducible artifact; finite computation is not treated as proof of an
+infinite statement.  The author remains responsible for the mathematical
+content.  No proof assistant was used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,66 @@
+Command: python3 evidence/n9_sat_screen.py
+Run date: 2026-09-06 (Asia/Shanghai)
+First-run resource report: elapsed=59.57 seconds, maxrss_kb=119312
+Second full run: elapsed=61.32 seconds, maxrss_kb=119244; every displayed
+count and both SHA-256 digests were identical to the first run.
+
+{
+  "conflict_clique_number_histogram": [
+    [2, 2],
+    [3, 186],
+    [4, 2837],
+    [5, 2997],
+    [6, 4422],
+    [7, 807],
+    [8, 637],
+    [9, 289]
+  ],
+  "connected_legal_order_8_bases": 1918,
+  "connected_legal_order_9_isomorphism_classes": 12177,
+  "edge_count_histogram": [
+    [8, 35],
+    [9, 185],
+    [10, 573],
+    [11, 1278],
+    [12, 2161],
+    [13, 2768],
+    [14, 2614],
+    [15, 1709],
+    [16, 702],
+    [17, 152]
+  ],
+  "exact_order_9_iso_comparisons": 104581,
+  "generation_basis": "all connected legal order-8 representatives reconstructed exactly, extended by one nonisolated vertex of degree 1..4",
+  "independent_decision": "exact DSATUR backtracking",
+  "networkx_version": "3.4.2",
+  "non_9_colorable_witness_count": 0,
+  "order_8_exact_iso_comparisons": 13929,
+  "order_8_raw_legal_extensions": 15791,
+  "pysat_solver": "Glucose4 (g4)",
+  "raw_legal_order_9_extensions": 116290,
+  "representative_graph6_multiset_sha256": "e150426f9e04ea1faf8713d03215618a63bf810c4422e8f09558a439561c05e8",
+  "scope": "exact finite observation for connected legal graphs on exactly nine vertices; not a universal upper-bound proof",
+  "verified_sat_coloring_records_sha256": "1ae11a34fe2577fc699eac254a792a341c1e07b4cc8cd8777bc925e8f6fa55ba",
+  "witnesses": []
+}
+
+Completeness of the order-9 generation: every connected graph with at least
+two vertices has a non-cut vertex. Deleting such a vertex from a connected
+legal order-9 graph produces a connected legal induced order-8 graph, because
+maximum degree, 3-degeneracy, and K_{3,4}-freeness are hereditary under vertex
+deletion. The order-8 generator supplies an exact-isomorphism representative
+of that graph. Restoring the deleted vertex is one of the enumerated nonempty
+neighborhoods of size at most four; every neighbor has degree below four in
+the order-8 base. The three bucket fields are isomorphism invariants, and all
+deduplication within a bucket uses exact NetworkX graph isomorphism.
+
+For each of the resulting 12,177 classes, the script constructs Gamma_B(G),
+asks Glucose4 for a proper 9-coloring, and checks every assigned color and
+every conflict edge directly. A separate exact DSATUR backtracker agreed with
+all 12,177 SAT decisions. The script is also arranged to serialize the exact
+graph, coloring CNF, and Glucose4 DRUP proof if an UNSAT case occurs; none did.
+
+Interpretation: there is no connected legal graph on exactly nine vertices
+whose B-conflict graph is not 9-colorable. Together with the earlier screens,
+there is no value-10 witness of order at most nine. This is an exact finite
+observation, not a proof that M_3(4)=9 for graphs of arbitrary order.

@@ -1,0 +1,35 @@
+Command: python3 evidence/verify_odd_family.py
+SymPy: 1.14.0
+
+exact_arithmetic=QQ
+charpoly_A=-(lambda + 1)*(-lambda**2 + lambda*x + lambda - 1)
+charpoly_A2=-(lambda - 1)*(-lambda**2 + lambda*x**2 + 2*lambda*x - lambda - 1)
+initial_q1=1
+initial_q2=2*x + 1 - 2/x
+initial_q3=2*x^2 + 2*x - 3
+columns=n,components,canonical_degree,sturm_real_roots,squarefree,chain_length
+1,1,2,2,true,3
+2,2,5,5,true,6
+3,1,6,6,true,7
+4,1,8,8,true,9
+5,2,11,11,true,12
+6,1,12,12,true,13
+7,1,14,14,true,15
+8,2,17,17,true,18
+9,1,18,18,true,19
+10,1,20,20,true,21
+11,2,23,23,true,24
+12,1,24,24,true,25
+13,1,26,26,true,27
+14,2,29,29,true,30
+15,1,30,30,true,31
+16,1,32,32,true,33
+17,2,35,35,true,36
+18,1,36,36,true,37
+19,1,38,38,true,39
+20,2,41,41,true,42
+
+Every displayed count is an exact Sturm count over QQ, not a numerical root
+count.  The script also asserts, for each n, equality of the transfer-matrix
+and Chebyshev constructions, integrality and nonzero constant term of the
+canonical polynomial, and squarefreeness.

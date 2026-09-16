@@ -1,0 +1,24 @@
+Command: python3 evidence/triage_enumerate.py
+Run date: 2026-09-11 (Asia/Shanghai)
+
+p=11 ell=3: normalized=4, slack_U=0, affine_orbits=2, match=True
+p=11 ell=4: normalized=5, slack_U=0, affine_orbits=3, match=True
+p=13 ell=3: normalized=4, slack_U=0, affine_orbits=2, match=True
+p=13 ell=4: normalized=5, slack_U=0, affine_orbits=3, match=True
+p=13 ell=5: normalized=6, slack_U=0, affine_orbits=3, match=True
+p=17 ell=3: normalized=4, slack_U=0, affine_orbits=2, match=True
+p=17 ell=4: normalized=5, slack_U=0, affine_orbits=3, match=True
+p=17 ell=5: normalized=6, slack_U=0, affine_orbits=3, match=True
+p=17 ell=6: normalized=7, slack_U=0, affine_orbits=4, match=True
+p=17 ell=7: normalized=8, slack_U=0, affine_orbits=4, match=True
+p=19 ell=3: normalized=4, slack_U=0, affine_orbits=2, match=True
+p=19 ell=4: normalized=5, slack_U=0, affine_orbits=3, match=True
+p=19 ell=5: normalized=6, slack_U=0, affine_orbits=3, match=True
+p=19 ell=6: normalized=7, slack_U=0, affine_orbits=4, match=True
+p=19 ell=7: normalized=8, slack_U=0, affine_orbits=4, match=True
+p=19 ell=8: normalized=9, slack_U=0, affine_orbits=5, match=True
+PASS: 16 parameter cases; exact exhaustive normalized search
+
+Interpretation: the search is exhaustive only after fixing the two missing
+sums as {0,2}, and only for the displayed primes and all their legal ell.  It
+is exact integer/set computation, but it is not evidence for arbitrary p.

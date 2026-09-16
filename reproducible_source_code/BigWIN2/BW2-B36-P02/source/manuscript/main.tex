@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The Pairwise-GCD Sunflower-Free Value at 127},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\title{The Pairwise-GCD Sunflower-Free Value at 127}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{September 6, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a positive integer $N$, let $f_3(N)$ be the maximum size of a subset
+$A\subseteq\set{1,\ldots,N}$ containing no three distinct elements whose
+three pairwise greatest common divisors are equal.  We prove
+$f_3(127)=16$.  The lower bound is an explicit set checked directly over
+all $560$ of its triples.  For the upper bound, the existence of a feasible
+set of size at least $17$ is encoded by definition-level forbidden-triple
+clauses and an exact totalizer cardinality constraint.  Independent
+regeneration reproduces the resulting CNF byte for byte, and a DRAT
+certificate verifies its unsatisfiability.  The argument is independent of
+the previously reported value at $126$.
+\end{abstract}
+
+\section{Statement and context}
+
+Write $[N]=\set{1,2,\ldots,N}$.  A set $A\subseteq[N]$ is \emph{feasible}
+when there are no pairwise distinct $x,y,z\in A$ such that
+\[
+ \gcd(x,y)=\gcd(x,z)=\gcd(y,z).
+\]
+Thus $f_3(N)$ is the maximum cardinality of a feasible subset of $[N]$.
+The subscript denotes the forbidden triple and is not an exponent.
+
+The terminology comes from the classical $\Delta$-system, or sunflower,
+condition that all pairwise intersections in a family of sets are equal
+\cite{ErdosRado1960}.  In the divisor lattice, where the meet is the greatest
+common divisor, McKenna defines a sunflower by requiring the gcd of every pair
+to equal the gcd of the entire family \cite[Section~2]{McKenna2005}.  For three
+integers this is precisely the forbidden configuration above: if their three
+pairwise gcds equal $d$, then their common gcd is also $d$.
+
+Zeng has reported $f_3(126)=16$ in a preprint whose stated method also uses
+an explicit lower bound and a Boolean formula with a DRAT derivation
+\cite{Zeng2026SSRN7395458}.  The accessible bibliographic record and abstract
+use the same definition, but the full text and its certificates were not
+available for inspection.  Accordingly, we make no priority claim and no
+paper-specific assertion beyond that record.  The proof below determines the
+adjacent value $N=127$ directly and does not use the result at $126$.
+
+\begin{theorem}\label{thm:main}
+The pairwise-GCD sunflower-free value at $127$ is
+\[
+ f_3(127)=16.
+\]
+\end{theorem}
+
+\section{Explicit lower bound}
+
+Let
+\begin{equation}\label{eq:witness}
+ W=\set{14,20,21,24,25,30,36,40,48,63,80,90,96,98,108,125}.
+\end{equation}
+The entries of $W$ are distinct and lie in $[127]$.  An exact integer
+calculation enumerated all $\binom{16}{3}=560$ unordered triples
+$a<b<c$ in $W$ and tested whether
+\[
+ \gcd(a,b)=\gcd(a,c)=\gcd(b,c).
+\]
+The list of triples passing that test was empty.  The verification script is
+only a direct loop over the displayed set and the standard integer gcd
+operation; it is included with the computational artifacts.  Hence $W$ is
+feasible and
+\begin{equation}\label{eq:lower}
+ f_3(127)\geq16.
+\end{equation}
+
+\section{Certified upper bound}
+
+Introduce Boolean membership variables $x_1,\ldots,x_{127}$.  For every
+unordered triple $a<b<c$ satisfying
+\begin{equation}\label{eq:bad}
+ \gcd(a,b)=\gcd(a,c)=\gcd(b,c),
+\end{equation}
+include the clause
+\begin{equation}\label{eq:clause}
+ \neg x_a\lor\neg x_b\lor\neg x_c.
+\end{equation}
+Exact enumeration of all $\binom{127}{3}=333{,}375$ unordered triples gives
+$119{,}176$ clauses of the form \eqref{eq:clause}.  Add a standard totalizer
+encoding, using the unary-tree construction of Bailleux and Boufkhad
+\cite[Sections~2.2--2.3]{BailleuxBoufkhad2003} through PySAT's
+\texttt{CardEnc} interface \cite{IgnatievEtAl2018}, to impose
+\begin{equation}\label{eq:card}
+ \sum_{i=1}^{127}x_i\geq17.
+\end{equation}
+The totalizer introduces auxiliary variables and $8{,}890$ clauses.  The
+combined formula $F$ has $1{,}015$ variables and $128{,}066$ clauses.
+
+\begin{lemma}\label{lem:encoding}
+The formula $F$ is satisfiable if and only if there is a feasible subset of
+$[127]$ having at least $17$ elements.
+\end{lemma}
+
+\begin{proof}
+Given an assignment to the membership variables, the clauses
+\eqref{eq:clause} hold exactly when the selected set contains none of the
+triples in \eqref{eq:bad}.  Because every unordered triple of distinct
+elements of $[127]$ was enumerated, this is exactly feasibility.  The
+totalizer has an extension to its auxiliary variables exactly when
+\eqref{eq:card} holds.  Consequently an assignment satisfying $F$ selects a
+feasible set of size at least $17$, and the indicator vector of any such set
+extends to a satisfying assignment of $F$.
+\end{proof}
+
+The following exact checks bind this equivalence to the serialized instance.
+An audit program independently re-enumerated the forbidden triples, rebuilt
+the totalizer, and reproduced the DIMACS file clause for clause and byte for
+byte.  Its SHA-256 digest is
+\begin{center}
+\texttt{8b79ee1c4a921f27dfdb7d4c6d9581ff}\allowbreak
+\texttt{98860b85d1caf903b5a500de6763a8c2}.
+\end{center}
+CaDiCaL 1.9.5 produced a DRAT refutation of that file.  The CaDiCaL solver
+family and its proof-output support are described by Biere et al.
+\cite{BiereEtAl2024}; the version used here predates their CaDiCaL 2.0 release.
+The refutation was checked by \texttt{drat-trim}, the checker for the DRAT
+clausal proof format \cite{WetzlerEtAl2014}.  The checker exited successfully
+with \texttt{s VERIFIED}; in backward checking it used $114{,}515$ input
+clauses and $1{,}794{,}649$ lemmas, comprising $98{,}745{,}797$ resolution
+steps.  The DRAT file has SHA-256 digest
+\begin{center}
+\texttt{57ae38a8f6ff606ef716bdaa488cf2d}\allowbreak
+\texttt{93a74c35ec9e16b9437aaac587ba69718}.
+\end{center}
+Thus the checked certificate proves that $F$ is unsatisfiable.  By
+Lemma~\ref{lem:encoding}, no feasible subset of $[127]$ has at least $17$
+elements, so
+\begin{equation}\label{eq:upper}
+ f_3(127)\leq16.
+\end{equation}
+Equations \eqref{eq:lower} and \eqref{eq:upper} prove
+Theorem~\ref{thm:main}.
+
+\section{Reproducibility and limitations}
+
+The supplementary artifacts comprise the witness verifier, the independent
+encoding audit, the DIMACS instance, the DRAT trace, and the DRAT checker.
+All gcd and enumeration operations are exact.  The upper bound is a certified
+finite computation: its validity depends on the definition-to-CNF argument,
+the standard totalizer semantics, and the sound checking of the supplied DRAT
+trace.  A separate audit also tested the isolated cardinality encoding on
+$384$ complete input assignments, covering every selected count from $0$ to
+$127$ in three orders; this was an off-by-one check, not a replacement for
+the totalizer semantics.
+
+This work determines only $f_3(127)$.  It neither classifies all extremal sets
+nor asserts a value at any other $N$.  Because the full text of the closest
+identified preprint was unavailable, the literature comparison is necessarily
+limited and no novelty or priority conclusion is drawn.
+
+Python programs were used for exact enumeration and independent regeneration;
+PySAT 1.8.dev24 supplied the totalizer encoding, CaDiCaL 1.9.5 produced the
+unsatisfiability trace, and \texttt{drat-trim} checked it.  A generative AI
+system assisted with the computational search, proof audit, literature
+screening, and manuscript drafting.  The theorem rests on the explicit
+argument and reproducible exact certificates described above; an AI review
+pass is not a substitute for external peer review.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,18 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Use the H(4,3) coordinate order (004,013,022,031,040,103,112,121,130,202,211,220,301,310,400). For every gamma in BR_{\\mathring Q}(4,3) intersect Z^{H(4,3)} satisfying gamma_103 <= 0, gamma_112 <= 0, gamma_301 <= 0, and gamma_alpha >= 0 at each of the other twelve coordinates, there exists C(gamma)>0 such that C(gamma)D_gamma-N_gamma is coefficientwise nonnegative in the twelve formal variables a_ri. This claim includes all boundary lattice points of that closed sign chamber and makes no assertion about integral cone points outside it; in particular it does not resolve the frozen universal conjecture.",
+  "contribution": "An exact rank-12 saturated-lattice computation reconstructs this full-dimensional closed chamber from both V- and H-representations. PyNormaliz 2.24 returns the same complete 134-element Hilbert basis from both descriptions (48 extreme rays and 86 non-ray elements), every generator is directly checked against the balance, lattice, facet, and sign constraints, and every generator passes exact ordinary-coefficient support containment. Sign compatibility and Hilbert generation then prove the stated chamber theorem. This advances the source's ray-level evidence to every integral point of one complete chamber while preserving the unresolved status of the original problem.",
+  "proposer_job_id": "win-00069-p01-research-e2d768b73cdc",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/triangular-ray-support.md",
+    "evidence/verify_triangular_rays.py",
+    "evidence/sign-chamber-audit.md",
+    "evidence/verify_sign_chamber.py",
+    "evidence/chamber-hilbert-audit.md",
+    "evidence/verify_chamber_hilbert.py",
+    "evidence/chamber-hilbert-basis.json"
+  ]
+}

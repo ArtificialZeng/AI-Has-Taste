@@ -1,0 +1,239 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\PP}{\mathbb P}
+
+\title{The Prime-Cube/Prime-Square Minimum Below One Trillion Is 49,600}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 31, 2026}
+\subjclass[2020]{Primary 11Y50; Secondary 11G05, 11A41}
+\keywords{Mordell equation, integral point, prime square, prime cube, exact computation}
+\hypersetup{%
+  pdftitle={The Prime-Cube/Prime-Square Minimum Below One Trillion Is 49,600},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+For every prime $p$ with $10^6\le p\le10^{12}$, consider the squares of the
+two primes adjacent to $p^{3/2}$.  We prove that the least distance from
+$p^3$ to either such square is exactly $49{,}600$, attained at
+$p=1{,}587{,}809$ and $q=2{,}000{,}771{,}023$.  The main observation is that
+every possible improvement is an integral point on a Mordell curve
+$Y^2=X^3+k$ with $0<|k|<49{,}600$.  A published complete classification for
+$0<|k|\le10^7$, followed by an independently checked exact prime filter,
+excludes all improvements.  Exact primality certificates and an integer
+square-root computation certify attainment.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For a prime $p$, let $q_-(p)<p^{3/2}<q_+(p)$ denote the primes adjacent to
+$p^{3/2}$.  The problem recorded as TheoremDB P2484 asks for the exact value
+of
+\begin{equation}\label{eq:delta}
+ \Delta=\min_{\substack{p\in\PP\\10^6\le p\le10^{12}}}
+ \min\{p^3-q_-(p)^2,\ q_+(p)^2-p^3\}.
+\end{equation}
+The July 24, 2026 snapshot reports an exact sweep through $p=10^{11}$, with
+incumbent $49{,}600$, while leaving the final interval open
+\cite{TheoremDBP2484}.  The incumbent primality and adjacency calculation is
+also recorded separately \cite{TheoremDBR560}.
+
+The unexploited feature is that a putative improvement produces an integral
+point on one of finitely many Mordell curves.  Bennett and Ghadermarzi gave a
+complete resolution of
+\begin{equation}\label{eq:mordell}
+ Y^2=X^3+k
+\end{equation}
+for every nonzero integer $k$ with $|k|\le10^7$ and posted their full output
+\cite{BennettGhadermarzi2015}.  Their range is more than sufficient for
+\eqref{eq:delta}.  Filtering those published tables yields the following
+exact resolution.
+
+\begin{theorem}\label{thm:main}
+The value in \eqref{eq:delta} is
+\[
+ \Delta=49{,}600.
+\]
+Equality is attained for
+\[
+ p=1{,}587{,}809,\qquad q_-(p)=2{,}000{,}771{,}023.
+\]
+\end{theorem}
+
+Searches through August 31, 2026, using the exact attaining pair, the three
+smaller integer-square candidates, and the problem title located the
+TheoremDB prefix computation and the Mordell tables, but no source spelling
+out Theorem~\ref{thm:main}.  This is only a bounded literature-search
+statement; the mathematical result below does not depend on a priority
+claim.
+
+\section{Reduction to Mordell equations}
+
+\begin{lemma}\label{lem:adjacent}
+For every prime $p$ in the range of \eqref{eq:delta},
+\[
+ \min\{p^3-q_-(p)^2,q_+(p)^2-p^3\}
+ =\min_{q\in\PP}|p^3-q^2|.
+\]
+Consequently,
+\begin{equation}\label{eq:twoprime}
+ \Delta=\min\{|p^3-q^2|:p,q\in\PP,\ 10^6\le p\le10^{12}\}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The map $q\mapsto q^2$ is strictly increasing for positive integers.  Among
+primes below $p^{3/2}$, the largest one therefore gives the closest square
+from below; among primes above, the smallest gives the closest square from
+above.  Taking the smaller of these two distances proves the assertion.
+\end{proof}
+
+The difference in \eqref{eq:twoprime} is never zero.  Indeed, if
+$p^3=q^2$ for primes $p,q$, unique factorization would require the same prime
+to occur to both exponent three and exponent two.
+
+For a nonzero difference, set
+\[
+ k=q^2-p^3.
+\]
+Then $(X,Y)=(p,q)$ is an integral solution of \eqref{eq:mordell}.  Thus every
+pair that could improve the incumbent has $0<|k|<49{,}600$ and is covered by
+the Bennett--Ghadermarzi classification.
+
+\section{The exact filter}
+
+We used the two complete tables for negative and positive $k$ with
+$0<|k|\le10^6$ linked from the authors' data page
+\cite{BennettGhadermarzi2015}.  This smaller portion of their published
+range already contains every curve needed here.
+
+\begin{proposition}\label{prop:filter}
+In the published tables, there are $65{,}522$ signed integral points with
+$0<|k|\le49{,}600$.  Exactly $196$ of them have
+$10^6\le X\le10^{12}$, or $98$ after identifying $Y$ and $-Y$.
+Among these, only the following four have prime $X$.
+\begin{center}
+\begin{tabular}{rrrl}
+\toprule
+$k$ & $X$ & $|Y|$ & classification \\
+\midrule
+$ 17{,}767$ & $15{,}175{,}973$ & $59{,}120{,}053{,}422$ & $Y$ even \\
+$-24{,}315$ & $ 1{,}646{,}719$ & $ 2{,}113{,}144{,}738$ & $Y$ even \\
+$ 25{,}895$ & $103{,}289{,}609$ & $1{,}049{,}747{,}744{,}368$ & $Y$ even \\
+$-49{,}600$ & $ 1{,}587{,}809$ & $ 2{,}000{,}771{,}023$ & both prime \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+\begin{proof}
+The accompanying discovery program parses every table entry, checks
+$Y^2=X^3+k$ in integer arithmetic, applies the two bounds, identifies the
+two signs of $Y$, and classifies the remaining coordinates.  A separate
+standard-library checker starts again from the two source PDFs, uses a
+different text-extraction mode and parser, recomputes every displayed
+Mordell identity, and uses exact trial division for the $98$ relevant
+points.  Both computations give the displayed counts and rows.
+\end{proof}
+
+The proposition is an exact filter of a cited complete classification.  It
+does not, by itself, reprove that the authors' tables contain every integral
+point; that completeness is the imported result of
+\cite{BennettGhadermarzi2015}.
+
+\section{Primality, adjacency, and proof of the main theorem}
+
+For completeness, the attaining pair has short $n-1$ certificates.  The
+complete factorizations are
+\begin{align*}
+ 1{,}587{,}809-1&=2^5\cdot29^2\cdot59,\\
+ 2{,}000{,}771{,}023-1&=2\cdot3\cdot19^2\cdot337\cdot2741.
+\end{align*}
+All factors on the right are prime by trial division.  For each distinct
+prime factor $s$ of $n-1$, the following table gives a base $a$ for which
+\[
+ a^{n-1}\equiv1\pmod n,
+ \qquad
+ \gcd\bigl(a^{(n-1)/s}-1,n\bigr)=1.
+\]
+\begin{center}
+\begin{tabular}{rll}
+\toprule
+$n$ & prime factors $s$ & corresponding bases $a$ \\
+\midrule
+$1{,}587{,}809$ & $2,29,59$ & $3,2,2$ \\
+$2{,}000{,}771{,}023$ & $2,3,19,337,2741$ & $3,11,2,2,2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Pocklington's criterion \cite{Pocklington1914} therefore proves that both
+integers are prime.  These data agree with the earlier incumbent certificate
+\cite{TheoremDBR560} and are rechecked by the independent verifier.
+
+Exact arithmetic gives
+\begin{align*}
+ 1{,}587{,}809^3&=4{,}003{,}084{,}686{,}476{,}516{,}129,\\
+ 2{,}000{,}771{,}023^2&=4{,}003{,}084{,}686{,}476{,}466{,}529,
+\end{align*}
+so their difference is $49{,}600$.  Moreover,
+\[
+ \left\lfloor\sqrt{1{,}587{,}809^3}\right\rfloor
+ =2{,}000{,}771{,}023.
+\]
+Since this integer is prime, it is the adjacent prime below
+$1{,}587{,}809^{3/2}$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The certified attaining pair gives $\Delta\le49{,}600$.  If a smaller pair
+existed, Lemma~\ref{lem:adjacent} would give primes $p,q$ in the required
+$p$-range with $0<|p^3-q^2|<49{,}600$.  Setting $k=q^2-p^3$ would produce an
+integral point covered by the complete Bennett--Ghadermarzi tables.
+Proposition~\ref{prop:filter} shows that no such point has both $X$ and $|Y|$
+prime.  Hence $\Delta\ge49{,}600$, proving equality.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The ancillary files contain the source-table locators, a discovery program,
+the exact filtered certificate, the Pocklington data, and an independent
+checker.  The checker uses CPython's standard library and Poppler's text
+extractor.  A single documented command reruns all identity, range,
+primality, and adjacency checks.  Integrity information and the complete
+file inventory are recorded in a separate release manifest rather than in
+this article.
+
+The only nonlocal completeness dependency is the published
+Bennett--Ghadermarzi computation.  The ancillary checker verifies the posted
+data and the deduction made here, but does not rerun their month-long
+enumeration of cubic forms and Thue equations.  No proof assistant was used.
+
+\section*{Data availability}
+
+The integral-point tables are available from the data page accompanying
+\cite{BennettGhadermarzi2015}.  The derived certificate and verification
+software are included with this manuscript.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

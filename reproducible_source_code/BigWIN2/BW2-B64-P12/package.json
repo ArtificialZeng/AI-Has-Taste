@@ -1,0 +1,229 @@
+{
+  "original_id": "win-00064-p12",
+  "archive_id": "BW2-B64-P12",
+  "title": "Quartic convergence in a diagonal counterexample to a claimed sixth-order inverse-matrix iteration",
+  "batch_label": "64",
+  "kind": "resolution-paper",
+  "original_status": "disproved",
+  "scope": "For the CTM iteration of Cordero--Torregrosa, arXiv:2609.04433v1, with residual R_k=I-AX_k and nu_k=||R_k^2||_F^2/||R_k||_F^2, the general order-six assertion in PDF Theorem 2.1 is false. Precisely, take A=I_3 and X_0=I_3-t diag(1,2,3). For every 0<t<=10^{-2}, the exact first residual is R_1=t^4 diag(-6,-12,18)+7t^6 diag(1,16,81), and the entire nonterminating orbit has Q-order exactly four: for every k>=1, (27/512)||R_k||_F^4<||R_{k+1}||_F<(4/3)||R_k||_F^4, and ||R_{k+1}||_F/||R_k||_F^4 converges to a positive finite limit explicitly described by the limiting projective direction. Hence the quartic term is persistent, not a one-step artifact. The source proof's equation (2.7) both asserts an unjustified vanishing normalized quartic coefficient and then substitutes the moving value ||e_k||^2 for a fixed epsilon in the definition of convergence. The claim refutes the theorem's stated general order, but does not claim failure of convergence or classify all CTM orbits.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": 64
+  },
+  "pdf": "pdfs/BigWIN2/BW2-B64-P12_Quartic_convergence_in_a_diagonal_counterexample_to_a_claimed_sixth_order_inverse_matrix_iteration.pdf",
+  "pdf_sha256": "f9c5e7d5a5c7236df6ba45d5263d56d7a7d8d7e315ac8660ac7ac2619342db89",
+  "pages": 5,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B64-P12/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B64-P12/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B64-P12/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 9,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/terminal.json",
+      "sha256": "455f79935e7b50d05a8db1e289f6e5cec3df013a309ed2c581aa0f6b4ed8981a",
+      "bytes": 748
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/release/manifest.json",
+      "sha256": "141a343a206a55a96b5f7985ad53f144a7b3db1a501b586e9b16b6d07fef8643",
+      "bytes": 1601
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/math.json",
+      "sha256": "237524121f3ecca4de55b1d78e28fa0453097aa0bf2bb3f3051c6b5f66500107",
+      "bytes": 194
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/citations.json",
+      "sha256": "599e858ece142edbd6a60cd74c92adbc2c15e3522c628a2686151411b7de8788",
+      "bytes": 1154
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/build.json",
+      "sha256": "29eac9ada8127410fd8a015e67aad41709e94abaec63ebdac94fdc6d09f80630",
+      "bytes": 648
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/visual.json",
+      "sha256": "0f02ca1aaedc5c98445ed11ce1af85b7ce0c4bdee4d78811b7dfe4b627923217",
+      "bytes": 531
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/snapshot.json",
+      "sha256": "50ae7bb53db8f8c56320427d5b0ee743eb2288161592f66b1be481ce7a4e460d",
+      "bytes": 641
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/manuscript-snapshot.json",
+      "sha256": "cfbd116c8c5efe2108bd6e879e3def1b051e9edfbc0892a2ae6b3bd364116975",
+      "bytes": 562
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/math.md",
+      "sha256": "73d478e95423e3287b35b6c10db8f1153a7741fdede9cf3abdcb1e9e196fec24",
+      "bytes": 6227
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/citations.md",
+      "sha256": "012bbd047951df93ede528cae3a577c9d495814db1a330fdea63a7d3a802b190",
+      "bytes": 3729
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/build.md",
+      "sha256": "ae2c3434a64fe30a597b830d4b49b19b684a717e24a37adc274b0eb10f73f70f",
+      "bytes": 936
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B64-P12/audit/visual.md",
+      "sha256": "0da8048c715469ba5ca9d37e30dcaea5bd070fdefdd806550ff56b53fd07d194",
+      "bytes": 1320
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "a7967094cfb67c5a28c92a1d84b52c8e81f48f6a13db5c5b23294b6169c819a1",
+      "original_bytes": 11487,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "a7967094cfb67c5a28c92a1d84b52c8e81f48f6a13db5c5b23294b6169c819a1",
+          "bytes": 11487
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/main.bbl",
+      "original_sha256": "8cd84e4462ffb1b950f52e535f7164b3cf5ff99715bf6ba7d1cd2d0c7af38c57",
+      "original_bytes": 1139,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.bbl",
+          "sha256": "8cd84e4462ffb1b950f52e535f7164b3cf5ff99715bf6ba7d1cd2d0c7af38c57",
+          "bytes": 1139
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "42b79d06c6868fd44342b97952edbd8101a7dcb09d7aa790258c1006f0aa497a",
+      "original_bytes": 1826,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "42b79d06c6868fd44342b97952edbd8101a7dcb09d7aa790258c1006f0aa497a",
+          "bytes": 1826
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/diagonal_orbit_proof.md",
+      "original_sha256": "8f39349bc53269dfa031dcd070eb7243028aaa40d3a549cca83b3720ed593e9d",
+      "original_bytes": 7095,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/diagonal_orbit_proof.md",
+          "sha256": "8f39349bc53269dfa031dcd070eb7243028aaa40d3a549cca83b3720ed593e9d",
+          "bytes": 7095
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/verify_identities.py",
+      "original_sha256": "38eae3b1f7c182cf83286a422850152d5a4539e5f4d3a79e8f6b6bd3f22d5a4d",
+      "original_bytes": 1377,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/verify_identities.py",
+          "sha256": "38eae3b1f7c182cf83286a422850152d5a4539e5f4d3a79e8f6b6bd3f22d5a4d",
+          "bytes": 1377
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "a8a2bea37103f33d1c0cc6892ce1f7b6b07587e0f628a550727c99f0e1933534",
+      "original_bytes": 1310,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "a8a2bea37103f33d1c0cc6892ce1f7b6b07587e0f628a550727c99f0e1933534",
+          "bytes": 1310
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "26950e613df1f00694bf92adf1d6f7db4af0ffd95be3f2b2c12bd9434420c3b8",
+      "original_bytes": 4131,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "26950e613df1f00694bf92adf1d6f7db4af0ffd95be3f2b2c12bd9434420c3b8",
+          "bytes": 4131
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "2bcf5d355d161af5de676705b538060f83edf5f77c1c5902ee25e577de477ca9",
+      "original_bytes": 1745,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "2bcf5d355d161af5de676705b538060f83edf5f77c1c5902ee25e577de477ca9",
+          "bytes": 1745
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "87bcadd61da5488202c09221f86400ecbea7e767801377a21b7bc44e75f35e54",
+      "original_bytes": 203,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "87bcadd61da5488202c09221f86400ecbea7e767801377a21b7bc44e75f35e54",
+          "bytes": 203
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B64-P12",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

@@ -1,0 +1,560 @@
+{
+  "original_id": "Win33-p07",
+  "archive_id": "BW2-B33-P07",
+  "title": "Conjectural Infinite Binary-Kernel Rank for Three Subsequences of A182510 (Original Eight-Zero Problem Unresolved)",
+  "batch_label": "33",
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "scope": "",
+  "gate_basis": "Current old-framework released gate, manuscript/PDF manifest hashes and citation/build/PDF audits agree.",
+  "provenance": {
+    "attribution_status": "legacy-bigWin-workflow",
+    "registry_batch_preserved": 33
+  },
+  "pdf": "pdfs/ai-conjecture/BW2-B33-P07_Conjectural_Infinite_Binary_Kernel_Rank_for_Three_Subsequences_of_A182510_Original_Eight_Zero_Problem_Unresol.pdf",
+  "pdf_sha256": "817e24d2a30bb2a08d5f575f31f623fac4a04719d6b171b4b9668b6671a0c281",
+  "pages": 9,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B33-P07/source/conjecture-note/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B33-P07/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B33-P07/source/",
+  "main_tex": "conjecture-note/main.tex",
+  "dependencies": [
+    "numba",
+    "numpy",
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim."
+  ],
+  "entrypoints": [],
+  "source_files": 35,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B33-P07/decision/release_gate.json",
+      "sha256": "0ef9c2c11a23eac508537a32e6d79a4db5606df64331a5e3ca696af39cefa5d1",
+      "bytes": 913
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B33-P07/audit/RELEASE_CITATION_AUDIT.json",
+      "sha256": "6bf2be50b93b671f6f40e17424685213d52052210160aa49f0f5a0f3250bddd9",
+      "bytes": 1362
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B33-P07/audit/RELEASE_BUILD_AUDIT.json",
+      "sha256": "f6b0c6da15c98ff5d72ce93b2dfd7eb796a83758c466b0b3a27536caed96edd4",
+      "bytes": 1227
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B33-P07/audit/RELEASE_PDF_AUDIT.json",
+      "sha256": "669dcc28c3d48511f92ed9ddf607476d0c4722970b7572a490bc713915347925",
+      "bytes": 2658
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B33-P07/decision/conjecture_note_gate.json",
+      "sha256": "aca7db1a3cf34a4503b3af741dad43ae75c3cb63929233b355246631b22a8fcf",
+      "bytes": 2261
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/conjecture-note/main.tex",
+      "original_sha256": "1bdbc02ef7a268941eb924419d2e6f179a224020bf2d4b7cea4e9b692a665949",
+      "original_bytes": 22770,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/conjecture-note/main.tex",
+          "sha256": "1bdbc02ef7a268941eb924419d2e6f179a224020bf2d4b7cea4e9b692a665949",
+          "bytes": 22770
+        }
+      ]
+    },
+    {
+      "path": "source/conjecture-note/references.bib",
+      "original_sha256": "36fa02298b66850d09c39f90b833b242cd0184030a44b83a8ef4e2a91afe6457",
+      "original_bytes": 1177,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/conjecture-note/references.bib",
+          "sha256": "36fa02298b66850d09c39f90b833b242cd0184030a44b83a8ef4e2a91afe6457",
+          "bytes": 1177
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_exact.py",
+      "original_sha256": "3a743c4fa6b09efc8a187a4c7dc6459fdb3ba708b9a962460cff9a31a78371fd",
+      "original_bytes": 1067,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_exact.py",
+          "sha256": "3a743c4fa6b09efc8a187a4c7dc6459fdb3ba708b9a962460cff9a31a78371fd",
+          "bytes": 1067
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/iterate_xor.py",
+      "original_sha256": "280cf1eb60adb402678160411f44747861b00f67b14561bf93e53c9572a36c69",
+      "original_bytes": 2051,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/iterate_xor.py",
+          "sha256": "280cf1eb60adb402678160411f44747861b00f67b14561bf93e53c9572a36c69",
+          "bytes": 2051
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/fast_zero_search.py",
+      "original_sha256": "7a57309a754c9ce8b55dde387b6c4d46ad9e3043a83cf47dc0993a74de4bf978",
+      "original_bytes": 6862,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/fast_zero_search.py",
+          "sha256": "7a57309a754c9ce8b55dde387b6c4d46ad9e3043a83cf47dc0993a74de4bf978",
+          "bytes": 6862
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/analyze_handoff_extensions.py",
+      "original_sha256": "68446e6fea82e44bbc577986b80aa2907cb9f702cb14c86f90eb6df7c7d452a9",
+      "original_bytes": 13333,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/analyze_handoff_extensions.py",
+          "sha256": "68446e6fea82e44bbc577986b80aa2907cb9f702cb14c86f90eb6df7c7d452a9",
+          "bytes": 13333
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/fast-zero-evidence.json",
+      "original_sha256": "ea48acf8e089c0c779d6dbc706bb1bab8cbbb730e55ab1c9fce855a0fca4ed5d",
+      "original_bytes": 4168,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/fast-zero-evidence.json",
+          "sha256": "ea48acf8e089c0c779d6dbc706bb1bab8cbbb730e55ab1c9fce855a0fca4ed5d",
+          "bytes": 4168
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/modular-falsification-evidence.json",
+      "original_sha256": "b0988902e07474790cf4b7ce36f55afdb33215c77cbb2d953ace4a1dad737ec7",
+      "original_bytes": 67384,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/modular-falsification-evidence.json",
+          "sha256": "b0988902e07474790cf4b7ce36f55afdb33215c77cbb2d953ace4a1dad737ec7",
+          "bytes": 67384
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/kernel-rank-evidence.json",
+      "original_sha256": "037df9281c879fea580fcd852c005e80d9539cc679f2f5d59073985d4be6f0df",
+      "original_bytes": 8324,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/kernel-rank-evidence.json",
+          "sha256": "037df9281c879fea580fcd852c005e80d9539cc679f2f5d59073985d4be6f0df",
+          "bytes": 8324
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_handoff_extensions.py",
+      "original_sha256": "ecff7879826abed20f91415b1185167bf211ea6d14644b6ddecad8dc589468db",
+      "original_bytes": 5484,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_handoff_extensions.py",
+          "sha256": "ecff7879826abed20f91415b1185167bf211ea6d14644b6ddecad8dc589468db",
+          "bytes": 5484
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/analyze_structural_hints.py",
+      "original_sha256": "8d7783f488082f51ebab80eefb3478614b402faad18326931717dcb04a9ab2be",
+      "original_bytes": 8212,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/analyze_structural_hints.py",
+          "sha256": "8d7783f488082f51ebab80eefb3478614b402faad18326931717dcb04a9ab2be",
+          "bytes": 8212
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_modular_falsification.py",
+      "original_sha256": "16e300cadc390e4bb31df098139efd23589782853ce7480f8a217567bd12c82e",
+      "original_bytes": 5667,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_modular_falsification.py",
+          "sha256": "16e300cadc390e4bb31df098139efd23589782853ce7480f8a217567bd12c82e",
+          "bytes": 5667
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/handoff-extensions-evidence.json",
+      "original_sha256": "0773d6b347cc3430006b68c7492832844864bb0c73fbad66461a6e1e50184b7e",
+      "original_bytes": 50962,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/handoff-extensions-evidence.json",
+          "sha256": "0773d6b347cc3430006b68c7492832844864bb0c73fbad66461a6e1e50184b7e",
+          "bytes": 50962
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_zero_lifts.py",
+      "original_sha256": "265f1948d3910db1a713aba58f79ecdd64645b7af52c6b83bb388b7bf260a2c1",
+      "original_bytes": 2637,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_zero_lifts.py",
+          "sha256": "265f1948d3910db1a713aba58f79ecdd64645b7af52c6b83bb388b7bf260a2c1",
+          "bytes": 2637
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/analyze_zero_lifts.py",
+      "original_sha256": "cf96e40225e8cd817408c7832617b2bfc5abf1673e4a64f73b750412756012ff",
+      "original_bytes": 3928,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/analyze_zero_lifts.py",
+          "sha256": "cf96e40225e8cd817408c7832617b2bfc5abf1673e4a64f73b750412756012ff",
+          "bytes": 3928
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/lift-state-feature-evidence.json",
+      "original_sha256": "fc30680bbfb93b54b5e3f6b1f8c1032106f997ec20a64cc11485a40c3e76223c",
+      "original_bytes": 9521,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/lift-state-feature-evidence.json",
+          "sha256": "fc30680bbfb93b54b5e3f6b1f8c1032106f997ec20a64cc11485a40c3e76223c",
+          "bytes": 9521
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/test_lift_state_features.py",
+      "original_sha256": "55962c3c477837d59525a67b158e798d8ad452bbf650659c56de49b0530b124d",
+      "original_bytes": 4385,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/test_lift_state_features.py",
+          "sha256": "55962c3c477837d59525a67b158e798d8ad452bbf650659c56de49b0530b124d",
+          "bytes": 4385
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_fast_zero_search.py",
+      "original_sha256": "7af5ef328949c3e124ef66cc3353d0a76fa1b319b8a8f7220cb1d460481df9a1",
+      "original_bytes": 1959,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_fast_zero_search.py",
+          "sha256": "7af5ef328949c3e124ef66cc3353d0a76fa1b319b8a8f7220cb1d460481df9a1",
+          "bytes": 1959
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/zero-lift-evidence.json",
+      "original_sha256": "10d3b3e7c3db919c1c69053921dd502997121c2169443fe9db9ab5733ac74f40",
+      "original_bytes": 14822,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/zero-lift-evidence.json",
+          "sha256": "10d3b3e7c3db919c1c69053921dd502997121c2169443fe9db9ab5733ac74f40",
+          "bytes": 14822
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_structural_hints.py",
+      "original_sha256": "a04e4acc66044d2f7dd607427d394448ff564f6483e8f2d35a33d8daf3fcfa04",
+      "original_bytes": 3644,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_structural_hints.py",
+          "sha256": "a04e4acc66044d2f7dd607427d394448ff564f6483e8f2d35a33d8daf3fcfa04",
+          "bytes": 3644
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/structural-hints-evidence.json",
+      "original_sha256": "0246fb26d01e2cdaee31311374fe3ee6c4fa2c1464540cca47c4b16e92dbb50b",
+      "original_bytes": 13377,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/structural-hints-evidence.json",
+          "sha256": "0246fb26d01e2cdaee31311374fe3ee6c4fa2c1464540cca47c4b16e92dbb50b",
+          "bytes": 13377
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_kernel_rank.py",
+      "original_sha256": "cb3664f539034fe05caf4e56cb99b8cc1780d8eb332982bc628d02729d567efc",
+      "original_bytes": 3839,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_kernel_rank.py",
+          "sha256": "cb3664f539034fe05caf4e56cb99b8cc1780d8eb332982bc628d02729d567efc",
+          "bytes": 3839
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/analyze_kernel_rank.py",
+      "original_sha256": "ef510aba68e1dacb8279a706accba5ca3d5601c6096835b1ae3c56b620628150",
+      "original_bytes": 6258,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/analyze_kernel_rank.py",
+          "sha256": "ef510aba68e1dacb8279a706accba5ca3d5601c6096835b1ae3c56b620628150",
+          "bytes": 6258
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/kernel-rank-d11-evidence.json",
+      "original_sha256": "8d182d239c7b128fca22e543250095e3c383bf916d9d79e7534b2d20263dbd08",
+      "original_bytes": 2256,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/kernel-rank-d11-evidence.json",
+          "sha256": "8d182d239c7b128fca22e543250095e3c383bf916d9d79e7534b2d20263dbd08",
+          "bytes": 2256
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/exact-evidence.json",
+      "original_sha256": "6122fad0b1e3c6287e5a886ba75c5ad6427ae63f4ab1776c757cb445592b0705",
+      "original_bytes": 18963,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/exact-evidence.json",
+          "sha256": "6122fad0b1e3c6287e5a886ba75c5ad6427ae63f4ab1776c757cb445592b0705",
+          "bytes": 18963
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/falsify_modular_theorem.py",
+      "original_sha256": "ea88c5b07d81adccd003910e322a32f64c0502f38ad35b906c326565073e1407",
+      "original_bytes": 8327,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/falsify_modular_theorem.py",
+          "sha256": "ea88c5b07d81adccd003910e322a32f64c0502f38ad35b906c326565073e1407",
+          "bytes": 8327
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_lift_state_features.py",
+      "original_sha256": "6d3cb0c5eae1a3bb4de269ad6234c5c96efa68cef97bcc45c6ff82ae6afb48b4",
+      "original_bytes": 2817,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_lift_state_features.py",
+          "sha256": "6d3cb0c5eae1a3bb4de269ad6234c5c96efa68cef97bcc45c6ff82ae6afb48b4",
+          "bytes": 2817
+        }
+      ]
+    },
+    {
+      "path": "source/proof/gap_ledger.md",
+      "original_sha256": "471bdb3c29841caa40e8179c0ad2deaf2afc8da484c2333dd9ead7af574bc706",
+      "original_bytes": 4866,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/gap_ledger.md",
+          "sha256": "471bdb3c29841caa40e8179c0ad2deaf2afc8da484c2333dd9ead7af574bc706",
+          "bytes": 4866
+        }
+      ]
+    },
+    {
+      "path": "source/proof/modular_period_theorem.md",
+      "original_sha256": "739d1b13bed52814b2e19fe52a0186749d965819665b51bdef0401212c301d0c",
+      "original_bytes": 4122,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/modular_period_theorem.md",
+          "sha256": "739d1b13bed52814b2e19fe52a0186749d965819665b51bdef0401212c301d0c",
+          "bytes": 4122
+        }
+      ]
+    },
+    {
+      "path": "source/proof/proof_dag.md",
+      "original_sha256": "d0272d3fc74e90eb1fcf47c8ccdf7e87c4d466b1b0317e47779a987bc5181a3b",
+      "original_bytes": 3343,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/proof_dag.md",
+          "sha256": "d0272d3fc74e90eb1fcf47c8ccdf7e87c4d466b1b0317e47779a987bc5181a3b",
+          "bytes": 3343
+        }
+      ]
+    },
+    {
+      "path": "source/proof/structural_handoff_rederivation.md",
+      "original_sha256": "597e06202f2ca292ae7ab0bfabe547f460c34b192a954a15511807f752686ad0",
+      "original_bytes": 7539,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/structural_handoff_rederivation.md",
+          "sha256": "597e06202f2ca292ae7ab0bfabe547f460c34b192a954a15511807f752686ad0",
+          "bytes": 7539
+        }
+      ]
+    },
+    {
+      "path": "source/proof/zero_lift_tree.md",
+      "original_sha256": "348bab0ca23d25846efc6b856b2a9ebfda355c340e2afcd9914c254503d945e7",
+      "original_bytes": 1845,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/zero_lift_tree.md",
+          "sha256": "348bab0ca23d25846efc6b856b2a9ebfda355c340e2afcd9914c254503d945e7",
+          "bytes": 1845
+        }
+      ]
+    },
+    {
+      "path": "source/proof/elementary_lemmas.md",
+      "original_sha256": "d5e21a8a9eafdd66115d558333b2eedf4abc7c8d8ba73b7f2a26bb6038d9f432",
+      "original_bytes": 2666,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/elementary_lemmas.md",
+          "sha256": "d5e21a8a9eafdd66115d558333b2eedf4abc7c8d8ba73b7f2a26bb6038d9f432",
+          "bytes": 2666
+        }
+      ]
+    },
+    {
+      "path": "source/proof/zero_xor_reduction.md",
+      "original_sha256": "d1741a7f66ddd992655ed0e586b34fd1b72abf37f8bdf3f84c9b4a75f5ca30bd",
+      "original_bytes": 1508,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/zero_xor_reduction.md",
+          "sha256": "d1741a7f66ddd992655ed0e586b34fd1b72abf37f8bdf3f84c9b4a75f5ca30bd",
+          "bytes": 1508
+        }
+      ]
+    },
+    {
+      "path": "source/proof/handoff_extension_rederivation.md",
+      "original_sha256": "8c8b94699e199ad1167ea23f06e1b0b77d9fe4722c97f2a5022e51a2b5036b9a",
+      "original_bytes": 7982,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/handoff_extension_rederivation.md",
+          "sha256": "8c8b94699e199ad1167ea23f06e1b0b77d9fe4722c97f2a5022e51a2b5036b9a",
+          "bytes": 7982
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B33-P07",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

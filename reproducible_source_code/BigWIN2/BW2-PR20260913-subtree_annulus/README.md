@@ -1,0 +1,63 @@
+# BW2-PR20260913-subtree_annulus — The shifted subtree-root annulus for trees of diameter at most three
+
+[Final PDF / 最终稿](../../../pdfs/BigWIN2/BW2-PR20260913-subtree_annulus_The_shifted_subtree_root_annulus_for_trees_of_diameter_at_most_three.pdf) · [LaTeX entry / 入口](source/manuscript/main.tex) · [Sources, data and proof / 复现材料](source/) · [Gate records / 历史门控](../../../assets/BigWIN2/gates/BW2-PR20260913-subtree_annulus/)
+
+Original ID / 原始编号: `primary-20260913-subtree-annulus`. Origin / 来源: primary.
+
+## Accepted scope / 已接受范围
+
+Partial-result note; parent problem not fully solved / 部分结果札记；母题未完整解决.
+
+Let T be any finite simple tree of order n&gt;=2 and diameter at most three, and let Phi_T(z)=sum_{k=1}^n s_k(T) z^k, where s_k(T) counts nonempty connected induced vertex subsets of cardinality k, each counted once. Every complex zero z of Phi_T satisfies 1/2&lt;=&#124;z+1/2&#124;&lt;=1/2+(n-1)^(1/(n-1)). The zero z=0 is simple and is the only zero on the inner boundary. A zero lies on the outer boundary if and only if n is even and T is the star K_{1,n-1}; in that case the unique outer-boundary zero is z=-1-(n-1)^(1/(n-1)). In particular, for every pair of integers a,b&gt;=1, the double star D(a,b), obtained from an edge uv by attaching a leaves to u and b leaves to v, has all its nonzero subtree roots strictly between the two circles, with n=a+b+2. The frozen original claim for arbitrary trees, without a diameter restriction, remains unresolved.
+
+The unchanged PDF retains its original authorship. This package reuses historical independent review and release evidence; it is not a new mathematical audit, journal acceptance, or a claim about a wider parent problem.
+
+PDF保持原始字节及署名。本次核对配套文件，不重新审稿，不将部分结果或猜想包装成原题全解。
+
+## Restore exact inputs / 还原精确输入
+
+From this package directory / 在当前包目录执行:
+
+```sh
+python3 ../prepare.py --restore BW2-PR20260913-subtree_annulus
+```
+
+No large input needs restoration.
+
+Restoration verifies stored and original digests and refuses to overwrite modified data. Large restored files are excluded from Git; compressed copies are the distributed originals.
+
+## Rebuild the manuscript / 重编译
+
+```sh
+python3 ../build.py BW2-PR20260913-subtree_annulus
+```
+
+The helper uses a disposable copy and retains build output outside the archive. Requires `latexmk` and the TeX packages declared by the source. Build status during packaging: **pass**. A regenerated PDF is not a replacement for the historical released PDF.
+
+Recorded build working directory / 已核验编译目录: `latex-parent`. The helper applies this automatically.
+
+## Reproduction programs and proof / 程序与证明
+
+Run programs from the `source/` directory unless their original instructions specify a subdirectory. Inspect their arguments first: discovery searches and full certificates can be long-running. Prefer a disposable copy; original programs may regenerate result files.
+
+- `evidence/research-exact-check.py`
+- `evidence/triage-check.py`
+
+Bounded replay status in this packaging task: **not-rerun**. Not rerun means archived but not re-executed here; it does not mean the historical proof failed. A short test does not certify assertions outside its encoded finite range.
+
+
+
+## Dependencies and limitations / 依赖与限制
+
+- numpy
+- sympy
+
+- Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.
+- Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.
+- Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.
+- The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim.
+- {'path': '/home/ailab/4math-open-problems/projects/primary-20260913-subtree-annulus/evidence/registry-screen.json', 'indicators': ['absolute-local-path']}
+- {'path': '/home/ailab/4math-open-problems/projects/primary-20260913-subtree-annulus/evidence/primary-captures.json', 'indicators': ['third-party-attribution-or-license-marker']}
+- External reference literature is not redistributed. Consult the bibliography and archived source URLs.
+
+`package.json` records every distributed scientific input, its original relative path, digest, and compression. External literature, account/configuration files, agent transcripts, installed environments and unrelated third-party binaries are not included. Bibliographic references remain in the LaTeX sources.

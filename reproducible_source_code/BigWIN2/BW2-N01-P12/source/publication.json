@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "All partition-restricted counts of nondegenerate 2 x 4 x 3 hypermatrices",
+  "author": "Xiaojian Zeng",
+  "source_files": [
+    "manuscript/build/main.bbl",
+    "manuscript/census.py",
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/shape-table.tex"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex",
+    "clean_command": "latexmk -C -outdir=build main.tex",
+    "log": "audit/write-build.log",
+    "transcript": "audit/write-build-transcript.log",
+    "bibtex_log": "audit/write-bibtex.log",
+    "log_description": "Unmodified final pdflatex pass log from a clean latexmk build; full transcript retains first-pass bootstrap diagnostics."
+  },
+  "supplementary_files": [
+    "manuscript/README.md",
+    "evidence/verify_sparse.py",
+    "evidence/sparse_certificates.json",
+    "evidence/sparse_summary.json",
+    "evidence/shape_table.md",
+    "evidence/triage_symbolic.json",
+    "evidence/exhaust_f2.py",
+    "evidence/exhaust_f2.json",
+    "audit/referee_verify.py",
+    "audit/referee_verification.json"
+  ],
+  "user_library_citations": [
+    {
+      "key": "ZengCertificates",
+      "registry_row": 9,
+      "doi": "10.20944/preprints202608.1658.v1",
+      "support": "Sections 3 and 4: exhaustive object reconstruction, integer predicates, and separately implemented verification; methodological comparison only"
+    }
+  ],
+  "writing_job_id": "newwin-00001-p12-write-3176be844b8c",
+  "generated_inputs": [
+    "manuscript/build/main.bbl"
+  ]
+}

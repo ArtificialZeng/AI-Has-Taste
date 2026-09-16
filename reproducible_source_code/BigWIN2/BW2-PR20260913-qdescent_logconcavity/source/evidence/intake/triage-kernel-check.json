@@ -1,0 +1,119 @@
+{
+  "job_id": "primary-20260913-qdescent-logconcavity-triage-178cb0fc6742",
+  "arithmetic": "exact integer polynomial arrays; no floating-point mathematics",
+  "shared_code": "polynomial arithmetic and q-Pascal Gaussian routine imported from prior calibration; direct enumeration is separate",
+  "source_sha256": "09b28e35bf37a42405472803e963d8cd37dce27edee55c075e7689eab2781fcb",
+  "script_sha256": "51c9a2557bae7c9118b4f907ac34e7ce0dc5485684681ba642c65b2ef964abc1",
+  "frozen_target_sha256": "e646ac53dd899d044a7647bb7fae85e9188f92364f9ed8abd7f75728185e9235",
+  "definitions": {
+    "permutations_enumerated": 46233,
+    "prefix_last_value_checks": 769,
+    "prefix_range": "all T subset [m-1], m=1..7, every r=1..m",
+    "direct_a_checks": 49,
+    "direct_a_range": "all nonempty S with max S <=4, every k=1..max S",
+    "gaussian_subset_checks": 45,
+    "gaussian_range": "all 0<=k<=n<=8"
+  },
+  "discovery_replay": [
+    {
+      "m": 1,
+      "checks": {
+        "strict": 0,
+        "diagonal": 1
+      },
+      "failures": []
+    },
+    {
+      "m": 2,
+      "checks": {
+        "strict": 3,
+        "diagonal": 6
+      },
+      "failures": []
+    },
+    {
+      "m": 3,
+      "checks": {
+        "strict": 18,
+        "diagonal": 18
+      },
+      "failures": []
+    },
+    {
+      "m": 4,
+      "checks": {
+        "strict": 60,
+        "diagonal": 40
+      },
+      "failures": []
+    },
+    {
+      "m": 5,
+      "checks": {
+        "strict": 150,
+        "diagonal": 75
+      },
+      "failures": []
+    },
+    {
+      "m": 6,
+      "checks": {
+        "strict": 315,
+        "diagonal": 126
+      },
+      "failures": []
+    },
+    {
+      "m": 7,
+      "checks": {
+        "strict": 588,
+        "diagonal": 196
+      },
+      "failures": []
+    },
+    {
+      "m": 8,
+      "checks": {
+        "strict": 1008,
+        "diagonal": 288
+      },
+      "failures": []
+    }
+  ],
+  "holdout": [
+    {
+      "m": 9,
+      "checks": {
+        "strict": 1620,
+        "diagonal": 405
+      },
+      "failures": []
+    },
+    {
+      "m": 10,
+      "checks": {
+        "strict": 2475,
+        "diagonal": 550
+      },
+      "failures": []
+    },
+    {
+      "m": 11,
+      "checks": {
+        "strict": 3630,
+        "diagonal": 726
+      },
+      "failures": []
+    },
+    {
+      "m": 12,
+      "checks": {
+        "strict": 5148,
+        "diagonal": 936
+      },
+      "failures": []
+    }
+  ],
+  "seconds": 11.217685252981028,
+  "conclusion": "Finite exact observations only. Target K remains unproved; a failure need not refute descent-derived a."
+}

@@ -1,0 +1,358 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\ord}{\operatorname{ord}_z}
+\title{An explicit formal quotient for\\Class 214 inversion sequences}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the ordinary generating function for inversion sequences
+with no indices $i<j<k$ satisfying both $e_i\ge e_k$ and $e_j\ge e_k$,
+the avoidance class known as Class 214. Starting from the auxiliary
+functional equation of Britt and Beaton, we give an explicit quotient
+of two coefficientwise convergent sums, with no unknown counting or
+boundary series. Subtracting the constant and linear terms of a boundary
+series makes its iterated remainder vanish in the formal topology.
+Truncation to $m$ summands gives an algebraic series $F_m$ with the exact
+contact $F_m-F=z^{m+3}+O(z^{m+4})$ for every $m\ge0$.
+This is a generating-function representation result: the original
+non-algebraicity conjecture remains unresolved.
+\end{abstract}
+
+\section{The counting problem and the quotient}
+
+Let $\mathcal I_n$ consist of the integer sequences $(e_1,\ldots,e_n)$
+such that $0\le e_i<i$ and
+\begin{equation}\label{eq:avoid}
+  \text{there are no }i<j<k\text{ with }e_i\ge e_k\text{ and }e_j\ge e_k.
+\end{equation}
+The empty sequence is counted once. Write
+$a_n=|\mathcal I_n|$ and $F(z)=\sum_{n\ge0}a_nz^n$.
+Equivalently, the forbidden subsequence patterns are
+$000,010,100,110,120,210$, where a pattern records all strict-order
+and equality relations, without an adjacency requirement.
+In the relation-triple classification of Martinez and Savage
+\cite{MartinezSavage}, this is the class $(-,\ge,\ge)$, labeled 214.
+We use the relation condition \eqref{eq:avoid}; the correction to its
+older pattern-list annotation is recorded in Britt and Beaton's Table~1
+\cite{BrittBeaton}.
+
+Britt and Beaton \cite[Section~3.5, equations~(3.31)--(3.33)]{BrittBeaton}
+give a succession rule and an auxiliary functional equation for this class,
+and leave the generating function unsolved there. Mansour
+\cite[Table~2, class~44, and Theorem~13]{Mansour} places the same six-pattern
+set in a Wilf class of five sets and gives generating-tree descriptions.
+Those descriptions and equivalences are prior results. The contribution
+here is an explicit evaluation of the remaining boundary coefficient,
+together with a sharp error formula for finite truncations.
+The proof uses kernel substitution, a standard method illustrated by
+Prodinger \cite{Prodinger}, followed by a regularized formal iteration.
+
+The original question also asks whether $F$ is non-algebraic over $\Q(z)$:
+whether $P(z,F(z))\ne0$ for every nonzero $P\in\Q[z,w]$.
+We do not decide that question. All limits below are formal,
+coefficientwise limits at $z=0$; $O(z^r)$ denotes an element of
+$z^r\Z[[z]]$ when the coefficients under discussion are integral.
+
+Define the small root
+\begin{equation}\label{eq:X}
+ X=\frac{1-2z-\sqrt{1-4z}}{2z}
+   =z+2z^2+5z^3+\cdots,\qquad X=z(1+X)^2,
+\end{equation}
+where $\sqrt{1-4z}=1+O(z)$. Set
+\begin{equation}\label{eq:qb}
+ q=\frac{X^2}{1+2X},\qquad
+ b=\frac{X^3}{(1+X)(1+2X)},
+\end{equation}
+and introduce the rational functions
+\begin{align}
+ T(u)&=\frac{zu}{1-zu}, & H(u)&=z(1+u)^2-u,\label{eq:TH}\\
+ R_0(u)&=-\frac{zu^2(1-z-zu)}{1-zu}, &
+ R_1(u)&=\frac{u^2(1-z-zu)^2}{1-zu}.\label{eq:R}
+\end{align}
+For $j\ge0$, put
+\begin{equation}\label{eq:orbit}
+ t_j=\frac{z^jq}{1-q\sum_{r=1}^jz^r},\qquad
+ D_j=\prod_{i=0}^jH(t_i),\qquad D_{-1}=1.
+\end{equation}
+Empty sums are zero throughout.
+
+\begin{theorem}\label{thm:quotient}
+The sums
+\begin{equation}\label{eq:sums}
+ A=\sum_{j\ge0}\frac{R_0(t_j)}{D_j},\qquad
+ L=q+\sum_{j\ge0}\frac{R_1(t_j)}{D_j}
+\end{equation}
+converge coefficientwise in $\Z[[z]]$. Their displayed summands have
+exact orders $j+4$ and $j+3$, respectively. Moreover,
+\begin{equation}\label{eq:quotient}
+ F(z)=\frac{b-A}{zL},\qquad
+ L=z^2+O(z^3),\qquad b-A=z^3+O(z^4).
+\end{equation}
+For every integer $m\ge0$, define
+\begin{equation}\label{eq:finite}
+ A_m=\sum_{j=0}^{m-1}\frac{R_0(t_j)}{D_j},\qquad
+ L_m=q+\sum_{j=0}^{m-1}\frac{R_1(t_j)}{D_j},\qquad
+ F_m=\frac{b-A_m}{zL_m}.
+\end{equation}
+Then $F_m\in\Q(z,X)\cap\Z[[z]]$, and
+\begin{equation}\label{eq:contact}
+ F_m-F=z^{m+3}+O(z^{m+4}).
+\end{equation}
+\end{theorem}
+
+Thus $m=\max(0,N-2)$ summands suffice to determine the coefficients
+through degree $N$. This assertion concerns exact coefficient contact,
+not a running-time comparison with the published recurrence.
+For example, $F_0=b/(zq)=1+X$, whose coefficient of $z^3$ exceeds that of
+$F$ by one. The initial series is
+\[
+ F=1+z+2z^2+4z^3+10z^4+26z^5+73z^6+214z^7+651z^8+O(z^9).
+\]
+
+\section{The inherited auxiliary equation}
+
+We recall the combinatorial input of \cite[Section~3.5]{BrittBeaton}.
+Enlarge the class to $\mathcal B$ by allowing occurrences of $000,010,100$
+only when every entry represented by a $0$ is literally zero.
+The patterns $110,120,210$ remain forbidden. There are at most two
+runs of zeros: three runs would provide two positive entries before
+a later zero, creating one of these last three patterns.
+Let $p,s$ be the lengths of the first and second zero runs, taking
+$s=0$ when the second is absent and $(p,s)=(0,0)$ for the empty object.
+
+For completeness, the published left-growth rule has root $(0,0)$ and
+the following children, with one child for each listed choice:
+\begin{equation}\label{eq:rule}
+\begin{aligned}
+ (p,s)&\longmapsto(p+1,s),\\
+ (p,s)&\longmapsto(p+1,s-1) &&(s>0),\\
+ (p,0)&\longmapsto(p-\ell,\ell) &&(0\le\ell\le p-1),\\
+ (p,0)&\longmapsto(p-\ell-1,\ell) &&(0\le\ell\le p-2).
+\end{aligned}
+\end{equation}
+This operation increments the positive entries, promotes selected
+zeros to ones, and prepends a zero. If $s=0$, one may promote one zero,
+or two provided one is rightmost. If $s>0$, only the rightmost zero
+can be promoted. Deleting the initial zero and decrementing positive
+entries recovers the parent. These are the choices encoded in
+\eqref{eq:rule}.
+
+Let $B(z,x,y)$ mark length, $p$, and $s$, and abbreviate
+$B(x,y)=B(z,x,y)$ and $V(x)=B(z,x,0)$.
+Every coefficient in $z$ is an integer polynomial in the marking
+variables. The desired class is exactly $s=0$, $p\le2$.
+Indeed a second zero run produces $010$, and three initial zeros
+produce $000$; a single run of at most two zeros leaves none of the
+allowed exceptions. Consequently, if $c=[x]V$ and $d=[x^2]V$, then
+\begin{equation}\label{eq:extract}
+ F=1+c+d,\qquad
+ V(x)=1+zx+z^2(x+x^2)+O(z^3).
+\end{equation}
+
+Multiplying equation~(3.33) of \cite{BrittBeaton} by $y-x$ gives
+\begin{equation}\label{eq:cleared}
+\begin{split}
+0={}&(y+z)(y-x)-(y-zx-zxy)(y-x)B(x,y)\\
+ &+xz(1+y)V(y)-z(y+2xy-x^2)V(x).
+\end{split}
+\end{equation}
+Set $y=T(x)$. This substitution is valid in $\Q[x][[z]]$,
+since $1-zx$ is a unit and $T(x)$ is divisible by $z$.
+The coefficient of $B$ vanishes. Rational simplification gives
+\[
+ \frac{T+2xT-x^2}{x(1+T)}=H(x),\qquad
+ -\frac{(T+z)(T-x)}{xz(1+T)}
+ =S(x):=\frac{(1+x-zx)(1-z-zx)}{1-zx}.
+\]
+Canceling the nonzero common factor $xz(1+T)$ in this integral domain
+yields the boundary equation
+\begin{equation}\label{eq:boundary}
+ H(x)V(x)=V(T(x))-S(x).
+\end{equation}
+We have cleared the denominator before substitution; no evaluation at
+a pole is involved.
+
+Since
+\[
+ S(x)=1-z+(1-2z)x-\sum_{k\ge2}(zx)^k,
+\]
+the coefficient of $x^2$ in \eqref{eq:boundary} is
+\[
+ zd+(2z-1)c+z=z^2(c+d+1).
+\]
+Cancellation of the unit $1-z$ gives $zd=(1-z)c-z$, so
+\begin{equation}\label{eq:c}
+ F=c/z.
+\end{equation}
+This is an ordinary formal series because $c=z+O(z^2)$.
+
+\section{Regularization and the exact remainder}
+
+Substitute $x=X$ in the undivided equation \eqref{eq:boundary}.
+As $H(X)=0$, we obtain $V(T(X))=S(X)$.
+Replacing $z$ by $X/(1+X)^2$ in the rational expressions gives
+\begin{equation}\label{eq:kernelvalue}
+ T(X)=q,\qquad S(X)=1+b,\qquad V(q)=1+b.
+\end{equation}
+In particular $q=z^2+O(z^3)$ and $b=z^3+O(z^4)$.
+The coefficients of $X$ are integral by the recursion in \eqref{eq:X}.
+
+Set $W(x)=V(x)-1-cx$. Equation~\eqref{eq:extract} implies the precise
+initial form
+\begin{equation}\label{eq:Winitial}
+ W(x)=z^2x^2+z^3x^2U(z,x),\qquad U\in\Z[x][[z]].
+\end{equation}
+Subtracting the constant and linear parts of \eqref{eq:boundary} gives
+\begin{equation}\label{eq:regular}
+ H(x)W(x)=W(T(x))+R_0(x)+cR_1(x),
+\end{equation}
+where direct calculation gives
+$R_0=1-S-H$ and $R_1=T-Hx$, exactly as in \eqref{eq:R}.
+
+The denominator in \eqref{eq:orbit} shows directly that
+$t_0=q$ and $t_{j+1}=T(t_j)$. For every $j\ge0$,
+\begin{align}
+ t_j&=z^{j+2}(1+O(z)), &
+ H(t_j)&=z(1+O(z)),\nonumber\\
+ D_j&=z^{j+1}(1+O(z)), &
+ R_0(t_j)&=-z^{2j+5}(1+O(z)),\label{eq:orders}\\
+ &&R_1(t_j)&=z^{2j+4}(1+O(z)).\nonumber
+\end{align}
+All units occurring here have integer coefficients and constant term
+one. Their inverses are integral as well. Thus the quotients
+$R_0(t_j)/D_j$ and $R_1(t_j)/D_j$ belong to $\Z[[z]]$, have exact
+orders $j+4$ and $j+3$, and have leading coefficients $-1$ and $1$.
+These orders tend to infinity, proving convergence of both sums
+in \eqref{eq:sums}.
+
+Iterating \eqref{eq:regular} finitely, including the empty iteration
+when $m=0$, gives
+\begin{equation}\label{eq:iteration}
+ W(q)=\sum_{j=0}^{m-1}\frac{R_0(t_j)+cR_1(t_j)}{D_j}
+       +\frac{W(t_m)}{D_{m-1}}.
+\end{equation}
+By \eqref{eq:Winitial} and \eqref{eq:orders}, its remainder satisfies
+\begin{equation}\label{eq:tail}
+ W(t_m)=z^{2m+6}(1+O(z)),\qquad
+ \frac{W(t_m)}{D_{m-1}}=z^{m+6}(1+O(z)).
+\end{equation}
+The term $z^3x^2U$ contributes only at larger order after substitution,
+so the leading coefficient in \eqref{eq:tail} is exactly one.
+This proves that the remainder vanishes in the formal limit.
+Without subtracting the constant and linear terms of $V$, the iterated
+remainder would not vanish: $V(t_m)/D_{m-1}$ has order $-m$.
+
+Equation~\eqref{eq:kernelvalue} now gives
+\[
+ b=cq+W(q)=A+cL.
+\]
+Together with \eqref{eq:c}, this proves \eqref{eq:quotient}.
+The orders already established imply $L=z^2+O(z^3)$ and
+$b-A=z^3+O(z^4)$. Dividing both numerator and denominator by $z^3$
+therefore makes \eqref{eq:quotient} a quotient of integral units.
+
+Keeping the finite remainder instead gives
+\[
+ b=A_m+cL_m+\frac{W(t_m)}{D_{m-1}},\qquad
+ F_m-F=\frac{W(t_m)}{D_{m-1}zL_m}.
+\]
+For every $m\ge0$, $L_m=z^2+O(z^3)$; hence \eqref{eq:tail} proves
+\eqref{eq:contact}, including its sign and the case $m=0$.
+Similarly $b-A_m=z^3+O(z^4)$, so $F_m\in\Z[[z]]$.
+Every finite sum and product in its definition lies in $\Q(z,X)$.
+This proves all assertions of Theorem~\ref{thm:quotient}.
+
+\begin{proposition}\label{prop:unique}
+Equation~\eqref{eq:boundary} has at most one solution in $\Q[x][[z]]$.
+\end{proposition}
+\begin{proof}
+For the difference $U$ of two solutions, $H(x)U(x)=U(T(x))$.
+Setting $x=0$ gives $(z-1)U(0)=0$, hence every coefficient polynomial
+of $U$ is divisible by $x$. If $z^ku_k(x)$ is the first nonzero term
+of $U$, then $U(T(x))$ has order at least $k+1$, whereas $H(x)U(x)$
+has nonzero coefficient $-xu_k(x)$ at degree $k$. This is impossible.
+\end{proof}
+The combinatorial series supplies existence. No additional degree-growth
+assumption on the coefficient polynomials is used in this uniqueness
+argument.
+
+\section{Exact checks and limitations}
+
+The proof above is an all-orders formal argument. Exact computations
+provide separate implementation checks. Direct expansion of the quotient,
+the published left-growth rule, and a right-append dynamic program agree
+through degree $40$. A separately implemented check evaluates the quotient
+in the parameter $w=X$, with $z=w/(1+w)^2$, and agrees with counting
+through degree $48$. It uses rational polynomial arithmetic with exclusive
+working precision $120$ in $w$. Lagrange inversion
+\cite[Theorem~2.1.1]{Gessel} converts back by
+\begin{equation}\label{eq:lagrange}
+ [z^n]f(X(z))=\frac1n\sum_{k=1}^n
+ k[w^k]f(w)\binom{2n}{n-k}\quad(n\ge1).
+\end{equation}
+In this verification $f(w)$ is the expression after substituting
+$z=w/(1+w)^2$, so it has no remaining independent $z$ argument.
+
+The counting criterion is particularly short. An entry $v$ appended to
+a valid prefix is allowed exactly when at most one earlier entry is
+at least $v$. A dynamic program therefore retains the two largest entries
+with multiplicity, padded by $-1$ initially, and requires $v$ to exceed
+the smaller retained entry. The inversion-sequence bound at the new
+position must also be imposed. Literal tests of indexed triples on all
+inversion sequences through length $9$ give the same counts.
+The parameter-based verifier also checks the first error in
+\eqref{eq:contact} for $0\le m\le45$ and the summand orders for
+$0\le j\le47$. These are finite checks, not proofs of the quantified
+statements. The accompanying reproducibility instructions identify the
+programs and their exact coverage.
+
+The formula removes the unknown boundary series from the inherited
+equation. No equivalent solved quotient was located in the inspected
+primary sources and the bounded literature searches through
+13 September 2026; this is not an exhaustive priority assertion.
+The infinite limit need not belong to the algebraic field containing
+every $F_m$. Neither the algebraicity of the approximants nor individual
+zeros of their denominators decide the algebraic status or analytic
+singularities of $F$: cancellations in the infinite quotient remain to
+be controlled. We make no analytic-continuation or asymptotic claim.
+The non-algebraicity part of the original problem remains unresolved.
+
+An obstruction to a prescribed coefficient formula has a different scope.
+Z.~Zeng gives such a two-basis obstruction for phylogenetic-network counts
+\cite{ZengSquareRoot}.
+The local author manuscript uses the nonzero coefficient $[Y^3]R_4(u)=5/16$, with
+$Y=\sqrt{1-2u}$ and $R_4$ the exponential generating function for
+reticulation-visible networks with four reticulations, to exclude a
+representation of the difference between
+reticulation-visible and tree-child counts by polynomial multiples of
+$(2\ell-3)!!$ and $2^{\ell-3}\ell!$ for all $\ell\ge5$.
+The obstruction concerns these two specified bases; it supplies no
+non-algebraicity criterion for the present quotient.
+The cited version is the dated local author manuscript identified in
+the bibliography; see Theorem~1.1, Corollary~3.2, and Lemma~4.1 there.
+
+\paragraph{Computational and AI assistance.}
+OpenAI language models assisted with the derivation, exact Python
+implementations, literature searches, mathematical checking, and manuscript
+preparation. A separate model context reconstructed the argument and
+implemented the check in the parameter $w$ using SymPy~1.14.0.
+That additional review is not human peer review or a claim of statistically
+independent evidence. The computations use integer or rational arithmetic;
+no floating-point fit or formal proof-assistant certification is used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

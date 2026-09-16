@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\F}{\mathbb F}
+
+\title{One Isomorphism Class among Six Deleted-Slope\\
+Neumaier Graphs of Order 280}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}\hypersetup{pdftitle={One Isomorphism Class among Six Deleted-Slope Neumaier Graphs of Order 280},pdfauthor={Xiaojian Zeng}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Greaves and Tan construct a Neumaier graph from a Hadamard matrix and a
+family of mutually appropriate Latin squares.  Fix the normalized Paley
+Hadamard matrix of order eight and the six Desarguesian squares of order
+seven, and form six graphs by deleting one square at a time.  We prove that
+these six graphs form exactly one graph-isomorphism class.  If the deleted
+slopes are $a,b\in\F_7^*$ and $u=b/a$, an explicit isomorphism is
+$(\alpha,r,x)\mapsto(u\alpha,u^{-1}r,x)$.  The proof is accompanied by exact
+adjacency lists, all 36 ordered vertex permutations, and a dependency-free
+verifier.  The result is confined to this fixed six-deletion problem; it does
+not resolve the broader dependence of the construction on arbitrary input
+matrices and Latin-square families.
+\end{abstract}
+
+\section{The fixed classification problem}
+
+Greaves and Tan define $\Gamma(H;\mathbf L)$ from a normalized Hadamard
+matrix $H$ and a family $\mathbf L$ of mutually appropriate Latin squares
+(MALS) \cite{GreavesTan2026}.  Their row--symbol interchange converts the
+standard Desarguesian mutually orthogonal Latin squares into the MALS
+\begin{equation}\label{eq:latin}
+ L_\alpha(r,c)=\alpha(r-c),
+ \qquad \alpha\in\F_7^*,\quad r,c\in\F_7.
+\end{equation}
+For any five of these six squares, their Theorem~4.3 gives a Neumaier graph
+with parameters
+\[
+ (v,k,\lambda;e,s)=(280,160,96;18,35)
+\]
+and five distinct adjacency eigenvalues.  Their Example~5.1 records this
+smallest parameter set, while their Question~5.4 asks more broadly how the
+isomorphism type depends on the Hadamard matrix and the MALS family
+\cite{GreavesTan2026}.  Common parameters and spectrum do not classify the
+six deletions considered here.
+
+We now give the complete labeled construction used in this note.  Write
+$X=\{\infty\}\cup\F_7$ and let $\chi$ be the quadratic character of $\F_7$,
+with $\chi(0)=0$.  The Paley construction \cite{Paley1933} gives the
+normalized order-eight Hadamard matrix whose first row is all $1$ and whose
+row indexed by $t\in\F_7$ is
+\[
+ h_t(\infty)=1,
+ \qquad
+ h_t(c)=
+ \begin{cases}
+ -1,&c=t,\\
+ \chi(c-t),&c\ne t.
+ \end{cases}
+\]
+Put $B_t=h_t^{\mathsf T}h_t$.  For a deleted slope $a\in\F_7^*$, set
+\[
+ S_a=\F_7^*\setminus\{a\},
+ \qquad
+ \Omega_a=S_a\times\F_7\times X.
+\]
+When $\alpha\ne\beta$, the rows $r$ of $L_\alpha$ and $s$ of $L_\beta$
+agree in a unique column.  Their common symbol is
+\begin{equation}\label{eq:K}
+ K_{\alpha\beta}(r,s)
+   =\frac{\alpha\beta(r-s)}{\beta-\alpha}\in\F_7.
+\end{equation}
+The graph $G_a$ has vertex set $\Omega_a$.  Two distinct vertices
+$(\alpha,r,x)$ and $(\beta,s,y)$ are adjacent precisely when
+\begin{equation}\label{eq:adjacency}
+ \begin{cases}
+ r\ne s, & \alpha=\beta,\\
+ B_{K_{\alpha\beta}(r,s)}(x,y)=1, & \alpha\ne\beta.
+ \end{cases}
+\end{equation}
+This is the specialization of the $A_4$ and $A_2$ relations in the source
+construction \cite{GreavesTan2026}.
+
+The problem is to classify $G_a$ for $a\in\F_7^*$.  It is a fixed finite
+specialization of Question~5.4 in \cite{GreavesTan2026}; no assertion about
+the priority or status of other specializations is made here.
+
+\section{The isomorphisms}
+
+\begin{theorem}\label{thm:classification}
+The six graphs $G_a$, $a\in\F_7^*$, form exactly one isomorphism class.  For
+every ordered pair $a,b\in\F_7^*$, put $u=ba^{-1}$.  Then
+\begin{equation}\label{eq:phi}
+ \phi_{a,b}:\Omega_a\longrightarrow\Omega_b,
+ \qquad
+ (\alpha,r,x)\longmapsto(u\alpha,u^{-1}r,x)
+\end{equation}
+is a graph isomorphism.
+\end{theorem}
+
+\begin{proof}
+Multiplication by $u$ maps the unique omitted slope $a$ to $b$, and hence
+bijectionally maps $S_a$ onto $S_b$.  Multiplication by $u^{-1}$ permutes
+$\F_7$, while the coordinate in $X$ is fixed.  Thus \eqref{eq:phi} is a
+bijection.
+
+Suppose first that two vertices have the same slope.  Slope equality and row
+inequality are both preserved by \eqref{eq:phi}, so the first relation in
+\eqref{eq:adjacency} is preserved.  If $\alpha\ne\beta$, direct substitution
+in \eqref{eq:K} gives
+\begin{align*}
+ K_{u\alpha,u\beta}(u^{-1}r,u^{-1}s)
+ &=\frac{(u\alpha)(u\beta)u^{-1}(r-s)}{u(\beta-\alpha)}\\
+ &=\frac{\alpha\beta(r-s)}{\beta-\alpha}
+ =K_{\alpha\beta}(r,s).
+\end{align*}
+Consequently, before and after applying $\phi_{a,b}$, the second relation in
+\eqref{eq:adjacency} consults the same matrix $B_t$ at the same pair $(x,y)$.
+It too is preserved.  The inverse coordinate map is $\phi_{b,a}$, so
+$\phi_{a,b}$ is an isomorphism.  Since $a$ and $b$ were arbitrary, all six
+graphs are isomorphic.  The family is nonempty, and therefore the number of
+isomorphism classes is exactly one.
+\end{proof}
+
+The calculation notably does not require a permutation of the Hadamard rows:
+the common symbol in \eqref{eq:K} is unchanged, rather than merely relabeled.
+It therefore works for the fixed field-symbol-to-row assignment above.  The
+same calculation would work for any other assignment held fixed across the
+six graphs, but Theorem~\ref{thm:classification} makes no comparison between
+different assignments or different Hadamard matrices.
+
+\section{Representative and exact certificates}
+
+We designate $G_1$ with the displayed Paley matrix convention as the
+canonical representative of the single class.  Its retained slopes are
+ordered as $2,3,4,5,6$; rows use the order $0,1,\ldots,6$; and the last
+coordinate uses the order $\infty,0,1,\ldots,6$.  If
+$\operatorname{pos}(\alpha)\in\{0,\ldots,4\}$ is the zero-based position of
+$\alpha$ in the retained-slope list and $\operatorname{ind}(x)$ is the
+zero-based position of $x$ in the last-coordinate list, the vertex identifier
+is
+\[
+ 8\bigl(7\operatorname{pos}(\alpha)+r\bigr)
+   +\operatorname{ind}(x)\in\{0,\ldots,279\}.
+\]
+Equation~\eqref{eq:adjacency}, together with this ordering, determines its
+adjacency list without a graph-canonicalization convention.
+
+The ancillary files \path{evidence/adjacency/G_1.adj} through
+\path{G_6.adj} contain this list and the analogous lists for all six
+deletions.  The file
+\path{evidence/slope_scaling_certificates.json} serializes each of the
+36 ordered maps $\phi_{a,b}$ as a 280-entry target-vertex permutation, and
+\path{evidence/verification-summary.json} records the deterministic check.
+The accompanying Python verifier has no third-party dependencies.  For each deletion it
+constructs the graph in two ways: first by scanning all seven columns for the
+unique equality in \eqref{eq:latin}, and second by using \eqref{eq:K}.  It
+requires equality of the two full edge sets, simplicity, symmetric adjacency,
+and constant degree.  It then verifies bijectivity and equality of image
+neighbor sets for every serialized permutation.  A complete run reports, for
+each graph, 280 vertices, degree 160, and 22,400 edges, and accepts all 36
+ordered certificates.  All arithmetic is exact modulo seven; neither
+floating-point arithmetic nor randomization is used.
+
+This certificate pattern---serialized finite objects together with a short
+program that reconstructs their defining data---also appears in exact finite
+graph computation by Zeng \cite{Zeng2026SSRN7385138}.  In the present note the
+computation checks the construction and the published permutations; it is
+corroboration rather than a substitute for the symbolic proof of
+Theorem~\ref{thm:classification}.
+
+From the project root, the deterministic verification command is
+\begin{verbatim}
+python3 evidence/verify_slope_scaling.py --verify-existing
+\end{verbatim}
+The command recomputes the graphs and certificates in memory and requires the
+saved adjacency lists, certificate collection, and summary to match byte for
+byte.
+
+\section{Scope and assistance disclosure}
+
+The conclusion classifies exactly the six graphs obtained by deleting one
+member of the complete order-seven Desarguesian family while keeping the
+order-eight Paley matrix fixed.  It does not answer when unrelated Hadamard
+matrices, unrelated MALS families, or other orders yield isomorphic graphs.
+
+OpenAI Codex assisted with the proof development, implementation of the exact
+verifier, and preparation of the manuscript.  A separate model context
+reconstructed the symbolic argument and ran an independently written
+in-memory check of the adjacency lists and permutations.  That process is a
+reproducibility audit, not external peer review.  The theorem rests on the
+explicit field calculation above; the computational claims are limited to
+the exhaustive exact checks described in the preceding section.
+
+\enlargethispage{2\baselineskip}
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

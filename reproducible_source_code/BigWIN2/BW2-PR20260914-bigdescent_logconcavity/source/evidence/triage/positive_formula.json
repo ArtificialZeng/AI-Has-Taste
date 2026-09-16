@@ -1,0 +1,34 @@
+{
+  "job_id": "primary-20260914-bigdescent-logconcavity-triage-21d5b29238e0",
+  "arithmetic": "exact Python integers; standard library only",
+  "formula_range": "1<=n<=80, 0<=k<=n",
+  "formula_coefficients_compared": 3320,
+  "formula_matches_published_GF": true,
+  "suffix_recurrence_matches_published_GF_through_n": 80,
+  "partial_sum_rows_tested": 3240,
+  "partial_sum_range": "1<=n<=80, 0<=R<=n-1, 1<=k<=n-1",
+  "partial_sum_first_LC_failure": null,
+  "pairwise_summand_mixed_counterexample": {
+    "n": 4,
+    "r": 0,
+    "s": 1,
+    "k": 1,
+    "mixed_determinant": -1,
+    "summand_r": [
+      1,
+      0,
+      0
+    ],
+    "summand_s": [
+      1,
+      4,
+      1
+    ]
+  },
+  "suffix_state_first_LC_failure": null,
+  "suffix_BC_mixed_first_failure": null,
+  "source_sha256": "03ad82cdbcbee83701695f50050dcb184d5b934b99b6e53aeb2818a8da1c517f",
+  "script_sha256": "7df28291414bf7cfd503186aea7a86bb459a03bf15a96edbcde2193156a87682",
+  "seconds": 0.09702246301458217,
+  "qualification": "Formula and suffix model are known-GF reformulations. Finite tests do not prove uniform log-concavity. The mixed counterexample concerns only a sufficient subsidiary condition."
+}

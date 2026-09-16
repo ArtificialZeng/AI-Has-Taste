@@ -1,0 +1,13 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let p>2, let A in R^{m x n} have full column rank and strictly positive row-wise ell_p Lewis weights w, put gamma=1-2/p, W=Diag(w), P=W^{gamma/2} A (A^T W^gamma A)^{-1} A^T W^{gamma/2}, and K=W^{-1}(P circ P). Then: (1) for every such A, if m>n(n+1)/2, lambda_min(K)=0 and the predicted local contraction factor is exactly 1-2/p; and (2) for every pair n<=m<=n(n+1)/2 and every p>2 there exists such an A for which K is positive definite.",
+  "contribution": "A complete proof of the frozen two-part problem. Part 1 identifies P circ P as the Gram matrix of m rank-one symmetric tensors in Sym_n and applies the dimension bound. Part 2 proves sharpness for every intermediate m by taking e_i together with any m-n distinct e_i+e_j, whitening this frame without losing tensor independence, and explicitly reconstructing an admissible Lewis-weight matrix A. The claim makes no priority or verified-open-status assertion.",
+  "proposer_job_id": "win-00064-p02-research-2f76e3b89d02",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/complete-proof.md",
+    "evidence/external/2609.04338.pdf"
+  ]
+}

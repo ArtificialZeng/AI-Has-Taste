@@ -1,0 +1,1273 @@
+                                                    Total positivity of transformation matrices for uniform
+                                                                           subdivisions
+                                                                                 Yanxin Liu, Jianxi Mao∗
+                                                       School of Mathematical Sciences, Dalian University of Technology, Dalian 116024,
+                                                                                         P. R. China
+arXiv:2607.01577v1 [math.CO] 2 Jul 2026
+
+
+
+
+                                          Abstract
+                                          The transformation of the h-vector of a finite simplicial complex under an F-uniform subdi-
+                                          vision is encoded by a transformation matrix. Mu and Welker conjectured that the transfor-
+                                          mation matrix of the barycentric subdivision is totally positive. In this paper, we give a new
+                                          combinatorial proof of this conjecture. We also prove the total positivity of the transforma-
+                                          tion matrix of the interval subdivision. In addition, we establish a sufficient condition for
+                                          the transformation matrix of a uniform subdivision to be totally positive of order 2 (TP2 ),
+                                          thereby partially answering a question of Mu and Welker. As an application, we show that
+                                          the transformation matrix of the r-colored barycentric subdivision is TP2 .
+                                          Keywords: Totally positive matrix, F-uniform subdivision, Neville elimination
+                                          2020 MSC: 05E45, 05A20, 15B48
+
+
+                                          1. Introduction
+                                              The h-vector is one of the central enumerative invariants of a finite simplicial complex.
+                                          Since Stanley’s work on the enumerative theory of simplicial subdivisions [27], a fundamental
+                                          problem has been to understand how the h-vector changes under subdivision operations. This
+                                          viewpoint has motivated the study of h-vector transformations for several important families
+                                          of subdivisions, including the edgewise subdivision [1, 11], the barycentric subdivision [10, 18,
+                                          25], the interval subdivision [5, 6] and the antiprism triangulation [4, 17]. Athanasiadis [3]
+                                          introduced the concept of F-uniform subdivision, which provides a unified framework for
+                                          these classical operations. Let
+                                                                                 h∆ = (h∆            ∆
+                                                                                        0 , . . . , hd )
+
+                                          be the h-vector of the (d − 1)-dimensional finite simplicial complex ∆. Athanasiadis [3]
+                                          showed that if a simplicial complex ∆′ is an F-uniform subdivision of ∆, then the h-vector
+                                          of ∆′ can be expressed via a transformation matrix HF ,
+                                                                                          ′
+                                                                                       h∆ = HF h∆ .
+
+                                            ∗
+                                                Corresponding author
+                                                Email addresses: liu-yanxin@outlook.com (Yanxin Liu), maojx@dlut.edu.cn (Jianxi Mao)
+    Mu and Welker [24] proved that the total positivity properties of HF are closely related to
+the preservation of specific coefficient inequalities under F-uniform subdivisions. Following
+Pinkus [26], a finite or infinite real matrix is called totally positive of order r (or TPr for
+short), if its minors of all orders ≤ r are non-negative. It is called totally positive (or TP for
+short) if its minors of all orders are non-negative. The theory of total positivity provides a
+powerful mathematical framework with fundamental applications across diverse fields such
+as statistics, mechanics, and representation theory [19].
+    There has been much interest in the total positivity of the transformation matrix HF .
+For example, the transformation matrix HF for the r-th edgewise subdivision is TP2 , as
+implied by the earlier work of Diaconis and Fulman [12]. Furthermore, the second author
+and Wang [22] obtained the stronger result that HF for the r-th edgewise subdivision is TP.
+Mu and Welker [24] showed that when F is the barycentric subdivision, its transformation
+matrix HF is TP2 . Then they raised the following conjecture.
+Conjecture 1.1 ([24, Conjecture 2.7]). Let F be the barycentric subdivision. Then the
+transformation matrix HF is TP.
+    Very recently, Mu, Wang and Zhu [23] settled this conjecture by verifying sufficient con-
+ditions for total positivity. In this paper, we give an independent combinatorial proof of
+Conjecture 1.1. Moreover, we prove the total positivity of the transformation matrix of the
+interval subdivision. We also establish a sufficient condition for the TP2 property of trans-
+formation matrices of uniform subdivisions by the interlacing property. As an application,
+we show that the transformation matrix of the r-colored barycentric subdivision is TP2 .
+    The rest of the paper is organized as follows. Section 2 collects the necessary background
+on Neville elimination, planar networks, and totally positive matrices. Section 3 is devoted
+to the barycentric subdivision. More precisely, we obtain a bidiagonal decomposition of HF
+for the barycentric subdivision and use planar networks to give a combinatorial proof of
+Conjecture 1.1. In Section 4, we prove the total positivity of the transformation matrix of
+the interval subdivision. We decompose the HF for the interval subdivision into three TP
+matrices, one of which is the HF for the barycentric subdivision. Then the result follows by
+Cauchy-Binet formula. In Section 5, we establish a general criterion for the TP2 property of
+transformation matrices of uniform subdivisions, and apply it to the r-colored barycentric
+subdivision.
+
+2. Preliminaries
+    Following Athanasiadis [3], a triangulation ∆′ of a simplicial complex ∆ is said to be F-
+uniform if, when restricted to any two faces of ∆ having the same dimension, the resulting
+triangulations have the same number of faces in every dimension. Equivalently, the combina-
+torial enumeration of the restriction depends only on the dimension of the original face, and
+not on the particular face chosen. The F-uniform subdivisions include the edgewise subdi-
+vision, the barycentric subdivision, the interval subdivision and the antiprism triangulation.
+We write ∆F for ∆′ in this case and speak of F as a uniform triangulation. The following is
+due to Athanasiadis [3].
+
+                                                2
+Lemma 2.1 ([3, Theorem 1.1]). Let ∆ be an (d − 1)-dimensional simplicial complex, and F
+be a uniform triangulation of ∆. Then there is a transformation matrix HF such that
+                                             h∆F = HF h∆ .
+    Throughout this paper, matrix row and column indices are counted starting from 0.
+Neville elimination (NE, for short) is a Gaussian-type elimination procedure that eliminates
+entries below the main diagonal column by column, using elementary operations between
+adjacent rows. This method is particularly effective when working with certain matrix
+classes, including TP matrices (see [16, 20, 21]). We refer the reader to [14, 15] for further
+details on Neville elimination.
+    For a nonsingular matrix A = [a(i, j)]0≤i,j≤n , the NE algorithm consists of n steps and
+produces the following sequence of matrices,
+                                  A =: A(0) → A(1) → · · · → A(n) = U,                               (2.1)
+where U is an upper triangular matrix and A(k) has zeros below the main diagonal in the
+first k columns for 1 ≤ k ≤ n. The matrix
+                                A(k+1) = a(k+1) (i, j) 0≤i,j≤n
+                                                     
+
+
+is obtained from the matrix A(k) by using the formula
+                                                                         k + 1 ≤ i ≤ n, k ≤ j ≤ n,
+                      
+                                    a(k) (i,k)
+                                                                    if
+                       (k)
+                        a (i, j) − a(k)         a(k) (i − 1, j),
+      a(k+1) (i, j) =                   (i−1,k)
+                                                                         and a(k) (i − 1, k) ̸= 0,
+                                                                              otherwise.
+                       (k)
+                        a (i, j),
+The (i, j) multiplier of NE of A, with 0 ≤ j ≤ i ≤ n, is defined as
+                               ( (j)
+                                   a (i,j)
+                                               , if a(j) (i − 1, j) ̸= 0,
+                         mij =    a(j) (i−1,j)                                                       (2.2)
+                                  0,             if a(j) (i − 1, j) = 0.
+The multipliers satisfy the following property: if mi,j = 0, then mh,j = 0 for h > i. Using
+NE, Gasca and Peña [15] obtained the following matrix factorization for a nonsingular matrix
+                                        A = Fn−1 Fn−2 · · · F0 U,
+where                                                                           
+                                     1
+                                    0 1                                         
+                                     ... ...
+                                                                                
+                                                                                 
+                                                                                
+                               Fi =       0    1
+                                                                                
+                                                                                 
+                                              mi+1,0 1
+                                                                                
+                                                                                
+                                    
+                                                    ...             ...         
+                                                                                 
+                                                                   mn,n−i−1 1
+for i = 0, 1, . . . , n − 1.
+
+                                                    3
+Example 2.2. Taking                                          
+                                        1 11 11 1            0
+                                      0 8 14 2              0
+                                                             
+                                      0 4 16 4
+                                    A=                      0
+                                                              
+                                      0 2 14 8              0
+                                        0 1 11 11            1
+as an example. Using Neville elimination,
+                                                                           
+                        1 11 11 1 0                               1 11 11 1 0
+                      0 8 14 2 0
+                                        ri −0·ri−1 , 1≤i≤4 (1) 0 8 14 2 0
+                                                                             
+              (0)
+                      
+ A =: A = 0 4 16 4 0 −−−−−−−−−−→ A = 0 4 16 4 0
+                                                               
+                      0 2 14 8 0 mi,0 =0, 1≤i≤4
+                                                                              
+                                                                 0 2 14 8 0
+                        0 1 11 11 1                               0 1 11 11 1
+                                                                                    
+                  1 11 11 1 0                  1 11 11 1 0                   1 11 11 1 0
+                0 8 14 2 0
+                                  r3 − 12 r2 0 8 14 2 0 r2 − 12 r1 (2) 0 8 14 2 0
+                                                                                      
+   r4 − 12 r3 
+  −−−−→         0 4 16 4 0 −
+                                  −−−→      0 4 16 4 0 −−−−→
+                                                                       A = 0 0 9 3 0
+                                                                            
+  m4,1 = 12                       m     =  1 
+                                                                 m  = 1                  
+                  0 2 14 8 0 3,1 2 0 0 6 6 0 2,1 2                       0 0 6 6 0
+                  0 0 4 7 1                    0 0 4 7 1                     0 0 4 7 1
+                                                                  
+                  1 11 11 1 0                            1 11 11 1 0
+   r4 − 23 r3 
+                 0    8  14  2 0 r3 − 23 r2 (3) 0 8 14 2 0
+                                                                   
+  −−−−→         0 0 9 3 0 −
+                                  −−−→      A = 0 0 9 3 0
+                                                       
+  m4,2 = 23                       m     =  2                        
+                  0 0 6 6 0 3,2 3                     0 0 0 4 0
+                  0 0 0 3 1                              0 0 0 3 1
+                                               
+                              1 11 11 1 0
+                             0 8 14 2 0
+                                               
+   r4 − 34 r3     (4)
+  −−−−→         A = U = 0 0 9 3 0
+                             
+                                                .
+  m4,3 = 34                  0 0 0 4 0
+                              0 0 0 0 1
+
+Thus, the factorization of the matrix A equals
+                                                                    
+  1                 1                1               1           1 11 11 1 0
+  1             1              1              0 1       0 8 14 2 0
+                                              1                     
+ 
+       1       
+                
+                          1       0 11
+                                   
+                                                    2 12
+                                                             0 0 9 3 0 .
+                                                                           
+           1            0 1           2
+                                               1  
+                                                         3
+                                                           1   0 0 0 4 0
+                              1                2           3
+            0 1               2
+                                1              3
+                                                 1         4
+                                                             1 0 0 0 0 1
+
+     Planar networks provide a powerful tool for proving the total positivity of a matrix. Let
+(V, A) be a directed graph (or digraph, for short) with vertex set V and arc set A without
+loops or multiple edges. A path in (V, A) is a sequence π = u0 u1 · · · uk of vertices such that
+(ui , ui+1 ) ∈ A, for i = 0, . . . , k − 1. In this case, we say that π is a path from u0 to uk . The
+digraph is called locally finite if, for any two vertices u, v ∈ V, the number of paths from u
+
+
+                                                 4
+to v is finite. If the digraph is planar, locally finite and has a non-negative weight function
+w : A → R≥0 , then we call D = (V, A, w) a planar network.
+    Let D = (V, A, w) be a planar network. The weight of a path is defined to be the product
+of the weights of all its components. For u, v ∈ V, let PD (u, v) be the sum of the weights of
+all paths from u to v. Given two vertex subsets
+
+                               u = (u0 , u1 , . . . , un ),          v = (v0 , v1 , . . . , vn ),
+
+we say that u and v are compatible if, for every non-identity permutation on {0, 1, . . . , n},
+there are no (n + 1)-tuples of paths from (u0 , u1 , . . . , un ) to (vσ(0) , vσ(1) , . . . , vσ(n) ) that are
+non-intersecting. Moreover, u and v are called fully compatible if every pair of subsequences
+
+                                   (ui0 , ui1 , . . . , uis ),       (vj0 , vj1 , . . . , vjs )
+
+is compatible for all i0 < · · · < is , j0 < · · · < js .
+
+Theorem 2.3 ([9, Theorem 3.1]). Let A = [a(i, j)]0≤i,j≤n be a real matrix. Then A is
+TP if and only if there exists a planar network D = (V, A, w) and two vertex sequences
+u = (u0 , u1 , . . . , un ), v = (v0 , v1 , . . . , vn ) that are fully compatible, such that
+
+                                  a(i, j) = PD (ui , vj )             for 0 ≤ i, j ≤ n.
+
+    Using the Lindström–Gessel–Viennot lemma, Brenti constructed the weighted digraph
+of a matrix when it has a bidiagonal decomposition. We refer the reader to the proof of
+Theorem 3.1 in [9]. Suppose a matrix A has a bidiagonal decomposition
+
+                                              A = W0 W1 · · · Wt+m ,
+
+for any t, m ≥ 0, where                  (i)                        
+                                         a0
+                                         (i) (i)
+                                         b1 a1
+                                                                     
+                                                                     
+                                        
+                                   Wi = 
+                                             . . .  . . .
+                                                                     
+                                                                     
+                                                                     
+                                                     (i)   (i)
+                                                    bn−1 an−1
+                                                                    
+                                                                    
+                                                            (i)  (i)
+                                                           bn   an
+for i = 0, 1, . . . , t, and              (i) (i)                   
+                                          a0 b 0
+                                                (i)   (i)
+                                               a1 b 1
+                                                                    
+                                                                    
+                                         
+                                    Wi = 
+                                                   . ..   . ..
+                                                                     
+                                                                     
+                                                                     
+                                                           (i)  (i) 
+                                                          an−1 bn−1 
+                                         
+                                         
+                                                                 (i)
+                                                                an
+for i = t+1, t+2, . . . , t+m. The planar network D = (V, A, w) associated to A is constructed
+as follows.
+
+                                                                 5
+   • Vertex set V = {0, 1, . . . , t + m + 1} × {0, 1, . . . , n}.
+
+   • For every vertex (i, j) ∈ {0, 1, . . . , t + m} × {0, 1, . . . , n}, we add a directed edge to
+                                  (i)
+     (i + 1, j) with weight aj , add a directed edge from (i, j) to (i + 1, j − 1) (respectively,
+                                        (i)
+     (i + 1, j + 1)) with weight bj for (i, j) ∈ {0, 1, . . . , t} × {0, 1, . . . , n} (respectively,
+     (i, j) ∈ {t + 1, . . . , t + m} × {0, 1, . . . , n}).
+
+Let u = ((0, 0), (0, 1), . . . , (0, n)) and v = ((t + m + 1, 0), . . . , (t + m + 1, n)). It is clear
+that D is a weighted digraph and u and v are fully compatible. Suppose that all the entries
+in Wi are non-negative for all i. Then by Theorem 2.3, the matrix A is TP. For the case
+n = t = m = 2, see Figure 1.
+
+                               (0)         (1)        (2)       (3)      (4)
+                              a2          a2         a2        a2       a2
+                   (0, 2)                                                          (5, 2)
+                                (0)          (1)        (2)    (3)      (4)
+                               b2           b2         b2     b1       b1
+
+                               (0)         (1)        (2)       (3)      (4)
+                              a1          a1         a1        a1       a1
+                   (0, 1)                                                          (5, 1)
+                                (0)          (1)        (2)    (3)      (4)
+                               b1           b1         b1     b0       b0
+
+                               (0)         (1)        (2)       (3)      (4)
+                              a0          a0         a0        a0       a0
+                   (0, 0)                                                          (5, 0)
+
+                                                   Figure 1
+
+
+
+3. Total positivity of the transformation matrix of the barycentric subdivision
+    In this section, we present the bidiagonal decomposition of HF of the barycentric subdi-
+vision by Neville elimination. Then we give a combinatorial proof of the total positivity of
+HF by a planar network. First we present the explicit expression of the entries of HF , which
+can be obtained in [10, Theorem 1 and Proof of Theorem 2].
+
+Lemma 3.1. Let F be the barycentric subdivision of (d−1)-dimensional simplicial complexes.
+Then we have              " i                               #
+                           X                          d  + 1
+                   HF =        rj (r + 1)d−j (−1)i−r              .                  (3.1)
+                           r=0
+                                                       i − r
+                                                                         0≤i,j≤d
+
+Theorem 3.2. Let F be the barycentric subdivision of (d − 1)-dimensional simplicial com-
+plexes. Then the transformation matrix HF has a bidiagonal decomposition
+
+                                   HF = W0 W1 · · · Wd−1 Wd · · · W2d−1 ,
+
+
+
+
+                                                      6
+where
+                                                                          d−i−1
+                                                                                                                  
+                                       1
+                                                                                                                  
+                              d−i−1             2                                                                 
+                                                                                                                  
+                                               ..               ..                                                
+                                                    .                .                                            
+                        Wi = 
+                                                                1            d−i
+                                                                                                                    d−i−1 ,
+                                                                                                                   
+                                                                                                                  
+                                                                              0         1                         
+                                                                                                                  
+                                                                                        ..       ..               
+                                                                                             .        .           
+                                                                                                  0        1
+
+for i = 0, 1, . . . , d − 1, and
+                                                                              j+1
+                                                                                                                      
+                                           1         0
+                                                ..               ..
+                                                                                                                 
+                                                         .                .
+                                                                                                                
+                                                                                                                
+                                  
+                                                                     1        0                                 
+                                                                                                                 
+                           Wd+j = 
+                                                                              1         1
+                                                                                         2
+                                                                                                                 j + 1
+                                                                                                                 
+                                                                                                                
+                                                                                        ..       ..             
+                                                                                             .        .         
+                                                                                                          d−j−1 
+                                                                                                 1         d−j  
+                                                                                                               1
+
+
+for j = 0, 1, . . . , d − 1.
+    Using Brenti’s construction, we give a planar network associated with the transformation
+matrix HF . See Figure 2. By Theorem 2.3, we provide an alternative combinatorial proof
+of Conjecture 1.1.
+Corollary 3.3. Let F be the barycentric subdivision of (d − 1)-dimensional simplicial com-
+plexes. Then the transformation matrix HF is totally positive.
+     In the following, we give a proof of Theorem 3.2. Fix a positive integer d. Let Ad =
+[ad (i, j)]0≤i,j≤d be the transpose of HF in (3.1), with entries
+                                               j                                                                  
+                                               X
+                                                             i                     d−i            j−r          d+1
+                               ad (i, j) =               r (r + 1)                       (−1)                        .
+                                               r=0
+                                                                                                               j−r
+
+To simplify the proof, we consider the bidiagonal decomposition of Ad .
+
+3.1. Neville elimination on the transpose of HF
+    To facilitate the proof, let Td be a linear row operator: for any polynomial f (x) of degree
+at most d, define the row vector
+
+                               Td (f ) = ((Td (f ))0 , (Td (f ))1 , . . . , (Td (f ))d ),
+
+                                                                              7
+          ud                            ···                                        ···                 vd
+
+                                                                         d−1             2         1
+                   d                                                      d              3         2
+        ud−1                                                                                           vd−1
+
+                                                                         d−2             1
+        ud−2      d−1                                                    d−1             2
+                                                                                                       vd−2
+
+
+           ..       ..         ..                             ..                              ..       ..
+            .        .          .                              .                               .        .
+
+          u2       3           3                     3                                                 v2
+                     d−2        d−3
+                                                                         1
+                   2           2                     2             2     2
+          u1                                                                                           v1
+                     d−1        d−2                  2
+          u0                            ···                                        ···                 v0
+
+                         Figure 2: The Planar network for HF of the barycentric subdivision
+
+
+where the j-th component is:
+                                                     j                            
+                                                     X                        d+1
+                                      (Td (f ))j =         f (r)(−1)   j−r
+                                                                                    .                         (3.2)
+                                                     r=0
+                                                                               j−r
+
+Using this operator, the i-th row of Ad is precisely Td (xi (x + 1)d−i ).
+
+Lemma 3.4. For 1 ≤ k ≤ d, let
+                                                         h         i
+                                               (k)         (k)
+                                              Ad =        ad (i, j)
+                                                                       0≤i,j≤d
+
+be the matrix obtained after k steps of Neville elimination of Ad . Then for k ≤ i ≤ d, k −1 ≤
+j ≤ d, we have                                            
+                                   (k)              (k)
+                                  ad (i, j) = Td (fi (x)) ,                               (3.3)
+                                                                               j
+
+where                                                     
+                                          (k)             x i−k
+                                         fi (x) =           x (x + 1)d−i .
+                                                          k
+Proof. We prove the statement by induction on k. For k = 1, since
+                         0                               (
+                                                              1 if i = 0,
+                                                   
+                        X   r i                     d + 1
+            ad (i, 0) =       r (r + 1)d−i (−1)0−r         =
+                        r=0
+                            0                        0−r      0 otherwise,
+
+we obtain that
+                                                               
+                 (1)                              x i          d−i
+                ad (i, j) = ad (i, j) =        Td    x (x + 1)
+                                                  0                   j
+
+
+                                                             8
+                                                              
+                                                 x i−1        d−i
+                                                                       
+                                                                             (1)
+                                                                                   
+                                    =       Td      x (x + 1)         = Td (fi (x))
+                                                 1                  j                j
+
+
+for 1 ≤ i ≤ d, 0 ≤ j ≤ d. For k = 2, consider i ≥ 1. Then
+                                              1                                          
+                  (1)
+                                              X
+                                                      i          d−i      1−r       d+1
+                 ad (i, 1) = ad (i, 1) =             r (r + 1)         (−1)                   = 2d−i .
+                                              r=0
+                                                                                    1−r
+
+Applying NE, for 2 ≤ i ≤ d, 1 ≤ j ≤ d, we have
+                                               (1)
+               (2)        (1)                 ad (i, 1)    (1)
+              ad (i, j) =ad (i, j) −         (1)
+                                                          ad (i − 1, j)
+                                            ad (i − 1, 1)
+                                             
+                              (1)    1 (1)
+                        = Td fi (x) − fi−1 (x)
+                                     2            j
+                                                                   
+                               x i−1        d−i   1 x i−2          d−i+1
+                        = Td      x (x + 1) −            x (x + 1)
+                               1                  2 1                       j
+                                            
+                               x i−2                   
+                                                            (2)
+                                                                  
+                        = Td      x (x + 1)d−i       = Td (fi (x))
+                               2                   j                j
+
+
+by the linearity of Td .
+   Assume that (3.3) holds for k. Performing the (k + 1)-th step of NE yields
+                                                               (k)
+                       (k+1)           (k)                    ad (i, k)  (k)
+                      ad     (i, j) = ad (i, j) −          (k)
+                                                                        ad (i − 1, j).
+                                                          ad (i − 1, k)
+By the induction hypothesis,
+                           k                         
+             (k)
+                          X   r i−k           k−r d + 1
+            ad (i, k) =                  d−i
+                                r (r + 1) (−1)            = k i−k (k + 1)d−i .                                      (3.4)
+                          r=0
+                              k                   k − r
+
+Then we obtain that
+                                    (k)                                                                      
+    (k+1)           (k)            ad (i, k)          (k)                         (k)            k   (k)
+   ad     (i, j) = ad (i, j) −    (k)
+                                                     ad (i − 1, j) =          Td fi (x) −           fi−1 (x)        .
+                                 ad (i − 1, k)                                                  k+1             j
+
+Note that for k + 1 ≤ i ≤ d, k ≤ j ≤ d, by the induction hypothesis,
+                                                         
+       (k)       k    (k)        x i−k           d−i   k   x i−k−1
+     fi (x) −        fi−1 (x) =     x (x + 1) −               x      (x + 1)d−i+1
+                k+1              k                   k+1 k
+                                                                    
+                                i−k−1         d−i x         k
+                              =x      (x + 1)         x−       (x + 1)
+                                                   k      k+1
+                                                                
+                                i−k−1         d−i x x − k       x
+                              =x      (x + 1)             =          xi−k−1 (x + 1)d−i .
+                                                   k k+1      k+1
+
+                                                          9
+Thus we derive that
+                                                                           
+                       (k+1)                            x    i−k−1         d−i
+                      ad     (i, j) =       Td             x       (x + 1)         ,
+                                                       k+1                       j
+
+and the proof is completed.
+   Combining (2.2) and (3.4), the multipliers in the NE are
+                                                       (j)
+                                                    ad (i, j)                   j
+                                   mi,j =          (j)
+                                                                           =       .
+                                                  ad (i − 1, j)                j+1
+
+Thus by Lemma 3.4, we obtain a matrix factorization
+
+                                       Ad = Fd−1 Fd−2 · · · F0 Ud ,
+
+where
+                                                  i                                     
+                                   1
+                                                                                        
+                                  0     ..                                              
+                                             .                                          
+                                         ..
+                                                                                        
+                                             .    1                                     
+                         Fi =                                                           i + 1 ,
+                                                                                        
+                                                   0
+                                                   1         1
+                                                                                        
+                                                            1    ..                     
+                                                            2         .                 
+                                                                                        
+                                                                 ..           1         
+                                                                      .                 
+                                                                           d−i−1
+                                                                            d−i      1
+
+and                                     h             i
+                                              (i)
+                                    Ud = Td (fi (x))j
+                                                                           0≤i≤j≤d
+
+is an upper triangular matrix. By (3.3), the entry of Ud = [ud (i, j)]0≤i,j≤d is
+                                                     j                        
+                                  (i)
+                                                    X   r             j−r d + 1
+                 ud (i, j) = Td (fi (x))j =                      d−i
+                                                          (r + 1) (−1)            .                 (3.5)
+                                                    r=0
+                                                        i                  j − r
+
+See Example 2.2 for the case d = 4.
+
+3.2. Bidiagonal decomposition of Ud
+    It suffices to give a bidiagonal decomposition of Ud . First we claim that ud (i, j) satisfies
+the following recurrence relation
+
+                      ud (i, j) = (j + 1) ud−1 (i, j) + (d − j) ud−1 (i, j − 1),                    (3.6)
+
+with 0 ≤ i ≤ j ≤ d − 1. Note that
+                                                     
+                 d+1                 d                d
+        (r + 1)         = (r + 1)         + (r + 1)
+                 j−r                j−r             j−r−1
+
+                                                             10
+                                         
+                                                                            
+                                      d                                  d
+                           = (r + 1)       + d − (j − r) + 1 − d + j
+                                     j−r                                j−r−1
+
+Using                                                 
+                                    d                  d
+                                 k     = (d − k + 1)       ,
+                                    k                 k−1
+we obtain that
+                                                              
+                           d+1                d                d
+                   (r + 1)        = (j + 1)        − (d − j)        .
+                            j−r              j−r             j−r−1
+
+Hence, by (3.5),
+                   j                                            
+                   X  r           d−1−i        j−r          d+1
+        ud (i, j) =          (r + 1)       (−1) (r + 1)
+                    r=0
+                          i                                 j−r
+                     j                                                            
+                    X     r          d−1−i     j−r               d                  d
+                  =          (r + 1)       (−1)     (j + 1)            − (d − j)
+                    r=0
+                          i                                   j −  r              j−r−1
+                             j                                  
+                            X     r                            d
+                  = (j + 1)          (r + 1)d−1−i (−1)j−r
+                            r=0
+                                  i                         j−r
+                                  j                                      
+                                X      r         d−1−i      j−r        d
+                      − (d − j)           (r + 1)      (−1)                   .
+                                 r=0
+                                       i                           j−r−1
+
+For the second sum, since      d
+                                         = 0 when r = j, we may write
+                                     
+                             j−r−1
+
+                             j                                    
+                             X  r               d−1−i     j−r    d
+                   − (d − j)          (r + 1)      (−1)
+                             r=0
+                                   i                         j−r−1
+                                  j−1                                  
+                                  X     r          d−1−i     j−1−r     d
+                        = (d − j)          (r + 1)       (−1)              .
+                                  r=0
+                                        i                           j−1−r
+
+Therefore,
+                                    j                               
+                                   X    r         d−1−i     j−r    d
+               ud (i, j) = (j + 1)         (r + 1)      (−1)
+                                   r=0
+                                        i                        j−r
+                                       j−1                                 
+                                       X     r        d−1−i      j−1−r    d
+                             + (d − j)         (r + 1)      (−1)
+                                       r=0
+                                             i                          j−1−r
+                       = (j + 1)ud−1 (i, j) + (d − j)ud−1 (i, j − 1).
+
+This proves the desired recurrence.
+
+
+                                                     11
+   Let Bd be the d × d upper bidiagonal matrix indexed by 0, . . . , d − 1, defined by
+                                       
+                                       j + 1, j = i,
+                                       
+                            Bd (i, j) = d − j, j = i + 1,
+                                                 otherwise.
+                                       
+                                         0,
+                                       
+
+For 0 ≤ i ≤ j ≤ d − 1, by the recurrence relation (3.6), we have
+                   ud (i, j) = (j + 1) · ud−1 (i, j) + (d − j) · ud−1 (i, j − 1)
+                             = ud−1 (i, j) · Bd (j, j) + ud−1 (i, j − 1) · Bd (j − 1, j).
+By (3.5), it is obvious that
+                                      d                       
+                                     X   r        0    d−r d + 1
+                         ud (d, d) =       (r + 1) (−1)            = 1.
+                                     r=0
+                                         d                  d−r
+
+This gives the following decomposition
+                                                       
+                                               Ud−1 Bd 0
+                                          Ud =            .                                       (3.7)
+                                                  0    1
+Iterating the decomposition, we obtain
+                                                                            
+                          Ud−2 Bd−1 0                        Ud−2 Bd−1 0 0            
+         Ud−1 Bd 0                             Bd    0                              B d 0
+ Ud =                  =         0        1          =          0          1 0
+            0     1                                                                  0 1
+                                      0              1             0          0 1
+                                                                           
+        Ud−3 Bd−2 0                                     U  d−3 Bd−2    0  0    0            
+                        Bd−1   0    0                                            Bd−1  0 0        
+           0       1                  Bd 0                 0        1 0 0                    Bd 0
+  =                                             =                             0   1 0 
+                0              1 0 0 1                       0        0 1 0                    0 1
+                                                                                     0   0 1
+                0              0 1                            0        0 0 1
+                          
+             B1                                   
+                 1                   B d−1   0   0             Y   d
+                                                       B     0
+                          
+                                                         d
+  = ··· =           ...    · · ·     0     1   0               =      Bek ,
+                                                
+                                                        0 1
+                                       0     0 1
+                                                                 k=1
+                          1
+                                                                                                   (3.8)
+where Bk is the direct sum of Bk and the identity matrix of order d + 1 − k. Therefore, we
+        e
+give the bidiagonal decomposition of Ud .
+Example 3.5. Taking d = 4 as an example. We have shown in Example 2.2 that
+                                                 
+                                    1 11 11 1 0
+                                   0 8 14 2 0
+                                                 
+                             U4 = 0 0 9 3 0 .
+                                                  
+                                   0 0 0 4 0
+                                    0 0 0 0 1
+
+                                                    12
+The bidiagonal decomposition of U4 is
+
+     U4 =B
+         e1 B
+            e2 B
+               e3 B
+                  e4
+                                                                                        
+            1                    1 1                   1 2                       1 3
+         
+              1              
+                                 2                
+                                                       2 1                  
+                                                                                 2 2         
+                                                                                               
+        =
+                  1          
+                                   1              
+                                                         3                  
+                                                                                   3 1       .
+                                                                                               
+                    1               1                   1                       4       
+                          1                     1                         1                1
+
+3.3. Proof of Theorem 3.2
+    We obtain the bidiagonal decomposition of Ad as
+
+                               Ad = Fd−1 Fd−2 · · · F0 B  e2 · · · B
+                                                       e1 B        ed .
+
+Recall that HF is the transpose of Ad . Then we derive the bidiagonal decomposition of HF ,
+                                   eT · · · B
+                                            eT B
+                                               eT T        T    T
+                              HF = Bd        2 1 F0 · · · Fd−2 Fd−1 .
+
+
+Taking Wi = B  e T for i = 0, 1, . . . , d − 1, and Wi = Fi−d for i = d, d + 1, . . . 2d − 1, we
+                d−i
+complete the proof.
+    Following Example 2.2 and Example 3.5, we present the bidiagonal factorization of HF
+for d = 4,
+                                                                              
+               1                 1                     1             1
+              3 2           2 2                 1 2          1                
+                                                                              
+                                                                                     ·
+               2 3
+         HF =               1 3                      1              1
+                                                                               
+                    1 4                    1            1              1 
+                           1                     1              1                  1
+                                                                               
+               1 0                1                     1             1
+               1 1           1 0                  1            1               
+                    2                                                          
+                         2                     1
+              
+                    1 3    
+                               
+                                          1 2     
+                                                      
+                                                          1 0    
+                                                                     
+                                                                           1         .
+                                                                                      
+                           3                    2            1 
+                        1 4                  1 3             1 2              1 0
+                           1                      1              1                   1
+
+4. Total positivity of the transformation matrix of the interval subdivision
+    In this section, we study the total positivity of the transformation matrix of the interval
+subdivision. The interval subdivision of a simplicial complex was introduced by Walker [28]
+in his work on canonical homeomorphisms of posets. It is closely related to the barycentric
+subdivision [5]. Let
+
+                     HF = [pd (i, j)]0≤i,j≤d    and HF ∗ = [qd (i, j)]0≤i,j≤d
+
+
+
+                                                 13
+be the transformation matrices of the barycentric subdivision and interval subdivision of
+(d − 1)-dimensional simplicial complexes, respectively. Let
+                                 d
+                                 X                                       d
+                                                                         X
+                   Pd,j (x) :=         pd (i, j)xi   and Qd,j (x) :=           qd (i, j)xi
+                                 i=0                                     i=0
+
+be the j-th column generating functions of HF and HF ∗ , respectively. The following lemma
+gives the relationship between Pd,j (x) and Qd,j (x).
+Lemma 4.1 ([5, Corollary 4.7]). For d ≥ 0 and 0 ≤ j ≤ d, we have
+                            Qd,j (x) = E2 (1 + x)d Pd,j (x) ,                                (4.1)
+                                                          
+
+where Er is the operator on formal series defined by
+                                   "          #
+                                     X            X
+                                E2      ck x k =     c2k xk .
+                                            k≥0             k≥0
+
+   Now we present our result.
+Theorem 4.2. Let F ∗ be the interval subdivision of (d−1)-dimensional simplicial complexes.
+Then the transformation matrix HF ∗ is totally positive.
+Proof. Taking the coefficients of xi on both sides of (4.1), we obtain that
+                                            d         
+                                           X       d
+                               qd (i, j) =               pd (r, j).                          (4.2)
+                                           r=0
+                                                2i − r
+
+Let Sd = [sd (i, j)] 0≤i≤d be a row-selection matrix with
+                  0≤j≤2d
+                                                     (
+                                                      1, j = 2i,
+                                         sd (i, j) =
+                                                           ̸ 2i,
+                                                      0, j =
+and                                                      
+                                                      d
+                                         Vd =                        .
+                                                     i−j    0≤i≤2d
+                                                            0≤j≤d
+
+By (4.2), we obtain the matrix factorization
+                                             HF ∗ = Sd Vd HF .
+    The TP of Sd is obvious since all its minors are either 0 or 1. Note that Vd is a truncated
+                                                       d
+submatrix of the Toeplitz matrix of the sequence kd k=0 . Since the generating function
+has only real non-positive zeros      k k x = (1 + x) , this sequence is a finite Pólya fre-
+                                    P d k              d
+                                                          
+
+quency sequence. By the Aissen–Schoenberg–Whitney theorem [7], the Toeplitz matrix of
+this sequence is totally positive and so is the truncated submatrix Vd . By Corollary 3.3, the
+transformation matrix HF is TP. Then, by the Cauchy–Binet formula, the transformation
+matrix HF ∗ of the interval subdivision is totally positive.
+
+                                                      14
+   The following example presents the decomposition of HF ∗ for d = 4.
+
+Example 4.3. Based on Example 2.2 and the proof of Theorem 4.2, we can obtain that
+                                                   
+                                       1 0 0 0 0
+                                     4 1 0 0 0
+                                                                            
+       1 0 0 0 0 0 0 0 0             6 4 1 0 0
+                                                             1 0 0 0 0
+      0 0 1 0 0 0 0 0 0            4 6 4 1 0             11 8 4 2 1 
+                                                                            
+      0 0 0 0 1 0 0 0 0 , V4 = 1 4 6 4 1 , HF = 11 14 16 14 11 .
+ S4 =                                                                       
+      0 0 0 0 0 0 1 0 0            0 1 4 6 4              1 2 4 8 11
+                                                   
+       0 0 0 0 0 0 0 0 1             0 0 1 4 6
+                                                             0 0 0 0 1
+                                     0 0 0 1 4
+                                       0 0 0 0 1
+
+Then for d = 4, we have
+                                                              
+                                              1  0   0   0   0
+                                            61 46 32 22 15 
+                                                              
+                         HF ∗ = S4 V4 HF = 
+                                           115 124 128 124 115.
+                                                               
+                                            15 22 32 46 61 
+                                              0  0   0   0   1
+
+5. A criterion for TP2 of the transformation matrix
+    In this section, we show that if a uniform subdivision has the interlacing property, then the
+transformation matrix HF is TP2 . This answers part of the question of Mu and Welker [24,
+Question 2.9]. Before presenting the main result, we need some notions.
+    Let f, g ∈ R[x] be two real-rooted polynomials with positive leading coefficients. Follow-
+ing Brändén [8], we say that f is an interleaver of g (written f ⪯ g) if
+
+                               · · · ≤ r2 (f ) ≤ r2 (g) ≤ r1 (f ) ≤ r1 (g),
+
+where ri (f ) and ri (g) are the zeros of f and g in non-increasing order, respectively. For
+notational convenience, let 0 ⪯ 0, 0 ⪯ h and h ⪯ 0, where h is any real-rooted polynomial
+with positive leading coefficient. By definition, if f ⪯ g, then deg(g) = deg(f ) or deg(f ) + 1.
+A sequence (f0 (x), f1 (x), . . . , fn (x)) of real-rooted polynomials is called interlacing if fi (x) ⪯
+fj (x) for all 0 ≤ i < j ≤ n. Note that if (f0 (x), f1 (x), . . . , fn (x)) is interlacing, then either
+deg(fi (x)) = deg(fj (x)) for all i, j, or there exists an integer m such that
+
+         deg(f1 (x)) + 1 = · · · = deg(fm (x)) + 1 = deg(fm+1 (x)) = · · · = deg(fn (x)).
+
+   Let F be a uniform subdivision of (d − 1)-dimensional simplicial complexes, and
+
+                                        HF = [pd (i, j)]0≤i,j≤d
+
+
+                                                   15
+be its transformation matrix. Let
+                                                   d
+                                                   X
+                                      Pd,k (x) =          pd (i, k)xi
+                                                    i=0
+
+be the k-th column generating function of the matrix HF . We say that F has the interlacing
+property if the polynomial sequence (Pd,0 (x), Pd,1 (x), . . . , Pd,d (x)) is an interlacing sequence.
+The following theorem is the main result of this section.
+Theorem 5.1. If the uniform subdivision F has the interlacing property, then the transfor-
+mation matrix HF is TP2 .
+  We prove this theorem by relating the interlacing property to the TP2 of coefficient
+matrices. Given a polynomial sequence (f0 (x), f1 (x), . . . , fn (x)), where
+                                                  n
+                                                  X
+                                       fi (x) =          a(i, j)xj ,
+                                                   j=0
+
+its coefficient matrix is defined as A = [a(i, j)]0≤i,j≤n . In other words, the polynomial fi (x)
+is the row generating function of A. Fisk gave the following result on the TP2 of coefficient
+matrices.
+Lemma 5.2 ([13, Lemma 3.20]). Let (f0 (x), f1 (x), . . . , fn (x)) be an interlacing polynomial
+sequence. Suppose that deg(fi (x)) = n and fi (x) has positive coefficients for each i. Then
+its coefficient matrix is TP2 .
+   We will establish a strengthened version of this result. Before that, we need the following
+two lemmas. The first is a classical result due to Fekete (see [26, Chapter 2] for instance).
+Lemma 5.3 ([26, Fekete’s criterion for TP2 ]). A matrix with non-negative entries is TP2 if
+all 2 × 2 minors with consecutive rows and consecutive columns are non-negative.
+  The second is based on the interlacing polynomials due to Fisk (see Lemma 1.20 and
+Remark 1.21 in [13]).
+Lemma 5.4. Let f (x) and g(x) be polynomials with positive leading coefficients, where g(x)
+has degree n and roots {s1 , . . . , sn }. If f (x) has degree n − 1 and we write
+                                                  n
+                                                  X            g(x)
+                                       f (x) =           cr          ,
+                                                  r=1
+                                                              x + sr
+
+then f (x) ⪯ g(x) if and only if all cr ≥ 0.
+   Now we are ready to give a generalization of Lemma 5.2.
+Proposition 5.5. Let (f0 (x), f1 (x), . . . , fn (x)) be an interlacing polynomial sequence. Sup-
+pose that fi (x) has non-negative coefficients for each i. Then its coefficient matrix is TP2 .
+
+                                                   16
+Proof. By Lemma 5.3, to prove the coefficient matrix A is TP2 , it suffices to prove that the
+submatrix of A with the consecutive two rows
+                                                                    
+                       ′      a(i, 0)     a(i, 1)   ...     a(i, n)
+                     A =
+                            a(i + 1, 0) a(i + 1, 1) . . . a(i + 1, n)
+
+is TP2 . We divide the proof into two steps.
+    Step 1: Assume that a(i, 0) > 0 and a(i+1, 0) > 0. Without loss of generality, we assume
+that a(i + 1, n) > 0. It has been shown that deg(fi (x)) = deg(fi+1 (x)) or deg(fi (x)) + 1 =
+deg(fi+1 (x)). For the first case, it is obvious that a(i, n) > 0 and the matrix is TP2 by
+Lemma 5.2. For the second case, we have a(i, n) = 0 and a(i, n − 1) > 0. Then the entries
+of A′ are strictly positive except a(i, n) = 0.
+    Write                                n
+                                         Y
+                  fi+1 (x) = a(i + 1, n)   (x + sr ), 0 < s1 ≤ s2 ≤ · · · ≤ sn .
+                                           r=1
+
+Define fei+1 (x) = (x + t)fi+1 (x), where t > sn . It is easy to check that
+                                                                                !
+                         fei+1 (x) fei+1 (x)      fei+1 (x) fei+1 (x)
+                                  ,          ,...          ,          = fi+1 (x)
+                          x + s1 x + s2            x + sn x + t
+
+forms an interlacing polynomial sequence. All these polynomials have degree n and their
+coefficients are positive. Therefore, by Lemma 5.2, their coefficient matrix Bt is TP2 .
+   For r = 1, 2, . . . , n, let
+
+                                           fi+1 (x)       fei+1 (x)
+                                hr (x) =            =                  .
+                                           x + sr     (x + t)(x + sr )
+
+Then
+                                      fei+1 (x)
+                                                = (x + t)hr (x).
+                                      (x + sr )
+Consider the coefficient matrix Ct of
+                   x              x                    x                 
+                1+       h1 (x), 1 +     h2 (x), . . . , 1 +    hn (x), fi+1 (x) .
+                      t               t                      t
+Clearly, Ct is obtained from Bt by dividing the first n rows by the positive scalar t. Since
+Bt is TP2 , we have that Ct is TP2 . As t → ∞,
+                                       x
+                                    1+     hr (x) −→ hr (x)
+                                        t
+coefficientwise for each r, while the last row of Ct is independent of t. Therefore
+
+                                                 Ct −→ C
+
+
+                                                   17
+entrywise. Since every entry and every 2 × 2 minor is a continuous function of the entries,
+the class of TP2 matrices is closed under entrywise limits. Hence C is TP2 . By Lemma 5.4,
+since fi (x) ⪯ fi+1 (x), and deg(fi (x)) + 1 = deg(fi+1 (x)), we have
+                                                    n
+                                                    X          fi+1 (x)
+                                         fi (x) =         cr            ,
+                                                    r=1
+                                                               x + sr
+
+where cr ≥ 0. Thus we obtain that
+                                                                    
+                                     c c ···                     cn 0
+                                 A = 1 2
+                                     ′
+                                                                       C.
+                                      0 0 ···                    0 1
+
+By the Cauchy–Binet formula, the TP2 of A′ follows that of C.
+    Step 2: Suppose that fi (x) = xm1 gi (x) and fi+1 (x) = xm2 gi+1 (x), where gi (0) ̸= 0 and
+gi+1 (0) ̸= 0. Then m1 = m2 or m1 + 1 = m2 by fi (x) ⪯ fi+1 (x). Without loss of generality,
+we only need to consider the case a(i, 0) > 0. If a(i + 1, 0) > 0, then the matrix is TP2 . If
+a(i + 1, 0) = 0 and a(i + 1, 1) > 0, then
+                                           n
+                                           Y
+             fi+1 (x) = a(i + 1, n) x        (x + sr ),         0 = s1 < s2 ≤ s3 ≤ · · · ≤ sn .
+                                           r=2
+
+We only consider the case deg(fi (x)) = n and the case deg(fi (x)) = n − 1 is similar. Write
+                                     n
+                                     Y
+                  fi (x) = a(i, n)     (x + tr ),         0 ≤ t1 ≤ t2 ≤ t3 ≤ · · · ≤ tn .
+                                     r=1
+
+Let ε > 0 be a sufficiently small perturbation parameter and define two polynomials
+                                                       n
+                                                       Y
+                                 gi (x) = a(i, n)              (x + tr + ε)
+                                                       r=1
+
+and                                                                n
+                                                                   Y
+                         gi+1 (x) = a(i + 1, n) (x + ε)              (x + sr + ε).
+                                                                   r=2
+
+Then gi (x) ⪯ gi+1 (x). Because every factor in the product has strictly positive coefficients,
+by Step 1, the coefficient matrix
+                             ε                                          
+                        ε      a (i, 0)     aε (i, 1)   ···     a(i, n)
+                       A = ε
+                             a (i + 1, 0) aε (i + 1, 1) · · · a(i + 1, n)
+
+of gi (x) and gi+1 (x) is TP2 . Taking the limit as ε → 0, we have
+
+                                           lim aε (i, j) = a(i, j),
+                                           ε→0
+
+
+                                                     18
+and
+
+                      lim (aε (i, j)aε (i + 1, j + 1) − aε (i, j + 1)aε (i + 1, j))
+                      ε→0
+                   = a(i, j)a(i + 1, j + 1) − a(i, j + 1)a(i + 1, j) ≥ 0.
+
+Then, by Lemma 5.3, we obtain that A′ is TP2 . This completes the proof.
+Proof of Theorem 5.1. By Theorem 1.1 of [3], the coefficient matrix of the polynomial se-
+quence
+                             (Pd,0 (x), Pd,1 (x), . . . , Pd,d (x))
+is the transpose of HF . Since F has the interlacing property, this sequence is interlacing.
+By Proposition 5.5, the coefficient matrix of this sequence, namely HFT , is TP2 . As total
+positivity is preserved under transposition (see Proposition 1.2 in [26]), it follows that HF is
+TP2 . This completes the proof.
+    The r-colored barycentric subdivision F was introduced in [1]. The barycentric sub-
+division and the interval subdivision are recovered as the special cases r = 1 and r = 2,
+respectively. Athanasiadis and Tzanaki investigated the interlacing property of HF for the
+r-colored barycentric subdivision.
+
+Lemma 5.6 ([2, Theorem 5.3]). Let F be the r-colored barycentric subdivision of (d − 1)-
+dimensional simplicial complexes. Then for each d and r, F has the interlacing property.
+
+   The following follows immediately from Theorem 5.1.
+
+Corollary 5.7. Let F be the r-colored barycentric subdivision of (d − 1)-dimensional sim-
+plicial complexes. Then for each d and r, the transformation matrix HF is TP2 .
+
+Remark 5.8. Another typical uniform subdivision is the antiprism triangulation, introduced
+by Izmestiev and Joswig [17] to study combinatorially branched coverings of manifolds. Re-
+cently, Athanasiadis, Brunink and Juhnke-Kubitzke [4] studied the enumerative and algebraic
+properties of antiprism triangulations. In particular, from the results in Section 5 of [4], we
+can obtain an explicit expression for the entries of the transformation matrix HF as
+            " d i                         X                                    #
+              XX j            d−j          r
+     HF =                                           (ℓ!)2 S(i − s, ℓ)S(r − i + s, ℓ)     ,
+              r=0 s=0
+                       s    d − r − s    i − s  ℓ≥0                                   0≤i,j≤d
+
+where S(a, b) denotes the Stirling number of the second kind. It is natural to consider the
+interlacing property and total positivity of this transformation matrix.
+
+Declaration of competing interest
+   The authors declare no conflict of interest.
+
+
+                                                 19
+Declaration of generative AI and AI-assisted technologies in the writing process
+   The authors didn’t use Generative AI and AI-assisted technologies in the writing process.
+
+Acknowledgements
+   This work was partially supported by the National Natural Science Foundation of China
+(No.12201100).
+
+References
+ [1] C.A. Athanasiadis, Edgewise subdivisions, local h-polynomials, and excedances in the
+     wreath product Zr ≀ Sn , SIAM J. Discrete Math. 28 (2014) 1479–1492.
+
+ [2] C.A. Athanasiadis, E. Tzanaki, Symmetric decompositions, triangulations and real-
+     rootedness, Mathematika. 67 (2021) 840–859.
+
+ [3] C.A. Athanasiadis, Face numbers of uniform triangulations of simplicial complexes, Int.
+     Math. Res. Not. IMRN. (2022) no. 20, 15756–15787.
+
+ [4] C.A. Athanasiadis, J.-M. Brunink, M. Juhnke-Kubitzke, Combinatorics of antiprism
+     triangulations, Discrete Comput. Geom. 68(1) (2022) 72–106.
+
+ [5] I. Anwar, S. Nazir, The f - and h-vectors of interval subdivisions, J. Combin. Theory
+     Ser. A. 169 (2020) 105124, 22 pp.
+
+ [6] I. Anwar, S. Nazir, The γ- and local γ-vectors of interval subdivisions, J. Algebraic
+     Combin. 53(3) (2021) 677–699.
+
+ [7] M.I. Aissen, I.J. Schoenberg, A. Whitney, On the generating functions of totally positive
+     sequences. I, J. Analyse Math. 2 (1952) 93–103.
+
+ [8] P. Brändén, Unimodality, log-concavity, real-rootedness and beyond, Handbook of enu-
+     merative combinatorics. CRC Press, Boca Raton, FL, 2015, pp. 437–483.
+
+ [9] F. Brenti, Combinatorics and total positivity, J. Combin. Theory Ser. A. 71 (1995)
+     175–218.
+
+[10] F. Brenti, V. Welker, f -Vectors of barycentric subdivisions, Math. Z. 259 (2008) no. 4,
+     849–865.
+
+[11] F. Brenti, V. Welker, The Veronese construction for formal power series and graded
+     algebras, Adv. in Appl. Math. 42 (2009) 545–556.
+
+[12] P. Diaconis, J. Fulman, Carries, shuffling, and an amazing matrix, Amer. Math.
+     Monthly. 116 (2009) 788–803.
+
+
+                                             20
+[13] S. Fisk, Polynomials, roots, and interlacing, arXiv:math/0612833v2.
+
+[14] M. Gasca, J.M. Peña, Total positivity and Neville elimination, Linear Algebra Appl.
+     165 (1992) 25-44.
+
+[15] M. Gasca, J.M. Peña, On factorizations of totally positive matrices, in: M. Gasca, C.A.
+     Micchelli (Eds.), Total Positivity and Its Applications, Kluwer Academic Publishers,
+     Dordrecht, The Netherlands, 1996, pp. 109–130.
+
+[16] M.T. Gassó, J.R. Torregrosa, A totally positive factorization of rectangular matrices by
+     the Neville elimination, SIAM J. Matrix Anal. Appl. 25 (2004) 986–994.
+
+[17] I. Izmestiev, M. Joswig, Branched coverings, triangulations, and 3-manifolds, Adv.
+     Geom. 3 (2003) 191–225.
+
+[18] M. Juhnke-Kubitzke, E. Nevo, The Lefschetz property for barycentric subdivisions of
+     shellable complexes, Trans. Amer. Math. Soc. 361 (2009) 6151–6163.
+
+[19] S. Karlin, Total Positivity, Volume 1, Stanford University Press, 1968.
+
+[20] Y. Khiar, E. Mainar, E. Royo-Amondarain and B. Rubio, Total positivity and accurate
+     computations related to q-Abel polynomials, J. Sci. Comput. 101 (2024) no. 3, Paper No.
+     56, 22 pp.
+
+[21] E. Mainar, J.M. Peña, B. Rubio, Accurate computations with Wronskian matrices of
+     Bessel and Laguerre polynomials, Linear Algebra Appl. 647 (2022) 31–46.
+
+[22] J. Mao, Y. Wang, Proof of a conjecture on the total positivity of amazing matrices, Adv.
+     Appl. Math. 140 (2022) 102387.
+
+[23] L. Mu, C. Wang, B.-X. Zhu, On the totally positive matrices related to refined Eulerian
+     numbers, Discrete Math. 349 (2026), no. 11, Paper No. 115247.
+
+[24] L. Mu, V. Welker, Total positivity and two inequalities by Athanasiadis and Tzanaki,
+     Ann. Comb. 30 (2026) no. 1, 59–75.
+
+[25] E. Nevo, T.K. Petersen, B.E. Tenner, The γ-vector of a barycentric subdivision, J.
+     Combin. Theory Ser. A. 118 (2011) 1364–1380.
+
+[26] A. Pinkus, Totally positive matrices, Cambridge Tracts in Mathematics, 181, Cambridge
+     Univ. Press, Cambridge, 2010.
+
+[27] R.P. Stanley, Subdivisions and local h-vectors, J. Amer. Math. Soc. 5 (1992) 805–851.
+
+[28] J.W. Walker, Canonical homeomorphisms of posets, European J. Combin. 9 (1988) no. 2,
+     97–107.
+
+
+
+                                             21
+

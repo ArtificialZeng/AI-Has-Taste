@@ -1,0 +1,76 @@
+{
+  "checker": "evidence/scripts/verify_census.py",
+  "checks": [
+    "graph6 decode/re-encode",
+    "order and edge count",
+    "simplicity and looplessness",
+    "3-regularity",
+    "connectedness",
+    "literal canonical-code uniqueness",
+    "expected order-by-order counts"
+  ],
+  "combined_order": "n=4,6,...,18; within each file geng -l traversal/output order",
+  "combined_sha256": "91781c09a687e69fab0719e58a3dff3585aa25d1199960c585a494d07ddb99b6",
+  "limitation": "Literal uniqueness is decisive only conditional on geng -l producing canonical labels; this checker is not an independent canonizer.",
+  "networkx_version": "3.4.2",
+  "orders": [
+    {
+      "count": 1,
+      "first_graph6": "C~",
+      "last_graph6": "C~",
+      "n": 4,
+      "sha256": "62073900de6d9451c02333f80b3c4de1105edb4559989fee6cfa91c1365d102b"
+    },
+    {
+      "count": 2,
+      "first_graph6": "Es\\o",
+      "last_graph6": "E{Sw",
+      "n": 6,
+      "sha256": "ba21a6e2d7d66e9a1f87dc625de77b1a40a624c9d4c7ea323c225d028d0b038a"
+    },
+    {
+      "count": 5,
+      "first_graph6": "Gs@ipo",
+      "last_graph6": "GtP@Ww",
+      "n": 8,
+      "sha256": "8e99bbe0d82a1c4aa946adea55cf3b13b9ed4aaf264931ae1ffb0adcca151066"
+    },
+    {
+      "count": 19,
+      "first_graph6": "Is?AXW[[?",
+      "last_graph6": "It?IQScDG",
+      "n": 10,
+      "sha256": "90b5fc4c0d570031df68c7473358874923ad3772f92ce9e5d79bbb14b961eb31"
+    },
+    {
+      "count": 85,
+      "first_graph6": "Ks?GGGRCrOL?",
+      "last_graph6": "Kt?GWK@OI@f?",
+      "n": 12,
+      "sha256": "ab1707a4c7b004582b444351104013d593ad037c6c4f4c6831dc97aeaa5d94bd"
+    },
+    {
+      "count": 509,
+      "first_graph6": "Ms??GOKB?eCESOW_?",
+      "last_graph6": "Ms??W\\?CI@CAH@EA?",
+      "n": 14,
+      "sha256": "c0a97be1aa900640a651ce7fd68e9dc81d0465c3f910ee50ac1ecba5b03c4cd3"
+    },
+    {
+      "count": 4060,
+      "first_graph6": "Os?GGG???FDACKCKGWBO?",
+      "last_graph6": "Ot?GGGA?gA?HOKOBD??o@",
+      "n": 16,
+      "sha256": "6b8bbbe66a6f8c110f3f289194b1c097e7f92c2a27cef5a9b4f73d4110956ea3"
+    },
+    {
+      "count": 41301,
+      "first_graph6": "Qs??GG???D_M@?E?b?P@_Oo@g??",
+      "last_graph6": "Qt?GW???G@_E@oA?G?I?BGQ?PC?",
+      "n": 18,
+      "sha256": "840a9c0925044b435d99337694f145309f8412db03066381c46972e0371c101b"
+    }
+  ],
+  "status": "pass",
+  "total": 45982
+}

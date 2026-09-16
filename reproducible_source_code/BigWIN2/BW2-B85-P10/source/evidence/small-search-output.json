@@ -1,0 +1,60 @@
+{
+  "independent_validation": {
+    "endpoint_reduction_checks": 1022,
+    "parameter_vectors_dp_vs_bruteforce": 1023
+  },
+  "method": {
+    "arithmetic": "exact integers",
+    "enumeration_order": "increasing total order N",
+    "tree_dp_states": [
+      "root chosen",
+      "root dominated below",
+      "root needs parent"
+    ]
+  },
+  "search": {
+    "coverage": {
+      "cases_by_N": {
+        "10": 51,
+        "11": 106,
+        "12": 221,
+        "13": 452,
+        "14": 929,
+        "15": 1885,
+        "16": 3838,
+        "17": 7752,
+        "18": 15686,
+        "19": 31587,
+        "20": 63657,
+        "5": 1,
+        "6": 2,
+        "7": 5,
+        "8": 11,
+        "9": 24
+      },
+      "log_concavity_minors": 2274467,
+      "normalized_core_conditions": "k>=3, endpoint legs positive, at least one internal zero; one representative modulo reversal",
+      "parameter_vectors": 126207,
+      "total_order_N": [
+        1,
+        20
+      ]
+    },
+    "smallest_positive-support_slack": {
+      "index": 4,
+      "parameter_vector": [
+        1,
+        0,
+        1
+      ],
+      "slack": 17,
+      "total_order": 5,
+      "triple": [
+        8,
+        5,
+        1
+      ]
+    },
+    "status": "no_counterexample_in_covered_range"
+  }
+}

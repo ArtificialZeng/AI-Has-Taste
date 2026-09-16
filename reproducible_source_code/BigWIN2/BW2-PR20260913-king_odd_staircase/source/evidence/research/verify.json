@@ -1,0 +1,752 @@
+{
+  "job_id": "primary-20260913-king-odd-staircase-research-fd17b876b830",
+  "arithmetic": "exact integers and finite mex; no random tests",
+  "python": "3.10.12",
+  "counts": {
+    "local_identity_cells": 8424,
+    "seam_table_rows": 28,
+    "transfer_interior_cells": 4313608,
+    "boundary_words": 1309,
+    "direct_boards": 114,
+    "direct_interior_cells": 7114,
+    "recursive_subpartitions": 210,
+    "huge_k_one_step_cases": 24
+  },
+  "coverage": [
+    {
+      "r": 1,
+      "k_range": [
+        1,
+        9
+      ],
+      "mismatches": [],
+      "full_board_checked": true
+    },
+    {
+      "r": 3,
+      "k_range": [
+        1,
+        13
+      ],
+      "mismatches": [],
+      "full_board_checked": true
+    },
+    {
+      "r": 5,
+      "k_range": [
+        1,
+        17
+      ],
+      "mismatches": [],
+      "full_board_checked": true
+    },
+    {
+      "r": 7,
+      "k_range": [
+        1,
+        21
+      ],
+      "mismatches": [],
+      "full_board_checked": true
+    },
+    {
+      "r": 9,
+      "k_range": [
+        1,
+        25
+      ],
+      "mismatches": [],
+      "full_board_checked": true
+    },
+    {
+      "r": 11,
+      "k_range": [
+        1,
+        29
+      ],
+      "mismatches": [],
+      "full_board_checked": true
+    },
+    {
+      "r": 13,
+      "k_range": [
+        1,
+        33
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 15,
+      "k_range": [
+        1,
+        37
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 17,
+      "k_range": [
+        1,
+        41
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 19,
+      "k_range": [
+        1,
+        45
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 21,
+      "k_range": [
+        1,
+        49
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 23,
+      "k_range": [
+        1,
+        53
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 25,
+      "k_range": [
+        1,
+        57
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 27,
+      "k_range": [
+        1,
+        61
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 29,
+      "k_range": [
+        1,
+        65
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 31,
+      "k_range": [
+        1,
+        69
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 33,
+      "k_range": [
+        1,
+        73
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 47,
+      "k_range": [
+        1,
+        101
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 65,
+      "k_range": [
+        1,
+        137
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 79,
+      "k_range": [
+        1,
+        165
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    },
+    {
+      "r": 101,
+      "k_range": [
+        1,
+        209
+      ],
+      "mismatches": [],
+      "full_board_checked": false
+    }
+  ],
+  "seam_table": [
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        -4,
+        -1
+      ],
+      "value": 3,
+      "options": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        -3,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        -1,
+        0
+      ],
+      "value": 0,
+      "options": [
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        0,
+        1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        0,
+        2
+      ],
+      "value": 2,
+      "options": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        -1,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 0,
+      "relative_cell": [
+        0,
+        0
+      ],
+      "value": 2,
+      "options": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        -5,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        2,
+        0,
+        3
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        -4,
+        -1
+      ],
+      "value": 2,
+      "options": [
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        -1,
+        0
+      ],
+      "value": 0,
+      "options": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        0,
+        1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        0,
+        2
+      ],
+      "value": 3,
+      "options": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        -1,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 0,
+      "relative_cell": [
+        0,
+        0
+      ],
+      "value": 2,
+      "options": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        -4,
+        -1
+      ],
+      "value": 2,
+      "options": [
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        -3,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        2,
+        0,
+        3
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        -1,
+        0
+      ],
+      "value": 0,
+      "options": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        0,
+        1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        0,
+        2
+      ],
+      "value": 3,
+      "options": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        -1,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "L_parity": 0,
+      "h": 1,
+      "relative_cell": [
+        0,
+        0
+      ],
+      "value": 2,
+      "options": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        -5,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        3,
+        0,
+        2
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        -4,
+        -1
+      ],
+      "value": 3,
+      "options": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        -1,
+        0
+      ],
+      "value": 0,
+      "options": [
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        0,
+        1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        0,
+        2
+      ],
+      "value": 2,
+      "options": [
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        -1,
+        -1
+      ],
+      "value": 1,
+      "options": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "L_parity": 1,
+      "h": 1,
+      "relative_cell": [
+        0,
+        0
+      ],
+      "value": 2,
+      "options": [
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "huge_k_one_step_cases": [
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000001",
+      "t": 1,
+      "h": 0
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000002",
+      "t": 2,
+      "h": 0
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000002",
+      "t": 2,
+      "h": 0
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000003",
+      "t": 3,
+      "h": 0
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000004",
+      "t": 1,
+      "h": 1
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000005",
+      "t": 2,
+      "h": 1
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000005",
+      "t": 2,
+      "h": 1
+    },
+    {
+      "r": 1,
+      "k": "300000000000000000000000000000000000000000000000006",
+      "t": 3,
+      "h": 1
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000001",
+      "t": 1,
+      "h": 0
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000002",
+      "t": 2,
+      "h": 0
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000004",
+      "t": 4,
+      "h": 0
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000005",
+      "t": 5,
+      "h": 0
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000006",
+      "t": 1,
+      "h": 1
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000007",
+      "t": 2,
+      "h": 1
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000009",
+      "t": 4,
+      "h": 1
+    },
+    {
+      "r": 3,
+      "k": "500000000000000000000000000000000000000000000000010",
+      "t": 5,
+      "h": 1
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000001",
+      "t": 1,
+      "h": 0
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000002",
+      "t": 2,
+      "h": 0
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000066",
+      "t": 66,
+      "h": 0
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000067",
+      "t": 67,
+      "h": 0
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000068",
+      "t": 1,
+      "h": 1
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000069",
+      "t": 2,
+      "h": 1
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000133",
+      "t": 66,
+      "h": 1
+    },
+    {
+      "r": 65,
+      "k": "6700000000000000000000000000000000000000000000000134",
+      "t": 67,
+      "h": 1
+    }
+  ],
+  "proof_sha256_fixed_before_tests": "316b86e82cfa7ba0e0375501dfd4f9dcf300ad0b169d0716285e2cb2dfdd8aae",
+  "script_sha256": "3eb263bd2b5562e39eadca3b3bef0a086a0d6d638ca9e3795c358f39ddb0e3c1",
+  "source_sha256": "e4dc12773dcaea452c4710f74f8cea0715f792af5af8f043d8d73d5b30913ae8",
+  "source_unchanged": true,
+  "elapsed_seconds": 3.137878242006991,
+  "qualification": "Finite corroboration by this proposer job, not fresh referee review. Universal proof is the exhaustive local case argument and induction in proof.md."
+}

@@ -1,0 +1,391 @@
+{
+  "original_id": "legacy-b08-p10",
+  "archive_id": "BW2-B08-P10",
+  "title": "Exact Verification of the Line-Graph Signature Inequality at Order Nine",
+  "batch_label": "8",
+  "kind": "historical-gated-manuscript",
+  "original_status": "certified finite result",
+  "scope": "Certified finite order-nine result only; universal conjecture remains open.",
+  "gate_basis": "Final submission/PDF/citation gates and manifest pass; current gap ledger resolves the stale G02 note retained in the older proof audit.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B08-P10_Exact_Verification_of_the_Line_Graph_Signature_Inequality_at_Order_Nine.pdf",
+  "pdf_sha256": "af3230ac800bfc753af6817d996df4a6954db28aedd8d4bcb365b6dfc4275dd4",
+  "pages": 3,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B08-P10/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B08-P10/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B08-P10/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Python 3 and python-flint; the audited certificate records python-flint 0.9.0."
+  ],
+  "limitations": [
+    "proof/gap_ledger.md currently marks G02 resolved. Exclude raw literature notes and internal experiment logs from public source.",
+    "Original entrypoints: ['python3 certificates/verify_census_flint.py --input experiments/data/connected_n9_all.g6 --census results/census_n9_all.json --log verification_result.json']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 23,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B08-P10/audit/CITATION_AUDIT.md",
+      "sha256": "3e8bf249f320be7bcfbdd5442f19f95726f1bd37c76ce90fba7a34e02c0bc254",
+      "bytes": 1356
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B08-P10/audit/PDF_AUDIT.md",
+      "sha256": "e42b6aa5c9e37eb0be3b2335ac4601b32c6efa569e95c91b9e524c4e4a29e54e",
+      "bytes": 771
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B08-P10/audit/PROOF_AUDIT.md",
+      "sha256": "d08ab7f4222760bf3a1a676631de8f6f70670f4ecf346e50542d107591517e71",
+      "bytes": 9927
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B08-P10/audit/SUBMISSION_AUDIT.md",
+      "sha256": "ff6241170b81a02b2f2797cea34fca15de5038425c0a4a2d325d4ddf56af2a8b",
+      "bytes": 975
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B08-P10/results/release_manifest.json",
+      "sha256": "e2450bf52202e2370633f0cd9e6b2da83d97661558d9ab6a39451e502883c190",
+      "bytes": 768
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B08-P10/proof/gap_ledger.md",
+      "sha256": "e98d29a48b8960dc3a898d9e46ba416d3efec7fb4395b08c0b5d110b2b6cbe9c",
+      "bytes": 1055
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/certificates/breaker_equality_order9.json",
+      "original_sha256": "2a72d3da91c22dc5355708335e1ad692ef2332a483c2fc93a269ad39d01b621d",
+      "original_bytes": 4389,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/breaker_equality_order9.json",
+          "sha256": "2a72d3da91c22dc5355708335e1ad692ef2332a483c2fc93a269ad39d01b621d",
+          "bytes": 4389
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/verify_census_flint.py",
+      "original_sha256": "add554eccb9a36e8a6492f0b47a4922245ae9f1931977e4af0c801505175b60a",
+      "original_bytes": 4176,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/verify_census_flint.py",
+          "sha256": "add554eccb9a36e8a6492f0b47a4922245ae9f1931977e4af0c801505175b60a",
+          "bytes": 4176
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/verify_n7.json",
+      "original_sha256": "8fcae6713accd62e2a13364de1b1e4af04984a69d3de47c759d0a1636a9108c7",
+      "original_bytes": 711,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/verify_n7.json",
+          "sha256": "8fcae6713accd62e2a13364de1b1e4af04984a69d3de47c759d0a1636a9108c7",
+          "bytes": 711
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/verify_n9_flint.json",
+      "original_sha256": "0c8d2dd6c43f6005e4cb3bf5ce94e0456488e7907711140b77a2ca13999c6448",
+      "original_bytes": 2130,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/verify_n9_flint.json",
+          "sha256": "0c8d2dd6c43f6005e4cb3bf5ce94e0456488e7907711140b77a2ca13999c6448",
+          "bytes": 2130
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/exact_census.py",
+      "original_sha256": "edab186b097fae583e28e0994f858022f3a248d178ff3c4320f8f4b15178a0bd",
+      "original_bytes": 5127,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/exact_census.py",
+          "sha256": "edab186b097fae583e28e0994f858022f3a248d178ff3c4320f8f4b15178a0bd",
+          "bytes": 5127
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/AUDIT.md",
+      "original_sha256": "873a0ffbf10102b4764aa22677f89673ec422ab5884f93d3c1632725b0c35ba7",
+      "original_bytes": 2927,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/AUDIT.md",
+          "sha256": "873a0ffbf10102b4764aa22677f89673ec422ab5884f93d3c1632725b0c35ba7",
+          "bytes": 2927
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/data/census_summary.json",
+      "original_sha256": "df8aa3bca969dc74840668eef7bd302dc93796f81cfad30827f29e118a0c3fba",
+      "original_bytes": 1161,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/data/census_summary.json",
+          "sha256": "df8aa3bca969dc74840668eef7bd302dc93796f81cfad30827f29e118a0c3fba",
+          "bytes": 1161
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/data/connected9.g6",
+      "original_sha256": "fe73f2b8aad1a653b6f3bee799efff369cc486688df5aeade62ce0b3b5889eb5",
+      "original_bytes": 2088640,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/data/connected9.g6",
+          "sha256": "fe73f2b8aad1a653b6f3bee799efff369cc486688df5aeade62ce0b3b5889eb5",
+          "bytes": 2088640
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/data/crosscheck_stride2500.json",
+      "original_sha256": "077b1c05f3b973e11c0f67150dcec2a44771092504ef2903fcefeaa4f02c17bd",
+      "original_bytes": 13009,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/data/crosscheck_stride2500.json",
+          "sha256": "077b1c05f3b973e11c0f67150dcec2a44771092504ef2903fcefeaa4f02c17bd",
+          "bytes": 13009
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/data/equality_direct_charpoly.json",
+      "original_sha256": "2a72d3da91c22dc5355708335e1ad692ef2332a483c2fc93a269ad39d01b621d",
+      "original_bytes": 4389,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/data/equality_direct_charpoly.json",
+          "sha256": "2a72d3da91c22dc5355708335e1ad692ef2332a483c2fc93a269ad39d01b621d",
+          "bytes": 4389
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/src/crosscheck.py",
+      "original_sha256": "0144c9f71559603354eff5910b2edcd93ef5ccfa9fea3131087ebf4362198fbe",
+      "original_bytes": 1375,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/src/crosscheck.py",
+          "sha256": "0144c9f71559603354eff5910b2edcd93ef5ccfa9fea3131087ebf4362198fbe",
+          "bytes": 1375
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/src/exact_census.py",
+      "original_sha256": "8c690355f7c4ed3a0128b6c73a48c96db5cfb7975d4f5e2a89c8e849c9126e9c",
+      "original_bytes": 3773,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/src/exact_census.py",
+          "sha256": "8c690355f7c4ed3a0128b6c73a48c96db5cfb7975d4f5e2a89c8e849c9126e9c",
+          "bytes": 3773
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/breaker/src/verify_equality.py",
+      "original_sha256": "c75327ad8d366113ecf9e4f535614752f032c9383ceb0efad1d7cdff7c315a47",
+      "original_bytes": 2277,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/breaker/src/verify_equality.py",
+          "sha256": "c75327ad8d366113ecf9e4f535614752f032c9383ceb0efad1d7cdff7c315a47",
+          "bytes": 2277
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/data/connected_n9_all.g6",
+      "original_sha256": "fe73f2b8aad1a653b6f3bee799efff369cc486688df5aeade62ce0b3b5889eb5",
+      "original_bytes": 2088640,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/data/connected_n9_all.g6",
+          "sha256": "fe73f2b8aad1a653b6f3bee799efff369cc486688df5aeade62ce0b3b5889eb5",
+          "bytes": 2088640
+        }
+      ]
+    },
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "e12be847472dd9182111ff112ffc79b580169d567f091f09cd2c01abe1a1c266",
+      "original_bytes": 7630,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "e12be847472dd9182111ff112ffc79b580169d567f091f09cd2c01abe1a1c266",
+          "bytes": 7630
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "d1b39039491309c42264f6309daf93669827f1a21252be14209489552dceb0b3",
+      "original_bytes": 2580,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "d1b39039491309c42264f6309daf93669827f1a21252be14209489552dceb0b3",
+          "bytes": 2580
+        }
+      ]
+    },
+    {
+      "path": "source/problem/formal_statement.md",
+      "original_sha256": "84e6cfe1aaf1bbf7965f76a8410560eef652a30db7c3dcf56d7296bbab63332c",
+      "original_bytes": 1762,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem/formal_statement.md",
+          "sha256": "84e6cfe1aaf1bbf7965f76a8410560eef652a30db7c3dcf56d7296bbab63332c",
+          "bytes": 1762
+        }
+      ]
+    },
+    {
+      "path": "source/proof/builder_notes.md",
+      "original_sha256": "e7840b572520b518bccacfec11533498598c3dd50afbc1f99a7877e80f4cab33",
+      "original_bytes": 8285,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/builder_notes.md",
+          "sha256": "e7840b572520b518bccacfec11533498598c3dd50afbc1f99a7877e80f4cab33",
+          "bytes": 8285
+        }
+      ]
+    },
+    {
+      "path": "source/results/census_n7.json",
+      "original_sha256": "1b730a61f583ea466fdf06056a32aa6e7ae959316b4ca5dafc4885f9d6099c56",
+      "original_bytes": 4675,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/results/census_n7.json",
+          "sha256": "1b730a61f583ea466fdf06056a32aa6e7ae959316b4ca5dafc4885f9d6099c56",
+          "bytes": 4675
+        }
+      ]
+    },
+    {
+      "path": "source/results/census_n9_all.json",
+      "original_sha256": "3688bfa9d9bb5fc8f96aa6705e407dcca50ce33c4ee1a0cf22ea49b41c7332d6",
+      "original_bytes": 16732,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/results/census_n9_all.json",
+          "sha256": "3688bfa9d9bb5fc8f96aa6705e407dcca50ce33c4ee1a0cf22ea49b41c7332d6",
+          "bytes": 16732
+        }
+      ]
+    },
+    {
+      "path": "source/results/census_n9_m8_14.json",
+      "original_sha256": "6257a9a7d2e353dbc1f63bcff002d423075400473112e7b8cae520551936ffb1",
+      "original_bytes": 13431,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/results/census_n9_m8_14.json",
+          "sha256": "6257a9a7d2e353dbc1f63bcff002d423075400473112e7b8cae520551936ffb1",
+          "bytes": 13431
+        }
+      ]
+    },
+    {
+      "path": "source/REPRODUCE.md",
+      "original_sha256": "5eef51754c8cb74a1ae4d0197b6d904bd048e22fbd64fc0aafee8c2dc43a64ee",
+      "original_bytes": 1131,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/REPRODUCE.md",
+          "sha256": "5eef51754c8cb74a1ae4d0197b6d904bd048e22fbd64fc0aafee8c2dc43a64ee",
+          "bytes": 1131
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+      "original_sha256": "ebee25570c0e2348f086118a76113112200c525de98127aaa110037415485ee2",
+      "original_bytes": 685,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+          "sha256": "ebee25570c0e2348f086118a76113112200c525de98127aaa110037415485ee2",
+          "bytes": 685
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B08-P10",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

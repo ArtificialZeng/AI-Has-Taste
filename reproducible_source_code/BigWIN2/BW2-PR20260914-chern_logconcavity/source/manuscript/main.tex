@@ -1,0 +1,438 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+% Certificate files are attached by the release build driver.
+\hypersetup{pdftitle={Binomial log-concavity of the lower-mode forcing term in a rank-two Chern recurrence},
+pdfauthor={Xiaojian Zeng},pdfsubject={Auxiliary log-concavity theorem with an exact polynomial certificate}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\LC}{\operatorname{LC}}
+\newcommand{\supp}{\operatorname{supp}}
+\DeclareMathOperator{\sort}{sort}
+\allowdisplaybreaks[1]
+\title{Binomial log-concavity of the lower-mode forcing term\\
+in a rank-two Chern recurrence}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{14 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The rank-two binomial log-concavity conjecture of B\'erczi and Feh\'er
+concerns the Newton coefficients of Schur coefficients of symmetric-power
+Chern classes. We prove an auxiliary theorem for the sum of the four
+lower-mode forcing terms in their recurrence for the second Schur mode.
+For every $k\geq4$, this forcing polynomial has positive Newton
+coefficients exactly on $[k-2,2k-1]$, and the coefficient sequence is
+log-concave. The proof applies the prior permutation-defect and Abel
+summation method, with a complete certificate of 41 polynomial prefixes.
+Their nonnegative expansions are checked in exact arithmetic, and the
+data and reconstruction program are included as PDF attachments.
+The original conjecture and its second-mode restriction remain unresolved
+by this result; we identify a sufficient mixed inequality for that restriction.
+\end{abstract}
+
+\section{The auxiliary theorem and its scope}
+
+For integers $d,k\geq0$, define
+\begin{equation}\label{eq:chern}
+c_k(2,d)=[z^k]\prod_{i=0}^{d}\bigl(1+z(ix_1+(d-i)x_2)\bigr).
+\end{equation}
+For $0\leq j\leq\lfloor k/2\rfloor$, write
+\begin{equation}\label{eq:schur}
+c_k(2,d)=\sum_j A_{k,j}(d)s_{(k-j,j)}(x_1,x_2),\qquad
+s_{(k-j,j)}=\sum_{m=j}^{k-j}x_1^{k-m}x_2^m.
+\end{equation}
+The functions $A_{k,j}$ are rational polynomials in $d$
+\cite[Theorem 2.4 and Section 3]{BercziFeher2026}. Their Newton expansions are
+\begin{equation}\label{eq:newton}
+A_{k,j}(x)=\sum_{r\geq0} B_{k,j,r}\binom{x}{r},\qquad
+B_{k,j,r}=\Delta^r A_{k,j}(0),\qquad
+\Delta f(x)=f(x+1)-f(x).
+\end{equation}
+Here $\binom{x}{r}=x(x-1)\cdots(x-r+1)/r!$, with $\binom{x}{0}=1$.
+All coefficient sequences below are extended by zero at negative indices.
+Polynomiality also follows directly from the Chern-root power sums:
+their coefficients are sums of polynomials in $i,d$, hence polynomials
+in $d$; Newton's identities and the triangular change in
+\eqref{eq:schur} preserve polynomiality. Their degrees are at most $2k$.
+
+B\'erczi--Feh\'er's Conjecture 3.3 asks for interval support and
+$B_{k,j,r}^2\geq B_{k,j,r-1}B_{k,j,r+1}$ for every admissible $k,j,r$.
+Their formal Theorems 3.7 and 5.4 prove the cases $j=0,1$, and
+Theorem 5.2 proves positivity for $j=2$ \cite{BercziFeher2026}.
+The theorem here concerns a different, explicitly defined polynomial.
+
+For $k\geq4$, set
+\begin{equation}\label{eq:residual}
+\begin{aligned}
+R_k(x)={}&(x-k+2)A_{k-1,1}(x)
+ +\frac{(x-k+3)(x-k+2)}2 A_{k-2,0}(x)\\
+&+(x+1)(x-k+3)A_{k-2,1}(x)\\
+&+\frac{(x+1)(x-k+4)(x-k+3)}2 A_{k-3,0}(x),
+\qquad R_k(x)=\sum_{r\geq0}\rho_{k,r}\binom{x}{r}.
+\end{aligned}
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For every integer $k\geq4$, the coefficients in \eqref{eq:residual}
+are positive exactly for $k-2\leq r\leq2k-1$ and vanish otherwise.
+For every integer $r\geq0$,
+\begin{equation}\label{eq:main}
+\rho_{k,r}^2\geq\rho_{k,r-1}\rho_{k,r+1}.
+\end{equation}
+\end{theorem}
+
+The forcing polynomial \eqref{eq:residual} is already present in
+\cite[equation (5.2)]{BercziFeher2026}:
+\begin{equation}\label{eq:recurrence}
+\Delta A_{k,2}(x)=(x+1)A_{k-1,2}(x)+R_k(x).
+\end{equation}
+At $k=4$ the out-of-range term $A_{3,2}$ means zero. This convention
+follows by extracting $[u^2](1-u)$ from a palindromic cubic, and does not
+change the admissible definitions in \eqref{eq:schur}.
+For completeness, \eqref{eq:recurrence} follows by comparing powers of $T$
+and then extracting $[u^2](1-u)$ in
+\[
+E_d(T,u):=\prod_{i=0}^d(T+i+(d-i)u)
+=(T+d)E_{d-1}(T+u,u).
+\]
+
+The increment over the prior recurrence and positivity theorem is
+log-concavity of the \emph{sum} of its four lower-mode terms. Log-concavity
+does not in general survive addition: $(1,1,1,1)$ and $(1,2,4,8)$ are
+positive log-concave sequences, whereas their sum $(2,3,5,9)$ is not.
+Our certificate extends the 17-prefix calculation for $j=1$ in
+\cite[Theorem 5.4]{BercziFeher2026} to this 41-prefix forcing family;
+the recurrence and the general method are prior results.
+Patel's reader contribution \cite{Patel2026} claims all-index binomial
+positivity by a support induction. We use no unverified all-index
+assertion from that contribution, and claim no such positivity result
+as an increment here.
+
+No equivalent theorem for the explicit $R_k$ was identified in the
+inspected sources as of 14 September 2026. This is a bounded comparison,
+not a claim of exhaustive priority verification. In comparing with
+\cite{BercziFeher2026}, we use the formal $j=1$ statement and proof of
+Theorem 5.4; the $j=2$ log-concavity label in its Figure 1 is inconsistent
+with that statement. Neither the full original conjecture nor its $j=2$
+restriction is proved here.
+
+\section{Permutation coefficients and exact support}
+
+Let $D(N,K)$ count permutations of $N$ letters with no fixed points and
+$N-K$ cycles. Put $D(0,0)=1$ and set $D$ to zero outside its natural
+range. Deleting a distinguished letter from a cycle of length at least
+three, or deleting its transposition, gives
+\begin{equation}\label{eq:defect}
+D(N,K)=(N-1)\bigl(D(N-1,K-1)+D(N-2,K-1)\bigr).
+\end{equation}
+For $K\geq1$, its positive support in $N$ is exactly $[K+1,2K]$.
+Indeed, $c=N-K$ nontrivial cycles require $c\geq1$ and $2c\leq N$.
+Conversely, use $c-1$ transpositions and one cycle of length
+$2K-N+2\geq2$.
+
+Put $S_h(x)=A_{h,0}(x)$. At a nonnegative integer $d$,
+$S_h(d)=e_h(0,1,\ldots,d)$ counts permutations of $d+1$ letters with
+cycle defect $h$. Decomposition according to nonfixed support and
+Pascal's identity give
+\begin{equation}\label{eq:zeroth}
+S_h(x)=\sum_{r\geq0}\bigl(D(r,h)+D(r+1,h)\bigr)\binom{x}{r}.
+\end{equation}
+An identity valid at all sufficiently large integer $d$ is a polynomial
+identity in $x$. Similarly, the rising-factorial identity
+\[
+E_d(T,u)=(1-u)^{d+1}
+\left(\frac{T+du}{1-u}\right)^{\overline{d+1}}
+\]
+and extraction of $[u](1-u)$ give
+\begin{equation}\label{eq:first}
+A_{n,1}(x)=x(x+2-n)S_{n-1}(x)-(n+1)S_n(x).
+\end{equation}
+These formulas and the defect basis are used in
+\cite[Section 3]{BercziFeher2026}.
+
+If $F(x)=\sum_r f_r\binom{x}{r}$, multiplication by $x-c$ gives
+\begin{equation}\label{eq:linear}
+\left[\binom{x}{r}\right](x-c)F(x)=(r-c)f_r+r f_{r-1},
+\end{equation}
+where the bracket denotes coefficient in the Newton basis. Substituting
+\eqref{eq:zeroth} into \eqref{eq:first} and applying
+\eqref{eq:defect} yields
+\begin{equation}\label{eq:firstcoeff}
+\begin{aligned}
+B_{n,1,r}={}&r(r+2-n)D(r+1,n-1)
+ +r(3r+2-3n)D(r,n-1)\\
+&+(3r^2-3nr-2r+n+1)D(r-1,n-1)\\
+&+(r-1)(r-n-1)D(r-2,n-1).
+\end{aligned}
+\end{equation}
+Every multiplier is nonnegative whenever its $D$ factor is positive.
+For the third multiplier, write $r=n+1+t$; it becomes
+$2n+2+(3n+4)t+3t^2>0$ for $t\geq0$. The other multipliers are positive
+on their active supports. For $n\geq2$, the first term covers
+$n-1\leq r\leq2n-3$; the next three terms cover $r=2n-2,2n-1,2n$,
+with multipliers $(2n-2)(3n-4)$, $6(n-1)^2$, and $(2n-1)(n-1)$.
+Thus the strict support of $B_{n,1,r}$ is $[n-1,2n]$.
+Equation \eqref{eq:zeroth} gives strict support $[h,2h]$ for $S_h$,
+for every $h\geq1$.
+
+If a nonnegative sequence is positive exactly on $[I,M]$ and $c\leq I$,
+\eqref{eq:linear} gives strict support $[I,M+1]$ when $c<I$, and
+$[I+1,M+1]$ when $c=I$. Applying this rule successively to the four
+terms of \eqref{eq:residual} gives, in their displayed order,
+\[
+[k-1,2k-1],\quad [k-1,2k-2],\quad
+[k-2,2k-2],\quad [k-2,2k-3].
+\]
+All four coefficient sequences are nonnegative. Their union proves the
+strict-support assertion of Theorem~\ref{thm:main}, including $k=4$.
+
+\section{The Abel certificate}
+
+\begin{lemma}\label{lem:defectLC}
+For fixed $K\geq1$, the sequence $D(N,K)$ is log-concave and, with zero
+extension, satisfies
+\[
+D(p,K)D(q,K)\geq D(p-1,K)D(q+1,K)\qquad(p\leq q).
+\]
+\end{lemma}
+\begin{proof}
+Let $P_K(t)=\sum_N D(N,K)t^N$. Equation \eqref{eq:defect} gives
+\[
+P_K(t)=t^2\bigl((1+t)P_{K-1}(t)\bigr)',\qquad P_0(t)=1.
+\]
+Induction and Rolle's theorem show that $P_K$ has only real nonpositive
+zeros. The usual coefficient inequalities for a real-rooted polynomial
+with nonnegative coefficients imply log-concavity; see
+\cite[Lemma 1.1]{Branden2014}. On the positive support, consecutive
+coefficient ratios decrease, which gives the displayed inequality.
+If its right side is positive, interval support makes its left factors
+positive too; otherwise the inequality is immediate. This is the
+defect-sequence argument of \cite[Lemma 5.3]{BercziFeher2026}.
+\end{proof}
+
+Fix $K=k-3\geq1$ and abbreviate $D_i=D(r+i,K)$. The linear identities
+above express the forcing coefficient as
+\begin{equation}\label{eq:expansion}
+2\rho_{k,r}=\sum_{i=-5}^{1}p_i(k,r)D_i,
+\end{equation}
+with seven polynomials of total degree at most four. The following
+recursion specifies all of them without relying on a fitted formula.
+Let $F_t(c_1,\ldots,c_m;r)$ denote the formal Newton coefficient of
+$\prod_{\nu=1}^m(x+c_\nu)S_{K+t}(x)$, reduced to the $D_i$ basis.
+For $m=0$, start with $D(r,K+t)+D(r+1,K+t)$ and apply
+\eqref{eq:defect} $t$ times. Then use
+\begin{equation}\label{eq:F}
+\begin{aligned}
+F_t(c_1,\ldots,c_m;r)={}&(r+c_m)F_t(c_1,\ldots,c_{m-1};r)\\
+&+rF_t(c_1,\ldots,c_{m-1};r-1).
+\end{aligned}
+\end{equation}
+Substituting \eqref{eq:first} into \eqref{eq:residual} makes the right
+side of \eqref{eq:expansion} exactly
+\begin{equation}\label{eq:spec}
+\begin{aligned}
+&2F_1(2-k,0,3-k;r)-2kF_2(2-k;r)+F_1(3-k,2-k;r)\\
+&\quad+2F_0(1,3-k,0,4-k;r)-2(k-1)F_1(1,3-k;r)\\
+&\quad+F_0(1,4-k,3-k;r).
+\end{aligned}
+\end{equation}
+Each defect reduction or linear multiplication raises total coefficient
+degree by at most one; counting also the scalar factors in
+\eqref{eq:spec} proves the degree bound four.
+
+Put $L_{k,r}=\rho_{k,r}^2-\rho_{k,r-1}\rho_{k,r+1}$ and expand
+\begin{equation}\label{eq:quadratic}
+4L_{k,r}=\sum_{(a,b)\in\mathcal P}q_{a,b}(k,r)D_aD_b,
+\end{equation}
+where $\sort(a,b)=(\min(a,b),\max(a,b))$ and
+\begin{equation}\label{eq:pairs}
+\begin{aligned}
+\mathcal P={}&\{\sort(a,b):-5\leq a,b\leq1\}\\
+&\cup\{\sort(a-1,b+1):-5\leq a,b\leq1\}.
+\end{aligned}
+\end{equation}
+All ranges in \eqref{eq:pairs} are integral. There are 41 pairs, including
+every term of the central and adjacent products. In particular, no term
+is deleted on the basis of a parameter-dependent support assumption.
+
+For each trace $s=a+b$, order its pairs $(a_i,b_i)$ from the center
+outward, that is, by increasing $b_i-a_i$. Set
+\[
+U_i=D_{a_i}D_{b_i},\qquad U_{t+1}=0,\qquad
+W_i(k,r)=\frac14\sum_{j=1}^i q_{a_j,b_j}(k,r).
+\]
+Lemma~\ref{lem:defectLC} gives $U_i\geq U_{i+1}$. Abel summation on
+each trace is the exact identity
+\begin{equation}\label{eq:abel}
+L_{k,r}=\sum_s\sum_{i=1}^t W_i(k,r)(U_i-U_{i+1}).
+\end{equation}
+If $U_i-U_{i+1}>0$, then $U_i>0$, so the support of $D$ implies
+\[
+X=r+a_i-(k-2)\geq0,\qquad
+Y=2k-6-(r+b_i)\geq0.
+\]
+Solving these two equations gives
+\begin{equation}\label{eq:substitution}
+k=X+Y+b_i-a_i+4,\qquad r=2X+Y+b_i-2a_i+2.
+\end{equation}
+
+For each of the 41 prefixes, substitution \eqref{eq:substitution}
+gives a nonzero polynomial in $X,Y$ all of whose nonzero coefficients
+are positive. The complete inventory is Table~\ref{tab:prefixes}; the
+attached certificate gives the 1,506 rational coefficients, with their
+monomial exponents. The attached program reconstructs them from
+\eqref{eq:defect}, \eqref{eq:F}, and \eqref{eq:spec}, forms both products
+in \eqref{eq:quadratic}, and compares every coefficient exactly.
+
+Thus each $W_i$ is nonnegative whenever its Abel difference is positive.
+If that difference is zero, its summand vanishes. Equation
+\eqref{eq:abel} proves \eqref{eq:main} for all $k\geq4$ and $r\geq0$.
+At $k=4$, $P_1(t)=t^2$ and the same argument applies. At $r=0$ and
+outside the strict support the minors are zero; at the support endpoints
+they are positive squares. This completes the proof of
+Theorem~\ref{thm:main}.
+
+The certificate uses coefficient positivity on the nonnegative quadrant.
+For comparison, Zeng's proof of a two-parameter spectral inequality uses exact
+positive Bernstein coefficients on a compact parameter box \cite{Zeng2026Lens}
+(Theorem 10, equations (8.25)--(8.27)). In both
+settings, an exact polynomial identity and the sign of a basis on its
+specified domain justify an infinite parameter range. Here the basis
+is $X^uY^v$, and the domain is determined by permutation support.
+
+\section{What remains for the second mode}
+
+Write $a_r=B_{k-1,2,r}$ and $g_r=(r+1)a_r+r a_{r-1}$. The known
+recurrence \eqref{eq:recurrence} says
+\begin{equation}\label{eq:induction}
+B_{k,2,r+1}=g_r+\rho_{k,r}.
+\end{equation}
+If $a$ is nonnegative and log-concave with interval support, then so is
+$g$. Indeed, for $r\geq1$ its minor is
+\begin{align*}
+g_r^2-g_{r-1}g_{r+1}={}&
+(r+1)^2a_r^2-r(r+2)a_{r-1}a_{r+1}\\
+&+r(r+1)a_{r-1}a_r-(r-1)(r+2)a_{r-2}a_{r+1}\\
+&+r^2a_{r-1}^2-(r^2-1)a_{r-2}a_r.
+\end{align*}
+By decreasing consecutive ratios and the zero-boundary convention,
+the three lines are at least $a_r^2$, $2a_{r-1}a_r$, and
+$a_{r-1}^2$, respectively. The case $r=0$ is immediate, and
+\eqref{eq:linear} gives interval support.
+
+Consequently one sufficient remaining assertion is
+\begin{equation}\label{eq:mixed}
+2g_r\rho_{k,r}-g_{r-1}\rho_{k,r+1}-g_{r+1}\rho_{k,r-1}\geq0
+\qquad(k\geq5,\ r\geq0).
+\end{equation}
+This assertion is unproved here. Adding its left side to the separate
+minors of $g$ and $\rho$ gives the minor of $g+\rho$. The base case
+$k=4$ follows from $A_{3,2}=0$, $R_4=\Delta A_{4,2}$, and
+$B_{4,2,0}=0$. For the induction, the positive supports of $a$ and $g$
+are $[k-2,2k-2]$ and $[k-2,2k-1]$, respectively, so they also have the
+required overlap with the forcing support. Thus \eqref{eq:mixed}
+would suffice for the second mode; no equivalence with the original
+conjecture is asserted.
+
+The numerical extent of the supplementary checks is explicit. A separate
+implementation rebuilt \eqref{eq:chern} for $0\leq d\leq90$ and checked
+3,690 residual Newton entries and their minors for $4\leq k\leq44$,
+along with 3,690 recurrence evaluations. It also found no negative
+mixed expression in the 2,000 cases $5\leq k\leq44$, $0\leq r\leq2k$.
+These are exact finite observations, not a proof of \eqref{eq:mixed}.
+For example, the first residual row is
+\[
+(\rho_{4,r})_{r=0}^{8}=(0,0,27,212,660,1000,735,210,0).
+\]
+
+\appendix
+\section{Certificate data and reproducibility}\label{app:certificate}
+
+Two supplementary files are embedded in this PDF: \texttt{certificate.json}
+contains all seven expansion polynomials and all 41 complete prefixes;
+\texttt{certificate.py} reconstructs them using only the Python 3 standard
+library. They can be saved from a PDF reader's attachment panel, or with
+\texttt{pdfdetach -saveall main.pdf}. In the directory containing both files,
+run
+\begin{center}
+\verb|python3 certificate.py --check certificate.json|
+\end{center}
+The program checks the complete pair set, degree bounds, coefficient
+identities, and all signs. It reports seven expansion polynomials,
+41 prefixes, and 1,506 positive coefficients. The variable names in each
+JSON field specify whether the exponent pairs refer to $(k,r)$ or
+$(X,Y)$. Coefficients are exact rational strings; omitted monomials have
+coefficient zero. The attached program can also reconstruct the entire
+JSON file with \verb|--write certificate.json|.
+
+The initial symbolic generation used SymPy \cite{Meurer2017}. Two separate
+standard-library implementations checked the finite algebra: one used
+exact evaluation on a $9\times9$ tensor grid for every prefix, and the
+other compared full sparse polynomial dictionaries. The grid calculation
+has a proof of completeness: each actual prefix has total degree at most
+eight by \eqref{eq:expansion}--\eqref{eq:quadratic}; affine substitution
+does not increase that bound. The reported polynomials satisfy the same
+bound. A polynomial separately of degree at most eight in each variable
+that vanishes at all $(X,Y)\in\{0,\ldots,8\}^2$ is identically zero,
+by applying univariate interpolation twice. Hence the 3,321 exact
+comparisons prove identities rather than extrapolating finite inequalities.
+The polynomial certificate is the infinite-range justification; the
+direct-product checks reported above are additional consistency tests.
+
+\begin{table}[htbp]
+\centering
+\caption{Complete prefix inventory, read down the left block and then the right.
+Each row describes $W_{a,b}(X,Y)$ after \eqref{eq:substitution}; $d$ is total degree,
+$m$ counts nonzero coefficients, and $c_{\min}$ is their minimum. The attached
+JSON contains all 1,506 coefficients.}\label{tab:prefixes}
+\small
+\begin{tabular}{rrrrr@{\qquad}rrrrr}
+\toprule
+Trace & Pair & $d$ & $m$ & $c_{\min}$ & Trace & Pair & $d$ & $m$ & $c_{\min}$\\
+\midrule
+$-10$ & $(-5,-5)$ & 8 & 42 & $1$ & $-4$ & $(-5,1)$ & 8 & 40 & $1$ \\
+$-10$ & $(-6,-4)$ & 6 & 28 & $1$ & $-4$ & $(-6,2)$ & 6 & 28 & $210$ \\
+$-9$ & $(-5,-4)$ & 8 & 42 & $5$ & $-3$ & $(-2,-1)$ & 8 & 42 & $40$ \\
+$-9$ & $(-6,-3)$ & 6 & 28 & $10$ & $-3$ & $(-3,0)$ & 8 & 42 & $10$ \\
+$-8$ & $(-4,-4)$ & 8 & 42 & $15$ & $-3$ & $(-4,1)$ & 8 & 40 & $5$ \\
+$-8$ & $(-5,-3)$ & 8 & 42 & $10$ & $-3$ & $(-5,2)$ & 6 & 28 & $120$ \\
+$-8$ & $(-6,-2)$ & 6 & 28 & $45$ & $-2$ & $(-1,-1)$ & 8 & 42 & $\tfrac{43}{4}$ \\
+$-7$ & $(-4,-3)$ & 8 & 42 & $40$ & $-2$ & $(-2,0)$ & 8 & 42 & $10$ \\
+$-7$ & $(-5,-2)$ & 8 & 42 & $10$ & $-2$ & $(-3,1)$ & 8 & 40 & $10$ \\
+$-7$ & $(-6,-1)$ & 6 & 28 & $120$ & $-2$ & $(-4,2)$ & 6 & 28 & $45$ \\
+$-6$ & $(-3,-3)$ & 8 & 42 & $50$ & $-1$ & $(-1,0)$ & 8 & 42 & $5$ \\
+$-6$ & $(-4,-2)$ & 8 & 42 & $45$ & $-1$ & $(-2,1)$ & 8 & 40 & $10$ \\
+$-6$ & $(-5,-1)$ & 8 & 42 & $5$ & $-1$ & $(-3,2)$ & 6 & 28 & $10$ \\
+$-6$ & $(-6,0)$ & 6 & 28 & $210$ & $0$ & $(0,0)$ & 8 & 42 & $1$ \\
+$-5$ & $(-3,-2)$ & 8 & 42 & $75$ & $0$ & $(-1,1)$ & 8 & 40 & $1$ \\
+$-5$ & $(-4,-1)$ & 8 & 42 & $24$ & $0$ & $(-2,2)$ & 6 & 28 & $1$ \\
+$-5$ & $(-5,0)$ & 8 & 42 & $1$ & $1$ & $(0,1)$ & 8 & 39 & $1$ \\
+$-5$ & $(-6,1)$ & 6 & 28 & $252$ & $1$ & $(-1,2)$ & 6 & 27 & $2$ \\
+$-4$ & $(-2,-2)$ & 8 & 42 & $\tfrac{77}{2}$ & $2$ & $(1,1)$ & 8 & 25 & $1$ \\
+$-4$ & $(-3,-1)$ & 8 & 42 & $45$ & $2$ & $(0,2)$ & 6 & 25 & $2$ \\
+$-4$ & $(-4,0)$ & 8 & 42 & $5$ &  & & & &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Computational and AI assistance.}
+AI systems assisted with proof exploration, program construction, source
+screening, and manuscript drafting. A separate AI review pass reconstructed
+the mathematical argument and verified the certificate with a separate
+exact-arithmetic implementation. These are reproducible computational
+checks and a separate review pass; no proof-assistant formalization or
+journal peer review is claimed.
+
+% The audited build attaches certificate.json and certificate.py using pdfattach.
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+\end{document}

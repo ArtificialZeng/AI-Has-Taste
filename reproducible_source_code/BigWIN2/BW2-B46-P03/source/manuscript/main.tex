@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks,pdftitle={Complete Tight-Set Classification for Deletion Speed 12},pdfauthor={Xiaojian Zeng},pdfsubject={Lonely Runner tight-set classification},pdfkeywords={Lonely Runner Conjecture, tight instance, exact rational certificate}]{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\dist}[1]{\left\lVert #1\right\rVert}
+\newcommand{\LR}{\operatorname{LR}}
+
+\title{Complete Tight-Set Classification for Deletion Speed \(12\)}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+Beijing 100190, China. Email: \texttt{xiaojianzeng@foxmail.com}.}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For integers \(n\geq 13\) and \(w>n-1\), put
+\[
+ V_{n,w}=([n-1]\setminus\{12\})\cup\{w\},\qquad
+ \LR(V)=\max_{0\leq t<1}\min_{v\in V}\dist{vt},
+\]
+where \(\dist{x}\) denotes distance to the nearest integer.  We prove that
+\(\LR(V_{n,w})=1/n\) if and only if \((n,w)=(14,24)\).  Published
+divisibility, effective-bound, and census results reduce the infinite
+classification to twenty pairs.  Exact rational interval-cover certificates
+then determine the value for every residual pair; a separate complete
+breakpoint enumeration gives the same values.  The result resolves the fixed
+deletion-speed-\(12\) specialization, not the broader middle-range
+classification for arbitrary deletion speeds.
+\end{abstract}
+
+\section{Statement and context}
+
+The Lonely Runner Conjecture originated in work of Wills
+\cite{Wills1967}.  In the integer-speed normalization used here, a set of
+\(n-1\) distinct positive speeds is called \emph{tight} when its lonely-runner
+value is exactly \(1/n\).  Goddyn and Wong classified the tight sets obtained
+from the baseline \([n-1]=\{1,\ldots,n-1\}\) by replacing one speed with an
+integer multiple of itself \cite{GoddynWong2006}.
+
+Zhang made the complementary finiteness result effective, gave an exact
+census through \(n=45\) in a bounded speed range, and asked for the remaining
+middle-range classification \cite{Zhang2026}.  The census contains the tight
+pair \((14,24)\), but does not settle fixed deletion speed \(12\) beyond its
+range.  The contribution here is to combine Zhang's universal reduction with
+an exact treatment of every case left for this one deletion speed.  No
+priority claim beyond this comparison is made.
+
+\begin{theorem}\label{thm:main}
+For every pair of integers \(n\geq13\) and \(w>n-1\),
+\[
+  \LR\bigl(([n-1]\setminus\{12\})\cup\{w\}\bigr)=\frac1n
+  \quad\Longleftrightarrow\quad (n,w)=(14,24).
+\]
+Moreover, \(\LR(V_{14,24})=1/14\), while the exact lonely-runner value
+of each of the twenty residual pairs in Table~\ref{tab:values} is one of
+\(2/59,2/61,2/65,2/67\).
+\end{theorem}
+
+\section{Universal reduction}
+
+We first reduce the quantified statement to a finite list.  This step is
+essential: the subsequent exact computation alone would not prove
+Theorem~\ref{thm:main}.
+
+Put \(s=n-12\).  Suppose first that \(13\leq n\leq24\).  Since
+\(2\cdot12>n-1\), Zhang's divisibility proposition forces \(12\mid w\)
+\cite[Proposition~1.3]{Zhang2026}; write \(w=12m\).  Here \(m\geq2\).
+The Goddyn--Wong criterion \cite[Theorem~2.3]{GoddynWong2006}, restated as
+Zhang's Theorem~1.1 \cite{Zhang2026}, says that tightness is equivalent,
+outside exceptions which do not occur here, to
+\[
+ \gcd(12,b)>1\qquad(s\leq b\leq ms-1)
+ \tag{1}\label{eq:gcdcriterion}
+\]
+For \(n=13\), the interval in \eqref{eq:gcdcriterion} contains \(1\).
+For \(n=14,m=2\), it is \(\{2,3\}\), so the criterion holds.  For
+\(n=14,m\geq3\), it contains \(5\).  Finally, for
+\(n=15,\ldots,24\), the interval already contains, respectively,
+\[
+ 5,5,5,7,7,11,11,11,11,13,
+\]
+at \(m=2\), and it continues to contain that integer for larger \(m\).
+Each displayed obstruction is coprime to \(12\).  Thus this whole range
+contributes exactly \((14,24)\), and the same criterion proves
+\(\LR(V_{14,24})=1/14\).
+
+Now let \(n\geq25\).  For a residue \(u\), define
+\[
+ F_n(u)=\max\{i\leq n-1:i\equiv u\pmod {12}\},\qquad
+ I(n)=\min_{u\in\{1,5,7,11\}}F_n(u).
+\]
+The deleted value \(12\) is irrelevant to these four unit residue classes.
+Zhang's effective bound \cite[Theorem~1.6]{Zhang2026} implies that a tight
+pair must satisfy
+\[
+ n\leq72,
+ \qquad
+ w\leq B(n):=\frac{48I(n)}{2(n-12)-I(n)}.
+ \tag{2}\label{eq:bound}
+\]
+For \(25\leq n\leq45\), direct substitution gives
+\(\lfloor B(n)\rfloor\leq74<10n\).  Zhang's exact census
+\cite[Theorem~1.8(i) and Table~1]{Zhang2026} therefore covers every possible
+\(w\) in this range and contains no deletion-speed-\(12\) pair.
+
+For \(46\leq n\leq72\), substitution in \eqref{eq:bound} yields the
+following nonempty ranges; at \(n=49\) and every \(52\leq n\leq72\), one
+has \(\lfloor B(n)\rfloor<n\).
+\[
+\begin{array}{c@{\qquad}c@{\qquad}c@{\qquad}c}
+\toprule
+n&I(n)&\lfloor B(n)\rfloor&\text{possible }w\\
+\midrule
+46&35&50&46\text{--}50\\
+47&35&48&47\text{--}48\\
+48&37&50&48\text{--}50\\
+50&41&56&50\text{--}56\\
+51&41&53&51\text{--}53\\
+\bottomrule
+\end{array}
+\tag{3}\label{tab:reduction}
+\]
+Consequently, \eqref{tab:reduction} is the complete twenty-pair residual list.  Values
+\(n>72\) are excluded directly by \eqref{eq:bound}.
+
+\section{Exact certification of the residual values}
+
+The upper certificates use the following elementary description.  It also
+gives a short verifier independent of breakpoint enumeration.
+
+\begin{lemma}[Interval-cover certificate]\label{lem:cover}
+Let \(V\) be a finite set of positive integers and \(0\leq q\leq1/2\).  For
+each \(v\in V\),
+\[
+ \{t\in[0,1]:\dist{vt}\leq q\}
+ =\bigcup_{k=0}^{v}
+ \left[\frac{k-q}{v},\frac{k+q}{v}\right]\cap[0,1].
+ \tag{4}\label{eq:intervals}
+\]
+If labeled intervals from the right-hand sides of \eqref{eq:intervals} form
+a chain covering \([0,1]\), then \(\LR(V)\leq q\).  If additionally a
+rational \(t_0\) satisfies
+\(\min_{v\in V}\dist{vt_0}=q\), then \(\LR(V)=q\).
+\end{lemma}
+
+\begin{proof}
+The nearest integer to \(vt\) is some \(k\in\{0,\ldots,v\}\), which proves
+\eqref{eq:intervals}.  A cover says that for every \(t\) at least one speed
+has distance at most \(q\), proving the upper bound.  Evaluation at \(t_0\)
+gives the matching lower bound.
+\end{proof}
+
+For every row of Table~\ref{tab:values}, the ancillary file
+\texttt{evidence/lr\_interval\_cover\_results.json} stores a labeled chain
+as in Lemma~\ref{lem:cover} and all distances at the stated \(t_0\).  There
+are \(6{,}305\) intervals and \(964\) lower-witness distances in total.  The
+verifier checks with rational arithmetic that the first interval begins at
+zero, every next interval meets the current frontier, the last reaches one,
+each label generates its stored endpoints by \eqref{eq:intervals}, and the
+minimum witness distance is \(q\).
+
+\begin{table}[ht]
+\centering
+\small
+\caption{The complete exact finite evaluation.  Pairs in a row share the
+displayed value and attaining time.}\label{tab:values}
+\begin{tabular}{c c p{0.60\textwidth}}
+\toprule
+\(\LR(V_{n,w})\)&attaining \(t_0\)&pairs \((n,w)\)\\
+\midrule
+\(1/14\)&\(1/14\)&\((14,24)\)\\
+\(2/59\)&\(5/59\)&\((46,46),(46,48),(46,49),(46,50),(47,48)\)\\
+\(2/61\)&\(5/61\)&\((46,47),(47,47),(48,48),(48,50)\)\\
+\(2/65\)&\(27/65\)&\((48,49),(50,50),(50,51),(50,52),(50,54),\)
+\newline \((50,55),(50,56),(51,51),(51,52)\)\\
+\(2/67\)&\(28/67\)&\((50,53),(51,53)\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A structurally separate program applies Zhang's breakpoint lemma
+\cite[Lemma~2.2]{Zhang2026}.  It enumerates, for all \(v<w\) in \(V\),
+\[
+ \frac{2a+1}{2v},\qquad \frac{b}{v+w},\qquad \frac{b}{w-v}
+\]
+over the complete index ranges in that lemma, evaluates the minimum speed
+distance at every distinct candidate, and maximizes exactly.  It obtains the
+same value and least attaining time in all twenty-one cases.  This program
+does not establish the universal reduction; conversely, the interval-cover
+program neither imports nor reads the breakpoint implementation or its
+results.
+
+The proof-carrying separation between an exact serialized certificate and a
+verifier which reconstructs its finite objects is also used in other recent
+finite classifications; compare the graph-theoretic certificates of
+\cite[Section~6]{ZengEtAl2026}.  Here the upper object is instead the explicit
+rational cover \eqref{eq:intervals}.
+
+For every residual row of Table~\ref{tab:values}, the displayed value is
+strictly greater than \(1/n\).  Thus none of the twenty residual pairs is
+tight.  Together with the universal reduction and the positive
+Goddyn--Wong criterion at \((14,24)\), this proves
+Theorem~\ref{thm:main}.
+
+\section*{Reproducibility and assistance disclosure}
+
+The complete certificates and standard-library Python verifiers accompany
+the manuscript.  From the project root, the two decisive computations are
+reproduced by
+\begin{verbatim}
+python3 evidence/lr_breakpoints.py
+python3 evidence/lr_interval_cover.py
+\end{verbatim}
+Both use \texttt{fractions.Fraction}; no floating-point tolerance or random
+seed is used.  The interval-cover output contains every interval and every
+lower-witness distance, so its mathematical checks do not rely on a search
+cache.  The breakpoint output supplies an independent exact cross-check.
+
+OpenAI Codex assisted with literature search, source-scope reconstruction,
+development of the exact programs, adversarial audit organization, and
+initial manuscript preparation.  Language-model output is not used as
+mathematical evidence: the conclusion rests on the cited theorems, the
+displayed reduction, and the released exact certificates and verifiers.  No
+proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

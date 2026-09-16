@@ -1,0 +1,20 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Let phi be the greedy aba-avoiding stack map, and let T be its sorting time. For every integer r>=3, let q be any word using exactly r letters, each occurring twice except that at most one letter may occur three times. Let W be any word whose deletion of a set A of additional letters equals q, with every letter of A occurring in one contiguous nonempty block in W. There is no bound on |A| or on those block multiplicities. Then T(W)=r if and only if T(q)=r. The proof uses a complete 28,800-input computer-assisted base at r=3 and induction on r. In particular, for every run-free q on r>=3 letters, each occurring at least twice, with 2r<=|q|<=2r+1, and every new terminal letter x, T(qx)=r iff T(q)=r. This proves the original first-letter deletion bridge for k>=4; it does not provide the requested complete uniform classification or enumeration M_k of length-2k+2 inputs.",
+  "contribution": "A maximal-sorting-time invariance principle for arbitrary clumped-letter insertion in the two shortest repeated-letter profiles, with a deletion-closed induction and explicitly exhaustive finite base. It settles the previously unproved terminal-letter reduction needed by the original next-layer problem. Known alphabet-size bounds, truncation compatibility, neighboring counts, and the first-letter-four subclass remain attributed to prior work. No equivalent insertion theorem was located in the bounded primary-source comparison; novelty and substantive value are submitted for fresh review, not certified here.",
+  "proposer_job_id": "newwin-00001-p05-research-6c0e4e7ea54b",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/clumped-marker-theorem.md",
+    "evidence/clumped-marker-base.py",
+    "evidence/clumped-marker-base.json",
+    "evidence/clumped-marker-heldout.py",
+    "evidence/clumped-marker-heldout.json",
+    "evidence/research-pass1.py",
+    "literature/research-pass2-20260912.md",
+    "evidence/external/choi-gan-li-zhu-2025.pdf",
+    "evidence/external/choi-gan-li-zhu-2025.txt"
+  ]
+}

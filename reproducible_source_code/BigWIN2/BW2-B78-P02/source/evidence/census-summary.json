@@ -1,0 +1,164 @@
+{
+  "arithmetic": "exact rational/integer arithmetic via SymPy QQ",
+  "canonical_order": "sorted reaction tuples, then reaction row, then X<Y",
+  "counts": {
+    "additional_mass_action_zero_pairs": 1432,
+    "canonical_orbits": 15799,
+    "generic_determinant_nonzero": 5168,
+    "generic_nonzero_pairs": 35968,
+    "labelled_networks": 31465,
+    "mass_action_determinant_zero": 463,
+    "positive_kernel": 5176,
+    "rank_two": 15607,
+    "retained": 5168,
+    "swap_fixed_networks": 133
+  },
+  "first_witness": {
+    "gale": [
+      [
+        "2",
+        "2"
+      ],
+      [
+        "-1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "generic_determinant_terms": [
+      {
+        "coefficient": "2",
+        "rx_row": 2,
+        "ry_row": 3
+      }
+    ],
+    "mass_action_determinant_in_z": [
+      {
+        "coefficient": "2",
+        "exponents": [
+          0,
+          2
+        ]
+      }
+    ],
+    "network": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "network_text": [
+      "0->X",
+      "0->2X",
+      "X->Y",
+      "X+Y->0"
+    ],
+    "orbit_index": 303,
+    "pair_certificate": {
+      "generic_nonzero": true,
+      "generic_terms": [
+        {
+          "coefficient": "-1",
+          "row": 2,
+          "variable": "r_2_X"
+        },
+        {
+          "coefficient": "1",
+          "row": 3,
+          "variable": "r_3_X"
+        }
+      ],
+      "ideal_identity_multipliers": [
+        "0",
+        "-1"
+      ],
+      "is_witness": true,
+      "mass_action_coefficients_in_v": [
+        "0",
+        "0",
+        "-1",
+        "1"
+      ],
+      "mass_action_identically_zero": true,
+      "mass_action_normal_form_in_z": [
+        "0",
+        "0"
+      ],
+      "reaction": [
+        0,
+        1
+      ],
+      "reaction_row": 0,
+      "reaction_text": "0->X",
+      "species": "Y"
+    },
+    "positive_flux": [
+      "2",
+      "1",
+      "2",
+      "2"
+    ],
+    "positive_z": [
+      "-1",
+      "2"
+    ],
+    "reaction": [
+      0,
+      1
+    ],
+    "reaction_row": 0,
+    "reaction_text": "0->X",
+    "source_matrix": [
+      [
+        "0",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "species": "Y",
+    "stoichiometric_matrix": [
+      [
+        "1",
+        "2",
+        "-1",
+        "-1"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "-1"
+      ]
+    ]
+  },
+  "first_witness_orbit_index": 303,
+  "first_witness_pair_index_within_orbit": 1,
+  "manifest_file": "evidence/census-manifest.jsonl",
+  "manifest_sha256": "108e3463bd6ab92b8e07f2c3160118b302d44b25eaf8098761a056b6de29c62a"
+}

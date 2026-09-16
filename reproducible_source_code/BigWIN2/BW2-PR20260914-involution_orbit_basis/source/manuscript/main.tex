@@ -1,0 +1,501 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Quadratic standard monomials for fixed involution classes},
+ pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\kk}{\mathbb{K}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Mn}{\mathcal{M}_{n,a}}
+\newcommand{\HH}{\mathcal{H}_n}
+\newcommand{\TT}{\mathcal{T}_n}
+\newcommand{\BB}{\mathcal{B}_{n,2}}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\RSK}{RSK}
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\score}{s}
+\title{Quadratic standard monomials for fixed involution classes}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190, China. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $\mathcal{M}_{n,a}$ be the permutation matrices of involutions with
+$a$ fixed points. For $a\geq2$ and $(n-a)/2\geq2$, we prove that Zhu's
+Pieri--RSK candidate is a basis of its orbit-harmonics quotient in degrees
+$0$, $1$, and $2$. The quadratic basis consists of all two-edge matching
+monomials except an explicit set of $\binom n2$ monomials. These exclusions
+form a connected spanning subgraph of $KG(n,2)$ with one odd cycle.
+Their unique straightening relations strictly decrease the variable weights
+$w(y_{ij})=n^2-ij$, so the basis is standard for every monomial order
+refining these weights in the off-diagonal presentation. In particular,
+this gives a complete standard monomial basis for the class with exactly
+two transpositions, for every $n\geq6$. The general monomial-basis problem
+for arbitrary fixed involution classes remains unresolved by this result.
+\end{abstract}
+
+\section{The quotient and the result}
+
+For integers $n>0$, $0\leq a\leq n$, and $a\equiv n\pmod2$, put
+$k=(n-a)/2$. Write $[n]=\{1,\ldots,n\}$ and let
+\[
+ \Mn=\{P_w:w\in\mathfrak S_n,\ w^2=1,\
+                |\{i:w(i)=i\}|=a\},\qquad
+ (P_w)_{ij}=\mathbf1_{w(i)=j}.
+\]
+Work over $\kk=\QQ$ or $\CC$. If $I(\Mn)$ is the vanishing ideal in
+$A=\kk[x_{ij}:1\leq i,j\leq n]$, define
+\[
+ \gr I(\Mn)=\langle\tau(f):0\ne f\in I(\Mn)\rangle,
+ \qquad R_{n,a}=A/\gr I(\Mn),
+\]
+where $\tau(f)$ is the highest nonzero homogeneous part of $f$.
+Thus the ideal is formed from all vanishing polynomials, and $R_{n,a}$
+is graded by total degree. The known presentation recalled below is
+defined over $\QQ$, and its complex scalar extension gives the same
+construction over $\CC$.
+
+Liu, Ma, Rhoades, and Zhu established a matching-monomial basis for the
+locus of all involutions and determined the graded characters for a fixed
+class \cite[Theorems 3.3 and 5.21]{LMRZ}.
+Zhu's positive character formula leads to a particular Pieri--RSK
+candidate for each graded component \cite[Proposition 17 and the
+discussion following Problem 29]{ZhuPositive}. Problem 29 asks for an
+explicit monomial basis of $R_{n,a}$ for general $n,a$. We prove the
+candidate in a restricted range of degrees and obtain a complete basis
+for the infinite family $a=n-4$.
+
+Let $E=\binom{[n]}2$, and write $ij$ for the vertex $\{i,j\}\in E$,
+always with $i<j$. Use off-diagonal variables $y_{ij}$, and let
+\[
+ S=\kk[y_{ij}:ij\in E],\qquad
+ J_{n,a}=\ker\bigl(S\longrightarrow R_{n,a},\ y_{ij}\longmapsto[x_{ij}]\bigr).
+\]
+This map is onto by the linear relations below. Denote by $\HH$ the
+set of squarefree two-edge matching monomials $y_e y_f$, $e\cap f=\varnothing$.
+For $n\geq6$ define the following disjoint union:
+\begin{equation}\label{eq:T}
+\begin{aligned}
+ \TT={}&\{y_{12}y_{ij}:3\leq i<j\leq n\}\\
+ &\mathbin{\cup}\{y_{13}y_{2j}:4\leq j\leq n\}\\
+ &\mathbin{\cup}\{y_{1j}y_{23}:4\leq j\leq n\}\\
+ &\mathbin{\cup}\{y_{15}y_{24},\ y_{15}y_{34},\ y_{25}y_{34}\}.
+\end{aligned}
+\end{equation}
+Set $\BB=\HH\setminus\TT$ and
+$\score(y_{ij}y_{rs})=ij+rs$.
+
+\begin{theorem}\label{thm:main}
+Suppose $a\geq2$ and $k=(n-a)/2\geq2$, in addition to the admissibility
+conditions above. The literal Pieri--RSK candidate of
+\cite[Problem 29]{ZhuPositive}, recalled in Section~\ref{sec:tableaux},
+has the following degree-$0$, degree-$1$, and degree-$2$ sets:
+\begin{equation}\label{eq:bases}
+ \{1\},\qquad \{y_{ij}:ij\in E,\ ij\ne12\},\qquad \BB.
+\end{equation}
+Their residue classes are bases of the corresponding components of
+$R_{n,a}$. They are also exactly the standard monomial sets in those
+degrees for $S/J_{n,a}$, for every monomial order refining
+\begin{equation}\label{eq:weight}
+ w(y_{ij})=n^2-ij,
+\end{equation}
+where larger weight means larger monomial.
+For every $t\in\TT$ there is a unique equality in $R_{n,a}$
+\begin{equation}\label{eq:straighten}
+ t=\sum_{h\in\BB}c_{t,h}h,
+ \qquad c_{t,h}\in\QQ,
+ \qquad c_{t,h}\ne0\ \Longrightarrow\ \score(t)<\score(h).
+\end{equation}
+\end{theorem}
+
+Here a monomial is standard if it does not belong to the initial ideal.
+The order assertion concerns $S$, with its off-diagonal variables; it
+does not prescribe an order on all $n^2$ original variables. The weights
+are positive, since $n^2-ij\geq n$ for $i<j\leq n$.
+
+\begin{corollary}\label{cor:two}
+For every $n\geq6$, the union of the three sets in \eqref{eq:bases}
+is a complete standard monomial basis of $R_{n,n-4}$ for every order in
+Theorem~\ref{thm:main}. Its Hilbert series is
+\begin{equation}\label{eq:hilbert}
+ \Hilb(R_{n,n-4};q)
+ =1+\left(\binom n2-1\right)q
+    +\left(3\binom n4-\binom n2\right)q^2.
+\end{equation}
+\end{corollary}
+
+The ideal presentation and graded dimensions are prior results
+\cite{LMRZ,ZhuPositive,ZhuRook}. The relation between degree-one
+Lefschetz multiplication and signless graph incidence, including its
+rank criterion, is also known \cite[Proposition 3.1, Lemma 3.2 and
+Theorem 3.3]{DaoNair}. Our contribution is the identification of the
+specific tableau exclusions with \eqref{eq:T}, together with the strict
+comparison for \eqref{eq:weight}. No equivalent of this precise combination
+was found in the primary sources inspected through 14 September 2026;
+this is a bounded literature assessment, not a priority claim.
+
+\section{Quadratic relations and an odd cycle}\label{sec:graph}
+
+We first recall the algebraic input. The presentation in
+\cite[Section 2.5]{ZhuPositive}, proved in
+\cite[Appendix A, Proposition A.7]{ZhuRook}, generates $\gr I(\Mn)$ by
+the row sums, column sums, differences $x_{ij}-x_{ji}$, the trace
+$\sum_i x_{ii}$, all quadratic products within a single row or column
+(including squares), the products $\prod_{i\in U}x_{ii}$ with $|U|=a+1$,
+and all monomials of degree greater than $k$. In the last family the
+matching monomials suffice, as in the presentation of \cite{ZhuRook}.
+
+Consider the squarefree matching algebra and its linear form
+\begin{equation}\label{eq:B}
+ B=S/(y_e^2,\ y_e y_f:e\ne f,\ e\cap f\ne\varnothing),
+ \qquad L=\sum_{e\in E}y_e.
+\end{equation}
+The symmetry and row-sum relations eliminate the remaining coordinates:
+\begin{equation}\label{eq:elimination}
+ x_{ji}=y_{ij}\ (i<j),\qquad
+ x_{ii}=-\sum_{j\ne i}y_{\min(i,j),\max(i,j)}.
+\end{equation}
+Column sums then vanish as well. Every row or column quadratic becomes
+zero in $B$: two off-diagonal factors share an endpoint, and terms
+involving $x_{ii}$ expand into such products, including squares.
+Conversely, each defining quadratic of $B$ comes from a row or column
+product using symmetry. The trace becomes $-2L$.
+The remaining generators have degrees $a+1\geq3$ or greater than
+$k\geq2$. All substitutions are linear and homogeneous, so these
+generators have no consequences in smaller degrees. Hence
+\begin{equation}\label{eq:low}
+ (R_{n,a})_0=\kk,\qquad
+ (R_{n,a})_1=B_1/\kk L,\qquad
+ (R_{n,a})_2=B_2/LB_1.
+\end{equation}
+
+Let $G=KG(n,2)$ be the graph whose vertices are $E$ and whose edges join
+disjoint pairs. Its edges index $\HH$, the monomial basis of $B_2$.
+Let $D$ be its signless vertex--edge incidence matrix: the column of an
+edge $ef$ is $\mathbf e_e+\mathbf e_f$. The relation
+\[
+ y_e L=\sum_{f\cap e=\varnothing}y_e y_f
+\]
+shows that the rows of $D$ span precisely $LB_1$ in these coordinates.
+This is the incidence interpretation of \cite[Lemma 3.2]{DaoNair}.
+
+\begin{lemma}\label{lem:incidence}
+The submatrix $D_T$ formed by the columns in $\TT$ is square and
+invertible over $\QQ$, with $|\det D_T|=2$. Consequently $\BB$ is a
+basis of $(R_{n,a})_2$, and its straightening coefficients are the entries
+of $-D_T^{-1}D_{\BB}$.
+\end{lemma}
+
+\begin{proof}
+The first three families of \eqref{eq:T} form three vertex-disjoint
+stars covering $E$: their centers are $12,13,23$, respectively.
+The last three edges connect the stars. The resulting spanning graph
+is connected and has
+\[
+ \binom{n-2}{2}+2(n-3)+3=\binom n2
+\]
+edges, as many as vertices. Its unique cycle is
+\begin{equation}\label{eq:cycle}
+ 13\;-\;24\;-\;15\;-\;34\;-\;25\;-\;13.
+\end{equation}
+If $z^\mathsf{t}D_T=0$, the entries of $z$ have opposite values at
+adjacent vertices. The odd cycle forces them to be zero there, and
+connectedness forces $z=0$. This proves invertibility. Removing leaf
+rows and their incident columns reduces the determinant, up to sign,
+to that of the five-cycle, which has absolute value $2$.
+
+Writing the relations as a vector equality in the quotient gives
+\[
+ D_T(t)_{t\in\TT}+D_{\BB}(h)_{h\in\BB}=0.
+\]
+The relation space projects isomorphically onto the $\TT$ coordinates,
+so the complementary monomials are independent and span the quotient
+in \eqref{eq:low}. Solving this system gives the asserted coefficients.
+\end{proof}
+
+\section{Strict comparison of weights}\label{sec:weights}
+
+For a graph vertex $v=ij$ put $p(v)=ij$. Thus
+$\score(uv)=p(u)+p(v)$ for a graph edge. The following column statement
+will determine every order refining \eqref{eq:weight}.
+
+\begin{lemma}\label{lem:score}
+For each $h=uv\in\BB$, the vector $\mathbf e_u+\mathbf e_v$ is in the
+span of the incidence columns of those $t\in\TT$ with
+$\score(t)<\score(h)$.
+\end{lemma}
+
+\begin{proof}
+The alternating sum of incidence columns along an odd walk from $u$ to
+$v$ is $\mathbf e_u+\mathbf e_v$. This identity permits repeated edges
+or vertices. Also, the columns of a connected graph containing an odd
+cycle span its entire vertex coordinate space, by the alternating-value
+argument in Lemma~\ref{lem:incidence}.
+
+Every edge incident with vertex $12$ belongs to $\TT$. The other edges
+$h$ fall into the following cases.
+
+\smallskip\noindent
+\emph{Case 1: $h=(1r)(2s)$.}
+If $r=3$ or $s=3$, then $h\in\TT$. Otherwise $r,s\geq4$, $r\ne s$,
+and the odd walk
+\[
+ 1r\;-\;23\;-\;15\;-\;24\;-\;13\;-\;2s
+\]
+uses only edges of $\TT$. Its edge scores are
+$r+6,11,13,11,2s+3$. The first and last are strictly less than $r+2s$.
+The minimum possible $r+2s$ is $13$, attained only at $(r,s)=(5,4)$;
+that edge is in $\TT$. Thus all five scores are strictly smaller than
+$\score(h)$ for the edges under consideration.
+
+\smallskip\noindent
+\emph{Case 2: $h=(1r)(st)$, with $3\leq s<t$ and $2$ absent.}
+When $r\geq4$, use the odd walk
+\[
+ 1r\;-\;23\;-\;15\;-\;34\;-\;12\;-\;st.
+\]
+Its scores are $r+6,11,17,14,st+2$. Since $st\geq12$ and $r\geq4$,
+the endpoint comparisons are strict. Disjointness gives $r+st\geq19$
+if $r=4$. For $r=5$, equality at the minimum $17$ occurs only for
+$15$--$34$, which belongs to $\TT$. If $r\geq6$, then $r+st\geq18$.
+All comparisons are therefore strict. The exception $r=3$ has score
+at least $3+4\cdot5=23$ and is included in the next argument.
+
+\smallskip\noindent
+\emph{Case 3: the remaining edges.}
+Apart from that exception, they have type $(2r)(st)$ with $s,t\geq3$,
+or contain neither $1$ nor $2$. In the first type, the lower bounds
+for $r=3,4,5,$ and $r\geq6$ are, respectively, $26,23,22,$ and $24$.
+Equality at $22$ occurs only for $25$--$34$, an edge of $\TT$.
+In the second type the minimum is $3\cdot6+4\cdot5=38$.
+Thus all remaining $h$ have score greater than $22$.
+
+The restriction of $\TT$ to the ten vertices $ij\subseteq[5]$ is
+connected, contains \eqref{eq:cycle}, and has maximum edge score $22$.
+Each endpoint of $h$ outside this core is attached to the core by one
+edge of $\TT$: attach $1r$ to $23$, $2r$ to $13$, and $ij$ with
+$3\leq i<j$ to $12$. These chosen neighbors uniquely minimize $p$
+among vertices disjoint from the endpoint: their products are $6,3,$
+and $2$, respectively. Since $h\notin\TT$, the attachment is not $h$,
+and its score is strictly smaller than $\score(h)$. The subgraph formed
+by this core and the necessary attachments is connected, contains an odd
+cycle, and contains both endpoints of $h$. Its columns therefore span
+$\mathbf e_u+\mathbf e_v$ using only strictly smaller scores.
+\end{proof}
+
+By invertibility of $D_T$, the representation in Lemma~\ref{lem:score}
+is unique. A nonzero entry at row $t$ and column $h$ of
+$D_T^{-1}D_{\BB}$ consequently implies $\score(t)<\score(h)$.
+This proves \eqref{eq:straighten}. Since the quadratic weight is
+$2n^2-\score$, each straightening relation has the unique largest-weight
+monomial $t$ as its leading monomial. Every nonmatching quadratic also
+belongs individually to $J_{n,a}$.
+
+These leading monomials leave just $\BB$ in degree two, and
+Lemma~\ref{lem:incidence} gives
+$\dim(R_{n,a})_2=|\BB|$. There can be no further degree-two initial
+monomial: in each fixed degree, row reduction of the homogeneous ideal
+with columns ordered by the chosen monomial order leaves exactly the
+dimension of the quotient as nonpivot monomials. This argument applies
+to every monomial order, without a degree-compatibility assumption.
+In degree one the only relation is $L$, whose unique largest-weight term
+is $y_{12}$. The degree-zero assertion is immediate. This proves the
+algebraic and order parts of Theorem~\ref{thm:main}.
+
+\section{The literal Pieri--RSK candidate}\label{sec:tableaux}
+
+For precision, we recall the candidate with English Young diagrams and
+ordinary row insertion. To insert a label, replace the leftmost larger
+entry of the first row and insert the displaced entry into the next row;
+append if no larger entry exists. The RSK matrix--tableau correspondence
+uses this insertion \cite[Sections 2--4]{Knuth}.
+
+For $0\leq d\leq k$, take a partition $\mu$ of $2d$ and a partition $\lambda$ of $n$
+such that every row length of $\mu$ is even,
+$\lambda_1\leq n-2d+a$, and $\lambda/\mu$ is a horizontal strip
+(at most one strip box in each column). Starting at height zero, scan
+the columns of $\lambda$ from left to right, adding $+1$ when a column
+meets the strip and $-1$ otherwise. The strip is positive if all the
+heights through column $\lambda_1$ are nonnegative
+\cite[Definition 5 and equation (4)]{ZhuPositive}.
+
+For each standard tableau $P$ of shape $\lambda$, remove the strip by
+reverse row insertion, starting at its rightmost column. In each preceding
+row, reverse bump through the rightmost smaller entry. If the remaining
+tableau is $Q$, the candidate monomial is obtained from
+\begin{equation}\label{eq:inverse}
+ M=\RSK^{-1}(Q^{\mathsf t},Q^{\mathsf t}),\qquad
+ m=\prod_{i<j:M_{ij}=1}y_{ij}.
+\end{equation}
+Unused labels index zero rows and columns of $M$. The even row lengths
+of $Q$ make $M$ a symmetric partial permutation matrix with zero diagonal
+\cite[Proposition 2]{ZhuPositive}. The transpose in \eqref{eq:inverse}
+is part of the construction.
+
+Equivalently, start with a matching, apply RSK to its partial permutation
+matrix, transpose the common tableau, and insert the unused labels in
+increasing order. The inserted boxes give $\lambda/\mu$. This is the
+inverse of the preceding procedure by the tableau version of Pieri's
+rule \cite[Proposition 3]{ZhuPositive}. It suffices to test the resulting
+strip and first-row restriction.
+
+\begin{lemma}\label{lem:tableaux}
+For $a\geq2$ and $k\geq2$, the degree-two candidate is exactly $\BB$.
+In degree one it excludes only $y_{12}$, and in degree zero it is $\{1\}$.
+\end{lemma}
+
+\begin{proof}
+For a two-edge matching on support $s_1<s_2<s_3<s_4$, four-letter row
+insertion and transposition give the following three starting tableaux:
+\begin{equation}\label{eq:tableaux}
+\begin{array}{c|c}
+ \text{matching}&Q\\ \hline
+ (s_1s_2)(s_3s_4)&
+    \begin{matrix}s_1&s_2\\s_3&s_4\end{matrix}\\[6pt]
+ (s_1s_3)(s_2s_4)&
+    \begin{matrix}s_1&s_3\\s_2&s_4\end{matrix}\\[6pt]
+ (s_1s_4)(s_2s_3)&
+    \begin{matrix}s_1&s_2&s_3&s_4\end{matrix}
+\end{array}
+\end{equation}
+For either tableau of shape $(2,2)$, positivity holds precisely when
+the strip meets column one, or equivalently when insertion creates a
+third row. Indeed, the first step must be up; the second step then
+cannot pass below zero; and every subsequent column is a strip column.
+In the first tableau a third row is created if and only if the smallest
+unused label is less than $s_2$. Such an insertion bumps a first-row
+entry smaller than a second-row entry and so reaches row three.
+If there is no such unused label, every insertion appends to row one.
+Failure is therefore equivalent to $s_2=2$. In the second tableau
+the same argument uses $s_3$, and failure is equivalent to $s_3=3$.
+These are exactly the first two families in \eqref{eq:T}.
+
+For the one-row tableau, increasing insertion bumps only original support
+labels, in increasing order, into row two. Let its final second-row length
+be $b$. It is the maximum number of disjoint pairs consisting of an unused
+label and a larger support label: leftmost-greater insertion is the greedy
+matching, and exchanging its first chosen support label for any larger
+choice cannot improve the number of pairs remaining. The same exchange
+argument applies successively. There is no third row. Among the first
+four columns, the strip occupies exactly columns $1,\ldots,b$ in row two.
+The path has $b$ up steps followed by $4-b$ down steps, and positivity is
+equivalent to $b\geq2$; all later columns are strip columns.
+
+Two such pairs exist precisely when
+\begin{equation}\label{eq:two-pairs}
+ s_3\geq4\quad\hbox{and}\quad s_4\geq6.
+\end{equation}
+For necessity, order the two paired support labels: the smaller is at
+most $s_3$ and the larger at most $s_4$. Thus at least one unused label
+is below $s_3$, and at least two are below $s_4$. Their respective counts
+are $s_3-3$ and $s_4-4$. Conversely, these counts permit pairing the
+smallest unused label with $s_3$ and the second smallest with $s_4$.
+Failure of \eqref{eq:two-pairs} means $s_3=3$ or $s_4\leq5$.
+The first condition gives $y_{1j}y_{23}$, $j\geq4$.
+After removing these cases, the second condition leaves the supports
+$\{1,2,4,5\}$, $\{1,3,4,5\}$, and $\{2,3,4,5\}$.
+Their nested pairings are exactly the last three monomials of
+\eqref{eq:T}.
+
+The extra first-row restriction is automatic here by
+\cite[Corollary 24]{ZhuPositive}, since $d=2\leq a$.
+For degree one the starting tableau is one row with the two matched
+labels. Positivity requires at least one bump into row two; it fails
+exactly for support $\{1,2\}$. The same corollary applies since $1\leq a$.
+In degree zero the empty tableau, followed by insertion of all labels,
+gives the single monomial $1$.
+\end{proof}
+
+Lemma~\ref{lem:tableaux} completes Theorem~\ref{thm:main}.
+For $a=n-4$ and $n\geq6$, we have $a\geq2$ and $k=2$.
+All higher degrees vanish by the cited ideal presentation, or
+\cite[Lemma A.3]{ZhuRook}. Thus the three sets form the complete standard
+basis. There are $3\binom n4$ two-edge matchings and $\binom n2$
+excluded ones, proving Corollary~\ref{cor:two}. The total basis size is
+$3\binom n4$, as expected for the class with two transpositions.
+
+\section{Exact checks and scope}
+
+The proof is uniform and does not depend on computation. Exact finite
+checks provide additional tests of its conventions and identities.
+One implementation checks every quadratic matching for $6\leq n\leq14$,
+including the incidence inverse, determinant, strict score comparisons,
+and agreement of forward and inverse tableau constructions.
+A separately written implementation solves the incidence systems by leaf
+removal and a five-cycle recurrence, storing twice the coefficients as
+integers. For $n=6,7,8,9,10,12,15,20$, every incidence identity and every
+nonzero coefficient comparison passes; the minimum positive score margin
+is $1$. Its independent enumeration of standard tableaux checks the literal
+inverse candidate in degrees one and two for $6\leq n\leq10$.
+These are finite observations, not an extension of the theorem's range.
+
+As a separate check on the quotient, let $F_{\leq d}$ be the span of
+evaluations on $\Mn$ of all polynomials of degree at most $d$.
+Then $(R_{n,a})_d\cong F_{\leq d}/F_{\leq d-1}$.
+For candidate columns $C_d$, the relevant test is
+\[
+ \rank[F_{\leq d-1},C_d]-\dim F_{\leq d-1}
+ =|C_d|=\dim F_{\leq d}-\dim F_{\leq d-1}.
+\]
+This tests independence modulo lower-degree functions.
+On the point set, symmetry,
+$x_{ii}=1-\sum_{j\ne i}x_{ij}$, idempotence of off-diagonal coordinates,
+and vanishing of overlapping edge products reduce every polynomial to
+matching monomials without increasing degree. Exact rational ranks,
+computed with SymPy~1.14.0 \cite{SymPy}, give Table~\ref{tab:ranks}.
+The points were enumerated directly from permutations. The $(6,2)$
+calculation also includes every original-coordinate monomial through
+degree two; the other cases use the preceding spanning reduction.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ccrrr}
+\toprule
+$(n,a)$ & $|\Mn|$ & $\dim F_{\leq1}$ & $\dim F_{\leq2}$
+ & $\dim(R_{n,a})_2$\\
+\midrule
+$(6,2)$ & 45  & 15 & 45  & 30\\
+$(7,3)$ & 105 & 21 & 105 & 84\\
+$(8,2)$ & 420 & 28 & 210 & 182\\
+\bottomrule
+\end{tabular}
+\caption{Exact finite evaluation checks. In every row $\dim F_{\leq0}=1$;
+adjoining the quadratic candidate to $F_{\leq1}$ gives rank
+$\dim F_{\leq2}$.}\label{tab:ranks}
+\end{table}
+
+The incidence checks retain exact matrix identities, so their verification
+does not rely on an isolated numerical rank. A related use of reconstructible
+multiplication-matrix certificates for monomial algebras is reported by
+Zeng \cite{ZengWhiskered} for whiskered graphs. This is a
+methodological comparison; no result about whiskered graphs is needed
+for the proof here. Reproduction commands and the precise finite coverage
+are recorded in the accompanying verification documentation.
+
+The restrictions $a\geq2$ and $k\geq2$ are essential to the quadratic
+reduction used here. We make no assertion for $a<2$ or about standard
+monomials in arbitrary higher degrees. In particular, a uniform proof of
+the full Pieri--RSK candidate, or of the same weight rule in all degrees,
+is not supplied. The original general construction problem remains
+unresolved by this note.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted proof exploration, preparation of the verification
+code, argument checking in separate model contexts, and manuscript drafting.
+These model passes are not external peer review. All reported calculations
+use exact integer or rational arithmetic, with no random or floating-point
+rank tests. The uniform argument is given above; no formal proof-assistant
+certificate is claimed.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

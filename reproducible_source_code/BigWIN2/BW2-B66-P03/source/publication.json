@@ -1,0 +1,15 @@
+{
+  "kind": "resolution-paper",
+  "title": "All Minimum Bondage Sets of an Eighteen-Vertex Counterexample",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/generate_orbits_table.py",
+    "manuscript/orbits-table.tex",
+    "evidence/bondage5_classification.json",
+    "evidence/enumerate_bondage5.py",
+    "evidence/verify_bondage5.py"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "cd manuscript && python3 generate_orbits_table.py ../evidence/bondage5_classification.json orbits-table.tex && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+}

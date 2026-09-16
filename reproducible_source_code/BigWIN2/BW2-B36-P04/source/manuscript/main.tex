@@ -1,0 +1,214 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={A Certified Prime Factor of a22 in a Quadratic Recurrence},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={A deterministic primality and modular-divisibility certificate},
+  pdfkeywords={integer recurrence, prime factor, Pocklington certificate}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{A Certified Prime Factor of $a_{22}$ in the Recurrence
+  $a_{n+1}=a_n^2+2$}
+\author{Xiaojian Zeng\\
+  PBC School of Finance, Tsinghua University, 100190\\
+  \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the integer sequence $a_0=1$ and $a_{n+1}=a_n^2+2$, we give the
+explicit prime
+\[
+q=108099707
+\]
+and exact certificates showing that $q\mid a_{22}$ and $1<q<a_{22}$.
+Consequently $a_{22}$ is composite.  No claim is made about the remaining
+cofactor, later terms of the sequence, or novelty or priority.
+\end{abstract}
+
+\section{Statement and context}
+
+\begin{theorem}\label{thm:main}
+Let $a_0=1$ and $a_{n+1}=a_n^2+2$ for $n\geq0$.  Then
+$q=108099707$ is prime, $q\mid a_{22}$, and $1<q<a_{22}$.  In particular,
+$a_{22}$ is composite.
+\end{theorem}
+
+A 2026 preprint by Zeng concerns the same recurrence and, according to its
+publisher-deposited abstract, reports the factor $7795379$ of $a_{20}$ and
+makes no assertion for $n\geq22$ \cite{Zeng2026SSRN7395382}.  Its full text
+was not available in the bounded source search for this note, and no result
+from it is used below.  The precise delta from that available metadata is the
+certified factor of $a_{22}$ in Theorem~\ref{thm:main}.  The source search was
+not exhaustive, so this comparison is not a claim of novelty or priority.
+
+For broader arithmetic-dynamical context, Jones proved that if
+$f(x)=x^2+k$ with $k\in\mathbb Z\setminus\{-1\}$, then the set of primes
+dividing a nonzero term in any integral orbit of $f$ has natural density zero
+\cite[Theorem~1.2]{Jones2008Density}.  Applied here with $k=2$ and initial
+point $1$, that asymptotic result does not identify a divisor of $a_{22}$ and
+is not used in the proof.
+
+We use the following complete-factorization criterion.  Brillhart, Lehmer,
+and Selfridge state the corresponding $N-1$ criterion with the weaker
+condition
+$b_p^{(N-1)/p}\not\equiv1\pmod N$
+\cite[Theorem~1]{BrillhartLehmerSelfridge1975}; the greatest-common-divisor
+condition below is stronger.  A proof is included to keep the certificate
+logically self-contained.
+
+\begin{lemma}[Full-factorization criterion]\label{lem:criterion}
+Let $N>1$, and suppose the complete prime factorization of
+$N-1=\prod_p p^{e_p}$ is known.  If, for every prime $p\mid N-1$, there is an
+integer $b_p$ such that
+\[
+b_p^{N-1}\equiv1\pmod N,
+\qquad
+\gcd\bigl(b_p^{(N-1)/p}-1,N\bigr)=1,
+\]
+then $N$ is prime.
+\end{lemma}
+
+\begin{proof}
+Let $\ell$ be any prime divisor of $N$.  The displayed conditions imply that
+the multiplicative order of $b_p$ modulo $\ell$ divides $N-1$ but does not
+divide $(N-1)/p$.  Hence its $p$-adic valuation is $e_p$, so
+$p^{e_p}\mid\ell-1$.  This holds for every $p\mid N-1$, giving
+$N-1\mid\ell-1$.  Since $\ell\leq N$, it follows that $\ell=N$, and therefore
+$N$ is prime.
+\end{proof}
+
+\section{Primality certificate}
+
+First,
+\[
+34361-1=34360=2^3\cdot5\cdot859.
+\]
+The integer $859$ is not divisible by any prime at most
+$\lfloor\sqrt{859}\rfloor=29$: for the primes
+\[
+2,3,5,7,11,13,17,19,23,29
+\]
+its respective nonzero residues are
+\[
+1,1,4,5,1,1,9,4,8,18.
+\]
+Thus $859$ is prime.  The following rows give the exact data required by
+Lemma~\ref{lem:criterion}; the third and fourth columns are reduced modulo
+$N$.
+
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$N$ & $p$ & $b_p^{N-1}$ & $b_p^{(N-1)/p}$ &
+$\gcd(b_p^{(N-1)/p}-1,N)$ \\
+\midrule
+$34361$ & $2$   & $1$ & $34360$ & $1$ \\
+$34361$ & $5$   & $1$ & $15387$ & $1$ \\
+$34361$ & $859$ & $1$ & $1951$  & $1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $b_2=3$ and $b_5=b_{859}=2$.  Lemma~\ref{lem:criterion} therefore
+proves that $34361$ is prime.  Next,
+\[
+q-1=108099706=2\cdot11^2\cdot13\cdot34361.
+\]
+Using $b_p=2$ in every row gives
+
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$N$ & $p$ & $b_p^{N-1}$ & $b_p^{(N-1)/p}$ &
+$\gcd(b_p^{(N-1)/p}-1,N)$ \\
+\midrule
+$108099707$ & $2$     & $1$ & $108099706$ & $1$ \\
+$108099707$ & $11$    & $1$ & $54894374$  & $1$ \\
+$108099707$ & $13$    & $1$ & $39708810$  & $1$ \\
+$108099707$ & $34361$ & $1$ & $99912603$  & $1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The elementary primes $2,11,13$, together with the preceding certification of
+$34361$, give the complete prime factorization of $q-1$.  A second application
+of Lemma~\ref{lem:criterion} proves that $q$ is prime.
+
+\section{Divisibility and properness}
+
+Starting with $r_0=1$, compute exactly
+\[
+r_{n+1}=(r_n^2+2)\bmod q,
+\qquad 0\leq n<22,
+\]
+where every displayed residue is the least nonnegative one.  The full chain is
+
+\begin{center}
+\begin{tabular}{rr@{\qquad}rr}
+\toprule
+$n$ & $r_n$ & $n$ & $r_n$ \\
+\midrule
+$0$  & $1$         & $12$ & $13474761$  \\
+$1$  & $3$         & $13$ & $51643108$  \\
+$2$  & $11$        & $14$ & $36226811$  \\
+$3$  & $123$       & $15$ & $44888898$  \\
+$4$  & $15131$     & $16$ & $33268166$  \\
+$5$  & $12747749$  & $17$ & $18262376$  \\
+$6$  & $4130680$   & $18$ & $80442749$  \\
+$7$  & $59509522$  & $19$ & $68864772$  \\
+$8$  & $53448106$  & $20$ & $83683223$  \\
+$9$  & $101159942$ & $21$ & $103702901$ \\
+$10$ & $81091708$  & $22$ & $0$         \\
+$11$ & $50080613$  &      &             \\
+\bottomrule
+\end{tabular}
+\end{center}
+By induction on $n$, the defining recurrence gives
+$a_n\equiv r_n\pmod q$ for $0\leq n\leq22$.  Since $r_{22}=0$, we have
+$q\mid a_{22}$.
+
+Direct integer recursion gives
+\[
+(a_0,a_1,a_2,a_3,a_4,a_5)
+=(1,3,11,123,15131,228947163).
+\]
+Thus $1<q<a_5$.  Every $a_n$ is positive, and
+$a_{n+1}=a_n^2+2>a_n$, so $a_5<a_{22}$.  This proves
+$1<q<a_{22}$ and completes the proof of Theorem~\ref{thm:main}.
+
+\section*{Reproducibility and assistance disclosure}
+
+The supplementary standard-library Python program
+\texttt{check\_certificate.py} recomputes both complete factorizations, every
+modular power and greatest common divisor in the primality certificate, all 22
+modular-recurrence transitions, and the exact value of $a_5$.  It also performs
+an independent exhaustive divisibility test for $q$ by every integer from $2$
+through $\lfloor\sqrt q\rfloor=10397$.
+
+The general two-level pattern of generating Pocklington witnesses externally
+and checking them in a smaller proof environment has also been implemented in
+the Coq proof assistant \cite{GregoireTheryWerner2006}.  The checker supplied
+with this note is an ordinary Python program using exact integer arithmetic;
+no Coq formalization is claimed here.
+
+The factor was found by a computer search over candidate prime divisors.
+Computer algebra was not used in the proof: the released checker uses exact
+integer arithmetic only.  An AI language model assisted with search-code
+development, certificate organization, and manuscript drafting.  The numerical
+certificates were then checked by two deterministic programs and independently
+recomputed during mathematical review.  The theorem rests on the exact
+certificates printed above, not on probabilistic primality testing, floating
+point computation, or the literature search.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

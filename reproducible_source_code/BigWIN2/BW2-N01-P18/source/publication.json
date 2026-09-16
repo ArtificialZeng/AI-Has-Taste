@@ -1,0 +1,28 @@
+{
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/supplement/README.md",
+    "manuscript/supplement/binomial-results.json",
+    "manuscript/supplement/check_binomial.py",
+    "manuscript/supplement/check_normal_form.py",
+    "manuscript/supplement/digit-block-certificates.json",
+    "manuscript/supplement/normal-form-results.json"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "clean_command": "latexmk -C -outdir=build main.tex",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex",
+    "engine": "pdfLaTeX",
+    "bibliography_processor": "BibTeX",
+    "bibliography_style": "installed plainurl.bst",
+    "final_tex_log": "manuscript/build/main.log",
+    "bibliography_log": "manuscript/build/main.blg",
+    "full_build_transcript": "manuscript/build/latexmk.stdout.log"
+  },
+  "provenance": {
+    "writer_job_id": "newwin-00001-p18-write-fe159d07c812",
+    "accepted_snapshot_digest": "011170d06fd9210f95cb49aaf1f72f76c244524f6060294fd12643738667ea16"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every integer k>=2 and every finite connected simple bipartite graph F with parts L,R of size k whose only maximum independent sets are L and R, set A=[[0,1,1],[1,0,1],[1,1,1]], f=Z_(F,A) with the unnormalized labeled-assignment convention in problem.md, beta=(k-1,k-1,0), and c=[x1^(k-1)x2^(k-1)x3^2]f. For distinct u,v let q(u,v) be the number of connected components of F-{u,v}, including isolated vertices; let s count unordered pairs within L or within R for which q(u,v)>1. Then c=sum_(u in L,v in R)2^q(u,v)+2s and Hessian(partial^beta f)=2(k!)^2 [[0,1,1],[1,0,1],[1,1,c/k^2]]. In particular c>=2k^2, with equality exactly when F has no two-vertex cut. Such F is 2-connected. The selected Hessian has two positive eigenvalues exactly when F is not 3-connected, proving that f is not Lorentzian in that case; A is admissible with spectrum -1,1-sqrt(2),1+sqrt(2). If F is 3-connected this Hessian has one positive, one negative, and one zero eigenvalue, without any assertion that f itself is Lorentzian. Corollaries: c=6k(k-1) for C_(2k), k>=2; c=2k^2 for K_(k,k), k>=3; c=12 for K_(2,2)=C4. The original universal connected-clique characterization remains unresolved.",
+  "contribution": "Proposed partial theorem: an exact semiproper-coloring coefficient expressed by two-vertex cuts, yielding one fixed three-spin antiferromagnetic witness for every bistable bipartite source that is not 3-connected, and an exact limitation of the same derivative on 3-connected sources. This subsumes the even-cycle lead. Bistability, biconnectivity and the coloring-by-components principle are known background, not separate novelty claims. No equivalent formula or resulting Lorentzian obstruction was found in the bounded primary comparison recorded in literature/separator-comparison.md; novelty, significance and mathematical correctness are submitted for fresh referee scrutiny.",
+  "proposer_job_id": "primary-20260914-lorentzian-cliques-research-d50fb585b2a3",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/separator-argument.md",
+    "evidence/separator-check.py",
+    "evidence/separator-check.json",
+    "literature/separator-comparison.md",
+    "evidence/source-bindings.json",
+    "evidence/external/2506.13659v2.html",
+    "evidence/external/2608.17920v1.html"
+  ]
+}

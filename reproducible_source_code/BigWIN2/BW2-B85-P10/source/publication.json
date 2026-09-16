@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "title": "Domination log-concavity for the caterpillars T(p,0,0,q)",
+  "source_files": [
+    "evidence/caterpillar_small_search.py",
+    "evidence/verify_two_zero_family.py",
+    "manuscript/README.md",
+    "manuscript/certificates.json",
+    "manuscript/certificates.tex",
+    "manuscript/generate_certificates.py",
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "clean_command": "latexmk -C -outdir=build main.tex",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex",
+    "engine": "pdfLaTeX",
+    "bibliography_engine": "BibTeX"
+  },
+  "writer_job_id": "win-00085-p10-write-19d96cf4ee27"
+}

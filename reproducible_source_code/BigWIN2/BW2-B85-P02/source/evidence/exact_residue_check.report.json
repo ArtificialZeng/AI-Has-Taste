@@ -1,0 +1,33 @@
+{
+  "job_id": "win-00085-p02-triage-78b756906fcd",
+  "run_at": "2026-09-10T02:42:14+08:00",
+  "command": "python3 evidence/exact_residue_check.py",
+  "python": "3.10.12",
+  "arithmetic": "exact integer arithmetic",
+  "source_md_sha256": "8dea57f4ed625562f4d0ff3d6ee46d2ad0a89dd86bfbc37f472166aead93d5f9",
+  "checker_sha256": "675a1927c5457b87922053a51b7cb4b02244b4efa3a275b876f5a0ab596d1235",
+  "allowed_residues_mod_16": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15],
+  "target_four_sum_residues_mod_16": [4, 8, 12],
+  "scans": [
+    {
+      "length": 8,
+      "expected_multisets": 75582,
+      "tested_multisets": 75582,
+      "avoiding_multisets": 160,
+      "first_avoider": [1, 1, 1, 2, 2, 2, 10, 13],
+      "domain_and_outcome_sha256": "10ee4c3899b75598a7629aa05ca83212ed2a449fadaa7e95bdd42c6b6a8b136d",
+      "avoider_sha256": "18083e322a52f7a6d3c99d2cb316fd0d538ef576368154d6e627a081f204bc66"
+    },
+    {
+      "length": 9,
+      "expected_multisets": 167960,
+      "tested_multisets": 167960,
+      "avoiding_multisets": 0,
+      "first_avoider": null,
+      "domain_and_outcome_sha256": "63d4154ad6439c6e92cd1af693f522ae3fc48cca7ea695b916f33538263cb7b4",
+      "avoider_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "lower_witness_four_sum_residues_mod_16": [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15],
+  "epistemic_status": "Exact finite observation from one unaudited implementation; not yet a referee-accepted proof."
+}

@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={A Breakpoint-Free Proof of a Quantile-Ladder Identity in Sun's Catalan-Constant Argument},pdfauthor={Xiaojian Zeng},pdfsubject={A structural proof of a generalized-quantile ladder identity},pdfkeywords={generalized inverse, quantile, arithmetic ladder, Catalan constant}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\ind}{\mathbf 1}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+
+\title{A Breakpoint-Free Proof of a Quantile-Ladder Identity\\
+in Sun's Catalan-Constant Argument}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Sun's Lemma~6.6 asserts an identity for the lower-mass cost of a continuum
+of arithmetic ladders and describes its proof as an exact finite
+verification over a breakpoint partition.  We prove the full identity by a
+uniform argument.  The main observation is that an integer-valued base law
+whose support has oscillation at most three produces a two-step ladder whose
+generalized quantile shifts by two after one unit of mass.  A first-moment
+calculation then determines every unit-block cost.  The step functions in
+Sun's lemma satisfy the support hypothesis for every parameter value,
+including all breakpoints, and have mean \(1-2v\).  This yields the claimed
+formula for every \(v\in[0,1)\) and every integer \(n\geq1\), without a cell
+enumeration.
+\end{abstract}
+
+\section{Statement and context}
+
+For a real number \(x\), write \(\{x\}=x-\lfloor x\rfloor\).  Fix
+\(v\in[0,1)\), and set
+\[
+ a=\{20v\},\qquad b=\{41v\},\qquad
+ z(y)=(\tfrac12-y)\bmod 1\quad(0\leq y<1).
+\]
+Define the integer-valued step function
+\[
+ h_v(y)=2\lfloor20v\rfloor-\lfloor41v\rfloor
+       +2\ind_{\{z(y)<a\}}-\ind_{\{z(y)<v\}}
+       +\ind_{\{y>b\}}.                                      \tag{1}
+\]
+On \(X=[0,1)\times\Z_{\geq0}\), equipped with Lebesgue measure in the
+first coordinate and counting measure in the second, let
+\[
+ c_v(y,r)=h_v(y)+2r.
+\]
+For \(s\geq0\), let \(K_v(s)\) be the infimum of
+\(\int_Ac_v\) over measurable \(A\subseteq X\) of mass \(s\).  Equivalently,
+if \(F_v(x)\) is the mass of points with cost at most \(x\) and
+\[
+ \lambda_v(s)=\inf\{x\in\R:F_v(x)\geq s\}\quad(s>0),             \tag{2}
+\]
+then \(K_v(s)=\int_0^s\lambda_v(t)\,dt\).  This is the usual generalized
+inverse convention~\cite{EmbrechtsHofert2013}; it also handles atoms and
+partial selection of a tie.  Values of the indicators at their finitely many
+endpoints do not affect the measure or \(K_v\).
+
+Sun introduced (1) in Section~6 of~\cite{Sun2026Catalan} and stated the
+following identity as Lemma~6.6:
+\[
+ K_v(n+v)=n^2+K_v(1+v)-1
+ \quad\text{for all \(n\in\Z_{\geq1}\) and \(v\in[0,1)\)}.       \tag{3}
+\]
+The printed proof sorts finitely many ladders and refers to an exact
+verification on the later breakpoint partition; the cell ledger is not part
+of the article.  The argument below instead explains the shift uniformly.
+The distinction between a deductive structural proof and exact computations
+used only as diagnostics is also explicit in a recent reconstruction note of
+Zeng~\cite[Section~4]{Zeng2026Multiplicity}; that paper concerns a different
+combinatorial problem, and is cited here only for this verification
+principle.
+
+\section{The ladder lemma}
+
+If an integer-valued function has essential range contained in
+\([L,H]\cap\Z\), call \(H-L\) its support oscillation.
+
+\begin{lemma}[Two-step ladder]
+Let \(\eta\) be a probability measure supported on
+\([L,H]\cap\Z\), where \(H-L\leq3\), and form the locally finite measure
+\[
+ \mu=\sum_{r\geq0}T_{2r}\eta,
+\]
+where \(T_d\) denotes translation by \(d\).  Put
+\[
+ F(x)=\mu(({-}\infty,x]),\qquad
+ \lambda(s)=\inf\{x:F(x)\geq s\},\qquad
+ K(s)=\int_0^s\lambda(t)\,dt.
+\]
+If \(m=\int x\,d\eta(x)\), then
+\[
+ \lambda(s+1)=\lambda(s)+2\quad(s>1),                           \tag{4}
+\]
+and
+\[
+ K(s+1)-K(s)=2s+m\quad(s\geq1).                                \tag{5}
+\]
+\end{lemma}
+
+\begin{proof}
+For \(x\geq H-2\), each progression
+\(h,h+2,h+4,\ldots\) contributes exactly one rung, with its base mass,
+to \((x,x+2]\).  Consequently
+\[
+ F(x+2)=F(x)+1.                                                  \tag{6}
+\]
+The same statement holds with both lower rays open.  Moreover,
+\(F(H-2)\leq1\).  Indeed, every rung with index at least one is at least
+\(L+2\geq H-1\), so only base rungs can lie at or below \(H-2\).
+
+Let \(s>1\) and \(q=\lambda(s)\).  Then \(q>H-2\), and the two quantile
+inequalities are
+\[
+ \mu(({-}\infty,q))<s\leq F(q).
+\]
+Applying the open and closed versions of (6) transports these inequalities
+to
+\[
+ \mu(({-}\infty,q+2))<s+1\leq F(q+2).
+\]
+Thus \(q+2=\lambda(s+1)\).  This proves (4), including the case in which
+\(s\) lies at an atom boundary.
+
+It remains to determine the integral over a unit quantile block.  Let \(A\)
+and \(B\) be the pushforwards under \(\lambda\) of Lebesgue measure on
+\((0,1]\) and \((1,2]\), respectively.  The generalized-inverse equivalence
+\[
+ \lambda(s)\leq x\quad\Longleftrightarrow\quad s\leq F(x)        \tag{7}
+\]
+shows that \(\mu\) is the pushforward of Lebesgue measure on
+\((0,\infty)\) under \(\lambda\).  Iterating (4) on the unit blocks gives
+\[
+ \mu=A+\sum_{j\geq0}T_{2j}B.                                   \tag{8}
+\]
+The original ladder construction also gives \(\mu=\eta+T_2\mu\).
+Subtracting the translate of (8) from (8), which is legitimate on bounded
+sets because all sums there are finite, yields the finite signed-measure
+identity
+\[
+ \eta=A+B-T_2A.                                                  \tag{9}
+\]
+Both \(A\) and \(B\) have mass one.  Taking first moments in (9) therefore
+gives \(\int x\,dB(x)=m+2\), and hence \(K(2)-K(1)=m+2\).
+
+Write \(D(s)=K(s+1)-K(s)\).  For \(1\leq s\leq2\), cancellation of the
+common part of the intervals and (4) give
+\[
+ D(s)-D(1)=\int_1^s\bigl(\lambda(t+1)-\lambda(t)\bigr)\,dt
+            =2(s-1).
+\]
+Likewise, \(D(s+1)=D(s)+2\) for every \(s\geq1\).  Translating the preceding
+formula by integer units proves \(D(s)=2s+m\) for all \(s\geq1\), which is
+(5).
+\end{proof}
+
+\section{Application to the step function}
+
+Let \(\eta_v\) be the distribution of \(h_v(y)\) for uniform
+\(y\in[0,1)\).  The intervals \([0,a)\) and \([0,v)\) are nested.  Hence
+\[
+ p(z)=2\ind_{\{z<a\}}-\ind_{\{z<v\}}
+\]
+takes values in \(\{0,1,2\}\) when \(a\geq v\), and in
+\(\{-1,0,1\}\) when \(a<v\).  Its oscillation is therefore at most two.
+Adding \(\ind_{\{y>b\}}\) increases the oscillation by at most one, while
+the floor term in (1) is constant in \(y\).  Thus
+\[
+ \operatorname{osc}(h_v)\leq3                                  \tag{10}
+\]
+for every \(v\in[0,1)\).  This includes coincident endpoints and every
+floor or fractional-part breakpoint.
+
+The map \(y\mapsto z(y)\) preserves Lebesgue measure.  Write
+\[
+ q=\lfloor20v\rfloor,\quad a=20v-q,\qquad
+ r=\lfloor41v\rfloor,\quad b=41v-r.
+\]
+Direct integration of (1) gives
+\begin{align*}
+ m_v:=\int_0^1h_v(y)\,dy
+   &=2q-r+2a-v+(1-b)\\
+   &=1-2v.                                                       \tag{11}
+\end{align*}
+The lemma applies to \(\eta_v\).  Taking \(s=j+v\geq1\) in (5), and using
+(11), yields for every integer \(j\geq1\)
+\[
+ K_v(j+1+v)-K_v(j+v)=2(j+v)+1-2v=2j+1.                         \tag{12}
+\]
+For \(n=1\), (3) is tautological.  For \(n\geq2\), summing (12) from
+\(j=1\) to \(j=n-1\) gives
+\[
+ K_v(n+v)-K_v(1+v)=\sum_{j=1}^{n-1}(2j+1)=n^2-1,
+\]
+which proves (3) in its full stated range.
+
+\section*{Assistance disclosure}
+
+AI systems assisted with proof discovery, exposition, and an adversarial
+review of generalized-inverse endpoint conventions.  Exact-rational checks
+at selected parameter values and for small finite base laws were also used
+during review as diagnostics.  No computational output is a premise of the
+proof above; the quantified conclusion follows from the deductive argument.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

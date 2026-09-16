@@ -1,0 +1,23 @@
+Command (run from the project directory on 2026-09-09):
+python3 evidence/verify_subfield_distribution.py
+
+m= 1 modulus=0x3 c=     1 d=    -2 fibres(0,1,2)=(1,1,0) OK
+m= 2 modulus=0x7 c=    -3 d=    -4 fibres(0,1,2)=(2,2,0) OK
+m= 3 modulus=0xb c=    -5 d=    -8 fibres(0,1,2)=(4,4,0) OK
+m= 4 modulus=0x13 c=     1 d=     0 fibres(0,1,2)=(10,4,2) OK
+m= 5 modulus=0x25 c=    11 d=     8 fibres(0,1,2)=(21,6,5) OK
+m= 6 modulus=0x43 c=     9 d=     8 fibres(0,1,2)=(41,14,9) OK
+m= 7 modulus=0x83 c=   -13 d=   -16 fibres(0,1,2)=(78,36,14) OK
+m= 8 modulus=0x11b c=   -31 d=   -32 fibres(0,1,2)=(156,72,28) OK
+m= 9 modulus=0x203 c=    -5 d=    -8 fibres(0,1,2)=(319,130,63) OK
+m=10 modulus=0x409 c=    57 d=    56 fibres(0,1,2)=(647,242,135) OK
+m=11 modulus=0x805 c=    67 d=    64 fibres(0,1,2)=(1288,496,264) OK
+m=12 modulus=0x1009 c=   -47 d=   -48 fibres(0,1,2)=(2554,1036,506) OK
+m=13 modulus=0x201b c=  -181 d=  -184 fibres(0,1,2)=(5097,2094,1001) OK
+m=14 modulus=0x4021 c=   -87 d=   -88 fibres(0,1,2)=(10229,4118,2037) OK
+m=15 modulus=0x8003 c=   275 d=   272 fibres(0,1,2)=(20514,8124,4130) OK
+
+The implementation is package-free exact bit-polynomial arithmetic.  Each
+printed modulus is selected only after an exact irreducibility test.  This run
+checks the reduced fibre formulation for 1 <= m <= 15; it is finite evidence,
+not a proof for all m.

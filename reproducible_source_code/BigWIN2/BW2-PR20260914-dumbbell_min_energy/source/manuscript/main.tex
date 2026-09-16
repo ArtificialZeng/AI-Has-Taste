@@ -1,0 +1,640 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{
+ pdftitle={Singular energy minima and fixed-product structure for all-odd complex unit gain dumbbells},
+ pdfauthor={Xiaojian Zeng}
+}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Rea}{Re}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\arsinh}{arsinh}
+\newcommand{\dd}{\,dt}
+\newcommand{\E}{\mathcal E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\T}{\mathbb T}
+\newcommand{\eps}{\varepsilon}
+\title{Singular energy minima and fixed-product structure\\
+for all-odd complex unit gain dumbbells}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study energy minimization on a fixed dumbbell graph whose two cycle
+lengths and connecting-path length are odd. The full minimum-energy and
+switching-equality classification remains unresolved. We give an explicit
+expansion at every interior parameter pair with a zero eigenvalue, replacing
+the unqualified smooth stationarity equations of Huang and Pereyra by a
+tangential equation and a normal inequality. A strict normal inequality
+also gives a strict local minimum. On every positive fixed-product curve,
+the integrated energy is strictly convex in the logarithmic gain ratio.
+A length-dependent comparison forces its minimizer to the boundary in an
+explicit range. Exact examples distinguish the possibilities: the two
+half-diagonal points are the only global minima for two triangles joined
+by one edge, whereas the analogous points for a five-edge connector admit
+a certified direction of descent.
+\end{abstract}
+
+\section{The problem and the contribution}
+
+A complex unit gain graph assigns $\varphi_{uv}\in\T=\{z\in\mathbb C:|z|=1\}$
+to each oriented edge, with $\varphi_{vu}=\overline{\varphi_{uv}}$.
+Its adjacency matrix $A_\varphi$ is Hermitian, and its energy is
+\[
+ \E(\varphi)=\sum_{j=1}^{N}|\lambda_j(A_\varphi)|
+            =\tr|A_\varphi|.
+\]
+We use the gain-graph and switching conventions of Reff~\cite{Reff2012}.
+Thus switching is diagonal unitary conjugation. Energy is the Schatten
+$1$-norm of the adjacency matrix. Matrix absolute values also enter
+Schatten-norm comparison problems. Zeng, Liu and Ratnavelu
+\cite{ZengLiuRatnavelu2026} certify a Schatten-norm counterexample at exponent
+$3/2$ by exact rational inequalities. Here the objective
+is the trace norm on a prescribed gain-graph family, and the small
+examples below likewise use exact sign certificates.
+
+Let $D=D_{r,s,\ell}$ consist of disjoint cycles $C_r,C_s$ whose designated
+vertices are joined by an $\ell$-edge path with new internal vertices.
+Throughout,
+\[
+ r,s\geq3,\quad \ell\geq1\quad\hbox{are odd},\qquad
+ N=r+s+\ell-1,\quad L=\frac{\ell-1}{2}.
+\]
+Fix orientations on the two cycles, with gain products $\gamma_r,\gamma_s$.
+Deleting one edge from each cycle gives a spanning tree. Its gains can
+be switched to $1$, and the two cycle products then determine the
+switching class. Write
+\begin{equation}\label{eq:normalization}
+ a=\Rea\gamma_r,\quad b=\Rea\gamma_s,\qquad
+ \alpha=(-1)^{(r+1)/2}a,\quad
+ \beta=(-1)^{(s+1)/2}b .
+\end{equation}
+Every $(\alpha,\beta)\in[-1,1]^2$ is attainable. These two real parameters
+determine the spectrum but do not distinguish all switching classes:
+each pair $(a,b)$ lifts to
+$\gamma_r=a\pm i\sqrt{1-a^2}$ and
+$\gamma_s=b\pm i\sqrt{1-b^2}$, counting coincident endpoint choices once.
+No quotient by graph automorphisms is taken.
+
+Samanta and Kannan~\cite[Theorem 4.3 and Section 5]{SamantaKannan2025}
+give a matching-polynomial expansion and extremal energy comparisons
+for unicyclic gain graphs. Huang and Pereyra~\cite{HuangPereyra2026}
+study the dumbbell family and leave the all-odd minimum problem
+undetermined. Their Theorem 4.6 minimizes the Coulson kernel at each
+fixed integration variable. Their Theorem 4.7 then states smooth
+stationarity equations for every interior energy minimizer. However,
+the energy may have a simple zero-eigenvalue cusp. Their Proposition 4.9
+already gives the half-diagonal energy for $D_{3,3,1}$, and their
+discussion of Figure 2 already recognizes this cusp.
+
+Our contribution is an explicit correction at singular parameters,
+including a strict local sufficiency test, together with uniqueness for
+the \emph{integrated} fixed-product problem and a length-based boundary
+criterion. We prove global minimality in the $D_{3,3,1}$ test case and
+give an exact contrasting derivative for $D_{3,3,5}$. The known
+half-diagonal energy and the general nonsmooth spectral mechanism are
+not contributions of this note. Differentiation and generalized
+gradients of spectral functions are established theory
+\cite{Lewis1996}; the argument below isolates the zero root explicitly.
+The comparison concerns version 2 of~\cite{HuangPereyra2026}.
+No equivalent graph-specific correction was found in the primary
+sources inspected through 14 September 2026; this is a bounded
+literature assessment.
+
+\section{Kernel and statements}
+
+For a graph $G$, let $M_k(G)$ count its $k$-edge matchings and put
+\[
+ m_G(x)=\sum_{k\geq0}(-1)^k M_k(G)x^{|V(G)|-2k}.
+\]
+The path $P_j$ has $j$ vertices; $P_0$ is empty, with $m_{P_0}=1$.
+The characteristic polynomial $P(x;\alpha,\beta)=\det(xI-A_\varphi)$,
+with $a,b$ recovered from~\eqref{eq:normalization}, is
+\begin{equation}\label{eq:matching}
+ P(x;\alpha,\beta)
+ =m_D(x)-2a\,m_{D-C_r}(x)-2b\,m_{D-C_s}(x)
+       +4ab\,m_{P_{\ell-1}}(x).
+\end{equation}
+This is~\cite[Theorem 2.10]{HuangPereyra2026}, also a specialization
+of~\cite[Theorem 4.3]{SamantaKannan2025}. For completeness, a determinant
+permutation contributes edge transpositions and oriented simple cycles.
+Each edge transposition has weight $-1$, and the two orientations of
+a cycle together have weight $-2$ times its real cycle gain. The only
+nonempty unions of disjoint cycles in $D$ are $C_r,C_s,C_r\cup C_s$;
+summing the remaining matchings gives~\eqref{eq:matching}.
+
+We specify the positive polynomials in the kernel so that the formulas
+are directly evaluable. With an indeterminate $v$, define
+\begin{align*}
+ f_{-1}(v)&=0,\quad f_0(v)=1,\quad
+ f_j(v)=f_{j-1}(v)+vf_{j-2}(v)\quad(j\geq1),\\
+ g_j(v)&=f_j(v)+vf_{j-2}(v)\quad(j\geq3).
+\end{align*}
+These are the matching generating polynomials for paths and cycles.
+Set
+\begin{align*}
+ M(v)&=\sum_{k\geq0}M_k(D)v^k,& T(v)&=f_{\ell-1}(v),\\
+ R(v)&=f_{\ell-1}(v)g_s(v)+vf_{\ell-2}(v)f_{s-1}(v),\\
+ S(v)&=f_{\ell-1}(v)g_r(v)+vf_{\ell-2}(v)f_{r-1}(v).
+\end{align*}
+The last two identities follow by separating matchings according to
+whether the tail uses its edge into the remaining cycle; they hold
+also for $\ell=1$. For $t>0$, put
+\begin{equation}\label{eq:polynomials}
+ Z=M(t^2),\quad W=4t^{r+s}T(t^2),\quad
+ X=2t^rR(t^2),\quad Y=2t^sS(t^2).
+\end{equation}
+All four quantities are strictly positive. In the notation
+\begin{equation}\label{eq:kernel}
+ A=Z-\alpha\beta W,\qquad B=\alpha X+\beta Y,\qquad C=A^2+B^2,
+\end{equation}
+Lemma 4.2 of~\cite{HuangPereyra2026} gives
+\begin{equation}\label{eq:energy-integral}
+ C=|t^NP(i/t;\alpha,\beta)|^2,\qquad
+ \E(\alpha,\beta)=\frac1\pi\int_0^\infty\frac{\log C}{t^2}\dd .
+\end{equation}
+Indeed, multiplying~\eqref{eq:matching} by $t^N$ and using
+$t^j m_G(i/t)=i^j\sum_k M_k(G)t^{2k}$ for a $j$-vertex graph gives
+$t^NP(i/t)=i^N(A-iB)$. The integral is the real-rooted case of the
+polynomial Coulson formula~\cite[Theorem 1]{MateljevicBozinGutman2010}.
+It follows directly here by summing the elementary identity
+\begin{equation}\label{eq:scalar-integral}
+ \frac1\pi\int_0^\infty
+       \frac{\log(1+t^2z^2)}{t^2}\dd=|z|,\qquad z\in\R,
+\end{equation}
+which follows by integration by parts, including $z=0$.
+
+Define, at the parameter pair in question,
+\begin{align}
+ I_\alpha&=\int_0^\infty\frac{-\beta WA+XB}{t^2C}\dd,&
+ I_\beta&=\int_0^\infty\frac{-\alpha WA+YB}{t^2C}\dd,\label{eq:integrals}\\
+ H&=(s+L)\alpha+(r+L)\beta,&
+ J&=\alpha I_\alpha+\beta I_\beta.\label{eq:HJ}
+\end{align}
+Convergence at the singular points is justified in Section~\ref{sec:singular}.
+
+\begin{theorem}[Singular expansion and optimality]\label{thm:singular}
+Write $\eps=(-1)^{N/2}$. On the closed parameter square,
+\begin{equation}\label{eq:coefficients}
+ P(0;\alpha,\beta)=\eps(1-4\alpha\beta),\qquad
+ P_x(0;\alpha,\beta)=-2\eps H.
+\end{equation}
+The zero-eigenvalue locus is $\alpha\beta=1/4$, and its zero eigenvalue
+is simple everywhere, including its boundary points.
+For each interior point $q=(\alpha,\beta)$ on this locus,
+\begin{equation}\label{eq:expansion}
+ \begin{split}
+ \E(q+h)=\E(q)&+\frac2\pi(I_\alpha h_\alpha+I_\beta h_\beta)\\
+ &+\frac{2|\beta h_\alpha+\alpha h_\beta|}{|H|}
+       +O(\|h\|^2).
+ \end{split}
+\end{equation}
+Thus necessary conditions for an interior singular local minimum are
+\begin{equation}\label{eq:conditions}
+ \alpha I_\alpha=\beta I_\beta,\qquad
+ |J|\leq\frac{\pi}{2|H|}.
+\end{equation}
+They are equivalent to nonnegativity of all first directional
+derivatives. If the equality and the \emph{strict} inequality
+in~\eqref{eq:conditions} hold, $q$ is a strict local minimum.
+The case of equality in the normal bound is not classified.
+At an interior point off $\alpha\beta=1/4$, the usual necessary
+conditions $I_\alpha=I_\beta=0$ are valid.
+\end{theorem}
+
+\begin{theorem}[Fixed-product uniqueness and boundary criterion]\label{thm:product}
+For each $0<p<1$, the energy on
+$\{(\alpha,\beta)\in(0,1]^2:\alpha\beta=p\}$ is strictly convex in
+\[
+ u=\frac12\log(\alpha/\beta),\qquad
+ \frac12\log p\leq u\leq-\frac12\log p .
+\]
+It has exactly one constrained minimizer. At $p=1$ the curve is a
+singleton. If $r=s$, the minimizer is $(\sqrt p,\sqrt p)$.
+If $r<s$ and $p<1$, its coordinates satisfy $\alpha<\beta$, and
+\begin{equation}\label{eq:ratio-bound}
+ \frac{X(t)}{Y(t)}>\frac{s+L}{r+L}\qquad(t>0).
+\end{equation}
+In particular, if $p\geq(r+L)/(s+L)$, the unique constrained
+minimizer is $(p,1)$. Hence
+\begin{equation}\label{eq:length-bound}
+ s+L\geq4(r+L)
+\end{equation}
+forces the positive singular-curve minimum to $(1/4,1)$ and excludes
+every interior singular local minimum of the full-square energy.
+Cycle exchange gives the corresponding statements for $s<r$,
+and simultaneous negation gives the negative-branch statements.
+No full-square local or global minimality of these boundary
+endpoints is asserted.
+\end{theorem}
+
+\section{Proof of the fixed-product structure}
+
+Write $\alpha=\sqrt p\,e^u$, $\beta=\sqrt p\,e^{-u}$. At fixed
+$p>0$ and $t>0$, the kernel takes the form
+\[
+ C=d+z+w,\qquad
+ d=(Z-pW)^2+2pXY>0,\quad
+ z=pX^2e^{2u}>0,\quad w=pY^2e^{-2u}>0.
+\]
+A direct calculation gives
+\begin{equation}\label{eq:strict-convex}
+ (\log C)_{uu}=\frac{4\{d(z+w)+4zw\}}{(d+z+w)^2}>0.
+\end{equation}
+Integrating the strict convexity inequality in~\eqref{eq:energy-integral}
+proves strict convexity of $\E$ without exchanging differentiation and
+integration. Continuity and compactness give existence, and strict
+convexity gives uniqueness. The first two $u$ derivatives can also be
+integrated: before division by $t^2$ they are
+$O(t^{2\min(r,s)})$ as $t\downarrow0$, and they are uniformly bounded
+as $t\to\infty$ on the fixed compact $u$ interval. Symmetry proves the
+diagonal assertion when $r=s$.
+
+To compare unequal cycle lengths, set $\eta=\arsinh(1/(2t))>0$.
+The characteristic roots of the path recurrence are $te^\eta$
+and $-te^{-\eta}$. For odd $k$ they give
+\[
+ g_k(t^2)=2t^k\sinh(k\eta),\qquad
+ f_{k-1}(t^2)=t^{k-1}\frac{\cosh(k\eta)}{\cosh\eta}.
+\]
+Also
+$f_{\ell-2}(t^2)=t^{\ell-2}\sinh((\ell-1)\eta)/\cosh\eta$,
+which agrees with $f_{-1}=0$ when $\ell=1$.
+Substituting in~\eqref{eq:polynomials} yields
+\begin{equation}\label{eq:hyperbolic}
+ \frac XY=
+ \frac{\sinh(s\eta)+c_\eta\cosh(s\eta)}
+      {\sinh(r\eta)+c_\eta\cosh(r\eta)},\qquad
+ c_\eta=\frac{\sinh((\ell-1)\eta)}
+              {2\cosh(\ell\eta)\cosh\eta}.
+\end{equation}
+Since $\cosh(\ell\eta)\cosh\eta\geq\cosh((\ell-1)\eta)$ and
+$\tanh y\leq y$ for $y\geq0$, we have $0\leq c_\eta\leq L\eta$.
+For fixed $c\geq0$, the function
+\[
+ z\longmapsto\frac{\sinh z+c\cosh z}{z+c}\qquad(z>0)
+\]
+is strictly increasing: its derivative numerator is
+$z\cosh z-\sinh z+cz\sinh z+c^2\sinh z>0$.
+For $r<s$, it follows that
+\[
+ \frac XY>\frac{s+c_\eta/\eta}{r+c_\eta/\eta}
+            \geq\frac{s+L}{r+L},
+\]
+proving~\eqref{eq:ratio-bound}. Moreover,
+\begin{equation}\label{eq:u-derivative}
+ (\log C)_u=\frac{2(\alpha^2X^2-\beta^2Y^2)}{C}.
+\end{equation}
+At $u=0$ this is positive, so the constrained minimizer has $u<0$
+for $p<1$. If $p\geq(r+L)/(s+L)$, then at the left endpoint
+$(\alpha,\beta)=(p,1)$ we have $pX>Y$ for every $t>0$.
+The energy derivative there is positive. Strict convexity places
+the unique minimum at that endpoint. Apply this with $p=1/4$
+to obtain~\eqref{eq:length-bound}, including equality.
+Every other point of that singular branch admits constrained descent.
+Finally, $\E(-\alpha,-\beta)=\E(\alpha,\beta)$ follows directly
+from~\eqref{eq:kernel}, completing the proof of Theorem~\ref{thm:product}.
+
+\section{The simple zero and its directional contribution}\label{sec:singular}
+
+The graph $D$ has exactly one perfect matching: each odd cycle must
+use its incident connector edge, and all residual even paths have
+forced alternating matchings. The graph $D-C_r$ is $C_s$ with a tail
+of $2L$ new vertices. It has exactly $s+L$ matchings leaving one
+vertex uncovered. For $L=0$ the count is $s$. Increasing the tail by
+two vertices either includes its last edge, recovering the previous
+near-perfect count, or leaves the free endpoint uncovered, after
+which the remaining graph has one forced perfect matching. Thus the
+count increases by one. Similarly $D-C_s$ has $r+L$ such matchings.
+Consequently,
+\[
+ [x]m_{D-C_r}=(-1)^{(N-r-1)/2}(s+L),\qquad
+ [x]m_{D-C_s}=(-1)^{(N-s-1)/2}(r+L).
+\]
+The polynomials $m_D$ and $m_{P_{\ell-1}}$ are even.
+Substitution in~\eqref{eq:matching}, with the signs
+in~\eqref{eq:normalization}, proves~\eqref{eq:coefficients}.
+On $\alpha\beta=1/4$, the two coordinates have the same nonzero
+sign, so $H\ne0$. This proves simplicity on the entire locus.
+
+Fix an interior singular point $q$. The implicit function theorem
+gives a real analytic root $\lambda$ near $q$, with
+\begin{equation}\label{eq:zero-slope}
+ \lambda(q)=0,\qquad
+ d\lambda(q)[h]=-\frac{2(\beta h_\alpha+\alpha h_\beta)}{H}.
+\end{equation}
+The other roots stay separated from zero. Their positive and negative
+group sums are analytic, even if roots within a group coincide:
+each group sum is a contour integral of $xP_x/P$ enclosing that group.
+Their absolute sum is therefore an analytic function $F$, and
+\[
+ \E=F+|\lambda|.
+\]
+
+It remains to identify the derivative of $F$ with the displayed
+integrals. Factor $P=(x-\lambda)Q$, where $Q$ is monic and real.
+Then exactly
+\begin{equation}\label{eq:root-removed}
+ |t^NP(i/t)|^2=(1+t^2\lambda^2)|t^{N-1}Q(i/t)|^2.
+\end{equation}
+By~\eqref{eq:scalar-integral}, the first factor contributes $|\lambda|$.
+The integral for $Q$ can be differentiated: its differentiated
+integrand is uniformly $O(1)$ near $t=0$ and $O(t^{-2})$ at infinity
+in a small parameter neighborhood. Monicity and reality of $Q$
+give the first estimate, and $Q(0)$ staying away from zero gives
+the second. On intermediate compact $t$ intervals, real-rootedness
+ensures $Q(i/t)\ne0$.
+At $q$ the fixed-$t$ parameter derivative of
+$\log(1+t^2\lambda^2)$ is zero. Hence
+\begin{equation}\label{eq:smooth-gradient}
+ \nabla F(q)=\frac2\pi(I_\alpha,I_\beta).
+\end{equation}
+This proves convergence in~\eqref{eq:integrals} at $q$.
+Taylor expansion of $F$ and $\lambda$, and the Lipschitz property
+of the absolute value, prove~\eqref{eq:expansion}. The remainder is
+uniform as $h\to0$ for each fixed $q$ and each fixed length triple;
+no bound uniform over all graphs is intended. Off the zero locus,
+the same domination argument applies directly to $P$.
+
+For the optimality conditions, put $g=\nabla F(q)$ and
+$n=(\beta,\alpha)$. All directional derivatives are nonnegative
+if and only if
+\[
+ g=kn\quad\hbox{for some }k\in\R,\qquad |k|\leq2/|H|.
+\]
+Indeed, the two tangent directions force $g$ to be normal, and
+the two normal directions give the bound. Since $\alpha\beta=1/4$,
+this is precisely~\eqref{eq:conditions}.
+
+To prove strict sufficiency, use local coordinates $p=\alpha\beta$,
+$u=\tfrac12\log(\alpha/\beta)$ on the fixed common-sign branch.
+The simple zero vanishes identically on $p=1/4$, so it factors as
+\[
+ \lambda(p,u)=(p-1/4)a_0(p,u),\qquad a_0(q)=-2/H(q).
+\]
+Thus $\E(p,u)=F(p,u)+|p-1/4|c(p,u)$, with $c=|a_0|>0$ locally.
+Equations~\eqref{eq:conditions} and~\eqref{eq:smooth-gradient} give
+\[
+ F_u(q)=0,\qquad F_p(q)=4J/\pi,\qquad c(q)=2/|H(q)|.
+\]
+The strict normal inequality is $|F_p(q)|<c(q)$.
+By continuity there is a neighborhood and $\delta>0$ in which
+$c(p,u)-|F_p(p',u)|\geq\delta$ for all relevant $p,p',u$.
+The mean value theorem yields
+\[
+ \E(p,u)-\E(1/4,u)\geq\delta|p-1/4|.
+\]
+By Theorem~\ref{thm:product}, tangential stationarity at $q$
+is the unique strict constrained minimum on $p=1/4$.
+Together these facts prove strict local minimality and finish
+Theorem~\ref{thm:singular}.
+
+\begin{remark}
+The tangential equation survives unchanged from
+\cite[equation (118)]{HuangPereyra2026}, since
+\[
+ \alpha I_\alpha-\beta I_\beta
+ =\int_0^\infty\frac{\alpha^2X^2-\beta^2Y^2}{t^2C}\dd .
+\]
+At singular minima the zero identity for $J$ in their equation (119)
+is replaced by the interval bound in~\eqref{eq:conditions}.
+\end{remark}
+
+\section{Two exact tests}
+
+\begin{proposition}\label{prop:331}
+For $D_{3,3,1}$ the full-square global minima occur exactly at
+$(\alpha,\beta)=(1/2,1/2)$ and $(-1/2,-1/2)$.
+There are eight oriented cycle-product switching classes attaining
+the common minimum $2+\sqrt{13}+\sqrt5$.
+At the positive minimizer both integrals in~\eqref{eq:integrals}
+are strictly positive, and the jump in the diagonal derivative is $4/3$.
+\end{proposition}
+
+\begin{proof}
+Here $a=\alpha$, $b=\beta$ and
+\[
+ P=x^6-7x^4+11x^2-1-2(\alpha+\beta)(x^3-3x)+4\alpha\beta.
+\]
+The kernel polynomials are
+\[
+ Z=1+7t^2+11t^4+t^6,\qquad
+ X=Y=2t^3(1+3t^2),\qquad W=4t^6.
+\]
+Since $ZW-X^2=4t^8(1+t^2)^2>0$,
+\[
+ C-Z^2=X^2(\alpha^2+\beta^2)
+          +2(X^2-ZW)\alpha\beta+W^2\alpha^2\beta^2
+\]
+is positive whenever $\alpha\beta\leq0$ and
+$(\alpha,\beta)\ne(0,0)$. For positive product,
+\[
+ C(\alpha,\beta)-C(\sqrt{\alpha\beta},\sqrt{\alpha\beta})
+      =X^2(\alpha-\beta)^2.
+\]
+Using simultaneous negation, every possible minimizer therefore
+reduces to $(c,c)$, $0\leq c\leq1$.
+
+On the diagonal,
+\begin{equation}\label{eq:331-factors}
+ P=(x^3-x^2-3x+1-2c)(x^3+x^2-3x-1-2c).
+\end{equation}
+Both cubics are real-rooted. For $0\leq c<1/2$, the first has one
+negative root $-U$, and the second has one positive root $v$.
+The products and traces of the roots give these sign counts.
+Writing $h(z)=z^3+z^2-3z$, we have
+\[
+ U,v>1,\qquad h(U)=1-2c,\quad h(v)=1+2c,\qquad
+ \E(c,c)=2+2(U+v).
+\]
+For $0<c<1/2$, $v>U$ and $h'$ is strictly increasing on $[1,\infty)$,
+so
+\[
+ \frac{d}{dc}\E(c,c)
+       =4\left(\frac1{h'(v)}-\frac1{h'(U)}\right)<0.
+\]
+For $1/2<c\leq1$, each cubic has one positive root, respectively
+$w>2$ and $v>1$. Three positive roots are excluded by the negative
+pairwise-root sum in the first cubic and the negative trace in
+the second. Hence
+\[
+ \E(c,c)=2(w+v),\qquad
+ \frac{d}{dc}\E(c,c)=\frac4{3w^2-2w-3}
+                         +\frac4{3v^2+2v-3}>0.
+\]
+Continuity handles the endpoints and $c=1/2$. This proves the
+asserted full-square minimizer set, including exclusion of the origin.
+At $c=1/2$,
+\[
+ P=x(x+2)(x^2-x-3)(x^2-x-1),
+\]
+which gives the energy value already computed in
+\cite[Proposition 4.9]{HuangPereyra2026}.
+Each real-part pair has four cycle-product lifts, giving eight
+switching classes.
+
+The smooth part has diagonal derivative
+\[
+ G=-\frac25-\frac{2\sqrt{13}}{39}+\frac{2\sqrt5}{5},
+       \qquad 0<G<\frac23 .
+\]
+The inequality follows, for example, from
+$11/5<\sqrt5<9/4$ and $18/5<\sqrt{13}<37/10$.
+Differentiating the extreme-root formulas above gives left and
+right derivatives $G-2/3$ and $G+2/3$, respectively.
+Their jump is $4/3$, as~\eqref{eq:zero-slope} predicts with $H=3$.
+Symmetry gives $I_\alpha=I_\beta=\pi G/4$, so the strict
+test~\eqref{eq:conditions} holds.
+Directly, each stationarity numerator at this point is
+\[
+ -\tfrac12W(Z-W/4)+X^2
+       =2t^6(1+5t^2+7t^4)>0.
+\]
+After division by $t^2C$ it is $O(t^4)$ at zero and $O(t^{-2})$
+at infinity. Thus both integrals are positive at this interior
+global minimizer, contradicting the unqualified zero equations
+in~\cite[Theorem 4.7, equation (117)]{HuangPereyra2026}.
+\end{proof}
+
+\begin{proposition}\label{prop:335}
+For $D_{3,3,5}$, at $(1/2,1/2)$ the directional energy derivative
+along $(-1,-1)$ lies strictly between $-8/1000$ and $-7/1000$.
+Consequently this singular point, and its simultaneous-negation
+companion, are not local minima.
+\end{proposition}
+
+\begin{proof}
+Let $P_c$ denote differentiation of $P(x;c,c)$ with respect to $c$,
+evaluated at $c=1/2$, and set $Q(x)=P(x;1/2,1/2)$ for this proof.
+Equation~\eqref{eq:matching} gives
+\begin{align}
+ Q(x)&=x(x+2)(x^4-x^3-5x^2+3x+5)
+                    (x^4-x^3-3x^2+x+1),\label{eq:335-Q}\\
+ P_c(x)&=-4(x^7-7x^5-x^4+13x^3+3x^2-5x-1).
+                    \label{eq:335-Pc}
+\end{align}
+All ten roots of $Q$ are simple. Define the nonzero-root contribution
+\[
+ G_{335}=\sum_{\substack{Q(z)=0\\z\ne0}}
+               -\sgn(z)\frac{P_c(z)}{Q'(z)}.
+\]
+The rational certificate in Appendix~\ref{app:certificate} proves
+\[
+ \frac{407}{1000}<G_{335}<\frac{408}{1000}.
+\]
+Implicit differentiation identifies this as the smooth diagonal
+derivative. Here $H=5$ and the zero-root diagonal derivative is
+$-2/5$. Therefore~\eqref{eq:expansion} gives the directional
+energy derivative $2/5-G_{335}$, proving the bounds.
+\end{proof}
+
+\section{Scope and reproducibility}
+
+Theorems~\ref{thm:singular} and~\ref{thm:product} give at most one
+positive interior singular candidate for each length triple and
+exclude all such candidates under~\eqref{eq:length-bound}.
+They do not determine which candidates are global minima.
+Equality in the normal bound, full-square sufficiency at singular
+boundary endpoints, and the global minimum with all switching
+classes for arbitrary odd $(r,s,\ell)$ remain unresolved here.
+The $D_{3,3,5}$ certificate demonstrates why constrained minimality
+and a zero-eigenvalue cusp alone do not suffice.
+
+Symbolic checks used Python and SymPy 1.14.0~\cite{Meurer2017}.
+They verified the coefficient identities on the 125 triples
+$r,s\in\{3,5,7,9,11\}$, $\ell\in\{1,3,5,7,9\}$, along with
+selected Hermitian characteristic polynomials and kernel identities.
+These finite checks supplement the proofs for all lengths.
+The $D_{3,3,5}$ certificate was separately recomputed by exact
+rational Sturm sequences and midpoint Taylor enclosures; the
+root-counting principle is the classical Sturm criterion
+\cite[Section 1]{GonzalezEtAl1989}.
+Floating-point quadrature, eigenvalue derivatives and energy
+increments were diagnostic comparisons only.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, symbolic and rational
+verification programs, literature searches and manuscript drafting.
+A separate model context reconstructed the mathematical arguments
+and recomputed the decisive finite certificate. This constituted
+an additional computational review pass, not external peer review.
+The proofs and exact inequalities stated above are the basis of the
+mathematical conclusions.
+
+\appendix
+\section{A rational certificate for the descent test}\label{app:certificate}
+
+For the polynomials~\eqref{eq:335-Q}--\eqref{eq:335-Pc}, Table~\ref{tab:335}
+lists isolating intervals for all nine nonzero roots. The remaining
+root is exactly $0$. The last column encloses
+$10^6[-\sgn(z)P_c(z)/Q'(z)]$; its endpoints are integers, so no
+decimal approximation enters the certificate.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{rrr}
+\toprule
+Lower endpoint & Upper endpoint & Scaled derivative enclosure\\
+\midrule
+$-2$ & $-2$ & $[-181819,-181818]$ \\
+$-6062528/3328017$ & $-6253391/3432791$ & $[-351836,-351835]$ \\
+$-1725791/1273013$ & $-10783276/7954179$ & $[-253297,-253296]$ \\
+$-5627533/6650601$ & $-1669473/1972978$ & $[192844,192845]$ \\
+$-6778623/14203208$ & $-977260/2047647$ & $[597764,597765]$ \\
+$1273013/1725791$ & $7954179/10783276$ & $[-59616,-59615]$ \\
+$2600452/1747381$ & $10436553/7012871$ & $[68791,68792]$ \\
+$24441443/11664923$ & $2047647/977260$ & $[222264,222265]$ \\
+$23045956/10573319$ & $22633443/10384061$ & $[172217,172218]$ \\
+\midrule
+\multicolumn{2}{r}{Sum of scaled derivative bounds} & $[407312,407321]$\\
+\bottomrule
+\end{tabular}
+\caption{Exact nonzero-root intervals and derivative enclosures for $D_{3,3,5}$.}
+\label{tab:335}
+\end{table}
+
+Here are explicit instructions to verify every entry. Form
+$q_0=Q$, $q_1=Q'$ and
+$q_{j+1}=-\operatorname{rem}(q_{j-1},q_j)$ over $\mathbb Q$ until
+the remainder is zero. Positive rescaling of any $q_j$ is harmless.
+The last nonzero polynomial is constant, so $\gcd(Q,Q')=1$.
+Let $V(x)$ be the number of sign changes in $(q_j(x))$, with zero
+entries removed. For each nonsingleton interval $[a,b]$ in the
+table, $V(a)-V(b)=1$, and the endpoints are not roots.
+The singleton $-2$ and the root $0$ are checked by direct
+substitution, with $Q'$ nonzero. These ten disjoint root enclosures
+exhaust the degree of $Q$.
+
+To enclose a polynomial $R$ on $[a,b]$, put
+$m=(a+b)/2$, $\rho=(b-a)/2$ and expand
+$R(m+y)=\sum_{j=0}^d r_jy^j$ by rational arithmetic. Then
+\[
+ R([a,b])\subseteq
+ \left[r_0-\sum_{j=1}^d|r_j|\rho^j,\
+       r_0+\sum_{j=1}^d|r_j|\rho^j\right].
+\]
+Apply this to $P_c$ and $Q'$. Every denominator enclosure excludes
+zero; divide the two intervals and multiply by $-\sgn(z)$.
+Outward rounding after multiplication by $10^6$ gives the integer
+endpoints in Table~\ref{tab:335}. Summing the lower and upper bounds
+and dividing by $10^6$ proves the displayed bound for $G_{335}$.
+The zero-root derivative is checked directly as
+$-P_c(0)/Q'(0)=-2/5$.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

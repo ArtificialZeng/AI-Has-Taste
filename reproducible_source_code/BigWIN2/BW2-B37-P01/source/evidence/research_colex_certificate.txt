@@ -1,0 +1,13 @@
+Command: /usr/bin/time -f 'elapsed=%E maxrss_kb=%M' python3 evidence/research_colex_certificate.py
+Date: 2026-09-06
+
+side=left summary_fixed_from_length=7 checked_summary_records=44301
+side=right summary_fixed_from_length=8 checked_summary_records=48650
+certificate=PASS scope=all_lengths_H_equals_cyclic_colex_successor
+elapsed=0:15.25 maxrss_kb=45808
+
+All calculations use exact integer tuples and the independently evaluated
+five-block local rule for H=F^3.  The left summary states at lengths 7 and 8
+are equal, and the right summary states at lengths 8 and 9 are equal.  Since
+the displayed summary update is deterministic once length is at least five,
+these equalities are the finite induction step, not a finite-prefix guess.

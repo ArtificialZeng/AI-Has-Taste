@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Four- or Eight-Cycles in Twelve-Vertex Two-Attachment Graphs},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={A finite-certificate proof for twelve-vertex two-attachment graphs}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Four- or Eight-Cycles in Twelve-Vertex\\
+Two-Attachment Graphs}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that every connected simple graph on twelve vertices with two
+distinct vertices of degree two, all other vertices of degree three, and the
+two exceptional vertices at distance at least three contains a cycle of
+length four or eight.  Adding an edge between the exceptional vertices gives
+an exact reduction to marked-edge deletions in the complete census of the 85
+connected cubic graphs on twelve vertices.  A certificate covers all 1,110
+eligible deletions and supplies a cycle in each.  A separately written
+verifier reconstructs the domain, checks every witness, and recomputes its
+lexicographic minimality.  The proof depends explicitly on the published
+completeness of the cubic census.
+\end{abstract}
+
+\section{Statement and context}
+
+A \emph{cycle of length $k$} below is a cyclic sequence of $k$ distinct
+vertices with consecutive vertices, including the last and first, adjacent.
+The question comes from the study of two-attachment gadgets for graphs without
+power-of-two cycle lengths.  Garcia's gadget census treats orders $4,6,8$ and
+shows that at order $10$ there is no $C_4/C_8$-free gadget whose attachments
+are at distance at least three \cite[Proposition~6.2(2)]{Garcia2026}.
+The following theorem settles the corresponding order-$12$ assertion.
+
+\begin{theorem}\label{thm:main}
+Let $H$ be a connected simple graph on exactly twelve vertices, and let
+$s\ne t$ be vertices such that
+\[
+ \operatorname{deg}_H(s)=\operatorname{deg}_H(t)=2,\qquad
+ \operatorname{deg}_H(v)=3\quad(v\notin\{s,t\}),
+ \qquad \operatorname{dist}_H(s,t)\geq 3.
+\]
+Then $H$ contains a simple cycle of length four or a simple cycle of length
+eight.
+\end{theorem}
+
+The result is not an immediate consequence of a statement for cubic graphs:
+after adding the edge $st$, a cycle in the resulting cubic graph might use
+that added edge.  We instead retain the marked edge throughout the finite
+reduction.
+
+\section{The marked-edge reduction}
+
+\begin{lemma}\label{lem:bijection}
+There is a bijection on labeled objects between graphs $(H,s,t)$ satisfying
+the hypotheses of Theorem~\ref{thm:main} and pairs $(G,st)$ such that $G$ is a
+connected simple cubic graph on twelve vertices, $st\in E(G)$, $G-st$ is
+connected, and
+\(\operatorname{dist}_{G-st}(s,t)\geq3\).
+The terminal order may be forgotten when testing cycle existence.
+\end{lemma}
+
+\begin{proof}
+The distance hypothesis implies that $st\notin E(H)$.  Adding $st$ therefore
+preserves simplicity and connectedness, and it increases precisely the two
+degree-two vertices to degree three.  This produces the required cubic graph
+$G$.  Conversely, deleting the marked edge from a pair $(G,st)$ with the
+stated connectivity and distance conditions gives exactly the degree sequence
+and hypotheses of the theorem.  The two operations are inverse.  Swapping
+$s$ and $t$ changes neither the deletion graph nor its cycles, so one test for
+each undirected marked edge covers both terminal orientations.
+\end{proof}
+
+Meringer's generation method constructs representatives of regular graphs up
+to isomorphism by orderly generation and a canonicity test
+\cite{Meringer1999}.  The same paper's Table~1 gives 85 connected cubic graphs
+on twelve vertices \cite[Table~1]{Meringer1999}, and the associated official
+online census provides their adjacency lists \cite{MeringerCensus}.  By
+Lemma~\ref{lem:bijection}, it is enough to
+test every edge of every representative: an isomorphism from an arbitrary
+cubic graph to a representative carries its marked edge to an edge of that
+representative, and deletion commutes with the isomorphism.
+
+\section{Finite certificate}
+
+The census has 85 graphs and every cubic graph on twelve vertices has 18
+edges, giving 1,530 marked-edge pairs.  The certificate construction found
+1,526 connected deletions.  Of these, exactly 1,110 have marked endpoints at
+distance at least three.  For each eligible pair it records either a
+four-cycle or an eight-cycle that avoids the deleted edge.
+
+For an explicit convention, write a cycle as a vertex tuple beginning at its
+least vertex, compare the two orientations lexicographically, and retain the
+smaller orientation.  Each certificate record contains the lexicographically
+least normalized tuple among all surviving four- and eight-cycles.  This
+minimality is not needed for Theorem~\ref{thm:main}, but makes the records
+canonical and strengthens reproducibility.
+
+The deterministic verifier performs the following checks from the census and
+certificate alone.
+
+\begin{enumerate}
+\item It parses all 85 adjacency lists and checks the vertex set, simplicity,
+      symmetry of adjacency, degree three, the 18-edge count, and
+      connectedness.
+\item For every undirected edge, it removes that edge, tests connectivity and
+      computes the distance between its endpoints.  It therefore reconstructs
+      the eligible set rather than trusting a list supplied by the generator.
+\item It rejects duplicate, missing, extra, or ineligible records and checks
+      directly that every listed tuple is a simple $C_4$ or $C_8$ in the
+      deletion graph.
+\item Independently of the generator's vertex-path search, it chooses subsets
+      of four and eight surviving edges and recognizes a cycle precisely when
+      the chosen subgraph is connected and $2$-regular.  It normalizes all
+      cycles found this way and recomputes the least one.
+\end{enumerate}
+
+The completed replay returned the counts
+\[
+\begin{array}{c|r}
+\text{census graphs}&85\\
+\text{graph--edge pairs}&1{,}530\\
+\text{connected deletions}&1{,}526\\
+\text{eligible deletions}&1{,}110
+\end{array}
+\]
+and accepted all 1,110 cycles and their claimed minimality.  All predicates
+are discrete; the computation uses neither floating-point arithmetic nor
+randomization.  Separating discovery from exact replay is also used in other
+finite-library results, where independent reconstruction is employed to keep
+the generated data outside the verifier's trust boundary
+\cite{ZengEtAl2026}; see Section~6 of that paper.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Given $(H,s,t)$, apply Lemma~\ref{lem:bijection} to obtain a connected simple
+cubic graph $G$ with marked edge $st$.  Map $G$ to its representative in the
+complete census.  The image of $st$ is one of the 1,110 eligible marked edges,
+so the corresponding certificate record gives a $C_4$ or $C_8$ avoiding that
+edge.  Pulling the cycle back through the isomorphism gives the same-length
+cycle in $G-st=H$.
+\end{proof}
+
+\section{Reproducibility and dependency}
+
+The ancillary file \texttt{evidence/cycle\_certificate.json} contains the
+records.  From the project directory, the replay command is
+\begin{verbatim}
+python3 evidence/verify_cycle_certificate.py \
+  evidence/external/12_3_3.asc evidence/cycle_certificate.json
+\end{verbatim}
+The verifier uses only the Python standard library.  It is separately written
+from \path{evidence/generate_cycle_certificate.py} and does not import it.
+
+The finite proof is relative to the cited completeness of Meringer's census.
+The verifier authenticates and checks the supplied census file and confirms
+that its 85 entries have the required graph properties; it does not regenerate
+all connected cubic graphs from first principles.  Thus census exhaustion is
+an explicit external classification dependency.  No SAT cross-check or proof
+assistant is claimed.
+
+\paragraph{Computational and AI assistance.}
+Python programs were used to generate and exactly replay the finite
+certificate.  OpenAI Codex assisted with literature search, code drafting,
+adversarial audit organization, and manuscript preparation.  Language-model
+output is not mathematical evidence for the theorem: the argument rests on
+Lemma~\ref{lem:bijection}, the cited complete census, the explicit certificate,
+and the deterministic verifier.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

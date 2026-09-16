@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\G}{\mathcal G}
+\newcommand{\Z}{\mathbb Z}
+
+\title{A Sharp Width-Ten Gap for Defective Valid-Extension Sets\\
+of Finite Gilbreath Sequences}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\hypersetup{
+  pdftitle={A Sharp Width-Ten Gap for Defective Valid-Extension Sets of Finite Gilbreath Sequences},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+For a normalized strictly increasing Gilbreath sequence $S$, let $K_S$ be
+the full two-sided set of integers that can be appended while preserving the
+Gilbreath property, and let $C_S$ be its natural parity interval.  We prove
+the all-length implication
+\[
+  K_S\ne C_S \quad\Longrightarrow\quad |K_S|\ge 10.
+\]
+The bound is sharp at $S=(2,3,5,9,15)$.  Consequently, extension width at
+most nine is equivalent to interval-completeness together with an
+anti-diagonal sum at most seven.  This gives four possible ordered
+anti-diagonal types.  It does not classify the top rows realizing those
+types, so the original all-length stability-classification problem remains
+unresolved.
+\end{abstract}
+
+\section{Context and statement}
+
+For an integer sequence $S=(s_1,\ldots,s_n)$, define its absolute-difference
+triangle by
+\[
+ s_a^0=s_a,\qquad
+ s_a^b=\lvert s_{a+1}^{b-1}-s_a^{b-1}\rvert
+ \quad(1\le b\le n-1,\ 1\le a\le n-b).
+\]
+The sequence is \emph{Gilbreath} when $s_1^b=1$ for every positive row.
+Write
+\[
+ \G_n=\{(s_1,\ldots,s_n):2=s_1<s_2=3<s_3<\cdots<s_n,
+               \ s_1^b=1\ (1\le b<n)\}.
+\]
+For $S\in\G_n$, its full valid-extension set is
+\[
+ K_S=\{k\in\Z:(s_1,\ldots,s_n,k)\text{ is Gilbreath}\}.
+\]
+There is no monotonicity requirement on the appended integer $k$.
+
+Muney \cite{Muney2026} developed an exact theory of these sets.  For the
+ordered right anti-diagonal
+\[
+ e_i=s_{n-i}^i\quad(1\le i<n),\qquad
+ A(S)=\sum_{i=1}^{n-1}e_i,
+\]
+the natural candidate set is
+\[
+ C_S=\{k\in\Z:|k-s_n|\le A(S)+1,
+                     \ k\equiv s_n\pmod 2\}.
+\]
+The closest results needed here are Muney's reverse-tree characterization
+and ordered interval-completeness criterion \cite[Proposition~18 and
+Theorem~20]{Muney2026}.  The latter is an order-sensitive counterpart of
+the classical subset-sum completeness criterion of Brown
+\cite{Brown1961}.  Muney also found the first failure of $K_S=C_S$, proved
+that the minimum extension width is five, and asked for an all-length
+classification of the members of $\G_n$ having width at most nine
+\cite[Theorems~24--25 and Question~16(5)]{Muney2026}.
+
+Our contribution is a sharp gap theorem for the defective case
+$K_S\ne C_S$, followed by a finite reduction in the language of ordered
+anti-diagonals.  Muney's paper does not state this gap or the reduction.
+We make no broader priority claim.  In particular, the reduction is not the
+top-row classification requested in the source problem.
+
+\section{Reverse sets and realizability constraints}
+
+For $e\ge0$ and a finite $T\subseteq\Z_{\ge0}$, put
+\[
+ P_e(T)=\{e+t:t\in T\}\cup\{e-t:t\in T,\ e\ge t\}.
+\]
+The condition $e\ge t$ in the second branch is essential.  Starting with
+$T_{n-1}=\{1\}$, define
+\[
+ T_{i-1}=P_{e_i}(T_i)\qquad(i=n-1,n-2,\ldots,1).
+\]
+Muney's reverse-tree theorem gives
+\begin{equation}\label{eq:reverse}
+ D_S:=\{|k-s_n|:k\in K_S\}=T_0,
+ \qquad
+ K_S=\{s_n+d:d\in D_S\}\cup\{s_n-d:d\in D_S\}.
+\end{equation}
+The interval-completeness criterion is
+\begin{equation}\label{eq:criterion}
+ K_S=C_S
+ \quad\Longleftrightarrow\quad
+ e_i\le 1+\sum_{j>i}e_j
+ \quad(1\le i\le n-2).
+\end{equation}
+
+The proof of the gap uses two constraints that distinguish realizable
+anti-diagonals from arbitrary folding tuples.
+
+\begin{lemma}[Parity]\label{lem:parity}
+If $S\in\G_n$, then every $s_j$ with $j\ge2$ is odd.  Consequently
+\[
+ e_1,\ldots,e_{n-2}\text{ are even},\qquad e_{n-1}=1.
+\]
+\end{lemma}
+
+\begin{proof}
+The assertion starts with $s_2=3$.  For $j\ge3$, reduce the bottom entry of
+the triangle of the prefix $(s_1,\ldots,s_j)$ modulo two.  Since absolute
+subtraction is addition modulo two,
+\[
+ 1\equiv \sum_{a=1}^{j}\binom{j-1}{a-1}s_a\pmod2.
+\]
+Here $s_1=2$ contributes zero.  If $s_2,\ldots,s_{j-1}$ are odd, their total
+contribution is
+\[
+ \sum_{a=2}^{j-1}\binom{j-1}{a-1}=2^{j-1}-2\equiv0\pmod2.
+\]
+Thus $s_j$ is odd, completing the induction.
+
+The first positive row therefore begins with $1$ and has only even entries
+thereafter.  The same description propagates down the triangle: its first
+entry is $1$ by the Gilbreath property, and every later entry is the
+difference of two even entries.  Reading the last entry of each positive row
+gives the claimed parity of the anti-diagonal; the bottom entry is $1$.
+\end{proof}
+
+\begin{lemma}[Zero-tail rigidity]\label{lem:zero-tail}
+Let $S\in\G_n$ and $i\le n-2$.  If
+\[
+ e_{i+1}=e_{i+2}=\cdots=e_{n-2}=0,
+\]
+then $e_i\in\{0,2\}$.
+\end{lemma}
+
+\begin{proof}
+Write row $i$ as $(x_1,\ldots,x_L)$.  Its first and last entries are
+$x_1=1$ and $x_L=e_i$.  The displayed zero anti-diagonal entries are the
+successive rightmost absolute differences of this row.  They force the
+suffix $x_2,\ldots,x_L$ to be constant.  Indeed, once the last $m$ entries
+are equal to $c$, the rightmost $m$-fold difference of
+$(x_{L-m},c,\ldots,c)$ is $|x_{L-m}-c|$, so the next zero extends the
+constant suffix.  (When $L=2$, the suffix assertion is immediate.)
+Hence $x_2=e_i$.  The first entry of row $i+1$ is also $1$, and therefore
+\[
+ 1=|x_2-x_1|=|e_i-1|.
+\]
+Thus $e_i$ is $0$ or $2$.
+\end{proof}
+
+\section{The sharp defective-width gap}
+
+\begin{theorem}\label{thm:gap}
+For every $n\ge3$ and every $S\in\G_n$,
+\[
+ K_S\ne C_S\quad\Longrightarrow\quad |K_S|\ge10.
+\]
+The constant $10$ is attained by $S=(2,3,5,9,15)$.
+\end{theorem}
+
+\begin{proof}
+Suppose $K_S\ne C_S$.  By \eqref{eq:criterion}, an ordered completeness
+inequality fails.  Let $i$ be the largest failing index and set
+\[
+ q=\sum_{j=i+1}^{n-1}e_j.
+\]
+All inequalities strictly to the right of $i$ hold.  Lemma~\ref{lem:parity}
+shows that $q$ is odd.  If $q=1$, then
+$e_{i+1}=\cdots=e_{n-2}=0$, so Lemma~\ref{lem:zero-tail} gives
+$e_i\le2=1+q$, contrary to failure at $i$.  Hence
+\begin{equation}\label{eq:qge3}
+ q\ge3.
+\end{equation}
+
+Run the reverse recurrence through the tail to the right of $i$.  The
+holding inequalities give
+\begin{equation}\label{eq:tail}
+ T_i=\{0,2,4,\ldots,q+1\}.
+\end{equation}
+For completeness, the induction starts with
+$P_1(\{1\})=\{0,2\}$.  If the current set is
+$\{0,2,\ldots,R\}$ and the next even entry $e$ satisfies $e\le R$, then
+the permitted lower branch is $\{0,2,\ldots,e\}$ and the translated branch
+is $\{e,e+2,\ldots,e+R\}$; their union is
+$\{0,2,\ldots,e+R\}$.
+
+At the failing index, $e_i>q+1$.  Thus every lower branch in
+$P_{e_i}(T_i)$ is permitted.  The reflected lower copy and translated upper
+copy meet only at $e_i$, so \eqref{eq:tail} yields
+\begin{equation}\label{eq:five}
+ |T_{i-1}|=2|T_i|-1=q+2\ge5,
+ \qquad 0\notin T_{i-1}.
+\end{equation}
+Every remaining outer preimage step is cardinality-nondecreasing because it
+contains the injective translate $e+T$.
+
+If zero never enters, then $0\notin D_S$ and
+\eqref{eq:reverse} gives $|K_S|=2|D_S|\ge10$.  Otherwise consider the first
+outer step at which zero enters.  Its input $T$ has at least five elements
+and does not contain zero.  The output can contain zero only if $e\in T$.
+In that case $e+T$ consists of $|T|$ distinct positive elements, in addition
+to zero.  The output has at least six elements, and subsequent steps cannot
+decrease cardinality.  Hence
+$|K_S|=2|D_S|-1\ge11$.  This proves the lower bound.
+
+For sharpness, $(2,3,5,9,15)$ is Gilbreath and has ordered anti-diagonal
+$(6,2,0,1)$.  Its reverse sets are
+\[
+ \{1\}\longmapsto\{0,2\}\longmapsto\{0,2\}
+ \longmapsto\{0,2,4\}\longmapsto\{2,4,6,8,10\}.
+\]
+Reflection about $15$ gives
+\[
+ K_S=\{5,7,9,11,13,17,19,21,23,25\},
+\]
+which has size ten.  The candidate set also contains $15$, so it is indeed
+defective.
+\end{proof}
+
+\section{Reduction of the width-at-most-nine problem}
+
+\begin{corollary}\label{cor:reduction}
+For $n\ge3$ and $S\in\G_n$,
+\[
+ |K_S|\le9
+ \quad\Longleftrightarrow\quad
+ K_S=C_S\ \text{ and }\ A(S)\le7.
+\]
+Equivalently, apart from the final entry $e_{n-1}=1$, the ordered
+anti-diagonal has exactly one of the following forms; every unshown entry is
+zero:
+\begin{enumerate}
+ \item $e_1=2$;
+ \item $e_1=2$ and $e_q=2$ for one $2\le q\le n-2$;
+ \item $e_1=2$ and $e_q=e_r=2$ for
+       $2\le q<r\le n-2$;
+ \item $e_1=4$ and $e_q=2$ for one $2\le q\le n-2$.
+\end{enumerate}
+The listed types have widths $5,7,9,9$, respectively, whenever they are
+realized by a member of $\G_n$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:gap} rules out a defective set of width at most nine.  When
+$K_S=C_S$, Lemma~\ref{lem:parity} makes $A(S)$ odd, and direct counting in
+the parity interval gives $|C_S|=A(S)+2$.  This proves the first
+equivalence.
+
+Write $e_i=2a_i$ for $i<n-1$.  Strict increase of the top row gives
+$a_1\ge1$, and
+\[
+ A(S)=1+2\sum_{i=1}^{n-2}a_i\le7,
+ \qquad
+ a_i\le1+\sum_{j=i+1}^{n-2}a_j
+\]
+where the second display is \eqref{eq:criterion} after division by two.
+Thus $\sum a_i\le3$.  If the total is one, only type~1 occurs.  If it is
+two, $a_1=2$ fails the first inequality, leaving type~2.  If the total is
+three, the possibilities satisfying all ordered inequalities are either
+$a_1=1$ with two later entries equal to one, or $a_1=2$ with one later entry
+equal to one.  These are types~3 and~4.  Conversely, every listed type
+satisfies the ordered inequalities, and its value of $A(S)$ gives the stated
+width.
+\end{proof}
+
+\begin{remark}[What remains unresolved]
+Corollary~\ref{cor:reduction} classifies only the possible ordered
+anti-diagonals.  It neither decides which displayed tuples are realizable at
+each length nor classifies all normalized top rows producing a realizable
+tuple.  Those are precisely the missing steps needed for the original
+if-and-only-if top-row classification.
+\end{remark}
+
+\section{Exact finite corroboration}
+
+The proof above is independent of computation.  As a check, the ancillary
+program \path{enumerate_threshold.py} exhaustively generated $\G_n$ for
+$2\le n\le10$ in two ways: by the ordered reverse tree and by direct
+difference-triangle tests.  For a positive append distance $d>A(S)$, all
+folds occur without a sign change and the final value is $d-A(S)$; hence the
+direct generator's scan of $1\le d\le A(S)+1$ is exhaustive.  The two exact
+frontiers agreed at every length.  The resulting sequence counts were
+\[
+ 1,1,2,6,27,180,1786,26094,559127
+ \qquad(n=2,\ldots,10).
+\]
+For each $5\le n\le10$, the least defective width was ten, attained by
+$1,1,8,9,37,102$ sequences, respectively; no defective sequence of width at
+most nine occurred.  Every minimum-width hit was checked again by directly
+constructing all appended triangles in the complete radius-$A(S)+1$ range.
+All arithmetic used exact Python integers and finite sets.
+
+The finite universe and the trust boundary of such a check should be stated
+explicitly; a certificate-based treatment of this reporting principle in a
+different finite combinatorial setting is given by Zeng, Liu, Ratnavelu, and
+Huat \cite[Section~6]{ZengEtAl2026Certificates}.  Here the census is only
+corroborative: no finite range is used to infer Theorem~\ref{thm:gap}.
+It can be reproduced from the project root with
+\begin{verbatim}
+python3 evidence/enumerate_threshold.py --max-n 10 \
+  --output /tmp/threshold_census_n10.json
+\end{verbatim}
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex assisted with literature searching, exact-computation design,
+proof auditing, and preparation of the manuscript.  A separate model context
+reconstructed the proof and independently recomputed the finite check through
+$n=8$.  Such model passes are not peer review and are not mathematical
+evidence.  The quantified result rests on the human-readable proof above;
+the bounded computational claims rest on the exact program and recorded
+output.  No proof assistant and no floating-point calculation were used.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,188 @@
+{
+  "original_id": "legacy-b17-p15",
+  "archive_id": "BW2-B17-P15",
+  "title": "A Certified Upper Bound for the Supremum of an Autoconvolution",
+  "batch_label": "17",
+  "kind": "historical-gated-manuscript",
+  "original_status": "certified finite result; raw live-record target remains open",
+  "scope": "Exact-certification note only; explicitly not a new numerical live record, not a sharp constant or global infimum.",
+  "gate_basis": "Existing proof, citation, PDF and independent root audits support release as an exact-certified upper-bound note; current PDF and ZIP match batch release hashes.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B17-P15_A_Certified_Upper_Bound_for_the_Supremum_of_an_Autoconvolution.pdf",
+  "pdf_sha256": "6824cf0382408f44192e5bf73926d4e4759effb0c3c16ec40bc86fdeabf2515e",
+  "pages": 3,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B17-P15/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B17-P15/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B17-P15/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Python 3 standard library; the C++ alternative was not compiled in the root audit."
+  ],
+  "limitations": [
+    "Batch final audit distinguishes this from the five new submission-manuscript results: public label must retain 'exact-certification note'.",
+    "PDF audit's hash condition is satisfied by current PDF matching results/release/MANIFEST.json and batch_release_manifest.json.",
+    "Stale 'not yet run' footers are superseded by explicit independent root and batch release evidence.",
+    "Original entrypoints: ['python3 certificates/verifier.py --self-test', 'python3 certificates/verifier.py certificates/witness.txt', 'python3 tests/breaker_step_formula.py']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 8,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/audit/CITATION_AUDIT.md",
+      "sha256": "53ae8c997b2eedab355e465d1dd7c334600b9e403c042eb0e750f3bae6e58095",
+      "bytes": 1675
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/audit/PDF_AUDIT.md",
+      "sha256": "f86fac57ac4868323a40d822fc3fbf2ee8f369dc075998d66d288f2225d846a0",
+      "bytes": 667
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/audit/PROOF_AUDIT.md",
+      "sha256": "f92cfdee36f7afd45ae9e28a745584de65bdab608b4d9468984a2065b56715ae",
+      "bytes": 914
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/audit/ROOT_PROOF_AUDIT.md",
+      "sha256": "798a8912d613b47ec47363f8f3221790d598618a6655ca90bd11bd14f4749287",
+      "bytes": 1542
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/batch-level/BATCH_FINAL_AUDIT.md",
+      "sha256": "a7fa17401c75934f9240c61428869e6023439c57b32169902b14b084d4eed70c",
+      "bytes": 2873
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/results/release/MANIFEST.json",
+      "sha256": "09cacc0b6b9593232268282c66ab041a6ec150155156f5ef6d7cdb29a5eec77e",
+      "bytes": 1760
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B17-P15/batch-level/batch_release_manifest.json",
+      "sha256": "e4df68c5b3959a76406a099b7ee8c329b98f2d2b35b4645e7929613502deddbf",
+      "bytes": 3467
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/certificates/README.md",
+      "original_sha256": "297fd1e129c679845df8633b3756eafea67fe326bca262d96ed0153ed8fcebcf",
+      "original_bytes": 1516,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/README.md",
+          "sha256": "297fd1e129c679845df8633b3756eafea67fe326bca262d96ed0153ed8fcebcf",
+          "bytes": 1516
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/verifier.cpp",
+      "original_sha256": "eab189a86da0183c993226e166a9e13a6e5f10d691fb3b84e58c58263976eb32",
+      "original_bytes": 5758,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/verifier.cpp",
+          "sha256": "eab189a86da0183c993226e166a9e13a6e5f10d691fb3b84e58c58263976eb32",
+          "bytes": 5758
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/verifier.py",
+      "original_sha256": "f22f4654f81efea6f7dfc156dade777f9f70275a9ac57d921034cbff70bea745",
+      "original_bytes": 4979,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/verifier.py",
+          "sha256": "f22f4654f81efea6f7dfc156dade777f9f70275a9ac57d921034cbff70bea745",
+          "bytes": 4979
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/witness.txt",
+      "original_sha256": "b82ce0c51aef757cde3850dd17c5357c4dc8d897f8b977af398d96e73e7e0cae",
+      "original_bytes": 585955,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/witness.txt",
+          "sha256": "b82ce0c51aef757cde3850dd17c5357c4dc8d897f8b977af398d96e73e7e0cae",
+          "bytes": 585955
+        }
+      ]
+    },
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "db5a3bb502ce52aacb449560000d000e6587c400f35c8596f18ba39554a7562e",
+      "original_bytes": 7031,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "db5a3bb502ce52aacb449560000d000e6587c400f35c8596f18ba39554a7562e",
+          "bytes": 7031
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "be1e4a1d5118ebd74780384809ebbf6b0213b0f9c8066076922cffd9695c51d2",
+      "original_bytes": 1222,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "be1e4a1d5118ebd74780384809ebbf6b0213b0f9c8066076922cffd9695c51d2",
+          "bytes": 1222
+        }
+      ]
+    },
+    {
+      "path": "source/tests/breaker_step_formula.py",
+      "original_sha256": "9afcdc4df446da177bfaa37dcb91181c7161c25eb604235cbf0f681165d28471",
+      "original_bytes": 1826,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/breaker_step_formula.py",
+          "sha256": "9afcdc4df446da177bfaa37dcb91181c7161c25eb604235cbf0f681165d28471",
+          "bytes": 1826
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+      "original_sha256": "297fd1e129c679845df8633b3756eafea67fe326bca262d96ed0153ed8fcebcf",
+      "original_bytes": 1516,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+          "sha256": "297fd1e129c679845df8633b3756eafea67fe326bca262d96ed0153ed8fcebcf",
+          "bytes": 1516
+        }
+      ]
+    }
+  ],
+  "build_cwd": "source-root",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B17-P15",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

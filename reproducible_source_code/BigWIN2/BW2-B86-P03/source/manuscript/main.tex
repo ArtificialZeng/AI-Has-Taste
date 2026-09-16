@@ -1,0 +1,221 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\F}{\mathbb F}
+\newcommand{\PG}{\operatorname{PG}}
+\newcommand{\GL}{\operatorname{GL}}
+
+\title{An Elementary Difference-Spectrum Certificate for\\
+Projective Equivalence without CCZ Equivalence over $\F_{11}$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a function $h\colon\F_{11}\to\F_{11}$, let $\Gamma_h$ be its affine
+graph and let $S_h$ be the corresponding $12$-point projective set obtained
+by adjoining $(0:1:0)$.  We give a direct exact certificate that
+$f(x)=x^4$ and $g(x)=x^8$ are projectively equivalent but not
+CCZ-equivalent.  Swapping the second and third projective coordinates maps
+$S_f$ onto $S_g$, including the zero and infinite points.  On the affine
+side, the complete ordered-difference multisets have histograms
+$\{0:50,1:50,3:20\}$ and $\{0:30,1:70,2:20\}$, respectively, so no
+invertible affine map can carry one graph to the other.  A general
+classification theorem of Dempwolff already implies the same CCZ
+inequivalence for these two power functions; the purpose here is the short,
+self-contained difference-spectrum proof and its reproducible finite
+certificate, not a priority claim.
+\end{abstract}
+
+\section{Context and statement}
+
+All arithmetic below is in the prime field $\F_{11}$.  For
+$h\colon\F_{11}\to\F_{11}$, set
+\[
+  \Gamma_h=\{(x,h(x)):x\in\F_{11}\}\subset\F_{11}^2
+\]
+and
+\[
+  S_h=\{(x:h(x):1):x\in\F_{11}\}\cup\{(0:1:0)\}
+       \subset\PG(2,11).
+\]
+Huczynska, Klawuhn and Paterson study the projective comparison at
+issue here, prove in their Example~2.11 that $x^4$ and $x^8$ are
+projectively equivalent, and observe that their different degrees make
+them EA-inequivalent~\cite{HuczynskaKlawuhnPaterson2026}.  They define CCZ
+equivalence by affine equivalence of graphs, following the equivalence
+introduced by Carlet, Charpin and Zinoviev~\cite{CarletCharpinZinoviev1998},
+and formulate the existence of a projectively equivalent but
+CCZ-inequivalent pair as their Open Problem~4.
+
+There is an important prior-literature qualification.  Dempwolff's general
+classification says that the power functions $x^k$ and $x^\ell$ on
+$\F_{p^n}$ are CCZ-equivalent precisely when, for some $0\leq a<n$,
+\[
+ \ell\equiv p^a k\pmod{p^n-1}
+ \quad\hbox{or}\quad
+ k\ell\equiv p^a\pmod{p^n-1}.
+\]
+For $p=11,n=1,k=4,\ell=8$, neither condition holds: $8\not\equiv4$
+and $4\cdot8\equiv2\not\equiv1\pmod {10}$.  Thus that classification
+already gives the non-CCZ conclusion~\cite{Dempwolff2018}.  A later
+correction to an intermediate lemma explicitly retains the main
+classification theorem~\cite{Dempwolff2022Correction}.  The result below
+records instead a direct certificate requiring no classification machinery.
+
+\begin{theorem}\label{thm:main}
+Let $f(x)=x^4$ and $g(x)=x^8$ on $\F_{11}$.  The projectivity induced by
+\[
+ M=\begin{pmatrix}
+       1&0&0\\
+       0&0&1\\
+       0&1&0
+    \end{pmatrix}
+\]
+maps $S_f$ onto $S_g$.  No invertible affine transformation of
+$\F_{11}^2$ maps $\Gamma_f$ onto $\Gamma_g$.  Consequently $f$ and $g$
+are projectively equivalent but not CCZ-equivalent.
+\end{theorem}
+
+\section{The projective certificate}
+
+The determinant of $M$ is $-1=10$ in $\F_{11}$, so $M$ induces a
+projectivity.  It exchanges
+\[
+ M(0:0:1)=(0:1:0),\qquad M(0:1:0)=(0:0:1),
+\]
+thereby accounting for both exceptional points.  If $x\ne0$, then
+\[
+ M(x:x^4:1)=(x:1:x^4)=(x^{-3}:x^{-4}:1).
+\]
+Put $u=x^{-3}$.  Since $\gcd(3,10)=1$, the map $x\mapsto u$ permutes
+$\F_{11}^{*}$; moreover
+\[
+ u^8=x^{-24}=x^{-4},
+\]
+because exponents of nonzero elements may be reduced modulo $10$.
+It follows that the ten remaining images are exactly
+$(u:u^8:1)$ for $u\in\F_{11}^{*}$.  Hence $M(S_f)=S_g$.
+
+\section{The affine-difference obstruction}
+
+For a subset $\Gamma\subset\F_{11}^2$ and a nonzero vector $w$, define
+the ordered-difference count
+\[
+ \Delta_\Gamma(w)
+   =\#\{(P,Q)\in\Gamma^2:P-Q=w\}.
+\]
+The differential spectrum is standard machinery in the study of CCZ
+equivalence~\cite{Kaleyski2021}.  We include the short invariance proof,
+which applies directly in odd characteristic and also incorporates vertical
+differences.
+
+\begin{lemma}\label{lem:invariant}
+The multiset
+\[
+ \mathcal D(\Gamma)=
+ \bigl\{\!\bigl\{\Delta_\Gamma(w):
+       w\in\F_{11}^2\setminus\{0\}\bigr\}\!\bigr\}
+\]
+is invariant under invertible affine transformations of $\F_{11}^2$.
+\end{lemma}
+
+\begin{proof}
+Write an affine permutation as $T(z)=Az+t$, where
+$A\in\GL(2,11)$.  For every ordered pair,
+\[
+ T(P)-T(Q)=A(P-Q).
+\]
+The map $(P,Q)\mapsto(T(P),T(Q))$ is a bijection, and $A$ permutes the
+$120$ nonzero vectors.  Therefore
+$\Delta_{T(\Gamma)}(Aw)=\Delta_\Gamma(w)$ for every $w\ne0$, proving the
+claim.
+\end{proof}
+
+For $d\in\{4,8\}$ abbreviate
+$\Delta_d=\Delta_{\Gamma_{x^d}}$.  If $a\ne0$, an ordered difference
+$(a,b)$ has the form
+\[
+ (y+a,(y+a)^d)-(y,y^d).
+\]
+After writing $y=at$, we obtain the reconstruction formula
+\begin{equation}\label{eq:reconstruction}
+ \Delta_d(a,b)=
+ \#\left\{t\in\F_{11}:(t+1)^d-t^d=b/a^d\right\}.
+\end{equation}
+For $a=0$ and $b\ne0$, the count is zero.  Thus the two rows below,
+computed directly modulo $11$, reconstruct every one of the $120$ entries.
+
+\begin{center}
+{\small
+\begin{tabular}{c|rrrrrrrrrrr}
+$d\backslash t$&0&1&2&3&4&5&6&7&8&9&10\\ \hline
+$4$&1&4&10&10&6&0&5&1&1&7&10\\
+$8$&1&2&2&4&6&0&5&7&9&9&10
+\end{tabular}
+\par\medskip
+\begin{tabular}{c|rrrrrrrrrrr}
+$d\backslash c$&0&1&2&3&4&5&6&7&8&9&10\\ \hline
+$4$&1&3&0&0&1&1&1&1&0&0&3\\
+$8$&1&1&2&0&1&1&1&1&0&2&1
+\end{tabular}
+}
+\end{center}
+
+The first table lists $(t+1)^d-t^d$ for $t=0,\ldots,10$; the second
+lists the multiplicity of each value $c=0,\ldots,10$.  For each of the ten
+choices $a\ne0$, multiplication by $a^{-d}$ merely permutes the eleven
+values of $b$ in~\eqref{eq:reconstruction}.  Repeating the second row ten
+times and adjoining the ten forced vertical zero entries gives
+\[
+ \mathcal D(\Gamma_f)=\{0:50,\ 1:50,\ 3:20\},
+ \qquad
+ \mathcal D(\Gamma_g)=\{0:30,\ 1:70,\ 2:20\}.
+\]
+Here, for example, $\{0:50,1:50,3:20\}$ means that the values $0,1,3$
+occur with multiplicities $50,50,20$.  Each multiset has $120$ entries,
+and the weighted sum of its entries is $110$, the number of ordered pairs
+of distinct graph points.  Since the two multisets differ, Lemma
+\ref{lem:invariant} rules out every affine graph equivalence.  Together
+with the projective certificate, this proves Theorem~\ref{thm:main}.
+
+\section{Reproducibility and assistance disclosure}
+
+The accompanying file \path{research_exact_certificate.json} contains
+all twelve projective images and both complete $120$-entry difference
+tables.  The standard-library Python checker
+\path{research_independent_check.py} reconstructs the tables from
+\eqref{eq:reconstruction}, recomputes them independently by looping over
+ordered graph pairs, and requires entrywise agreement.  All operations are
+integer operations reduced modulo $11$; there is no floating-point or
+randomized computation.  The displayed derivation proves the theorem, while
+the files provide reproducible corroboration.  This distinction between an
+algebraic proof and an exact-arithmetic companion verifier is also made in
+recent prime-field work of Zeng, Liu and Ratnavelu
+\cite{ZengLiuRatnavelu2026}; that preprint is cited here as the most closely
+related verification practice in the author's supplied bibliography, not
+as a source for the present CCZ argument.
+
+OpenAI Codex assisted with exact finite-field computation, proof
+organization, literature discovery and LaTeX preparation.  A separate
+automated audit recomputed the finite certificate and checked the displayed
+argument; such an audit is not independent peer review.  All theorem-level
+claims used in the paper are stated and proved above, or are attributed to
+the cited primary literature.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

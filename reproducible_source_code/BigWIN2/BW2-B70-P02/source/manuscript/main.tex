@@ -1,0 +1,259 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+
+\title{A Certified Zero-Free Interval Through 1024\\
+for the Golden-Mean Fourier Transform}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\mu$ be the non-homogeneous golden-mean self-similar probability
+measure and let $F=\widehat\mu$.  Mao and Wu proved that $F$ has no real
+zero for $|\xi|\leq 27/25$ and reported a non-rigorous numerical scan through
+$10^7$.  We prove
+\[
+        F(\xi)\ne0 \qquad (27/25\leq |\xi|\leq1024)
+\]
+by a gap-free rational interval cover.  Each leaf is certified using
+outward-rounded Arb enclosures of the functional equation and its first
+three derivatives, followed by a quadratic interpolation witness for
+$F(\xi)/F(\xi/2)$.  The certificate has 11,224 leaves and is replayed at
+higher precision and recursion depth by a separately implemented coefficient
+recurrence.  Together with the preceding analytic result, this proves
+zero-freeness on $[-1024,1024]$.  The assertion through $10^7$ remains
+unresolved.
+\end{abstract}
+
+\section{Statement and context}
+
+Put
+\[
+ p=\frac{\sqrt5-1}{2},\qquad p+p^2=1,
+ \qquad f_1(x)=\frac{x}{2},\qquad f_2(x)=\frac{x+2}{4}.
+\]
+The contraction framework of Hutchinson~\cite{Hutchinson1981} gives the
+unique probability measure satisfying
+\[
+ \mu(E)=p\,\mu(f_1^{-1}E)+p^2\,\mu(f_2^{-1}E).
+\]
+Its support is contained in $[0,2/3]$.  We use the Fourier-transform
+normalization
+\[
+ F(\xi)=\int_{\R}e^{-2\pi i\xi x}\,d\mu(x).
+\]
+The invariance identity implies
+\begin{equation}\label{eq:functional}
+ F(\xi)=pF(\xi/2)+p^2e^{-\pi i\xi}F(\xi/4),
+ \qquad F(0)=1.
+\end{equation}
+
+Mao and Wu~\cite{MaoWu2026} introduced this zero-set problem in the study of
+spectrality.  Their Proposition~3.3 proves zero-freeness on
+$[-1.08,1.08]=[-27/25,27/25]$.  Their subsequent double-precision scan reports
+no real zero through $10^7$, but their final remark explicitly distinguishes
+that experiment from a formal computer-assisted proof.  The result here is
+the following strictly bounded extension of the rigorous interval.
+
+\begin{theorem}\label{thm:main}
+For every real $\xi$ with $27/25\leq |\xi|\leq1024$, one has
+$F(\xi)\ne0$.
+\end{theorem}
+
+\begin{corollary}\label{cor:combined}
+The Fourier transform $F$ has no real zero in $[-1024,1024]$.
+\end{corollary}
+
+Theorem~\ref{thm:main} says nothing about
+$1024<|\xi|\leq10^7$, and Corollary~\ref{cor:combined} by itself does not
+settle spectrality.
+
+\section{Analytic enclosures}
+
+The two maps send $[0,2/3]$ into $[0,1/3]$ and $[1/2,2/3]$,
+respectively.  Thus $\operatorname{supp}\mu\subset[0,2/3]$.  Set
+\[
+                    A=\frac{4\pi}{3}.
+\]
+For every real $t$, compact support and differentiation under the integral
+give
+\begin{equation}\label{eq:terminal}
+ |F(t)-1|\leq A|t|,
+ \qquad |F^{(n)}(t)|\leq A^n\quad (1\leq n\leq3).
+\end{equation}
+Indeed, the first inequality follows from
+$|e^{-2\pi ity}-1|\leq2\pi|t|y$, and the derivative bounds follow from
+$0\leq y\leq2/3$.
+
+Differentiating~\eqref{eq:functional} yields, for $0\leq n\leq3$,
+\begin{equation}\label{eq:derivatives}
+\begin{split}
+F^{(n)}(x)={}&p\,2^{-n}F^{(n)}(x/2)\\
+&+p^2e^{-\pi ix}\sum_{j=0}^{n}\binom{n}{j}
+       (-\pi i)^{n-j}4^{-j}F^{(j)}(x/4).
+\end{split}
+\end{equation}
+For a real interval $X$, bounds~\eqref{eq:terminal} enclose the terminal
+jets at $X/2^D$ and $X/2^{D+1}$.  Repeated use of
+\eqref{eq:derivatives}, with outward rounding at every operation, then
+encloses $F^{(0)},\ldots,F^{(3)}$ throughout $X$ and $X/2$.  The generator
+uses $D=120$ and 256-bit Arb ball arithmetic~\cite{Johansson2017Arb}.
+There is no unbounded truncation remainder: the terminal balls contain the
+exact Fourier integrals by~\eqref{eq:terminal}.
+
+Where the enclosure of $F(x/2)$ excludes zero, define
+\[
+                       q(x)=\frac{F(x)}{F(x/2)}.
+\]
+Order-three Taylor-series division applied to the enclosed jets produces
+enclosures of $q,q',q'',q'''$.  Every point and interval denominator is
+required to exclude zero before this quotient is used.
+
+\section{The leaf criterion}
+
+Let $I=[a,b]$, $m=(a+b)/2$, and $h=(b-a)/2$.  Write
+$x=m+hs$, where $-1\leq s\leq1$, and let $P(s)$ be the quadratic
+interpolating $q(a),q(m),q(b)$ at $s=-1,0,1$.  Applying the scalar Lagrange
+remainder separately to the real and imaginary components gives
+\begin{equation}\label{eq:remainder}
+ |\operatorname{comp}(q(m+hs)-P(s))|
+ \leq \sup_{x\in I}|\operatorname{comp}q'''(x)|
+       \frac{h^3}{9\sqrt3}.
+\end{equation}
+Here we used
+$\max_{[-1,1]}|s(s^2-1)|=2/(3\sqrt3)$ and the factor $1/3!$.
+
+Let the right sides of~\eqref{eq:remainder} be
+$\varepsilon_{\mathrm{re}}$ and $\varepsilon_{\mathrm{im}}$, and put
+$\varepsilon=(\varepsilon_{\mathrm{re}}^2+
+\varepsilon_{\mathrm{im}}^2)^{1/2}$.  The following elementary criterion is
+the logical unit checked by the certificate.
+
+\begin{lemma}\label{lem:leaf}
+Suppose $F(x/2)\ne0$ throughout $I$, all enclosures used above are valid,
+and
+\[
+                  |P(s)|>\varepsilon\qquad(-1\leq s\leq1).
+\]
+Then $F(x)\ne0$ throughout $I$.
+\end{lemma}
+
+\begin{proof}
+Equation~\eqref{eq:remainder} and the Euclidean norm give
+$|q(m+hs)-P(s)|\leq\varepsilon$.  The strict inequality and the reverse
+triangle inequality imply $q(m+hs)\ne0$.  Since the denominator defining
+$q$ is nonzero, its numerator $F(m+hs)$ is nonzero as well.
+\end{proof}
+
+For each leaf the certificate proves the strict polynomial inequality in
+Lemma~\ref{lem:leaf} on an exact dyadic cover of $[-1,1]$.  Most segments are
+settled by a direct outward-rounded enclosure of $P$.  If that enclosure is
+too wide, the verifier encloses
+\[
+              (|P|^2)'=2\operatorname{Re}(\overline P P')
+\]
+with a fixed strict sign and checks the minimizing endpoint.  Interval
+coefficients enclose the exact interpolant, so both alternatives retain all
+rounding and input uncertainty.
+
+\section{Gap-free certificate and proof}
+
+The initial exact partition consists of
+\[
+ \left[\frac{27}{25}+\frac{k}{8},
+       \frac{27}{25}+\frac{k+1}{8}\right]
+       \quad(0\leq k<8183)
+\]
+and the final interval $[204791/200,1024]$, whose width is $9/200$.
+These 8,184 closed cells meet at their endpoints and cover
+$[27/25,1024]$.  A failed leaf criterion causes exact midpoint bisection;
+there is no acceptance based on sampling.
+
+The resulting certificate contains 11,224 accepted Taylor leaves.  The
+maximum Taylor bisection depth is 10.  Its exact dyadic polynomial covers
+contain 11,396 segments and have maximum depth 7.  Of those segments, 11,360
+are accepted by direct separation, 23 by certified increase of $|P|^2$, and
+13 by certified decrease.  At 256-bit precision, the least absolute lower
+bound among interval denominators exceeds
+$1.3651341245973564\times10^{-5}$; the least certified polynomial-distance
+lower bound minus remainder-norm upper bound exceeds
+$3.5487297055146310\times10^{-5}$.  Thus all decisions are strict.
+
+The verifier first checks exact rational adjacency, endpoint inclusion,
+dyadic alignment, every serialized denominator, and every polynomial
+witness.  It then recomputes all leaves at 320-bit precision and recursion
+depth 128.  This second evaluator propagates Taylor coefficients rather than
+the generator's raw derivatives and reconstructs every interpolation and
+distance proof.  It again accepts all 11,224 leaves and obtains the same
+aggregate 11,396 polynomial segments.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+On every positive leaf, the directed enclosures and the verified strict
+inequalities satisfy Lemma~\ref{lem:leaf}; hence $F$ is nonzero there.
+Exact partition checks show that the leaves cover the complete closed
+interval $[27/25,1024]$.  Finally, positivity and reality of $\mu$ imply
+$F(-x)=\overline{F(x)}$, which proves the stated absolute-value range.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:combined}]
+Combine Theorem~\ref{thm:main} with Mao--Wu Proposition~3.3 on
+$[-27/25,27/25]$.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The supplementary artifacts are
+\begin{verbatim}
+evidence/research_taylor_cover_1024.py
+evidence/research_taylor_cover_1024_certificate.json
+evidence/verify_research_taylor_cover_1024.py
+evidence/research_taylor_stencils.py
+evidence/verify_research_taylor_stencils.py
+\end{verbatim}
+From the project root, the decisive replay command is
+\begin{verbatim}
+python3 evidence/verify_research_taylor_cover_1024.py \
+  evidence/research_taylor_cover_1024_certificate.json
+\end{verbatim}
+The generator and both replay paths use python-flint 0.9.0 and Arb.  The
+second path changes precision, depth, and recurrence implementation, but it
+is not a cross-library formalization.  Consequently the proof has the usual
+software trust boundary of a directed-rounding computer-assisted argument.
+
+The organization separates certificate generation from deterministic
+verification.  This proof-carrying pattern, including explicit restriction
+to the certified finite model, also appears in the exact finite-certificate
+work of Zeng, Liu, Ratnavelu, and Ong~\cite{ZengEtAl2026}; that citation is a
+methodological comparison, not an input to the Fourier analysis here.
+
+No certificate leaf covers a point larger than 1024.  The nonuniform
+subdivision depths also give no justified extrapolation of cost or validity
+to $10^7$.  In particular, a successful build or verifier run is not itself
+a proof of any statement beyond the analytic reductions and the exact domain
+encoded above.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, design and implementation
+of the certificate generator and verifier, adversarial audit organization,
+and initial manuscript preparation.  Language-model output is not used as
+mathematical evidence.  The evidence consists of the displayed analytic
+reductions, the complete rational certificate, and deterministic replay.
+No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

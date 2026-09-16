@@ -1,0 +1,287 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A counterexample to multiset rook-Eulerian interlacing},pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\DeclareMathOperator{\asc}{asc}
+\newcommand{\W}{\mathcal W}
+\title{A counterexample to multiset rook--Eulerian interlacing}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190. Email: \texttt{xiaojianzeng@foxmail.com}.}}
+\date{September 13, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Alexandersson, Jal and Quemener conjectured that multiset rook--Eulerian
+polynomials on Ferrers boards are real-rooted and that their first-entry
+refinements, in decreasing order of the first letter, form an interlacing
+sequence. We refute the interlacing clause on the nonrectangular board
+$(3,3,3,3,4,4)$ with content $(2,2,1,1)$. Its $60$ admissible words have
+explicit refined generating polynomials whose required root order fails
+because $-4-\sqrt{13}<-7$. All three refinements and their sum nevertheless
+have only real roots. Thus the conjecture as a conjunction is false, while
+its separate assertion of universal real-rootedness for the total polynomial
+is not decided here. A complete insertion table makes the counting
+certificate directly checkable.
+\end{abstract}
+
+\section{The assertion and the counterexample}
+
+We use the conventions of Alexandersson--Jal--Quemener
+\cite[Definitions 5, 8 and 9; Section 3.3]{AJQ2025}.
+A Ferrers board with $n$ rows is described by positive integers
+$\lambda_1\leq\cdots\leq\lambda_n$; row $r$ consists of columns
+$1,\ldots,\lambda_r$. Let $\alpha=(\alpha_1,\ldots,\alpha_k)$ be a
+vector of nonnegative integers with sum $n$. Define
+\[
+ \W(\lambda,\alpha)=\left\{
+ w\in\{1,\ldots,k\}^n:
+ \#\{r:w_r=j\}=\alpha_j\ (1\leq j\leq k),\quad
+ w_r\leq\lambda_r\ (1\leq r\leq n)
+ \right\}.
+\]
+Each row has one rook, and a column may have several rooks.
+For a word $w$, set
+\[
+ \asc(w)=\#\{r:1\leq r<n,\ w_r<w_{r+1}\}.
+\]
+These are strict adjacent ascents, with no endpoint sentinel. The total
+and first-entry polynomials are
+\begin{equation}\label{eq:definitions}
+ R(\lambda,\alpha;t)=\sum_{w\in\W(\lambda,\alpha)}t^{\asc(w)},
+ \qquad
+ R_j(\lambda,\alpha;t)=
+ \sum_{\substack{w\in\W(\lambda,\alpha)\\w_1=j}}t^{\asc(w)}.
+\end{equation}
+In particular, $R=\sum_{j=1}^{\lambda_1}R_j$, with empty sums equal to zero.
+
+For polynomials $f,g$ with positive leading coefficients and real
+nonpositive roots, write their roots, with multiplicity, in decreasing
+order as $a_1,a_2,\ldots$ and $b_1,b_2,\ldots$, respectively.
+The convention $f\preceq g$ means
+\begin{equation}\label{eq:interlace}
+ \cdots\leq a_3\leq b_3\leq a_2\leq b_2\leq a_1\leq b_1\leq0,
+ \qquad \deg g-\deg f\in\{0,1\}.
+\end{equation}
+An interlacing sequence $(f_1,\ldots,f_m)$ must satisfy
+$f_i\preceq f_j$ for \emph{every} $i<j$.
+Conjecture 28 of \cite{AJQ2025}, in its arXiv v1 formulation, asserts
+real-rootedness of $R(\lambda,\alpha;t)$ for every Ferrers board and content,
+together with interlacing of
+\begin{equation}\label{eq:conjectured}
+ (R_{\lambda_1},R_{\lambda_1-1},\ldots,R_2,R_1).
+\end{equation}
+
+\begin{theorem}\label{thm:witness}
+For $\lambda=(3,3,3,3,4,4)$ and $\alpha=(2,2,1,1)$, there are exactly
+$60$ words in $\W(\lambda,\alpha)$, and
+\begin{align}\label{eq:refinements}
+ R_3(t)&=t(t^2+8t+3),\notag\\
+ R_2(t)&=t(8t^2+15t+1),\\
+ R_1(t)&=t^2(t+7)(2t+1).\notag
+\end{align}
+The sequence $(R_3,R_2,R_1)$ is not interlacing. Each of these three
+polynomials and the total
+\begin{equation}\label{eq:total}
+ R(t)=2t(t^3+12t^2+15t+2)
+\end{equation}
+is real-rooted.
+\end{theorem}
+
+The board is non-skew and nonrectangular, and every content coordinate is
+positive. The theorem therefore refutes the interlacing clause of the
+stated conjecture without a degeneracy involving zero refinements. It
+does not refute the separately quantified total-real-rootedness clause.
+
+The relevant preceding results concern two different specializations.
+In the nonattacking, distinct-letter setting,
+\cite[Theorem 12]{AJQ2025} proves refinement interlacing and total
+real-rootedness. For rectangles, the context is Simion's theory of
+multiset composition and Eulerian polynomials \cite{Simion1984}; the
+identification of rectangular total real-rootedness with Section 2 of that paper
+is recorded in \cite[Section 3.3]{AJQ2025}.
+Ma and Pan \cite[Theorem 1.11]{MaPan2023} prove first-entry interlacing
+for unrestricted multiset words on at least three distinct letters, using
+descents. Complementing the alphabet exchanges ascents with descents
+and reverses the first-entry order, so their result supplies the
+corresponding rectangular comparison relevant here. More recently,
+Yan \cite[Theorems 1.4 and 1.5]{Yan2026} proves real-rootedness for
+unrestricted colored multiset totals and interlacing when one multiplicity
+increases. Those statements concern different word sets and comparisons
+from \eqref{eq:conjectured} with row bounds.
+The present contribution is the explicit failure of the proposed
+first-entry extension when repeated letters and nonrectangular row bounds
+occur together. We found no equivalent counterexample in the primary
+sources inspected through September 13, 2026; this is a bounded literature
+comparison, not an exhaustive priority claim.
+
+\section{Counting and root order}
+
+\begin{proof}[Proof of Theorem~\ref{thm:witness}]
+The unique letter $4$ can occupy only position $5$ or $6$. Deleting it
+leaves a permutation $v=v_1\cdots v_5$ of $11223$. Conversely, each such
+base gives exactly the two admissible words
+\[
+ v_1v_2v_3v_4\,4\,v_5,
+ \qquad
+ v_1v_2v_3v_4v_5\,4.
+\]
+Deletion is inverse to insertion, so no word is missed or counted twice.
+There are $5\binom42=30$ bases: choose the position of $3$, then the
+two positions of $1$, and fill the remaining positions with $2$.
+Thus there are exactly $60$ admissible words.
+
+Write $a_5(v)$ and $a_6(v)$ for the ascent counts after inserting $4$
+in position $5$ and $6$, respectively. Since every letter of $v$ is
+less than $4$,
+\begin{equation}\label{eq:insertion}
+ a_5(v)=1+\sum_{r=1}^3\mathbf{1}_{\{v_r<v_{r+1}\}},
+ \qquad
+ a_6(v)=1+\sum_{r=1}^4\mathbf{1}_{\{v_r<v_{r+1}\}}.
+\end{equation}
+The complete base table is in Appendix~\ref{app:certificate}.
+Grouping its entries by the first letter gives the following two
+contributions:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+First letter & $4$ in position $5$ & $4$ in position $6$\\
+\midrule
+$1$ & $5t^2+7t^3$ & $2t^2+8t^3+2t^4$\\
+$2$ & $t+9t^2+2t^3$ & $6t^2+6t^3$\\
+$3$ & $2t+4t^2$ & $t+4t^2+t^3$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Adding the two columns and factoring proves \eqref{eq:refinements}.
+
+In particular, the roots of $R_3$ and $R_1$, with multiplicity, are
+\[
+ \{-4-\sqrt{13},-4+\sqrt{13},0\},
+ \qquad
+ \{-7,-\tfrac12,0,0\}.
+\]
+Since $\deg R_3=3$ and $\deg R_1=4$, the necessary chain for
+$R_3\preceq R_1$ starts with
+$\min\operatorname{root}(R_1)\leq\min\operatorname{root}(R_3)$.
+This fails:
+\begin{equation}\label{eq:obstruction}
+ -4-\sqrt{13}<-7,
+ \qquad\text{because }13>3^2.
+\end{equation}
+The pair $(R_3,R_1)$ is required by the all-pairs definition of an
+interlacing sequence. Hence \eqref{eq:conjectured} fails.
+There is no cancellation of roots at zero in this comparison.
+
+The displayed roots show that $R_1$ and $R_3$ are real-rooted.
+The two nonzero roots of $R_2$ are
+$(-15\pm\sqrt{193})/16$, which are real and negative because
+$0<193<15^2$. Summing \eqref{eq:refinements} gives \eqref{eq:total}.
+For $q(t)=t^3+12t^2+15t+2$, exact integer evaluation gives
+\[
+\begin{array}{c|rrrrr}
+x&-11&-10&-2&-1&0\\\hline
+q(x)&-42&52&12&-2&2
+\end{array}
+\]
+There is a root in each of $(-11,-10)$, $(-2,-1)$ and $(-1,0)$ by
+the intermediate value theorem. These three distinct roots exhaust the
+degree of $q$. The additional root of $R=2tq$ is zero, proving the last
+assertion.
+\end{proof}
+
+The root certificate uses exact order comparisons and polynomial
+evaluations. The same type of certification is used for an algebraically
+defined bound by Zeng, Liu and Ratnavelu
+\cite{ZengLiuRatnavelu2026}, Section 2, equations (17)--(18), where a
+rational evaluation of a cubic and monotonicity replace a decimal root
+estimate. Here the obstruction reduces to \eqref{eq:obstruction}, and
+integer sign changes certify the total. No numerical root approximation
+is needed.
+
+The example establishes neither a minimal counterexample size nor a
+classification of boards admitting interlacing. In particular, the
+universal question whether every nonzero total
+$R(\lambda,\alpha;t)$ has only real roots remains unresolved by this
+argument.
+
+\appendix
+\section{Complete insertion certificate}\label{app:certificate}
+
+The $30$ bases and their two ascent counts in \eqref{eq:insertion} are
+listed below. There are $12$ bases beginning with $1$, $12$ beginning
+with $2$, and $6$ beginning with $3$. The two halves of the table together
+list every permutation of $11223$ exactly once.
+
+\begin{center}
+\begin{tabular}{crr@{\qquad\qquad}crr}
+\toprule
+$v$ & $a_5(v)$ & $a_6(v)$ & $v$ & $a_5(v)$ & $a_6(v)$\\
+\midrule
+11223 & 2 & 3 & 21231 & 3 & 3\\
+11232 & 3 & 3 & 21312 & 2 & 3\\
+11322 & 2 & 2 & 21321 & 2 & 2\\
+12123 & 3 & 4 & 22113 & 1 & 2\\
+12132 & 3 & 3 & 22131 & 2 & 2\\
+12213 & 2 & 3 & 22311 & 2 & 2\\
+12231 & 3 & 3 & 23112 & 2 & 3\\
+12312 & 3 & 4 & 23121 & 3 & 3\\
+12321 & 3 & 3 & 23211 & 2 & 2\\
+13122 & 3 & 3 & 31122 & 2 & 2\\
+13212 & 2 & 3 & 31212 & 2 & 3\\
+13221 & 2 & 2 & 31221 & 2 & 2\\
+21123 & 2 & 3 & 32112 & 1 & 2\\
+21132 & 2 & 2 & 32121 & 2 & 2\\
+21213 & 2 & 3 & 32211 & 1 & 1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+As a separate check, one may visit all $4^6=4096$ words on
+$\{1,2,3,4\}$, retain content $(2,2,1,1)$, and impose the row bounds.
+Exactly $180$ words pass the content test and $60$ pass both tests.
+The following complete Python procedure computes coefficient lists in
+increasing degree order; it requires only the standard library.
+\begin{quote}\small
+\begin{verbatim}
+from itertools import product
+lam = (3, 3, 3, 3, 4, 4)
+alpha = (2, 2, 1, 1)
+c = {j: [0] * 6 for j in (1, 2, 3)}
+for w in product(range(1, 5), repeat=6):
+    if tuple(w.count(j) for j in range(1, 5)) != alpha:
+        continue
+    if any(x > b for x, b in zip(w, lam)):
+        continue
+    a = sum(w[r] < w[r + 1] for r in range(5))
+    c[w[0]][a] += 1
+assert c == {1: [0, 0, 7, 15, 2, 0],
+             2: [0, 1, 15, 8, 0, 0],
+             3: [0, 3, 8, 1, 0, 0]}
+\end{verbatim}
+\end{quote}
+The enumeration was also implemented by choosing the base positions
+and by visiting all $6!$ labeled orders, erasing the labels on equal
+letters, and filtering the row bounds. The resulting word sets and ascent
+counts agree. These computations check the finite table; the insertion
+bijection and root comparison give the mathematical argument.
+
+\section*{Computational and AI assistance}
+AI tools assisted with witness exploration, programming, proof drafting,
+source searches and manuscript preparation. The finite count was
+recomputed by separately implemented enumeration methods, including a
+Cartesian-product check that imports no discovery code. All decisive
+counting and sign computations use exact integer or rational arithmetic.
+The proof above is explicit and does not depend on a numerical fit,
+a root plot, or a formal proof-assistant verification.
+
+\bibliographystyle{plain}
+\raggedright
+\bibliography{references}
+\end{document}

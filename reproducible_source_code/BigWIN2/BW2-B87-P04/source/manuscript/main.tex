@@ -1,0 +1,348 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,
+  urlcolor=blue,
+  pdftitle={Coloop Multiplication for Radial Mobius Hilbert Series},
+  pdfauthor={Xiaojian Zeng}]{hyperref}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{references.bib}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\cl}{\operatorname{cl}}
+
+\title{Coloop Multiplication for Radial M\"obius Hilbert Series:\\
+the Connected Graphic Classification Through Five Vertices}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the radial cyclic module of the graded M\"obius algebra, adjoining a
+coloop suggests multiplication of the Hilbert series by $1+q$.  We give a
+complete computer-assisted classification of this identity for cycle
+matroids of connected simple graphs on at most five vertices.  The identity
+holds through order four.  At order five it fails exactly when the graph
+complement is a linear forest.  We determine all seven nonzero differences;
+the unique failure with the fewest edges is
+$K_5-P_5\cong\Theta(1,2,3)$, whose Hilbert vectors are
+$(1,6,11,6,1)$ and $(1,7,19,19,7,1)$ before and after adjoining the
+coloop.  The proof exhausts all $31$ graph isomorphism classes, constructs
+every flat and cyclic space over $\Q$, and is checked by a separate exact
+implementation based on connected set partitions.  The result is confined
+to this finite graphic range and does not settle the general operations
+question for the radial cyclic module.
+\end{abstract}
+
+\section{Context and statement}
+
+Cycle matroids are among the motivating examples in Whitney's introduction
+of matroids \cite{Whitney1935}.  The graded M\"obius algebra of a matroid is
+also a natural module-theoretic object in modern combinatorial Hodge theory
+\cite{BradenEtAl2026}.  Sinclair \cite{Sinclair2026} introduced a canonical
+radial lowering operator on this algebra and the Hilbert series of the cyclic
+module generated jointly by it and the atom lowerings.  He asked how that
+module behaves under direct sum, deletion, contraction, and duality, while
+noting that simple formulas for the Hilbert series fail
+\cite[Question~6.3]{Sinclair2026}.
+
+This note isolates the direct sum with one coloop in the smallest connected
+graphic range.  Relative to \cite{Sinclair2026}, the contribution is the
+exact classification through five vertices, including the first failing
+order in that range, the least-edge uniqueness statement, and every nonzero
+difference.  Sinclair's Example~3.2 supplies the value for $K_5$ but not its
+coloop extension or the classification below.  No assertion is made here
+about graphs of larger order or about the full operations question.
+
+We now fix the conventions.  Let $G=(V,E)$ be a connected simple graph.  For
+$A\subseteq E$, let $c(V,A)$ count all components of the spanning subgraph
+$(V,A)$, isolated vertices included, and set
+\[
+  r(A)=|V|-c(V,A).
+\]
+The cycle-matroid closure is
+\[
+  \cl_G(A)=A\cup
+  \{uv\in E:u\text{ and }v\text{ are connected in }(V,A)\}.
+\]
+Thus $X\subseteq E$ is a flat when $\cl_G(X)=X$.  Write
+$X\prec Y$ when $X$ is covered by $Y$ in the flat lattice.
+
+Work over $\Q$ with basis $\{g_X:X\text{ is a flat}\}$.  For $e\in E$,
+define the lowering operators
+\begin{align*}
+ L_e g_Y
+   &=\sum_{\substack{X\prec Y\\e\in Y\setminus X}}g_X,\\
+ Dg_Y
+   &=r(Y)\sum_{X\prec Y}
+       \frac{|Y\setminus X|}{|E\setminus X|}g_X.
+\end{align*}
+These are the rescaled flat-cover formulas of
+\cite[Proposition~2.4]{Sinclair2026}, specialized to a simple graphic
+matroid.  A denominator is never zero, because a lower member of a cover is
+not the top flat.  Starting at the top flat, put
+\[
+ C_0(M)=\Q g_E,
+ \qquad
+ C_{j+1}(M)=D C_j(M)+\sum_{e\in E}L_e C_j(M),
+\]
+and
+\[
+ H_M(q)=\sum_{j=0}^{r(M)}\dim_{\Q}C_j(M)q^j.
+\]
+If $c$ is a new coloop, let $M^+=M\oplus U_{1,1}$ and define
+\[
+  \Delta_G(q)=H_{M^+}(q)-(1+q)H_M(q).
+\]
+Graphically, $M^+$ is realized by attaching a new leaf edge to $G$.  For the
+one-vertex graph $E=\varnothing$, the conventions give $H_M=1$.
+
+A \emph{linear forest} is a disjoint union of paths; an isolated vertex is a
+copy of $P_1$.
+
+\begin{theorem}[Complete classification through five vertices]
+\label{thm:classification}
+Let $G$ be a connected simple graph with $1\leq |V(G)|\leq5$ and let all
+objects be as above.
+\begin{enumerate}
+\item If $|V(G)|\leq4$, then $\Delta_G(q)=0$.
+\item If $|V(G)|=5$, then $\Delta_G(q)\neq0$ if and only if the complement
+  $\overline G$ is a linear forest.
+\item The seven nonzero cases, including the two Hilbert vectors that certify
+  each difference, are listed in Table~\ref{tab:nonzero}.
+\item Within this range, order five is the first failing order.  Among the
+  five-vertex failures, the minimum number of edges is six, and the unique
+  such graph up to isomorphism is
+  $K_5-P_5\cong\Theta(1,2,3)$.  Its two Hilbert vectors are
+  $(1,6,11,6,1)$ and $(1,7,19,19,7,1)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}lcll@{}}
+\toprule
+$\overline G$ & $|E(G)|$ & $(\dim C_j(M))_j$ &
+  $(\dim C_j(M^+))_j$ \\
+\midrule
+$P_5$                  & 6  & $(1,6,11,6,1)$ & $(1,7,19,19,7,1)$ \\
+$P_4\sqcup P_1$        & 7  & $(1,7,13,7,1)$ & $(1,8,22,22,8,1)$ \\
+$P_3\sqcup P_2$        & 7  & $(1,8,15,7,1)$ & $(1,9,25,24,8,1)$ \\
+$P_3\sqcup2P_1$        & 8  & $(1,9,16,8,1)$ & $(1,10,26,26,9,1)$ \\
+$2P_2\sqcup P_1$       & 8  & $(1,9,20,8,1)$ & $(1,10,33,28,9,1)$ \\
+$P_2\sqcup3P_1$        & 9  & $(1,10,22,9,1)$ & $(1,11,36,31,10,1)$ \\
+$5P_1$                  & 10 & $(1,11,25,10,1)$ & $(1,12,40,35,11,1)$ \\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{tabular}{@{}lc@{}}
+\toprule
+$\overline G$ & $\Delta_G(q)$ \\
+\midrule
+$P_5,\ P_4\sqcup P_1,\ P_3\sqcup P_2$ & $2q^2+2q^3$ \\
+$P_3\sqcup2P_1$                         & $q^2+2q^3$ \\
+$2P_2\sqcup P_1,\ P_2\sqcup3P_1,\ 5P_1$ & $4q^2$ \\
+\bottomrule
+\end{tabular}
+\caption{All nonzero differences at order five.}
+\label{tab:nonzero}
+\end{table}
+\section{Two exact models for graphic flats}
+
+The proof is finite, but its mathematical specification does not depend on a
+particular graph or flat encoding.  The generating computation uses closure
+of edge subsets.  A separate checker uses the following partition model.
+
+\begin{lemma}[Connected-partition model]
+\label{lem:partition}
+The flats of $M(G)$ are in bijection with the set partitions $\pi$ of $V$
+whose blocks induce connected subgraphs of $G$.  The flat associated with
+$\pi$ is
+\[
+ X(\pi)=\{uv\in E:u\text{ and }v\text{ lie in the same block of }\pi\},
+\]
+and its rank is $|V|-|\pi|$.
+\end{lemma}
+
+\begin{proof}
+Let $X$ be a flat, and let $\pi$ be the component partition of $(V,X)$.
+Every block is connected in $G$.  Closure adds precisely all edges of $G$
+whose endpoints are in one component of $(V,X)$.  Since $X$ is closed, it
+already contains all of them, so $X=X(\pi)$.
+
+Conversely, suppose every block of $\pi$ induces a connected subgraph of
+$G$.  Then the components of $(V,X(\pi))$ are exactly the blocks of $\pi$.
+Every graph edge internal to one component already belongs to $X(\pi)$, so
+$X(\pi)$ is closed.  The rank formula follows from the number of spanning
+components.
+\end{proof}
+
+If $X\subsetneq Y$ are flats of adjacent ranks, they form a cover; therefore
+either implementation can determine the exact flat-cover relation.  On a
+ranked flat layer, the two matrices used in the computation have entries
+\begin{align}
+ (L_e)_{X,Y}&=\mathbf{1}_{\{e\in Y\setminus X\}},
+ \label{eq:Le}\tag{1}\\
+ D_{X,Y}&=r(Y)\frac{|Y\setminus X|}{|E|-|X|}
+ \label{eq:D}\tag{2}
+\end{align}
+when $X\prec Y$, and zero otherwise.  Thus the definitions are reduced to
+finite set operations and exact rational arithmetic.
+
+\section{Exhaustion and rational-rank certificates}
+
+We describe enough of the certificate construction to make clear why its
+successful replay proves Theorem~\ref{thm:classification}.
+
+\subsection{All graph isomorphism classes}
+
+For each $n=1,\ldots,5$, the generator visits all
+$2^{\binom n2}$ labeled edge masks, rejects the disconnected masks, and
+minimizes the adjacency word over all $n!$ vertex permutations.  It also
+computes the automorphism group size of each representative.  The resulting
+counts are shown in Table~\ref{tab:coverage}.  The orbit-size sum agrees with
+the independently counted connected labeled graphs in every order, so the
+$31$ retained representatives cover the quantified domain exactly once up
+to isomorphism.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$n$ & labeled masks & connected labeled & representatives & orbit-size sum \\
+\midrule
+1 & 1    & 1   & 1  & 1   \\
+2 & 2    & 1   & 1  & 1   \\
+3 & 8    & 4   & 2  & 4   \\
+4 & 64   & 38  & 6  & 38  \\
+5 & 1024 & 728 & 21 & 728 \\
+\bottomrule
+\end{tabular}
+\caption{Exact graph-orbit coverage.}
+\label{tab:coverage}
+\end{table}
+
+Relabeling vertices permutes the edges and flats.  The induced map
+$g_X\mapsto g_{\sigma X}$ intertwines $D$ and permutes the family
+$(L_e)_{e\in E}$.  It therefore carries every $C_j(M(G))$ isomorphically to
+the corresponding space for $\sigma G$.  One representative per orbit is
+enough.
+
+\subsection{Flat and cyclic-space certificates}
+
+For a representative with $m$ edges, the generator visits all $2^m$ edge
+subsets.  Union--find computes the components of $(V,A)$ and hence
+\[
+ \cl_G(A)=\{uv\in E:u,v\text{ have the same component root in }(V,A)\}.
+\]
+Its fixed points give every flat.  Covers are then found by literal
+intermediate-flat exclusion.  The program asserts, for every edge subset,
+extensivity, idempotence, and rank preservation of closure, and also checks
+that literal covers agree with inclusions between adjacent rank layers.
+
+Starting with the unit vector at the top flat, assume that an exact row basis
+for $C_j$ has been obtained in one flat layer.  Apply every matrix
+\eqref{eq:Le} and the matrix \eqref{eq:D} to every basis vector, concatenate
+the images, and perform Gaussian elimination over $\Q$.  The resulting rows
+span
+\[
+  DC_j+\sum_{e\in E}L_eC_j=C_{j+1}.
+\]
+Induction on $j$ proves that their exact ranks are the coefficients of
+$H_M$.  The full certificate serializes every flat layer, coordinate order,
+and sparse rational echelon basis, rather than only the final dimensions.
+
+For $M^+$ the computation attaches a new vertex by one pendant edge and
+repeats the entire construction.  The pendant edge is a bridge, hence a
+coloop, so the resulting cycle matroid is $M(G)\oplus U_{1,1}$.  No direct-sum
+formula is assumed in calculating $H_{M^+}$.
+
+The separate replay checker does not call the subset-closure implementation.
+It generates the flats from Lemma~\ref{lem:partition}, constructs covers and
+the matrices \eqref{eq:Le}--\eqref{eq:D} afresh, and computes exact column
+spaces with SymPy \cite{MeurerEtAl2017}.  For all $31$ graphs and all $31$
+pendant-edge extensions, its flat layers equal the serialized layers; each
+serialized basis is linearly independent and spans the freshly recomputed
+cyclic space in every degree.  A separate execution of the generator also
+reproduces all $62$ certificates exactly.  This certificate pattern is
+related in spirit to exhaustive graph-isomorphism and exact-arithmetic checks
+of algebraic multiplication maps in \cite{Zeng2026Whiskered}; here all
+claimed ranks are over $\Q$, and no floating-point or modular rank is used.
+
+The replay returns zero differences for all ten representatives of orders at
+most four and precisely the seven rows of
+Table~\ref{tab:nonzero} among the $21$ representatives of order five.  The
+$K_5$ row is $(1,11,25,10,1)$, agreeing with
+\cite[Example~3.2]{Sinclair2026}.  These exact outputs prove the first three
+parts of Theorem~\ref{thm:classification}: a linear forest on five vertices
+is determined up to isomorphism by the path sizes in an integer partition of
+five, and the seven partitions are exactly the seven complement types in the
+table.
+
+\subsection{Least-edge uniqueness}
+
+It remains only to extract the final structural conclusion from the table.
+A linear forest on five vertices with $k$ components has $5-k$ edges.  Among
+the seven possible types, only $P_5$ has four edges.  Hence only its
+complement has $10-4=6$ edges; all other failures have at least seven edges.
+Thus the unique least-edge failure is $K_5-P_5$.
+
+For completeness, take vertices $0,1,2,3,4$.  The theta graph formed by the
+three internally disjoint paths
+\[
+  0-1,\qquad 0-2-1,\qquad 0-3-4-1
+\]
+has complement path $0-4-2-3-1$.  It is therefore
+$K_5-P_5\cong\Theta(1,2,3)$.  Its two Hilbert vectors are the first row of
+Table~\ref{tab:nonzero}, completing the proof of
+Theorem~\ref{thm:classification}.
+
+\section{Reproducibility, assistance, and limits}
+
+The ancillary archive contains the exact generator
+\path{independent_subset_check.py}, its complete JSON certificate
+\path{subset_closure_census.json}, the connected-partition replay
+\path{referee_verify.py}, and the detailed replay output
+\path{referee_replay.json}.  The certificate can be regenerated with
+Python~3 using only standard-library rational arithmetic; the separate replay
+uses SymPy~1.14.0.  These artifacts cover exactly the finite domain stated in
+Theorem~\ref{thm:classification}.
+
+OpenAI Codex was used in a bounded research workflow to help generate and
+inspect code, execute the exact computations, conduct a separate replay of
+the certificate, check bibliographic records, and draft this manuscript.
+Language-model output is not used as mathematical evidence: the finite
+claims are supported by inspectable source code, complete exact certificates,
+and a separate exact implementation.  The author is responsible for the
+statement and the manuscript.
+
+Nothing here addresses connected graphs on six or more vertices,
+disconnected or nonsimple graphs, arbitrary matroids, or a general formula
+for direct sum, deletion, contraction, or duality.  In particular, the result
+does not answer Sinclair's Question~6.3.  The literature comparison in this
+note is deliberately limited to the cited records and is not a claim of
+priority.
+
+\printbibliography
+
+\end{document}

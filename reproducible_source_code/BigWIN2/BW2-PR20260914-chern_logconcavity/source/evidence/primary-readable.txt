@@ -1,0 +1,1226 @@
+
+Positivity in classical enumerative geometry: A Case Study in Synchronized AI-Assisted Mathematics
+Report GitHub Issue
+×
+Title:
+Content selection saved. Describe the issue below:
+Description:
+Submit without GitHub
+Submit in GitHub
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+Why HTML?
+Report Issue
+Back to Abstract
+Download PDF
+Abstract.
+1 Introduction
+1.1 Motivation
+1.2 Results
+1.3 Methodology: orchestrating AI tools and human insight
+2 A binomiality theorem for symmetric powers
+2.1 The case of $d=2$ : the Laksov–Lascoux–Thorup formula
+2.2 A $K$ -theoretic generalization.
+2.3 Leading terms and applications
+2.4 Euler classes
+3 A rank-two binomial refinement
+3.1 Binomial log-concavity implies ordinary log-concavity
+3.2 Proof of binomial log-concavity for $j=0$
+4 An AlphaEvolve detective story for Conjecture
+4.1 A first local ansatz.
+4.2 A symmetric residual.
+4.3 Correcting the local structure
+4.4 Passing to lower modes.
+4.5 Conclusion of the AlphaEvolve search.
+5 Proofs of Conjectures and by Co-Mathematician
+6 Shifted binomial log-concavity for Plücker coefficients
+6.1 A proof strategy and the current gap
+6.2 Chern–Schwartz–MacPherson classes of the coincident root strata
+A Prefix-sum polynomials in the proof of Theorem
+References
+License: CC BY 4.0
+arXiv:2605.25271v1 [math.AG] 24 May 2026
+Positivity in classical enumerative geometry: A Case Study in Synchronized AI-Assisted Mathematics
+Gergely Bérczi
+Address: Department of Mathematics, Aarhus University
+Email address: gergely.berczi@math.au.dk
+and
+László M. Fehér
+Address: Eötvös University Budapest and Alfréd Rényi Institute of Mathematics
+Email address: lfeher63@gmail.com
+Date: April 2026
+Abstract.
+We study the symmetric polynomial
+$\prod_{\alpha\in A_{n,d}}\bigl(1+\alpha_{1}x_{1}+\cdots+\alpha_{n}x_{n}\bigr),\qquad A_{n,d}:=\{\alpha\in\mathbb{Z}_{\geq 0}^{n}:|\alpha|=d\},$
+which is the total Chern class of $\Sym^{d}(\mathbb{C}^{n})$ , viewed as a torus representation whose Chern roots are the weights $\alpha_{1}x_{1}+\cdots+\alpha_{n}x_{n}$ for $\alpha\in A_{n,d}$ . Its homogeneous degree- $k$ part $c_{k}(n,d)$ is the $k$ -th Chern class of $\Sym^{d}(\mathbb{C}^{n})$ . These Chern classes, together with their coefficients in various symmetric function bases, play a central role in enumerative geometry. Despite their simple definition, general closed formulas for their coefficients are subtle, and many structural properties of these classes have remained poorly understood.
+In this paper we prove several conjectures concerning their structure, establish explicit formulas, and study log-concavity properties for both the Chern classes and their $K$ -theoretic analogue. In rank two, passing to the Schur basis and expanding the Schur coefficients in the binomial basis of $d$ , we uncover a new binomial log-concavity phenomenon and prove refined positivity results.
+The paper demonstrates a novel methodology: we combine several AI systems with human mathematical insight in a coordinated workflow, deploying each tool according to its strengths in experimental discovery, conjecture formation, symbolic proof construction, and verification. To our knowledge, this is one of the first detailed case studies of orchestrating multiple AI tools to make substantial progress on a coherent mathematical research project.
+1. Introduction
+Chern classes of symmetric powers of vector bundles form a classical meeting point of intersection theory, enumerative geometry, and representation theory. If $E$ is a rank- $n$ vector bundle with Chern roots $x_{1},\ldots,x_{n}$ , the splitting principle identifies the total Chern class of $\Sym^{d}E$ with
+(1.1)
+$c(\Sym^{d}E)=\prod_{\begin{subarray}{c}\alpha=(\alpha_{1},\ldots,\alpha_{n})\in\mathbb{Z}_{\geq 0}^{n}\\
+|\alpha|=d\end{subarray}}\left(1+\alpha_{1}x_{1}+\cdots+\alpha_{n}x_{n}\right).$
+We write
+$c(\Sym^{d}E)=1+c_{1}(n,d)+c_{2}(n,d)+\cdots,$
+where $c_{k}(n,d)$ is the homogeneous degree $k$ part of the product. Thus $c_{k}(n,d)$ is a symmetric polynomial in $x_{1},\ldots,x_{n}$ , and it can be expanded in several natural bases of the ring of symmetric functions. The goal of this paper is twofold: first, to obtain structure theorems, closed and recursive formulas for these classes and for related $K$ -theoretic expressions; second, to study positivity and log-concavity phenomena that become visible after choosing suitable bases.
+1.1. Motivation
+We recall two directions of related work that motivate the present paper. The first concerns the explicit calculation of Chern classes of functorial constructions on vector bundles. The splitting principle gives a universal algorithm: the Chern roots of $E\otimes F$ , $\Sym^{d}E$ , $\bigwedge^{d}E$ , and more general Schur functors are obtained by applying the corresponding weight operations to the Chern roots of the input bundles. However, converting these root formulas into compact expressions in Chern classes or symmetric-function bases is a subtle problem. Lascoux gave formulas for Chern classes of tensor products and second symmetric and exterior powers, and Laksov–Lascoux–Thorup developed determinantal formulas for Chern and Segre classes associated with these constructions [Las78, LLT89]. Manivel’s formulas for Chern classes of tensor products provide another systematic framework [Man16]. In the special case of $\Sym^{2}E$ , the Laksov–Lascoux–Thorup determinant gives an especially elegant Schur expansion; we recall this formula below. More recently, Chern plethysm, as developed by Billey–Rhoades–Tewari, has placed such expressions in a broader representation-theoretic and symmetric-function context [BRT21].
+The top Chern class in (1.1) also has a direct enumerative interpretation. If $S$ is the tautological bundle on a Grassmannian, then
+$c_{\rm top}(\Sym^{d}S^{\vee})$
+is the Euler class of the vector bundle whose zero scheme is the Fano scheme of linear subspaces lying on a degree- $d$ hypersurface. In the expected zero-dimensional case, its integral gives the degree of the corresponding Fano scheme. Such degrees have been studied by a variety of methods, including residue formulas, localization, and Schubert calculus; see, for example, Manivel [Man99], Ciliberto–Zaidenberg [CZ20], Fehér–Juhász [FJ25], and Hiep [Hie16]. The corresponding monodromy questions for finite Fano problems were studied by Harris [Har79] and, in broad generality, by Hashimoto–Kadets [HK22] and Sottile–Yahl [SY25].
+The second direction concerns positivity. Two bases for symmetric polynomials play especially important roles in geometry: the elementary symmetric basis, which is the Chern-class basis, and the Schur basis, which is the natural basis of Schubert calculus. A basic theorem of Fulton–Lazarsfeld identifies Schur polynomials as the fundamental numerically positive polynomials in the Chern classes of ample vector bundles [FL83]. This is one reason Schur positivity is often a stronger and more geometric statement than positivity in an arbitrary monomial basis. In singularity theory, Thom polynomials provide a parallel source of positivity questions. Rimányi [Rim01] conjectured positivity properties for Thom polynomials of Morin singularities when written in the relative Chern classes; Bérczi’s work on Morin singularities discusses this conjecture and related strengthened positivity phenomena [BS12]. On the other hand, Pragacz and Weber proved broad Schur-positivity results for Thom polynomials of stable singularities, using the Fulton–Lazarsfeld theory together with Kazarian’s classifying-space approach [PW07]. Pragacz and collaborators also showed that Schur expansions often reveal recurrences and structural features that are difficult to see in the Chern-monomial basis [Pra07, LP10].
+Positivity is frequently accompanied by unimodality or log-concavity phenomena. These properties are central in algebraic combinatorics and algebraic geometry: classical examples include unimodality of Hilbert functions and $h$ -vectors, log-concavity conjectures for matroids, and the Hodge-theoretic proofs of the Rota–Heron–Welsh conjecture and related Mason-type conjectures [Sta89, Huh12, AHK18, BH20]. The modern theory of Lorentzian and Hodge-theoretic polynomials gives a conceptual explanation for many such inequalities. In this paper, the same philosophy leads us from closed formulas for the Chern classes $c_{k}(n,d)$ to refined positivity questions for their Schur coefficients.
+1.2. Results
+The first part of the paper concerns polynomiality in the two parameters
+$n$ and $d$ . We study the weak polynomiality conjecture and a
+stronger binomial-form conjecture from [FJ25] for the elementary-basis coefficients from
+$c_{k}(n,d)=\sum_{\lambda\vdash k}f_{\lambda}(n,d)e_{\lambda},\qquad e_{\lambda}=e_{\lambda_{1}}\cdots e_{\lambda_{\ell}}.$
+The main result in this direction is Theorem 2.4,
+which proves more than the conjectural binomial form: for each fixed $k$ ,
+all coefficients $f_{\lambda}(n,d)$ lie in the polynomial ring
+$\mathbb{Q}[T_{1}(n,d),\ldots,T_{k}(n,d)],\qquad T_{r}(n,d):=\binom{d+n-1}{n+r-1}.$
+Thus the $k$ distinguished binomial coefficients $T_{1},\ldots,T_{k}$
+already generate all elementary-basis coefficients of $c_{k}(n,d)$ . The
+proof reduces the Chern-root power sums to factorial moments of weak
+compositions, using Lemma 2.5, and then applies
+Newton identities.
+We then record several consequences and variants of this binomiality
+theorem. Proposition 2.3 gives the first nontrivial closed
+formula, namely $c_{2}(n,d)$ , and Example 2.6 gives the
+first universal expressions in the variables $T_{r}$ . The
+Laksov–Lascoux–Thorup determinant for $d=2$ is recalled in
+Theorem 2.8. We also prove a multiplicative, $K$ -theoretic
+analogue: the normalized product $\operatorname{NN}_{n,d}$ satisfies
+$[z^{k}\zeta^{k}]\operatorname{NN}_{n,d}=c_{k}(n,d)$
+by Proposition 2.10, and Theorem 2.11
+shows that all coefficients $[z^{q}\zeta^{m}]\operatorname{NN}_{n,d}$ have the same
+binomial dependence on $n$ and $d$ . Finally, we show leading-term
+consequences in the elementary basis and rank-two Euler-class formulas for
+the top Chern class.
+The second part of the paper studies a refined rank-two positivity
+phenomenon. Write
+$c_{k}(2,d)=\sum_{0\leq j\leq\lfloor k/2\rfloor}A_{k,j}(d)\,s_{(k-j,j)}(x_{1},x_{2}),$
+and expand each Schur coefficient in the binomial basis of $d$ :
+$A_{k,j}(d)=\sum_{r}B_{k,j,r}\binom{d}{r}.$
+Conjecture 3.2 asserts binomial positivity,
+$B_{k,j,r}\geq 0$ , and Conjecture 3.3 asserts binomial
+log-concavity in the index $r$ . We prove first the general implication
+that binomial positivity together with binomial log-concavity implies
+ordinary log-concavity of the value sequence; this is
+Theorem 3.4. We then prove the initial
+rank-two cases: Theorem 3.6 proves positivity for
+$j=0,1$ , and Theorem 3.7 proves log-concavity for
+$j=0$ , using fixed-point-free permutations with prescribed cycle defect.
+The first cases not covered by these initial arguments are settled in
+Section 5. Theorem 5.2 proves
+Conjecture 3.2 for $j=2$ , that is,
+$B_{k,2,r}\geq 0\qquad\text{for all }k,r.$
+Theorem 5.4 proves Conjecture 3.3 for $j=1$ ,
+namely
+$B_{k,1,r}^{2}\geq B_{k,1,r-1}B_{k,1,r+1}\qquad\text{for all }k,r.$
+Thus the paper proves binomial positivity for the first three rank-two
+Schur modes $j=0,1,2$ , and binomial log-concavity for the first two modes
+$j=0,1$ . The general higher-mode forms of
+Conjectures 3.2 and 3.3 remain open.
+The final section moves beyond symmetric powers and formulates an analogous shifted-binomial log-concavity problem for Plücker coefficients of coincident root strata; unlike the rank-two Chern-class results, this Plücker extension is presented as a conjectural direction together with a proof strategy and a precise obstruction. This is a
+classical enumerative problem, going back to Plücker’s work in the
+1830s. Let $\lambda=(2^{e_{2}},3^{e_{3}},\ldots,m^{e_{m}})$
+be a partition of $n$ without parts equal to $1$ . Equivalently, after choosing
+an ordering of its parts, we write $\lambda=(\lambda_{1},\ldots,\lambda_{\ell})$ where $\ell=\sum_{q\geq 2}e_{q}$ .
+We also use the partition
+$\tilde{\lambda}:=(\lambda_{1}-1,\ldots,\lambda_{\ell}-1)=(1^{e_{2}},2^{e_{3}},\ldots,(m-1)^{e_{m}}),$
+The number $|\tilde{\lambda}|$ is the total tangency codimension imposed by the prescribed multiplicities.
+Choose $n_{0}$ and an admissible integer $i$ with
+$0\leq i\leq|\tilde{\lambda}|$ and $|\tilde{\lambda}|+i=2(n_{0}-2)$ .
+For $d\geq|\lambda|$ , the Plücker number
+$\Pl_{\lambda;i}(d)$ is the number of lines
+$L\subset\mathbb{P}(\mathbb{C}^{n_{0}})$ satisfying the following conditions
+with respect to a general degree $d$ hypersurface $X$ . The intersection
+divisor $X\cap L$ has $\ell$ distinct points at which the intersection
+multiplicities are prescribed by
+$\lambda_{1},\ldots,\lambda_{\ell}$ , and the remaining $d-|\lambda|$
+intersection points are simple. In addition, $L$ is required to meet a
+general projective subspace of codimension $i+1$ . The dimension condition
+above makes the expected number of such lines finite.
+For example, the classical formulas
+$\Pl_{(2,2);0}(d)=\frac{1}{2}d(d-2)(d-3)(d+3),\qquad\Pl_{(3);0}(d)=3d(d-2),$
+give, respectively, the number of bitangent lines and flex lines to a
+general degree $d$ plane curve.
+In [FJ26] it is shown that the Plücker numbers are
+polynomials in $d$ , and several structural properties of these
+polynomials are studied. They can be computed from equivariant cohomology
+classes of coincident root strata. Let $\Pol^{d}(\mathbb{C}^{2})$ denote the
+space of binary forms of degree $d$ . For $d\geq|\lambda|$ , define
+$Y_{\lambda}(d)$ to be the set of
+binary forms whose roots have exactly the prescribed multiplicities
+$\lambda_{1},\ldots,\lambda_{\ell}$ , with all remaining roots simple. Its
+closure $\overline{Y}_{\lambda}(d)$ allows further collisions of roots. If $M=|\tilde{\lambda}|$ , then the equivariant cohomology class of this
+coincident root stratum has the Schur expansion
+(1.2)
+$[\overline{Y}_{\lambda}(d)]=\sum_{|\tilde{\lambda}|/2\leq i\leq|\tilde{\lambda}|}P_{\lambda;i}(d)\,s_{i,|\tilde{\lambda}|-i},$
+Thus the Plücker polynomials appear as the Schur coefficients of
+$\bigl[\overline{Y}_{\lambda}(d)\bigr]$ .
+We shift to the natural threshold $N=|\lambda|$ , set
+$Q_{\lambda;i}(x):=P_{\lambda;i}(N+x),$
+and write
+$Q_{\lambda;i}(x)=\sum_{r\geq 0}C_{\lambda;i,r}\binom{x}{r}.$
+Conjecture 6.1 predicts that the
+coefficient sequence $(C_{\lambda;i,r})_{r}$ is nonnegative and
+log-concave for every admissible pair $(\lambda,i)$ . By
+Theorem 3.4, this implies the weaker shifted
+value log-concavity stated as
+Conjecture 6.2. We give several small
+examples and a proof strategy based on the recursive formula for
+$[\overline{Y}_{\lambda}(d)]$ ; the proof is not complete, because the
+missing step is a positive transition formula strong enough to preserve
+log-concavity in the shifted binomial basis.
+Subsection 6.2 further extends this viewpoint to equivariant
+Chern–Schwartz–MacPherson classes of open coincident root strata, suggesting
+that the shifted-binomial positivity and log-concavity phenomena may belong to
+a broader theory of characteristic classes of root-collision strata.
+1.3. Methodology: orchestrating AI tools and human insight
+The paper is a case study in orchestrating AI tools with human mathematical insight. By orchestration we mean that we, the human mathematicians, did not treat one system as a monolithic black box; rather, different systems were assigned different mathematical roles, and their outputs were repeatedly translated into conjectures, bases, identities, and proof obligations. The AI tools we used are the following.
+(1)
+AlphaEvolve [NVE+25] by Google DeepMind, which is an evaluator-guided evolutionary coding agent designed to improve candidate programs against exact tests; in this project it served first as a formula-finding engine and later as a detective for structural recurrences.
+(2)
+ChatGPT 5.5 Pro was used as an interactive mathematical assistant for symbolic derivations and conjecture refinement. It produced closed formulas for the Chern classes $c_{k}(n,d)$ , leading to a proof of a strong form of the polynomiality conjecture. It also supplied the proof of the $j=0$ case of the rank-two binomial log-concavity conjecture.
+(3)
+Google DeepMind’s Co-Mathematician agent [ZvGZ+26] was used in the final stage of the project; it successfully provided proofs of the rank-two positivity for $j=2$ and log-concavity theorem for $j=1$ which were not available for GPT 5.5 Pro.
+The chronology of the project was as follows. AlphaEvolve first suggested
+the closed formula for $c_{2}(n,d)$ in Proposition 2.3, together
+with structural patterns in the cases $k=3,4$ . These patterns were then
+used as input for ChatGPT 5.5 Pro, which provided the factorial-moment
+identity of Lemma 2.5 and the proof of the strong
+binomiality Theorem 2.4. This settled the Fehér–Juhász binomial-form
+conjecture for the coefficients of $c_{k}(n,d)$ , in a stronger form than
+originally predicted. ChatGPT 5.5 Pro also proved the parallel
+$K$ -theoretic analogue Theorem 2.11, whose diagonal coefficients recover the
+same Chern classes.
+The next step was human: in rank two we changed basis from the Schur
+coefficients $A_{k,j}(d)$ to their binomial-basis coefficients
+$B_{k,j,r}$ , and formulated the binomial positivity and binomial
+log-concavity conjectures, Conjectures 3.2 and 3.3,
+based on exact computations. ChatGPT 5.5 Pro proved
+Conjecture 3.2 for $j=0,1$ , and
+Conjecture 3.3 for $j=0$ . It did not prove the first remaining
+cases, namely Conjecture 3.2 for $j=2$ and
+Conjecture 3.3 for $j=1$ . In the latter case, the stronger
+real-rootedness statement is false, so a different proof strategy was
+needed.
+A series of AlphaEvolve experiments, described in
+Section 4, then narrowed the search space for
+Conjecture 3.2. These experiments progressively isolated the
+correct local recurrence, the appropriate residual terms, and finally the
+lower-mode operator basis.
+Co-Mathematician then produced proof drafts for the two remaining first
+cases. After verification and rewriting, these became the proofs of
+Conjecture 3.2 for $j=2$ and Conjecture 3.3 for
+$j=1$ explained in Section 5.
+We also investigated the analogous shifted-binomial log-concavity
+conjecture for Plücker coefficients. Those attempts did not lead to a
+complete proof. The ideas produced by Co-Mathematician are collected in
+Section 6 as a proof strategy and as a
+record of the present obstruction.
+Thus the project benefited from a division of work among systems with
+different strengths: conjecture formation, recurrence discovery, symbolic
+derivation, proof drafting, and finite verification. The methodological
+lesson is that AI tools can be used as a research ensemble, while the human
+mathematician supplies the problem selection, the changes of perspective,
+and the standards of proof.
+AlphaEvolveclosed form for $c_{2}(n,d)$ GPT Pro 5.5proof of strong binomiality, $K$ -theory analogueHuman insight:change tobinomial basis;formulate log-concavity conjecturesAlphaEvolvedetective searchesstructural discoveriesGPT Pro 5.5proof of log-concavity for $j=1$ Co-Mathematicianproof of log-concavity for $j=2$
+Figure 1. The proof pipeline recorded in this paper. The mathematician acts as a conductor: each AI tool contributes a distinct mathematical instrument.
+Several mathematical questions remain. Higher- $j$ versions of the rank-two log-concavity theorem remain unresolved. And although Theorem 5.2 gives a native binomial-basis proof of positivity, a direct positive combinatorial interpretation of the coefficients $B_{k,2,r}$ is still open.
+Acknowledgements
+G.B. thanks the Co-Mathematician and AlphaEvolve teams for providing early
+access to their models, and for their valuable advice, support, and feedback
+throughout this project. G.B. was supported by DFF 40296 grant of the Danish Independent Research
+Fund.
+2. A binomiality theorem for symmetric powers
+This section describes the first mathematical phase of the workflow. The starting point was the closed formula for $c_{2}(n,d)$ in Proposition 2.3, first suggested experimentally by AlphaEvolve. That formula exhibited exactly the binomial structure predicted by Fehér–Juhász and led to the search for a general pattern for $c_{3}(n,d)$ and $c_{4}(n,d)$ . These patterns were then used as input for ChatGPT 5.5 Pro, which provided the factorial-moment
+identity of Lemma 2.5 and the proof of the strong
+binomiality Theorem 2.4. The proof converts sums over weak compositions into binomial coefficients, and hence turns the Chern-root power sums into polynomials in the quantities $T_{r}(n,d)$ . We then study the K-theory analogue where GPT Pro 5.5 successfully generalised Theorem 2.4 to the closed formula of Theorem 2.11, whose diagonal coefficients recover the original Chern classes.
+Let
+$A_{n,d}:=\{\alpha\in\mathbb{Z}_{\geq 0}^{n}:|\alpha|=d\},\qquad y_{\alpha}:=\alpha_{1}x_{1}+\cdots+\alpha_{n}x_{n}.$
+Then recall from the Introduction the Chern classes
+$\prod_{\alpha\in A_{n,d}}(1+y_{\alpha})=\sum_{k\geq 0}c_{k}(n,d).$
+A two-parameter expression need not be polynomial in both parameters (also called separately polynomial function), even if it has a simple closed form. For example, $d^{n}$ is a polynomial in $d$ for every fixed $n$ , but after setting $d=2$ one obtains $2^{n}$ , which is not a polynomial in $n$ . Thus polynomiality in the rank $n$ and the degree $d$ is already a genuine structural constraint.
+Conjecture 2.1 (Separate polynomiality, [FJ25]).
+For each fixed $k$ and each partition $\lambda\vdash k$ , the coefficient $f_{\lambda}(n,d)$ in
+$c_{k}(n,d)=\sum_{\lambda\vdash k}f_{\lambda}(n,d)e_{\lambda}$
+is polynomial in $d$ for fixed $n$ , and polynomial in $n$ for fixed $d$ .
+The following conjecture is a stronger form of this polynomiality statement: it predicts not only polynomial dependence on the parameters separately, but polynomial dependence through a distinguished family of binomial coefficients.
+Conjecture 2.2 (Strong binomial form, [FJ25]).
+For each fixed $k$ and each partition $\lambda\vdash k$ , the coefficient $f_{\lambda}(n,d)$ in
+$c_{k}(n,d)=\sum_{\lambda\vdash k}f_{\lambda}(n,d)e_{\lambda}$
+is a polynomial in finitely many binomial coefficients of the form $\binom{d+n+a}{n+b}$ .
+The first nontrivial low-degree case already exhibits the special binomial structure.
+Proposition 2.3 (Closed formula for $c_{2}(n,d)$ ).
+One has
+$c_{2}(n,d)=\binom{d+n}{n+1}e_{2}+\left(\frac{1}{2}\binom{d+n-1}{n}^{2}-\frac{1}{2}\binom{d+n-1}{n}-\binom{d+n-1}{n+1}\right)e_{1}^{2}.$
+This formula was found experimentally by AlphaEvolve, recovering the result of [CZ20].
+Proof.
+Let
+$u=\binom{d+n-1}{n},\qquad v=\binom{d+n}{n+1}.$
+For $m\geq 1$ put
+$P_{m}(n,d):=\sum_{\alpha\in A_{n,d}}y_{\alpha}^{m}.$
+A direct generating-function calculation gives
+$P_{1}(n,d)=\sum_{\alpha\in A_{n,d}}y_{\alpha}=u\,e_{1}$
+and
+$P_{2}(n,d)=\sum_{\alpha\in A_{n,d}}y_{\alpha}^{2}=(2v-u)e_{1}^{2}-2v\,e_{2}.$
+Newton’s identity $2c_{2}=P_{1}^{2}-P_{2}$ now yields the formula.
+∎
+It turns out that the much stronger version of Conjecture 2.2 holds: the coefficients of the Chern classes are polynomials of an explicit short list of binomial coefficients $T_{r}(n,d)$ below.
+Theorem 2.4 (Strong binomiality).
+For every $k\geq 0$ , there is a universal polynomial
+$Q_{k}\in\mathbb{Q}[u_{1},\ldots,u_{k},z_{1},\ldots,z_{k}]$
+such that, for all $n,d$ ,
+$c_{k}(n,d)=Q_{k}\bigl(T_{1}(n,d),\ldots,T_{k}(n,d);e_{1},\ldots,e_{k}\bigr),$
+where
+$T_{r}(n,d):=\binom{d+n-1}{n+r-1},\qquad 1\leq r\leq k.$
+Equivalently, $f_{\lambda}(n,d)\in\mathbb{Q}[T_{1}(n,d),\ldots,T_{k}(n,d)]$ for every $\lambda\vdash k$ . In particular, Conjecture 2.2 holds.
+Lemma 2.5 (Factorial moments of weak compositions).
+Let $i_{1},\ldots,i_{s}$ be distinct indices and let $m_{1},\ldots,m_{s}$ be positive integers. Put $M=m_{1}+\cdots+m_{s}$ and write $a^{\underline{m}}=a(a-1)\cdots(a-m+1)$ . Then
+(2.1)
+$\sum_{\alpha\in A_{n,d}}\prod_{j=1}^{s}\alpha_{i_{j}}^{\underline{m_{j}}}=\left(\prod_{j=1}^{s}m_{j}!\right)\binom{d+n-1}{n+M-1}.$
+Proof.
+Taking generating functions in $d$ gives
+$\sum_{d\geq 0}\left(\sum_{\alpha\in A_{n,d}}\prod_{j=1}^{s}\alpha_{i_{j}}^{\underline{m_{j}}}\right)t^{d}=\left(\prod_{j=1}^{s}\frac{m_{j}!t^{m_{j}}}{(1-t)^{m_{j}+1}}\right)(1-t)^{-(n-s)}.$
+This is
+$\left(\prod_{j=1}^{s}m_{j}!\right)t^{M}(1-t)^{-(n+M)}.$
+Taking the coefficient of $t^{d}$ proves the lemma.
+∎
+Proof of Theorem 2.4.
+Fix $m\geq 1$ . We first show that
+(2.2)
+$P_{m}(n,d)\in\mathbb{Z}[T_{1}(n,d),\ldots,T_{m}(n,d)]\otimes_{\mathbb{Z}}\Lambda_{m},$
+where $\Lambda_{m}$ denotes homogeneous symmetric functions of degree $m$ .
+Let $\mu=(\mu_{1},\ldots,\mu_{s})\vdash m$ . The coefficient of a monomial of type $\mu$ in $P_{m}$ is a multinomial factor times
+$M_{\mu}(n,d):=\sum_{\alpha\in A_{n,d}}\alpha_{1}^{\mu_{1}}\cdots\alpha_{s}^{\mu_{s}}.$
+Using Stirling numbers of the second kind,
+$a^{q}=\sum_{r=1}^{q}\genfrac{}{}{0.0pt}{}{q}{r}a^{\underline{r}},$
+and applying Lemma 2.5, we obtain
+(2.3)
+$M_{\mu}(n,d)=\sum_{1\leq r_{j}\leq\mu_{j}}\left(\prod_{j=1}^{s}\genfrac{}{}{0.0pt}{}{\mu_j}{r_j}r_{j}!\right)T_{r_{1}+\cdots+r_{s}}(n,d).$
+Thus each monomial-symmetric coefficient of $P_{m}$ lies in $\mathbb{Z}[T_{1},\ldots,T_{m}]$ . Since the elementary products form a basis in each degree over $\mathbb{Q}$ , $P_{m}$ can be written universally as a polynomial in $T_{1},\ldots,T_{m}$ and $e_{1},\ldots,e_{m}$ .
+Newton identities for the roots $y_{\alpha}$ give
+$kc_{k}=\sum_{j=1}^{k}(-1)^{j-1}c_{k-j}P_{j},\qquad c_{0}=1.$
+By induction on $k$ , the right hand side lies in $\mathbb{Q}[T_{1},\ldots,T_{k}][e_{1},\ldots,e_{k}]$ . Dividing by $k$ proves the theorem.
+∎
+Example 2.6.
+For small $k$ we have
+$\displaystyle c_{1}(n,d)$
+$\displaystyle=T_{1}e_{1},$
+$\displaystyle c_{2}(n,d)$
+$\displaystyle=\frac{T_{1}^{2}-T_{1}-2T_{2}}{2}e_{1}^{2}+(T_{1}+T_{2})e_{2},$
+$\displaystyle c_{3}(n,d)$
+$\displaystyle=\frac{T_{1}^{3}-3T_{1}^{2}-6T_{1}T_{2}+2T_{1}+12T_{2}+12T_{3}}{6}e_{1}^{3}$
+$\displaystyle+\left(T_{1}^{2}+T_{1}T_{2}-T_{1}-5T_{2}-4T_{3}\right)e_{1}e_{2}$
+$\displaystyle+\left(T_{1}+3T_{2}+2T_{3}\right)e_{3}.$
+Remark 2.7.
+Theorem2.4 immediately implies that the Schur coefficents of $c_{k}(n,d)$ are also polynomials in the binomial expressions $T_{r}$ .
+2.1. The case of $d=2$ : the Laksov–Lascoux–Thorup formula
+For $d=2$ ,
+$C_{n}(x):=c(\Sym^{2}\mathbb{C}^{n})=\prod_{i=1}^{n}(1+2x_{i})\prod_{1\leq i
+The case of $d=2$ can be calculated from (2.3) but ChatGPT 5.5 Pro gives the following shorter proof:
+Theorem 2.8 ( [LLT89] The $d=2$ determinant).
+Let $\lambda\vdash k$ with $\ell(\lambda)\leq n$ . Then
+$c_{k}(n,2)=\sum_{\lambda\vdash k,\ \ell(\lambda)\leq n}A_{\lambda}(n)s_{\lambda}(x),$
+where
+(2.4)
+$A_{\lambda}(n)=2^{k-\binom{n}{2}}\det\left[\binom{2n-2j+1}{\lambda_{i}+n-i}\right]_{1\leq i,j\leq n}.$
+Proof.
+Let $h_{r}$ be the complete symmetric functions, with $h_{r}=0$ for $r<0$ . For a strictly increasing sequence $I=(i_{1}<\cdots
+$s_{I}=\det(h_{i_{q}-p+1})_{1\leq p,q\leq n}.$
+Set $A_{r,q}=2^{r}\binom{2n-2q+1}{r}$ and $B_{p,r}=h_{r-p+1}$ . By Cauchy–Binet,
+$\det(BA)=\sum_{I}s_{I}\det(A_{I}).$
+Using
+$h_{m}=\sum_{a=1}^{n}\frac{x_{a}^{m+n-1}}{\prod_{b\neq a}(x_{a}-x_{b})},$
+one obtains
+$(BA)_{p,q}=\sum_{a=1}^{n}\frac{x_{a}^{n-p}(1+2x_{a})^{2n-2q+1}}{\prod_{b\neq a}(x_{a}-x_{b})}.$
+Taking determinants,
+$\det(BA)=(-1)^{\binom{n}{2}}\frac{\det((1+2x_{a})^{2n-2q+1})_{a,q}}{\prod_{a
+With $u_{a}=1+2x_{a}$ ,
+$\det(u_{a}^{2n-2q+1})_{a,q}=\left(\prod_{a}u_{a}\right)\prod_{a
+Since $u_{a}^{2}-u_{b}^{2}=4(x_{a}-x_{b})(1+x_{a}+x_{b})$ , we get
+$\det(BA)=(-1)^{\binom{n}{2}}2^{n(n-1)}C_{n}(x).$
+Reindexing $I$ by partitions gives (2.4).
+∎
+Example 2.9.
+For small $k$ ,
+$c_{1}(n,2)=(n+1)s_{1},$
+$c_{2}(n,2)=\frac{(n-1)(n+2)}{2}s_{2}+\frac{(n+1)(n+2)}{2}s_{11},$
+$c_{3}(n,2)=\frac{(n-2)(n-1)(n+3)}{6}s_{3}+\frac{(n+2)(n^{2}+n-3)}{3}s_{21}+\frac{(n+1)(n+2)(n+3)}{6}s_{111}.$
+2.2. A $K$ -theoretic generalization.
+The following normalized multiplicative generalization
+was proved in this project by GPT Pro 5.5. It is useful to regard it as a $K$ -theoretic or finite-difference refinement of Theorem 2.4: the variables $X_{i}$ are multiplicative Chern-root variables, while the substitution $X_{i}=1-\zeta u_{i}$ extracts the additive Chern-root information order by order in $\zeta$ .
+Let
+$M_{n,d}(y,X)=\prod_{\alpha\in A_{n,d}}(1+yX^{\alpha}),\qquad X^{\alpha}=X_{1}^{\alpha_{1}}\cdots X_{n}^{\alpha_{n}}.$
+This is the $K$ -theoretic total Chern class, or equivariant motivic Chern class of the representation $\Sym^{d}(\mathbb{C}^{n})$ . Using a substitution we can compare it with the cohomological Chern class:
+Define
+$\operatorname{NN}_{n,d}(z,\zeta,u):=(1+z)^{|A_{n,d}|}M_{n,d}\left(-\frac{z}{1+z},\,X_{j}\mapsto 1-\zeta u_{j}\right).$
+Equivalently,
+(2.5)
+$\operatorname{NN}_{n,d}(z,\zeta,u)=\prod_{\alpha\in A_{n,d}}\left(1+z\left(1-\prod_{j=1}^{n}(1-\zeta u_{j})^{\alpha_{j}}\right)\right).$
+Then the cohomological Chern class is the diagonal:
+Proposition 2.10 (Diagonal recovery of the Chern classes).
+For every $k\geq 0$ ,
+$[z^{k}\zeta^{k}]\operatorname{NN}_{n,d}(z,\zeta,u)=c_{k}(n,d).$
+Proof.
+For each $\alpha\in A_{n,d}$ ,
+$1-\prod_{j=1}^{n}(1-\zeta u_{j})^{\alpha_{j}}=\zeta\sum_{j=1}^{n}\alpha_{j}u_{j}+O(\zeta^{2}).$
+To obtain $z^{k}\zeta^{k}$ , one must choose the $z$ -term from exactly $k$ factors in (2.5). Since each chosen factor contributes at least one power of $\zeta$ , the total $\zeta$ -degree $k$ forces us to take only the linear part displayed above. Therefore
+$[z^{k}\zeta^{k}]\operatorname{NN}_{n,d}=\sum_{\begin{subarray}{c}S\subseteq A_{n,d}\\
+|S|=k\end{subarray}}\prod_{\alpha\in S}\left(\sum_{j}\alpha_{j}u_{j}\right),$
+which is precisely the degree- $k$ homogeneous component of
+$\prod_{\alpha\in A_{n,d}}\left(1+\sum_{j}\alpha_{j}u_{j}\right).$
+∎
+Using this we can see that the following theorem generalizes Theorem 2.4:
+Theorem 2.11 (Binomiality for the $\operatorname{NN}$ -analogue).
+For every fixed pair $q,m\geq 0$ , the coefficient
+$[z^{q}\zeta^{m}]\operatorname{NN}_{n,d}(z,\zeta,u)$
+is a symmetric homogeneous polynomial of degree $m$ in $u_{1},\ldots,u_{n}$ . If
+$[z^{q}\zeta^{m}]\operatorname{NN}_{n,d}=\sum_{\lambda\vdash m}F_{q,m,\lambda}(n,d)e_{\lambda}(u),$
+then
+$F_{q,m,\lambda}(n,d)\in\mathbb{Q}[T_{1}(n,d),\ldots,T_{m}(n,d)].$
+Moreover,
+$[z^{q}\zeta^{m}]\operatorname{NN}_{n,d}=0\qquad\text{if }q>m.$
+Proof.
+For $\alpha\in A_{n,d}$ put
+$A_{\alpha}(\zeta,u):=1-\prod_{j=1}^{n}(1-\zeta u_{j})^{\alpha_{j}}.$
+Then (2.5) says
+$\operatorname{NN}_{n,d}=\prod_{\alpha\in A_{n,d}}(1+zA_{\alpha}),$
+and hence
+$[z^{q}]\operatorname{NN}_{n,d}=e_{q}(A_{\alpha}:\alpha\in A_{n,d}).$
+Newton identities express this elementary symmetric function universally in the power sums
+$P_{s}^{\operatorname{NN}}:=\sum_{\alpha\in A_{n,d}}A_{\alpha}^{s},\qquad 1\leq s\leq q.$
+Now
+$A_{\alpha}(\zeta,u)=\sum_{\beta\neq 0}(-1)^{|\beta|+1}\binom{\alpha}{\beta}\zeta^{|\beta|}u^{\beta},\qquad\binom{\alpha}{\beta}:=\prod_{j=1}^{n}\binom{\alpha_{j}}{\beta_{j}}.$
+Thus the coefficient of $\zeta^{m}u^{\mu}$ in $P_{s}^{\operatorname{NN}}$ is a finite linear combination of sums of the form
+$\sum_{\alpha\in A_{n,d}}\prod_{j}\binom{\alpha_{j}}{\beta_{j}^{(1)}}\binom{\alpha_{j}}{\beta_{j}^{(2)}}\cdots\binom{\alpha_{j}}{\beta_{j}^{(s)}}.$
+For fixed $j$ , the product of binomial coefficients is a polynomial in $\alpha_{j}$ and can be expanded in the falling-factorial basis. The total falling-factorial degree is at most $m$ . Applying Lemma 2.5 shows that every such sum lies in
+$\mathbb{Q}[T_{1}(n,d),\ldots,T_{m}(n,d)].$
+Therefore the same is true for every coefficient of each $P_{s}^{\operatorname{NN}}$ , and Newton identities imply the assertion for $[z^{q}]\operatorname{NN}_{n,d}$ . Extracting $\zeta^{m}$ proves the coefficient statement. Finally, each $A_{\alpha}$ has $\zeta$ -order at least one, so a term of $z$ -degree $q$ has $\zeta$ -order at least $q$ . Hence $[z^{q}\zeta^{m}]\operatorname{NN}_{n,d}=0$ for $q>m$ .
+∎
+Example 2.12 (Small $\operatorname{NN}$ -coefficients).
+Write $T_{r}=T_{r}(n,d)$ . The first coefficients are
+$[z\zeta]\operatorname{NN}_{n,d}=T_{1}e_{1},$
+$[z\zeta^{2}]\operatorname{NN}_{n,d}=-T_{2}e_{1,1}+T_{2}e_{2},$
+$[z^{2}\zeta^{2}]\operatorname{NN}_{n,d}=\frac{T_{1}^{2}-T_{1}-2T_{2}}{2}e_{1,1}+(T_{1}+T_{2})e_{2},$
+$[z\zeta^{3}]\operatorname{NN}_{n,d}=T_{3}e_{1,1,1}-2T_{3}e_{2,1}+T_{3}e_{3},$
+$\displaystyle[z^{2}\zeta^{3}]\operatorname{NN}_{n,d}={}$
+$\displaystyle(3T_{3}+2T_{2}-T_{1}T_{2})e_{1,1,1}$
+$\displaystyle+(T_{1}T_{2}-6T_{3}-5T_{2})e_{2,1}+(3T_{3}+3T_{2})e_{3},$
+$\displaystyle[z^{3}\zeta^{3}]\operatorname{NN}_{n,d}={}$
+$\displaystyle\frac{T_{1}^{3}-3T_{1}^{2}-6T_{1}T_{2}+12T_{3}+12T_{2}+2T_{1}}{6}e_{1,1,1}$
+$\displaystyle+(T_{1}^{2}+T_{1}T_{2}-4T_{3}-5T_{2}-T_{1})e_{2,1}+(2T_{3}+3T_{2}+T_{1})e_{3}.$
+Notice that the coefficient of $[z^{k}\zeta^{k}]$ agrees with $c_{k}(n,d)$ in 2.6, as the diagonal recovery Proposition 2.10 claims.
+2.3. Leading terms and applications
+Formula (2.3) immediately implies that the $d$ leading coefficients of $c_{k}(n,d)$ in the elementary symmetric basis are
+$[e_{\lambda}]{c_{k}(n,d)}=\frac{1}{\prod_{i\geq 1}m_{i}!\,((d-1)!)^{\ell(\lambda)}}n^{(d-1)\ell(\lambda)}+O\left(n^{(d-1)\ell(\lambda)-1}\right).$
+This was conjectured in [FJ25, Conj 3.10].
+The leading terms for the Schur basis were obtained [FJ25]. That result led to the generalization of a theorem of Manivel of the degree of hypersurfaces containing a projective $r$ -space. Interestingly, the leading terms for the Schur basis are easier to calculate and their degree is uniform $n|\lambda|$ . For the elementary symmetric basis the degrees can be much smaller due to a surprising cancellation.
+The result on the leading coefficients of $c_{k}(n,d)$ in the elementary symmetric basis is more subtle, but we are not aware of any enumerative applications.
+2.4. Euler classes
+The Schur coefficients of the top Chern class or Euler class
+(2.6)
+$E_{n,d}(x):=c_{\rm top}(n,d)=\prod_{\begin{subarray}{c}\alpha\in\mathbb{Z}_{\geq 0}^{n}\\
+|\alpha|=d\end{subarray}}(\alpha_{1}x_{1}+\cdots+\alpha_{n}x_{n}).$
+also has enumerative applications as it is explained e.g. in [FJ25]. For $n=2$ let
+$c_{\mathrm{top}}(2,d)=\sum_{b=0}^{\left\lfloor(d+1)/2\right\rfloor}\gamma_{d,b}\,s_{(d+1-b,b)}(x_{1},x_{2}).$
+be the Schur expansion of the Euler class. Then ChatGPT 5.5 Pro gives
+$\gamma_{d,b}=\sum_{r=b-1}^{d}(-1)^{r-b}\binom{r+1}{b}d^{\,d+1-r}\left[{d+1\atop d+1-r}\right],$
+which is somewhat simpler than the formula of [FJ25]. This simplifies the formula of [FJ25] for the Euler characteristics of Fano varieties of lines of hypersurfaces. Here square brackets denote the unsigned Stirling numbers of the first kind.
+For higher $n$ ChatGPT 5.5 Pro did not provide closed formulas.
+Remark 2.13.
+Similar enumerative applications can be given for the $K$ -theory Chern class, leading to calculation of Hilbert polynomials and Todd classes of Fano varieties. These applications will be published elsewhere.
+3. A rank-two binomial refinement
+This section introduces the refined rank-two phenomenon that became the central target of the later AI-assisted proof stage.
+We study the $n=2$ , rank two case and write $c_{k}(2,d)$ in the Schur basis:
+$c_{k}(2,d)=\sum_{0\leq j\leq\lfloor k/2\rfloor}A_{k,j}(d)s_{(k-j,j)}(x_{1},x_{2}).$
+We then change coordinates once more by expanding each Schur coefficient $A_{k,j}(d)$ in the binomial basis of the degree parameter $d$ :
+$A_{k,j}(d)=\sum_{r\geq 0}B_{k,j,r}\binom{d}{r}.$
+This change of basis, which was previously unknown in the literature and was motivated by Theorem 2.4, revealed positivity and log-concavity patterns that were invisible in the original $d$ -power basis.
+Definition 3.1.
+We will call a polynomial
+$f(d)=\sum_{r\geq 0}b_{r}\binom{d}{r}$
+binomially positive if $b_{r}\geq 0$ for all $r$ . We will call it binomially log-concave if the nonzero sequence $(b_{r})_{r}$ has no internal zeroes and is log-concave, that is, $b_{r}^{2}\geq b_{r-1}b_{r+1}$ .
+The following rank-two conjectures predict that, for each fixed $k$ and $j$ , the Schur coefficient $A_{k,j}(d)$ is binomially positive and binomially log-concave as a polynomial in $d$ .
+Conjecture 3.2 (Rank-two binomial positivity).
+For all $k,j,r$ with $0\leq j\leq\lfloor k/2\rfloor$ , one has
+$B_{k,j,r}\geq 0.$
+Equivalently, for each fixed $k$ and $j$ , the polynomial $A_{k,j}(d)$ is binomially positive.
+Conjecture 3.3 (Rank-two binomial log-concavity).
+For fixed $k$ and $j$ , the nonzero sequence $(B_{k,j,r})_{r}$ is log-concave:
+$B_{k,j,r}^{2}\geq B_{k,j,r-1}B_{k,j,r+1}.$
+Equivalently, $A_{k,j}(d)$ is binomially log-concave as a polynomial in $d$ .
+ChatGPT 5.5 Pro proved the first accessible cases, namely binomial positivity for $j=0,1$ and binomial log-concavity for $j=0$ , using fixed-point-free permutations with prescribed cycle defect. The remaining cases were then isolated as the precise problems for the later AlphaEvolve and Co-Mathematician stages.
+3.1. Binomial log-concavity implies ordinary log-concavity
+We first prove that binomial log-concavity implies ordinary log-concavity of the values $A_{k,j}(d)$ in the degree parameter. This is a well-known result, but here we give a proof to keep our study self-contained.
+Theorem 3.4 (Binomial log-concavity implies ordinary log-concavity).
+Let $f(d)$ be a binomially positive and binomially log-concave function, as in Definition 3.1.
+Then the nonzero sequence $(f(d))_{d\geq 0}$ is log-concave:
+$f(d)^{2}\geq f(d-1)f(d+1)$
+for all $d$ in its nonzero range.
+Proof.
+Let the support of $(b_{r})_{r}$ be the interval $[m,M]$ . We first prove the result in the case $m=0$ and $b_{r}>0$ for $0\leq r\leq M$ . Put $b_{M+1}=0$ and
+$q_{r}:=\frac{b_{r+1}}{b_{r}}\qquad(0\leq r\leq M).$
+The log-concavity of $(b_{r})_{r}$ is equivalent to
+$q_{0}\geq q_{1}\geq\cdots\geq q_{M}.$
+Write
+$f_{d}:=f(d)=\sum_{r=0}^{M}b_{r}\binom{d}{r}.$
+By Pascal’s identity,
+$f_{d+1}=f_{d}+g_{d},\qquad g_{d}:=\sum_{r=0}^{M}b_{r+1}\binom{d}{r}.$
+Define a probability distribution on $\{0,\ldots,M\}$ by
+$p_{d}(r):=\frac{b_{r}\binom{d}{r}}{f_{d}}.$
+Then
+$\frac{g_{d}}{f_{d}}=\sum_{r=0}^{M}q_{r}p_{d}(r).$
+We claim that the right-hand side is nonincreasing in $d$ . Indeed, for $0\leq r\leq d-1$ ,
+$\frac{p_{d}(r)}{p_{d-1}(r)}=\frac{f_{d-1}}{f_{d}}\frac{\binom{d}{r}}{\binom{d-1}{r}}=\frac{f_{d-1}}{f_{d}}\frac{d}{d-r},$
+which is an increasing function of $r$ . Thus $p_{d}$ is larger than $p_{d-1}$ in the monotone likelihood-ratio order. Since $q_{r}$ is nonincreasing in $r$ , we obtain
+$\sum_{r=0}^{M}q_{r}p_{d}(r)\leq\sum_{r=0}^{M}q_{r}p_{d-1}(r).$
+Equivalently,
+$\frac{g_{d}}{f_{d}}\leq\frac{g_{d-1}}{f_{d-1}}.$
+Hence
+$\frac{f_{d+1}}{f_{d}}=1+\frac{g_{d}}{f_{d}}\leq 1+\frac{g_{d-1}}{f_{d-1}}=\frac{f_{d}}{f_{d-1}},$
+which is precisely
+$f_{d}^{2}\geq f_{d-1}f_{d+1}.$
+It remains to remove the assumption $m=0$ . If the support starts at $m>0$ , replace the zero prefix by
+$b_{r}^{(\varepsilon)}:=b_{m}\varepsilon^{m-r}\qquad(0\leq r
+and set $b_{r}^{(\varepsilon)}:=b_{r}$ for $m\leq r\leq M$ . For sufficiently small $\varepsilon>0$ , the ratio sequence
+$\frac{b_{r+1}^{(\varepsilon)}}{b_{r}^{(\varepsilon)}}$
+is still nonincreasing, so the first part of the proof applies to
+$f^{(\varepsilon)}(d):=\sum_{r=0}^{M}b_{r}^{(\varepsilon)}\binom{d}{r}.$
+Thus $(f^{(\varepsilon)}(d))_{d}$ is log-concave. Letting $\varepsilon\to 0$ gives the desired log-concavity inequalities for $f(d)$ , since these inequalities are closed under limits.
+∎
+Consequently, Conjectures 3.2 and 3.3 imply that, for every fixed $k$ and $j$ , the sequence
+$A_{k,j}(0),A_{k,j}(1),A_{k,j}(2),\ldots$
+is log-concave after deleting its initial zeroes.
+3.2. Proof of binomial log-concavity for $j=0$
+We start with a closed formula using second order Stirling coefficients. Specialize to $n=2$ . Put $x_{1}=u$ , $x_{2}=1$ , and
+$C_{k,d}(u):=c_{k}(2,d)(u,1)=e_{k}(i+(d-i)u:0\leq i\leq d).$
+Since $s_{(k-j,j)}(u,1)=u^{j}+\cdots+u^{k-j}$ ,
+(3.1)
+$A_{k,j}(d)=[u^{j}](1-u)C_{k,d}(u).$
+From
+$\prod_{i=0}^{d}(X+i+(d-i)u)=(1-u)^{d+1}\left(\frac{X+du}{1-u}\right)^{\overline{d+1}},$
+we get
+(3.2)
+$C_{k,d}(u)=\sum_{s=0}^{k}\genfrac{[}{]}{0.0pt}{}{d+1}{d+1-k+s}\binom{d+1-k+s}{s}d^{s}u^{s}(1-u)^{k-s}.$
+Indeed, here $y^{\overline{m}}$ denotes the rising factorial
+$y^{\overline{m}}=y(y+1)\cdots(y+m-1),$
+and
+$X+i+(d-i)u=(1-u)\left(\frac{X+du}{1-u}+i\right).$
+Thus
+(3.3)
+$A_{k,j}(d)=\sum_{s=0}^{j}(-1)^{j-s}\binom{k-s+1}{j-s}d^{s}\binom{d+1-k+s}{s}\genfrac{[}{]}{0.0pt}{}{d+1}{d+1-k+s}.$
+Let $\mathfrak{D}(N,K)$ be the number of fixed-point-free permutations of an $N$ -element set with defect $K$ , i.e. with $N-K$ cycles. We put $\mathfrak{D}(N,K)=0$ outside the natural range and $\mathfrak{D}(0,0)=1$ .
+Lemma 3.5.
+The numbers $\mathfrak{D}(N,K)$ satisfy
+$\mathfrak{D}(N,K)=(N-1)(\mathfrak{D}(N-1,K-1)+\mathfrak{D}(N-2,K-1)).$
+Proof.
+Look at the cycle containing a distinguished letter. If it has length at least three, deleting the distinguished letter gives a fixed-point-free permutation on $N-1$ letters with defect $K-1$ , and there are $N-1$ insertion positions. If it lies in a transposition, deleting the transposition gives a fixed-point-free permutation on $N-2$ letters with defect $K-1$ , and there are $N-1$ choices for the partner.
+∎
+Theorem 3.6 (The cases $j=0,1$ of binomial positivity).
+For all $k,r$ ,
+$B_{k,0,r}\geq 0,\qquad B_{k,1,r}\geq 0.$
+More precisely,
+$B_{k,0,r}=\mathfrak{D}(r,k)+\mathfrak{D}(r+1,k),$
+and
+$\displaystyle B_{k,1,r}={}$
+$\displaystyle r(r+2-k)\mathfrak{D}(r+1,k-1)+r(3r+2-3k)\mathfrak{D}(r,k-1)$
+$\displaystyle+(3r^{2}-3kr-2r+k+1)\mathfrak{D}(r-1,k-1)$
+$\displaystyle+(r-1)(r-k-1)\mathfrak{D}(r-2,k-1).$
+Proof.
+For $j=0$ , (3.3) gives $A_{k,0}(d)=\genfrac{[}{]}{0.0pt}{}{d+1}{d+1-k}$ . A permutation of $d+1$ letters with $d+1-k$ cycles has a support of non-fixed letters. If the support has size $N$ , the induced fixed-point-free permutation has $N-k$ cycles and is counted by $\mathfrak{D}(N,k)$ . Hence
+$\genfrac{[}{]}{0.0pt}{}{d+1}{d+1-k}=\sum_{N}\mathfrak{D}(N,k)\binom{d+1}{N}.$
+Since $\binom{d+1}{N}=\binom{d}{N}+\binom{d}{N-1}$ , this gives the displayed formula for $B_{k,0,r}$ .
+For $j=1$ , (3.3) gives
+$A_{k,1}(d)=d(d+2-k)\genfrac{[}{]}{0.0pt}{}{d+1}{d+2-k}-(k+1)\genfrac{[}{]}{0.0pt}{}{d+1}{d+1-k}.$
+Expanding both Stirling numbers by supports of non-fixed letters and using Lemma 3.5, one rewrites the coefficient of $\binom{d}{r}$ in the displayed formula as the stated expression. The required binomial-basis rewritings are
+$d\binom{d}{s}=s\binom{d}{s}+(s+1)\binom{d}{s+1}$
+and
+$d^{2}\binom{d}{s}=s^{2}\binom{d}{s}+(s+1)(2s+1)\binom{d}{s+1}+(s+1)(s+2)\binom{d}{s+2}.$
+Each active coefficient in the displayed formula is nonnegative. For example, if $\mathfrak{D}(r,k-1)\neq 0$ , then $r\geq k$ , so $r(3r+2-3k)\geq 0$ ; the other terms are checked similarly.
+∎
+Theorem 3.7 (The case $j=0$ of binomial log-concavity).
+For fixed $k$ , the nonzero sequence $(B_{k,0,r})_{r}$ is log-concave.
+Proof.
+Let $P_{k}(t)=\sum_{N}\mathfrak{D}(N,k)t^{N}$ . Lemma 3.5 gives
+$P_{k}(t)=t^{2}\frac{d}{dt}\bigl((1+t)P_{k-1}(t)\bigr),\qquad P_{0}(t)=1.$
+By induction and Rolle’s theorem, all roots of $P_{k}(t)$ are real and nonpositive. Since
+$\sum_{r}B_{k,0,r}t^{r}=\frac{1+t}{t}P_{k}(t),$
+this generating polynomial also has only real nonpositive roots. Newton’s inequalities imply log-concavity of its nonzero coefficient sequence.
+∎
+Remark 3.8.
+The same real-rootedness mechanism does not prove Conjecture 3.3 for $j>0$ . Already for $j=1$ we have
+$\sum_{r}B_{2,1,r}t^{r}=t+4t^{2}+6t^{3}+3t^{4}=t(1+4t+6t^{2}+3t^{3}),$
+and the cubic factor has non-real roots.
+The first values for Conjecture 3.2 are:
+$\displaystyle A_{4,2}(d)={}$
+$\displaystyle 27\binom{d}{3}+212\binom{d}{4}+660\binom{d}{5}+1000\binom{d}{6}+735\binom{d}{7}+210\binom{d}{8},$
+$\displaystyle A_{5,2}(d)={}$
+$\displaystyle 320\binom{d}{4}+3375\binom{d}{5}+14010\binom{d}{6}+29575\binom{d}{7}+33740\binom{d}{8}+19845\binom{d}{9}+4725\binom{d}{10},$
+$\displaystyle A_{6,2}(d)={}$
+$\displaystyle 3250\binom{d}{5}+44004\binom{d}{6}+233604\binom{d}{7}+646492\binom{d}{8}+1022217\binom{d}{9}$
+$\displaystyle+932400\binom{d}{10}+457380\binom{d}{11}+93555\binom{d}{12}.$
+4. An AlphaEvolve detective story for Conjecture 3.2
+This section reports a series of AlphaEvolve experiments in search for approximate identities and leading terms for the coefficients $B_{k,2,r}$ . These led to the proof of
+Conjecture 3.2 for $j=2$ and Conjecture 3.3 for $j=1$ . The role of AlphaEvolve was not to prove a
+statement, but to propose candidate recurrences for the exact integer table
+of coefficients $B_{k,2,r}$ . The displayed approximate identities below
+are therefore not used as formal arguments. They are included because they
+explain how the correct mathematical language was found: the final proof in
+Section 5 is a binomial-basis induction involving
+lower modes and multiplication by linear factors.
+We use the reindexed array
+$M_{k,m}:=B_{k,2,2k-m},\qquad r=2k-m.$
+Thus $m=0$ corresponds to the top edge $r=2k$ , and increasing $m$
+moves downward in the binomial-basis degree $r$ . All arrays are extended
+by zero outside their natural supports. We also keep the defect-derangement
+notation $\mathfrak{D}(N,K)$ introduced above.
+In this section, the symbol $\approx$ has only an experimental meaning:
+the proposed formula gave a good fit on finite rectangles of exactly
+computed values, but it is not asserted to be an identity.
+4.1. A first local ansatz.
+The first useful pattern was that $M_{k,m}$ should be determined mainly
+from its two nearest predecessors in the previous $k$ -row:
+$M_{k-1,m-1},\qquad M_{k-1,m}.$
+The simplest successful ansatz had the form
+$M_{k,m}\approx Q_{1}(k,m)M_{k-1,m-1}+Q_{2}(k,m)M_{k-1,m}+\text{a short }\mathfrak{D}\text{-source}.$
+One compact candidate was
+(4.1)
+$\displaystyle M_{k,m}\approx{}$
+$\displaystyle m\,M_{k-1,m-1}+(2k-m-1)M_{k-1,m}$
+$\displaystyle+2\mathfrak{D}(r,k)+4k\,\mathfrak{D}(r-1,k-1)+3k(k-1)\mathfrak{D}(r-2,k-2)$
+$\displaystyle+\frac{4}{3}k(k-1)(k-2)\mathfrak{D}(r-3,k-3),$
+where $r=2k-m$ . The source term in (4.1) is not
+the right one, but the recurrence revealed an important feature: the
+dependence on $k$ should be local in the $(k,m)$ -lattice.
+4.2. A symmetric residual.
+The next useful observation came from subtracting a simple two-neighbour
+operator. Define the operator
+$W(F)(k,m):=(2k-m-1)\bigl(F(k-1,m)+F(k-1,m-1)\bigr),$
+and set
+$E_{k,m}:=(I-W)M_{k,m}.$
+The residual $E$ appeared to satisfy a simpler recurrence:
+(4.2)
+$E_{k,m}\approx(2k-m-1)E_{k-1,m}+(2k-m-1)E_{k-1,m-1}+m\,\mathfrak{D}(r+1,k).$
+Equivalently, this suggests the schematic second-order relation
+$(I-W)^{2}M_{k,m}\approx m\,\mathfrak{D}(r+1,k).$
+This relation is still not exact. Its value was conceptual: after removing
+a local homogeneous part, the remaining defect became much simpler. This
+suggested that the true recurrence should be found by choosing the correct
+homogeneous operator and then studying its residual.
+4.3. Correcting the local structure
+The next step was to correct the coefficients of the two-neighbour
+homogeneous part. The more accurate local backbone was
+(4.3)
+$M_{k,m}\approx(2k-m)M_{k-1,m-1}+(2k-m-1)M_{k-1,m}+\operatorname{source}(k,m).$
+With a source written directly in defect-derangement terms, the best compact
+candidate was
+(4.4)
+$\displaystyle M_{k,m}\approx{}$
+$\displaystyle(2k-m)M_{k-1,m-1}+(2k-m-1)M_{k-1,m}$
+$\displaystyle+(k-m+1)\mathfrak{D}(r,k)+(k+m-1)\mathfrak{D}(r+1,k)$
+$\displaystyle-(k+m-1)\mathfrak{D}(r,k-1)+(km+1)\mathfrak{D}(r+1,k-1).$
+In the original $(k,r)$ -coordinates this becomes
+(4.5)
+$\displaystyle B_{k,2,r}\approx{}$
+$\displaystyle rB_{k-1,2,r-1}+(r-1)B_{k-1,2,r-2}$
+$\displaystyle+(r-k+1)\mathfrak{D}(r,k)+(3k-r-1)\mathfrak{D}(r+1,k)$
+$\displaystyle-(3k-r-1)\mathfrak{D}(r,k-1)+\bigl(k(2k-r)+1\bigr)\mathfrak{D}(r+1,k-1).$
+Again, (4.5) is not an exact formula.
+However, it correctly identified the homogeneous part. In particular, the
+terms
+$rB_{k-1,2,r-1}+(r-1)B_{k-1,2,r-2}$
+are precisely the binomial-basis coefficients obtained by multiplying the
+previous row by a linear factor. This was the main structural improvement.
+4.4. Passing to lower modes.
+The direct $\mathfrak{D}$ -description was too rigid. The next change was to
+work with the lower Schur modes themselves:
+$a_{n,r}:=B_{n,0,r},\qquad b_{n,r}:=B_{n,1,r},\qquad c_{n,r}:=B_{n,2,r}.$
+This is natural because the positivity of the $a$ - and $b$ -rows had
+already been proved in Theorem 3.6.
+For a sequence $f=(f_{r})_{r\geq 0}$ , define
+$(T_{\alpha}f)_{r}:=(r-\alpha)f_{r}+rf_{r-1},\qquad f_{-1}:=0.$
+This operator has a simple binomial-basis meaning. If
+$F(x)=\sum_{r\geq 0}f_{r}\binom{x}{r},$
+then
+$(x-\alpha)F(x)=\sum_{r\geq 0}(T_{\alpha}f)_{r}\binom{x}{r}.$
+Thus the operators $T_{\alpha}$ encode multiplication by linear factors in
+the binomial basis.
+The most informative lower-mode candidate was
+(4.6)
+$c_{k,\bullet+1}\approx T_{-1}(c_{k-1,\bullet})+2T_{-1}(b_{k-1,\bullet})-T_{k-2}(b_{k-1,\bullet})+T_{1}(b_{k-2,\bullet}),$
+where $c_{k,\bullet+1}$ denotes the shifted sequence
+$r\mapsto c_{k,r+1}$ . Expanding the operators gives
+(4.7)
+$\displaystyle c_{k,r+1}\approx{}$
+$\displaystyle(r+1)c_{k-1,r}+rc_{k-1,r-1}$
+$\displaystyle+(r+k)b_{k-1,r}+rb_{k-1,r-1}$
+$\displaystyle+(r-1)b_{k-2,r}+rb_{k-2,r-1}.$
+This formula was not exact, but it was the decisive clue. It suggested
+that the correct recurrence should be written not in terms of raw
+$\mathfrak{D}$ -atoms, but in terms of the lower binomial coefficient arrays
+$a$ , $b$ , and $c$ , acted on by the elementary operators $T_{\alpha}$ .
+There is also a natural reason for the shifted left-hand side
+$c_{k,\bullet+1}$ . Since
+$\Delta\binom{x}{r+1}=\binom{x}{r},$
+one has
+$\Delta A_{k,2}(x)=\sum_{r\geq 0}c_{k,r+1}\binom{x}{r}.$
+Thus the search was implicitly pointing toward a recurrence for the forward
+difference of $A_{k,2}$ , rather than directly for $A_{k,2}$ itself.
+4.5. Conclusion of the AlphaEvolve search.
+The mathematical lesson of the search can be summarized as follows: the positivity of $B_{k,2,r}$ should be proved by a binomial-basis recurrence using lower modes.
+In hindsight, this is exactly what happens in the proof of Theorem 5.2. The exact identity
+(5.2) expresses $\Delta A_{k,2}$ as a sum of
+terms involving
+$A_{k-1,2},\qquad A_{k-1,1},\qquad A_{k-2,1},\qquad A_{k-2,0},\qquad A_{k-3,0},$
+multiplied by explicit linear or quadratic factors. In binomial-basis
+coordinates, those multiplications are controlled by the elementary
+operator $T_{\alpha}$ and by the binomial shift lemma
+(Lemma 5.1). The approximate formulas in this section
+therefore did not constitute a proof, but they identified the correct
+coordinate system in which the proof becomes elementary.
+5. Proofs of Conjectures 3.2 and 3.3 by Co-Mathematician
+The proof drafts produced by Co-Mathematician transformed the structural information suggested by the AlphaEvolve experiments into rigorous arguments.
+For Conjecture 3.2, the proof is carried out directly in the binomial
+basis. A binomial-shift lemma and an explicit recurrence express the
+coefficients in the case $j=2$ in terms of binomial-basis coefficients
+from lower Schur modes (i.e coefficients with smaller second part $j$ ), whose positivity has already been established.
+For Conjecture 3.3, the proof uses a more delicate argument. The
+coefficients for $j=1$ are first expressed in terms of numbers of
+fixed-point-free permutations with a prescribed number of cycles. Strong
+log-concavity properties of these permutation numbers reduce the desired
+inequalities to a finite family of explicit polynomial inequalities, which
+are then checked exactly.
+Lemma 5.1 (Binomial shift lemma).
+Let
+$A(x)=\sum_{r\geq I}a_{r}\binom{x}{r}$
+be a polynomial with $a_{r}\geq 0$ for all $r$ , and suppose that $a_{I}>0$ . If $I\geq c$ , then
+$(x-c)A(x)=\sum_{r\geq\max(I,c+1)}b_{r}\binom{x}{r}$
+with $b_{r}\geq 0$ for all $r$ .
+Proof.
+Using the absorption identity
+$x\binom{x}{r}=r\binom{x}{r}+(r+1)\binom{x}{r+1},$
+we obtain
+$(x-c)A(x)=a_{I}(I-c)\binom{x}{I}+\sum_{r\geq I+1}\bigl(a_{r}(r-c)+r\,a_{r-1}\bigr)\binom{x}{r}.$
+Since $I\geq c$ and $a_{I}>0$ , the leading coefficient $a_{I}(I-c)$ is nonnegative. For $r\geq I+1$ one has $r-c\geq 1$ , so all displayed coefficients are nonnegative. If $I=c$ , then the leading coefficient vanishes and the support shifts up by one. This proves the claim.
+∎
+Theorem 5.2 (Conjecture 3.2 for $j=2$ ).
+For all integers $k\geq 4$ and $r\geq 0$ one has
+$B_{k,2,r}\geq 0.$
+Equivalently, Conjecture 3.2 holds for $j=2$ .
+Proof.
+Define the generating polynomial
+$E_{d}(T,u):=\prod_{i=0}^{d}\bigl(T+i+(d-i)u\bigr)=\sum_{k=0}^{d+1}C_{k,d}(u)T^{d+1-k}.$
+Factoring out the $i=d$ term gives
+$E_{d}(T,u)=(T+d)\,E_{d-1}(T+u,u).$
+Expanding $E_{d-1}(T+u,u)$ and matching the coefficient of $T^{d+1-k}$ yields
+$C_{k,d}(u)=\sum_{j=0}^{k}\binom{d-j}{k-j}u^{k-j}C_{j,d-1}(u)+d\sum_{j=0}^{k-1}\binom{d-j}{k-1-j}u^{k-1-j}C_{j,d-1}(u).$
+Multiplying by $1-u$ and extracting the coefficient of $u^{2}$ , we obtain
+$\displaystyle A_{k,2}(d)={}$
+$\displaystyle A_{k,2}(d-1)+(d-k+1)A_{k-1,1}(d-1)+\binom{d-k+2}{2}A_{k-2,0}(d-1)$
+(5.1)
+$\displaystyle+d\,A_{k-1,2}(d-1)+d(d-k+2)A_{k-2,1}(d-1)+d\binom{d-k+3}{2}A_{k-3,0}(d-1).$
+Now put $x=d-1$ and write $\Delta f(x)=f(x+1)-f(x)$ . Then (5.1) becomes
+$\displaystyle\Delta A_{k,2}(x)={}$
+$\displaystyle(x-k+2)A_{k-1,1}(x)+\binom{x-k+3}{2}A_{k-2,0}(x)$
+(5.2)
+$\displaystyle+(x+1)A_{k-1,2}(x)+(x+1)(x-k+3)A_{k-2,1}(x)+(x+1)\binom{x-k+4}{2}A_{k-3,0}(x).$
+Since
+$\Delta A_{k,2}(x)=\sum_{r\geq 0}B_{k,2,r+1}\binom{x}{r},$
+it suffices to prove that every summand on the right-hand side of (5.2) has nonnegative binomial coefficients.
+By Theorem 3.6, the polynomials $A_{n,0}(x)$ and $A_{n,1}(x)$ have nonnegative binomial coefficients. Moreover their minimum supports satisfy
+$\operatorname{mindeg}_{\binom{\cdot}{r}}A_{n,0}\geq n,\qquad\operatorname{mindeg}_{\binom{\cdot}{r}}A_{n,1}\geq n-1.$
+We prove by induction on $k$ that $A_{k,2}(x)$ has nonnegative binomial coefficients and minimum support at least $k-1$ .
+The base case $k=3$ is trivial, since $A_{3,2}(x)=0$ . Assume the claim for $A_{k-1,2}(x)$ . Then Lemma 5.1 applies successively to each term on the right-hand side of (5.2):
+•
+$(x-(k-2))A_{k-1,1}(x)$ has nonnegative coefficients and minimum support at least $k-1$ ;
+•
+$\binom{x-k+3}{2}A_{k-2,0}(x)=\frac{1}{2}(x-(k-3))(x-(k-2))A_{k-2,0}(x)$ has nonnegative coefficients and minimum support at least $k-1$ ;
+•
+$(x+1)A_{k-1,2}(x)$ has nonnegative coefficients and minimum support at least $k-2$ ;
+•
+$(x+1)(x-k+3)A_{k-2,1}(x)$ has nonnegative coefficients and minimum support at least $k-2$ ;
+•
+$(x+1)\binom{x-k+4}{2}A_{k-3,0}(x)=\frac{1}{2}(x+1)(x-k+4)(x-k+3)A_{k-3,0}(x)$ has nonnegative coefficients and minimum support at least $k-2$ .
+Hence $\Delta A_{k,2}(x)$ has nonnegative binomial coefficients and minimum support at least $k-2$ , so
+$B_{k,2,r+1}\geq 0\qquad(r\geq 0).$
+Finally,
+$B_{k,2,0}=A_{k,2}(0)=0,$
+which is immediate from (3.3). Therefore all coefficients $B_{k,2,r}$ are nonnegative, and $A_{k,2}(x)$ has minimum support at least $k-1$ . This closes the induction.
+∎
+The proof of Conjecture 3.3 for $j=1$ starts from the explicit formula of Theorem 3.6. Set
+$D_{i}:=\mathfrak{D}(r+i,k-1)\qquad(i\in\{-3,-2,-1,0,1,2\}),$
+and write
+$B_{k,1,r}=p_{1}D_{1}+p_{0}D_{0}+p_{-1}D_{-1}+p_{-2}D_{-2},$
+where
+$\displaystyle p_{1}$
+$\displaystyle=r(r+2-k),$
+$\displaystyle p_{0}$
+$\displaystyle=r(3r+2-3k),$
+$\displaystyle p_{-1}$
+$\displaystyle=3r^{2}-3kr-2r+k+1,$
+$\displaystyle p_{-2}$
+$\displaystyle=(r-1)(r-k-1).$
+Lemma 5.3 (Strong log-concavity of $\mathfrak{D}(\cdot,K)$ ).
+Fix $K\geq 0$ . For all integers $p\leq q$ one has
+$\mathfrak{D}(p,K)\mathfrak{D}(q,K)\geq\mathfrak{D}(p-1,K)\mathfrak{D}(q+1,K).$
+Proof.
+In the proof of Theorem 3.7 we showed that the generating polynomial
+$P_{K}(t)=\sum_{N}\mathfrak{D}(N,K)t^{N}$
+has only real nonpositive roots. Hence its coefficient sequence is log-concave and has no internal zeros. Therefore the ratios
+$\frac{\mathfrak{D}(N,K)}{\mathfrak{D}(N-1,K)}$
+form a weakly decreasing sequence on the active support. Iterating this monotonicity from $p$ to $q$ gives
+$\frac{\mathfrak{D}(p,K)}{\mathfrak{D}(p-1,K)}\geq\frac{\mathfrak{D}(q+1,K)}{\mathfrak{D}(q,K)},$
+which is equivalent to the displayed inequality.
+∎
+Theorem 5.4 (Conjecture 3.3 for $j=1$ ).
+For all integers $k\geq 2$ and $r\geq 0$ one has
+$B_{k,1,r}^{2}\geq B_{k,1,r-1}B_{k,1,r+1}.$
+Equivalently, Conjecture 3.3 holds for $j=1$ .
+Proof.
+Set
+$L_{k,r}:=B_{k,1,r}^{2}-B_{k,1,r-1}B_{k,1,r+1}.$
+Expanding $L_{k,r}$ in the variables $D_{-3},\ldots,D_{2}$ gives a quadratic form. Group its terms by the trace $S=a+b$ . For each $S\in\{-4,-3,-2,-1,0,1,2\}$ , let
+$(m_{0},M_{0}),\ldots,(m_{t},M_{t})$
+be the pairs with $m_{i}\leq M_{i}$ , $m_{i}+M_{i}=S$ , ordered from the center outward:
+$\displaystyle S=-4:$
+$\displaystyle\quad(-2,-2),(-3,-1),$
+$\displaystyle S=-3:$
+$\displaystyle\quad(-2,-1),(-3,0),$
+$\displaystyle S=-2:$
+$\displaystyle\quad(-1,-1),(-2,0),(-3,1),$
+$\displaystyle S=-1:$
+$\displaystyle\quad(-1,0),(-2,1),(-3,2),$
+$\displaystyle S=0:$
+$\displaystyle\quad(0,0),(-1,1),(-2,2),$
+$\displaystyle S=1:$
+$\displaystyle\quad(0,1),(-1,2),$
+$\displaystyle S=2:$
+$\displaystyle\quad(1,1),(0,2).$
+Write
+$U_{S,i}:=D_{m_{i}}D_{M_{i}}.$
+By Lemma 5.3, the sequence $U_{S,0},U_{S,1},\ldots,U_{S,t}$ is weakly decreasing. Define
+$\Delta_{S,i}:=U_{S,i}-U_{S,i+1}\geq 0,\qquad U_{S,t+1}:=0.$
+Let $c_{S,i}(k,r)$ be the coefficient of $U_{S,i}$ in the slice of $L_{k,r}$ with trace $S$ . By discrete Abel summation,
+$\sum_{i=0}^{t}c_{S,i}U_{S,i}=\sum_{i=0}^{t}W_{S,i}\Delta_{S,i},\qquad W_{S,i}:=\sum_{j=0}^{i}c_{S,j}.$
+Therefore
+$L_{k,r}=\sum_{S=-4}^{2}\sum_{i}W_{S,i}(k,r)\,\Delta_{S,i}.$
+It is thus enough to prove that every prefix sum $W_{S,i}(k,r)$ is nonnegative on the active support of $\Delta_{S,i}$ .
+Fix one of the pairs $(m_{i},M_{i})$ . If $\Delta_{S,i}\neq 0$ , then both indices $r+m_{i}$ and $r+M_{i}$ lie in the active support of $\mathfrak{D}(\,\cdot\,,k-1)$ , namely
+$k\leq r+m_{i},\qquad r+M_{i}\leq 2k-2.$
+Introduce new variables
+$X:=r+m_{i}-k\geq 0,\qquad Y:=2k-2-(r+M_{i})\geq 0.$
+Solving for $k$ and $r$ gives
+$k=X+Y+M_{i}-m_{i}+2,\qquad r=2X+Y+M_{i}-2m_{i}+2.$
+Substituting these expressions into each $W_{S,i}(k,r)$ yields a polynomial $W_{S,i}(X,Y)$ in the nonnegative variables $X$ and $Y$ . The exact list of all seventeen resulting polynomials is recorded in Appendix A. Every one of them has nonnegative coefficients. Hence
+$W_{S,i}(X,Y)\geq 0\qquad\text{for all }X,Y\geq 0.$
+Since also $\Delta_{S,i}\geq 0$ , every term in the Abel decomposition of $L_{k,r}$ is nonnegative. Therefore $L_{k,r}\geq 0$ for all $k,r$ , proving Conjecture 3.3 for $j=1$ .
+∎
+Remark 5.5.
+The proof of Theorem 5.4 is exact but computer-assisted. The role of the computer algebra calculation is finite and transparent: it expands the seventeen prefix-sum polynomials $W_{S,i}(X,Y)$ and checks that every coefficient is nonnegative. No numerical approximation is involved.
+6. Shifted binomial log-concavity for Plücker coefficients
+In this section we discuss a related binomial log-concavity phenomenon for the
+Plücker coefficients of coincident root strata. This problem is a harder, stratified version of Theorem 5.2 and 5.4.
+Let
+$\lambda=(2^{e_{2}},\ldots,m^{e_{m}})$ be a partition without parts equal
+to $1$ , and let
+$N:=|\lambda|,\qquad M:=|\tilde{\lambda}|,$
+where $\tilde{\lambda}$ is obtained from $\lambda$ by subtracting $1$
+from each part. The equivariant cohomology class
+$[\overline{Y}_{\lambda}(d)]$ was introduced in (1.2) of the Introduction, and it is computed recursively by
+Theorem 2.7 of [FJ25]. In the Schur basis it has
+the form
+$[\overline{Y}_{\lambda}(d)]=\sum_{\lceil M/2\rceil\leq i\leq M}P_{\lambda;i}(d)\,s_{i,M-i},\qquad P_{\lambda;i}(d):=\operatorname{Pl}_{\lambda;2i-M}(d).$
+Thus the admissible indices are precisely $\lceil M/2\rceil\leq i\leq M$ .
+The recursive formula is naturally valid at the enumerative threshold
+$d\geq N$ . This suggests shifting the degree variable to
+$d=N+x.$
+For each admissible pair $(\lambda,i)$ , define the shifted Plücker
+polynomial
+$Q_{\lambda;i}(x):=P_{\lambda;i}(N+x),$
+and expand it in the binomial basis of the shifted variable:
+$Q_{\lambda;i}(x)=\sum_{r\geq 0}C_{\lambda;i,r}\binom{x}{r}.$
+Equivalently,
+$C_{\lambda;i,r}=\Delta_{x}^{r}Q_{\lambda;i}(0),$
+where $\Delta_{x}f(x)=f(x+1)-f(x)$ is the forward difference operator.
+The ordinary binomial basis in $d$ is not the natural one in this
+problem. For example,
+$\operatorname{Pl}_{(3);0}(d)=6\binom{d}{2}-3\binom{d}{1}$
+already has a negative binomial coefficient. After the shift
+$d=N+x$ , however, all computed examples exhibit positive and
+log-concave binomial-basis coefficients.
+Conjecture 6.1 (Shifted-binomial log-concavity for Plücker coefficients).
+For every partition $\lambda$ without parts equal to $1$ , and for every
+admissible index $i$ , the coefficient sequence
+$(C_{\lambda;i,0},C_{\lambda;i,1},C_{\lambda;i,2},\ldots)$
+is nonnegative and log-concave. Equivalently, $C_{\lambda;i,r}\geq 0$ for all $r$ , and
+$C_{\lambda;i,r}^{2}\geq C_{\lambda;i,r-1}C_{\lambda;i,r+1}$
+for all relevant $r$ , with the convention that $C_{\lambda;i,r}=0$
+outside the degree range of $Q_{\lambda;i}$ .
+By Theorem 3.4, binomial positivity together
+with binomial log-concavity implies ordinary log-concavity of the values.
+Thus Conjecture 6.1 formally implies
+the following weaker shifted-value conjecture.
+Conjecture 6.2 (Shifted Plücker value log-concavity).
+For every admissible pair $(\lambda,i)$ , the sequence
+$Q_{\lambda;i}(0),Q_{\lambda;i}(1),Q_{\lambda;i}(2),\ldots$
+is log-concave after deleting its initial zeroes. Equivalently,
+$P_{\lambda;i}(N+x)^{2}\geq P_{\lambda;i}(N+x-1)P_{\lambda;i}(N+x+1)$
+for all $x\geq 1$ in the nonzero range.
+Remark 6.3.
+Conjecture 6.2 is stated separately
+because it is the directly visible numerical consequence at the level of
+Plücker values. The stronger structure is
+Conjecture 6.1: it predicts
+log-concavity before the binomial transform is evaluated.
+Example 6.4 (Top coefficient).
+The top Plücker coefficient is known explicitly:
+$\operatorname{Pl}_{\lambda;M}(d)=\frac{1}{\prod_{q\geq 2}e_{q}!}\,d(d-1)\cdots(d-N+1).$
+After shifting $d=N+x$ , this becomes
+$\operatorname{Pl}_{\lambda;M}(N+x)=\frac{1}{\prod_{q\geq 2}e_{q}!}\,(x+1)(x+2)\cdots(x+N).$
+Therefore
+$\operatorname{Pl}_{\lambda;M}(N+x)=\frac{N!}{\prod_{q\geq 2}e_{q}!}\sum_{r=0}^{N}\binom{N}{r}\binom{x}{r}.$
+Thus the shifted-binomial coefficient sequence is a positive multiple of
+$\binom{N}{0},\binom{N}{1},\ldots,\binom{N}{N},$
+and is therefore log-concave.
+For instance, for $\lambda=(2,2)$ , we have $N=4$ , $M=2$ , and
+$\operatorname{Pl}_{(2,2);2}(d)=\frac{1}{2}d(d-1)(d-2)(d-3).$
+Hence
+$\operatorname{Pl}_{(2,2);2}(4+x)=12+48\binom{x}{1}+72\binom{x}{2}+48\binom{x}{3}+12\binom{x}{4},$
+with coefficient sequence
+$(12,48,72,48,12).$
+Example 6.5 (The bitangent coefficient).
+For $\lambda=(2,2)$ , the ordinary bitangent polynomial is
+$\operatorname{Pl}_{(2,2);0}(d)=\frac{1}{2}d(d-2)(d-3)(d+3).$
+After shifting by $N=4$ ,
+$\operatorname{Pl}_{(2,2);0}(4+x)=\frac{1}{2}(x+4)(x+2)(x+1)(x+7).$
+Its shifted-binomial expansion is
+$\operatorname{Pl}_{(2,2);0}(4+x)=28+92\binom{x}{1}+112\binom{x}{2}+60\binom{x}{3}+12\binom{x}{4}.$
+Thus
+$(C_{0},C_{1},C_{2},C_{3},C_{4})=(28,92,112,60,12),$
+and the log-concavity inequalities are
+$92^{2}\geq 28\cdot 112,\qquad 112^{2}\geq 92\cdot 60,\qquad 60^{2}\geq 112\cdot 12.$
+Example 6.6 (A non-top coefficient for $\lambda=(2,2,2)$ ).
+For $\lambda=(2,2,2)$ , one has $N=6$ , $M=3$ , and
+$\operatorname{Pl}_{(2,2,2);1}(d)=\frac{1}{3}d(d-5)(d-4)(d-3)(d^{2}+3d-2).$
+After shifting,
+$\operatorname{Pl}_{(2,2,2);1}(6+x)=\frac{1}{3}(x+6)(x+1)(x+2)(x+3)(x^{2}+15x+52).$
+The shifted-binomial expansion is
+$\displaystyle\operatorname{Pl}_{(2,2,2);1}(6+x)={}$
+$\displaystyle 624+3184\binom{x}{1}+6768\binom{x}{2}+7680\binom{x}{3}$
+$\displaystyle+4912\binom{x}{4}+1680\binom{x}{5}+240\binom{x}{6}.$
+Thus
+$(C_{0},C_{1},C_{2},C_{3},C_{4},C_{5},C_{6})=(624,3184,6768,7680,4912,1680,240),$
+which is positive and log-concave.
+6.1. A proof strategy and the current gap
+The following is a revised version of the induction strategy suggested by
+the Co-Mathematician proof draft. It should be read as a proof idea, not
+as a complete proof.
+Let $m$ be the largest part of $\lambda$ , let $\lambda^{\prime}$ be obtained
+by removing one part $m$ , and put
+$N^{\prime}=|\lambda^{\prime}|=N-m.$
+The recursion of Theorem 2.7 of [FJ26] is compatible
+with the shift $d=N+x$ , because
+$d-m=N^{\prime}+x.$
+Thus the recursion takes the shifted form
+$[\overline{Y}_{\lambda}(N+x)]=\frac{1}{e_{m}}\partial\left([\overline{Y}_{\lambda^{\prime}}(N^{\prime}+x)]_{m/(N^{\prime}+x)}\prod_{\ell=0}^{m-1}\bigl(\ell a+(N+x-\ell)b\bigr)\right),$
+where
+$\partial(\alpha)(a,b)=\frac{\alpha(a,b)-\alpha(b,a)}{b-a}.$
+This gives a natural induction on the length of $\lambda$ . Since
+$C_{\lambda;i,r}=\Delta_{x}^{r}Q_{\lambda;i}(0),$
+the conjecture can be reformulated as a statement about the finite
+differences in $x$ of the Schur coefficients produced by this recursion.
+A possible route to a proof would be to turn the shifted recursion into a
+coefficient-level transition formula of the form
+$C_{\lambda;i,r}=\sum_{i^{\prime},s}K_{\lambda,m}^{i,i^{\prime}}(r,s)\,C_{\lambda^{\prime};i^{\prime},s},$
+where the kernels $K_{\lambda,m}^{i,i^{\prime}}(r,s)$ are manifestly nonnegative.
+If these kernels were known to preserve log-concavity in the $r$ -direction,
+and if the sums over $i^{\prime}$ satisfied the necessary compatibility or
+interlacing conditions, then the conjecture would follow by induction from
+the empty partition.
+The main missing point is precisely this kernel statement. Positivity of
+the individual factors
+$\prod_{\ell=0}^{m-1}\bigl(\ell a+(N+x-\ell)b\bigr)$
+after shifting is not enough: the divided difference $\partial$ mixes the
+Schur components, and sums of log-concave sequences need not be log-concave
+without an additional synchronization condition. A complete proof would
+therefore need a cancellation-free binomial-basis form of the shifted
+recursion, together with a total-positivity or interlacing statement strong
+enough to imply log-concavity after summing over the intermediate Schur
+indices.
+There are also two tempting approaches which do not by themselves complete
+the proof. First, one cannot simply prove real-rootedness and appeal to
+Newton’s inequalities. For example, the coefficient of $s_{3,1}$ for
+$\lambda=(3,3)$ gives
+$Q(x)=\frac{1}{2}(x+1)(x+2)(x+6)\bigl(x^{3}+27x^{2}+188x+402\bigr),$
+and the cubic factor has discriminant
+$-96548<0.$
+Thus $Q(x)$ is not real-rooted. Moreover, its shifted-binomial
+coefficient sequence is
+$(2412,10566,19368,19026,10512,3060,360),$
+whose ordinary generating polynomial factors as
+$18(z+1)^{2}\bigl(20z^{4}+130z^{3}+304z^{2}+319z+134\bigr),$
+and the quartic factor has discriminant
+$-975021840<0.$
+Thus the binomial-coefficient generating polynomial is not generally
+real-rooted either.
+Second, the divided difference $\partial$ in Theorem 2.7 acts on the
+Chern-root variables $a,b$ , not on the shifted degree variable $x$ .
+Therefore $\partial$ should not be confused with the forward difference
+$\Delta_{x}$ . Similarly, the coefficients
+$C_{\lambda;i,r}=\Delta_{x}^{r}P_{\lambda;i}(N)$
+are finite differences in an external degree parameter. At present there
+is no direct realization of these numbers as intersection numbers of powers
+of a fixed nef divisor, so standard Hodge-theoretic inequalities such as
+Khovanskii–Teissier or Lorentzian-polynomial log-concavity do not apply
+without further geometric input.
+Thus the recursion gives a promising induction scheme, but the essential
+new ingredient would be a positive, log-concavity-preserving transition
+kernel for the shifted-binomial coefficients.
+6.2. Chern–Schwartz–MacPherson classes of the coincident root strata
+A natural generalization is to study the equivariant
+Chern–Schwartz–MacPherson classes of the coincident root strata; see
+[Juh24]. These classes lead to formulas for Euler
+characteristics of varieties of lines with prescribed contact type
+$\lambda$ to a degree $d$ hypersurface. In the case of the empty
+partition, this framework recovers the total equivariant Chern class of
+$\Pol^{d}(\mathbb{C}^{2})$ . Thus Plücker numbers and the total Chern class
+$c(\Pol^{d}(\mathbb{C}^{2}))$ are closely related special cases of the same
+general theory of equivariant characteristic classes of coincident root
+strata. In both settings one obtains polynomial dependence on $d$ , and
+the examples suggest stronger positivity and log-concavity after passing to
+the appropriate binomial basis.
+ChatGPT 5.5 Pro found the following conjecture:
+Conjecture 6.7 (Shifted binomial log-concavity for stable CSM–Schur coefficients).
+Let $\lambda$ be a partition with parts at least $2$ , and let
+$c=\operatorname{codim}Y_{\lambda}=|\lambda|-\ell(\lambda).$
+For every $f\geq c$ , consider the homogeneous degree $f$ part of the stable
+Chern–Schwartz–MacPherson class of the open coincident root stratum
+$Y_{\lambda}(d)$ :
+$c^{SM}(Y_{\lambda}(d))_{f}.$
+Expand it in the two-variable Schur basis as
+$c^{SM}(Y_{\lambda}(d))_{f}=\sum_{i=0}^{\lfloor f/2\rfloor}C_{\lambda,f,i}(d)\,s_{f-i,i}(a,b),$
+where each $C_{\lambda,f,i}(d)$ is a polynomial in $d$ in the stable range.
+Define the signed Schur coefficient polynomial
+$\widetilde{C}_{\lambda,f,i}(d)=(-1)^{f-c}C_{\lambda,f,i}(d).$
+Set
+$y=d-|\lambda|-2(f-c).$
+Then the shifted polynomial
+$\widetilde{C}_{\lambda,f,i}\bigl(y+|\lambda|+2(f-c)\bigr)$
+has a nonnegative expansion in the binomial basis:
+$\widetilde{C}_{\lambda,f,i}\bigl(y+|\lambda|+2(f-c)\bigr)=\sum_{j\geq 0}\gamma_{\lambda,f,i,j}\binom{y}{j},\qquad\gamma_{\lambda,f,i,j}\geq 0.$
+Moreover, after deleting possible initial zeros, the coefficient sequence
+$\left(\gamma_{\lambda,f,i,0},\gamma_{\lambda,f,i,1},\gamma_{\lambda,f,i,2},\ldots\right)$
+is log-concave:
+$\gamma_{\lambda,f,i,j}^{\,2}\geq\gamma_{\lambda,f,i,j-1}\gamma_{\lambda,f,i,j+1}\qquad\text{for all }j.$
+This conjecture should be viewed as a candidate common extension of
+Conjecture 3.3 and Conjecture 6.1.
+There is, however, an important distinction: the full vector space is naturally a
+closure rather than an open stratum. At present we do not know the correct
+log-concavity statement for CSM or ordinary classes of stratum closures.
+Appendix A Prefix-sum polynomials in the proof of Theorem 5.4
+For each trace slice $S$ in the proof of Theorem 5.4, the Abel prefix sums $W_{S,i}(k,r)$ become explicit polynomials in the support variables
+$X=r+m_{i}-k,\qquad Y=2k-2-(r+M_{i}),$
+where $(m_{i},M_{i})$ is the $i$ -th pair on the slice. The following list was produced by exact symbolic expansion. Every coefficient is nonnegative.
+For $S=-4$ :
+$\displaystyle W_{-4,0}(X,Y)={}$
+$\displaystyle 4X^{4}+4X^{3}Y+20X^{3}+X^{2}Y^{2}+14X^{2}Y+37X^{2}$
+$\displaystyle+2XY^{2}+16XY+30X+Y^{2}+6Y+9,$
+$\displaystyle W_{-4,1}(X,Y)={}$
+$\displaystyle 5X^{2}+4XY+28X+Y^{2}+12Y+39.$
+For $S=-3$ :
+$\displaystyle W_{-3,0}(X,Y)={}$
+$\displaystyle 12X^{4}+12X^{3}Y+84X^{3}+3X^{2}Y^{2}+58X^{2}Y+221X^{2}$
+$\displaystyle+8XY^{2}+94XY+258X+6Y^{2}+52Y+112,$
+$\displaystyle W_{-3,1}(X,Y)={}$
+$\displaystyle 30X^{2}+24XY+204X+6Y^{2}+88Y+344.$
+For $S=-2$ :
+$\displaystyle W_{-2,0}(X,Y)={}$
+$\displaystyle 24X^{4}+24X^{3}Y+94X^{3}+6X^{2}Y^{2}+61X^{2}Y+140X^{2}$
+$\displaystyle+7XY^{2}+51XY+94X+2Y^{2}+14Y+24,$
+$\displaystyle W_{-2,1}(X,Y)={}$
+$\displaystyle 12X^{4}+12X^{3}Y+110X^{3}+3X^{2}Y^{2}+77X^{2}Y+401X^{2}$
+$\displaystyle+11XY^{2}+181XY+696X+15Y^{2}+168Y+481,$
+$\displaystyle W_{-2,2}(X,Y)={}$
+$\displaystyle 75X^{2}+60XY+598X+15Y^{2}+258Y+1187.$
+For $S=-1$ :
+$\displaystyle W_{-1,0}(X,Y)={}$
+$\displaystyle 32X^{4}+32X^{3}Y+196X^{3}+8X^{2}Y^{2}+134X^{2}Y+442X^{2}$
+$\displaystyle+18XY^{2}+174XY+432X+8Y^{2}+68Y+152,$
+$\displaystyle W_{-1,1}(X,Y)={}$
+$\displaystyle 4X^{4}+4X^{3}Y+46X^{3}+X^{2}Y^{2}+33X^{2}Y+270X^{2}$
+$\displaystyle+5XY^{2}+145XY+832X+20Y^{2}+272Y+976,$
+$\displaystyle W_{-1,2}(X,Y)={}$
+$\displaystyle 100X^{2}+80XY+912X+20Y^{2}+392Y+2080.$
+For $S=0$ :
+$\displaystyle W_{0,0}(X,Y)={}$
+$\displaystyle 24X^{4}+24X^{3}Y+78X^{3}+6X^{2}Y^{2}+53X^{2}Y+94X^{2}$
+$\displaystyle+7XY^{2}+37XY+50X+2Y^{2}+8Y+10,$
+$\displaystyle W_{0,1}(X,Y)={}$
+$\displaystyle 12X^{4}+12X^{3}Y+102X^{3}+3X^{2}Y^{2}+73X^{2}Y+339X^{2}$
+$\displaystyle+11XY^{2}+151XY+522X+11Y^{2}+112Y+309,$
+$\displaystyle W_{0,2}(X,Y)={}$
+$\displaystyle 75X^{2}+60XY+558X+15Y^{2}+238Y+1027.$
+For $S=1$ :
+$\displaystyle W_{1,0}(X,Y)={}$
+$\displaystyle 12X^{4}+12X^{3}Y+68X^{3}+3X^{2}Y^{2}+50X^{2}Y+138X^{2}$
+$\displaystyle+8XY^{2}+60XY+116X+3Y^{2}+18Y+32,$
+$\displaystyle W_{1,1}(X,Y)={}$
+$\displaystyle 30X^{2}+24XY+172X+6Y^{2}+72Y+240.$
+For $S=2$ :
+$\displaystyle W_{2,0}(X,Y)={}$
+$\displaystyle 4X^{4}+4X^{3}Y+12X^{3}+X^{2}Y^{2}+10X^{2}Y+13X^{2}$
+$\displaystyle+2XY^{2}+8XY+6X+Y^{2}+2Y+1,$
+$\displaystyle W_{2,1}(X,Y)={}$
+$\displaystyle 5X^{2}+4XY+20X+Y^{2}+8Y+19.$
+References
+[AHK18]
+Karim Adiprasito, June Huh, and Eric Katz, Hodge theory for combinatorial
+geometries, Annals of Mathematics 188 (2018), no. 2, 381–452.
+[BH20]
+Petter Brändén and June Huh, Lorentzian polynomials, Annals of
+Mathematics 192 (2020), no. 3, 821–891.
+[BRT21]
+Sara C. Billey, Brendon Rhoades, and Vasu Tewari, Boolean product
+polynomials, Schur positivity, and Chern plethysm, International
+Mathematics Research Notices 2021 (2021), no. 21, 16636–16670.
+[BS12]
+Gergely Bérczi and András Szenes, Thom polynomials of Morin
+singularities, Annals of Mathematics 175 (2012), no. 2, 567–629.
+[CZ20]
+Ciro Ciliberto and Mikhail Zaidenberg, On Fano schemes of complete
+intersections, Polynomial Rings and Affine Algebraic Geometry (Shigeru
+Kuroda, Nobuharu Onoda, and Gene Freudenburg, eds.), Springer Proceedings in
+Mathematics & Statistics, vol. 319, Springer, Cham, 2020, pp. 1–39.
+[FJ25]
+László M. Fehér and András P. Juhász, Polynomiality
+of the Stirling coefficients of $c(\mathrm{Pol}^{d}(\mathbb{C}^{n}))$ and
+Fano schemes, arXiv preprint arXiv:2509.01725, 2025, Available at
+https://arxiv.org/abs/2509.01725.
+[FJ26]
+by same author, Plücker formulas using equivariant cohomology of coincident
+root strata, Michigan Mathematical Journal (2026), 1–36, Advance
+publication.
+[FL83]
+William Fulton and Robert Lazarsfeld, Positive polynomials for ample
+vector bundles, Annals of Mathematics 118 (1983), no. 1, 35–60.
+[Har79]
+Joe Harris, Galois groups of enumerative problems, Duke Mathematical
+Journal 46 (1979), no. 4, 685–724.
+[Hie16]
+Dang Tuan Hiep, On the degree of Fano schemes of linear subspaces on
+hypersurfaces, Kodai Mathematical Journal 39 (2016), no. 1,
+110–118.
+[HK22]
+S. Hashimoto and B. Kadets, 38406501359372282063949 and all that:
+Monodromy of Fano problems, International Mathematics Research Notices
+2022 (2022), no. 5, 3349–3370.
+[Huh12]
+June Huh, Milnor numbers of projective hypersurfaces and the chromatic
+polynomial of graphs, Journal of the American Mathematical Society
+25 (2012), no. 3, 907–927.
+[Juh24]
+András P. Juhász, Equivariant classes of coincident root strata
+and related invariants of varieties of tangent lines, Ph.D. thesis, Central
+European University, 2024.
+[Las78]
+Alain Lascoux, Classes de Chern d’un produit tensoriel, Comptes Rendus
+de l’Académie des Sciences de Paris, Série A–B 286 (1978),
+no. 8, A385–A387.
+[LLT89]
+Dan Laksov, Alain Lascoux, and Anders Thorup, On Giambelli’s theorem on
+complete correlations, Acta Mathematica 162 (1989), no. 3–4,
+143–199.
+[LP10]
+Alain Lascoux and Piotr Pragacz, Thom polynomials and Schur functions:
+the singularities $A_{3}(-)$ , Publications of the Research Institute for
+Mathematical Sciences 46 (2010), 183–200.
+[Man99]
+Laurent Manivel, Sur les hypersurfaces contenant des espaces
+linéaires, Comptes Rendus de l’Académie des Sciences - Series I -
+Mathematics 328 (1999), no. 4, 307–312.
+[Man16]
+Laurent Manivel, Chern classes of tensor products, International Journal
+of Mathematics 27 (2016), no. 10, 1650079.
+[NVE+25]
+Alexander Novikov, Ngân Vũ, Marvin Eisenberger, Emilien Dupont, Po-Sen
+Huang, Adam Zsolt Wagner, Sergey Shirobokov, Borislav Kozlovskii, Francisco
+J. R. Ruiz, Abbas Mehrabian, M. Pawan Kumar, Abigail See, Swarat Chaudhuri,
+George Holland, Alex Davies, Sebastian Nowozin, Pushmeet Kohli, and Matej
+Balog, AlphaEvolve: A coding agent for scientific and algorithmic
+discovery, arXiv preprint arXiv:2506.13131, 2025, Available at
+https://arxiv.org/abs/2506.13131.
+[Pra07]
+Piotr Pragacz, Thom polynomials and Schur functions: the singularities
+$I_{2,2}(-)$ , Annales de l’Institut Fourier 57 (2007), no. 5,
+1487–1508.
+[PW07]
+Piotr Pragacz and Andrzej Weber, Positivity of Schur function
+expansions of Thom polynomials, Fundamenta Mathematicae 195
+(2007), no. 1, 85–95.
+[Rim01]
+Richárd Rimányi, Thom polynomials, symmetries and incidences of
+singularities, Inventiones Mathematicae 143 (2001), no. 3,
+499–521.
+[Sta89]
+Richard P. Stanley, Log-concave and unimodal sequences in algebra,
+combinatorics, and geometry, Annals of the New York Academy of Sciences
+576 (1989), 500–535.
+[SY25]
+Frank Sottile and Thomas Yahl, Galois groups in enumerative geometry and
+applications, Expositiones Mathematicae 43 (2025), no. 6.
+[ZvGZ+26]
+Daniel Zheng, Ingrid von Glehn, Yori Zwols, Iuliya Beloshapka, Lars Buesing,
+Daniel M. Roy, Martin Wattenberg, Bogdan Georgiev, Tatiana Schmidt, Andrew
+Cowie, Fernanda Viegas, Dimitri Kanevsky, Vineet Kahlon, Hartmut Maennel,
+Sophia Alj, George Holland, Alex Davies, and Pushmeet Kohli, AI
+Co-Mathematician: Accelerating mathematicians with agentic ai, arXiv
+preprint arXiv:2605.06651, 2026, Available at
+https://arxiv.org/abs/2605.06651.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+methods listed below:
+Click the "Report Issue" (
+) button, located in the page header.
+Tip: You can select the relevant text first, to include it in your report.
+Our team has already identified the following issues. We appreciate your time reviewing and reporting rendering errors we
+may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a list of packages that need conversion, and welcome developer contributions.
+We gratefully acknowledge support from
+our major funders,
+member institutions, ,
+and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status (opens in new tab)
+Major funding support from
+

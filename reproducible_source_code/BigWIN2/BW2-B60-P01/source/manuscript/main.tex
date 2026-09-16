@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\NAE}{\operatorname{NAE}}
+\newcommand{\Sat}{\operatorname{Sat}}
+\newcommand{\Fthree}{\mathbb F_{3}}
+
+\title{An Explicit 98-Clause Linear Monotone NAE-4 Equality Gadget}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We give an explicit bounded-size equality gadget using only monotone
+four-variable not-all-equal clauses, with any two clauses meeting in at most
+one variable.  The gadget is obtained by deleting one line from an explicitly
+specified 99-line non-two-colourable subhypergraph of
+$\operatorname{PG}(3,3)$.  Its terminal projection is exactly
+$\{0000,1111\}$, as certified by a dependency-free exhaustive verifier.
+Replacing every indexed occurrence in a monotone NAE-4 instance by a fresh
+copy and attaching one gadget therefore preserves the full projected solution
+set and produces a linear instance.  An input with $n$ variables and $m$
+clauses is transformed into one with $n+156m$ variables and $393m$ clauses in
+linear time; the local bound may be taken as $B=98$.  This supplies the
+four-uniform linearization step invoked, but not exhibited, in the reduction
+of Bhardwaj (arXiv:2609.03508v1).  No claim is made about minimality of the
+gadget or about unrelated downstream steps of that reduction.
+\end{abstract}
+
+\section{Context and statement}
+
+An indexed monotone NAE-4 instance is a pair
+\[
+   F=(V;(C_j)_{j=1}^{m}), \qquad C_j\in \binom{V}{4}.
+\]
+The indices matter, so identical members of $\binom{V}{4}$ may occur at
+different indices.  A map $s:V\to\{0,1\}$ satisfies a clause when its four
+values are not all equal.  The instance is \emph{linear} when
+$|C_i\cap C_j|\leq 1$ for distinct indices $i,j$.
+
+Bhardwaj's reduction from restricted NAE-4-SAT to recognition of Max-Cut SDP
+exactness invokes a standard vertex-splitting linearization, tied together by
+intermediate NAE equality clauses \cite[Sec.~3.1, Lemma~1]{Bhardwaj2026}.
+The subsequent $K_6$ construction uses linearity to ensure that its clause
+cliques are edge-disjoint \cite[Sec.~3.2]{Bhardwaj2026}.  The cited proof does
+not specify a four-uniform equality gadget or its terminal projection.
+
+The closest explicit construction we found is due to Darmann and D\"ocker.
+Their 12-clause linear monotone NAE-3 gadget forces four terminals to have a
+common value, and it is used occurrence-by-occurrence to linearize a
+3-uniform formula \cite[Lemma~3 and Theorem~2]{DarmannDocker2019}.  Because
+all of its clauses have arity three, it does not by itself provide the
+four-uniform replacement needed here.  Our contribution is limited to the
+following explicit four-uniform construction and its composition proof; it
+is not a priority claim about all possible NAE-4 gadgets.
+
+\begin{theorem}\label{thm:main}
+For every finite indexed monotone NAE-4 instance
+$F=(V;(C_j)_{j=1}^{m})$, there is a monotone NAE-4 instance $F'$ such that:
+\begin{enumerate}[label=\textup{(\roman*)}]
+  \item every two distinct clauses of $F'$ intersect in at most one variable;
+  \item
+  \[
+     \{s'|_V:s'\in\Sat(F')\}=\Sat(F);
+  \]
+  in particular, every satisfying assignment of $F$ extends to one of $F'$
+  and every satisfying assignment of $F'$ restricts to one of $F$;
+  \item $F'$ has $n+156m$ variables and $393m$ clauses, where $n=|V|$;
+  and
+  \item $F'$ is generated in $O(n+m)$ time from fixed incidence data.
+\end{enumerate}
+Each replaced occurrence uses 39 fresh variables and 98 new clauses, so the
+same absolute bound $B=98$ applies to both local quantities.
+\end{theorem}
+
+\section{The projective equality gadget}
+
+We first specify the finite incidence structure without relying on a stored
+list of point coordinates or clauses.  Represent the 40 points of
+$\operatorname{PG}(3,3)$ by the vectors in $\Fthree^4$ whose first nonzero
+coordinate is $1$, ordered lexicographically, and label them $0,\ldots,39$.
+For every linearly independent pair of representatives, normalize the four
+one-dimensional subspaces in its two-dimensional span.  Deduplicate the
+resulting four-element point sets, sort each set by point label, and order the
+130 sets lexicographically.  Call the resulting lines
+$\ell_0,\ldots,\ell_{129}$; this deterministic convention gives
+\[
+  \ell_0=\{0,1,2,3\}=:L.
+\]
+
+Let $K$ be the hypergraph on these 40 points whose line-index set is
+\begingroup\small
+\begin{align*}
+I=\{&0,2,3,4,5,6,7,8,9,11,12,13,17,18,19,20,21,22,24,26,27,28,30,31,\\
+&33,34,35,37,38,39,40,41,43,44,46,47,49,50,51,52,54,56,57,60,61,\\
+&63,64,65,66,67,68,70,71,73,74,75,76,77,80,81,82,83,84,85,88,91,\\
+&92,93,94,95,96,97,98,99,100,101,102,103,105,106,108,109,110,111,\\
+&112,113,114,115,116,117,118,119,120,121,122,123,127,128,129\}.
+\end{align*}
+\endgroup
+Define the 98-edge hypergraph
+\[
+   G:=K\setminus\{L\}.
+\]
+Every edge of $G$ has four distinct points.  Moreover, two distinct
+projective lines are two-dimensional vector subspaces whose intersection
+cannot contain two distinct one-dimensional subspaces unless the lines are
+equal.  Thus $G$ is a linear 4-uniform hypergraph.
+
+\begin{proposition}[Exact terminal projection]\label{prop:projection}
+The NAE-satisfying colourings of $G$, projected onto the ordered terminal set
+$(0,1,2,3)$, are exactly
+\[
+   \{(0,0,0,0),(1,1,1,1)\}.
+\]
+\end{proposition}
+
+\begin{proof}
+Two exact finite facts are used:
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item $K$ has no NAE two-colouring;
+  \item $G$ has a colouring whose four terminal values are zero.
+\end{enumerate}
+They are certified exhaustively as described below.  Complementing the
+colouring in (b) gives one with terminal pattern $1111$.  Conversely, if a
+colouring of $G$ had a nonmonochromatic terminal pattern, it would also
+satisfy the deleted NAE edge $L$, giving a colouring of $K$ and contradicting
+(a).  These are therefore the only two terminal patterns.
+\end{proof}
+
+Identify terminal 0 with a variable $x$, terminal 1 with a variable $y$, and
+regard terminals 2 and 3 and the remaining 36 points as auxiliary variables.
+Proposition~\ref{prop:projection} then says precisely that an assignment on
+$\{x,y\}$ extends through $G$ if and only if $x=y$.  This is stronger than
+equisatisfiability: it determines the entire two-terminal projection.
+
+\section{Exact finite certificate}\label{sec:certificate}
+
+The accompanying program \texttt{gadget\_certificate.py} constructs the
+points and lines from arithmetic in $\Fthree$, selects $I$, and runs a complete
+two-colour search.  Its only propagation rule is forced by a four-edge: if
+three assigned vertices of an edge have the same colour and its fourth vertex
+is unassigned, the fourth receives the opposite colour.  A completed
+monochromatic edge is a conflict.  When neither condition applies, the
+program selects an unassigned vertex and recursively tries both colours.
+
+This recursion is complete by induction on the number of unassigned
+vertices.  Propagation discards no satisfying colouring, because the forced
+value is the only value that can satisfy the relevant edge.  At a branch,
+the two recursive calls partition all extensions of the current partial
+assignment.  Hence a return value of UNSAT after both calls is an exhaustive
+statement, not a floating-point or heuristic conclusion.
+
+For $K$, the run visits 15,047 search nodes, reports 7,524 conflicts and
+105,948 propagations, and returns UNSAT.  For $G$ with its terminals fixed to
+zero it returns the following 40-bit witness in point order:
+\[
+\texttt{0000000111001001011001100111001010101011}.
+\]
+Direct substitution checks every one of the 98 edges.  The program also fixes
+each terminal pattern and exhausts the remaining variables, producing the
+full local table
+\begin{center}
+\small
+\begin{tabular}{@{}cccccccc@{}}
+\toprule
+0000 & 0001 & 0010 & 0011 & 0100 & 0101 & 0110 & 0111\\
+SAT  & UNSAT& UNSAT& UNSAT& UNSAT& UNSAT& UNSAT& UNSAT\\
+\midrule
+1000 & 1001 & 1010 & 1011 & 1100 & 1101 & 1110 & 1111\\
+UNSAT& UNSAT& UNSAT& UNSAT& UNSAT& UNSAT& UNSAT& SAT\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In certified finite searches it is useful to separate the correctness of an
+encoding, termination of a solver, and checking of the resulting proof object;
+Zeng, Liu, Ratnavelu, and Huat make this distinction explicitly in a SAT-based
+geometric setting \cite[Sec.~1]{ZengEtAl2026}.  Here the fixed instance is
+small enough that the supplied dependency-free verifier performs the complete
+branching itself.  A separate verification pass also regenerated all 40
+points and 130 lines, encoded each NAE edge by the two CNF clauses forbidding
+all-zero and all-one values, and reproduced the UNSAT and 16-row projection
+results with an independent SAT backend.  The theorem, however, depends only
+on the inspectable incidence convention, the exhaustive verifier, and the
+completeness argument above.
+
+\section{Occurrence replacement and composition}
+
+Write
+\[
+   C_j=\{x_{j,1},x_{j,2},x_{j,3},x_{j,4}\},
+\]
+where the four variables in a clause are distinct.  For every indexed
+occurrence $(j,r)$, introduce a fresh variable $y_{j,r}$ and replace $C_j$ by
+the copied clause
+\[
+   D_j=\{y_{j,1},y_{j,2},y_{j,3},y_{j,4}\}.
+\]
+Attach a fresh copy $G_{j,r}$ of $G$ by identifying its terminal 0 with the
+original variable $x_{j,r}$ and its terminal 1 with $y_{j,r}$.  All other
+vertices of all gadget copies are fresh.  This replaces every occurrence,
+which in particular replaces every offending occurrence.
+
+\begin{lemma}\label{lem:linear}
+The resulting instance $F'$ is linear.
+\end{lemma}
+
+\begin{proof}
+There are five exhaustive types of clause pairs.  Two copied input clauses
+are disjoint because all occurrence variables are fresh.  Two clauses inside
+one gadget meet in at most one variable by projective linearity.  Gadget
+copies attached to different original variables are disjoint.  Two gadget
+copies attached to the same original variable share only that variable.
+Finally, a copied input clause and a gadget clause can share only the unique
+occurrence variable belonging to that gadget.  Every pair therefore has
+intersection size at most one.
+\end{proof}
+
+\begin{lemma}\label{lem:projection}
+The restriction map from $\Sat(F')$ to assignments on $V$ has image exactly
+$\Sat(F)$.
+\end{lemma}
+
+\begin{proof}
+Let $s\in\Sat(F)$.  Set $y_{j,r}=s(x_{j,r})$.  When this common value is zero,
+use the displayed zero-terminal witness in $G_{j,r}$; when it is one, use its
+bitwise complement.  These choices are independent between gadget copies.
+Each $D_j$ then receives the same four values as $C_j$, so all copied clauses
+and all gadget clauses are satisfied.  Thus $s$ extends to $F'$.
+
+Conversely, let $s'\in\Sat(F')$.  Proposition~\ref{prop:projection} applied to
+each copy $G_{j,r}$ gives
+$s'(y_{j,r})=s'(x_{j,r})$.  Since $D_j$ is satisfied, substituting these four
+equalities shows that $C_j$ is satisfied by $s'|_V$.  This holds for every
+indexed clause, so $s'|_V\in\Sat(F)$.
+\end{proof}
+
+For additional finite checks of the composition boundary, the verifier forms
+pairs of indexed input clauses sharing respectively two, three, and four
+variables.  The transformed instances have respectively 318, 317, and 316
+variables, each has 786 clauses, and in every case the maximum intersection
+of two distinct output clauses is one.  Exhaustion of the 64, 32, and 16
+input truth-table rows also confirms that the canonical gadget extension
+exists exactly on the original satisfying rows.  These tests are not needed
+to replace Lemmas~\ref{lem:linear} and \ref{lem:projection}; they exercise all
+possible offending overlap sizes in the implementation.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemmas~\ref{lem:linear} and \ref{lem:projection} prove the incidence and
+assignment assertions.  Each gadget copy has 40 vertices, but terminal 0 is
+identified with an existing original variable.  It therefore introduces 39
+fresh variables, including the occurrence variable, and 98 clauses.  There
+are $4m$ indexed occurrences, giving
+\[
+   |V(F')|=n+39(4m)=n+156m
+\]
+and
+\[
+   |C(F')|=m+98(4m)=393m.
+\]
+The line-index set and all normalized incidences are fixed data independent
+of the input.  Creating a constant-size gadget for each occurrence and
+copying the $m$ input clauses takes $O(n+m)$ time.  Since $39\leq98$, one may
+take the requested common local bound to be $B=98$.
+\end{proof}
+
+\section{Scope and limitations}
+
+The result establishes the bounded four-uniform replacement, linearity,
+extension, restriction, and complexity assertions for every finite indexed
+monotone NAE-4 instance with four distinct variables per clause.  It does not
+use signed literals, constants, repeated variables within a clause, or
+lower-arity constraints.  The transformation preserves the projected
+solution set, not just the existence of a solution.
+
+We do not assert that 98 clauses or 39 fresh variables are minimal.  The
+finite core was found computationally, and the paper makes no unrestricted
+priority claim beyond the stated comparison with the inspected sources.  The
+construction fills the linearization step used by Bhardwaj's unweighted
+$K_6$ reduction under the monotone four-uniform interpretation above.  It
+does not audit the later $K_6$ calculation, the weighted reduction, membership
+claims, or any other conclusion in that paper.
+
+\paragraph{Computational and AI assistance.}
+A language model assisted with the search organization, literature triage,
+and preparation of the exposition.  The fixed finite claims were checked by
+the dependency-free exhaustive program described in
+Section~\ref{sec:certificate}; a separate verification pass reconstructed the
+incidence system and checked the Boolean assertions with an independent SAT
+backend.  The author is responsible for the statement and proof presented
+here.
+
+\paragraph{Code availability.}
+The supplementary files \texttt{gadget\_certificate.py} and
+\texttt{gadget\_certificate.out} reproduce the projective incidence data,
+core non-two-colourability, terminal projection, witness check, linearity
+check, and overlap-composition tests using exact integer and Boolean
+arithmetic.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

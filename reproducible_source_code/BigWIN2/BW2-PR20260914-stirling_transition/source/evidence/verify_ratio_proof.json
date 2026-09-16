@@ -1,0 +1,63 @@
+{
+  "job_id": "primary-20260914-stirling-transition-research-d94530e09967",
+  "date": "2026-09-14",
+  "source_sha256": "4a37fe8a21f41aac0b72c9da83e28e1aff2ce19676fe24c5d93befb9e2d99594",
+  "script_sha256": "b1e3abcede9bb9cf2cb4c2abc1a52db9f9c7af70e64acbb0f57c761bc2546765",
+  "proof_sha256": "71e9a2e499806f2d05ea07ff9456a82c5cf220161cb8ff25338321008979bace",
+  "symbolic_residuals": {
+    "equal_step_identity": "0",
+    "first_argument_derivative": "0",
+    "second_argument_derivative": "0",
+    "upper_endpoint_limit": "0",
+    "positive_numerator_decomposition": "0",
+    "U_ratio_identity": "0"
+  },
+  "sympy_version": "1.14.0",
+  "rational_preservation_tests": {
+    "finite_inputs": 768,
+    "infinite_endpoint_inputs": 768,
+    "negative_comparison_value_inputs": 288,
+    "grid": "h,d,a,b in {0,1/7,1,10}; t in {1/9,1,7}"
+  },
+  "elementary_symmetric_tests": {
+    "families_including_reversals": 144,
+    "m_range": [
+      1,
+      12
+    ],
+    "degree_convexity_centers": 792,
+    "appended_weight_centers": 2808,
+    "appended_weights": [
+      "1/10^9",
+      "1",
+      "10^9"
+    ],
+    "independent_subsets": 1023,
+    "subset_dimension_range": [
+      0,
+      9
+    ]
+  },
+  "stirling_tests": {
+    "q_range": "1<=k<=n<=160",
+    "q_count": 12880,
+    "q_strict_for_k_at_least_2": true,
+    "D_range": "1<=k<=160, 1<=n<=160",
+    "D_count": 25600,
+    "D_ratio_identity_count": 12720,
+    "symmetric_coefficient_mapping_range": "2<=n<=16, 1<=k<=n",
+    "symmetric_coefficient_mapping_count": 135
+  },
+  "primary_source_copies": {
+    "evidence/external/2408.02782v1.html": {
+      "sha256": "6b4c97905f1fe95e002f603cb74c768b07180c9be9fa00bdba0414616b6e5a3b",
+      "bytes": 1051126
+    },
+    "evidence/external/2607.04217v1.html": {
+      "sha256": "c2754444d71b8fb4bc3d6fc238a3bb42b65cc7008b39ceab8f82d8399394acb0",
+      "bytes": 405957
+    }
+  },
+  "all_assertions_passed": true,
+  "limitations": "Exact finite error detection and symbolic identities. The infinite proof is the argument in ratio-convexity-proof.md. These checks are not a fresh referee pass or a novelty certificate."
+}

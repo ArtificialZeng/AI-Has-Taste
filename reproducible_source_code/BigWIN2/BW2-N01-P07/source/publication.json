@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "A bijection for 312/321-avoiding permutations whose cubes avoid 2143",
+  "writer_job_id": "newwin-00001-p07-write-b73ab1d11c9a",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/README.md",
+    "manuscript/supplement.zip"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "input_roles": {
+    "tex": [
+      "manuscript/main.tex"
+    ],
+    "bibtex": [
+      "manuscript/references.bib"
+    ],
+    "figures": [],
+    "supplement": [
+      "manuscript/README.md",
+      "manuscript/supplement.zip"
+    ]
+  },
+  "build": {
+    "working_directory": "manuscript",
+    "clean_command": [
+      "latexmk",
+      "-C",
+      "-outdir=build",
+      "main.tex"
+    ],
+    "command": [
+      "latexmk",
+      "-pdf",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-outdir=build",
+      "main.tex"
+    ],
+    "engine": "pdfLaTeX",
+    "bibliography_engine": "BibTeX",
+    "bibliography_style": "plainurl (installed TeX distribution)",
+    "generated_bibliography": "manuscript/build/main.bbl",
+    "final_tex_log": "manuscript/build/main.log",
+    "final_bibtex_log": "manuscript/build/main.blg",
+    "writer_transcript": "audit/write-build-transcript.log"
+  },
+  "supplement_sha256": "4b6ef207dfbe3633f5da8c0982d99f054a278d9a5ac0bf2bbfe8b8588e9a8d2c",
+  "release_status": "draft awaiting fresh release review"
+}

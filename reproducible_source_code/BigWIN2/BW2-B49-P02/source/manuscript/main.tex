@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks,pdftitle={Strong Optimality of Two-Color Permutation Wordle at n=3},pdfauthor={Xiaojian Zeng}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\bits}{\{0,1\}}
+\newcommand{\Om}{\Omega}
+
+\title{Strong Optimality of Two-Color Permutation Wordle at $n=3$}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the strong finite-horizon optimum for the two-color Permutation
+Wordle game on three ranks.  Among all deterministic adaptive strategies with
+legal colored-permutation guesses, the maximum numbers of the 48 secrets solved
+within one through six guesses are
+\[
+  1,\ 8,\ 24,\ 40,\ 47,\ 48.
+\]
+The operational multicolor \textsc{CircularShift} strategy has exact-round
+counts $1,7,16,16,7,1$, and hence attains every one of these optima
+simultaneously.  The upper bounds are certified by an unpruned exact Bellman
+census over 98,898 state--horizon pairs; a separate verifier reconstructs all
+feedback and recomputes all 4,747,104 state--action scores.  This theorem is
+restricted to $(n,s)=(3,2)$ and does not settle the general multicolor
+conjecture.  We also disclose and resolve, for the theorem, an inconsistency
+between the displayed color-update cases in the source definition and the
+operational rule supported by its prose, example, and proof.
+\end{abstract}
+
+\section{The finite game and its context}
+
+Write $[3]=\{1,2,3\}$ and
+\[
+  \Om=S_3\times\bits^{[3]}.
+\]
+An element $(\sigma,\kappa)\in\Om$ consists of a permutation, regarded as a
+map from positions to ranks, and a color $\kappa(j)$ attached to each rank
+$j$.  Thus there are $6\cdot 2^3=48$ secrets, and the legal-guess alphabet is
+the same set.  Against a guess $g=(\gamma,c)$, the feedback is the complete
+subset
+\[
+ F(g;\sigma,\kappa)=
+ \{i\in[3]:\gamma(i)=\sigma(i)\text{ and }
+ c(\gamma(i))=\kappa(\sigma(i))\}.
+ \tag{1}
+\]
+Full feedback $[3]$ occurs exactly when the guess is the secret.
+
+A deterministic adaptive strategy chooses its next legal guess from the
+preceding feedback.  If $T_{\mathcal S}(x)$ is the first round in which it
+guesses secret $x$, define
+\[
+ N_r=\max_{\mathcal S}\#\{x\in\Om:T_{\mathcal S}(x)\le r\}.
+ \tag{2}
+\]
+For a uniform secret this is $48$ times the maximum success probability.
+Randomization cannot improve (2): after fixing all random choices, one obtains
+a deterministic strategy, and an average cannot exceed the largest
+deterministic success count.
+
+Kutin and Smithline introduced Permutation Wordle and its suited, or
+multicolor, extension, analyzed \textsc{CircularShift}, and conjectured its
+strong optimality at every horizon~\cite{KutinSmithline2026}.  Hiveley studied
+the monochrome strategy experimentally~\cite{Hiveley2025}.  Kutin, Smithline,
+and Vatter subsequently proved the strong horizon-by-horizon theorem for the
+monochrome game, even allowing non-permutation guesses, while retaining the
+multicolor analogue as a conjectural direction~\cite{KutinSmithlineVatter2026}.
+The result below concerns only the 48-element legal-guess model in (1).
+
+\begin{theorem}\label{thm:main}
+For the game in \emph{(1)--(2)},
+\[
+ (N_1,N_2,N_3,N_4,N_5,N_6)=(1,8,24,40,47,48),
+ \tag{3}
+\]
+and $N_r=48$ for every $r\ge6$.  The operational two-color
+\textnormal{\textsc{CircularShift}} strategy defined in Section~\ref{sec:cs} attains $N_r$
+for every $r\ge1$.
+\end{theorem}
+
+\section{An exact Bellman certificate}\label{sec:bellman}
+
+For a viable-secret set $A\subseteq\Om$, a guess $g\in\Om$, and feedback
+$u\subseteq[3]$, let
+\[
+ A_{g,u}=\{x\in A:F(g;x)=u\}.
+\]
+Let $V_r(A)$ be the largest number of secrets in $A$ that can be solved in the
+next $r$ rounds, and set $V_0(A)=0$.  The following recurrence is both the
+computational specification and the upper-bound argument.
+
+\begin{lemma}\label{lem:bellman}
+For every $r\ge1$ and $A\subseteq\Om$,
+\[
+ V_r(A)=\max_{g\in\Om}\left(
+    \mathbf 1_{\{g\in A\}}+
+    \sum_{u\subsetneq[3]}V_{r-1}(A_{g,u})
+ \right).
+ \tag{4}
+\]
+In particular, $N_r=V_r(\Om)$.
+\end{lemma}
+
+\begin{proof}
+For a fixed first guess $g$, full feedback solves precisely $g$ when $g\in A$.
+Each proper feedback $u$ leaves the disjoint viable set $A_{g,u}$, and after
+observing $u$ one may choose an optimal continuation for that cell.  This
+proves the lower bound in (4).  Conversely, the first guess of any deterministic
+strategy is one of the 48 elements $g\in\Om$.  Restricted to the secrets in a
+proper response cell, its remaining decision tree solves at most
+$V_{r-1}(A_{g,u})$ secrets.  Summing over cells proves the upper bound.
+Induction on $r$ completes the proof.
+\end{proof}
+
+The exhaustive computation encodes each subset of $\Om$ by an exact 48-bit
+mask.  Items are ordered canonically by a lexicographic permutation word and a
+three-bit color word.  At every memoized nonempty state the solver evaluates
+all 48 legal guesses.  It uses no floating point, symmetry quotient, dominance
+rule, or pruning cutoff.  Table~\ref{tab:census} gives the complete census.
+
+\begin{table}[ht]
+\centering
+\caption{Bellman census and \textsc{CircularShift} distribution.}
+\label{tab:census}
+\begin{tabular}{rrrrrr}
+\toprule
+$r$ & state rows & action scores & $N_r$ & exact round & cumulative \\
+\midrule
+1 & 48,645 & 2,334,960 & 1  & 1  & 1  \\
+2 & 37,125 & 1,782,000 & 8  & 7  & 8  \\
+3 & 10,743 &   515,664 & 24 & 16 & 24 \\
+4 &  2,143 &   102,864 & 40 & 16 & 40 \\
+5 &    241 &    11,568 & 47 & 7  & 47 \\
+6 &      1 &        48 & 48 & 1  & 48 \\
+\midrule
+Total & 98,898 & 4,747,104 & & 48 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The released certificate contains all 48 item encodings, all $48^2=2,304$
+guess--secret feedback entries, and every state row in the table.  A second
+program, which imports no discovery code, reconstructs $\Om$ and (1), checks
+every serialized feedback entry, and processes the state rows bottom-up.  For
+each row it recomputes the right side of (4) for all 48 guesses, requires every
+child dependency to be present, and checks that the stored value is the maximum.
+It reports no missing dependency and obtains the six root values in (3).
+This discovery/certification separation is also used in other exact finite
+computational theorems; for example, Zeng et al. independently re-enumerate a
+finite search space and check the decisive certificate from scratch
+~\cite{ZengEtAl2026FiniteCertificates}.
+
+Lemma~\ref{lem:bellman} turns this exhaustive integer replay into both a lower
+and an upper bound for every deterministic adaptive strategy.  Since the last
+root value is $48$, monotonicity and the size of $\Om$ give $N_r=48$ for all
+$r\ge6$.
+
+\section{CircularShift attainment and a source discrepancy}\label{sec:cs}
+
+The first guess is the identity permutation with all colors zero.  Following a
+nonterminal response, keep every correctly guessed colored rank fixed.  If the
+remaining active positions are
+$a_1<\cdots<a_\ell$, cyclically move the rank at $a_j$ to $a_{j+1}$ and the
+rank at $a_\ell$ to $a_1$.  A moved rank $i$, going clockwise from old position
+$p$ to new position $q$ on the cyclic order $1,2,3,1$, has its color incremented
+exactly when the arc $(p,q]$ contains its identity starting position $i$.
+When $p=q$ (one active position), this is a full circuit and the color is
+incremented.  On every viable history in the present two-color instance, the
+submitted colors remain in $\bits$ until the secret is solved.
+
+This is the circuit-completion rule described operationally by Kutin and
+Smithline and used in their example and proof of the completion-time
+formula~\cite[Definition~4.3, Figure~6, and Lemma~4.4]{KutinSmithline2026}.
+There is, however, a material inconsistency in that source.  The two displayed
+color-update cases in Definition~4.3 do not implement the surrounding
+operational description or the case analysis in the proof of Lemma~4.4.  For
+the minimal secret encoded as \texttt{213-000}, the first feedback to
+\texttt{123-000} is $\{3\}$.  The displayed cyclic condition increments the
+color of rank 2 and produces \texttt{213-010}; the circuit rule produces
+\texttt{213-000} and solves in round two, as the lemma's formula requires.
+Accordingly, Theorem~\ref{thm:main} concerns the precisely stated circuit rule
+above and does not assert equivalence with the inconsistent displayed cases.
+
+For a secret $(\sigma,\kappa)$, the operational rule's completion time in the
+48-secret census is
+\[
+ T(\sigma,\kappa)=1+\operatorname{exc}(\sigma)
+                    +\sum_{i=1}^3\kappa(i),
+ \qquad
+ \operatorname{exc}(\sigma)=\#\{i:\sigma(i)>i\}.
+ \tag{5}
+\]
+An independent transcript verifier parses all 168 submitted guesses, checks
+their legality, recomputes all 168 feedback sets and all 120 nonsolving
+transitions, and verifies (5) for each of the 48 secrets.  Since the excedance
+enumerator of $S_3$ is $1+4z+z^2$ and the color-sum enumerator is $(1+z)^3$,
+the exact-round generating polynomial is
+\[
+ (1+4z+z^2)(1+z)^3
+ =1+7z+16z^2+16z^3+7z^4+z^5.
+ \tag{6}
+\]
+Thus \textsc{CircularShift} has the exact-round and cumulative columns of
+Table~\ref{tab:census}.  Comparing its cumulative counts with the Bellman
+optima proves simultaneous attainment and completes the proof of
+Theorem~\ref{thm:main}.
+
+\section{Scope, reproducibility, and assistance}
+
+The result is a finite theorem about three ranks, two colors attached to ranks,
+and a 48-element legal-guess alphabet.  It says nothing about larger $n$, more
+colors, or variants that permit repeated ranks in a guess.  The public sources
+state the general multicolor assertion conjecturally, while the later source
+also cites multicolor work in preparation~\cite{KutinSmithlineVatter2026}; we
+therefore make no priority claim over inaccessible work.
+
+The ancillary material includes the Bellman solver, the independent Bellman
+verifier, the complete CSV certificate, the direct \textsc{CircularShift}
+simulator, the independent transcript verifier, and their exact JSON summaries.
+The decisive computations use integer masks and set operations; no numerical
+tolerance or random seed is involved.
+
+OpenAI Codex assisted with literature search, code development, exact
+computation, adversarial review organization, and manuscript preparation.
+Language-model output is not mathematical evidence.  The proof rests on
+Lemma~\ref{lem:bellman}, the complete serialized finite certificate, and the
+independent exact replay programs.  No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

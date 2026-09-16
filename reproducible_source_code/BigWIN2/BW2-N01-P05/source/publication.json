@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/verify_base.py"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+    "clean_command": "latexmk -C main.tex"
+  },
+  "writer_job_id": "newwin-00001-p05-write-d7ff3abd497e"
+}

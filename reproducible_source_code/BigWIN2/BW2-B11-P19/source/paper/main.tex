@@ -1,0 +1,142 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\crn}{\operatorname{cr}}
+\newcommand{\join}{\mathbin{\vee}}
+\title{Albertson's Conjecture Holds for Chromatic Number 25}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{}
+\hypersetup{pdftitle={Albertson's Conjecture Holds for Chromatic Number 25},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+Albertson conjectured that every graph of chromatic number at least $r$ has
+crossing number at least that of $K_r$. Recent work verified the conjecture
+for $r\leq24$ and reduced $r=25$ to 25-critical graphs on 48 vertices. We
+close this case. Gallai's sharp excess theorem gives at least 598 edges.
+Applying a linear crossing-number bound separately to every 23-vertex induced
+subgraph, and using integrality before averaging, handles at least 599 edges.
+Gallai's equality classification shows that the 598-edge graph contains a
+subdivision of $K_{25}$.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+For a finite simple graph $G$, let $\chi(G)$ and $\crn(G)$ denote its chromatic
+and crossing numbers. Albertson's conjecture asserts
+\[
+ \chi(G)\geq r\quad\Longrightarrow\quad\crn(G)\geq\crn(K_r).
+\]
+Albertson, Cranston, and Fox proved the cases $7\leq r\leq12$, completing
+verification through 12 at that time~\cite{Albertson_Cranston_Fox_2009}.
+Cranston recently proved it
+through $r=24$ and showed that a 25-critical counterexample must have exactly
+48 vertices~\cite{cranston2025progressalbertsonsconjecture}.
+
+The exact value of $\crn(K_{25})$ is unknown. We use only the standard
+Harary--Hill drawing upper bound
+\begin{equation}\label{eq:hill}
+ \crn(K_{25})\leq\frac14(12)(12)(11)(11)=4356.
+\end{equation}
+\begin{theorem}\label{thm:main}
+Every finite simple graph $G$ with $\chi(G)\geq25$ satisfies
+$\crn(G)\geq\crn(K_{25})$.
+\end{theorem}
+
+\section{Ingredients}
+A graph is $k$-critical if it has chromatic number $k$ and every proper
+subgraph has smaller chromatic number. Define
+$\varepsilon(k,G)=2|E(G)|-(k-1)|V(G)|$. We use Gallai's sharp excess
+theorem~\cite[pp.~374, 389--394]{Gallai1963}; see also the modern
+formulation and notation in~\cite[Theorem~6]{Kostochka2006}.
+\begin{lemma}[Gallai]\label{lem:gallai}
+Let $k\geq4$ and $2\leq p\leq k-1$. If $G$ is $k$-critical on $k+p$
+vertices, then $\varepsilon(k,G)\geq p(k-p)-2$. Equality holds exactly when
+$G=K_{k-p-1}\join D$ for some $D\in\mathcal D_{p+1}$.
+\end{lemma}
+Here $D\in\mathcal D_q$ means that $D$ has pairwise disjoint nonempty sets
+$A,B_1,B_2$ and two additional vertices $a,b$, where
+$|B_1|+|B_2|=|A|+1=q-1$. The sets $A$ and $B_1\cup B_2$ induce cliques,
+there are no edges between them, and
+$N_D(a)=A\cup B_1$, $N_D(b)=A\cup B_2$.
+
+We also use B\"ungener and Kaufmann's inequality~\cite{BuengenerKaufmann2024}.
+\begin{lemma}\label{lem:linear}
+If $F$ has $v>2$ vertices and $e$ edges, then
+$\crn(F)\geq5e-\frac{203}{9}(v-2)$.
+\end{lemma}
+
+\section{Proof}
+Suppose $X$ satisfies $\chi(X)\geq25$ and
+$\crn(X)<\crn(K_{25})$. Choose an inclusion-minimal subgraph $G$ with
+$\chi(G)\geq25$. Deleting one vertex decreases chromatic number by at most
+one, so minimality forces $\chi(G)=25$; thus $G$ is 25-critical. Subgraph
+monotonicity makes $G$ a counterexample too. Cranston's
+reduction~\cite[Theorem~2]{cranston2025progressalbertsonsconjecture} gives $|V(G)|=48$. Put
+$m=|E(G)|$.
+
+Lemma~\ref{lem:gallai}, with $k=25,p=23$, gives
+\[
+ 2m-24\cdot48\geq23(25-23)-2=44,
+\]
+so $m\geq598$.
+
+Suppose first that $m\geq599$. Fix a crossing-minimal drawing in general
+position, so adjacent edges do not cross and every crossing involves two
+independent edges. For each $S\in\binom{V(G)}{23}$, let $e_S$ and $x_S$ be
+the numbers of edges and crossings in the inherited drawing. By
+Lemma~\ref{lem:linear} and integrality,
+\[
+ x_S\geq\crn(G[S])\geq5e_S-\frac{203}{9}(21)
+ =5e_S-473\frac23,
+ \qquad x_S\geq5e_S-473.
+\]
+Sum over all $S$. Every edge occurs $\binom{46}{21}$ times and every crossing,
+having four distinct endpoints, occurs $\binom{44}{19}$ times. Hence
+\begin{equation}\label{eq:doublecount}
+ \crn(G)\binom{44}{19}
+ \geq5m\binom{46}{21}-473\binom{48}{23}.
+\end{equation}
+The right side increases with $m$. At $m=599$, using
+\[
+ \frac{\binom{46}{21}}{\binom{44}{19}}=\frac{69}{14},\qquad
+ \frac{\binom{48}{23}}{\binom{44}{19}}=\frac{1692}{77},
+\]
+we get $\crn(G)\geq61143/14=4367+5/14$, hence
+$\crn(G)\geq4368>4356\geq\crn(K_{25})$, a contradiction.
+
+It remains that $m=598$. Equality in Lemma~\ref{lem:gallai} gives
+$G=K_1\join D$ for some $D\in\mathcal D_{24}$. In the definition above,
+$|A|=22$ and $B_1,B_2$ are nonempty. Use $A\cup\{a,b\}$ as the 24 branch
+vertices of a subdivision of $K_{24}$. All required edges except $ab$ are
+present. Choose $x\in B_1$ and $y\in B_2$; the path $a x y b$ replaces the
+missing edge. Thus $D$ contains a subdivision of $K_{24}$. The extra join
+vertex is adjacent to all branch vertices, so $G$ contains a subdivision of
+$K_{25}$. Therefore $\crn(G)\geq\crn(K_{25})$, the final contradiction.
+\qed
+
+\section{Arithmetic check and limitations}
+The calculation in~\eqref{eq:doublecount} is exact. Accompanying scripts
+recompute it using rational arithmetic and an independent integer
+cross-product checker. They certify no structural assertion, and the decisive
+arithmetic is displayed above. The proof does not determine $\crn(K_{25})$
+or assume the Harary--Hill conjecture. It uses the strengthened arXiv version
+of the B\"ungener--Kaufmann inequality; the conference version has a weaker
+constant.
+
+\section*{Data, code, and computational disclosure}
+The exact arithmetic scripts and logs accompany the source. They use only the
+Python standard library and no randomness. Computational tools were used for
+bibliography management and arithmetic checking; the proof is the
+human-readable argument above.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

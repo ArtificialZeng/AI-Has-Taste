@@ -1,0 +1,297 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=0.88in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={Exact Diameters and Sorting Times for Full Cycles of Orders 6, 7, and 8},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact exhaustive computation in finite Schreier graphs}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Sort}{\operatorname{Sort}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\cyc}[1]{\langle #1\rangle}
+
+\title{Exact Diameters and Sorting Times for Full Cycles of Orders 6, 7, and 8}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\Gamma_n$ have the full $n$-cycles as vertices, with an edge from $c$ to
+$s_i c s_i$ for each adjacent transposition $s_i=(i,i+1)$.  We determine by
+complete exact enumeration
+\[
+ (D_6,\Sort_6)=(7,6),\qquad (D_7,\Sort_7)=(10,10),\qquad
+ (D_8,\Sort_8)=(14,13).
+\]
+Two separately written programs use canonical cycle words and one-line
+permutation maps, respectively.  Each constructs the graph independently and
+runs breadth-first search from every vertex; the resulting distance
+histograms and deterministic hashes agree.  Explicit shortest paths are
+included.  The sorting values reproduce computations reported by
+Adin--Bagno--Roichman; no priority claim is made for the diameter values, and
+the calculation has no implication for their asymptotic or unimodality
+conjectures.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $C_n$ be the conjugacy class of full cycles in $S_n$, let
+$s_i=(i,i+1)$ for $1\leq i<n$, and let $\Gamma_n$ be the simple undirected
+graph with edges $\{c,s_i c s_i\}$.  Put $c_n=(1,2,\ldots,n)$ and
+\[
+ D_n=\max_{u,v\in C_n}\dist_{\Gamma_n}(u,v),\qquad
+ \Sort_n=\max_{v\in C_n}\dist_{\Gamma_n}(c_n,v).
+\]
+These are the diameter and Coxeter cyclic sorting time introduced by
+Adin, Bagno, and Roichman~\cite{AdinBagnoRoichman2026}.  They identify
+$\Gamma_n$ with a Schreier graph and give general bounds.  They also report
+$D_5=5>4=\Sort_5$ and verify their proposed sorting formula through $n=12$;
+in particular, their computation already gives the three sorting values below.
+
+\begin{theorem}\label{thm:main}
+For the graph just defined,
+\[
+\begin{array}{c|ccc}
+n&6&7&8\\ \hline
+\Sort_n&6&10&13\\
+D_n&7&10&14
+\end{array}
+\]
+The maxima range over all $(n-1)!$ vertices, and the diameter maxima range over
+all ordered pairs of vertices.
+\end{theorem}
+
+The contribution is the exact finite determination requested for orders
+$6,7,8$, including reproducible diameter computations, complete distance
+distributions, and shortest witnesses.  The certificate architecture is close
+in spirit to other finite graph certificates that reconstruct the instance and
+check the decisive predicate in separately written exact implementations; see,
+for example, Zeng et al.~\cite[Sections 6--7]{ZengEtAl2026FiniteCertificates}.
+That comparison is methodological: the mathematical problems are unrelated.
+
+\section{Exhaustive certificate}
+
+A cycle is represented by its unique rotation
+\[
+  (1,a_2,\ldots,a_n),
+\]
+where the displayed permutation maps each entry to its successor and the last
+entry to $1$.  Reversal is not identified.  We abbreviate this word as
+$\cyc{a_2\cdots a_n}$ below.  Thus every permutation of $2,\ldots,n$ occurs
+once, giving exactly $(n-1)!$ vertices.
+
+\begin{lemma}\label{lem:edge}
+In the canonical cycle-word representation, $s_i c s_i$ is obtained by
+interchanging the labels $i$ and $i+1$ everywhere in the word and then rotating
+the result to begin with $1$.
+\end{lemma}
+
+\begin{proof}
+Conjugation relabels every entry $x$ of a cycle as $s_i(x)$.  A cyclic rotation
+does not change the resulting cycle, so rotating to put $1$ first gives its
+unique canonical word.
+\end{proof}
+
+Verifier A enumerates the canonical words lexicographically and applies
+Lemma~\ref{lem:edge}.  Verifier B instead enumerates all one-line maps in
+$S_n$, retaining a map $p$ precisely when the orbit of $1$ first returns after
+$n$ steps.  It constructs a neighbor by literal map composition
+\[
+ q(x)=s_i\bigl(p(s_i(x))\bigr),
+\]
+without using A's word-swap routine.  Both programs check connectivity,
+involutivity of each labeled edge, absence of loops and duplicate generator
+neighbors, and the following counts.
+
+\begin{center}
+\begin{tabular}{crrr}
+\toprule
+$n$ & vertices & degree & undirected edges\\
+\midrule
+6&120&5&300\\
+7&720&6&2,160\\
+8&5,040&7&17,640\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Each verifier performs ordinary unweighted breadth-first search from every
+vertex.  Hence it computes every ordered-pair distance: the maximum in the row
+rooted at $c_n$ is $\Sort_n$, while the maximum over all rows is $D_n$.  The
+complete rooted histograms $H_n^{\rm root}(d)$ are
+
+\begin{center}\small
+\begin{tabular}{c|rrrrrrrrrrrrrrr}
+\toprule
+$n\backslash d$&0&1&2&3&4&5&6&7&8&9&10&11&12&13\\
+\midrule
+6&1&5&14&27&36&28&9&&&&&&&\\
+7&1&6&20&48&91&140&169&146&78&20&1&&&\\
+8&1&7&27&76&172&329&544&784&970&978&729&344&77&2\\
+\bottomrule
+\end{tabular}
+\end{center}
+and the all-ordered-pairs histograms $H_n^{\rm all}(d)$ are
+
+\begin{center}\scriptsize
+\begin{tabular}{c|rrrrrrrr}
+\toprule
+$n\backslash d$&0&1&2&3&4&5&6&7\\
+\midrule
+6&120&600&1,620&3,134&4,268&3,424&1,162&72\\
+7&720&4,320&14,400&34,962&67,284&103,662&123,828&103,614\\
+8&5,040&35,280&135,936&381,656&866,404&1,676,632&2,826,516&4,131,396\\
+\bottomrule
+\end{tabular}
+
+\medskip
+\begin{tabular}{c|rrrrrrr}
+\toprule
+$n\backslash d$&8&9&10&11&12&13&14\\
+\midrule
+6&&&&&&&\\
+7&51,852&12,642&1,116&&&&\\
+8&5,081,316&4,973,336&3,461,236&1,486,704&319,284&20,784&80\\
+\bottomrule
+\end{tabular}
+\end{center}
+The rows sum to $(n-1)!$ and $((n-1)!)^2$, respectively.  Their last nonzero
+levels prove the upper bounds in Theorem~\ref{thm:main}; the paths in
+Appendix~\ref{app:paths} attain them and prove the matching lower bounds.
+
+For deterministic comparison, vertices are serialized in lexicographic order,
+undirected edges by sorted endpoint pairs, and distance rows in vertex order.
+The two implementations agree on all three SHA-256 streams:
+
+\begin{center}\scriptsize\ttfamily
+\begin{tabular}{ccl}
+\toprule
+$n$&stream&SHA-256\\
+\midrule
+6&vertices&80515474c51c1389bbf0de1fb7efe3eaefa5db03b42b3d33b8073f91249478c4\\
+7&vertices&2c2f4bf673ff0ad5f4cc54c54337813877c4f84307ae76bcceac38aa62e24147\\
+8&vertices&81c19e18a046ee68d22e66a3ad83cd7996604685829d84bf947f5320d33a8b11\\
+6&edges&e8000a7ce9605187753a9a742d888d71e7182f77a9c74fd6615cc8acdf7cd66c\\
+7&edges&a3c33fff0b1e78d8287ceff39f1464571d9d541786ddb86ee29d1f87b9ddb0a2\\
+8&edges&33bc18caa3367881413fa8f20e21dfe8936342291caf41187ce37f5c2405c83f\\
+6&distances&526c7ef0cd53c0d83e42e0f63249f7496b9c030d1109dfa683ac21303245b1f7\\
+7&distances&c62e059528260bca71a36fa5a0ba4e118850e03378cc5a9dd8b6b6a6b669a081\\
+8&distances&4c1bc1c3e6aeeff3e22198a39dd09fe86841484c08ad5ef8183410ac26073fb6\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both submitted runs used CPython 3.10.12 on Linux and only the Python standard
+library.  From the project root they are replayed by
+\begin{verbatim}
+for n in 6 7 8; do
+  python3 evidence/verifier_a.py --n "$n" \
+    --output "evidence/verifier_a_n${n}.json"
+  python3 evidence/verifier_b.py --n "$n" \
+    --compare-a "evidence/verifier_a_n${n}.json" \
+    --output "evidence/verifier_b_n${n}.json"
+done
+\end{verbatim}
+Verifier B also replays every path produced by A using literal map composition
+and confirms that its length is the independently computed endpoint distance.
+
+\section{Scope and disclosure}
+
+This is a finite exhaustive theorem for $n\in\{6,7,8\}$.  It neither proves
+nor disproves the asymptotic Conjecture 7.1 or the unimodality Conjecture 7.2 of
+Adin--Bagno--Roichman~\cite{AdinBagnoRoichman2026}.  The three sorting values
+reproduce their finite experiments.  No assertion of priority or journal
+acceptance is made for the three diameter values.
+
+OpenAI Codex assisted with literature searching, implementation and audit
+organization, and initial manuscript preparation.  Language-model output is
+not mathematical evidence.  The result rests on the finite argument above,
+the released exact programs and records, and independently replayable paths.
+No proof assistant was used.
+
+\appendix
+\section{Explicit shortest paths}\label{app:paths}
+
+An arrow labeled $i$ means conjugation by $s_i=(i,i+1)$.  The abbreviation
+$\cyc{a_2\cdots a_n}$ denotes $(1,a_2,\ldots,a_n)$.  The displayed generator
+lists are recorded as an additional compact replay check.
+
+\paragraph{$n=6$, sorting witness.}
+The generator list is $(4,3,4,2,3,4)$, and
+\[
+\begin{aligned}
+\cyc{23456}&\xrightarrow{4}\cyc{23546}\xrightarrow{3}\cyc{24536}
+\xrightarrow{4}\cyc{25436}\xrightarrow{2}\cyc{35426}\\
+&\xrightarrow{3}\cyc{45326}\xrightarrow{4}\cyc{54326}.
+\end{aligned}
+\]
+
+\paragraph{$n=6$, diameter witness.}
+The generator list is $(4,5,4,3,2,3,4)$, and
+\[
+\begin{aligned}
+\cyc{23564}&\xrightarrow{4}\cyc{23465}\xrightarrow{5}\cyc{23456}
+\xrightarrow{4}\cyc{23546}\xrightarrow{3}\cyc{24536}\\
+&\xrightarrow{2}\cyc{34526}\xrightarrow{3}\cyc{43526}
+\xrightarrow{4}\cyc{53426}.
+\end{aligned}
+\]
+
+\paragraph{$n=7$, sorting and diameter witness.}
+Here the sorting path is also a diameter path.  The generator list is
+$(6,5,6,3,4,5,6,2,1,2)$, and
+\[
+\begin{aligned}
+\cyc{234567}&\xrightarrow{6}\cyc{234576}\xrightarrow{5}\cyc{234675}
+\xrightarrow{6}\cyc{234765}\xrightarrow{3}\cyc{243765}\\
+&\xrightarrow{4}\cyc{253764}\xrightarrow{5}\cyc{263754}
+\xrightarrow{6}\cyc{273654}\xrightarrow{2}\cyc{372654}\\
+&\xrightarrow{1}\cyc{654237}\xrightarrow{2}\cyc{654327}.
+\end{aligned}
+\]
+
+\paragraph{$n=8$, sorting witness.}
+The generator list is $(7,5,6,7,4,3,4,2,3,4,1,2,3)$, and
+\[
+\begin{aligned}
+\cyc{2345678}&\xrightarrow{7}\cyc{2345687}\xrightarrow{5}\cyc{2346587}
+\xrightarrow{6}\cyc{2347586}\xrightarrow{7}\cyc{2348576}\\
+&\xrightarrow{4}\cyc{2358476}\xrightarrow{3}\cyc{2458376}
+\xrightarrow{4}\cyc{2548376}\xrightarrow{2}\cyc{3548276}\\
+&\xrightarrow{3}\cyc{4538276}\xrightarrow{4}\cyc{5438276}
+\xrightarrow{1}\cyc{7625438}\xrightarrow{2}\cyc{7635428}\\
+&\xrightarrow{3}\cyc{7645328}.
+\end{aligned}
+\]
+
+\paragraph{$n=8$, diameter witness.}
+The generator list is $(6,5,6,4,5,3,4,5,2,3,4,5,6,7)$, and
+\[
+\begin{aligned}
+\cyc{2347856}&\xrightarrow{6}\cyc{2346857}\xrightarrow{5}\cyc{2345867}
+\xrightarrow{6}\cyc{2345876}\xrightarrow{4}\cyc{2354876}\\
+&\xrightarrow{5}\cyc{2364875}\xrightarrow{3}\cyc{2463875}
+\xrightarrow{4}\cyc{2563874}\xrightarrow{5}\cyc{2653874}\\
+&\xrightarrow{2}\cyc{3652874}\xrightarrow{3}\cyc{4652873}
+\xrightarrow{4}\cyc{5642873}\xrightarrow{5}\cyc{6542873}\\
+&\xrightarrow{6}\cyc{7542863}\xrightarrow{7}\cyc{8542763}.
+\end{aligned}
+\]
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

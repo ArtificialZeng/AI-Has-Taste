@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{The $(k-1)$-Tournament Sch\"utte Boundary:\\
+       $f(k-1,k)=k+3$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For integers $m,k\geq 1$, let $f(m,k)$ be the least order of a common
+vertex set carrying $m$ tournaments such that every $k$-set is dominated
+by one outside vertex in one of the tournaments.  We prove that
+\[
+    f(k-1,k)=k+3 \qquad (k\geq 3).
+\]
+The lower bound comes from an auxiliary graph attached to a tournament:
+the graph is contained in a star or is exactly a triangle.  This reduces
+the only two smaller orders to a source count and an elementary edge-cover
+obstruction.  We also give a direct block construction on $k+3$ vertices,
+including the endpoint $k=3$.
+\end{abstract}
+
+\section{Context and statement}
+
+A \emph{tournament} is a loopless orientation of a complete graph.  Write
+$x\to_T y$ when the edge $xy$ is oriented from $x$ to $y$ in a tournament
+$T$.  The classical one-tournament domination problem goes back to
+Erd\H{o}s~\cite{Erdos1963}; its lower bound was subsequently sharpened by
+Szekeres and Szekeres~\cite{SzekeresSzekeres1965}.  Intersecting-family
+reformulations have also been useful for a bipartite version of that
+problem~\cite{BorowieckiEtAl2003}.
+
+Jeffries~\cite{Jeffries2026} introduced the following multi-tournament
+parameter.  For integers $m,k\geq1$, let $f(m,k)$ be the least integer
+$n\geq k+1$ for which there are tournaments $T_1,\ldots,T_m$ on one
+$n$-element set $V$ satisfying
+\begin{equation}\label{eq:property}
+  \forall U\in\binom{V}{k}\quad
+  \exists i\in\{1,\ldots,m\}\quad
+  \exists x\in V\setminus U\quad
+  \forall u\in U,\quad x\to_{T_i}u.
+\end{equation}
+Thus the same outside vertex, in the same tournament, must beat every
+member of $U$.  Proposition~2.3 and Theorem~2.2 of
+Jeffries~\cite{Jeffries2026} give the upper bound in the theorem below,
+and the table there reports equality on this parameter slice for
+$k=3,4,5,6$ using a SAT formulation.  The source notes that general
+nontrivial lower bounds for $f(m,k)$ are absent, but it does not present
+this slice as a numbered open problem; no claim of publication priority is
+made here.
+
+Our proof is symbolic and elementary.  Its lower-bound reduction asks
+whether a collection of star-contained graphs and triangles can cover the
+edges of a complete graph.  This is distinct from the triangle
+covering/packing problem studied, for example, in the split-graph setting
+by Zeng~\cite{Zeng2026Tuza}: here the triangles are available subgraphs
+whose \emph{union} must cover edges.
+
+\begin{theorem}\label{thm:main}
+For every integer $k\geq3$,
+\[
+    f(k-1,k)=k+3.
+\]
+\end{theorem}
+
+\section{The auxiliary graph}
+
+For a tournament $T$ on a set $V$ of size $n\geq3$, define a simple graph
+$H_T$ on $V$ by
+\begin{equation}\label{eq:auxiliary}
+ ab\in E(H_T)
+ \quad\Longleftrightarrow\quad
+ a\to_T V\setminus\{a,b\}
+ \ \text{or}\ 
+ b\to_T V\setminus\{a,b\},
+\end{equation}
+where $x\to_T W$ means $x\to_T w$ for every $w\in W$.
+
+\begin{lemma}\label{lem:structure}
+For every tournament $T$ of order at least three, $H_T$ is contained in a
+star or $H_T$ is exactly a triangle.
+\end{lemma}
+
+\begin{proof}
+First suppose that $T$ has a source $s$, meaning that $s$ beats every
+other vertex.  If $ab\in E(H_T)$ and $s\notin\{a,b\}$, then a witnessing
+endpoint of $ab$ beats $s$, contradicting that $s$ is a source.  Hence
+every edge of $H_T$ is incident with $s$.
+
+Now suppose that $T$ has no source.  If $ab\in E(H_T)$ and $a$ is a
+witnessing endpoint in~\eqref{eq:auxiliary}, every possible in-neighbor of
+$a$ lies in $\{b\}$.  Since $a$ is not a source, $b\to_T a$; in
+particular, the mate of a witnessing endpoint is its unique in-neighbor.
+There cannot be two disjoint edges of $H_T$: witnessing endpoints $x$ and
+$y$ for two such edges would satisfy both $x\to_T y$ and $y\to_T x$.
+Thus the edges of $H_T$ are pairwise intersecting.
+
+It remains only the elementary two-uniform classification.  Empty and
+one-edge families are star-contained.  Otherwise choose two edges $ab$
+and $ac$.  If not every edge contains $a$, an edge missing $a$ must meet
+both chosen edges and hence is $bc$.  Any edge meeting all three of
+$ab,ac,bc$ is one of those three.  The family is therefore either
+star-contained or exactly the triangle on $\{a,b,c\}$.
+\end{proof}
+
+\section{Proof of the boundary}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $k\geq3$ and put $m=k-1$.
+
+We first rule out order $n=k+1$.  For every $x\in V$, the set
+$U_x=V\setminus\{x\}$ has $x$ as its only possible outside witness.
+Consequently, covering $U_x$ requires $x$ to be a source in one of the
+$m$ tournaments.  A tournament has at most one source, so $m=k-1$
+tournaments can account for at most $k-1$ of the $k+1$ choices of $x$.
+Thus order $k+1$ is impossible.
+
+Next let $n=k+2$.  The $k$-sets are precisely the complements of pairs,
+so~\eqref{eq:property} is equivalent to
+\begin{equation}\label{eq:cover}
+  E(H_{T_1})\cup\cdots\cup E(H_{T_m})=E(K_n),
+  \qquad m=k-1=n-3.
+\end{equation}
+Use Lemma~\ref{lem:structure} to call an index \emph{star-type} when its
+auxiliary graph is contained in a star, and \emph{triangle-type}
+otherwise.  In the latter case the auxiliary graph is exactly a triangle.
+
+Suppose there are $a$ star-type indices.  Choose one star center for each
+of them (arbitrarily when the auxiliary graph is empty), let $C$ be the
+set of distinct chosen centers, and write
+\[
+    r=|C|,\qquad q=n-r.
+\]
+Because $r\leq a\leq n-3$, we have $q\geq3$.  After deleting $C$, none of
+the star-type graphs supplies an edge.  Hence~\eqref{eq:cover} would force
+the remaining $n-3-a$ triangle graphs to cover every edge of $K_q$.  But
+\[
+ n-3-a\leq n-3-r=q-3,
+\]
+so their union has at most $3(q-3)$ edges, whereas
+\begin{align*}
+  2\left(\binom q2-3(q-3)\right)
+    &=q^2-7q+18\\
+    &=\left(q-\frac72\right)^2+\frac{23}{4}>0.
+\end{align*}
+This contradiction includes repeated star centers and the endpoint
+$q=3$.  Order $k+2$ is therefore impossible.  Since the definition
+requires $n\geq k+1$, these are all possible smaller orders, and
+$f(k-1,k)\geq k+3$.
+
+For the reverse inequality, partition a set $V$ of size $k+3$ into two
+three-element blocks and $k-3$ singleton blocks.  There are exactly
+$k-1$ blocks.  For each block $D$, form a tournament $T_D$ by orienting
+every edge between $D$ and $V\setminus D$ outward from $D$; if $D$ is a
+triple, orient it as a directed $3$-cycle; orient all remaining edges
+arbitrarily.  These prescriptions concern disjoint classes of unordered
+pairs, so they extend to a tournament.
+
+Let $U\in\binom{V}{k}$.  Either $U$ misses a singleton block, or it
+meets one of the triple blocks in at most one vertex.  Indeed, otherwise
+$U$ would contain all $k-3$ singleton vertices and at least two vertices
+from each triple, giving $|U|\geq k+1$.  If $U$ misses the singleton
+$\{x\}$, then $x$ dominates $U$ in $T_{\{x\}}$.  If a triple $D$ is
+disjoint from $U$, any vertex of $D$ dominates $U$ in $T_D$.  Finally, if
+$D\cap U=\{u\}$, the directed cycle on $D$ contains a vertex
+$x\in D\setminus U$ with $x\to_{T_D}u$, and the outward cross-block
+orientation makes $x$ beat every vertex of $U\setminus D$.  Thus
+property~\eqref{eq:property} holds on $k+3$ vertices.  The same argument
+works when $k=3$, when there are no singleton blocks.  Hence
+$f(k-1,k)\leq k+3$, completing the proof.
+\end{proof}
+
+\section*{Computational and AI assistance}
+
+OpenAI's Codex system assisted with literature searching, adversarial proof
+checking, preparation of a finite diagnostic script, and language editing.
+The script exhaustively checked Lemma~\ref{lem:structure} for labeled
+tournaments of orders $3$ through $6$, the block construction for
+$3\leq k\leq12$, and the displayed inequality for $3\leq q\leq100$.
+These finite checks are sanity checks only; no computational output is used
+to prove the quantified theorem.  The author is responsible for the
+statement, proof, citations, and manuscript.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

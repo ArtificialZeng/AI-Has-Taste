@@ -1,0 +1,93 @@
+{
+  "constants": {
+    "H_0.73_upper_expression": "[0.0456028219027266479592173138171730221409751893 +/- 2.17e-47]",
+    "H_upper_used": "22801411/500000000",
+    "K_0.73": "[0.402314889241417376658530945150736398855091270 +/- 3.29e-46]",
+    "K_upper_used": "40231489/100000000",
+    "R_0.75_partial_through_F90": "[0.757466080626606950452310961666347684578566474 +/- 3.08e-46]",
+    "R_lower_used": "4734163/6250000",
+    "arb_precision_bits": "192",
+    "first_vacuous_20_chord_bound_F233": "[2.67921882157981591110291197814492062437752062 +/- 1.71e-45]",
+    "omega_arc_halfwidth_calculated": "[0.348764754947714778899912838205293343904462297 +/- 4.72e-46]",
+    "omega_arc_halfwidth_upper_used": "87191189/250000000"
+  },
+  "cover_file": "evidence/phase_cover_intervals.tsv",
+  "cover_sha256": "9f574a6d680d682f931d6f1e09580815e693a7e6b70760563da2020df01f3c70",
+  "derivation": [
+    "Lemma 2.1 makes H decreasing; K is decreasing; Theorem 1.1 gives sigma_F<0.75.",
+    "Equation (17) gives odd-pi windows for bases 2 and 3 using lower phase weights.",
+    "Equations (19)-(20) give every nonvacuous individual free-phase window: F=5,13,21,34,55,89; the bound is vacuous from F_13=233 onward.",
+    "For w_n=F_n^(-3/4), (18) implies for n=5..30 (excluding 6,12) that W-|sum w_n F_n^(-it)| <= H_UP.",
+    "Equation (19) additionally confines omega to omega=-exp(i alpha), |alpha|<=ETA_HI; Arb interval maxima over 24 alpha subarcs certify further exclusions.",
+    "Surviving terminal boxes are retained whole, so the TSV is a superset of all possible zero ordinates in the stated sigma strip."
+  ],
+  "grid": "1e-9; every periodic and terminal endpoint rounded outward",
+  "job_id": "win-00070-p04-research-3248e212eada",
+  "joint_pruning": {
+    "additional_boxes_excluded_using_19": 2476,
+    "arb_interval_tests": 59741,
+    "boxes_excluded_by_18_alone": 42763,
+    "joint_free_indices_through": 30,
+    "omega_arc_subintervals": 24,
+    "terminal_box_max_ticks": 5000000
+  },
+  "limitations": [
+    "The cover is only a necessary-condition cover and proves neither existence nor absence of a zero in any surviving interval.",
+    "It does not certify the requested zero count, disk uniqueness, or simplicity.",
+    "All zero isolation, tail control on complex boxes, and included-boundary handling remain to be done."
+  ],
+  "ordinate_domain": "0 < t <= 8596696",
+  "proposition_source": "https://arxiv.org/html/2609.04993v1#S7.Thmtheorem1",
+  "sigma_domain": "0.73 <= sigma < sigma_F < 0.75",
+  "stages": [
+    {
+      "constraints": "(17): bases 2 and 3",
+      "interval_count": 425784,
+      "total_width": "267086.201731579",
+      "total_width_ticks": 267086201731579
+    },
+    {
+      "constraints": "previous plus (20): base 5",
+      "interval_count": 194823,
+      "total_width": "79292.698130358",
+      "total_width_ticks": 79292698130358
+    },
+    {
+      "constraints": "previous plus (20): base 13",
+      "interval_count": 107363,
+      "total_width": "30530.826948684",
+      "total_width_ticks": 30530826948684
+    },
+    {
+      "constraints": "previous plus (20): base 21",
+      "interval_count": 62843,
+      "total_width": "13663.204012992",
+      "total_width_ticks": 13663204012992
+    },
+    {
+      "constraints": "previous plus (20): base 34",
+      "interval_count": 41004,
+      "total_width": "7251.498321303",
+      "total_width_ticks": 7251498321303
+    },
+    {
+      "constraints": "previous plus (20): base 55",
+      "interval_count": 31269,
+      "total_width": "4704.971681444",
+      "total_width_ticks": 4704971681444
+    },
+    {
+      "constraints": "previous plus (20): base 89",
+      "interval_count": 31425,
+      "total_width": "4193.521920257",
+      "total_width_ticks": 4193521920257
+    },
+    {
+      "constraints": "previous plus joint finite (18)-(19), free indices 5..30",
+      "interval_count": 8,
+      "total_width": "1.140395094",
+      "total_width_ticks": 1140395094
+    }
+  ],
+  "status": "certified_necessary_condition_cover_not_zero_count"
+}

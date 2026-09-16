@@ -1,0 +1,13 @@
+{
+  "verdict": "accept",
+  "job_id": "win-00066-p03-release-5211be7d8dff",
+  "snapshot_digest": "d248f45250edb03d49215e1294f64340b70c956ded27d975d67ff63b70be30fe",
+  "manuscript_digest": "24024f2e9ed2c0382bebae648e8955ae22d5be4358bdb16b2a466ab5d6574edd",
+  "pdf_digest": "9b1e2288dcba4da257093451a63bfcf21de1029476dc504612b63fc66b4a4183",
+  "report": "audit/build.md",
+  "build_log": "manuscript/main.log",
+  "build_log_digest": "8827f99d7d2462e9f6562efc173ebf7b1ebe9f3d8a6156fa36bfc5ccb7dfe0c0",
+  "clean_build": true,
+  "build_command": "python3 generate_orbits_table.py ../evidence/bondage5_classification.json orbits-table.tex && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "build_working_directory": "manuscript"
+}

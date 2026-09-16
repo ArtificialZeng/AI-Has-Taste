@@ -1,0 +1,67 @@
+{
+  "verdict": "accept",
+  "job_id": "newwin-00001-p20-release-3992adf5ac58",
+  "snapshot_digest": "cf7630d6bb75637ad046c973a80a87165a82712e35b2590de9570c5fd83fbf73",
+  "manuscript_digest": "7b93959746febc59f27108bef0e6f383afed252661f643a166d5d32589bd16ce",
+  "pdf_digest": "4ca5de43598fb74ebcc0a8c28110cf8ac5b7bc1c4cfe184f991656f46160a160",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "render_command": [
+    "pdftoppm",
+    "-png",
+    "-scale-to",
+    "1700",
+    "manuscript/build/main.pdf",
+    "audit/release-pages/page"
+  ],
+  "inspection_method": "Each final PNG opened using view_image and visually inspected by this release context after the last rebuild.",
+  "rendered_pages": [
+    {
+      "page": 1,
+      "path": "audit/release-pages/page-1.png",
+      "sha256": "63ac3aca033af6cdd8bf5e0d5bdc21c2c4eb7a74f79a62ae9ab19a13ecb8b539",
+      "observation": "Title, abstract, model, piecewise definition, coefficients and full theorem all legible; equation labels 1-4 and metadata footnotes clear."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-pages/page-2.png",
+      "sha256": "620ad25a68afbf21d90908ef82b19e6b3bec61df6e98d8629b2ec2a76e6c5c0f",
+      "observation": "Related literature, symmetry, exact branches, constants, local lemma and Wallis normalization fit; all fraction and floor/symmetry indices legible."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-pages/page-3.png",
+      "sha256": "c15c69ed491d9e4d7275687b0b984f08b811736950868c0200825b72f040fa33",
+      "observation": "Finite product, CDF constant, local sum orientations and quadrature proof checked; wide displays and the corrected paragraph have no overflow."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-pages/page-4.png",
+      "sha256": "1098af5c60e8b66dd5f93f6d6f17af61a0e009309ceec02a6b02a9fd1e311f4c",
+      "observation": "Ratio bounds, rational expansion, grid estimate, zero smoothness and constants checked; endpoint signs and stacked fractions clear."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-pages/page-5.png",
+      "sha256": "ccca5ae47a26028742bb623d7a6f5a16599dfe94d6eee791538b09950fcf5b88",
+      "observation": "Uniform Taylor conclusion, central identities, all finite count/range assertions, direct library citation and assistance disclosure checked; nothing clipped."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-pages/page-6.png",
+      "sha256": "ffca10699fcb30e2191fae67e150a5ce8350b3b62167d7cd104443286e1b1c19",
+      "observation": "All six references, complete authors, version/status, URLs, affiliation and email are readable; intentional remaining white space is not missing content."
+    }
+  ],
+  "clipping": false,
+  "overlaps": false,
+  "illegibility": false,
+  "figures_or_tables_in_manuscript": false
+}

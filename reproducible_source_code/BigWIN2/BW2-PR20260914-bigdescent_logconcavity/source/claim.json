@@ -1,0 +1,20 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every n>=1, let a_n(A) count binary words of length n ending in 1 whose event set A consists exactly of the ending positions of factors 10 and 011. For every J subset of {2,...,n} with m=|J|<=4 and every S subset of {2,...,n}\\J, the homogeneous symmetric polynomial H_(S,J)(x,y)=sum_(T subset J) a_n(S union T) a_n(S union (J\\T)) x^|T| y^(m-|T|) is Schur-positive in two variables. Thus, if G(t;z)=sum_(T subset J) a_n(S union T)t^|T| product_(i in T) z_i=sum_k g_k(z)t^k, every g_k(z)^2-g_(k-1)(z)g_(k+1)(z) is coefficientwise nonnegative, with g_k=0 outside its range. There is no bound on n, the spacing of J, or |S|; all other event indicators are fixed, and zero-count cases are included. The two-position inequality a_n(S)a_n(S union {i,j})<=2a_n(S union {i})a_n(S union {j}) has optimal factor 2, attained at n=4,S=empty,{i,j}={2,4}. The pair-polynomial conclusion also holds for arbitrary |J| when J can be partitioned in its natural order into blocks of at most four positions such that, between each consecutive pair of blocks, S contains two adjacent positions. No unrestricted weighted theorem, full exceptional-class log-concavity, or resolution of the original 21-family assertion is claimed.",
+  "contribution": "A uniform conditional coefficientwise log-concavity theorem for the binary 10/011 event model underlying the source exceptional three-pair class, proved by a finite reduction of arbitrary intervening matrix words and exact nonnegative parameter-polynomial certificates. It allows arbitrary length and arbitrarily many fixed events, extends to products separated by rank-one gaps, and includes a sharp two-position bound. The three-position extension is not implied by all two-position factor-two face bounds for general Boolean weights, as an exact auxiliary counterexample demonstrates. The source gives univariate enumeration; the inspected normalized antipodal-pairs criterion has a hypothesis violated by the sharp actual-word example. No equivalent exact theorem was found in the bounded primary-source comparison; novelty and publication value are submitted for fresh referee assessment.",
+  "proposer_job_id": "primary-20260914-bigdescent-logconcavity-research-5c6b908e3ed6",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research/four-singleton-theorem.md",
+    "evidence/research/multi_singleton_certificate.py",
+    "evidence/research/multi_singleton_certificate.json",
+    "evidence/research/two_singleton_certificate.py",
+    "evidence/research/pass3_audit.py",
+    "evidence/research/pass3_audit.json",
+    "literature/research-pass-3.md",
+    "evidence/external/erz-2026-primary.txt",
+    "evidence/external/erz-2026-primary.html"
+  ]
+}

@@ -1,0 +1,408 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{
+  pdftitle={Maxwell Sharpness for Complements of Disjoint Triangles and Four-Cycles},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Generic rigidity and Maxwell dimension}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\rig}{\operatorname{rig}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\coker}{\operatorname{coker}}
+
+\title{Maxwell Sharpness for Complements of Disjoint Triangles and Four-Cycles}
+\author{Xiaojian Zeng\\
+  PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $D=sC_3\sqcup tC_4$ have $N=3s+4t\geq4$ vertices and let
+$G=\overline D$.  If $a$ is the least nonnegative integer such that
+$N\leq\binom{a+1}{2}$, then we prove
+\[
+ \rig(G)=M(G)=N-a-1,
+\]
+where $\rig$ and $M$ denote generic rigidity dimension and Maxwell
+dimension.  The main ingredient is a symmetric-product theorem: for generic
+$z_1,\ldots,z_N\in\K^a$, the tensors $z_i\odot z_j$ indexed by the edges of
+$D$ are independent.  Its proof compares the exact compression codimension
+of $Z^{\mathsf T}CZ=0$ with every rank stratum of the space of symmetric
+matrices supported on the triangles and four-cycles.  An all-nonzero kernel
+scaling then turns $Z$ into a Gale matrix, and stress-space duality shows that
+deleting $E(D)$ from $K_N$ preserves the complete framework's rigidity rank.
+This settles the pure exceptional-component family left outside the closest
+bounded-degree-complement theorem.
+\end{abstract}
+
+\section{Statement and context}
+
+A realization of a finite simple graph $H$ in $\R^d$ is \emph{generic} when
+all of its coordinates are algebraically independent over $\mathbb Q$.
+For $|V(H)|\geq d+1$, the theorem of Asimow and Roth identifies generic
+rigidity with the rigidity-matrix rank condition
+\[
+ \rank R(H,p)=d|V(H)|-\binom{d+1}{2}.
+ \tag{1.1}
+\]
+We use the convention that every graph is generically $0$-rigid.  The
+rigidity dimension $\rig(H)$ is the greatest $0\leq d\leq |V(H)|-1$ for
+which $H$ is generically $d$-rigid.  Maxwell's necessary edge count
+\cite{Maxwell1864}, together with the generic rank criterion
+\cite{AsimowRoth1978}, gives
+\[
+ \rig(H)\leq M(H),\qquad
+ M(H):=\max\left\{0\leq d\leq |V(H)|-1:
+ d|V(H)|-\binom{d+1}{2}\leq |E(H)|\right\}.
+ \tag{1.2}
+\]
+
+Haslegrave, Michaeli and Nixon proved that the complement of a graph of
+maximum degree at most two is Maxwell-sharp provided that no component of the
+deleted graph is a triangle or a four-cycle
+\cite[Theorem~1.4]{HaslegraveMichaeliNixon2026}.  They explicitly identified
+the exclusions of $C_3$ and $C_4$ as limitations of their argument.  Their
+Corollary~1.5 implies, for $D=sC_3\sqcup tC_4$, only
+\[
+ M(\overline D)-\rig(\overline D)
+ \leq \left\lceil\frac{s+t}{2}\right\rceil,
+ \tag{1.3}
+\]
+because one vertex must be deleted from each component of $D$ to remove all
+triangle and four-cycle components.  The result below treats precisely this
+pure excluded family.
+
+\begin{theorem}\label{thm:main}
+For all integers $s,t\geq0$ with $N=3s+4t\geq4$, let
+$D=sC_3\sqcup tC_4$ and $G=\overline D$.  If
+\[
+ a=\min\left\{q\geq0:N\leq\binom{q+1}{2}\right\},
+\]
+then
+\[
+ \rig(G)=M(G)=N-a-1.
+\]
+\end{theorem}
+
+The argument is self-contained apart from the standard generic-rigidity
+criterion (1.1).  We work over an algebraically closed field $\K$ of
+characteristic zero during the dimension calculation.  Since every open set
+and polynomial used below is defined over $\mathbb Q$, the resulting
+nonvanishing has a rational, and hence real, specialization.
+
+\section{The Maxwell target}
+
+The graph $D$ is $2$-regular, so it has $N$ edges.  Consequently
+\[
+ |E(G)|=\binom N2-N=\frac{N(N-3)}2.
+ \tag{2.1}
+\]
+
+\begin{lemma}\label{lem:maxwell}
+With $a$ as in Theorem~\ref{thm:main}, the Maxwell dimension of $G$ is
+$N-a-1$.
+\end{lemma}
+
+\begin{proof}
+Put $d=N-q-1$.  Substitution of (2.1) into the Maxwell inequality gives
+\[
+ dN-\binom{d+1}{2}\leq\frac{N(N-3)}2
+ \quad\Longleftrightarrow\quad
+ N\leq\frac{q(q+1)}2.
+ \tag{2.2}
+\]
+Increasing $d$ by one decreases $q$ by one.  Thus the largest admissible
+$d$ is obtained from the least $q=a$ satisfying the right side of (2.2),
+and equals $N-a-1$.
+\end{proof}
+
+\section{Generic independence of the deleted-edge tensors}
+
+For $x,y\in\K^a$, write
+\[
+ x\odot y:=\frac{xy^{\mathsf T}+yx^{\mathsf T}}2\in\Sym^2\K^a.
+\]
+The following proposition is the central algebraic statement.
+
+\begin{proposition}[symmetric-product independence]\label{prop:compression}
+Let $D=sC_3\sqcup tC_4$ have $N$ vertices.  If
+$N\leq\binom{a+1}{2}$, then, for generic
+$z_1,\ldots,z_N\in\K^a$, the $N$ tensors
+\[
+ \{z_i\odot z_j:ij\in E(D)\}
+ \tag{3.1}
+\]
+are linearly independent in $\Sym^2\K^a$.
+\end{proposition}
+
+\begin{proof}
+Let $Z$ be the $N\times a$ matrix with rows $z_i$, and let $L_D$ be the
+$N$-dimensional space of symmetric $N\times N$ matrices whose diagonal
+entries vanish and whose off-diagonal support is contained in $E(D)$.  A
+linear relation among (3.1) is equivalent, up to a fixed nonzero factor on
+each off-diagonal coefficient, to
+\[
+ Z^{\mathsf T}CZ=0
+ \tag{3.2}
+\]
+for some nonzero $C\in L_D$.  We prove that the incidence variety of such
+pairs $(C,Z)$ does not dominate the $aN$-dimensional space of $Z$.
+
+\smallskip
+\noindent\emph{Compression codimension.}
+Fix a symmetric matrix $C$ of rank $r$.  Congruence reduces it to
+$\operatorname{diag}(I_r,0)$.  After applying the same invertible row change
+to $Z$, condition (3.2) becomes
+\[
+ X^{\mathsf T}X=0,
+ \tag{3.3}
+\]
+where $X$ consists of the first $r$ rows.  On the locus $\rank X=k$, the
+column space of $X$ is a totally isotropic $k$-plane in $\K^r$.  The variety
+of these planes has dimension
+\[
+ k(r-k)-\binom{k+1}{2}.
+\]
+Indeed, the ordinary Grassmannian has dimension $k(r-k)$ and the vanishing
+of the restricted nondegenerate symmetric form imposes the
+$\binom{k+1}{2}$ independent entries of a symmetric Gram matrix.  Once the
+plane is chosen, its spanning $r\times a$ matrices form an open subset of an
+$ak$-dimensional vector space.  Thus the rank-$k$ part of (3.3) has dimension
+\[
+ f(k)=k(r-k)-\binom{k+1}{2}+ak.
+\]
+Here $0\leq k\leq\min(a,\lfloor r/2\rfloor)$, and
+$f(k)-f(k-1)=a+r-3k+1>0$ throughout this range.  Therefore the codimension,
+in the full space of $Z$, of (3.2) for this fixed $C$ is
+\[
+ c_a(r)=
+ \begin{cases}
+ \dfrac{h(2a-h+1)}2,&r=2h<2a,\\[5pt]
+ a+\dfrac{h(2a-h-1)}2,&r=2h+1<2a,\\[5pt]
+ \binom{a+1}{2},&r\geq2a.
+ \end{cases}
+ \tag{3.4}
+\]
+
+\smallskip
+\noindent\emph{Rank strata in $L_D$.}
+A weighted triangle block has the form
+\[
+ \begin{pmatrix}
+ 0&x&z\\ x&0&y\\ z&y&0
+ \end{pmatrix}.
+\]
+Its determinant is $2xyz$, and its nonzero strata have
+$(\text{rank},\text{dimension})=(2,2)$ or $(3,3)$.  Rank one is impossible.
+After ordering a four-cycle by its bipartition, its block has the form
+\[
+ \begin{pmatrix}0&B\\B^{\mathsf T}&0\end{pmatrix},
+ \qquad B\in\K^{2\times2},
+\]
+so its nonzero strata have $(\text{rank},\text{dimension})=(2,3)$ or
+$(4,4)$.  Refining reducible strata into their finitely many irreducible
+pieces does not change these dimension bounds.
+
+Suppose that $u,v,x,y$ components are active in, respectively, the four
+types
+\[
+ (2,2)_{C_3},\quad(3,3)_{C_3},\quad
+ (2,3)_{C_4},\quad(4,4)_{C_4}.
+\]
+The corresponding product stratum has rank $r$ and dimension $\ell$ given
+by
+\[
+ r=2u+3v+2x+4y,
+ \qquad \ell=2u+3v+3x+4y=r+x.
+ \tag{3.5}
+\]
+We claim that its projective dimension satisfies
+\[
+ \ell-1<c_a(r).
+ \tag{3.6}
+\]
+
+If $r\geq2a$, then $\ell$ is at most the number of edge parameters in the
+active components.  Hence
+$\ell\leq N\leq\binom{a+1}{2}=c_a(r)$.
+
+Let $r=2h<2a$.  Equation (3.5) gives $x\leq h$ and therefore
+$\ell\leq3h$.  From (3.4),
+\[
+ c_a(2h)-(3h-1)=\frac{h(2a-h-5)+2}{2}.
+ \tag{3.7}
+\]
+For $1\leq h\leq a-1$, the numerator is a concave quadratic in $h$, so
+its minimum occurs at an endpoint.  The endpoint values are $2a-4$ and
+$(a-2)(a-3)$.  They are nonnegative, with equality only when
+$(a,h)=(2,1)$ or $(3,2)$.  Equality in $\ell\leq3h$ would require,
+respectively, one or two active rank-two four-cycle blocks.  These require
+$N\geq4$ or $N\geq8$, contradicting $N\leq\binom{a+1}{2}=3$ or $6$.
+Thus (3.6) is strict also in the exceptional arithmetic cases.
+
+Finally, let $r=2h+1<2a$.  Odd rank forces $v$ to be odd, hence at least
+one rank-three triangle block is active.  It follows that $x\leq h-1$ and
+$\ell\leq3h$.  Now
+\[
+ c_a(2h+1)-(3h-1)
+ =\frac{2a+h(2a-h-7)+2}{2}>0.
+ \tag{3.8}
+\]
+The numerator is again concave in $h$; at $h=1$ and $h=a-1$ its values are
+$4a-6$ and $(a-2)(a-3)+2$, both positive.  This proves (3.6).
+
+For the projectivization of any fixed rank-stratum piece, the incidence
+pairs $([C],Z)$ satisfying (3.2) consequently have dimension at most
+\[
+ (\ell-1)+(aN-c_a(r))<aN.
+\]
+There are only finitely many choices of active blocks, block ranks and
+irreducible pieces.  Their images lie in a proper closed subset of the space
+of $Z$.  Thus a generic $Z$ admits no nonzero $C\in L_D$ satisfying (3.2),
+which proves the proposition.
+\end{proof}
+
+\section{Gale normalization and rigidity}
+
+We next pass from the unconstrained rows in
+Proposition~\ref{prop:compression} to the Gale matrix of an affine
+configuration.  Gale transforms and equilibrium stress matrices are standard
+tools in rigidity theory; see, for example,
+\cite{GortlerHealyThurston2010}.  We include the exact linear-algebra passage
+needed here.
+
+\begin{lemma}[all-nonzero Gale normalization]\label{lem:gale}
+Assume $N-1\geq a$ and that the tensors in (3.1) are independent on a
+nonempty Zariski-open set of $N\times a$ matrices.  There is a rational
+$N\times a$ matrix $Z$, still having this independence property, such that
+\[
+ \rank Z=a,\qquad \sum_{i=1}^N z_i=0,
+ \tag{4.1}
+\]
+and deleting any row of $Z$ leaves rank $a$.
+\end{lemma}
+
+\begin{proof}
+Intersect the given independence locus with the nonempty open locus on which
+every row deletion has rank $a$.  This intersection is a nonempty open set
+defined over $\mathbb Q$, so choose a rational $Z$ in it.  Put
+$W=\ker Z^{\mathsf T}$.  For each coordinate $i$, the row-deletion
+condition implies that $W$ is not contained in the coordinate hyperplane
+$c_i=0$: the other rows span $\K^a$, so there is a dependence involving
+row $i$ with nonzero coefficient.  A finite union of proper hyperplanes
+cannot cover $W$.  We may therefore choose a rational
+$c=(c_1,\ldots,c_N)\in W$ with every $c_i\neq0$.  Replacing $z_i$ by
+$c_i z_i$ gives (4.1), preserves every row-deletion rank, and multiplies
+each edge tensor by the nonzero scalar $c_ic_j$.
+\end{proof}
+
+\begin{proposition}[stress restriction]\label{prop:stress}
+Let $Z$ be as in Lemma~\ref{lem:gale}, suppose that the tensors indexed by
+$E(D)$ are independent, and put $d=N-a-1$.  Then
+$K_N-E(D)$ has a realization in $\mathbb Q^d$ whose rigidity matrix has
+rank $dN-\binom{d+1}{2}$.
+\end{proposition}
+
+\begin{proof}
+The kernel of $Z^{\mathsf T}$ has dimension $d+1$ and contains the all-ones
+vector.  Choose an $N\times(d+1)$ matrix $[\mathbf1\ P]$ whose columns form
+a basis of this kernel.  The rows of $P$ form an affinely spanning rational
+realization $p$ in $\mathbb Q^d$.
+
+For the complete framework $(K_N,p)$, write a stress as its symmetric stress
+matrix $\Omega$: its off-diagonal entries are the negatives of the edge
+stress coefficients and its diagonal entries make every row sum zero.  The
+equilibrium equations are
+\[
+ \Omega\mathbf1=0,\qquad \Omega P=0.
+\]
+Because the columns of $Z$ span the orthogonal complement of the columns of
+$[\mathbf1\ P]$, all complete-framework stress matrices are precisely
+\[
+ \Omega=Z\Psi Z^{\mathsf T},\qquad \Psi\in\Sym^2\K^a.
+ \tag{4.2}
+\]
+In particular, restriction of (4.2) to a deleted edge $ij\in E(D)$ is the
+linear functional
+\[
+ \Psi\longmapsto z_i^{\mathsf T}\Psi z_j.
+\]
+With respect to the trace pairing on symmetric matrices, the transpose of
+this restriction map has columns $z_i\odot z_j$.  Their independence makes
+the restriction map from the complete stress space onto
+$\K^{E(D)}$ surjective.
+
+Let $R_e$ denote the row of $R(K_N,p)$ indexed by $e$.  For any fixed
+$e\in E(D)$, surjectivity supplies a complete stress whose coefficient on
+$e$ is $1$ and whose coefficients on all other edges of $D$ are zero.  The
+stress relation then writes $R_e$ as a linear combination of the rows
+indexed by $E(K_N)\setminus E(D)$.  This holds for every deleted edge, so
+\[
+ \operatorname{rowspan}R(K_N-E(D),p)
+ =\operatorname{rowspan}R(K_N,p).
+\]
+Since $p$ affinely spans $\K^d$, the latter rank is
+$dN-\binom{d+1}{2}$.  The same is therefore true for the complement
+framework.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $a$ be minimal with $N\leq\binom{a+1}{2}$ and put $d=N-a-1$.
+Minimality and $N\geq4$ imply $N-1\geq a$.  Proposition
+\ref{prop:compression}, Lemma~\ref{lem:gale}, and Proposition
+\ref{prop:stress} give a rational realization of $G$ with full rigidity
+rank in dimension $d$.  A maximal minor that is nonzero at this realization
+is a nonzero polynomial in the coordinates, so the generic rigidity matrix
+has the same full rank.  Thus $G$ is generically $d$-rigid (with the
+$d=0$ case covered by the standing convention).  Lemma~\ref{lem:maxwell}
+gives $d=M(G)$, while Maxwell's necessary count gives the reverse bound
+$\rig(G)\leq M(G)$.  Hence $\rig(G)=M(G)=N-a-1$.
+\end{proof}
+
+\section{Ancillary exact checks}
+
+The proof above is uniform and does not rely on computation.  As adversarial
+diagnostics, all feasible pairs $(s,t)$ with $4\leq3s+4t\leq28$ were also
+checked at three deterministic integer realizations.  For each of the 41
+pairs, exact elimination modulo $65521$ produced the full target rigidity
+rank, and a separate verifier reconstructed the graph, placement, affine
+span, selected maximal minor and its nonzero determinant.  A symbolic
+transition check at $a=4$ also produced a determinant
+$2q(27q+10)$ for ten edge tensors.  These calculations test small and sharp
+regimes but are not evidence for untested orders.  For comparison, the same
+methodological separation between an exact-arithmetic certificate and a
+definition-level independent reconstruction is used in a different matrix
+problem in \cite{ZengEtAl2026ExactPositivity}.
+
+\section*{Computational and AI assistance}
+
+OpenAI Codex assisted with proof discovery, exact finite and symbolic
+experiments, literature screening, and preparation of this manuscript.  The
+finite checks were performed in Python~3 with integer, finite-field, and
+symbolic arithmetic; no floating-point rank decision enters the result.  A
+separate fresh model context reconstructed the compression, rank-stratum,
+Gale-normalization, and stress-surjectivity arguments and reran the supplied
+exact checks.  This was an internal mathematical audit, not independent peer
+review.  The universal conclusion rests on the deductive proof in
+Sections~3--4.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

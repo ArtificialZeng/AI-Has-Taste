@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "semantics": "exact signed int64 with an inductive pre-operation no-overflow guard",
+  "identity_checked": "y xor n = y + n - 2*(y & n) for n >= 0",
+  "limit_inclusive": 50000000000,
+  "checkpoint_stride": 5000000000,
+  "known_zero_indices": [
+    0,
+    6,
+    11,
+    23,
+    36,
+    42,
+    48,
+    54
+  ],
+  "direct_xor": {
+    "penultimate_value": -61858344117690071,
+    "last_value": -55764502440538543,
+    "zero_count": 8,
+    "last_zero": 54,
+    "maximum_absolute_value": 157338414726127168,
+    "maximum_conservative_step_bound": 273489287306986132,
+    "steps_completed": 50000000000,
+    "overflow_detected": false,
+    "checkpoints": [
+      {
+        "n": 5000000000,
+        "a_n_minus_1": 1326350101459753,
+        "a_n": -48096740729775,
+        "zero_count": 8
+      },
+      {
+        "n": 10000000000,
+        "a_n_minus_1": -15795839885252297,
+        "a_n": -16057233677852284,
+        "zero_count": 8
+      },
+      {
+        "n": 15000000000,
+        "a_n_minus_1": -1441636366148096,
+        "a_n": 7753529770221056,
+        "zero_count": 8
+      },
+      {
+        "n": 20000000000,
+        "a_n_minus_1": 18165366242820393,
+        "a_n": 4771046013460049,
+        "zero_count": 8
+      },
+      {
+        "n": 25000000000,
+        "a_n_minus_1": -8517728023431369,
+        "a_n": -11635171212186748,
+        "zero_count": 8
+      },
+      {
+        "n": 30000000000,
+        "a_n_minus_1": 35215629551241216,
+        "a_n": 22455108677520384,
+        "zero_count": 8
+      },
+      {
+        "n": 35000000000,
+        "a_n_minus_1": -40661755430178007,
+        "a_n": -70928956999494575,
+        "zero_count": 8
+      },
+      {
+        "n": 40000000000,
+        "a_n_minus_1": -15467806560326345,
+        "a_n": 47717162666469764,
+        "zero_count": 8
+      },
+      {
+        "n": 45000000000,
+        "a_n_minus_1": 20075336649760256,
+        "a_n": -20898956963786240,
+        "zero_count": 8
+      },
+      {
+        "n": 50000000000,
+        "a_n_minus_1": -61858344117690071,
+        "a_n": -55764502440538543,
+        "zero_count": 8
+      }
+    ]
+  },
+  "and_identity": {
+    "penultimate_value": -61858344117690071,
+    "last_value": -55764502440538543,
+    "zero_count": 8,
+    "last_zero": 54,
+    "maximum_absolute_value": 157338414726127168,
+    "maximum_conservative_step_bound": 273489287306986132,
+    "steps_completed": 50000000000,
+    "overflow_detected": false,
+    "checkpoints": [
+      {
+        "n": 5000000000,
+        "a_n_minus_1": 1326350101459753,
+        "a_n": -48096740729775,
+        "zero_count": 8
+      },
+      {
+        "n": 10000000000,
+        "a_n_minus_1": -15795839885252297,
+        "a_n": -16057233677852284,
+        "zero_count": 8
+      },
+      {
+        "n": 15000000000,
+        "a_n_minus_1": -1441636366148096,
+        "a_n": 7753529770221056,
+        "zero_count": 8
+      },
+      {
+        "n": 20000000000,
+        "a_n_minus_1": 18165366242820393,
+        "a_n": 4771046013460049,
+        "zero_count": 8
+      },
+      {
+        "n": 25000000000,
+        "a_n_minus_1": -8517728023431369,
+        "a_n": -11635171212186748,
+        "zero_count": 8
+      },
+      {
+        "n": 30000000000,
+        "a_n_minus_1": 35215629551241216,
+        "a_n": 22455108677520384,
+        "zero_count": 8
+      },
+      {
+        "n": 35000000000,
+        "a_n_minus_1": -40661755430178007,
+        "a_n": -70928956999494575,
+        "zero_count": 8
+      },
+      {
+        "n": 40000000000,
+        "a_n_minus_1": -15467806560326345,
+        "a_n": 47717162666469764,
+        "zero_count": 8
+      },
+      {
+        "n": 45000000000,
+        "a_n_minus_1": 20075336649760256,
+        "a_n": -20898956963786240,
+        "zero_count": 8
+      },
+      {
+        "n": 50000000000,
+        "a_n_minus_1": -61858344117690071,
+        "a_n": -55764502440538543,
+        "zero_count": 8
+      }
+    ]
+  },
+  "implementations_agree": true,
+  "no_signed_overflow": true,
+  "int64_max": 9223372036854775807,
+  "python": "3.10.12",
+  "numba": "0.67.0",
+  "timing_seconds_noncertifying": {
+    "direct_xor": 65.52339540100365,
+    "and_identity": 116.85561315499945
+  }
+}

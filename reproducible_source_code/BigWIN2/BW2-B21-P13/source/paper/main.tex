@@ -1,0 +1,117 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{A Counterexample to an Exponential Divisibility Recurrence}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{2026-09-02}
+\hypersetup{pdftitle={A Counterexample to an Exponential Divisibility Recurrence},pdfauthor={Xiaojian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+Starting with $a_1=a_2=1$, suppose that
+$a_n=(2^{a_{n-1}}+1)/a_{n-2}$ whenever this quotient is integral.
+We show that all divisions through $a_6$ are exact but the next one is not:
+$(2^{a_6}+1)\bmod 171=9$.  Thus the integrality question recorded as
+OEIS A078590 has the negative answer, with first failure at $n=7$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+The entry OEIS A078590, contributed by Benoit Cloitre in 2002, asks whether
+the recurrence
+\begin{equation}\label{eq:rec}
+ a_1=a_2=1,\qquad a_n=\frac{2^{a_{n-1}}+1}{a_{n-2}}\quad(n\geq3)
+\end{equation}
+always produces integers \cite{oeis}.  The public entry displays the terms
+through $a_6$ and still poses the integrality question.  The corresponding
+Formal Conjectures source also records the divisibility assertion as open
+\cite{formalconjectures}.  We give an elementary exact counterexample at the
+very next step.  Our literature statement is limited to those public records
+and searches completed on September 2, 2026; it is not a claim that no
+unindexed or differently worded prior observation exists.
+
+Equation \eqref{eq:rec} is understood as a partial recurrence: $a_n$ is
+defined only if all preceding terms are positive integers and the displayed
+division is exact.  This matters because totalizing division in the natural
+numbers would define a different sequence after the first failure.
+
+\section{Main result}
+
+\begin{theorem}\label{thm:main}
+For the recurrence \eqref{eq:rec}, the terms $a_1,\ldots,a_6$ are positive
+integers, but
+\[
+ 171\nmid 2^{a_6}+1.
+\]
+More precisely,
+\[
+ 2^{a_6}+1\equiv9\pmod{171}.
+\]
+Consequently the first failed division is the one defining $a_7$.
+\end{theorem}
+
+\begin{proof}
+Direct calculation gives
+\[
+ a_3=3,\qquad a_4=9,\qquad a_5=171.
+\]
+As $2^3\equiv-1\pmod9$ and $171=3\cdot57$, with $57$ odd, we have
+$2^{171}\equiv-1\pmod9$.  Hence $a_6=(2^{171}+1)/9$ is an integer.
+
+It remains to test the next numerator without expanding it.  First,
+\[
+ 2^{171}+1\equiv27\pmod{162}.
+\]
+(For example, modulo $81$ the exponent may be reduced modulo $54$, giving
+$2^{171}\equiv2^9\equiv26\pmod{81}$; parity then selects the residue $27$
+modulo $162$ after adding one.)  Division of this congruence by $9$ is now
+legitimate and yields
+\[
+ a_6=\frac{2^{171}+1}{9}\equiv3\pmod{18}.
+\]
+Thus $a_6\equiv3\pmod6$, so $2^{a_6}+1\equiv2^3+1\equiv0\pmod9$.
+Also Fermat's theorem modulo $19$, together with $a_6\equiv3\pmod{18}$,
+gives $2^{a_6}+1\equiv9\pmod{19}$.  Since $171=9\cdot19$, the Chinese
+remainder theorem gives
+\[
+ 2^{a_6}+1\equiv9\pmod{171}.
+\]
+The nonzero remainder proves failure at $n=7$, while the preceding
+calculations prove that no earlier division fails.
+\end{proof}
+
+\section{Independent exact verification}
+
+For reproducibility, the ancillary files contain the integer $a_6$, the
+remainder, and two small verifiers.  One reconstructs all terms through
+$a_6$ using exact integer arithmetic; the other implements binary modular
+exponentiation independently.  Both return the exact remainder $9$.  These
+programs are supplementary checks: the proof above is complete without them.
+
+\section*{Data, code, and computational disclosure}
+The certificate and verifiers accompanying this note use Python 3.10 and
+Ruby 3.0 and require no external solver or floating-point computation.
+Automated language assistance was used during drafting and adversarial
+checking; the exact argument and all scientific claims were independently
+recomputed and are the author's responsibility.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

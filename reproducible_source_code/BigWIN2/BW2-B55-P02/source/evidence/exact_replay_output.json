@@ -1,0 +1,237 @@
+{
+  "arithmetic": "exact integers and fractions; affine expressions a+b*d",
+  "comparison_with_problem_md": "all eight templates and all multiset multiplicities agree",
+  "contact_checks": [
+    {
+      "adjacent": true,
+      "job": "q",
+      "slot": "A",
+      "upper_job_minus_lower_slot": "1/3+d",
+      "upper_slot_minus_lower_job": "1"
+    },
+    {
+      "adjacent": false,
+      "job": "q",
+      "slot": "B",
+      "upper_job_minus_lower_slot": "-2/3+d",
+      "upper_slot_minus_lower_job": "2"
+    },
+    {
+      "adjacent": false,
+      "job": "q",
+      "slot": "C",
+      "upper_job_minus_lower_slot": "-5/3+d",
+      "upper_slot_minus_lower_job": "2+d"
+    },
+    {
+      "adjacent": true,
+      "job": "q",
+      "slot": "D",
+      "upper_job_minus_lower_slot": "2/3-d",
+      "upper_slot_minus_lower_job": "2/3-d"
+    },
+    {
+      "adjacent": true,
+      "job": "h",
+      "slot": "A",
+      "upper_job_minus_lower_slot": "1+d",
+      "upper_slot_minus_lower_job": "2/3-d"
+    },
+    {
+      "adjacent": true,
+      "job": "h",
+      "slot": "B",
+      "upper_job_minus_lower_slot": "d",
+      "upper_slot_minus_lower_job": "5/3-d"
+    },
+    {
+      "adjacent": false,
+      "job": "h",
+      "slot": "C",
+      "upper_job_minus_lower_slot": "-1+d",
+      "upper_slot_minus_lower_job": "5/3"
+    },
+    {
+      "adjacent": true,
+      "job": "h",
+      "slot": "E",
+      "upper_job_minus_lower_slot": "1/3",
+      "upper_slot_minus_lower_job": "1/3"
+    },
+    {
+      "adjacent": false,
+      "job": "r",
+      "slot": "A",
+      "upper_job_minus_lower_slot": "2+d",
+      "upper_slot_minus_lower_job": "-d"
+    },
+    {
+      "adjacent": true,
+      "job": "r",
+      "slot": "B",
+      "upper_job_minus_lower_slot": "1+d",
+      "upper_slot_minus_lower_job": "1-d"
+    },
+    {
+      "adjacent": true,
+      "job": "r",
+      "slot": "C",
+      "upper_job_minus_lower_slot": "d",
+      "upper_slot_minus_lower_job": "1"
+    }
+  ],
+  "enumeration_domain_size": 12,
+  "interior_breakpoints": [],
+  "job_intervals": {
+    "h@0": "[1/3+d,1+d)",
+    "h@2": "[0,1/3)",
+    "q@0": "[0,1/3+d)",
+    "q@1": "[0,2/3-d)",
+    "r@0": "[1+d,2+d)"
+  },
+  "makespan_multiset": {
+    "1": 5,
+    "11/6-d": 1,
+    "4/3-d": 2
+  },
+  "matchings": [
+    {
+      "loads_m0_m1_m2": [
+        "11/6-d",
+        "0",
+        "0"
+      ],
+      "makespan": "11/6-d",
+      "template_q_h_r": "(A,B,C)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "4/3-d",
+        "0",
+        "1/2"
+      ],
+      "makespan": "4/3-d",
+      "template_q_h_r": "(A,E,B)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "4/3-d",
+        "0",
+        "1/2"
+      ],
+      "makespan": "4/3-d",
+      "template_q_h_r": "(A,E,C)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "5/6-d",
+        "1",
+        "0"
+      ],
+      "makespan": "1",
+      "template_q_h_r": "(D,A,B)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "5/6-d",
+        "1",
+        "0"
+      ],
+      "makespan": "1",
+      "template_q_h_r": "(D,A,C)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "5/6-d",
+        "1",
+        "0"
+      ],
+      "makespan": "1",
+      "template_q_h_r": "(D,B,C)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "1/3-d",
+        "1",
+        "1/2"
+      ],
+      "makespan": "1",
+      "template_q_h_r": "(D,E,B)"
+    },
+    {
+      "loads_m0_m1_m2": [
+        "1/3-d",
+        "1",
+        "1/2"
+      ],
+      "makespan": "1",
+      "template_q_h_r": "(D,E,C)"
+    }
+  ],
+  "maximum_makespan": "11/6-d",
+  "minimum_makespan": "1",
+  "neighbors": {
+    "h": [
+      "A",
+      "B",
+      "E"
+    ],
+    "q": [
+      "A",
+      "D"
+    ],
+    "r": [
+      "B",
+      "C"
+    ]
+  },
+  "order_checks": [
+    {
+      "inequality": "p_q-p_h=1/2>0",
+      "machine": "0"
+    },
+    {
+      "inequality": "p_h-p_r=1/6+d>0",
+      "machine": "0"
+    }
+  ],
+  "orders": {
+    "0": [
+      "q",
+      "h",
+      "r"
+    ],
+    "1": [
+      "q"
+    ],
+    "2": [
+      "h"
+    ]
+  },
+  "parameter_domain": "0<d<1/6",
+  "representative": "1/12",
+  "slots": {
+    "A": {
+      "interval": "[0,1)",
+      "machine": 0
+    },
+    "B": {
+      "interval": "[1,2)",
+      "machine": 0
+    },
+    "C": {
+      "interval": "[2,2+d)",
+      "machine": 0
+    },
+    "D": {
+      "interval": "[0,2/3-d)",
+      "machine": 1
+    },
+    "E": {
+      "interval": "[0,1/3)",
+      "machine": 2
+    }
+  },
+  "source_sha256": "66bd29461d230e70ebd25d85636d33bb9132c518790efc445618077a3ba1df4b",
+  "valid_matching_count": 8
+}

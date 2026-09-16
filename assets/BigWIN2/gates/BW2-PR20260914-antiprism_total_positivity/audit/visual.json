@@ -1,0 +1,56 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260914-antiprism-total-positivity-release-0c9af236c4d2",
+  "snapshot_digest": "fd3a6126f1cdaa284e6ddf47330455d28fc2279c1f2dcd4db37729e575ecb89a",
+  "manuscript_digest": "01d847b3ee08cafe577b812f6646d0fcd497306267c6a9fa3c9cf58643b339c9",
+  "pdf_digest": "9ad9d81105e1ddb7a5cc28a33fdfa1a21031dc2c69265370c9b64734f8d723b5",
+  "reviewed_at": "2026-09-14T09:33:15.232264+00:00",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "render_command": "pdftoppm -r 120 -png build/main.pdf audit/release-pages/page",
+  "page_images": [
+    {
+      "page": 1,
+      "path": "audit/release-pages/page-1.png",
+      "sha256": "9f689c6dccc59766f5bc5b621055231e3f891c239bf59a8f2d94ea05f933d937",
+      "observations": "Title, byline, affiliation, abstract and matrix equation are readable; three origin/context citations resolve. Bottom definition fits inside margins."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-pages/page-2.png",
+      "sha256": "7b634772c55edca29e566f440a626495b1f5ece67557ab6ffe1c274c8639c456",
+      "observations": "All three theorem coefficient formulas and the large order-22 rational are clear. Generating function and specialization fit. A final equation reference wraps to a short separate line, without overlap or ambiguity."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-pages/page-3.png",
+      "sha256": "f605f36b8aecafff487b6e53bfc5e20ac43eab91cc79fe135bf12d3b763e21ae",
+      "observations": "Leading-row, trace and interpolation formulas are readable. The corrected Zeng sentence renders as Lemma 2.1 with reference [6], and Berrut\u2013Trefethen resolves to [3]."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-pages/page-4.png",
+      "sha256": "1af38d7fb4221558fceb57b93c753e7cff493e865ea29b19ce9a01e9c965aa5f",
+      "observations": "Harmonic cancellation, Lemma 2, Stirling formulas and all five rows of the F matrix are legible. No equation number or matrix entry collides with text."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-pages/page-5.png",
+      "sha256": "bc5d231db21a5d623176ba63cc7817894023594288e3c6bbb4d2faf3d55d0cda",
+      "observations": "The shifted quartic, recurrence, eight exact Table 1 fractions and witness sum are readable. The table matches the exact verification output value by value. Bottom power-sum equation is inside the text area."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-pages/page-6.png",
+      "sha256": "3d8cc5a28547ca8d4572563eeb285d1afe83f82480f46c04e33cb17ce486803e",
+      "observations": "Bareiss attribution, finite-search limits and assistance disclosure are readable. All six bibliography entries resolve; author names, versions, year distinctions, DOI strings and long titles remain inside the margins."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "claim_refuted": "Every C001 partition of G-v extends when d_G(v) is at most four.",
+  "graph6": "Gi_GOO",
+  "order": 8,
+  "size": 7,
+  "deleted_vertex": 0,
+  "degree_of_deleted_vertex": 2,
+  "partition_of_deleted_graph": {
+    "A0": [1],
+    "A1": [2, 3],
+    "B": [4, 5, 6, 7]
+  },
+  "why_no_simple_insertion_works": {
+    "A0": "Vertex 0 is adjacent to vertex 1 in A0, violating independence.",
+    "A1": "Vertex 1 would gain a third neighbour in A, violating Delta(G[A])<=2.",
+    "B": "Vertex 4 would gain a fourth neighbour in B, violating Delta(G[B])<=3."
+  },
+  "valid_partition_of_full_graph": {
+    "A0": [0, 2, 3, 5, 6, 7],
+    "A1": [],
+    "B": [1, 4]
+  },
+  "interpretation": "The eight-vertex tree satisfies C001, but the displayed valid partition after deleting vertex 0 cannot be extended by assigning only vertex 0. This refutes the naive fixed-partition induction step, not C001 or F1."
+}

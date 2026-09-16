@@ -1,0 +1,281 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks,pdftitle={The Smallest Abelian Cayley Graphs with a Goemans--Linial Gap},pdfauthor={Xiaojian Zeng}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\DeclareMathOperator{\Cay}{Cay}
+\DeclareMathOperator{\SDP}{SDP}
+
+\title{The Smallest Abelian Cayley Graphs with a Goemans--Linial Gap}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a connected simple Cayley graph of a finite Abelian group, with uniform
+edge and pair demands, we determine the smallest group order at which the
+Goemans--Linial relaxation is not exact.  The minimum is ten.  There are
+exactly three non-exact graphs of that order, up to graph isomorphism, and
+each has a single Abelian Cayley-presentation orbit.  Their exact cut and SDP
+values are
+\[
+(4/5,3/4),\qquad (4/5,(15+\sqrt5)/22),\qquad
+(5/6,(10+\sqrt5)/15).
+\]
+The proof combines the exponent-at-most-four theorem with a complete exact
+enumeration of the residual cyclic cases.  The finite part is accompanied by
+machine-checkable rational and quadratic primal--dual identities.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $\Gamma$ be a finite Abelian group and let
+$S\subseteq\Gamma\setminus\{0\}$ be a set such that $S=-S$ and
+$\langle S\rangle=\Gamma$.  Thus $G=\Cay(\Gamma,S)$ is connected, simple,
+undirected, and $|S|$-regular.  For a nonempty proper set $A\subset\Gamma$,
+put
+\[
+ \psi_G(A)=\frac{|\Gamma|\,|\partial A|}
+ {|S|\,|A|(|\Gamma|-|A|)},\qquad
+ \psi(G)=\min_A\psi_G(A).
+\]
+For a squared Euclidean semimetric $d$ satisfying all triangle inequalities,
+write
+\[
+ N_G(d)=\mathbb E_{x\in\Gamma,s\in S}d(x,x+s),\qquad
+ D(d)=\mathbb E_{x,y\in\Gamma}d(x,y),
+\]
+and define
+\[
+ \SDP_{\rm GL}(G)=\inf_{D(d)>0}\frac{N_G(d)}{D(d)}.
+\]
+Every cut metric is feasible, so $\SDP_{\rm GL}(G)\leq\psi(G)$.
+
+Stamoulis proved exactness for groups of exponent at most four and exhibited
+$\Cay(\mathbb Z_{10},\{\pm1,\pm3\})$ with SDP value $3/4$ and cut value
+$4/5$ \cite[Corollary~4.7 and Section~6.4]{Stamoulis2026}.  The question left
+by this ten-vertex seed is whether a smaller example exists and what the full
+order-ten classification is.  Earlier work on low-degree Abelian Cayley
+graphs gives a $(1+\varepsilon)$-approximation algorithm and spectral
+structure rather than this exact finite classification
+\cite{DorsiEtAl2025}.  The literature comparison here is deliberately
+limited: no priority claim beyond these inspected sources is made.
+
+\begin{theorem}\label{thm:main}
+The least order of a finite Abelian group admitting an admissible presentation
+with $\psi(G)>\SDP_{\rm GL}(G)$ is $10$.  The $16$ presentation orbits on
+$\mathbb Z_{10}$ yield pairwise nonisomorphic graphs.  Exactly three are
+non-exact:
+\begin{center}
+\begin{tabular}{c@{\qquad}c@{\qquad}c}
+\toprule
+$S$ & $\psi(G)$ & $\SDP_{\rm GL}(G)$\\
+\midrule
+$\{1,3,7,9\}$ & $4/5$ & $3/4$\\
+$\{1,4,6,9\}$ & $4/5$ & $(15+\sqrt5)/22$\\
+$\{1,2,5,8,9\}$ & $5/6$ & $(10+\sqrt5)/15$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each of these graph-isomorphism classes has one Cayley-presentation orbit.
+\end{theorem}
+
+\section{The cyclic linear program}
+
+We first reduce every residual cyclic instance to a finite exact problem.
+
+\begin{lemma}\label{lem:fourier}
+For $G=\Cay(\mathbb Z_n,S)$, an optimum GL semimetric may be taken in the
+form
+\[
+ f(t)=\sum_{k=1}^{\lfloor n/2\rfloor}b_k
+ \bigl(1-\cos(2\pi kt/n)\bigr),\qquad b_k\geq0.
+\]
+After the normalization $D(f)=1$, one has $\sum_k b_k=1$, and feasibility is
+equivalent to the finite family
+\[
+ f(a)+f(b)-f(a+b)\geq0\qquad(a,b\in\mathbb Z_n).
+\]
+Consequently the cyclic GL value is the optimum of a finite linear program.
+\end{lemma}
+
+\begin{proof}
+Average a feasible metric over all simultaneous translations.  Convexity of
+the squared-Euclidean cone and of the triangle inequalities preserves
+feasibility, while the Cayley numerator and uniform-pair denominator are
+unchanged.  A translation-invariant squared Euclidean semimetric is a
+conditionally negative-type function on $\mathbb Z_n$; this is the finite
+cyclic specialization of Schoenberg's negative-type correspondence
+\cite{Schoenberg1938}.  Diagonalizing its
+circulant matrix by the characters, and pairing conjugate characters, gives
+exactly the displayed representation with nonnegative coefficients; the
+converse follows by adding the corresponding squared chord metrics.  Averaging
+over $t$ gives $D(f)=\sum_k b_k$.  The remaining metric axioms are precisely
+the displayed triangle inequalities.  Normalization confines $b$ to a closed
+subset of a simplex, so the infimum is attained.
+\end{proof}
+
+For certificates that need no negative-type information, set
+$x_i=f(i)=f(n-i)$, $1\leq i\leq\lfloor n/2\rfloor$.  Let $c\cdot x=N_G(f)$,
+$w\cdot x=D(f)$, and let $R_{a,b}\cdot x=f(a)+f(b)-f(a+b)$.  An identity
+\begin{equation}\label{eq:rationaldual}
+ c-Lw=\sum_{a,b}\lambda_{a,b}R_{a,b}+\sum_i\mu_i e_i,
+ \qquad \lambda_{a,b},\mu_i\geq0,
+\end{equation}
+proves $N_G(f)\geq L D(f)$.  A cut attaining $L$ proves equality.  All
+rational instances used below are certified by identities of
+form~\eqref{eq:rationaldual}, stored as exact numerator--denominator pairs in
+the accompanying verifier.
+
+Four order-ten cases use the full Fourier program.  Put
+\[
+ u_k(t)=1-\cos(2\pi kt/10),\quad
+ T_{a,b,k}=u_k(a)+u_k(b)-u_k(a+b),\quad
+ c_k=|S|^{-1}\sum_{s\in S}u_k(s).
+\]
+For each row below the displayed $b^*$ is nonnegative, sums to one, satisfies
+all triangle inequalities, and has objective $L$.  The exact verifier also
+checks the matching identity
+\begin{equation}\label{eq:quadraticdual}
+ c-L\mathbf1=\sum_{a,b}\lambda_{a,b}T_{a,b}+\mu,
+ \qquad \lambda_{a,b}\geq0,\quad \mu_k\geq0,
+\end{equation}
+in $\mathbb Q(\sqrt5)$.  Only nonzero $\lambda$ values are shown.
+
+\begin{center}\small
+\begin{tabular}{p{.23\textwidth}p{.14\textwidth}p{.50\textwidth}}
+\toprule
+$S$ and $L$ & nonzero $\lambda$ & $b^*$ and $\mu$\\
+\midrule
+$\{1,3,7,9\}$, $3/4$
+& none
+& $b^*=((5-\sqrt5)/10,0,(5+\sqrt5)/10,0,0)$;
+  $\mu=(0,1/2,0,1/2,5/4)$\\[2pt]
+$\{1,4,6,9\}$, $(15+\sqrt5)/22$
+& $\lambda_{1,1}=\lambda_{4,4}=(7-\sqrt5)/88$;
+  $\lambda_{1,6}=(7-\sqrt5)/44$
+& $b^*=(4/11-6\sqrt5/55,1/11+3\sqrt5/11,
+4/11-6\sqrt5/55,0,2/11-3\sqrt5/55)$;
+$\mu=(0,0,0,(15+\sqrt5)/44,0)$\\[2pt]
+$\{1,2,5,8,9\}$, $(10+\sqrt5)/15$
+& $\lambda_{1,2}=(5-\sqrt5)/25$;
+  $\lambda_{2,2}=(5-\sqrt5)/75$
+& $b^*=(\sqrt5/3,(3-\sqrt5)/6,0,(3-\sqrt5)/6,0)$;
+$\mu=(0,0,2/5,0,(8-\sqrt5)/15)$\\[2pt]
+$\{1,2,3,5,7,8,9\}$, $20/21$
+& $\lambda_{2,2}=2/21$
+& $b^*=(1/3,0,(3-\sqrt5)/6,(1+\sqrt5)/6,0)$;
+$\mu=(0,0,0,0,10/21)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Exhaustion and proof of the theorem}
+
+We isolate a small family that admits a direct proof.  Write $K_{p\times q}$
+for the complete multipartite graph with $p$ equal parts of size $q$.
+
+\begin{lemma}\label{lem:multipartite}
+$\psi(K_{p\times q})=\SDP_{\rm GL}(K_{p\times q})=1$ for $p,q\geq2$.
+\end{lemma}
+
+\begin{proof}
+For vectors realizing a feasible squared Euclidean semimetric, let $m_i$ and
+$V_i$ be the centroid and mean squared deviation in part $i$.  The mean
+squared distance within a part is $2p^{-1}\sum_iV_i$.  The mean over ordered
+pairs in distinct parts equals this quantity plus
+\[
+ \frac1{p(p-1)}\sum_{i\ne j}\|m_i-m_j\|^2,
+\]
+and is therefore no smaller.  The latter mean is the graph numerator, while
+the all-pairs denominator is a convex combination of the two means.  Hence
+$N_G(d)\geq D(d)$.
+
+For a cut meeting the parts in $a_i$ vertices and $a=\sum_i a_i$, direct
+counting and Cauchy--Schwarz give
+\[
+ p|\partial A|-(p-1)a(pq-a)=p\sum_i a_i^2-a^2\geq0.
+\]
+Thus every cut has value at least one, and choosing one vertex from every part
+attains one.
+\end{proof}
+
+We now describe the exhaustive step.  For each $5\leq n\leq10$, enumerate
+every nonempty subset of $\mathbb Z_n\setminus\{0\}$, retain it exactly when
+$S=-S$ and $\gcd(n,S)=1$, and quotient by multiplication by the units modulo
+$n$.  The resulting orbit counts are
+\[
+\begin{array}{c|rrrrrr}
+n&5&6&7&8&9&10\\ \hline
+\text{presentation orbits}&2&5&3&8&6&16.
+\end{array}
+\]
+For each representative, every cut/complement pair is tested exactly once by
+requiring the representative side to omit $n-1$.  Boundary counts are
+integers, hence this computes $\psi$ exactly.  Of the $24$ representatives
+below ten, $21$ have a rational certificate
+\eqref{eq:rationaldual}; the remaining three are
+\[
+(6,\{1,3,5\}),\quad (8,\{1,3,5,7\}),\quad
+(9,\{1,2,4,5,7,8\}),
+\]
+namely $K_{2\times3}$, $K_{2\times4}$, and $K_{3\times3}$, covered by
+Lemma~\ref{lem:multipartite}.  This style of canonical exact cut enumeration
+also appears, in a different graph-reconstruction setting, in
+\cite{Zeng2026Multiplicity}; here every decisive identity is recomputed in
+exact arithmetic rather than accepted from numerical optimization.
+
+Every noncyclic Abelian group of order at most nine has exponent at most four;
+the same is true for cyclic groups of order at most four.  Stamoulis's
+exactness theorem therefore covers them, and the preceding cyclic exhaustion
+covers everything else.  Hence every admissible presentation below order ten
+is exact.
+
+At order ten, $\mathbb Z_{10}$ is the only Abelian group.  Eleven of its
+$16$ presentation orbits have rational certificates
+\eqref{eq:rationaldual}; the all-odd generator set is $K_{2\times5}$; and the
+remaining four cases have certificates~\eqref{eq:quadraticdual}.  Exact cut
+enumeration gives the values in Theorem~\ref{thm:main}, and all other cases
+are exact.  The three inequalities are strict because
+$5\sqrt5<13$ and $2\sqrt5<5$ (square their positive sides).
+
+Finally, for every one of the $16$ representatives the verifier constructs
+the integer adjacency matrix and computes its characteristic polynomial
+exactly.  The $16$ polynomials are pairwise distinct.  Since isomorphic graphs
+have the same characteristic polynomial, distinct presentation orbits cannot
+collide under ordinary graph isomorphism.  This proves both the asserted
+three-class list and the absence of a second inequivalent presentation for
+any of those classes.  Together with exactness below ten, this completes the
+proof of Theorem~\ref{thm:main}.
+
+\section*{Computational reproducibility and assistance disclosure}
+
+The supplementary verifier is \path{evidence/exact_cyclic_gl.py}.  It uses
+integer and rational arithmetic (Python's \texttt{Fraction} class), together
+with symbolic arithmetic in $\mathbb Q(\sqrt5)$ via SymPy.  It enumerates all $40$ residual cyclic
+presentation orbits, every cut, every stored dual identity, all Fourier primal
+slacks, and the $16$ order-ten characteristic polynomials.  It is run from the
+project root with
+\begin{center}
+\texttt{python3}\ \path{evidence/exact_cyclic_gl.py}.
+\end{center}
+No floating-point SDP value is used as proof.
+
+An OpenAI Codex model assisted with organizing the accepted proof dossier,
+checking bibliographic records, and preparing the LaTeX exposition.  The
+finite certificates were independently recomputed by the exact verifier, and
+the author takes responsibility for all statements and calculations.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

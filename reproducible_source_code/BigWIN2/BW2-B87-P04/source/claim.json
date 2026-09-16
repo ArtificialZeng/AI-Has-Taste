@@ -1,0 +1,16 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let G be a connected simple graph with 1 <= |V(G)| <= 5, and define its cycle-matroid flats, the lowering operators L_e and D, the cyclic spaces C_j, H_M(q), the coloop extension M^+, and Delta_G(q) exactly as frozen in source.md and interpreted in problem.md. Then Delta_G(q)=0 for every graph on at most four vertices. On five vertices, Delta_G(q) is nonzero if and only if the complement of G is a linear forest. For complement types P5, P4+P1, and P3+P2 it equals 2q^2+2q^3; for P3+2P1 it equals q^2+2q^3; and for 2P2+P1, P2+3P1, and 5P1 it equals 4q^2. Within this frozen range, five is the first failing order and the unique least-edge failure among the five-vertex graphs has six edges: K5-P5, isomorphic to Theta(1,2,3), with Hilbert vectors (1,6,11,6,1) and (1,7,19,19,7,1) before and after adjoining the coloop.",
+  "contribution": "A complete computer-assisted proof of the frozen finite classification. It exhausts all 31 connected simple graph isomorphism classes of orders one through five, computes all flat layers by edge-subset closure, and certifies every cyclic-space rank over Q; this independent implementation agrees in every Hilbert vector with the supplied partition-flat census. The contribution is a bounded finite classification adjacent to Sinclair's operations question, not a solution of that general question, and the bounded literature search does not assert novelty or priority.",
+  "proposer_job_id": "win-00087-p04-research-4d7b5b5d25ee",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/finite_classification_proof.md",
+    "evidence/independent_subset_check.py",
+    "evidence/subset_closure_census.json",
+    "evidence/triage_replay.md",
+    "literature/triage_sources.md"
+  ]
+}

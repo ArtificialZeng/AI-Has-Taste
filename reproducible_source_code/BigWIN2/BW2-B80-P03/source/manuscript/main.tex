@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Exact Toughness under Tetrahedral Replacement in Plane Triangulations},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\comp}{c}
+\newcommand{\tough}{\tau}
+
+\title{Exact Toughness under Tetrahedral Replacement in Plane Triangulations}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(G\) be a finite plane triangulation and let \(v\) be a vertex of
+degree three.  The tetrahedral replacement \(R_v(G)\) deletes \(v\), inserts
+a copy of \(K_4\), and attaches three of its vertices cyclically to the three
+neighbors of \(v\).  We prove the exact identity
+\[
+  \tough(R_v(G))=\min\{\tough(G),3/2\},
+\]
+with the convention \(\tough(K_n)=\infty\).  The proof transfers every
+toughness level at most \(3/2\) through the replacement and, in the reverse
+direction, shows that an optimum toughness cut can avoid the replaced
+vertex.  The complete boundary case \(G=K_4\) is handled separately.
+\end{abstract}
+
+\section{Statement and context}
+
+For a graph \(J\), write \(\comp(J)\) for its number of connected components.
+Following Chv\'{a}tal~\cite{Chvatal1973}, a graph is \(t\)-tough if
+\[
+  |S|\ge t\,\comp(J-S)
+  \quad\text{whenever }S\subseteq V(J)\text{ and }\comp(J-S)\ge2.
+\]
+For a finite noncomplete graph this is equivalent to
+\[
+  \tough(J)=
+  \min_{\substack{S\subseteq V(J)\\\comp(J-S)\ge2}}
+       \frac{|S|}{\comp(J-S)},
+\]
+and we use the standard convention \(\tough(K_n)=\infty\).
+
+Let \(v\) have neighbors \(a,b,c\), listed in their cyclic order.  Since
+\(G\) is a plane triangulation, these neighbors induce a triangle.  Put
+\[
+ B=\{a,b,c\},\qquad A=\{x,y,z,w\}.
+\]
+The graph \(H=R_v(G)\) has vertex set
+\((V(G)\setminus\{v\})\mathbin{\dot\cup}A\).  Its edges are those of
+\(G-v\), all six edges within \(A\), and
+\[
+ xa,\ xb,\ yb,\ yc,\ zc,\ za;
+\]
+there are no other edges incident with \(A\).  Shan~\cite{Shan2026}
+introduced this operation and proved in Theorem~1.4(ii) that
+\(3/2\)-toughness is preserved.  The result below gives the exact value,
+including inputs of toughness below \(3/2\).  Thus the additional content
+relative to that cited version is a parameterized lower transfer together
+with a matching reverse transfer; no broader priority claim is intended.
+
+\begin{theorem}\label{thm:main}
+For every finite plane triangulation \(G\) and every degree-three vertex
+\(v\in V(G)\),
+\[
+  \tough(R_v(G))=\min\{\tough(G),3/2\}.
+\]
+\end{theorem}
+
+\section{The two transfers}
+
+\begin{lemma}[Lower transfer]\label{lem:lower}
+If \(0\le t\le3/2\) and \(G\) is \(t\)-tough, then \(R_v(G)\) is
+\(t\)-tough.
+\end{lemma}
+
+\begin{proof}
+Let \(H=R_v(G)\), and fix \(S\subseteq V(H)\) for which
+\(d:=\comp(H-S)\ge2\).  Set
+\[
+ S_0=S\setminus A,\qquad k=|S\cap A|,
+ \qquad g=\comp(G-S_0),\qquad
+ g'=\comp((G-v)-S_0).
+\]
+All surviving vertices of \(B\), if there are any, lie in one component of
+\((G-v)-S_0\), because \(B\) is a clique.  Adding \(v\) therefore gives
+\begin{equation}\label{eq:g-gprime}
+ g=\begin{cases}
+      g',&B\setminus S_0\ne\varnothing,\\
+      g'+1,&B\subseteq S_0.
+    \end{cases}
+\end{equation}
+We consider all possible values of \(k\).
+
+If \(k=0\) or \(k=1\), then \(H[A\setminus S]\) is nonempty and connected.
+Moreover, every vertex of \(B\setminus S_0\) retains a neighbor in
+\(A\setminus S\), since each vertex of \(B\) has two neighbors among
+\(x,y,z\).  Relative to the common graph \((G-v)-S_0\), adding
+\(A\setminus S\) has exactly the same effect on the component count as
+adding \(v\).  Hence \(d=g\ge2\), and the \(t\)-toughness of \(G\) yields
+\[
+  |S|\ge |S_0|\ge tg=td.
+\]
+
+Suppose next that \(k=2\) or \(k=3\).  The surviving part of \(A\) is again
+nonempty and connected.  Adding it to \((G-v)-S_0\) can increase the
+component count by at most one, so by~\eqref{eq:g-gprime},
+\begin{equation}\label{eq:component-upper}
+  d\le g'+1\le g+1.
+\end{equation}
+If \(g\ge2\), then
+\[
+ |S|=|S_0|+k\ge tg+k\ge t(g+1)\ge td,
+\]
+where \(k\ge2\ge t\).  If \(g=1\), admissibility and
+\eqref{eq:component-upper} force \(d=2\).  We then have
+\(|S|\ge3\ge2t=td\), unless \(k=2\) and \(S_0=\varnothing\).  That exception
+cannot disconnect \(H\).  Indeed, \(G-v\) is connected: every component of
+\(G-v\) contains a neighbor of \(v\), and the three such neighbors form a
+clique.  The two surviving gadget vertices are adjacent, and at least one is
+among \(x,y,z\), hence is adjacent to \(B\).  Thus \(H-S\) would be connected,
+contrary to \(d=2\).
+
+Finally, if \(k=4\), then
+\[
+  H-S=(G-v)-S_0=G-(S_0\cup\{v\}).
+\]
+This graph has \(d\ge2\) components, so \(t\)-toughness applied to the cut
+\(S_0\cup\{v\}\) gives \(|S_0|+1\ge td\).  Consequently
+\(|S|=|S_0|+4\ge td\).  All admissible cuts of \(H\) have now been covered.
+\end{proof}
+
+\begin{lemma}[An optimum avoids \(v\)]\label{lem:avoid}
+Let \(G\) be finite and noncomplete.  If \(v\) has a clique as its
+neighborhood, then a toughness-minimizing set of \(G\) avoids \(v\).
+\end{lemma}
+
+\begin{proof}
+Because \(G\) is finite and noncomplete, an admissible minimizing set \(Q\)
+exists.  Write \(d=\comp(G-Q)\ge2\), and suppose that \(v\in Q\).  Put
+\(Q_0=Q\setminus\{v\}\).
+
+If \(N_G(v)\nsubseteq Q\), all surviving neighbors of \(v\) belong to one
+component, since they form a clique.  Restoring \(v\) therefore merges no
+components, and \(\comp(G-Q_0)=d\).  The numerator has decreased by one,
+contradicting minimality.
+
+If \(N_G(v)\subseteq Q\), restoring \(v\) creates one isolated component,
+so \(\comp(G-Q_0)=d+1\).  The set \(Q_0\) is admissible and
+\[
+  \frac{|Q|-1}{d+1}<\frac{|Q|}{d},
+\]
+again a contradiction.  Hence a minimizing set avoids \(v\).
+\end{proof}
+
+\section{Proof of the exact law}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+First assume \(G\ne K_4\).  A plane triangulation with a degree-three vertex
+has at least four vertices, and the order-four case is \(K_4\); hence
+\(|V(G)|\ge5\).  Deleting \(B=N_G(v)\) leaves \(v\) isolated and leaves at
+least one further vertex.  Thus \(G\) is noncomplete and
+\begin{equation}\label{eq:upper-three-halves}
+  \tough(G)\le \frac{|B|}{\comp(G-B)}\le\frac32.
+\end{equation}
+Apply Lemma~\ref{lem:lower} with \(t=\tough(G)\) to obtain
+\(\tough(H)\ge\tough(G)\).
+
+For the other inequality, Lemma~\ref{lem:avoid} supplies a minimizing set
+\(Q\subseteq V(G)\setminus\{v\}\).  Relative to the common graph
+\((G-v)-Q\), the vertex \(v\) in \(G-Q\) and the connected gadget \(A\) in
+\(H-Q\) have the same effect.  If \(B\setminus Q\ne\varnothing\), each
+attaches to the component containing the surviving part of \(B\); if
+\(B\subseteq Q\), each forms one isolated component.  Therefore
+\[
+  \comp(H-Q)=\comp(G-Q),
+\]
+and
+\[
+  \tough(H)\le\frac{|Q|}{\comp(H-Q)}
+  =\frac{|Q|}{\comp(G-Q)}=\tough(G).
+\]
+Together with~\eqref{eq:upper-three-halves}, this proves the claimed identity
+when \(G\ne K_4\).
+
+Now take \(G=K_4\).  The convention gives \(\tough(G)=\infty\), while
+Lemma~\ref{lem:lower} with \(t=3/2\) gives \(\tough(H)\ge3/2\).  In \(H\),
+deleting \(\{x,y,z\}\) leaves exactly two components: the isolated vertex
+\(w\) and the triangle on \(B\).  Hence \(\tough(H)\le3/2\), proving
+\[
+  \tough(H)=\frac32=\min\{\infty,3/2\}.
+\]
+\end{proof}
+
+\section*{Computational and AI assistance}
+
+The theorem is established by the preceding argument; no computation is
+used in its proof.  As a supplementary falsification check, a Python program
+using exact rational arithmetic enumerated every graph-atlas plane
+triangulation through seven vertices having a degree-three vertex, all
+sixteen ordered choices of \((G,v)\), and every vertex subset in both \(G\)
+and \(R_v(G)\).  All checks agreed with Theorem~\ref{thm:main}, including the
+exact \(K_4\) value \(3/2\).  For comparison,
+Zeng--Liu--Ratnavelu--Huat~\cite{ZengEtAl2026Certificates} likewise pair
+exhaustive exact finite enumeration with independent exact verification while
+explicitly leaving the unrestricted ambient problems unresolved.  Generative AI
+assisted with organizing the proof exposition, checking the case split, and
+screening bibliographic metadata.  The author reviewed the mathematical
+argument and is responsible for the manuscript.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

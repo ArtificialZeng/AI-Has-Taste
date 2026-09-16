@@ -1,0 +1,381 @@
+{
+  "original_id": "primary-20260912-stack22-mechanism",
+  "archive_id": "BW2-PR20260912-stack22_mechanism",
+  "title": "A direct first-return enumeration of (2,2)-stack-sortable permutations",
+  "batch_label": "primary",
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "scope": "For every integer n>=0, in the frozen (2,2)-stack input-sorting model of source.md and problem.md, the sortable permutations of [n] are in size-preserving bijection with the following canonical rank words: words with n pushes and n pops that start and end with an empty bit stack, obey P1: empty -> 0 and aT -> 1aT; P2: aT -> 10T; Q1: aT -> T; Q2: 0bT -> 0T, where a,b are bits and T is any suffix, and avoid the adjacent factor P2 Q1. Token labeling by increasing pop order reconstructs the unique input. The complete unambiguous first-return specification proved in evidence/first_return_proof.md derives F=1+xAF and A=1+xA(4A-2F-1) directly from these operations. Hence the ordinary generating function F(x)=sum_{n>=0}u_n x^n, with each sortable input counted once and F(0)=1, is the unique such formal series satisfying 2xF^3-(2x+3)F^2-(x-7)F-4=0. This supplies the requested mechanism-level derivation for all n, without using the forbidden pattern basis or presupposing the polynomial.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": null
+  },
+  "pdf": "pdfs/BigWIN2/BW2-PR20260912-stack22_mechanism_A_direct_first_return_enumeration_of_2_2_stack_sortable_permutations.pdf",
+  "pdf_sha256": "2002677dfe80c65e38e4af5d4a2a7fd3f1e98f3ff982451297e2b02b95b7cd0c",
+  "pages": 7,
+  "latex": "reproducible_source_code/BigWIN2/BW2-PR20260912-stack22_mechanism/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-PR20260912-stack22_mechanism/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-PR20260912-stack22_mechanism/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    {
+      "path": "/home/ailab/4math-open-problems/projects/primary-20260912-stack22-mechanism/manuscript/references.bib",
+      "indicators": [
+        "absolute-local-path"
+      ]
+    },
+    {
+      "path": "/home/ailab/4math-open-problems/projects/primary-20260912-stack22-mechanism/manuscript/build/main.bbl",
+      "indicators": [
+        "absolute-local-path"
+      ]
+    },
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 19,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/terminal.json",
+      "sha256": "1e90830ed0d0d9e30ed8ee929648b44b582fbacce5483d335516375493b55637",
+      "bytes": 665
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/release/manifest.json",
+      "sha256": "491bed143dfb8b187915b5bd7e4447fd6b1b6e9c1f967ffabc03186319172d3c",
+      "bytes": 1667
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/math.json",
+      "sha256": "3a2c468e2723d2fb18a38d7f3fadbd98b845fbecd04d4a9e9a2334786e4ba53d",
+      "bytes": 215
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/citations.json",
+      "sha256": "e51569e584326aba8b6d9f0aa16a08cabc2a995d68411698c4b648c515f87e1e",
+      "bytes": 1826
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/build.json",
+      "sha256": "be2be149ac856c338c5fe63fd39aa32a11d81a7f10305869878fc1a5f06bca6a",
+      "bytes": 1146
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/visual.json",
+      "sha256": "7ee48f7f15023263175341f5c80f97f992b759a824392680b57d6a7413234985",
+      "bytes": 1795
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/snapshot.json",
+      "sha256": "1155853daee875c5115dfd727dad7420e9c1fec74d65236fe9a8c9224da68013",
+      "bytes": 1462
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/manuscript-snapshot.json",
+      "sha256": "32cc63f62caeeaad260c31d890ed2ab1e8ddeabedc6c1b2ac4a8c17e8a673318",
+      "bytes": 568
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/math.md",
+      "sha256": "517977a9a8335e2a91d524d08498b322d5e31eec616e0f6bbacd85d7c3b2b858",
+      "bytes": 14992
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/citations.md",
+      "sha256": "72a698e1c55980fb14b3f4efc3524e5b5cac385a6cd223fd7de4dcf93204bf78",
+      "bytes": 12515
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/build.md",
+      "sha256": "f355e1a27837b4327292118c02393da6884d945883c87348c54975dcebfdf997",
+      "bytes": 2578
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260912-stack22_mechanism/audit/visual.md",
+      "sha256": "9a7f22e8cceb5a7489810081a0e1fb51ab4b787f76e5d32164ee8e3893d000a5",
+      "bytes": 2896
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "5e329d2d8adfcb687a0ba857768f3aeafa001f9741fd2af445002634970f98d6",
+      "original_bytes": 22787,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "5e329d2d8adfcb687a0ba857768f3aeafa001f9741fd2af445002634970f98d6",
+          "bytes": 22787
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "809c482f77712b8c62468fed2244890730a2a55fefb3f178027c97c4e62f3fb3",
+      "original_bytes": 2186,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "809c482f77712b8c62468fed2244890730a2a55fefb3f178027c97c4e62f3fb3",
+          "bytes": 2186
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/main.bbl",
+      "original_sha256": "8bc38e0acbf9eadef5f72c278ae0b3461f736e7ca0f06fcddf7a04b4da0e3d1b",
+      "original_bytes": 2105,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/main.bbl",
+          "sha256": "8bc38e0acbf9eadef5f72c278ae0b3461f736e7ca0f06fcddf7a04b4da0e3d1b",
+          "bytes": 2105
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_algebra.json",
+      "original_sha256": "faeea52e64534b261760b45a8917918c793b8869e43d4802134f763b20ed1e93",
+      "original_bytes": 4339,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_algebra.json",
+          "sha256": "faeea52e64534b261760b45a8917918c793b8869e43d4802134f763b20ed1e93",
+          "bytes": 4339
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/normalization.md",
+      "original_sha256": "33aeb7f22f42941df9fcb401841e2939fcdcf12aea09814e4eb651919a49035c",
+      "original_bytes": 5577,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/normalization.md",
+          "sha256": "33aeb7f22f42941df9fcb401841e2939fcdcf12aea09814e4eb651919a49035c",
+          "bytes": 5577
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_grammar.py",
+      "original_sha256": "962f8b3300c4174b700a02c5411de7f7747c8a07453406982b06e8b946878bf8",
+      "original_bytes": 3793,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_grammar.py",
+          "sha256": "962f8b3300c4174b700a02c5411de7f7747c8a07453406982b06e8b946878bf8",
+          "bytes": 3793
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_exact.py",
+      "original_sha256": "342e37bb880b5b63171b30608eb997f1aa4738544fba149f2ac4d3e9324d30e2",
+      "original_bytes": 4216,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_exact.py",
+          "sha256": "342e37bb880b5b63171b30608eb997f1aa4738544fba149f2ac4d3e9324d30e2",
+          "bytes": 4216
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_exact.py",
+      "original_sha256": "af69dfbc20902176e8da0b40fa3e448c919939aa0b9553f476649ed677f40a4c",
+      "original_bytes": 3631,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_exact.py",
+          "sha256": "af69dfbc20902176e8da0b40fa3e448c919939aa0b9553f476649ed677f40a4c",
+          "bytes": 3631
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_algebra.py",
+      "original_sha256": "b59d18d717356f5a2acdff8352b6e2305531d4ed63cbbee2275f340ec7b81c8c",
+      "original_bytes": 2509,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_algebra.py",
+          "sha256": "b59d18d717356f5a2acdff8352b6e2305531d4ed63cbbee2275f340ec7b81c8c",
+          "bytes": 2509
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_exact.json",
+      "original_sha256": "6790576994613b2184ffe44fec59b884efd2e576f52192ee67e9a0acda562e01",
+      "original_bytes": 2840,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_exact.json",
+          "sha256": "6790576994613b2184ffe44fec59b884efd2e576f52192ee67e9a0acda562e01",
+          "bytes": 2840
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_holdout.py",
+      "original_sha256": "95d19c7a3d3830b8d60af2d8e6b4747b1b683a63f19ed0e70a0b8e61f85c259c",
+      "original_bytes": 3399,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_holdout.py",
+          "sha256": "95d19c7a3d3830b8d60af2d8e6b4747b1b683a63f19ed0e70a0b8e61f85c259c",
+          "bytes": 3399
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_exact.json",
+      "original_sha256": "2019e454d80fe263a83970d5f16d514d14fd2e3b18004e9336fe7b94abc56689",
+      "original_bytes": 2911,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_exact.json",
+          "sha256": "2019e454d80fe263a83970d5f16d514d14fd2e3b18004e9336fe7b94abc56689",
+          "bytes": 2911
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_grammar.json",
+      "original_sha256": "b07e79e1797a6b16a5f6881830fad7fdd6200c11d72f12c90de3a3279cc5e26a",
+      "original_bytes": 4337,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_grammar.json",
+          "sha256": "b07e79e1797a6b16a5f6881830fad7fdd6200c11d72f12c90de3a3279cc5e26a",
+          "bytes": 4337
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_holdout.json",
+      "original_sha256": "669995fd48366906d23f4d8fb4e1319e8066627b779dc39c4e2a84abdd8c07f8",
+      "original_bytes": 1575,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_holdout.json",
+          "sha256": "669995fd48366906d23f4d8fb4e1319e8066627b779dc39c4e2a84abdd8c07f8",
+          "bytes": 1575
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/first_return_proof.md",
+      "original_sha256": "c56ea24138d8d14965ad8afff7952a9ec83eb7e914c5cb598bf093170bbe9fac",
+      "original_bytes": 14236,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/first_return_proof.md",
+          "sha256": "c56ea24138d8d14965ad8afff7952a9ec83eb7e914c5cb598bf093170bbe9fac",
+          "bytes": 14236
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "403df3b10d13461c45e5dfd74d1548350e575ce83ae62f17ab501428dc4855be",
+      "original_bytes": 3501,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "403df3b10d13461c45e5dfd74d1548350e575ce83ae62f17ab501428dc4855be",
+          "bytes": 3501
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "477067d8d26275de9d14f834b5d13c2435dd63f8b8073895421d79a78b229d99",
+      "original_bytes": 5180,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "477067d8d26275de9d14f834b5d13c2435dd63f8b8073895421d79a78b229d99",
+          "bytes": 5180
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "0e676b060a16b8348d59ff1cdfec6c27ea32f0d984e283bf9d23df768b901794",
+      "original_bytes": 2157,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "0e676b060a16b8348d59ff1cdfec6c27ea32f0d984e283bf9d23df768b901794",
+          "bytes": 2157
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "aaf6687b596ed2381aa47f908f499ced05fc99572889b709aa1344ca85d0c278",
+      "original_bytes": 742,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "aaf6687b596ed2381aa47f908f499ced05fc99572889b709aa1344ca85d0c278",
+          "bytes": 742
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-PR20260912-stack22_mechanism",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Zf}{\mathcal{Z}^{\mathrm f}_*}
+
+\title{Formal Multiple \(q\)-Zeta Injectivity Through Weight Eight\\
+       via an Exact Rank Certificate}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{9 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the Schlesinger--Zudilin model of formal multiple \(q\)-zeta values,
+Mozgovoy records a conjecture that quotienting the admissible quasi-shuffle algebra by
+the ideal of duality relations gives the algebra of the corresponding formal
+\(q\)-series.  We prove the complete weight-at-most-eight instance.  The proof
+is computer-assisted but exact: the filtered word space has dimension \(1597\),
+an explicit subspace of the duality ideal has rank at least \(1432\), and the
+first \(165\) coefficient functionals have rank at least \(165\).  Nonzero
+integer minors, certified modulo two primes, establish both lower bounds.
+Rank--nullity then identifies the finite coefficient kernel with the displayed
+ideal subspace.  The result makes no assertion in weights above eight.
+\end{abstract}
+
+\section{Statement and context}
+
+We work over \(\Q\) and regard \(q\) as a formal variable.  Put
+\[
+ z_i=\frac{q^i}{(1-q)^i}\qquad(i\geq 0),
+\]
+and use the same symbols for letters satisfying \(z_i=x^iz_0\) in the free
+associative algebra \(H=\Q\langle x,z_0\rangle\).  The admissible space
+\[
+ H^0=\Q 1\oplus xHz_0
+\]
+has as a basis the empty word and the words
+\(z_{s_1}\cdots z_{s_k}\) with \(s_1\geq1\) and
+\(s_2,\ldots,s_k\geq0\).  It carries the quasi-shuffle product
+\cite{Hoffman2000}
+\begin{align*}
+ 1*u&=u*1=u,\\
+ (z_a u)*(z_b v)
+ &=z_a(u*z_bv)+z_b(z_au*v)+z_{a+b}(u*v).
+\end{align*}
+Define the anti-involution \(\tau\) by
+\[
+ \tau(uv)=\tau(v)\tau(u),\qquad \tau(x)=z_0,
+ \qquad \tau(z_0)=x,
+\]
+and let
+\[
+ I=(\tau(u)-u:u\in H^0)_*
+\]
+be the full ideal in the quasi-shuffle algebra, not merely the linear span of
+its displayed generators.  We write \(\Zf=H^0_*/I\).
+
+For an admissible word set
+\[
+ Z(z_{s_1}\cdots z_{s_k})=
+ \sum_{n_1>\cdots>n_k>0}
+ \prod_{j=1}^k
+ \left(\frac{q^{n_j}}{1-q^{n_j}}\right)^{s_j},
+ \qquad Z(1)=1.
+\]
+This is a well-defined element of \(\Q[[q]]\).  The map \(Z\) is a
+quasi-shuffle algebra homomorphism, and the duality theorem gives
+\(Z(\tau u)=Z(u)\) \cite[Theorem~3.5]{Mozgovoy2026}.  It therefore descends to
+a surjection from \(\Zf\) onto its image.
+
+Give a word the weight
+\[
+ \operatorname{wt}(z_{s_1}\cdots z_{s_k})
+   =\sum_{j=1}^k\max(s_j,1),\qquad \operatorname{wt}(1)=0,
+\]
+and give \(\Zf\) the induced filtration.  Conjecture~3.6 in Mozgovoy asks for
+the descended map to be an isomorphism in every weight
+\cite{Mozgovoy2026}.  A closely related stuffle/duality quotient and partial
+structural results appear in \cite{Brindle2025}.  Takeyama reported that
+double-shuffle and resummation-duality relations account for the relations in
+his modified \(q\)-MZV computation through weight seven
+\cite[p.~2]{Takeyama2013}.  That computation does not itself give the exact
+certificate below for the present filtered quotient.
+
+Our result is the following bounded assertion.
+
+\begin{theorem}\label{thm:main}
+The canonical map induced by \(Z\) is injective on \(W_8\Zf\).  Equivalently,
+for every \(a\in W_8H^0\),
+\[
+ Z(a)=0\quad\Longrightarrow\quad a\in I.
+\]
+\end{theorem}
+
+The comparison above records the closest results found in the cited sources;
+it is not an exhaustive priority claim.
+
+\section{The two exact matrices}
+
+Let \(V=W_8H^0\).  The generating function for the first, positive letter is
+\(t/(1-t)\).  A later letter has generating function
+\(2t+t^2/(1-t)\), since both indices \(0\) and \(1\) have weight one.
+Consequently the generating function for nonempty admissible words is
+\[
+ \frac{t/(1-t)}{1-(2t+t^2/(1-t))}
+ =\frac{t}{1-3t+t^2}.
+\]
+The word counts in exact weights \(0,1,\ldots,8\), including the empty word
+in weight zero, are
+\[
+ 1,1,3,8,21,55,144,377,987.
+\]
+Thus
+\begin{equation}\label{eq:dim}
+ \dim_{\Q}V=1597.
+\end{equation}
+
+Fix the ordering by increasing weight and then the recursive index ordering
+used in the ancillary certificate.  Define
+\begin{equation}\label{eq:J}
+ J=\operatorname{span}_{\Q}
+ \left\{v*(\tau(u)-u):
+ u,v\text{ basis words},\ 
+ \operatorname{wt}(u)+\operatorname{wt}(v)\leq8\right\}.
+\end{equation}
+Since \(\tau\) preserves weight and
+\[
+ \max(a+b,1)\leq\max(a,1)+\max(b,1)
+ \qquad(a,b\geq0),
+\]
+every vector in \eqref{eq:J} is supported in \(V\).  It also lies in \(I\).
+For the actual enumeration, \(z_{s_1}\cdots z_{s_k}\) is encoded by the
+binary word \(1^{s_1}0\cdots1^{s_k}0\); reversing the bits and interchanging
+zero and one implements \(\tau\) directly.
+After zero vectors are removed, these generators give \(4636\) integer rows
+in the \(1597\)-word basis.  Let \(R\) be the resulting
+\(4636\times1597\) matrix, so that \(J\) is its rational row space.
+
+The second integer matrix records initial series coefficients:
+\begin{equation}\label{eq:C}
+ C_{n,w}=[q^n]Z(w),\qquad 0\leq n\leq164,
+\end{equation}
+where \(w\) runs over the same word basis.  Hence \(C\) is
+\(165\times1597\).
+
+For completeness, the entries of \(C\) can be constructed without numerical
+evaluation.  For \(s\geq0\) and \(m\geq1\), put
+\[
+ F_{s,m}(q)=
+ \begin{cases}
+ 1,&s=0,\\[2pt]
+ \left(q^m/(1-q^m)\right)^s,&s>0.
+ \end{cases}
+\]
+For a possibly nonadmissible suffix \(\boldsymbol{s}=(s,\boldsymbol{t})\),
+let \(H_{\boldsymbol{s}}(M)\) be the strict nested sum with largest index at
+most \(M\).  Then
+\begin{equation}\label{eq:recurrence}
+ H_{(s,\boldsymbol{t})}(M)
+ =H_{(s,\boldsymbol{t})}(M-1)
+  +F_{s,M}H_{\boldsymbol{t}}(M-1),
+\end{equation}
+with \(H_{\varnothing}(M)=1\) and
+\(H_{\boldsymbol{s}}(0)=0\) for nonempty \(\boldsymbol{s}\).  For \(s>0\),
+\begin{equation}\label{eq:factorcoeff}
+ [q^{m\ell}]F_{s,m}(q)=\binom{\ell-1}{s-1}
+ \quad(\ell\geq s),
+\end{equation}
+and all other coefficients vanish.  Equations
+\eqref{eq:recurrence}--\eqref{eq:factorcoeff}, truncated after degree \(164\),
+therefore use integer arithmetic only.  Because the first index of an
+admissible word is positive, a largest summation index exceeding \(164\)
+cannot affect any retained coefficient.  Thus \eqref{eq:C} is exact, not a
+floating-point approximation.
+
+\section{Certificate and proof}
+
+The ancillary files record pivot rows and columns for the following minors.
+
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+prime & size in \(R\) & \(\det(R')\bmod p\)
+      & size in \(C\) & \(\det(C')\bmod p\)\\
+\midrule
+1000003 & 1432 & 795164 & 165 & 372525\\
+1000033 & 1432 & 221688 & 165 & 994554\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both moduli are prime, and every displayed residue is nonzero.  Each selected
+minor is the reduction of an integer minor.  Nonvanishing modulo either prime
+therefore implies nonvanishing over \(\Q\), and hence
+\begin{equation}\label{eq:ranks}
+ \dim_{\Q}J=\operatorname{rank}_{\Q}R\geq1432,
+ \qquad \operatorname{rank}_{\Q}C\geq165.
+\end{equation}
+The second prime is a redundant replication, not an additional assumption.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For every generator used in \eqref{eq:J}, multiplicativity and duality give
+\[
+ Z\bigl(v*(\tau(u)-u)\bigr)
+ =Z(v)\bigl(Z(\tau(u))-Z(u)\bigr)=0.
+\]
+Thus \(J\subseteq\ker C\).  Combining rank--nullity,
+\eqref{eq:dim}, and \eqref{eq:ranks}, we obtain
+\[
+ 1597=\dim V
+ \geq \dim J+\operatorname{rank}C
+ \geq1432+165=1597.
+\]
+All inequalities are equalities, so \(\ker C=J\subseteq I\).  If
+\(a\in V\) satisfies \(Z(a)=0\) as a formal series, its coefficients through
+degree \(164\) vanish.  Hence \(Ca=0\), whence \(a\in J\subseteq I\).
+This is precisely injectivity on the induced filtered piece \(W_8\Zf\).
+\end{proof}
+
+The argument does not assume a conjectural quotient dimension.  It also does
+not need an a priori description of all of \(I\cap V\): the explicit subspace
+\(J\subseteq I\) already saturates the complementary coefficient-rank bound.
+In particular, possible presentations of elements of \(I\cap V\) involving
+higher-weight terms do not create a gap in the proof.
+
+\section{Reproducibility and limitations}
+
+The ancillary program \texttt{weight8\_certificate.py} enumerates the words,
+constructs \(R\) and \(C\), and writes the two modular certificates.  Each
+certificate contains the selected row and column indices as well as the four
+determinant residues.  A separate verifier, which does not import the producer
+program, reconstructs the word ordering and ideal rows and recomputes the
+selected coefficient columns using out-of-place suffix tables.  It reproduces
+the determinant residues and checks that every one of the \(4636\) ideal rows
+is annihilated by all \(165\) coefficient rows modulo each prime.
+
+This separation of generated witnesses from a reconstruction verifier is also
+used in other exact finite work; for an application using integer predicates
+and separate exact implementations, see
+\cite{ZengEtAl2026}.  That citation is methodological and no mathematical
+claim from that finite-geometry setting is used here.
+
+The theorem is confined to weights at most eight.  It neither proves
+Mozgovoy's Conjecture~3.6 in general nor derives the conjectural Poincar\'e
+series for \(\Zf\).  Successful verification of the finite files establishes
+the stated matrix identities; the mathematical conclusion additionally uses
+the human-readable rank--nullity argument above and Mozgovoy's duality theorem.
+
+\paragraph{Computational and AI assistance.}
+The certificate construction used exact integer and finite-field arithmetic
+implemented in Python with NumPy, Numba, and python-flint.  A separately
+written verification program reconstructed the decisive matrices and minors.
+OpenAI Codex assisted with literature search, program development, adversarial
+audit organization, and manuscript preparation.  Language-model output is
+not used as mathematical evidence: the result rests on the displayed
+reduction, the serialized exact minors, and the reconstruction verifier.  No
+proof assistant was used.
+
+\paragraph{Data and code availability.}
+The ancillary package accompanying this manuscript contains the certificate
+generator, the two JSON certificates, the reconstruction verifier, and exact
+run instructions.
+
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

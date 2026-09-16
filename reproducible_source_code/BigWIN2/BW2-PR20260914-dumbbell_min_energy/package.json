@@ -1,0 +1,378 @@
+{
+  "original_id": "primary-20260914-dumbbell-min-energy",
+  "archive_id": "BW2-PR20260914-dumbbell_min_energy",
+  "title": "Singular energy minima and fixed-product structure for all-odd complex unit gain dumbbells",
+  "batch_label": "primary-20260914",
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "scope": "For every odd r,s>=3 and odd ell>=1, use the frozen graph and normalized gain real parts alpha,beta of problem.md, and put L=(ell-1)/2, N=r+s+ell-1, H=(s+L)alpha+(r+L)beta. The Hermitian characteristic polynomial satisfies P(0)=(-1)^(N/2)(1-4alpha beta) and P_x(0)=-2(-1)^(N/2)H. Thus its zero eigenvalue exists exactly on alpha beta=1/4 and is simple throughout that locus in the closed square. At each interior point q of that locus, with Z,W,X,Y the source Lemma 4.2 polynomials, A=Z-alpha beta W, B=alpha X+beta Y, C=A^2+B^2, I_alpha=integral_0^infinity(-beta WA+XB)/(t^2 C)dt, and I_beta=integral_0^infinity(-alpha WA+YB)/(t^2 C)dt, one has E(q+h)=E(q)+(2/pi)(I_alpha h_alpha+I_beta h_beta)+2|beta h_alpha+alpha h_beta|/|H|+O(||h||^2). Therefore a necessary condition for an interior singular local minimum is alpha I_alpha=beta I_beta and |alpha I_alpha+beta I_beta|<=pi/(2|H|); together with strict inequality these conditions suffice for a strict local minimum. Equality in the normal bound is unclassified. Away from the singular locus the usual necessary interior conditions I_alpha=I_beta=0 hold. For every 0<p<1 the energy on alpha beta=p in the positive square is strictly convex in u=(1/2)log(alpha/beta), hence has a unique constrained minimum; at p=1 the curve is a singleton. When r=s the constrained minimum is (sqrt(p),sqrt(p)). When r<s its coordinates satisfy alpha<beta for p<1, and X(t)/Y(t)>(s+L)/(r+L) for all t>0. In particular, if p>=(r+L)/(s+L) the constrained minimum is exactly (p,1); if s+L>=4(r+L), the unique positive singular-curve minimum is (1/4,1) and there is no interior singular local minimum. Exchange of cycles and simultaneous negation give the corresponding statements. These constrained endpoint minima are not asserted to minimize the full square. For D_(3,3,1), the full-square minima are exactly (+1/2,+1/2) and (-1/2,-1/2), with eight oriented cycle-gain switching lifts and common energy 2+sqrt(13)+sqrt(5); the source equation (117) integrals at the positive minimizer are strictly positive, while its diagonal derivative jump is 4/3. For D_(3,3,5), exact root intervals put the directional energy derivative at (1/2,1/2) along (-1,-1) strictly between -8/1000 and -7/1000, so this singular point is not a local minimum. Complete arguments and all scope exclusions are in evidence/singular-branch.md. The full original all-odd global minimum/equality classification remains unresolved.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": "primary-20260914"
+  },
+  "pdf": "pdfs/BigWIN2/BW2-PR20260914-dumbbell_min_energy_Singular_energy_minima_and_fixed_product_structure_for_all_odd_complex_unit_gain_dumbb.pdf",
+  "pdf_sha256": "2c59c283fc319ae3992c6615f0593ca4e74baabd685856808187e3403ed5eb1f",
+  "pages": 9,
+  "latex": "reproducible_source_code/BigWIN2/BW2-PR20260914-dumbbell_min_energy/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-PR20260914-dumbbell_min_energy/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-PR20260914-dumbbell_min_energy/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "numpy",
+    "scipy",
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim.",
+    {
+      "path": "/home/ailab/4math-open-problems/projects/primary-20260914-dumbbell-min-energy/evidence/triage_checks.py",
+      "indicators": [
+        "absolute-local-path"
+      ]
+    },
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 19,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/terminal.json",
+      "sha256": "fa3614a4643744e3a66d3d0b1460e0ecd32a1e5aa2bb9cefeb10365891ebc059",
+      "bytes": 670
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/release/manifest.json",
+      "sha256": "e168d50fa80a2f8c9f634b45782384334c15dbe50b8ce98f68e26b81c459c23d",
+      "bytes": 1661
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/math.json",
+      "sha256": "7c8abf8607a15ee9de30ba330431153edef237e2ab035c84ae4ce6a33ac58e53",
+      "bytes": 217
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/citations.json",
+      "sha256": "144f14c2936278074094e330a28dc7f3778d93a76becdb6ef586dbc94c1c8e2b",
+      "bytes": 1595
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/build.json",
+      "sha256": "3b7200dd8603cb8c266042be9b27b66e445c5312a6c92b8a2e45611b2668f256",
+      "bytes": 924
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/visual.json",
+      "sha256": "1877351f67b537f44e6fb173b6d29d0cd5bbee16ab2017ebba0114551ab1186c",
+      "bytes": 835
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/snapshot.json",
+      "sha256": "1907f322e1d327144f20ff8ebe5c24a7ce054598a4822e6a9948aaca670a6b29",
+      "bytes": 1341
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/manuscript-snapshot.json",
+      "sha256": "1a7044a614275df5f998da7a10ac90ce74962d8f5661d26dd78bb7509f9eb890",
+      "bytes": 747
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/math.md",
+      "sha256": "6945b5d61c34cd02d6cd1ac6fd6032e18a00e9ca5557e77a925f0e0fbfead625",
+      "bytes": 14644
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/citations.md",
+      "sha256": "e5caa8722996e266e57d1cff0d49fbed188e3a55f019440db87cb7d4823ad27c",
+      "bytes": 9039
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/build.md",
+      "sha256": "e7a921051ccc337d7c1db8ee0e885ed113b56ffd041f6c44ce1fd199d323e28e",
+      "bytes": 1373
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260914-dumbbell_min_energy/audit/visual.md",
+      "sha256": "b8ae73c1a705a9bc7552376276f0580b497472afb2dd38004e777e29e10b1453",
+      "bytes": 2038
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/d335-table.tex",
+      "original_sha256": "439b605d5f84dc2539278a98ef63615bca5c80de10db40623d91b13b85f5175e",
+      "original_bytes": 931,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/d335-table.tex",
+          "sha256": "439b605d5f84dc2539278a98ef63615bca5c80de10db40623d91b13b85f5175e",
+          "bytes": 931
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "5f6a754e0b353d7ed3a9bf703cbfc47cafd3b283c73e29db6cf473266d8c73d5",
+      "original_bytes": 26522,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "5f6a754e0b353d7ed3a9bf703cbfc47cafd3b283c73e29db6cf473266d8c73d5",
+          "bytes": 26522
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "743cabc30295901554c2b93025a631b87e6b1ca6fcd82d077fd1f41f1071c575",
+      "original_bytes": 3414,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "743cabc30295901554c2b93025a631b87e6b1ca6fcd82d077fd1f41f1071c575",
+          "bytes": 3414
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-registry.json",
+      "original_sha256": "27806fea6720a2f1424b484f32203704396868fbbc13ddb83451675fb0c6342e",
+      "original_bytes": 532,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-registry.json",
+          "sha256": "27806fea6720a2f1424b484f32203704396868fbbc13ddb83451675fb0c6342e",
+          "bytes": 532
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_checks.py",
+      "original_sha256": "01a4179602781909e03af4a57452a1a6a20c24ee795852162f6cf855abe16b06",
+      "original_bytes": 5933,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_checks.py",
+          "sha256": "01a4179602781909e03af4a57452a1a6a20c24ee795852162f6cf855abe16b06",
+          "bytes": 5933
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_checks.py",
+      "original_sha256": "fe4bea1c90d1ebb8873e850d6c436af1e1202b115a4e90544748b6e3761f2b53",
+      "original_bytes": 10367,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_checks.py",
+          "sha256": "fe4bea1c90d1ebb8873e850d6c436af1e1202b115a4e90544748b6e3761f2b53",
+          "bytes": 10367
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-math.md",
+      "original_sha256": "1f09441d5ba09bb9e816169bdc7db37edd108bba59c6669df3b81825893858c5",
+      "original_bytes": 6680,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-math.md",
+          "sha256": "1f09441d5ba09bb9e816169bdc7db37edd108bba59c6669df3b81825893858c5",
+          "bytes": 6680
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-checks.json",
+      "original_sha256": "43950d5b86e90ca34fdac9639ac6f86132d38132abb2efbff4f0d656e8fed788",
+      "original_bytes": 2526,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-checks.json",
+          "sha256": "43950d5b86e90ca34fdac9639ac6f86132d38132abb2efbff4f0d656e8fed788",
+          "bytes": 2526
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research-checks.json",
+      "original_sha256": "3a076a7d5fc0dd166564ec54a94a7896b857193edacecd25d46959cd4864002d",
+      "original_bytes": 10513,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research-checks.json",
+          "sha256": "3a076a7d5fc0dd166564ec54a94a7896b857193edacecd25d46959cd4864002d",
+          "bytes": 10513
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_diagnostics.py",
+      "original_sha256": "66d75a0f67bcd29623e2d7090d5b7508de375956a5277202ae89fcce0108aa14",
+      "original_bytes": 5950,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_diagnostics.py",
+          "sha256": "66d75a0f67bcd29623e2d7090d5b7508de375956a5277202ae89fcce0108aa14",
+          "bytes": 5950
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research-diagnostics.json",
+      "original_sha256": "30a7f84cddcae153635ef0607709d5ed4d5d2a146f540414f7fbedbb47afa654",
+      "original_bytes": 13122,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research-diagnostics.json",
+          "sha256": "30a7f84cddcae153635ef0607709d5ed4d5d2a146f540414f7fbedbb47afa654",
+          "bytes": 13122
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/singular-branch.md",
+      "original_sha256": "b1bc4c2e430713c91b9b3cc1f6ee75a9dd86e4a9ff4198d87ff98a847de687dd",
+      "original_bytes": 16130,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/singular-branch.md",
+          "sha256": "b1bc4c2e430713c91b9b3cc1f6ee75a9dd86e4a9ff4198d87ff98a847de687dd",
+          "bytes": 16130
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/recovery_checks.py",
+      "original_sha256": "43135af2c096e3a213ac4339c4cf9ca3cddf4df296fd63ee7b8604f6c2affd2c",
+      "original_bytes": 2302,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/recovery_checks.py",
+          "sha256": "43135af2c096e3a213ac4339c4cf9ca3cddf4df296fd63ee7b8604f6c2affd2c",
+          "bytes": 2302
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/recovery-checks.json",
+      "original_sha256": "04fa4c33a491446cf0cbb0181ed41ae02f0fc02c3d1d94d800bfa257095e51bf",
+      "original_bytes": 2875,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/recovery-checks.json",
+          "sha256": "04fa4c33a491446cf0cbb0181ed41ae02f0fc02c3d1d94d800bfa257095e51bf",
+          "bytes": 2875
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/recovery-triage.md",
+      "original_sha256": "980678034e642858265081ef72335dd234a5aa48fc8fba138d525a066f1bf131",
+      "original_bytes": 5951,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/recovery-triage.md",
+          "sha256": "980678034e642858265081ef72335dd234a5aa48fc8fba138d525a066f1bf131",
+          "bytes": 5951
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "ec7265dcc8f807c129c4343be3ebf171d3c8a7b56c87316810172368a8e016fa",
+      "original_bytes": 3124,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "ec7265dcc8f807c129c4343be3ebf171d3c8a7b56c87316810172368a8e016fa",
+          "bytes": 3124
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "e7a588351770f8ac2831a0fd2382046365c4f830a23f6e172a83e1f4523bec27",
+      "original_bytes": 6055,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "e7a588351770f8ac2831a0fd2382046365c4f830a23f6e172a83e1f4523bec27",
+          "bytes": 6055
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "c2b9d76040ee423c9287f07240f36b49e520379740c51c28eea9771e7e6259a2",
+      "original_bytes": 3748,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "c2b9d76040ee423c9287f07240f36b49e520379740c51c28eea9771e7e6259a2",
+          "bytes": 3748
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "fd3312fdc82360a74a0e1e5709ecb3499bc7f053d98f4bc4f1a9d1089cbfc118",
+      "original_bytes": 180,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "fd3312fdc82360a74a0e1e5709ecb3499bc7f053d98f4bc4f1a9d1089cbfc118",
+          "bytes": 180
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-PR20260914-dumbbell_min_energy",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

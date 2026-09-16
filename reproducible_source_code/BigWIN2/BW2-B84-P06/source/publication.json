@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "original_status": "disproved",
+  "title": "The Exact Ternary Value ASP(6,4,3)=12",
+  "author": "Xiaojian Zeng",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "ancillary_evidence": [
+    "evidence/systematic_sat_search.py",
+    "evidence/systematic_search.cnf",
+    "evidence/systematic_search_glucose.drup",
+    "evidence/replay_drup.py",
+    "evidence/systematic_drup_replay_pass2.json",
+    "evidence/validate_sat_encoding_broad.py",
+    "evidence/encoding_validation_broad_report.json"
+  ],
+  "provenance_job_id": "win-00084-p06-write-f693ce6a81cf"
+}

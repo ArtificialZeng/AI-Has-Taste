@@ -1,0 +1,26 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Within the fixed Xu--Fu--Qiao--Tao arXiv:2609.04122v1 construction and proof framework specified in problem.md, using the canonical 952 length-54 ternary codewords, the published exact event-volume and dependency construction, and the fixed charges alpha=51/100000 and beta=3/10, C(226) holds: for every integer n>=1 there exists S in {0,1,2}^n such that ED(S[i,j),S[j,k)) >= (k-i)/226 for every 1<=i<j<k<=n+1. This statement does not assert that 226 is the least working denominator.",
+  "contribution": "The candidate improves the certified denominator 227 in the frozen v1 framework to 226 by exactly eliminating the two newly relevant shells (one deletion at total 227 and two deletions at total 454) and recomputing the complete exact-rational LLL envelope with two implementations. The original least-denominator problem remains unresolved, and the bounded literature search is not represented as proof of priority.",
+  "proposer_job_id": "win-00058-p02-research-7a3c7e99d2ae",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research-pass-1.md",
+    "evidence/research-pass-2.md",
+    "evidence/audit_one_deletion_shell.py",
+    "evidence/audit_two_deletion_shell.py",
+    "evidence/one-deletion-227-result.json",
+    "evidence/one-deletion-229-control.json",
+    "evidence/two-deletion-454-result.json",
+    "evidence/two-deletion-456-control.json",
+    "evidence/d226-lll-primary.json",
+    "evidence/d226-lll-independent.txt",
+    "evidence/external/2609.04122.pdf",
+    "evidence/external/ternary-synchronization-strings-artifact/inputs/codewords_54_952.txt",
+    "evidence/external/ternary-synchronization-strings-artifact/verifiers/verify_two_deletion_shell.mjs",
+    "evidence/external/ternary-synchronization-strings-artifact/verifiers/verify_d227_lll.py",
+    "evidence/external/ternary-synchronization-strings-artifact/verifiers/independent_verify_d227_lll.py"
+  ]
+}

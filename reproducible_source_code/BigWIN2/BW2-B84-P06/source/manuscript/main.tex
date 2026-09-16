@@ -1,0 +1,298 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks,pdftitle={The Exact Ternary Value ASP(6,4,3)=12},pdfauthor={Xiaojian Zeng}]{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F}
+\newcommand{\ASP}{\operatorname{ASP}}
+\newcommand{\ASB}{\operatorname{ASB}}
+
+\title{The Exact Ternary Value $\ASP(6,4,3)=12$}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a rank-$k$ matrix over $\F_q$, the $t$-all-symbol PIR property asks
+for $t$ pairwise disjoint recovery sets for every column.  The closest
+available bounds give
+$11\leq\ASP(6,4,3)\leq\ASB(6,4,3)\leq12$.
+We prove that the lower endpoint is impossible and hence that
+$\ASP(6,4,3)=12$.  The proof reduces every putative ternary
+$6\times11$ matrix, without loss, to a normalized systematic matrix and
+encodes the remaining finite problem as a $7{,}428$-variable,
+$34{,}731$-clause CNF.  We prove both directions of the encoding and
+certify unsatisfiability by a replayed DRUP derivation.  A separate exact
+kernel enumeration tests the semantics of the encoding on $25$ fixed
+matrices and all their targets; it is an audit of the encoding, not a
+substitute for the refutation.
+\end{abstract}
+
+\section{Statement and context}
+
+Coding can replace replication in distributed private information
+retrieval, leading to PIR codes with disjoint recovery groups
+\cite{FazeliVardyYaakobi2015}.  Boruchovsky, Gruica, Niemann, and Yaakobi
+introduced the all-symbol parameters used here
+\cite{BoruchovskyEtAl2026}.  If
+$G=[g_1,\ldots,g_n]\in\F_q^{k\times n}$ has rank $k$, a set
+$R\subseteq[n]$ \emph{recovers} $g_i$ when
+\[
+  g_i\in\operatorname{span}_{\F_q}\{g_j:j\in R\}.
+\]
+The matrix is $t$-all-symbol PIR when every column has $t$ pairwise
+disjoint recovery sets, and $\ASP(k,t,q)$ is the minimum possible
+length.  The batch parameter $\ASB(k,t,q)$ imposes the stronger
+simultaneous recovery requirement.
+
+Theorem~23 of \cite{BoruchovskyEtAl2026}, specialized to $k=6$ and
+$q=3$, gives
+\begin{equation}\label{eq:published-interval}
+  11\leq\ASP(6,4,3)\leq\ASB(6,4,3)\leq12.
+\end{equation}
+That paper reports exhaustive nonexistence for the corresponding binary
+length-$11$ cell, not for the ternary cell.  Thus the precise remaining
+task in \eqref{eq:published-interval} is to decide whether a rank-six
+$6\times11$ matrix over $\F_3$ with the four-all-symbol PIR property
+exists.  We prove that it does not.  Our originality statement is
+deliberately limited: a bounded search located no later primary
+resolution, but this does not establish priority.
+
+\begin{theorem}\label{thm:main}
+There is no rank-six matrix in $\F_3^{6\times11}$ having four pairwise
+disjoint recovery sets for every column.  Consequently,
+\[
+  \ASP(6,4,3)=12.
+\]
+\end{theorem}
+
+\section{Lossless normalization}
+
+We first reduce the quantified matrix problem to the exact domain used
+by the certificate.
+
+\begin{lemma}[Three nontrivial recoveries]\label{lem:three}
+Let $g_i\neq0$.  The column $g_i$ has four pairwise disjoint recovery
+sets if and only if it has three pairwise disjoint recovery sets that
+avoid $i$, in addition to the singleton $\{i\}$.
+\end{lemma}
+
+\begin{proof}
+The reverse implication is immediate.  Conversely, among four disjoint
+sets at most one contains $i$.  If one does, replace it by $\{i\}$ and
+retain the other three.  If none does, retain any three and add
+$\{i\}$.
+\end{proof}
+
+\begin{lemma}[Systematic normalized form]\label{lem:normalization}
+If a matrix forbidden by Theorem~\ref{thm:main} exists, then one exists
+in the form
+\[
+  G=(I_6\mid A),\qquad A\in\F_3^{6\times5},
+\]
+with the following properties.
+\begin{enumerate}
+  \item[(i)] Every column of $A$ is nonzero and its first nonzero entry is
+        $1$.
+  \item[(ii)] The first entries of the first three columns of $A$ are $1$.
+  \item[(iii)] Every column of $A$ whose first entry is $1$ precedes every
+        column whose first entry is $0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+No column of the original matrix is zero.  Indeed, deleting a zero
+column preserves rank, and deleting that coordinate from all recovery
+sets preserves their spans and disjointness.  This would produce a
+length-$10$ example, contradicting the published lower bound in
+\eqref{eq:published-interval}.
+
+Choose six basis columns, permute them first, and left-multiply by the
+inverse basis matrix.  Every recovery equation is preserved, so the
+matrix becomes $(I_6\mid A)$.  Each remaining column is nonzero.
+Multiplying any individual column $g_j$ by a scalar $d_j\neq0$ also
+preserves the property: the equation
+$g_i=\sum_j\alpha_jg_j$ becomes
+\[
+ d_i g_i=\sum_j \alpha_j\frac{d_i}{d_j}(d_jg_j).
+\]
+We may therefore scale each column of $A$ so that its first nonzero
+entry is $1$.
+
+Apply Lemma~\ref{lem:three} to the systematic target $e_1$.  Each of
+its three disjoint target-avoiding recoveries must use a column of $A$
+with nonzero first entry, because $e_2,\ldots,e_6$ have zero first
+entry.  Disjointness makes these three parity columns distinct.  Their
+normalized first entries are $1$.  A permutation of the five columns
+of $A$ now gives (ii), and a further permutation within the two
+first-entry classes gives (iii).  All operations used are invertible or
+are column permutations, so no candidate is lost.
+\end{proof}
+
+\section{Exact CNF equivalence}
+
+We describe the formula generated by the ancillary program
+\texttt{systematic\_sat\_search.py}.  Every field variable is represented
+by three Boolean literals, one for each value in $\{0,1,2\}$, with one
+at-least-one and three pairwise at-most-one clauses.  Thus every such
+trit has exactly one value.
+
+The $30$ trits $a_{r,p}$ encode $A$.  Clauses require each parity
+column to be nonzero, make its first nonzero entry equal to $1$, set
+$a_{1,1}=a_{1,2}=a_{1,3}=1$, and put all first-row $1$ entries before
+all first-row $0$ entries.  These are precisely the conventions in
+Lemma~\ref{lem:normalization}.
+
+For every target $t\in[11]$ and recovery label $s\in[3]$, trits
+$c_{t,s,j}$ encode a coefficient on column $j$.  The formula imposes
+\begin{align}
+  c_{t,s,t}&=0,\label{eq:avoid}\\
+  \operatorname{supp}(c_{t,s,\cdot})\cap
+  \operatorname{supp}(c_{t,s',\cdot})&=\varnothing
+    \quad(s\neq s'),\label{eq:disjoint}\\
+  \sum_{j=1}^{6}c_{t,s,j}e_j+
+  \sum_{p=1}^{5}c_{t,s,6+p}a_{\cdot,p}&=g_t
+    \quad\text{in }\F_3^6.\label{eq:recovery}
+\end{align}
+For each support an exact-one family of ``minimum'' variables chooses
+its least nonzero coordinate.  The three minima are required to be
+strictly increasing.  Hence every support is nonempty and the constraint
+only orders the three otherwise interchangeable recoveries.
+
+Equation~\eqref{eq:recovery} is expanded row by row.  Multiplication and
+addition gates contain an implication for each of the nine possible
+input pairs in $\F_3^2$.  Together with exact-one input and output trits,
+these exhaustive truth tables make every gate functional and exact;
+they are not a one-way relaxation.  The resulting formula $F$ has
+$7{,}428$ variables and $34{,}731$ clauses.
+
+\begin{proposition}[Encoding equivalence]\label{prop:equivalence}
+The CNF $F$ is satisfiable if and only if a rank-six
+$6\times11$ matrix over $\F_3$ has the four-all-symbol PIR property.
+\end{proposition}
+
+\begin{proof}
+From a satisfying assignment, decode the exact-one trits.  The matrix
+is $(I_6\mid A)$ and therefore has rank six; its parity columns satisfy
+the normalization clauses.  For each target, equations
+\eqref{eq:avoid}--\eqref{eq:recovery} give three nonempty, pairwise
+disjoint, target-avoiding coefficient supports that recover the target.
+All target columns are nonzero.  Lemma~\ref{lem:three} supplies a fourth
+recovery, namely the singleton target.
+
+Conversely, normalize any putative matrix by
+Lemma~\ref{lem:normalization}.  By Lemma~\ref{lem:three}, choose three
+disjoint target-avoiding recoveries for each target and choose
+coefficients expressing the target in each span.  Delete coordinates
+whose coefficient is zero.  The resulting supports remain disjoint and
+are nonempty because the targets are nonzero.  Order the three supports
+by their distinct least coordinates, assign all coefficient trits, and
+assign each arithmetic gate its actual value in $\F_3$.  Every matrix,
+minimum, disjointness, and truth-table clause is then satisfied.
+\end{proof}
+
+\section{The checked refutation}
+
+The clausal-certificate conventions used below are standard; see
+\cite{WetzlerHeuleHunt2014,Heule2016}.  A clause $C$ has the reverse unit
+propagation (RUP) property with respect to a clause database $D$ when
+unit propagation on
+$D\cup\{\{\lnot\ell\}:\ell\in C\}$ reaches a conflict.  In that case
+the clause $C$ is entailed by $D$.
+
+The supplied file \texttt{systematic\_search\_glucose.drup} was produced
+by Glucose4, from the solver family introduced in
+\cite{AudemardSimon2009}.  It has $833{,}442$ lines: $426{,}775$ clause
+additions and $406{,}667$ deletions.  The short checker
+\texttt{replay\_drup.py} parses the fixed CNF and proof, checks every
+addition by RUP, and reaches the empty clause on the final line.  It
+uses Minisat22 only as a unit-propagation engine and performs no
+satisfiability search.
+
+For completeness, ignoring the deletion instructions is sound here.
+Inductively, every retained added clause is entailed by the input CNF.
+The retained database is therefore equivalent to the input with respect
+to satisfiability.  If unit propagation refutes the negation of the next
+clause, that clause too is entailed by the input.  The accepted empty
+clause consequently proves that $F$ is unsatisfiable.  This argument
+establishes the following certificate proposition.
+
+\begin{proposition}[Certified finite fact]\label{prop:unsat}
+The formula $F$ in Proposition~\ref{prop:equivalence} is unsatisfiable.
+\end{proposition}
+
+The release manifest binds the exact CNF, trace, checker, and replay
+report.  From the project root, the decisive check is reproduced by
+\begin{verbatim}
+python3 evidence/replay_drup.py evidence/systematic_search.cnf \
+  evidence/systematic_search_glucose.drup --solver minisat22
+\end{verbatim}
+The output must report acceptance, all $426{,}775$ RUP additions, and an
+empty clause on line $833{,}442$.
+
+Combining Propositions~\ref{prop:equivalence} and \ref{prop:unsat}
+excludes the length-$11$ matrix.  Equation~\eqref{eq:published-interval}
+then proves Theorem~\ref{thm:main}.
+
+\section{Independent semantic tests and limits}
+
+The separate program \texttt{validate\_sat\_encoding\_broad.py} checks
+the meaning of fixed-matrix instances without reusing the CNF arithmetic
+as its semantic oracle.  For $G=(I_6\mid A)$, every kernel vector is
+uniquely
+\[
+  (-Ax,x),\qquad x\in\F_3^5.
+\]
+A target-avoiding recovery of column $t$ is equivalent, after scaling,
+to a projective kernel direction whose $t$th coordinate is nonzero:
+if $Mc=g_t$ and $c_t=0$, then $c-e_t\in\ker M$ has $t$th coordinate
+$-1$, and the converse follows by reversing this construction.
+The oracle enumerates all
+$(3^5-1)/(3-1)=121$ projective directions, constructs their exact
+supports, and finds the maximum number of disjoint supports by a
+bit-mask dynamic program.
+
+This oracle was compared with the targetwise CNF on $25$ normalized
+matrices, all $11$ targets, and two SAT backends, for $550$ status checks
+in total.  All statuses agreed, with both satisfiable and unsatisfiable
+target instances represented.  These tests could expose a semantic
+encoding error but do not range over every $A$ and do not prove global
+unsatisfiability; Proposition~\ref{prop:unsat} rests on the DRUP
+certificate.  The separation between discovery and an exact verifier
+that reconstructs the finite predicates also appears in certified
+finite ternary searches of Zeng, Liu, Ratnavelu, and Huat
+\cite{ZengEtAl2026TernaryCertificates}.
+
+The result concerns exactly $(k,t,q,n)=(6,4,3,11)$.  It does not classify
+all extremal length-$12$ matrices, and it makes no assertion for other
+fields or dimensions.  A second model context audited the frozen
+reduction and replayed the certificate; this is a useful workflow check,
+not external peer review.
+
+\section*{Computational and AI assistance}
+
+OpenAI Codex assisted with the bounded literature search, the design and
+implementation of the normalization-aware SAT encoding, the exact
+semantic validator, certificate replay and audit organization, and
+initial manuscript preparation.  Language-model output is not used as
+mathematical evidence.  The theorem-bearing evidence consists of the
+explicit reduction above, the fixed CNF and clausal derivation, and the
+replayable exact checks.  No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

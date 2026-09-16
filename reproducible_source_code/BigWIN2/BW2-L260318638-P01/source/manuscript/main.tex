@@ -1,0 +1,276 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage[hidelinks,
+  pdftitle={The Two-Hole Minimum in the Regular Hyperbolic (4,5)-Tessellation Is 17},
+  pdfauthor={Xiaojian Zeng}]{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{The Two-Hole Minimum in the Regular Hyperbolic
+  $\{4,5\}$-Tessellation Is 17}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{10 September 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Let $g_{4,5}(h)$ be the minimum number of square tiles in an
+edge-connected polyform with exactly $h$ holes in the regular hyperbolic
+$\{4,5\}$-tessellation.  Eldridge et al. gave a $17$-tile example with two
+holes and a perimeter obstruction below $16$, leaving the endpoint $16$
+undecided.  We prove that no $16$-tile example exists, and hence that
+$g_{4,5}(2)=17$.  Equality in their perimeter bound would force the two
+holes to be single tiles and their filling to be an $18$-tile
+minimum-perimeter animal.  A uniqueness theorem of Malen, Rold\'an, and
+Toal\'a-Enr\'iquez identifies that animal with the second layer grown from a
+domino.  Its only fully edge-surrounded tiles are the adjacent central pair,
+whose simultaneous deletion makes one cavity rather than two.  An exact
+Coxeter-group certificate over $\mathbb Q(\sqrt2,\sqrt5)$ verifies the finite
+incidence facts used in this last step.
+\end{abstract}
+
+\noindent\textbf{Keywords.}
+Hyperbolic polyforms; holes; extremal animals; isoperimetric inequality;
+exact certificate.
+
+\section{The endpoint problem}
+
+Let $\mathcal T$ be the tile set of the regular $\{4,5\}$-tessellation of
+$\mathbb H^2$.  Thus every tile is a regular geodesic square and five tiles meet
+at every tessellation vertex.  A \emph{polyform} is a finite set
+$A\subset\mathcal T$ whose edge-dual graph is connected: two tiles are
+adjacent precisely when they share a complete tessellation edge.  Tiles may
+also have vertex-only contacts.  A hole is a bounded connected component of
+$\mathbb H^2\setminus\bigcup_{T\in A}T$, and
+\[
+ g_{4,5}(h)=\min\{\lvert A\rvert:A\text{ is a polyform with exactly }h
+ \text{ holes}\}.
+\]
+These are the conventions of Eldridge et al.~\cite{EldridgeEtAl2026}.
+
+Their Theorem~1.2 and Table~1 supply a $17$-tile polyform with two holes.
+For this entry, their Table~2 gives
+\[
+ M_{4,5}(15,2)=1.5,
+ \qquad M_{4,5}(16,2)=2,
+ \qquad M_{4,5}(17,2)=2.
+\]
+Lemma~2.1 and Corollary~2.2 of the same paper therefore rule out $15$ tiles
+but not $16$, giving the documented window
+\[
+                 16\le g_{4,5}(2)\le17.
+\]
+We settle precisely this one-unit alternative.
+
+\begin{theorem}\label{thm:main}
+There is no $16$-tile $\{4,5\}$-polyform with exactly two holes.
+Consequently,
+\[
+                         g_{4,5}(2)=17.
+\]
+\end{theorem}
+
+The proof combines the equality case of the preceding perimeter bound with
+the unique-extremal subsequence of Malen, Rold\'an, and
+Toal\'a-Enr\'iquez~\cite{MalenRoldanToala2023}.  It does not classify
+$\{4,5\}$-animals at arbitrary sizes and makes no general assertion about
+$g_{p,q}(h)$.
+
+\section{What equality at 16 would force}
+
+For a polyform $A$, write $b(A)$ for the number of shared tile edges,
+$p_o(A)$ for its outer perimeter, and $p_h(A)$ for the total perimeter of
+its holes.  Let $\overline A$ be obtained by filling every hole with all the
+tiles it contains.  Finally, let $\mathcal P_{\min}(N)$ denote the minimum perimeter of
+an $N$-tile $\{4,5\}$-animal.
+
+The function used in~\cite{EldridgeEtAl2026} is
+\[
+ M_{p,q}(n,h)
+   =\frac{n(p-2)+2-\mathcal P_{\min}^{p,q}(n+h)}{p}.
+\]
+Substituting $p=4$, $n=16$, $h=2$, and the tabulated value
+$M_{4,5}(16,2)=2$ gives
+\begin{equation}\label{eq:pmin18}
+                         \mathcal P_{\min}(18)=26.
+\end{equation}
+
+\begin{lemma}[Equality reduction]\label{lem:equality}
+If a $16$-tile $\{4,5\}$-polyform $A$ has two holes, then both holes consist
+of one tile, $b(A)=15$, and $\overline A$ is an $18$-tile animal of
+perimeter $26$.
+\end{lemma}
+
+\begin{proof}
+Connectivity gives $b(A)\ge15$.  Filling does not change the outer
+boundary, while each hole contains at least one tile.  The monotonicity used
+in Lemma~2.1 of~\cite{EldridgeEtAl2026} (valid here because $p=4>3$) and
+\eqref{eq:pmin18} give
+\[
+ p_o(A)=p_o(\overline A)
+   \ge \mathcal P_{\min}(\lvert\overline A\rvert)
+   \ge \mathcal P_{\min}(18)=26.
+\]
+Every one of the $64$ tile-edge incidences is either counted twice along a
+shared edge or once on an outer or hole boundary.  Hence
+\[
+                  p_h(A)=64-2b(A)-p_o(A).
+\]
+Each of the two holes has boundary length at least four, so
+\[
+ 8\le p_h(A)\le64-2\cdot15-26=8.
+\]
+All these inequalities are equalities.  Thus $b(A)=15$, $p_o(A)=26$, and
+the two hole perimeters are both four.
+
+The source convention regards the tiles in each hole as a polyform in their
+own right.  A connected two-tile square animal has perimeter six, and
+   $\mathcal P_{\min}$ is nondecreasing.  A hole containing at least two tiles would
+therefore have perimeter at least six, contradicting its perimeter four.
+Both holes are single tiles.  Exactly two tiles are added on filling, so
+$\lvert\overline A\rvert=18$; its perimeter is $26$, which is minimal by
+\eqref{eq:pmin18}.
+\end{proof}
+
+\section{The unique 18-tile extremal animal}
+
+Malen, Rold\'an, and Toal\'a-Enr\'iquez define $C_{p,q}(1)$ to be an
+edge-adjacent pair of tiles.  The next member $C_{p,q}(2)$ is obtained by
+adding every tile incident to a perimeter vertex of this initial domino.
+Their Theorem~6.4 states that, for every $k\ge1$, $C_{p,q}(k)$ is the unique
+extremal animal at its tile count, up to isometry~\cite{MalenRoldanToala2023}.
+The following local facts identify the relevant member of that subsequence.
+
+\begin{lemma}[Domino-layer incidence]\label{lem:incidence}
+The animal $C_{4,5}(2)$ has $18$ tiles, $23$ shared edges, and perimeter
+$26$.  Its only tiles having all four edge-neighbours in $C_{4,5}(2)$ are
+the two tiles of the initial domino, and those two tiles share an edge.
+\end{lemma}
+
+\begin{proof}
+The domino has six boundary edges and six boundary vertices.  The six tiles
+across its boundary edges are part of the new layer.  At each of the four
+boundary vertices incident to one old tile, the cyclic star of five tiles
+has two further positions after the old tile and the two across-edge tiles
+are counted.  At each endpoint of the common edge, one further position
+remains after the two old and two across-edge tiles are counted.  Thus the
+new layer has
+\[
+          6+4(5-1-2)+2(5-2-2)=16
+\]
+tiles, for $18$ in total.
+
+For completeness, all possible identifications and edge incidences in this
+local count are checked by the exact ancillary verifier described below.
+It shows that the $16$ new tiles form an edge-adjacency cycle.  Each of the
+six across-edge tiles has three neighbours in $C_{4,5}(2)$, each of the ten
+remaining new tiles has two, and each old domino tile has four.  Consequently
+the sum of tile degrees is
+\[
+             2\cdot4+6\cdot3+10\cdot2=46,
+\]
+so there are $46/2=23$ shared edges and the perimeter is
+$4\cdot18-2\cdot23=26$.  The displayed degrees also show that precisely the
+old domino pair has no exposed edge, and the pair is edge-adjacent by its
+definition.
+\end{proof}
+
+We now complete the mathematical argument.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose that $A$ were a $16$-tile polyform with two holes.  By
+Lemma~\ref{lem:equality}, $\overline A$ would be an $18$-tile extremal
+animal of perimeter $26$.  Lemma~\ref{lem:incidence} shows that
+$C_{4,5}(2)$ is an $18$-tile animal with that perimeter.  Theorem~6.4
+of~\cite{MalenRoldanToala2023} therefore implies that $\overline A$ is
+isometric to $C_{4,5}(2)$.
+
+The two tiles in $\overline A\setminus A$ represent two distinct singleton
+holes.  Each must have all four edge-neighbours still present; moreover,
+the two deleted tiles cannot share an edge, since edge-adjacent absent tiles
+belong to one complementary component.  They would thus have to be two
+nonadjacent, fully edge-surrounded tiles of $C_{4,5}(2)$.  By
+Lemma~\ref{lem:incidence}, the only two fully surrounded tiles are the
+adjacent central domino.  Deleting them creates one two-tile cavity, not two
+holes.  This contradiction proves the $16$-tile nonexistence.  The published
+$17$-tile construction~\cite[Theorem~1.2 and Table~1]{EldridgeEtAl2026}
+then gives $g_{4,5}(2)=17$.
+\end{proof}
+
+\section{Exact verification and scope}
+
+The ancillary program \path{verify_c45_domino_layer.py} verifies only
+the finite-incidence assertions in Lemma~\ref{lem:incidence}; the perimeter
+reduction and the published uniqueness theorem remain human-readable parts
+of the proof.  The program uses the standard faithful geometric
+representation of the Coxeter group $[4,5]$~\cite[Chapter~5]{Humphreys1990}.
+With simple reflections $s_0,s_1,s_2$, it checks
+\[
+ (s_0s_1)^4=(s_1s_2)^5=(s_0s_2)^2=1
+\]
+and represents every coordinate in
+$\mathbb Q(\sqrt2,\sqrt5)$, with no floating-point comparisons.  It builds
+a radius-four tile patch, selects exactly the tiles incident to the six
+vertices of a central domino, and reconstructs all edge adjacencies.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Checked quantity & Exact result \\
+\midrule
+tiles in $C_{4,5}(2)$ & $18$ \\
+shared edges; perimeter & $23$; $26$ \\
+new-layer edge graph & one $16$-cycle \\
+fully edge-surrounded tiles & the two central tiles \\
+central-pair relation & edge-adjacent \\
+cell counts after deleting the pair $(V,E,F)$ & $(32,48,16)$ \\
+bounded cavities after deleting the pair & $1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Run the check from the ancillary directory with
+\begin{verbatim}
+python3 verify_c45_domino_layer.py
+\end{verbatim}
+under ordinary assertion-enabled Python.  The output serializes the complete
+selected-tile adjacency lists and exact centre coordinates, so the stated
+counts can be recomputed without geometric plotting.
+
+This separation between an ambient theorem and the exact finite model that
+a certificate actually checks is also explicit in the discrete-geometry
+examples of Zeng et al.~\cite[Sections~6--7]{ZengEtAl2026Finite}.  In the
+present proof, the certificate is not an exhaustive search over
+$16$-tile polyforms.  Completeness instead comes from the equality reduction
+and the published unique-extremal theorem; the computation only audits the
+one forced animal.  Thus neither a successful program run nor a bounded
+literature search is being used as a proof of the theorem's universal scope
+or of publication priority.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with primary-literature retrieval, formulation and
+checking of the equality reduction, development and replay of the exact
+finite-incidence verifier, and initial manuscript drafting.  Language-model
+output is not mathematical evidence.  The proof rests on the cited source
+theorems, the displayed deductions, and the deterministic exact verifier.
+No proof assistant was used.
+
+\paragraph{Data and code availability.}
+The exact verifier is supplied with this article as
+\path{verify_c45_domino_layer.py}.  It uses only the Python standard
+library, takes no input, uses no randomness, and prints a JSON certificate.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

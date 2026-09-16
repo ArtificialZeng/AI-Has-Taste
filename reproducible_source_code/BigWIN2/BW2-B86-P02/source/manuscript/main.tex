@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\sdp}{\mathbin{\times\!\!|}}
+\newcommand{\wprod}{\mathbin{\operatorname{wr}}}
+\hypersetup{
+  pdftitle={The Disconnected Graph A(4,4,3): Classification and a Counterexample to Pan's arXiv-v1 Conjecture},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\DeclareMathOperator{\Aut}{Aut}
+\newcommand{\Cay}{\operatorname{Cay}}
+\newcommand{\Sn}{S_n}
+\newcommand{\Sfour}{S_4}
+\newcommand{\Afour}{A_4}
+\newcommand{\Vfour}{V_4}
+
+\title{The Disconnected Graph $A(4,4,3)$:\\
+Classification and a Counterexample to Pan's arXiv-v1 Conjecture}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+For $F_t$ the set of permutations of $S_n$ having exactly $t$ fixed
+points, Pan conjectured in arXiv:2407.19745v1 that the full automorphism
+group of $\Cay(S_n,F_t)$ is
+$[R(S_n)\sdp\operatorname{Inn}(S_n)]\sdp C_2$ for every admissible
+$n$ and $t$.  We determine the graph and the full group at
+$(n,t)=(4,1)$.  The connection set is $F_1=A_4\setminus V_4$, and its
+cosets give
+\[
+  \Cay(S_4,F_1)\cong A(4,4,3)\cong 2K_{4,4,4}.
+\]
+Consequently
+\[
+  \Aut(A(4,4,3))\cong (S_4\wprod S_3)\wprod S_2,
+\]
+of order $13{,}759{,}414{,}272$, whereas the conjectured group has order
+$1{,}152$.  Thus the conjecture as stated in that arXiv version is false
+at this parameter.  No assertion is made about priority or the text of
+any later journal version.
+\end{abstract}
+
+\section{Context and conventions}
+
+Day and Tripathi introduced arrangement graphs as a flexible class of
+interconnection networks \cite{DayTripathi1992}.  Chen, Ghorbani, and Wong
+then considered the generalized graph $A(n,k,r)$: its vertices are the
+ordered $k$-tuples of distinct elements of $[n]$, and two vertices are
+adjacent when they differ in exactly $r$ coordinates
+\cite{ChenGhorbaniWong2014}.  Pan determined the full automorphism groups
+in two extreme families and proposed a uniform formula for the associated
+symmetric-group Cayley graphs \cite{Pan2024}.  The corresponding full
+groups for the complete derangement and complete transposition graphs
+were determined by Deng and Zhang \cite{DengZhang2011} and Ganesan
+\cite{Ganesan2015}, respectively.
+
+We address only Conjecture~3.1 of Pan's arXiv version~1 and only the
+parameter $(n,t)=(4,1)$.  We use Pan's left-Cayley convention: vertices
+$g,h\in S_4$ are adjacent when
+\[
+ g\sim h \quad\Longleftrightarrow\quad hg^{-1}\in F_1.
+ \tag{1}\label{eq:cayley}
+\]
+Permutations act as functions on $[4]$, and $g$ is identified with the
+tuple $[g(1),g(2),g(3),g(4)]$.  The symbol $\sdp$ denotes a semidirect
+product; wreath products below use their natural
+imprimitive actions, and $2K_{4,4,4}$ denotes the disjoint union of two
+copies of $K_{4,4,4}$.
+
+\section{Classification and full automorphism group}
+
+Set
+\[
+ \Vfour=\{1,(12)(34),(13)(24),(14)(23)\}.
+\]
+
+\begin{theorem}\label{thm:main}
+Let $F_1$ be the permutations of $S_4$ with exactly one fixed point.  Then
+\[
+ F_1=A_4\setminus V_4,
+ \qquad
+ \Cay(S_4,F_1)\cong A(4,4,3)\cong 2K_{4,4,4},
+\]
+and
+\[
+ \Aut(A(4,4,3))\cong (S_4\wprod S_3)\wprod S_2.
+\]
+The group has order $13{,}759{,}414{,}272$.  In particular,
+Conjecture~3.1 of \cite{Pan2024}, as stated in arXiv version~1, is false
+at $(n,t)=(4,1)$.
+\end{theorem}
+
+\begin{proof}
+A permutation of four letters with exactly one fixed point acts without a
+fixed point on the other three letters, so it is a $3$-cycle.  Conversely,
+every $3$-cycle fixes the remaining letter.  Hence
+\[
+ F_1=\{(123),(132),(124),(142),(134),(143),(234),(243)\}.
+\]
+The even permutations in $S_4$ consist of the identity, the three double
+transpositions, and these eight $3$-cycles.  Therefore
+\[
+ F_1=A_4\setminus V_4. \tag{2}\label{eq:connection}
+\]
+The displayed $V_4$ is normal in $S_4$: conjugation preserves the cycle
+type of its three nonidentity elements.
+
+We first check the arrangement-graph identification without changing the
+Cayley convention.  For $g,h\in S_4$, a coordinate $i$ satisfies
+$h(i)=g(i)$ exactly when $g(i)$ is a fixed point of $hg^{-1}$.  The map
+$i\mapsto g(i)$ makes this a bijection between agreeing coordinates and
+fixed points.  Thus \eqref{eq:cayley} holds exactly when the two
+permutation tuples differ in three coordinates.  This proves
+$\Cay(S_4,F_1)\cong A(4,4,3)$.
+
+By \eqref{eq:cayley} and \eqref{eq:connection},
+\begin{align*}
+ g\sim h
+ &\Longleftrightarrow hg^{-1}\in A_4\setminus V_4\\
+ &\Longleftrightarrow
+   \operatorname{sgn}(g)=\operatorname{sgn}(h)
+   \quad\text{and}\quad V_4g\ne V_4h. \tag{3}\label{eq:cosets}
+\end{align*}
+Indeed, when $g$ and $h$ have the same parity, $hg^{-1}\in A_4$, while
+$hg^{-1}\in V_4$ is equivalent to $h\in V_4g$, and hence to equality of
+the two $V_4$-cosets.  Normality means these right cosets are also left
+cosets.
+
+Each $V_4$-coset has four elements of one parity.  Each of the twelve
+even and twelve odd permutations therefore splits into three such
+cosets.  Equation~\eqref{eq:cosets} says that within a parity class there
+are no edges inside a coset and all possible edges between distinct
+cosets.  Each parity class consequently induces $K_{4,4,4}$.  It is
+connected, and there are no edges between the two parity classes, so
+these classes are precisely the two connected components.  Hence
+\[
+ A(4,4,3)\cong 2K_{4,4,4}. \tag{4}\label{eq:decomp}
+\]
+
+Let $Y=K_{4,4,4}$, with parts $P_1,P_2,P_3$.  Every independent set of
+$Y$ lies in one part, so its inclusion-maximal independent sets are
+exactly $P_1,P_2,P_3$.  Every automorphism therefore permutes the three
+parts.  The kernel of this action consists of the arbitrary, independent
+permutations inside them, and every permutation of the parts preserves
+adjacency.  The action splits, giving
+\[
+ \Aut(Y)\cong (S_4)^3\sdp S_3=S_4\wprod S_3,
+ \qquad
+ |\Aut(Y)|=(4!)^3 3!=82{,}944. \tag{5}\label{eq:onecomponent}
+\]
+By \eqref{eq:decomp}, an automorphism of the full graph permutes its two
+connected components.  The kernel is $\Aut(Y)^2$, and an exchange of the
+two copies supplies the nontrivial element of $S_2$.  Therefore
+\[
+ \Aut(A(4,4,3))
+ \cong \Aut(Y)^2\sdp S_2
+ \cong (S_4\wprod S_3)\wprod S_2, \tag{6}
+\]
+whose order is
+\[
+ (82{,}944)^2\,2=13{,}759{,}414{,}272. \tag{7}
+\]
+
+Finally, $S_4$ has trivial center, so
+$|\operatorname{Inn}(S_4)|=24$.  The iterated semidirect product proposed
+in \cite[Conjecture~3.1]{Pan2024} has order
+\[
+ |R(S_4)|\,|\operatorname{Inn}(S_4)|\,|C_2|
+ =24\cdot24\cdot2=1{,}152. \tag{8}
+\]
+The orders in (7) and (8) differ.  Since the cited conjecture quantifies
+over every admissible $n$ and $t$, the case $(4,1)$ disproves it.
+\end{proof}
+
+\section{Exact check, scope, and assistance disclosure}
+
+As a corroborating check, a Python standard-library program enumerated
+all $24$ permutation tuples and reconstructed adjacency directly from
+the connection set.  Using only tuple and integer operations, it verified
+the eight elements of $F_1$, degree $8$, two parity components of order
+$12$, three four-element $V_4$-cosets in each component, all within- and
+between-part adjacencies, and the three group-order formulas displayed in
+\eqref{eq:onecomponent}, (7), and (8).  The proof of
+Theorem~\ref{thm:main} does not depend on this enumeration.  This
+separation between a mathematical
+argument and a reconstructive exact checker is also used in finite graph
+certificate work where the verifier rebuilds the graph and its symmetry
+action before accepting stored data \cite[Sections~2 and~6]{ZengEtAl2026}.
+
+The conclusion is deliberately restricted to the conjecture in
+arXiv:2407.19745v1.  It does not claim priority and makes no statement
+about whether a later journal text retains, modifies, or omits the
+conjecture.
+
+OpenAI Codex assisted with literature searching and source verification,
+the preparation of the exact checker, adversarial organization of the
+argument, and initial manuscript drafting.  Neither language-model output
+nor the finite check is used as a premise in the proof above.  No proof
+assistant was used.
+
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

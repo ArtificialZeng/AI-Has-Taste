@@ -1,0 +1,324 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage{url}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={The NNE distribution on Fuss--Catalan paths with a fixed number of peaks},
+  pdfauthor={Xiaojian Zeng},pdfsubject={Fuss--Catalan enumeration and real-rootedness}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\pk}{pk}
+\DeclareMathOperator{\nne}{nne}
+\newcommand{\N}{\mathsf{N}}
+\newcommand{\E}{\mathsf{E}}
+\newcommand{\W}{W^{(m)}_{n,k}}
+\title{The NNE distribution on Fuss--Catalan paths with a fixed number of peaks}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+For paths from $(0,0)$ to $(n,mn)$ staying above $y=mx$, with $m\geq2$,
+we enumerate consecutive NNE factors after fixing the number $k$ of NE
+peaks. A first-return decomposition and Lagrange inversion give
+\[
+ W^{(m)}_{n,k}(t)=\frac{1}{n}\binom nk
+       \sum_{j=1}^{k}\binom kj\binom{mn-k}{j-1}t^j.
+\]
+This is a positive scalar multiple of the ordinary Dyck-path polynomial
+of semilength $mn+1$ with $k$ peaks, and hence proves the corresponding
+Fuss--Catalan real-rootedness conjecture. A self-contained Jacobi-polynomial
+argument shows that zero is simple and all other zeros are distinct and
+strictly negative.
+\end{abstract}
+
+\section{Statement and relation to earlier work}
+
+Fix integers $m\geq2$ and $n\geq1$. Let $\mathcal D^{(m)}_n$ be the
+set of words containing $mn$ north steps $\N=(0,1)$ and $n$ east steps
+$\E=(1,0)$, such that every prefix satisfies
+$\#\N\geq m\#\E$. These are the paths from $(0,0)$ to $(n,mn)$
+that stay in $y\geq mx$. For $D\in\mathcal D^{(m)}_n$, let $\pk(D)$
+and $\nne(D)$ count the consecutive factors $\N\E$ and $\N\N\E$,
+respectively. These counts do not wrap around the ends of the word.
+Equivalently, each maximal north run contributes one peak, and contributes
+one NNE factor exactly when its length is at least two. For $1\leq k\leq n$,
+put
+\begin{equation}\label{eq:def}
+ \W(t)=\sum_{\substack{D\in\mathcal D^{(m)}_n\\\pk(D)=k}}t^{\nne(D)}.
+\end{equation}
+
+The ordinary Dyck-path joint distribution of peaks and NNE factors was
+enumerated by B\'ona, Dimitrov, Labelle, Li, Pappe, Vindas-Mel\'endez and
+Zhuang \cite[Theorem~2]{BonaEtAl2025}; their Theorem~27 proves
+real-rootedness. Wang and Zhang \cite{WangZhang2024} reproduce these
+results and establish the associated interlacing conjectures.
+Alexandersson's catalog \cite{AlexanderssonCatalan} asks for the
+real-rootedness extension to Fuss--Catalan paths in an $n\times nm$
+rectangle. We resolve this question with the orientation and literal
+factor conventions in \eqref{eq:def}.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\geq2$, $n\geq1$ and $1\leq k\leq n$,
+\begin{equation}\label{eq:formula}
+ \W(t)=\frac{1}{n}\binom nk
+       \sum_{j=1}^{k}\binom kj\binom{mn-k}{j-1}t^j.
+\end{equation}
+The polynomial has degree $k$, a simple zero at $0$, and $k-1$ distinct
+strictly negative zeros. In particular, all its zeros are real.
+\end{theorem}
+
+Write $V_{r,k}(t)$ for the corresponding polynomial on ordinary Dyck
+paths of semilength $r$, with the same NE and NNE conventions. The
+enumeration in \eqref{eq:formula} gives the exact identity
+\begin{equation}\label{eq:ordinary}
+ \W(t)=\frac{\binom{n-1}{k-1}}{\binom{mn+1}{k-1}}\,V_{mn+1,k}(t).
+\end{equation}
+The contribution is this joint enumeration on the Fuss family and its
+identification with the ordinary family. Generalized first-return
+decompositions are standard; a nearby application is Zhang and Zhuang's
+enumeration of augmented paths \cite{ZhangZhuang2024}. Their Lemma~12
+marks long ascents after augmentation, whereas \eqref{eq:def} marks both
+peaks and NNE factors before augmentation. The ordinary multi-pattern
+refinement in \cite[Theorem~5]{BonaEtAl2025} also retains the ordinary
+step set. No equivalent Fuss identification was found in these inspected
+works; this comparison makes no exhaustive priority claim.
+
+\section{The joint enumeration}
+
+Give $\N$ height increment $1$ and $\E$ increment $-m$. A valid word
+is then an excursion that stays at nonnegative height. We include the
+empty excursion when forming generating functions.
+
+\begin{lemma}\label{lem:split}
+Every nonempty excursion has a unique decomposition
+\begin{equation}\label{eq:split}
+ D=\N P_1\N P_2\cdots\N P_m\E P_{m+1},
+\end{equation}
+where each $P_i$, translated to start at height zero, is an excursion,
+possibly empty. The displayed $\E$ is the first return to height zero.
+\end{lemma}
+
+\begin{proof}
+The first return must be an east step from height $m$. Before it, mark
+the last north step from each height $i$ to $i+1$, for $0\leq i<m$.
+Each exists because upward steps have size one. The marked steps occur
+in increasing order of $i$: after the last departure from $i$, the path
+still has to reach $m$ and therefore must later depart from every larger
+level below $m$.
+
+For $1\leq i<m$, let $P_i$ be the segment between the marked departures
+from $i-1$ and $i$; let $P_m$ end just before the distinguished east step.
+Each starts and ends at height $i$. If it visited a height below $i$,
+its return to $i$ would require another north departure from $i-1$,
+contradicting the choice of the marked step. This argument also applies
+when an east step crosses several levels. The remaining suffix $P_{m+1}$
+is an excursion at zero.
+
+Conversely, inserting any $m+1$ excursions into \eqref{eq:split} yields
+a valid word. Before the displayed east step its height is positive,
+so that step is the first return. No subsequent component before this
+return descends below its displayed base level. Thus the displayed
+north steps are exactly the marked last departures, proving uniqueness
+and the inverse construction.
+\end{proof}
+
+Every nonempty excursion starts with at least $m$ north steps and ends
+with an east step. Since $m\geq2$, its first east step already has both
+preceding letters inside the excursion. Consequently every NE or NNE
+factor ending at an east step inside a component of \eqref{eq:split}
+is counted internally. All additional factors end at the displayed east
+step. The possibilities are exhaustive:
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Component condition & Extra peaks & Extra NNE factors\\
+\midrule
+$P_m\ne\varnothing$ & $0$ & $0$\\
+$P_m=\varnothing$, $P_{m-1}\ne\varnothing$ & $1$ & $0$\\
+$P_m=P_{m-1}=\varnothing$ & $1$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Indeed, in the first case the displayed east step follows an east step;
+in the second its two preceding letters are $\E\N$; in the third they
+are $\N\N$. The last case includes $m=2$.
+
+Let $z$ mark east steps, $u$ mark peaks and $t$ mark NNE factors, and set
+\[
+ F=1+\sum_{n\geq1}\sum_{D\in\mathcal D^{(m)}_n}
+            z^n u^{\pk(D)}t^{\nne(D)}.
+\]
+The three rows of the table contribute, respectively,
+$zF^m(F-1)$, $zuF^{m-1}(F-1)$ and $zutF^{m-1}$. Hence
+\begin{equation}\label{eq:F}
+ F=1+zF^{m-1}\bigl(F(F-1)+u(F-1)+ut\bigr).
+\end{equation}
+Set $Y=F-1$. Then $Y=z\phi(Y)$, where
+\[
+ \phi(v)=(1+v)^{m-1}\bigl(v(1+v)+u(v+t)\bigr).
+\]
+Formal Lagrange inversion \cite[Section~2.1]{Gessel2016} gives
+\[
+ [z^n]Y=\frac1n[v^{n-1}]\phi(v)^n.
+\]
+For example, this identity may be applied over $\mathbb Q(u,t)$, where
+$\phi(0)=ut$ is invertible. The defining recursion has a unique
+zero-constant-term solution whose coefficients belong to
+$\mathbb Q[u,t]$, so subsequent coefficient extraction is legitimate;
+no analytic convergence is involved.
+
+Selecting $u^k$ chooses $k$ of the $n$ factors $u(v+t)$ and yields
+\begin{align}
+ [z^nu^k]Y
+ &=\frac1n\binom nk[v^{n-1}]
+       (1+v)^{(m-1)n}v^{n-k}(1+v)^{n-k}(v+t)^k\notag\\
+ &=\frac1n\binom nk[v^{k-1}](1+v)^{mn-k}(v+t)^k.\label{eq:extraction}
+\end{align}
+The coefficient of $t^j$ in the last factor is $\binom kj v^{k-j}$.
+The remaining exponent of $v$ is $j-1$; the $j=0$ term vanishes.
+This proves \eqref{eq:formula}. Since $mn-k\geq k$, every displayed
+coefficient is positive. In particular,
+\[
+ [t]\W(t)=\binom{n-1}{k-1}>0,
+\]
+and the degree is $k$. For $k=1$ the formula gives $\W(t)=t$.
+As a consistency check, Vandermonde's identity gives
+\[
+ \W(1)=\frac1n\binom nk\binom{mn}{k-1}.
+\]
+
+\section{Real zeros and simplicity}
+
+The ordinary formula of B\'ona et al., as stated in
+\cite[Theorem~1]{WangZhang2024}, implies, for $r\geq2k+1$,
+\[
+ V_{r,k}(t)=\frac1k\binom r{k-1}
+                \sum_{j=1}^k\binom kj\binom{r-k-1}{j-1}t^j.
+\]
+Here the ordinary up and down letters correspond directly to $\N$ and
+$\E$, with no reversal of factors. Substituting $r=mn+1\geq2k+1$
+and using $\frac{k}{n}\binom nk=\binom{n-1}{k-1}$ proves
+\eqref{eq:ordinary}. The scalar is positive, so ordinary real-rootedness
+\cite[Theorem~27]{BonaEtAl2025} already proves real-rootedness in
+Theorem~\ref{thm:main}.
+
+We give a second, self-contained root argument to establish simplicity
+as well. Put
+\[
+ d=k-1,\qquad A=mn-k,\qquad b=A-d=mn-2k+1\geq1.
+\]
+Define
+\begin{equation}\label{eq:J}
+ J(x)=\sum_{\ell=0}^d\binom{d+1}{d-\ell}\binom{d+b}{\ell}
+           \left(\frac{x-1}{2}\right)^\ell
+           \left(\frac{x+1}{2}\right)^{d-\ell}.
+\end{equation}
+This is the classical Jacobi polynomial $P_d^{(1,b)}$;
+see \cite[Eq.~18.5.8 and Table~18.5.1]{DLMFJacobi} for the normalization
+and Rodrigues formula. Its leading coefficient is positive, so $\deg J=d$.
+The product rule gives
+\begin{equation}\label{eq:Rodrigues}
+ (1-x)(1+x)^bJ(x)=\frac{(-1)^d}{2^d d!}
+       \frac{d^d}{dx^d}\bigl((1-x)^{d+1}(1+x)^{d+b}\bigr).
+\end{equation}
+To check the identity directly, differentiate the first factor $d-\ell$
+times and the second factor $\ell$ times. After division by the weight,
+the resulting summand is
+\[
+ 2^{-d}(-1)^\ell\binom{d+1}{d-\ell}\binom{d+b}{\ell}
+                  (1-x)^\ell(1+x)^{d-\ell},
+\]
+which is the corresponding summand in \eqref{eq:J}.
+
+Let $q$ have degree less than $d$. Multiply \eqref{eq:Rodrigues} by $q$
+and integrate over $[-1,1]$. Integrating by parts $d$ times gives
+\begin{equation}\label{eq:orthog}
+ \int_{-1}^1 q(x)J(x)(1-x)(1+x)^b\,dx=0.
+\end{equation}
+All boundary terms vanish because
+$(1-x)^{d+1}(1+x)^{d+b}$ has zeros of order at least $d+1$ at both
+endpoints; the remaining integral contains $q^{(d)}=0$.
+
+Suppose $J$ had only $s<d$ sign-changing roots $x_1,\ldots,x_s$ in
+$(-1,1)$. Taking $q(x)=\prod_{i=1}^s(x-x_i)$ makes $qJ$ have one fixed,
+nonzero sign away from its finitely many zeros. Since the weight in
+\eqref{eq:orthog} is strictly positive in the interval, this contradicts
+\eqref{eq:orthog}. Thus $J$ has $d$ distinct roots, all in $(-1,1)$.
+For $d=0$, $J=1$ and the assertion is vacuous.
+
+Termwise substitution into \eqref{eq:J} now gives
+\begin{equation}\label{eq:transform}
+ (1-t)^d J\!\left(\frac{1+t}{1-t}\right)
+       =\sum_{\ell=0}^d\binom{k}{\ell+1}\binom A\ell t^\ell.
+\end{equation}
+All denominators cancel, so this is a polynomial identity. Each zero
+$x_i\in(-1,1)$ of $J$ gives the distinct negative zero
+$t_i=(x_i-1)/(x_i+1)$ on the right. These $d$ zeros exhaust its degree.
+Its constant term is $k$, and its value at $t=1$ is positive.
+Multiplying \eqref{eq:transform} by $\frac1n\binom nk t$ proves the
+remaining assertions of Theorem~\ref{thm:main}.
+
+The lower parameter boundary $m=2$, $k=n$ gives $b=1$, so the same
+positive-weight proof applies there. The functional equation
+\eqref{eq:F} is specific to $m\geq2$: an ordinary component may start
+with NE, allowing an NNE factor to cross its beginning. The ordinary
+result is used through \eqref{eq:ordinary}, rather than by specializing
+\eqref{eq:F} to $m=1$.
+
+\section{Exact checks and reproducibility}
+
+The proof above is independent of computation. The accompanying exact
+verifier checks the factor conventions, coefficients and root counts.
+Its implementation appends one north or east letter at a time and
+retains the numbers of each letter, the last two letters, and the two
+statistics. It checked all $1\leq k\leq n$ for
+\[
+ m\in\{2,3,4,7\},\quad 1\leq n\leq10,
+\]
+and for the nine additional pairs
+\[
+\begin{gathered}
+ (2,14),(2,16),(3,13),(5,8),(6,11),\\
+ (11,8),(17,5),(31,5),(100,3).
+\end{gathered}
+\]
+This gives $49$ pairs and $303$ polynomials. All coefficients agree with
+\eqref{eq:formula}. For $Q(t)=\W(t)/t$, exact signed Euclidean remainder
+chains count $k-1$ roots in $(-\infty,0)$ by Sturm's theorem
+\cite[Theorem~2.50]{BasuPollackRoy2006}, and the terminal gcd has degree
+zero. The latter check has the derivative Bézout interpretation
+$aQ+cQ'=1$ for suitable rational polynomials $a,c$, when $Q$ is
+nonconstant. The corresponding normalized derivative Bézout pair is
+described by Zeng \cite[Eq.~(1) and Lemma~2.1]{Zeng2026Bezout}.
+Only the coprimality test is needed here, and it is performed
+by exact polynomial division. For $k=1$, $Q=1$ is handled directly.
+
+The accompanying \texttt{verify.py} reproduces the $303$-polynomial
+check using only the Python standard library and additionally verifies
+eleven instances of \eqref{eq:Rodrigues} and \eqref{eq:transform} after
+clearing denominators. It records all coefficients, endpoint signs and
+root counts in \texttt{verification.json}; run it with
+\texttt{python3 verify.py}. The eleven $(d,b)$ inputs for the identity
+checks are explicitly listed in the script.
+These are exact finite observations; Theorem~\ref{thm:main} follows from
+the general decomposition, coefficient extraction and orthogonality
+argument.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof exploration, verification programming,
+literature checks and manuscript drafting. SymPy~1.14.0
+\cite{MeurerEtAl2017} was used for symbolic differentiation and expansion
+during proof exploration. A separate model pass examined
+the counting and root arguments and implemented the letter-based verifier.
+This assistance is not external human peer review. No proof-assistant
+formalization or floating-point root fit is used in the argument.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

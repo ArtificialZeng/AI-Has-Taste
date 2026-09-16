@@ -1,0 +1,23 @@
+Command: /usr/bin/time -f 'elapsed=%E maxrss_kb=%M' python3 evidence/research_block_transducer.py
+Date: 2026-09-06
+
+full_truth_table_rows=1048576 sha256=8daa099568b0ddd2641c338c7e006173826db9c18662d0f8330138b6be80f0d2
+output_counts=65536,65536,65536,65536,65536,65536,65536,65536,65536,65536,65536,65536,65536,65536,65536,65536
+interior_five_windows=3070 interior_six_windows=12286
+boundary_left_prefixes=8190 boundary_right_prefixes=4094 boundary_generic_suffixes=8191 short_left_words=1818 short_right_words=3630
+interface_left_contexts=511 interface_right_contexts=254 interface_pairs=129794 short_factor_pairs=15272
+i=0 left_words=1 right_words=1
+i=1 left_words=5 right_words=9
+i=2 left_words=21 right_words=41
+i=3 left_words=85 right_words=169
+i=4 left_words=341 right_words=681
+i=5 left_words=1365 right_words=2729
+i=6 left_words=5461 right_words=10921
+certificate=PASS scope=invariance_and_interface_decoupling_only
+elapsed=0:29.08 maxrss_kb=16128
+
+All truth-table entries and admissibility checks use exact Boolean/integer
+operations.  The SHA-256 digest serializes each lexicographically ordered
+five-block input followed by its one-byte output.  The script aborts on any
+failed assertion.  Its explicitly limited scope does not include the claim
+that the induced finite permutations are single cycles at every length.

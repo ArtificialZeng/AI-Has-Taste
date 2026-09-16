@@ -1,0 +1,180 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A 2-adic obstruction for an eighteen-variable rational moment system},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\Q}{\mathbb{Q}}
+
+\title{A 2-adic obstruction for an eighteen-variable\\rational moment system}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that there is no rational \(18\)-tuple whose second, fourth, and
+sixth power sums are respectively \(9\), \(27/4\), and \(45/8\).  No
+distinctness, nonzero-coordinate, sign, or interval hypothesis is imposed.
+After clearing a primitive common denominator, congruences modulo \(32\)
+exclude every possible 2-adic valuation of that denominator.  The proof is
+elementary and does not depend on a computational search.
+\end{abstract}
+
+\section{Context and statement}
+
+For a probability measure, a Chebyshev-type quadrature is an equal-weight
+formula matching a prescribed initial segment of moments~\cite{Peled2010}.
+In the interval-design literature, the qualifier ``strict'' requires
+distinct nodes, whereas
+the unqualified notion allows repetitions~\cite{MisawaMunemasaSawa2026}.
+The even moments of the arcsine probability measure on \([-1,1]\) are
+\[
+  \int_{-1}^{1}t^{2r}\frac{dt}{\pi\sqrt{1-t^2}}
+  =\frac{\binom{2r}{r}}{4^r}.
+\]
+For the corresponding Jacobi weight
+\(w_{-1/2,-1/2}\), the Gaussian rule has equal weights, and an
+\(N\)-node Gaussian rule is exact through degree \(2N-1\)
+~\cite{GilboaPeled2017}.  Taking \(N=18\) therefore gives a real
+\(18\)-tuple with the three target moments below.  The obstruction proved in
+this paper is specifically to choosing all eighteen coordinates rational.
+Consequently the normalized target moments \(1/2,3/8,5/16\) lead, for
+eighteen equal-weight rational coordinates, to the arithmetic system below.
+These are precisely the Hilbert--Kamke equations attached to antipodal
+rational \(7\)-designs for the Chebyshev measure; Mishima--Lu--Sawa--Uchida
+exclude \(N\leq16\) and pose the range \(N\geq17\)~
+\cite{MishimaLuSawaUchida2026}.  The system by itself is weaker than a strict
+quadrature or design problem: it does not require nodes in \([-1,1]\),
+distinct nodes, or the matching of odd moments.
+
+A closely related preprint concerns the analogous \(17\)-variable system;
+its deposited abstract reports nonexistence, also without distinctness or
+interval assumptions, by an elementary 2-adic argument~
+\cite{Zeng2026SSRN7385178}.  The
+proof below independently treats all eighteen variables and uses only the
+displayed moment equations.  We make no priority claim beyond this comparison.
+
+\begin{theorem}\label{thm:main}
+There is no tuple \((x_1,\ldots,x_{18})\in\Q^{18}\) satisfying
+\[
+ \sum_{j=1}^{18}x_j^2=9,\qquad
+ \sum_{j=1}^{18}x_j^4=\frac{27}{4},\qquad
+ \sum_{j=1}^{18}x_j^6=\frac{45}{8}.
+\]
+This assertion allows zero and repeated coordinates, arbitrary signs, and
+coordinates outside \([-1,1]\).
+\end{theorem}
+
+\section{The congruence obstruction}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose that a solution exists.  Choose integers
+\(a_1,\ldots,a_{18}\) and a positive integer \(D\) such that
+\[
+  x_j=\frac{a_j}{D},\qquad
+  \gcd(D,a_1,\ldots,a_{18})=1.
+\]
+Writing \(S_r=\sum_{j=1}^{18}a_j^r\), clearing denominators gives
+\begin{equation}\label{eq:cleared}
+ S_2=9D^2,\qquad S_4=\frac{27D^4}{4},\qquad
+ S_6=\frac{45D^6}{8}.
+\end{equation}
+The denominator \(D\) is even.  Indeed, if \(D\) were odd, the identity
+\(4S_4=27D^4\) would equate an integer divisible by \(4\) with an odd
+integer.  Put \(D=2^k d\), where \(k\geq1\) and \(d\) is odd.  Primitivity
+then ensures that at least one \(a_j\) is odd.
+
+Let \(O\) denote the number of odd \(a_j\).  For every odd integer \(a\),
+define \(p(a)\in\mathbb Z/4\mathbb Z\) by
+\[
+ a^2\equiv1+8p(a)\pmod {32}.
+\]
+Squaring and multiplying this congruence gives
+\begin{equation}\label{eq:odd-powers}
+ a^4\equiv1+16p(a),\qquad
+ a^6\equiv1-8p(a)\pmod {32}.
+\end{equation}
+Set
+\[
+ P=\sum_{a_j\ \mathrm{odd}}p(a_j)\in\mathbb Z/4\mathbb Z,
+\]
+and let \(E\) and \(F\) count the indices for which \(v_2(a_j)=1\) and
+\(v_2(a_j)=2\), respectively.  Modulo \(32\), an integer of 2-adic
+valuation \(1\) contributes \((4,16,0)\) to
+\((a^2,a^4,a^6)\); one of valuation \(2\) contributes \((16,0,0)\); and
+one of valuation at least \(3\) contributes \((0,0,0)\).  Together with
+\eqref{eq:odd-powers}, this yields
+\begin{align}
+ S_2&\equiv O+8P+4E+16F,\label{eq:s2}\\
+ S_4&\equiv O+16P+16E,\label{eq:s4}\\
+ S_6&\equiv O-8P\pmod {32}.\label{eq:s6}
+\end{align}
+
+First suppose \(k=1\).  Because \(d\) is odd, the right-hand sides of
+\eqref{eq:cleared} are congruent to \((4,12,8)\) modulo \(32\).  Reducing
+the fourth-power identity modulo \(16\) gives
+\(O\equiv12\pmod {16}\).  Since \(1\leq O\leq18\), this forces \(O=12\).
+The sixth-power identity modulo \(8\), however, gives
+\(O\equiv0\pmod8\), a contradiction.
+
+It remains to consider \(k\geq2\).  In this case both \(S_4\) and \(S_6\)
+vanish modulo \(32\).  Equation~\eqref{eq:s4} modulo \(16\) gives
+\(O\equiv0\pmod {16}\), and hence \(O=16\).  Equation~\eqref{eq:s6}
+then gives \(P\equiv2\pmod4\), while substitution into
+\eqref{eq:s4} shows that \(E\) is odd.  Exactly two numerators are even,
+so \(E=1\).  The other even numerator has valuation \(2\) or at least
+\(3\), and therefore \(F\in\{0,1\}\).  Equation~\eqref{eq:s2} now gives
+\[
+ S_2\equiv4+16F\in\{4,20\}\pmod {32}.
+\]
+On the other hand, the first identity in \eqref{eq:cleared} gives
+\(S_2\equiv16\pmod {32}\) when \(k=2\), and
+\(S_2\equiv0\pmod {32}\) when \(k\geq3\).  Both possibilities are
+contradictions.  Thus every possible value of \(v_2(D)\) is excluded.
+\end{proof}
+
+\section{Exact verification and limitations}
+
+The residue calculation admits a finite exact check that is independent of
+the case analysis.  For each residue \(a\in\mathbb Z/32\mathbb Z\), record
+\((a^2,a^4,a^6,\epsilon(a))\), where \(\epsilon(a)\) records whether \(a\)
+is odd.  Starting from the zero state, iteratively add one such contribution
+for each of eighteen coordinates, always reducing the first three entries
+modulo \(32\).  Exact integer dynamic programming leaves \(520\) compressed
+states.  Among states with an odd coordinate, none has power-sum triple
+\[
+ (4,12,8),\qquad (16,0,0),\qquad (0,0,0),
+\]
+the respective targets for \(v_2(D)=1\), \(v_2(D)=2\), and
+\(v_2(D)\geq3\).  This finite check corroborates the proof but is not used
+to establish the theorem.
+
+The result resolves only the rational system in Theorem~\ref{thm:main}.
+It does not assert nonexistence over the reals, nor does it classify systems
+with other numbers of coordinates or other target moments.
+
+\paragraph{Computational and AI assistance.}
+AI tools assisted with proof search, exact finite-check design, audit support,
+and manuscript preparation.  The modular proof was subsequently reconstructed
+and checked line by line in a separate mathematical review.  The dynamic
+program described above used exact integer arithmetic and supplies corroboration
+only; no floating-point calculation or computational search is an input to the
+proof.  Bibliographic claims about the \(17\)-variable preprint are restricted
+to its deposited metadata and abstract.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,258 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\GB}{\Gamma_{B}}
+\newcommand{\qB}{q_{B}}
+
+\title{Nine $B$-Colors Suffice Through Ten Vertices for\\
+$3$-Degenerate $K_{3,4}$-Free Graphs of Maximum Degree at Most Four}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\hypersetup{
+  pdftitle={Nine B-Colors Suffice Through Ten Vertices for 3-Degenerate K3,4-Free Graphs of Maximum Degree at Most Four},
+  pdfauthor={Xiaojian Zeng},
+  pdfkeywords={B-coloring, graph coloring, degeneracy, exact enumeration, SAT, computer-assisted proof}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A $B$-coloring is a proper edge-coloring in which every $4$-cycle is
+rainbow.  Hu, Kong, and Wang showed that the maximum $B$-chromatic index
+$M_3(4)$ over finite simple $3$-degenerate, $K_{3,4}$-free graphs of maximum
+degree at most four is either nine or ten.  We prove the following exact
+finite result by exhaustive generation and checked coloring: every graph in
+this class on at most ten vertices has $B$-chromatic index at most nine.  The
+bound is sharp, since $K_{3,3}$ has $B$-chromatic index nine.  Consequently,
+any graph in the class with $B$-chromatic index ten has a connected component
+on at least eleven vertices.  The computation enumerates exact isomorphism
+classes, checks every returned SAT coloring edge by edge, and separately
+repeats each colorability decision with an exact DSATUR backtracker.  This
+finite theorem does not determine $M_3(4)$; the original problem remains
+unresolved.
+\end{abstract}
+
+\noindent\textbf{Keywords.} $B$-coloring; graph coloring; degeneracy;
+exact enumeration; SAT; computer-assisted proof.\\
+\textbf{2020 Mathematics Subject Classification.} 05C15, 05C35, 05--04.
+
+\section{Problem and contribution}
+
+Let $G$ be a finite simple graph.  A \emph{$B$-coloring} of $G$ is a proper
+edge-coloring for which the four edges of every simple $4$-cycle receive
+pairwise distinct colors.  Its minimum number of colors is denoted by
+$\qB(G)$.  Equivalently, the \emph{$B$-conflict graph} $\GB(G)$ has vertex set
+$E(G)$, with two edges adjacent when they share an endpoint or are opposite
+edges of a $4$-cycle; then
+\[
+  \qB(G)=\chi(\GB(G)).
+\]
+These definitions and the extremal problem considered here are due to Hu,
+Kong, and Wang~\cite{HuKongWang2026}.
+
+Call $G$ \emph{legal} if it is $3$-degenerate, has maximum degree at most
+four, and contains no copy of $K_{3,4}$ (the copy need not be induced).  Thus
+every nonempty subgraph of a legal graph has a vertex of degree at most three.
+Hu, Kong, and Wang proved that $\qB(G)\leq 10$ for every legal $G$, while
+$K_{3,3}$ gives the lower bound nine.  In their notation,
+\[
+  9\leq M_3(4)\leq 10,
+\]
+and they ask which value occurs~\cite[Theorem~2.8 and
+Problem~4.1]{HuKongWang2026}.
+
+Our contribution is restricted to graphs of order at most ten.
+
+\begin{theorem}\label{thm:main}
+Every finite simple legal graph $G$ on at most ten vertices satisfies
+$\qB(G)\leq 9$.  This bound is sharp.  Consequently, if a legal graph $H$
+satisfies $\qB(H)=10$, then some connected component of $H$ has at least
+eleven vertices.
+\end{theorem}
+
+This is an order-bounded theorem, not a resolution of the extremal problem.
+Exact finite certification has also recently been used for restricted graph
+problems in which a structural reduction is followed by canonical cases and
+independently checked witnesses; for example, Zeng~\cite{Zeng2026Tuza}
+reduces a split-graph statement to $44{,}702$ canonical records carrying
+explicit packing and covering certificates.  Here the objects are instead
+unlabeled legal graphs, and the decisive witness for each class is a verified
+nine-coloring of its $B$-conflict graph.  This comparison is methodological;
+neither result implies the other.
+
+\section{Reduction to connected isomorphism classes}
+
+\begin{lemma}\label{lem:components}
+If $G$ has connected components $G_1,\dots,G_t$, then
+\[
+  \GB(G)=\GB(G_1)\mathbin{\dot\cup}\cdots\mathbin{\dot\cup}\GB(G_t)
+  \quad\text{and}\quad
+  \qB(G)=\max_i\qB(G_i).
+\]
+\end{lemma}
+
+\begin{proof}
+Two edges in distinct components neither meet nor lie on a common $4$-cycle.
+Thus there are no conflict-graph edges between different components, and the
+chromatic number of the disjoint union is the maximum of the component
+chromatic numbers.
+\end{proof}
+
+It therefore suffices to enumerate connected legal graphs.  Orders at most
+seven are taken from the Graph Atlas of Read and Wilson~\cite{ReadWilson1998}
+through NetworkX's \texttt{graph\_atlas\_g} interface
+\cite{HagbergSchultSwart2008}.  That interface contains one representative
+of every simple isomorphism class on at most seven vertices.
+
+For the subsequent orders we use the following elementary induction.
+
+\begin{lemma}\label{lem:generation}
+Suppose one representative of every connected legal graph on $n-1$ vertices
+is available, where $n\geq 2$.  Extending every representative by a new
+nonisolated vertex in every neighborhood of size at most four, discarding
+illegal graphs, and deduplicating by exact graph isomorphism produces one
+representative of every connected legal graph on $n$ vertices.
+\end{lemma}
+
+\begin{proof}
+Every connected graph on at least two vertices has a vertex whose deletion
+leaves the graph connected: take a leaf of a spanning tree.  Maximum degree
+at most four, $3$-degeneracy, and $K_{3,4}$-freeness are hereditary under
+vertex deletion.  Deleting such a vertex from a connected legal $n$-vertex
+graph therefore gives a connected legal graph represented at order $n-1$.
+Restoring the vertex is precisely one of the enumerated nonempty
+neighborhoods, and each chosen neighbor had degree below four before the
+restoration.  Conversely, the legality test discards every extension outside
+the class.  Exact isomorphism deduplication proves the assertion.
+\end{proof}
+
+The implementation first buckets extensions by degree sequence, triangle
+count, and a Weisfeiler--Lehman hash.  These quantities are used only as
+isomorphism invariants to reduce comparisons.  Every decision that two graphs
+are duplicates is made by an exact NetworkX graph-isomorphism test; the hash
+is never treated as a certificate of isomorphism.
+
+The legality tests directly implement the defining predicates.  Maximum
+degree is read from the degree sequence.  A graph is $3$-degenerate exactly
+when its maximum core number is at most three.  Finally, a simple graph
+contains a (not necessarily induced) $K_{3,4}$ exactly when some triple of
+vertices has at least four common neighbors.  At order ten an optimized
+extension test is used.  Since the base is legal, any newly created
+$K_{3,4}$ uses the new vertex.  If the new vertex lies on the four-vertex
+side, three vertices in its neighborhood have three old common neighbors.  If
+it lies on the three-vertex side, its degree is four and two old vertices are
+adjacent to all four of its neighbors.  These are exactly the two cases
+tested.  Before the full order-ten run, this optimized predicate was compared
+with the complete common-neighbor predicate on every extension of the first
+$300$ order-nine representatives, with no disagreement.
+
+\section{Exact coloring certification}
+
+For each representative $G$, the program orders $E(G)$ and constructs
+$\GB(G)$.  For distinct edges $uv$ and $xy$, it inserts a conflict when the
+edges meet or, if they are disjoint, when either
+\[
+  ux,vy\in E(G) \qquad\text{or}\qquad uy,vx\in E(G).
+\]
+The latter condition is equivalent to the two edges being opposite on a
+simple $4$-cycle.
+
+Nine-colorability is encoded in CNF.  For every vertex $e$ of $\GB(G)$ and
+color $c\in\{1,\dots,9\}$ there is a Boolean variable $x_{e,c}$.  Clauses
+require exactly one color at each vertex, and for every conflict $ef$ and
+every color $c$ the clause $\neg x_{e,c}\lor\neg x_{f,c}$ forbids equality.
+The instances are solved through PySAT~\cite{IgnatievMorgadoMarquesSilva2018}
+using Glucose4, from the Glucose family of CDCL solvers
+\cite{AudemardSimon2009}.  Every satisfying assignment is decoded, checked
+to give exactly one color per conflict-graph vertex, and checked against every
+conflict edge.
+
+As a second colorability decision, a separate exact backtracker uses the
+DSATUR rule~\cite{Brelaz1979}: it branches on an uncolored vertex with maximum
+color saturation, breaking ties by degree, and exhausts all currently
+available colors.  This route shares the enumerated graphs and conflict-graph
+construction with the SAT route, but not its encoding or solver.  The two
+decisions agreed for every enumerated class.
+
+\begin{table}[ht]
+\centering
+\caption{Exact exhaustive screens.  The first row combines all orders at
+most seven; raw extensions and isomorphism comparisons apply only to the
+inductively generated top order.}
+\label{tab:counts}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Order & Connected legal classes & Raw legal extensions & Exact iso comparisons
+  & Non-$9$-colorable \\
+\midrule
+$\leq 7$ & $456$    & ---       & ---       & $0$ \\
+$8$       & $1{,}918$  & $15{,}791$  & $13{,}929$  & $0$ \\
+$9$       & $12{,}177$ & $116{,}290$ & $104{,}581$ & $0$ \\
+$10$      & $89{,}299$ & $933{,}827$ & $849{,}829$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All counts in Table~\ref{tab:counts} are integer counts of exact objects, and
+all colorability answers are exact.  No floating-point calculation is used
+to decide legality, isomorphism, conflict, or colorability.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemma~\ref{lem:generation}, the Atlas screen and the three inductive
+generation steps cover every connected legal isomorphism class on at most ten
+vertices.  The checked SAT coloring gives a proper nine-coloring of
+$\GB(G)$ for every representative; isomorphism preserves this property.
+Lemma~\ref{lem:components} extends the conclusion to arbitrary legal graphs
+on at most ten vertices; the empty graph is immediate.
+
+For sharpness, $K_{3,3}$ is legal and has nine edges.  Any two of its edges
+either meet or are opposite on a $4$-cycle, so $\GB(K_{3,3})=K_9$ and
+$\qB(K_{3,3})=9$.  Finally, if a legal graph has $B$-chromatic index ten,
+Lemma~\ref{lem:components} gives a component of index ten.  The finite result
+forces that component to have at least eleven vertices.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The accompanying source archive contains four Python programs and their
+recorded outputs: \texttt{atlas\_screen.py},
+\texttt{n8\_sat\_screen.py}, \texttt{n9\_sat\_screen.py}, and
+\texttt{n10\_sat\_screen.py}.  The top-order program reconstructs all lower
+orders before generating order ten.  The recorded full run used Python
+$3.10.12$, NetworkX $3.4.2$, PySAT $1.8.dev24$, and the PySAT solver name
+\texttt{g4}.  A clean full rerun reproduced the order-ten counts and all
+recorded deterministic digests.  The programs also record graph6 digests of
+the representative multisets and digests of the checked coloring records,
+allowing byte-level comparison of future runs.
+
+The theorem is finite.  In particular, the absence of a ten-color witness
+through order ten cannot be extrapolated to graphs of arbitrary order.  No
+finite-order reduction beyond Lemma~\ref{lem:generation} is claimed, and no
+universal nine-coloring argument is supplied.  Thus the possibilities
+$M_3(4)=9$ and $M_3(4)=10$ both remain compatible with this result.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with route exploration, implementation and checking of
+the enumeration, literature triage, and preparation of the manuscript.  SAT
+solving was used only to produce colorings that were checked directly; the
+separate DSATUR backtracker repeated every decision.  The author reviewed the
+mathematical statement, proof, code, computational scope, citations, and
+manuscript, and takes responsibility for them.  No AI system was treated as
+an author or as mathematical authority, and no claim of formal proof-assistant
+verification is made.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

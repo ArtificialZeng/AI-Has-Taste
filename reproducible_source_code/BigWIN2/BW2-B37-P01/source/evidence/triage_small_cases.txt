@@ -1,0 +1,16 @@
+Command: python3 evidence/triage_small_cases.py
+Date: 2026-09-06
+
+i=0 family_k=0 predicted=3 first_return=3 match=True
+i=1 family_k=2 predicted=135 first_return=135 match=True
+i=2 family_k=4 predicted=2583 first_return=2583 match=True
+i=3 family_k=6 predicted=43095 first_return=43095 match=True
+
+All operations are exact bit/set operations.  A state is represented by the
+two uniform background bits and the finite sets on which its two components
+differ from that background.  At one update, every possible new defect lies
+either at an old memory defect or within radius one of an old current defect;
+the script evaluates exactly that exhaustive candidate set.  Equality of the
+background bits and both defect sets is equality of the configurations on all
+of Z.  The reported first positive recurrence is therefore the least period
+within each completed search, not merely a return time.

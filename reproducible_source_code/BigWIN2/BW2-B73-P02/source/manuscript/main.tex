@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\F}{\mathbb F}
+\newcommand{\dminus}{\mathbin{\dot{-}}}
+
+\title{The Exact Prime Threshold for a Short Arithmetic\
+Point-Count Formula for Weierstrass Cubics}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Dumitru and Prunescu proved that their short arithmetic term gives the
+affine point count of every Weierstrass cubic over \(\F_p\) when \(p\geq17\).
+We show that this lower bound is exact for the corresponding universal
+statement.  At \(p=5,7,11,13\), respectively, the nonsingular pairs
+\((A,B)=(1,1),(0,1),(1,3),(0,4)\) give the actual affine counts
+\(8,11,17,20\), whereas the arithmetic term gives \(3,4,6,7\).
+The evaluations use integer coefficient extraction and complete quadratic
+residue counts.  Consequently, for every odd prime \(p>3\), the term is
+correct for all \(A,B\in\F_p\) if and only if \(p\geq17\).
+\end{abstract}
+
+\section{Statement and context}
+
+For nonnegative integers, write \(u\dminus v=\max\{u-v,0\}\).  Let \(p>3\)
+be an odd prime and represent \(A,B\in\F_p\) by their canonical integers in
+\(\{0,\ldots,p-1\}\).  Put
+\[
+ e=\frac{p-1}{2},\qquad q=2^{p^2},
+\]
+and define
+\begin{align}
+ d_p(A,B)
+   &=\left(\left\lfloor
+       \frac{(q^3+Aq+B)^e}{q^{p-1}}
+      \right\rfloor\bmod q\right),
+ &r_p(A,B)&=d_p(A,B)\bmod p,                                      \label{eq:r}\\
+ \widehat N_p(A,B)
+   &=(p\dminus r_p)+p\Bigl(1\dminus
+      \bigl((4p+1)\dminus r_p^2\bigr)\Bigr).                     \label{eq:nhat}
+\end{align}
+These are equations (4) and (5), with the notation compressed, of Dumitru
+and Prunescu~\cite{DumitruPrunescu2026}.  Let
+\[
+ N_p(A,B)=\#\{(x,y)\in\F_p^2:y^2=x^3+Ax+B\};
+\]
+this is an affine count, so no point at infinity is included.
+
+\begin{theorem}\label{thm:main}
+For every odd prime \(p>3\),
+\[
+ \bigl(\widehat N_p(A,B)=N_p(A,B)\text{ for every }A,B\in\F_p\bigr)
+ \quad\Longleftrightarrow\quad p\geq17.
+\]
+\end{theorem}
+
+The sufficient direction---the identity for all parameters at every prime
+\(p\geq17\)---is precisely Theorem~3 of
+\cite{DumitruPrunescu2026}, including singular cubics.  Its recentering step
+uses the Hasse bound, originating in Hasse's work on elliptic function
+fields~\cite{Hasse1936}.  The contribution here is the converse: four exact
+evaluations exhaust the excluded prime range and show that the published
+threshold cannot be lowered for the universal assertion.  The biconditional
+formulation and these four witnesses are not claims made in
+\cite{DumitruPrunescu2026}.
+
+There is a recent, methodologically different example of completing the
+boundary left by a prime-field theorem in
+Zeng, Liu, and Ratnavelu~\cite{ZengLiuRatnavelu2026}; there the boundary is
+settled by a structural equality case rather than by finite counterexamples.
+That work is contextual and is not an input to the proof below.
+
+\section{Exact lower-prime evaluations}
+
+Write
+\[
+ (x^3+Ax+B)^e=\sum_m c_mx^m.
+\]
+If a monomial contributing to \(c_{p-1}\) chooses \(i\) copies of \(x^3\),
+\(j\) copies of \(Ax\), and \(k\) copies of \(B\), then
+\begin{equation}
+ i+j+k=e,\qquad 3i+j=p-1,                                      \label{eq:constraints}
+\end{equation}
+and its value is
+\begin{equation}
+ \frac{e!}{i!j!k!}A^jB^k.                                     \label{eq:multinomial}
+\end{equation}
+For the four pairs in the abstract, the nonzero terms are as follows.
+
+\begin{center}
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+\(p\) & \(A\) & \(B\) & nonzero \((i,j,k)\) & \(c_{p-1}\) & \(r_p\) \\
+\midrule
+5  & 1 & 1 & \((1,1,0)\) & \(2\)   & 2 \\
+7  & 0 & 1 & \((2,0,1)\) & \(3\)   & 3 \\
+11 & 1 & 3 & \((3,1,1)\) & \(60\)  & 5 \\
+13 & 0 & 4 & \((4,0,2)\) & \(240\) & 6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These coefficients are the literal digits \(d_p(A,B)\), not merely values
+congruent to them modulo \(p\).  Indeed,
+\[
+ (q^3+Aq+B)^e=\sum_m c_mq^m.
+\]
+All coefficients are nonnegative, and their sums in the four rows are
+\[
+ (1+A+B)^e=9,\ 8,\ 3125,\ 15625,
+\]
+respectively.  These are smaller than the corresponding radices
+\(2^{25},2^{49},2^{121},2^{169}\).  Thus there is no carry between base-
+\(q\) digits, and the division and remainder in \eqref{eq:r} extract exactly
+\(c_{p-1}=2,3,60,240\).  Reduction modulo \(p\) gives the displayed values of
+\(r_p\).
+
+It remains to count the points without approximation.  For
+\(f(x)=x^3+Ax+B\), direct evaluation at every \(x\in\F_p\) gives
+{\small
+\begin{align*}
+p=5:  &&(f(0),\ldots,f(4))&=(1,3,1,1,4),\\
+p=7:  &&(f(0),\ldots,f(6))&=(1,2,2,0,2,0,0),\\
+p=11: &&(f(0),\ldots,f(10))&=(3,5,2,0,5,1,5,1,6,4,1),\\
+p=13: &&(f(0),\ldots,f(12))&=(4,5,12,5,3,12,12,9,9,5,3,9,3).
+\end{align*}}
+The nonzero square sets and the resulting complete fibre counts are
+
+\begin{center}
+\begin{tabular}{@{}clccccc@{}}
+\toprule
+\(p\) & nonzero squares & zeros & square values & nonsquares
+      & \(N_p\) & \(\widehat N_p\) \\
+\midrule
+5  & \(\{1,4\}\)             & 0 & 4  & 1 & 8  & 3 \\
+7  & \(\{1,2,4\}\)           & 3 & 4  & 0 & 11 & 4 \\
+11 & \(\{1,3,4,5,9\}\)       & 1 & 8  & 2 & 17 & 6 \\
+13 & \(\{1,3,4,9,10,12\}\)   & 0 & 10 & 3 & 20 & 7 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Here a zero value has one square root, a nonzero square has two, and a
+nonsquare has none, so the sixth column is \(\text{zeros}+2\cdot
+\text{square values}\).  In all four rows \(r_p^2\leq4p\).  Hence the second
+term in \eqref{eq:nhat} vanishes and
+\(\widehat N_p=p-r_p=3,4,6,7\), proving each mismatch in the last two
+columns.  Finally,
+\[
+ 4A^3+27B^2\pmod p=1,6,5,3,
+\]
+respectively, so all four cubics are nonsingular.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For every prime \(p\geq17\), Theorem~3 of
+\cite{DumitruPrunescu2026} gives \(\widehat N_p(A,B)=N_p(A,B)\) for every
+parameter pair, including pairs defining singular cubics.  For orientation,
+their proof shows that \(r_p\) is the residue modulo \(p\) of
+\(a_p=p-N_p\) and that \(|a_p|\leq2\sqrt p\); when \(p\geq17\), exactly one
+of \(r_p\) and \(r_p-p\) lies in that interval, and the test
+\(r_p^2\leq4p\) in \eqref{eq:nhat} selects it.
+
+The primes strictly between \(3\) and \(17\) are exactly
+\(5,7,11,13\).  The calculations above give one pair \((A,B)\) at each of
+these primes for which \(\widehat N_p(A,B)\ne N_p(A,B)\).  Thus the
+universally quantified identity fails at every admissible prime below 17 and
+holds at every admissible prime at least 17.
+\end{proof}
+
+\section{Reproducibility, scope, and assistance}
+
+The four rows were checked with exact integer arithmetic in two separately
+written Python implementations.  One evaluates \eqref{eq:r} literally,
+expands the polynomial by convolution, and enumerates all \(p^2\) affine
+pairs.  The other uses \eqref{eq:multinomial} and counts square-map fibres.
+Both reproduce every digit, residue, point count, value of \eqref{eq:nhat},
+and discriminant displayed above.  No floating-point computation or random
+search enters the result; the tables also provide a self-contained manual
+certificate.
+
+This theorem concerns the universal formula over prime fields only.  It does
+not classify the parameter pairs for which the term happens to work below
+17, and it makes no assertion about composite moduli or extension fields.
+The literature comparison was bounded to the cited sources, so no claim of
+priority is made for the short sharpness corollary.
+
+OpenAI Codex assisted with organizing the audited argument, checking the
+LaTeX presentation, and locating bibliographic records.  The mathematical
+claims were checked against the cited primary sources and the exact
+implementations described above; language-model output is not used as proof.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

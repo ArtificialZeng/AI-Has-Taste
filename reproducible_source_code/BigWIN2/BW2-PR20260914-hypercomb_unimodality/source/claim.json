@@ -1,0 +1,20 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every pair of integers n>=2 and ell>=3, let a=(1+(ell-2)x)(1+(ell-1)x), b=x(1+(ell-1)x), z0=1+ell*x, z1=(1+(ell-1)x)(a+2*x), F0=0, F1=1, and Fj=a*F_(j-1)+b*F_(j-2) for j>=2. Set Wn=z1*Fn and Yn=z0*b*F_(n-1), the Galvin-Sharpe Section 2.5 decomposition Cn=Wn+Yn. With zero-extended coefficients define P<=_lr Q by p_i*q_j>=p_j*q_i for all integers i<j. Then Wn<=_lr x^2*Yn and Yn<=_lr x*Wn. Hence the smallest coefficient-maximizing indices satisfy m(Yn)-1<=m(Wn)<=m(Yn)+2. In particular, Cn is nondecreasing up to r=min(m(Wn),m(Yn)) and nonincreasing from q=max(m(Wn),m(Yn)), where q-r<=2. The summand separation bound two is attained by unique modes 6 and 4 at n=3,ell=5. Full unimodality and log-concavity of Cn for all parameters remain unproved here.",
+  "contribution": "A proposed all-length, all-uniformity reduction of the possible nonmonotonicity interval from the journal O(sqrt(n)) band to at most two index steps, sharp for the chosen two summands. The proof uses a simultaneous likelihood-ratio recurrence invariant and explicit initial-factor comparisons. The interval is located by summand modes, not an explicit affine center. This is a partial theorem distinct from the September 2026 preprint asserting eventual strict log-concavity for each fixed weight pair; no independent acceptance or worldwide priority is claimed.",
+  "proposer_job_id": "primary-20260914-hypercomb-unimodality-research-c86b16750561",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/two-step-mode-proof.md",
+    "evidence/two_step_checks.py",
+    "evidence/two-step-checks.json",
+    "literature/research-mode-bound-screen.md",
+    "evidence/external/linear-hyperpaths-author-journal.pdf",
+    "evidence/external/2409.15555v5.pdf",
+    "evidence/external/capture-record.json",
+    "evidence/primary-statement-extract.txt",
+    "evidence/primary-section-2-5-extract.txt"
+  ]
+}

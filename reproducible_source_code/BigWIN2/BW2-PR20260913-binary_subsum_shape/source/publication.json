@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "title": "Boundary log-concavity of binary reciprocal-subsum numerators",
+  "author": "Xiaojian Zeng",
+  "source_files": [
+    "manuscript/README.md",
+    "manuscript/build/main.bbl",
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/supplement/README.md",
+    "manuscript/supplement/criterion.py",
+    "manuscript/supplement/kernel2.json",
+    "manuscript/supplement/kernel3.json",
+    "manuscript/supplement/strictness.json",
+    "manuscript/supplement/verify.py"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "cwd": "manuscript",
+    "command": [
+      "latexmk",
+      "-gg",
+      "-pdf",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-outdir=build",
+      "main.tex"
+    ],
+    "engine": "pdfLaTeX / TeX Live 2022; BibTeX 0.99d",
+    "final_log": "audit/write-build.log"
+  },
+  "writer_job_id": "primary-20260913-binary-subsum-shape-write-a0d9067b96b3",
+  "user_library_citations": [
+    {
+      "registry_row": 23,
+      "key": "ZengChollet",
+      "doi": "10.20944/preprints202608.1346.v1",
+      "support": "Exact algebraic positivity verification, primary Section 7"
+    }
+  ]
+}

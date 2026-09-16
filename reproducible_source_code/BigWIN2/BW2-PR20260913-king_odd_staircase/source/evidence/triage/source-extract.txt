@@ -1,0 +1,133 @@
+Primary HTML mathematical alttext extraction; all pictograms replaced by [diagram]; not an immutable source copy.
+
+Definition 2.1 (Partition Families).
+
+
+
+Given positive integers r,c, and k, the rectangle, staircase, hook, and generalized staircase partitions are defined respectively as
+
+
+
+
+\displaystyle[diagram]_{r,c}
+\displaystyle=\llbracket c^{r}\rrbracket,
+\displaystyle[diagram]^{k}
+\displaystyle=\llbracket k,k-1,k-2,\ldots,1\rrbracket,
+
+
+
+\displaystyle[diagram]_{r,c}
+\displaystyle=\llbracket c,1^{r-1}\rrbracket,
+\displaystyle[diagram]^{k}_{r,c}
+\displaystyle=\llbracket(kc)^{r},((k-1)c)^{r},\ldots,c^{r}\rrbracket.
+
+
+
+
+
+
+
+See Figure 2 for examples. These definitions imply [diagram]^{k}_{1,1}=[diagram]^{k}
+and
+[diagram]^{1}_{r,c}=[diagram]_{r,c}.
+
+
+Figure 2: Partitions corresponding to [diagram]^{6}, [diagram]_{6,4}, [diagram]_{6,4} and
+[diagram]^{2}_{3,2}.
+
+
+
+
+
+The parts of generalized staircases are easily computed from r,c, and k.
+
+Definition 3.1.
+
+
+
+We study the following impartial chess games.
+
+
+
+
+• 
+
+
+
+Downright is played on the moveset \mathcal{D}=\{(0,1),(1,0)\}.
+
+• 
+
+
+
+Pawn is played on the moveset \sympawn=\{(0,1),(1,1)\}.
+
+• 
+
+
+
+Knight is played on the moveset \symknight=\{(1,2),(2,1)\}.
+
+• 
+
+
+
+Bishop is played on the moveset \symbishop=(1,1)^{+}.
+
+• 
+
+
+
+King is played on the moveset \symking=\{(0,1),(1,0),(1,1)\}.
+
+• 
+
+
+
+Rook is played on the moveset \symrook=(1,0)^{+}\cup(0,1)^{+}.
+
+• 
+
+
+
+Queen is played on the moveset \symqueen=(1,1)^{+}\cup(1,0)^{+}\cup(1,1)^{+}.
+
+Theorem 3.8 (Berlekamp).
+
+
+
+Let r,c be positive integers. Then
+
+
+
+
+\mathbb{SG}_{\symking}\left([diagram]_{r,c}\right)=\begin{cases}0&\text{if $c$ and $r$ are odd}\\
+2&\text{if $c$ and $r$ are even}\\
+1&\text{if $c+r$ is odd and $\min(c,r)$ is odd}\\
+3&\text{if $c+r$ is odd and $\min(c,r)$ is even}\end{cases}
+
+Lemma 3.13.
+
+
+
+Let k\in\mathbb{Z}^{\geq 0}. Then \mathbb{SG}_{\symking}([diagram]^{k})=(k-1)\bmod 3.
+
+Lemma 3.14.
+
+
+
+Let r be even. Then \mathbb{SG}_{\symking}([diagram]^{k}_{r,r})=\begin{cases}2&\text{if $k=1$,}\\
+1&\text{otherwise.}\end{cases}
+
+Conjecture 5.1.
+
+
+
+Let r be odd and k\geq 1. Then
+
+
+
+
+\mathbb{SG}_{\symking}([diagram]^{k}_{r,r})=\begin{cases}0&\text{$k\bmod(r+2)$ is odd}\\
+1&\text{$k\bmod(r+2)$ is even and not 0}\\
+2&\text{$k\bmod(r+2)$ is 0}.\end{cases}

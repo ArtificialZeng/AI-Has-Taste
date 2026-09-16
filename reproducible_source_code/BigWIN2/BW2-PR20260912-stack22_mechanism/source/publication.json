@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "A direct first-return enumeration of (2,2)-stack-sortable permutations",
+  "author": "Xiaojian Zeng",
+  "writer_job_id": "primary-20260912-stack22-mechanism-write-f5df71ad8d65",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex"
+  },
+  "supplementary_documentation": "manuscript/REPRODUCIBILITY.md",
+  "citation_preparation": "audit/write-citation-notes.md",
+  "release_status": "draft-awaiting-fresh-release-review"
+}

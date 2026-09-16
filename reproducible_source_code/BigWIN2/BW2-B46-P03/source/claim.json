@@ -1,0 +1,19 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every pair of integers n >= 13 and w > n-1, let V_{n,w}=({1,2,...,n-1}\\{12}) union {w} and LR(V)=max_{0<=t<1} min_{v in V} ||vt||. Then LR(V_{n,w})=1/n if and only if (n,w)=(14,24). Moreover, LR(V_{14,24})=1/14; for the 20 pairs remaining after the cited theorem-based exhaustion, the exact LR value is respectively one of 2/59, 2/61, 2/65, or 2/67 as itemized in the evidence.",
+  "contribution": "This settles the frozen deletion-speed r=12 classification by combining the published large-deletion, effective-bound, and finite-census results with exact evaluation of every residual pair. The decisive primary source is frozen in the evidence at its recorded SHA-256, so a fresh referee can inspect the actual theorem hypotheses and census table. The residual values and the positive control are established in two structurally different rational computations: complete breakpoint enumeration and independently encoded closed-interval cover certificates with direct lower witnesses. This is a candidate for fresh mathematical audit, not a claim of priority beyond the bounded literature comparison already recorded.",
+  "proposer_job_id": "win-00046-p03-research-7ecc4a09ad31",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "literature/2608.13599v1.pdf",
+    "evidence/triage_bounds.md",
+    "evidence/lr_breakpoints.py",
+    "evidence/lr_breakpoints_results.json",
+    "evidence/lr_breakpoints.md",
+    "evidence/lr_interval_cover.py",
+    "evidence/lr_interval_cover_results.json",
+    "evidence/lr_interval_cover.md"
+  ]
+}

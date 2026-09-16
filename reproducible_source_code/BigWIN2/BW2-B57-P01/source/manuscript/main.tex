@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cut}{\operatorname{Cut}}
+
+\title{A Sharp Nonattained Clique--Web Ratio\\
+on a Three-Parameter Lorentzian Family}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\hypersetup{
+  pdftitle={A Sharp Nonattained Clique-Web Ratio on a Three-Parameter Lorentzian Family},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Sharp optimization on a Lorentzian matrix family}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an explicit three-parameter family of normalized positive Lorentzian
+matrices associated with a seven-vertex clique--web exponent, we determine
+the ratio supremum exactly.  It is
+\(\bigl((5+\sqrt5)/4\bigr)^{5/4}\), is not attained at any finite
+parameter triple, and is approached by a closed-form sequence lying on both
+boundary equations of the Lorentzian region.  We also recover the published
+feasibility criterion directly from an invariant-subspace decomposition.
+The result concerns only this family and does not determine the unrestricted
+bounded-ratio constant.
+\end{abstract}
+
+\section{Context and statement}
+
+Lorentzian polynomials provide a broad setting in which a Hessian has a
+single positive direction; see Br\"and\'en and Huh~\cite{BrandenHuh2020}.
+For a real symmetric matrix with nonnegative entries, we use the corresponding
+quadratic notion: the matrix is \emph{Lorentzian} if it has at most one
+positive eigenvalue.  Huang, Huh, Soskin, and Wang~\cite{HuangEtAl2025}
+introduced bounded ratios for such matrices, identified their cone with the
+dual of the cut cone, and conjectured that every normalized reduced ratio is
+bounded by~2.  Clique--web facets belong to the standard structure theory of
+cut cones~\cite[Sections~29.3--29.6]{DezaLaurent1997}.
+
+Baldi and Kummer~\cite{BaldiKummer2026} used a seven-vertex clique--web facet
+to disprove that conjectured bound.  Their construction uses, for
+\(r,q,t>0\),
+\[
+P(r,q,t)=
+\begin{pmatrix}
+1&r&q&q&r&t&t\\
+r&1&r&q&q&t&t\\
+q&r&1&r&q&t&t\\
+q&q&r&1&r&t&t\\
+r&q&q&r&1&t&t\\
+t&t&t&t&t&1&1\\
+t&t&t&t&t&1&1
+\end{pmatrix}.
+\]
+Let
+\[
+ z=x_{13}+x_{14}+x_{24}+x_{25}+x_{35}+x_{67}
+   -\sum_{i=1}^{5}(x_{i6}+x_{i7}),
+ \qquad \alpha=\frac{z}{4}.
+\]
+The coordinate sum of \(\alpha\) is \(-1\), and direct substitution gives
+\begin{equation}\label{eq:objective}
+ P(r,q,t)^\alpha
+ =\left(\frac{q^5}{t^{10}}\right)^{1/4}
+ =\left(\frac{q}{t^2}\right)^{5/4}.
+\end{equation}
+Baldi and Kummer proved that this matrix is Lorentzian precisely when
+\begin{equation}\label{eq:feasible}
+ r+q-2\geq \sqrt5\,|r-q|,
+ \qquad
+ t^2\geq \frac{1+2r+2q}{5},
+\end{equation}
+and exhibited the feasible point \((284,701,20)\), whose value exceeds~2.
+They did not optimize the displayed family.
+
+Restricting a matrix inequality to a structured normalized family and then
+determining its exact sharp ratio is also useful in other settings.  For
+example, Zeng, Liu, and Ratnavelu~\cite{ZengEtAl2026} determine a sharp
+permanent ratio on rank-two real correlation matrices by reducing to a
+low-dimensional exact minimization.  That positive-semidefinite permanent
+problem is otherwise unrelated to the Lorentzian ratio considered here.
+
+Define the family constant
+\[
+ C_{\mathrm{fam}}
+ :=\sup\left\{P(r,q,t)^\alpha:
+ r,q,t>0\ \text{and \eqref{eq:feasible} holds}\right\}.
+\]
+Our result resolves exactly this restricted optimization.
+
+\begin{theorem}\label{thm:main}
+One has
+\[
+ C_{\mathrm{fam}}=\left(\frac{5+\sqrt5}{4}\right)^{5/4}.
+\]
+No finite feasible triple attains this value.  For every integer \(n\geq1\),
+set
+\begin{equation}\label{eq:sequence}
+ q_n=n,\qquad
+ r_n=\frac{(\sqrt5-1)+(3-\sqrt5)n}{2},\qquad
+ t_n=\sqrt{\frac{\sqrt5+(5-\sqrt5)n}{5}}.
+\end{equation}
+Then \((r_n,q_n,t_n)\) is feasible and
+\[
+ P(r_n,q_n,t_n)^\alpha
+ =\left(\frac{5n}{\sqrt5+(5-\sqrt5)n}\right)^{5/4}
+ \longrightarrow
+ \left(\frac{5+\sqrt5}{4}\right)^{5/4}.
+\]
+\end{theorem}
+
+\section{The Lorentzian region}
+
+For completeness, we independently recover~\eqref{eq:feasible}.  Let
+\[
+ U=\langle e_6-e_7\rangle,
+ \quad
+ V=\langle e_6+e_7,e_1+\cdots+e_5\rangle,
+ \quad
+ W=\left\{(w_1,\ldots,w_5,0,0):\sum_{i=1}^5w_i=0\right\}.
+\]
+These subspaces give a direct sum of \(\R^7\) and are mutually orthogonal
+for the bilinear form represented by \(P\).  The restriction to \(U\) is
+zero.  In the displayed basis of \(V\), the Gram matrix is
+\[
+ \begin{pmatrix}
+ 4&10t\\
+ 10t&5+10r+10q
+ \end{pmatrix}.
+\]
+It has a positive direction.  Hence its restriction has at most one positive
+eigenvalue exactly when its determinant is nonpositive, or equivalently when
+\[
+ t^2\geq\frac{1+2r+2q}{5}.
+\]
+
+The upper-left \(5\times5\) block is circulant.  On \(W\), its two distinct
+eigenvalues, each of multiplicity two, are
+\[
+ 1-\frac{r+q}{2}\mathbin{\pm}\frac{\sqrt5}{2}(r-q).
+\]
+Both are nonpositive exactly when
+\(r+q-2\geq\sqrt5|r-q|\).  Since the restriction to \(V\) always has a
+positive direction, the two inequalities in~\eqref{eq:feasible} are together
+necessary and sufficient for \(P\) to have exactly one positive eigenvalue.
+This argument includes the equality cases and the unavoidable kernel on
+\(U\).
+
+\section{Sharp optimization and nonattainment}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Put \(s=\sqrt5\).  By~\eqref{eq:objective}, for fixed feasible \((r,q)\)
+the objective is strictly decreasing in \(t^2\).  Thus it suffices to take
+\[
+ t^2=\frac{1+2r+2q}{5}
+ \quad\text{and maximize}\quad
+ B(r,q):=\frac{5q}{1+2r+2q}.
+\]
+
+First suppose that \(r\leq q\).  The first inequality
+in~\eqref{eq:feasible} is then equivalent to
+\[
+ r\geq a(q):=\frac{(s-1)q+2}{s+1}
+ =\frac{(3-s)q+(s-1)}{2}.
+\]
+The interval \([a(q),q]\) is nonempty exactly when \(q\geq1\).  Because
+\(B(r,q)\) decreases with \(r\),
+\begin{equation}\label{eq:firstbranch}
+ B(r,q)\leq B(a(q),q)
+ =\frac{5q}{s+(5-s)q}
+ <\frac{5}{5-s}.
+\end{equation}
+The last inequality is strict for every finite \(q>0\), since the denominator
+on its left contains the additional positive term~\(s\).
+
+Now suppose that \(r\geq q\).  Feasibility is equivalent to
+\[
+ (s-1)r\leq(s+1)q-2,
+\]
+and compatibility with \(r\geq q\) again forces \(q\geq1\).  Therefore
+\begin{equation}\label{eq:secondbranch}
+ B(r,q)\leq\frac{5q}{1+4q}<\frac{5}{5-s}.
+\end{equation}
+Indeed, the last comparison is equivalent to
+\((5-s)q<1+4q\), which is immediate.  The two branches exhaust the feasible
+set, so every finite feasible triple satisfies
+\[
+ P(r,q,t)^\alpha
+ <\left(\frac{5}{5-s}\right)^{5/4}
+ =\left(\frac{5+s}{4}\right)^{5/4}.
+\]
+This proves the upper bound and already proves nonattainment.
+
+It remains to show sharpness.  For~\eqref{eq:sequence}, one has
+\[
+ q_n-r_n=\frac{(s-1)(n-1)}2,
+ \qquad
+ r_n+q_n-2=\frac{(5-s)(n-1)}2=s(q_n-r_n).
+\]
+Also \(q_n\geq r_n>0\), \(t_n>0\), and direct substitution gives
+\[
+ t_n^2=\frac{1+2r_n+2q_n}{5}.
+\]
+Thus both feasibility inequalities hold with equality.  Finally,
+\[
+ P(r_n,q_n,t_n)^\alpha
+ =\left(\frac{5n}{s+(5-s)n}\right)^{5/4}
+ \longrightarrow
+ \left(\frac{5}{5-s}\right)^{5/4},
+\]
+which supplies the matching lower bound.
+\end{proof}
+
+\section{Scope and comparison}
+
+The finite point of Baldi and Kummer gives
+\((701/400)^{5/4}\approx2.01638\).  Theorem~\ref{thm:main} replaces that
+single witness, within the same three-parameter family, by the exact family
+supremum, an attainment classification, and an exact extremal sequence.  No
+claim is made that \(C_{\mathrm{fam}}\) equals the global bounded-ratio
+constant \(f(\alpha)\), nor does this calculation provide a global upper
+bound for that constant.
+
+\paragraph{Computational and AI assistance.}
+AI-assisted tools were used for literature triage, symbolic cross-checks,
+and preparation of the \LaTeX{} manuscript.  Exact algebraic identities and
+the mathematical argument were checked independently; the proof above is
+self-contained and does not rely on floating-point computation.  The author
+takes responsibility for all statements and citations.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

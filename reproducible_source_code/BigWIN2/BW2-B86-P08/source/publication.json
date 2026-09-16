@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "build/main.pdf",
+  "build_command": "cd manuscript && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=../build main.tex",
+  "engine": "pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)",
+  "bibliography_tool": "BibTeX 0.99d with plainurl.bst"
+}

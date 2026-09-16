@@ -1,0 +1,354 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Nonexistence of an Order-17 C4-Free Graph with 123 Common-Neighbor Pairs},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\codeg}{\operatorname{codeg}}
+
+\title{Nonexistence of an Order-17 $C_4$-Free Graph\\
+with 123 Common-Neighbor Pairs}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that there is no finite simple graph $G$ on $17$ vertices for
+which every two distinct vertices have at most one common neighbor and
+$\sum_{v\in V(G)}\binom{d(v)}2=123$.  The codegree condition is equivalent
+to $C_4$-freeness.  Previous work excluded the planar case and reduced any
+remaining witness to maximum degree between $5$ and $9$.  A complete exact
+enumeration then leaves eight degree multisets.  Six are excluded by a
+local deficiency inequality, the seventh by parity in the leave of the
+common-neighbor relation, and the eighth by incompatible lower and upper
+bounds on triangle incidences.  Computation is used only for the finite
+degree-multiset reduction; all eight surviving cases are eliminated
+symbolically.
+\end{abstract}
+
+\noindent\textbf{Keywords.}
+Common neighbors; $C_4$-free graph; degree sequence; exact enumeration;
+triangle incidence.
+
+\medskip
+\noindent\textbf{MSC 2020.} 05C35, 05C07, 05C30.
+
+\section{The problem and the result}
+
+For distinct vertices $x,y$ of a simple graph $G$, write
+\[
+  \codeg_G(x,y)=|N_G(x)\cap N_G(y)|.
+\]
+Ascolese, Negrini, Pagani, and Pellegrini introduced the corresponding
+codegree-realization problem and gave a complete answer within the class of
+planar $C_4$-free graphs~\cite{AscoleseEtAl2026}.  In the version consulted,
+their Theorem~5.9 excludes the planar graph at the parameter below,
+Corollary~5.8 reduces a remaining witness to the nonplanar range
+$5\leq\Delta\leq9$, and the sentence following that corollary conjectures
+that this remaining case does not occur.  We prove precisely that
+nonexistence assertion.
+
+\begin{theorem}\label{thm:main}
+There is no finite simple undirected graph $G$ such that
+\[
+ |V(G)|=17,\qquad
+ \codeg_G(x,y)\leq1\quad(x\ne y),\qquad
+ \sum_{v\in V(G)}\binom{d(v)}2=123.
+\]
+\end{theorem}
+
+The finite part of the proof follows the certificate-aware practice of
+making the search domain, integer predicates, and independent checks
+explicit.  For comparison, this practice is also used in recent
+finite-library graph investigations based on exact integer predicates and
+independent verifiers~\cite{ZengEtAl2026Certificates}.  No mathematical
+result from that work is used here.
+
+\section{Reduction to eight degree multisets}
+
+Suppose for contradiction that $G$ satisfies the hypotheses of
+Theorem~\ref{thm:main}.  Two vertices have two distinct common neighbors if
+and only if the four vertices contain a (not necessarily induced) $4$-cycle.
+Thus $G$ is $C_4$-free.  Moreover,
+\[
+ \sum_{v}\binom{d(v)}2
+   =\sum_{\{x,y\}\in\binom{V(G)}2}\codeg_G(x,y).
+\]
+The codegree bound therefore says that exactly $123$ of the
+$\binom{17}{2}=136$ vertex pairs have one common neighbor and the other
+$13$ have none.
+
+The graph is connected.  Indeed, every pair of vertices in different
+components has no common neighbor, while a nontrivial partition of a
+$17$-element set has at least $1\cdot16=16$ cross-part pairs.
+
+Put $m=|E(G)|$.  The target equation and the handshaking lemma give
+\[
+ \sum_v d(v)^2=246+2m.
+\]
+Cauchy--Schwarz yields
+\[
+ 4m^2\leq17(246+2m).
+\]
+This inequality already fails at $m=37$, and the difference between its
+left- and right-hand sides is strictly increasing for $m\geq37$; hence
+$m\leq36$.  The cited planar exclusion and degree reduction now imply that
+$G$ is nonplanar and
+\begin{equation}\label{eq:delta-range}
+ 5\leq\Delta(G)\leq9.
+\end{equation}
+
+We shall also use the following necessary inequality, which is the
+specialization of Lemma~5.3 of~\cite{AscoleseEtAl2026}.  Its short proof is
+included to make the reduction transparent.
+
+\begin{lemma}\label{lem:source-ineq}
+For every vertex $x$ of a $C_4$-free graph on $17$ vertices,
+\begin{equation}\label{eq:source-ineq}
+ \binom{17-d(x)}2\geq
+ \sum_{y\ne x}\binom{d(y)-1}{2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $A=V(G)\setminus N(x)$, so $|A|=17-d(x)$.  For each $y\ne x$, at most
+one neighbor of $y$ lies in $N(x)$; consequently
+$|N(y)\cap A|\geq d(y)-1$.  If one pair $\{a,b\}\subseteq A$ lay in both
+$\binom{N(y)\cap A}{2}$ and $\binom{N(z)\cap A}{2}$ for distinct $y,z$,
+then $y$ and $z$ would have the two common neighbors $a,b$.  Hence these
+families of pairs are disjoint as $y$ varies.  Counting them inside
+$\binom A2$ proves~\eqref{eq:source-ineq}.
+\end{proof}
+
+\begin{lemma}[Exact degree reduction]\label{lem:eight}
+The degree multiset of $G$ must be one of the eight rows in
+Table~\ref{tab:degrees}.  In the table, $a^b$ means that $a$ occurs with
+multiplicity $b$, $h$ is the number of degree-$5$ vertices, and
+\[
+ S=\sum_{d(v)<5}d(v)(5-d(v)).
+\]
+\end{lemma}
+
+\begin{table}[ht]
+\centering
+\caption{The complete list surviving the degree-sequence filters.}
+\label{tab:degrees}
+\begin{tabular}{@{}cclrr@{}}
+\toprule
+case & $m$ & degree multiset & $h$ & $S$\\
+\midrule
+1 & 34 & $5^{12},2^3,1^2$       & 12 & 26\\
+2 & 34 & $5^{11},4^2,2,1^3$     & 11 & 26\\
+3 & 35 & $5^{11},4,3,2^4$       & 11 & 34\\
+4 & 35 & $5^{11},3^4,2,1$       & 11 & 34\\
+5 & 35 & $5^{10},4^3,3,2^2,1$   & 10 & 34\\
+6 & 35 & $5^9,4^5,3,1^2$        &  9 & 34\\
+7 & 36 & $5^9,4^3,3^5$          &  9 & 42\\
+8 & 36 & $5^8,4^6,3^2,2$        &  8 & 42\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proof}
+Connectedness,~\eqref{eq:delta-range}, and $m\leq36$ show that it is enough
+to inspect nonincreasing $17$-tuples $(d_1,\ldots,d_{17})$ in
+$\{1,\ldots,9\}^{17}$ satisfying
+\begin{equation}\label{eq:filters}
+ 5\leq d_1\leq9,\quad
+ \sum_i\binom{d_i}{2}=123,\quad
+ \sum_i d_i\ \text{is even and at most }72,
+\end{equation}
+together with graphicality and~\eqref{eq:source-ineq} for every entry.
+Graphicality was tested both with the Erd\H{o}s--Gallai criterion
+\cite{ErdosGallai1960} and with the Havel--Hakimi reduction
+\cite{Havel1955,Hakimi1962}.
+
+For completeness, an unpruned implementation traverses all
+\[
+ \binom{9+17-1}{17}=\binom{25}{17}=1{,}081{,}575
+\]
+multisets using a combinations-with-replacement iterator.  It retains a
+tuple exactly when the literal predicates in~\eqref{eq:filters}, the
+Erd\H{o}s--Gallai inequalities
+\[
+ \sum_{i=1}^k d_i\leq k(k-1)+\sum_{i=k+1}^{17}\min(d_i,k)
+ \quad(1\leq k\leq17),
+\]
+and~\eqref{eq:source-ineq} all hold.  The successive counts are $1{,}368$
+after the arithmetic predicates, $1{,}356$ after graphicality, and $8$
+after~\eqref{eq:source-ineq}, giving Table~\ref{tab:degrees}.
+
+Two separately written enumerators reproduce the list: one uses a pruned
+sorted-tuple recursion and a direct Erd\H{o}s--Gallai implementation; the
+other enumerates degree multiplicities and uses a direct Havel--Hakimi
+implementation.  The unpruned cross-check uses NetworkX~3.4.2
+\cite{HagbergEtAl2008} and requires its two graphicality methods to agree.
+All predicates and counters use integer arithmetic; no random choices or
+numerical tolerances occur.  Thus every positive degree multiset allowed by
+the preceding mathematical reductions is covered.
+\end{proof}
+
+\section{Local deficiency and triangle bounds}
+
+All rows of Table~\ref{tab:degrees} have maximum degree $5$.  Put
+\[
+ H=\{v:d(v)=5\},\qquad L=V(G)\setminus H,
+ \qquad \epsilon(v)=5-d(v).
+\]
+Thus $\epsilon(v)\geq0$ throughout the remaining argument.
+
+\begin{lemma}\label{lem:local}
+For every vertex $x$, let $r_x$ be the number of vertices $z\ne x$ with
+$\codeg_G(x,z)=0$, and let $t_x$ be the number of triangles containing
+$x$.  For $x\in H$, define
+\[
+ D_x=\sum_{y\in N(x)}\epsilon(y)
+\]
+Then
+\begin{align}
+ D_x&\geq4,\label{eq:D-lower}\\
+ r_x&=D_x-4.\label{eq:r-exact}
+\end{align}
+For every vertex $x$, moreover,
+\begin{equation}\label{eq:triangle-lower-local}
+ r_x\geq d(x)-2t_x.
+\end{equation}
+In particular, $r_x\geq1$ whenever $d(x)$ is odd.
+\end{lemma}
+
+\begin{proof}
+For fixed $x$, the sets
+\[
+ N(y)\setminus\{x\},\qquad y\in N(x),
+\]
+are pairwise disjoint.  Otherwise, two neighbors of $x$ and an element in
+the intersection form a $4$-cycle with $x$.  They are subsets of
+$V(G)\setminus\{x\}$, and hence
+\begin{equation}\label{eq:local-packing}
+ \sum_{y\in N(x)}(d(y)-1)\leq16.
+\end{equation}
+When $d(x)=5$, the left side equals $20-D_x$, proving
+\eqref{eq:D-lower}.  Its disjoint union is exactly the set of vertices
+$z\ne x$ that have a common neighbor with $x$.  Therefore
+\[
+ 16-r_x=20-D_x,
+\]
+which is~\eqref{eq:r-exact}.
+
+No edge can belong to two triangles, since the two third vertices would
+form a $4$-cycle with the endpoints of that edge.  Consequently the
+triangles through $x$ use $2t_x$ distinct edges incident with $x$.  The
+other $d(x)-2t_x$ incident edges $xz$ lie in no triangle, so $x$ and each
+such $z$ have no common neighbor.  This proves
+\eqref{eq:triangle-lower-local}.  If $d(x)$ is odd, at least one incident
+edge remains.
+\end{proof}
+
+We now sum these local quantities.  Define the low--low deficiency cost
+\[
+ C=\sum_{uv\in E(G[L])}\bigl(\epsilon(u)+\epsilon(v)\bigr).
+\]
+Counting low-to-high incidences, first from $H$ and then from $L$, gives the
+exact identities
+\begin{align}
+ \sum_{x\in H}D_x&=S-C,\label{eq:sum-D}\\
+ \sum_{x\in H}r_x&=S-C-4|H|.\label{eq:sum-r}
+\end{align}
+
+In cases 1--6 of Table~\ref{tab:degrees},
+\eqref{eq:D-lower} and~\eqref{eq:sum-D} require
+\[
+ 4|H|\leq S-C\leq S.
+\]
+But the respective pairs $(S,4|H|)$ are
+\[
+ (26,48),(26,44),(34,44),(34,44),(34,40),(34,36),
+\]
+a contradiction in every case.
+
+In case 7, equation~\eqref{eq:sum-r} gives
+\[
+ \sum_{x\in H}r_x=42-C-36=6-C\leq6.
+\]
+All nine vertices of $H$ have odd degree, whereas
+Lemma~\ref{lem:local} makes the same sum at least $9$.  This excludes the
+seventh row.
+
+\section{The final degree multiset}
+
+It remains to exclude case 8.  Here $|H|=8$, while $L$ contains six
+degree-$4$ vertices, two degree-$3$ vertices, and one degree-$2$ vertex.
+Thus $S=42$, and~\eqref{eq:sum-r} becomes
+\begin{equation}\label{eq:RH}
+ R_H:=\sum_{x\in H}r_x=10-C.
+\end{equation}
+Every vertex of $H$ has odd degree, so $R_H\geq8$ and $C\leq2$.
+Every low--low edge contributes at least $2$ to $C$, with equality only for
+an edge between two degree-$4$ vertices.  It follows that
+\begin{equation}\label{eq:q}
+ q:=e(G[L])\in\{0,1\},\qquad C=2q.
+\end{equation}
+
+The degree sum in $L$ is $32$, so the number of high--low edges is
+$32-2q$.  The degree sum in $H$ is $40$; consequently
+\begin{equation}\label{eq:eH}
+ e(G[H])=\frac{40-(32-2q)}2=4+q.
+\end{equation}
+Let
+\[
+ T_H=\sum_{x\in H}t_x
+\]
+be the number of high-vertex incidences with triangles.  Summing
+\eqref{eq:triangle-lower-local} over $H$ and using
+\eqref{eq:RH}--\eqref{eq:q} gives
+\begin{equation}\label{eq:TH-lower}
+ T_H\geq\frac{40-R_H}{2}=15+q.
+\end{equation}
+
+There is an incompatible upper bound.  Recall that the triangles of $G$
+are edge-disjoint.  Charge their high-vertex incidences as follows.  A
+triangle with two high vertices charges both high incidences to its unique
+high--high edge.  A triangle with three high vertices charges its three
+incidences to its three different high--high edges.  A triangle with one
+high vertex charges that incidence to its unique low--low edge.  Thus each
+high--high edge receives at most two charges and each low--low edge at most
+one, whence, by~\eqref{eq:q} and~\eqref{eq:eH},
+\begin{equation}\label{eq:TH-upper}
+ T_H\leq2e(G[H])+e(G[L])=8+3q.
+\end{equation}
+For $q=0$ or $q=1$, the lower bound $15+q$ is larger than the upper bound
+$8+3q$.  The contradiction eliminates case 8.  Lemma~\ref{lem:eight} is
+exhaustive, so Theorem~\ref{thm:main} follows.
+
+\section*{Computational and AI assistance disclosure}
+
+Three exact Python enumerators were used for Lemma~\ref{lem:eight}.  Two
+implement their graphicality tests directly; the third uses NetworkX~3.4.2
+as an independent cross-check.  The complete programs and saved outputs
+record the iteration ranges, predicates, and counts.  OpenAI Codex assisted
+with literature searching, proof development, implementation and checking
+of the exact enumerators, adversarial review organization, and manuscript
+preparation.  Language-model output and successful program execution were
+not treated as proofs by themselves: the mathematical argument is presented
+in full, and the computational claim is restricted to the explicitly
+exhausted finite degree-multiset domain.  Final responsibility for the
+manuscript remains with the author.  No floating-point computation or proof
+assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

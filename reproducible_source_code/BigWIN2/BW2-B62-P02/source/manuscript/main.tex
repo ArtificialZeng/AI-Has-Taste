@@ -1,0 +1,263 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Maximum Popular Dimension on Tied Unweighted K3,3 Is Two},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cW}{\mathcal W}
+
+\title{The Maximum Popular Dimension on Tied Unweighted $K_{3,3}$ Is Two}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the maximum popular dimension over all weak-order preference
+profiles in the unweighted marriage problem on $K_{3,3}$.  All three agents on
+the opposite side are acceptable, an unmatched outcome is strictly worse, and
+all $34$ partial matchings are admitted as alternatives.  An exact exhaustive
+enumeration of the $13^6=4{,}826{,}809$ labelled profiles finds
+$4{,}826{,}131$ profiles of dimension one and $678$ of dimension two.  A
+second implementation checks the entire labelled domain without symmetry
+reduction.  We also give an explicit profile with no popular matching and a
+popular-winning pair.  Consequently the maximum is exactly two.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $M=\{m_0,m_1,m_2\}$ and $W=\{w_0,w_1,w_2\}$.  Every vertex is an
+unweighted voter and ranks all three vertices on the other side by a total
+preorder; ties are allowed.  Being unmatched, denoted $\bot$, is strictly
+worse than every acceptable partner.  Let $\cX$ be the set of all matchings of
+$K_{3,3}$, including the empty and nonperfect matchings.  Thus
+\[
+ |\cX|=\sum_{k=0}^3 \binom{3}{k}^2k!=34.
+\]
+
+For a nonempty set $C$ of distinct matchings, each agent compares its best
+partner among the matchings in $C$ with its partner in an alternative
+$Y\in\cX$.  Write
+\[
+ A_P(C,Y)=|\{v:b_C(v)\succ_v p_Y(v)\}|,
+ \qquad
+ B_P(C,Y)=|\{v:p_Y(v)\succ_v b_C(v)\}|.
+\]
+Indifferent agents contribute to neither count.  The set $C$ is
+\emph{popular winning} if $A_P(C,Y)\geq B_P(C,Y)$ for every $Y\in\cX$, and
+the popular dimension $d(P)$ is the least cardinality of such a set.
+These are the definitions of Connor et al.~\cite{ConnorEtAl2026}.  Their
+Theorem~3.3 proves the general upper bound three for the marriage problem with
+weights and ties, while their Table~1 leaves the possible class values at two
+or three in the unweighted-with-ties case.  It does not determine the fixed
+complete three-by-three domain considered here.
+
+\begin{theorem}\label{thm:main}
+For the unweighted marriage problem on $K_{3,3}$ with total preorders, all
+partners acceptable, and all partial matchings admitted as alternatives,
+\[
+ \max_{P\in\cW^6} d(P)=2,
+\]
+where $\cW$ is the set of total preorders on three labelled alternatives.
+More precisely, $4{,}826{,}131$ labelled profiles have dimension one and
+$678$ have dimension two.
+\end{theorem}
+
+The theorem is a finite-domain statement.  In particular, it does not close
+the general two-versus-three gap for larger marriage instances with ties.  We
+make no priority claim for the census.  Exact finite certificates using
+integer predicates, symmetry reduction, and a separate verifier have also
+been used for finite coordinate-library classifications in discrete geometry
+\cite{ZengEtAl2026}; the comparison here concerns certificate architecture,
+not a mathematical dependency.
+
+\section{Exact encoding and predicate}
+
+A weak order is encoded by a triple $(r_0,r_1,r_2)$ of nonnegative integer
+ranks, lower being better, for which the used ranks are exactly
+$\{0,\ldots,\max_i r_i\}$.  These are precisely the ordered nonempty
+indifference blocks on three labelled alternatives, so
+\[
+ |\cW|=1+6+6=13.
+\]
+A profile is the ordered sextuple of rows for
+$(m_0,m_1,m_2,w_0,w_1,w_2)$; a man's coordinates are in
+$(w_0,w_1,w_2)$ order and a woman's in $(m_0,m_1,m_2)$ order.  Base-$13$
+decoding of the integers from $0$ through $13^6-1$ therefore visits every
+labelled profile exactly once.
+
+A matching is stored as six partner indices.  A matched acceptable partner
+has the rank in the corresponding row, while $\bot$ has rank $3$.  For a
+candidate $C$ of size one or two, the componentwise minimum of the stored rank
+vectors is exactly the rank vector of the six agents' best partners in $C$.
+For each alternative $Y$, the verifier computes the exact integer margin
+\[
+ \Delta_P(C,Y)=\sum_{v\in M\cup W}
+ \begin{cases}
+  1,&\rank_v(b_C(v))<\rank_v(p_Y(v)),\\
+  0,&\rank_v(b_C(v))=\rank_v(p_Y(v)),\\
+ -1,&\rank_v(b_C(v))>\rank_v(p_Y(v)).
+ \end{cases}
+\]
+Thus $C$ is accepted if and only if all $34$ margins are nonnegative.  No
+floating-point operation enters this predicate.
+
+\section{Exhaustive upper bound}
+
+The primary program generates the $13$ normalized rank triples and the $34$
+partial injective maps between subsets of $M$ and $W$.  It acts on profiles by
+the $72=(3!)^2\cdot2$ automorphisms obtained by independently relabelling the
+two sides and optionally exchanging them.  Scanning base-$13$ profile codes in
+increasing order, it marks the complete orbit of the least unmarked code and
+tests that representative.  Popular dimension is invariant under this action.
+
+Orbit marking produces $67{,}815$ orbits covering all $4{,}826{,}809$
+profiles.  As a separate check on the action and its coverage, the program
+computes the number of fixed profiles for each of the $72$ group elements.
+Their sum is $4{,}882{,}680$, and Burnside's formula gives
+\[
+ \frac{4{,}882{,}680}{72}=67{,}815
+\]
+orbits again.  For every representative, the program tests all $34$
+singletons.  Only if none wins does it test all
+$\binom{34}{2}=561$ unordered pairs of distinct matchings, and every candidate
+is compared with all $34$ alternatives.  The exact result, with orbit sizes
+used to recover labelled counts, is
+\[
+\begin{array}{c|rr}
+\toprule
+\text{dimension}&\text{profile orbits}&\text{labelled profiles}\\
+\midrule
+1&67{,}797&4{,}826{,}131\\
+2&18&678\\
+3&0&0\\
+\bottomrule
+\end{array}
+\]
+
+The second program is an unreduced check of the universal quantifier.  It
+independently generates the $34$ matchings as partial injective functions and
+directly scans every one of the $13^6$ labelled profiles.  It does not use the
+group action, orbit marking, Burnside counts, or the primary program's cache of
+candidate best-rank vectors.  It again tests every singleton and, when needed,
+every unordered pair against every alternative.  It returns exactly
+\[
+ (N_1,N_2,N_3)=(4{,}826{,}131,678,0)
+\]
+and asserts that its three counts sum to $13^6$.  This exhaustive unreduced
+calculation proves $d(P)\leq2$ for every profile in the stated domain.  The
+primary and unreduced runs used Python~3.10.12, NumPy~2.2.6, and Numba~0.67.0;
+Numba is a just-in-time compiler for numerical Python code
+\cite{LamPitrouSeibert2015}.  Compilation changes execution speed, not the
+integer predicate.
+
+\section{A profile of dimension two}
+
+Consider the rank sextuple
+\begin{equation}\label{eq:witness}
+ P_*=((0,0,0),(0,1,2),(0,2,1),(0,2,1),(1,2,0),(1,0,0)).
+\end{equation}
+For compactness, write $ij$ for the edge $m_iw_j$.  A pure-standard-library
+verifier independently constructs the $34$ matchings.  Table~\ref{tab:defeats}
+gives, for every singleton candidate $C$, an alternative $Y$ with
+$A_{P_*}(C,Y)<B_{P_*}(C,Y)$.  It follows that $P_*$ has no popular matching.
+
+Now take
+\[
+ C_*=\bigl\{\{20\},\{00,11,22\}\bigr\}.
+\]
+In agent order $(m_0,m_1,m_2,w_0,w_1,w_2)$, its best-rank vector is
+$(0,1,0,0,2,0)$.  Against the $34$ alternatives in the order used in
+Table~\ref{tab:defeats}, beginning with the empty matching and then proceeding
+by matching size, its integer margins are
+\begin{multline*}
+6,4,3,5,4,4,5,5,4,5,2,1,3,3,2,3,2,2,3,4,2,3,2,3,\\
+3,4,3,3,1,1,0,1,1,2.
+\end{multline*}
+Every margin is nonnegative, including the single equality.  Hence $C_*$ is
+popular winning, while no singleton is.  Therefore $d(P_*)=2$, which supplies
+the lower bound in Theorem~\ref{thm:main}.  Together with the exhaustive upper
+bound, this proves the theorem.
+
+\begin{longtable}{@{}lll@{}}
+\caption{A strict defeat of every singleton for $P_*$.
+The last column is $A_{P_*}(C,Y):B_{P_*}(C,Y)$.}\label{tab:defeats}\\
+\toprule
+$C$&defeating $Y$&votes\\
+\midrule
+\endfirsthead
+\toprule
+$C$&defeating $Y$&votes\\
+\midrule
+\endhead
+$\varnothing$&$\{00\}$&$0:2$\\
+$\{00\}$&$\{00,11\}$&$0:2$\\
+$\{01\}$&$\{21\}$&$1:2$\\
+$\{02\}$&$\{12\}$&$1:2$\\
+$\{10\}$&$\{00\}$&$1:2$\\
+$\{11\}$&$\{01\}$&$1:2$\\
+$\{12\}$&$\{10\}$&$1:2$\\
+$\{20\}$&$\{00\}$&$1:2$\\
+$\{21\}$&$\{20\}$&$1:2$\\
+$\{22\}$&$\{20\}$&$1:2$\\
+$\{00,11\}$&$\{01,10\}$&$1:2$\\
+$\{01,10\}$&$\{00,21\}$&$1:3$\\
+$\{00,12\}$&$\{00,11\}$&$1:2$\\
+$\{02,10\}$&$\{00,12\}$&$1:2$\\
+$\{01,12\}$&$\{01,10\}$&$1:2$\\
+$\{02,11\}$&$\{01,10\}$&$1:3$\\
+$\{00,21\}$&$\{00,22\}$&$1:2$\\
+$\{01,20\}$&$\{00,12\}$&$2:3$\\
+$\{00,22\}$&$\{00,11,22\}$&$0:2$\\
+$\{02,20\}$&$\{00,11\}$&$2:3$\\
+$\{01,22\}$&$\{01,20\}$&$1:2$\\
+$\{02,21\}$&$\{00,12\}$&$2:3$\\
+$\{10,21\}$&$\{00,21\}$&$1:2$\\
+$\{11,20\}$&$\{00,11\}$&$1:2$\\
+$\{10,22\}$&$\{01,20\}$&$2:4$\\
+$\{12,20\}$&$\{00,11\}$&$2:4$\\
+$\{11,22\}$&$\{01,10\}$&$2:4$\\
+$\{12,21\}$&$\{00,22\}$&$2:3$\\
+$\{00,11,22\}$&$\{01,10,22\}$&$1:2$\\
+$\{00,12,21\}$&$\{00,11,22\}$&$1:2$\\
+$\{01,10,22\}$&$\{01,12,20\}$&$1:2$\\
+$\{01,12,20\}$&$\{00,12,21\}$&$1:2$\\
+$\{02,10,21\}$&$\{00,22\}$&$2:3$\\
+$\{02,11,20\}$&$\{00,11,22\}$&$1:2$\\
+\bottomrule
+\end{longtable}
+
+\section*{Reproducibility and disclosure}
+
+The accompanying source archive contains the primary orbit census
+\texttt{orbit\_pair\_census.py}, the separately implemented unreduced verifier
+\texttt{verify\_unreduced.py}, the pure-Python witness verifier
+\texttt{verify\_dimension\_two\_witness.py}, and their complete text outputs.
+The archive records the weak-order encoding, unmatched convention, group
+action, Burnside table, software versions, run times, and deterministic file
+digests.  No randomized sampling, floating-point optimization, or proof
+assistant is used.
+
+OpenAI Codex assisted with literature search, finite-search design, draft code,
+adversarial audit organization, and initial manuscript preparation.  Language
+model output is not mathematical evidence; the theorem-bearing claims are
+supported by the explicit finite reductions and exact verifiers described
+above.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

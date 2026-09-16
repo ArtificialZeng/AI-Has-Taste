@@ -1,0 +1,321 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,
+  urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\cC}{\mathcal{C}}
+
+\title{The Diameter of the \(K_{3,3}\) Graph Associahedron Is 12:\\
+An Exact Computer-Assisted Proof}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine the diameter of the graph associahedron of the labelled complete
+bipartite graph \(K_{3,3}\), under the usual maximal-tubing convention.  An
+exact program constructs all 552 graph search trees recursively, constructs
+all 1,380 rotations, and runs breadth-first search from every state.  A
+structurally separate maximal-clique enumeration reconstructs the same set of
+maximal tubings and the same flip graph.  The eccentricities are 10, 11, and
+12, with multiplicities 12, 108, and 432, respectively.  Complete exact BFS
+records give the upper bound 12 and certify that an explicit pair of tubings
+is at distance 12.  Hence the diameter is exactly 12.  The proof uses only
+finite integer and set operations; source code and a machine-readable run are
+provided for reproduction.
+\end{abstract}
+
+\section{Context and result}
+
+Graph associahedra were introduced as polytopes whose face posets are governed
+by compatible connected subgraphs~\cite{CarrDevadoss2006}.  Their vertices can
+be represented either by maximal tubings or by recursively defined search
+trees, and flips of tubings correspond to rotations of search
+trees~\cite{CardinalPourninValenciaPabon2022}.  We work throughout with the
+labelled graph; in particular, no quotient by automorphisms is taken.
+
+Cardinal, Pournin, and Valencia-Pabon determined the diameters for complete
+split graphs and for sufficiently unbalanced complete bipartite graphs.  Their
+Question~2 asks for the balanced complete-bipartite regime
+\cite{CardinalPourninValenciaPabon2022}.  For the complete split graph
+\(SPK_{3,3}\), their Theorem~8 gives diameter 13.  Monotonicity under adding
+edges therefore gives
+\(\operatorname{diam}\Rcal(K_{3,3})\leq 13\).  On the other hand, the
+true-twin edge-deletion inequality of Gargantini, Pastine, and
+Torres~\cite[Theorem~4.7]{GargantiniPastineTorres2024} gives
+\[
+  13-\binom{3}{2}\leq \operatorname{diam}\Rcal(K_{3,3}).
+\]
+Thus those results give the interval \([10,13]\).  Corollary~4.8 of the latter
+paper also specializes to the lower bound 10; the full two-sided interval does
+not follow from that corollary alone.
+
+The contribution of this note is the following exact finite determination.
+
+\begin{theorem}\label{thm:main}
+Let \(K_{3,3}\) have labelled parts
+\(P=\{p_1,p_2,p_3\}\) and \(Q=\{q_1,q_2,q_3\}\).  Let
+\(\Rcal(K_{3,3})\) be the graph of all labelled maximal compatible tubings,
+with two tubings adjacent when one non-full tube is exchanged.  Then
+\[
+  \operatorname{diam}\Rcal(K_{3,3})=12.
+\]
+\end{theorem}
+
+The literature comparison above is deliberately bounded: it identifies the
+nearest results used here, but is not a priority claim.
+
+\section{Conventions and finite encodings}
+
+Put \(G=K_{3,3}\).  A \emph{tube} is a nonempty set
+\(A\subseteq V(G)\) for which \(G[A]\) is connected.  Distinct tubes \(A,B\)
+are compatible when one contains the other, or when they are disjoint and
+\(G[A\cup B]\) is disconnected.  A tubing is a pairwise compatible set of
+tubes and is maximal with respect to inclusion.  The full tube \(V(G)\) is
+compatible with every tube, so it belongs to every maximal tubing.  Retaining
+this common tube does not create a flip.
+
+We encode \(p_1,p_2,p_3,q_1,q_2,q_3\) by \(0,1,\ldots,5\), respectively, and
+encode a vertex set \(A\) by the bit mask
+\[
+  m(A)=\sum_{i\in A}2^i\in\{1,\ldots,63\}.
+\]
+All canonical orderings used by the verifier are lexicographic orderings of
+integer tuples of such masks.  A nonempty induced subgraph of \(G\) is
+connected precisely when its vertex set is a singleton or meets both parts.
+Consequently the number of tubes, including the full tube, is
+\begin{equation}\label{eq:tubes}
+  6+(2^3-1)^2=55.
+\end{equation}
+
+A search tree on a connected induced subgraph \(G[S]\) is defined recursively:
+choose a root \(r\in S\), delete \(r\), choose a search tree on every connected
+component of \(G[S\setminus\{r\}]\), and attach the roots of those trees to
+\(r\).  For a search tree \(T\), let \(D_T(v)\) be the set consisting of \(v\)
+and its descendants.  The sets \(D_T(v)\), over all vertices \(v\), form the
+maximal tubing corresponding to \(T\)~\cite{CardinalPourninValenciaPabon2022}.
+
+\begin{lemma}\label{lem:recursion}
+The recursive construction just described enumerates every search tree on
+\(G[S]\) exactly once.
+\end{lemma}
+
+\begin{proof}
+Induct on \(|S|\).  The root of a search tree is uniquely recoverable.  After
+it is deleted, the child subtrees are, by definition, search trees on the
+uniquely determined connected components.  The induction hypothesis gives
+both completeness and uniqueness within every component, and the Cartesian
+product over the components gives all and only the possible choices.  Distinct
+roots or distinct component choices cannot yield the same parent vector.
+\end{proof}
+
+The implementation also validates every output independently of its route
+through the recursion.  For every vertex \(v\), it checks that \(D_T(v)\) is
+connected and that
+\begin{equation}\label{eq:local-check}
+ \{D_T(c):c\text{ is a child of }v\}
+ =\cC\bigl(G[D_T(v)\setminus\{v\}]\bigr),
+\end{equation}
+where \(\cC(H)\) is the set of vertex sets of the connected components of
+\(H\).  Thus each stored parent vector is checked against the recursive
+definition locally at every node.
+
+\section{Two exhaustive constructions of the flip graph}
+
+The primary construction applies Lemma~\ref{lem:recursion} to the full
+six-vertex set.  It obtains 92 search trees for each possible root, hence 552
+in total.  It maps each parent vector to the sorted six-tuple
+\((m(D_T(v)))_{v\in V(G)}\) and obtains 552 distinct tuples.
+
+The comparison construction begins instead with the 55 masks counted in
+\eqref{eq:tubes}.  It constructs the compatibility graph on those masks and
+enumerates all its maximal cliques by the Bron--Kerbosch algorithm
+\cite{BronKerbosch1973}.  Since a clique in this graph is exactly a tubing and
+a maximal clique is exactly a maximal tubing, this is exhaustive directly
+from the definitions.  It obtains 552 maximal cliques, each containing six
+tubes.  Their complete canonical set is exactly equal to the 552 descendant-set
+tuples from the primary construction.
+
+It remains to construct every edge.  In the comparison construction, two
+canonical tubings are joined precisely when their symmetric difference has
+size two.  Equivalently, for each tubing one deletes each of its five proper
+tubes and groups the resulting ridges by equality.  Every ridge has exactly
+two owners.  This gives 1,380 undirected edges.
+
+The primary construction obtains edges by rotations without consulting those
+ridges.  Suppose that \(t\) is a child of \(s\).  Promote \(t\) above \(s\),
+make the old parent of \(s\) the new parent of \(t\), and make \(t\) the new
+parent of \(s\).  For each old child \(c\) of \(t\), reattach \(c\) below
+\(s\) exactly when
+\begin{equation}\label{eq:rotation-rule}
+  N_G(s)\cap D_T(c)\neq\varnothing;
+\end{equation}
+otherwise leave \(c\) below \(t\).
+
+\begin{lemma}\label{lem:rotation}
+Rule~\eqref{eq:rotation-rule} gives the search-tree rotation that exchanges the
+tube \(D_T(t)\) with one other proper tube.
+\end{lemma}
+
+\begin{proof}
+Consider the old descendant set of \(s\) after deleting \(t\).  The component
+containing \(s\) contains precisely those old child-components of \(t\) that
+have an edge to \(s\), together with the unaffected child-components of
+\(s\).  An old child-component of \(t\) having no edge to \(s\) is separated
+from that component and from the other child-components.  Hence
+\eqref{eq:rotation-rule} gives exactly the components required by the recursive
+search-tree definition after \(t\) is promoted.  All descendant tubes except
+the old \(D_T(t)\) and its replacement are unchanged.
+\end{proof}
+
+For every generated state, the verifier applies Lemma~\ref{lem:rotation} to
+each of its five parent--child edges.  It validates the resulting parent vector
+using \eqref{eq:local-check}, checks that it belongs to the census, and checks
+the reverse rotation.  The 2,760 directed rotations give 1,380 undirected
+edges, degree five at every state.  The entire edge set is exactly equal to the
+edge set from the symmetric-difference construction.
+
+Table~\ref{tab:census} records the resulting finite census.  The equalities in
+the last column are explicit full-set comparisons, not comparisons of counts
+alone.
+
+\begin{table}[ht]
+\centering
+\caption{Exact census and cross-checks.}\label{tab:census}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Object & Exact count & Independent check \\
+\midrule
+Tubes, including the full tube & 55 & formula \eqref{eq:tubes} \\
+Search trees / maximal tubings & 552 & identical canonical state sets \\
+Directed rotations & 2,760 & inverse checked for each rotation \\
+Undirected flip edges & 1,380 & identical canonical edge sets \\
+Vertex degrees & \(5\) for all 552 states & both edge constructions \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{All-pairs distances}
+
+On the common graph, the verifier runs ordinary unweighted breadth-first
+search from every one of the 552 states.  In each run a vertex receives its
+distance when first reached, after all vertices at smaller distance have been
+processed.  This standard layer invariant proves that the assigned labels are
+shortest-path distances.  Every run reaches all 552 states.  Thus the
+computation covers all
+\[
+  552^2=304{,}704
+\]
+ordered pairs, rather than a sample.  The eccentricity histogram is
+\begin{equation}\label{eq:eccentricities}
+  10:12,\qquad 11:108,\qquad 12:432.
+\end{equation}
+In particular, every distance is at most 12.
+
+For a concrete diametral witness, let \(T_0\) and \(T_{12}\) be the maximal
+tubings whose masks are
+\[
+ T_0=(1,9,11,15,31,63),\qquad
+ T_{12}=(32,36,52,60,62,63).
+\]
+For example, the proper tubes of \(T_0\) are
+\[
+ \{p_1\}\subset\{p_1,q_1\}\subset
+ \{p_1,p_2,q_1\}\subset\{p_1,p_2,p_3,q_1\}
+ \subset\{p_1,p_2,p_3,q_1,q_2\},
+\]
+and the omitted mask 63 is the full tube.  Table~\ref{tab:path} gives a
+12-flip path; each row lists the five proper tube masks, with the common full
+tube suppressed.  Consecutive rows exchange exactly one tube.
+
+\begin{table}[ht]
+\centering
+\caption{An explicit 12-flip path from \(T_0\) to \(T_{12}\).}
+\label{tab:path}
+\begin{tabular}{@{}rl@{}}
+\toprule
+Step & Proper-tube masks \\
+\midrule
+0  & \(1,9,11,15,31\) \\
+1  & \(1,2,11,15,31\) \\
+2  & \(1,2,4,15,31\) \\
+3  & \(1,2,4,15,47\) \\
+4  & \(1,2,4,39,47\) \\
+5  & \(1,2,4,39,55\) \\
+6  & \(2,4,38,39,55\) \\
+7  & \(2,4,38,54,55\) \\
+8  & \(2,4,38,54,62\) \\
+9  & \(4,36,38,54,62\) \\
+10 & \(4,36,52,54,62\) \\
+11 & \(4,36,52,60,62\) \\
+12 & \(32,36,52,60,62\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The complete BFS layer record from \(T_0\) places \(T_{12}\) in layer 12 and
+in no earlier layer.  Therefore \(d(T_0,T_{12})=12\).  Together with the
+all-pairs upper bound following from \eqref{eq:eccentricities}, this proves
+Theorem~\ref{thm:main}.
+
+\section{Reproduction, scope, and disclosure}
+
+The ancillary program \texttt{independent\_search\_tree\_verifier.py}
+reconstructs the six-vertex graph from its nine individual edges, enumerates
+search trees recursively, validates \eqref{eq:local-check}, constructs direct
+rotations, and performs every BFS.  Only after its state construction is
+complete does it invoke the structurally separate file
+\texttt{verify\_k33\_diameter.py} to construct tubes, maximal compatible sets,
+and ridge edges.  From the directory containing the ancillary
+\texttt{evidence} folder, the complete deterministic run is
+\begin{verbatim}
+python3 evidence/independent_search_tree_verifier.py \
+  --output evidence/independent_search_tree_run.json
+\end{verbatim}
+The JSON output contains all 552 BFS layer records, the witness path, the
+canonical states, and exact comparison results.  Both programs use only the
+Python standard library.  All decisive operations are on integers, bit masks,
+finite sets, and queues; there is no randomness, floating-point arithmetic,
+numerical tolerance, or automorphism reduction.  Assertions for the expected
+totals act only after objects have been generated and cannot generate those
+objects.
+
+Separating discovery from exact reconstruction and using a second
+implementation is also advocated and instantiated in the finite-certificate
+workflow of Zeng, Liu, Ratnavelu, and Huat~\cite{ZengEtAl2026Certificates}.
+That citation is methodological only: the present theorem is supported by the
+definitions, reductions, source code, and complete run described here.
+
+The result is limited to the fixed labelled graph \(K_{3,3}\) and the tubing
+and flip conventions in Theorem~\ref{thm:main}.  It makes no assertion about a
+formula for the remaining balanced family.  A bounded source search did not
+locate another determination of this fixed value, but this is not evidence of
+priority.
+
+OpenAI Codex assisted with literature search, proof organization, verifier
+development, adversarial audit organization, and initial manuscript
+preparation.  A fresh model context separately reconstructed the census and
+distances; that was a review pass, not statistical independence or peer
+review.  Language-model output is not used as mathematical evidence.  The
+proof rests on the human-readable finite reductions and the exact verifiers
+accompanying this note.  No proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

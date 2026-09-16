@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={Local rigidity of component-triangle Cayley deformations at order-seven permutation Euler points},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\title{Local rigidity of component-triangle Cayley deformations\\
+at order-seven permutation Euler points}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an orthogonal matrix $Q=(q_{ij})$ of order seven, write
+$D(Q)=\sum_i q_{ii}^2$ and $A(Q)=\sum_i q_{i,8-i}^2$.
+We study a three-parameter Cayley deformation through an unsigned
+permutation matrix $P$ satisfying $D(P)=A(P)=1$ and having no eigenvalue
+$-1$.  The three skew coordinates join, one at a time, each pair among the
+singleton and the two three-cycle components of $P$.  In every such family,
+$P$ is an isolated real solution of $D=A=1$.  The decisive quadratic
+coefficients are established by an exhaustive exact-arithmetic census of
+$112\cdot81=9{,}072$ families and a separately implemented rational-arithmetic
+check.  This is a local obstruction for the specified families only; the
+existence of a proper Euler magic matrix of order seven remains unresolved.
+\end{abstract}
+
+\section{Context and statement}
+
+An Euler magic matrix of order $n$ is an integer matrix $M$ such that
+$MM^{\mathsf T}=\gamma I_n$ for a nonzero integer $\gamma$, while the sums
+of the entry-squares on the main diagonal and antidiagonal are both
+$\gamma$.  It is \emph{proper} when all $n^2$ entry-squares are distinct.
+This terminology and the equivalent rational normalization in odd order are
+reviewed by M\"uller and Kominers~\cite{Muller2026,Kominers2026}.  Recent
+work gives proper constructions in orders five and six
+~\cite{Kominers2026,Mehat2026}, while M\"uller constructs improper
+permutation examples in every order at least four and a proper example in
+order eight~\cite{Muller2026}.
+
+For $Q=(q_{ij})\in\SO(7)$ put
+\[
+ D(Q)=\sum_{i=1}^7q_{ii}^2,
+ \qquad
+ A(Q)=\sum_{i=1}^7q_{i,8-i}^2.
+\]
+Thus the normalized Euler locus is
+\[
+ V_7=\{Q\in\SO(7):D(Q)=A(Q)=1\}.
+\]
+Kominers notes that the odd-order reduction and mirror-rotation method apply
+in order seven, but that a suitable seed is still needed
+~\cite[Section~5]{Kominers2026}.  The Cayley transform gives a different
+coordinate system on the orthogonal group and is standard in the study of
+rational orthogonal matrices~\cite{LiebeckOsborne1991,Muller2026}.  We use it
+to identify a limitation of a sparse deformation of the permutation-seed
+route.
+
+For distinct $a,b\in\{1,\ldots,7\}$ define the elementary skew matrix
+\[
+ F_{ab}=E_{ab}-E_{ba}\quad(a<b),
+ \qquad F_{ab}=F_{ba}\quad(a>b).
+\]
+The convention merely fixes a sign for the coordinate on the unordered edge
+$\{a,b\}$.
+
+\begin{theorem}[Component-triangle local rigidity]\label{thm:main}
+Let $P$ be an unsigned $7\times7$ permutation matrix having exactly one
+entry $1$ on the main diagonal, exactly one entry $1$ on the antidiagonal,
+and no eigenvalue $-1$.  Its cycle type is $1+3+3$.  Write $\{s\}$ for the
+singleton cycle and $C_1,C_2$ for the two three-cycles.  Choose arbitrary
+$u,v\in C_1$ and $w,t\in C_2$, and put
+\[
+ S_P=(I-P)(I+P)^{-1},\qquad
+ E=xF_{su}+yF_{vw}+zF_{st},
+\]
+\[
+ S(x,y,z)=S_P+E,\qquad
+ Q(x,y,z)=(I-S)(I+S)^{-1}.
+\]
+Then $(0,0,0)$ is an isolated real common zero of
+\[
+ D(Q(x,y,z))-1=0,
+ \qquad
+ A(Q(x,y,z))-1=0.
+\]
+In particular, there is no nonconstant real-continuous solution germ in this
+family through $P$.  Nor can a rational parametrization, defined at a real
+parameter value mapping to $P$, parametrize non-anchor Euler points in this
+family arbitrarily close to $P$.
+\end{theorem}
+
+The theorem is strictly local and family-specific.  It does not exclude
+deformations involving additional Cayley coordinates, other seeds, or a
+rational algebraic component on which $P$ is an isolated real point.  In
+particular, it does not decide whether a proper order-seven Euler magic
+matrix exists.
+
+\section{Proof}
+
+We first record the expansion that makes the finite part of the argument
+small.  A permutation matrix has eigenvalue $-1$ exactly when its permutation
+has an even cycle.  The hypothesis on the main diagonal says that there is
+exactly one fixed point.  Every remaining cycle is therefore odd and has
+length at least three; since six letters remain, the only possibility is
+$3+3$.
+
+The absence of the eigenvalue $-1$ makes $I+P$ invertible.  Orthogonality of
+$P$ gives $S_P^{\mathsf T}=-S_P$, and direct substitution gives
+\[
+ Q(0,0,0)=P.
+\]
+Set
+\[
+ B=(I+S_P)^{-1}=\frac{I+P}{2}.
+\]
+For $E=xF_{su}+yF_{vw}+zF_{st}$, the identity
+$(I+S_P+E)=(I+S_P)(I+BE)$ yields
+\begin{align}
+ Q(x,y,z)
+ &=2(I+BE)^{-1}B-I \notag\\
+ &=P-2BEB+2BEBEB+O(\norm{E}^3).\label{eq:taylor}
+\end{align}
+Write $L=-2BEB$ and $H=2BEBEB$ for the homogeneous terms of degrees one
+and two.
+
+The cycle decomposition $\{s\}\sqcup C_1\sqcup C_2$ makes $B$ block
+diagonal.  Each active edge of $E$ joins two different blocks.  Hence $L$
+vanishes at every position in the support of $P$.  The linear terms of both
+$D(Q)-1$ and $A(Q)-1$ consequently vanish.  Their quadratic terms are
+\begin{align}
+ [D(Q)-1]_2
+ &=\sum_{i=1}^7L_{ii}^2
+   +2\sum_{i=1}^7P_{ii}H_{ii},\label{eq:d2}\\
+ [A(Q)-1]_2
+ &=\sum_{i=1}^7L_{i,8-i}^2
+   +2\sum_{i=1}^7P_{i,8-i}H_{i,8-i}.\label{eq:a2}
+\end{align}
+
+Exact evaluation of \eqref{eq:d2}--\eqref{eq:a2} over all allowed choices
+gives
+\begin{equation}
+ [D(Q)-1]_2=-2x^2-2z^2,\label{eq:decisive}
+\end{equation}
+and the coefficient $c=[y^2][A(Q)-1]_2$ belongs to
+\[
+ \left\{-\frac12,-\frac14,\frac14,\frac12,\frac34,1\right\};
+\]
+in particular, $c\ne0$.  Section~\ref{sec:verification} describes the
+exhaustive exact calculation.
+
+It remains to explain why these quadratic terms prove isolation, rather than
+only the absence of a first-order tangent.  Suppose that distinct common real
+zeros $r_k=(x_k,y_k,z_k)$ tend to the origin.  Passing to a subsequence, the
+unit directions $r_k/\norm{r_k}$ tend to a unit vector
+$r=(x_0,y_0,z_0)$.  Divide the first equation by $\norm{r_k}^2$ and take the
+limit.  Equation~\eqref{eq:decisive} gives
+$-2x_0^2-2z_0^2=0$, so $x_0=z_0=0$.  Applying the same argument to the
+second equation leaves $c y_0^2=0$.  Since $c\ne0$, also $y_0=0$, contrary
+to $\norm{r}=1$.  Thus the origin is isolated.  The two stated consequences
+follow from continuity; a rational map is continuous wherever it is defined.
+This proves Theorem~\ref{thm:main}.
+
+\section{Exact finite verification}\label{sec:verification}
+
+The coefficient census uses integer and rational arithmetic only.  It
+enumerates all $7!$ permutations, retaining precisely those with one fixed
+point, one antidiagonal hit, and cycle lengths $1,3,3$.  There are $112$.
+After ordering the two three-cycles by their least elements, it enumerates
+\[
+ 3\cdot(3\cdot3)\cdot3=81
+\]
+choices of $(\{s,u\},\{v,w\},\{s,t\})$ per permutation.  Swapping the two
+three-cycles only interchanges the roles of $x$ and $z$, so this convention
+loses no family.  For each of the resulting $9{,}072$ cases, it forms
+$B,L,H$ and evaluates \eqref{eq:d2}--\eqref{eq:a2} exactly.
+
+The primary checker uses SymPy rational matrices.  A separately written
+checker uses only Python's standard-library \texttt{fractions.Fraction},
+enumerates the anchors and edge choices afresh, and recomputes just the
+coefficients needed above.  Both report no failed case.  The latter gives the
+following complete distribution of $c=[y^2][A(Q)-1]_2$.
+
+This emphasis on exact rational certificates and deterministic verification
+also appears in nearby low-dimensional matrix algebra: Zeng gives an exact
+rational Hadamard-factorization certificate together with a standard-library
+verifier~\cite{Zeng2026Zenodo22242517}.  That work does not concern Euler
+magic matrices and supplies no evidence for the local isolation theorem here.
+\begin{center}
+\begin{tabular}{@{}cr@{}}
+\toprule
+$c$ & number of families \\
+\midrule
+$-1/2$ & 1,728 \\
+$-1/4$ & 3,456 \\
+$ 1/4$ & 1,728 \\
+$ 1/2$ & 1,512 \\
+$ 3/4$ &   432 \\
+$ 1$   &   216 \\
+\midrule
+Total & 9,072 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The supplementary files \path{cayley_triangle_slices.py} and
+\path{cayley_triangle_slices.json} contain the primary census; the files
+\path{verify_cayley_triangle_tangents.py} and
+\path{cayley_triangle_fraction_check.json} contain the separate check and
+its output.  The reported run used Python 3.10.12 and SymPy 1.14.0.
+The mathematical conclusion uses only the coefficient census, not the
+additional bounded-grid experiments recorded by the primary script.
+
+\section*{Computational and AI assistance disclosure}
+
+AI systems assisted with exploration of the Cayley families, implementation
+and review of the exact-arithmetic checks, literature inspection, and
+manuscript drafting.  The decisive finite claim was checked by two separately
+implemented programs, one of which uses only standard-library rational
+arithmetic.  The proof and the exact certificates, rather than any numerical
+fit or model assessment, support the theorem.  Responsibility for errors
+remains with the author.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

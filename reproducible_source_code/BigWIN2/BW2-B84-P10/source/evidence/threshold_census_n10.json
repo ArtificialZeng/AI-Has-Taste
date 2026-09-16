@@ -1,0 +1,460 @@
+{
+  "arithmetic": "exact Python integers and finite sets",
+  "claim_tested": "For S in G_n, K_S != C_S implies |K_S| >= 10.",
+  "coverage": {
+    "maximum_n": 10,
+    "minimum_n": 2
+  },
+  "generation_audit": "Exact equality of the ordered reverse-tree frontier and a direct difference-triangle frontier at every n.  The direct frontier scans every integer append distance 1..A(S)+1.",
+  "minimum_hit_audit": "For every minimum-width defective sequence at each n, K_S was independently reconstructed by direct appended difference triangles for every integer in the complete radius-A(S)+1 range.",
+  "result": "No defective sequence of width at most 9 was found in the exhaustive range.",
+  "rows": [
+    {
+      "defective_count": 0,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 1,
+      "low_width_histogram": {
+        "3": 1
+      },
+      "minimum_defective_count": 0,
+      "minimum_defective_width": null,
+      "n": 2,
+      "sequence_count": 1,
+      "sequence_sha256": "72f79a8a3b0abb46b637b6de8761e09c6e147a6ebb3abb952cc05462535fdbb8",
+      "target_width_at_most_9_count": 1
+    },
+    {
+      "defective_count": 0,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 1,
+      "low_width_histogram": {
+        "5": 1
+      },
+      "minimum_defective_count": 0,
+      "minimum_defective_width": null,
+      "n": 3,
+      "sequence_count": 1,
+      "sequence_sha256": "29fafba71f1e60a45621755310c48175a34f8a9de37b5471723822d24b0f8682",
+      "target_width_at_most_9_count": 1
+    },
+    {
+      "defective_count": 0,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 2,
+      "low_width_histogram": {
+        "5": 1,
+        "9": 1
+      },
+      "minimum_defective_count": 0,
+      "minimum_defective_width": null,
+      "n": 4,
+      "sequence_count": 2,
+      "sequence_sha256": "ac8bcb46f7f05c21f43dd72274591f58083f21a74205bdf77ba3a40e81641608",
+      "target_width_at_most_9_count": 2
+    },
+    {
+      "defective_count": 1,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 5,
+      "lexicographically_first_minimum_defective": {
+        "C": [
+          5,
+          7,
+          9,
+          11,
+          13,
+          15,
+          17,
+          19,
+          21,
+          23,
+          25
+        ],
+        "K": [
+          5,
+          7,
+          9,
+          11,
+          13,
+          17,
+          19,
+          21,
+          23,
+          25
+        ],
+        "holes": [
+          15
+        ],
+        "right_antidiagonal": [
+          6,
+          2,
+          0,
+          1
+        ],
+        "sequence": [
+          2,
+          3,
+          5,
+          9,
+          15
+        ]
+      },
+      "low_width_histogram": {
+        "10": 1,
+        "11": 1,
+        "5": 1,
+        "7": 1,
+        "9": 1
+      },
+      "minimum_defective_count": 1,
+      "minimum_defective_width": 10,
+      "n": 5,
+      "sequence_count": 6,
+      "sequence_sha256": "72f1364fdefe87743523428418d4f53a15024b478c586b638a88d95110542491",
+      "target_width_at_most_9_count": 3
+    },
+    {
+      "defective_count": 5,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 22,
+      "lexicographically_first_minimum_defective": {
+        "C": [
+          11,
+          13,
+          15,
+          17,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29,
+          31,
+          33,
+          35
+        ],
+        "K": [
+          11,
+          13,
+          15,
+          17,
+          19,
+          27,
+          29,
+          31,
+          33,
+          35
+        ],
+        "holes": [
+          21,
+          23,
+          25
+        ],
+        "right_antidiagonal": [
+          8,
+          2,
+          0,
+          0,
+          1
+        ],
+        "sequence": [
+          2,
+          3,
+          5,
+          9,
+          15,
+          23
+        ]
+      },
+      "low_width_histogram": {
+        "10": 1,
+        "11": 1,
+        "5": 1,
+        "9": 7
+      },
+      "minimum_defective_count": 1,
+      "minimum_defective_width": 10,
+      "n": 6,
+      "sequence_count": 27,
+      "sequence_sha256": "5005e6ed14722fe8ca024827fc7d0bc214a58a929ebe3eb3aabbbfc34701a47a",
+      "target_width_at_most_9_count": 8
+    },
+    {
+      "defective_count": 60,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 120,
+      "lexicographically_first_minimum_defective": {
+        "C": [
+          11,
+          13,
+          15,
+          17,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29,
+          31
+        ],
+        "K": [
+          11,
+          13,
+          15,
+          17,
+          19,
+          23,
+          25,
+          27,
+          29,
+          31
+        ],
+        "holes": [
+          21
+        ],
+        "right_antidiagonal": [
+          6,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "sequence": [
+          2,
+          3,
+          5,
+          9,
+          11,
+          15,
+          21
+        ]
+      },
+      "low_width_histogram": {
+        "10": 8,
+        "11": 11,
+        "5": 1,
+        "7": 4,
+        "9": 4
+      },
+      "minimum_defective_count": 8,
+      "minimum_defective_width": 10,
+      "n": 7,
+      "sequence_count": 180,
+      "sequence_sha256": "0ada3a8d2a5b18b4e7682c49f0d2a594797f720e7088702c95bced0b19094f8a",
+      "target_width_at_most_9_count": 9
+    },
+    {
+      "defective_count": 760,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 1026,
+      "lexicographically_first_minimum_defective": {
+        "C": [
+          17,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29,
+          31,
+          33,
+          35,
+          37
+        ],
+        "K": [
+          17,
+          19,
+          21,
+          23,
+          25,
+          29,
+          31,
+          33,
+          35,
+          37
+        ],
+        "holes": [
+          27
+        ],
+        "right_antidiagonal": [
+          6,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "sequence": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          15,
+          21,
+          27
+        ]
+      },
+      "low_width_histogram": {
+        "10": 9,
+        "11": 41,
+        "5": 1,
+        "7": 2,
+        "9": 14
+      },
+      "minimum_defective_count": 9,
+      "minimum_defective_width": 10,
+      "n": 8,
+      "sequence_count": 1786,
+      "sequence_sha256": "89521e9e7851d6acc6b6caecca1a1262ca0457d75c7ebbf372a1a7a5c3a1add4",
+      "target_width_at_most_9_count": 17
+    },
+    {
+      "defective_count": 13312,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 12782,
+      "lexicographically_first_minimum_defective": {
+        "C": [
+          21,
+          23,
+          25,
+          27,
+          29,
+          31,
+          33,
+          35,
+          37,
+          39,
+          41
+        ],
+        "K": [
+          21,
+          23,
+          25,
+          27,
+          29,
+          33,
+          35,
+          37,
+          39,
+          41
+        ],
+        "holes": [
+          31
+        ],
+        "right_antidiagonal": [
+          6,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "sequence": [
+          2,
+          3,
+          5,
+          7,
+          9,
+          13,
+          19,
+          25,
+          31
+        ]
+      },
+      "low_width_histogram": {
+        "10": 37,
+        "11": 99,
+        "12": 2,
+        "5": 1,
+        "7": 7,
+        "9": 29
+      },
+      "minimum_defective_count": 37,
+      "minimum_defective_width": 10,
+      "n": 9,
+      "sequence_count": 26094,
+      "sequence_sha256": "77a966e3b165c05624fd0e5fad6aa7fdf1fc7b3f2c53ddd99d78deb5160fddf1",
+      "target_width_at_most_9_count": 37
+    },
+    {
+      "defective_count": 322054,
+      "defective_width_at_most_9_count": 0,
+      "interval_complete_count": 237073,
+      "lexicographically_first_minimum_defective": {
+        "C": [
+          27,
+          29,
+          31,
+          33,
+          35,
+          37,
+          39,
+          41,
+          43,
+          45,
+          47,
+          49,
+          51
+        ],
+        "K": [
+          27,
+          29,
+          31,
+          33,
+          35,
+          43,
+          45,
+          47,
+          49,
+          51
+        ],
+        "holes": [
+          37,
+          39,
+          41
+        ],
+        "right_antidiagonal": [
+          8,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "sequence": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          15,
+          17,
+          23,
+          31,
+          39
+        ]
+      },
+      "low_width_histogram": {
+        "10": 102,
+        "11": 125,
+        "12": 11,
+        "5": 1,
+        "9": 152
+      },
+      "minimum_defective_count": 102,
+      "minimum_defective_width": 10,
+      "n": 10,
+      "sequence_count": 559127,
+      "sequence_sha256": "afae0a184f4e91d2cf76574a9ca6568b77b46673b45a8030bd068dfa4b9de998",
+      "target_width_at_most_9_count": 153
+    }
+  ]
+}

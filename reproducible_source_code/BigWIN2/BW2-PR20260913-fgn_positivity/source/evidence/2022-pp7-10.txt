@@ -1,0 +1,295 @@
+     FRACTIONAL GAUSSIAN NOISE: ANALYTICAL & COMPUTATIONAL PROBLEMS                7
+
+
+Proof. Recall that, by Corollary 2.6 (Statement 1), 1 > ρ1 > ρ2 > . . . Hence, the
+first inequality Γ23 > Γ33 is equivalent to
+
+                   ρ1 (1 − ρ2 ) > ρ2 − ρ21   or    (1 + ρ1 )(ρ1 − ρ2 ) > 0,
+
+which is true due to Corollary 2.6.
+   To prove the second inequality Γ33 > 0, we need to show that ρ2 > ρ21 , which was
+established in Corollary 2.6.                                                     
+
+Remark 2.9. It is worth pointing out that the positivity (and positive definiteness)
+of the coefficient matrix together with the positivity of the right-hand side of the
+system does not imply the positivity of solution. Indeed, consider the following
+system with the same coefficients as in (16), but another positive right-hand side,
+say (b1 , b2 ):
+                                       
+                               1 ρ1      x1       b
+                                              = 1 .
+                               ρ1 1      x2       b2
+
+The solution has the form:
+                                  b1 − b2 ρ1             b2 − b1 ρ1
+                           x1 =              ,    x2 =              .
+                                   1 − ρ21                1 − ρ21
+
+If, for example, b2 < b1 ρ1 , then x1 > 0 and x2 < 0. For the system (16), this
+condition is written as ρ2 < ρ21 , contradicting Corollary 2.6.
+
+Proposition 2.10.
+
+                                  9 log 9 − 8 log 4
+                         lim Γ23 =                  ≈ 0.783083,
+                        H↑1            8 log 4
+                                  8 log 16 − 9 log 9
+                        lim Γ33 =                    ≈ 0.216917.
+                        H↑1             8 log 4
+Proof. If we take the limit H ↑ 1 in the relations
+                                                  1 2H
+                     ρ1 = 22H−1 − 1,                3 − 22H+1 + 1 ,
+                                                                 
+                                          ρ2 =                                 (17)
+                                                  2
+we get
+
+                             ρ1 → 1,      ρ2 → 1,     as H ↑ 1.
+
+Therefore,
+
+                                  ρ1 (1 − ρ2 )                1 − ρ2
+               lim Γ23 = lim                        = lim
+               H↑1        H↑1 (1 − ρ1 )(1 + ρ1 )      H↑1 2(1 − ρ1 )
+
+                              1 − 12 32H − 22H+1 + 1
+                                                     
+                        = lim
+                          H↑1     2(1 − 22H−1 + 1)
+                              1 − 32H + 22H+1         1 − 9H + 2 · 4H
+                        = lim                  = lim                  .
+                          H↑1   4(2 − 22H−1 )    H↑1     8 − 2 · 4H
+
+By l’Hôpital’s rule,
+
+                            −9H log 9 + 2 · 4H log 4   −9 log 9 + 8 log 4
+             lim Γ23 = lim             H
+                                                     =                    .
+             H↑1        H↑1     −2 · 4 log 4               −8 log 4
+8                     YU. MISHURA, K. RALCHENKO, AND R.L. SCHILLING
+
+0.8
+
+
+
+                                                         0.6
+0.6
+
+
+                                                                                                                          C24
+                                                   C23   0.4
+0.4
+                                                                                                                          C43
+                                                   C33
+                                                                                                                          C44
+                                                         0.2
+0.2
+
+
+
+
+                                               H                                                                      H
+          0.6   0.7    0.8      0.9      1.0                        0.6         0.7         0.8         0.9     1.0
+
+
+
+
+      Figure 1. Case n = 3: Γ23 and Γ33                         Figure 2. Case n = 4: Γ24 , Γ34 ,
+      as the functions of H.                                    and Γ44 as the functions of H.
+
+                                                         0.08
+0.7
+
+0.6
+                                                         0.06
+0.5
+                                                   C25
+0.4                                                C35
+                                                         0.04
+0.3                                                C54
+0.2                                                C55
+                                                         0.02
+0.1
+
+                                               H
+          0.6   0.7    0.8      0.9      1.0
+
+                                                                          0.6         0.7         0.8         0.9         1.0
+
+      Figure 3. Case n = 5: Γ25 , Γ35 ,
+      Γ45 , and Γ55 depending on H.                             Figure 4. The left-hand side of
+                                                                (23).
+
+
+
+Similarly,
+
+                             ρ2 − ρ21           ρ2 − ρ21
+                lim Γ33 = lim       2  = lim
+                H↑1      H↑1 1 − ρ1       H↑1 2(1 − ρ1 )
+                              1   2H
+                                                     
+                              2 3     − 22H+1 + 1 − (22H−1 − 1)2
+                       = lim
+                         H↑1               2(2 − 22H−1 )
+                               2H      2H+1
+                             3 −2             + 1 − 2(24H−2 − 22H + 1)
+                       = lim
+                         H↑1                 4(2 − 22H−1 )
+                                         1
+                             9 − 1 − 2 16H
+                               H
+                                                        9H log 9 − 12 16H log 16
+                       = lim                    =  lim
+                         H↑1     8 − 2 · 4H        H↑1       −2 · 4H log 4
+                         9 log 9 − 8 log 16
+                       =                    .                                                                             
+                              −8 log 4
+
+   Figure 1 shows the dependence of the coefficients Γ23 and Γ33 on H. It illustrates
+the theoretical results stated in Propositions 2.8 and 2.10, in particular, positivity
+and monotonicity of the coefficients, and convergence to theoretical limit values as
+H ↑ 1.
+
+
+2.3.2. Case n = 4. For n = 4, the system (3) has the following form
+
+                                        ρ = Γ24 + Γ34 ρ1 + Γ44 ρ2 ,
+                                      
+                                       1
+                                      
+                                        ρ2 = Γ24 ρ1 + Γ34 + Γ44 ρ1 ,
+                                      
+                                        ρ3 = Γ24 ρ2 + Γ34 ρ1 + Γ44 .
+                                      
+     FRACTIONAL GAUSSIAN NOISE: ANALYTICAL & COMPUTATIONAL PROBLEMS                               9
+
+
+Therefore,
+                            ρ1 + ρ21 ρ3 + ρ1 ρ22 − ρ2 ρ3 − ρ31 − ρ1 ρ2
+                       Γ24 =                                           ,                    (18)
+                                     1 + 2ρ21 ρ2 − ρ22 − 2ρ21
+                            ρ2 ρ2 − ρ32 + ρ1 ρ2 ρ3 − ρ21 + ρ2 − ρ1 ρ3
+                       Γ34 = 1                                         ,                    (19)
+                                     1 + 2ρ21 ρ2 − ρ22 − 2ρ21
+                            ρ3 + ρ1 ρ22 − 2ρ1 ρ2 + ρ3 − ρ21 ρ3
+                       Γ44 = 1                                  .                           (20)
+                                  1 + 2ρ21 ρ2 − ρ22 − 2ρ21
+Proposition 2.11. For any H ∈ ( 12 , 1),
+                                  Γ24 > Γ34   and    Γ44 > 0.
+Proof. The positivity of the denominator follows from the representation
+              1 + 2ρ21 ρ2 − ρ22 − 2ρ21 = (1 − ρ2 )(1 − ρ21 ) + (1 − ρ2 )(ρ2 − ρ21 )         (21)
+and with Corollary 2.6. Therefore, it suffices to prove the claimed relations for the
+numerators of Γ24 , Γ34 , and Γ44 .
+1. Let us prove that Γ24 > Γ34 . The difference between the numerators of Γ24 and Γ34
+is equal to
+  (ρ1 + ρ21 ρ3 + ρ1 ρ22 − ρ2 ρ3 − ρ31 − ρ1 ρ2 ) − (ρ21 ρ2 − ρ32 + ρ1 ρ2 ρ3 − ρ21 + ρ2 − ρ1 ρ3 )
+             = (ρ1 − ρ2 )(1 + ρ3 )(1 − ρ2 ) + (ρ21 − ρ22 )(1 − ρ1 − ρ2 + ρ3 ) > 0,
+since ρ1 > ρ2 and 1 − ρ1 ≥ ρ2 − ρ3 by Statements 1 and 2 of Corollary 2.6.
+2. Finally, the positivity of Γ44 follows from the following representation of its
+numerator:
+   ρ31 + ρ1 ρ22 − 2ρ1 ρ2 + ρ3 − ρ21 ρ3 = (ρ1 − ρ2 )2 + (1 − ρ1 )(ρ3 − ρ21 + ρ1 ρ3 − ρ22 ),
+because ρ3 > ρ21 and ρ1 ρ3 > ρ22 by (15), and (12), respectively.                                 
+  Figure 2 confirms the above proposition. We see that Γ24 is the largest coefficient.
+However, Γ34 > Γ44 only for H < 0.752281, for larger H the order changes.
+Remark 2.12. Consider numerically the relation between Γ34 and Γ44 and the sign
+of Γ34 . One may represent the numerator of Γ34 as follows:
+     ρ21 ρ2 − ρ32 + ρ1 ρ2 ρ3 − ρ21 + ρ2 − ρ1 ρ3 = (1 − ρ2 )(ρ2 + ρ22 − ρ21 − ρ1 ρ3 ).       (22)
+Thus we need to establish that
+                                  ρ2 + ρ22 − ρ21 − ρ1 ρ3 > 0.                               (23)
+We established this fact numerically, since we could not come up with an analytical
+proof. Figure 4 shows the plot of the left-hand side of (23) that confirms the
+positivity of Γ34 .
+   However, we can look at (23) from another point of view. Rewrite (23) in the
+following form:
+                                 1 + ρ2     ρ1 + ρ3
+                                         >          .
+                                   ρ1          ρ2
+The left- and the right-hand sides of this inequality are the values at the points
+x = 0 and x = 1, respectively, of the following function:
+             ρ(H, x) + ρ(H, x + 2)
+ψ(H, x) :=
+                  ρ(H, x + 1)
+            (x + 3)2H − 2(x + 2)2H + 2(x + 1)2H − 2x2H + (1 − x)2H
+          =                                                        ,                  x ∈ [0, 1].
+                          (x + 2)2H − 2(x + 1)2H + x2H
+10                     YU. MISHURA, K. RALCHENKO, AND R.L. SCHILLING
+
+
+The graph of the surface {ψ(H, x), x ∈ [0, 1], H ∈ (1/2, 1)} is shown in Figure 5.
+It was natural to assume that the function ψ(H, x) decreases in x for any H, being
+at x = 0 bigger than at x = 1. However, the function is not monotone for all H.
+Figure 6 contains two-dimensional plots of {ψ(H, x), x ∈ [0, 1]} for four different
+values of H: 0.6, 0.7, 0.8 and 0.9. We observe that ψ(H, 0) > ψ(H, 1) for each
+value of H however, the function ψ(H, x) changes its behaviour from increasing to
+decreasing.
+Remark 2.13. The unexpected behaviour of ψ(H, x), x ∈ [0, 1] (first increasing, then
+decreasing) is a consequence of the non-standard term (1 − x)2H . For x ≥ 1 this
+function decreases in x for any H > 1/2. Indeed, for x ≥ 1 it has a form
+                        (x + 3)2H − 2(x + 2)2H + 2(x + 1)2H − 2x2H + (x − 1)2H
+        ψ(H, x) =
+                                      (x + 2)2H − 2(x + 1)2H + x2H
+                              (x + 3)2H + (x − 1)2H − 2(x + 1)2H
+                      = −2 +
+                                 (x + 2)2H − 2(x + 1)2H + x2H
+                                    2 2H           2 2H
+                              (1 + x+1 ) + (1 − x+1  ) −2
+                      = −2 +        1 2H           1 2H      .
+                              (1 + x+1 ) + (1 − x+1 ) − 2
+           1
+Write y = x+1 ∈ (0, 12 ]. It is sufficient to prove that the function
+                                  (1 + 2y)2H + (1 − 2y)2H − 2
+                      η(H, y) =                               ,           y ∈ (0, 21 ],
+                                   (1 + y)2H + (1 − y)2H − 2
+increases in y for any H ∈ ( 12 , 1). However, for y < 12 ,
+                                                                ∞
+                                                                X
+                                    2H               2H
+                           (1 + y)       + (1 − y)        −2=         ck y 2k+2
+                                                                k=0
+and
+                                                            ∞
+                                                            X
+                        (1 + 2y)2H + (1 − 2y)2H − 2 =             ck (2y)2k+2 ,
+                                                            k=0
+where
+            4H(2H − 1)(2H − 2) . . . (2H − 2k − 1)   2(2H)2k+2
+     ck =                                          =            ,                   k = 0, 1, 2, . . .
+                        (2k + 2)!                     (2k + 2)!
+(here (x)n = x(x − 1) . . . (x − n + 1) is the Pochhammer symbol). The monotonicity
+of η(H, y) for y ∈ (0, 12 ] can be proved by differentiation. Then
+                                          P∞
+                                                 c 22k+2 y 2k
+                              η(H, y) = k=0  P∞k         2k
+                                                              ,               (24)
+                                                k=0 ck y
+hence, the partial derivative equals
+ ∂
+    η(H, y)
+ ∂y
+      ∞
+                 !−2 ∞                      ∞        ∞             ∞
+                                                                                 !
+      X              X                      X        X             X
+              2k              2k+2     2k−1       2l          2k−1       2l+2 2l
+ =       ck y            ck 2      2ky        cl y −   ck 2ky        cl 2    y
+      k=0                  k=1                       l=0         k=1                  l=0
+      ∞
+                      !−2 ∞ ∞
+      X                  XX
+            ck y 2k                ck cl · 2k 22k+2 − 22l+2 y 2k+2l−1 .
+                                                           
+ =
+      k=0                k=1 l=0
+By rearranging the double sum in the numerator, we get the expression
+                   ∞
+                              !−2 ∞ k
+    ∂             X
+                           2k
+                                 XX
+                                      ck cl (2k − 2l) 22k+2 − 22l+2 y 2k+2l−1 ,
+                                                                   
+       η(H, y) =      ck y
+    ∂y
+                         k=0              k=1 l=0
+

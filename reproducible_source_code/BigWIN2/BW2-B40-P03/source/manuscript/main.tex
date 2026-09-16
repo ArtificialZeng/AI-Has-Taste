@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Four-Dimensional Hypercube Inequality for Two-Valued Vertex Weights},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\cube}{\{0,1\}^{4}}
+
+\title{The Four-Dimensional Hypercube Inequality\\
+for Two-Valued Vertex Weights}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The hypercube inequality in dimension four is a homogeneous degree-eight
+inequality in sixteen nonnegative vertex weights.  Its validity on the full
+nonnegative orthant is unresolved.  We prove the restricted inequality when
+the sixteen weights take at most two distinct values.  For each unordered
+nontrivial bipartition of the vertices, substitution of the two values gives
+a bivariate polynomial.  Exact enumeration of all $2^{15}-1=32767$
+bipartitions shows that all nine coefficients of every such polynomial are
+nonnegative.  The enumeration uses integer simplex determinants and is
+provided as a reproducible certificate.  Consequently, any strict
+counterexample to the unrestricted inequality must have at least three
+distinct coordinate values.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $V=\cube$.  For a five-element set
+$S=\{v_0,\ldots,v_4\}\subset V$, set
+\[
+ \operatorname{Vol}(S)
+ =\left|\det[v_1-v_0\;v_2-v_0\;v_3-v_0\;v_4-v_0]\right|,
+\]
+the normalized four-dimensional volume of $\operatorname{conv}S$.  For
+$i\in\{1,2,3,4\}$ and $\epsilon\in\{0,1\}$, write
+\[
+ F_{i,\epsilon}=\{v\in V:v_i=\epsilon\}.
+\]
+These are the eight facets of the four-cube.  For nonnegative weights
+$x=(x_v)_{v\in V}$, define
+\begin{align*}
+ A(x)&=\sum_{S\in\binom V5}\operatorname{Vol}(S)
+       \prod_{v\in S}x_v, &
+ T(x)&=\sum_{v\in V}x_v,\\
+ B(x)&=\prod_{i=1}^{4}\prod_{\epsilon=0}^{1}
+       \left(\sum_{v\in F_{i,\epsilon}}x_v\right), &
+ H_4(x)&=B(x)-A(x)T(x)^3.
+\end{align*}
+The four-dimensional hypercube inequality is $H_4(x)\geq0$ on
+$\mathbb R_{\geq0}^{16}$.
+
+Averkov, von Dichter, and Soprunov introduced the general hypercube
+formulation, proved the preceding case $d=3$, and explicitly left $d\geq4$
+unresolved~\cite{AverkovVonDichterSoprunov2026}.  The $d=2$ identity used in
+their inductive argument had appeared in an earlier algebraic-combinatorial
+proof of a related mixed-volume inequality for three-dimensional
+zonoids~\cite{AverkovSoprunov2026}.  The two-entry reduction for auxiliary
+matrix rows in
+\cite[Section~4.2]{AverkovVonDichterSoprunov2026} is different from requiring
+the final vertex weights $x_v$ to take two values.  The result below concerns
+only the latter restriction.  It neither proves nor disproves the
+unrestricted $d=4$ inequality.  The comparison made here is deliberately
+limited to these directly related sources and is not a claim of priority.
+
+\begin{theorem}\label{thm:two-values}
+If the coordinates of $x\in\mathbb R_{\geq0}^{16}$ take at most two distinct
+values, then $H_4(x)\geq0$.
+\end{theorem}
+
+\section{Bivariate reduction}
+
+Fix $U\subset V$ and put $x_v=a$ for $v\in U$ and $x_v=b$ for
+$v\in V\setminus U$, where $a,b\geq0$.  Let $m=|U|$ and define
+\[
+ c_j(U)=\sum_{\substack{S\in\binom V5\\|S\cap U|=j}}
+          \operatorname{Vol}(S),
+ \qquad
+ q_F(U)=|F\cap U|.
+\]
+Direct grouping gives
+\begin{align}
+ A(x)&=\sum_{j=0}^{5}c_j(U)a^j b^{5-j},\label{eq:A}\\
+ T(x)^3&=(ma+(16-m)b)^3,\label{eq:T}\\
+ B(x)&=\prod_F\bigl(q_F(U)a+(8-q_F(U))b\bigr),\label{eq:B}
+\end{align}
+where the product in \eqref{eq:B} runs over the eight facets.  Hence
+\begin{equation}\label{eq:Hexpansion}
+ H_4(x)=\sum_{k=0}^{8}h_k(U)a^k b^{8-k}
+\end{equation}
+with integer coefficients.  More explicitly, if
+\[
+ \beta_k(U)=
+ \sum_{\substack{\mathcal J\subseteq\mathcal F\\|\mathcal J|=k}}
+ \prod_{F\in\mathcal J}q_F(U)
+ \prod_{F\in\mathcal F\setminus\mathcal J}(8-q_F(U)),
+\]
+where $\mathcal F$ is the set of facets, then
+\begin{equation}\label{eq:hk}
+ h_k(U)=\beta_k(U)-
+ \sum_{\substack{0\leq j\leq5\\0\leq k-j\leq3}}
+ c_j(U)\binom{3}{k-j}m^{k-j}(16-m)^{3-k+j}.
+\end{equation}
+Thus coefficientwise nonnegativity of \eqref{eq:Hexpansion} is a sufficient
+exact certificate for the desired inequality on this two-parameter family.
+
+\begin{proposition}[Exact finite certificate]\label{prop:certificate}
+For every nonempty $U\subset V$ that does not contain $(1,1,1,1)$, all nine
+integers $h_0(U),\ldots,h_8(U)$ in \eqref{eq:hk} are nonnegative.
+\end{proposition}
+
+\begin{proof}
+The accompanying program \texttt{two\_level\_certificate.py} implements
+\eqref{eq:hk} using only exact integer arithmetic.  It first enumerates all
+$\binom{16}{5}=4368$ five-subsets.  Each normalized volume is evaluated by
+the Leibniz determinant formula.  The resulting distribution is
+\[
+\begin{array}{c|rrrr}
+\operatorname{Vol}(S)&0&1&2&3\\ \hline
+\#S&1360&2672&320&16.
+\end{array}
+\]
+For every mask $1\leq M<2^{15}$, the program takes the corresponding
+nonempty subset of the fifteen vertices other than $(1,1,1,1)$, computes the
+six numbers $c_j(U)$ and the eight facet intersections, and forms the nine
+coefficients by exact polynomial multiplication.  It tests
+\[
+ (2^{15}-1)\cdot9=294903
+\]
+integer coefficients.  No coefficient is negative; $2040$ are zero and the
+smallest positive coefficient is $1$.
+
+As a consistency check, the weighted sum of the volume distribution is
+$2672+2(320)+3(16)=3360$.  Therefore, at the all-ones vector,
+\[
+ H_4(1,\ldots,1)=8^8-16^3(3360)=3014656,
+\]
+and the program verifies that $\sum_{k=0}^{8}h_k(U)$ equals this value for
+every mask.  The computation terminates with a nonzero exit status if the
+volume distribution, the all-ones invariant, or coefficientwise
+nonnegativity fails.  Running
+\[
+ \texttt{python3 evidence/two\_level\_certificate.py}
+\]
+from the source directory reproduces the calculation.  This is an exhaustive
+integer computation, not a floating-point search.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:two-values}]
+Suppose first that exactly two values $a$ and $b$ occur.  Their level sets
+form an unordered nontrivial bipartition $\{U,V\setminus U\}$.  Exactly one
+member of this pair omits the distinguished vertex $(1,1,1,1)$, so it is one
+of the $2^{15}-1$ subsets in Proposition~\ref{prop:certificate}.  Exchanging
+the two sides only exchanges $a$ and $b$.  By \eqref{eq:Hexpansion},
+Proposition~\ref{prop:certificate}, and $a,b\geq0$, every summand
+$h_k(U)a^k b^{8-k}$ is nonnegative.  This also covers $a=0$ or $b=0$.
+
+If all coordinates have the same value, choose any enumerated nontrivial
+$U$ and set $a=b$; the same conclusion follows.  Thus all assignments with
+at most two coordinate values are covered.
+\end{proof}
+
+\section{Scope and reproducibility}
+
+The proof is coefficientwise only after restriction to each two-level cone;
+it makes no assertion that the full sixteen-variable polynomial has
+nonnegative coefficients.  In particular, vectors with three or more
+distinct weights are untreated.  The immediate structural consequence of
+Theorem~\ref{thm:two-values} is therefore only that a strict counterexample,
+if one exists, must use at least three distinct coordinate values.
+
+The certificate is a self-contained Python standard-library program.  During
+preparation, its output was also reproduced by a separately written exact
+implementation using a different vertex ordering, fraction-free determinant
+elimination, and direct expansion of the $2^8$ choices in the facet product.
+This cross-check is additional implementation evidence; the mathematical
+reduction and the supplied exhaustive certificate are the proof artifacts.
+
+A separate finite-certificate study of ternary Borsuk and kissing-code models
+likewise converts geometric compatibility to an integer predicate and checks a
+finite-library theorem by exhaustive computation with an independently
+reconstructed implementation~\cite[Section~4, Lemma~3 and
+Proposition~1]{202608.1658}.  That work concerns different finite models and
+provides only a methodological analogue; it does not address the Hypercube
+inequality.
+
+An AI research and coding assistant was used to organize the finite
+reduction, assist with exact-code implementation and cross-checking, conduct
+a bounded literature search, and help draft the manuscript.  Numerical
+optimization and language-model output are not treated as proof.  The author
+checked the theorem-critical reduction against the exact computation and
+takes responsibility for the statement and exposition.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

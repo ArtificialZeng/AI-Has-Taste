@@ -1,0 +1,325 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,filecolor=blue,anchorcolor=blue,menucolor=blue,breaklinks=true,pdftitle={The log-concavity to log-convexity transition in fixed columns of Stirling numbers},pdfauthor={Xiaojian Zeng}]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\D}{D_k}
+\title{The log-concavity to log-convexity transition\protect\\
+in fixed columns of Stirling numbers}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190, China. Email: \texttt{xiaojianzeng@foxmail.com}.}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $c(n,k)$ be the number of permutations of $n$ elements with $k$ cycles.
+We prove that each fixed column changes from log-concavity to log-convexity,
+as conjectured by Liang and Sagan. More precisely, for every $k\geq1$ there
+is a finite $N_k\geq k+1$ such that
+$c(n,k)^2-c(n-1,k)c(n+1,k)$ is nonnegative for $1\leq n<N_k$ and strictly
+negative for $n\geq N_k$. The proof establishes discrete convexity in $n$
+of $c(n,k-1)/c(n,k)$, strictly so for $k\geq2$. A preservation identity
+for elementary-symmetric coefficient ratios and a positive decomposition
+of the resulting numerator give this convexity. Monotonicity and telescoping
+then produce an exact criterion for a finite transition index.
+\end{abstract}
+
+\section{Statement and context}
+
+We use the signless Stirling numbers of the first kind, with
+$c(0,0)=1$, $c(n,0)=0$ for $n>0$, and $c(n,k)=0$ when $k<0$ or $k>n$.
+For $k\geq1$ and $n\geq1$, put
+\[
+  \D(n)=c(n,k)^2-c(n-1,k)c(n+1,k).
+\]
+Thus the sign of $\D(n)$ describes log-concavity or log-convexity at the
+center $n$. Liang and Sagan conjectured that, for every fixed $k$, the
+nonnegative signs precede the nonpositive signs
+\cite{LiangSagan2026} (Conjecture~8.8, p.~31). Their published statement
+reports verification for $1\leq k\leq n\leq100$; the earlier arXiv version
+numbers the same assertion Conjecture~8.9. We prove the assertion on its
+whole domain, with a strictly negative tail.
+
+\begin{theorem}\label{thm:main}
+For every integer $k\geq1$, define, for integers $n\geq k$,
+\[
+  q_k(n)=\frac{c(n,k-1)}{c(n,k)}.
+\]
+Then
+\begin{equation}\label{eq:qconvex}
+ q_k(n)-2q_k(n+1)+q_k(n+2)\geq0 \qquad(n\geq k),
+\end{equation}
+with strict inequality if $k\geq2$ and equality if $k=1$.
+The integer
+\begin{equation}\label{eq:threshold}
+ N_k=1+\min\{j\geq k:q_k(j)-q_k(j+1)<1\}
+\end{equation}
+is well defined and satisfies $N_k\geq k+1$. Moreover,
+\[
+ \D(n)\geq0 \quad(1\leq n<N_k),\qquad
+ \D(n)<0 \quad(n\geq N_k).
+\]
+In particular, $N_1=2$.
+\end{theorem}
+
+The distinction between rows and columns is essential. Salas proves
+coefficientwise strong log-concavity of fixed rows of the
+Graham--Knuth--Patashnik array and strong log-convexity of its sequence of
+row-generating polynomials \cite{Salas2026} (Theorems~1.4 and~1.5).
+For row polynomials $P_n(z)=\sum_j c(n,j)z^j$, the coefficient of $z^{2k}$
+in $P_{n-1}(z)P_{n+1}(z)-P_n(z)^2$ is a sum over pairs of indices
+$i,2k-i$. It does not isolate $-\D(n)$. The argument below supplies the
+passage from inequalities within a row to convexity of $q_k(n)$ as the row
+index varies.
+
+Fan and Wang's abstract reports convexity of elementary-symmetric ratios
+obtained through operators preserving real-rootedness \cite{FanWang2026}.
+We give the precise ratio lemma needed here with its full proof and claim
+no priority for that general property. Their complete theorem and possible
+applications to Stirling numbers have not been compared, because the full
+text was unavailable. The contribution presented here is the explicit
+positive decomposition leading to \eqref{eq:qconvex} and the finite-threshold
+argument for the stated Liang--Sagan conjecture; no worldwide priority
+claim is made.
+
+\section{Convexity of elementary-symmetric coefficient ratios}
+
+For positive real numbers $x_1,\ldots,x_m$, let $e_j=e_j(x_1,\ldots,x_m)$
+be defined by
+\[
+ \prod_{i=1}^m(1+x_i z)=\sum_{j=0}^m e_jz^j.
+\]
+We set $e_0=1$ and $e_j=0$ for $j<0$. A sequence $(R_j)_{j=0}^m$ is
+discretely convex if $R_{j+1}-2R_j+R_{j-1}\geq0$ for $1\leq j<m$.
+
+\begin{lemma}\label{lem:ratios}
+For every $m\geq1$ and every positive $x_1,\ldots,x_m$, the sequence
+\[
+ R_0=0,\qquad R_j=\frac{e_{j-1}}{e_j}\quad(1\leq j\leq m)
+\]
+is strictly increasing and discretely convex.
+\end{lemma}
+
+\begin{proof}
+For $t>0$, set
+\[
+ F_t(u,v)=\frac{u(1+tv)}{1+tu}.
+\]
+Suppose $0\leq u\leq v$, $h\geq2u-v$, and $w\geq2v-u$.
+The function $F_t(w,v)$ increases with $w\geq0$, since its derivative
+is $(1+tv)/(1+tw)^2>0$. Also $F_t(u,h)$ is nondecreasing in $h$ on
+the entire real line, since its derivative is $tu/(1+tu)\geq0$.
+Consequently,
+\begin{align}
+ &F_t(w,v)-2F_t(v,u)+F_t(u,h)\notag\\
+ &\quad\geq F_t(2v-u,v)-2F_t(v,u)+F_t(u,2u-v)\notag\\
+ &\quad=\frac{2t^2(v-u)^3}
+ {(1+tu)(1+tv)(1+t(2v-u))}\geq0.\label{eq:preserve}
+\end{align}
+The equality follows by clearing the three positive denominators.
+The comparison value $2u-v$ may be negative, but it occurs only as
+the second argument of $F_t$, hence only in a numerator. The inequality
+also holds for $w=+\infty$ if
+\begin{equation}\label{eq:endpoint}
+ F_t(+\infty,v)=v+1/t,
+\end{equation}
+by taking the limit in the first term.
+
+We show that multiplication by $1+tz$ preserves the asserted properties.
+Let $a_0,\ldots,a_m>0$, $m\geq1$, and assume that
+$R_0=0$, $R_j=a_{j-1}/a_j$ form an increasing, convex sequence.
+Put $a_{-1}=a_{m+1}=0$ and
+$b_j=a_j+ta_{j-1}$ for $0\leq j\leq m+1$.
+The new ratios are
+\begin{equation}\label{eq:newratios}
+ S_0=0,\quad
+ S_j=F_t(R_j,R_{j-1})\ (1\leq j\leq m),\quad
+ S_{m+1}=R_m+1/t.
+\end{equation}
+Extend the old ratios by $R_{-1}=0$ and $R_{m+1}=+\infty$.
+For each $1\leq j\leq m$, apply \eqref{eq:preserve} with
+\[
+ (h,u,v,w)=(R_{j-2},R_{j-1},R_j,R_{j+1}).
+\]
+Convexity gives both comparison inequalities at interior indices.
+At $j=1$, the lower comparison is $0\geq-R_1$.
+At $j=m$, \eqref{eq:endpoint} gives precisely the last ratio in
+\eqref{eq:newratios}. These endpoint conventions apply simultaneously
+when $m=1$. We obtain $S_{j+1}-2S_j+S_{j-1}\geq0$ at every center.
+Since $S_1>0=S_0$, the successive increments are all strictly positive.
+This also provides the monotonicity needed for the next multiplication.
+
+For a single factor, $R_0=0<R_1=1/x_1$, and there are no convexity
+centers to check. Induction on the number of factors proves the lemma.
+\end{proof}
+
+\begin{lemma}\label{lem:HU}
+Fix $1\leq r\leq m$ and write
+\[
+ A=e_r,\quad B=e_{r-1},\quad C=e_{r-2},\quad E=e_{r-3}.
+\]
+Then $A,B>0$, and
+\begin{equation}\label{eq:HU}
+ H=B^2-AC>0,\qquad U=B^2C-2AC^2+ABE\geq0.
+\end{equation}
+These sign conclusions persist when all four coefficients are multiplied
+by a common positive constant.
+\end{lemma}
+
+\begin{proof}
+For $r=1$, one has $B=1$, $C=E=0$, so $H=1$ and $U=0$.
+For $r\geq2$, strict increase in Lemma~\ref{lem:ratios} gives
+$B/A>C/B$, and hence $H>0$.
+For $r=2$, convexity at the first center, multiplied by $AB$, gives
+$U=B^2-2A\geq0$. For $r\geq3$, all of $A,B,C$ are positive and
+\[
+ \frac{U}{ABC}=R_r-2R_{r-1}+R_{r-2}\geq0.
+\]
+Finally, scaling multiplies $H$ by the square and $U$ by the cube
+of the common factor.
+\end{proof}
+
+The variable domain in these lemmas matters. For a related use of
+elementary-symmetric reduction, Zeng, Liu and Ratnavelu express order-five
+permanent inequalities in symmetric functions of unimodular variables
+and verify explicit positivity decompositions in exact arithmetic
+\cite{ZengLiuRatnavelu2026}. That setting uses phase
+constraints; Lemmas~\ref{lem:ratios}--\ref{lem:HU} here use positive real
+variables and the ordered real ratios they provide.
+
+\section{Column convexity and the finite transition}
+
+Insertion of the largest element in a permutation gives the recurrence
+\begin{equation}\label{eq:recurrence}
+ c(n+1,k)=nc(n,k)+c(n,k-1).
+\end{equation}
+Indeed, the largest element is either a singleton cycle or can be inserted
+after any of the $n$ existing elements. Induction then gives
+\begin{equation}\label{eq:product}
+ \sum_{k=0}^n c(n,k)z^k
+ =z(z+1)\cdots(z+n-1)
+ =(n-1)!z\prod_{j=1}^{n-1}(1+z/j),\quad n\geq1.
+\end{equation}
+
+\begin{proposition}\label{prop:column}
+The ratios $q_k(n)$ satisfy \eqref{eq:qconvex}, with the strictness
+asserted in Theorem~\ref{thm:main}.
+\end{proposition}
+
+\begin{proof}
+Fix $n\geq k\geq2$ and put
+\[
+ (A,B,C,E)=(c(n,k),c(n,k-1),c(n,k-2),c(n,k-3)).
+\]
+By \eqref{eq:product}, these are $(n-1)!$ times the four coefficients
+in Lemma~\ref{lem:HU}, with $r=k-1$, $m=n-1$, and variables
+$1,1/2,\ldots,1/(n-1)$. Thus $A,B>0$, $H>0$, and $U\geq0$.
+Two uses of \eqref{eq:recurrence} yield
+\begin{align*}
+ Q_1&=nA+B, & q_k(n+1)&=\frac{nB+C}{Q_1},\\
+ Q_2&=n(n+1)A+(2n+1)B+C,
+ &q_k(n+2)&=\frac{n(n+1)B+(2n+1)C+E}{Q_2}.
+\end{align*}
+Both $Q_1$ and $Q_2$ are positive. The numerator of the second difference
+over the positive denominator $AQ_1Q_2$ is
+\begin{align*}
+ P={}&BQ_1Q_2-2A(nB+C)Q_2\\
+     &+AQ_1\bigl(n(n+1)B+(2n+1)C+E\bigr)\\
+   ={}&(nA+B)H+n(2B^3-3ABC+A^2E)+U.
+\end{align*}
+The identity
+\[
+ 2B^3-3ABC+A^2E=\frac{2H^2+AU}{B}
+\]
+therefore gives the positive decomposition
+\begin{equation}\label{eq:positive}
+ P=(nA+B)H+\frac{2n}{B}H^2+
+       \left(1+\frac{nA}{B}\right)U>0.
+\end{equation}
+This proves strict convexity for $k\geq2$ on the full domain $n\geq k$.
+For $k=1$, $q_1(n)=0$ for every $n\geq1$, so its second difference
+vanishes. No division by $B$ is used in that case.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Proposition~\ref{prop:column}, the sequence
+\[
+ d_j=q_k(j)-q_k(j+1),\qquad j\geq k,
+\]
+is nonincreasing. Some $d_j$ must be less than $1$. Otherwise, for every
+integer $t\geq0$, telescoping would give
+\[
+ 0\leq q_k(k+t)=q_k(k)-\sum_{j=k}^{k+t-1}d_j
+       \leq q_k(k)-t,
+\]
+which fails for an integer $t>q_k(k)$. Hence the minimum $j_0$ in
+\eqref{eq:threshold} exists, and $N_k=j_0+1\geq k+1$.
+
+For $n\geq k+1$, the recurrence gives the exact identity
+\begin{align}
+ \frac{\D(n)}{c(n-1,k)c(n,k)}
+ &=\frac{c(n,k)}{c(n-1,k)}-\frac{c(n+1,k)}{c(n,k)}\notag\\
+ &=q_k(n-1)-q_k(n)-1=d_{n-1}-1.\label{eq:sign}
+\end{align}
+The denominator is positive. If $k+1\leq n<N_k$, minimality of $j_0$
+gives $d_{n-1}\geq1$. If $n\geq N_k$, monotonicity gives
+$d_{n-1}\leq d_{j_0}<1$. These are the two asserted signs on the
+positive support. At the remaining indices,
+$\D(n)=0$ for $1\leq n<k$ and $\D(k)=1$.
+For $k=1$, one has $d_j=0$, giving $N_1=2$.
+\end{proof}
+
+\begin{remark}
+The threshold in \eqref{eq:threshold} is the first negative center.
+The theorem allows equalities before that center and requires no
+classification of them. For the separate boundary $k=0$, the conventions
+give $D_0(n)=0$ for every $n\geq1$.
+\end{remark}
+
+\section{Exact verification and assistance}
+
+The proof uses finite products, rational identities, induction, and
+telescoping. Its quantified conclusion does not depend on finite testing
+or an asymptotic estimate. Symbolic exploration used SymPy~1.14.0
+\cite{MeurerEtAl2017}. A separate standard-library Python implementation
+checks the rational identity in \eqref{eq:preserve} and the identity obtained by multiplying
+\eqref{eq:positive} by $B$ through sparse integer-polynomial expansion.
+Both residual polynomials are zero.
+
+The accompanying \texttt{verify.py} also constructs Stirling rows by
+polynomial multiplication and cross-checks the permutation cycle-type
+formula
+\[
+ c(n,k)=\sum_{\substack{m_1,\ldots,m_n\geq0\\
+                  \sum_i i m_i=n,\ \sum_i m_i=k}}
+           \frac{n!}{\prod_i i^{m_i}m_i!}
+\]
+through $n=22$. It checks $72\,000$ determinant signs for
+$1\leq k\leq200$, $1\leq n\leq360$, and $52\,100$ second differences
+for $1\leq k\leq200$, $k\leq n\leq360$ (using rows through $362$).
+It also tests rational instances of the preservation inequality, including
+negative comparison values and the terminal limit, and elementary-symmetric
+ratios for all $791$ multisets of lengths $1$ through $7$ from
+$\{1/10000,1/3,1,7,10000\}$. The script uses exact arithmetic and records
+its coverage in \texttt{verification.json}. These finite checks detect
+implementation and transcription errors; the preceding proof establishes
+the infinite statement.
+
+Generative AI assisted proof exploration, verification-code development,
+manuscript preparation, and review in a separate model context. The model
+review is not human peer review. The algebraic identities and all arguments
+needed for the theorem are displayed above.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,31 @@
+# Citation and bibliography audit (pass 2: verification only)
+
+Mode: primary-source search verification  
+Search/verification date: 2026-09-07  
+Frozen extraction input: `audit/claim-citation-ledger.md`  
+Manuscript: `manuscript/main.tex`  
+Result: **accept** (14 claim groups verified; 0 numerical errors, unverified claims, hallucinations, misleading claims, or missing citations).
+
+The user expressly prohibited delegation, so the five-key audit was performed serially in this release context. All applicable academic-citation query templates were run for each retained work (author/year/title words; full title with arXiv/Semantic Scholar restriction; author/year/venue; DOI where present; arXiv identifier where present). Direct primary records and exact passages were then checked against the frozen ledger.
+
+## Claim-to-source verification
+
+| Key | Current and official record | Exact source location and nearby support | Status |
+|---|---|---|---|
+| `Fink1990Bondage` | J. F. Fink, M. S. Jacobson, L. F. Kinch, J. Roberts, *The Bondage Number of a Graph*, *Discrete Mathematics* 86 (1990), 47--57, DOI `10.1016/0012-365X(90)90348-L`. Publisher record: https://www.sciencedirect.com/science/article/pii/0012365X9090348L | Publisher abstract defines the bondage number as the smallest edge set whose deletion increases the domination number. This directly supports C03; “sensitivity” is a conservative interpretation of that definition, not an additional theorem. | Verified (paraphrase/interpretation) |
+| `Srivastava2026Truncated` | Prateek R. Srivastava, *The Truncated Octahedral Graph Has Bondage Number Five*, arXiv:2609.02477v1 [math.CO], DOI `10.48550/arXiv.2609.02477`. Primary record: https://arxiv.org/abs/2609.02477 | Primary PDF/HTML: Section 3 and Lemma 1 give the identical 24-vertex, 36-edge list and \(\gamma(T)=8\); Section 4 and Theorem 1 give \(b(T)=5\), the one witness, 1,767 dominating eight-sets, and all 58,905 four-edge cases; Section 5 gives verifier details. The full text contains no census of all five-edge bondage sets and no automorphism-orbit classification. Supports C01, C04, C05, and C13 exactly. | Verified (exact/paraphrase) |
+| `Hagberg2008NetworkX` | Aric A. Hagberg, Daniel A. Schult, Pieter J. Swart, *Exploring Network Structure, Dynamics, and Function Using NetworkX*, Proc. 7th Python in Science Conference (2008), 11--15. Author-hosted primary paper: https://aric.hagberg.org/papers/hagberg-2008-exploring.pdf | Title/author block and pp. 11--12 identify NetworkX as a Python package providing graph data structures and algorithms. This supports the package attribution in C08. The stated version 3.4.2 is a property of the frozen project environment/evidence, not attributed to the 2008 paper. | Verified (exact/paraphrase) |
+| `Cordella2004VF2` | Luigi P. Cordella, Pasquale Foggia, Carlo Sansone, Mario Vento, *A (Sub)Graph Isomorphism Algorithm for Matching Large Graphs*, *IEEE TPAMI* 26(10) (2004), 1367--1372, DOI `10.1109/TPAMI.2004.75`. Publisher DOI: https://doi.org/10.1109/TPAMI.2004.75 | The paper's Section 2 is the VF2 algorithm. NetworkX's official VF2 documentation states that its GraphMatcher module implements VF2 and cites this exact paper: https://networkx.org/documentation/stable/reference/algorithms/isomorphism.vf2.html . Together these directly support the method clause in C08. | Verified (exact/paraphrase) |
+| `Zeng2026MultiplicityArxiv` | Zijian Zeng, *Multiplicity-Isolated Cores and Chromatic Symmetric Reconstruction of Trees*, arXiv:2608.18179v1 [math.CO], DOI `10.48550/arXiv.2608.18179`. Primary record: https://arxiv.org/abs/2608.18179 | Section 4 gives the canonical integer-partition encoding and bijection for diameter-six trees; its final paragraph and Data and code availability describe the exact cut-partition evaluator. This exactly supports C11's narrow methodological comparison. The entry is active registry row 17 and is cited in ordinary body flow. | Verified (exact/paraphrase) |
+
+C02, C06--C07, C09--C10, and C12 are the paper's mathematical contribution and were checked against the accepted frozen mathematical audit `audit/math.md`; the release audit found no strengthening beyond that accepted scope. C14 agrees with the recorded workflow and is clearly labeled as a disclosure. No retained citation is decorative or contradicted by its source.
+
+## Bibliography metadata and key audit
+
+Five citation keys were extracted from `manuscript/main.tex`; all five exist uniquely in `manuscript/references.bib`, all five occur in the converged `.aux`, and the bibliography has no unused entry. Author, title, year, venue/version, pagination, DOI/arXiv identifiers, and URLs were compared with the primary records above. No key change or BibTeX replacement was required. The later SciPy DOI for the Hagberg proceedings paper is not needed to establish its identity; the author-provided BibTeX likewise identifies it by proceedings, pages, place, and year.
+
+Coverage is complete without padding: Fink is the definition/origin source; Srivastava is the exact graph, baseline theorem, and closest prior result; Hagberg and Cordella are the software and nontrivial graph-isomorphism method sources; Zeng is the independently verified user-library source for the explicit canonical-encoding/exact-evaluator comparison. Standard orbit-stabilizer language and the locally proved bundle criterion require no additional source. The bibliography is neither Excel-only nor user-library-only.
+
+The active registry contained 49 first-sheet records. `audit/user-bibliography-selection.json` binds row 17 to citation attempt 1 and runner launch `a351bcaa-afb4-4bc4-b5f1-ad6c246baec3`; the registry metadata was treated only as a lead and the arXiv primary text was checked at the exact nearby locations. No `literature/bibliography-revision-*.md` or saved `literature/crossref-*` capture exists in this project.
+
+Mechanical checks: the citation-key checker reports five cited keys, five BibTeX keys, no missing/unused keys, and exact `.aux` agreement. The converged `main.log`/`main.blg` scan contains no undefined citation/reference, missing database entry, duplicate entry, BibTeX warning, LaTeX error, fatal error, or runaway argument.

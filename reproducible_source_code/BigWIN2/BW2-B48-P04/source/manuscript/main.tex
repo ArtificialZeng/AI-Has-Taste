@@ -1,0 +1,329 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\Prob}{\mathbb P}
+
+\title{Exact Worst-Case Success Probability for Increasing Event Kernels on
+  $K_5$ at $p=1/2$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We determine an exact finite optimization problem arising from a conjecture
+about increasing auxiliary events in Bernoulli bond percolation.  On
+$K_5$, with one origin and the other four vertices designated as the boundary,
+fix $p=1/2$.  If $F(r)$ denotes the least unconditional probability of
+connecting the origin to a boundary vertex whose event occurs, among all
+jointly defined event families with increasing conditional marginal kernels
+and event probabilities at least $r$, then $F$ is an explicitly determined
+four-piece affine function on $3/4\leq r\leq1$.  In particular, the bound
+$1-2\sqrt\varepsilon$ holds for every $0<\varepsilon\leq1/4$ on this
+complete $p=1/2$ slice.  The proof uses lossless symmetry reduction, exact
+primal tables at five breakpoints, exact dual certificates on four intervals,
+and a verifier that expands the tables over all $1024$ percolation
+configurations.  No value $p\neq1/2$ is controlled, so the original all-$p$
+problem remains unresolved.
+\end{abstract}
+
+\section{Context and result}
+
+Flammant formulated a finite-graph conjecture in which each boundary vertex
+is assigned a highly probable event whose conditional probability is
+increasing in the percolation configuration \cite{Flammant2026}.  The
+conjecture asks for a graph-independent modulus tending to one.  For planar
+graphs with the origin and boundary on the outer face, Flammant proved the
+explicit modulus $1-2\sqrt\varepsilon$.  That theorem does not apply to
+$K_5$.
+
+We study the following finite nonplanar test of that modulus.  Let
+\[
+ V=\{0,1,2,3,4\},\qquad B=\{1,2,3,4\},\qquad G=K_5,
+\]
+where $0$ is the origin.  A percolation configuration
+$\pi\in\{0,1\}^{E(G)}$ has independent Bernoulli-$p$ coordinates.  Auxiliary
+randomness is allowed.  Four jointly defined events $(E_b)_{b\in B}$ are
+admissible when
+\[
+ q_b(\omega):=\Prob(E_b\mid\pi=\omega)
+\]
+is coordinatewise increasing for every $b$.  No independence is assumed
+among the events or between the auxiliary randomness and $\pi$.
+
+For the rest of the paper set $p=1/2$.  For $3/4\leq r\leq1$, let $F(r)$ be
+the minimum, over all admissible event families satisfying
+$\Prob(E_b)\geq r$ for all $b$, of
+\begin{equation}\label{eq:success}
+ \Prob\!\left(\bigcup_{b\in B}
+   \bigl(\{0\leftrightarrow b\}\cap E_b\bigr)\right).
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For $3/4\leq r\leq1$,
+\begin{equation}\label{eq:formula}
+F(r)=
+\begin{cases}
+\dfrac{182}{207}r,
+  &\dfrac34\leq r\leq\dfrac{207}{256},\\[5pt]
+\dfrac{19}{18}r-\dfrac{73}{512},
+  &\dfrac{207}{256}\leq r\leq\dfrac{243}{256},\\[5pt]
+\dfrac43r-\dfrac{13}{32},
+  &\dfrac{243}{256}\leq r\leq\dfrac{63}{64},\\[5pt]
+2r-\dfrac{17}{16},
+  &\dfrac{63}{64}\leq r\leq1.
+\end{cases}
+\end{equation}
+Consequently, for every $0<t\leq1/2$,
+\begin{equation}\label{eq:modulus}
+ F(1-t^2)>\frac{15}{16}(1-2t).
+\end{equation}
+Thus the proposed conditional lower bound $1-2\sqrt\varepsilon$ holds on the
+complete $p=1/2$ slice for $0<\varepsilon\leq1/4$.
+\end{theorem}
+
+The theorem is a result about one parameter slice.  It neither proves nor
+disproves the all-$p$ assertion.  The bounded literature comparison made for
+this project located the planar theorem above but no equivalent $K_5$
+classification; this is not a claim of priority or of formal open status.
+
+Our symmetry averaging is an instance of fixed-space reduction for symmetric
+linear programs \cite{BodiHerrJoswig2013}.  The proof architecture also shares
+with recent exact finite-model work the separation of restricted scope,
+symmetry-reduced discovery, and exact reconstructive verification
+\cite{ZengEtAl2026Finite}.  All details particular to the present problem are
+given below.
+
+\section{A lossless finite linear program}
+
+For a configuration $\omega$, let $C_0(\omega)\subseteq B$ be the vertices
+connected to $0$.  Record the complete joint conditional law of the auxiliary
+events by
+\begin{equation}\label{eq:Q}
+ Q_\omega(S)=\Prob\bigl(\{b\in B:E_b\text{ occurs}\}=S
+                    \mid\pi=\omega\bigr),\qquad S\subseteq B.
+\end{equation}
+Then
+\begin{align}
+ Q_\omega(S)&\geq0,&
+ \sum_{S\subseteq B}Q_\omega(S)&=1,\label{eq:norm}\\
+ q_b(\omega)&=\sum_{S\ni b}Q_\omega(S),&
+ q_b(\omega)&\leq q_b(\omega')\quad(\omega\leq\omega').
+ \label{eq:mono}
+\end{align}
+At $p=1/2$, the four probability constraints and the objective are
+\begin{align}
+ 2^{-10}\sum_\omega q_b(\omega)&\geq r \quad(b\in B),
+ \label{eq:marginal}\\
+ \Phi(Q)&=2^{-10}\sum_\omega\sum_{S\subseteq B}
+ Q_\omega(S)\,\mathbf 1\{S\cap C_0(\omega)\neq\varnothing\}.
+ \label{eq:objective}
+\end{align}
+
+\begin{lemma}\label{lem:lossless}
+Minimizing \eqref{eq:objective} subject to
+\eqref{eq:norm}--\eqref{eq:marginal} is exactly the optimization defining
+$F(r)$.
+\end{lemma}
+
+\begin{proof}
+Every admissible family gives such a table by \eqref{eq:Q}, and
+\eqref{eq:objective} is precisely \eqref{eq:success}.  Conversely, from any
+feasible table define a finite probability space on pairs $(\omega,S)$ by
+\[
+ \Prob((\omega,S))=2^{-10}Q_\omega(S),
+\]
+let $\pi=\omega$, and declare $E_b$ to occur exactly when $b\in S$.  Its
+conditional marginals are the prescribed $q_b$.  Hence every feasible table
+is realized by jointly defined auxiliary events; in particular, the
+formulation imposes no independence that is absent from the problem.
+\end{proof}
+
+It suffices in \eqref{eq:mono} to impose comparisons in which $\omega'$ is
+obtained from $\omega$ by opening one edge.  Chaining these cover comparisons
+gives every coordinatewise comparison.
+
+\begin{lemma}\label{lem:symmetry}
+The minimum is unchanged if $Q$ is required to be invariant under all $24$
+permutations of $B$ that fix the origin.
+\end{lemma}
+
+\begin{proof}
+Let $\Gamma\cong S_4$ act simultaneously on configurations and subsets of
+$B$, and average a feasible $Q$ over $\Gamma$.  Normalization,
+nonnegativity, marginal monotonicity, and the objective are preserved.  For
+each fixed $b$, the unconditional marginal of the averaged table is
+\[
+ \frac14\sum_{j\in B}\Prob(E_j)\geq r.
+\]
+Thus averaging maps every feasible table to an invariant feasible table with
+the same objective.  The reverse inequality follows because invariant tables
+are a subclass of all tables.
+\end{proof}
+
+The invariant formulation has one variable for every orbit of a pair
+$(\omega,S)$.  Direct orbit construction gives $996$ variables and $90$
+configuration orbits.  There are $90$ normalization equations.  After equal
+rows are identified, the one-edge marginal comparisons give $984$ distinct
+inequalities.  Invariance makes the four unconditional event marginals equal,
+so one common marginal constraint suffices.
+
+Write the resulting program in the convention
+\begin{equation}\label{eq:LP}
+ \min c^{\mathsf T}x,\qquad Ax\leq b(r),\qquad Ex=\mathbf1,
+ \qquad x\geq0.
+\end{equation}
+Only the final entry of $b(r)$ depends on $r$; with the unnormalized marginal
+row used here, it is $-1024r$.  A pair $(y,z)$ satisfying
+\begin{equation}\label{eq:dualfeas}
+ y\leq0,\qquad A^{\mathsf T}y+E^{\mathsf T}z\leq c
+\end{equation}
+therefore gives the lower bound
+\begin{equation}\label{eq:dualbound}
+ c^{\mathsf T}x\geq(-1024y_{\rm marg})r+\mathbf1^{\mathsf T}z.
+\end{equation}
+
+\section{Exact primal and dual certificate}
+
+The ancillary certificate stores invariant primal tables at five values of
+$r$.  Its exactly reconstructed data are as follows.
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$r$ & objective & nonzero orbit values\\
+\midrule
+$3/4$       & $91/138$ & $175$\\
+$207/256$   & $91/128$ & $90$\\
+$243/256$   & $55/64$  & $90$\\
+$63/64$     & $29/32$  & $90$\\
+$1$         & $15/16$  & $90$\\
+\bottomrule
+\end{tabular}
+\end{center}
+It also stores four pairs satisfying \eqref{eq:dualfeas}.  The slopes and
+intercepts in \eqref{eq:dualbound} are
+\begin{equation}\label{eq:lines}
+ \left(\frac{182}{207},0\right),\quad
+ \left(\frac{19}{18},-\frac{73}{512}\right),\quad
+ \left(\frac43,-\frac{13}{32}\right),\quad
+ \left(2,-\frac{17}{16}\right).
+\end{equation}
+
+\begin{proposition}\label{prop:certificate}
+The five stored primal tables satisfy all constraints exactly, with the
+objectives displayed above.  Each stored dual pair satisfies
+\eqref{eq:dualfeas} exactly and gives the corresponding affine line in
+\eqref{eq:lines}.
+\end{proposition}
+
+\begin{proof}[Certificate verification]
+The certificate records the edge order, the five sparse primal orbit tables,
+and the four sparse dual vectors as rational numbers.  The accompanying
+verifier reconstructs the $S_4$ action and all $996$ pair orbits.  For every
+endpoint it expands the orbit table over all $1024$ configurations and checks
+in rational arithmetic:
+\begin{itemize}
+\item all $1024$ normalization identities;
+\item all four event marginals, each equal to the stated $r$;
+\item every one-edge-cover marginal monotonicity comparison; and
+\item the objective in \eqref{eq:objective}.
+\end{itemize}
+For each dual it reconstructs $A$, $E$, and $c$, checks the sign of every
+inequality multiplier, and checks all $996$ reduced costs
+$c-(A^{\mathsf T}y+E^{\mathsf T}z)$ coefficient by coefficient.  It then
+recomputes $-1024y_{\rm marg}$ and $\mathbf1^{\mathsf T}z$.  These checks
+return no normalization or monotonicity failure, no positive inequality dual,
+and no negative reduced cost.  They also reproduce every rational number in
+the two displays above.  Thus the proposition is a finite collection of exact
+rational identities and inequalities, independently replayable from the
+serialized data.
+\end{proof}
+
+We now prove the piecewise formula.  Between any two consecutive endpoint
+tables, take their convex interpolation having marginal $r$.  It is feasible,
+and its objective is the affine interpolation of the two endpoint objectives.
+For that interval the corresponding dual in \eqref{eq:lines} gives exactly the
+same affine expression as a lower bound.  The matching upper and lower bounds
+prove \eqref{eq:formula} throughout each interval.  The adjacent lines meet at
+$207/256$, $243/256$, and $63/64$.  Compactness of the finite feasible
+polytope shows that the minimum in the definition of $F$ is attained.
+
+\section{Comparison with the percolation modulus}
+
+Because $B$ contains every vertex other than the origin, the event
+$\{0\leftrightarrow B\}$ occurs exactly when at least one of the four edges
+incident to $0$ is open.  At $p=1/2$,
+\[
+ \Prob(0\leftrightarrow B)=1-2^{-4}=\frac{15}{16}.
+\]
+Put $r=1-t^2$ and define
+\[
+ D(t)=F(1-t^2)-\frac{15}{16}(1-2t).
+\]
+On every branch of \eqref{eq:formula}, $D$ is a concave quadratic.  At the
+successive branch endpoints
+\[
+ t=\frac12,\quad\frac7{16},\quad\frac{\sqrt{13}}{16},
+ \quad\frac18,\quad0,
+\]
+its values are
+\begin{equation}\label{eq:gaps}
+ \frac{91}{138},\quad \frac{19}{32},\quad
+ \frac{15\sqrt{13}-10}{128},\quad \frac{13}{64},\quad0.
+\end{equation}
+The first four are positive; in the radical case this follows from
+$225\cdot13>100$.  Concavity therefore proves strict positivity on the first
+three closed branch intervals.  On the final branch, which is incident with
+$t=0$, direct substitution gives
+\[
+ D(t)=t\left(\frac{15}{8}-2t\right)>0
+ \qquad(0<t\leq1/8).
+\]
+This proves \eqref{eq:modulus}.  Dividing by $15/16$ yields the desired
+conditional lower bound.  Notice that the gap has infimum zero as $t$ tends
+to zero, but zero is not attained in the stated domain.
+
+\section{Reproducibility, scope, and assistance}
+
+The decisive ancillary files are
+\begin{itemize}
+\item \texttt{lp\_p\_half\_parametric\_certificate.json}, containing the five
+  primal tables and four duals;
+\item \texttt{verify\_lp\_p\_half\_parametric.py}, the exact verifier;
+\item \texttt{lp\_p\_half\_parametric.py}, which reconstructs the reduced LP
+  and records the discovery procedure; and
+\item \texttt{lp\_p\_half\_t\_quarter.py}, which defines the graph, group
+  action, orbit routines, and connectivity calculation.
+\end{itemize}
+Run the verifier with Python 3 from the project root.  Its verification path
+does not call an optimizer: all decisive comparisons use
+\texttt{fractions.Fraction}.  SciPy/HiGHS was used to discover candidate
+vertices and duals, which were rationalized and retained only after exact
+checks.  Consequently, floating-point solver output is not part of the proof.
+
+OpenAI Codex assisted with literature search, LP exploration, certificate and
+verifier development, adversarial audit organization, and manuscript
+preparation.  Language-model output is not mathematical evidence.  The result
+rests on the reductions in this paper and on the released exact certificate
+checks.  No proof assistant was used.
+
+The restriction $p=1/2$ is essential to the scope of the result.  When $p$
+varies, both the objective and event-marginal coefficients acquire nonconstant
+polynomial weights in $p$.  The present right-hand-side parametric certificate
+does not address those changes.  In particular, it gives no conclusion for
+any $p\neq1/2$ and leaves the original all-$p$ problem unresolved.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

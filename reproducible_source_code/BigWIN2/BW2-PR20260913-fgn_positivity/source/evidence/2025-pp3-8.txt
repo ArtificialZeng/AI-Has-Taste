@@ -1,0 +1,392 @@
+Fractal Fract. 2025, 9, 428                                                                                                          3 of 26
+
+
+
+                              Conjecture 3. The coefficients Γkn for n = 2, 3, . . . , k = 2, 3, . . . , n, are strictly positive.
+
+                                   It was shown in [19] that Conjecture 3 implies Conjecture 2, which in turn implies
+                              Conjecture 1. Also, Conjecture 3 was numerically confirmed in [18,19] for a wide range of
+                              values of n. Note also that due to stationarity of fGn, coefficients of one-sided projection
+                              can be considered as the prediction coefficients, because
+
+                                                                                             n −1
+                                                              E(∆n | ∆1 , . . . , ∆n−1 ) = ∑ Γnn−k+1 ∆k .
+                                                                                             k =1
+
+                                   It is worth noting that the aforementioned open problems initially arose in [19] during
+                              the study of limit theorems for financial markets with memory. Specifically, the weak
+                              convergence of a discrete-time multiplicative scheme to an asset price model with memory
+                              was investigated. In this context, the pre-limit processes were constructed using the
+                              Cholesky decomposition of the covariance function of fBm. The corresponding proofs
+                              required an in-depth analysis of the properties of the Cholesky decomposition for the
+                              covariance matrix of fBm, which subsequently led to the identification of the open problems
+                              related to the coefficients Γkn . Therefore, the further study of these coefficients is not only
+                              of intrinsic mathematical interest but also essential for advancing the understanding of
+                              financial markets with memory.
+                                   To better understand the properties of projection coefficients for other Gaussian–
+                              Volterra noises, a very simple process of the form
+                                                                                Z t
+                                                                         Xt =         (t − s) dWs ,
+                                                                                 0
+
+                              where W is a Wiener process, was considered in [20].
+                                    It is established in [20] that X, like fBm, is self-similar, non-Markov, has a long memory,
+                              and its increments over non-overlapping intervals are positively correlated. But, unlike fBm,
+                              its increments are not stationary. The projection problem of the form (4) for the process X
+                              was considered in [20]. Using a combinatorial approach, we obtained the explicit formulas
+                              for the respective projection coefficients. Note that this is apparently one of the few cases
+                              when the coefficients can be explicitly calculated. We established that the coefficients are
+                              not all positive; moreover, they are alternating. Thus, we can assume that the stationarity
+                              or non-stationarity of the increments is precisely the property that is determining the signs
+                              of projection coefficients. But for now, this statement is still a hypothesis.
+                                    With all these previous results in mind, in this paper, we considered three main
+                              tasks: to proceed analytically with the properties of the coefficients of one-sided projection,
+                              to investigate the coefficients of the two-sided (bilateral) projection and to study the norms
+                              of both kinds of projections as the functions of n and H. The motivation for considering a
+                              two-sided projection comes mostly from physics, since we are interested in the influence of
+                              the state of a physical system at a given point and at a given moment on the multilateral
+                              environment with which it interacts. That is, in a sense, we are interested in the influence of
+                              a given point on the two-sided surrounding space, and not just on one side of it. From this
+                              point of view, one can also interpret the influence of the system’s position on both the past
+                              and the future, which does not contradict modern physical theories about time loops, as can
+                              be seen, for example, in recent research [21]. Along the way, we made a rather unexpected
+                              observation: while all the coefficients of one-sided projection remain positive, at least
+                              within the limits of our observations, with a two-sided projection, one of the coefficients
+                              steadily becomes negative, but quite small in absolute value. We established this property
+                              analytically for a small value of n, although this “exceptional” behavior seems somewhat
+                              strange and inexplicable, from a logical point of view.
+Fractal Fract. 2025, 9, 428                                                                                                   4 of 26
+
+
+
+                                   The paper is organized as follows: Section 2 is devoted to some properties of the
+                              coefficients of one-sided projections. More precisely, we establish that all coefficients of
+                              one-sided projection (4) in the case n = 4 are strictly positive and at the same time we show
+                              what technical difficulties will arise along the way and why we really limit ourselves to
+                              small values of n in precise calculations. Then, we consider another form of projection that
+                              contains orthogonal summands, calculate the coefficients of such projection, and give a
+                              simple equality for the L2 -norm of one-sided projection. In Sections 3 and 4, we calculate
+                              the coefficients of bilateral projection and comment in detail their (somehow unexpected)
+                              properties. Section 5 is devoted to the norms of projections. We see that the norms are
+                              stabilized after some not very big value of n, and both of them do not tend towards 1.
+                              This means that, from the point of view of the theory of stationary sequences, fractional
+                              Gaussian noise is a purely nondeterministic sequence.
+
+                              2. Some Results Concerning Coefficients of One-Sided Projection
+                                   As it was explained in the Introduction, Conjecture 3 about the sign of the coefficients
+                              of one-sided projection (4) (namely the hypothesis that they are strictly positive) has not
+                              been analytically proven yet. However, we can a bit proceed in this direction, and demon-
+                              strate simultaneously what technical difficulties appear in the general case, in comparison
+                              with [18].
+
+                              2.1. Coefficients of One-Sided Projection (4) in the Case n = 4
+                                   Let n = 4. Then
+
+                                                         E(∆1 | ∆2 , ∆3 , ∆4 ) = Γ24 ∆2 + Γ34 ∆3 + Γ44 ∆4 .
+
+                                    It was proven in [18] that Γ2n > 0 for any n ≥ 2, and it was established in [18]
+                              (Proposition 3) that for any H ∈ (1/2, 1), Γ24 > Γ34 and Γ44 > 0.
+                                    The positivity of Γ34 was numerically established in [18]. Now, we go a step ahead and
+                              supplement numerical calculations with analytic approach in the interval (1/2, H0 ), where
+                              ρ3 ( H ) = 21 , as well as with some neighborhood of 1. According to equality (20), from [18],
+
+                                                                 ρ21 ρ2 − ρ32 + ρ1 ρ2 ρ3 − ρ21 + ρ2 − ρ1 ρ3
+                                                         Γ34 =                                              ,                    (6)
+                                                                          1 + 2ρ21 ρ2 − ρ22 − 2ρ21
+
+                              and the denominator in the right-hand side of (6), being a determinant of non-degenerate
+                              covariance matrix, is strictly positive. Therefore, our goal is to establish that
+
+                                                         ρ21 ρ2 − ρ32 + ρ1 ρ2 ρ3 − ρ21 + ρ2 − ρ1 ρ3 > 0.                         (7)
+
+                                   It was mentioned in [18] (Remark 5) (and it is very easy to see by direct transformations)
+                              that the left-hand side of (7) equals (1 − ρ2 )(ρ2 + ρ22 − ρ21 − ρ1 ρ3 ). Also, all coefficients ρk
+                              are less than one. Therefore, it is sufficient to prove that
+
+                                                                  ρ̂ := ρ2 + ρ22 − ρ21 − ρ1 ρ3 > 0.
+
+                              Remark 1. It is known that ρ2 > ρ21 and ρ22 < ρ1 ρ3 (established in Lemma 3 and Corollary 1
+                              of [18], respectively). These inequalities imply that the sign of ρ̂ cannot be determined directly and
+                              requires a more careful analysis.
+                                    Furthermore, substituting the explicit expressions for ρ1 , ρ2 , and ρ3 in terms of H, we obtain
+
+                                                             1  2H                                      
+                                                 ρ̂( H ) =      9 − 82H − 2 · 62H + 4 · 42H − 2 · 22H − 1 .                      (8)
+                                                             4
+Fractal Fract. 2025, 9, 428                                                                                                                                 5 of 26
+
+
+
+                              It is straightforward to check that ρ̂( H ) = 0 when H = 1/2 and H = 1.
+                                     Note that the expression (8) involves several distinct exponential functions, namely, 22H , 42H ,
+                              6 , 82H , and 92H , which makes an analytic investigation of its sign and behavior particularly
+                                2H
+
+                              challenging.
+
+                              Proposition 1. ρ̂( H ) > 0 for all H ∈ (1/2, 1).
+
+                              Proof. Based on the observations in Remark 1, we provide a combined analytical
+                                                                                                         and
+                                                                                                                                                        1
+                              numerical proof. Specifically, we analytically show that ρ̂( H ) > 0 for H ∈                                              2 , H0     ,
+                              where H0 ≈ 0.874958 is such that ρ3 ( H ) = 12 . Furthermore, we prove that ρ̂( H ) > 0 in a
+                              neighborhood of H = 1. Although we are unable to confirm analytically that H1 ≤ H0
+                              (which would provide a complete analytical proof), we supplement the argument with a
+                              numerical
+                                      verification that clearly demonstrates ρ̂( H ) > 0 throughout the entire interval
+                               1
+                               2, 1 .
+                                   Step 1. It was shown in [18] (Lemma 1) that
+
+                                                                                        1
+                                                                           ρ2 − ρ21 =     ( ρ − ρ3 ).
+                                                                                        2 1
+                              Therefore,
+                                                                                                                           
+                                           ρ̂ = ρ2 + ρ22 − ρ21 − ρ1 ρ3 =            1
+                                                                                    2 + ρ1       ( ρ2 − ρ3 ) +       1
+                                                                                                                     2 − ρ2       ( ρ1 − ρ2 ).                 (9)
+
+                              Moreover, according to [18] (Corollary 1),
+
+                                                                                ρ1 > ρ2 > ρ3 .
+
+                              Hence, if ρ2 ≤ 21 , it follows directly that ρ̂ > 0.
+                                  Now, suppose ρ2 > 12 . If ρ3 < 21 , then (9) yields:
+                                                                                                       
+                                                    1
+                                         ρ̂ >       2 + ρ1        ρ2 − 21 + 12 − ρ2 (ρ1 − ρ2 ) = ρ2 − 21 21 + ρ2 > 0.
+                                                                                                                                                       
+                              Note that the condition ρ3 ( H ) < 21 is equivalent to H < H0 , where H0 ∈                                         1
+                                                                                                                                                 2, 1       is the
+                              solution of the equation
+                                                               42H − 2 · 32H + 22H = 1.
+                                                                                                                                                                  
+                                                                                                                                                            1
+                              We now show that this equation indeed admits a unique solution in the interval                                                2, 1       .
+                              Consider the function
+                                                                                         2H    
+                                        f ( H ) := 42H − 2 · 32H + 22H = 22H 22H − 2 · 32     + 1 =: 22H g( H ).
+                                                                     
+                              It is straightforward to verify that f 12 = 0 and f (1) = 1. Therefore, to establish the
+                              existence and uniqueness
+                                                       of the solution in the given interval, it suffices to show that f is
+                              strictly increasing on 12 , 1 . Evidently, it is enough to prove that g( H ) is strictly increasing.
+                              The derivative of g is given by
+
+                                                                                                      3 2H
+                                                                                                                     
+                                                                  g′ ( H ) = 2 22H log 2 − 2 ·             log 23
+                                                                                                        
+                                                                                                      2                   .
+
+                              Hence, to show that g′ ( H ) > 0, we need to verify the inequality
+
+                                                                                                 3 2H
+                                                                        22H log 2 > 2 ·               log 32 ,
+                                                                                                   
+                                                                                                 2
+Fractal Fract. 2025, 9, 428                                                                                              6 of 26
+
+
+
+                              which is equivalent to
+                                                                       2H
+                                                                        4            2 log 32
+                                                                        3        >            .
+                                                                                      log 2
+                              Since the left-hand side of this inequality is strictly increasing with respect to H, it suffices
+                              to verify it at H = 12 . In this case, the inequality reduces to
+
+                                                                            4   2 log 32
+                                                                              >          .
+                                                                            3    log 2
+
+                              This can be further rewritten as log 4 > log 27
+                                                                              
+                                                                            8 , which clearly holds.
+                                   A numerical approximation of the solution yields H0 ≈ 0.874958.
+                                   Step 2. We now prove that ρ̂( H ) > 0 in a neighborhood of H = 1. From (9), this is
+                              equivalent to
+                                                                    1
+                                                                    2 + ρ1   ρ − ρ2
+                                                                           > 1       .                            (10)
+                                                                   ρ2 − 12   ρ2 − ρ3
+
+                              As H → 1, both ρ1 → 1 and ρ2 → 1, and thus
+
+                                                                    1
+                                                                    2 + ρ1
+                                                                            → 3,        H → 1.
+                                                                    ρ2 − 12
+
+                              We now apply l’Hôpital’s rule to the right-hand side of (10). First, observe that
+
+                                                     1 2H       1                     1
+                                         ρ1 − ρ2 =     (2 − 2) − (32H − 2 · 22H + 1) = (3 · 22H − 3 − 32H ),
+                                                     2          2                     2
+                              and
+                                                         1 2H                 1
+                                                ρ2 − ρ3 =  (3 − 2 · 22H + 1) − (42H − 2 · 32H + 22H )
+                                                         2                    2
+                                                         1
+                                                        = (3 · 3 − 3 · 2 + 1 − 42H ).
+                                                                2H      2H
+                                                         2
+                              Clearly, both ρ1 − ρ2 and ρ2 − ρ3 tend towards zero as H → 1. Therefore, by l’Hôpital’s
+                              rule,
+
+                                                  ρ1 − ρ2                3 · 22H − 3 − 32H
+                                              lim           = lim
+                                             H →1 ρ 2 − ρ 3   H →1 3 · 32H − 3 · 22H + 1 − 42H
+
+                                                                               6 · 22H log 2 − 2 · 32H log 3
+                                                            = lim
+                                                                H →1 6 · 32H log 3 − 6 · 22H log 2 − 2 · 42H log 4
+                                                                 12 log 2 − 9 log 3
+                                                            =                       ≈ 1.882 ≪ 3.
+                                                                27 log 3 − 44 log 2
+
+                              Therefore, inequality (10) holds for H sufficiently close to 1, and thus ρ̂( H ) > 0 in a
+                              neighborhood of H = 1.
+                                                                                       ρ̂(H ), shown in Figure 1, which
+                                  Step 3. Finally, we refer to the graph of the function
+                                                                                                  1
+                              confirms that ρ̂( H ) > 0 throughout the entire interval            2, 1   .
+Fractal Fract. 2025, 9, 428                                                                                                                            7 of 26
+
+
+
+
+                              0.30
+
+                              0.25
+
+                              0.20
+
+                              0.15
+
+                              0.10
+
+                              0.05
+
+                                                                                                         H
+                                              0.6         0.7           0.8        0.9             1.0
+
+                              Figure 1. Graph of ρ̂( H ) as a function of H.
+
+                              Remark 2. It would be sufficient to show that the second derivative ρ̂′′ ( H ) is negative; however,
+                              this is not the case, as illustrated in Figure 2. Notably, the second derivative becomes positive for
+                              H ≳ 0.96. This observation provides further evidence that the analytical investigation of ρ̂( H )
+                              becomes increasingly challenging for large values of H.
+
+
+                                                                                                   10
+                               2
+
+                                                                                                    5
+                               1
+
+                                                                                                                                                   H
+                                                                                          H                    0.6    0.7        0.8   0.9   1.0
+                                        0.6         0.7          0.8       0.9      1.0
+                                                                                                  -5
+                              -1
+                                                                                                  -10
+                              -2
+
+                                                     (a) ρ̂′ ( H )                                                    (b) ρ̂′′ ( H )
+
+                              Figure 2. Graphs of derivatives ρ̂′ ( H ) and ρ̂′′ ( H ) as functions of H.
+
+                              2.2. Some “Conditional” Relations
+                                   Now, our goal is to consider general value of n and construct some kind of recurrence
+                              relations. According to [18] (Proposition 6), the first coefficient Γ2n > 0 for all n ≥ 2. Now,
+                              assume that we already proved that Γkn > 0 for some n ≥ 2 and any 2 ≤ k ≤ n.
+
+                              Proposition 2. If we know that Γkn > 0 for some n ≥ 2 and any 2 ≤ k ≤ n, then the last coefficient
+                              Γnn+ 1                                             n +1
+                                 +1 in the expansion (4) for n + 1 is positive: Γn+1 > 0.
+
+                              Remark 3. The coefficients {Γkn ∈ R, 2 ≤ k ≤ n} in the expansion (4) are determined recursively
+                              in [18] (Proposition 5). Namely,
+
+                                                                                 ρn − ∑nk=2 Γkn ρn+1−k
+                                                                       Γnn+ 1
+                                                                          +1 =                         ,             n ≥ 2,                              (11)
+                                                                                   1 − ∑nk=2 Γkn ρk−1
+                                                                                   1 n − k +2
+                                                                Γkn+1 = Γkn − Γnn+
+                                                                                 +1 Γ n       ,              n ≥ 2, 2 ≤ k ≤ n.                           (12)
+
+                              Proof. Note that the denominator in (11) is strictly positive as a determinant of covariance
+                              matrix. Therefore, it is sufficient to prove that ρn − ∑nk=2 Γkn ρn+1−k > 0, under assumption
+                              that Γkn > 0 for all 2 ≤ k ≤ n.
+                                   Multiplying both parts of (4) by ∆n and taking expectation, we get that
+
+                                                                                              n
+                                                                                 ρn−1 − ∑ Γkn ρn−k = 0.
+                                                                                          k =2
+Fractal Fract. 2025, 9, 428                                                                                                                          8 of 26
+
+
+
+                                   Therefore, it is sufficient to prove that
+
+                                                                                             n
+                                                             δn := ρn−1 − ρn − ∑ Γkn (ρn−k − ρn+1−k ) < 0.
+                                                                                         k =2
+
+                                   However,                                      n                 
+                                                                       ρn                      ρ
+                                                        δn = ρn−1 1 −          − ∑ Γkn ρn−k 1 − n+1−k ,
+                                                                      ρ n −1     k =2
+                                                                                                 ρn−k
+
+                              and taking to the account that Γkn > 0 and also 0 < ρk < ρk−1 ≤ 1, k ≥ 1 (see [18]
+                              (Corollary 1)), we see that it is sufficient to prove that
+
+                                                                       ρn         ρ
+                                                               1−            < 1 − n +1− k                for       2 ≤ k ≤ n.
+                                                                      ρ n −1        ρn−k
+
+                                   However, this relation is a direct consequence of inequality (13) from [18] which states
+                              that the coefficients ρk are log-convex, and so
+
+                                                                                        ρl           ρ l +1
+                                                                                                 <          .
+                                                                                      ρ l −1          ρl
+
+                                   The proposition is proved.
+
+                              Remark 4. Since we already proved that for n = 4, Γkn > 0, 2 ≤ k ≤ 4, it means that Γ55 > 0.
+                              However, to prove analytically that Γ45 > 0 is a much more tedious problem than to prove that
+                              Γ34 > 0 (both coefficients are “penultimate”), therefore it is better to prove this fact numerically, see
+                              Figure 6 in [18]. The situation with the next coefficients is even more involved. This explains why
+                              to get the general result Γkn > 0, n ≥ 2, 2 ≤ k ≤ n, is indeed problematic.
+
+                              2.3. “Martingale” Approach to the Calculation of Coefficients
+                                   Obviously, the following conditional expectations are equal:
+
+                                E( ∆1 | ∆2 , . . . , ∆ n )
+                                                = E ( ∆ 1 | ∆ 2 , ∆ 3 − E ( ∆ 3 | ∆ 2 ), . . . , ∆ k − E ( ∆ k | ∆ 2 , . . . , ∆ k −1 ), . . . ,
+                                                                                                                        ∆n − E(∆n | ∆2 , . . . , ∆n−1 )),
+
+                              all random variables in both conditions are Gaussian, and in the right-hand side, they
+                              are non-correlated (orthogonal), therefore create a martingale according to the filtration
+                              Fk = σ{∆2 , . . . , ∆k }, and they are even independent. Consequently,
+                                                                                 n
+                                               E(∆1 | ∆2 , . . . , ∆n ) = ∑ Rkn (∆k − E(∆k | ∆2 , . . . , ∆k−1 )) + R2n ∆2 ,
+                                                                               k =3
+
+
+                              for some coefficients Rkn ∈ R, n ≥ 2, 2 ≤ k ≤ n.
+
+                              Proposition 3. Coefficients Rkn do not depend on n and equal
+
+                                                                             ρk−1 − ∑ik=−21 Γik−1 ρk−i
+                                                             Rkn = Rk =                                         ,     3 ≤ k ≤ n,                       (13)
+                                                                                1 − ∑ik=−21 Γik−1 ρi−1
+                                                                                      R2n = R2 = ρ1 .                                                  (14)
+

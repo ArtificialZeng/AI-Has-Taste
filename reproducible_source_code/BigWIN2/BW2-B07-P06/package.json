@@ -1,0 +1,429 @@
+{
+  "original_id": "legacy-b07-p06",
+  "archive_id": "BW2-B07-P06",
+  "title": "Two structural transforms for chromatic symmetric functions of unicyclic graphs",
+  "batch_label": "7",
+  "kind": "historical-gated-manuscript",
+  "original_status": "open_after_search",
+  "scope": "Two structural CSF transforms and certified finite ranges; full conjecture remains open.",
+  "gate_basis": "Historical independent proof, citation, build/PDF and release gates passed for the stated manuscript scope; the current manuscript matches the archived final source. PROOF_AUDIT explicitly passes the partial manuscript and fails full-conjecture resolution. Later PDF_AUDIT closes all eight-page visual, build and extracted-ZIP gates.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B07-P06_Two_structural_transforms_for_chromatic_symmetric_functions_of_unicyclic_graphs.pdf",
+  "pdf_sha256": "bb1286e5d359d5aedbf040220b74bb42ac3506a33a60d869cd8a1cefc9e2142b",
+  "pages": 8,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B07-P06/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B07-P06/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B07-P06/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Python 3 and NetworkX 3.4.2. Full graph regeneration additionally needs externally installed nauty/geng 2.7r3."
+  ],
+  "limitations": [
+    "SUBMISSION_AUDIT is a pre-PDF build-entry gate; later PDF_AUDIT and final release manifest supply completion evidence.",
+    "Original ZIP included Ubuntu packages. Exclude them and replace frozen tools/nauty_pkg instructions with external installation and GENG path instructions.",
+    "Original entrypoints: ['python3 tests/test_exact_csf.py', 'python3 tests/test_degree_transform.py', 'python3 tests/test_edge_transform.py']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 26,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P06/audit/PROOF_AUDIT.md",
+      "sha256": "3b1bade17218b156f635a9cb5690489f7fbb90578c0e8a1df7d963b045c56209",
+      "bytes": 3068
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P06/audit/CITATION_AUDIT.md",
+      "sha256": "9e324e5183faf716e247e8ccd7c6f10bdb6632bb582ab9b5add75363a0809df2",
+      "bytes": 1868
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P06/audit/SUBMISSION_AUDIT.md",
+      "sha256": "c2cb55a7a72b8bb1b65b27e6ee971e9d4bc67be9fc06171c07f8e9063b77384d",
+      "bytes": 1437
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P06/audit/PDF_AUDIT.md",
+      "sha256": "37ca14b24a1ae9c89af223a997fa98a1ee0657168a6c946e42f351fd78edf4ad",
+      "bytes": 1692
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P06/results/release_manifest.json",
+      "sha256": "9bfef8a9dd325c06eb345ae212010b96c630f7686d75c54a161b8b839ca0027c",
+      "bytes": 598
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/src/graph6_utils.py",
+      "original_sha256": "8eff88a21e21ec1c9f5fe37f43b162640de65248ef9e0761fe56901a67ce1a14",
+      "original_bytes": 3568,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/graph6_utils.py",
+          "sha256": "8eff88a21e21ec1c9f5fe37f43b162640de65248ef9e0761fe56901a67ce1a14",
+          "bytes": 3568
+        }
+      ]
+    },
+    {
+      "path": "source/src/csf_delete_contract.py",
+      "original_sha256": "bfd4f695ce487ff57b405d482bf5846b54218a5de6fc039868b0eea5d8d4e699",
+      "original_bytes": 2401,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/csf_delete_contract.py",
+          "sha256": "bfd4f695ce487ff57b405d482bf5846b54218a5de6fc039868b0eea5d8d4e699",
+          "bytes": 2401
+        }
+      ]
+    },
+    {
+      "path": "source/src/csf_subset.py",
+      "original_sha256": "8076a611d22129069424240e27a2f4b306ce9086dd1e5e93cd1e22e0c2a71080",
+      "original_bytes": 1598,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/csf_subset.py",
+          "sha256": "8076a611d22129069424240e27a2f4b306ce9086dd1e5e93cd1e22e0c2a71080",
+          "bytes": 1598
+        }
+      ]
+    },
+    {
+      "path": "source/src/verify_finite_stream.py",
+      "original_sha256": "654e05323d82b31fed0528055d0d77da4afa52b41e45d987186e40cb4f02aba5",
+      "original_bytes": 9292,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/verify_finite_stream.py",
+          "sha256": "654e05323d82b31fed0528055d0d77da4afa52b41e45d987186e40cb4f02aba5",
+          "bytes": 9292
+        }
+      ]
+    },
+    {
+      "path": "source/src/csf_hash_search.py",
+      "original_sha256": "5958ebb57412e875cc193d79f4743dc6eeefc70cc94c316cd8788923defbcd8b",
+      "original_bytes": 7614,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/csf_hash_search.py",
+          "sha256": "5958ebb57412e875cc193d79f4743dc6eeefc70cc94c316cd8788923defbcd8b",
+          "bytes": 7614
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/README.md",
+      "original_sha256": "afe12e601d9542c894169fdfcd3fe30a45b7c52b217cc7ac2e15eba1e5bf82ee",
+      "original_bytes": 3075,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/README.md",
+          "sha256": "afe12e601d9542c894169fdfcd3fe30a45b7c52b217cc7ac2e15eba1e5bf82ee",
+          "bytes": 3075
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/run_n17/candidates.json",
+      "original_sha256": "c3825517d6e527691fb7f3df8bfa375c05f2f0d0f4157d9d2dad438fe2605759",
+      "original_bytes": 515,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/run_n17/candidates.json",
+          "sha256": "c3825517d6e527691fb7f3df8bfa375c05f2f0d0f4157d9d2dad438fe2605759",
+          "bytes": 515
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_n18_target/result.json",
+      "original_sha256": "3f345bb0b5076713c5f41ca897e2761a8cee95dc79960fa4aff16d57f1dcb5d7",
+      "original_bytes": 875,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_n18_target/result.json",
+          "sha256": "3f345bb0b5076713c5f41ca897e2761a8cee95dc79960fa4aff16d57f1dcb5d7",
+          "bytes": 875
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/run_n18_target/candidates.json",
+      "original_sha256": "4b677e3fa4c7f6c2fe38fd2765f3773418b832620f6a643d86671cc067b0b233",
+      "original_bytes": 517,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/run_n18_target/candidates.json",
+          "sha256": "4b677e3fa4c7f6c2fe38fd2765f3773418b832620f6a643d86671cc067b0b233",
+          "bytes": 517
+        }
+      ]
+    },
+    {
+      "path": "source/experiments/verify_n17/result.json",
+      "original_sha256": "5351fc6bf4065e9dac1f0b256ed003fd5f3d8468d8c64463e819e5334c450df6",
+      "original_bytes": 869,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/experiments/verify_n17/result.json",
+          "sha256": "5351fc6bf4065e9dac1f0b256ed003fd5f3d8468d8c64463e819e5334c450df6",
+          "bytes": 869
+        }
+      ]
+    },
+    {
+      "path": "source/requirements.txt",
+      "original_sha256": "4a403703a0bb3522fe67d158683509ee59057a3060c917ed8f728d9603ecb165",
+      "original_bytes": 16,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/requirements.txt",
+          "sha256": "4a403703a0bb3522fe67d158683509ee59057a3060c917ed8f728d9603ecb165",
+          "bytes": 16
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/finite_result.md",
+      "original_sha256": "34eb5cd6ac90cd020a42117a5437167180c70055a46b6b7dd55659b3825c259e",
+      "original_bytes": 2387,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/finite_result.md",
+          "sha256": "34eb5cd6ac90cd020a42117a5437167180c70055a46b6b7dd55659b3825c259e",
+          "bytes": 2387
+        }
+      ]
+    },
+    {
+      "path": "source/problem/formal_statement.md",
+      "original_sha256": "aa377a3bfa25045c03ec3e5ceb068ffd3caa090094449e14b724a8ff45900a9c",
+      "original_bytes": 2668,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem/formal_statement.md",
+          "sha256": "aa377a3bfa25045c03ec3e5ceb068ffd3caa090094449e14b724a8ff45900a9c",
+          "bytes": 2668
+        }
+      ]
+    },
+    {
+      "path": "source/proof/edge_transform.md",
+      "original_sha256": "e9d0960941623bf7af251d82a735943ae404c50b3ca8216b5a97875fee383793",
+      "original_bytes": 2837,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/edge_transform.md",
+          "sha256": "e9d0960941623bf7af251d82a735943ae404c50b3ca8216b5a97875fee383793",
+          "bytes": 2837
+        }
+      ]
+    },
+    {
+      "path": "source/proof/degree_transform.md",
+      "original_sha256": "3281908ef591ede50410152db58119306743249860766eda1dbb98318bbbfb48",
+      "original_bytes": 5962,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/degree_transform.md",
+          "sha256": "3281908ef591ede50410152db58119306743249860766eda1dbb98318bbbfb48",
+          "bytes": 5962
+        }
+      ]
+    },
+    {
+      "path": "source/tests/make_bingham_family.py",
+      "original_sha256": "83d2b7d21b854d3c269f3f2673a8234b47b8e697694d1b2b6cb834387e6d62bb",
+      "original_bytes": 1345,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/make_bingham_family.py",
+          "sha256": "83d2b7d21b854d3c269f3f2673a8234b47b8e697694d1b2b6cb834387e6d62bb",
+          "bytes": 1345
+        }
+      ]
+    },
+    {
+      "path": "source/tests/test_exact_csf.py",
+      "original_sha256": "3824752e3d2f0cb8a4f1620ce85f66e7670bab0397afd7fdf569eb493a1a8964",
+      "original_bytes": 1783,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/test_exact_csf.py",
+          "sha256": "3824752e3d2f0cb8a4f1620ce85f66e7670bab0397afd7fdf569eb493a1a8964",
+          "bytes": 1783
+        }
+      ]
+    },
+    {
+      "path": "source/tests/test_edge_transform.py",
+      "original_sha256": "862c2762cc79ed2be87a36a2249daeaf637e9a8d1aa3331dfa145436a841f651",
+      "original_bytes": 2387,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/test_edge_transform.py",
+          "sha256": "862c2762cc79ed2be87a36a2249daeaf637e9a8d1aa3331dfa145436a841f651",
+          "bytes": 2387
+        }
+      ]
+    },
+    {
+      "path": "source/tests/check_degree_transform_stream.py",
+      "original_sha256": "0f45612e20ceecd141b3e65e9e19e6752316443b6869e4e32d81fed2638428af",
+      "original_bytes": 673,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/check_degree_transform_stream.py",
+          "sha256": "0f45612e20ceecd141b3e65e9e19e6752316443b6869e4e32d81fed2638428af",
+          "bytes": 673
+        }
+      ]
+    },
+    {
+      "path": "source/tests/check_edge_transform_stream.py",
+      "original_sha256": "1568242c8e7261951c9aeb62542cbeee50cd44b3e2f86a441de4da0ded857b3c",
+      "original_bytes": 667,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/check_edge_transform_stream.py",
+          "sha256": "1568242c8e7261951c9aeb62542cbeee50cd44b3e2f86a441de4da0ded857b3c",
+          "bytes": 667
+        }
+      ]
+    },
+    {
+      "path": "source/tests/test_degree_transform.py",
+      "original_sha256": "2c808f06f354f4af6b534bba801d358632786035d1ae1c333405437b72587b5b",
+      "original_bytes": 2129,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/test_degree_transform.py",
+          "sha256": "2c808f06f354f4af6b534bba801d358632786035d1ae1c333405437b72587b5b",
+          "bytes": 2129
+        }
+      ]
+    },
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "41da9c988aae726e70f0a70efdae97e30bf30d72895b875fae9ce0ee4a3f5f12",
+      "original_bytes": 19555,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "41da9c988aae726e70f0a70efdae97e30bf30d72895b875fae9ce0ee4a3f5f12",
+          "bytes": 19555
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "f4467c5e8ffe3775a64eda0eb81981947c4aabd5b7d6cc70452b3550f0c5e7ac",
+      "original_bytes": 2603,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "f4467c5e8ffe3775a64eda0eb81981947c4aabd5b7d6cc70452b3550f0c5e7ac",
+          "bytes": 2603
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+      "original_sha256": "3476b54d692ef42eeb90cc43ec41a9f54cca834164472c9cb59f021132cac03b",
+      "original_bytes": 458,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+          "sha256": "3476b54d692ef42eeb90cc43ec41a9f54cca834164472c9cb59f021132cac03b",
+          "bytes": 458
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+      "original_sha256": "afe12e601d9542c894169fdfcd3fe30a45b7c52b217cc7ac2e15eba1e5bf82ee",
+      "original_bytes": 3075,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+          "sha256": "afe12e601d9542c894169fdfcd3fe30a45b7c52b217cc7ac2e15eba1e5bf82ee",
+          "bytes": 3075
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_03.md",
+      "original_sha256": "4a403703a0bb3522fe67d158683509ee59057a3060c917ed8f728d9603ecb165",
+      "original_bytes": 16,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_03.md",
+          "sha256": "4a403703a0bb3522fe67d158683509ee59057a3060c917ed8f728d9603ecb165",
+          "bytes": 16
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B07-P06",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

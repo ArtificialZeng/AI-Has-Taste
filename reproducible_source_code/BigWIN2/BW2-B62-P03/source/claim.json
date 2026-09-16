@@ -1,0 +1,21 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For Gamma_n exactly as defined in source.md, the exact pairs (D_n, Sort_n) are (7,6) for n=6, (10,10) for n=7, and (14,13) for n=8. Lexicographically selected diameter witnesses are ((1,2,3,5,6,4),(1,5,3,4,2,6)), ((1,2,3,4,5,6,7),(1,6,5,4,3,2,7)), and ((1,2,3,4,7,8,5,6),(1,8,5,4,2,7,6,3)); selected sorting witnesses are (1,5,4,3,2,6), (1,6,5,4,3,2,7), and (1,7,6,4,5,3,2,8). The evidence gives explicit shortest conjugation paths and certifies the upper bounds by exhaustive exact BFS from every one of the (n-1)! vertices in two distinct encodings.",
+  "contribution": "A complete exact computational resolution of the frozen finite problem, with independently written cycle-word and one-line-permutation-map verifiers, full rooted and all-ordered-pairs histograms, deterministic hashes, and replayed shortest witnesses. The sorting values reproduce the primary paper's finite assertion; the added value is the reproducible dual-verifier certificate and the requested diameter computations. No priority claim for the diameter values and no asymptotic or unimodality conclusion are asserted.",
+  "proposer_job_id": "win-00062-p03-research-d7b96c070c78",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/external/2601.12597.pdf",
+    "evidence/computation_certificate.md",
+    "evidence/verifier_a.py",
+    "evidence/verifier_a_n6.json",
+    "evidence/verifier_a_n7.json",
+    "evidence/verifier_a_n8.json",
+    "evidence/verifier_b.py",
+    "evidence/verifier_b_n6.json",
+    "evidence/verifier_b_n7.json",
+    "evidence/verifier_b_n8.json"
+  ]
+}

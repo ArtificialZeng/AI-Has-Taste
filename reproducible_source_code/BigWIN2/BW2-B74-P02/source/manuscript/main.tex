@@ -1,0 +1,253 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The v-Numbers of (x2,y2,zc,xyz) and Its Integral Closure for Every c at Least 2},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\NP}{\operatorname{NP}}
+\newcommand{\Soc}{\operatorname{Soc}}
+\newcommand{\Ass}{\operatorname{Ass}}
+
+\title{The \(v\)-Numbers of \((x^2,y^2,z^c,xyz)\) and Its Integral Closure for Every \(c\geq 2\)}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(K\) be an arbitrary field and
+\(I_c=(x^2,y^2,z^c,xyz)\subset K[x,y,z]\), where \(c\geq2\).
+We prove the simultaneous formulas
+\[
+  v(I_c)=2,
+  \qquad
+  v(\overline{I_c})=\left\lceil\frac c2\right\rceil .
+\]
+The proof gives the weighted half-space description
+\(\overline{I_c}=(x^ay^bz^d:c(a+b)+2d\geq2c)\) and classifies all
+socle monomials of both quotients.  Consequently integral closure lowers
+the \(v\)-number at \(c=2\), preserves it at \(c=3,4\), and raises it
+exactly when \(c\geq5\).
+\end{abstract}
+
+\section{Statement and context}
+
+Write \(R=K[x,y,z]\) with its standard grading.  For a homogeneous ideal
+\(J\subset R\), its \(v\)-number is
+\[
+ v(J)=\min\bigl\{d:\text{there are }f\in R_d\text{ and }
+ \mathfrak p\in\Ass_R(R/J)\text{ with }(J:f)=\mathfrak p\bigr\}.
+\]
+This invariant arose in the study of generalized minimum-distance functions
+and socle degrees; see Cooper et al.~\cite{CooperEtAl2020}.  We use only the
+displayed definition.  Standard background on monomial ideals and integral
+closure may be found in \cite{HerzogHibi2011,HunekeSwanson2006}.
+
+Biswas, Mandal and Phukan recently compared \(v(I)\) with
+\(v(\overline I)\) for classes of monomial ideals
+\cite{BiswasMandalPhukan2026}.  Their Theorem~3.2 treats ideals in two
+variables, whereas their Example~3.3 considers
+\[
+  I_5=(x^2,y^2,z^5,xyz)
+\]
+and computes \(v(I_5)=2<v(\overline{I_5})=3\).  The result below determines
+that entire one-parameter family, including the smaller endpoints.  This is
+a comparison with the cited source, not a claim of priority beyond the
+literature inspected here.
+
+\begin{theorem}\label{thm:main}
+For every field \(K\) and every integer \(c\geq2\),
+\[
+ v(I_c)=2,
+ \qquad
+ v(\overline{I_c})=\left\lceil\frac c2\right\rceil,
+ \qquad
+ I_c=(x^2,y^2,z^c,xyz)\subset K[x,y,z].
+\]
+More precisely, the complete lists of socle-monomial exponent triples are
+\begin{align*}
+ \operatorname{SocMon}(R/I_c)
+   &=\{(1,1,0),(1,0,c-1),(0,1,c-1)\},\\
+ \operatorname{SocMon}(R/\overline{I_c})
+   &=\left\{(0,0,c-1),
+       \left(1,0,\left\lceil\frac c2\right\rceil-1\right),
+       \left(0,1,\left\lceil\frac c2\right\rceil-1\right)\right\}.
+\end{align*}
+\end{theorem}
+
+\section{The integral closure as a weighted half-space}
+
+For \((a,b,d)\in\mathbb R_{\geq0}^3\), put
+\[
+ w(a,b,d)=c(a+b)+2d,
+ \qquad
+ H_c=\{(a,b,d)\in\mathbb R_{\geq0}^3:w(a,b,d)\geq2c\}.
+\]
+The three pure-power exponent vectors lie on the boundary of \(H_c\).
+They generate the whole half-space as a Newton polyhedron.  Indeed, if
+\(u\in H_c\) and \(S=w(u)\), then \(t=2c/S\leq1\), the point \(tu\) is a
+convex combination of \((2,0,0),(0,2,0),(0,0,c)\), and
+\(u-tu\in\mathbb R_{\geq0}^3\).  Moreover,
+\(w(1,1,1)=2c+2\), so the generator \(xyz\) does not enlarge this
+polyhedron.  Thus
+\[
+ \NP(I_c)=H_c.\tag{1}
+\]
+The following direct argument proves the needed lattice statement over
+every field, without taking (1) as a black box.
+
+\begin{lemma}\label{lem:closure}
+For every \(c\geq2\),
+\[
+ \overline{I_c}
+ =\bigl(x^ay^bz^d:c(a+b)+2d\geq2c\bigr).\tag{2}
+\]
+\end{lemma}
+
+\begin{proof}
+For a nonzero polynomial \(f\), let \(\nu(f)\) be the least \(w\)-weight
+of one of its monomial terms.  The weighted initial forms lie in the domain
+\(K[x,y,z]\), so
+\(\nu(fg)=\nu(f)+\nu(g)\).  Each generator of \(I_c\) has weight at least
+\(2c\); hence every element of \(I_c^i\) has weight at least \(2ci\).
+
+Suppose that \(f\) is integral over \(I_c\).  It satisfies
+\[
+ f^n+a_1f^{n-1}+\cdots+a_n=0,
+ \qquad a_i\in I_c^i.
+\]
+If \(\nu(f)<2c\), then \(f^n\) has weight \(n\nu(f)\), while every other
+summand has weight at least
+\[
+ 2ci+(n-i)\nu(f)>n\nu(f).
+\]
+The nonzero lowest-weight initial form of \(f^n\) therefore cannot cancel,
+a contradiction.  Thus every monomial term of \(f\) has weight at least
+\(2c\), proving one inclusion in (2).
+
+Conversely, let \(m=x^ay^bz^d\) have integer weight
+\(S=c(a+b)+2d\geq2c\).  The product
+\[
+ (x^2)^{ca}(y^2)^{cb}(z^c)^{2d}
+\]
+uses exactly \(S\) generators and divides \(m^S\): the coordinate
+differences are respectively
+\(a(S-2c),b(S-2c),d(S-2c)\).  Hence \(m^S\in I_c^S\), and the monic
+equation \(T^S-m^S=0\) shows that \(m\) is integral over \(I_c\).
+The elements integral over an ideal form an ideal
+\cite[Chapter~1]{HunekeSwanson2006}; consequently every polynomial whose
+terms have weight at least \(2c\) belongs to \(\overline{I_c}\).
+\end{proof}
+
+\section{Socle classifications}
+
+Both \(I_c\) and \(\overline{I_c}\) are proper \(\m=(x,y,z)\)-primary
+ideals: each contains a power of every variable, and (2) excludes \(1\).
+Thus \(\m\) is the only associated prime of either quotient.  It follows
+directly from the definition that \(v(J)\) is the least total degree of a
+nonzero class in
+\[
+ \Soc(R/J)=(J:\m)/J
+\]
+for either ideal \(J\).  Since membership in a monomial ideal is termwise,
+the standard monomials form a basis of the quotient and its socle is spanned
+by the standard monomials killed by \(x,y,z\).  In particular, a homogeneous
+sum cannot produce a smaller degree through cancellation.
+
+First consider \(I_c\).  A standard monomial \(u=x^ay^bz^d\) has
+\(a,b\leq1\), \(d\leq c-1\), and not both \(a=b=1\) when \(d\geq1\).
+For such a monomial, direct divisibility by the four generators gives
+\begin{align*}
+ xu\in I_c&\Longleftrightarrow a=1\ \text{or}\ (b=1\ \text{and}\ d\geq1),\\
+ yu\in I_c&\Longleftrightarrow b=1\ \text{or}\ (a=1\ \text{and}\ d\geq1),\\
+ zu\in I_c&\Longleftrightarrow d=c-1\ \text{or}\ a=b=1.\tag{3}
+\end{align*}
+Solving (3) is exhaustive.  The case \(a=b=0\) fails.  The cases
+\((a,b)=(1,0),(0,1)\) force \(d=c-1\), while \(a=b=1\) forces \(d=0\)
+by standardness.  Hence the first list in Theorem~\ref{thm:main} is complete.
+Its total degrees are \(2,c,c\), and therefore
+\[
+ v(I_c)=2.\tag{4}
+\]
+
+Now consider \(\overline{I_c}\).  By Lemma~\ref{lem:closure}, a monomial
+of weight \(W\) is standard exactly when \(W<2c\).  Multiplication by
+\(x,y,z\) changes the weight by \(c,c,2\), respectively.  Thus the monomial
+is in the socle exactly when
+\[
+ W<2c,\qquad W+c\geq2c,\qquad W+2\geq2c.
+\]
+Since \(2c-2\geq c\) for \(c\geq2\), these conditions reduce to
+\[
+ 2c-2\leq W<2c.\tag{5}
+\]
+Set \(s=a+b\).  The upper inequality in (5) forces \(s\leq1\).  If
+\(s=0\), the unique solution is \(d=c-1\).  If \(s=1\), then
+\[
+ c-2\leq2d<c,
+\]
+whose unique integer solution is
+\(d=\lceil c/2\rceil-1\).  There are two choices for \((a,b)\), giving the
+second list in Theorem~\ref{thm:main}.  Its total degrees are
+\[
+ c-1,\qquad \left\lceil\frac c2\right\rceil,
+ \qquad \left\lceil\frac c2\right\rceil.
+\]
+Because \(c-1\geq\lceil c/2\rceil\) for \(c\geq2\),
+\[
+ v(\overline{I_c})=\left\lceil\frac c2\right\rceil.\tag{6}
+\]
+Equations (4) and (6), together with the two complete socle lists, prove
+Theorem~\ref{thm:main}.
+
+\begin{corollary}
+One has
+\[
+ v(\overline{I_2})<v(I_2),
+\]
+equality for \(c=3,4\), and
+\[
+ v(I_c)<v(\overline{I_c})
+ \quad\Longleftrightarrow\quad c\geq5.
+\]
+\end{corollary}
+
+\begin{proof}
+The ordered pair is \((2,1)\) at \(c=2\), is \((2,2)\) at \(c=3,4\),
+and has second component at least \(3\) exactly when \(c\geq5\).
+\end{proof}
+
+\section{Finite check and assistance disclosure}
+
+A deterministic exact-arithmetic script independently enumerated all
+standard monomials and tested the three variable-colon conditions for every
+\(2\leq c\leq20\).  It returned precisely the two symbolic lists in
+Theorem~\ref{thm:main}.  This bounded calculation is a diagnostic, not a
+proof of the universal quantifier.  The distinction between a proved
+infinite class and an exact implementation aimed at further cases is also
+made explicitly in the different reconstruction setting of
+\cite{Zeng2026Multiplicity}; the quantified scope of a computation matters
+in both settings.  Here the universal conclusion rests entirely on
+Lemmas~\ref{lem:closure} and the symbolic solution of (3)--(5).
+
+OpenAI Codex was used during proof discovery, literature triage, symbolic
+case organization, and preparation of the \LaTeX{} manuscript.  Before
+manuscript preparation, a separate fresh language-model context reconstructed
+the frozen argument, attacked its endpoint and field-independence claims, and
+reran the finite checker.  That audit is not human peer review.  No numerical
+or language-model output is used as a premise in the proof above; all
+universal claims follow from the displayed algebraic arguments.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

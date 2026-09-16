@@ -1,0 +1,406 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\allowdisplaybreaks
+\setlength{\emergencystretch}{1.5em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\phig}{\frac{1+\sqrt5}{2}}
+
+\title[Non-Parry powers of the quartic Perron root]{Every Power of the Perron Root of
+\texorpdfstring{$X^4-X-1$}{X4-X-1} Is Non-Parry:\ An Exact Certificate}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{Primary 11A63; Secondary 11R06, 37B10}
+\keywords{beta-expansion, Parry number, Perron number, algebraic certificate}
+\hypersetup{
+  pdftitle={Every Power of the Perron Root of X4-X-1 Is Non-Parry: An Exact Certificate},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Let $\beta>1$ be the real root of $X^4-X-1$.  We prove that
+$\beta^k$ is non-Parry for every integer $k\geq 1$.  This settles the fixed
+$d=4$ case of a conjecture of Hare and Hichri, who recorded this case as part
+of broader computational evidence.  A nonreal conjugate $\gamma$ gives a
+uniform obstruction for $k\geq 8$ through Solomyak's golden-ratio bound.  The
+seven remaining powers are treated by exact greedy prefixes whose embedded
+remainders escape every eventually periodic tail bound.  All floor decisions
+and strict inequalities are reduced to rational interval calculations.  A
+serialized certificate is checked independently by a standard-library
+rational verifier and by a symbolic verifier using Sturm root counts.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For a real base $q>1$, let
+\[
+T_q(x)=qx-\lfloor qx\rfloor \qquad (0\leq x\leq 1)
+\]
+and define the greedy digits of exact $1$ by
+\[
+d_n(q)=\left\lfloor qT_q^{n-1}(1)\right\rfloor,\qquad n\geq 1.
+\]
+The base $q$ is a \emph{Parry number} when the word
+$d_1(q)d_2(q)\cdots$ is eventually periodic; a finite expansion is understood
+to have an all-zero tail.  This is equivalent to finiteness of the orbit of
+$1$ under $T_q$ and is the standard convention originating with
+Parry~\cite{Parry1960}.
+
+Let $\beta_d>1$ be the Perron root of $X^d-X-1$.  Akiyama proved that
+$\beta_d$ is non-Parry for every $d\geq 4$~\cite[Theorem~1.1]{Akiyama2016}.
+Hare and Hichri subsequently conjectured that every positive power
+$\beta_d^k$ is non-Parry for all $d\geq 4$~\cite[Conjecture~3.3]{HareHichri2026}.
+Their Table~3.3 labels the cases $4\leq d\leq 10$ as non-Parry for all positive
+powers, while the surrounding text describes the table as numerical support
+and reports computations through $d=100$~\cite[Table~3.3 and
+Remark~3.4]{HareHichri2026}.  The exact finite witnesses behind the $d=4$ row
+are not supplied there.
+
+The purpose of this note is to give a fully exact and independently
+reproducible proof for that fixed row.
+
+\begin{theorem}\label{thm:main}
+Let $\beta>1$ satisfy $\beta^4=\beta+1$.  Then $\beta^k$ is non-Parry for
+every integer $k\geq 1$.
+\end{theorem}
+
+The proof has two parts.  A nonreal conjugate $\gamma$ satisfies
+$|\gamma|>1$ and $|\gamma|^8>\phig$.  Solomyak's strict bound on conjugates of
+Parry numbers~\cite{Solomyak1994} therefore covers every $k\geq 8$.  For
+$1\leq k\leq 7$, we give a short exact greedy prefix and prove that its image
+under $\beta\mapsto\gamma$ is already too large to be the tail of an
+eventually periodic expansion.  This escape principle is related to
+Akiyama's criterion~\cite[Lemma~2.1]{Akiyama2016}; we rederive it for the
+exact-$1$ convention used here.
+
+\section{Algebraic root data}
+
+Put
+\[
+f(X)=X^4-X-1,
+\qquad
+h(S)=S^6+S^4-S^3-S^2-1.
+\]
+We use the rational intervals
+\begin{align}
+B_-&=\frac{1220744084}{10^9}, &
+B_+&=\frac{1220744085}{10^9},\label{eq:Binterval}\\
+S_-&=\frac{1130685445}{10^9}, &
+S_+&=\frac{1130685446}{10^9}.\label{eq:Sinterval}
+\end{align}
+
+\begin{lemma}\label{lem:roots}
+The polynomial $f$ is irreducible over $\Q$.  It has a unique positive root
+$\beta\in(B_-,B_+)$.  If $s$ is the unique positive root of $h$ in
+$(S_-,S_+)$ and
+\[
+u=-\frac{s}{s^2+1},\qquad p=-\frac1s,
+\]
+then
+\begin{equation}\label{eq:factor}
+f(X)=(X^2-uX+s)(X^2+uX+p).
+\end{equation}
+The first quadratic has conjugate nonreal roots $\gamma,\overline\gamma$ with
+$|\gamma|^2=s$; the second has roots $\beta$ and a real $\alpha$ with
+$|\alpha|<1$.  Moreover,
+\[
+1<|\gamma|<\beta.
+\]
+\end{lemma}
+
+\begin{proof}
+Modulo $2$, the polynomial $f$ becomes $X^4+X+1$.  It has no root in
+$\mathbb F_2$ and has remainder $1$ upon division by the only monic
+irreducible quadratic $X^2+X+1$.  Hence it is irreducible.
+
+Direct rational substitution gives
+$f(B_-)<0<f(B_+)$ and $h(S_-)<0<h(S_+)$.  Each polynomial has one sign change,
+so Descartes' rule gives uniqueness of its positive root.  Since
+\[
+(s^2-1)(s^2+1)^2-s^3=h(s)=0,
+\]
+we have $p+s-u^2=0$, $u(s-p)=-1$, and $sp=-1$.  Multiplication now proves
+\eqref{eq:factor}.
+
+The discriminant of the first factor is negative because
+$u^2=s-1/s<4s$.  Its roots have product $s$, hence modulus $\sqrt{s}$.  The
+second factor has negative product and therefore one positive and one negative
+root; its positive root is the unique positive root $\beta$ of $f$.  The
+intervals give $S_+<B_-^2$ and $S_-B_->1$.  Thus
+$|\gamma|^2=s<\beta^2$, while
+$|\alpha|=1/(s\beta)<1$.
+\end{proof}
+
+\begin{lemma}\label{lem:cutoff}
+For the conjugate $\gamma$ in Lemma~\ref{lem:roots},
+\[
+|\gamma|^8>\phig.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $c=16181/10000$.  Exact rational arithmetic gives
+\[
+s^4>S_-^4>c.
+\]
+Also $c>1/2$ and $(2c-1)^2>5$, so $c>\phig$.
+\end{proof}
+
+\section{An escape criterion for exact 1}
+
+\begin{lemma}[embedded-tail escape]\label{lem:escape}
+Let $q>1$ be algebraic, and let $d_1d_2\cdots$ be the greedy expansion of
+exact $1$ in base $q$.  Define
+\[
+r_0=1,\qquad r_n=qr_{n-1}-d_n.
+\]
+Suppose an embedding of a number field containing $q$ sends $q$ to
+$\eta$, where $|\eta|>1$, and let $r_n'$ be the image of $r_n$.  If
+\begin{equation}\label{eq:escape}
+|r_n'|>\frac{\lfloor q\rfloor}{|\eta|-1}
+\end{equation}
+for some $n$, then $q$ is non-Parry.
+\end{lemma}
+
+\begin{proof}
+Assume that the digit word is eventually periodic.  The identity
+\[
+\sum_{i\geq1}d_iq^{-i}=1
+\]
+is then a rational function identity in $q^{-1}$, so applying the embedding is
+legitimate.  Since $|\eta|>1$, the corresponding
+eventually periodic series converges at $\eta^{-1}$ and represents that same
+rational function.  Consequently,
+\[
+r_n'=\eta^n\left(1-\sum_{i=1}^n d_i\eta^{-i}\right)
+     =\sum_{j\geq1}d_{n+j}\eta^{-j}.
+\]
+Every greedy digit lies between $0$ and $\lfloor q\rfloor$, so
+\[
+|r_n'|\leq \sum_{j\geq1}\lfloor q\rfloor |\eta|^{-j}
+=\frac{\lfloor q\rfloor}{|\eta|-1},
+\]
+contrary to \eqref{eq:escape}.  A finite expansion is included by its zero
+tail.
+\end{proof}
+
+\section{The seven finite certificates}
+
+All states are computed in the free rank-four ring
+\[
+\Z[X]/(X^4-X-1),
+\]
+using $X^4=X+1$.  For fixed $k$, start with $R_0(X)=1$ and use the digits in
+Table~\ref{tab:witnesses} to form
+\begin{equation}\label{eq:recurrence}
+R_j(X)\equiv X^kR_{j-1}(X)-d_j \pmod{f(X)},
+\qquad \deg R_j\leq 3.
+\end{equation}
+
+\begin{table}[t]
+\centering
+\caption{Exact greedy-prefix escape data.  The last state is
+$R_n(\beta)=P_k(\beta)$.}\label{tab:witnesses}
+\small
+\setlength{\tabcolsep}{7pt}
+\begin{tabular}{@{}ccclc@{}}
+\toprule
+$k$ & $\lfloor\beta^k\rfloor$ & $n$ & $d_1\cdots d_n$ & $L_k$\\
+\midrule
+1 & 1 & 35 & \texttt{10000000100000000000010000000010000} & $16$\\
+2 & 1 & 10 & \texttt{1010000001} & $8$\\
+3 & 1 & 7  & \texttt{1101100} & $5$\\
+4 & 2 & 7  & \texttt{2010002} & $17/2$\\
+5 & 2 & 3  & \texttt{212} & $6$\\
+6 & 3 & 3  & \texttt{310} & $15/2$\\
+7 & 4 & 4  & \texttt{4002} & $10$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The corresponding final states are
+\begin{align*}
+P_1(X)&=7+6X-7X^2-2X^3,&
+P_2(X)&=-4-3X+3X^2+2X^3,\\
+P_3(X)&=1-X-2X^2+2X^3,&
+P_4(X)&=1+5X-X^2-3X^3,\\
+P_5(X)&=-1+3X+X^2-2X^3,&
+P_6(X)&=3+X-4X^2+X^3,\\
+P_7(X)&=-5+5X^2-X^3.&&
+\end{align*}
+
+We now describe a finite exact check that certifies both greediness and escape.
+For $P(X)=\sum_{i=0}^3a_iX^i$, define the outward rational enclosure
+\begin{align*}
+\underline P&=a_0+
+ \sum_{\substack{1\leq i\leq3\\a_i\geq0}}a_iB_-^i+
+ \sum_{\substack{1\leq i\leq3\\a_i<0}}a_iB_+^i,\\
+\overline P&=a_0+
+ \sum_{\substack{1\leq i\leq3\\a_i\geq0}}a_iB_+^i+
+ \sum_{\substack{1\leq i\leq3\\a_i<0}}a_iB_-^i.
+\end{align*}
+Then $P(\beta)\in[\underline P,\overline P]$.  Applying this enclosure to
+every state generated by \eqref{eq:recurrence} gives
+\begin{equation}\label{eq:statebounds}
+0<\underline {R_j}\leq R_j(\beta)\leq\overline {R_j}<1
+\end{equation}
+in all seven rows.  Thus the displayed strings are exact greedy prefixes.
+The same calculation gives the listed values of $\lfloor\beta^k\rfloor$.
+
+It remains to certify the embedded norms without approximating $\gamma$.
+For a final state $P_k(X)=a_0+a_1X+a_2X^2+a_3X^3$, reduce with
+$\gamma^2=u\gamma-s$ to write
+\[
+P_k(\gamma)=A_k+B_k\gamma,
+\]
+where
+\begin{align*}
+A_k&=a_0-a_2s-a_3us,\\
+B_k&=a_1+a_2u+a_3(u^2-s).
+\end{align*}
+It follows that
+\begin{equation}\label{eq:norm}
+|P_k(\gamma)|^2=A_k^2+A_kB_ku+B_k^2s.
+\end{equation}
+After subtracting $L_k^2$, clearing the positive denominator, and reducing
+the numerator modulo $h(s)$, one obtains the polynomials $G_k$ listed in
+Appendix~\ref{app:gaps}.  Direct outward rational evaluation on
+$[S_-,S_+]$ proves
+\begin{equation}\label{eq:normlower}
+G_k(s)>0,\qquad |P_k(\gamma)|>L_k
+\quad (1\leq k\leq7).
+\end{equation}
+
+Finally, put
+\[
+\rho=\frac{1063336938}{10^9}.
+\]
+The exact inequalities $\rho^2<S_-$ and
+\begin{equation}\label{eq:products}
+L_k(\rho^k-1)>\lfloor\beta^k\rfloor
+\qquad(1\leq k\leq7)
+\end{equation}
+are rational comparisons.  Since $|\gamma|>\rho$, equations
+\eqref{eq:normlower} and \eqref{eq:products} give
+\[
+|P_k(\gamma)|>
+\frac{\lfloor\beta^k\rfloor}{|\gamma|^k-1}.
+\]
+Lemma~\ref{lem:escape}, applied with $q=\beta^k$ and $\eta=\gamma^k$,
+proves that $\beta^k$ is non-Parry for $1\leq k\leq7$.
+
+\section{Completion of the proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The preceding section covers $1\leq k\leq7$.  For $k\geq8$, restriction of
+the embedding $\Q(\beta)\hookrightarrow\mathbb C$, $\beta\mapsto\gamma$, to
+$\Q(\beta^k)$ maps $\beta^k$ to $\gamma^k$.  These images are distinct because
+$|\gamma|<\beta$, so $\gamma^k$ is a non-dominant conjugate of $\beta^k$.
+Lemma~\ref{lem:cutoff} gives
+\[
+|\gamma^k|\geq|\gamma|^8>\phig.
+\]
+Solomyak proved that every non-dominant Galois conjugate of a Parry number has
+modulus strictly less than $\phig$~\cite{Solomyak1994}.  Hence $\beta^k$ is
+non-Parry for every $k\geq8$ as well.
+\end{proof}
+
+\begin{remark}
+The field $\Q(\beta^k)$ is allowed to be smaller than $\Q(\beta)$ in the last
+argument.  Restricting an embedding still produces a conjugate of $\beta^k$;
+no degree-preservation assertion is needed.
+\end{remark}
+
+\section{Exact verification and limitations}
+
+The ancillary certificate contains only integers and rationals: the intervals
+\eqref{eq:Binterval}--\eqref{eq:Sinterval}, the seven words in
+Table~\ref{tab:witnesses}, the final states, the $L_k$, and the $G_k$.  It is
+verified in two independent ways.
+
+\begin{enumerate}
+\item \texttt{certify\_exact.py} uses the Python standard library only.  It
+checks irreducibility, isolating signs, the factorization, every state bound
+in \eqref{eq:statebounds}, equation \eqref{eq:norm}, the seven strict products,
+and the exponent-eight cutoff by outward rational interval arithmetic.
+\item \texttt{verify\_symbolic.py} independently recomputes quotient-ring
+remainders and uses exact Sturm root counts for every sign.  It derives the
+norm numerators symbolically and checks their remainders modulo $h$.
+\end{enumerate}
+
+From the ancillary directory, the checks are run by
+\begin{verbatim}
+python3 certify_exact.py nonparry_d4.json
+python3 verify_symbolic.py nonparry_d4.json
+\end{verbatim}
+The second command was tested with Python 3.10.12 and SymPy 1.14.0; the first
+has no third-party dependency.  Neither command reads floating-point discovery
+output.
+
+The theorem resolves only the fixed $d=4$ case.  It does not settle the
+Hare--Hichri conjecture for all $d\geq4$.  Searches of the arXiv, DOI records,
+and exact certificate fingerprints through August 30, 2026 found the prior
+computational report in~\cite{HareHichri2026}, but no published exact witness
+data for this row.  This is a bounded literature statement, not a claim about
+unindexed or unpublished work.
+
+\section*{Data, code, and computational disclosure}
+
+The LaTeX source, exact JSON certificate, and both verification programs are
+included with the submission archive.  Floating-point computation was used
+only to locate candidate prefixes; it is not imported by either checker and is
+not used in the proof.  Generative AI assistance was used during exploration,
+code drafting, adversarial checking, and manuscript preparation.  The stated
+theorem is supported by the human-readable proof and the independently
+recomputed exact certificate.  No proof assistant was used.
+
+\appendix
+\section{Norm-gap polynomials}\label{app:gaps}
+
+With the notation of \eqref{eq:norm}, the numerator of
+$|P_k(\gamma)|^2-L_k^2$, after clearing a positive denominator and reducing
+modulo $h(s)$, is
+\begin{align*}
+G_1(S)&=281S^5-193S^4+385S^3-581S^2+220S-264,\\
+G_2(S)&=71S^5-50S^4+97S^3-146S^2+56S-65,\\
+G_3(S)&=29S^5-17S^4+42S^3-54S^2+23S-24,\\
+G_4(S)&=320S^5-210S^4+447S^3-644S^2+256S-302,\\
+G_5(S)&=42S^5-25S^4+60S^3-79S^2+35S-37,\\
+G_6(S)&=272S^5-142S^4+395S^3-472S^2+212S-210,\\
+G_7(S)&=132S^5-54S^4+200S^3-194S^2+107S-84.
+\end{align*}
+Exact interval evaluation on $[S_-,S_+]$ gives positive lower bounds for all
+seven values.  These identities and signs are recomputed, rather than trusted
+as input, by the symbolic verifier.
+
+\clearpage
+\begingroup
+\sloppy
+\bibliographystyle{amsplain}
+\bibliography{references}
+\endgroup
+
+\end{document}

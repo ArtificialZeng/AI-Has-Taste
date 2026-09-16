@@ -1,0 +1,51 @@
+Command: python3 evidence/n8_sat_screen.py
+Run date: 2026-09-06 (Asia/Shanghai)
+
+{
+  "conflict_clique_number_histogram": [
+    [2, 2],
+    [3, 68],
+    [4, 456],
+    [5, 455],
+    [6, 611],
+    [7, 140],
+    [8, 118],
+    [9, 68]
+  ],
+  "connected_legal_order_8_isomorphism_classes": 1918,
+  "edge_count_histogram": [
+    [7, 18],
+    [8, 73],
+    [9, 182],
+    [10, 326],
+    [11, 430],
+    [12, 427],
+    [13, 297],
+    [14, 132],
+    [15, 33]
+  ],
+  "exact_iso_comparisons": 13929,
+  "generation_basis": "all connected legal order-7 Graph Atlas representatives, extended by one nonisolated vertex of degree 1..4",
+  "independent_decision": "exact DSATUR backtracking",
+  "legal_order_7_bases": 349,
+  "networkx_version": "3.4.2",
+  "non_9_colorable_witness_count": 0,
+  "pysat_solver": "Glucose4 (g4)",
+  "raw_legal_extensions": 15791,
+  "representative_graph6_multiset_sha256": "3578c9b3582f65512e88d227c669155a0693c025466ee1a95beb715cacc38932",
+  "scope": "exact finite observation for connected legal graphs on exactly eight vertices; not a universal upper-bound proof",
+  "witnesses": []
+}
+
+Completeness of the order-8 generation: every connected graph with at least
+two vertices has a non-cut vertex. Deleting one from a connected legal
+8-vertex graph produces a connected legal induced 7-vertex graph, hence an
+isomorphic copy of one of the Atlas bases used here. Restoring the deleted
+vertex is one of the enumerated nonempty neighborhoods of size at most four.
+The three bucket fields are isomorphism invariants, and deduplication within
+each bucket uses exact NetworkX graph isomorphism.
+
+Interpretation: there is no connected legal graph on exactly eight vertices
+whose B-conflict graph is not 9-colorable. Together with the earlier Atlas
+screen, there is no value-10 witness of order at most eight. This is an exact
+finite observation, not a proof that M_3(4)=9 for graphs of arbitrary order.

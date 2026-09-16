@@ -1,0 +1,266 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={The Exact Extremal Value for the Five-Vertex Subdivided Claw},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\Tstar}{T^{*}}
+\newcommand{\Exact}{\operatorname{Exact}}
+
+\title{The Exact Extremal Value for the Five-Vertex Subdivided Claw}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(\Tstar\) be the tree obtained by subdividing one edge of the
+four-vertex claw.  A graph \(G\) is \(\Tstar\)-exact if every induced
+five-vertex subgraph of \(G\) is either isomorphic to \(\Tstar\) or is
+incomparable with \(\Tstar\) under ordinary, not necessarily induced,
+subgraph containment.  Caro, Tuza, and Zarb proved the bounds
+\(8\leq f(\Tstar)\leq16\).  We prove that \(f(\Tstar)=8\).  The known lower
+construction is two disjoint copies of \(K_4\).  For the upper bound, we
+give a complete 36-variable encoding of the nine-vertex case.  Its
+95,382 clauses forbid every comparable noncopy on every five-set, and a
+complete DRUP trace proves the formula unsatisfiable.  A separate checker
+reconstructs all local patterns and clauses and verifies every reverse unit
+propagation step; a second, direct fixed-point implementation independently
+replays the refutation.
+\end{abstract}
+
+\section{Statement and context}
+
+All graphs in this paper are finite, simple, and undirected.  For graphs
+\(A\) and \(B\) of the same order, write \(A\preceq B\) if some bijection
+\(\phi:V(A)\to V(B)\) satisfies
+\(\phi(E(A))\subseteq E(B)\).  Thus \(\preceq\) is ordinary spanning-subgraph
+containment, not induced-subgraph containment.  The graphs are
+\emph{comparable} if \(A\preceq B\) or \(B\preceq A\), and incomparable
+otherwise.
+
+Let
+\[
+ V(\Tstar)=\{c,a,b,d,e\},\qquad
+ E(\Tstar)=\{ca,cb,cd,de\}.
+\]
+For a graph \(H\) on five vertices, a graph \(G\) is \(H\)-exact if, for
+every \(U\in\binom{V(G)}5\), either \(G[U]\cong H\), or \(G[U]\) and
+\(H\) are incomparable.  Set
+\[
+ f(H)=\max\{|V(G)|:G\text{ is }H\text{-exact}\}.
+\]
+
+Caro, Tuza, and Zarb study this parameter and prove general tree bounds
+which, for \(\Tstar\), give
+\(8\leq f(\Tstar)\leq16\); they also ask for the value for every tree
+\cite{CaroTuzaZarb2026}.  Relative to version~2 of their preprint, the step
+supplied here is the nonexistence of a nine-vertex \(\Tstar\)-exact graph.
+This paper concerns only \(\Tstar\), not the problem for all trees.  A
+targeted literature search through 10 September 2026 found no later primary
+resolution of this case, but that bounded comparison is not a claim of
+priority.
+
+\begin{theorem}\label{thm:main}
+For the five-vertex subdivided claw \(\Tstar\),
+\[
+ f(\Tstar)=8.
+\]
+\end{theorem}
+
+\section{The lower construction}
+
+\begin{lemma}\label{lem:lower}
+The graph \(2K_4\) is \(\Tstar\)-exact.  Consequently,
+\(f(\Tstar)\geq8\).
+\end{lemma}
+
+\begin{proof}
+Every five-set in \(2K_4\) meets the two components in sizes \(4+1\) or
+\(3+2\), and hence induces \(K_4\mathbin{\dot\cup}K_1\) or
+\(K_3\mathbin{\dot\cup}K_2\).  Neither graph contains the connected
+spanning tree \(\Tstar\).  The first has six edges and therefore cannot be
+contained in the four-edge graph \(\Tstar\).  The second has four edges; if
+it were contained in \(\Tstar\), equality of the edge counts would make the
+two graphs isomorphic, contrary to their degree multisets.  Thus every one
+of the \(\binom85=56\) five-sets induces a graph incomparable with
+\(\Tstar\).  This construction is the lower-bound mechanism already present
+in \cite{CaroTuzaZarb2026}.
+\end{proof}
+
+\section{The complete nine-vertex encoding}
+
+Write \([9]=\{0,1,\ldots,8\}\), order its 36 unordered pairs
+lexicographically, and introduce a variable \(x_{ij}\) for each
+\(0\leq i<j\leq8\).  The intended interpretation is
+\(x_{ij}=1\) if and only if \(ij\) is an edge.  The DIMACS variable order is
+the same lexicographic order.
+
+On the local vertex set \([5]=\{0,1,2,3,4\}\), also order the ten pairs
+lexicographically.  A ten-bit mask \(m\), read in that order with the first
+pair as the least significant bit, represents the edge set \(P_m\).  Let
+\(\mathcal C\) be the set of the labeled copies
+\(\pi(E(\Tstar))\), for \(\pi\in S_5\), and define the forbidden masks by
+\[
+ \mathcal B=\left\{m:
+   \bigl(\exists Q\in\mathcal C\; P_m\subseteq Q\bigr)
+   \ \text{or}\ 
+   \bigl(\exists Q\in\mathcal C\; Q\subseteq P_m\bigr),
+   \quad P_m\notin\mathcal C
+ \right\}.
+\]
+This is a definition-level enumeration: form \(\mathcal C\) from all 120
+permutations, then test the two displayed inclusions for masks
+\(m=0,1,\ldots,1023\).  Since the only nonidentity automorphism of
+\(\Tstar\) exchanges the leaves \(a,b\), there are \(5!/2=60\) distinct
+labeled copies.  Exhaustive inclusion testing gives 226 masks contained in
+a copy and 651 masks containing a copy.  Their intersection consists
+exactly of the 60 copies, so 817 masks are comparable and
+\[
+ |\mathcal B|=817-60=757.
+\]
+The following edge-count census is an additional exact check.
+
+\begin{center}
+\begin{tabular}{c@{\quad}rrrrrrrrrrr}
+\toprule
+number of edges & 0&1&2&3&4&5&6&7&8&9&10\\
+forbidden masks & 1&10&45&110&0&210&205&120&45&10&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For a five-set \(U=\{u_0<\cdots<u_4\}\) and \(m\in\mathcal B\), transport
+the local pair \(rs\) to the global pair \(u_ru_s\), and set
+\[
+ C(U,m)=
+ \mathop{\vee}\limits_{rs\in P_m}\lnot x_{u_ru_s}
+ \ \vee\!
+ \mathop{\vee}\limits_{rs\notin P_m}x_{u_ru_s}.
+ \tag{1}\label{eq:clause}
+\]
+Every clause has all ten variables belonging to \(U\).  Define
+\[
+ F_9=\mathop{\wedge}\limits_{U\in\binom{[9]}5}\ \mathop{\wedge}\limits_{m\in\mathcal B} C(U,m),
+ \tag{2}\label{eq:cnf}
+\]
+where five-sets are ordered lexicographically and the masks increasingly.
+This fixes the CNF without symmetry breaking or auxiliary variables.
+
+\begin{proposition}\label{prop:equivalence}
+The formula \(F_9\) has 36 variables and
+\(\binom95\lvert\mathcal B\rvert=126\cdot757=95{,}382\) clauses.  Its
+satisfying assignments are in bijection with the labeled nine-vertex
+\(\Tstar\)-exact graphs.
+\end{proposition}
+
+\begin{proof}
+An assignment to the 36 variables is precisely a labeled graph on \([9]\).
+For fixed \(U,m\), every literal in \eqref{eq:clause} is false exactly when
+the induced graph on \(U\) has local edge mask \(m\).  Thus the clause
+forbids exactly that local pattern.  The definition of \(\mathcal B\)
+contains exactly the graphs comparable with, but not isomorphic to,
+\(\Tstar\).  Conjoining over all 126 five-sets gives exactly the defining
+condition for \(\Tstar\)-exactness.
+\end{proof}
+
+\section{Certified unsatisfiability}
+
+The formula \(F_9\) was generated by a deterministic Python program and
+passed to the proof-enabled \texttt{Glucose3} interface supplied by PySAT
+1.8.dev24.  PySAT and the Glucose clause-learning method are described in
+\cite{IgnatievMorgadoMarquesSilva2018,AudemardSimon2009}.  The solver emitted
+a textual DRUP trace: an addition is a space-separated clause ending in
+\texttt{0}, and a deletion has the prefix \texttt{d}.  The trace has 4,990
+operations, comprising 3,993 additions and 997 deletions, and its last
+operation adds the empty clause.
+
+For completeness, recall the proof rule used here.  An added clause \(D\)
+has the reverse unit propagation (RUP) property with respect to the active
+formula \(F\) if unit propagation on \(F\) together with the unit clauses
+\(\{\lnot\ell\}\), \(\ell\in D\), produces a conflict.  In that event
+\(F\mathrel{|=}D\).  Consequently, an induction over RUP additions preserves
+logical consequence of the input formula.  Clause deletions are harmless,
+and a final RUP addition of the empty clause proves the input formula
+unsatisfiable.  This clausal proof format and deletion-aware checking are
+treated by Heule, Hunt, and Wetzler \cite{HeuleHuntWetzler2013}.
+
+\begin{proposition}\label{prop:rup}
+The supplied 4,990-operation trace is a valid RUP refutation of \(F_9\).
+Hence \(F_9\) is unsatisfiable.
+\end{proposition}
+
+\begin{proof}[Certificate verification]
+The independent verifier imports neither the generator nor a SAT library.
+It reconstructs ordinary containment by all 120 bijections of five
+vertices, recovers the counts 60, 226, 651, 817, and 757, and compares every
+one of the 95,382 input clauses with the canonical list defined by
+\eqref{eq:clause}--\eqref{eq:cnf}.  It also checks all 56 five-sets of the
+lower construction.
+
+The verifier then maintains the active clause multiset, explicitly matches
+and applies all 997 deletions, and checks every one of the 3,993 additions by
+unit propagation under the negated clause.  Its watched-literal propagator
+was compared with a direct fixed-point propagator on 3,200 deterministic
+synthetic tests.  It accepts the final empty-clause addition only after all
+earlier operations pass.  A second verifier, written independently for the
+mathematical audit, uses positive and negative 36-bit clause masks and direct
+fixed-point propagation; it reproduces the same operation totals and also
+accepts the final empty clause.  Thus the proposition follows from the RUP
+soundness argument above, rather than from the solver's UNSAT status alone.
+
+This architecture parallels the use of independent, definition-level
+reconstruction in other exact finite graph certificates, while the present
+certificate is specifically a clausal refutation; see, for methodological
+comparison, \cite{ZengLiuRatnaveluHuat2026}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Proposition~\ref{prop:equivalence} and
+Proposition~\ref{prop:rup}, no nine-vertex \(\Tstar\)-exact graph exists.
+Exactness is hereditary under induced subgraphs of order at least five:
+each relevant five-set of an induced subgraph is also a five-set of the
+original graph, with the same induced graph.  Therefore, any
+\(\Tstar\)-exact graph on more than nine vertices would induce a forbidden
+nine-vertex one.  Hence \(f(\Tstar)\leq8\).  Lemma~\ref{lem:lower} gives the
+reverse inequality.
+\end{proof}
+
+\section{Reproducibility and disclosure}
+
+The ancillary material contains the deterministic generator, the complete
+DIMACS CNF, the complete textual DRUP trace, the independent verifier, and
+saved verification logs.  From the ancillary root, the decisive checks are
+reproduced by
+\begin{verbatim}
+python3 evidence/generate_n9_cnf_and_proof.py
+python3 evidence/verify_n9_certificate.py
+python3 audit/referee_naive_rup.py
+\end{verbatim}
+The first command requires Python-SAT 1.8.dev24 with proof-enabled
+\texttt{Glucose3}; the two replay programs use no SAT library.  All graph
+enumerations and proof checks are exact, with no random choices,
+floating-point tolerances, or sampled clauses.
+
+OpenAI Codex assisted with the literature search, the construction and
+auditing of the computational certificate, and manuscript preparation.
+The author directed the work and reviewed its mathematical claims.  No
+language-model output is used as evidence: Theorem~\ref{thm:main} rests on
+the explicit reduction and the released exact proof and checkers.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

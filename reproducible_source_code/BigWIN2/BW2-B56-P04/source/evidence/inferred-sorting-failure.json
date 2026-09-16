@@ -1,0 +1,30 @@
+{
+  "interpretation": "Williams's undefined C is set to (P0 union P1) minus (P0 intersection P1), exactly the inference proposed for audit in problem.md.",
+  "R": {
+    "elements": [0, 1, 2],
+    "cover_relations": [[0, 1], [1, 2]],
+    "description": "the three-element chain 0<1<2"
+  },
+  "P0": [0, 1, 2],
+  "P1": [0, 1],
+  "B": [0, 1],
+  "C": [2],
+  "convexity_certificate": "P is C3xQ1 with only the maximum point (2,1) removed, so it is a downset and hence convex; here C3 is the three-element chain.",
+  "maximum_input_antichains": {
+    "P0xQ1": [[2, 0], [0, 1]],
+    "P1xQ1": [[1, 0], [0, 1]],
+    "widths": [2, 2],
+    "upper_bound_certificate": "Each factor is a product of two chains: C3xC2 and C2xC2. The two vertical fibers over the Q1 coordinate give chain covers of size 2, while the displayed antichains have size 2."
+  },
+  "sorting_data": {
+    "L0": [2],
+    "H0": [0],
+    "L1": [1],
+    "H1": [0],
+    "H0_occurrence_0": "sorted into L because z=0 in H1 satisfies 0<=z",
+    "L1_occurrence_1": "sorted into L because no z in L0 union (H0 intersection C) satisfies z<=1"
+  },
+  "failed_output": [[2, 0], [0, 1], [1, 1]],
+  "failure": "The upper-layer points (0,1) and (1,1) are comparable. Thus the first asserted output is not an antichain. The source sentence 'Since x is in L, not y<=x' is false here: y=0<=1=x while both are sorted into L.",
+  "lemma_status_on_this_example": "The inequality itself is an equality: w(P)=2 and both section-product widths are 2. This refutes only the inferred sorting repair, not the frozen lemma."
+}

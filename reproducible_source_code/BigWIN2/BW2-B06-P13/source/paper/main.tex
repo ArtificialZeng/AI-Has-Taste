@@ -1,0 +1,389 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\DeltaA}{\mathit{\Delta}}
+
+\title[Atiyah--Sutcliffe linear independence for two pyramid families]
+{Atiyah--Sutcliffe linear independence for centered rectangular and rhombic pyramids}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University,
+Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{51M15, 15A03}
+\keywords{Atiyah--Sutcliffe conjecture, configurations of points, binary forms,
+symbolic factorization}
+\hypersetup{
+  pdftitle={Atiyah--Sutcliffe linear independence for centered rectangular and rhombic pyramids},
+  pdfauthor={Zijian Zeng},
+  pdfsubject={Atiyah--Sutcliffe Conjecture 1 for two five-point families}
+}
+
+\begin{document}
+
+\begin{abstract}
+We prove Atiyah--Sutcliffe Conjecture~1 for two nonplanar five-point
+families. In each family four points form either an arbitrary rectangle or
+an arbitrary rhombus, and the fifth point lies off their plane on the normal
+line through the center. After rationalizing the apex directions, the two
+binary-quartic determinants admit explicit factorizations into strictly
+positive quantities, up to a nonzero constant phase. The identities are
+verified by two exact computations: coefficient convolution and direct
+evaluation at five projective points followed by a Vandermonde determinant.
+We also record a boundary lemma reducing a nondegenerate one-point escape to
+the known four-point theorem. These results do not prove the conjecture for
+arbitrary five points in three-space.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For distinct points $x_1,\ldots,x_n\in\R^3$, Atiyah and Sutcliffe associate
+to every $x_i$ a binary form of degree $n-1$, using the directions from
+$x_i$ to the other points. Their Conjecture~1 asserts that the resulting
+$n$ forms are linearly independent, or equivalently that the associated
+determinant is nonzero \cite{AtiyahSutcliffe2002}.
+
+The conjecture is known for arbitrary configurations with $n\leq4$;
+the four-point case is due to Eastwood and Norbury
+\cite{EastwoodNorbury2001}, with a later proof by Malkoun
+\cite{Malkoun2023}. A number of special configurations are also known.
+In particular, Djokovi\'c proved the conjecture when some points lie on an
+axis and the remaining points form a regular polygon in a perpendicular
+plane with center on that axis \cite{Djokovic2002}. For five points this
+contains a centered square pyramid. Further results and determinant
+formulas appear in \cite{MazurPetrenko2012,Malkoun2019}; a recent account
+still separates the unrestricted $n\leq4$ result from the five-point
+frontier \cite{Malkoun2026}.
+
+We treat two centered but nonregular deformations of the square pyramid.
+
+\begin{theorem}\label{thm:intro}
+Atiyah--Sutcliffe Conjecture~1 holds for each of the following five-point
+configurations:
+\begin{enumerate}
+\item four vertices of an arbitrary nondegenerate rectangle and a fifth
+point off its plane on the normal line through its center;
+\item four vertices of an arbitrary nondegenerate rhombus and a fifth point
+off its plane on the normal line through its center.
+\end{enumerate}
+\end{theorem}
+
+Each part is a two-real-parameter family up to Euclidean similarities. The
+square occurs in both parts and is already covered by Djokovi\'c's theorem;
+the content here is that no equality of the two base dimensions is needed.
+The proof is constructive: Sections~\ref{sec:rectangle} and
+\ref{sec:rhombus} give the exact determinant factorizations. Section
+\ref{sec:verification} describes two independent exact ways to check them.
+
+\section{Binary forms and a convenient lift}\label{sec:binary}
+
+We fix conventions because individual lifts affect the displayed
+determinant, although never its zero set. The Hopf map is
+\[
+h(a,b)=\bigl(2\operatorname{Re}(a\overline b),
+2\operatorname{Im}(a\overline b),|a|^2-|b|^2\bigr).
+\]
+For an ordered pair $i\ne j$, choose a lift $(a_{ij},b_{ij})$ of the unit
+direction $(x_j-x_i)/\lVert x_j-x_i\rVert$ and set
+\[
+L_{ij}(U,V)=a_{ij}V-b_{ij}U,
+\qquad p_i(U,V)=\prod_{j\ne i}L_{ij}(U,V).
+\]
+Writing
+\[
+p_i(U,V)=\sum_{k=0}^4c_{ki}U^{4-k}V^k,
+\qquad \DeltaA=\det(c_{ki})_{0\leq k\leq4,\ 1\leq i\leq5},
+\]
+Conjecture~1 is the assertion $\DeltaA\ne0$. Multiplying any $L_{ij}$ by a
+nonzero scalar only rescales one column, so nonvanishing is independent of
+these choices.
+
+We use the following unnormalized lift throughout.
+
+\begin{lemma}\label{lem:lift}
+Let $(X,Y,Z)\ne0$ have length $r$ and suppose $(X,Y,Z)$ is not the north-pole
+vector $(0,0,r)$. Then
+\[
+\ell_{(X,Y,Z)}(U,V)=-(r-Z)U+(X+\ii Y)V                     \tag{2.1}
+\]
+is a valid Atiyah linear factor for the direction $(X,Y,Z)/r$.
+\end{lemma}
+
+\begin{proof}
+Take $(a,b)=(X+\ii Y,r-Z)$. Its squared norm is $2r(r-Z)$, and a direct
+calculation gives
+\[
+h(a,b)=2(r-Z)(X,Y,Z).
+\]
+After normalization this is $(X,Y,Z)/r$, while $aV-bU$ is (2.1).
+\end{proof}
+
+No displacement used below is vertical: the apex is above the center rather
+than above a base vertex. Thus Lemma~\ref{lem:lift} applies to every factor.
+
+\section{Centered rectangular pyramids}\label{sec:rectangle}
+
+Up to similarity and reflection, every configuration in the first part of
+Theorem~\ref{thm:intro} has the form
+\begin{equation}\label{eq:rectangle-points}
+\begin{aligned}
+x_1&=(1,A,0),&x_2&=(-1,A,0),\\
+x_3&=(-1,-A,0),&x_4&=(1,-A,0),\qquad x_5=(0,0,H),
+\end{aligned}
+\end{equation}
+where $A,H>0$. Define
+\[
+S=\sqrt{1+A^2},\qquad R=\sqrt{S^2+H^2},\qquad
+w=\frac{R-H}{S}=\frac{S}{R+H}.
+\]
+Then $S>0$, $0<w<1$, and
+\begin{equation}\label{eq:w-inverse}
+H=\frac{S(1-w^2)}{2w},\qquad R=\frac{S(1+w^2)}{2w}.
+\end{equation}
+
+For a base vertex write $z_i=(x_i)_1+\ii(x_i)_2$. Formula (2.1) gives
+\begin{align*}
+L_{i5}&=-wS\,U-z_iV &&(1\leq i\leq4),\\
+L_{5j}&=-\frac{S}{w}U+z_jV &&(1\leq j\leq4),
+\end{align*}
+while a base-to-base factor is
+$-r_{ij}U+(z_j-z_i)V$, with $r_{ij}\in\{2,2A,2S\}$.
+
+Set
+\[
+E=w^6+w^5+w+1
+\]
+and
+\begin{equation}\label{eq:rectangle-Q}
+\begin{split}
+Q={}&(A^4+1)(w^3+1)^2
+ +SE(A^3+A^2+A+1)\\
+ &+2(w^5+w)(A^3+A)+2A^2(w^3-1)^2.
+\end{split}
+\end{equation}
+
+\begin{proposition}\label{prop:rectangle-factor}
+For the determinant convention of Section~\ref{sec:binary},
+\begin{equation}\label{eq:rectangle-factor}
+\begin{split}
+w^4\DeltaA={}&-2^{16}A^4S^5(A^2+AS+S+1)\\
+&\quad\cdot\bigl(S(1+w^2)+2w(A+1)\bigr)Q.
+\end{split}
+\end{equation}
+The identity holds in
+$\mathbb Z[\ii,A,S,w]/(S^2-A^2-1)$.
+\end{proposition}
+
+\begin{proof}
+Expand each product of four displayed linear factors in the ordered basis
+$U^4,U^3V,\ldots,V^4$. Multiplying the fifth column by $w^4$ clears its
+denominators. Exact determinant expansion and reduction by
+$S^2-A^2-1$ gives the right side of \eqref{eq:rectangle-factor}.
+Section~\ref{sec:verification} gives two reproducible checks that do not share
+the same determinant representation.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:intro}(1)]
+Every displayed factor on the right of \eqref{eq:rectangle-factor}, apart
+from the leading minus sign, is strictly positive for $A,S,w>0$. In
+particular, all four groups in \eqref{eq:rectangle-Q} are nonnegative and the
+first three are strictly positive. Since $w\ne0$, we obtain
+$\DeltaA\ne0$.
+\end{proof}
+
+\section{Centered rhombic pyramids}\label{sec:rhombus}
+
+The diagonals of a nondegenerate rhombus are perpendicular. Hence, up to
+similarity and reflection, every configuration in the second part of
+Theorem~\ref{thm:intro} can be written
+\begin{equation}\label{eq:rhombus-points}
+\begin{gathered}
+x_1=(1,0,0),\quad x_2=(0,A,0),\quad x_3=(-1,0,0),\\
+x_4=(0,-A,0),\qquad x_5=(0,0,H),\qquad A,H>0.
+\end{gathered}
+\end{equation}
+Put
+\[
+S=\sqrt{1+A^2},\qquad R=\sqrt{1+H^2},\qquad
+T=\sqrt{A^2+H^2}
+\]
+and introduce two positive apex parameters
+\begin{equation}\label{eq:uv}
+u=R-H=\frac1{R+H},\qquad
+v=\frac{T-H}{A}=\frac{A}{T+H}.
+\end{equation}
+In fact $0<u,v<1$. With $z_i=(x_i)_1+\ii(x_i)_2$, put
+$(d_i,t_i)=(1,u)$ for $i=1,3$ and $(d_i,t_i)=(A,v)$ for
+$i=2,4$. The apex factors are
+\[
+L_{i5}=-d_it_iU-z_iV,\qquad
+L_{5i}=-\frac{d_i}{t_i}U+z_iV.
+\]
+The six base-pair lengths are $S,S,S,S,2,2A$.
+
+Define
+\begin{equation}\label{eq:rhombus-P}
+\begin{split}
+P={}&A^3uv+A^3v+A^2Suv+A^2Su+A^2Sv+A^2S+A^2uv+A^2u\\
+ &+AS^2u+AS^2+2ASu+2ASv+Auv+Av\\
+ &+S^2v+S^2+Suv+Su+Sv+S+uv+u
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{eq:rhombus-Q}
+\begin{split}
+Q={}&A^4(u+v)+2A^3S(v+1)\\
+ &+A^2S^2\bigl(2u^3v^3+(u+v)(u-v)^2+2\bigr)\\
+ &+2A^2S(u+1)+2A^2(u+v)\\
+ &+2AS^3(u^3v^3+u^3v^2)+2AS(v+1)\\
+ &+S^4(u^3v^2+u^2v^3)+2S^3(u^3v^3+u^2v^3)\\
+ &+2S^2u^3v^3+S^2\bigl((u+v)(u-v)^2+2\bigr)\\
+ &+2S(u+1)+(u+v).
+\end{split}
+\end{equation}
+
+\begin{proposition}\label{prop:rhombus-factor}
+For the determinant convention of Section~\ref{sec:binary},
+\begin{equation}\label{eq:rhombus-factor}
+u^2v^2\DeltaA=2^7\ii A^6SPQ.
+\end{equation}
+This is an identity in the polynomial ring
+$\mathbb Z[\ii,A,S,u,v]$, before imposing any geometric relation among the
+four variables.
+\end{proposition}
+
+\begin{proof}
+Expand the quartics from the factors above. Multiplication of the fifth
+column by $u^2v^2$ clears every denominator. Exact determinant expansion
+gives \eqref{eq:rhombus-factor}. In obtaining the displayed positive form of
+$Q$, the only signed four-term group is rewritten using
+\begin{equation}\label{eq:square-regroup}
+u^3+v^3-u^2v-uv^2=(u+v)(u-v)^2.
+\end{equation}
+Independent exact checks are described in Section~\ref{sec:verification}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:intro}(2)]
+Every monomial in \eqref{eq:rhombus-P} is strictly positive. Every summand
+in \eqref{eq:rhombus-Q} is nonnegative, and several are strictly positive.
+Thus $P,Q>0$. Since $A,S,u,v>0$, equation
+\eqref{eq:rhombus-factor} implies $\DeltaA\ne0$.
+\end{proof}
+
+\section{Exact verification}\label{sec:verification}
+
+The factorizations were verified in SymPy~1.14.0 by two separate exact
+determinant constructions.
+
+\subsection{Coefficient construction}
+For each linear factor $c_0U+c_1V$, the first verifier updates the coefficient
+list by convolution. It then forms the $5\times5$ coefficient matrix and
+uses an exact domain-matrix determinant. The unreduced rectangular
+determinant has $231$ terms over $\mathbb Z[\ii,A,S,w]$; reduction modulo
+$S^2-A^2-1$ gives \eqref{eq:rectangle-factor}. The cleared rhombic
+determinant has $363$ terms over $\mathbb Z[\ii,A,S,u,v]$ and equals
+\eqref{eq:rhombus-factor} identically.
+
+\subsection{Projective-value construction}
+The second verifier does not form quartic coefficients. For
+$t\in\{0,1,-1,\ii,-\ii\}$, it directly multiplies the four values
+$c_0+c_1t$ for every column. If $C$ is the coefficient matrix and $M$ is
+the resulting value matrix, then
+\[
+M=VC,\qquad V=(t_j^k)_{0\leq j,k\leq4},\qquad \det V=-16\ii.
+\]
+Consequently $\det C=\det M/(-16\ii)$. This computation independently
+reproduces both claimed identities with exact Gaussian-integer arithmetic.
+
+The verification scripts, located in the archive's \texttt{code} directory,
+are
+\begin{itemize}
+\item \texttt{certify\_rectangular\_pyramid.py},
+\item \texttt{verify\_rectangular\_pyramid\_identity.py},
+\item \texttt{certify\_rhombic\_pyramid.py}, and
+\item \texttt{verify\_rhombic\_pyramid\_identity.py}.
+\end{itemize}
+Each program reconstructs its determinant from the displayed linear factors
+and exits unsuccessfully if the difference from the claimed expression is
+nonzero. The short positivity arguments following the identities are not
+delegated to numerical computation.
+
+\section{A one-point escape boundary}\label{sec:escape}
+
+The following observation is useful for attempts at the unrestricted
+five-point problem.
+
+\begin{lemma}\label{lem:escape}
+Fix four distinct bounded points $x_1,\ldots,x_4\in\R^3$. If a fifth point
+escapes to infinity in a fixed direction $e\in S^2$, then the limiting five
+binary quartics in the directional compactification are linearly independent.
+Therefore, sufficiently far along that ray, the five-point determinant is
+nonzero.
+\end{lemma}
+
+\begin{proof}
+Let $q_1,\ldots,q_4$ be the four Atiyah cubics of the bounded configuration.
+All directions from a bounded point to the escaping point tend to $e$, and
+all reverse directions tend to $-e$. Up to nonzero rescaling, the limiting
+quartics are
+\[
+L_eq_1,\quad L_eq_2,\quad L_eq_3,\quad L_eq_4,\quad L_{-e}^4.
+\]
+The antipodal factors $L_e,L_{-e}$ are independent. A binary change of
+variables sends them to $U,V$. In the basis
+$U^4,U^3V,U^2V^2,UV^3,V^4$, the five-point coefficient matrix is then block
+triangular: its upper left block is the four-point coefficient matrix of the
+$q_i$, and its last diagonal entry is nonzero. The upper block is nonsingular
+by the four-point theorem \cite{EastwoodNorbury2001}. The limiting
+determinant is therefore nonzero, and continuity gives the final assertion.
+\end{proof}
+
+The lemma does not address collisions, degeneration of the four-point
+cluster, or simultaneous escape of several clusters.
+
+\section{Limitations}
+
+Theorem~\ref{thm:intro} covers two two-parameter similarity families inside
+the eight-dimensional similarity moduli of generic ordered five-point
+configurations. It does not establish Conjecture~1 for arbitrary five
+points. In particular, the rectangle and rhombus factorizations cannot be
+interpolated without proof to an arbitrary parallelogram base.
+
+As a diagnostic only, a deterministic floating-point search tested $70{,}000$
+random, near-planar, near-collinear, clustered, and small-integer
+configurations, together with three global-optimization runs. It produced no
+candidate zero. This negative observation is not used anywhere in the
+proofs. The exact verification described in Section~\ref{sec:verification}
+uses no floating-point arithmetic.
+
+\section*{Data and code availability}
+
+The accompanying source archive contains the LaTeX manuscript, the exact
+verification scripts, machine-readable certificate summaries, and pinned
+Python package versions. The core verification commands are documented in
+the included README file.
+
+\newpage
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,27 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every n>0 and 0<=a<=n with a congruent to n modulo 2, a>=2, and k=(n-a)/2>=2, let H_n be all squarefree two-edge matching monomials in off-diagonal variables y_ij, i<j, and let T_n={y_12*y_ij:3<=i<j<=n} union {y_13*y_2j:4<=j<=n} union {y_1j*y_23:4<=j<=n} union {y_15*y_24,y_15*y_34,y_25*y_34}. The literal Pieri-RSK candidate specified in problem.md in degree 2 equals H_n minus T_n and is a basis of R(M_(n,a))_2. For the presentation Q[y_ij]/ker(y_ij maps to [x_ij]), or its scalar extension to C, H_n minus T_n is its degree-2 standard monomial set for every monomial order refining the positive variable weights n^2-ij. Every t in T_n has a unique homogeneous straightening into H_n minus T_n, and a nonzero coefficient at h implies sum_(ij in t) ij < sum_(ij in h) ij. Degrees 0 and 1 have the literal candidate and standard monomial sets {1} and {y_ij:(i,j)!=(1,2)}. Consequently, for every n>=6 their union is a complete explicit standard monomial basis of R(M_(n,n-4)), with Hilbert series 1+(C(n,2)-1)q+(3*C(n,4)-C(n,2))q^2. No universal higher-degree assertion or complete resolution of original Problem 29 is claimed.",
+  "contribution": "A uniform stable-quadratic proof of the specific source candidate, an explicit product-weight straightening order, and a full basis for the infinite two-transposition family. The new proposed ingredients are the tableau classification and its compatibility with a specific odd-cycle spanning subgraph of KG(n,2) and the weight n^2-ij. The ideal presentation, Hilbert dimensions, and general incidence/Lefschetz rank method are credited to prior sources. No equivalent was found in the recorded bounded primary-source screen; significance and novelty require the fresh referee. Computations supplement a complete symbolic proof and do not establish any untested higher-degree claim.",
+  "proposer_job_id": "primary-20260914-involution-orbit-basis-research-44e8d30db215",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/quadratic-proof.md",
+    "evidence/verify_quadratic.py",
+    "evidence/quadratic-verification.json",
+    "evidence/triage_rank.py",
+    "evidence/research_rank.py",
+    "evidence/research-n7a1.json",
+    "evidence/research-n7a1-forward.json",
+    "evidence/research-n8a2-forward.json",
+    "evidence/research-n9a3-forward.json",
+    "evidence/research-n10a2-forward.json",
+    "evidence/research-n10a4-forward.json",
+    "literature/research-screen.md",
+    "evidence/external/zhu-ejc33-2-54.pdf",
+    "evidence/external/zhu-ejc33-2-54.txt",
+    "evidence/external/2409.06175v1.html",
+    "evidence/research-provenance.json"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let R=C[x,y,z] with the fixed Borel order x<y<z. Among all zero-dimensional Borel-fixed monomial ideals I of colength 15, max dim_C Hom_R(I,R/I)=81. Exactly four ideals attain 81: (y^3,xyz,xy^2,x^2z,x^2y,x^3,yz^3,y^2z^2,xz^3,z^5), (y^2z,y^3,xyz,xy^2,x^2z,x^2y,x^3,yz^3,xz^3,z^6), (xyz,xy^2,x^2z,x^2y,x^3,z^4,yz^3,y^2z^2,y^3z,y^4,xz^3), and (xz^2,xyz,xy^2,x^2z,x^2y,x^3,yz^3,y^2z^2,y^3z,y^4,z^5). Their pure-power tuples are respectively (3,3,5), (3,3,6), (3,4,4), and (3,4,5). Hence every maximizing Borel-fixed ideal has m_1(I)=3, proving the frozen necessary condition. The maximum among ideals with m_1<=2 is 69, attained uniquely by (x^2,xyz,xy^2,yz^3,y^2z^2,y^3z,y^4,xz^3,z^5). No assertion is made about the maximum among non-Borel points of Hilb^15(A^3).",
+  "contribution": "A complete exact finite resolution of the frozen Borel-fixed colength-15 problem: two exhaustive census constructions agree on all 107 ideals, exact Taylor-syzygy ranks give every tangent dimension, and a separately implemented Eliahou-Kervaire/component computation checks all records and independently replays the four maximizers plus the best m_1<=2 competitor. The classification finds four tied maximizers, including three equality cases beyond the single literature-nominated ideal. This is a Borel-only computational classification and makes no claim of priority over unsearched literature or of control of non-Borel points.",
+  "proposer_job_id": "win-00056-p03-research-e7d87a5cc409",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/triage-sources.md",
+    "evidence/external/2609.04054.pdf",
+    "evidence/enumerate_borel15.py",
+    "evidence/borel-atlas-15.jsonl",
+    "evidence/borel-census-15.json",
+    "evidence/borel15-census.md",
+    "evidence/tangent_borel15.py",
+    "evidence/borel-tangents-15.jsonl",
+    "evidence/borel-tangent-summary-15.json",
+    "evidence/verify_tangent_extrema.py",
+    "evidence/tangent-extrema-independent.json",
+    "evidence/tangent15-resolution.md"
+  ]
+}

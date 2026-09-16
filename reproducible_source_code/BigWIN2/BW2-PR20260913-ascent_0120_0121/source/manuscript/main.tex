@@ -1,0 +1,422 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A finite-width enumeration of ascent sequences avoiding 0120 and 0121},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\asc}{asc}
+\newcommand{\A}{\mathcal A}
+\newcommand{\D}{\mathcal D}
+\newcommand{\one}{\mathbf 1}
+\title{A finite-width enumeration of ascent sequences\\avoiding 0120 and 0121}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give an all-length structural enumeration of ascent sequences that
+simultaneously avoid the classical patterns 0120 and 0121. After the first
+entry greater than one, a sufficient continuation state records the number
+of eligible letters and the ranks of those already seen. Its width never
+increases. At exit width $K$, the resulting finite system has
+$2^K-K-1$ states and counts suffixes of arbitrary length. Decomposition at
+the maximal binary prefix gives a locally finite matrix generating series
+and a finite binomial--matrix formula for every coefficient. All
+coefficients through degree $N$ can be computed in
+$O(NL2^L+N^3)$ arithmetic operations, where
+$L=\lfloor(N+1)/2\rfloor$, without generating the words. The result covers
+the full avoidance class, including sequences that are not restricted
+growth functions. The generating series is formal; no scalar rationality,
+algebraicity, or analytic convergence assertion is made.
+\end{abstract}
+
+\section{The class and its enumeration}
+
+For a finite word $w=w_1\cdots w_m$, let
+$\asc(w)=|\{i:1\leq i<m,\ w_i<w_{i+1}\}|$.
+An \emph{ascent sequence} is a word of nonnegative integers with $w_1=0$
+and $w_i\leq 1+\asc(w_1\cdots w_{i-1})$ for $i\geq2$.
+These sequences were introduced in connection with $(2+2)$-free posets
+by Bousquet-M\'elou, Claesson, Dukes, and Kitaev~\cite{BMC2010};
+pattern avoidance in them was studied by Duncan and
+Steingr\'imsson~\cite{DS2011}.
+Pattern occurrences here are subsequences, with order and equality
+preserved and with no adjacency requirement.
+
+Let $\A_n$ be the ascent sequences of length $n$ avoiding both 0120 and
+0121. Equivalently, their entries satisfy
+\begin{equation}\label{eq:avoid}
+ \nexists\ i<j<k<\ell
+ \quad\text{such that}\quad
+ w_i<w_j<w_k\quad\text{and}\quad w_\ell\in\{w_i,w_j\}.
+\end{equation}
+Include $\A_0=\{\epsilon\}$, put $a_n=|\A_n|$, and write
+$F(z)=\sum_{n\geq0}a_nz^n$.
+Liu, Kitaev, and Zhang~\cite[Table~1 and Section~6]{LKZ2026}
+list the initial values of this class and leave its enumeration
+unresolved in their April 2026 preprint. The formulas below provide a
+uniform structural enumeration for this exact class.
+
+Generating trees organize recursive constructions by succession
+rules~\cite{Banderier2002}; finite transition matrices then enumerate
+paths by the transfer-matrix method~\cite[Section~4.7]{Stanley2012}.
+The class-specific step here is a sufficient state of eligible ranks
+whose width cannot increase after the first nonbinary entry. At every
+fixed exit width, this gives a finite system for suffixes of all lengths.
+
+For an integer $K\geq2$, define
+\[
+ \D_K=\{(k,H):2\leq k\leq K,\quad
+       \varnothing\ne H\subseteq\{0,\ldots,k-2\}\}.
+\]
+For $s=(k,H)$, put $m=\min H$. For each $t\in\{0,\ldots,k-1\}$, set
+\begin{equation}\label{eq:transition}
+ f(s,t)=
+ \begin{cases}
+ (k,H\cup\{t\}),&t\leq m,\\[2pt]
+ \bigl(k+1-r,\{h-r:h\in H,\ h\geq t\}\cup\{t-r\}\bigr),&t>m,
+ \end{cases}
+\end{equation}
+where $r=|\{h\in H:h<t\}|$ in the second case.
+The rule takes values in $\D_K$, as proved below. Let $T_K$ be the
+matrix with rows and columns indexed by $\D_K$ and entries
+\[
+ T_K(s,u)=|\{t:0\leq t<k,\ f(s,t)=u\}| \qquad(s=(k,H)).
+\]
+Thus repeated successors retain their multiplicity. Let $b_K$ be the row
+whose entries are one at $(K,\{h\})$, $0\leq h\leq K-2$, and zero
+elsewhere, and let $\one$ be the all-ones column of the appropriate size.
+
+\begin{theorem}\label{thm:main}
+In $\mathbb Z[[z]]$ one has
+\begin{equation}\label{eq:series}
+ F(z)=\frac{1-z}{1-2z}
+   +\sum_{K\geq2}\left(\frac{z}{1-z}\right)^{2K-1}
+      b_K(I-zT_K)^{-1}\one.
+\end{equation}
+Equivalently, $a_0=1$ and, for every $n\geq1$,
+\begin{equation}\label{eq:coefficients}
+ a_n=2^{n-1}+
+ \sum_{K=2}^{\lfloor(n+1)/2\rfloor}
+ \sum_{d=0}^{n-2K+1}
+ \binom{n-d-1}{2K-2}\,b_KT_K^d\one.
+\end{equation}
+The matrix $T_K$ has $2^K-K-1$ states. Its continuation functions are
+rational, and only $K\leq\lfloor(N+1)/2\rfloor$ contributes through
+degree $N$ in~\eqref{eq:series}.
+\end{theorem}
+
+The formula is an infinite, locally finite sum of explicitly specified
+finite matrix expressions. The theorem makes no assertion that the full
+series $F$ is a rational or algebraic function.
+
+\section{Eligible letters and the quotient state}
+
+For a nonempty avoiding prefix $w$, write $a=\asc(w)$, let $S$ be its set
+of letters, and let $\lambda$ be its final letter. Define the banned set
+and eligible set by
+\begin{equation}\label{eq:eligible}
+ B(w)=\bigcup_{\substack{i<j<k\\w_i<w_j<w_k}}\{w_i,w_j\},
+ \qquad E(w)=\{0,\ldots,a+1\}\setminus B(w).
+\end{equation}
+Since an occurrence newly created by an append must end at that append,
+\eqref{eq:avoid} gives the exact criterion
+\begin{equation}\label{eq:append}
+ wv\text{ is an avoiding ascent sequence}\quad\Longleftrightarrow
+ \quad v\in E(w).
+\end{equation}
+Call a prefix \emph{postbinary} if it contains a letter at least two.
+
+\begin{lemma}\label{lem:invariants}
+Every nonempty ascent sequence satisfies $\max(w)\leq\asc(w)$. For a postbinary
+ascent sequence,
+\begin{equation}\label{eq:banned}
+ B(w)=\{0\}\cup
+ \{u>0:\text{an occurrence of $u$ has a larger letter later in $w$}\}.
+\end{equation}
+If the postbinary sequence avoids 0120 and 0121, then
+\begin{equation}\label{eq:last}
+ \lambda=\min(S\cap E(w)),\qquad a+1\in E(w)\setminus S.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The maximum bound holds for $w=0$. Suppose it holds before appending
+$v\leq a+1$. If $v\leq a$, the old bound persists. If $v=a+1$, then $v$
+exceeds the old maximum, so the append creates an ascent and equals the
+new ascent count. This proves the bound by induction.
+
+The first nonzero letter of an ascent sequence must be one. Thus, before
+the first letter at least two, both zero and one have appeared in this
+order, giving a triple that bans zero. If a positive letter $u$ has a
+larger letter $v$ later, the initial zero precedes its occurrence and
+forms an increasing triple $(0,u,v)$. Conversely, either positive lower
+value in an increasing triple has a larger letter later. This proves
+\eqref{eq:banned}. Binary prefixes have $B(w)=\varnothing$.
+
+The final letter $\lambda$ of an avoiding prefix cannot belong to $B(w)$:
+any triple banning it has third value larger than $\lambda$, hence ends
+before the final position, which would complete a forbidden occurrence.
+In the postbinary case, $\lambda>0$, and every smaller seen value is banned
+by~\eqref{eq:banned}, using the final $\lambda$ as the larger later letter.
+This proves the first identity in~\eqref{eq:last}. The maximum bound
+shows that $a+1$ is unseen; since banned letters have occurred, it is
+also eligible.
+\end{proof}
+
+Rank the elements of $E(w)$ increasingly, starting at rank zero. Set
+$k=|E(w)|$ and let $H$ be the ranks of the letters in $S\cap E(w)$.
+Lemma~\ref{lem:invariants} shows that $k\geq2$, that
+$\varnothing\ne H\subseteq\{0,\ldots,k-2\}$, and that the rank of
+$\lambda$ is $\min H$. Denote this label by $s(w)=(k,H)$.
+
+\begin{lemma}\label{lem:quotient}
+Appending the eligible letter of rank $t$ changes $s(w)$ to
+$f(s(w),t)$ as in~\eqref{eq:transition}. The width $k$ never increases.
+For every $s\in\D_K$, the number of legal suffixes of length $d$ from
+a prefix with label $s$ is $(T_K^d\one)_s$.
+\end{lemma}
+
+\begin{proof}
+For the appended numerical value $v$, equation~\eqref{eq:banned} gives
+\begin{equation}\label{eq:update}
+ B(wv)=B(w)\cup\{u\in S:u<v\}.
+\end{equation}
+Zero is already banned, so it causes no exception in this formula.
+
+If $t\leq\min H$, then $v\leq\lambda$. There is no ascent, and no seen
+eligible value lies below $v$. Thus $E(w)$ is unchanged and the seen
+ranks become $H\cup\{t\}$.
+
+If $t>\min H$, the append is an ascent. Exactly
+$r=|\{h\in H:h<t\}|$ seen eligible values are deleted by~\eqref{eq:update}.
+The increase of the ascent bound adds one new unseen top value, $a+2$.
+The width therefore becomes $k+1-r$. Each surviving seen rank $h\geq t$
+shifts down by $r$, and the appended value has rank $t-r$. This is the
+second branch of~\eqref{eq:transition}. Since $r\geq1$, the width cannot
+increase.
+
+The domain is closed even for abstract labels: in the second branch,
+$r\leq t\leq k-1$, so $k+1-r\geq2$, and all seen ranks are strictly
+below the new top rank $k-r$. In the first branch,
+$t\leq\min H\leq k-2$, giving closure immediately.
+
+Each rank represents exactly one eligible numerical choice. Consequently
+the rule describes the successor \emph{multiset}, even when several
+choices lead to the same label. Induction on $d$, starting with one
+empty suffix, gives $(T_K^d\one)_s$. No information about numerical gaps
+is assumed irrelevant: its effect on the ascent bound has been accounted
+for explicitly in the transition calculation.
+\end{proof}
+
+Every label $(K,H)$ is realizable. Start with $(01)^{K-1}$, append
+$\max(H)+2$, and then append the remaining values $h+2$ in decreasing
+order. After the first of these appends the eligible set is
+$\{2,\ldots,K+1\}$; the subsequent appends are nonascending and leave
+it unchanged. This realizes precisely $H$. Applying the construction
+with $k$ in place of $K$ realizes every label of $\D_K$.
+
+\section{Binary initialization and assembly}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Every binary word starting in zero is an ascent sequence and avoids both
+patterns. These words contribute $2^{n-1}$ at length $n\geq1$ and,
+together with the empty word, give $(1-z)/(1-2z)$.
+
+Each remaining word has a unique maximal binary prefix $p$, followed by
+its first nonbinary value $v$ and then a suffix. Suppose $\asc(p)=a$.
+An exit is possible exactly when $a\geq1$ and $2\leq v\leq a+1$.
+It creates an ascent and bans exactly zero and one. The eligible set of
+$pv$ is $\{2,\ldots,a+2\}$, with only $v$ seen. Thus
+\begin{equation}\label{eq:initial}
+ s(pv)=(a+1,\{v-2\}).
+\end{equation}
+At $K=a+1$, the exit choices give each of the $K-1$ singleton labels
+in $b_K$ once.
+
+Put $q=z/(1-z)$, the generating series for a nonempty constant run.
+A binary prefix starting in zero with $a\geq1$ ascents has $2a$ runs
+if it ends in one and $2a+1$ runs if it ends in zero. Its combined
+weight is therefore
+\[
+ B_a(z)=q^{2a}+q^{2a+1}=\frac{z^{2a}}{(1-z)^{2a+1}}.
+\]
+The first nonbinary letter contributes a further $z$, so
+$zB_{K-1}(z)=q^{2K-1}$. Lemma~\ref{lem:quotient} gives the suffix
+column
+\[
+ \sum_{d\geq0}z^dT_K^d\one=(I-zT_K)^{-1}\one.
+\]
+Multiplying the prefix, exit, and suffix weights proves~\eqref{eq:series}.
+The decomposition is unique, so no word is counted twice or omitted.
+
+There are
+\[
+ |\D_K|=\sum_{k=2}^K(2^{k-1}-1)=2^K-K-1
+\]
+states. The inverse $ (I-zT_K)^{-1}$ exists formally because its matrix
+has identity constant term, and its entries are rational functions by
+the adjugate formula. The minimum length at exit width $K$ is $2K-1$,
+attained by $(01)^{K-1}$ followed by an allowed exit. Hence each summand
+has order at least $2K-1$, proving local finiteness and the cutoff.
+Finally,
+\[
+ [z^{n-d}]\left(\frac{z}{1-z}\right)^{2K-1}
+ =\binom{n-d-1}{2K-2}\qquad(n-d\geq2K-1),
+\]
+which yields~\eqref{eq:coefficients}. All these operations are in formal
+power series; no analytic convergence is used.
+\end{proof}
+
+\begin{proposition}\label{prop:cost}
+For $N\geq3$ and $L=\lfloor(N+1)/2\rfloor$, all coefficients through
+degree $N$ can be computed in $O(NL2^L+N^3)$ arithmetic operations, with
+$O(2^L+N)$ live counting values apart from stored transitions.
+\end{proposition}
+
+\begin{proof}
+Use the single domain $\D_L$. Each state has at most $L$ outgoing
+choices. Building the transitions by scanning rank sets costs
+$O(L^22^L)$ elementary work, absorbed by $O(NL2^L)$.
+At each length, propagate postbinary counts along these transitions.
+This takes $O(NL2^L)$ additions over $N$ levels.
+Keep binary counts separately by $(a,\lambda)$, where
+$\lambda\in\{0,1\}$. There are $O(N)$ such labels per level, each with
+two binary extensions and $O(N)$ exits specified by~\eqref{eq:initial}.
+Their total cost is $O(N^3)$. Only the present and next counting arrays
+are needed. This proves the claims. The bound counts arithmetic
+operations, not bit operations on bounded-size integers.
+\end{proof}
+
+\section{Small systems and exact checks}
+
+For $K=2$, the only label is $(2,\{0\})$, and both choices return to it.
+Thus $b_2(I-zT_2)^{-1}\one=1/(1-2z)$.
+For $K=3$, let $c_0,c_1,c_{01}$ be the continuation series of
+$(3,\{0\})$, $(3,\{1\})$, and $(3,\{0,1\})$, respectively, and put
+$c_2=1/(1-2z)$. The transition rule gives
+\begin{align*}
+ c_0&=1+z(2c_0+c_1),&
+ c_1&=1+z(2c_1+c_{01}),&
+ c_{01}&=1+z(c_{01}+c_0+c_2).
+\end{align*}
+In particular,
+\[
+ b_3(I-zT_3)^{-1}\one=c_0+c_1
+ =\frac{2-8z+12z^2-7z^3}{(1-2z)(1-5z+8z^2-5z^3)}.
+\]
+This example exhibits both multiplicities and transitions to smaller width.
+The initial coefficients are shown in Table~\ref{tab:counts}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{r r@{\qquad}r r}
+\toprule
+$n$&$a_n$&$n$&$a_n$\\
+\midrule
+0&1&9&1980\\
+1&1&10&5945\\
+2&2&11&18470\\
+3&5&12&59306\\
+4&13&13&196547\\
+5&34&14&671306\\
+6&90&15&2359338\\
+7&244&16&8519890\\
+8&683&&\\
+\bottomrule
+\end{tabular}
+\caption{Coefficients of the full simultaneous-avoidance class.}
+\label{tab:counts}
+\end{table}
+
+The exact checks reconstruct the objects from their definitions and use
+separate implementations, a verification design also used in the finite
+geometric certificates of Zeng et al.~\cite{Zeng2026}.
+Here the computations test the enumeration and its implementation;
+the all-length conclusion follows from the preceding induction.
+The accompanying verification record has the following coverage:
+\begin{itemize}
+\item A literal quadruple test of every ascent sequence through length
+9 includes all 31,240 sequences at length 9 and retains 1,980 of them.
+A separate unmerged word census using increasing triples reaches
+length 13 and agrees with~\eqref{eq:coefficients}.
+\item Successor multisets and eligible-set invariants were checked on
+all 8,997 avoiding prefixes of lengths 1 through 10, covering 27,466
+legal edges. Closure and realizability were checked for all 247 labels
+through width 8.
+\item A reference recurrence retaining increasing value pairs checks
+all reachable exact states through prefix length 15 and yields counts
+through length 16. Its last level has 16,575 states representing
+2,359,338 words, with 67,433 outgoing edges checked.
+\item Separate binomial--matrix and mixed binary/rank computations
+agree through degree 28, where $a_{28}=234799242479776$.
+Exact rational systems were checked at widths 2, 3, and 4.
+\end{itemize}
+The larger exact-state computation merges equivalent reference states;
+it is not a literal census of all words at those lengths. Structured
+boundary checks through width 32 and 40 seeded walks of 160 steps each
+provide additional finite stress tests, with no exhaustive claim for
+those larger ranges.
+
+The ancillary \texttt{coefficients.py} is a short standard-library
+implementation of the mixed binary/rank recurrence. The detailed
+reference programs and their coverage reports are supplied separately.
+The symbolic checks used Python 3.10.12 and SymPy 1.14.0;
+SymPy is described by Meurer et al.~\cite{SymPy2017}.
+All reported count comparisons use integers, and the rational residual
+checks are exact. There are no floating-point fits in the enumeration.
+
+\section{Scope and comparison limits}
+
+The eligible-rank quotient and the nonincreasing width give an
+all-length structural answer to the class left unenumerated in the
+checked April preprint~\cite{LKZ2026}. The finite matrix for a fixed
+exit width handles arbitrarily long suffixes, while the coefficient
+algorithm uses substantially fewer states than the number of words:
+already the binary members alone number $2^{N-1}$ at length $N$.
+No minimality assertion for the quotient is intended.
+
+The full class cannot be replaced by restricted growth functions
+(RGFs), for which each first occurrence of a positive letter has an
+earlier occurrence of its predecessor. The member $01013$ is not an
+RGF. Accordingly, the shorter-pattern reductions of
+\cite[Lemma~2.2]{LKZ2026}, which require the RGF hypothesis, do not
+apply to the entire present class. Mansour and Shattuck's inspected
+preprint~\cite{MS2025} studies simultaneous avoidance of 021 and a
+length-four pattern. The word $010132$ belongs to our class but
+contains 021 at positions $(1,5,6)$ and 0132 at $(1,2,5,6)$.
+Thus either additional avoidance condition would discard valid inputs.
+
+The literature comparison is bounded by the primary material inspected
+on 13 September 2026. No equivalent enumeration was found in that
+material. The full text of Mansour's later study of 0132 avoidance
+\cite{Mansour2026} was unavailable for comparison, and changes between
+the inspected 021 preprint and its journal version were not checked.
+These limits prevent a claim of established worldwide priority or a
+complete exclusion of overlap with those works. The self-contained
+enumeration does not depend on a theorem from either work. A simpler
+scalar expression for $F$, its algebraic classification, and its
+analytic growth are not determined here.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, proof development,
+exact-check programs, separate model-context mathematical checking,
+and manuscript preparation. A separate model context is not external
+peer review or statistically independent evidence. The theorem is
+supported by the written proof; the explicitly delimited computations
+check finite instances and implementations. No proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

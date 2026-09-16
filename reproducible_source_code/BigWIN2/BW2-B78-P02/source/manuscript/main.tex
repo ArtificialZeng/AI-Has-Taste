@@ -1,0 +1,316 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Classical-Mass-Action Sensitivity Zero in an Exact Six-Complex Census},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\rank}{\operatorname{rank}}
+
+\title{A Classical-Mass-Action Sensitivity Zero in an Exact Six-Complex Census}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{10 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the ordered complexes
+\(0,X,Y,2X,X+Y,2Y\), consider every simple directed reaction network
+with three or four reactions, modulo exchange of the species, subject to
+rank two, existence of a strictly positive steady flux, and a nonzero
+independent-symbol Jacobian determinant.  We determine exactly whether
+classical mass action can turn a generically nonzero inverse sensitivity
+into an identically zero one.  The answer is affirmative.  In the prescribed
+lexicographic order the minimum is
+\[
+  (0\to X,\ 0\to2X,\ X\to Y,\ X+Y\to0),
+  \qquad (\rho,m)=(0\to X,Y).
+\]
+The cancellation is the steady-state identity
+\(-v_{X\to Y}+v_{X+Y\to0}=-(Sv)_Y\), while the relevant determinant is
+nonzero throughout the positive steady-flux locus.  Minimality is certified
+by a symmetry-reduced enumeration using exact rational arithmetic and by a
+separately implemented exact replay through the first witness.  The result is
+only for this finite census; it is not a classification of mass-action
+sensitivity zeros in general.
+\end{abstract}
+
+\section{Context and finite question}
+
+Structural sensitivity analysis seeks steady-state responses that are
+determined by a reaction network without fixing numerical rate laws.  The
+augmented matrix used below arose in that program
+\cite{mochizuki-fiedler-2015,brehm-fiedler-2018}.  Kuhrs, Telek, and Vassena
+recently interpreted it as a layered mixed matrix and characterized the
+nonzero pattern of its inverse in the independent-symbol model
+\cite{kuhrs-telek-vassena-2026}.  Their Remark~3.6 also points out the precise
+motivation here: classical mass action is not parameter-rich, so its
+derivatives obey extra algebraic relations at a steady state.
+
+We resolve a deliberately finite test of that distinction.  No source cited
+above poses this six-complex census as an open problem, and we make no claim
+about networks beyond its boundary.  From a certification perspective, the
+method is akin to exact finite work in a different setting that combines
+symmetry reduction, machine-readable certificates, and independent
+reconstruction \cite{zeng-liu-ratnavelu-ong-2026}; here every decisive
+predicate is likewise evaluated over the integers or rationals.
+
+Index the ordered complex set by
+\[
+ c_0=(0,0),\quad c_1=(1,0),\quad c_2=(0,1),\quad
+ c_3=(2,0),\quad c_4=(1,1),\quad c_5=(0,2).
+\]
+A reaction is a pair \((i,j)\), \(i\ne j\), representing
+\(c_i\to c_j\), and reactions are ordered lexicographically.  A network
+\(E\) is a three- or four-element subset of the 30 reactions.  The involution
+\(\tau:X\leftrightarrow Y\) induces
+\[
+ (0,1,2,3,4,5)\longmapsto(0,2,1,5,4,3).
+\]
+We sort the reaction list and represent its \(\tau\)-orbit by the smaller of
+\(E\) and \(\tau E\) in ordinary lexicographic order.  Canonical networks are
+then ordered lexicographically, followed by their reactions and the species
+order \(X<Y\).
+
+For a sorted network with \(q\) reactions, let
+\[
+ (S^-)_{\bullet\rho}=c_{\mathrm{source}(\rho)},\qquad
+ S_{\bullet\rho}=c_{\mathrm{target}(\rho)}-
+ c_{\mathrm{source}(\rho)}.
+\]
+The generic reactivity matrix \(R_{\rm gen}\in\R^{q\times2}\) has an
+independent symbol \(r_{\rho m}\) in position \((\rho,m)\) precisely when
+species \(m\) occurs in the source of \(\rho\), and zero otherwise.  We retain
+exactly the networks satisfying
+\begin{equation}\label{eq:filters}
+ \rank S=2,\qquad \ker S\cap\R_{>0}^{q}\ne\varnothing,
+ \qquad \det(SR_{\rm gen})\not\equiv0.
+\end{equation}
+Choose a rational full-column-rank matrix
+\(G\in\Q^{q\times(q-2)}\) with \(SG=0\), and set
+\[
+ A_{\rm gen}=[R_{\rm gen}\mid G].
+\]
+The first two rows of \(A_{\rm gen}^{-1}\), indexed by \(X,Y\), do not
+depend on the chosen Gale basis as far as their zero pattern is concerned.
+
+At a positive mass-action steady state, write \(v>0\) for the reaction-flux
+vector and \(x=(x_X,x_Y)>0\) for the concentration vector.  Then
+\begin{equation}\label{eq:ma}
+ R_{\rm MA}(v,x)=\diag(v)(S^-)^T\diag(x)^{-1},
+ \qquad Sv=0,
+ \qquad A_{\rm MA}=[R_{\rm MA}\mid G].
+\end{equation}
+Conversely, every such \((v,x)\) is realized by positive rate constants:
+for a reaction with source complex \(c_i\), take
+\(k_\rho=v_\rho/x^{c_i}\).  Moreover,
+\begin{equation}\label{eq:normalization}
+ A_{\rm MA}(v,x)=A_{\rm MA}(v,(1,1))
+ \diag(x_X^{-1},x_Y^{-1},I_{q-2}),
+\end{equation}
+so concentration normalization preserves zeros in the species rows of the
+inverse.
+
+\begin{theorem}\label{thm:main}
+Among all networks retained by \eqref{eq:filters}, there is a pair for which
+an entry of \(A_{\rm gen}^{-1}\) is nonzero but the corresponding entry of
+\(A_{\rm MA}^{-1}\) vanishes identically on the positive steady-state
+parameter variety.  In the ordering above, the lexicographically minimum
+triple is
+\[
+ E_*=(0\to X,\ 0\to2X,\ X\to Y,\ X+Y\to0),
+ \qquad \rho=0\to X,\qquad m=Y.
+\]
+The mass-action inverse is generically defined for this network; indeed, its
+determinant is nonzero at every positive steady flux.
+\end{theorem}
+
+\section{The exact witness}
+
+Label the displayed reactions of \(E_*\) by \(\rho_0,\ldots,\rho_3\).  Direct
+construction gives
+\begin{equation}\label{eq:matrices}
+ S=\begin{pmatrix}1&2&-1&-1\\0&0&1&-1\end{pmatrix},\qquad
+ S^-=\begin{pmatrix}0&0&1&1\\0&0&0&1\end{pmatrix},\qquad
+ G=\begin{pmatrix}2&2\\-1&0\\0&1\\0&1\end{pmatrix}.
+\end{equation}
+The minor of columns 0 and 2 of \(S\) equals 1, while \(SG=0\).  At
+\(z=(-1,2)^T\),
+\[
+ v=Gz=(2,1,2,2)^T>0,
+\]
+so the first two filters hold.
+
+Let
+\[
+ a=r_{\rho_2X},\qquad b=r_{\rho_3X},\qquad c=r_{\rho_3Y}.
+\]
+These are exactly the nonzero independent symbols, and
+\[
+ R_{\rm gen}=\begin{pmatrix}0&0\\0&0\\a&0\\b&c\end{pmatrix},
+ \qquad
+ A_{\rm gen}=\begin{pmatrix}
+ 0&0&2&2\\
+ 0&0&-1&0\\
+ a&0&0&1\\
+ b&c&0&1
+ \end{pmatrix}.
+\]
+Expansion yields
+\begin{equation}\label{eq:genericdet}
+ \det(SR_{\rm gen})=\det A_{\rm gen}=2ac.
+\end{equation}
+Thus \(E_*\) passes the last filter.  The signed adjugate cofactor for inverse
+row \(Y\) and reaction column \(\rho_0\) is
+\[
+ C_{\rho_0,Y}=-a+b,
+ \qquad
+ (A_{\rm gen}^{-1})_{Y,\rho_0}=\frac{-a+b}{2ac},
+\]
+which is not the zero rational function in the independent symbols.
+
+At \(x=(1,1)\), mass action specializes
+\[
+ a=v_2,\qquad b=v_3,\qquad c=v_3.
+\]
+The cofactor then satisfies the polynomial identity
+\begin{equation}\label{eq:identity}
+ C^{\rm MA}_{\rho_0,Y}=-v_2+v_3=-(Sv)_Y.
+\end{equation}
+It therefore vanishes on the entire linear steady-flux variety \(Sv=0\), not
+merely at a sampled point.  On that variety, writing \(v=Gz\) gives
+\begin{equation}\label{eq:madet}
+ \det A_{\rm MA}(v,(1,1))=2z_1^2=2v_3^2.
+\end{equation}
+Every positive steady flux has \(v_3>0\), so the inverse is defined there.
+Equation~\eqref{eq:normalization} extends both the zero and nondegeneracy
+statements to every \(x>0\).  This proves the existential part of
+Theorem~\ref{thm:main}.
+
+For completeness, the only earlier pair within this same canonical network is
+\((\rho_0,X)\).  Its generic cofactor is \(-c\), and under mass action it is
+\(-v_3\), which never vanishes for a positive steady flux.  Thus it does not
+precede the stated witness.
+
+\section{Exact census and minimality}
+
+There are
+\[
+ \binom{30}{3}+\binom{30}{4}=31{,}465
+\]
+labelled networks.  Exactly 133 are fixed by \(\tau\), so Burnside's lemma
+gives \((31{,}465+133)/2=15{,}799\) canonical orbits.  A complete exact
+enumeration sorted these representatives and applied the following tests.
+
+\begin{lemma}\label{lem:tests}
+For \(q\in\{3,4\}\), all retention, inverse-cofactor, and mass-action
+vanishing predicates in the census reduce to finite rational arithmetic.
+\end{lemma}
+
+\begin{proof}
+Rank and a Gale basis are obtained by rational row reduction.  When
+\(q=3\), strict positivity of the one-dimensional kernel is decided by the
+two orientations of a basis vector.  When \(q=4\), the inequalities
+\(Gz>0\) define an open cone in \(\Q^2\).  If it is nonempty, it contains a
+point with \(z_0\ne0\): this is immediate unless a chosen feasible point has
+\(z_0=0\), in which case openness permits a small rational perturbation.
+After scaling, it is therefore enough to intersect the inequalities with
+\(z_0=1\) and \(z_0=-1\).  Each intersection is an exact open interval with
+rational endpoints.
+
+Writing \(S_{\bullet j}\) for a stoichiometric column, expansion gives
+\[
+ \det(SR_{\rm gen})=
+ \sum_{j,k}\det(S_{\bullet j},S_{\bullet k})
+ r_{jX}r_{kY},
+\]
+where only symbols allowed by the source complexes occur.  The symbols are
+independent, so nonvanishing is decided by the integer coefficients.
+
+After deletion of reaction row \(\rho\) and species column \(m\) from
+\([R_{\rm gen}\mid G]\), only the other reactivity column remains.  Its
+determinant is linear in distinct independent symbols, and its coefficients
+are rational minors of \(G\).  Under mass action it becomes a linear form
+\(\alpha^Tv\).  Restriction to \(Sv=0\), parameterized by \(v=Gz\), is the
+linear form \(\alpha^TGz\); it vanishes identically exactly when all of those
+rational coefficients are zero.  The retained positive cone is a nonempty
+relatively open subset of \(\ker S\), so this is also exactly the criterion
+for identical vanishing on the positive locus.  Finally, direct determinant expansion of
+\([R_{\rm MA}(Gz,(1,1))\mid G]\) decides whether the denominator is the zero
+polynomial.  These are all exact finite tests.
+\end{proof}
+
+The full census produced the following audit counts.
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.72\textwidth}r@{}}
+\toprule
+Predicate & Count\\
+\midrule
+Canonical orbits & 15,799\\
+Rank-two orbits & 15,607\\
+Rank two with a strictly positive kernel vector & 5,176\\
+Retained orbits & 5,168\\
+Retained orbits with identically zero mass-action determinant & 463\\
+Generic-nonzero inverse pairs checked & 35,968\\
+Mass-action-zero pairs with nonzero denominator & 1,432\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first qualifying pair occurs at zero-based orbit index 303, namely the
+304th representative, and is the pair in Theorem~\ref{thm:main}.  No
+representative at indices 0 through 302 contains a qualifying pair.
+
+The main implementation writes one machine-readable record for each of the
+15,799 representatives, including the canonical reaction list, filter
+decisions, rational Gale data, an exact positive flux when one exists, the
+mass-action determinant polynomial, and every generic-nonzero cofactor normal
+form.  A second implementation shares neither the census code nor its linear
+algebra library.  Using only rational fractions, separate Gaussian
+elimination, and direct determinant formulas, it reconstructs all canonical
+representatives and reclassifies every representative through index 303.  It
+again finds no earlier witness and verifies \eqref{eq:matrices}--\eqref{eq:madet}.
+Together with Lemma~\ref{lem:tests}, this establishes the claimed
+lexicographic minimality.
+
+\section{Scope, reproducibility, and assistance}
+
+The theorem is exhaustive only for the six ordered complexes above, three or
+four distinct loop-free directed reactions, the species-swap equivalence, and
+the three filters in \eqref{eq:filters}.  It neither classifies larger
+networks nor asserts that every failure of parameter richness creates a zero.
+Networks on which the specialized determinant vanishes identically are
+recorded but are not counted as witnesses, because a generic mass-action
+inverse is then unavailable.
+
+The accompanying files include the full census program and JSON-lines
+manifest, a summary record, and the separately written prefix verifier with
+its output.  Running the two Python programs from the project root reproduces
+the classification and the minimum.  The main census uses exact SymPy
+rational arithmetic; the replay uses Python's standard-library
+\texttt{fractions.Fraction}.  No floating-point comparison or random choice
+enters a decisive predicate.
+
+OpenAI Codex assisted with literature search, search-space formalization,
+development and checking of the exact enumeration, and manuscript
+preparation.  Language-model output is not mathematical evidence: the result
+rests on the displayed identities and the released exact-arithmetic
+certificates.  No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

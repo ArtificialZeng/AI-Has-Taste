@@ -1,0 +1,514 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={A direct-sum law for the Ray--West correction and a statistic for separable permutations},pdfauthor={Xiaojian Zeng},pdfsubject={Permutation patterns and exact combinatorial enumeration}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Ins}{\operatorname{Ins}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\dec}{\mathrm{dec}}
+\newcommand{\inc}{\mathrm{inc}}
+\newcommand{\good}{\mathcal{G}}\newcommand{\skewsum}{\mathbin{\mathrm{skew}}}
+\title{A direct-sum law for the Ray--West correction\\
+and a statistic for separable permutations}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190, China. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Ray and West expressed the number of permutations of length $m+2$
+containing a given permutation $\pi$ of length $m$ as a polynomial in $m$
+minus a correction $j(\pi)\in\{0,\ldots,m-1\}$. We prove that
+$j(\alpha\oplus\beta)=j(\alpha)+j(\beta)+T(\alpha)H(\beta)$ for arbitrary
+nonempty summands. Here $T$ and $H$ indicate decreasing last and first
+sum-indecomposable components, respectively. The proof localizes the
+Ray--West insertion witnesses at a direct-sum cut; restriction may require
+re-pairing the inserted points. Complementation gives a skew-sum law.
+These laws yield an intrinsic decomposition-tree statistic on every
+separable permutation and classify equality $j(\pi)=|\pi|-1$ throughout
+the sum- and skew-decomposable domains. The problem of expressing $j$
+intrinsically for arbitrary permutations remains unresolved by these results.
+\end{abstract}
+
+\section{The composition law and its scope}
+
+Write $S_m$ for the permutations of $\{1,\ldots,m\}$ in one-line notation.
+A permutation $\tau$ contains $\pi$ if some subsequence of $\tau$ has the
+same relative order as $\pi$. Let $g_2(\pi)$ count the \emph{distinct}
+permutations in $S_{m+2}$ containing $\pi\in S_m$, rather than their
+occurrences. Set
+\begin{equation}\label{eq:residual}
+ B(m)=\frac{m^4+2m^3+m^2+4m+4}{2},\qquad
+ j(\pi)=B(m)-g_2(\pi).
+\end{equation}
+Ray and West~\cite[Corollary~8.6 and Theorem~8.7]{raywest}
+proved $0\le j(\pi)\le m-1$ and described $j$ using insertion tracks.
+Vatter~\cite[Problem~3.7]{vatter} asks for a description in terms of
+statistics of $\pi$. We answer this question on the separable class and
+give a composition law without any separability hypothesis on the summands.
+We do not resolve the question for all permutations.
+
+For $\alpha\in S_a$ and $\beta\in S_b$, define
+\[
+ \alpha\oplus\beta=
+ (\alpha(1),\ldots,\alpha(a),a+\beta(1),\ldots,a+\beta(b)),
+\]
+\[
+ \alpha\skewsum\beta=
+ (b+\alpha(1),\ldots,b+\alpha(a),\beta(1),\ldots,\beta(b)).
+\]
+A permutation is \emph{sum-indecomposable} if it is not a direct sum of
+two nonempty permutations. Its maximal direct-sum decomposition is its
+unique decomposition into sum-indecomposable components. Indeed, the cuts
+are exactly the indices $k<m$ with
+$\{\pi(1),\ldots,\pi(k)\}=\{1,\ldots,k\}$, and taking all cuts gives
+uniqueness. Skew-indecomposability and maximal skew decomposition are
+defined analogously. Let
+\begin{align*}
+ H(\pi)&=\ind\{\text{the first sum component of $\pi$ is decreasing}\},\\
+ T(\pi)&=\ind\{\text{the last sum component of $\pi$ is decreasing}\}.
+\end{align*}
+Singletons are both increasing and decreasing.
+
+\begin{theorem}\label{thm:sum}
+For every pair of nonempty permutations $\alpha,\beta$,
+\begin{equation}\label{eq:sum}
+ j(\alpha\oplus\beta)=j(\alpha)+j(\beta)+T(\alpha)H(\beta).
+\end{equation}
+More precisely, the Ray--West good gaps internal to either summand
+restrict exactly to the good gaps of that summand. The gap at the join
+is good if and only if $T(\alpha)H(\beta)=1$.
+\end{theorem}
+
+Good gaps are defined in Section~\ref{sec:tracks}. Theorem~\ref{thm:sum}
+identifies the boundary contribution by two component tests; it is not
+merely the residual definition~\eqref{eq:residual}. Its consequences are
+proved in Section~\ref{sec:consequences}.
+
+The closest counting framework is that of Ray and West~\cite{raywest},
+whose track count is the starting point of our proof. Shar's
+thesis~\cite[Corollary~4.21 and Theorem~4.25]{shar} proves eventual
+polynomiality for fixed-codimension extensions of repeated direct sums
+of a fixed permutation, and bounds differences between the resulting
+polynomials. The examples on pp.~63--64, qualified there by an unproved
+stabilization threshold, already give codimension-two predictions for
+repeated $21$, $132$, $231$, and $321$. Those examples are prior work.
+Our formula applies exactly to arbitrary, possibly unequal, summands,
+with no stabilization condition. No equivalent composition law was found
+in the Ray--West and Shar passages inspected, or in the bounded comparison
+with Vatter's problem discussion, on 12 September 2026. This comparison
+does not establish exhaustive priority.
+
+\section{Insertion witnesses and good gaps}\label{sec:tracks}
+
+We state explicitly the parts of the Ray--West framework used below.
+All sites refer to the original grid of a permutation $\pi\in S_m$.
+A two-point insertion triple is $t=(\rho;R,C)$, where
+$\rho\in S_2$ and
+\[
+ R=(r_1,r_2),\quad C=(c_1,c_2),\qquad
+ 1\le r_1\le r_2\le m+1,\quad 1\le c_1\le c_2\le m+1.
+\]
+The inserted entries occupy positions $c_1,c_2+1$, and their values
+are $r_1,r_2+1$, paired in relative order $\rho$. Equivalently, the
+original-grid sites are $(r_{\rho(h)},c_h)$ for $h=1,2$.
+The original point $(q,\pi(q))$ is sent to
+\begin{equation}\label{eq:shift}
+ \left(q+\#\{c\in C:c\le q\},\quad
+ \pi(q)+\#\{r\in R:r\le\pi(q)\}\right),
+\end{equation}
+where multisets are counted with multiplicity. Write $\Ins(t;\pi)$
+for the resulting permutation. These are the insertion conventions of
+Ray and West~\cite[Section~4]{raywest}.
+
+A site $(r,c)$ is \emph{active} if neither original column $c-1$ nor
+original column $c$ contains value $r$; nonexistent columns are omitted.
+A triple is active if its two sites are active. A \emph{synonymity}
+$t\sim_\pi u$ means the equality $\Ins(t;\pi)=\Ins(u;\pi)$ of actual
+permutations. Only the left triple $t$ is required to be active.
+The right triple need not be active or canonical.
+
+Put $u=(\sigma;S,D)$, with sorted multisets $S=(s_1,s_2)$ and
+$D=(d_1,d_2)$. The two orientations of pattern (C) used here are
+\begin{align}
+ r_1\le r_2<s_1\le s_2,\quad c_1\le c_2<d_1\le d_2,
+ &\qquad (+),\label{eq:plus}\\
+ r_1\le r_2<s_1\le s_2,\quad d_1\le d_2<c_1\le c_2,
+ &\qquad (-).\label{eq:minus}
+\end{align}
+The strict middle inequalities are essential; the outer inequalities
+allow repeated sites. The following source facts fix the precise
+meaning of the good-gap count~\cite[Proposition~6.3, Theorem~6.4,
+Proposition~8.5, Corollary~8.6 and Theorem~8.7]{raywest}.
+
+\begin{enumerate}
+\item The number $j(\pi)$ counts the distinct active left triples having
+a synonymous right triple in~\eqref{eq:plus} or~\eqref{eq:minus}.
+There is at most one such left triple per adjacent gap. A gap is
+\emph{good} if it receives a triple. Multiple right witnesses for the
+same left triple are counted once.
+\item The affected original points split into two nonempty tracks. In
+both orientations values increase along each track; positions increase
+in $(+)$ and decrease in $(-)$. The tracks cover every permutation
+point of a contiguous support rectangle. Its row interval is
+$[r_1,s_2-1]$, and its column interval is $[c_1,d_2-1]$ in $(+)$ or
+$[d_1,c_2-1]$ in $(-)$. Each row and each column of this rectangle
+has its unique permutation point inside it.
+\item In $(+)$ the assigned gap is a descent, and its index $i$ satisfies
+\begin{equation}\label{eq:source}
+ i=c_2,\qquad r_1=\pi(i+1),\qquad \pi(c_1)=r_2+1.
+\end{equation}
+The points at $i,i+1$ belong to different tracks. In $(-)$ the assigned
+gap is an ascent, its index is $i=c_1-2$, and its two incident points
+again belong to different tracks.
+\end{enumerate}
+
+For clarity, complete support can also be read directly from the two
+embeddings~\eqref{eq:shift}. The row-shift difference is positive exactly
+on $[r_1,s_2-1]$. The column-shift difference has the corresponding
+positive or negative sign exactly on the indicated column interval.
+For an original point, one shift difference vanishes if and only if
+the other does: otherwise the common ambient permutation would have
+two different points in a single row or column. Thus membership in
+the row interval is equivalent to membership in the column interval.
+Following identifications of original points between the embeddings
+gives the tracks of Theorem~6.4; Proposition~8.5 supplies their two
+nonempty components. In particular, there are no omitted original
+points inside the support used below.
+
+The negative gap convention follows by horizontal reflection of the
+positive case: original position $q$ becomes $m+1-q$, whereas a grid
+column $c$ becomes $m+2-c$. Hence $i=c_1-2$. This explicit reflection
+also removes any ambiguity caused by the repeated positive sign in
+the second case of the printed proof of Corollary~8.6.
+Let $\good(\pi)\subseteq\{1,\ldots,m-1\}$ denote the good-gap set.
+The source count says $j(\pi)=|\good(\pi)|$.
+
+\section{Restriction at a direct-sum cut}
+
+Throughout this section let $\pi=\alpha\oplus\beta$ and $k=|\alpha|$.
+
+\begin{lemma}[Restriction with re-pairing]\label{lem:repair}
+Suppose $t\sim_\pi u$ has orientation $(+)$, its left triple is active,
+and $\max R,\max C\le k$. Define
+\[
+ S'=(\min(s_1,k+1),\min(s_2,k+1)),\qquad
+ D'=(\min(d_1,k+1),\min(d_2,k+1)).
+\]
+There exists $\sigma'\in S_2$ such that
+$t\sim_\alpha(\sigma';S',D')$ is a synonymity of orientation $(+)$
+with active left triple and the same assigned gap.
+\end{lemma}
+
+\begin{proof}
+The insertion of $t$ has the form $\tau_A\oplus\beta$, where
+$\tau_A=\Ins(t;\alpha)$ has length $k+2$. Consider the occurrence of
+$\pi$ furnished by the right insertion $u$ in this common permutation.
+For each of its first $k$ original points, both coordinates in
+\eqref{eq:shift} are at most $k+2$. These points therefore give an
+occurrence of $\alpha$ inside $\tau_A$. Its two complementary points
+determine an insertion triple on $\alpha$.
+
+For $q\le k$ and any site $d$,
+\[
+ \min(d,k+1)\le q\quad\Longleftrightarrow\quad d\le q.
+\]
+Thus $D'$ gives exactly the positions of the retained original points
+in that occurrence. Those positions uniquely determine the two missing
+positions, hence their original-grid insertion multiset. The same
+argument on values gives $S'$. Pairing each missing position with its
+actual value in $\tau_A$ determines $\sigma'$, and proves the required
+insertion identity. This argument permits repeated coordinates and
+clipping of either or both coordinates.
+
+The left triple remains active upon deleting the suffix: no new
+adjacent entry equal to a source row is introduced. Moreover,
+$s_1>r_2$ and $k+1>r_2$ imply $\min(s_1,k+1)>r_2$.
+Likewise $\min(d_1,k+1)>c_2$. Both strict inequalities survive.
+The left triple and its gap index $c_2$ are unchanged.
+\end{proof}
+
+\begin{remark}\label{rem:clipping}
+The right permutation $\sigma'$ cannot in general be fixed to $\sigma$.
+For $\pi=213=21\oplus1$, the triples
+\[
+ (21;(1,1),(1,1))\quad\hbox{and}\quad(12;(4,4),(3,4))
+\]
+both insert to $21435$. At the cut $k=2$, coordinate clipping while
+retaining $12$ gives $2134$, whereas the left insertion on $21$ is
+$2143$. The repaired right triple is $(21;(3,3),(3,3))$.
+This small failure is the reason restriction is formulated using the
+induced occurrence and its complementary points.
+\end{remark}
+
+\begin{lemma}[Internal gaps]\label{lem:internal}
+For $i<k$, $i\in\good(\pi)$ if and only if $i\in\good(\alpha)$.
+For $i>k$, $i\in\good(\pi)$ if and only if $i-k\in\good(\beta)$.
+\end{lemma}
+
+\begin{proof}
+First restrict a positive-orientation witness with gap $i<k$.
+By~\eqref{eq:source}, $c_1\le c_2=i\le k-1$, and
+$r_2=\pi(c_1)-1\le k-1$. Lemma~\ref{lem:repair} applies regardless
+of the location of the right sites.
+For a positive witness with $i>k$, the same equations give
+$r_1=\pi(i+1)>k$ and $\pi(c_1)=r_2+1>k$, so $c_1>k$.
+Strict separation puts every coordinate of $R,C,S,D$ at least $k+1$.
+Subtracting $k$ from all coordinates restricts the two equal insertions
+to $\beta$. Activity, separation and the translated gap are preserved.
+
+Next consider a negative witness. A track cannot cross the direct-sum
+cut: a point of $\alpha$ is both earlier and smaller than every point
+of $\beta$, whereas positions and values have opposite orders along
+such a track. If $i,i+1$ lie in $\alpha$, the two tracks containing
+them lie wholly in $\alpha$. Since they cover the entire support,
+all its rows and columns are at most $k$, and all four site multisets
+lie in $[1,k+1]$. If $i,i+1$ lie in $\beta$, all support rows and
+columns exceed $k$, and all sites are at least $k+1$. Restriction of
+the common insertion, with translation in the latter case, proves
+the required synonymity. No clipping is needed in this orientation.
+
+Conversely, a witness on $\alpha$ lifts by leaving every site unchanged;
+the common insertion becomes the old common result direct-summed with
+$\beta$. A witness on $\beta$ lifts by adding $k$ to all sites.
+The strict inequalities persist. For a prefix lift,
+$r_2<s_1\le k+1$ forces every source row to be at most $k$.
+Consequently an added adjacent entry from $\beta$ cannot spoil activity,
+even at grid column $k+1$. For a suffix lift, all source rows exceed
+$k$, so an adjacent prefix entry cannot spoil activity at the first
+suffix grid column. This proves both converses, including boundary sites.
+\end{proof}
+
+\begin{lemma}[The join]\label{lem:join}
+The gap $k$ belongs to $\good(\alpha\oplus\beta)$ if and only if
+$T(\alpha)H(\beta)=1$.
+\end{lemma}
+
+\begin{proof}
+The join is an ascent, so any witness there has orientation $(-)$.
+Its tracks contain $\pi(k)$ and $\pi(k+1)$ separately. By the preceding
+monotonicity argument, one track lies wholly in $\alpha$ and the other
+wholly in $\beta$. The support rectangle has rows $[r_1,s_2-1]$ and
+columns $[d_1,c_2-1]$. Its prefix part occupies exactly columns
+$d_1,\ldots,k$ and values $r_1,\ldots,k$. Every such row and column
+is occupied, so counting gives $d_1=r_1$. All these points lie on one
+decreasing track; hence
+\[
+ (\pi(d_1),\ldots,\pi(k))=(k,k-1,\ldots,d_1).
+\]
+Similarly, its suffix part is a decreasing initial interval of $\beta$,
+using values $k+1,\ldots,c_2-1$; counting gives $s_2=c_2$.
+The complementary prefix entries use smaller values, and the remaining
+suffix entries use larger values. These intervals are therefore
+direct-sum components. A decreasing permutation is sum-indecomposable,
+including in size one, so they are precisely the two incident maximal
+components. This proves necessity for arbitrary summands.
+
+For sufficiency, write $\delta_a=(a,a-1,\ldots,1)$.
+It is enough to exhibit a witness on $\delta_a\oplus\delta_b$ for
+all $a,b\ge1$, then lift across the surrounding direct summands using
+Lemma~\ref{lem:internal}. Put $m=a+b$ and take
+\begin{equation}\label{eq:witness}
+ \rho=\sigma=12,\quad R=D=(1,a),\quad C=S=(a+2,m+1).
+\end{equation}
+By~\eqref{eq:shift}, both insertions equal
+\begin{equation}\label{eq:ambient}
+ (a+2,\ a,a-1,\ldots,2,\ m+2,\ 1,\ m+1,m,\ldots,a+3,\ a+1),
+\end{equation}
+with empty decreasing ranges omitted. At source site $(1,a+2)$
+the adjacent entries are greater than $1$; when $b=1$, only the
+adjacent entry $a+1$ exists. At $(a,m+1)$ the only adjacent entry is
+$a+1$. The left triple is active, and both strict inequalities reduce
+to $a<a+2$. Its gap is $c_1-2=a$. The construction includes $a=1$
+or $b=1$; when $a=b=1$ the common ambient permutation is $3412$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sum}]
+Lemma~\ref{lem:internal} identifies all internal good gaps, and
+Lemma~\ref{lem:join} identifies the only remaining one. In fact,
+\[
+ \good(\alpha\oplus\beta)=\good(\alpha)\ \cup\
+ \{k+i:i\in\good(\beta)\}\ \cup\
+ \begin{cases}\{k\},&T(\alpha)H(\beta)=1,\\
+ \varnothing,&T(\alpha)H(\beta)=0.
+ \end{cases}
+\]
+The sets are disjoint. Counting them with $j=|\good|$ proves
+\eqref{eq:sum} and the stronger gap statement.
+\end{proof}
+
+\section{Skew sums, separable permutations and equality}\label{sec:consequences}
+
+Let $c(\pi)(q)=|\pi|+1-\pi(q)$ be value complementation. It gives a
+bijection between ambient permutations containing $\pi$ and those
+containing $c(\pi)$, so
+\begin{equation}\label{eq:complement}
+ j(c(\pi))=j(\pi),\qquad
+ c(\alpha\skewsum\beta)=c(\alpha)\oplus c(\beta).
+\end{equation}
+Let $H_-(\pi),T_-(\pi)$ indicate whether the first and last
+skew-indecomposable components, respectively, are increasing.
+
+\begin{corollary}\label{cor:skew}
+For all nonempty $\alpha,\beta$,
+\[
+ j(\alpha\skewsum\beta)=j(\alpha)+j(\beta)+T_-(\alpha)H_-(\beta).
+\]
+\end{corollary}
+\begin{proof}
+Complementation converts maximal skew components to maximal sum
+components and increasing permutations to decreasing permutations.
+Apply Theorem~\ref{thm:sum} to~\eqref{eq:complement}.
+\end{proof}
+
+For a maximal sum decomposition $\pi=\pi_1\oplus\cdots\oplus\pi_t$,
+iteration of Theorem~\ref{thm:sum} yields
+\begin{equation}\label{eq:maximal}
+ j(\pi)=\sum_{h=1}^{t}j(\pi_h)
+ +\sum_{h=1}^{t-1}\ind\{\pi_h,\pi_{h+1}\text{ are decreasing}\}.
+\end{equation}
+The maximal skew version replaces ``decreasing'' by ``increasing''.
+
+A \emph{separable} permutation is obtained from singletons by repeated
+direct and skew sums, as in Albert, Atkinson and
+Vatter~\cite[Section~1]{albert}. Recursively taking maximal decompositions
+gives its ordered decomposition tree: each internal node is labelled
+$\oplus$ or $\skewsum$ and its children are its maximal components.
+For length at least two the two decomposability types cannot occur
+simultaneously. To see this, a proper initial segment cannot be both
+the smallest and the largest set of values, and two proposed initial
+segments of these different types are nested. Thus the type at each
+node is unambiguous. Every leaf is a singleton.
+
+\begin{corollary}[An intrinsic statistic]\label{cor:tree}
+At each sum node count adjacent children whose represented permutations
+are both decreasing, and at each skew node count adjacent children whose
+represented permutations are both increasing. The total over all nodes
+of the maximal decomposition tree of a separable permutation $\pi$ is
+$j(\pi)$.
+\end{corollary}
+\begin{proof}
+For the singleton, $g_2(1)=6=B(1)$ and $j(1)=0$.
+Apply~\eqref{eq:maximal} or its skew version at each internal node,
+and induct on the tree. The terms at singleton leaves vanish.
+\end{proof}
+
+This statistic can be evaluated from the permutation's decomposition,
+without enumerating insertion triples or ambient containing permutations.
+It also determines $g_2$ by~\eqref{eq:residual}.
+
+A permutation is \emph{layered} if it is a direct sum of decreasing
+permutations, and \emph{colayered} if it is a skew sum of increasing
+permutations.
+
+\begin{corollary}[Equality on decomposable permutations]\label{cor:equality}
+If $\pi$ is sum-decomposable, then
+$j(\pi)=|\pi|-1$ if and only if $\pi$ is layered.
+If $\pi$ is skew-decomposable, then
+$j(\pi)=|\pi|-1$ if and only if $\pi$ is colayered.
+In particular, among separable permutations equality holds precisely
+for the layered and colayered permutations.
+\end{corollary}
+\begin{proof}
+For the maximal sum components $\pi_1,\ldots,\pi_t$, with $t\ge2$,
+let $I_h$ indicate that $\pi_h$ and $\pi_{h+1}$ are both decreasing.
+Equation~\eqref{eq:maximal} gives the deficit identity
+\begin{equation}\label{eq:deficit}
+ |\pi|-1-j(\pi)=
+ \sum_{h=1}^{t}\bigl(|\pi_h|-1-j(\pi_h)\bigr)
+ +\sum_{h=1}^{t-1}(1-I_h).
+\end{equation}
+Each term is nonnegative by the Ray--West bound. Equality forces every
+$I_h=1$. Since $t\ge2$, each child is in an adjacent pair and therefore
+is decreasing. Hence $\pi$ is layered. Conversely, the skew law on
+singletons gives $j(\delta_a)=a-1$, so decreasing children and
+\eqref{eq:maximal} imply equality for every layered sum-decomposable
+permutation. Complementation proves the skew statement. Every separable
+permutation of size at least two has a decomposition of one type; in
+size one equality and both descriptions hold directly.
+\end{proof}
+
+\section{Exact checks and remaining questions}
+
+The proof above is uniform in the lengths of the summands. Exact finite
+computations served to test its conventions and boundary cases.
+An insertion-based verifier examined every permutation through length
+$6$ and $15$ structured examples of lengths $10$--$12$. It generated
+all two-point insertion triples, permitting inactive right triples,
+reconstructed the tracks from the two embeddings, and checked support,
+source equations, internal restriction and the join criterion.
+It tested $3{,}110$ witness/cut cases; $1{,}219$ used positive-prefix
+restriction and $188$ required changing the right inserted permutation.
+All checks passed.
+
+A separately authored verifier reconstructed the calculation from
+ambient permutations and two-position deletions, without importing
+the insertion generator. This separation of generation from checking
+is also used concretely by Zeng, Liu, Ratnavelu and
+Ong~\cite[Section~6]{zengcert}, whose finite-geometry certificates are
+checked afresh by a standalone verifier. Here the second program
+enumerated all $46{,}230$ ambient permutations of lengths $3$--$8$,
+and all $1{,}246{,}962$ two-position deletion occurrences. Deduplication
+by ambient permutation gave $g_2$ for all $873$ patterns of lengths
+$1$--$6$. Besides agreement with the first counts, it verified all
+$465$ direct-sum cuts and their exact good-gap identities. Its $659$
+positive-prefix restrictions included $134$ changes of right pattern.
+A separate deletion-decoding check verified~\eqref{eq:witness}--\eqref{eq:ambient}
+for every $1\le a,b\le50$, including repeated and boundary sites.
+
+The tree implementation agreed with the inherited exact census for all
+$52{,}465$ separable permutations through length $9$. Table~\ref{tab:coverage}
+records that range. The second verifier separately confirmed the $515$
+separable permutations through length $6$. These are exact finite
+checks and implementation comparisons, not proofs for untested lengths.
+The inherited census informed the statement; it is exploratory and
+regression evidence, not a blind experiment. Separate code and a fresh
+review context do not make previously seen data statistically independent.
+
+\begin{table}[ht]
+\centering
+\caption{Coverage of the inherited census used for the tree regression.
+Every listed separable permutation agrees with Corollary~\ref{cor:tree}.}
+\label{tab:coverage}
+\small
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Length & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\
+\midrule
+All patterns & 1 & 2 & 6 & 24 & 120 & 720 & 5040 & 40320 & 362880\\
+Separable & 1 & 2 & 6 & 22 & 90 & 394 & 1806 & 8558 & 41586\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The remaining issue in Vatter's problem is an intrinsic evaluation of
+$j$ when repeated sum and skew decomposition leaves a permutation
+indecomposable in both senses. The equality classification proved here
+also leaves that domain untreated. Neither a general deletion inequality
+for $j$ nor a general equality classification is needed in our argument.
+The natural next test of any proposed extension is an exact counterexample
+search on permutations indecomposable in both senses, followed by a
+uniform proof if the proposed rule survives.
+
+\paragraph{Computation and assistance disclosure.}
+The companion reproducibility instructions identify the programs,
+coverage reports and exact census inputs. The counting and witness
+checks use integer arithmetic; the census array is stored as exact
+integers. No numerical fitting or tolerance enters the stated identities.
+OpenAI Codex assisted with literature searches, proof development and
+revision, program construction, a separate mathematical review pass,
+and manuscript preparation. That review is a separate model context,
+not external peer review. Language-model output and successful tests
+are not substitutes for the written proof. No proof assistant was used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

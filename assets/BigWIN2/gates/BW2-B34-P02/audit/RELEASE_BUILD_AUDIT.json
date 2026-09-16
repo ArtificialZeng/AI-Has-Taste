@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "command": "cd /tmp/Win34-p02-release-build.QhCmmw && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+  "exit_code": 0,
+  "latex_audit_passed": true,
+  "undefined_references": 0,
+  "undefined_citations": 0,
+  "log_path": "audit/release-build.log",
+  "notes": [
+    "Clean isolated build used only copied main.tex and references.bib; latexmk ran pdfLaTeX, BibTeX, and the required reruns to convergence.",
+    "audit_latex.py passed with cited=4, bib=4, missing=0, unused=0 and no manuscript template residue.",
+    "The final TeX log has no undefined reference, undefined citation, rerun request, error, overfull box, emergency stop, or fatal error. Six underfull table-cell warnings were visually checked and cause no missing text, overlap, or clipping.",
+    "The BibTeX log reports zero warnings and zero errors."
+  ]
+}

@@ -1,0 +1,345 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\NACnum}{\operatorname{NAC}_{\#}}
+\newcommand{\Gsc}{\mathcal G_{\mathrm{sc}}}
+\setlength{\emergencystretch}{2em}
+
+\title[The eleven-vertex unique NAC-colouring conjecture]
+{The Eleven-Vertex Case of the Unique NAC-Colouring Conjecture}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{05C15, 52C25, 05C85}
+\keywords{NAC-colouring, Laman graph, minimal rigidity, exhaustive verification, graph generation}
+\hypersetup{
+  pdftitle={The Eleven-Vertex Case of the Unique NAC-Colouring Conjecture},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Clinch, Garamvölgyi, Haslegrave, Huynh, Legerský, and Nixon conjectured a
+structural characterization of minimally rigid graphs having a unique
+NAC-colouring modulo global colour exchange, and reported a computer
+verification through ten vertices.  We certify the next case.  Among all
+$2{,}039{,}273$ isomorphism classes of eleven-vertex Laman graphs, exactly
+$23{,}499$ have one NAC-colouring modulo colour exchange, and every one belongs
+to one of the two conjectured families.  The exhaustive certificate assigns
+each graph either to a positive structural family, to the class of $2$-trees,
+or supplies two explicit inequivalent NAC-colourings.  An independent checker
+verifies every Laman inequality and every certificate row using exact integer
+and bitset operations.  This proves the conjecture at order eleven; it does not
+settle the conjecture for arbitrary order.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+A NAC-colouring is a surjective red--blue edge-colouring in which every cycle
+is monochromatic or contains at least two edges of each colour.  Such
+colourings were introduced by Grasegger, Legerský, and Schicho in their study
+of flexible graph realizations~\cite{grasegger2019}.  For a graph $G$, let
+$\NACnum(G)$ be half the number of its NAC-colourings; thus only global colour
+exchange is removed, not graph automorphisms.
+
+Clinch, Garamvölgyi, Haslegrave, Huynh, Legerský, and Nixon recently studied
+this parameter for minimally rigid graphs~\cite{clinch2026}.  Their
+Conjecture~6.1 states that $\NACnum(G)=1$ precisely for two structural classes:
+
+\begin{enumerate}
+\item $G\in\Gsc$ and $G$ has exactly one triangular-prism subgraph; or
+\item $G$ is a $0$-extension graph admitting exactly one open step.
+\end{enumerate}
+
+They proved the forward construction statements and reported verification of
+the converse for graphs on at most ten vertices~\cite[Conjecture~6.1 and the
+following paragraph]{clinch2026}.  The same paper reports NAC-count
+distributions at orders eleven and twelve, so a new finite result must certify
+the structural classification, not merely repeat those counts.
+
+Our main result is the complete next order.
+
+\begin{theorem}\label{thm:main}
+Let $G$ be an eleven-vertex minimally rigid graph in the plane.  Then
+$\NACnum(G)=1$ if and only if either
+\begin{enumerate}
+\item $G\in\Gsc$ and $G$ has exactly one triangular-prism subgraph, or
+\item $G$ is a $0$-extension graph with exactly one open step.
+\end{enumerate}
+There are exactly $23{,}499$ isomorphism classes satisfying these equivalent
+conditions.
+\end{theorem}
+
+The proof is computer-assisted but finite and exact.  Its trust boundary is
+small: a canonical graph universe is cross-checked against an independently
+published dataset, and a separate verifier checks a four-way certificate.  In
+particular, no conclusion is drawn from floating-point output, a search limit,
+or failure to find a colouring.
+
+The literature search for this work was repeated after the computation on
+August 30, 2026.  We found no primary source in the recorded searches that
+certified Conjecture~6.1 at order eleven.  This is a bounded search statement,
+not a claim of absolute priority.
+
+\section{Definitions and structural facts}
+
+All graphs are finite, undirected, and simple.  For $X\subseteq V(G)$, write
+$G[X]$ for the induced subgraph.
+
+\begin{definition}
+A graph $G=(V,E)$ is a \emph{Laman graph} if
+\[
+ |E|=2|V|-3
+ \quad\text{and}\quad
+ |E(G[X])|\leq 2|X|-3
+ \quad\text{whenever }2\leq |X|\leq |V|.
+\]
+\end{definition}
+
+By the Pollaczek--Geiringer--Laman characterization, the Laman graphs are
+exactly the generically minimally rigid graphs in the plane~\cite{laman1970}.
+At order eleven they have nineteen edges.
+
+\begin{definition}
+A colouring $c:E(G)\to\{\mathrm{red},\mathrm{blue}\}$ is a
+\emph{NAC-colouring} if it is surjective and every cycle is monochromatic or
+has at least two red and at least two blue edges.  We set
+\[
+ \NACnum(G)=\frac12\#\{\text{NAC-colourings of }G\}.
+\]
+\end{definition}
+
+The following elementary form is useful for independent verification.
+
+\begin{lemma}[Connectivity criterion]\label{lem:connectivity}
+A surjective red--blue edge-colouring is a NAC-colouring if and only if no edge
+of either colour has endpoints connected by a path using only the other
+colour.
+\end{lemma}
+
+\begin{proof}
+An edge and an opposite-coloured path between its endpoints contain an
+almost-monochromatic cycle: take a shortest such path.  Conversely, deleting
+the uniquely coloured edge from an almost-monochromatic cycle leaves an
+opposite-coloured path between its endpoints.
+\end{proof}
+
+A $0$-extension adds a new vertex adjacent to exactly two old vertices.  The
+step is \emph{open} if those two vertices are non-adjacent.  A $0$-extension
+graph is obtained from $K_2$ by a sequence of such steps.  A $2$-tree is a
+$0$-extension graph with no open step.
+
+\begin{lemma}[Open-step invariant]\label{lem:open}
+If $G$ is an $n$-vertex $0$-extension graph and $t(G)$ is its number of
+triangles, then every $0$-extension construction of $G$ has
+\[
+ n-2-t(G)
+\]
+open steps.
+\end{lemma}
+
+\begin{proof}
+There are $n-2$ extension steps.  A closed step creates exactly one triangle,
+while an open step creates none.  Conversely, every triangle in the final
+graph has a unique last-added vertex; the step adding that vertex was closed
+and created the triangle.  Thus triangles are in bijection with closed steps.
+\end{proof}
+
+This also removes a possible ambiguity in the phrase ``exactly one open
+step.''  At order eleven it is equivalent to being a $0$-extension graph with
+eight triangles.
+
+\begin{proposition}\label{prop:h1}
+A $2$-tree has no NAC-colouring.  A $0$-extension graph with exactly one open
+step has exactly one NAC-colouring modulo global colour exchange.
+\end{proposition}
+
+\begin{proof}
+Every triangle is monochromatic in a NAC-colouring.  In a $2$-tree, the closed
+construction propagates one colour from the initial edge to every edge, which
+contradicts surjectivity.
+
+Now consider a construction with one open step.  Before that step the graph is
+a $2$-tree, so all its edges have one colour, say blue, in the restriction of
+any NAC-colouring.  Let the open step add $x$ adjacent to non-adjacent vertices
+$u$ and $v$.  The new edges cannot both be blue, since later closed steps
+cannot introduce a second colour.  They also cannot have different colours:
+a blue $u$--$v$ path in the connected $2$-tree, together with $xu$ and $xv$,
+would have exactly one red edge.  Hence $xu$ and $xv$ are both red.
+
+This gives a NAC-colouring: every cycle through $x$ contains both red edges
+and a blue $u$--$v$ path of length at least two.  At each later closed
+extension, the two new edges must have the colour of the old edge that joins
+their endpoints, because they form a triangle.  Conversely, extending in this
+forced way preserves the NAC property: replace every two-edge passage through
+the new vertex by that old edge, of the same colour.  Thus the colouring is
+unique up to exchange.
+\end{proof}
+
+The class $\Gsc$ starts from $K_2$ and recursively glues a triangle or a
+triangular prism along an edge or a triangle.  Le and Pfender characterized
+graphs with $2n-3$ edges and no stable cut in these terms~\cite{lepfender2013};
+a gap in their proof was subsequently repaired by Rauch and
+Rautenbach~\cite{rauch2025}.  We use the resulting equivalence
+\begin{equation}\label{eq:gsc}
+  G\in\Gsc
+  \quad\Longleftrightarrow\quad
+  G\text{ has no stable cut},
+\end{equation}
+for graphs with $2|V(G)|-3$ edges.  Here a stable cut is an independent vertex
+set whose deletion disconnects the graph.
+
+For $G\in\Gsc$, the prior calculation gives
+\begin{equation}\label{eq:family-a}
+ \NACnum(G)=2^p-1,
+\end{equation}
+where $p$ is the number of prism attachments in a recursive construction of
+$G$~\cite[following Conjecture~6.1]{clinch2026}.  Briefly, after fixing the
+colour of a gluing edge, a triangle attachment adds no choice, whereas a prism
+attachment permits the monochromatic choice or the prism's unique compatible
+NAC-colouring.  Every attached prism remains a prism subgraph, and different
+attachments produce distinct copies.  A construction with no prism is a
+$2$-tree and cannot contain the cubic prism as a subgraph.  Consequently, a
+member of $\Gsc$ with exactly one prism subgraph has $p=1$ and hence
+$\NACnum(G)=1$.
+
+\section{The exact four-way certificate}
+
+The certificate contains one row for every isomorphism class.  Graphs are
+stored as 55-bit integers obtained by reading the upper triangle of the
+$11\times11$ adjacency matrix row by row.  A red-edge mask uses the same bit
+positions; its complement within the graph is the blue-edge mask.
+
+Each row has one of four meanings.
+
+\begin{description}
+\item[Type 2.] Two literal red-edge masks are supplied.  The checker verifies
+both by Lemma~\ref{lem:connectivity} and verifies that they are neither equal
+nor global colour exchanges.  Hence $\NACnum(G)\geq2$.
+\item[Type T.] A reverse degree-two elimination reaches $K_2$, with adjacent
+neighbours at every deletion.  Thus $G$ is a $2$-tree and
+$\NACnum(G)=0$ by Proposition~\ref{prop:h1}.
+\item[Type B.] A reverse degree-two elimination reaches $K_2$, exactly one
+deleted vertex has non-adjacent neighbours, and $G$ has eight triangles.
+Lemma~\ref{lem:open} and Proposition~\ref{prop:h1} give $\NACnum(G)=1$.
+\item[Type A.] Direct enumeration finds no stable cut and exactly one
+six-vertex subgraph isomorphic to the triangular prism.  Equation
+\eqref{eq:gsc} and \eqref{eq:family-a} give $\NACnum(G)=1$.
+\end{description}
+
+For a Laman graph, a prism subgraph is automatically induced: the prism already
+has nine edges on six vertices, the maximum allowed by Laman sparsity.
+The positive types are disjoint.  Indeed, every $0$-extension graph is
+$2$-degenerate, while the triangular prism has minimum degree three; hence a
+Type~B graph cannot contain the prism required for Type~A.
+
+The certificate does not contain a ``not found'' type.  Malformed data,
+unknown types, missing rows, repeated graph encodings, invalid colour masks,
+or a failed structural test cause the independent checker to reject.
+
+\section{Exhaustiveness and independent verification}
+
+Larsson's nauty plugin generates nonisomorphic $(2,3)$-tight graphs directly
+using canonical augmentation~\cite{larsson,nauty2014}.  A fresh run produced
+$2{,}039{,}273$ graph6 records at order eleven.  As an independent universe,
+we used the 2018 dataset of Capco, Gallet, Grasegger, Koutschan, Lubbes, and
+Schicho, which was produced by a different combinatorial computation and
+contains all Laman graphs through order twelve~\cite{capco2018data}.  After
+canonical relabelling, sorting, and duplicate checks, the two eleven-vertex
+files agreed exactly.
+
+The release checker then performs the following operations from serialized
+input, without importing discovery output as trusted values.
+
+\begin{enumerate}
+\item It confirms exactly $2{,}039{,}273$ distinct graph encodings.
+\item For every graph, it checks the nineteen-edge count and all $1{,}815$
+vertex subsets of sizes four through ten.  Subsets of sizes two and three
+satisfy Laman sparsity automatically in a simple graph.
+\item It verifies every Type~2 colouring by bitset transitive closure.
+\item It recomputes every Type~A, B, and T structural predicate directly.
+\item It rejects any missing or trailing certificate row.
+\end{enumerate}
+
+The discovery code uses disjoint-set closure; the checker instead uses a
+separately implemented reachability closure.  Thus the decisive NAC predicate
+is evaluated by two different decompositions.  The verified partition is
+shown in Table~\ref{tab:partition}.
+
+\begin{table}[ht]
+\centering
+\caption{The verified four-way partition of eleven-vertex Laman graphs.}
+\label{tab:partition}
+\begin{tabular}{lrl}
+\toprule
+Type & Number of classes & Consequence \\
+\midrule
+A & $1{,}196$ & conjectured family A; $\NACnum=1$ \\
+B & $22{,}303$ & conjectured family B; $\NACnum=1$ \\
+T & $2{,}171$ & $2$-tree; $\NACnum=0$ \\
+2 & $2{,}013{,}603$ & two explicit classes; $\NACnum\geq2$ \\
+\midrule
+Total & $2{,}039{,}273$ & all isomorphism classes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The universe comparison and the direct Laman checks show that the certificate
+covers every eleven-vertex minimally rigid graph up to isomorphism.  Type~A
+and Type~B rows satisfy the two conjectured structural conditions and have
+$\NACnum=1$ by the results of Section~2.  Type~T rows have $\NACnum=0$.
+Every Type~2 row has two independently verified NAC-colourings after quotienting
+global colour exchange, so it cannot have $\NACnum=1$.  The four types are
+exhaustive.  Finally, $1{,}196+22{,}303=23{,}499$.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The accompanying archive contains the integer graph dataset, the four-way
+certificate, discovery source, independent verifier, build script, generation
+cross-check, and complete logs.  Running
+\begin{center}
+\texttt{./scripts/build\_and\_verify.sh}
+\end{center}
+recompiles the checker, verifies the full certificate, and runs eight
+fail-closed mutation tests.  Enabling \texttt{RUN\_DISCOVERY=1} also reruns
+discovery and requires byte-for-byte equality with the released certificate.
+All decisive operations are exact integer, bitset, graph-connectivity, or
+finite enumeration operations.  No proof assistant was used.
+
+This theorem is limited to eleven vertices.  It neither proves the infinite
+converse of Conjecture~6.1 nor gives a new asymptotic characterization.  The
+reported order-eleven NAC-count distribution in the prior paper remains prior
+work; the contribution here is the exhaustive family classification and its
+independently checkable certificate.
+
+\section*{Data and code availability}
+
+All data and source files required for the result accompany the submission.
+The independent Laman-graph universe is also publicly available from Zenodo
+record 1245517~\cite{capco2018data}; the canonical generator is publicly
+available from Larsson's repository~\cite{larsson}.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

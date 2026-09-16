@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let c(n,k) count permutations of n elements with k cycles, with c(0,0)=1 and c(n,k)=0 outside 0<=k<=n. For each integer k>=1 there exists an integer N_k>=k+1 such that D_k(n)=c(n,k)^2-c(n-1,k)c(n+1,k) is nonnegative for every integer 1<=n<N_k and strictly negative for every integer n>=N_k. Hence the full weak-inequality assertion frozen in source.md holds. The proof establishes the sufficient inequality q_k(n)-2q_k(n+1)+q_k(n+2)>=0 for every n>=k>=1, where q_k(n)=c(n,k-1)/c(n,k); it is strict for k>=2 and an equality for k=1. An admissible finite threshold is N_k=1+min{j>=k:q_k(j)-q_k(j+1)<1}.",
+  "contribution": "A complete self-contained elementary proof of the fixed-column transition stated as Liang--Sagan Conjecture 8.8 (published 2026; Conjecture 8.9 in arXiv v1). A coefficient-ratio preservation argument gives a positive decomposition of the previously unresolved cubic numerator, followed by an exact finite-threshold construction. The general elementary-symmetric ratio property is not claimed as new; Fan--Wang (2026) report related convexity, but their exact theorem and possible Stirling applications remain uninspected. No equivalent transition resolution was found in the sources inspected in this bounded pass. This candidate requests fresh correctness and contribution review, not acceptance.",
+  "proposer_job_id": "primary-20260914-stirling-transition-research-d94530e09967",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/ratio-convexity-proof.md",
+    "evidence/ratio-reduction.md",
+    "evidence/verify_ratio_proof.py",
+    "evidence/verify_ratio_proof.json",
+    "literature/research-pass1-review.md",
+    "evidence/external/2408.02782v1.html",
+    "evidence/external/2607.04217v1.html"
+  ]
+}

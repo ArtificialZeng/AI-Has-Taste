@@ -1,0 +1,136 @@
+{
+  "agreed_first_matching_layer": 61,
+  "agreed_ordered_matches": [
+    {
+      "a": [
+        4,
+        9,
+        16,
+        32
+      ],
+      "b": [
+        1,
+        16,
+        8,
+        36
+      ],
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    },
+    {
+      "a": [
+        4,
+        16,
+        9,
+        32
+      ],
+      "b": [
+        1,
+        16,
+        8,
+        36
+      ],
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    },
+    {
+      "a": [
+        4,
+        9,
+        16,
+        32
+      ],
+      "b": [
+        36,
+        8,
+        16,
+        1
+      ],
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    },
+    {
+      "a": [
+        4,
+        16,
+        9,
+        32
+      ],
+      "b": [
+        36,
+        8,
+        16,
+        1
+      ],
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    }
+  ],
+  "allowed_orbit_count": 1,
+  "allowed_orbit_representatives": [
+    {
+      "a": [
+        4,
+        9,
+        16,
+        32
+      ],
+      "b": [
+        1,
+        16,
+        8,
+        36
+      ]
+    }
+  ],
+  "checks": {
+    "enumeration_aggregate_a_count": true,
+    "enumeration_aggregate_b_count": true,
+    "enumeration_first_matching_layer_61": true,
+    "enumeration_has_no_anomalies": true,
+    "enumeration_layers_are_exactly_4_through_61": true,
+    "enumeration_no_hit_below_61": true,
+    "enumeration_per_layer_domain_counts_are_compositions": true,
+    "enumeration_status_complete": true,
+    "one_orbit_under_only_allowed_involutions": true,
+    "same_complete_ordered_match_set": true,
+    "same_match_count": true,
+    "same_source_sha256": true,
+    "smt_domain_count_each_side": true,
+    "smt_first_matching_layer_61": true,
+    "smt_status_complete": true,
+    "smt_sub_61_unsat": true,
+    "smt_terminal_result_unsat_after_blocking_models": true
+  },
+  "coverage": {
+    "common_sum_range": [
+      4,
+      61
+    ],
+    "positive_ordered_quadruples_each_side": 521855
+  },
+  "inputs": {
+    "enumeration_report": "evidence/signature_join_61.json",
+    "enumeration_report_sha256": "61c841403b4668fff102446a817ad440e93317f74e83d80026206e5e2903c4c6",
+    "smt_report": "evidence/z3_bv_verification_61.json",
+    "smt_report_sha256": "0ba507cc43bb88fff6e448464fa0acc2497ca6a05a587fbf326d847cd09701bc"
+  },
+  "schema": "p4-paw-independent-verifier-comparison-v1",
+  "status": "pass"
+}

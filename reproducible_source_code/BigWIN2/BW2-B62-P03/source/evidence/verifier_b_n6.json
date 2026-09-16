@@ -1,0 +1,140 @@
+{
+  "adjacency": "construct s_i as a one-line map and compute compose(s_i,compose(p,s_i)); no cycle-word edge construction",
+  "all_ordered_pairs_distance_histogram": {
+    "0": 120,
+    "1": 600,
+    "2": 1620,
+    "3": 3134,
+    "4": 4268,
+    "5": 3424,
+    "6": 1162,
+    "7": 72
+  },
+  "counts": {
+    "connected": true,
+    "degree": 5,
+    "undirected_edges": 300,
+    "vertices": 120
+  },
+  "diameter": 7,
+  "diameter_farthest_ordered_pair": [
+    "(1,2,3,5,6,4)",
+    "(1,5,3,4,2,6)"
+  ],
+  "diameter_shortest_path": {
+    "generators": [
+      2,
+      1,
+      3,
+      4,
+      5,
+      4,
+      3
+    ],
+    "length": 7,
+    "vertices_as_cycle_words": [
+      "(1,2,3,5,6,4)",
+      "(1,3,2,5,6,4)",
+      "(1,5,6,4,2,3)",
+      "(1,5,6,3,2,4)",
+      "(1,4,6,3,2,5)",
+      "(1,4,5,3,2,6)",
+      "(1,5,4,3,2,6)",
+      "(1,5,3,4,2,6)"
+    ],
+    "vertices_as_one_line_maps": [
+      "[2,3,5,1,6,4]",
+      "[3,5,2,1,6,4]",
+      "[5,3,1,2,6,4]",
+      "[5,4,2,1,6,3]",
+      "[4,5,2,6,1,3]",
+      "[4,6,2,5,3,1]",
+      "[5,6,2,3,4,1]",
+      "[5,6,4,2,3,1]"
+    ]
+  },
+  "internal_representation": "zero-based one-line permutation image tuple; output displayed one-based",
+  "n": 6,
+  "ordering": "vertices lexicographic by one-line map; generator rows ordered i=1,...,n-1",
+  "replay": "python3 evidence/verifier_b.py --n 6 --compare-a evidence/verifier_a_n6.json --output evidence/verifier_b_n6.json",
+  "root": "(1,2,3,4,5,6)",
+  "rooted_distance_histogram": {
+    "0": 1,
+    "1": 5,
+    "2": 14,
+    "3": 27,
+    "4": 36,
+    "5": 28,
+    "6": 9
+  },
+  "schema": "gamma-permutation-map-verifier-b-v1",
+  "sha256": {
+    "cycle_word_edge_stream_for_cross_check": "e8000a7ce9605187753a9a742d888d71e7182f77a9c74fd6615cc8acdf7cd66c",
+    "cycle_word_ordered_distance_rows_for_cross_check": "526c7ef0cd53c0d83e42e0f63249f7496b9c030d1109dfa683ac21303245b1f7",
+    "cycle_word_vertex_stream_for_cross_check": "80515474c51c1389bbf0de1fb7efe3eaefa5db03b42b3d33b8073f91249478c4",
+    "one_line_vertex_stream": "79c3eb40802eb885ac941807654017e9365d6600b27ad58a7efa7bc263cfbf5f"
+  },
+  "software": {
+    "implementation": "CPython",
+    "libraries": "Python standard library only",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.10.12"
+  },
+  "sorting_farthest_cycle": "(1,5,4,3,2,6)",
+  "sorting_shortest_path": {
+    "generators": [
+      2,
+      3,
+      2,
+      4,
+      3,
+      2
+    ],
+    "length": 6,
+    "vertices_as_cycle_words": [
+      "(1,2,3,4,5,6)",
+      "(1,3,2,4,5,6)",
+      "(1,4,2,3,5,6)",
+      "(1,4,3,2,5,6)",
+      "(1,5,3,2,4,6)",
+      "(1,5,4,2,3,6)",
+      "(1,5,4,3,2,6)"
+    ],
+    "vertices_as_one_line_maps": [
+      "[2,3,4,5,6,1]",
+      "[3,4,2,5,6,1]",
+      "[4,3,5,2,6,1]",
+      "[4,5,2,3,6,1]",
+      "[5,4,2,6,3,1]",
+      "[5,3,6,2,4,1]",
+      "[5,6,2,3,4,1]"
+    ]
+  },
+  "sorting_time": 6,
+  "verifier_a_comparison": {
+    "all_checks_passed": true,
+    "all_ordered_pairs_histogram_equal": true,
+    "counts_equal": true,
+    "diameter_equal": true,
+    "edge_stream_hash_equal": true,
+    "ordered_distance_rows_hash_equal": true,
+    "rooted_histogram_equal": true,
+    "selected_diameter_pair_equal": true,
+    "selected_sorting_witness_equal": true,
+    "sorting_time_equal": true,
+    "verifier_a_diameter_path_replay": {
+      "independent_endpoint_distance": 7,
+      "is_shortest": true,
+      "reported_length": 7,
+      "transitions_valid_by_direct_composition": true
+    },
+    "verifier_a_sorting_path_replay": {
+      "independent_endpoint_distance": 6,
+      "is_shortest": true,
+      "reported_length": 6,
+      "transitions_valid_by_direct_composition": true
+    },
+    "vertex_stream_hash_equal": true
+  },
+  "vertex_filter": "retain exactly maps whose orbit of label 1 first returns after n steps"
+}

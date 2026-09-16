@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks,pdftitle={Exact Preperiod on the Even Boundary Family {4,6,10K+1}},pdfauthor={Xiaojian Zeng}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\mex}{mex}
+
+\title{Exact Preperiod on the Even Boundary Family
+  $\{4,6,10K+1\}$}
+\author{Xiaojian Zeng\\
+  PBC School of Finance, Tsinghua University, 100190\\
+  \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the subtraction game with move set
+$S_K=\{4,6,10K+1\}$, $K\geq 1$, we determine the complete
+Sprague--Grundy word.  Writing $c=10K+1$, it is a finite concatenation
+of five fixed blocks followed by the periodic tail
+$\overline{02101}$.  Direct, parameter-independent mex tables verify all
+block interiors and seams.  The resulting sequence has least eventual
+period $5$ and, under the convention that the period is minimized first,
+least preperiod $2c+5=20K+7$.  This treats an even boundary family not
+covered by the closest ultimately bipartite odd-parameter result.
+\end{abstract}
+
+\section{Statement and context}
+
+A subtraction game with finite move set $S\subset\mathbb Z_{>0}$ is the
+normal-play impartial game in which a move subtracts an element of $S$
+from a nonnegative heap; see Golomb~\cite{Golomb1966}.  Its
+Sprague--Grundy function, in the sense of
+Sprague~\cite{Sprague1935} and Grundy~\cite{Grundy1939}, is determined by
+\begin{equation}\label{eq:mex}
+ G_S(n)=\mex\{G_S(n-s):s\in S,\ s\leq n\},\qquad n\geq0.
+\end{equation}
+Here $\mex$ denotes the least nonnegative integer absent from the set.
+
+For a sequence $G$, we call $p$ its least eventual period if $p\geq1$ is
+least such that $G(n+p)=G(n)$ for every sufficiently large $n$.  After
+fixing this least $p$, its least preperiod is the least $q\geq0$ for which
+the equality holds for all $n\geq q$.  This is the period-first
+convention used by Manabe~\cite{Manabe2026}.
+
+Manabe organizes primitive three-move sets $\{a,b,c\}$ by the angle
+$\rho=c\bmod(a+b)$ and proves a sufficient criterion for pure
+periodicity.  For $(a,b,c)=(4,6,10K+1)$ one has
+$\delta=b-a=2$ and $\rho=1$, which is the boundary angle in the
+conjectural positive-preperiod cell of his Table~1 and Conjecture~50
+\cite{Manabe2026}.  Zhang's nearby ultimately bipartite family
+$\{a,a+2,(2a+2)t+1\}$ requires odd $a\geq3$
+\cite[Theorem~6.3]{Zhang2024}, and hence does not include $a=4$.
+The result below gives the exact word and both minimality statements in
+this even case.  This comparison records the delta from the inspected
+sources; it is not a claim of priority.
+
+For a finite word $X=X_0\cdots X_{m-1}$, indices on $X$ below are
+zero-based.  Concatenation is written without a symbol, $X^j$ denotes
+$j$ repetitions, and $\overline X=XXX\cdots$.
+
+\begin{theorem}\label{thm:main}
+For every integer $K\geq1$, set $c=10K+1$ and
+$S_K=\{4,6,c\}$.  The Sprague--Grundy sequence of $S_K$ has least
+eventual period
+\[
+ p_K=5
+\]
+and, for this period, least preperiod
+\[
+ q_K=2c+5=20K+7.
+\]
+More precisely, with
+\begin{align*}
+ A&=0000111122, & B&=2331020010,\\
+ D&=1121020010, & F&=112102, & W&=02101,
+\end{align*}
+the complete SG word is
+\begin{equation}\label{eq:word}
+ G_{S_K}=A^K\,0\,B\,D^{K-1}\,F\,\overline W.
+\end{equation}
+\end{theorem}
+
+\section{Uniform block verification}
+
+We prove the exact word by checking recurrence~\eqref{eq:mex} at every
+index.  Because the recurrence determines successive terms uniquely,
+this is also a uniqueness proof.
+
+Before index $c$, only the moves $4$ and $6$ are available.  Direct
+calculation for indices $0,\ldots,9$ gives $A$.  At residues
+$0,\ldots,9$ modulo $10$, the two predecessor values at offsets $4$ and
+$6$ are
+\[
+ \texttt{11}\quad\texttt{11}\quad\texttt{21}\quad\texttt{21}
+ \quad\texttt{02}\quad\texttt{02}\quad\texttt{00}\quad
+ \texttt{00}\quad\texttt{10}\quad\texttt{10}.
+\]
+Their mex values spell $A$ again.  This propagates through $A^K$ and
+also gives the final $0$ at index $c-1=10K$.
+
+At $n=c+t$, $0\leq t<10$, the option reached by subtracting $c$ has
+value $A_t$.  Substitution of the already determined short-move values
+gives, in move order $(4,6,c)$, the ten triples
+\begin{equation}\label{eq:Btable}
+ \texttt{110}\ \texttt{210}\ \texttt{210}\ \texttt{020}\
+ \texttt{221}\ \texttt{301}\ \texttt{321}\ \texttt{131}\
+ \texttt{032}\ \texttt{212}.
+\end{equation}
+Their mex word is $B$.
+
+Suppose next that a $D$ block is present.  Its residue-$j$ short
+predecessors are the circular entries $D_{j-4}$ and $D_{j-6}$, while
+the $c$-predecessor is $A_j$ (indices on length-$10$ words are reduced
+modulo $10$ here).  The option triples are
+\begin{equation}\label{eq:Dtable}
+ \texttt{000}\ \texttt{020}\ \texttt{100}\ \texttt{000}\
+ \texttt{111}\ \texttt{101}\ \texttt{211}\ \texttt{111}\
+ \texttt{022}\ \texttt{212},
+\end{equation}
+whose mex word is $D$.  The first seam is also covered because
+$(B_4,\ldots,B_9)=(D_4,\ldots,D_9)$, precisely the suffix visible to
+the moves $4$ and $6$; later seams are $D|D$.  When $K=1$ the exponent
+$K-1$ is zero, so no $D$ block occurs.
+
+The word $F$ begins at index $2c-1$.  Whether the preceding length-$10$
+block is $B$ (when $K=1$) or $D$ (when $K\geq2$), direct substitution
+gives
+\begin{equation}\label{eq:Ftable}
+ \texttt{000}\ \texttt{022}\ \texttt{103}\ \texttt{003}\
+ \texttt{111}\ \texttt{100},
+\end{equation}
+whose mex word is $F$.  Thus~\eqref{eq:word} is verified through index
+$2c+4$.
+
+It remains to check the infinite tail, which begins at
+$q=2c+5$.  For $n=q+u$ with $0\leq u<6$, the complete option triples
+are
+\begin{equation}\label{eq:tailseam}
+ \texttt{212}\ \texttt{110}\ \texttt{020}\ \texttt{211}\
+ \texttt{000}\ \texttt{221}.
+\end{equation}
+Their mex values are $\texttt{021010}$, the first six entries of
+$\overline W$.  The sixth triple is the same for $K=1$ and $K\geq2$:
+its $c$-predecessor is respectively the first entry of $F$ or of $D$,
+and both are $1$.
+
+For $u\geq6$, write $r=u\bmod5$ and
+\[
+ h_u=G_{S_K}(c+5+u),
+\]
+the value reached from $q+u$ by subtracting $c$.  The two short options
+are $W_{r+1}$ and $W_{r-1}$, with indices modulo $5$.  The five possible
+local calculations reduce to
+\[
+\begin{array}{c|c|c|c}
+r & \text{short-option pair} & W_r &
+ \text{condition for mex to equal }W_r\\ \hline
+0&(2,1)&0&h_u\ne0\\
+1&(1,0)&2&h_u\ne2\\
+2&(0,2)&1&h_u\ne1\\
+3&(1,1)&0&h_u\ne0\\
+4&(0,0)&1&h_u\ne1
+\end{array}
+\]
+Thus it suffices, in every row, to prove $h_u\ne W_r$.
+
+There are three source regions for $h_u$.  If $K\geq2$, the $D$ region
+starts at $u=5$; at its actual alignment
+\[
+ D=\texttt{1121020010},\qquad WW=\texttt{0210102101},
+\]
+and the two words differ at every position.  The $F$ region starts at
+$u=c-6$, which is divisible by $5$, and
+\[
+ F=\texttt{112102}
+\]
+differs positionwise from the aligned word $\texttt{021010}$.  Finally,
+for $u\geq c$, the $c$-predecessor is itself in the tail and
+\[
+ h_u=W_{u-c}=W_{r-1}\ne W_r,
+\]
+because $c\equiv1\pmod5$ and adjacent cyclic entries of $W$ are
+unequal.  The regions meet without a gap.  For $K=1$ the $D$ region is
+empty, while the $F$ and tail checks meet the six explicitly checked
+seam positions.  This proves~\eqref{eq:word} for every $K\geq1$.
+
+\section{Minimality}
+
+The exact word makes $5$ a period from index $q$.  It cannot start at
+an earlier index, since the comparison immediately before $q$ fails:
+\begin{equation}\label{eq:boundary}
+ G_{S_K}(q-1)=F_5=2,\qquad
+ G_{S_K}(q-1+5)=W_4=1.
+\end{equation}
+
+We also record the elementary period lemma needed to show that $5$ is
+least.
+
+\begin{lemma}\label{lem:gcd}
+If an infinite word has eventual periods $r$ and $s$, then it has
+eventual period $\gcd(r,s)$.
+\end{lemma}
+
+\begin{proof}
+Assume $r>s$ and that both period equalities hold beyond $N$.  For
+$n\geq N+s$,
+\[
+ G(n+r-s)=G((n-s)+r)=G(n-s)=G(n),
+\]
+so $r-s$ is an eventual period after discarding a further finite
+prefix.  Iterating the Euclidean algorithm proves the claim.
+\end{proof}
+
+If there were an eventual period $p<5$, Lemma~\ref{lem:gcd} applied to
+$p$ and $5$ would give eventual period $1$.  This is impossible because
+$\overline W$ is not eventually constant: every copy of $W$ contains
+both $0$ and $2$.  Hence $5$ is the least eventual period.  With this
+period fixed, equation~\eqref{eq:boundary} excludes every preperiod
+smaller than $q$, completing the proof of Theorem~\ref{thm:main}.
+
+\section*{Computational and AI assistance}
+
+An exact-integer Python checker independently evaluates every finite
+mex table displayed above, every pointwise mismatch used in the tail
+argument, and recurrence replays for $1\leq K\leq50$ and also for
+$K=100$ and $K=1000$.  These runs are reproducibility checks, not
+an extrapolation in $K$; the universal quantifier is established by the
+finite block reduction.  This separation between a transparent
+mathematical reduction and an exact checker is methodologically akin to
+the finite-certificate architecture described by Zeng, Liu, Ratnavelu,
+and Huat~\cite{ZengEtAl2026Certificates}, although the mathematical
+problems and certificates are different.
+
+OpenAI Codex assisted with computational exploration, exact recurrence
+checking, proof drafting, adversarial mathematical review, literature
+verification, and preparation of this manuscript.  Language-model
+output is not used as mathematical evidence; the proof is the symbolic
+argument above, with the exact scripts serving only the stated checking
+role.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

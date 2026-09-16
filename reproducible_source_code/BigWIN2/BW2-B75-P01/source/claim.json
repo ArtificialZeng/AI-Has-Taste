@@ -1,0 +1,15 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every integer m >= 1, let q=2^m, U_{q+1}={x in F_{q^2}^*: x^(q+1)=1}, N_m(a)=#{x in U_{q+1}: x^7+a*x^4+a*x^3+1=0} for a in F_q, and M_j(m)=#{a in F_q: N_m(a)=j}. If c_1=1, c_2=-3, c_m=c_{m-1}-2c_{m-2} for m>=3, and d_m=-2+(-1)^m+c_m, then M_5(m)=(2^m+d_m)/8, M_3(m)=(2^m-d_m)/4, and M_1(m)=(5*2^m+d_m)/8 for every m>=1, with distinct roots counted without multiplicity.",
+  "contribution": "A complete proof of the frozen all-m distribution. The ordered collision count is reduced by an exact character-sum cancellation to the point count of the smooth genus-one curve (t^2+t)(w^2+w+1)=1 over F_2; its Frobenius polynomial X^2-X+2 gives the required recurrence, with diagonal, zero, pole, infinity, and t^2+t+1=0 contributions handled explicitly. No priority claim is made.",
+  "proposer_job_id": "win-00075-p01-research-d61a906ae5c2",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "research/proof.md",
+    "evidence/verify_subfield_distribution.py",
+    "evidence/verify_character_sum_curve.py",
+    "evidence/research-character-sum-run-20260909.txt"
+  ]
+}

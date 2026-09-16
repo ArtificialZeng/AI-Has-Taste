@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "A uniform two-term expansion for the lane-merging gap near capacity",
+  "writer_job_id": "newwin-00001-p20-write-99c066b99db2",
+  "source_files": [
+    "manuscript/README.md",
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/supplement/README.md",
+    "manuscript/supplement/checks.json",
+    "manuscript/supplement/verify.py"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "cwd": "manuscript",
+    "command": [
+      "latexmk",
+      "-pdf",
+      "-gg",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-outdir=build",
+      "main.tex"
+    ],
+    "log": "manuscript/build/clean-build.txt",
+    "tex_log": "manuscript/build/main.log",
+    "bibtex_log": "manuscript/build/main.blg",
+    "bbl": "manuscript/build/main.bbl"
+  },
+  "user_library_citations": [
+    {
+      "registry_row": 9,
+      "registry_bibtex_key": "202608.1658",
+      "manuscript_bibtex_key": "Zeng2026Certificates",
+      "doi": "10.20944/preprints202608.1658.v1",
+      "support": "Exact reconstruction and separate checking, primary Section 6",
+      "manuscript_location": "Section 4"
+    }
+  ],
+  "preparation_records": [
+    "audit/write-citation-ledger.md",
+    "audit/write-scope-map.md",
+    "audit/write-supplement-check.json"
+  ],
+  "release_status": "awaiting fresh citation, build, and visual audits"
+}

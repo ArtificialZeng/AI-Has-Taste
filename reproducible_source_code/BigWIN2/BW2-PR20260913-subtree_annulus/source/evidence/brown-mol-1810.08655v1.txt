@@ -1,0 +1,799 @@
+                                                           On the roots of the subtree polynomial
+                                                                                    Jason I. Brown∗
+                                                                                    Dalhousie University
+arXiv:1810.08655v1 [math.CO] 19 Oct 2018
+
+
+
+
+                                                                                    jason.brown@dal.ca
+
+                                                                                         Lucas Mol
+                                                                                  University of Winnipeg
+                                                                                    l.mol@uwinnipeg.ca
+
+
+
+
+                                                                                          Abstract
+                                                        For a tree T , the subtree polynomial of T is the generating polynomial for
+                                                     the number of subtrees of T . We show       that the complex
+                                                                                                                √ roots of the subtree
+                                                     polynomial are contained in the disk z ∈ C : |z| ≤ 1 + 3 3 , and that K1,3 is the
+                                                     only tree whose subtree polynomial has a root on the boundary. We also prove
+                                                     that the closure of the collection of all real roots of subtree
+                                                                                                             √       polynomials contains
+                                                     the interval [−2, −1], while the intervals (∞, −1 − 3 3), [−1, 0), and (0, ∞) are
+                                                     root-free.
+
+
+                                           1         Introduction
+                                           For a given (finite) tree T , let sk (T ) denote the number of subtrees (i.e. connected
+                                           induced subgraphs) of T of order k. The subtree polynomial of T , denoted ΦT (x), is the
+                                           generating polynomial for the number of subtrees of T , that is,
+                                                                                              n
+                                                                                              X
+                                                                                   ΦT (x) =         sk (T )xk .
+                                                                                              k=1
+
+                                           For example, one can easily verify that for the star K1,n−1 and the path Pn of order n,
+                                           we have
+                                                                   ΦK1,n−1 (x) = x(1 + x)n−1 + (n − 1)x,
+                                           and                                                                    n
+                                                                                                                  X
+                                                                                     2               n−1      n
+                                                          ΦPn (x) = nx + (n − 1)x + · · · + 2x             +x =         (n − k + 1)xk .
+                                                                                                                  k=1
+
+                                               ∗
+                                                   Supported by an NSERC grant CANADA, Grant number RGPIN 170450-2013
+
+
+                                                                                              1
+A linear time algorithm for computing the subtree polynomial was given in [20].
+    The coefficients of the subtree polynomial were the subject of intense study by Jami-
+son [8–11]. Recently, Ralaivaosaona and Wagner studied the distribution of the subtree
+orders of a tree [15]. Roughly speaking, they demonstrated that if a tree has sufficiently
+many leaves and no long branchless paths, then the distribution of the subtree orders is
+close to a Gaussian distribution. This relates to a question of Jamison regarding when
+the coefficients s2 (T ), s3 (T ), . . . , sn (T ) form a unimodal sequence (c.f. [15]).
+    The subtree polynomial of T encodes several useful invariants of T , including the
+total number of subtrees of T , the mean subtree order of T , and the independence
+number of T . The total number of subtrees of T , given by ΦT (1), has become an
+important topological index. Much work has been done on finding the tree(s) in a
+given family that maximize or minimize the number of subtrees [16, 20–22]. The mean
+subtree order of T , introduced by Jamison [8] as a rough measure of the shape of the
+                                             Φ0 (1)
+lattice of subtrees of T is given by ΦTT (1) . Jamison posed six open problems on the mean
+subtree order in [8], five of which have recently been solved, along with some subsequent
+questions [7, 14, 17–19]. Finally, it was shown in [10] that ΦT (−1) = −α(T ), where
+α(T ) is the independence number of T . Given the interest in various evaluations of the
+subtree polynomial, it is natural to ask about other properties of the subtree polynomial.
+    For many graph polynomials, such as chromatic [5], reliability [2], domination [3],
+edge cover [4] and independence polynomials [12], there has been significant interest in
+the location and distribution of their roots. In this article, we study the location and
+distribution of the roots of the subtree polynomial. For a tree T , we refer to the roots
+of the subtree polynomial of T as the subtree roots of T .
+    We note that the subtrees of a tree T are exactly the connected induced subgraphs
+of T , so the subtree polynomial of T is precisely the connected set polynomial (the
+generating polynomial for the number of connected induced subgraphs) of T . The
+roots of the connected set polynomial were studied in [1], in connection with the node
+reliability polynomial. It was shown that the connected set polynomial of every graph
+of order at least 3 has a nonreal root (hence every tree of order at least 3 has a nonreal
+subtree root). It was also shown that the closure of the collection of roots of connected
+set polynomials of all connected graphs is dense in the entire complex plane [1]. However,
+we demonstrate here√that the roots of the subtree polynomial are bounded in modulus
+by the constant 1 + 3 3. See Figure 1 for an illustration of the subtree roots of all trees
+of order at most 14 in the complex plane.
+    The layout of the article is as follows. In Section 2, we         √ prove that for any tree
+                                                                       3
+T , the subtree roots of T lie in the disk z ∈ C : |z| ≤ 1 + 3 , and that K1,3 is the
+only tree with a subtree root  √     on the boundary of the disk. In Section 3, we prove that
+                                3
+the intervals (−∞, −1 − 3), [−1, 0) and (0, ∞) are free of subtree roots, and that
+the closure of the collection of all real subtree roots contains the interval [−2, −1]. In
+Section 4, we discuss several open problems and conjectures.
+    We require several short definitions and observations which have all appeared in the
+literature (see [8], for example). If v is a vertex of T , then for every k ∈ {1, . . . , n}, let
+sk (T, v) denote the number of subtrees of T of order k that contain v. Then the local
+
+                                               2
+                                                        Im(z)
+
+
+
+
+                                                                          Re(z)
+
+
+
+
+              Figure 1: The subtree roots of all trees of order at most 14.
+
+subtree polynomial of T at v is defined by
+                                               n
+                                               X
+                                  ΦT,v (x) =         sk (T, v)xk .
+                                               k=1
+
+We also extend the definition of subtree polynomial to forests, mainly for convenience,
+as forests arise as vertex-deleted subgraphs of trees. If F is a forest with component
+trees T1 , T2 , . . . , Tk , then the subtree polynomial of F is given by
+                                                k
+                                                X
+                                    ΦF (x) =           ΦTi (x).
+                                                i=1
+
+    Let T be a tree (or forest) with vertex v. Then it is easy to see that
+                                ΦT (x) = ΦT,v (x) + ΦT −v (x),                              (1)
+since every subtree of T either contains v or does not contain v. Moreover, if v has
+degree d in T , and neighbours u1 , . . . , ud belonging to components T1 , . . . , Td of T − v,
+respectively, then
+                                              d
+                                              Y
+                               ΦT,v (z) = z         [1 + ΦTi ,ui (z)] .                     (2)
+                                              i=1
+
+
+2     Subtree roots are bounded in modulus
+In
+ this section, we √
+                   prove that for any tree T , the subtree roots of T lie in the disk
+ z ∈ C : |z| ≤ 1 + 3 3 , and that K1,3 is the only tree with a subtree root on the
+
+                                                3
+boundary of the disk. The proof technique is somewhat similar to that of Csikvari
+and Oboudi’s proof that the roots of the edge cover polynomial are bounded in modu-
+lus [4]. We begin with a lower bound on the modulus of the local subtree polynomial
+ΦT,v (z) for |z| ≥ 2, which improves a bound from [13].
+
+Lemma 2.1. Let T be a tree of order n, and let z ∈ C with |z| ≥ 2. Then for every
+vertex v of T , |ΦT,v (z)| ≥ |z| · (|z| − 1)n−1 .
+
+Proof. Throughout the proof, let |z| ≥ 2. The proof is by induction on n. If n = 1,
+then
+                         |ΦT,v (z)| = |z| = |z|(|z| − 1)1−1 ,
+so the statement is verified for n = 1. Now for some n ≥ 2, suppose that the statement
+holds for all trees of order strictly less than n. Let T be a tree of order n with vertex
+v. Let the neighbours of v be u1 , . . . , ud . Recall from (2) that
+                                                       d
+                                                       Y
+                              ΦT,v (z) = z ·                 [1 + ΦTi ,ui (z)] ,
+                                                       i=1
+
+where Ti is the component of T − v containing ui . Thus we have
+                                   d
+                                   Y                                     d
+                                                                         Y
+              |ΦT,v (z)| = |z| ·         |1 + ΦTi ,ui (z)| ≥ |z| ·             [|ΦTi ,ui (z)| − 1] .
+                                   i=1                                   i=1
+
+Let ni denote the order of tree Ti . Then by the induction hypothesis,
+                                           d
+                                           Y
+                                              |z| · (|z| − 1)ni −1 − 1 .
+                                                                     
+                        |ΦT,v (z)| ≥ |z| ·
+                                                 i=1
+
+Since |z| ≥ 2, it follows that
+                                         d
+                                         Y
+                                                |z| · (|z| − 1)ni −1 − (|z| − 1)ni −1
+                                                                                             
+                  |ΦT,v (z)| ≥ |z| ·
+                                         i=1
+                                         Yd
+                            ≥ |z| ·            (|z| − 1)ni
+                                         i=1
+                            = |z| · (|z| − 1)n−1 .
+
+   The following corollary is immediate.
+
+Corollary 2.2. Let T be a tree of order n with vertex v. Then the roots of the local
+subtree polynomial of T at v lie in the disk {z ∈ C : |z| < 2}.
+
+
+
+
+                                                        4
+    To prove the main result of this section, we demonstrate that for√every tree T and
+every vertex v of T , we have |ΦT,v (z)| > |ΦT −v (z)| for all |z| > 1 + 3 3, from which it
+follows that |ΦT (z)| > 0, and thus ΦT (z) 6= 0. The argument √      is by induction on the
+order of T . We actually consider the possibility that |z| = 1 + 3 3 as well, so that we
+can prove that K1,3 is the only tree with a subtree root of this modulus.
+    Before we proceed with the proof, we handle some base cases. First, we deal with
+                                                          4      3      2
+the tree K1,3 . It is easily verified
+                                     that ΦK1,3 (z) = z + 3z + 3z + 4z has roots 0,
+      √                 √      √6
+−1 − 3 3, and −1 + 3 3 ± i 35 /2, so the following lemma is best possible.
+                                                         √
+Lemma 2.3. Let v be a vertex of T = K1,3 . If |z| ≥ 1 + 3 3, then |ΦT,v (z)| ≥ |ΦT −v (z)|.
+                     √
+Proof. Let |z| ≥ 1 + 3 3. First suppose that v is the vertex of degree 3 in T . Then
+
+               |ΦT,v (z)| = |z| · |z + 1|3 ≥ |z| · (|z| − 1)3 ≥ 3|z| = |ΦT −v (z)| .
+                                                                                 √
+   Now suppose that v is a leaf of T . For ease of notation, let c = 3 3. Note that
+ΦT,v (z) = z 4 + 2z 3 + z 2 + z and ΦT −v (z) = z 3 + 2z 2 + 3z, so we show
+
+                          |z 3 + 2z 2 + z + 1|2 ≥ |z 2 + 2z + 3|2 .                    (3)
+
+Write z = x + iy, where x, y ∈ R. By substituting and simplifying, we find that (3) is
+equivalent to
+            (x3 + 3x2 + 3x + 4)(x3 + x2 − x − 2)
+                                                                                       (4)
+              + y 2 3x4 + 8x3 + 6x2 − 6x − 1 + y 2 3x2 + 4x + 1 + y 2 ≥ 0.
+                                                                    
+
+First we show that the expression in the square brackets of (4) is positive. Since |z| ≥
+(1 + c), we have y 2 ≥ (1 + c)2 − x2 . Using this inequality repeatedly, we find
+
+         3x4 + 8x3 + 6x2 − 6x − 1 + y 2 3x2 + 4x + 1 + y 2
+                                                            
+
+      ≥ 3x4 + 8x3 + 6x2 − 6x − 1 + y 2 2(x + 1)2 + c2 + 2c
+                                                              
+
+      ≥ 3x4 + 8x3 + 6x2 − 6x − 1 + (1 + c)2 − x2 2(x + 1)2 + c2 + 2c
+                                                                         
+
+      = x4 + 4x3 + c2 + 2c + 6 x2 + 2(2c2 + 4c − 1)x + (c4 + 4c3 + 7c2 + 6c + 1)
+                                 
+
+      = x4 + 4x3 + c2 + 2c + 6 x2 + 2(2c2 + 4c − 1)x + (7c2 + 9c + 13),
+                                 
+
+where the fact that c3 = 3 was used at the last step. We verify that this last expression
+is positive for all x ∈ R. Now we show that the left hand side of (4) is nonnegative. If
+x ≥ −1 − c, then using y 2 ≥ (1 + c)2 − x2 , we have
+
+  (x3 + 3x2 + 3x + 4)(x3 + x2 − x − 2)
+   + y 2 3x4 + 8x3 + 6x2 − 6x − 1 + y 2 3x2 + 4x + 1 + y 2
+                                                          
+
+≥ (x3 + 3x2 + 3x + 4)(x3 + x2 − x − 2)
+   + (1 + c)2 − x2 ) x4 + 4x3 + c2 + 2c + 6 x2 + 2(2c2 + 4c − 1)x + (7c2 + 9c + 13)
+                                                                                 
+
+= 2(x + 1 + c) 4x2 + 2(c2 − 2)x + 7c2 + 12c + 16 ,
+                                                 
+
+
+                                             5
+which we verify is nonnegative for x ≥ −1 − c. On the other hand, if x < −1 − c, then
+y 2 ≥ 0, hence the left hand side of (4) is at least (x3 + 3x2 + 3x + 4)(x3 + x2 − x − 2),
+which we verify is positive for x < −1 − c.
+
+Lemma 2.4. Let T be a √    tree of order at most 4 not isomorphic to K1,3 , and let v be a
+vertex of T . If |z| ≥ 1 + 3 3, then |ΦT,v (z)| > |ΦT −v (z)|.
+                        √
+Proof. Let |z| ≥ 1 + 3 3. If T has order 1, then |ΦT,v (v)| = |z| > 0 = |ΦT −v (z)|. If
+T ∼
+  = K1,n−1 for some n ∈ {2, 3}, and v is a vertex of degree n − 1 in T , then
+                                                             √ n−1
+|ΦT,v (z)| = |z| · |z + 1|n−1 ≥ |z| · (|z| − 1)n−1 ≥ |z| ·
+                                                              3
+                                                                3    > |z| · (n − 1) = |ΦT −v (z)| .
+
+There are three remaining cases.
+Case I: T ∼  = K1,2 and v is a leaf. We prove the stronger statement that if |z| ≥ 2,
+then |ΦT,v (z)| > |ΦT −v (z)|. So let |z| ≥ 2. Note that ΦT,v (z) = z 3 + z 2 + z and
+ΦT −v (z) = z 2 + 2z, so we need to show that
+
+                                    |z 2 + z + 1|2 > |z + 2|2 .                                 (5)
+
+Write z = x + iy, where x, y ∈ R. By substituting and simplifying, we find that (5) is
+equivalent to
+                  (x2 − 1)(x2 + 2x + 3) + y 2 (2x2 + 2x − 2 + y 2 ) > 0.
+Since |z| ≥ 2, we have y 2 ≥ 4 − x2 . Using this inequality along with the fact that
+x2 + 2x + 2 = (x + 1)2 + 1 > 0 for all x ∈ R, we find
+
+                        (x2 − 1)(x2 + 2x + 3) + y 2 (2x2 + 2x − 2 + y 2 )
+                      ≥ (x2 − 1)(x2 + 2x + 3) + y 2 (x2 + 2x + 2)
+                      ≥ (x2 − 1)(x2 + 2x + 3) + (4 − x2 )(x2 + 2x + 2)
+                      = 4x2 + 6x + 5,
+
+which is easily verified to be strictly positive for all x ∈ R.
+Case II: T ∼   = P4 and v is a leaf. We prove the stronger statement that if |z| ≥ 2,
+then |ΦT,v (z)| > |ΦT −v (z)|. So let |z| ≥ 2. Note that ΦT,v (z) = z 4 + z 3 + z 2 + z and
+ΦT −v (z) = z 3 + 2z 2 + 3z, so we need to show that
+
+                              |z 3 + z 2 + z + 1|2 > |z 2 + 2z + 3|2 .                          (6)
+
+Write z = x + iy, where x, y ∈ R. By substituting and simplifying, we find that (6) is
+equivalent to
+
+            (x3 − x − 2)(x3 + 2x2 + 3x + 4)
+                                                                                                (7)
+              + y 2 (x − 1)(3x3 + 7x2 + 7x − 1) + y 2 (3x2 + 2x − 2 + y 2 ) > 0.
+                                                                          
+
+
+
+                                                 6
+First we show that the expression in the square brackets of (7) is positive. Using the
+facts that y 2 ≥ 4 − x2 and that 2x2 + 2x + 2 = 2(x + 21 )2 + 22
+                                                              3
+                                                                 > 0, we obtain
+
+                   (x − 1)(3x3 + 7x2 + 7x − 1) + y 2 (3x2 + 2x − 2 + y 2 )
+                 ≥ (x − 1)(3x3 + 7x2 + 7x − 1) + y 2 (2x2 + 2x + 2)
+                 ≥ (x − 1)(3x3 + 7x2 + 7x − 1) + (4 − x2 )(2x2 + 2x + 2)
+                 = x4 + 2x3 + 6x2 + 9.
+
+Now one can verify that x4 + 2x3 + 6x2 + 9 > 0 for all x ∈ R. We use the bound
+y 2 ≥ max{4 − x2 , 0} to bound the left side of (7) as follows:
+
+          (x3 − x − 2)(x3 + 2x2 + 3x + 4)
+           +y 2 (x − 1)(3x3 + 7x2 + 7x − 1) + y 2 (3x2 + 2x − 2 + y 2 )
+                                                                      
+
+        ≥ (x3 − x − 2)(x3 + 2x2 + 3x + 4) + y 2 (x4 + 2x3 + 6x2 + 9).
+        ≥ max{(x3 − x − 2)(x3 + 2x2 + 3x + 4) + (4 − x2 )(x4 + 2x3 + 6x2 + 9),
+                  (x3 − x − 2)(x3 + 2x2 + 3x + 4)}
+        = max{2(4x3 + 4x2 − 5x + 14), (x3 − x − 2)(x3 + 2x2 + 3x + 4)}.
+
+The proof is completed by verifying that 2(4x3 + 4x2 − 5x + 14) > 0 for all x ≥ −2,
+while (x3 − x − 2)(x3 + 2x2 + 3x + 4) > 0 for all x < −2.
+Case III: T ∼  = P4 and v is not a leaf. We prove the stronger statement that if |z| ≥ 2,
+then |ΦT,v (z)| > |ΦT −v (z)|. So let |z| ≥ 2. Note that ΦT,v (z) = z 4 + 2z 3 + 2z 2 + z and
+ΦT −v (z) = z 2 + 3z, so we need to show that
+
+                              |z 3 + 2z 2 + 2z + 1|2 > |z + 3|2 .                        (8)
+
+Write z = x + iy, where x, y ∈ R. By substituting and simplifying, we find that (8) is
+equivalent to
+
+             (x3 + 2x2 + 3x + 4)(x3 + 2x2 + x − 2)
+                                                                                         (9)
+               + y 2 (3x3 + 5x2 + 3x − 1)(x + 1) + y 2 (3x2 + 4x + y 2 ) > 0.
+                                                                       
+
+
+First we show that the expression in the square brackets of (9) is positive. We use the
+supposition that y 2 ≥ 4 − x2 , and the fact that 2x2 + 4x + 4 = 2(x + 1)2 + 2 > 0, to
+obtain
+
+                   (3x3 + 5x2 + 3x − 1)(x + 1) + y 2 (3x2 + 4x + y 2 )
+                 ≥ (3x3 + 5x2 + 3x − 1)(x + 1) + y 2 (2x2 + 4x + 4)
+                 ≥ (3x3 + 5x2 + 3x − 1)(x + 1) + (4 − x2 )(2x2 + 4x + 4)
+                 = x4 + 4x3 + 12x2 + 18x + 15,
+
+
+
+                                              7
+which we can verify is positive for all x ∈ R. Using this fact along with the bound
+y 2 ≥ max{4 − x2 , 0}, we bound the left side of (9) as follows:
+
+  (x3 + 2x2 + 3x + 4)(x3 + 2x2 + x − 2)
+   +y 2 (3x3 + 5x2 + 3x − 1)(x + 1) + y 2 (3x2 + 4x + y 2 )
+                                                           
+
+≥ max{(x3 + 2x2 + 3x + 4)(x3 + 2x2 + x − 2) + (4 − x2 )(x4 + 4x3 + 12x2 + 18x + 15),
+          (x3 + 2x2 + 3x + 4)(x3 + 2x2 + x − 2)}
+= max{2(4x3 + 20x2 + 35x + 26), (x3 + 2x2 + 3x + 4)(x3 + 2x2 + x − 2)}.
+
+The proof is completed by verifying that 2(4x3 + 20x2 + 35x + 26) > 0 for x ≥ −2, while
+(x3 + 2x2 + 3x + 4)(x3 + 2x2 + x − 2) > 0 for x < −2.
+   We are now ready to prove the main result of this section.
+
+Theorem 2.5. The subtree roots of every tree T lie in the disk
+                              n                    √3
+                                                      o
+                         D = z ∈ C : |z| ≤ 1 + 3 ,
+
+and the only tree with a subtree root on the boundary of D is K1,3 .
+                                                                    √
+Proof. Let T be a tree with vertex v. If T ∼                         3
+                                                                       
+                                              = K1,3 , then ΦT −1 − 3 = 0 (giving the
+root on the boundary of D), and by inspection, all other subtree roots of K1,3 lie in the
+interior of D.
+    Now suppose that T is not isomorphic to K1,3 . Recall from (1) that we have ΦT (z) =
+ΦT,v (z) + ΦT −v (z). By the reverse triangle inequality,
+
+                           |ΦT (z)| ≥ |ΦT,v (z)| − |ΦT −v (z)| .
+                           √
+We claim that if |z| ≥ 1 + 3 3, then
+
+                                  |ΦT,v (z)| > |ΦT −v (z)| ,
+
+from which it follows immediately that the subtree roots of T lie in the interior of D.
+To prove the claim, we proceed by induction on the order of T . First of all, if T has
+order at most 4, then the claim holds by Lemma 2.4. Now suppose, for some n ≥ 5,
+that for every tree S of order√   strictly less than n not isomorphic to K1,3 , and every
+                               3
+vertex u of S, if |z| ≥ 1 + 3, then |ΦS,u (z)| > √     |ΦS−u (z)|. By Lemma 2.3, we also
+know, for every vertex u of K1,3 , that if |z| ≥ 1 + 3 3, then ΦK1,3 ,u (z) ≥ ΦK1,3 −u (z) .
+So altogether, for every tree√ S of order strictly less than n (including K1,3 ), and every
+vertex u of S, if |z| ≥ 1 + 3 3, then |ΦS,u (z)| ≥ |ΦS−u (z)|. For convenience, we refer to
+this last statement as the induction hypothesis.                      √
+    Suppose that T has order√n. We wish to show that if |z| ≥ 1 + 3 3, then |ΦT,v (z)| >
+|ΦT −v (z)|. So let |z| ≥ 1 + 3 3, and let u be a neighbour of v. The graph T − uv is a
+
+
+
+                                              8
+forest with exactly two components. Let T1 be the component of T − uv containing v,
+and let T2 be the component of T − uv containing u. Then
+
+                              ΦT,v (z) = ΦT1 ,v (z) · (1 + ΦT2 ,u (z)) ,                     (10)
+
+and
+
+                                 ΦT −v (z) = ΦT1 −v (z) + ΦT2 (z).                           (11)
+
+At this point, we consider three cases.
+Case I: The tree T1 has order 1.
+From (10) and (11), we have ΦT,v (z) = z · (1 + ΦT2 ,u (z)) and ΦT −v (z) = ΦT2 (z), so it
+suffices to show that
+                           |z| · |1 + ΦT2 ,u (z)| > |ΦT2 (z)| .
+Now
+             |z| · |1 + ΦT2 ,u (z)| ≥ |z| · (|ΦT2 ,u (z)| − 1) = |z| · |ΦT2 ,u (z)| − |z|,
+and
+                      |ΦT2 (z)| ≤ |ΦT2 ,u (z)| + |ΦT2 −u (z)| ≤ 2 |ΦT2 ,u (z)|
+by the induction hypothesis. Therefore, it suffices to show that
+
+                              |z| · |ΦT2 ,u (z)| − |z| > 2 |ΦT2 ,u (z)| ,
+
+or equivalently,
+                                   (|z| − 2) · |ΦT2 ,u (z)| > |z|.
+By Lemma 2.1, since T2 has order n − 1, we have
+
+                     (|z| − 2) · |ΦT2 ,u (z)| ≥ (|z| − 2) · (|z| − 1)n−2 · |z|
+                                                √          √ 3
+                                                  3              3
+                                              ≥     3−1 ·          3 · |z|
+                                              > |z|,
+                                  √
+where we used n ≥ 5 and |z| ≥ 1 + 3 3.
+Case II: The tree T2 has order 1.
+From (10) and (11), we have ΦT,v (z) = ΦT1 ,v (z) · (1 + z) and ΦT −v (z) = ΦT1 −v (z) + z.
+Thus
+          |ΦT,v (z)| ≥ |ΦT1 ,v (z)| · (|z| − 1) = |ΦT1 ,v (z)| + (|z| − 2) · |ΦT1 ,v (z)| ,
+and
+                       |ΦT −v (z)| ≤ |ΦT1 −v (z)| + |z| ≤ |ΦT1 ,v (z)| + |z|,
+where the induction hypothesis was used at the last inequality. Thus, it suffices to show
+that
+                              (|z| − 2) · |ΦT1 ,v (z)| > |z|.
+
+                                                  9
+This follows by an argument analogous to that used in Case I.
+Case III: Both T1 and T2 have order at least 2.
+From (10), we have
+
+                   |ΦT,v (z)| ≥ |ΦT1 ,v (z)| · (|ΦT2 ,u (z)| − 1)
+                              = |ΦT1 ,v (z)| + |ΦT1 ,v (z)| · (|ΦT2 ,u (z)| − 2) .
+
+From (11), we have
+
+                     |ΦT −v (z)| ≤ |ΦT1 −v (z)| + |ΦT2 (z)|
+                                 ≤ |ΦT1 −v (z)| + |ΦT2 ,u (z)| + |ΦT2 −u (z)|
+                                 ≤ |ΦT1 ,v (z)| + 2 |ΦT2 ,u (z)| ,
+
+where the induction hypothesis was used at the last inequality. So it suffices to show
+that
+                      |ΦT1 ,v (z)| · (|ΦT2 ,u (z)| − 2) > 2 |ΦT2 ,u (z)| ,
+or equivalently,
+                            (|ΦT1 ,v (z)| − 2) (|ΦT2 ,u (z)| − 2) > 4.
+Let ni denote the order of Ti for i ∈ {1, 2}. Since n ≥ 5 and n1 , n2 ≥ 2, we must have
+either n1 ≥ 3 and n2 ≥ 2, or √      n1 ≥ 2 and n2 ≥ 3. Using this fact along with Lemma 2.1
+and the inequality |z| ≥ 1 + 3 3, we have
+
+    (|ΦT1 ,v (z)| − 2) (|ΦT2 ,u (z)| − 2) ≥ |z| · (|z| − 1)n1 −1 − 2 |z| · (|z| − 1)n2 −1 − 2
+                                                                                            
+
+                                          ≥ |z| · (|z| − 1)2 − 2 (|z| · (|z| − 1) − 2)
+                                                                 
+
+                                                    √    √ 2                √   √
+                                                                                       
+                                                    3      3                   3   3
+                                          ≥ (1 + 3)          3 − 2 (1 + 3) 3 − 2
+
+                                       > 4.
+
+This completes the proof of the theorem.
+
+
+3     Real subtree roots
+Since the coefficients of the subtree polynomial are all positive, it follows immediately
+that (0, ∞) is a root-free interval of√the
+                                          real line for the subtree polynomial. By The-
+orem 2.5, the interval −∞, −1 − 3 3 is also free of subtree roots. Moreover, both
+                                              √
+intervals are maximal in this sense, as −1 − 3 3 and 0 are both subtree roots of K1,3 (in
+fact, every tree has subtree root 0). In this section, we prove that the interval [−1, 0)
+                            √ It follows that the collection R of real subtree roots of all
+is also free of subtree roots.
+trees is contained in [−1− 3 3, −1]∪{0}. We demonstrate that the closure of R contains
+the interval [−2, −1]. Hence, the interval [−1, 0) is a maximal root-free interval for the
+subtree polynomial as well.
+
+                                                 10
+   First, we show that the interval [−1, 0) is free of subtree roots. We actually prove
+the stronger result that the subtree polynomial is increasing on the interval (−1, 0),
+from which the desired result easily follows. The proof relies on the useful fact that
+xΦ0T (x) is equal to the sum of all local subtree polynomials of T . This fact was observed
+by Jamison [10], but we provide justification below for completeness.
+
+Theorem 3.1. Let T be a tree. Then Φ0T (x) > 0 for x ∈ (−1, 0).
+                                                                            n
+                                                                            X
+Proof. Let T be a tree of order n with vertex set V , and let ΦT (x) =            sk xk . First,
+                                                                            k=1
+note that
+                                        n
+                                        X                X
+                           xΦ0T (x) =         ksk xk =         ΦT,v (x).
+                                        k=1              v∈V
+
+This follows from the fact that every subtree S of T of order k is counted exactly k
+times in the sum on the right (once for each of the k vertices in S). So to show that
+Φ0T (x) > 0 for all x ∈ (−1, 0), it suffices to show that ΦT,v (x) < 0 for all v ∈ V and
+x ∈ (−1, 0). We prove the stronger statement that −1 < ΦT,v (x) < 0 for all v ∈ V and
+x ∈ (−1, 0). The proof is by induction on the order of T .
+     The statement is easily verified for a tree of order 1. Suppose that the statement
+holds for all trees of order strictly less than n. Let T be a tree of order n and let v be
+an arbitrary vertex of T . Let v have neighbours u1 , . . . , ud , where d = deg(v). Recall
+from (2) that
+                                              d
+                                              Y
+                             ΦT,v (x) = x ·         [1 + ΦTi ,vi (x)] ,                    (12)
+                                              i=1
+
+where Ti is the component of T − v containing vi . Now suppose that x ∈ (−1, 0). Then
+0 < 1 + ΦTi ,vi (x) < 1 for all i ∈ {1, . . . , d} by the induction hypothesis. From (12), we
+conclude that −1 < ΦT,v (x) < 0.
+
+Theorem 3.2. No tree has a real subtree root in the interval [−1, 0).
+
+Proof. Let T be a tree. We show that ΦT (x) < 0 for all x ∈ [−1, 0). Note that
+ΦT (0) = 0, and by Theorem 3.1, Φ0T (x) > 0 for all x ∈ (−1, 0). Applying the Mean
+Value Theorem, we find ΦT (x) < 0 for all x ∈ [−1, 0).
+    Next, we demonstrate that the closure of the collection of real subtree roots of all
+trees contains the interval [−2, −1], i.e. subtree roots are dense in [−2, −1]. We will use
+the following result from elementary real analysis.
+
+Proposition 3.3 ([6, Proposition 6.4.5]). If f is a strictly monotonic function on an
+interval I, then f −1 : f (I) → I is continuous.
+
+
+                                               11
+Theorem 3.4. The closure of the collection of real subtree roots of all trees contains
+the interval [−2, −1].
+
+Proof. Let Ta,b denote the tree on a + 2b + 1 vertices obtained from K1,a+b by joining
+a pendant vertex to exactly b leaves (see Figure 2). We prove that the closure of the
+collection of real subtree roots of all trees in the set {Ta,b : a, b ≥ 1, a odd} contains
+[−2, −1].
+
+
+
+                                  a                           b
+                                             v
+
+
+
+                                   Figure 2: The tree Ta,b .
+
+  Let a, b ≥ 1 with a odd, and let v be the central vertex of Ta,b , as labeled in Figure 2.
+Then
+
+                   ΦTa,b (x) = ΦTa,b ,v (x) + ax + b(x2 + 2x)
+                             = x(1 + x)a (1 + x + x2 )b + ax + b(x2 + 2x)
+                             = x (1 + x)a (1 + x + x2 )b + a + b(x + 2)
+                                                                       
+
+
+For convenience, we substitute x = −1 − y, and use the fact that a is odd to simplify.
+
+               ΦTa,b (−1 − y) = (y + 1) y a (y 2 + y + 1)b − a − b(1 − y)
+                                                                        
+                                                                                  (13)
+
+Let fa,b (y) = y a (y 2 + y + 1)b − a − b(1 − y). It suffices to show that the closure of the
+collection of real roots of all polynomials in {fa,b (y) : a, b ≥ 1, a odd} contains (0, 1).
+    For a fixed a, b ≥ 1 with a odd, consider the sequence of functions
+
+                     fan,bn (y) = y an (y 2 + y + 1)bn − an − bn(1 − y)
+                                                     n
+                                = y a (y 2 + y + 1)b − [a + b(1 − y)]n,
+                                  
+
+
+where n ≥ 1 and n is odd (so that an is odd). Note that fan,bn is increasing for all
+y > 0. Since fan,bn (0) = −(a + b)n < 0, and lim fan,bn (y) = ∞, it follows that fan,bn (y)
+                                                     y→∞
+has a unique positive root. Further, if y (y + y + 1)b > 1, then
+                                             a   2
+
+
+                                        lim fan,bn (y) = ∞,
+                                       n→∞
+
+while if y a (y 2 + y + 1) < 1, then
+
+                                       lim fan,bn (y) = −∞.
+                                       n→∞
+
+
+
+
+                                                 12
+Therefore, for n sufficiently large, the unique positive root of fan,bn (y) can be made
+arbitrarily close to the unique positive root of the function
+
+                               ga,b (y) = y a (y 2 + y + 1)b − 1,
+
+which, evidently, lies in (0, 1). Let Rg ⊆ (0, 1) denote the collection of positive roots of
+all polynomials in {ga,b (y) : a, b ≥ 1, a odd}. It now suffices to show that Rg is dense
+in (0, 1).
+                                                                            a
+    Let r = ra,b denote the unique root of ga,b (y) in (0, 1), and let t = a+b . Then
+                                   a                 b
+        ra (r2 + r + 1)b = 1 ⇔ r a+b (r2 + r + 1) a+b = 1 ⇔ rt (r2 + r + 1)1−t = 1.
+
+For every t ∈ (0, 1), define
+
+                               ht (y) = y t (y 2 + y + 1)1−t − 1.
+                                                                        a
+                                                                          
+and let R(t) denote the unique root of ht (y) in (0, 1) (so that R a+b      = ra,b ). We
+claim that R is a continuous function of t on (0, 1) with range (0, 1). For a fixed t, let
+ρ = R(t), so that ρt (ρ2 + ρ + 1)1−t = 1. Taking logarithms on both sides and solving
+for t, we find
+                                      log(ρ2 + ρ + 1)
+                                  t=                .
+                                                   1
+                                      log ρ + 1 + ρ
+It is easily checked that this expression for t is a strictly increasing function of ρ with
+domain (0, 1) and range (0, 1). In other words, R−1 : (0, 1) → (0, 1) is a strictly
+increasing function, and thus by Proposition 3.3, we conclude that R : (0, 1) → (0, 1) is
+a continuous function. Since the set
+                          a
+                    Q = a+b    : a and b are positive integers, a odd
+
+in dense in (0, 1), and Rg is precisely the image of Q under the continuous map R,
+we conclude that Rg is dense in the range of R, namely (0, 1). This completes the
+proof.
+
+
+4     Concluding remarks and open problems
+In this article, we demonstrated
+                          √       that the roots of the subtree polynomial lie in the disk
+                          3
+D = z ∈ C : |z| ≤ 1 + 3 , and that K1,3 is the unique tree with a subtree root on
+the boundary of D. We make the following stronger conjecture, which we have verified
+for all n ≤ 18.
+
+Conjecture                    √of order n ≥ 2. Then the subtree roots of T lie in the
+          4.1. Let T be a tree
+                            n−1
+disk Dn = z ∈ C : |z| ≤ 1 +     n−1 .
+
+
+                                              13
+    For n ≤ 18, the star K1,n−1 is the unique tree with a subtree root of maximum
+modulus among all trees of order n, and we conjecture that this is true for all n. It is
+                                                        lie in the disk Dn for all n ≥ 2.
+straightforward to show that the subtree roots of K√1,n−1
+    We also found that the intervals −∞, −1 − 3 3 , [−1, 0), and (0, ∞) are free of
+subtree roots, and that the closure of the collection R of real subtree roots of all trees
+contains the interval
+                 √    [−2, −1]. What can be said about the real subtree roots in the
+interval√(−1 − 3 3, −2)? If Conjecture 4.1 is correct, then for any real number t ∈
+(−1 − 3 3, −2), there are only finitely many trees with subtree roots of modulus    √ at
+least |t|, and hence only finitely many real subtree roots in the interval (−1 − 3 3, t].
+Therefore, if Conjecture 4.1 is correct, then the closure of R is exactly R ∪ [−2, −1].
+
+                                       Im(z)
+
+
+
+
+                                                               Re(z)
+
+
+
+
+                                                                                √
+Figure 3: The subtree roots of all trees of order 14, the disk z ∈ C : |z| = 1 + 3 3
+                                                        √
+of Theorem 2.5 (solid line), the disk z ∈ C : |z| = 1 + 13 13 of Conjecture 4.1 (dot-
+                                                       √
+ted line), and the annulus z ∈ C : 12 ≤ z + 12 ≤ 12 + 13 13 of Conjecture 4.2 (dashed
+                          
+
+lines).
+
+   Finally, we note that the collection of complex subtree roots of all trees actually
+appears to be centred loosely around the point −1/2 in the complex plane. In fact, we
+make the following conjecture that strengthens Conjecture 4.1.
+
+Conjecture 4.2. If T is a tree of order n ≥ 2, then the subtree roots of T are contained
+in the annulus                                        √
+                        z ∈ C : 21 ≤ z + 12 ≤ 21 + n−1 n − 1 .
+                      
+
+   We have confirmed Conjecture 4.2 for all n ≤ 18. The subtree roots of all trees of
+order 14, along with the disk D that we have proven contains all subtree roots, the disk
+of Conjecture 4.1, and the annulus of Conjecture 4.2 are illustrated in Figure 3. What
+
+
+                                           14
+can be said about the closure of the
+                                   collection of complex subtree roots of all trees?
+Does it contain the entire annulus z ∈ C : 12 ≤ z + 21 ≤ 32 ?
+
+
+Acknowledgements
+We wish to thank Shannon Ezzat for a conversation which was helpful in completing
+the proof of Theorem 3.4.
+
+
+References
+ [1] J. I. Brown and L. Mol, On the roots of the node reliability polynomial, Networks
+     68(3) (2016), 238–246.
+ [2] J. I. Brown and L. Mol, On the roots of all-terminal reliability polynomials, Discrete
+     Math. 340(6) (2017), 1287–1299.
+ [3] J. I. Brown and J. Tufts, On the Roots of Domination Polynomials, Graphs Combin.
+     30(3) (2014), 527–547.
+ [4] P. Csikvári and M. R. Oboudi, On the roots of edge cover polynomials of graphs,
+     European J. Combin. 32(8) (2011), 1407–1416.
+ [5] F. M. Dong, K. M. Koh, and K. L. Teo, Chromatic Polynomials and Chromaticity
+     of Graphs, World Scientific Publishing, Singapore, 2005.
+ [6] D. J. H. Garling, A Course in Mathematical Analysis, Volume I: Foundations and
+     Elementary Real Analysis, Cambridge University Press, 2013.
+ [7] J. Haslegrave, Extremal results on average subtree density of series-reduced trees,
+     J. Combin. Theory Ser. B 107(1) (2014), 26–41.
+ [8] R. E. Jamison, On the average number of nodes in a subtree of a tree, J. Combin.
+     Theory Ser. B 35 (1983), 207–223.
+ [9] R. E. Jamison, Monotonicity of the mean order of subtrees, J. Combin. Theory Ser.
+     B 37 (1984), 70–78.
+[10] R. E. Jamison, Alternating Whitney sums and matchings in trees, part I, Discrete
+     Math. 67(2) (1987), 177–189.
+[11] R. E. Jamison, Alternating Whitney sums and matchings in trees, part II, Discrete
+     Math. 79(2) (1990), 177–189.
+[12] V. E. Levit and E. Mandrescu, The independence polynomial of a graph - a survey,
+     Proceedings of the 1st International Conference on Algebraic Informatics, Aristotle
+     University of Thessaloniki, Greece (2005), 231–252.
+
+                                            15
+[13] L. Mol, On connectedness and graph polynomials, Ph.D. thesis, Dalhousie Univer-
+     sity, 2016, pp. 1–174.
+
+[14] L. Mol and O. Oellermann, Maximizing the mean subtree order, preprint, arXiv:
+     1707.01874 [math.CO] (2017), 1–31.
+
+[15] D. Ralaivaosaona and S. Wagner, On the distribution of subtree orders of a tree,
+     Ars Math. Contemp. 14(1) (2018), 129–156.
+
+[16] A. V. Sills and H. Wang, The minimal number of subtrees of a tree, Graphs Combin.
+     31(1) (2015), 255–264.
+
+[17] A. Vince and H. Wang, The average order of a subtree of a tree, J. Combin. Theory
+     Ser. B 100(2) (2010), 161–170.
+
+[18] S. Wagner and H. Wang, Indistinguishable trees and graphs, Graphs Combin. 30(6)
+     (2014), 1593–1605.
+
+[19] S. Wagner and H. Wang, On the local and global means of subtree orders, J. Graph
+     Theory 81(2) (2016), 154–166.
+
+[20] W. Yan and Y.-N. Yeh, Enumeration of subtrees of trees, Theoret. Comput. Sci.
+     369(1-3) (2006), 256–268.
+
+[21] X.-M. Zhang and X.-D. Zhang, The minimal number of subtrees with a given degree
+     sequence, Graphs Combin. 31(1) (2015), 309–318.
+
+[22] X.-M. Zhang, X.-D. Zhang, D. Gray, and H. Wang, The number of subtrees of trees
+     with given degree sequence, J. Graph Theory 73(3) (2013), 280–295.
+
+
+
+
+                                         16
+

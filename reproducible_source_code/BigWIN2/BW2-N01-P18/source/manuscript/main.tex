@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  pdftitle={Recurrent constant-term words for a degenerate Laurent polynomial},
+  pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\FS}{FS}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\Fp}{\mathbb F_p}
+\title{Recurrent constant-term words for\\$x^{p-1}+x^{-1}$}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $p$ be any prime, put $P(x)=x^{p-1}+x^{-1}$, and let
+$Q\in\Fp[x,x^{-1}]$. We prove that the word
+$u_n=[x^0]P(x)^nQ(x)$, indexed from $n=0$, is recurrent if and only if it
+is identically zero. Here recurrence means that every occurring finite
+contiguous block occurs arbitrarily far out, without a bound on return gaps.
+We also determine all such $Q$: they are exactly $P F(P)$ with
+$F\in\Fp[t]$. The proof identifies the generating functions of these words
+with polynomials in a lacunary series and computes the kernel of the
+constant-term map. A digit-sum obstruction then excludes the translated
+finite-sums sets forced by recurrence. This settles the specified example
+in Kohen's question on completely degenerate constant-term sequences.
+\end{abstract}
+
+\section{Statement and context}
+
+Write $[x^0]$ for the constant coefficient of a Laurent polynomial.
+Throughout, $p$ is prime, $K=\Fp$, and
+\begin{equation}\label{eq:family}
+ P(x)=x^{p-1}+x^{-1},\qquad
+ u_n(Q)=[x^0]\bigl(P(x)^nQ(x)\bigr)\quad(n\in\Nzero).
+\end{equation}
+A word $v=(v_n)_{n\geq0}$ is \emph{recurrent} if, for every
+$i,N\geq0$ and $\ell\geq1$, there is $j>N$ such that
+$v_{j+k}=v_{i+k}$ for $0\leq k<\ell$. This agrees with
+\cite[Definition~18]{Kohen2026}. In particular, the initial term
+$u_0(Q)=[x^0]Q$ is included.
+
+\begin{theorem}\label{thm:main}
+For every prime $p$ and every $Q\in K[x,x^{-1}]$, the following are equivalent:
+\begin{enumerate}
+\item[(i)] The word $u(Q)$ defined in \eqref{eq:family} is recurrent.
+\item[(ii)] $u_n(Q)=0$ for every $n\geq0$.
+\item[(iii)] $Q=P F(P)$ for some polynomial $F\in K[t]$.
+\end{enumerate}
+\end{theorem}
+
+The space in (iii) is $P K[P]$, the polynomials in $P$ with zero constant
+coefficient as polynomials in $P$. It is a $K$-linear subspace, and should
+not be replaced by the Laurent-ring ideal $P K[x,x^{-1}]$.
+The statement includes $p=2$, $Q=0$, and arbitrary finite positive and
+negative Laurent exponents.
+
+Constant-term sequences modulo prime powers admit finite-automaton
+representations by the construction of Rowland and Zeilberger
+\cite{RowlandZeilberger2014}. Kohen's earlier work treats uniform recurrence
+for symmetric Laurent trinomials; the relevant general-$Q$ statement
+assumes $p>2$ \cite[Proposition~15]{Kohen2025}.
+His subsequent general result shows that if an unweighted constant term
+vanishes modulo $p$, then zeros have density one in every weighted sequence,
+and a nonzero such word is not uniformly recurrent
+\cite[Theorem~14]{Kohen2026}. Ordinary recurrence still holds if some
+positive unweighted term is nonzero \cite[Proposition~19]{Kohen2026}.
+Question~20 of that paper asks about the remaining case in which every
+positive unweighted term vanishes, explicitly giving the polynomial
+\eqref{eq:family} as an example.
+
+Theorem~\ref{thm:main} classifies ordinary recurrence and the entire zero
+kernel for this example. The inspected results above do not supply this
+classification. This comparison is limited to the primary material checked
+through September~12, 2026; it is not an assertion of exhaustive priority.
+The argument makes no claim about other degenerate $P$ or moduli $p^a$ with
+$a>1$, so the generality of Kohen's question is not resolved here.
+
+The proof uses a constraint stronger than density-zero support. We first
+reduce every generating function to a polynomial in one lacunary series.
+We then show that its support cannot contain the translated finite-sums set
+that any recurrent nonzero word must contain. These elementary arguments
+are given in full; no separate originality is asserted for their components.
+
+\section{The generating-function map and its kernel}
+
+Set
+\begin{equation}\label{eq:Y}
+ a_j=\frac{p^j-1}{p-1}\quad(j\geq1),\qquad
+ Y(z)=\sum_{j\geq1}z^{a_j},\qquad
+ \Phi(Q)=\sum_{n\geq0}u_n(Q)z^n.
+\end{equation}
+The integer identity $a_{j+1}=p a_j+1$ and Frobenius give
+\begin{equation}\label{eq:inverse}
+ Y=z(1+Y^p),\qquad Y=z+O(z^2).
+\end{equation}
+Thus $Y$ is the compositional inverse of $f(x)=x/(1+x^p)$.
+
+\begin{lemma}\label{lem:monomial}
+For every integer $r\geq0$, one has $\Phi(x^r)=Y^r$.
+\end{lemma}
+\begin{proof}
+We use formal residues: $\Res_x G(x)\,dx=[x^{-1}]G(x)$.
+The change-of-variable identity is
+\begin{equation}\label{eq:residue}
+ \Res_z G(z)\,dz=\Res_x G(f(x))f'(x)\,dx
+ \qquad\bigl(G\in K((z)),\ f=x+O(x^2)\bigr).
+\end{equation}
+For its characteristic-zero form, see
+\cite[Theorem~4.1.1]{Gessel2016}. To justify its use over $K$, lift the
+coefficients of $G$ and $f$ to integers, keeping the linear coefficient of
+$f$ equal to $1$. Only finitely many coefficients affect either residue.
+Over $\mathbb Q$, linearity reduces the identity to
+$G(z)=z^m$: for $m\ne-1$, the residue of
+$f^m f'=(f^{m+1})'/(m+1)$ is zero; for $m=-1$, writing $f=xh$ with
+$h\in1+x\mathbb Z[[x]]$ gives $f'/f=x^{-1}+h'/h$, of residue $1$.
+Both residues are integral expressions, so reducing this identity modulo
+$p$ proves \eqref{eq:residue}. No division by an index takes place in $K$.
+
+In $K[[x]]$ we have $f'(x)=(1+x^p)^{-1}$ and $Y(f(x))=x$.
+For $r,n\geq0$, substitution gives
+\begin{align*}
+ [z^n]Y(z)^r
+ &=\Res_x x^r\left(\frac{x}{1+x^p}\right)^{-n-1}
+                  \frac{dx}{1+x^p}\\
+ &=[x^{n-r}](1+x^p)^n
+  =[x^0]\bigl(P(x)^n x^r\bigr).
+\end{align*}
+Equality of every coefficient proves the lemma.
+\end{proof}
+
+In particular, $\Phi(1)=1$, so $[x^0]P^n=0$ for all $n>0$.
+The next proposition includes all negative exponents and all cancellations
+among Laurent monomials.
+
+\begin{proposition}\label{prop:kernel}
+The linear map $\Phi:K[x,x^{-1}]\longrightarrow K[[z]]$ has image $K[Y]$
+and kernel $P K[P]$.
+\end{proposition}
+\begin{proof}
+Consider the quotient
+\[
+ R=K[t,X]/(X^p-tX+1).
+\]
+In $R$, one has $X(t-X^{p-1})=1$. Hence the homomorphisms
+\begin{align*}
+ R&\longrightarrow K[x,x^{-1}], & X&\longmapsto x,&t&\longmapsto P,\\
+ K[x,x^{-1}]&\longrightarrow R, & x&\longmapsto X,&x^{-1}&\longmapsto t-X^{p-1}
+\end{align*}
+are well defined and inverse: their compositions fix the displayed
+generators, with $X^{p-1}+X^{-1}=t$ in $R$.
+Division by the monic polynomial in $X$ makes $R$ a free $K[t]$-module
+with basis $1,X,\ldots,X^{p-1}$. Consequently every Laurent polynomial
+has a unique expression
+\begin{equation}\label{eq:module}
+ Q=\sum_{r=0}^{p-1}f_r(P)x^r,\qquad f_r\in K[t].
+\end{equation}
+
+The map $\Phi$ is linear, but no multiplicativity is used. Instead, shifting
+the index in its definition gives
+\begin{equation}\label{eq:shift}
+ \Phi(PQ)=\frac{\Phi(Q)-[x^0]Q}{z}.
+\end{equation}
+If $\Phi(Q)=H(Y)$ for $H\in K[y]$, the constant coefficient is
+$[x^0]Q=H(0)$. Since \eqref{eq:inverse} implies
+$z^{-1}=Y^{-1}+Y^{p-1}$, define
+\begin{equation}\label{eq:L}
+ L(H)(y)=(H(y)-H(0))(y^{-1}+y^{p-1});
+ \qquad \Phi(PQ)=L(H)(Y).
+\end{equation}
+The expression $L(H)$ is polynomial because $y$ divides $H(y)-H(0)$.
+The operator kills constants. If $H$ has positive degree $d$, then $L(H)$
+has degree $d+p-1$ and the same leading coefficient.
+Lemma~\ref{lem:monomial}, \eqref{eq:module}, and \eqref{eq:L} now imply
+$\Phi(Q)\in K[Y]$ for every Laurent $Q$.
+
+The $K$-basis $\{P^k x^r:k\geq0,\ 0\leq r\leq p-1\}$ of the Laurent
+ring has zero images for $r=0$, $k\geq1$. Its remaining polynomial images are
+\[
+ 1,\qquad L^k(y^r)\quad(k\geq0,\ 1\leq r\leq p-1).
+\]
+These are monic of pairwise distinct degrees $0$ and $r+k(p-1)$,
+which exhaust the nonnegative integers. They are therefore a basis of
+$K[y]$, by elimination of leading terms.
+Substitution $H\mapsto H(Y)$ is injective: the lowest nonzero monomial of
+$H$ has the same degree and coefficient after $Y=z+O(z^2)$ is substituted.
+It follows that $\Phi(Q)=0$ precisely when $f_r=0$ for $r>0$ and
+$f_0(0)=0$ in \eqref{eq:module}. This is exactly $Q\in P K[P]$,
+and the same basis argument proves surjectivity onto $K[Y]$.
+\end{proof}
+
+\begin{remark}\label{rem:characteristic}
+The full relation in the quotient above matters. Over $K(t)$ its defining
+polynomial has derivative $-t$. This is the family $X^p+cX+d$ for which
+Zeng's preprint \cite{Zeng_2026} records in Proposition~6.1 that the normalized
+Bézout pair for the polynomial and its derivative is $(0,c^{-1})$,
+independently of $d$. Thus these derivative data cannot recover the
+constant coefficient. Our explicit presentation retains that coefficient:
+the value $1$ is what gives the inverse $X^{-1}=t-X^{p-1}$.
+\end{remark}
+
+\section{Recurrence and a digit-sum obstruction}
+
+For positive integers $t_1,t_2,\ldots$, write
+\[
+ \FS_0(t_i)=\left\{\sum_{i\in I}t_i:
+          I\subset\mathbb N\text{ finite}\right\},
+\]
+including the empty sum. Finite-sums structure also occurs in the study of
+sparse automatic sets. Byszewski and Konieczny
+\cite[Definition~3.11 and Theorem~3.13]{ByszewskiKonieczny2020}
+formulate an arid-or-IPS alternative, where the IPS notion allows shifts
+depending on the stage. Their discussion following that theorem
+distinguishes this from a single translate of an IP set. Here we need one
+fixed translate, and establish both necessary lemmas directly.
+
+\begin{lemma}\label{lem:returns}
+If a word $v$ is recurrent and $v_a=c$, there exist positive integers $t_i$
+such that $v_{a+s}=c$ for every $s\in\FS_0(t_i)$.
+\end{lemma}
+\begin{proof}
+Suppose $t_1,\ldots,t_m$ have been chosen so that the assertion holds for
+their subset sums. Put $T_m=\sum_{i=1}^m t_i$, with $T_0=0$.
+Recurrence gives an occurrence of the prefix $v_0\cdots v_{a+T_m}$
+starting at an index $t_{m+1}>T_m$. For each old subset sum $s$, this
+copies $v_{a+s}=c$ to $v_{a+s+t_{m+1}}=c$ while retaining all old
+positions. Induction proves the assertion, since every finite subset
+is included at a finite stage. No bound on return gaps is required.
+\end{proof}
+
+Let $s_p(m)$ denote the sum of the base-$p$ digits of $m\in\Nzero$.
+For an integer $D\geq0$, define
+\begin{equation}\label{eq:SD}
+ S_{p,D}=\{n\geq0:s_p((p-1)n+r)\leq D
+                   \text{ for some }r\in\{0,\ldots,D\}\}.
+\end{equation}
+
+\begin{lemma}\label{lem:digits}
+For every $a\geq0$ and every infinite sequence of positive integers $t_i$,
+one has $a+\FS_0(t_i)\not\subseteq S_{p,D}$.
+\end{lemma}
+\begin{proof}
+For any $K\geq0$, every unused tail of $(t_i)$ contains a nonempty
+consecutive block whose sum is divisible by $p^K$. Indeed, two among its
+first $p^K+1$ partial sums, including the empty sum, agree modulo $p^K$.
+Their difference is the sum of such a block and is positive.
+
+Choose $K_1\geq0$ with $p^{K_1}>(p-1)a+D$, and take a block sum $b_1$
+divisible by $p^{K_1}$. After choosing $b_i$, choose $K_{i+1}$ with
+$p^{K_{i+1}}>(p-1)b_i$, and take a block sum $b_{i+1}$ divisible by
+$p^{K_{i+1}}$ from a tail strictly after the indices already used.
+Continue until $b_1,\ldots,b_{D+1}$ have been chosen. The blocks are
+disjoint, so their total belongs to $\FS_0(t_i)$.
+
+Since $b_i\geq p^{K_i}$, we have $K_{i+1}>K_i$.
+The digits of $(p-1)b_i$ start at position $K_i$ or later and, for
+$i\leq D$, end below position $K_{i+1}$. For every $0\leq r\leq D$,
+the digits of $(p-1)a+r$ lie below $K_1$.
+These summands therefore occupy disjoint digit positions. For the single
+index $n=a+b_1+\cdots+b_{D+1}$ there are no carries between them, and
+simultaneously for all $0\leq r\leq D$,
+\begin{align*}
+ s_p((p-1)n+r)
+ &=s_p((p-1)a+r)+\sum_{i=1}^{D+1}s_p((p-1)b_i)\\
+ &\geq D+1.
+\end{align*}
+Every positive $b_i$ contributes at least one to the sum.
+Thus $n\in a+\FS_0(t_i)$ and $n\notin S_{p,D}$, as required.
+This argument includes $D=0$ and $p=2$.
+\end{proof}
+
+\begin{lemma}\label{lem:support}
+If $0\ne H\in K[y]$ has degree $D$, then
+$\supp H(Y)\subseteq S_{p,D}$, where the support consists of indices
+with nonzero coefficient.
+\end{lemma}
+\begin{proof}
+If $[z^n]H(Y)\ne0$, at least one $Y^r$, $0\leq r\leq D$, contributes
+a nonzero coefficient there. For $r>0$ there must be an ordered tuple
+$j_1,\ldots,j_r\geq1$ with $n=a_{j_1}+\cdots+a_{j_r}$; only finitely
+many tuples contribute at any fixed index. Hence
+\[
+ (p-1)n+r=p^{j_1}+\cdots+p^{j_r},\qquad
+ s_p((p-1)n+r)\leq r\leq D.
+\]
+Carrying in base $p$ decreases digit sum, which proves the inequality.
+For $r=0$ only $n=0$ occurs and satisfies the same condition.
+Cancellations among coefficients can only remove support points.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Proposition~\ref{prop:kernel}, write $\Phi(Q)=H(Y)$.
+If $H\ne0$ and $D=\deg H$, injectivity of substitution gives a nonzero
+coefficient $u_a(Q)=c$.
+If $u(Q)$ were recurrent, Lemma~\ref{lem:returns} would put some
+$a+\FS_0(t_i)$ in the support of $H(Y)$.
+Lemma~\ref{lem:support} puts this support in $S_{p,D}$, contradicting
+Lemma~\ref{lem:digits}. Thus recurrence forces $H=0$, or equivalently
+$u(Q)=0$. The zero word is recurrent, and Proposition~\ref{prop:kernel}
+identifies its preimage as $P K[P]$.
+\end{proof}
+
+\section{Boundary cases and reproducibility}
+
+For $Q=1$ the word is $(1,0,0,\ldots)$ and fails recurrence, whereas
+$Q=P$ gives the zero word, including its initial term.
+For $Q=x$, the support is exactly $\{a_j:j\geq1\}$; its successive gaps
+are $p,p^2,p^3,\ldots$. These examples illustrate why the indexing from
+zero and the precise algebraic kernel are necessary.
+
+Sparsity by itself would not prove the theorem. For example, let $W_0=1$
+and $W_{m+1}=W_m0^{4|W_m|}W_m$. The nested prefixes define a recurrent
+infinite word: every finite block lies in some $W_m$ and is copied
+arbitrarily far out in later second copies. Since $|W_m|=6^m$ and
+$W_m$ contains $2^m$ ones, the number of ones in a prefix of length
+$6^m\leq N<6^{m+1}$ is at most $2^{m+1}$, giving density zero.
+The simultaneous digit constraint \eqref{eq:SD} supplies the additional
+obstruction used above.
+
+The accompanying supplementary programs use exact Python integer
+arithmetic and finite-field reduction. The binomial identity
+\begin{equation}\label{eq:binomial}
+ [x^0]P^n x^e=
+ \begin{cases}
+ \displaystyle\binom{n}{(n-e)/p}\bmod p,
+    & (n-e)/p\in\{0,\ldots,n\},\\
+ 0,&\text{otherwise},
+ \end{cases}
+\end{equation}
+follows by expanding $P^n=x^{-n}(1+x^p)^n$.
+One implementation evaluates these binomial coefficients by Lucas's digit
+congruence \cite[Theorem~1.1]{LaugierSaikia2012} and computes images of
+negative monomials from
+$P x^{1-m}=x^{p-m}+x^{-m}$. It checks all $236{,}775$ coefficient
+comparisons for $p\in\{2,3,5,7,11,13,17\}$, $-16\leq e\leq16$,
+and $0\leq n\leq1024$, with $29{,}799$ direct integer-binomial
+crosschecks through $n=128$.
+
+A second implementation uses literal repeated Laurent multiplication
+and the quotient normal form \eqref{eq:module}. It checks all $502{,}250$
+coefficient comparisons for
+$p\in\{2,3,5,7,11,13,17,19,23,29\}$, $-24\leq e\leq24$,
+and $0\leq n\leq1024$. For each of these ten primes and
+$R\in\{1,2,4,8,16,24\}$, it also checks the kernel of the matrix
+$([x^0]P^n x^e)_{0\leq n\leq R(p-1),\,-R\leq e\leq R}$;
+the computed nullity is $\lfloor R/(p-1)\rfloor$, with basis given by the
+coefficient vectors of $P^k$, $1\leq k\leq\lfloor R/(p-1)\rfloor$.
+The two programs respectively construct and check $207$ finite instances
+of the digit-block argument, including $D=0$ and degrees through $16$.
+The precise generator families and ranges are specified in the supplement.
+All stated checks pass. They test finite identities and matrices; the
+infinite recurrence classification follows from the written proof.
+
+\paragraph{Computational and AI assistance.}
+Language-model assistance was used for literature screening, proof
+development, counterexample checks, program construction, a separate
+mathematical review pass, and manuscript preparation. The second program
+was developed in that separate pass without importing the first program.
+This describes distinct implementations and review contexts, not statistical
+independence or external peer review. No proof assistant was used.
+The supplementary programs are diagnostic and are not premises of
+Theorem~\ref{thm:main}.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

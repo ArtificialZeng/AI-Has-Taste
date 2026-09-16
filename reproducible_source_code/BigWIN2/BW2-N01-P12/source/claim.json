@@ -1,0 +1,23 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every prime power q and every pair of weakly decreasing nonnegative integer triples lambda and mu with mu_j <= lambda_j, lambda_j <= 4-j and mu_j <= 3-j for j=1,2,3, the number of ordered pairs (A,B) of 4-by-3 matrices over F_q with A_rj=0 whenever r>4-lambda_j and B_rj=0 whenever r>4-mu_j, and with nonzero boundary-format hyperdeterminant, is q^9 (q-1)^6 times product_{j=1}^3 [5-j-lambda_j]_q times product_{j=1}^3 [4-j-mu_j]_q, where [r]_q=sum_{a=0}^{r-1} q^a. Nondegeneracy equivalently means rank(sA+tB)=3 for all nonzero (s,t) over the algebraic closure of F_q. All 55 permitted shapes and all prime powers are included. No assertion for k>3 is made.",
+  "contribution": "A proposed complete computational proof of the original k=3 specialization: exact integer coefficient evaluation of the established Koprowski-Lewis augmented-cell sum for all 55 shapes, including the 40 shapes left unevaluated in Section 3.3 of the inspected journal paper. Explicit distinct unit pivots and a closed variable order give characteristic-free elimination certificates; a separate exhaustive q=2 maximal-minor computation corroborates every shape. The orbit method and pure-power cell principle are prior results. No global priority, general-k solution, fresh-audit acceptance, or journal acceptance is claimed; the scope and contribution value are submitted for fresh review.",
+  "proposer_job_id": "newwin-00001-p12-research-79bff11d6956",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/proof.md",
+    "evidence/verify_sparse.py",
+    "evidence/sparse_certificates.json",
+    "evidence/sparse_summary.json",
+    "evidence/shape_table.md",
+    "evidence/triage_symbolic.py",
+    "evidence/triage_symbolic.json",
+    "evidence/exhaust_f2.py",
+    "evidence/exhaust_f2.json",
+    "evidence/external/koprowski-lewis-2602.22129v1-web.txt",
+    "evidence/external/koprowski-lewis-eca2027-web.txt",
+    "literature/research-screen.md"
+  ]
+}

@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks,pdftitle={A Four-Job Counterexample to an Almost-Exact Fathoming Rule for Job Sequencing and Tool Switching},pdfauthor={Xiaojian Zeng}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cM}{\mathcal M}
+
+\title{A Four-Job Counterexample to an Almost-Exact Fathoming Rule\\
+for Job Sequencing and Tool Switching}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In 2026, Locatelli, C\^ot\'e, and Coelho introduced an almost-exact
+fathoming rule for an insertion-based search for the job sequencing and tool
+switching problem.  Their five-job example shows that this rule can fathom a
+branch containing a globally optimal completion.  We disprove the proposed
+lower boundary of five jobs.  An instance with four jobs, four tools, and
+magazine capacity three has, under either orientation of its uniquely selected
+root pair, a reachable proper node that is fathomed although it has a globally
+optimal completion.  The root pair and next job are unique, both relevant
+KTNS magazine histories are forced, and the competing completion-pruning rule
+does not apply.  The proof is an explicit certificate; exact enumeration is
+used only as a reproducibility check.
+\end{abstract}
+
+\section{Setting and contribution}
+
+Let the jobs be $J=\{1,\ldots,n\}$ and the tools be
+$\cT=\{1,\ldots,m\}$.  Job $j$ requires a nonempty set
+$T_j\subseteq\cT$, and a magazine configuration is a $c$-element set
+$M\subseteq\cT$ with $T_j\subseteq M$ while job $j$ is processed.  For a
+job sequence $\pi=(\pi_1,\ldots,\pi_n)$ and a covering configuration sequence
+$\cM=(M_1,\ldots,M_n)$, the number of switches is
+\[
+  z(\cM)=\sum_{i=2}^n |M_i\setminus M_{i-1}|.
+\]
+The initial loading is not charged.  Minimizing over covering histories gives
+$z(\pi)$, and minimizing $z(\pi)$ over all job orders gives the global optimum.
+This is the classical model of Tang and Denardo~\cite{TangDenardo1988}; their
+keep-tool-needed-soonest (KTNS) policy optimizes the loading decisions when the
+job sequence is fixed.
+
+We use exactly the insertion search and the rule of
+Locatelli, C\^ot\'e, and Coelho~\cite{LocatelliCoteCoelho2026}.  Its root is an
+ordered orientation of a pair maximizing
+\[
+  |T_a\setminus T_b|+|T_b\setminus T_a|.
+\]
+At a partial sequence $\sigma=(\sigma_1,\ldots,\sigma_\ell)$, the next
+unsequenced job maximizes
+\[
+  \min_{1\leq i\leq\ell}|T_{\sigma_i}\cup T_j|,
+\]
+and inserting that job in every position produces the children.  Reversal
+symmetry retains only one orientation.  The almost-exact rule fathoms
+$\sigma$ if, in a KTNS-optimal history $(M_1,\ldots,M_\ell)$, some adjacent
+pair satisfies
+\[
+  T_{\sigma_i}\subseteq M_{i+1}
+  \quad\text{and}\quad
+  \sigma_i>\sigma_{i+1}.                                      \tag{1}
+\]
+A proper node is \emph{unsafe} when it is fathomed by (1) but some full order
+obtained by inserting all remaining jobs into it has globally optimal cost.
+The cited paper gives an unsafe event with five jobs.  The following theorem
+shows that five is not a lower bound; it does not claim that every optimal
+branch is lost or that the heuristic returns a suboptimal solution.
+
+\begin{theorem}\label{thm:counterexample}
+The assertion that no unsafe node exists in any instance with at most four
+jobs, at most four tools, and
+$\max_j|T_j|\leq c<m$ is false.
+\end{theorem}
+
+\begin{proof}
+Consider
+\[
+ n=m=4,\qquad c=3,
+ \qquad
+ T_1=\{1\},\quad T_2=\{1,2\},\quad
+ T_3=\{1,3,4\},\quad T_4=\{2,3,4\}.                         \tag{2}
+\]
+All four tools occur, every requirement is nonempty, and
+$\max_j|T_j|=3=c<4=m$, so (2) is admissible.
+
+For the unordered job pairs
+$(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)$, the symmetric-difference scores are,
+respectively,
+\[
+  1,\ 2,\ 4,\ 3,\ 3,\ 2.                                   \tag{3}
+\]
+Thus $\{1,4\}$ is the unique root pair.  Relative to either of its
+orientations, the remaining jobs have selection scores
+\[
+ \min_{i\in\{1,4\}}|T_i\cup T_2|=2,
+ \qquad
+ \min_{i\in\{1,4\}}|T_i\cup T_3|=3.                         \tag{4}
+\]
+Hence job $3$ is selected uniquely.  If the root orientation is $(1,4)$,
+front insertion generates the proper node
+$\sigma_+=(3,1,4)$.  If the orientation is $(4,1)$, middle insertion generates
+$\sigma_-=(4,3,1)$.  Consequently the unspecified choice of root orientation
+cannot remove the construction.
+
+Write
+\[
+  A=\{1,3,4\},\qquad B=\{2,3,4\}.
+\]
+The unique KTNS-optimal magazine history for $\sigma_+$ is $(A,A,B)$.
+Indeed, jobs $3$ and $4$ force $A$ and $B$, respectively, and retaining $A$
+at the intervening job $1$ gives the unique one-switch history.  At the first
+adjacent pair, $T_3=A\subseteq A=M_2$ and $3>1$, so (1) fathoms
+$\sigma_+$.  Similarly, the unique KTNS-optimal history for $\sigma_-$ is
+$(B,A,A)$.  At its second adjacent pair,
+$T_3=A\subseteq A=M_3$ and $3>1$, so (1) fathoms $\sigma_-$.  Thus neither
+event depends on a KTNS filler or eviction tie.
+
+The only unsequenced job is job $2$.  Its requirement $\{1,2\}$ is contained
+in neither $A$ nor $B$.  Therefore the completion-pruning test in Section~6.2
+of~\cite{LocatelliCoteCoelho2026}, which requires every unsequenced job to be
+covered by a node configuration, does not apply at either node.
+
+It remains to prove global optimality of a completion.  Jobs $3$ and $4$
+force the distinct full configurations $A$ and $B$.  Passing between them
+already costs one switch.  If a complete history had total cost at most one,
+all its other configurations would have to equal $A$ or $B$; otherwise an
+additional transition would be charged.  Neither $A$ nor $B$ covers job $2$,
+a contradiction.  Hence the global optimum is at least two.
+
+Deleting job $2$ from $(2,3,1,4)$ leaves $\sigma_+$.  The covering history
+\[
+  (\{1,2,3\},A,A,B)
+\]
+has cost two.  Likewise, deleting job $2$ from $(2,4,3,1)$ leaves
+$\sigma_-$, and
+\[
+  (\{1,2,3\},B,A,A)
+\]
+also has cost two.  Both full orders are therefore globally optimal
+completions of their respective fathomed nodes.  Under either root
+orientation, an unsafe node exists, proving the theorem.
+\end{proof}
+
+\section{Scope and reproducibility}
+
+The five-job construction in Section~6.3 of
+Locatelli, C\^ot\'e, and Coelho~\cite{LocatelliCoteCoelho2026} establishes the
+same type of unsafe event, while the contribution here is the smaller explicit
+instance (2), together with orientation robustness, unique selection scores,
+forced KTNS histories, and the nonapplication of completion pruning.  We make
+no assertion here about whether an unsafe instance exists with three jobs, or
+about the final incumbent returned by the full heuristic.
+
+The accompanying verifier reconstructs all size-three magazine histories,
+evaluates all $24$ complete job orders in exact integer arithmetic, and checks
+(2)--(4), both orientation cases, both fathoming triggers, and the failure of
+completion pruning.  It returns global optimum two.  This computation is not
+needed for the proof above.  For methodological comparison, Zeng~\cite{Zeng2026Whiskered}
+likewise uses exhaustive exact arithmetic together with a short independent
+verifier in a finite combinatorial setting; the present theorem does not depend
+on that paper.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted in finding and checking the counterexample, preparing an
+exact Python replay, checking cited source passages, and drafting the
+manuscript.  The replay uses only finite enumeration and exact integer set
+operations.  The mathematical claim rests on the explicit certificate and
+proof above, not on software output or probabilistic computation.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

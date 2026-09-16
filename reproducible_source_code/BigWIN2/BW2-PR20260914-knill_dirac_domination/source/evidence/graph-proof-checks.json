@@ -1,0 +1,1365 @@
+{
+  "job_id": "primary-20260914-knill-dirac-domination-research-6e957123a5e9",
+  "proof_sha256_before_tests": "724a715ca76f865839477beaceb847a6f34f75ccb06a222cc8a2e9b9b63a0ef6",
+  "numpy_version": "2.2.6",
+  "sympy_version": "1.14.0",
+  "arithmetic": {
+    "matrix_identities": "exact int64; entries and sizes prevent overflow",
+    "spectral_screens": "float64; tolerance 1e-6; not proof certificates",
+    "symbolic_examples": "exact SymPy integer polynomial identities"
+  },
+  "exhaustive_counts": {
+    "1": 1,
+    "2": 2,
+    "3": 8,
+    "4": 64,
+    "5": 1024,
+    "6": 32768
+  },
+  "exhaustive_minima": {
+    "1": {
+      "name": "labeled-1-0",
+      "v": 1,
+      "e": 0,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 1.0,
+      "min_k": 1,
+      "q1": 0.0,
+      "initial_bound": 0.0,
+      "tail_bound": 1.0,
+      "edges": []
+    },
+    "2": {
+      "name": "labeled-2-1",
+      "v": 2,
+      "e": 1,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 1.5,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "3": {
+      "name": "labeled-3-1",
+      "v": 3,
+      "e": 1,
+      "components": 2,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 2.5,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "4": {
+      "name": "labeled-4-1",
+      "v": 4,
+      "e": 1,
+      "components": 3,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 3.5,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "5": {
+      "name": "labeled-5-1",
+      "v": 5,
+      "e": 1,
+      "components": 4,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 4.5,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "6": {
+      "name": "labeled-6-1",
+      "v": 6,
+      "e": 1,
+      "components": 5,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 5.5,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "held_out_cases": [
+    {
+      "name": "path-7",
+      "v": 7,
+      "e": 6,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.0990615151586556,
+      "min_k": 1,
+      "q1": 3.8019377358048385,
+      "initial_bound": 1.1479484716198862,
+      "tail_bound": 4.0
+    },
+    {
+      "name": "cycle-7",
+      "v": 7,
+      "e": 7,
+      "components": 1,
+      "bipartite": false,
+      "minimum_gap": 2.2862121531361437,
+      "min_k": 1,
+      "q1": 3.9999999999999996,
+      "initial_bound": 1.2360679774997894,
+      "tail_bound": 4.0
+    },
+    {
+      "name": "star-7",
+      "v": 7,
+      "e": 6,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 4.494303633575669,
+      "min_k": 1,
+      "q1": 7.0,
+      "initial_bound": 2.640054944640259,
+      "tail_bound": 4.0
+    },
+    {
+      "name": "matching-7",
+      "v": 7,
+      "e": 3,
+      "components": 4,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 5.5
+    },
+    {
+      "name": "path-8",
+      "v": 8,
+      "e": 7,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.130559984760242,
+      "min_k": 1,
+      "q1": 3.847759065022573,
+      "initial_bound": 1.1682510130554182,
+      "tail_bound": 4.5
+    },
+    {
+      "name": "cycle-8",
+      "v": 8,
+      "e": 8,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.236067977499788,
+      "min_k": 1,
+      "q1": 4.0,
+      "initial_bound": 1.2360679774997898,
+      "tail_bound": 4.5
+    },
+    {
+      "name": "star-8",
+      "v": 8,
+      "e": 7,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 5.294678500871472,
+      "min_k": 1,
+      "q1": 8.0,
+      "initial_bound": 3.1231056256176606,
+      "tail_bound": 4.5
+    },
+    {
+      "name": "matching-8",
+      "v": 8,
+      "e": 4,
+      "components": 4,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 6.0
+    },
+    {
+      "name": "path-15",
+      "v": 15,
+      "e": 14,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.205647951287682,
+      "min_k": 1,
+      "q1": 3.9562952014676114,
+      "initial_bound": 1.2165441412904263,
+      "tail_bound": 8.0
+    },
+    {
+      "name": "cycle-15",
+      "v": 15,
+      "e": 15,
+      "components": 1,
+      "bipartite": false,
+      "minimum_gap": 2.24702418676324,
+      "min_k": 1,
+      "q1": 4.0,
+      "initial_bound": 1.2360679774997898,
+      "tail_bound": 8.0
+    },
+    {
+      "name": "star-15",
+      "v": 15,
+      "e": 14,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 11.19338962900336,
+      "min_k": 1,
+      "q1": 15.000000000000002,
+      "initial_bound": 6.566372975210779,
+      "tail_bound": 8.0
+    },
+    {
+      "name": "matching-15",
+      "v": 15,
+      "e": 7,
+      "components": 8,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 11.5
+    },
+    {
+      "name": "path-16",
+      "v": 16,
+      "e": 15,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.209314276078555,
+      "min_k": 1,
+      "q1": 3.96157056080646,
+      "initial_bound": 1.2188984490197163,
+      "tail_bound": 8.5
+    },
+    {
+      "name": "cycle-16",
+      "v": 16,
+      "e": 16,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.236067977499788,
+      "min_k": 1,
+      "q1": 3.9999999999999996,
+      "initial_bound": 1.2360679774997894,
+      "tail_bound": 8.5
+    },
+    {
+      "name": "star-16",
+      "v": 16,
+      "e": 15,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 12.062257748298546,
+      "min_k": 1,
+      "q1": 16.0,
+      "initial_bound": 7.062257748298549,
+      "tail_bound": 8.5
+    },
+    {
+      "name": "matching-16",
+      "v": 16,
+      "e": 8,
+      "components": 8,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 12.0
+    },
+    {
+      "name": "path-31",
+      "v": 31,
+      "e": 30,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.2289164495417544,
+      "min_k": 1,
+      "q1": 3.9897386467837905,
+      "initial_bound": 1.2314801404919646,
+      "tail_bound": 16.0
+    },
+    {
+      "name": "cycle-31",
+      "v": 31,
+      "e": 31,
+      "components": 1,
+      "bipartite": false,
+      "minimum_gap": 2.238634963157685,
+      "min_k": 1,
+      "q1": 4.000000000000001,
+      "initial_bound": 1.2360679774997902,
+      "tail_bound": 16.0
+    },
+    {
+      "name": "star-31",
+      "v": 31,
+      "e": 30,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 25.464460204179048,
+      "min_k": 1,
+      "q1": 31.0,
+      "initial_bound": 14.532224567009067,
+      "tail_bound": 16.0
+    },
+    {
+      "name": "matching-31",
+      "v": 31,
+      "e": 15,
+      "components": 16,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 23.5
+    },
+    {
+      "name": "path-32",
+      "v": 32,
+      "e": 31,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.229355919313826,
+      "min_k": 1,
+      "q1": 3.9903694533443943,
+      "initial_bound": 1.2317621050519723,
+      "tail_bound": 16.5
+    },
+    {
+      "name": "cycle-32",
+      "v": 32,
+      "e": 32,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 2.2360679774997916,
+      "min_k": 1,
+      "q1": 4.0,
+      "initial_bound": 1.2360679774997898,
+      "tail_bound": 16.5
+    },
+    {
+      "name": "star-32",
+      "v": 32,
+      "e": 31,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 26.37436529238901,
+      "min_k": 1,
+      "q1": 32.0,
+      "initial_bound": 15.031219541881399,
+      "tail_bound": 16.5
+    },
+    {
+      "name": "matching-32",
+      "v": 32,
+      "e": 16,
+      "components": 16,
+      "bipartite": true,
+      "minimum_gap": 0.9999999999999996,
+      "min_k": 1,
+      "q1": 2.0,
+      "initial_bound": 0.41421356237309515,
+      "tail_bound": 24.0
+    },
+    {
+      "name": "complete-7",
+      "v": 7,
+      "e": 21,
+      "components": 1,
+      "bipartite": false,
+      "minimum_gap": 9.43701121923364,
+      "min_k": 1,
+      "q1": 12.0,
+      "initial_bound": 5.082762530298219,
+      "tail_bound": 4.0
+    },
+    {
+      "name": "complete-10",
+      "v": 10,
+      "e": 45,
+      "components": 1,
+      "bipartite": false,
+      "minimum_gap": 14.893107477969027,
+      "min_k": 1,
+      "q1": 18.00000000000001,
+      "initial_bound": 8.055385138137423,
+      "tail_bound": 5.5
+    },
+    {
+      "name": "complete-16",
+      "v": 16,
+      "e": 120,
+      "components": 1,
+      "bipartite": false,
+      "minimum_gap": 26.0332963783729,
+      "min_k": 1,
+      "q1": 29.999999999999993,
+      "initial_bound": 14.033296378372905,
+      "tail_bound": 8.5
+    },
+    {
+      "name": "complete-bipartite-2-9",
+      "v": 11,
+      "e": 18,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 7.773545153394069,
+      "min_k": 1,
+      "q1": 11.0,
+      "initial_bound": 4.5901699437494745,
+      "tail_bound": 6.0
+    },
+    {
+      "name": "complete-bipartite-3-8",
+      "v": 11,
+      "e": 24,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 7.773545153394069,
+      "min_k": 1,
+      "q1": 10.999999999999996,
+      "initial_bound": 4.590169943749473,
+      "tail_bound": 6.0
+    },
+    {
+      "name": "complete-bipartite-8-8",
+      "v": 16,
+      "e": 64,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 12.062257748298556,
+      "min_k": 1,
+      "q1": 15.999999999999993,
+      "initial_bound": 7.062257748298546,
+      "tail_bound": 8.5
+    },
+    {
+      "name": "complete-bipartite-16-16",
+      "v": 32,
+      "e": 256,
+      "components": 1,
+      "bipartite": true,
+      "minimum_gap": 26.374365292389005,
+      "min_k": 1,
+      "q1": 32.0,
+      "initial_bound": 15.031219541881399,
+      "tail_bound": 16.5
+    },
+    {
+      "name": "odd-cycle-path-edge-four-isolates",
+      "v": 13,
+      "e": 7,
+      "components": 7,
+      "bipartite": false,
+      "minimum_gap": 2.3883089124772137,
+      "min_k": 1,
+      "q1": 3.9999999999999987,
+      "initial_bound": 1.236067977499789,
+      "tail_bound": 10.0
+    }
+  ],
+  "exact_examples": [
+    {
+      "name": "singleton",
+      "v": 1,
+      "edges": [],
+      "L": [
+        [
+          1
+        ]
+      ],
+      "D": [
+        [
+          0
+        ]
+      ],
+      "charpoly_L": "x - 1",
+      "charpoly_D": "x",
+      "charpoly_Q": "x",
+      "exact_spectral_transform_identity": true
+    },
+    {
+      "name": "single-edge",
+      "v": 2,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "L": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          0
+        ]
+      ],
+      "charpoly_L": "x**3 - 3*x**2 + x + 1",
+      "charpoly_D": "x**3 - 2*x",
+      "charpoly_Q": "x**2 - 2*x",
+      "exact_spectral_transform_identity": true
+    },
+    {
+      "name": "path-3",
+      "v": 3,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "L": [
+        [
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "charpoly_L": "x**5 - 5*x**4 + 5*x**3 + 3*x**2 - 3*x - 1",
+      "charpoly_D": "x**5 - 4*x**3 + 3*x",
+      "charpoly_Q": "x**3 - 4*x**2 + 3*x",
+      "exact_spectral_transform_identity": true
+    },
+    {
+      "name": "unfilled-triangle",
+      "v": 3,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "L": [
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "charpoly_L": "x**6 - 6*x**5 + 6*x**4 + 8*x**3 - 6*x**2 - 6*x - 1",
+      "charpoly_D": "x**6 - 6*x**4 + 9*x**2",
+      "charpoly_Q": "x**3 - 6*x**2 + 9*x - 4",
+      "exact_spectral_transform_identity": true
+    },
+    {
+      "name": "cycle-4",
+      "v": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "L": [
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "charpoly_L": "x**8 - 8*x**7 + 16*x**6 + 8*x**5 - 34*x**4 - 8*x**3 + 16*x**2 + 8*x + 1",
+      "charpoly_D": "x**8 - 8*x**6 + 20*x**4 - 16*x**2",
+      "charpoly_Q": "x**4 - 8*x**3 + 20*x**2 - 16*x",
+      "exact_spectral_transform_identity": true
+    },
+    {
+      "name": "triangle-pendant",
+      "v": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "L": [
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "charpoly_L": "x**8 - 8*x**7 + 15*x**6 + 8*x**5 - 28*x**4 - 8*x**3 + 15*x**2 + 8*x + 1",
+      "charpoly_D": "x**8 - 8*x**6 + 19*x**4 - 12*x**2",
+      "charpoly_Q": "x**4 - 8*x**3 + 19*x**2 - 16*x + 4",
+      "exact_spectral_transform_identity": true
+    },
+    {
+      "name": "matching-two-isolates",
+      "v": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "L": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "D": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "charpoly_L": "x**8 - 8*x**7 + 24*x**6 - 32*x**5 + 14*x**4 + 8*x**3 - 8*x**2 + 1",
+      "charpoly_D": "x**8 - 4*x**6 + 4*x**4",
+      "charpoly_Q": "x**6 - 4*x**5 + 4*x**4",
+      "exact_spectral_transform_identity": true
+    }
+  ],
+  "summary": {
+    "exhaustive_labeled_graphs": 33867,
+    "exhaustive_partial_sums": 453098,
+    "bipartite": 5604,
+    "nonbipartite": 28263,
+    "held_out_cases": 32,
+    "exact_examples": 7,
+    "all_assertions_passed": true,
+    "elapsed_seconds": 5.095748494000873
+  }
+}

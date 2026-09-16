@@ -1,0 +1,24 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every integer n>=1, every partition of [n] into nonempty blocks B_v, and every rooted tree tau on those blocks, let D_v be the union of descendant blocks including B_v and N_v=|D_v|. Set Q_tau={x in R^n: x_i>=0 for all i and sum_{i in D_v} x_i<=N_v for every v}. Let W_tau be all length-n words over [n] with at least N_v occurrences of letters from D_v for every v, and des(w)=|{j:1<=j<n, w_j>w_{j+1}}|. With sum_{m>=0}|m Q_tau intersect Z^n| t^m=h*(Q_tau,t)/(1-t)^(n+1), one has h*(Q_tau,t)=sum_{w in W_tau} t^(n-1-des(w)). Equivalently, for every integer m>=0, |m Q_tau intersect Z^n|=sum_{a in A_tau} product_{i=1}^n binom(m+1,a_i), where A_tau={a in Z_{≥0}^n:sum_i a_i=n and sum_{i in D_v} a_i>=N_v for every v}, and binom(m+1,a_i)=0 when a_i>m+1. No restriction on block labels, sizes, depth, or branching is imposed.",
+  "contribution": "Proposed complete proof of Athanasiadis-Xiao-Yan, arXiv:2603.11654v1, Conjecture 5.2, using a polynomial transformation that intertwines upper and lower subtree truncations. The height-counting recurrence, binomial-content reformulation, and multiset-word identity are credited as known; the new proposed step is their compatible subtree transformation and all-arbor consequence. No equivalent proof was found in the bounded primary-source comparison of 2026-09-14. The broader conjecture for arbitrary preorders is outside the claimed scope. Fresh mathematical review is requested; no acceptance is asserted.",
+  "proposer_job_id": "primary-20260914-arbor-ehrhart-words-research-9e9070b093b6",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research-proof.md",
+    "evidence/research-checks.md",
+    "evidence/research_checks.py",
+    "evidence/research_checks.json",
+    "literature/research-verification.md",
+    "literature/triage-verification.md",
+    "literature/intake-dedup.json",
+    "evidence/triage-transform.md",
+    "evidence/external/2603.11654v1.pdf",
+    "evidence/external/2603.11654v1.txt",
+    "evidence/external/2605.26916v1.pdf",
+    "evidence/external/2605.26916v1.txt",
+    "evidence/external/2608.16037v2.html"
+  ]
+}

@@ -1,0 +1,326 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Aut}{\operatorname{Aut}}
+
+\title[Bounds for 17-point unlabeled posets]{Certified bounds for the number of unlabeled posets on 17 points}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 31, 2026}
+\hypersetup{pdftitle={Certified bounds for the number of unlabeled posets on 17 points},pdfauthor={Zijian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+Let $U(n)$ denote the number of isomorphism classes of $n$-element
+posets.  The exact value of $U(17)$ remains unknown.  We prove the explicit
+partial result
+\[
+377293651326150106\leq U(17)\leq15754175376569459236.
+\]
+The lower bound is obtained from Burnside's lemma by constructing three
+disjoint families of posets fixed by each permutation cycle type.  The upper
+bound deletes a maximal point, then combines the complete 16-point
+comparability-count histogram with the Kruskal--Katona clique bound.  We also
+independently certify the known disconnected count
+$4554367168841547$.  All arithmetic is integral, and independent evaluators
+are supplied for both endpoints.  The interval is not an exact enumeration
+of the 17-point classes.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Write $U(n)$ for the number of finite posets on $n$ unlabeled points, where
+only order-preserving isomorphisms are factored out.  Brinkmann and McKay
+enumerated all classes through 16 points and obtained
+\[
+U(16)=4483130665195087
+\]
+together with extensive refined tables \cite{BrinkmannMcKay2002}.  This is
+still the last term in the live table A000112 \cite{OEISA000112}.  A recent
+preprint advances the labeled count to 19 by moment transfer, but explicitly
+retains 16 as the unlabeled frontier \cite{Ayala2026}.  Labeled moments are
+automorphism-weighted and do not determine the number of isomorphism classes.
+
+Our contribution is a certified interval for the next unlabeled term.  It is
+not a solution of the exact enumeration problem.  We also recertify the
+published disconnected count of Mohammad, Noor, and Talukder
+\cite{MohammadNoorTalukder2022}.  Searches of OEIS, arXiv, Crossref, zbMATH
+Open, author pages, and exact result strings through August 31, 2026 did not
+locate the displayed interval; this is a search-bounded statement, not a
+claim that every possible source has been examined.
+
+\section{Definitions and the disconnected part}
+
+For a finite poset $Q$, let $d(Q)$ denote its number of order ideals,
+equivalently its number of antichains.  Let $C(n)$ and $D(n)$ denote,
+respectively, the numbers of connected and disconnected unlabeled
+$n$-point posets.  Connectedness refers to the undirected Hasse graph (or,
+equivalently, the comparability graph).  Unique decomposition into connected
+components gives the Euler product
+\begin{equation}\label{eq:euler}
+1+\sum_{n\geq1}U(n)x^n=\prod_{k\geq1}(1-x^k)^{-C(k)}.
+\end{equation}
+
+\begin{proposition}\label{prop:disconnected}
+The number of disconnected unlabeled posets on 17 points is
+\[
+D(17)=4554367168841547.
+\]
+More precisely, the numbers with $m$ connected components are as follows.
+\end{proposition}
+
+\begin{center}
+\begin{tabular}{r@{\quad}r@{\qquad}r@{\quad}r}
+\toprule
+$m$ & count & $m$ & count\\
+\midrule
+2 & 4484639396830962 & 10 & 17905\\
+3 & 68351780482060 & 11 & 2179\\
+4 & 1340882409188 & 12 & 332\\
+5 & 33946665077 & 13 & 64\\
+6 & 1112290782 & 14 & 14\\
+7 & 47328664 & 15 & 4\\
+8 & 2624304 & 16 & 1\\
+9 & 190010 & 17 & 1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proof}
+Adjoin a variable marking components in \eqref{eq:euler}.  The coefficient
+of $x^{17}y^m$ in
+\[
+\prod_{k=1}^{16}(1-yx^k)^{-C(k)}
+\]
+counts the classes with exactly $m\geq2$ components.  Expanding the factors
+with the certified values $C(1),\ldots,C(16)$ gives the displayed table, whose
+sum is the asserted total.  Notice that $C(17)$ cannot occur in a term with
+two or more components.  For independent checking, we also enumerated the
+integer partitions $17=\sum k m_k$ and summed
+\[
+\prod_k \binom{C(k)+m_k-1}{m_k}.
+\]
+A third implementation first recovered $C(1),\ldots,C(16)$ from the published
+$U(0),\ldots,U(16)$ by inverse Euler transformation.  All three computations
+agree component by component.  The total matches the earlier published value
+\cite[Table~4]{MohammadNoorTalukder2022}.
+\end{proof}
+
+\section{A constructive Burnside lower bound}
+
+Let $P(r)$ be the number of partial orders on a fixed labeled $r$-element
+set.  Fix $\sigma\in S_{17}$, and denote its distinguishable cycles by
+$B_1,\ldots,B_r$, with lengths $\lambda_1,\ldots,\lambda_r$.
+
+\begin{lemma}\label{lem:pairorbits}
+The cyclic group generated by $\sigma$ has
+$\gcd(\lambda_i,\lambda_j)$ orbits on $B_i\times B_j$.
+Every nonempty such orbit projects onto both factors.
+\end{lemma}
+
+\begin{proof}
+Simultaneous cyclic shift has orbit length
+$\operatorname{lcm}(\lambda_i,\lambda_j)$.  Division of
+$\lambda_i\lambda_j$ by this length gives the first assertion.  During a full
+orbit the first and second coordinates each traverse their cycles.
+\end{proof}
+
+Uniformly replacing each point of a labeled $r$-point poset by the
+corresponding antichain $B_i$ gives $P(r)$ distinct posets fixed by $\sigma$.
+We next describe two further fixed families.
+
+For a linear ordering $\pi$ of the blocks, choose between each adjacent pair
+any nonempty union of its pair-orbits and orient it forward.  Put every point
+of each earlier nonadjacent block below every point of the later block.  The
+result is a poset: any two-step relation between adjacent blocks closes into
+one of the complete nonadjacent relations.  Its block order and its adjacent
+patterns are recoverable.  The number for a fixed $\pi$ is
+\[
+\prod_{i=1}^{r-1}
+\left(2^{\gcd(\lambda_{\pi_i},\lambda_{\pi_{i+1}})}-1\right).
+\]
+The cases in which every adjacent relation is complete are indexed by all
+permutations of the blocks; they are already uniform blow-ups.
+
+For the second family, choose a nonempty matching $M$ on the cycle blocks.
+Make each matched pair $i,j$ an isolated two-block component, choose either
+orientation, and choose a nonempty proper union of its pair-orbits.  This
+gives
+\[
+w_{ij}=2\left(2^{\gcd(\lambda_i,\lambda_j)}-2\right)
+\]
+possibilities.  Put an arbitrary labeled poset on the unmatched blocks and
+blow it up uniformly.  The nonuniform block-pairs recover $M$, so the objects
+are distinct.  When $r=2$ this family is omitted because it coincides with
+part of the linearly ordered family; when $r>2$ its block quotient is
+disconnected and hence cannot overlap that family.
+
+For a partition $\lambda\vdash17$, let $m_j$ be the multiplicity of part $j$
+and let $z_\lambda=\prod_j j^{m_j}(m_j!)$.  Define
+\begin{align*}
+T_\lambda={}&\sum_{\pi\in S_r}
+\prod_{i=1}^{r-1}
+\left(2^{\gcd(\lambda_{\pi_i},\lambda_{\pi_{i+1}})}-1\right)-r!,\\
+M_\lambda={}&\sum_{\substack{M\text{ a nonempty matching}\\
+                              \text{of the }r\text{ blocks}}}
+P(r-2|M|)\prod_{\{i,j\}\in M}w_{ij},
+\end{align*}
+where $M_\lambda$ is set to zero for $r=2$.
+
+\begin{proposition}\label{prop:fixedlower}
+If $\sigma$ has cycle type $\lambda$, then
+\[
+\Fix(\sigma)\geq P(r)+T_\lambda+M_\lambda.
+\]
+\end{proposition}
+
+\begin{proof}
+The uniform, linearly ordered nonuniform, and matching constructions above
+are fixed by $\sigma$.  They are internally injective.  A nonuniform relation
+separates either additional family from the uniform family, while connected
+versus disconnected block quotients separate the two additional families for
+$r>2$.  The exceptional overlap at $r=2$ was removed by definition.
+\end{proof}
+
+\begin{proposition}\label{prop:lower}
+One has
+\[
+U(17)\geq377293651326150106.
+\]
+\end{proposition}
+
+\begin{proof}
+The conjugacy class of type $\lambda$ has size $17!/z_\lambda$.  Exact
+aggregation of Proposition~\ref{prop:fixedlower} over the partitions of 17
+gives three contributions
+\begin{align*}
+L_0&=134198602505888509372423191552000,\\
+L_1&=2210831977844367360,\\
+L_2&=5971256590320944751628800.
+\end{align*}
+Thus the Burnside numerator is at least
+\[
+L=L_0+L_1+L_2=134198608477147310525345787548160.
+\]
+Burnside's lemma and integrality give
+\[
+U(17)\geq\left\lceil\frac{L}{17!}\right\rceil
+=377293651326150106.
+\]
+\end{proof}
+
+\section{A one-point-extension upper bound}
+
+\begin{lemma}\label{lem:extension}
+Let $\mathcal P_{16}$ be a set of representatives of the 16-point poset
+classes.  Then
+\[
+U(17)\leq\sum_{Q\in\mathcal P_{16}}d(Q).
+\]
+\end{lemma}
+
+\begin{proof}
+Every 17-point poset has a maximal point.  Delete one and call the remaining
+poset $Q$.  The strict lower set of the deleted point is an order ideal of
+$Q$.  Conversely, adjoining a new maximal point above exactly an order ideal
+defines a poset.  After transporting $Q$ to the chosen representative of its
+class, this construction covers every 17-point isomorphism class.  Different
+ideals can yield isomorphic extensions, which is why the conclusion is an
+upper bound.
+\end{proof}
+
+Suppose $Q$ has $q$ strict comparable pairs.  Its antichains are the
+independent sets of its comparability graph and hence the cliques, including
+the empty set and singletons, of the complementary graph with
+$N=\binom{16}{2}-q$ edges.  Write
+\[
+N=\binom{a}{2}+b,\qquad 0\leq b<a.
+\]
+The Kruskal--Katona theorem says that the colex graph maximizes the number of
+cliques of every size; this graph formulation is recorded explicitly in
+\cite[Proposition~1]{KirschRadcliffe2021}, based on the original theorem
+\cite{Kruskal1963}.  The colex graph is a $K_a$, one further vertex joined to
+$b$ clique vertices, and isolates.  Consequently
+\begin{equation}\label{eq:imax}
+I_{16}(q)=2^a+2^b+16-a-1.
+\end{equation}
+For $N=\binom{16}{2}$, the value is $I_{16}(0)=2^{16}$.
+
+\begin{proposition}\label{prop:upper}
+One has
+\[
+U(17)\leq15754175376569459236.
+\]
+\end{proposition}
+
+\begin{proof}
+Table~59 of Brinkmann--McKay \cite{BrinkmannMcKay2002} gives, for every
+$0\leq q\leq120$, the exact number $h_q$ of 16-point unlabeled posets with
+$q$ strict relations.  It checks that $\sum_q h_q=U(16)$.  Lemma
+\ref{lem:extension}, the ideal--antichain bijection, and
+\eqref{eq:imax} give
+\[
+U(17)\leq\sum_{q=0}^{120}h_q I_{16}(q)
+=15754175376569459236.
+\]
+\end{proof}
+
+Propositions \ref{prop:lower} and \ref{prop:upper} prove the interval in the
+abstract.
+
+\section{Exact verification and limitations}
+
+The supplementary certificate consists only of integer input tables and
+short Python programs using arbitrary-precision integer arithmetic.  The
+disconnected count is evaluated by three methods.  The Burnside lower
+numerator is evaluated both by a cycle-multiplicity recursion and by a
+distinguishable-cycle bit-mask dynamic program.  The upper bound is evaluated
+from the closed colex formula and, independently, by constructing all 121
+colex graphs and testing all $2^{16}$ vertex subsets.  A separate parser
+checks every serialized histogram entry against the archived published
+table.  No floating-point value enters a theorem.
+
+The exact value of $U(17)$ remains open.  In a complete Burnside computation,
+permutations with several nontrivial cycles admit nonuniform relations not
+exhausted by our constructed families.  Already cycle type $2^2 1^{13}$
+introduces counts tied to marked cover relations over labeled 15-point
+posets, a refinement not supplied by the labeled totals or antichain moments
+used here.  Direct canonical generation also requires a nontrivial extension
+of the public 16-point generator and a complete independently checked split
+manifest.  Neither missing step is replaced by a finite test or runtime
+estimate.
+
+\section*{Data, code, and computational disclosure}
+
+The supplementary archive contains the exact input certificates, all
+independent verification programs, the archived-source comparison, and
+documented one-command checks.  The 2026 labeled-moment residue table was also
+reconstructed from its authors' public data as a frontier check, but it is not
+used as a certificate for $U(17)$.  The mathematical claims were separated
+from exploratory computations and checked by independent exact
+implementations.  No proof assistant was used.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

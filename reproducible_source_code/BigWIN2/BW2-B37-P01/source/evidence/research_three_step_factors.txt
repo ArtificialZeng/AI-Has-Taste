@@ -1,0 +1,27 @@
+Commands:
+  python3 evidence/research_three_step_factors.py
+  python3 -c 'import sys; sys.path.insert(0,"evidence"); from research_three_step_factors import check_prefix; print(check_prefix(6))'
+Date: 2026-09-06
+
+i=0 family_k=0 left_period=1 right_period=1 gcd=1 sampled_period=1 least_F_period=3 language_counts=1x1 language_match=True support=[-1,0] interface=site -1 is 00; site 0 is 00 or 11
+i=1 family_k=2 left_period=5 right_period=9 gcd=1 sampled_period=45 least_F_period=135 language_counts=5x9 language_match=True support=[-3,2] interface=site -1 is 00; site 0 is 00 or 11
+i=2 family_k=4 left_period=21 right_period=41 gcd=1 sampled_period=861 least_F_period=2583 language_counts=21x41 language_match=True support=[-5,4] interface=site -1 is 00; site 0 is 00 or 11
+i=3 family_k=6 left_period=85 right_period=169 gcd=1 sampled_period=14365 least_F_period=43095 language_counts=85x169 language_match=True support=[-7,6] interface=site -1 is 00; site 0 is 00 or 11
+i=4 family_k=8 left_period=341 right_period=681 gcd=1 sampled_period=232221 least_F_period=696663 language_counts=341x681 language_match=True support=[-9,8] interface=site -1 is 00; site 0 is 00 or 11
+i=5 family_k=10 left_period=1365 right_period=2729 gcd=1 sampled_period=3725085 least_F_period=11175255 language_counts=1365x2729 language_match=True support=[-11,10] interface=site -1 is 00; site 0 is 00 or 11
+
+The complete i=0,...,5 run took 123.58 seconds and at most 10752 KB RSS.
+For each i it checked every one of P(2i)/3 sampled states, not only the
+endpoint.  In particular, both projected cycles repeat exactly throughout the
+full orbit and have no repeated state within their asserted first cycle.
+
+Held-out path-language/factor-prefix test:
+i=6 family_k=12 prefix_samples=10922 left_first_return=5461 right_first_return=10921 language_counts=5461x10921 language_match=True full_return_tested=False
+
+The i=6 command took 0.39 seconds and at most 12784 KB RSS.  It does not test
+the full return (which would require 5461*10921 sampled updates); it exactly
+checks distinctness and the first return of each projection through sample
+10921, together with support, interface, and path-language assertions.
+
+All state evolution, equality, path, and distinctness checks use exact integer
+and finite-set operations.  The script aborts on any failed assertion.

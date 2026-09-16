@@ -1,0 +1,21 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every odd r,s>=3 and odd ell>=1, use the frozen graph and normalized gain real parts alpha,beta of problem.md, and put L=(ell-1)/2, N=r+s+ell-1, H=(s+L)alpha+(r+L)beta. The Hermitian characteristic polynomial satisfies P(0)=(-1)^(N/2)(1-4alpha beta) and P_x(0)=-2(-1)^(N/2)H. Thus its zero eigenvalue exists exactly on alpha beta=1/4 and is simple throughout that locus in the closed square. At each interior point q of that locus, with Z,W,X,Y the source Lemma 4.2 polynomials, A=Z-alpha beta W, B=alpha X+beta Y, C=A^2+B^2, I_alpha=integral_0^infinity(-beta WA+XB)/(t^2 C)dt, and I_beta=integral_0^infinity(-alpha WA+YB)/(t^2 C)dt, one has E(q+h)=E(q)+(2/pi)(I_alpha h_alpha+I_beta h_beta)+2|beta h_alpha+alpha h_beta|/|H|+O(||h||^2). Therefore a necessary condition for an interior singular local minimum is alpha I_alpha=beta I_beta and |alpha I_alpha+beta I_beta|<=pi/(2|H|); together with strict inequality these conditions suffice for a strict local minimum. Equality in the normal bound is unclassified. Away from the singular locus the usual necessary interior conditions I_alpha=I_beta=0 hold. For every 0<p<1 the energy on alpha beta=p in the positive square is strictly convex in u=(1/2)log(alpha/beta), hence has a unique constrained minimum; at p=1 the curve is a singleton. When r=s the constrained minimum is (sqrt(p),sqrt(p)). When r<s its coordinates satisfy alpha<beta for p<1, and X(t)/Y(t)>(s+L)/(r+L) for all t>0. In particular, if p>=(r+L)/(s+L) the constrained minimum is exactly (p,1); if s+L>=4(r+L), the unique positive singular-curve minimum is (1/4,1) and there is no interior singular local minimum. Exchange of cycles and simultaneous negation give the corresponding statements. These constrained endpoint minima are not asserted to minimize the full square. For D_(3,3,1), the full-square minima are exactly (+1/2,+1/2) and (-1/2,-1/2), with eight oriented cycle-gain switching lifts and common energy 2+sqrt(13)+sqrt(5); the source equation (117) integrals at the positive minimizer are strictly positive, while its diagonal derivative jump is 4/3. For D_(3,3,5), exact root intervals put the directional energy derivative at (1/2,1/2) along (-1,-1) strictly between -8/1000 and -7/1000, so this singular point is not a local minimum. Complete arguments and all scope exclusions are in evidence/singular-branch.md. The full original all-odd global minimum/equality classification remains unresolved.",
+  "contribution": "Proposed graph-specific repair of Huang--Pereyra Theorem 4.7 at zero eigenvalues, with explicit length-dependent directional conditions, strict local sufficiency, fixed-product uniqueness and a structural boundary criterion. D331 supplies an exact global counterexample to the unqualified subsidiary stationarity equations, and D335 an exact contrasting descent test. The source already gives the D331 half-diagonal energy and notes its cusp; neither these observations nor generic spectral subgradient calculus is claimed as new. No equivalent correction was found in the documented bounded primary-source comparison; significance, correctness and novelty remain for fresh review.",
+  "proposer_job_id": "primary-20260914-dumbbell-min-energy-research-4c017c9f21aa",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/singular-branch.md",
+    "evidence/research_checks.py",
+    "evidence/research-checks.json",
+    "evidence/research_diagnostics.py",
+    "evidence/research-diagnostics.json",
+    "evidence/triage-math.md",
+    "literature/research-screen.md",
+    "evidence/external/2604.27785v2.pdf",
+    "evidence/external/2604.27785v2.txt",
+    "evidence/external/source-copy.json"
+  ]
+}

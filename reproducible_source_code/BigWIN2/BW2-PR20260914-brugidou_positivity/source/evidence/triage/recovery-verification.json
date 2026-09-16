@@ -1,0 +1,120 @@
+{
+  "job_id": "primary-20260914-brugidou-positivity-triage-af8134cc889c",
+  "recorded_at": "2026-09-14T02:14:57.152585+08:00",
+  "outcome": "advance",
+  "candidate_kind": "none",
+  "original_status": "unresolved",
+  "source_sha256": "41514463fec1850514a2d7e769680ea0403b78bc8ec786ce51eef70271847b1d",
+  "source_unchanged": true,
+  "handoffs_read": [
+    "literature/operational-recovery-handoff.md"
+  ],
+  "checker_reexecution": {
+    "command": "python3 evidence/triage/hook_check.py",
+    "exit_code": 0,
+    "definition_checks": 45,
+    "definition_max_size": 10,
+    "prior_calibration_comparisons": 66,
+    "prior_calibration_max_size": 12,
+    "a3_formula_checks": 31,
+    "a3_b_range": [
+      0,
+      30
+    ],
+    "cutoff_and_neighbor_checks": 28,
+    "a_range": [
+      3,
+      12
+    ],
+    "failures": [],
+    "qualification": "Saved checker reexecuted during this job; same implementation and ranges, not an independent implementation or new computational coverage."
+  },
+  "registry_screen": {
+    "path": "/home/ailab/4math-open-problems/registry/problems.jsonl",
+    "sha256": "6a4d6e6df560b916b856ac5bfbd5f324e6f3c3d524fa19dc4c5643de7984c8b7",
+    "record_count": 667,
+    "regex": "brugidou|2306[.]15300|q.exponential|monomial.symmetric|hook.{0,90}positiv|positiv.{0,90}hook",
+    "matched_ids": [
+      "win-00056-p09",
+      "primary-20260914-brugidou-positivity",
+      "primary-excluded-20260914-brugidou-dfs"
+    ],
+    "compared_neighbors": [
+      {
+        "id": "win-00040-p02",
+        "title": "八顶点图的加权 bond 对称函数 Schur 对数凹性",
+        "object": "Schur-log-concavity of the multiweighted-bond symmetric function Psi_G",
+        "quantifiers": "every connected simple graph on exactly eight vertices satisfies all degree inequalities",
+        "nearest_result": "González D'León--Wachs report computational verification for all connected graphs through seven vertices",
+        "proposed_delta": "complete the first unchecked finite layer or give its first exact counterexample",
+        "status": "admitted"
+      },
+      {
+        "id": "win-00046-p14",
+        "title": "q,t-Bergeron 猜想的第一条 a=4 射线",
+        "object": "two-variable Schur positivity of the (4,5,4m,5m) Gaussian-binomial difference",
+        "quantifiers": "all integers m>=2 and every two-row Schur coefficient",
+        "nearest_result": "arXiv:2608.30979v1 Conjecture 3.1 states the general problem; classical results cover only a=2,3 or one-variable specializations",
+        "proposed_delta": "settle the first a=4 parameter ray by a nonnegative formula or one exact negative coefficient",
+        "status": "parked"
+      },
+      {
+        "id": "win-00052-p14",
+        "title": "三变量 signed Tutte polynomial 的 Hopf 解释",
+        "object": "character and convolution realization of the GLRV signed Tutte polynomial in the signed-graph combinatorial Hopf algebra",
+        "quantifiers": "all finite signed graphs",
+        "nearest_result": "arXiv:2609.03959v1 final open question",
+        "proposed_delta": "a specialization-preserving Hopf-algebra construction",
+        "status": "parked"
+      },
+      {
+        "id": "win-00056-p09",
+        "title": "Structural classification of branching-balanced partitions",
+        "object": "partitions whose largest Plancherel up-transition probability is at most one half",
+        "quantifiers": "all nonempty integer partitions, including every equality family",
+        "nearest_result": "arXiv:2609.03746v1 defines branching-balanced partitions and uses them in a sharp universal Plucker positivity theorem",
+        "proposed_delta": "give a Ferrers-diagram characterization via hook-length ratios",
+        "status": "parked"
+      },
+      {
+        "id": "win-00057-p07",
+        "title": "Hopf realization of the three-variable signed Tutte polynomial",
+        "object": "character and convolution realization of the GLRV signed Tutte polynomial",
+        "quantifiers": "all finite signed graphs with both required specializations",
+        "nearest_result": "arXiv:2609.03959v1 final open question",
+        "proposed_delta": "construct a specialization-preserving combinatorial Hopf morphism",
+        "status": "parked"
+      },
+      {
+        "id": "win-00068-p07",
+        "title": "Degree-four obstruction to independent-row K-basis closure",
+        "object": "the molecular-species product K_22 times K_4 under the literal independent-row group G_alpha from arXiv:2609.05010v1 Remark 3.2",
+        "quantifiers": "disprove nonnegative expansion in {K_lambda: lambda partitions 4} and certify that no such obstruction occurs in degrees at most 3",
+        "nearest_result": "arXiv:2609.05010v1 Open Problem 5.1 asks for subgroup-lattice formulas for K_alpha products; arXiv:2604.10336v1 Definition 3.3 instead uses one diagonal cyclic factor per distinct part size and therefore does not settle the literal newer definition",
+        "proposed_delta": "independently verify the exact double-coset candidate K_22 times K_4 isomorphic to K_(1,1,1,1) plus C_22 and the cycle-index identity K_22 star K_4 = 2 K_22 - 2 K_211 + 2 K_(1,1,1,1), yielding the first negative K-basis coefficient",
+        "status": "done"
+      },
+      {
+        "id": "newwin-00001-p10",
+        "title": "Schur 形状 \\((2,2)\\) 的单项式多重集能否恢复整数分拆？",
+        "object": "Monomial-value multiset of Schur shape (2,2), with coefficient multiplicities, on positive integer partitions",
+        "quantifiers": "Every N and every two partitions of N of length>=2; equality of S22 multisets implies equal partitions",
+        "nearest_result": "Thomas-Tung arXiv2606.19796v1 Conj6.3 is the parent two-row question; Theorem5.7 already proves prefix recovery, so that proposed route is prior art.",
+        "proposed_delta": "Entire shape(2,2) injectivity at fixed N, not the differing-sum rectangle counterexample.",
+        "status": "released-result-note"
+      }
+    ],
+    "conclusion": "This project is the self-match. DFS is a different excluded claim; seven normalized neighbor targets use different objects/maps. No additional matching target found in this bounded screen.",
+    "limitations": "No new Excel or conversation comparison; keyword screen and normalized neighbor comparison are not exhaustive equivalence detection."
+  },
+  "artifacts_sha256": {
+    "source.md": "41514463fec1850514a2d7e769680ea0403b78bc8ec786ce51eef70271847b1d",
+    "problem.md": "df3c132c1e063bc64189b6c56a4e0b43e330c0659d4f4fc2597a864b2c7c4016",
+    "evidence/triage/hook-route.md": "3eaf8c352cb8404807dfaa3f25d56ebdf65756cf1bbbeab536bf12330cb75945",
+    "evidence/triage/hook_check.py": "c8c6f5c1ea8c77f345e9bdd7a4b283c9b5c67c5132ab18d08b105d63f84d4ac2",
+    "evidence/triage/hook_check.json": "b444d00def7e484bfd3cff24acd6d32134a7f159e30e74d94ddee07b64758ed5",
+    "evidence/triage/recovery-verification.md": "26a1fc8675b39b3f2236765eedf9b548308c6267a4ab55c749217270995e7aa7",
+    "literature/recovery-triage-screen.md": "9f871926a29b8374f86ad64358d82da953fb24f8689bceb051793896e57a430e"
+  },
+  "qualification": "Triage suitability only. No mathematical acceptance, candidate, full resolution, or novelty certification."
+}

@@ -1,0 +1,61 @@
+The number of realizations of all Laman graphs with at most 12 vertices
+Jose Capco, Matteo Gallet, Georg Grasegger, Christoph Koutschan, Niels Lubbes, Josef Schicho
+10.5281/zenodo.1245517
+
+
+This data set consists of files for Laman graphs (minimally rigid graphs) and their Laman numbers (number of complex relaizations).
+Laman graphs and Laman numbers for graphs up to 10 vertices are collected in one zip file.
+LamanGraphs<N>.txt/.zip 
+	These files contain all Laman graphs with N vertices. The graphs are stored in integer representation. 
+	A description on how to read the represnetation can be found below.
+Realizations<N>.txt/.zip 
+	These files contain the Laman numbers of the Laman graphs in respective order.
+	The algorithm that was used to compute these numbers is presented in [1,2].
+	An implementaion can be found at [3].
+	
+Representation of graphs.
+We representat a graph by an integer. This integer is obtained from the adjacency matrix.
+We take the upper triangle from the matrix and store entries row by row in a list.
+This list is interpreted as digits in base two.
+The integer is the base 10 representation.
+The graph with adjecency matrix
+	0 1 1
+	1 0 1
+	1 1 0
+is represented by (111)_2 = 7.
+The graph with adjecency matrix
+	0 0 1 1
+	0 0 1 1
+	1 1 0 1
+	1 1 1 0
+is represented by (011111)_2=31.
+
+In Mathematica the adjecency matrix can be obtained from the integer by the following code:
+	G2Mat[g_Integer] := G2Mat[g, Floor[(3 + Sqrt[8*Floor[Log[2, g]] + 1]) / 2]];
+	G2Mat[g_Integer, n_Integer] := (# + Transpose[#])&[PadLeft[
+		Table[Take[#, {(2n-i)*(i-1)/2+1, (2n-i-1)*i/2}], {i, n}]&[PadLeft[IntegerDigits[g, 2], n*(n-1)/2]], {n, n}]];
+
+
+
+
+
+
+References
+[1] J. Capco, M. Gallet, G. Grasegger, C. Koutschan, N. Lubbes, and J. Schicho.
+	The number of realizations of a Laman graph.
+	SIAM Journal on Applied Algebra and Geometry, 2(1):94–125, 2018
+	doi: 10.1137/17M1118312
+
+[2] J. Capco, M. Gallet, G. Grasegger, C. Koutschan, N. Lubbes, and J. Schicho.
+	Computing the number of realizations of a Laman graph.
+	Electronic Notes in Discrete Mathematics, 61:207–213, 2017
+	The European Conference on Combinatorics, Graph Theory and Applications (EUROCOMB’17).
+	doi: 10.1016/j.endm.2017.06.040
+
+[3] J. Capco, M. Gallet, G. Grasegger, C. Koutschan, N. Lubbes, and J. Schicho
+	An algorithm for computing the number of realizations of a Laman graph
+	doi: 10.5281/zenodo.1245506
+
+
+Data manager
+Georg Grasegger

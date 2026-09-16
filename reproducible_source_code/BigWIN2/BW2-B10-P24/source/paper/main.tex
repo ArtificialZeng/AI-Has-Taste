@@ -1,0 +1,137 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\title{The Strict-Pair Product Extremal Value at 62 Is 31}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{August 31, 2026}
+\hypersetup{pdftitle={The Strict-Pair Product Extremal Value at 62 Is 31},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+Let $F(N)$ be the largest cardinality of a subset $A\subseteq[N]$ for which
+the products $ab$, over two-element subsets $\{a,b\}\subseteq A$, are all
+distinct.  We certify the finite equality $F(62)=31$.  The lower bound is an
+explicit set whose 465 products are distinct.  For the upper bound,
+equal-product collisions define a four-uniform hypergraph with 1203 edges.
+An exact exhaustive vertex-cover enumeration rejects every cover of size at
+most 30.  This finite result does not settle the asymptotic questions
+associated with Erd\H{o}s problem 425.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+Erd\H{o}s studied sets of positive integers having distinct products of two
+different members in 1938~\cite{Erdos1938}.  The classical theory determines
+the order of the secondary term beyond $\pi(N)$ but not its limiting
+coefficient; see Erd\H{o}s's graph-theoretic account~\cite{Erdos1969} and the
+modern summary in Liu and Pach~\cite{LiuPach2019}.  Here we address only one
+finite instance of the strict-pair problem.
+
+The qualification ``strict-pair'' is essential.  We compare products indexed
+by two-element subsets and therefore do not compare squares $a^2$ with other
+products.  Some uses of ``multiplicative Sidon'' impose the stronger condition
+that includes repeated factors.  No such strengthening is used below.
+
+\section{Collision hypergraph}
+Write $[N]=\{1,\ldots,N\}$.
+\begin{definition}
+A set $A\subseteq[N]$ is \emph{strict-pair product injective} if, for all
+$a,b,c,d\in A$,
+\[
+ (a<b\ \wedge\ c<d\ \wedge\ ab=cd)
+ \quad\Longrightarrow\quad (a=c\ \wedge\ b=d).
+\]
+Let $F(N)$ be the maximum cardinality of such a set.
+\end{definition}
+
+\begin{lemma}\label{lem:four}
+If two distinct strict pairs of positive integers have the same product, then
+their union has four elements.
+\end{lemma}
+\begin{proof}
+If the pairs shared an element, cancellation of that positive element would
+make their other elements equal.  The pairs would then be identical.
+\end{proof}
+
+Let $H_N$ be the four-uniform hypergraph on $[N]$ whose edges are the
+four-sets that admit a partition into two pairs with equal products.
+\begin{proposition}\label{prop:reduction}
+For every $N\geq1$,
+\[
+                         F(N)=\alpha(H_N)=N-\tau(H_N),
+\]
+where $\alpha$ and $\tau$ denote the independence and vertex-cover numbers.
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:four}, a set violates strict-pair product injectivity if and
+only if it contains an edge of $H_N$.  Thus admissible sets are precisely the
+independent sets.  Taking complements exchanges independent sets and vertex
+covers in every finite hypergraph.
+\end{proof}
+
+\section{The exact finite value}
+\begin{theorem}\label{thm:main}
+Under the strict-pair convention, $F(62)=31$.
+\end{theorem}
+\begin{proof}
+For the lower bound, take
+\begin{align*}
+A=\{&2,5,9,11,19,21,31,32,34,35,37,39,41,43,44,46,47,49,50,51,\\
+    &52,53,54,55,56,57,58,59,60,61,62\}.
+\end{align*}
+Direct integer multiplication gives 465 distinct products from its 465
+two-element subsets.  Hence $F(62)\geq31$.
+
+For the reverse inequality, the exact enumeration described in
+Section~\ref{sec:certificate} constructs $H_{62}$ in two independent ways;
+both give the same 1203 edges.  It exhaustively rejects a vertex cover of size
+at most 30.  Thus $\tau(H_{62})\geq31$, and
+Proposition~\ref{prop:reduction} gives $F(62)\leq31$.
+\end{proof}
+
+\section{Exact enumeration certificate}\label{sec:certificate}
+The instance uses no floating-point arithmetic.  One edge generator groups
+all $\binom{62}{2}$ pairs by their integer product and takes the four-element
+supports of distinct pairs in a common group.  A second generator examines
+every four-subset and its three pairings.  The sorted edge lists agree exactly.
+
+The cover procedure maintains the uncovered edges, the vertices still
+available, and the remaining budget.  Singleton candidate sets are forced.
+Two lower bounds are used: the number of uncovered edges divided by the
+largest current vertex degree, rounded upward, and the size of a greedily
+constructed family of edges with pairwise disjoint available candidate sets.
+Both are lower bounds for every completion.
+
+For branching, choose an uncovered edge, and denote its available candidates
+by $v_1,\ldots,v_t$.  Branch $i$ selects $v_i$ and excludes
+$v_1,\ldots,v_{i-1}$.  Every cover has a unique first selected candidate in
+this order, so the branches are disjoint and exhaustive.  Only complete
+states already proved infeasible are memoized.  The budget-30 run visits
+4,684,599 recursive states and rejects the budget; an independent replay
+gives the same state count.
+
+Literal subset enumeration agrees with the cover procedure for every
+$N\leq12$, and the two edge generators agree at $N=62$.  The archived verifier
+reconstructs the hypergraph from the definition instead of trusting the
+serialized instance.
+
+\section{Scope and data availability}
+The result is an isolated certified finite equality.  It neither determines
+an asymptotic coefficient nor answers the higher-product question in
+Erd\H{o}s problem 425.  The accompanying source code, serialized instance,
+exact witness, run logs, small-instance cross-check, and release manifest
+permit reconstruction of the complete enumeration using exact integer
+arithmetic.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

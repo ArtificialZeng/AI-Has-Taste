@@ -1,0 +1,88 @@
+{
+  "verdict": "accept",
+  "job_id": "newwin-00001-p13-release-e80ab705955d",
+  "snapshot_digest": "83424893dbe79ac62570cb8872367e3214fedd92702526faa64aab6e96f471b7",
+  "manuscript_digest": "69f0c0877e7662597fc452e956d04ade99877f4da48524144a92a7980f33837e",
+  "pdf_digest": "03aafbb8438b545795ef0dce60b93227c846381a78d5f070d1a283b09eb6644d",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "render_command": [
+    "pdftoppm",
+    "-r",
+    "110",
+    "-png",
+    "manuscript/build/main.pdf",
+    "audit/release-pages/page"
+  ],
+  "inspection_method": "Each of the nine local rendered PNGs was opened with view_image in this release context; inspection was not based only on pdftotext.",
+  "rendered_pages": [
+    {
+      "page": 1,
+      "path": "audit/release-pages/page-1.png",
+      "sha256": "a6376d0f7601d0bf9d9ee5d4cde883ca892f3bece124f304b9155d77db7ad194",
+      "observation": "Title, author and affiliation are legible. Abstract, q-hit definition, integral weight and residue display fit within margins; citations [2]-[4] resolve."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-pages/page-2.png",
+      "sha256": "d1455ca7e72d8c2c311be06ab96650eb473ac079cdc35dcd47f800c76118db08",
+      "observation": "Theorem 1 retains the universal square-board statement. Convolution equations and inverse are legible; citation locators and sums do not collide."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-pages/page-3.png",
+      "sha256": "ee019d11a94bc71379154fc1a7420940c44ea3b12a96952c6970072d6dd0d111",
+      "observation": "Operator lemma and component-defect formula are clearly set. Citations to the diagonal method and small-component polynomiality are visible. No clipped subscripts."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-pages/page-4.png",
+      "sha256": "be968c42a428d569065b499da595874cc504f09837314688e18de751613334c7",
+      "observation": "The complete dummy-permutation patch argument and its displayed cardinalities are readable. Proof terminator and the signed orbit example are separated cleanly."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-pages/page-5.png",
+      "sha256": "3328089c12951107127f5f7dde90edb1168ccf92e817df07a536ef63ba222a41",
+      "observation": "Weight coefficient formulas, differential-operator identity and locality theorem are legible. The universal sum near the page bottom is above the footer with no overlap."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-pages/page-6.png",
+      "sha256": "027489561cbef60763e02d5f90a2ee3b899427ae85d5a6bf9ee5011853304cf7",
+      "observation": "The finite-certificate proof and all four rows of the enumeration table are legible. Counts, minima and maxima match the raw-data transcription check. The main-theorem conclusion is present."
+    },
+    {
+      "page": 7,
+      "path": "audit/release-pages/page-7.png",
+      "sha256": "78acb90d558cf8dacaf17aa75daface4bfd8875df0ae4b715c2fb71131fe3727",
+      "observation": "All verification totals are legible, including 83,919, 989,340, 329,780, 2,907, 282,701 and 6,300. Direct library citation [6], preprint scope comparison, reproducibility and assistance disclosure are visible."
+    },
+    {
+      "page": 8,
+      "path": "audit/release-pages/page-8.png",
+      "sha256": "afa5d21b25f602dc62f5f9183c116c5ed9f9bfcb8ab5e5774f5977bb6cd46815",
+      "observation": "All 28 orbit-table rows are visible on one page. Masks, signs, powers and the three rank columns are readable with no overlap. The narrowest final rows still separate the polynomials."
+    },
+    {
+      "page": 9,
+      "path": "audit/release-pages/page-9.png",
+      "sha256": "f8f40f057fbe9dc3f4b1df4c2831b115b59821a99deefb131b88cb62d08f9973",
+      "observation": "All six bibliography entries are visible and match their keys and verified metadata. Accented names, q notation, page ranges and wrapped URLs are readable; no overflow or missing reference."
+    }
+  ],
+  "clipping": false,
+  "overlap": false,
+  "illegible_content": false,
+  "audited_at": "2026-09-12T10:22:27.030551+00:00"
+}

@@ -1,0 +1,18 @@
+Job: win-00077-p01-triage-8ca907fc3a49
+Date: 2026-09-09
+
+Command: python3 evidence/bipyramid_check.py
+PASS: exact checks for every m in [3,40]
+orders checked: 5 through 42
+each graph: |E|=3|V|-6 and spherical triangular face incidence verified
+each colouring: no red or blue non-induced S_{2,1,1} union K_2
+
+Command: python3 evidence/triage_independent_check.py
+NetworkX 3.4.2
+PASS: VF2 non-induced monomorphism and planarity checks, m=3..12
+
+Input hashes:
+58b849a88e8e183e9af7bdc626ad98795b4e624b50b785a9f4c62a2ce66abb08  evidence/bipyramid_check.py
+dc549bbd035c63db13e01daf3d473eca00e125eb80747431eb0f4e5222510099  evidence/triage_independent_check.py
+
+These are finite encoding and boundary-case checks, not the proof for all m.

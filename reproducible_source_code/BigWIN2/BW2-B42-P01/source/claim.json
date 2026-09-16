@@ -1,0 +1,21 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let A(n,k) count permutations of [n+1] with k descents and be zero outside 0<=k<=n. For every 1<=s<=4 and strictly increasing nonnegative row and column tuples n_1<...<n_s and k_1<...<k_s, det[A(n_i,k_j)] is nonnegative. More strongly, every admissible minor of order at most four (k_i<=n_i for each aligned index) is strictly positive, while every nonadmissible minor is zero.",
+  "contribution": "A complete exact computer-assisted proof of the frozen TP4 claim. It independently reconstructs the source paper's 126 consecutive order-four templates, audits every ordinary monomial coefficient, certifies the six non-coefficientwise-positive templates by 18 exact Muirhead majorization transfers, and proves strictness from the m=0 Schur-polynomial summand. It relies on the source paper's proved TP3 theorem, real-rootedness input, Toeplitz-Cauchy-Binet lemma, and lower-triangular consecutive-minor criterion; no priority claim beyond this bounded comparison is asserted.",
+  "proposer_job_id": "win-00042-p01-research-bd27b63008ca",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "literature/mao-eulerian-tp3-2608.29224v1.pdf",
+    "literature/primary-source-provenance.md",
+    "evidence/tp4_resolution.md",
+    "evidence/coverage_126.md",
+    "evidence/reconstruct_126.py",
+    "evidence/template_manifest.json",
+    "evidence/audit_template_coefficients.py",
+    "evidence/template_coefficients.json",
+    "evidence/verify_muirhead_certificate.py",
+    "evidence/muirhead_certificate.json"
+  ]
+}

@@ -1,0 +1,158 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\emergencystretch=2em
+\raggedbottom
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\title[Certified autoconvolution upper bound]{A Certified Upper Bound for the Supremum of an Autoconvolution}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{September 1, 2026}
+\hypersetup{pdftitle={A Certified Upper Bound for the Supremum of an Autoconvolution},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+For nonnegative functions of integral one supported on $[-1/4,1/4]$, we give
+an explicit rational step function whose autoconvolution has supremum
+\[
+ \frac{6454234827725784010707924360626176}{4294967295999961333760000000087025}
+ <\frac{150274365}{100000000}.
+\]
+The function has $65{,}536$ equal cells. All $131{,}071$ coefficients governing
+its piecewise-affine autoconvolution are recovered exactly by a five-modulus
+number-theoretic transform and Chinese remaindering. A separate small-instance
+evaluator checks the reduction by direct integration. This is a certified
+finite upper-bound construction; it does not determine the sharp constant.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+Let $\mathcal F$ be the set of nonnegative integrable functions supported on
+$[-1/4,1/4]$ and having integral one, and put
+\[
+ S=\inf_{f\in\mathcal F}\|f*f\|_\infty,
+ \qquad (f*f)(t)=\int_{\mathbb R}f(t-x)f(x)\,dx.
+\]
+Matolcsi and Vinuesa established $1.2748\le S\le1.5098$ and used the
+uniform-step reduction below
+\cite[Eq.~(1), Section~4, and Eq.~(13)]{MV2010}.
+Public computational constructions report $1.50286286$ \cite{ArenaSOTA}; by
+August 14, 2026, the live API listed $1.5027436492326165$ \cite{ArenaLive}.
+These are floating-point records. Our exact value is approximately
+$1.50274364923263$, about $1.37\mathbin{\cdot}10^{-14}$ higher than the live
+entry, so no numerical improvement is claimed. The contribution is an
+explicit rational certificate strictly below the page's eight-decimal target
+$1.50274365$.
+
+The terminology ``autocorrelation inequality'' is common in computational
+tables, but the operation in this problem is autoconvolution. Ordinary
+correlation would be a different variational problem.
+
+\section{A finite exact reduction}
+Fix $n\ge1$, write $h=1/(2n)$, and take nonnegative rational numbers
+$a_0,\ldots,a_{n-1}$, not all zero. Define
+\[
+ f_a(x)=a_i\quad\text{if }-\tfrac14+ih\le x< -\tfrac14+(i+1)h,
+\]
+and set $f_a=0$ elsewhere. Values at cell endpoints are immaterial.
+
+\begin{lemma}\label{lem:reduction}
+Let $A=\sum_i a_i$ and $c_k=\sum_{i+j=k}a_i a_j$ for
+$0\le k\le2n-2$. Then
+\[
+ \frac{\|f_a*f_a\|_\infty}{(\int f_a)^2}
+ =\frac{2n\max_k c_k}{A^2}.
+\]
+\end{lemma}
+\begin{proof}
+For a fixed ordered pair $(i,j)$, convolution of the indicators of the two
+cells is triangular, supported on an interval of length $2h$, and has height
+$h$ at its midpoint. The midpoint belonging to $i+j=k$ is
+$-1/2+(k+1)h$. At this breakpoint the full convolution equals $hc_k$.
+Between consecutive breakpoints every triangular summand, and hence their
+sum, is affine. The continuous compactly supported convolution attains its
+maximum at a breakpoint. Since $\int f_a=hA$, division gives the formula.
+\end{proof}
+Multiplying all $a_i$ by one positive rational does not change the quotient,
+so an integer height vector suffices.
+
+\section{The certified construction}
+The ancillary file \texttt{witness.txt} contains $n=65{,}536$ nonnegative
+integer heights. Its common scale may be divided out. The exact checker
+reconstructs
+\begin{align*}
+ A&=65535999999999705,\\
+ \max_k c_k&=49241903898054382405913729558.
+\end{align*}
+The maximum is first attained at $k=24997$ (indices start at zero).
+
+\begin{theorem}\label{thm:main}
+There is a nonnegative rational step function $f$, supported on
+$[-1/4,1/4]$ and constant on $65{,}536$ equal cells, such that
+\[
+ \frac{\|f*f\|_\infty}{(\int f)^2}
+ =\frac{6454234827725784010707924360626176}{4294967295999961333760000000087025}
+ <\frac{150274365}{100000000}.
+\]
+Consequently $S<1.50274365$.
+\end{theorem}
+\begin{proof}
+Take the integer vector in \texttt{witness.txt}. Its entries are nonnegative
+and its displayed sum is positive. Lemma~\ref{lem:reduction} and the displayed
+maximum coefficient give the reduced fraction in the statement. The strict
+comparison is the integer identity
+\[
+\begin{split}
+ &(65535999999999705)^2(150274365)\\
+ &\quad -(2\cdot65536)(49241903898054382405913729558)(100000000)\\
+ &=329582828384544626350460026614125>0.
+\end{split}
+\]
+This proves feasibility and strictness separately.
+\end{proof}
+
+\section{Exact verification}
+The reference checker parses a fixed, fail-closed integer format and computes
+the complete polynomial square $\sum_k c_kx^k=(\sum_i a_ix^i)^2$. It performs
+five number-theoretic transforms and reconstructs every coefficient by the
+Chinese remainder theorem. Before reconstruction it verifies
+\[
+ n(\max_i a_i)^2 < M,
+\]
+where $M$ is the product of the five transform primes. This makes each
+nonnegative coefficient uniquely determined by its residues. The checker
+then recomputes $A$, scans all $2n-1$ coefficients, and makes the strict
+integer comparison in Theorem~\ref{thm:main}. It neither reads nor accepts a
+supplied objective value.
+
+For instances with at most $2{,}048$ cells, the checker additionally requires
+coefficient-by-coefficient agreement with a separate quadratic-time
+arbitrary-precision convolution. A second test program derives breakpoint
+values by direct rational interval intersection; it agrees with the
+coefficient formula on $163$ deterministic small cases. These tests guard the
+implementation, while Lemma~\ref{lem:reduction} supplies the mathematical
+reduction.
+
+\section{Limitations and data availability}
+The theorem supplies one upper-bound witness only. It gives no matching lower
+bound, optimality assertion, uniqueness statement, or classification of
+extremizers. Zero-height cells are permitted, and no limiting or attainment
+claim for the global infimum is made. The novelty search covered the cited
+primary paper, official public repository, and live record through September
+1, 2026; it cannot exclude private or unindexed work.
+
+The exact height vector, reference checker, independent tests, and commands
+needed to reproduce the strict comparison accompany this article. Numerical
+optimization and exact rationalization were used to locate the construction.
+Discovery and certificate verification are separated: the theorem rests only
+on the exact integer data, the elementary reduction above, and the
+reproducible exact-arithmetic check.
+
+\enlargethispage{5\baselineskip}
+\bibliographystyle{amsplain}
+\bibliography{paper/references}
+\end{document}

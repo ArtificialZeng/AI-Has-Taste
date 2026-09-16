@@ -1,0 +1,310 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks,
+  pdftitle={The least Type 1 cubic graphs without equitable 4-total colorings have order 16},
+  pdfauthor={Xiaojian Zeng}]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{The least Type~1 cubic graphs without equitable
+  \(4\)-total colorings have order \(16\)}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Adauto, de Figueiredo, Sasaki, and Schneider asked whether every Type~1
+cubic graph of order less than \(20\) has an equitable proper
+\(4\)-total coloring.  We give a negative answer by an exact finite
+classification.  The minimum counterexample order is \(16\), and there
+are exactly \(16\) isomorphism classes at that order.  A canonical census
+contains all \(45{,}982\) connected simple cubic graphs of orders
+\(4,6,\ldots,18\).  Every graph through order \(16\) is covered by a
+directly checked equitable coloring, a checked proof that no proper
+\(4\)-total coloring exists, or---for the \(16\) counterexamples---a
+directly checked proper coloring together with checked unsatisfiability
+certificates for equitable colorability.  Census completeness is checked
+independently by exhaustive canonization and exact orbit sums against a
+labeled-graph recurrence.  Thus the previously known order-\(20\) graph
+is not minimum.  No classification at order \(18\), or claim at larger
+orders, is made.
+\end{abstract}
+
+\section{Context and result}
+
+All graphs in this article are finite, simple, and undirected.  A total
+coloring assigns colors to vertices and edges so that adjacent vertices,
+adjacent edges, and incident vertex--edge pairs receive distinct colors.
+It is equitable when any two color classes differ in cardinality by at
+most one.  A cubic graph is \emph{Type~1} when its total chromatic number
+is \(4\).
+
+Dantas et al.\ exhibited Type~1 cubic graphs whose equitable total
+chromatic number is \(5\) and proved that equitable \(4\)-total
+colorability is NP-complete even for bipartite cubic graphs
+\cite{DantasEtAl2016}.  One of their examples is the order-\(20\) graph
+\(R\).  Adauto et al.\ subsequently distinguished the existence of an
+equitable coloring from the stronger requirement that every
+\(4\)-total coloring be equitable.  Their Question~7.1 asks whether every
+Type~1 cubic graph below order \(20\) has at least one equitable
+\(4\)-total coloring, and suggests a complete catalogue computation by
+integer programming or SAT \cite{AdautoEtAl2026}.
+
+The contribution here is an exact negative resolution of that finite
+question, including minimum order and the complete least-order
+classification.  The computation uses canonical graph representatives,
+explicit positive witnesses, proof-carrying SAT, and a census-completeness
+argument independent of the generator.  The practice of coupling
+canonical graph6 representatives with a definition-level independent
+verifier also appears in a recent exact finite graph classification by
+Zeng \cite{Zeng2026Whiskered}; the algebraic property treated there is
+unrelated to total coloring.
+
+\begin{theorem}\label{thm:main}
+The assertion that every connected Type~1 cubic graph \(G\) with
+\(|V(G)|<20\) admits an equitable proper \(4\)-total coloring is false.
+The minimum order of a counterexample is \(16\), and exactly \(16\)
+isomorphism classes are counterexamples at that order.
+\end{theorem}
+
+In canonical census order, their graph6 codes are
+\begin{center}
+\small
+\begin{tabular}{ll}
+\verb|Os?GOCF@O??ACBCBL?B?O| & \verb|Ot?GOCA?WB@?ODOBC_?g@|\\
+\verb|Os?GO?C?_MAECKOOCGJO?| & \verb|Os?GOKE??@`?CDCBKABA?|\\
+\verb|Os?GGOB@OO?OGBCBGEB_?| & \verb|Ot?GOKFA??_A?B?BK?Q_A|\\
+\verb|Ov?GW?@?OM?E?KA?G?h?E| & \verb|Os?GOGA?AOgoGWGWAA?_`|\\
+\verb|Os??WWK?@CaGCGOCCAI?K| & \verb|Ov?GO???WB?k?c?a?_ZO?|\\
+\verb|Os??WWA?W@?ACBCBL?BG?| & \verb|Os??WOB?OW?ACBCDKCBG?|\\
+\verb|Os??WOC?@@cEOSQOAO?g@| & \verb|Os???[AAGH@_C@GEIOB?C|\\
+\verb|Os?GG???WBD_CcCaGKBO?| & \verb|Os?GW?@?OMA?E@OKCEB?G|\\
+\end{tabular}
+\end{center}
+
+\section{Coloring formulas}
+
+Let \(G\) be cubic of order \(n\).  It has \(3n/2\) edges, so a total
+coloring colors \(5n/2\) objects.  Write \(A(G)\) for the existence of a
+proper \(4\)-total coloring and \(E(G)\) for the existence of an equitable
+one.  Since every cubic graph has total chromatic number at least \(4\),
+Type~1 is equivalent to \(A(G)\).  The question is therefore whether
+\(A(G)\Rightarrow E(G)\) for every eligible \(G\).
+
+The following identity, also given as the decomposition lemma of
+Adauto et al.\ \cite{AdautoEtAl2026}, is useful both mathematically and as
+the basis of a second encoding.
+
+\begin{lemma}[four-color star identity]\label{lem:star}
+Fix a proper \(4\)-total coloring of a cubic graph of order \(n\).  For a
+color \(c\), let \(S_c\) be the vertices of color \(c\), and let \(M_c\)
+be the edges of color \(c\).  Then
+\[
+  n=|S_c|+2|M_c|,
+  \qquad
+  |S_c|+|M_c|=\frac{n+|S_c|}{2}.
+\]
+In particular, at order \(16\) the coloring is equitable if and only if
+\(|S_c|=4\) for every color \(c\).
+\end{lemma}
+
+\begin{proof}
+At each vertex, that vertex and its three incident edges are pairwise
+conflicting, hence use all four colors.  Counting occurrences of a fixed
+color over the \(n\) vertex-stars counts a vertex in \(S_c\) once and an
+edge in \(M_c\) at both endpoints.  This proves the first identity, and
+the second follows by elimination.  At order \(16\) there are \(40\)
+objects, so equitability requires four classes of size \(10\); the second
+identity makes this equivalent to \(|S_c|=4\) for all \(c\).
+\end{proof}
+
+For the primary CNF, order the objects as vertices \(0,\ldots,n-1\)
+followed by lexicographically ordered edges, and introduce \(x_{a,c}\)
+for every object \(a\) and color \(c\in\{0,1,2,3\}\).  An at-least-one
+clause and the six pairwise negative clauses impose exactly one color on
+each object.  For every conflicting pair \(a,b\) and every \(c\), add
+  \(\lnot x_{a,c}\lor\lnot x_{b,c}\).  Finally, \(x_{0,0}\) fixes a harmless
+color symmetry.  The resulting formula is satisfiable exactly when
+\(A(G)\) holds.
+
+For \(E(G)\), the primary encoding additionally bounds every color-class
+sum between \(\lfloor(5n/2)/4\rfloor\) and
+\(\lceil(5n/2)/4\rceil\), using sequential-counter clauses
+\cite{Sinz2005} as implemented by PySAT \cite{IgnatievEtAl2018}.  These
+bounds are equivalent to equitability because every object has exactly
+one color.  All retained DIMACS files were regenerated from their graph6
+rows and compared clause for clause.
+
+The decisive order-\(16\) failures have a second, independently written
+encoding.  It uses only the \(160\) variables \(x_{a,c}\), the direct
+proper-total-coloring clauses above, and, for every color \(c\) and every
+five-element set \(U\subseteq V(G)\), the clause
+\[
+  \mathop{\vee}\limits_{v\in U}\lnot x_{v,c}.
+\]
+Thus at most four vertices receive any one color.  The \(16\) exactly-one
+vertex assignments force equality for all four colors, and
+Lemma~\ref{lem:star} proves that this is exactly equitable
+\(4\)-total colorability.  Each such formula has \(18{,}233\) clauses.
+
+Unsatisfiability is carried by DRAT derivations checked against the exact
+DIMACS inputs.  DRAT and its checker are described by Wetzler, Heule, and
+Hunt \cite{WetzlerEtAl2014}.  Solver exit status is never used as a
+certificate: a negative classification is admitted only after a retained
+derivation is replayed successfully.
+
+\section{Complete census}
+
+Simplicity and the handshaking lemma restrict the orders below \(20\) to
+\(4,6,\ldots,18\).  Representatives were generated with the
+\texttt{geng} program in the nauty suite, using
+\begin{center}
+\texttt{geng -cld3D3 n (3*n/2)}.
+\end{center}
+The options request connected graphs, canonical labels, and minimum and
+maximum degree three.  The nauty refinement--individualization framework
+is described by McKay and Piperno \cite{McKayPiperno2014}.  Every graph6
+row was decoded and checked for order, simplicity, cubicity, and
+connectedness.
+
+Completeness does not rest on the generator's status output.  A separate
+C program starts from the one-cell vertex partition, repeatedly refines
+vertices by their neighbor-count vectors into the current cells, and, if
+the stable partition is not discrete, individualizes every vertex in an
+isomorphism-invariantly selected nonsingleton cell.  It performs no branch
+pruning.  Consequently isomorphic inputs have the same multiset of leaf
+adjacency strings.  The least string is a canonical form, and the number
+of leaves attaining it is \(|\operatorname{Aut}(G)|\).  The census has
+distinct canonical forms at every order.
+
+An independent recurrence counts the labeled graphs.  Let
+\(F(c_1,c_2,c_3)\) count simple completions of a fixed labeled residual
+degree sequence with \(c_i\) vertices of residual degree \(i\).  Remove a
+fixed vertex of maximum residual degree \(d\); choosing \(k_i\) of the
+remaining degree-\(i\) vertices as its neighbors, where
+\(k_1+k_2+k_3=d\), lowers each selected residual degree by one.  Summing
+the corresponding products of binomial coefficients gives \(F\), with
+\(F(0,0,0)=1\).  Hence \(L_n=F(0,0,n)\) counts all labeled simple cubic
+graphs.  If \(C_n\) counts the connected ones and label \(1\) lies in a
+component of order \(k\), then
+\[
+ C_n=L_n-
+ \sum_{\{k\in 2\mathbb{Z}:4\leq k<n\}}
+ \binom{n-1}{k-1}C_kL_{n-k}.
+\]
+This counts each graph once, by the unique component containing label
+\(1\).
+
+The resulting values and the census orbit sums agree exactly:
+\begin{center}
+\begin{tabular}{r@{\qquad}r@{\qquad}r}
+\toprule
+\(n\) & isomorphism classes & \(C_n=\sum_G n!/|\operatorname{Aut}(G)|\)\\
+\midrule
+4  & 1      & 1\\
+6  & 2      & 70\\
+8  & 5      & 19,320\\
+10 & 19     & 11,166,120\\
+12 & 85     & 11,543,439,600\\
+14 & 509    & 19,491,385,914,000\\
+16 & 4,060  & 50,233,275,604,512,000\\
+18 & 41,301 & 187,663,723,374,359,232,000\\
+\bottomrule
+\end{tabular}
+\end{center}
+The class counts total \(45{,}982\).  Pairwise nonisomorphism and the
+orbit-sum equality prove completeness: any omitted isomorphism class
+would contribute the positive integer \(n!/|\operatorname{Aut}(G)|\) and
+make the displayed orbit sum smaller than the independent labeled count.
+
+\section{Classification and proof of Theorem~\ref{thm:main}}
+
+The exhaustive join through order \(16\) is as follows.  Here
+``\(A\)-UNSAT'' means a checked DRAT refutation of the proper-coloring
+formula, and the last column combines a directly checked proper coloring
+with a checked refutation of the equitable formula.
+
+\begin{center}
+\begin{tabular}{r@{\qquad}r@{\qquad}r@{\qquad}r}
+\toprule
+order & equitable witness & \(A\)-UNSAT & proper witness + \(E\)-UNSAT\\
+\midrule
+4  & 0    & 1   & 0\\
+6  & 1    & 1   & 0\\
+8  & 4    & 1   & 0\\
+10 & 9    & 10  & 0\\
+12 & 60   & 25  & 0\\
+14 & 461  & 48  & 0\\
+16 & 3,817& 227 & 16\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+There are \(4{,}352\) equitable witness arrays and \(16\) further proper
+witness arrays.  A verifier reconstructs the ordered vertex and edge
+objects from the graph6 row and checks every vertex, edge, and incidence
+conflict and every asserted class size directly.  Each of the \(16\)
+proper witnesses has sorted total-class profile \((9,10,10,11)\), which
+establishes Type~1 but is not used to infer equitable nonexistence.
+
+For the remaining rows, \(313\) primary \(A\)-formulas and \(16\) primary
+\(E\)-formulas have replayed DRAT refutations.  All \(16\) decisive
+\(E\)-refutations are additionally replayed for the independent
+\(160\)-variable encoding derived from Lemma~\ref{lem:star}.  Thus each
+graph below order \(16\) either has an equitable witness or is not Type~1.
+At order \(16\), precisely the \(16\) listed codes have a proper witness
+and no equitable coloring.  The complete census then proves both
+minimality and the exact least-order classification, completing the proof
+of Theorem~\ref{thm:main}. \qed
+
+Order \(18\) was enumerated to complete the specified below-\(20\)
+census, but it was not color-classified: after a counterexample at order
+\(16\) and a complete classification at all lower orders, such a
+classification is unnecessary for the theorem.  The result does not
+characterize all larger counterexamples.
+
+\section{Reproducibility and limitations}
+
+The accompanying artifact has one verification entry point,
+\path{evidence/scripts/final_verify.py}.  It rebuilds the retained
+generator and two checkers, reproduces every census file byte for byte,
+reruns the independent canonization and labeled-count test, directly
+checks all \(4{,}368\) positive coloring arrays, regenerates and binds the
+\(329\) primary CNFs, and replays the \(329\) primary and \(16\) secondary
+DRAT derivations.  The recorded environment uses Python~3.10.12,
+NetworkX~3.4.2, PySAT~1.8.dev24, and Zig~0.13.0.  Census generation uses
+no random option; the deterministic relabeling test of the independent
+canonizer records seed \(6802\).  Certificate generation requested no
+randomization.
+
+The retained nauty generator is tied to version~2.8.9 by its object
+provenance, and can be relinked byte identically, but its full source
+archive is not part of the artifact.  This is a provenance limitation of
+the generator.  It is not a completeness assumption: the separately
+implemented canonizer and labeled recurrence establish the census
+independently.  Likewise, the second equitable encoding avoids reliance
+on the primary cardinality library for every decisive counterexample.
+
+\paragraph{Computational and AI assistance.}
+Python and C programs performed graph generation, exact enumeration,
+SAT encoding, witness checking, and certificate replay.  OpenAI Codex
+assisted with the research workflow, verification code, and manuscript
+drafting.  No solver status or AI-generated assertion was treated as a
+mathematical proof; the conclusions above rest on explicit witnesses,
+definition-level checks, exact integer identities, and replayed proof
+certificates.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

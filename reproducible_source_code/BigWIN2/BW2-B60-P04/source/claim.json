@@ -1,0 +1,14 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let R=Q[a11,a12,a21,a22,b1,b2,c1,c2,p1,p2,q] be a polynomial ring of independent derivation-constant coefficient indeterminates, F=Frac(R), A=((a11,a12),(a21,a22)), b=(b1,b2)^T, c=(c1,c2)^T, and p^T=(p1,p2). For the generic dense characteristic-zero system x'=Ax+bu+c and y=p^Tx+q, put tau=tr(A), delta=det(A), Omega=det((p^T),(p^TA)), and P=Omega*tau*delta*(p^Tb)*[p^T(tau I-A)b]*[p^T(tau I-A)c-delta q]. The polynomial P is nonzero. On the nonempty Zariski-open locus P!=0, the generic eliminant order is nu=2 and the primitive irreducible eliminant, normalized to be monic in y'', is E=y''-tau y'+delta y+p^T(tau I-A)b u-p^Tb u'+p^T(tau I-A)c-delta q. Its exact support is {1,u,u',y,y',y''}. The seven candidates furnished by the specialized Theorem 3.7 inequalities are {1,u,u',u'',y,y',y''}; hence the missing monomial is u'', and every eliminant support exponent satisfies the exact additional equality ell_2=0 (equivalently deg_{u''} E=0). This is only the frozen n=2 affine-linear dense row with one differential input and derivation-constant model coefficients; it asserts nothing for broader nonlinear, sparse, positive-characteristic, or time-varying-coefficient systems.",
+  "contribution": "This completely resolves the frozen problem symbolically: Cayley-Hamilton gives the universal relation, the nonzero observability determinant makes x -> (y,y') generically invertible and identifies the order-two image as the closed graph with defining ideal (E), and an exact simultaneous specialization proves all six support coefficients generically nonzero. It upgrades the source paper's stable finite-field 7-to-6 observation to an independent-coefficient Zariski-open proof. No general sharp-support or priority claim beyond this precise row is made.",
+  "proposer_job_id": "win-00060-p04-research-da612da50c3d",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research_proof.md",
+    "evidence/research_symbolic_certificate.py",
+    "evidence/external/2609.03828.pdf"
+  ]
+}

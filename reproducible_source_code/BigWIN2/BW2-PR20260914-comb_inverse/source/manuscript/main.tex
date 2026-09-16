@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{pdftitle={A compositional inverse for the support polynomials of comb preorder polytopes},pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Cset}{\mathcal{C}}
+\DeclareMathOperator{\supp}{supp}
+\title{A compositional inverse for the support polynomials\protect\\ of comb preorder polytopes}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University, 100190, China.\newline
+Email: \href{mailto:xiaojianzeng@foxmail.com}{\texttt{xiaojianzeng@foxmail.com}}.}}
+\date{September 14, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove the support-refined compositional inverse proposed by Athanasiadis
+and Chapoton for comb preorder polytopes. All lower-ideal inequalities reduce
+to prefix inequalities for nonnegative integer costs, with local support
+weights $w_0=1+t$ and $w_c=2t+ct^2$ for $c\geq1$. A postorder correspondence
+identifies the resulting weighted words with nonempty ordered forests.
+Accounting for their canonical first leaf gives the exact normalization and
+yields the inverse $y/\bigl((1+y)(1+(1+t)y)(1+(1+t)y/t)\bigr)$.
+The argument holds in $\Q(t)[[x]]$ with the support parameter indeterminate.
+\end{abstract}
+
+\section{The comb inverse}
+
+Let $\tau_0$ be the empty poset. For $n\geq0$, form $\tau_{n+1}$ by taking
+the disjoint union of $\tau_n$ with one singleton and then adjoining a new
+minimum. Thus $\tau_n$ has $2n$ elements. Its preorder polytope is
+\begin{equation}\label{eq:polytope}
+ Q_n=\left\{a\in\mathbb{R}_{\geq0}^{\tau_n}:
+       \sum_{v\in I}a_v\leq |I|
+       \text{ for every lower ideal }I\text{ of }\tau_n\right\}.
+\end{equation}
+A lower ideal contains every predecessor of each of its elements.
+We count lattice points by their number of positive coordinates:
+\begin{equation}\label{eq:h}
+ h_n(t)=\sum_{a\in Q_n\cap\Z^{\tau_n}}
+                t^{|\supp(a)|},\qquad h_0(t)=1.
+\end{equation}
+These sums are finite: the ideal $\tau_n$ bounds the sum of all coordinates
+by $2n$. The polynomial in \eqref{eq:h} is the raw support enumerator,
+called the $h$-polynomial in Section~5 of \cite{AC}; it is distinct from the
+Ehrhart $h^*$-polynomial of $Q_n$.
+
+Athanasiadis and Chapoton's final unnumbered proposal in
+Section~9.6 of \cite{AC} concerns the series
+\begin{align}
+ F(t,x)&=\sum_{n\geq0}t^{-n}h_n(t)x^{n+1},\label{eq:F}\\
+ R(t,x)&=\sum_{m\geq1}(-1)^{m-1}
+ \left(1+(1+t)^m t^{1-m}\sum_{j=0}^{m-2}t^j\right)x^m.
+ \label{eq:R}
+\end{align}
+The inner sum is zero when $m=1$. Throughout, $t$ is an indeterminate.
+
+\begin{theorem}\label{thm:main}
+For the comb posets and support polynomials above,
+\begin{equation}\label{eq:inverse}
+ R(t,F(t,x))=x=F(t,R(t,x))\qquad\text{in }\Q(t)[[x]].
+\end{equation}
+In particular, the series \eqref{eq:R} is the rational series
+\begin{equation}\label{eq:rational}
+ R(t,x)=\frac{x}{(1+x)(1+(1+t)x)(1+(1+t)x/t)}.
+\end{equation}
+\end{theorem}
+
+Chapoton's arbor recursions already enumerate lattice points by support and
+height (Propositions~2.8--2.9 of \cite{Chapoton}). General invariance of preorder
+support polynomials under order duality follows from Wang, Hou, Thawinrak,
+Liu and Dai \cite{Wang} (Theorem~1.3 and the following paragraph); that result
+settles Conjecture~5.4 of \cite{AC}. The proposal addressed here is the
+separate explicit comb inverse in Section~9.6. Our proof works directly
+with the minimum-rooted comb and does not require the duality theorem.
+Tree equations and their inversion are classical; see, for example,
+Banderier and Flajolet \cite{BF}, Example~3, equation~(24).
+The contribution here is the reduction of the comb's entire ideal system
+to support-weighted prefix costs and the forest normalization that produces
+the proposed inverse. No equivalent resolution was found in the primary
+passages inspected through September~14, 2026; this is a bounded literature
+assessment, without a claim of absolute priority.
+
+\section{From lattice points to ordered forests}
+
+Write $q=1+t$ and $K=\Q(t)$. Index the spine of $\tau_n$ from its minimum
+as $r_1<\cdots<r_n$, and let $s_i$ be the leaf covering $r_i$.
+The covering relations are exactly $r_i<r_{i+1}$ and $r_i<s_i$.
+Indeed, each recursive step creates the new $r_1,s_1$ and increases all old
+indices by one.
+
+\begin{lemma}\label{lem:costs}
+For a nonnegative integer vector with coordinates
+$a_i=a_{r_i}$ and $b_i=a_{s_i}$, define
+\[
+ c_i=a_i+\max(b_i-1,0).
+\]
+Membership in $Q_n$ is equivalent to
+\begin{equation}\label{eq:prefix}
+ \sum_{i=1}^k c_i\leq k\qquad(1\leq k\leq n).
+\end{equation}
+If $\Cset_n$ denotes the set of nonnegative integer words satisfying
+\eqref{eq:prefix}, then
+\begin{equation}\label{eq:weighted}
+ h_n(t)=\sum_{(c_1,\ldots,c_n)\in\Cset_n}\prod_{i=1}^n w_{c_i}(t),
+ \qquad w_0=q,\quad w_c=2t+ct^2\quad(c\geq1).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Every nonempty lower ideal has the unique form
+\[
+ I_{k,S}=\{r_1,\ldots,r_k\}\cup\{s_i:i\in S\},
+ \qquad 1\leq k\leq n,\quad S\subseteq\{1,\ldots,k\}.
+\]
+The spine part must be an initial segment, and a leaf requires exactly its
+parent and the preceding spine vertices. Conversely, every displayed set
+is an ideal. Its inequality is
+\[
+ \sum_{i=1}^k a_i+\sum_{i\in S}(b_i-1)\leq k.
+\]
+Maximizing over $S$ gives \eqref{eq:prefix}, in both directions; the empty
+ideal imposes no constraint.
+
+For a fixed cost $c$, sum $t^{\mathrm{1}_{a>0}+\mathrm{1}_{b>0}}$ over pairs
+$(a,b)$ with $a+\max(b-1,0)=c$. At cost zero the pairs are $(0,0),(0,1)$.
+For $c\geq1$, the two pairs of support one are $(c,0),(0,c+1)$.
+The support-two pairs are $(c,1)$ and $(c-b+1,b)$ for $2\leq b\leq c$,
+giving exactly $c$ pairs. This proves the local weights. Once the costs
+are fixed, the coordinate pairs can be chosen independently and their
+supports add, proving \eqref{eq:weighted}. The empty word has weight one.
+\end{proof}
+
+The local degree series is therefore
+\begin{equation}\label{eq:W}
+ W(t,u)=\sum_{c\geq0}w_c(t)u^c
+ =q+\frac{2tu}{1-u}+\frac{t^2u}{(1-u)^2}
+ =\frac{(1+(t-1)u)(q-u)}{(1-u)^2}.
+\end{equation}
+
+An ordered rooted tree has an ordered list of children at each vertex;
+an ordered forest is an ordered list of such trees. All vertices here are
+unlabelled. In postorder, the children are visited in their order before
+their parent, and components are visited in their order.
+
+\begin{lemma}\label{lem:forest}
+For every $n\geq0$, the words in $\Cset_n$ correspond bijectively to
+nonempty ordered forests on $n+1$ vertices, with postorder outdegree word
+\begin{equation}\label{eq:degrees}
+ (0,c_1,\ldots,c_n).
+\end{equation}
+If a degree-$c$ vertex has weight $z w_c(t)$, and $T(z)$ enumerates ordered
+rooted trees with these weights, then, for
+$H(z)=\sum_{n\geq0}h_n(t)z^n$,
+\begin{equation}\label{eq:forest}
+ T=zW(t,T),\qquad qzH(z)=\frac{T(z)}{1-T(z)}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Process \eqref{eq:degrees} from left to right using a stack of completed
+trees, kept as an ordered list. At an entry $d$, take the last $d$ trees
+in their existing order as the children of a new root and replace them
+by that tree. An entry zero simply appends a leaf; in particular the
+initial zero creates one leaf.
+
+Before processing $c_i$, the stack has
+$i-\sum_{j<i}c_j$ trees: $i$ vertices and $\sum_{j<i}c_j$ edges have been
+created. Hence the operation is legal exactly when
+$\sum_{j\leq i}c_j\leq i$. After it the stack has
+$i+1-\sum_{j\leq i}c_j\geq1$ trees. Inductively, concatenating the
+postorder words of the current trees gives precisely the processed word.
+The final stack is the required nonempty forest.
+
+Conversely, a nonempty forest starts its postorder traversal at a leaf.
+Processing any subtree by the stack rule leaves earlier stack entries
+unchanged and appends exactly that subtree: this follows by induction on
+its children. Thus the last $d$ completed trees at a degree-$d$ parent
+are exactly its children, in order. Applying this observation component
+by component reconstructs the original forest uniquely. Each operation
+is legal, so its degree word satisfies \eqref{eq:prefix}. This establishes
+both directions of the bijection.
+
+Root decomposition now gives $T=z\sum_{c\geq0}w_cT^c$ and
+$T=qz+O(z^2)$. Nonempty forests have series $T+T^2+\cdots=T/(1-T)$.
+At each size there are only finitely many tree shapes, degrees and local
+decorations, so these equations are valid coefficientwise even though the
+degree set is unbounded. They define $T\in zK[[z]]$ uniquely by recursion.
+
+The forest for a word in $\Cset_n$ has weight
+\[
+ z^{n+1}w_0\prod_{i=1}^n w_{c_i}
+   =qz\,z^n\prod_{i=1}^n w_{c_i}.
+\]
+The extra vertex is the uniquely specified \emph{first} postorder leaf.
+Its two cost-zero decorations contribute $1+t=q$; no leaf is chosen
+arbitrarily, so no factor counting the leaves occurs. Summing proves the
+second equation in \eqref{eq:forest}. For $n=0$, the single-vertex forest
+has weight $qz$, giving the required constant term $H(0)=1$.
+\end{proof}
+
+\section{Formal elimination and the proposed coefficient series}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By definition $F(t,x)=xH(x/t)$. Set $U=T(x/t)$ and abbreviate $F=F(t,x)$.
+Equation \eqref{eq:forest} gives
+\begin{equation}\label{eq:U}
+ F=\frac{tU}{q(1-U)},\qquad
+ U=\frac{qF}{t+qF},\qquad U=\frac{x}{t}W(t,U).
+\end{equation}
+In the factorization \eqref{eq:W}, substitution yields
+\[
+ 1-U=\frac{t}{t+qF},\qquad
+ 1+(t-1)U=\frac{t(1+qF)}{t+qF},\qquad
+ q-U=\frac{qt(1+F)}{t+qF}.
+\]
+It follows that $W(t,U)=q(1+F)(1+qF)$, and therefore
+\begin{equation}\label{eq:elimination}
+ x=\frac{tU}{W(t,U)}
+   =\frac{F}{(1+F)(1+qF)(1+qF/t)}.
+\end{equation}
+
+It remains to identify this rational expression with the coefficient
+series actually proposed in \eqref{eq:R}. Using an auxiliary variable $y$,
+the initial $1$ in each coefficient sums to $y/(1+y)$. For the remaining
+terms put $m=k+2$, then $a=j$ and $b=k-j$. Their sum is
+\begin{align*}
+ -\frac{q^2y^2}{t}\sum_{k\geq0}(-qy)^k\sum_{j=0}^k t^{j-k}
+ &=-\frac{q^2y^2}{t}\sum_{a,b\geq0}(-qy)^a(-qy/t)^b\\
+ &=-\frac{q^2y^2}{(1+qy)(t+qy)}.
+\end{align*}
+Every fixed degree receives finitely many terms, justifying the
+rearrangement as a formal double geometric sum. Consequently,
+\begin{align*}
+ R(t,y)&=\frac{y}{1+y}-\frac{q^2y^2}{(1+qy)(t+qy)}\\
+ &=\frac{ty}{(1+y)(1+qy)(t+qy)}
+ =\frac{y}{(1+y)(1+qy)(1+qy/t)},
+\end{align*}
+where the simplification uses
+$(1+qy)(t+qy)-q^2y(1+y)=t$. This proves \eqref{eq:rational}, and
+\eqref{eq:elimination} proves $R(t,F(t,x))=x$.
+
+Both $F$ and $R$ have constant coefficient zero and linear coefficient
+one. Such a series has a unique compositional inverse, obtained by solving
+successive coefficients, so also $F(t,R(t,x))=x$.
+All substitutions used zero-constant series; all denominators had nonzero
+constant coefficient in $K$. In particular, $t$ and $q$ are units in this
+field, and the division by $z$ implicit in \eqref{eq:forest} removes an
+explicit factor. No analytic convergence or scalar specialization is used.
+\end{proof}
+
+The resulting support series also has a polynomial description. Substituting
+$x=tz$ in \eqref{eq:elimination}, clearing denominators and cancelling $tz$
+gives
+\begin{equation}\label{eq:cubic}
+ H=(1+tzH)(1+tqzH)(1+qzH).
+\end{equation}
+This identity holds in $\Z[t][[z]]$, and its constant-one solution is unique
+by coefficient recursion. It includes the initial values
+\[
+ h_1(t)=1+3t+t^2,\qquad h_2(t)=1+8t+15t^2+8t^3+t^4.
+\]
+Unlike the intermediate quotient by $q$, \eqref{eq:cubic} can be specialized
+at $t=-1$; it gives $H(z)=1/(1+z)$. At $t=0$ it gives $H(z)=1/(1-z)$.
+These polynomial specializations do not define the Laurent series
+\eqref{eq:F} at $t=0$.
+
+\section{Exact checks and reproducibility}
+
+The proof establishes every coefficient with $t$ indeterminate.
+Supplementary programs use exact integers and Laurent-polynomial arithmetic
+to check its combinatorial and algebraic steps. The verification design
+uses different representations of the finite objects, as in the separate
+integer-predicate computations of finite lattice configurations in
+Zeng, Liu, Ratnavelu and Ong \cite{ZengChecks}, Sections~4 and~6.
+That comparison concerns verification practice; their geometric results
+are not used in the comb proof.
+
+One program generates forests as recursive lists of trees. A separately
+written program generates balanced-parenthesis encodings and reconstructs
+the ideals directly from the minimum-adjunction recursion. The latter
+checks the following finite ranges, with no numerical tolerances:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+
+\textbf{Check} & \textbf{Coverage}\\
+
+All-ideal versus prefix membership & $n=0,\ldots,5$; 198,627 vectors\\
+Forests versus admissible cost words & $n=0,\ldots,8$; 6,917 forests\\
+Canonical-leaf support normalization & $n=0,\ldots,8$\\
+Local coordinate-pair weights & $c=0,\ldots,25$\\
+Both formal compositions & through $x^{13}$ over $\Z[t,t^{-1}]$\\
+
+\end{tabular}
+\end{center}
+The ambient lattice vectors in the first row are all nonnegative
+$2n$-tuples of total at most $2n$; the forest comparison uses all 17,577
+nonnegative length-$n$ words of total at most $n$ in its stated range.
+The larger series check does not extend direct lattice enumeration beyond
+$n=5$. These are finite consistency checks, not an extrapolation proof.
+
+The supplementary file \texttt{comb\_checks.py} reproduces the latter
+checks using only the Python~3 standard library; running
+\texttt{python3 comb\_checks.py} writes \texttt{comb\_checks.json} alongside
+the script. It is a publication adaptation of the separately written
+checker, rather than an additional independent implementation.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, literature searches, exact-check
+programs and manuscript preparation. An additional model context examined
+the argument and produced the separately written checker. Model output is
+not a mathematical certificate: the all-degree justification is the
+self-contained proof above. No proof assistant was used.
+
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "source_files": [
+    "manuscript/build/main.bbl",
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "clean_command": "latexmk -C -outdir=build main.tex",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex",
+    "engine": "pdfLaTeX with BibTeX; installed TeX Live and plain.bst"
+  },
+  "writer_job_id": "newwin-00001-p16-write-8b1e9584e88a"
+}

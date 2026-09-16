@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{hidelinks}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\KG}{\mathrm{KG}}
+\newcommand{\KGR}{R^{\mathrm{KG}}_{3}(3,3)}
+
+\title{A Two-Coloring of the Edges of $\KG(11,3)$\\
+with No Monochromatic Triangle}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give an explicit red--blue coloring of all $4{,}620$ edges of the
+three-uniform Kneser graph $\KG(11,3)$ and exhaustively verify that none of
+its $15{,}400$ triangles is monochromatic.  It follows that
+$R^{\mathrm{KG}}_{3}(3,3)\geq 12$, improving the previously published lower
+bound $11$.  Combined with the known upper bound $13$, this leaves the exact
+value in $\{12,13\}$.  In particular, this local result does not decide the
+$\KG(12,3)$ case, so it does not resolve the original exact-value problem.
+The coloring and two verifiers using different enumerations are supplied as
+machine-readable ancillary files.
+\end{abstract}
+
+\section{Statement and context}
+
+For $n\geq 6$, the Kneser graph $\KG(n,3)$ has the three-element subsets of
+$[n]=\{1,\ldots,n\}$ as vertices, with two vertices adjacent when they are
+disjoint.  Following Heath, McCourt, Parker, Schwieder, and
+Zerbib~\cite{HeathEtAl2025}, let $\KGR$ be the least $n$ such that every red--blue
+edge-coloring of $\KG(n,3)$ contains a monochromatic triangle.  They proved
+\[
+  11\leq \KGR\leq 13
+\]
+and encoded the avoidance of monochromatic triangles as a satisfiability
+problem~\cite[Theorems 11--12 and Section 3.3]{HeathEtAl2025}.
+
+An edge-coloring without a monochromatic triangle is equivalent to a cover
+of the edge set by two triangle-free spanning subgraphs: the color classes
+give such a cover, while an edge in an overlapping cover may be assigned to
+either covering graph.  Gujgiczer, Marits, and Ozeki used this formulation
+and explicitly recorded the $\KG(11,3)$ and $\KG(12,3)$ triangle-free-cover
+cases as unresolved~\cite[Section 4]{GujgiczerEtAl2026}.  Their separate
+question about covers by two graphs of fractional chromatic number at most
+$2.5$ is stronger and is not used here.
+
+The contribution of this note is restricted to the following finite case.
+
+\begin{theorem}\label{thm:main}
+The graph $\KG(11,3)$ has a red--blue edge-coloring with no monochromatic
+triangle.  Consequently,
+\[
+  R^{\mathrm{KG}}_{3}(3,3)\geq 12.
+\]
+\end{theorem}
+
+Relative to the two sources above, Theorem~\ref{thm:main} decides the
+$n=11$ case on the colorable side.  The literature comparison in this note
+is bounded to the cited records and is not a claim of priority.
+
+\section{Certificate proof}
+
+We first record the finite objects that the certificate must cover.  There
+are
+\[
+  \binom{11}{3}=165
+\]
+vertices.  Every vertex is disjoint from $\binom{8}{3}=56$ other vertices,
+so the number of unordered edges is
+\begin{equation}\label{eq:edges}
+  \frac12\binom{11}{3}\binom{8}{3}=4{,}620.
+\end{equation}
+Three vertices form a triangle precisely when they are three pairwise
+disjoint triples.  Equivalently, they are an unordered partition of a
+nine-element subset of $[11]$ into three triples.  Thus the number of
+triangles is
+\begin{equation}\label{eq:triangles}
+  \binom{11}{9}\frac{9!}{{(3!)}^3 3!}
+  =55\cdot 280=15{,}400.
+\end{equation}
+
+The ancillary text file \verb|n11_coloring.txt| has one data line for every
+edge.  A line
+\[
+  a_1,a_2,a_3\quad b_1,b_2,b_3\quad C
+\]
+assigns $C\in\{\mathrm{R},\mathrm{B}\}$ to the edge joining the displayed
+sorted triples.  The primary verifier performs the following exact checks.
+
+\begin{enumerate}
+  \item It parses every endpoint, checks that it is a three-subset of
+  $[11]$, checks disjointness, and rejects duplicate edges or invalid
+  colors.
+  \item Independently of the lines present in the certificate, it constructs
+  all $165$ vertices and all unordered pairs of disjoint vertices.  It
+  requires set equality between these expected edges and the parsed edges;
+  the common cardinality is $4{,}620$ as in~\eqref{eq:edges}.
+  \item It enumerates every unordered triple of graph vertices.  A triple is
+  tested exactly when the union of its three three-subsets has size nine,
+  which is equivalent to pairwise disjointness.  For each such triangle, it
+  looks up its three edge colors and rejects equality of all three.  The
+  number tested is required to be $15{,}400$ as in
+  Equation~\eqref{eq:triangles}.
+\end{enumerate}
+
+The verifier accepts the supplied file.  It finds $2{,}308$ red edges and
+$2{,}312$ blue edges.  Among all triangles, $7{,}720$ have one red and two
+blue edges, while $7{,}680$ have two red and one blue edge.  Hence there are
+no all-red or all-blue triangles.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The coverage check makes the parsed certificate a total map from
+$E(\KG(11,3))$ to $\{\mathrm{R},\mathrm{B}\}$.  By
+Equation~\eqref{eq:triangles}, the exhaustive triangle check considers every
+triangle of the graph, and the reported two nonmonochromatic patterns
+account for all $15{,}400$ of them.  The certificate therefore supplies the
+claimed coloring.
+
+The defining property is monotone in $n$, because $\KG(m,3)$ is the
+subgraph of $\KG(n,3)$ induced by triples contained in $[m]$ whenever
+$m\leq n$.  A coloring without a monochromatic triangle at $n=11$ therefore
+implies that the least forcing value is greater than $11$, proving
+$\KGR\geq 12$.
+\end{proof}
+
+\section{Independent replay and reproducibility}
+
+A second verifier was written without importing the primary checker.  It
+generates each edge by choosing its six-point union and then an unordered
+partition of that union into two triples.  It generates each triangle by
+choosing its nine-point union and then an unordered partition into three
+triples.  These routes give, independently,
+\[
+  \binom{11}{6}\frac{\binom63}{2}=4{,}620,
+  \qquad
+  \binom{11}{9}\frac{9!}{{(3!)}^3 3!}=15{,}400.
+\]
+It obtains the same edge-color and triangle-pattern counts stated above.
+As negative controls, it rejects a certificate with one edge deleted and
+detects a monochromatic triangle after the three edges of a generated
+triangle are forced red.
+
+The two verification routes use integer set operations only; neither uses
+floating-point arithmetic, randomized sampling, or a SAT solver.  A SAT
+solver was used to discover the assignment, but its output is outside the
+trust boundary: the explicit coloring is checked from scratch.  This
+separation of discovery from exact certificate checking is also used in
+other finite combinatorial work; for a directly verified example involving
+stored graph colorings and independent reconstruction, see
+Zeng et~al.~\cite[Sections 3 and 6]{202608.1658}.
+
+The ancillary material contains the coloring, the primary standard-library
+checker, the independently written audit verifier, and its recorded output.
+Running
+\begin{center}
+  \verb|python3 check_n11_coloring.py|
+\end{center}
+from the directory containing the coloring and primary checker reproduces
+the decisive coverage and triangle checks.  The independent verifier is
+run from the project root as
+\begin{center}
+  \verb|python3 audit/referee_verify.py|.
+\end{center}
+
+\section{Scope and limitations}
+
+Combining Theorem~\ref{thm:main} with the upper bound of Heath et~al.\ gives
+only
+\[
+  12\leq R^{\mathrm{KG}}_{3}(3,3)\leq 13.
+\]
+Nothing in the $n=11$ certificate determines whether every two-coloring of
+$\KG(12,3)$ has a monochromatic triangle.  An exact decision at $n=12$
+would require either a similarly complete coloring or a fully checkable
+refutation of the corresponding finite constraints.  Thus the original
+exact-value problem remains unresolved by this note.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, SAT formulation and
+witness discovery, checker development, adversarial audit organization, and
+initial manuscript preparation.  A SAT solver supplied the candidate
+coloring.  Neither solver status nor language-model output is used as
+mathematical evidence: the result rests on the released finite coloring and
+the exhaustive exact verifiers described above.  No proof assistant was
+used.
+
+\bibliographystyle{alphaurl}
+\bibliography{references}
+
+\end{document}

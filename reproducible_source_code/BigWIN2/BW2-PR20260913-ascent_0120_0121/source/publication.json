@@ -1,0 +1,12 @@
+{
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/coefficients.py",
+    "manuscript/README.md"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build_command": "cd manuscript && latexmk -C -outdir=build main.tex && latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex",
+  "author": "Xiaojian Zeng",
+  "writer_job_id": "primary-20260913-ascent-0120-0121-write-d85c24d5b7ca"
+}

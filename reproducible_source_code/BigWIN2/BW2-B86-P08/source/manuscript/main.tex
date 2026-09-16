@@ -1,0 +1,263 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Direct Scalene Triangular Facets of Convex Polyhedra Must Be Acute},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Convex polytopes with orientation-preserving congruent triangular facets}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\R}{\mathbb{R}}
+
+\title{Direct Scalene Triangular Facets of Convex Polyhedra Must Be Acute}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 10, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fix either planar orientation of a nondegenerate scalene triangle $T$.
+We prove that if every facet of a full-dimensional compact convex
+three-polytope is congruent to $T$ by an orientation-preserving congruence,
+where facet orientation is induced by the outward normal, then $T$ is acute.
+Thus no right or obtuse scalene triangle has an orientation-preserving
+monohedral realization.  The key local observation is that the side labels
+around every oriented vertex link advance by a fixed nontrivial three-cycle.
+Consequently every vertex degree is divisible by three; Euler's formula then
+forces a degree-three vertex, whose star determines a nondegenerate
+disphenoid.  Its elementary coordinate identities imply strict acuteness.
+\end{abstract}
+
+\section{Context and statement}
+
+Problem B22 of Croft, Falconer, and Guy asks which triangles can occur as the
+common face of a convex polyhedron, both with and without reflected copies
+\cite[Problem B22]{CroftFalconerGuy1991}.  Georgiou recently solved the
+reflection-allowed existence and minimum-face-count questions
+\cite{Georgiou2026}.  For a scalene triangle, however, his eight-face
+construction contains four direct and four mirror-image facets.  With cyclic
+side order read using the outward normal, his Remark~3 therefore leaves the
+orientation-preserving case untouched; his concluding discussion isolates
+right and obtuse scalene triangles as the remaining case
+\cite[Remark~3 and Section~4]{Georgiou2026}.
+
+We use the following precise convention.  Fix an orientation of a scalene
+triangle $T$ with side-length set $\{a,b,c\}$.  Its positive boundary has a
+cyclic side-length word.  A triangular facet of a convex three-polytope is
+oriented by its outward normal, and it is a \emph{direct copy} of $T$ when its
+positive cyclic side-length word is a cyclic rotation of the word for $T$,
+not of its reverse.  This agrees exactly with Georgiou's direct-versus-mirror
+distinction for scalene facets \cite[Remark~3]{Georgiou2026}.
+
+\begin{theorem}\label{thm:main}
+Let $T$ be a nondegenerate scalene Euclidean triangle, with either of its two
+planar orientations fixed.  If a full-dimensional compact convex
+three-polytope has every facet a direct copy of $T$, then $T$ is acute.
+Equivalently, if
+\[
+  0<a<b<c<a+b, \qquad c^2\geq a^2+b^2,
+\]
+then no such polytope exists.
+\end{theorem}
+
+The proof supplies the orientation-sensitive local step missing from the
+reflection-allowed construction and then reduces the problem to the
+four-face obstruction.  The latter is the classical disphenoid calculation
+studied, for example, by Leech \cite{Leech1950} and used as Lemma~5 by
+Georgiou \cite{Georgiou2026}; we reproduce the needed calculation so that the
+argument is self-contained.  A bounded literature search through the date of
+this manuscript located no later paper proving Theorem~\ref{thm:main} or an
+equivalent oriented-link lemma.  This dated negative search is not a claim of
+priority.
+
+\section{The oriented-link constraint}
+
+Fix the usual orientation of $\R^3$.  An ordered facet $(p_0,p_1,p_2)$ is
+positive when
+\[
+ ((p_1-p_0)\times(p_2-p_0))\mathbin{\cdot}n_{\mathrm{out}}>0.
+\]
+Positive boundary orders on two adjacent facets traverse their common edge
+in opposite directions.
+
+Let $\psi$ be the next-label permutation in the fixed positive cyclic word
+of $T$.  Since $T$ is scalene, $\psi$ is one of the two nonidentity
+three-cycles on $\{a,b,c\}$.  Reversing the chosen orientation of $T$
+replaces $\psi$ by $\psi^{-1}$.
+
+\begin{lemma}[oriented-link three-cycle]\label{lem:link}
+At every vertex $v$, the degree $\deg(v)$ is divisible by three.
+More precisely, if $u_0,\ldots,u_{d-1}$ are its cyclic neighbors, indexed so
+that every incident facet is positively ordered as
+$(v,u_i,u_{i+1})$, and if
+\[
+ r_i=|vu_i|, \qquad q_i=|u_i u_{i+1}|,
+\]
+then, with indices modulo $d$,
+\begin{equation}\label{eq:transition}
+ q_i=\psi(r_i), \qquad r_{i+1}=\psi^2(r_i).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The link of $v$ in the triangular boundary sphere is a cycle.  Begin with
+one positive incident facet $(v,u_0,u_1)$.  Across $vu_1$, compatibility of
+the oriented facet boundaries forces the next positive facet to be
+$(v,u_1,u_2)$.  Continuing gives the asserted cyclic indexing.
+
+The positive side word on $(v,u_i,u_{i+1})$ is
+$(r_i,q_i,r_{i+1})$.  Directness says that this word is a cyclic rotation of
+the fixed word of $T$.  Its three entries are distinct, so its first entry
+determines the other two and yields \eqref{eq:transition}.  Closure of the
+link gives
+\[
+ r_0=r_d=\psi^{2d}(r_0).
+\]
+A nonidentity three-cycle has no fixed label under its first or second power.
+Hence $3\mid 2d$, and therefore $3\mid d$.
+\end{proof}
+
+Notice that the same proof treats both handedness classes: it uses only that
+$\psi$ has order three, not which of the two three-cycles it is.
+
+\section{Euler reduction and the disphenoid}
+
+\begin{lemma}\label{lem:degree3}
+The polytope has a vertex of degree three.
+\end{lemma}
+
+\begin{proof}
+Let $V,E,F$ be the numbers of vertices, edges, and facets.  The boundary is a
+triangulated two-sphere, so
+\[
+ V-E+F=2,\qquad 3F=2E,\qquad
+ \sum_v\deg(v)=2E.
+\]
+Eliminating $E$ and $F$ gives
+\begin{equation}\label{eq:curvature}
+ \sum_v(6-\deg(v))=12.
+\end{equation}
+Every vertex has degree at least three, and Lemma~\ref{lem:link} makes every
+degree a multiple of three.  If no degree were three, every degree would be
+at least six and the left side of \eqref{eq:curvature} would be nonpositive,
+a contradiction.
+\end{proof}
+
+\begin{lemma}\label{lem:star}
+Let $v$ have degree three and cyclic neighbors $u_0,u_1,u_2$.  The four
+points $v,u_0,u_1,u_2$ are affinely independent, and their six joining edges
+occur in three equal opposite pairs.  In particular, they form a
+nondegenerate tetrahedron all four of whose faces are congruent to $T$.
+\end{lemma}
+
+\begin{proof}
+For the notation of Lemma~\ref{lem:link}, equation
+\eqref{eq:transition} gives
+\[
+ q_{i+1}=\psi(r_{i+1})=\psi^3(r_i)=r_i.
+\]
+The link edge $u_{i+1}u_{i+2}$ is opposite the radial edge $vu_i$ in the
+four-point configuration, so the three opposite pairs are equal.
+
+It remains to exclude a flat configuration.  Any two consecutive vectors
+$u_i-v$ and $u_{i+1}-v$ are linearly independent because they span a
+nondegenerate triangular facet.  If the three vectors $u_i-v$ were linearly
+dependent, all four points would lie in one plane $H$, and each of the three
+distinct incident triangular facets would have affine hull $H$.  But a
+facet plane of a convex three-polytope is supporting, and its intersection
+with the polytope is one face.  The three facets would therefore coincide,
+a contradiction.  Thus the four points form a nondegenerate tetrahedron.
+
+Its three faces through $v$ are facets and hence copies of $T$.  Moreover,
+the three radial labels in a closed degree-three link are precisely
+$a,b,c$, and \eqref{eq:transition} permutes them to the three link labels.
+Thus the fourth face $u_0u_1u_2$ also has side-length set $\{a,b,c\}$ and is
+congruent to $T$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemmas~\ref{lem:degree3} and \ref{lem:star}, the polytope contains four
+vertices forming a nondegenerate tetrahedron with three equal pairs of
+opposite edges and with every face congruent to $T$.
+
+Call the vertices $A,B,C,D$ and translate their centroid to the origin.  Set
+\[
+ x=\frac{A+B-C-D}{4},\quad
+ y=\frac{A-B+C-D}{4},\quad
+ z=\frac{A-B-C+D}{4}.
+\]
+Then
+\[
+ A=x+y+z,\quad B=x-y-z,\quad
+ C=-x+y-z,\quad D=-x-y+z.
+\]
+Equality of the opposite edges $AB$ and $CD$ gives
+$|y+z|=|y-z|$, hence $y\cdot z=0$.  The other two opposite-pair equalities
+similarly give $x\cdot z=x\cdot y=0$.  Nondegeneracy makes $x,y,z$ nonzero.
+
+After permuting the coordinate names to match the three opposite-pair
+lengths $a,b,c$, we have
+\[
+ a^2=4(|y|^2+|z|^2),\qquad
+ b^2=4(|x|^2+|z|^2),\qquad
+ c^2=4(|x|^2+|y|^2).
+\]
+Solving,
+\begin{equation}\label{eq:disphenoid}
+ |x|^2=\frac{b^2+c^2-a^2}{8},\quad
+ |y|^2=\frac{c^2+a^2-b^2}{8},\quad
+ |z|^2=\frac{a^2+b^2-c^2}{8}.
+\end{equation}
+All three quantities are strictly positive.  In particular,
+$a^2+b^2-c^2>0$, so $T$ is acute.  This proves the first assertion and
+contradicts $c^2\geq a^2+b^2$ in the stated right-or-obtuse range.
+\end{proof}
+
+\section{Verification and scope}
+
+The proof above is deductive and does not depend on computation.  As a finite
+cross-check, two short exact Python enumerators were used.  One independently
+chooses any cyclic rotation on every incident face for each of the two
+reference words $(a,b,c)$ and $(a,c,b)$.  For degrees $3,4,5,6,7,8$ it finds
+respectively $3,0,0,3,0,0$ legal labeled stars in either handedness class,
+and every degree-three output has the opposite-edge equalities used in
+Lemma~\ref{lem:star}.  A second radial-word enumerator gives the same
+divisibility pattern through degree $12$.  All comparisons are finite string
+equalities; there is no floating-point tolerance or random search.
+
+Exact finite enumeration with a separately replayable verifier is also used
+in related discrete-geometric work of Zeng, Liu, Ratnavelu, and Huat
+\cite{ZengEtAl2026Certificates}.  Here the enumerations are only checks of the
+closed-form transition \eqref{eq:transition}, not theorem-bearing evidence.
+
+Convexity is used in the supporting-plane argument of
+Lemma~\ref{lem:star}; full dimensionality rules out the flat star;
+triangularity supplies the cyclic vertex links and Euler count; scaleneness
+makes the side transition deterministic; and the direct-copy hypothesis
+selects one cyclic word rather than both.  The proof makes no assertion about
+reflection-allowed realizations, acute constructions, isosceles triangles,
+nonconvex surfaces, lower-dimensional configurations, polygonal facets, or
+the classification of attainable face counts.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, proof organization,
+construction and checking of the auxiliary exact enumerators, adversarial
+review, and manuscript preparation.  A separate language-model review was
+used as an additional error-finding pass, not as independent peer review.
+Language-model output is not mathematical evidence: the complete argument is
+given above, and the finite checks are reproducible exact computations.  No
+proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

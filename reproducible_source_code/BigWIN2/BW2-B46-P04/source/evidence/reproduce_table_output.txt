@@ -1,0 +1,47 @@
+n=1 D=1 expected=1 match=True
+n=2 D=2 expected=2 match=True
+n=3 D=2 expected=2 match=True
+n=4 D=2 expected=2 match=True
+n=5 D=1 expected=1 match=True
+n=6 D=1 expected=1 match=True
+n=7 D=4 expected=4 match=True
+n=8 D=1 expected=1 match=True
+n=9 D=1 expected=1 match=True
+n=10 D=1 expected=1 match=True
+n=11 D=4 expected=4 match=True
+n=12 D=1 expected=1 match=True
+n=13 D=4 expected=4 match=True
+n=14 D=1 expected=1 match=True
+n=15 D=2 expected=2 match=True
+n=16 D=2 expected=2 match=True
+n=17 D=1 expected=1 match=True
+n=18 D=2 expected=2 match=True
+n=19 D=2 expected=2 match=True
+n=20 D=3 expected=3 match=True
+n=21 D=1 expected=1 match=True
+n=22 D=3 expected=3 match=True
+n=23 D=2 expected=2 match=True
+n=24 D=2 expected=2 match=True
+n=25 D=2 expected=2 match=True
+n=26 D=3 expected=3 match=True
+n=27 D=2 expected=2 match=True
+n=28 D=1 expected=1 match=True
+n=29 D=3 expected=3 match=True
+n=30 D=1 expected=1 match=True
+n=31 D=5 expected=5 match=True
+n=32 D=1 expected=1 match=True
+n=33 D=3 expected=3 match=True
+n=34 D=1 expected=1 match=True
+n=35 D=2 expected=2 match=True
+n=36 D=1 expected=1 match=True
+n=37 D=1 expected=1 match=True
+n=38 D=1 expected=1 match=True
+n=39 D=5 expected=5 match=True
+n=40 D=1 expected=1 match=True
+n=41 D=3 expected=3 match=True
+n=42 D=1 expected=1 match=True
+n=43 D=7 expected=7 match=True
+observed=(1, 2, 2, 2, 1, 1, 4, 1, 1, 1, 4, 1, 4, 1, 2, 2, 1, 2, 2, 3, 1, 3, 2, 2, 2, 3, 2, 1, 3, 1, 5, 1, 3, 1, 2, 1, 1, 1, 5, 1, 3, 1, 7)
+published=(1, 2, 2, 2, 1, 1, 4, 1, 1, 1, 4, 1, 4, 1, 2, 2, 1, 2, 2, 3, 1, 3, 2, 2, 2, 3, 2, 1, 3, 1, 5, 1, 3, 1, 2, 1, 1, 1, 5, 1, 3, 1, 7)
+survivors_43_as_(a,b,c)=[(0, 0, 43), (0, 4, 35), (0, 8, 27), (1, 2, 36), (1, 4, 32), (1, 6, 28), (1, 10, 20)]
+table_match=all 43 values and all seven S_43 survivors passed

@@ -1,0 +1,399 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Nonconvergence of the normalized size of the second remainder set},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\PP}{\mathcal P}
+\DeclareMathOperator{\lcm}{lcm}
+\title{Nonconvergence of the normalized size\protect\\of the second remainder set}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190, China. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Starting with $S_0(n)=\{1,\ldots,\lfloor n/2\rfloor\}$, define
+$S_{j+1}(n)=\{n\bmod k:k\in S_j(n),\ k>0\}$ and $s_j(n)=|S_j(n)|$.
+We prove that $s_2(n)/n$ does not converge, settling the second-iterate
+case of Problem 2 of Baraskar and Vukusic. An exact congruence
+description of positive second remainders gives a finite-cutoff count
+on each arithmetic progression. Two such counts, evaluated by exhaustive
+residue enumeration and prime-power divisibility, give rationally
+separated subsequence bounds with a positive gap exceeding $0.0098$.
+Explicit error terms also give separated bounds for every progression
+parameter $t\ge203$. No result for higher iterates or exact global
+limit inferior and limit superior is asserted.
+\end{abstract}
+
+\section{Statement and context}
+
+For every positive integer $n$, let
+\begin{equation}\label{eq:sets}
+ \begin{gathered}
+ S_0(n)=\{1,\ldots,\lfloor n/2\rfloor\},\qquad s_j(n)=|S_j(n)|,\\
+ S_{j+1}(n)=\{n\bmod k:k\in S_j(n),\ k>0\}\quad(j\ge0).
+ \end{gathered}
+\end{equation}
+Repeated remainders are counted once. Zero is retained as a value and
+excluded as a modulus. In particular, all these sets are empty for $n=1$.
+
+Baraskar and Vukusic studied the iterated sets in
+\eqref{eq:sets}. Their Theorem 1 proves convergence of $s_1(n)/n$;
+their Theorem 3 gives, for the second iterate
+\cite[Theorems 1 and 3]{BaraskarVukusic2026},
+\[
+ \frac1{24}\le\liminf_{n\to\infty}\frac{s_2(n)}n
+ \le\limsup_{n\to\infty}\frac{s_2(n)}n\le\frac14
+ .
+\]
+Problem 2 in their Section 7 asks for nonconvergence of $s_j(n)/n$
+for each fixed $j\ge2$ \cite[p.~16]{BaraskarVukusic2026}.
+We prove precisely its $j=2$ case. The proof supplies two explicit
+arithmetic progressions whose limiting bounds are strictly separated;
+the general bounds above do not give such a separation.
+
+Write $\PP$ for the set of primes and, for an integer $Q\ge3$, define
+\begin{equation}\label{eq:period}
+ L_Q=\lcm\{pq:3\le q\le Q,\ p\in\PP,\ p<q\}.
+\end{equation}
+The constants used below are
+\begin{align*}
+ L&=L_{10}=75600, &
+ M&=L_{50}=691374732709966591241323368000,\\
+ \alpha&=\frac{30093341768093808664597}{276977102566985955634500}, &
+ \beta&=\frac{1182869}{9979200}.
+\end{align*}
+Their difference is
+\begin{equation}\label{eq:delta}
+ \delta:=\beta-\alpha
+ =\frac{131410063319607383019139}{13294900923215325870456000}>0.
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For every integer $t\ge1$,
+\begin{align}
+ \frac{s_2(Mt)}{Mt}&\le\alpha+\frac{M+3}{Mt},\label{eq:upper}\\
+ \frac{s_2(Lt+1)}{Lt+1}&\ge\beta-\frac{L+2}{Lt+1}.\label{eq:lower}
+\end{align}
+Consequently,
+\begin{equation}\label{eq:separation}
+ \limsup_{t\to\infty}\frac{s_2(Mt)}{Mt}
+ \le\alpha<\beta\le
+ \liminf_{t\to\infty}\frac{s_2(Lt+1)}{Lt+1},
+\end{equation}
+so $s_2(n)/n$ has no limit as $n\to\infty$.
+\end{theorem}
+
+The argument uses Euclidean division, finite residue counting, and the
+Chinese remainder theorem. The latter identifies residues modulo a
+product of relatively prime prime powers with the corresponding tuples
+of local residues \cite[Theorem 2.6]{Shoup2009}. We use it only for
+exact finite proportions; no probabilistic model for integer
+factorization is assumed.
+
+\section{Congruences and a uniform cutoff}
+
+\begin{lemma}\label{lem:membership}
+For positive integers $n$ and $r$, one has $r\in S_2(n)$ if and only if
+there are an integer $q\ge3$ and a prime $p<q$ such that
+\begin{equation}\label{eq:membership}
+ (q+1)r\le n-q,\qquad pq\mid(q-1)n+r.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Suppose $r\in S_2(n)$ and $r>0$. Choose $k\in S_1(n)$ with
+$n=qk+r$ and $0<r<k$. There are integers $a\ge2$ and
+$1\le h\le\lfloor n/2\rfloor$ with $n=ah+k$ and $0<k<h$.
+Thus $n\ge2(k+1)+k$, which implies $q\ge3$. Choose a prime divisor
+$p$ of $a$. Since $(n-k)/p\ge h>k$,
+\[
+ p<\frac nk-1=q-1+\frac rk<q.
+\]
+Also $q(n-k)=(q-1)n+r$, giving the divisibility in
+\eqref{eq:membership}, and $k\ge r+1$ gives its inequality.
+
+Conversely, \eqref{eq:membership} implies $q\mid n-r$. Set
+$k=(n-r)/q$. Then $k\ge r+1$, and cancelling $q$ in
+$pq\mid q(n-k)$ gives $p\mid n-k$. This cancellation is valid even
+when $p\mid q$. Put $h=(n-k)/p$. Since $p\le q-1$ and $r>0$,
+\[
+ n-k=(q-1)k+r>pk,
+\]
+so $h>k$. Moreover, $p\ge2$ and $k>0$ give
+$h\le\lfloor n/2\rfloor$. The divisions $n=ph+k$ and $n=qk+r$
+therefore prove $k\in S_1(n)$ and $r\in S_2(n)$.
+\end{proof}
+
+Let $T_Q(n)$ count the positive remainders admitted by
+\eqref{eq:membership} with $3\le q\le Q$. A positive remainder
+missing from this count has a witness $q\ge Q+1$, hence
+\[
+ r\le\frac{n-q}{q+1}<\frac{n}{Q+2}.
+\]
+Accounting separately for the possible zero remainder gives
+\begin{equation}\label{eq:tail}
+ 0\le s_2(n)-T_Q(n)\le\left\lfloor\frac{n}{Q+2}\right\rfloor+1.
+\end{equation}
+
+Fix a residue $b$ modulo $L_Q$. For a residue $a$ modulo $L_Q$, let
+$w_b(a)$ be the least $q\in\{3,\ldots,Q\}$ for which
+\begin{equation}\label{eq:first}
+ pq\mid(q-1)b+a\quad\text{for some }p\in\PP,\ p<q,
+\end{equation}
+and set $w_b(a)=\infty$ if no such $q$ exists. Define
+\begin{equation}\label{eq:coefficient}
+ A_q(b)=\#\{a\bmod L_Q:w_b(a)=q\},\qquad
+ C_Q(b)=\sum_{q=3}^{Q}\frac{A_q(b)}{L_Q(q+1)}.
+\end{equation}
+
+\begin{lemma}\label{lem:count}
+If $n\ge Q$ and $n\equiv b\pmod{L_Q}$, then
+\begin{equation}\label{eq:count}
+ |T_Q(n)-nC_Q(b)|\le L_Q+2.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:bounds}
+ C_Q(b)-\frac{L_Q+2}{n}\le\frac{s_2(n)}n
+ \le C_Q(b)+\frac1{Q+2}+\frac{L_Q+3}{n}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Every modulus $pq$ in \eqref{eq:first} divides $L_Q$, so the
+congruence tests depend only on $a$ and $b$. Their endpoints
+\[
+ H_q(n)=\left\lfloor\frac{n-q}{q+1}\right\rfloor
+       =\left\lfloor\frac{n+1}{q+1}\right\rfloor-1
+\]
+are nonincreasing in $q$. Thus a class with $w_b(a)=q$ contributes
+exactly its positive representatives up to $H_q(n)$.
+
+Represent the class by $c\in\{1,\ldots,L_Q\}$, using $c=L_Q$ for
+zero. Since $n\ge Q$, the endpoint is nonnegative. For an integer
+$H\ge0$, the number of these representatives up to $H$ is
+\[
+ \left\lfloor\frac{H+L_Q-c}{L_Q}\right\rfloor,
+\]
+which differs from $H/L_Q$ by at most one. Also
+$|H_q(n)-n/(q+1)|<2$. The error for one eligible class is therefore
+at most $1+2/L_Q$. Summing over at most $L_Q$ classes proves
+\eqref{eq:count}. Combining this with \eqref{eq:tail} proves
+\eqref{eq:bounds}.
+\end{proof}
+
+\section{The two finite coefficients}
+
+\subsection{The residue class one}
+
+For $Q=10$ and $b=1$, testing \eqref{eq:first} on the full set
+$\{0,\ldots,75599\}$ gives
+\begin{center}
+\begin{tabular}{c*{8}{r}}
+\toprule
+$q$ &3&4&5&6&7&8&9&10\\
+\midrule
+$A_q(1)$ &12600&12600&6930&7770&4110&3540&165&1128\\
+\bottomrule
+\end{tabular}
+\end{center}
+For clarity, the following complete integer enumeration produces this
+table. Quotients are processed in increasing order, and a residue is
+assigned only at its first occurrence.
+\begin{verbatim}
+L = 75600
+first = [0] * L
+counts = [0] * 11
+for q in range(3, 11):
+    for p in (2, 3, 5, 7):
+        if p >= q:
+            continue
+        m = p*q
+        for a in range((1-q) % m, L, m):
+            if first[a] == 0:
+                first[a] = q
+                counts[q] += 1
+\end{verbatim}
+The loop covers each allowed congruence throughout a complete period.
+Consequently,
+\begin{equation}\label{eq:beta}
+ C_{10}(1)=\frac1{75600}\left(
+ \frac{12600}4+\frac{12600}5+\frac{6930}6+\frac{7770}7+
+ \frac{4110}8+\frac{3540}9+\frac{165}{10}+\frac{1128}{11}
+ \right)=\beta.
+\end{equation}
+
+\subsection{The residue class zero}
+
+For $b=0$, the condition is simply $pq\mid r$. Its least quotient
+has the following description.
+
+\begin{lemma}\label{lem:firstzero}
+For a positive integer $r$, the least integer $q\ge3$ for which
+$pq\mid r$ for some prime $p<q$, when it exists, is the minimum of:
+the second smallest distinct prime divisor of $r$, if present; and
+the numbers $p^2$ with $p\in\PP$ and $p^3\mid r$.
+For $w_0$, candidates exceeding $Q$ are discarded.
+\end{lemma}
+\begin{proof}
+If a witness quotient $q$ is prime, the second smallest distinct prime
+divisor of $r$ is at most $q$. If $q$ is composite with a prime divisor
+$\ell\ne p$, then $q'=\max(p,\ell)<q$ and $p'=\min(p,\ell)$
+give an earlier witness. Otherwise $q=p^a$ for an integer $a\ge2$;
+then $p^3\mid r$ and $q'=p^2\le q$ is a witness. Conversely, every
+listed candidate directly gives a witness.
+\end{proof}
+
+Put
+\[
+ P_x=\prod_{\substack{a<x\\a\in\PP}}\left(1-\frac1a\right),
+ \qquad d_q=\frac{A_q(0)}{L_Q}\quad(3\le q\le Q).
+\]
+Every prime at most $Q$ divides $L_Q$, and $p^3\mid L_Q$ whenever
+$p^2\le Q$, by the pair $(q,p)=(p^2,p)$ in \eqref{eq:period}.
+Thus the Chinese remainder theorem gives exact product proportions
+for all the prime-power conditions used below. Larger prime powers in
+$L_Q$ just repeat these proportions. For the zero residue we may use
+the positive representative $L_Q$.
+
+For a prime first quotient $\ell$, exactly one prime $p<\ell$ divides
+$r$, and $\ell\mid r$. If $p^2<\ell$, we must also exclude
+$p^3\mid r$; if $p^2>\ell$, there is no restriction on its exponent.
+All other primes below $\ell$ are absent. The density factors for
+the distinguished prime $p$ are respectively $1/p-1/p^3$ and $1/p$.
+Dividing out its factor $1-1/p$ in $P_\ell$ gives
+\begin{equation}\label{eq:primedensity}
+ d_\ell=\frac{P_\ell}{\ell}
+ \sum_{\substack{p<\ell\\p\in\PP}}h(p,\ell),\qquad
+ h(p,\ell)=
+ \begin{cases}
+  1/p+1/p^2,&p^2<\ell,\\
+  1/(p-1),&p^2>\ell.
+ \end{cases}
+\end{equation}
+The alternatives are disjoint, and equality $p^2=\ell$ is impossible.
+For a square first quotient $p^2$, its cube must divide $r$ and every
+other prime below $p^2$ must be absent. Any such other prime would
+give an earlier prime pair. Hence
+\begin{equation}\label{eq:squaredensity}
+ d_{p^2}=\frac{1}{p^3}\frac{P_{p^2}}{1-1/p}
+        =\frac{P_{p^2}}{p^2(p-1)}.
+\end{equation}
+All remaining $d_q$ are zero by Lemma~\ref{lem:firstzero}.
+
+At $Q=50$, the nonzero densities from
+\eqref{eq:primedensity}--\eqref{eq:squaredensity} are shown in
+Table~\ref{tab:densities}. Their exact weighted sum is
+\begin{equation}\label{eq:c0}
+ C_{50}(0)=\sum_{q=3}^{50}\frac{d_q}{q+1}
+ =\frac{6191714756605250456368}{69244275641746488908625},
+ \qquad C_{50}(0)+\frac1{52}=\alpha.
+\end{equation}
+\begin{table}[tb]
+\centering
+\small
+\begin{tabular}{rr@{\qquad}rr}
+\toprule
+$q$&$d_q$&$q$&$d_q$\\
+\midrule
+3&$1/6$&23&$31104/2187185$\\
+4&$1/12$&25&$27648/16900975$\\
+5&$1/12$&29&$59242752/5391411025$\\
+7&$2/35$&31&$1689209856/167133741775$\\
+9&$4/315$&37&$31905792/3829070245$\\
+11&$116/3465$&41&$28931530752/3900644404195$\\
+13&$16/585$&43&$160298237952/22952212862579$\\
+17&$304/15015$&47&$18484212400128/2928046583754721$\\
+19&$12224/692835$&49&$38220595200/81013146586099$\\
+\bottomrule
+\end{tabular}
+\caption{All nonzero first-quotient proportions modulo $L_{50}$ for
+the residue class $b=0$. Every entry is an exact rational number.}
+\label{tab:densities}
+\end{table}
+
+\section{Separation, verification, and scope}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Apply the upper bound in Lemma~\ref{lem:count} with
+$(Q,b,n)=(50,0,Mt)$ and use \eqref{eq:c0}. Apply its lower bound
+with $(Q,b,n)=(10,1,Lt+1)$ and use \eqref{eq:beta}. For every
+$t\ge1$, both integers exceed their respective cutoffs, so this proves
+\eqref{eq:upper}--\eqref{eq:lower}. Letting $t$ tend to infinity
+and using \eqref{eq:delta} gives \eqref{eq:separation}.
+The two index sequences are strictly increasing and unbounded. If
+$s_2(n)/n$ converged, both subsequences would have the same limit,
+contradicting \eqref{eq:separation}.
+\end{proof}
+
+\begin{corollary}\label{cor:finite}
+Set $A=(M+3)/M$ and $B=(L+2)/L$. For every integer $t\ge203$,
+\[
+ \frac{s_2(Mt)}{Mt}\le\alpha+\frac{A}{203}
+ <\beta-\frac{B}{203}\le\frac{s_2(Lt+1)}{Lt+1}.
+\]
+\end{corollary}
+\begin{proof}
+Use $(L+2)/(Lt+1)\le B/t$ in \eqref{eq:lower} and $A/t\le A/203$
+in \eqref{eq:upper}. The gap between the two fixed bounds is
+\begin{equation}\label{eq:finitegap}
+ \delta-\frac{A+B}{203}
+ =\frac{559612671694976819161613011}
+ {17543633842515402252748580463000}>0.
+\end{equation}
+\end{proof}
+
+The threshold $203$ is an explicit sufficient choice. The same coarse
+error allowance fails at $202$; no minimality for the actual counts is
+claimed. We do not identify the global limit inferior or limit superior.
+The cases $j\ge3$ in the original problem are not resolved here.
+
+All displayed arithmetic can be reproduced with the accompanying
+\texttt{certificate.py}, using Python~3.10 or later and only the standard
+library. It enumerates all $75600$ residues for $C_{10}(1)$, evaluates
+\eqref{eq:primedensity}--\eqref{eq:squaredensity} using rational
+arithmetic, and checks the two periods and both positive gaps.
+No enumeration of all $L_{50}$ residues is required. Running
+\texttt{python3 certificate.py --full} also performs the following
+inclusion--exclusion cross-check.
+
+As a separate check of the zero-class densities, the arithmetic
+verification starts with the raw clauses $pq\mid r$. If $U$ is the
+indicator of the union already processed, adding a clause $E$ replaces
+it by $U+1_E-U1_E$. Products of divisibility indicators are represented
+by least common multiples. This is the finite inclusion--exclusion
+identity \cite[Theorem 8.1]{Shoup2009}. For a period divisible by every
+modulus, a term $c\,1_{d\mid r}$ contributes exactly $cL_Q/d$
+residues. Differences of successive unions recover the first-quotient
+counts, providing a check that does not use the prime-square
+classification. A separately written verifier also checked
+Lemma~\ref{lem:membership} against literal remainder sets for every
+$1\le n\le768$ and checked both coefficient calculations.
+
+The use of exact predicates, complete finite coverage, and a separate
+implementation has a methodological parallel in Section 6 of
+Zeng et al.\ \cite{ZengEtAl2026Certificates}, where finite geometric
+enumerations are checked from their defining integer data. Here the
+finite computations supply the periodic coefficients; the proofs of
+Lemmas~\ref{lem:membership} and~\ref{lem:count} justify the claims
+for arbitrary $n$. Small-instance tests alone would not do so.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, literature retrieval,
+exact-arithmetic code, a separate mathematical review pass, and
+manuscript preparation. The review pass is not external peer review.
+The mathematical argument and explicitly specified integer and rational
+calculations, rather than language-model output or numerical fitting,
+support the conclusions. No proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "candidate_kind": "result-note",
+  "original_status": "unresolved",
+  "title": "A Two-Coloring of the Edges of KG(11,3) with No Monochromatic Triangle",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "evidence/n11_coloring.txt",
+    "evidence/check_n11_coloring.py"
+  ],
+  "ancillary_files": [
+    "evidence/n11_coloring.txt",
+    "evidence/check_n11_coloring.py",
+    "audit/referee_verify.py",
+    "audit/referee_verification.log"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+}

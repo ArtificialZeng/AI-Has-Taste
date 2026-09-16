@@ -1,0 +1,512 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}\hypersetup{pdftitle={A Newton-positivity conjecture for dyadic stages of reciprocal-subsum denominators},pdfauthor={Xiaojian Zeng},pdfsubject={Conjecture note; original log-concavity problem unresolved},pdfkeywords={subsum polynomials, log-concavity, Newton coefficients, exact certificates}}
+\usepackage{url}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Lfun}{\mathcal L}
+\newcommand{\ind}{\mathbf 1}
+\DeclareMathOperator{\odd}{o}
+\title{A Newton-positivity conjecture for dyadic stages\\
+of reciprocal-subsum denominators}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+The conjectured coefficient log-concavity of ordinary reciprocal-subsum
+denominators remains unresolved. We propose nonnegativity of all Newton
+coefficients of a quadratic minor margin at actual intermediate dyadic
+stages, starting when the relevant factor exponents become affine.
+An exact polynomial reduction bounds the degree by twice the coefficient
+index. Complete integer certificates through index 96 imply log-concavity
+at the first and last 96 internal indices for every admissible denominator.
+We also prove a uniform band of nonnegative high-order differences and an
+obstruction to extending the polynomial method through its first excluded
+degree. Larger finite tests support the conjecture, with their verification
+limits stated explicitly. Neither the proposed Newton inequalities nor
+the unrestricted denominator conjecture is proved.
+\end{abstract}
+
+\section{The original problem and the proposed inequalities}
+
+For $n\geq1$, let
+\begin{equation}\label{eq:D}
+ D_n(x)=\prod_{i=1}^{n}(1+x^i)^{e_{n,i}},\qquad
+ e_{n,i}=\#\{q\in\Z_{\geq0}:2^qi\leq n\},\qquad L_n=\deg D_n.
+\end{equation}
+Ballantine, Beck, Feigon and Maurischat introduced the subsum polynomial
+$\operatorname{sp}(\lambda,x)=\prod_{a\in\lambda}(1+x^a)$ of a partition
+and studied sums of its reciprocals. Their Proposition~3.8 identifies
+$D_n$ with their ordinary denominator $\operatorname{den}(n,x)$
+\cite{BBFM}. Writing $D_n(x)=\sum_r d_{n,r}x^r$, their Conjecture~4 asks for
+\begin{equation}\tag{LC}\label{eq:LC}
+ d_{n,j}^2\geq d_{n,j-1}d_{n,j+1}\quad
+ \left\{\begin{array}{l}
+ n\geq1,\quad n\notin\{3,5,6,7\},\\
+ 1\leq j<L_n.
+ \end{array}\right.
+\end{equation}
+All integer coefficient indices are included. The four exceptions are
+already part of the original conjecture. Chen, Ono and Zhang retain this
+ordinary-denominator question as unresolved in Table~1 of their second
+version \cite{COZ}; their correction of a binary-numerator conjecture
+concerns a different polynomial. We leave \eqref{eq:LC} unresolved.
+
+The nearest structural results are palindromicity and unimodality, and
+the recurrence \cite[Propositions 3.9--3.10]{BBFM}
+\begin{equation}\label{eq:recurrence}
+ \frac{D_n(x)}{D_{n-1}(x)}=
+ \prod_{k=0}^{v_2(n)}(1+x^{2^k\odd(n)}),\qquad
+ \odd(n)=n/2^{v_2(n)}\quad(n\geq2).
+\end{equation}
+Here $v_2(n)$ is the exponent of 2 in $n$. We process every factor in
+\eqref{eq:recurrence} in increasing order of degree. Palindromicity
+supplies reflection of minors, but unimodality supplies no sign for those
+minors. A preservation argument must also handle factors with gaps in
+their coefficient support.
+
+For a polynomial $a(x)=\sum_r a_rx^r$, extend its coefficients by zero
+outside its support and put
+\[
+ T_r(a)=a_r^2-a_{r-1}a_{r+1}\qquad(r\in\Z).
+\]
+At a stage adding $1+x^s$, write $n=s2^t$. Its old polynomial is exactly
+\begin{equation}\label{eq:a}
+ a_{s,t}(x)=D_{s2^t-1}(x)
+       \prod_{\ell=1}^{v_2(s)}(1+x^{s/2^\ell}),
+ \qquad t\geq0,\quad s2^t\geq9.
+\end{equation}
+The extra factors are all those preceding $1+x^s$, including when $s$ is
+even. Define the stage margin
+\begin{equation}\label{eq:F}
+ F_{s,j}(t)=2T_j\bigl(a_{s,t}(1+x^s)\bigr)
+                   -T_j(a_{s,t})-T_{j-s}(a_{s,t}).
+\end{equation}
+The useful stage inequality is
+\begin{equation}\tag{H}\label{eq:H}
+ 2T_j\bigl(a_{s,t}(1+x^s)\bigr)
+       \geq T_j(a_{s,t})+T_{j-s}(a_{s,t}),
+\end{equation}
+or equivalently $F_{s,j}(t)\geq0$.
+
+\paragraph{Conjecture (Newton positivity at the affine start).}
+For every integer $j\geq0$ and every integer $1\leq s\leq j+1$, set
+\begin{equation}\label{eq:tau}
+ \tau=\min\{t\in\Z_{\geq0}:s2^t\geq9,\quad 2s2^t>j+1\}.
+\end{equation}
+Then
+\begin{equation}\tag{K}\label{eq:K}
+ c_{s,j,h}:=\Delta^hF_{s,j}(\tau)\geq0
+       \qquad(0\leq h\leq2j).
+\end{equation}
+Here $\Delta f(t)=f(t+1)-f(t)$ acts on the dyadic parameter $t$, not on
+$n$. This conjecture is unproved. For $j=0$ its sole assertion is $F=1$.
+
+The proposal concerns a simultaneous sign structure for higher differences
+of actual intermediate-stage margins. This is distinct from the
+individual final-polynomial minors in \eqref{eq:LC}. The results below
+explain its starting point, give an infinite family of supporting signs,
+and turn fixed coefficient edges into finite certification problems.
+The comparison with \cite{BBFM,COZ} and bounded searches of primary
+literature through 13 September 2026 found no equivalent statement;
+this is not an exhaustive priority assessment. Newton interpolation itself
+is standard \cite[Section 3.3(iv)]{DLMF}.
+
+\section{Exact polynomial reduction}
+
+\begin{proposition}\label{prop:reduction}
+Fix $(s,j)$ in \eqref{eq:K}, let $m=j+1$, $A=a_{s,\tau}$, and put
+$P_m(x)=\prod_{i=1}^m(1+x^i)$. For integers $u\geq0$,
+\begin{equation}\label{eq:affine}
+ a_{s,\tau+u}(x)\equiv A(x)P_m(x)^u\pmod{x^{m+1}}.
+\end{equation}
+The function $F_{s,j}(\tau+u)$ agrees with a polynomial in $u$ of degree
+at most $2j$. In particular,
+\begin{equation}\label{eq:newton}
+ F_{s,j}(\tau+u)=\sum_{h=0}^{2j}c_{s,j,h}\binom uh.
+\end{equation}
+For $\Lfun_j(W)=[x^jy^j]W-[x^{j-1}y^{j+1}]W$, these coefficients are
+\begin{equation}\label{eq:bivariate}
+ c_{s,j,h}=\Lfun_j\!\left(
+ A(x)A(y)\bigl(1+2x^s+2y^s+(xy)^s\bigr)
+       \bigl(P_m(x)P_m(y)-1\bigr)^h\right).
+\end{equation}
+Coefficient extraction at a negative exponent is understood to be zero.
+\end{proposition}
+
+\begin{proof}
+Let $E_i(n)=\#\{q\geq0:2^qi<n\}$, the exponent of $1+x^i$ in
+$D_{n-1}$. Splitting off $q=0$ gives
+\[
+ E_i(2n)-E_i(n)=\ind_{i<2n}.
+\]
+The choice of $\tau$ makes this difference equal to 1 for every $i\leq m$
+at every subsequent doubling. The extra factors in \eqref{eq:a} do not
+depend on $t$. This proves \eqref{eq:affine}.
+
+The coefficient of $x^r$ in $AP_m^u$ is a polynomial in $u$ of degree at
+most $r$, by the binomial expansion of the factors. On expanding
+\eqref{eq:F}, each nonzero product of old coefficients has total index
+at most $2j$. Hence the margin has degree at most $2j$. The polynomial
+Newton formula now gives \eqref{eq:newton}. For completeness, the basis
+$\binom uh$ satisfies $\Delta\binom uh=\binom u{h-1}$, so successive
+differences at zero recover its coefficients. Thus no fitted degree
+assumption is involved.
+
+Finally $T_j(a)=\Lfun_j(a(x)a(y))$, and twice the new product minus the
+old product and its shift has multiplier
+\[
+ 2(1+x^s)(1+y^s)-1-(xy)^s=1+2x^s+2y^s+(xy)^s.
+\]
+Each difference multiplies the remaining expression by
+$P_m(x)P_m(y)-1$, proving \eqref{eq:bivariate}.
+\end{proof}
+
+If \eqref{eq:K} holds, \eqref{eq:newton} gives \eqref{eq:H} for affected
+shifts $s\leq j+1$ throughout the affine region $2n>j+1$, because
+$\binom uh\geq0$ for integers $u\geq0$. It supplies no automatic sign
+before $\tau$. For unaffected shifts $s\geq j+2$, the coefficient triple
+at $j$ is unchanged and $F_{s,j}=T_j(a_{s,t})$; this requires an old-minor
+bound. Thus \eqref{eq:K} alone is not a complete induction on a moving
+linear edge and is not asserted to be equivalent to \eqref{eq:LC}.
+
+\section{A complete certificate for a fixed edge}
+
+\begin{theorem}[Computer-assisted fixed-edge result]\label{thm:edge}
+For every $n\geq9$, every actual stage in \eqref{eq:recurrence} satisfies
+\eqref{eq:H} at $0\leq j\leq96$ and at their reflections in the degree
+of the new stage. For every $n\geq1$ outside $\{3,5,6,7\}$,
+\[
+ T_j(D_n)\geq0\quad\text{if}\quad
+ 1\leq j<L_n,\qquad \min(j,L_n-j)\leq96.
+\]
+\end{theorem}
+
+\begin{proof}
+The exact finite certificate consists of all pairs
+$0\leq j\leq96$, $1\leq s\leq j+1$, at their least starts
+\eqref{eq:tau}, and all orders $0\leq h\leq2j$. These are 4,753 pairs
+and 613,137 strictly positive integer coefficients. It also verifies all
+3,126 triples $(s,j,t)$ in the same pair domain with $s2^t\geq9$ and
+$t<\tau$. Every one of their margins is nonnegative. The construction
+and separate recomputation are specified below.
+
+For affected shifts, Proposition~\ref{prop:reduction} and the earlier
+triples therefore prove \eqref{eq:H} for every admissible $t$.
+Rebuilding the full products verifies log-concavity for $D_1,D_2,D_4,D_8$.
+Starting from $D_8$, induct over every ascending stage. The old indices
+$j$ and $j-s$ are at most 96; a negative index has zero minor. In an
+affected stage, their nonnegativity and \eqref{eq:H} give the new minor's
+nonnegativity. In an unaffected stage, the minor is unchanged, and its
+old sign also proves \eqref{eq:H}. This simultaneously supplies the
+old-minor hypothesis, without circularity.
+
+All stage polynomials are palindromic. If the old degree is $L$, then
+$T_r(a)=T_{L-r}(a)$, including zero-extended indices, and
+$F_{s,j}=F_{s,L+s-j}$: reflection interchanges the two old minors.
+This proves the reflected stage statement and the right-edge result.
+\end{proof}
+
+The finite part can be checked using only integer arithmetic. At each
+fixed $s$, construct coefficients through degree 97 at each needed actual
+$t$, form \eqref{eq:F}, and take forward differences. An independent
+construction uses logarithmic derivatives. More explicitly, if
+$a(x)=\prod_i(1+x^i)^{f_i}$, then
+\begin{equation}\label{eq:logderiv}
+ \beta_r=\sum_{i\mid r} i f_i(-1)^{r/i-1},\qquad
+ a_0=1,\qquad r a_r=\sum_{k=1}^r\beta_k a_{r-k}.
+\end{equation}
+Here $f_i=E_i(s2^t)+\ind_{i\in\{s/2,\ldots,s/2^{v_2(s)}\}}$;
+every division by $r$ is checked exact. Formula \eqref{eq:logderiv}
+follows by differentiating the product, so it does not assume the affine
+reduction. Each difference can also be reconstructed as
+\begin{equation}\label{eq:signed}
+ c_{s,j,h}=\sum_{u=0}^h(-1)^{h-u}\binom hu F_{s,j}(\tau+u).
+\end{equation}
+
+The original producer uses sparse shift-and-add multiplication and the
+exact doubling identity. Separate programs reconstruct all 613,137
+coefficients by \eqref{eq:logderiv} and \eqref{eq:signed}, as well as all
+earlier triples. A further verification uses the telescoped Euler product
+described in Appendix~\ref{app:reproduction}. The edge theorem uses cutoff
+96 throughout; later tests below are evidence about the conjecture.
+
+The use of a nonnegative polynomial basis has a related verification
+precedent: Zeng, Liu, Ratnavelu, Huat and Xiong report exact Bernstein
+certificates with separate collocation reconstruction for a Hermitian
+scalar inequality \cite{ZengGate}. Here the basis is instead
+$\{\binom uh\}$ on the nonnegative integers, and the infinite range follows
+from the proved degree bound and the exact finite coefficients.
+
+\section{A uniform band of high-order coefficients}
+
+The following elementary smoothing argument applies more generally than
+the particular stage polynomials.
+
+\begin{lemma}\label{lem:smoothing}
+Let $V(x,y)$ be symmetric and homogeneous of degree $d$, with nonnegative
+real coefficients. If $N\geq0$, $N+d=2j$, and $N+2\geq d^2$, then
+$\Lfun_j((x+y)^NV)\geq0$.
+\end{lemma}
+
+\begin{proof}
+Decompose $V$ into nonnegative multiples of
+$x^ay^{d-a}+x^{d-a}y^a$, allowing half a pair on the diagonal.
+Set $q=j-a$. The assumptions imply $N\geq d$: this is immediate for
+$d=0$, follows from parity for $d=1$, and follows from $N\geq d^2-2$
+for $d\geq2$. Thus $0\leq q\leq N$. On this monomial pair the functional
+is
+\[
+ 2\binom Nq-\binom N{q-1}-\binom N{q+1}
+ =\binom Nq\frac{N+2-(N-2q)^2}{(q+1)(N-q+1)}.
+\]
+Since $|N-2q|=|2a-d|\leq d$, the numerator is nonnegative and the
+denominator positive. Binomial coefficients outside $[0,N]$ are zero;
+the formula also covers $N=d=0$.
+\end{proof}
+
+\begin{proposition}\label{prop:band}
+Let $B$ and $R$ be symmetric formal power series with nonnegative real
+coefficients. Suppose the constant term of $R$ is zero and its linear
+part is $x+y$. If integers $j,k\geq0$ satisfy
+\[
+ h=2j-k\geq0,\qquad j\geq2k^2+k-1,
+\]
+then $\Lfun_j(BR^h)\geq0$. In particular, $c_{s,j,2j-k}\geq0$ under
+these conditions for every pair in \eqref{eq:K}.
+\end{proposition}
+
+\begin{proof}
+Write $R=(x+y)+S$, where $S$ has no terms of degree below 2. Expand
+\[
+ BR^h=\sum_{r=0}^h\binom hr(x+y)^{h-r}BS^r.
+\]
+In the $r$th term, only the homogeneous component of $BS^r$ of degree
+$d=2j-(h-r)=k+r$ contributes. It vanishes unless $d\geq2r$, so
+$r\leq k$ and $d\leq2k$. Put $N=h-r=2j-d$. Then
+\[
+ N+2-d^2=2j+2-d(d+1)
+       \geq2j+2-2k(2k+1)\geq0.
+\]
+Apply Lemma~\ref{lem:smoothing} to each contributing component. Only
+finitely many components occur. For the application take
+$B=A(x)A(y)(1+2x^s+2y^s+(xy)^s)$ and
+$R=P_m(x)P_m(y)-1$ in \eqref{eq:bivariate}.
+\end{proof}
+
+There are also explicit formulas for the two highest orders. With
+$C_j=\binom{2j}j/(j+1)$ and $a_1=[x]A$, one has
+\begin{align}
+ c_{s,j,2j}&=C_j,\label{eq:top}\\
+ c_{s,j,2j-1}&=(a_1+2\ind_{s=1})C_j
+              +(2j-1)(C_j-C_{j-1})\qquad(j\geq1).\label{eq:nexttop}
+\end{align}
+Indeed $B_0=1$, $B_1=(a_1+2\ind_{s=1})(x+y)$, and, for $j\geq1$,
+$R_2=(x+y)^2-xy$. For order $2j$ only $(x+y)^{2j}$ contributes.
+For order $2j-1$ the two contributions are
+$B_1(x+y)^{2j-1}$ and $(2j-1)(x+y)^{2j-2}R_2$.
+Using $\Lfun_j((x+y)^{2j})=C_j$ and
+$\Lfun_j(xy(x+y)^{2j-2})=C_{j-1}$ proves the formulas.
+
+The low and middle orders do not follow from coefficient positivity
+alone. For example, take $A=1$, $s=3$, $j=2$ and $m=3$ in
+\eqref{eq:bivariate}. Direct expansion gives $\Lfun_2(BR)=-3$ and
+$\Lfun_2(BR^2)=-1$. This $A$ is not an actual old stage. The example
+invalidates the corresponding generic positivity argument, while
+leaving \eqref{eq:K} untouched. It explains why the actual exponent
+profile in \eqref{eq:a} is a substantive hypothesis.
+
+\section{The first excluded degree}
+
+The strict inequality in \eqref{eq:tau} has an algebraic reason.
+At its boundary, the actual sequence has a discrepancy at its first
+term relative to its polynomial tail.
+
+\begin{proposition}\label{prop:boundary}
+Let $n=s2^t\geq9$ be any actual stage, put $j=2n-1$, and write
+$a=a_{s,t}$. There is a polynomial $Q(u)$ of degree at most $4n-2$ such
+that $F_{s,j}(t+u)=Q(u)$ for every integer $u\geq1$, whereas
+\begin{equation}\label{eq:discrepancy}
+ F_{s,j}(t)-Q(0)=-a_{2n-2}-2a_{2n-s-2}<0.
+\end{equation}
+For every integer $h>4n-2$,
+\begin{equation}\label{eq:boundarydiff}
+ \Delta^hF_{s,j}(t)=(-1)^{h+1}(a_{2n-2}+2a_{2n-s-2}).
+\end{equation}
+In particular all even differences of order at least $4n$ are negative.
+\end{proposition}
+
+\begin{proof}
+Set $m=2n=j+1$. The exponent identity in the proof of
+Proposition~\ref{prop:reduction} gives, for integers $u\geq1$,
+\[
+ a_{s,t+u}(x)\equiv\frac{a(x)P_m(x)^u}{1+x^m}
+                         \pmod{x^{m+1}}.
+\]
+The first doubling adds every factor through degree $m-1$, while later
+doublings add every factor through $m$. Coefficients of degree $r$ in
+this expression are polynomial in $u$ of degree at most $r$, including
+the exponent $u-1$ at degree $m$. Substitution into \eqref{eq:F} defines
+$Q$ with degree at most $2j=4n-2$.
+
+At $u=0$ the extrapolated old series is
+\[
+ \widehat a(x)=\frac{a(x)}{1+x^{2n}}
+              \equiv a(x)-x^{2n}\pmod{x^{2n+1}}.
+\]
+Only $a_{j+1}$ changes among the coefficients needed for the margin.
+Expanding that margin gives
+\begin{align*}
+ F={}&T_j(a)+T_{j-s}(a)+4a_ja_{j-s}\\
+     &\ -2a_{j-1}a_{j-s+1}-2a_{j+1}a_{j-s-1}.
+\end{align*}
+The coefficient of $a_{j+1}$ is $-a_{j-1}-2a_{j-s-1}$, proving the
+equality in \eqref{eq:discrepancy}. The factor
+$\prod_{i=1}^{n-1}(1+x^i)$ divides $D_{n-1}$ and has positive
+coefficients throughout $[0,n(n-1)/2]$: the integers $1,\ldots,n-1$
+have every subset sum in this interval. Since $2n-2\leq n(n-1)/2$
+for $n\geq9$, we have $a_{2n-2}>0$.
+
+The actual sequence differs from $Q$ only at $u=0$. A difference of
+order $h>4n-2$ annihilates $Q$; the remaining term is $(-1)^h$ times
+the discrepancy. This proves \eqref{eq:boundarydiff}.
+\end{proof}
+
+This result obstructs extending the polynomial reduction and
+nonnegativity of all differences unchanged to $2n=j+1$. It does not
+assert a negative coefficient of order at most $2j$ at that excluded
+start, nor does it assert that the actual margin is negative. For
+example, at $n=s=9$ and $j=17$, exact calculation gives
+$F=19668$, $Q(0)=20795$, and $\Delta^{36}F=-1127$.
+Thus the obstruction is neither a counterexample to \eqref{eq:K} nor a
+disproof of \eqref{eq:H} or \eqref{eq:LC}.
+
+\section{Evidence, limitations, and a next falsification test}
+
+Table~\ref{tab:tests} records the exact Newton-coefficient tests. A
+template is a pair $(s,j)$, always with its prescribed least start and
+every order $0\leq h\leq2j$. The conjecture was fixed after the design
+range; the next contiguous block tested it without changing its statement.
+All coefficients in the three contiguous blocks were strictly positive.
+The sparse block also had no negative coefficients.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrl}
+\toprule
+Domain in $j$ & Templates & Coefficients & Separate recomputation\\
+\midrule
+$0$--$64$ (design) & 2,145 & 185,185 & All coefficients\\
+$65$--$96$ & 2,608 & 427,952 & All coefficients\\
+Listed sparse degrees & 128 & 69,632 & Partial; see text\\
+$97$--$128$ (later test) & 3,632 & 826,288 & Separate Euler product\\
+\bottomrule
+\end{tabular}
+\caption{Exact finite evidence for \eqref{eq:K}. The last two rows
+overlap and must not be added as disjoint tests.}\label{tab:tests}
+\end{table}
+
+The sparse degrees are
+\[
+ \{126,127,128,129,190,191,192,193,
+   254,255,256,257,510,511,512,513\},
+\]
+with shifts
+\[
+ \{1,2,3,\lfloor(j+1)/2\rfloor,\lfloor(j+1)/2\rfloor+1,j-1,j,j+1\}
+\]
+at each degree. They target changes in the dyadic start, small shifts,
+threshold shifts, and the onset of overlap. Their producer uses exact
+integer polynomials in python-flint 0.9.0 \cite{PythonFlint}; all forward
+differences use Python integers. Separate arithmetic checks the first
+five orders, both highest-order formulas, and two evaluations outside
+the interpolation grid for each of these 128 pairs. It does not
+recompute every middle coefficient of this sparse block. No exhaustive
+coverage through 513 is asserted.
+
+The later separate Euler-product test covers every shift at
+$97\leq j\leq128$. It overlaps the sparse block in 24 templates and
+6,120 coefficients; hence 3,608 templates and 820,168 coefficients were
+previously unlisted. These are further falsification data, without an
+increase to the fixed-edge theorem's stated cutoff. The boundary
+identity was initially checked at all 48 actual stages for $9\leq n\leq32$,
+and subsequently at all 112 stages for $9\leq n\leq64$.
+
+The unbounded low and middle Newton orders remain uncontrolled.
+Theorem~\ref{thm:edge} concerns a fixed distance from either edge; it
+leaves the unbounded interior of \eqref{eq:LC} unresolved. The arbitrary
+cutoff 96 is a certified range, not an extremal threshold. The
+conjectural sign structure, the high-order band, and the precise
+boundary obstruction together are the proposed contribution.
+
+A reproducible falsifier for \eqref{eq:K} is any admissible tuple
+$(s,j,h)$ with the unique $\tau$ of \eqref{eq:tau} and a negative exact
+sum \eqref{eq:signed}. One next test is
+$j\in\{1022,1023,1024\}$, all
+$s\in\{1,2,3,511,512,513,j,j+1\}$, and all $0\leq h\leq2j$.
+A negative coefficient must be distinguished from a negative actual
+margin: the former refutes \eqref{eq:K} but need not refute
+\eqref{eq:H}. Only a negative final-polynomial minor at an admissible
+$n$ would refute \eqref{eq:LC}.
+
+\appendix
+\section{Reproduction of the fixed certificate}\label{app:reproduction}
+
+The accompanying \texttt{verify\_edge.py} reproduces exactly the
+$j\leq96$ certificate and the finite bases, reading the supplied data
+without changing them. It is a presentation adaptation of the separate
+Euler-product verifier, not an additional independent implementation.
+It requires only Python~3 standard-library integer arithmetic.
+
+For $N=s2^t-1$ and $o=\odd(s)$, dyadic telescoping gives
+\begin{equation}\label{eq:euler}
+ a_{s,t}(x)=\frac{1-x^s}{1-x^o}
+ \prod_{\substack{d\leq N\\d\ \mathrm{odd}}}
+       (1-x^d)^{-e_{N,d}}
+ \prod_{\substack{d\leq2N\\d\ \mathrm{even}}}(1-x^d).
+\end{equation}
+To see this, replace each $1+x^i$ by $(1-x^{2i})/(1-x^i)$ in $D_N$.
+At an even index $d\leq N$, the difference between numerator and
+denominator exponents is $e_{N,d/2}-e_{N,d}=1$; for
+$N<d\leq2N$ the numerator exponent is also 1. At an odd index only
+the denominator remains. The extra stage factors telescope to
+$(1-x^s)/(1-x^o)$.
+
+Writing \eqref{eq:euler} as $\prod_d(1-x^d)^{-g_d}$ gives
+$\beta_r=\sum_{d\mid r}d g_d$. The same coefficient recursion in
+\eqref{eq:logderiv} then reconstructs the old polynomial at every
+actual $t$. For each $s=1,\ldots,97$, take all $t$ from its first value
+with $s2^t\geq9$ through $\tau(s,96)+192$. Compute the margin vector
+for $j=0,\ldots,96$ at these $t$, select the $2j+1$ values beginning at
+$\tau(s,j)$, and form their difference table. Compare every entry with
+the saved coefficients, check its sign, and check the exact earlier
+triple domain. Full direct products verify the four finite bases.
+The reproduction README identifies the data files and commands.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with conjecture formulation, algebraic arguments,
+programming, literature checks, and manuscript preparation. A separate
+model context reconstructed the arguments and implemented the
+Euler-product verification. Separate contexts and separate programs do
+not constitute statistically independent evidence or human peer review.
+The supporting computer-assisted theorem uses the stated exact integer
+checks and polynomial identities; no floating-point sign decisions,
+random sampling, or proof-assistant formalization are used. The sparse
+tests use python-flint only as described above.
+
+
+\small
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

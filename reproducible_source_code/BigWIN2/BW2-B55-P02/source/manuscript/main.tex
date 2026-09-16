@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref} \hypersetup{pdftitle={The Exact Matching Spectrum of a Three-Job Wang--Sitters Tight Family},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+
+\title{The Exact Matching Spectrum of a Three-Job\\Wang--Sitters Tight Family}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the three-job, three-machine restricted-assignment family used to approach
+the $11/6$ bound for Wang--Sitters rounding, we determine every valid slot
+matching for every real parameter $0<\delta<1/6$.  The half-open slot graph is
+constant throughout this interval and has exactly eight job-saturating
+matchings.  Their makespans, counted with matching multiplicity, form the
+multiset
+\[
+ \left\{\left(\frac{11}{6}-\delta\right)^1,
+ \left(\frac43-\delta\right)^2,1^5\right\}.
+\]
+Thus the minimum makespan is $1$ and the maximum is
+$11/6-\delta$.  This is a symbolic census of one fixed fractional family; it
+does not change the approximation guarantee for arbitrary instances.
+\end{abstract}
+
+\section{Context and statement}
+
+The matching-based rounding of Shmoys and Tardos
+\cite{ShmoysTardos1993} is a basic tool for assignment problems.  Wang and
+Sitters used this rounding in a simple $11/6$-approximation for graph balancing
+\cite{WangSitters2016}.  Shavit later isolated the nondeterminism in the
+fractional solution and in the valid slot matching \cite{Shavit2026}.  His
+Theorem~2 gives the parametric family studied below and one valid matching of
+makespan $11/6-\delta$ for every $0<\delta<1/6$.  His Measurement~4 reports,
+at $\delta\in\{10^{-2},10^{-3},10^{-4}\}$, eight valid matchings with minimum
+$1$ and maximum $11/6-\delta$.  The result here upgrades that finite
+measurement to a proof uniform on the full open interval.
+
+Fix $0<\delta<1/6$, machines $\{0,1,2\}$, and the three jobs
+\[
+\begin{array}{c|c|c}
+ j & p_j & \{(i,x_{ji}):x_{ji}>0\}\\ \hline
+ q&1&\{(0,\frac13+\delta),(1,\frac23-\delta)\}\\
+ h&\frac12&\{(0,\frac23),(2,\frac13)\}\\
+ r&\frac13-\delta&\{(0,1)\}.
+\end{array}
+\]
+The threshold is $T=1$ and the Step-2 threshold is $\beta=2/3$.
+A job is big when its size is strictly greater than $1/2$, so only $q$ is
+big.  Both shares of $q$ are strictly below $2/3$, and hence Step~2 assigns no
+job.
+
+On each machine, order the surviving fractional jobs by nonincreasing size and
+concatenate their fractional masses.  If their total mass is $M_i$, slot $z$
+on machine $i$ is
+\[
+ S_{i,z}=[z-1,\min\{z,M_i\}),
+ \qquad z=1,\ldots,\lceil M_i\rceil.
+\]
+A job is adjacent to a slot precisely when their half-open intervals have
+nonempty intersection.  A valid matching assigns every job to an adjacent
+slot and uses every slot at most once.  The induced schedule assigns the job
+to the machine containing its matched slot.
+
+\begin{theorem}\label{thm:spectrum}
+For every real $0<\delta<1/6$, this slot graph has exactly eight valid
+job-saturating matchings.  Their makespan multiset is
+\[
+ \left\{\left(\frac{11}{6}-\delta\right)^1,
+ \left(\frac43-\delta\right)^2,1^5\right\}.
+\]
+Consequently, the minimum makespan is $1$ and the maximum makespan is
+$11/6-\delta$.
+\end{theorem}
+
+\section{Uniform slot graph}
+
+The strict inequalities
+\[
+ 1=p_q>p_h=\frac12>p_r=\frac13-\delta>0
+\]
+fix the order $q,h,r$ on machine~0.  The fractional masses on machines
+$0,1,2$ are, respectively,
+\[
+ M_0=2+\delta,\qquad M_1=\frac23-\delta,
+ \qquad M_2=\frac13.
+\]
+Write $A=S_{0,1}$, $B=S_{0,2}$, $C=S_{0,3}$,
+$D=S_{1,1}$, and $E=S_{2,1}$.  The job and slot intervals are
+\[
+\begin{array}{c|c|c}
+i&\text{job intervals}&\text{slot intervals}\\ \hline
+0&q:[0,\frac13+\delta),\quad
+  h:[\frac13+\delta,1+\delta),\quad
+  r:[1+\delta,2+\delta)
+ &A:[0,1),\ B:[1,2),\ C:[2,2+\delta)\\[2pt]
+1&q:[0,\frac23-\delta)&D:[0,\frac23-\delta)\\[2pt]
+2&h:[0,\frac13)&E:[0,\frac13).
+\end{array}
+\]
+
+For half-open intervals $[a,b)$ and $[c,e)$, intersection is nonempty if and
+only if $b>c$ and $e>a$.  Applying these strict tests gives
+\begin{equation}\label{eq:neighborhoods}
+ N(q)=\{A,D\},\qquad N(h)=\{A,B,E\},\qquad
+ N(r)=\{B,C\}.
+\end{equation}
+These neighborhoods do not change on the parameter interval.  In particular,
+the parameter-sensitive overlaps $hB$ and $rC$ both have length $\delta>0$.
+The closest excluded contacts remain excluded: the relevant signed gaps for
+$qB$ and $rA$ are $-2/3+\delta<0$ and $-\delta<0$, respectively.  There is
+also no slot-count breakpoint because $M_0\in(2,13/6)$ while $M_1,M_2\in(0,1)$.
+
+\section{Exhaustive matching and load calculation}
+
+We now enumerate the injective choices in \eqref{eq:neighborhoods}.  If $q$
+uses $A$, then $h$ can use $B$ or $E$.  The first choice forces $r$ to $C$;
+the second allows $r$ to use $B$ or $C$.  This gives three matchings.  If $q$
+uses $D$, then $h$ can use $A,B$, or $E$, giving respectively two, one, and
+two choices for $r$.  These five further matchings exhaust the product of the
+three neighborhoods.
+
+The complete calculation is shown in Table~\ref{tab:loads}.  Coordinates in
+the first column give the slots of $(q,h,r)$, and $(L_0,L_1,L_2)$ is the
+induced machine-load vector.  Different slot matchings are retained even when
+they induce the same machine assignment.
+
+\begin{table}[ht]
+\centering
+\caption{All valid matchings and their exact loads.}
+\label{tab:loads}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+Matching & $(L_0,L_1,L_2)$ & Makespan \\ \midrule
+$(A,B,C)$ & $(11/6-\delta,0,0)$ & $11/6-\delta$\\
+$(A,E,B)$ & $(4/3-\delta,0,1/2)$ & $4/3-\delta$\\
+$(A,E,C)$ & $(4/3-\delta,0,1/2)$ & $4/3-\delta$\\
+$(D,A,B)$ & $(5/6-\delta,1,0)$ & $1$\\
+$(D,A,C)$ & $(5/6-\delta,1,0)$ & $1$\\
+$(D,B,C)$ & $(5/6-\delta,1,0)$ & $1$\\
+$(D,E,B)$ & $(1/3-\delta,1,1/2)$ & $1$\\
+$(D,E,C)$ & $(1/3-\delta,1,1/2)$ & $1$\\ \bottomrule
+\end{tabular}
+\end{table}
+
+Throughout $0<\delta<1/6$,
+\[
+ \frac{11}{6}-\delta>\frac43-\delta>1,
+\]
+and every nonunit load in the final five rows is below $1$.  The table
+therefore gives exactly the multiset in Theorem~\ref{thm:spectrum}.  It also
+shows the stated maximum.  Independently, the unit-size job $q$ implies that
+no schedule can have makespan below $1$, while the final five rows attain that
+value.  This completes the proof. \qed
+
+\section{Verification, comparison, and limitations}
+
+The proof is accompanied by a deterministic exact-rational replay.  From the
+instance data it reconstructs the job order, fraction intervals, slot counts,
+all signed contact tests, the $12$ raw neighborhood tuples, the eight injective
+tuples, and their affine load vectors.  It uses rational arithmetic for
+expressions of the form $a+b\delta$ and no floating-point tolerance.  Exact
+finite certificate designs with a separate reconstruction step are useful in
+substantially larger bounded enumerations as well; for example, Zeng et al.
+use integer predicates and independently reconstructed finite graphs in their
+ternary Borsuk and kissing-code certificates \cite{ZengEtAl2026}.  In the
+present three-job calculation, however, the replay is only a reproducibility
+check: the symbolic proof above establishes the quantified result.
+
+The scope is deliberately narrow.  Shavit's Theorem~2 already proves that the
+first row of Table~\ref{tab:loads} is a valid matching uniformly in $\delta$;
+the contribution here is the exhaustive symbolic spectrum and its extrema.
+The theorem excludes $\delta=0$ and $\delta=1/6$, depends on the stated
+half-open convention and fixed fractional point, and makes no assertion about
+other feasible fractional solutions, solver outputs, thresholds, or arbitrary
+instances.  In particular, it does not modify the general $11/6$ analysis of
+the Wang--Sitters scheme.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with primary-literature verification, translation of the
+audited argument into manuscript form, exact-replay preparation, and
+adversarial consistency checks.  The computational check uses exact rational
+arithmetic and is not used as a substitute for the displayed proof.  No proof
+assistant was used.
+
+{\small
+\bibliographystyle{plain}
+\bibliography{references}
+}
+
+\end{document}

@@ -1,0 +1,303 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+ pdftitle={Higher-index failure of ultra-log-concavity for Chen's recursion polynomials},
+ pdfauthor={Xiaojian Zeng},
+ pdfsubject={A proof of arXiv:2503.16296v2, Conjecture 3.9},
+ pdfkeywords={ultra-log-concavity, recursion polynomials, signed moments}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\ULC}{\mathrm{ULC}}
+\title{Higher-index failure of ultra-log-concavity\newline
+for Chen's recursion polynomials}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190, China. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the degree-$(m-1)$ polynomials
+$f_m(s)=((s+1)^m-(-1)^m)/(s+2)$ and
+$h_m(s)=((s+1)^m+(-1)^m(s+1))/(s+2)$, we prove that every
+ordinary ultra-log-concavity inequality at an index
+$4\le j\le m-2$ fails strictly. This proves Conjecture~3.9 of
+Chen's arXiv version~2 on log-concavity for banana graphs and clasped
+necklaces. The normalized coefficient difference reduces exactly to a
+two-by-two moment determinant on $[-1,1]$. For even parity the determinant
+is positive by Cauchy--Schwarz. For odd parity, where the density is signed,
+an explicit base case and an identity involving an auxiliary positive
+measure give a positivity-preserving induction. An endpoint difference
+equal to $-m$ also recovers the known failure of ultra-log-concavity for
+every $m\ge4$, including the two cases with an empty higher-index range.
+\end{abstract}
+
+\section{Statement and context}
+
+Aluffi, Marcolli and Qaisar developed recursive formulas for the
+Grothendieck classes of melonic graphs and proved positivity of their
+coefficients in the variable given by the class of $\mathcal M_{0,4}$
+\cite[Proposition~3.2 and Corollary~3.4]{AMQ2023}.
+Two of the recursion polynomials studied by Chen are
+\begin{equation}\label{eq:families}
+ f_m(s)=\frac{(s+1)^m-(-1)^m}{s+2},\qquad
+ h_m(s)=\frac{(s+1)^m+(-1)^m(s+1)}{s+2}.
+\end{equation}
+Chen proves ordinary coefficient log-concavity for these families and
+investigates the stronger ultra-log-concavity inequalities
+\cite[Theorem~1.1 and Section~3]{Chen2025}.
+
+For a polynomial $P(s)=\sum_{j=0}^{d}a_js^j$ with nonnegative coefficients,
+ordinary ultra-log-concavity means that the sequence
+\begin{equation}\label{eq:normalization}
+ b_j=\frac{a_j}{\binom dj},\qquad 0\le j\le d,
+\end{equation}
+is log-concave: $b_j^2\ge b_{j-1}b_{j+1}$ at every internal index.
+We use the degree-based convention of
+\cite[Definition~2.4]{Chen2025}. For interval support this is $\ULC(d)$;
+Liggett proves convolution closure \cite{Liggett1997}.
+Here $d=m-1$, even when the constant coefficient vanishes. In particular,
+normalization by $\binom mj$ would give a different question.
+
+\begin{theorem}\label{thm:main}
+Let $m\ge4$ be an integer and let $P$ be either polynomial in
+\eqref{eq:families}. Then $P$ is monic of degree $m-1$ with nonnegative
+integer coefficients. Writing $a_j=[s^j]P$, one has
+\begin{equation}\label{eq:main}
+ j(m-1-j)a_j^2<(j+1)(m-j)a_{j-1}a_{j+1}
+ \qquad(4\le j\le m-2).
+\end{equation}
+Moreover, for every $m\ge4$,
+\begin{equation}\label{eq:endpoint-statement}
+ (m-2)a_{m-2}^2-2(m-1)a_{m-3}a_{m-1}=-m.
+\end{equation}
+Consequently, neither $f_m$ nor $h_m$ is ordinary ultra-log-concave
+for any $m\ge4$.
+\end{theorem}
+
+The final non-ULC assertion is already contained in Chen's
+Proposition~3.8. The contribution here is the uniform strict inequality
+\eqref{eq:main}, posed as Conjecture~3.9 after computations through
+$m=100$ \cite[p.~16]{Chen2025}. All these locators refer specifically
+to arXiv:2503.16296v2. Theorem~\ref{thm:main} proves that source statement
+in its full range. Chen's Proposition~3.10 concerns $\ULC(m)$ and
+therefore does not supply these degree-$(m-1)$ inequalities.
+A journal version is recorded under
+\href{https://doi.org/10.1016/j.geomphys.2025.105666}{doi:10.1016/j.geomphys.2025.105666}.
+Its complete text was not inspected in preparing this note; no assertion
+of priority relative to that version or all subsequent literature is made.
+
+Moment determinants provide a familiar connection between measures and
+log-convexity; Wang and Zhu give a combinatorial treatment, including
+infinite log-convexity for Stieltjes moment sequences
+\cite[Sections~1--2]{WangZhu2016}. Our reduction involves a density that
+changes sign in one parity. The essential step is to transfer positivity
+from a different, nonnegative density through an exact determinant identity.
+
+\section{A moment determinant}
+
+For nonnegative integers $p,k,r$, define
+\begin{equation}\label{eq:moments}
+ M_r(p,k)=\int_{-1}^{1}x^{k+r}(1+x)^p\dd x,
+ \qquad H(p,k)=M_0(p,k)M_2(p,k)-M_1(p,k)^2.
+\end{equation}
+
+\begin{lemma}\label{lem:positive}
+For all integers $p\ge3$ and $k\ge0$, one has $H(p,k)>0$.
+\end{lemma}
+
+\begin{proof}
+If $k$ is even, $x^k(1+x)^p\dd x$ is a nonnegative measure on $[-1,1]$.
+Its density is positive on $(0,1)$, where the functions $1$ and $x$
+are not proportional almost everywhere. Strict Cauchy--Schwarz gives
+$M_1^2<M_0M_2$.
+
+Fix an odd integer $k\ge1$. For each integer $p\ge1$, all the moments
+$M_r(p,k)$ are positive. When $k+r$ is even, the integrand is
+nonnegative and positive on $(0,1)$. When $k+r$ is odd, reflection gives
+\begin{equation}\label{eq:reflection}
+ M_r(p,k)=\int_0^1 x^{k+r}\bigl((1+x)^p-(1-x)^p\bigr)\dd x>0.
+\end{equation}
+In this parity, introduce the auxiliary determinant
+\begin{equation}\label{eq:auxiliary}
+ E(p,k)=M_1(p,k)M_3(p,k)-M_2(p,k)^2>0.
+\end{equation}
+Indeed, the density $x^{k+1}(1+x)^p$ is nonnegative and positive on
+$(0,1)$, with moments of orders $0,1,2$ equal to $M_1,M_2,M_3$.
+Thus the same strict Cauchy--Schwarz argument proves
+\eqref{eq:auxiliary}. It is applied only to this nonnegative measure.
+
+For the base $p=3$, expansion of $(1+x)^3$ yields
+\[
+ M_0=\frac{6}{k+2}+\frac{2}{k+4},\qquad
+ M_1=\frac{2}{k+2}+\frac{6}{k+4},\qquad
+ M_2=\frac{6}{k+4}+\frac{2}{k+6}.
+\]
+Consequently,
+\begin{equation}\label{eq:base}
+ H(3,k)=\frac{64(k+1)}{(k+2)^2(k+4)^2(k+6)}>0.
+\end{equation}
+For example, after setting $t=k+2$, the numerator identity needed here is
+$t(2t+3)(2t+7)-(t+4)(2t+1)^2=4(t-1)$.
+
+Multiplication of the integrand by $1+x$ gives
+\begin{equation}\label{eq:moment-step}
+ M_r(p+1,k)=M_r(p,k)+M_{r+1}(p,k).
+\end{equation}
+Abbreviate the four moments at $(p,k)$ by $A,B,C,D$, in that order,
+and put $H=AC-B^2$, $E=BD-C^2$. Since $B>0$, direct algebra gives
+\begin{align}
+ H(p+1,k)&=(A+B)(C+D)-(B+C)^2\notag\\
+ &=H+(AD-BC)+E\notag\\
+ &=\left(1+\frac CB\right)H+
+   \left(1+\frac AB\right)E.\label{eq:induction}
+\end{align}
+The last equality follows from $B(AD-BC)=CH+AE$.
+Both displayed coefficients are positive, as is $E$ by
+\eqref{eq:auxiliary}. Starting from \eqref{eq:base}, induction proves
+$H(p,k)>0$ for every $p\ge3$ at this fixed odd $k$. Together with
+the even case, this proves the lemma.
+\end{proof}
+
+\section{Proof of the coefficient inequalities}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Geometric summation gives, for $r\ge1$,
+\begin{equation}\label{eq:positive-coefficients}
+ f_{2r}(s)=s\sum_{\ell=0}^{r-1}(s+1)^{2\ell},\qquad
+ f_{2r+1}(s)=1+s(s+1)\sum_{\ell=0}^{r-1}(s+1)^{2\ell}.
+\end{equation}
+Also, subtraction in \eqref{eq:families} gives
+\begin{equation}\label{eq:shared}
+ h_m(s)=f_m(s)+(-1)^m.
+\end{equation}
+These identities establish polynomiality, nonnegative integer
+coefficients, degree $m-1$, and monicity for both families. For odd $m$,
+\eqref{eq:shared} removes the constant $1$ of $f_m$; for even $m$,
+it adds a constant $1$. All positive-degree coefficients agree.
+Thus every coefficient difference under consideration is the same for
+the two families, since its index is at least $2$.
+
+We first treat the endpoint, which will also cover $m=4,5$.
+Comparison of the top three coefficients in
+$(s+2)f_m=(s+1)^m-(-1)^m$ gives
+\begin{equation}\label{eq:top}
+ a_{m-1}=1,\qquad a_{m-2}=m-2,\qquad
+ a_{m-3}=\frac{m^2-5m+8}{2}.
+\end{equation}
+All three indices are positive for $m\ge4$, so \eqref{eq:top} holds
+for $h_m$ as well. Define
+\begin{equation}\label{eq:difference}
+ D_{m,j}=j(m-1-j)a_j^2-(j+1)(m-j)a_{j-1}a_{j+1}.
+\end{equation}
+Substitution into \eqref{eq:difference} gives
+\begin{equation}\label{eq:endpoint}
+ D_{m,m-2}=(m-2)^3-(m-1)(m^2-5m+8)=-m.
+\end{equation}
+This is a failing internal index for every $m\ge4$.
+
+It remains to prove \eqref{eq:main}. Work with $f_m$ and set
+$b_j=a_j/\binom{m-1}{j}$. The binomial coefficient ratios give
+\begin{equation}\label{eq:minor-normalized}
+ D_{m,j}=j(m-1-j)\binom{m-1}{j}^{\!2}
+ \bigl(b_j^2-b_{j-1}b_{j+1}\bigr)
+\end{equation}
+at each internal index. The prefactor is strictly positive.
+The fundamental theorem of calculus gives the polynomial identity
+\begin{equation}\label{eq:polynomial-integral}
+ f_m(s)=m\int_0^1\bigl(-1+(s+2)t\bigr)^{m-1}\dd t.
+\end{equation}
+For $s\ne-2$ this follows by direct integration; equality of
+polynomials includes $s=-2$. Expanding
+$-1+(s+2)t=st+(2t-1)$ in the finite binomial sum, then making the
+substitution $x=2t-1$, yields
+\begin{equation}\label{eq:coefficient-integral}
+ b_j=m\int_0^1t^j(2t-1)^{m-1-j}\dd t
+ =\frac{m}{2^{j+1}}\int_{-1}^1(1+x)^jx^{m-1-j}\dd x.
+\end{equation}
+
+For $4\le j\le m-2$, put $p=j-1$ and $k=m-j-2$.
+Then $p\ge3$, $k\ge0$; conversely every such pair corresponds to
+$j=p+1$, $m=p+k+3$ in the target range. With $M_r=M_r(p,k)$,
+\eqref{eq:coefficient-integral} gives
+\begin{equation}\label{eq:adjacent}
+ \begin{aligned}
+ b_{j-1}&=\frac{m}{2^j}M_2,\\
+ b_j&=\frac{m}{2^{j+1}}(M_1+M_2),\\
+ b_{j+1}&=\frac{m}{2^{j+2}}(M_0+2M_1+M_2).
+ \end{aligned}
+\end{equation}
+Multiplication and cancellation therefore give
+\begin{equation}\label{eq:reduction}
+ b_{j-1}b_{j+1}-b_j^2=\frac{m^2}{2^{2j+2}}H(p,k)>0
+\end{equation}
+by Lemma~\ref{lem:positive}. Equations \eqref{eq:minor-normalized}
+and \eqref{eq:reduction} imply $D_{m,j}<0$ throughout the target
+range. Equation~\eqref{eq:shared} transfers the inequality to $h_m$,
+and \eqref{eq:endpoint} completes the assertion for all $m\ge4$.
+\end{proof}
+
+\section{Exact checks and scope}
+
+The higher-index range is empty at $m=4,5$, but
+\eqref{eq:endpoint} gives $D_{4,2}=-4$ and $D_{5,3}=-5$.
+The lower cutoff cannot be replaced uniformly by $j=3$:
+\[
+ f_6(s)=3s+6s^2+7s^3+4s^4+s^5,\qquad D_{6,3}=6>0.
+\]
+Equivalently, the corresponding moment determinant is
+$H(2,1)=-16/225$. These calculations illustrate the boundary of the
+theorem; they do not alter its quantified range.
+
+Exact sign certificates turn a comparison into rational residuals.
+For example, Zeng, Liu and Ratnavelu use seven strict rational
+inequalities to certify a Schatten-norm counterexample
+\cite[Section~2, equations~(11)--(18)]{ZengLiuRatnavelu2026}.
+For the present formulas, moment evaluation itself is rational:
+\begin{equation}\label{eq:finite-moment}
+ \int_{-1}^1 x^q(1+x)^p\dd x
+ =2^{p+1}\sum_{\ell=0}^q
+ \frac{\binom q\ell 2^\ell(-1)^{q-\ell}}{p+\ell+1}
+ \qquad(p,q\in\mathbb Z_{\ge0}).
+\end{equation}
+It follows by substituting $x=2t-1$ and expanding $(2t-1)^q$.
+Long division of the two original numerators, together with
+\eqref{eq:finite-moment}, gives a direct way to check the coefficient
+and determinant formulas with integer and rational arithmetic.
+
+A portable Python script, \texttt{verification.py}, is supplied with
+the manuscript source. The exact checks cover both families for every
+$4\le m\le512$: 1,018 polynomial divisions, 257,556 strict-negative
+higher-index differences, and 1,018 endpoint identities. They also
+check the coefficient-to-moment reduction at all 703 target pairs for
+$6\le m\le42$, and moment positivity at all 920 pairs
+$3\le p\le25$, $0\le k\le39$. The latter rectangle includes 460
+odd-$k$ induction checks. Separate symbolic checks with SymPy
+\cite{Meurer2017} verify the base, endpoint, cancellation and
+induction identities. These are finite checks of formulas and indices;
+the all-parameter conclusion follows from the proofs above.
+
+The theorem concerns exactly the two families in \eqref{eq:families}
+and their degree-based normalization. It asserts neither a general
+ultra-log-concavity result for graph classes nor a classification of
+all the lower-index signs.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the moment reduction, proof development,
+counterexample searches, verification code, literature checks and
+manuscript preparation. A separate model context reconstructed the
+argument and wrote a second exact verifier. This was an additional
+checking pass, not external peer review or statistical independence.
+The computations use Python integer and rational arithmetic and SymPy
+symbolic algebra. No floating-point test is used to establish a sign,
+and no formal proof assistant verification is claimed.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

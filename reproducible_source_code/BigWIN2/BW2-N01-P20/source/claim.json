@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For integers m>=1 and 0<=k<=2m-1, let E_{m,k}=G_{m,k}/binom(2m-1,k), where G_{m,k}=sum_{i=0}^k binom(2m-1,i) if k<m, and G_{m,k}=sum_{i=0}^{2m-2-k} binom(2m-1,i)+(k-m+1)binom(2m,k+1) if k>=m, with a sum with negative upper endpoint equal to zero. Define x_+=max(x,0), erfc(t)=(2/sqrt(pi))*integral_t^infinity exp(-u^2)du, H(x)=(sqrt(pi)/2)exp(x^2)erfc(|x|), F0(x)=H(x)+2x_+, and F1(x,delta)=(2delta+1)xH(x)+delta+1-2x_+^2 for real x and -1<delta<=0. For every real A>0 there exist a finite C_A>=0 and an integer M_A>=1 such that for every integer m>=M_A and every real |x|<=A, k=m+floor(x sqrt(m)) is admissible and |E_{m,k}-sqrt(m)F0(x)-F1(x,delta_m(x))|<=C_A/sqrt(m), where delta_m(x)=floor(x sqrt(m))-x sqrt(m). This includes x=0, all floor jumps, and m-dependent real x. Explicit nonoptimized C_A and M_A are given in equations (6), (11), (13), (18), and (19) of evidence/research-proof.md. No growing-window extension is claimed.",
+  "contribution": "Full solution of the user's frozen two-term central-window refinement of the near-center approximation question in Insko--Johnson--Sullivan, Corollary 7.2 and section 8 question 2. The contribution is the explicit leading and lattice terms with a uniform absolute remainder, proved using elementary Wallis bounds, finite products, symmetry, and signed quadrature. These methods are classical. No equivalent formula and uniform remainder were located in the bounded primary-source screen recorded in evidence/research-literature.md; this is not an exhaustive priority claim. The proof and application value are submitted for fresh mathematical review, not represented as accepted.",
+  "proposer_job_id": "newwin-00001-p20-research-f42a5d965fef",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research-proof.md",
+    "evidence/research-verification.md",
+    "evidence/research-check.py",
+    "evidence/research-check.json",
+    "evidence/research-literature.md",
+    "evidence/external/insko-johnson-sullivan-limited.pdf",
+    "evidence/external/hiveley-zeilberger-2607.26334v1.html"
+  ]
+}

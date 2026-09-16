@@ -1,0 +1,17 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every integer m >= 4, let f_m(s)=((s+1)^m-(-1)^m)/(s+2) and h_m(s)=((s+1)^m+(-1)^m(s+1))/(s+2). For either P in {f_m,h_m}, write P(s)=sum_{j=0}^{m-1} a_j s^j. These are monic degree-(m-1) polynomials with nonnegative integer coefficients. For every integer j satisfying 4 <= j <= m-2, j(m-1-j)a_j^2 < (j+1)(m-j)a_{j-1}a_{j+1}. Moreover, for every m >= 4 the difference j(m-1-j)a_j^2-(j+1)(m-j)a_{j-1}a_{j+1} equals -m at j=m-2. Thus neither f_m nor h_m is ordinary ultra-log-concave, meaning that (a_j/binom(m-1,j)) is not log-concave, for any m >= 4. This includes both clauses of source.md and the m=4,5 cases with empty higher-index range.",
+  "contribution": "A complete elementary proof candidate for the uniform higher-index failure clause of Chen's arXiv:2503.16296v2 Conjecture 3.9, using an exact signed-moment determinant reduction and a positivity-preserving induction. The endpoint calculation independently includes the non-ULC existence clause already known from Proposition 3.8; existence alone is not claimed as new. The proof covers both families through their shared positive-degree coefficients. No equivalent uniform proof was found in the bounded primary-source search, but the full later journal body was not obtained, so absolute priority and present global novelty remain unverified. Fresh referee review of correctness, scope, and contribution is requested.",
+  "proposer_job_id": "primary-20260913-chen-ulc-failure-research-14052831c026",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research-proof.md",
+    "evidence/research-verify.py",
+    "evidence/research-verify.json",
+    "literature/research-screen.md",
+    "evidence/external/chen-2503.16296v2.pdf",
+    "evidence/external/chen-2503.16296v2.txt"
+  ]
+}

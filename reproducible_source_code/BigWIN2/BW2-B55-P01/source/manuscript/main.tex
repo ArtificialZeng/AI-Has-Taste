@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={A Parity Classification for Maximum-Likelihood Thresholds of Distinctly Edge-Colored Cycles},pdfauthor={Xiaojian Zeng},pdfsubject={Maximum-likelihood thresholds of colored Gaussian graphical models}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PSD}{\operatorname{PSD}}
+\newcommand{\mlt}{\operatorname{mlt}}
+\newcommand{\gcr}{\operatorname{gcr}}
+
+\title{A Parity Classification for Maximum-Likelihood Thresholds\\
+of Distinctly Edge-Colored Cycles}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Consider the colored Gaussian graphical model on a cycle in which all
+vertices have one color and every edge has its own color.  We prove that its
+maximum-likelihood threshold is $2$ for every odd cycle length.  Combined
+with the known even case, this gives threshold $1$ for even lengths and $2$
+for odd lengths.  In particular, the five-cycle has threshold $2$, not $1$.
+The proof constructs, on a nonempty open set of one-observation vectors, a
+positive-semidefinite concentration matrix having that observation as its
+one-dimensional kernel.  The construction is an exact diagonal congruence
+to a positive-weight cycle Laplacian.
+\end{abstract}
+
+\section{Context and statement}
+
+Colored Gaussian graphical models encode equality constraints among entries
+of a concentration matrix; the edge- and vertex-symmetric models were
+introduced by H\o jsgaard and Lauritzen~\cite{HojsgaardLauritzen2008}.  The
+maximum-likelihood threshold for an uncolored graph was developed in
+\cite{GrossSullivant2018}.  We use the colored-model formulation and kernel
+criterion of Homs, Kuznetsova, and Stolz~\cite{HomsKuznetsovaStolz2026}.
+
+Let $G_m$ be the undirected cycle on $\mathbb Z/m\mathbb Z$, where $m\geq3$.
+All vertices form one color class, and the $m$ edges form $m$ separate color
+classes.  Thus its concentration space consists of matrices $K(a,b)$ with
+indices taken modulo $m$ and
+\[
+ K(a,b)_{ii}=a,\qquad
+ K(a,b)_{i,i+1}=K(a,b)_{i+1,i}=b_i,
+\]
+all other entries being zero.  Separate edge colors mean that the parameters
+$b_i$ are independent; they are not required to have distinct numerical
+values.
+
+For this family, Proposition~3.26 of
+\cite{HomsKuznetsovaStolz2026} proves $\gcr(G_m)=2$ for every $m$ and
+$\mlt(G_m)=1$ for even $m$.  Conjecture~3.27 there proposes threshold $1$ in
+the odd case, although its Appendix Table~2 records threshold $2$ for the
+three-vertex member.  The following theorem gives the opposite value for
+every odd length and, in particular, settles the five-cycle case.
+
+\begin{theorem}\label{thm:main}
+For every $m\geq3$,
+\[
+ \mlt(G_m)=
+ \begin{cases}
+ 1,&m\text{ even},\\
+ 2,&m\text{ odd}.
+ \end{cases}
+\]
+\end{theorem}
+
+The even assertion is the cited proposition.  We prove the odd assertion
+below.  We use two further results from \cite{HomsKuznetsovaStolz2026}:
+Theorem~3.4(2), which characterizes threshold one through the absence, for
+almost every observation $x$, of a nonzero $K\in L_{G_m}\cap\PSD(m)$ with
+$Kx=0$; and Corollary~3.7, which gives $\mlt(G_m)\leq\gcr(G_m)$.
+
+\section{An open positive-measure obstruction}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main} for odd $m$]
+Fix an odd $m\geq3$ and set the common diagonal parameter to $a=2$.  For an
+observation $x=(x_0,\ldots,x_{m-1})^{\mathsf T}$, the equations
+$K(2,b)x=0$ are
+\begin{equation}\label{eq:kernel}
+ x_{i-1}b_{i-1}+x_{i+1}b_i=-2x_i
+ \qquad (i\in\mathbb Z/m\mathbb Z).
+\end{equation}
+Let $B_m(x)$ be the coefficient matrix of this system in
+$b=(b_0,\ldots,b_{m-1})^{\mathsf T}$.  Row $i$ is supported in columns
+$i-1$ and $i$, where its entries are $x_{i-1}$ and $x_{i+1}$, respectively.
+
+There are exactly two supported permutations in the Leibniz expansion of
+$\det B_m(x)$.  Indeed, if any row uses column $i-1$, bijectivity propagates
+that choice around the cycle; otherwise every row uses column $i$.  The two
+products are both $\prod_i x_i$, while their relative sign is the sign
+$(-1)^{m-1}$ of an $m$-cycle.  Consequently
+\begin{equation}\label{eq:determinant}
+ \det B_m(x)=\bigl(1+(-1)^{m-1}\bigr)\prod_{i=0}^{m-1}x_i
+             =2\prod_{i=0}^{m-1}x_i.
+\end{equation}
+
+Equation~\eqref{eq:kernel} therefore has the unique solution
+\[
+ b(x)=-2B_m(x)^{-1}x
+\]
+whenever every coordinate of $x$ is nonzero.  This solution is a continuous
+rational function on the positive orthant.  At
+$\mathbf 1=(1,\ldots,1)^{\mathsf T}$, uniqueness and
+\eqref{eq:kernel} give $b_i(\mathbf1)=-1$ for all $i$.  Hence
+\begin{equation}\label{eq:open-set}
+ U_m=\{x\in(0,\infty)^m:b_i(x)<0\text{ for every }i\}
+\end{equation}
+is open and contains $\mathbf1$.  In particular, $U_m$ has positive
+$m$-dimensional Lebesgue measure.
+
+For $x\in U_m$, put
+\[
+ w_i=-b_i(x)x_ix_{i+1}>0,
+ \qquad D=\operatorname{diag}(x_0,\ldots,x_{m-1}).
+\]
+Multiplication of the $i$th equation in \eqref{eq:kernel} by $x_i$ gives
+\begin{equation}\label{eq:degree}
+ 2x_i^2=w_{i-1}+w_i.
+\end{equation}
+The diagonal identities \eqref{eq:degree} and the off-diagonal entries now
+give the exact congruence
+\begin{equation}\label{eq:congruence}
+ DK(2,b(x))D=L_w,
+\end{equation}
+where $L_w$ is the Laplacian of the cycle with positive edge weights $w_i$.
+Equivalently, for every $y\in\R^m$,
+\begin{equation}\label{eq:squares}
+ y^{\mathsf T}K(2,b(x))y
+ =\sum_{i=0}^{m-1}w_i
+ \left(\frac{y_i}{x_i}-\frac{y_{i+1}}{x_{i+1}}\right)^2.
+\end{equation}
+Because the cycle is connected, \eqref{eq:squares} proves
+\[
+ K(2,b(x))\succeq0,\qquad
+ \ker K(2,b(x))=\R x,\qquad
+ \operatorname{rank}K(2,b(x))=m-1.
+\]
+
+Thus every $x$ in the positive-measure set $U_m$ is annihilated by a
+nonzero matrix in $L_{G_m}\cap\PSD(m)$.  The kernel characterization cited
+above rules out $\mlt(G_m)=1$.  On the other hand,
+$\mlt(G_m)\leq\gcr(G_m)=2$, so $\mlt(G_m)=2$.
+\end{proof}
+
+\begin{corollary}
+For the five-cycle with one vertex color and pairwise distinct edge colors,
+$\mlt(G_5)=2$.  Hence the assertion $\mlt(G_5)=1$ is false on a
+positive-measure, rather than merely exceptional, set of observations.
+\end{corollary}
+
+\section{Scope, reproducibility, and assistance}
+
+The argument is pointwise for each fixed odd $m$; it does not assert a
+neighborhood in \eqref{eq:open-set} that is uniform in $m$.  For even $m$,
+the determinant in \eqref{eq:determinant} vanishes identically, and the
+present construction is not a proof of the even case.  The parity
+classification uses the previously proved even result exactly as stated
+above.  No claim of bibliographic priority beyond this comparison is made.
+
+A supplementary Python/SymPy verifier reconstructs $B_m(x)$ directly from
+\eqref{eq:kernel} and checks the determinant support, parity, exact rational
+kernel equations, Laplacian congruences, and rank certificates in finite
+test dimensions.  These computations audit displayed exact identities; the
+arbitrary-$m$ conclusion rests on the proof above.  This use of exact
+arithmetic as an audit rather than as a replacement for proof is also found
+in finite positive-semidefinite matrix certification, for example
+\cite{ZengLiuRatnavelu2026}.
+
+An AI coding assistant was used to organize the proof, prepare and run the
+symbolic checks, screen cited records, and draft the manuscript.  Those uses
+do not constitute external peer review; all mathematical dependencies and
+the full dimension-uniform argument are stated in the article.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

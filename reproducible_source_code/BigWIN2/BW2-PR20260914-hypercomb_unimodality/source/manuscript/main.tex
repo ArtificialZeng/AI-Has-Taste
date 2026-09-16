@@ -1,0 +1,371 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\lr}{\mathrel{\leq_{\mathrm{lr}}}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+\title{A two-step bound for the modes of\ uniform hypercomb summands}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University, 100190.\newline
+Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Galvin and Sharpe express the strong independence polynomial of a uniform
+linear hypercomb as a sum of two log-concave polynomials. Their mode estimates
+leave a possible interval of nonmonotonicity of length $O(\sqrt n)$ for each
+fixed uniformity. For every spine length $n\geq2$ and uniformity $\ell\geq3$,
+we prove that the smallest modes of these two summands differ by at most two.
+More precisely, the summands $W_n,Y_n$ satisfy
+$W_n\leq_{\mathrm{lr}}x^2Y_n$ and $Y_n\leq_{\mathrm{lr}}xW_n$ in the
+likelihood-ratio order, with coefficients extended by zero.
+Their sum is therefore nondecreasing up to the smaller mode and
+nonincreasing from the larger. The separation two is attained at
+$(n,\ell)=(3,5)$. The interval is located by the summand modes; full
+unimodality of the hypercomb polynomial remains unresolved here.
+\end{abstract}
+
+\section{The family and the result}
+
+Fix integers $n\geq1$ and $\ell\geq3$. A linear $\ell$-uniform hypercomb
+has distinct attachment vertices $w_0,\ldots,w_n$. For $1\leq i\leq n$,
+its $i$th spine edge consists of $w_{i-1},w_i$ and $\ell-2$ private vertices.
+At each $w_i$ attach a tooth consisting of $w_i$ and $\ell-1$ private
+vertices. All private vertex sets are disjoint. In particular, the two
+attachments are distinct when $n=1$. A \emph{strong independent set}
+meets each hyperedge in at most one vertex. Write
+\[
+ C_n(x)=C_{n,\ell}(x)=\sum_{k=0}^{2n+1}c_{n,\ell,k}x^k
+\]
+for its counting polynomial. Each edge has a private vertex, so the maximum
+size of such a set is $2n+1$.
+
+Galvin and Sharpe~\cite[Theorem 1.7, Corollary 1.8 and Section 2.5]{GS}
+give a recurrence for $C_n$ and a decomposition into two log-concave
+summands. For each fixed $\ell$, their bounds give monotonicity outside
+an interval $[K_\ell n-L_\ell\sqrt n,K_\ell n+L_\ell\sqrt n]$.
+Their Question 1.10(4) asks whether this interval can be shortened or
+eliminated. Note 1.9 of that paper withdraws an earlier proof of full
+log-concavity. The theorem below shortens the possible interval, with
+endpoints specified by summand modes rather than an explicit affine center.
+
+Put $s=\ell-2$ and $t=\ell-1=s+1$, and define
+\begin{equation}\label{eq:factors}
+ \begin{aligned}
+ a&=(1+sx)(1+tx), & b&=x(1+tx),\\
+ z_0&=1+(t+1)x, & z_1&=(1+tx)(a+2x).
+ \end{aligned}
+\end{equation}
+The recurrence in~\cite{GS} reads
+\begin{equation}\label{eq:comb}
+ C_0=z_0,\qquad C_1=z_1,\qquad C_n=aC_{n-1}+bC_{n-2}\quad(n\geq2).
+\end{equation}
+Here $C_0$ is an auxiliary initial polynomial. Let
+\begin{equation}\label{eq:F}
+ F_0=0,\qquad F_1=1,\qquad F_j=aF_{j-1}+bF_{j-2}\quad(j\geq2).
+\end{equation}
+Then, by induction in~\eqref{eq:comb}, the summands from
+\cite[Section 2.5, equations (28)--(30)]{GS} are
+\begin{equation}\label{eq:split}
+ C_n=W_n+Y_n,\qquad W_n=z_1F_n,\qquad Y_n=z_0bF_{n-1}\quad(n\geq2).
+\end{equation}
+
+For nonzero polynomials $P=\sum_i p_ix^i$ and $Q=\sum_i q_ix^i$ with
+nonnegative coefficients, extended by zero to all integer indices, set
+\begin{equation}\label{eq:order}
+ P\lr Q\quad\Longleftrightarrow\quad
+ p_iq_j-p_jq_i\geq0\quad\text{for every }i<j.
+\end{equation}
+This is the usual likelihood-ratio order without normalization; see
+\cite[Section 2]{DM}. Write $m(P)=\min\{i:p_i=\max_j p_j\}$ for the
+\emph{smallest} mode.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq2$ and $\ell\geq3$, the summands in~\eqref{eq:split} satisfy
+\begin{equation}\label{eq:mainorder}
+ W_n\lr x^2Y_n,\qquad Y_n\lr xW_n.
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:modes}
+ m(Y_n)-1\leq m(W_n)\leq m(Y_n)+2.
+\end{equation}
+If $r=\min\{m(W_n),m(Y_n)\}$ and $q=\max\{m(W_n),m(Y_n)\}$, then
+$q-r\leq2$ and
+\begin{equation}\label{eq:tails}
+ c_{n,\ell,0}\leq\cdots\leq c_{n,\ell,r},\qquad
+ c_{n,\ell,q}\geq\cdots\geq c_{n,\ell,2n+1}.
+\end{equation}
+The separation bound two is attained by unique summand modes $6$ and $4$
+at $n=3$, $\ell=5$.
+\end{theorem}
+
+The contribution is the simultaneous order invariant
+$F_{j-1}\lr F_j\lr bF_{j-1}$ and its application to the initial factors.
+The recurrence, factorization and summand log-concavity are prior ingredients.
+Recurrence factorizations for graph independence polynomials occur in
+Wang and Zhu~\cite[Theorem 3.1]{WZ}; related order-based arguments appear
+in Bautista-Ramos, Guill\'en-Galv\'an and G\'omez-Salgado~\cite{BGG}.
+Their corrigendum~\cite{BGGcorr} addresses support conditions in ratio
+comparisons. We retain all pairs of indices in~\eqref{eq:order} and prove
+the required order properties, including zero coefficients, below.
+
+The September 2026 preprint~\cite[Theorem 1 and Corollary 2]{Eventual}
+asserts eventual strict log-concavity for each fixed pair of positive
+weights. Its recurrence specializes to~\eqref{eq:comb} at
+$s=\ell-2$, $t=\ell-1$; its Section 9 retains the question at every
+length in the uniform family. Theorem~\ref{thm:main} applies at every
+length in its stated range and uses no result from that preprint.
+Its analytic proof and reported formalization are not evaluated here.
+The comparison with these sources, checked on 14 September 2026, is a
+bounded assessment of the contribution, not a claim of worldwide priority.
+
+\section{Order calculus and log-concavity}
+
+In this section every nonzero sequence has finite support and is positive
+at every integer between its support endpoints. A polynomial is
+\emph{log-concave} if $p_i^2\geq p_{i-1}p_{i+1}$ for all $i$.
+With the support convention above, log-concavity implies unimodality.
+
+\begin{lemma}\label{lem:order}
+The order~\eqref{eq:order} is transitive. Its inequalities are preserved
+under addition with a common lower or upper bound, and under multiplication
+by a log-concave polynomial with interval support. Moreover,
+$P\lr Q$ implies $m(P)\leq m(Q)$.
+\end{lemma}
+\begin{proof}
+If $P\lr Q$, each support endpoint of $P$ is at most the corresponding
+endpoint of $Q$. For example, if the left endpoint of $Q$ preceded that
+of $P$, the minor on these two endpoints would be negative; the right
+endpoints are treated similarly. Suppose $P\lr Q\lr R$ and $i<j$.
+If $p_jr_i=0$, the required inequality is immediate. Otherwise the
+endpoint inequalities place $i,j$ in the positive support of $Q$.
+Multiplying $p_iq_j\geq p_jq_i$ and $q_ir_j\geq q_jr_i$ and dividing
+by $q_iq_j>0$ proves transitivity. Linearity of each minor in either
+polynomial proves the assertions about addition whenever the resulting
+sequences have interval support, as they do below.
+
+Let $R=\sum_k r_kx^k$ be log-concave. Decreasing successive coefficient
+ratios give
+\begin{equation}\label{eq:toeplitz}
+ r_{i-u}r_{j-v}-r_{j-u}r_{i-v}\geq0\qquad(i<j,\ u<v).
+\end{equation}
+Indeed, if the second product is positive, its two indices are the
+outermost of the four indices. The indices of the first product lie
+between them and have the same sum. All four coefficients are then
+positive, and the ratio argument applies. If the second product vanishes,
+the inequality is immediate. Expanding the convolution minor gives
+\begin{equation}\label{eq:convolution}
+ \begin{aligned}
+ &(PR)_i(QR)_j-(PR)_j(QR)_i\\
+ &\quad=\sum_{u<v}(p_uq_v-p_vq_u)
+       (r_{i-u}r_{j-v}-r_{j-u}r_{i-v})\geq0.
+ \end{aligned}
+\end{equation}
+Here $(PR)_i$ denotes the coefficient of $x^i$ in $PR$. This proves
+preservation under multiplication.
+
+Finally, if $i=m(Q)<j=m(P)$, then $p_i<p_j$, $q_i\geq q_j$ and
+$q_i>0$. Thus $p_iq_j<p_jq_i$, contradicting~\eqref{eq:order}.
+This also covers tied modes.
+\end{proof}
+
+We will use the classical closure of log-concavity under convolution,
+stated, for example, in~\cite[Theorem 1.4]{JG}. It follows directly from
+the lemma: log-concavity and interval support imply $P\lr xP$ by the
+ratio argument. Multiplication by a log-concave $R$ gives
+$PR\lr xPR$, whose adjacent minors are precisely the log-concavity
+inequalities for $PR$. Products preserve interval support.
+
+\begin{lemma}\label{lem:lc}
+The polynomials $a,b,z_0,z_1$, and every $F_j$ with $j\geq1$, are
+log-concave. The supports of $F_j,W_n,Y_n$ are respectively
+$[0,2j-2]$, $[0,2n+1]$ and $[1,2n-1]$.
+\end{lemma}
+\begin{proof}
+The factors $a,b,z_0$ are products of linear polynomials and monomials.
+Also $d=a+2x=1+(s+t+2)x+stx^2$ is log-concave since
+$(s+t+2)^2>st$. Hence $z_1=(1+tx)d$ is log-concave.
+
+For $0\leq y\leq1$, factor
+\begin{equation}\label{eq:cubic}
+ \begin{aligned}
+ a^2+4yb&=(1+tx)R_y,\\
+ R_y&=1+(2s+t+4y)x+(s^2+2st)x^2+s^2tx^3.
+ \end{aligned}
+\end{equation}
+The two interior log-concavity determinants of $R_y$ are positive:
+\begin{align}
+ (2s+t+4y)^2-(s^2+2st)
+   &=3s^2+2st+t^2+16sy+8ty+16y^2>0,\label{eq:det1}\\
+ (s^2+2st)^2-(2s+t+4y)s^2t
+   &=s^2(s^2+2st+3t^2-4ty)\notag\\
+   &\geq s^2(6s^2+4s-1)>0.\label{eq:det2}
+\end{align}
+The last inequality uses $t=s+1$, $s\geq1$ and $y\leq1$.
+Thus $a^2+4yb$ is log-concave. These identities give an algebraic
+verification of the factor condition in~\cite[Section 2.5]{GS}.
+
+The Fibonacci recurrence~\eqref{eq:F} has the factorization
+\begin{equation}\label{eq:factorization}
+ F_j=a^{\varepsilon_j}
+ \prod_{h=1}^{\lfloor(j-1)/2\rfloor}
+ \left(a^2+4b\cos^2\frac{h\pi}{j}\right),
+ \qquad
+ \varepsilon_j=\begin{cases}1,&j\text{ even},\\0,&j\text{ odd}.
+ \end{cases}
+\end{equation}
+An empty product equals one. To see the identity, solve the recurrence as
+$F_j=(\lambda^j-\mu^j)/(\lambda-\mu)$, where
+$\lambda+\mu=a$ and $\lambda\mu=-b$. Pairing conjugate factors of the
+numerator yields~\eqref{eq:factorization}, with the unpaired factor
+$\lambda+\mu$ when $j$ is even. One may first take $x>0$, where the
+characteristic roots are distinct, and then use polynomial identity.
+This is the factorization underlying~\cite[equations (29)--(30)]{GS}.
+
+Each cosine square lies in $[0,1]$, so product closure proves
+log-concavity of $F_j$. Since $a$ has positive coefficients in degrees
+$0,1,2$, induction in~\eqref{eq:F} gives the support $[0,2j-2]$.
+Multiplication by $z_1$ and $z_0b$ gives the asserted supports and
+log-concavity of the summands.
+\end{proof}
+
+\section{The invariant and the two-step bound}
+
+\begin{lemma}\label{lem:invariant}
+For every $j\geq2$,
+\begin{equation}\label{eq:invariant}
+ F_{j-1}\lr F_j\lr bF_{j-1}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The base case is $1=F_1\lr F_2=a\lr b$. The only potentially
+nontrivial minors of $a\lr b$, at $(0,1),(0,2),(1,2)$, are
+$1,t,t^2$, respectively.
+
+Assume~\eqref{eq:invariant}. Because $1\lr a$ and $F_j$ is
+log-concave, Lemma~\ref{lem:order} gives $F_j\lr aF_j$.
+Together with the right inequality in~\eqref{eq:invariant}, addition
+gives
+\[
+ F_j\lr aF_j+bF_{j-1}=F_{j+1}.
+\]
+For the other half, $a\lr b$ and log-concavity of $F_j$ give
+$aF_j\lr bF_j$. The left inequality in~\eqref{eq:invariant},
+multiplied by the log-concave kernel $b$, gives
+$bF_{j-1}\lr bF_j$. Adding the lower polynomials yields
+$F_{j+1}\lr bF_j$, completing the simultaneous induction.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Expand
+\[
+ z_1=1+(3\ell-2)x+3t^2x^2+st^2x^3.
+\]
+First, $z_1\lr x^2z_0$: the only overlap pair needing comparison is
+$(2,3)$, with minor $t^2(3(t+1)-s)>0$. Every other minor is
+nonnegative by the supports. Apply Lemma~\ref{lem:invariant} and this
+initial-factor comparison, with log-concave kernels $z_1$ and
+$bF_{n-1}$, respectively:
+\begin{equation}\label{eq:chain1}
+ W_n=z_1F_n\lr z_1bF_{n-1}\lr x^2z_0bF_{n-1}=x^2Y_n.
+\end{equation}
+Second, $z_0\lr d=a+2x$, since its minors at
+$(0,1),(0,2),(1,2)$ are $s+1,st,(t+1)st$. Multiplication by
+$b=x(1+tx)$ gives $z_0b\lr xz_1$. Using the log-concave kernels
+$z_0b$ and $F_n$ gives
+\begin{equation}\label{eq:chain2}
+ Y_n=z_0bF_{n-1}\lr z_0bF_n\lr xz_1F_n=xW_n.
+\end{equation}
+Transitivity proves~\eqref{eq:mainorder}.
+
+Lemma~\ref{lem:order} and $m(x^hP)=m(P)+h$ now give~\eqref{eq:modes}.
+Both summands are log-concave by Lemma~\ref{lem:lc}. Adding their
+monotonicity inequalities proves~\eqref{eq:tails}. Finally, the exact
+coefficients in Table~\ref{tab:witness} show the unique modes $6$ and
+$4$, so the bound on summand separation is attained.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Exact coefficients at $n=3$, $\ell=5$. Omitted high-degree
+coefficients of $Y_n$ are zero.}\label{tab:witness}
+\small
+\begin{tabular}{crrrrrrrr}
+\toprule
+$k$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+\midrule
+$[x^k]W_n$ & 1 & 28 & 320 & 1937 & 6744 & 13632 & 14976 & 6912\\
+$[x^k]Y_n$ & 0 & 1 & 16 & 95 & 248 & 240 & 0 & 0\\
+$[x^k]C_n$ & 1 & 29 & 336 & 2032 & 6992 & 13872 & 14976 & 6912\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The sum in Table~\ref{tab:witness} is itself log-concave. Thus the example
+establishes sharpness only for the separation of these summands. The case
+$n=1$ is log-concave directly from $C_1=z_1$. In general, when $q-r\leq1$,
+the two monotone tails already give unimodality. When $q=r+2$, the only
+remaining possible failure is the strict valley
+\[
+ c_{n,\ell,r}>c_{n,\ell,r+1}<c_{n,\ell,r+2}.
+\]
+The argument does not exclude this valley. Neither full unimodality nor
+log-concavity for all parameters follows from the theorem.
+
+\section{Exact checks and reproducibility}
+
+The infinite conclusion follows from the preceding proof. Finite exact
+checks give a separate test of the formulas and their implementation.
+An independently written verifier generated $F_j$ by the tiling expansion
+\[
+ F_j=\sum_{h=0}^{\lfloor(j-1)/2\rfloor}
+       \binom{j-1-h}{h}a^{j-1-2h}b^h
+\]
+and tested the recurrence, all four order comparisons in
+\eqref{eq:invariant} and~\eqref{eq:mainorder}, the summand
+log-concavity and the two monotone tails. It checked all $i<j$ minors
+for all pairs in
+\[
+ \bigl(\{2,\ldots,24\}\times\{3,\ldots,18\}\bigr)
+ \ \cup\
+ \bigl(\{25,32,47,64\}\times\{3,4,5,31,1000003\}\bigr).
+\]
+These are $388$ parameter pairs and $958{,}808$ minors, all passing.
+A second construction enumerated subsets $A\subseteq\{0,\ldots,n\}$
+of occupied attachment vertices with no consecutive positions. If
+$h(A)$ counts spine edges with neither endpoint in $A$, the contribution is
+\[
+ x^{|A|}(1+tx)^{n+1-|A|}(1+sx)^{h(A)}.
+\]
+Summing these contributions agreed with $C_n$ for $1\leq n\leq10$,
+$3\leq\ell\leq8$, giving $60$ direct combinatorial comparisons.
+
+Independent reconstruction is also used in exact verification for related
+pendant-edge constructions: Zeng~\cite{ZengWhiskered} reports integer
+kernel certificates, checkable by reconstructing multiplication matrices,
+for the eight-vertex whiskered-graph weak Lefschetz problem. Here the
+reconstructed objects are coefficient arrays and hypercomb counts.
+The accompanying verifier uses Python integers and no external package;
+it can be run as \texttt{python3 manuscript/verify.py} from the project
+directory. It recomputes the finite checks just described without modifying
+the research records. The finite ranges impose no cutoff on
+Theorem~\ref{thm:main}.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex was used in the mathematical exploration, proof development,
+literature searches, exact-check programs and manuscript preparation.
+A separate model context reviewed the mathematical argument and wrote the
+second verifier. This was an additional review pass, not external peer review
+or statistically independent evidence. The initial symbolic checks used
+SymPy 1.14.0; the accompanying verification uses exact integer arithmetic.
+No formal proof-assistant verification of this note is claimed.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

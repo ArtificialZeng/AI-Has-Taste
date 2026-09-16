@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The Least Uniquely Three-Colorable Integral Circulant with Clique Number Two},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Integral circulant graphs; unique three-colorability; exact finite census}
+}
+\emergencystretch=3em
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\ICG}{\operatorname{ICG}}
+
+\title{The Least Uniquely Three-Colorable Integral Circulant\\
+with Clique Number Two}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a set $D$ of proper positive divisors of $n$, let $\ICG_n(D)$ be the
+graph on $\Z_n$ in which distinct $x,y$ are adjacent when
+$\gcd(x-y,n)\in D$.  We determine the least order in the restricted class
+of uniquely $3$-colorable integral circulants having clique number $2$.
+An exhaustive exact census gives order $60$, and at that order the only
+divisor set is $D=\{2,5\}$.  Its unique unordered color partition is the
+three residue classes modulo $3$.  The census covers all $4091$ pairs
+$(n,D)$ with $n\leq 60$ and is reproduced by a separately implemented
+CNF/DPLL verifier.  This result does not assert least order among uniquely
+$k$-colorable integral circulants with arbitrary $k>\omega$.
+\end{abstract}
+
+\section{Statement and context}
+
+A circulant graph is integral precisely when its connection set is a union
+of gcd classes; this gives the divisor-set parametrization above
+\cite{So2006}.  We say that a graph is \emph{uniquely $3$-colorable} when
+its chromatic number is $3$ and all proper $3$-colorings induce the same
+unordered partition into three nonempty independent sets.
+
+Klotz and Sander asked whether every uniquely colorable circulant satisfies
+$\chi=\omega$ \cite[Problem~3.6]{KlotzSander2017}.  Ba\v{s}i\'c answered that
+question negatively by proving that
+$\ICG_{12p}(\{2,p\})$ is uniquely $3$-colorable with clique number $2$ for
+every prime $p\geq5$ \cite[Theorem~3.1]{Basic2026}.  In particular, $p=5$
+supplies an order-$60$ example.  The issue addressed here is the sharp
+finite boundary within the fixed parameter pair
+$(\chi,\omega)=(3,2)$, together with the complete divisor-set
+classification at that boundary.
+
+\begin{theorem}\label{thm:main}
+Let $n$ be a positive integer and let $D$ range over all subsets of the
+proper positive divisors of $n$.  Among the graphs $\ICG_n(D)$ that are
+uniquely $3$-colorable and have clique number $2$, the least possible order
+is $n=60$.  At order $60$ the only such divisor set is
+$D=\{2,5\}$.  Its unique unordered color partition is
+\[
+  C_r=\{x\in\Z_{60}:x\equiv r\pmod 3\},\qquad r=0,1,2.
+\]
+\end{theorem}
+
+The minimum in Theorem~\ref{thm:main} is deliberately restricted to
+uniquely three-colorable graphs with clique number two.  The theorem does
+not exclude a smaller uniquely $k$-colorable integral circulant with
+$k\geq4$ and $k>\omega$.
+
+\section{Exact finite proof}
+
+Write $\mathcal D_n$ for the set of proper positive divisors of $n$.
+Every subset of $\mathcal D_n$ was visited, without an isomorphism or
+symmetry quotient.  Thus the exact search domain has size
+\[
+ \sum_{n=1}^{59}2^{|\mathcal D_n|}=2043,
+ \qquad
+ \sum_{n=1}^{60}2^{|\mathcal D_n|}=4091.
+\]
+There is no duplication by equality of labeled graphs: if
+$D\ne D'$ and $d\in D\mathbin\triangle D'$, then the edge $\{0,d\}$
+belongs to exactly one of $\ICG_n(D)$ and $\ICG_n(D')$, since
+$\gcd(d,n)=d$.
+
+The certificate design follows a useful principle for finite-library
+theorems: enumerate the entire discrete domain with exact predicates and
+make the recorded witnesses independently reconstructible.  Related uses
+of exhaustive graph certificates and a separate exact implementation occur,
+in a different finite geometric setting, in \cite{ZengEtAl2026}.
+
+For each pair $(n,D)$, the primary program constructs all adjacency rows as
+integer bitsets directly from the gcd definition.  It then applies the
+following exhaustive decision tree.
+
+\begin{enumerate}
+  \item An edgeless graph fails because its chromatic number is at most one.
+  \item A disconnected graph fails unique $3$-colorability.
+  \item A displayed triangle proves $\omega\geq3$.
+  \item A displayed bipartition proves $\chi\leq2$.
+  \item Every remaining graph is connected, has an edge, is triangle-free,
+        and is nonbipartite.  Hence $\omega=2$ and $\chi\geq3$.
+        A complete canonical DSATUR search then reports no proper
+        $3$-coloring, two distinct unordered color partitions, or the
+        unique unordered partition.
+\end{enumerate}
+
+For completeness, the second exclusion is justified even when a component
+has chromatic number greater than three.  Such a graph is not
+$3$-colorable.  Otherwise, if the whole graph is $3$-chromatic, at least one
+component uses all three colors.  Permuting colors nontrivially on a
+different nonempty component, while leaving the first component fixed,
+changes the global unordered partition.  Thus a disconnected graph cannot
+be uniquely $3$-colorable.
+
+Using the saturation-degree ordering of Br{\'e}laz \cite{Brelaz1979}, the
+search introduces colors only in their first-use order.  Its
+vertex choice depends on saturation cardinality, degree, and vertex label,
+not on color names.  Consequently every unordered proper $3$-color
+partition appears in exactly one branch.  Stopping after two partitions is
+sufficient only for the nonuniqueness decision; searches reporting zero or
+one partition run to exhaustion.
+
+The complete census is as follows.
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+classification & number of pairs \\
+\midrule
+edgeless & 60 \\
+disconnected & 677 \\
+contains a triangle & 3228 \\
+bipartite & 91 \\
+not $3$-colorable & 17 \\
+nonuniquely $3$-colorable & 17 \\
+qualifying & 1 \\
+\midrule
+total & 4091 \\
+\bottomrule
+\end{tabular}
+\end{center}
+No pair with $n<60$ qualifies.  Among the $2048$ divisor sets at order
+$60$, the sole qualifying record is $D=\{2,5\}$.  Its $360$ edges include
+the odd cycle
+\[
+  4,2,0,14,9,4,
+\]
+and no triangle.  The exhaustive coloring certificate gives exactly the
+three classes $C_0,C_1,C_2$ in Theorem~\ref{thm:main}.  These classes are
+also visibly independent: a nonzero difference within one class is
+divisible by $3$, so its gcd with $60$ is neither $2$ nor $5$.
+
+An independent verifier reconstructs each graph using ordinary neighbor
+sets, tests connectivity by union--find, detects triangles by set
+intersection, and tests bipartiteness by parity propagation.  On every
+remaining graph it forms the standard three-color CNF: each vertex has
+exactly one color and adjacent vertices have different colors.  Vertex $0$
+is fixed to color $0$.  After finding a model, the verifier blocks both
+labeled models compatible with that choice that represent the same
+unordered partition, and solves again by exhaustive unit propagation and
+binary DPLL branching \cite{DavisLogemannLoveland1962}.  A second model is
+precisely a second unordered
+partition; unsatisfiability is precisely uniqueness.  This implementation
+reproduced all $4091$ classifications, all witnesses, and the sole qualifier.
+The domain count and the exhaustive alternatives above prove
+Theorem~\ref{thm:main}.
+
+\section{Reproducibility and assistance disclosure}
+
+The ancillary files \texttt{evidence/enumerate\_icg.py} and
+\texttt{evidence/verify\_census\_sat.py} use only the Python~3 standard
+library.  From the project root, the census and its independent replay are
+regenerated by
+\begin{verbatim}
+python3 evidence/enumerate_icg.py \
+  --records evidence/census-primary.jsonl \
+  --summary evidence/census-primary-summary.json
+python3 evidence/verify_census_sat.py \
+  --primary evidence/census-primary.jsonl \
+  --records evidence/census-independent.jsonl \
+  --audit evidence/census-audit.json
+\end{verbatim}
+The computations use exact integer and Boolean operations; no numerical
+tolerance or floating-point inference enters the theorem.
+
+An AI coding and reasoning assistant was used to help develop and inspect
+the enumeration, verification code, and exposition.  The mathematical claim
+rests on the explicitly described exhaustive algorithms and replayable exact
+records; a separate implementation reconstructs every graph and repeats all
+classification decisions.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

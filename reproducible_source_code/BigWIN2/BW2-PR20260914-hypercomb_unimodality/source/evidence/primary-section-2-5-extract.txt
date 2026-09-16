@@ -1,0 +1,466 @@
+             D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121       112
+
+       k                                                 k
+  2. Bn,`    consists of those independent sets in In,`     that include none of w or
+                                                                k      k            k
+     w1 , . . . , w`−2 . The identity map is a bijection from Bn,` to In−1,` , so |Bn,` |=
+      k
+     pn−1,` .
+                                     k                                              k
+  3. For each i = 1, . . . , ` − 2, Cn,` (i) consists of those independent sets in In,` that
+     include wi (and so necessarily do not include any of v, w or wj , j =        6 i. The
+                                              k
+     identity map is a bijection from Cn,`      (i) to
+                                              k−1
+                                        {I ∈ In−1,` : v 6∈ I}.
+
+                                     k                                              k
+  4. For each i = 1, . . . , ` − 2, Dn,` (i) consists of those independent sets in In,` that
+     include both w and vi (and so necessarily do not include any of v, w1 , . . . , w`−2 ,
+                                                            k
+     or vj , j 6= i. There is a simple bijection from Dn,`     (i) to
+                                              k−1
+                                        {I ∈ In−1,` : v ∈ I},
+                                                                  k
+        obtained by deleting w and vi from an independent set in Dn,` (i), and adding v.
+
+Combining the observations in points 3 and 4 above we obtain
+
+                     ∪`−2    k         k
+                                                 = (` − 2)pk−1
+                                               
+                       i=1 Cn,` (i) ∪ Dn,` (i)             n−1,` .
+
+Combining this with the observations in the points 1 and 2 above we obtain
+
+                            pkn,` = pkn−1,` + pk−1             k−1
+                                               n−2,` + (` − 2)pn−1,` .
+
+
+2.5     The independent set sequence of hypercombs and related hyper-
+        graphs
+
+We begin by describing the more general setting in which we will work, alluded to
+just after Note 1.9. Let G be a hypergraph (not necessarily uniform, not necessarily
+a hypertree) with distinguished vertex v. For ` ≥ 3, let a sequence (Hn,` )n≥0 of
+hypergraphs be defined as follows:
+
+      • H0,` consists of a single copy of G.
+
+      • H1,` consists of an edge of size `, together with two disjoint copies of G; in the
+        first of these copies, the distinguished vertex v is identified with some (arbitrary)
+        vertex of the initial edge, and in the second, it is identified with some other
+        (arbitrary) vertex of the initial edge.
+
+      • For n ≥ 2, Hn,` starts with a copy of Pn,` . Let w0 be a vertex in e1 \ e2 . For
+        i = 1, . . . , n − 1 let wi be the vertex in common to ei and ei+1 . Finally let
+        wn be a vertex in en \ en−1 . Augment Pn,` by adding n + 1 disjoint copies of
+        G, say G0 , . . . , Gn , with the distinguished vertex in Gi identified with wi for
+        i = 0, . . . , n.
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121    113
+
+
+Notice that when G is a single edge of order `, Hn,` coincides with Cn,` for n ≥ 1.
+Note also that in this case the independence polynomial of H0,` is 1 + `x, exactly
+what C0,` (x) was declared to be in Theorem 1.7.
+   Let also a sequence (Dn,` )n≥0 of auxiliary hypergraphs be defined as follows:
+
+   • Dn,` is obtained from Hn,` by removing the first (left-most) copy of G from Hn,`
+     (including the vertex at which the copy of G meets the underlying copy of Pn,` ).
+
+In particular this means that D0,` is empty (so D0,` (x) = 1). An illustration of Dn,`
+when G is a single edge of order ` is given in Figure 2.
+   Let Hn,` (x) and Dn,` (x) denote the independence polynomials of Hn,` and Dn,`
+respectively. Let also
+
+   • G0 (x) be the independence polynomial of G,
+
+   • G1 (x) be the independence polynomial of the hypergraph obtained from G by
+     deleting the vertex v (which reduces by 1 the order of every edge in G that
+     includes v), and
+
+   • G2 (x) be the independence polynomial of the hypergraph obtained from G by
+     deleting the vertex v and all edges in G that include v.
+
+    We now observe that there are coupled recurrence relations for Hn,` (x) and Dn,` (x)
+valid for n ≥ 1. For Hn,` (x) we have
+
+                 Hn,` (x) = G1 (x)Dn,` (x) + xG1 (x)G2 (x)Dn−1,` (x)
+                          = G1 (x) (Dn,` (x) + xG2 (x)Dn−1,` (x))                  (25)
+
+(consider first not occupying the first vertex along the spine of Hn,` (x) that has a
+copy of G dropped from it, and then occupying it), and for Dn,` (x) we have
+
+                    Dn,` (x) = Hn−1,` (x) + x(` − 2)G1 (x)Dn−1,` (x)               (26)
+
+(consider first not occupying any of the initial ` − 2 vertices along the spine that do
+not have a copy of G dropped from them, then occupying one of them). Applying
+(26) twice (once with index n and once with index n − 1) and rearranging terms we
+get
+
+Dn,` (x) + xG2 (x)Dn−1,` (x) = Hn−1,` (x) + x(` − 2)G1 (x)Dn−1,` (x)
+                               +xG2 (x)Hn−2,` (x) + x2 (` − 2)G1 (x)G2 (x)Dn−2,` (x)
+                             = (1 + (` − 2)x)Hn−1,` (x) + xG2 (x)Hn−2,` (x).
+
+In the second equality above we use (25) to combine the second and fourth terms on
+the right-hand side. It follows (using (25) again) that
+
+           Hn,` (x) = G1 (x) ((1 + (` − 2)x)Hn−1,` (x) + xG2 (x)Hn−2,` (x)) .      (27)
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121     114
+
+
+Noting that when G is a single edge of order ` we have G1 (x) = 1 + (` − 1)x and
+G2 (x) = 1 (since G2 is empty in this case), we obtain (6) as a special case of (27).
+    The initial conditions for the recurrence (27) are
+
+      H0,` (x) = G0 (x) and H1,` (x) = G0 (x)2 − x2 G2 (x)2 + (` − 2)xG1 (x)2 .
+
+For the second of these initial conditions, consider first those independent sets in H1,`
+that only use vertices from the two copies of G in H1,` . The factor G0 (x)2 comes from
+choosing an arbitrary independent set from each copy of G. The factor of −x2 G2 (x)2
+comes from the fact that we have over-counted by including all pairs that have the
+property that each independent set in the pair includes a vertex from the spine. Then
+consider those independent sets in H1,` that include one vertex from among the ` − 2
+vertices that are not part of a copy of G. These sets contribute (` − 2)xG1 (x)2 to
+the independence polynomial. When G is a single edge of order ` these formulae are
+easily seen to give the initial conditions posited in Theorem 1.7 for the hypercomb,
+completing the proof of that theorem.
+    We now move on to Corollary 1.8, the partial unimodality of the independent set
+sequence of Cn,` . Note that the graph obtained from Cn,` by replacing each edge with
+a clique is not claw-free for n ≥ 2, so we cannot apply the results of Hamidoune and
+of Chudnovsky and Seymour that we used for the linear hyperpath.
+    We work in the general setting of a sequence (zn (x))n≥0 of polynomials with
+non-negative coefficients defined by the recurrence
+
+                          zn (x) = a(x)zn−1 (x) + b(x)zn−2 (x)
+
+for n ≥ 2, where a(x), b(x) are non-negative and non-zero polynomials. Our goal
+is to establish easy-to-check conditions on a(x), b(x), z0 (x) and z1 (x) that imply
+unimodality of all but a vanishing proportion of the coefficient sequence of zn (x). We
+briefly sketch the approach here.
+
+   • First we explicitly solve the recurrence, to express zn (x) as the sum of two
+     polynomials, Wn (x) and Yn (x), each of which can be explicitly factored into a
+     product of low-degree polynomials.
+
+   • Assuming that each of these factors is log-concave we conclude that Wn (x) and
+     Yn (x) are log-concave and so unimodal.
+
+   • Viewing Wn and Yn as probability generating functions of discrete distributions
+     we explicitly compute the expectations of Wn and Yn and find that they are
+     (asymptotically) the same.
+
+   • We then appeal to a result of Bottomley, that shows that the expectation and
+     the mode of a unimodal polynomial are (quantifiably) close to each other. We
+     conclude that the modes of Wn and Yn are close to each other.
+
+   • Since the sum of two unimodal polynomials is increasing at least up to the
+     smaller of the two modes, and is decreasing at least from the larger of the
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121                   115
+
+
+      two modes on, we conclude that zn (x) = Wn (x) + Zn (x) is mostly unimodal
+      (specifically, unimodal except possibly between the modes of Wn (x) and Yn (x)).
+
+This scheme leads to a general statement (Theorem 2.3 below) to the effect that if a
+particular collection of low-degree polynomials is log-concave, then zn (x) is mostly
+unimodal for all n. We then apply this general result to the linear uniform hypercomb.
+   Let us now begin executing the above-described scheme. In the initial part of
+what follows we draw on the presentation given in [26]. First note that using standard
+recurrence relation techniques we have that for n ≥ 2
+
+               (z1 (x) − z0 (x)µ)λ(x)n + (z0 (x)λ(x) − z1 (x))µ(x)n
+     zn (x) =
+                                   λ(x) − µ(x)
+                        λ(x) − µ(x)n
+                             n
+                                                             λ(x)n−1 − µ(x)n−1
+                                                                            
+             = z1 (x)                   − z0 (x)λ(x)µ(x)                         (28)
+                         λ(x) − µ(x)                            λ(x) − µ(x)
+
+where
+                           p                                                  p
+                  a(x) +    a2 (x) + 4b(x)                        a(x) −          a2 (x) + 4b(x)
+        λ(x) =                                     and µ(x) =
+                             2                                                     2
+or equivalently
+
+                     λ(x) + µ(x) = a(x) and λ(x)µ(x) = −b(x).
+
+(See e.g. [10, Chapter 7].) Note that since a(x), b(x) are non-negative and non-zero
+we have a2 (x) + 4b(x) > 0 for x > 0 and so λ(x) 6= µ(x).
+    Next (see e.g. [2, Chapter V.19]), we have the following factorizations for arbitrary
+p, q with p 6= q:
+                        (n−1)/2 
+                                                        2 sπ
+                          Y                               
+                                            2
+                                   (p +  q)   −  4pq cos           if n ≥ 1 is odd,
+                  
+                  
+      pn − q n                                             n
+                  
+                           s=1
+               =              (n−2)/2 
+       p−q
+                                                            2 sπ
+                               Y                              
+                                                2
+                  
+                    (p +  q)           (p +  q)   − 4pq cos       if n ≥ 2 is even
+                                                               n
+                  
+                                s=1
+
+(here interpreting the empty product to be 1, as usual). Combining this with (28) we
+get that
+                               zn (x) = Wn (x) + Yn (x)
+for n ≥ 2, where
+                                (n−2)/2 
+                                                            2 sπ
+                                  Y                          
+                                            2
+                     z1 (x)a(x)           a (x) + 4b(x) cos      if n is even,
+                    
+                    
+                                                               n
+                    
+                                        s=1
+      Wn (x) =                        (n−1)/2 
+                                                                                                   (29)
+                                      Y                                 sπ 
+                                                  a2 (x) + 4b(x) cos2
+                    
+                    
+                            z1 (x)                                                 if n is odd
+                                                                          n
+                    
+                                       s=1
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121                 116
+
+
+and
+                                   (n−2)/2                                
+                                    Y
+                                                2              2        sπ
+                       z0 (x)b(x)           a (x) + 4b(x) cos                     if n is even,
+              
+              
+                                                                       n−1
+              
+              
+                                      s=1
+  Yn (x) =                          (n−3)/2                                              (30)
+                              Y                                        sπ
+                                            a2 (x) + 4b(x) cos2
+              
+               z0 (x)a(x)b(x)                                                    if n is odd.
+              
+              
+                                     s=1
+                                                                       n−1
+Let us now assume that each of the following polynomials:
+                  z0 (x), z1 (x), a(x), b(x) and a2 (x) + 4b(x)y (y ∈ [0, 1])
+have log-concave coefficient sequences. Using the standard fact that the log-concavity
+of coefficient sequences of polynomials is preserved under multiplication (see e.g.
+[6, Theorem 9.9]), it follows that each of Wn (x) and Yn (x) have log-concave and so
+unimodal coefficient sequences.
+    Let mwn be a mode of Wn (x). That is, let mwn be an integer satisfying that the
+coefficient sequence of Wn (x) is weakly increasing up to (and including) the coefficient
+of xmwn and is weakly decreasing starting from the coefficient of xmwn . Let myn be a
+mode of Yn (x). Evidently the coefficient sequence of zn (x) is weakly increasing at
+least up to the coefficient of xmin{mwn ,myn } , and it is weakly decreasing at least from
+the coefficient of xmax{mwn ,myn } on. So the smaller we can make |mwn − myn |, the
+closer we get to concluding unimodality of the coefficient sequence of zn (x).
+    Let us focus first on estimating mwn in the case where n is even. Because Wn (x) is
+a non-negative and non-zero polynomial we may view Wn (x)/Wn (1) as the probability
+generating function of a discrete probability distribution Xn , supported on a finite
+subset of the natural numbers. In light of the factorization we have found for Wn (x)
+we see that
+                                                 (n−2)/2
+                                                   X
+                                          0
+                                  Xn = Xn +              Xns
+                                            s=1
+
+where Xn has probability generating function z1 (x)a(x)/(z1 (1)a(1)), Xns has proba-
+       0
+                          2               2            2               2
+bility generating function (a (x) + 4b(x) cos (sπ/n))/((a (1) + 4b(1) cos (sπ/n))) for
+each s, and the Xni ’s are independent.
+    We now use that if a distribution X has probability generating function PX (x)
+then its expectation is given by E(X) = PX0 (x)|x=1 , where 0 indicates derivative with
+respect to x. So
+                                           (z1 (x)a(x))0 |x=1
+                             E(Xn0 ) =                        := c0
+                                               z1 (1)a(1)
+and for s ≥ 1
+                                             c1 + c2 cos2 (sπ/n)
+                               E(Xns ) =
+                                             c3 + c4 cos2 (sπ/n)
+where the ci ’s are constants that can be explicitly calculated from a(x), b(x) and (in
+the case of c0 ) z1 (x), with c3 , c4 6= 0. It follows that
+                                           (n−2)/2
+                                            X c1 + c2 cos2 (sπ/n)
+                         E(Xn ) = c0 +                       2 (sπ/n)
+                                                                      .                      (31)
+                                            s=1
+                                                c 3 + c 4 cos
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121                 117
+
+
+We estimate the sum in (31) using an integral. Setting m = (n − 2)/2 we have
+  (n−2)/2                           m
+    X c1 + c2 cos2 (sπ/n)          X   1 c1 + c2 cos2 ((2s/(2m + 2))(π/2))
+                                                                              
+                       2 (sπ/n)
+                                =m                      2 ((2s/(2m + 2))(π/2))
+                                                                                 . (32)
+    s=1
+          c 3 + c 4 cos            s=1
+                                       m   c 3 + c 4 cos
+Observing that
+                                   s−1        2s       s
+                                         ≤           ≤                            (33)
+                                    m       2m + 2     m
+(the latter is always true, the former is true for s ≤ m + 1) we see
+                                                                  Z that the summation
+                                                                            1
+on the right-hand side of (32) is a Riemann sum estimate for                    f (t) dt where
+                                                                        0
+
+                                       c1 + c2 cos2 (tπ/2)
+                               f (t) =                     .
+                                       c3 + c4 cos2 (tπ/2)
+Since f 0 (t) is bounded above and below on the interval [0, 1] by a constant depending
+on c1 , c2 , c3 and c4 , using standard Riemann sum error estimates we get
+                m                                       Z 1
+                   1 c1 + c2 cos2 ((2s/(2m + 2))(π/2))
+                     
+              X                                                             c5
+                                  2
+                                                         =       f (t) dt ±
+               s=1
+                   m c3 + c4 cos ((2s/(2m + 2))(π/2))         0             m
+
+where c5 is a constant depending c1 , c2 , c3 and c4 . (Here we use the notation A = B±C
+as shorthand for |A − B| ≤ C.) Returning to (31) and using that m = n/2 + O(1)
+we conclude that (for even n) there is a constant K (depending only on a(x), b(x))
+such that
+                                E(Xn ) = Kn + O(1),
+where the implicit constant in the O(1) depends on a(x), b(x) and z1 (x). Specifically
+we have
+                              1 1 c1 + c2 cos2 (tπ/2)
+                                Z                    
+                         K=                              dt.
+                              2 0 c3 + c4 cos2 (tπ/2)
+   Next we estimate the variance of Xn . By independence of the Xni ’s we have
+                                                 (n−2)/2
+                                                   X
+                        Var(Xn ) = Var(Xn0 ) +             Var(Xns ).
+                                                   s=1
+
+We now use that if a distribution X has probability generating function PX (x) then
+                  Var(X) = PX00 (x)|x=1 + PX0 (x)|x=1 − (PX0 (x)|x=1 )2 .
+From this it is immediate that Var(Xn0 ) is a constant (depending on a(x), b(x) and
+z1 (x)), and that for s ≥ 1 Var(Xns ) can be bounded above and below by constants
+independent of s (depending only on a(x) and b(x)). It follows that σ(Xn ), the
+standard deviation of Xn , satisfies
+                                               √
+                                    σ(Xn ) ≤ O( n)
+                                       √
+where the implicit constant in the O( n) depends only on a(x) and b(x).
+   We now appeal to a result of Bottomley [7].
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121               118
+
+
+Theorem 2.2. Let X be a discrete probability distribution supported on the integers,
+that is unimodal in the sense that there is an integer m(X) (not necessarily unique)
+with P (X = i − 1) ≤ P (X = i) for all i ≤ m(X) and P (X = i) ≥ P (X = i + 1) for
+all i ≥ m(X). If X has finite expectation E(X) and finite standard deviation σ(X)
+then                                            √
+                            |E(X) − m(X)| ≤ 3σ(X).
+
+    This may be viewed as an extension to arbitrary polynomials of a weak form
+of Darroch’s theorem [12], which recall says that if X is finitely supported on the
+natural numbers and if furthermore the probability generating polynomial of X has
+all real roots (a stronger condition than unimodality) then |E(X) − m(X)| ≤ 1.
+    Applying Theorem 2.2 to Xn (when n is even) we conclude that
+                                                  √
+                                |mwn − Kn| ≤ O( n),                              (34)
+                                       √
+where the implicit constant in the O( n) depends only on a(x) and b(x).
+    We can do an almost identical analysis for Yn when n is even. In this case we still
+set m = (n − 2)/2 to get the analog of (32). To confirm that the summation Z on the    1
+right-hand side of the analog of (32) is still a Riemann sum estimate for                  f (t) dt,
+                                                                                   0
+we need to check an analog of (33), namely
+                                 s−1     2s    s
+                                     ≤        ≤ .
+                                  m    2m + 1  m
+We conclude (routine analysis, very similar to that used in the derivation of (34),
+omitted) that                                   √
+                              |myn − Kn| ≤ O( n)                              (35)
+for (crucially) the same constant K as in (34); and running through the analysis for
+n odd we find that (34) and (35) both hold for odd n, again with the same√ constant
+K. We conclude that the modes of Yn and Wn differ by at most O( √n), and so
+the coefficient sequence of zn (x) is unimodal except (possibly) for a O( n) portion
+around the [Kn]th term.
+   We summarize all of this in a theorem.
+Theorem 2.3. Let a(x) and b(x) be polynomials with non-negative coefficients, each
+with at least one positive coefficient. Let z0 (x) and z1 (x) be polynomials with non-
+negative coefficients. For n ≥ 2 let the polynomial zn (x) be defined by the recurrence
+
+                          zn (x) = a(x)zn−1 (x) + b(x)zn−2 (x).
+
+    Suppose that the coefficient sequences of each of a(x), b(x), z0 (x) and z1 (x) are
+log-concave, and also that the coefficient sequence of a2 (x) + 4b(x)y is log-concave for
+all choices of y ∈ [0, 1]. Then there are constants K > 0 and L > 0, both depending
+only the coefficients of a(x) and b(x), such that for all n the coefficient sequence of
+zn (x) is
+           D. GALVIN AND C. SHARPE / AUSTRALAS. J. COMBIN. 94 (1) (2026), 93–121    119
+
+                                                          √
+   • weakly increasing up to the coefficient of x[Kn−L√ n] and
+   • weakly decreasing from the coefficient of x[Kn+L n] on.
+
+Note 2.4. We can strengthen Theorem 2.3 very slightly by observing that we do not
+need Wn (x) and Yn (x) to be log-concave, just unimodal, and then using the fact that
+the product of a unimodal polynomial and a log-concave polynomial is unimodal. So
+we can allow up to one of the factors in each of the four factorizations in (29), (30)
+to be unimodal but not necessarily log-concave, without changing the conclusion of
+the theorem.
+
+   We now apply Theorem 2.3 to the independent set sequence of the family of linear
+hypercombs, in order to prove Corollary 1.8. In this case we have
+                         a(x) = (1 + (` − 1)x)(1 + (` − 2)x),
+                                 b(x) = x(1 + (` − 1)x)
+and
+                               z0 (x) = C0,` (x) = 1 + `x,
+all three of which are easily seen to have log-concave independent set sequences for all
+` (for a(x) and b(x) we can use that log-concavity is preserved under multiplication,
+and that linear polynomials are trivially log-concave; for z0 (x) we need only use this
+second fact). We have
+z1 (x) = C0,` (x) = 1+(3`−2)x+(2(`−1)(`−2)+(`−1)2 +2(`−1))x2 +(`−1)2 (`−2)x3 .
+The two log-concavity relations that need to be checked here reduce to
+                                    6`2 − 6` + 1 ≥ 0
+and
+                           6`4 − 22`3 + 31`2 − 20` + 5 ≥ 0,
+both of which are easily checked to hold for ` ≥ 3. Finally we have
+a2 (x)+4b(x)y = (1+(`−1)x)(1+(3`−5+4y)x+(3`2 −10`+8)x2 +(`3 −5`2 +8`−4)x3 ).
+The first factor trivially has log-concave coefficient sequence. There are two relations
+that need to be checked to verify that the second factor has log-concave coefficient
+sequence, and these simplify to
+                         6`2 − (20 − 24y)` + +(17 − 40y) ≥ 0
+and
+         6`4 − (40 + 4y)`3 + (99 + 20y)`2 − (108 + 32y)` + (44 + 16y) ≥ 0.
+We appeal to Mathematica to minimize the left-hand side of both inequalities over
+` ∈ [3, ∞] and y ∈ [0, 1] and see that the minima are both positive, but this could in
+principle also be done by hand.
+    The conditions of Theorem 2.3 having been verified, we conclude that for each
+` ≥ 3 there are constants K` , L` > 0 such that the independent set sequence of
+the `-uniform
+          √ linear hypercomb built on an n-edge√     spine is weakly increasing up to
+K` n − L` n and weakly decreasing from K` n + L` n, as asserted in Corollary 1.8.
+

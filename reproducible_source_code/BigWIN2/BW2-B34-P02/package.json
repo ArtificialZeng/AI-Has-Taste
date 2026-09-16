@@ -1,0 +1,349 @@
+{
+  "original_id": "Win34-p02",
+  "archive_id": "BW2-B34-P02",
+  "title": "Conjectural CDS-Colorability for Young Shapes with Two or Three Row Lengths (No Accepted Resolution Located)",
+  "batch_label": "34",
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "scope": "",
+  "gate_basis": "Current old-framework released gate, manuscript/PDF manifest hashes and citation/build/PDF audits agree.",
+  "provenance": {
+    "attribution_status": "legacy-bigWin-workflow",
+    "registry_batch_preserved": 34
+  },
+  "pdf": "pdfs/ai-conjecture/BW2-B34-P02_Conjectural_CDS_Colorability_for_Young_Shapes_with_Two_or_Three_Row_Lengths_No_Accepted_Resolution_Located.pdf",
+  "pdf_sha256": "b1af7205273ab31cb0d453dd575d69edaa830c37a0da9a4135606f1d4a6ae1c2",
+  "pages": 8,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B34-P02/source/conjecture-note/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B34-P02/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B34-P02/source/",
+  "main_tex": "conjecture-note/main.tex",
+  "dependencies": [
+    "networkx",
+    "ortools"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim."
+  ],
+  "entrypoints": [],
+  "source_files": 20,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P02/decision/release_gate.json",
+      "sha256": "848b67908a4ad719c10491c83d9a4acc0b4e29ca7ea287380091a9c4e14bd614",
+      "bytes": 471
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P02/audit/RELEASE_CITATION_AUDIT.json",
+      "sha256": "f6bb2787582e32e8b86bb30dd829a18f02d8c921dd4815baf0f7ce85b7f915ea",
+      "bytes": 705
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P02/audit/RELEASE_BUILD_AUDIT.json",
+      "sha256": "46c6c5744dd7e4ed8f1fa03b661caf184f7edf76e7bb58eb8039c45d114189a9",
+      "bytes": 905
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P02/audit/RELEASE_PDF_AUDIT.json",
+      "sha256": "d2a9578ee0f602adef4113ae3b854d1fa3c4b258029f3319f76981a86c3eb2e1",
+      "bytes": 1291
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B34-P02/decision/conjecture_note_gate.json",
+      "sha256": "19900e43983d080d36f4ec02b763a822db11cbad00190789c8acd2b0e3ae4d50",
+      "bytes": 3580
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/conjecture-note/main.tex",
+      "original_sha256": "e9811f44041384dc7a3f16ebfa7d3e91d626d65be956c17e54832bbdd95cb173",
+      "original_bytes": 19418,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/conjecture-note/main.tex",
+          "sha256": "e9811f44041384dc7a3f16ebfa7d3e91d626d65be956c17e54832bbdd95cb173",
+          "bytes": 19418
+        }
+      ]
+    },
+    {
+      "path": "source/conjecture-note/references.bib",
+      "original_sha256": "2563f64e0ac4adb1da4d2606b75fdab736e587bc6a458dd671b8ab8fc5ba1e27",
+      "original_bytes": 1586,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/conjecture-note/references.bib",
+          "sha256": "2563f64e0ac4adb1da4d2606b75fdab736e587bc6a458dd671b8ab8fc5ba1e27",
+          "bytes": 1586
+        }
+      ]
+    },
+    {
+      "path": "source/code/route_obstructions.py",
+      "original_sha256": "67fe3b8d89193f32efee8d2f08a188479ca4f3ab7e82be4406c694ebbe003ca9",
+      "original_bytes": 5745,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/route_obstructions.py",
+          "sha256": "67fe3b8d89193f32efee8d2f08a188479ca4f3ab7e82be4406c694ebbe003ca9",
+          "bytes": 5745
+        }
+      ]
+    },
+    {
+      "path": "source/code/cds_search.py",
+      "original_sha256": "c85c488af504a9855b0e6f62d32282ba6abb78b8fdb1a3239037a4173bf5a70e",
+      "original_bytes": 18291,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/cds_search.py",
+          "sha256": "c85c488af504a9855b0e6f62d32282ba6abb78b8fdb1a3239037a4173bf5a70e",
+          "bytes": 18291
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_two_level_candidate.py",
+      "original_sha256": "e9f3405185e4559f3580298bafc4b3c3e7c26942e220f8a6486b882885e082cb",
+      "original_bytes": 3991,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_two_level_candidate.py",
+          "sha256": "e9f3405185e4559f3580298bafc4b3c3e7c26942e220f8a6486b882885e082cb",
+          "bytes": 3991
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_evidence.py",
+      "original_sha256": "ad090a50e1e1dbd184ec7f4c1c988386c68485808633a10aac7e2ed285c57bc4",
+      "original_bytes": 1751,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_evidence.py",
+          "sha256": "ad090a50e1e1dbd184ec7f4c1c988386c68485808633a10aac7e2ed285c57bc4",
+          "bytes": 1751
+        }
+      ]
+    },
+    {
+      "path": "source/code/block_allocation.py",
+      "original_sha256": "657eeaa611dc17e21cf914ba87171c984d67068ab3725bcebf6edc337bbbfca9",
+      "original_bytes": 15935,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/block_allocation.py",
+          "sha256": "657eeaa611dc17e21cf914ba87171c984d67068ab3725bcebf6edc337bbbfca9",
+          "bytes": 15935
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_block_allocations.py",
+      "original_sha256": "66cda675d3670ad61b7604a09e757cc2f2b0d9cbab08b8e4e1e29486daa326fe",
+      "original_bytes": 1679,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_block_allocations.py",
+          "sha256": "66cda675d3670ad61b7604a09e757cc2f2b0d9cbab08b8e4e1e29486daa326fe",
+          "bytes": 1679
+        }
+      ]
+    },
+    {
+      "path": "source/data/exhaustive-width13-rows5.json",
+      "original_sha256": "4f7f2f4dac6904fde3a45d2a42e3c68f2030c0dfcc10766a7ad7922e7e661a4d",
+      "original_bytes": 2878005,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/exhaustive-width13-rows5.json",
+          "sha256": "4f7f2f4dac6904fde3a45d2a42e3c68f2030c0dfcc10766a7ad7922e7e661a4d",
+          "bytes": 2878005
+        }
+      ]
+    },
+    {
+      "path": "source/data/three-level-boundary-15x15.json",
+      "original_sha256": "a447b3629cc5aa8157739c21cf2ab8642e870fbb8f173da42b2c9bf2e17811ea",
+      "original_bytes": 18389414,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/three-level-boundary-15x15.json",
+          "sha256": "a447b3629cc5aa8157739c21cf2ab8642e870fbb8f173da42b2c9bf2e17811ea",
+          "bytes": 18389414
+        }
+      ]
+    },
+    {
+      "path": "source/data/two-level-width13-rows13.json",
+      "original_sha256": "d25a9ca1493287505413a3338ee5e5a162fafc233f7361e6e8b18d828b67c6e7",
+      "original_bytes": 1946283,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/two-level-width13-rows13.json",
+          "sha256": "d25a9ca1493287505413a3338ee5e5a162fafc233f7361e6e8b18d828b67c6e7",
+          "bytes": 1946283
+        }
+      ]
+    },
+    {
+      "path": "source/data/route-obstructions.json",
+      "original_sha256": "1119f07bf35d61dbf456d4573ef823e61d5b545efbaf3d056931aaee53703a0b",
+      "original_bytes": 2983,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/route-obstructions.json",
+          "sha256": "1119f07bf35d61dbf456d4573ef823e61d5b545efbaf3d056931aaee53703a0b",
+          "bytes": 2983
+        }
+      ]
+    },
+    {
+      "path": "source/data/computation_summary.json",
+      "original_sha256": "cbd8ec724c73c5f098b3ead8332526d278f1688d3617a8724650520767560c78",
+      "original_bytes": 3363,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/computation_summary.json",
+          "sha256": "cbd8ec724c73c5f098b3ead8332526d278f1688d3617a8724650520767560c78",
+          "bytes": 3363
+        }
+      ]
+    },
+    {
+      "path": "source/data/exhaustive-box-6x6-rerun.json",
+      "original_sha256": "cf50a15e4c392ca6400c3d997482444fbbb0bf08c50d0f3aa2ed800e4c53bc93",
+      "original_bytes": 715981,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/exhaustive-box-6x6-rerun.json",
+          "sha256": "cf50a15e4c392ca6400c3d997482444fbbb0bf08c50d0f3aa2ed800e4c53bc93",
+          "bytes": 715981
+        }
+      ]
+    },
+    {
+      "path": "source/data/random-13x13-1000.json",
+      "original_sha256": "161871fa391aefe54cef11740a95e5369378c14447ac277347ae29074e21a714",
+      "original_bytes": 1811093,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/random-13x13-1000.json",
+          "sha256": "161871fa391aefe54cef11740a95e5369378c14447ac277347ae29074e21a714",
+          "bytes": 1811093
+        }
+      ]
+    },
+    {
+      "path": "source/data/exhaustive-box-6x6.json",
+      "original_sha256": "b55b6d65a90929167eafa46241c7212d0eb1f6b57c99508741d5a77217dda1ba",
+      "original_bytes": 715176,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/exhaustive-box-6x6.json",
+          "sha256": "b55b6d65a90929167eafa46241c7212d0eb1f6b57c99508741d5a77217dda1ba",
+          "bytes": 715176
+        }
+      ]
+    },
+    {
+      "path": "source/proof/partial_results.md",
+      "original_sha256": "57704969848ae5dc53e72ce9c187e5b81f5c616f190ca7f8c28fb38b99b59823",
+      "original_bytes": 5488,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/partial_results.md",
+          "sha256": "57704969848ae5dc53e72ce9c187e5b81f5c616f190ca7f8c28fb38b99b59823",
+          "bytes": 5488
+        }
+      ]
+    },
+    {
+      "path": "source/proof/two_level_candidate.md",
+      "original_sha256": "ba70bf3638a8fab2648e41a409d8835c44bd5a34b257540cfaed7660b944069f",
+      "original_bytes": 7468,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/two_level_candidate.md",
+          "sha256": "ba70bf3638a8fab2648e41a409d8835c44bd5a34b257540cfaed7660b944069f",
+          "bytes": 7468
+        }
+      ]
+    },
+    {
+      "path": "source/proof/gap_ledger.md",
+      "original_sha256": "3d08926b0371aebad7266e2fcb21a10a3806b328ff7658aa9c3f62cb5dd95ff8",
+      "original_bytes": 2448,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/gap_ledger.md",
+          "sha256": "3d08926b0371aebad7266e2fcb21a10a3806b328ff7658aa9c3f62cb5dd95ff8",
+          "bytes": 2448
+        }
+      ]
+    },
+    {
+      "path": "source/proof/proof_dag.md",
+      "original_sha256": "04088cbf533ed58a9175f2c5605f2c55ed9588b9d5e576d42a4d17a373274c5f",
+      "original_bytes": 2229,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/proof/proof_dag.md",
+          "sha256": "04088cbf533ed58a9175f2c5605f2c55ed9588b9d5e576d42a4d17a373274c5f",
+          "bytes": 2229
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B34-P02",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

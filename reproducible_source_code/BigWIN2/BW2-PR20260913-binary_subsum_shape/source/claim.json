@@ -1,0 +1,30 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Let N_n be exactly the binary reciprocal-subsum numerator in source.md and problem.md, d(n)=deg N_n, c_(n,j)=[x^j]N_n, and T_j(P)=p_j^2-p_(j-1)p_(j+1). (1) For every real epsilon with 0<epsilon<1 there exists an integer n_epsilon such that for every integer n>=n_epsilon, T_j(N_n)>0 at every integer 1<=j<=floor((1-epsilon)*sqrt(log_2(n)/2)) and at each reflected index d(n)-j. (2) For every integer n>=6, T_j(N_n)>0 for j=1,2,3,d(n)-1,d(n)-2,d(n)-3; for even n>=6 the stronger inequalities T_j(N_n)>T_j(A_n)>0 hold at these positions, where A_n=(1+x)^n N_(n/2)(x^2). (3) Set M_n=min over integers 0<=K<=floor(log_2 n) of (n+2^(K+1)-K-2)/(K+1). For n>=2 and an internal integer 1<=j<=n, the conditions j*M_n<n and binom(n,j)^2*(1-j*M_n/n)^2>binom(n+j-2,j-1)*binom(n+j,j+1) imply T_j(N_n)>0. The supporting kernel lemma is K3_m(l,t)>=0 for all integers m>=5 and 0<=l<=t<=m, with exactly the formal-weight definition in equation (10) of evidence/research-boundary-proof.md. None of these statements settles all internal indices of the original conjecture.",
+  "contribution": "A proposed partial result giving an unbounded uniform range of strict boundary log-concavity, an explicit rational sufficient criterion that requires no binary partition counts, and a uniform first-three-position theorem. The main method combines an elementary mean-multiplicity bound with coefficient envelopes; the third-position extension uses exact polynomial certificates. No equivalent was found in the bounded accessed primary sources, but novelty, significance, and correctness require fresh review. The original all-coefficient conjecture remains unresolved.",
+  "proposer_job_id": "primary-20260913-binary-subsum-shape-research-9e631dc6dcdd",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research-growing-boundary-proof.md",
+    "evidence/research_growing_boundary.py",
+    "evidence/research_growing_boundary.json",
+    "evidence/research-kernel3-proof.md",
+    "evidence/research_kernel3.py",
+    "evidence/research_kernel3.json",
+    "evidence/research_kernel3_verify.py",
+    "evidence/research_kernel3_verify.json",
+    "evidence/research-boundary-proof.md",
+    "evidence/research_boundary.py",
+    "evidence/research_boundary.json",
+    "evidence/research_recurrence.py",
+    "evidence/research_recurrence.json",
+    "evidence/triage_recurrence.py",
+    "literature/research-pass2-source-check.md",
+    "evidence/external/bbfm-subsum-journal.pdf",
+    "evidence/external/bbfm-subsum-journal.txt",
+    "evidence/external/chen-ono-zhang-2605.21718v2.pdf",
+    "evidence/external/chen-ono-zhang-2605.21718v2.txt"
+  ]
+}

@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\title{An Improved Lower Bound for the Finite Zarankiewicz Number $z(13,23;3,3)$}
+\author{Zijian Zeng\\
+\small Institute of Computer Science and Digital Innovation, UCSI University\\
+\small Kuala Lumpur, 56000, MALAYSIA\\
+\small \texttt{zijianzeng@foxmail.com}; \texttt{1002266693@ucsiuniversity.edu.my}}
+\date{}
+\hypersetup{pdftitle={An Improved Lower Bound for the Finite Zarankiewicz Number z(13,23;3,3)},pdfauthor={Zijian Zeng}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give an explicit $13\times23$ binary matrix with 140 ones and no all-one
+$3\times3$ submatrix. This improves the previously located lower bound 139.
+For completeness, we also give a short independent proof of the known upper
+bound 144. Consequently,
+\[
+140\le z(13,23;3,3)\le144.
+\]
+The exact value remains open.
+\end{abstract}
+
+\section{Introduction}
+For positive integers $m,n,s,t$, let $z(m,n;s,t)$ be the maximum number of
+ones in an $m\times n$ binary matrix containing no all-one $s\times t$
+submatrix. Equivalently, it is the maximum number of edges in a bipartite
+graph with parts of orders $m,n$ and no copy of $K_{s,t}$.
+
+An exact result $z(13,22;3,3)=137$ was recently reported
+\cite{afrasyab2026}; adding a column of weight two gives
+$z(13,23;3,3)\ge139$. A public verification artifact gives the upper bound
+$z(13,23;3,3)\le144$ and explicitly records the interval $139$--$144$
+\cite{FiniteZarankiewiczClosures2026}. The general finite upper-bound context is developed by
+Davies, Gill, and Horsley \cite{davies2026}.
+
+The contribution here is the following one-edge improvement.
+
+\begin{theorem}\label{thm:interval}
+The finite Zarankiewicz number satisfies
+\[
+140\le z(13,23;3,3)\le144.
+\]
+\end{theorem}
+
+The literature and exact-string searches used for the novelty check were
+completed on 31 August 2026. Thus the priority statement is limited to the
+sources indexed and cited here; the mathematical lower bound itself is
+independently checkable from the displayed matrix.
+
+\section{The 140-edge construction}
+Read each of the following strings as one row of a binary matrix, from left to
+right. The row weights are
+$(11,11,11,11,11,11,12,11,11,11,11,12,6)$.
+\begin{center}
+\begin{verbatim}
+11111111111000000000000
+11111000000111110000100
+11000111000111001110000
+10100100110100101101100
+10010010101010111011000
+10001001011001010111100
+01100001101010011100111
+01010100011001101010011
+01001010110100110110010
+00110011010101011001001
+00101110001011100101010
+00011101100110000011111
+01001100000000000100101
+\end{verbatim}
+\end{center}
+
+\begin{proposition}\label{prop:witness}
+The displayed matrix has 140 ones and contains no all-one $3\times3$
+submatrix.
+\end{proposition}
+
+\begin{proof}
+Summing the displayed row weights gives 140. For any three rows, direct
+intersection of their supports has cardinality at most two. Indeed, exhaustive
+inspection of all $\binom{13}{3}=286$ row triples gives maximum common support
+two. This condition is equivalent to the absence of three columns on which
+the same three rows are all one, and hence to the absence of an all-one
+$3\times3$ submatrix.
+\end{proof}
+
+The first twelve rows are a relabeling-free copy of a 134-edge construction
+distributed with \cite{FiniteZarankiewiczClosures2026}. The final row has support
+$\{2,5,6,18,21,23\}$ in one-based indexing. Exhausting all $2^{23}$ possible
+added-row supports over this fixed core shows that weight six is maximal for
+this particular extension scheme. This fixed-core optimality is not a global
+upper bound and is not needed for Proposition~\ref{prop:witness}.
+
+\section{The upper bound}
+We include the short argument underlying the upper endpoint in
+Theorem~\ref{thm:interval}, independently of the software artifact
+\cite{FiniteZarankiewiczClosures2026}.
+
+Suppose that a feasible matrix has 145 ones. For column $j$, let $E_j$ be its
+row support and $d_j=|E_j|$. Every row triple occurs in at most two columns, so
+\begin{equation}\label{eq:capacity}
+\sum_{j=1}^{23}\binom{d_j}{3}\le2\binom{13}{3}=572.
+\end{equation}
+For $0\le d\le13$,
+\[
+\binom d3\ge15d-70,
+\]
+with equality only for $d=6,7$. The total nonnegative penalty
+$p(d)=\binom d3-15d+70$ is at most seven. The column count, degree sum 145,
+and this penalty budget leave exactly the profiles
+\[
+6^{16}7^7,\qquad 5^1 6^{14}7^8,\qquad 6^{17}7^5 8^1.
+\]
+Their unused triple capacities
+$s=572-\sum_j\binom{d_j}{3}$ are respectively $7,2,1$.
+
+For a row $r$, put
+\[
+D_r=132-\sum_{j:r\in E_j}\binom{d_j-1}{2}\ge0.
+\]
+Double counting gives $\sum_rD_r=3s$. A row outside every exceptional
+degree-five or degree-eight column receives only contributions 10 and 15, so
+$D_r\equiv132\equiv2\pmod5$ and therefore $D_r\ge2$. In the three profiles,
+at least $13,8,5$ rows are respectively clean. They force total deficits at
+least $26,16,10$, whereas $3s$ equals $21,6,3$. Each case is impossible.
+Thus 145 edges are impossible; deleting edges handles every larger weight and
+proves the upper bound 144. Together with Proposition~\ref{prop:witness}, this
+proves Theorem~\ref{thm:interval}.
+
+\section{Verification and limitations}
+The construction was checked in two independent exact ways: by all 286 row
+triples and directly by all
+$\binom{13}{3}\binom{23}{3}=506{,}506$ candidate submatrices. The degree-profile
+classification in the upper-bound proof was also regenerated by an exact
+integer enumerator. No floating-point computation or solver infeasibility
+claim enters either endpoint.
+
+Computational search was used to locate the final row and to implement
+redundant checks. All theorem-bearing data and arguments are printed here or
+use finite integer enumeration; responsibility for the claims and
+presentation rests with the author.
+
+The remaining gap is genuine: this work neither constructs 141--144 edges nor
+certifies their impossibility. In particular, fixed-core extension optimality
+must not be confused with the exact Zarankiewicz number.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

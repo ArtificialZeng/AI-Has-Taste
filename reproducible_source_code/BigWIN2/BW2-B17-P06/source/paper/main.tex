@@ -1,0 +1,161 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\raggedbottom
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\title[The finite covering invariant at 41]{The Exact Value of the Finite Erd\H{o}s--Ruzsa Covering Invariant at 41}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{September 1, 2026}
+\hypersetup{pdftitle={The Exact Value of the Finite Erdos--Ruzsa Covering Invariant at 41},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+For a positive integer $N$, let $\mu(N)$ be the minimum of
+$\sum_{p\in P}1/p$ over subsets $P$ of the primes at most $N$ for which one
+residue class modulo each $p\in P$ covers $[1,N]$.  We prove the certified
+finite result
+\[
+ \mu(41)=\frac{4369938619315}{3202634352918}.
+\]
+An explicit cover proves the upper bound.  The lower bound is a complete exact
+enumeration using forced branching through an uncovered integer and an exact
+fractional-capacity relaxation.  No floating-point calculation or optimizer
+status enters the proof.  This finite result does not resolve the asymptotic
+Erd\H{o}s--Ruzsa covering problem.
+\end{abstract}
+\maketitle
+\section{Introduction}
+Erd\H{o}s and Ruzsa conjectured that, for all sufficiently large $x$, the positive integers
+below $x$ can be covered by one residue class for each prime in a selected
+finite set, while the sum of the reciprocal moduli remains bounded by an
+absolute constant~\cite[p.~106]{Erdos1980}.  Erd\H{o}s and Ruzsa also posed the
+complementary arbitrary-residue small-sieve question~\cite[p.~386, Problem~2]{ErdosRuzsa1980}.
+The asymptotic problem is currently recorded as open~\cite{Bloom1200}.
+
+The direct finite invariant below converts the question into exact weighted
+set cover.  A public computational working report dated July 27, 2026,
+reported a complete table through $N=40$, ending with~\cite{WorkingReport1200}
+\[
+\mu(40)=\frac{2067007816901}{1484147626962}.
+\]
+We determine the next cell.  Our novelty search covered the cited primary
+sources, the live problem record, exact-value web searches, and OEIS through
+September 1, 2026; no earlier value for $\mu(41)$ was located.  This is a
+date-bounded search report, not a claim that an unindexed computation cannot
+exist.
+
+\section{Definition and exact normalization}
+For $N\ge1$, write $\mathcal P_N=\{p\le N:p\text{ is prime}\}$ and define
+\[
+\mu(N)=\min\left\{\sum_{p\in P}\frac1p:P\subseteq\mathcal P_N
+\text{ admits a covering residue assignment}\right\}.
+\]
+Here a covering residue assignment means integers $0\le a_p<p$, one for each
+$p\in P$, such that for every $n\in[1,N]$ there is a $p\in P$ with
+$n\equiv a_p\pmod p$.
+The value is $+\infty$ if no such cover exists.  Thus primes may be omitted,
+but at most one class is used for each selected prime.  For $N=41$, every
+objective comparison may be multiplied by
+\[
+ L=\prod_{p\le41}p=304250263527210,
+\]
+turning it into an integer comparison.
+
+\section{The exact value}
+\begin{theorem}\label{thm:main}
+One has
+\[
+\boxed{\displaystyle \mu(41)=\frac{4369938619315}{3202634352918}}.
+\]
+\end{theorem}
+\begin{proof}
+For the upper bound, use the following classes.
+\[
+\begin{array}{c|rrrrrrrrrrr}
+p&2&3&7&11&13&17&23&29&31&37&41\\ \midrule
+a_p&1&1&3&8&6&2&18&14&20&12&26
+\end{array}
+\]
+Direct reduction modulo the displayed primes shows that every integer from 1
+through 41 belongs to at least one class.  Summing the reciprocals and reducing
+gives
+\[
+ \frac12+\frac13+\frac17+\frac1{11}+\frac1{13}+\frac1{17}
+ +\frac1{23}+\frac1{29}+\frac1{31}+\frac1{37}+\frac1{41}
+ =\frac{4369938619315}{3202634352918}.
+\]
+Proposition~\ref{prop:enumeration} proves that no cheaper cover exists.
+\end{proof}
+
+\section{Complete lower-bound certificate}
+Represent a subset of $[1,41]$ by a 41-bit integer.  For each prime $p\le41$
+and $0\le a<p$, precompute the mask
+$M_{p,a}=\{n\in[1,41]:n\equiv a\pmod p\}$.  A state consists of a covered mask
+$C$ and the set $R$ of unused primes.
+\begin{lemma}[Complete forced branching]\label{lem:branch}
+If $n\notin C$, every completion of the state uses, for some $p\in R$, the
+unique class $M_{p,n\bmod p}$.
+\end{lemma}
+\begin{proof}
+Any completion covers $n$ with a class modulo an unused prime $p$.  Exactly one
+residue modulo $p$ contains $n$, namely $n\bmod p$.
+\end{proof}
+
+For pruning, let $U=[1,41]\setminus C$ and
+\[
+ g_p=\max_{0\le a<p}|U\cap M_{p,a}|.
+\]
+Relax every remaining prime to a divisible item of capacity $g_p$ and cost
+$1/p$, allow fractional items, and ignore overlaps.  Filling $|U|$ units in
+nondecreasing order of $(1/p)/g_p$ gives a lower bound on every completion:
+the relaxation has weakly more freedom than the residue-class problem.  The
+implementation evaluates this bound after multiplication by $L$, using integer
+cross multiplication even for the final fractional item.
+\begin{proposition}\label{prop:enumeration}
+There is no cover of $[1,41]$ having cost strictly less than
+$4369938619315/3202634352918$.
+\end{proposition}
+\begin{proof}
+Starting from $C=\varnothing$ and all 13 primes unused, choose an uncovered
+$n$ and branch over every possibility in Lemma~\ref{lem:branch}.  Discard a
+state only if its accumulated exact integer cost already reaches the strict
+budget, or if the fractional-capacity lower bound reaches it.  Cache only
+states whose entire descendant tree has failed.  The pair $(C,R)$ determines
+the selected prime set and hence its accumulated cost, so this caching loses no
+budget information.
+
+The completed run entered 28,998,666 states, cached 5,536,355 failed states,
+and applied 22,110,683 capacity prunes.  It returned no cheaper cover.  The
+source recomputes the primes, masks, exact objective, and incumbent coverage;
+the serialized run record includes the interpreter and platform versions.
+By Lemma~\ref{lem:branch}, every possible completion occurs on a branch, and
+the only nontrivial prune is a lower bound from a relaxation.  The enumeration
+is therefore exhaustive.
+\end{proof}
+
+As a structurally independent small-instance check, a Cartesian program
+enumerated, for every prime, the choice ``unused'' or every residue.  For all
+$1\le N\le10$, its finite optima and infeasible cells agree with the main
+enumerator; in particular the finite values are $5/6$ at $N=3$, $31/30$ at
+$N=5$, and $247/210$ at $N=7,8,9$.
+
+\section{Scope and reproducibility}
+The theorem is a certified finite result only.  In particular, it neither
+proves nor disproves boundedness of $\mu(N)$ as $N\to\infty$.  The exact
+witness, exhaustive enumerator, independent witness checker, small-instance
+Cartesian checker, logs, and commands accompany the source archive.  The fast
+checker recomputes primality, residue validity, coverage, and the reduced
+rational cost from the serialized witness.  The full certificate uses Python
+3.10.12 and only its standard library; it is deterministic and uses no random
+seed.  Optimization software was used to locate a candidate, but its status
+and floating-point objective are not used in the proof.
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

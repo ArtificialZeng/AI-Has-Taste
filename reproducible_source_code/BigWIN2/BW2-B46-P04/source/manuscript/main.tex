@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={The Zero-Free Columns of the Character Table of S44},pdfauthor={Xiaojian Zeng},pdfsubject={Symmetric-group character tables}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\ZF}{\operatorname{ZF}}
+
+\title{The Zero-Free Columns of the Character Table of $S_{44}$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a partition $\mu$ of $44$, let the column indexed by $\mu$ in the
+ordinary irreducible character table of $S_{44}$ be called zero-free when
+$\chi^\lambda(\mu)\ne0$ for every $\lambda\vdash44$.  We determine this
+finite layer exactly: the identity column is the only zero-free column, so
+$\ZF(44)=\{(1^{44})\}$ and $D(44)=1$.  The proof combines the published
+core-distance reduction with two explicit, exactly verified zero witnesses.
+The result concerns only $n=44$ and makes no assertion about the asymptotic
+zero-free-column conjecture or about priority.
+\end{abstract}
+
+\section{Context and statement}
+
+The rows and columns of the ordinary irreducible character table of the
+symmetric group $S_n$ are indexed by partitions $\lambda,\mu\vdash n$; the
+entry $\chi^\lambda(\mu)$ is the value of the irreducible character afforded
+by the Specht module $S^\lambda$ on the class of cycle type $\mu$.  Following
+Defant, Hariharan, Lau, and Ono~\cite{DefantEtAl2026}, write
+\[
+ \ZF(n)=\{\mu\vdash n: \chi^\lambda(\mu)\ne0
+          \text{ for every }\lambda\vdash n\},
+ \qquad D(n)=|\ZF(n)|.
+\]
+Mart\'in Duro's question about the integers for which every nonidentity
+column contains a zero is the origin of this finite problem
+\cite[Question~4.17]{MartinDuro2026}.  Defant et al. give a complete table
+only through $n=43$, where $D(43)=7$~\cite[Section~8.2]{DefantEtAl2026}.
+The present note supplies the adjacent value $n=44$.
+
+\begin{theorem}\label{thm:main}
+For the ordinary irreducible complex character table of $S_{44}$,
+\[
+             \ZF(44)=\{(1^{44})\},\qquad D(44)=1.
+\]
+\end{theorem}
+
+The bounded literature comparison above identifies the closest inspected
+results; it is not a claim of priority.  In particular, Theorem~\ref{thm:main}
+does not address the conjectural asymptotic size of $D(n)$.
+
+\section{Exhaustive reduction}
+
+The reduction of Defant et al.~\cite[Proposition~3.1 and
+Corollaries~4.1--4.2]{DefantEtAl2026}, based on the
+Murnaghan--Nakayama rule~\cite{Murnaghan1937,Nakayama1940}, says that a
+zero-free type for $n\ge3$ must have the form
+\[
+                    (3^a,2^b,1^c),
+\]
+where $b$ is even, $b\le s_2(n)$, and $a\le s_3(n)$.  Here $s_2(n)$ is the
+least $s\ge0$ for which $n-2s$ is triangular, and $s_3(n)$ is the least
+$s\ge0$ for which there is a $3$-core partition of $n-3s$.
+
+For $n=44$, the integers $44,42,40,38$ lie strictly between the consecutive
+triangular numbers $36$ and $45$, while
+\[
+                    44-2\cdot4=36=\frac{8\cdot9}{2}.
+\]
+Thus $s_2(44)=4$.  The existence criterion for $3$-cores used in the same
+paper gives $s_3(44)=0$, since
+\[
+                3\cdot44+1=133=9^2+9\cdot4+4^2.
+\]
+It follows that every zero-free column is one of the three types
+\begin{equation}\label{eq:candidates}
+       (1^{44}),\qquad (2^2,1^{40}),\qquad (2^4,1^{36}).
+\end{equation}
+This is an exhaustive reduction, not a computationally sampled list.
+
+\section{Exact zero witnesses}
+
+The two nonidentity types in~\eqref{eq:candidates} have the following zero
+witnesses:
+\begin{center}
+\begin{tabular}{c|c|c}
+cycle type $\mu$ & row label $\lambda$ & $\chi^\lambda(\mu)$\\ \hline
+$(2^2,1^{40})$ & $(14,7,6,5,3,3,2,2,2)$ & $0$\\
+$(2^4,1^{36})$ & $(14,11,4,3,3,1,1,1,1,1,1,1,1,1)$ & $0$
+\end{tabular}
+\end{center}
+Both displayed row labels are partitions of $44$.  For completeness, we
+describe an exact certificate for the two values.
+
+Under the Frobenius characteristic map, one has
+\[
+ s_\lambda=\sum_{\nu\vdash44}\frac{\chi^\lambda(\nu)}{z_\nu}p_\nu,
+\]
+and the Jacobi--Trudi identity gives
+$s_\lambda=\det(h_{\lambda_i-i+j})$; see
+Macdonald~\cite[Chapter~I]{Macdonald1995}.  Specialize $p_1=1$, $p_2=y$,
+and $p_k=0$ for $k>2$.  Then
+\[
+ \sum_{m\ge0}h_m t^m=\exp(t+yt^2/2),\qquad
+ h_m=\sum_{r=0}^{\lfloor m/2\rfloor}
+       \frac{y^r}{(m-2r)!2^r r!}.
+\]
+Consequently, if $\mu_b=(2^b,1^{44-2b})$, then
+\begin{equation}\label{eq:coefficient}
+ \chi^\lambda(\mu_b)
+ =(44-2b)!2^b b!\,[y^b]\det(h_{\lambda_i-i+j}).
+\end{equation}
+
+The determinant in~\eqref{eq:coefficient} was evaluated in the truncated
+ring $\mathbb Q[y]/(y^{b+1})$.  A directly reproducible row-subset recurrence
+starts with $F_0(\varnothing)=1$ and, when column $j$ is appended after the
+set $S$ of previously used columns, adds
+\[
+ (-1)^{|\{s\in S:s>j\}|}F_i(S)h_{\lambda_{i+1}-(i+1)+(j+1)}
+ \quad\text{to}\quad F_{i+1}(S\cup\{j\}).
+\]
+All polynomial coefficients are rational numbers.  For the first displayed
+partition with $b=2$, and for the second with $b=4$, the coefficient
+$[y^b]F_\ell(\{0,\ldots,\ell-1\})$ is exactly $0$.  Equation
+\eqref{eq:coefficient} therefore proves both character values in the table,
+without floating-point evaluation.
+
+Finally, the identity type survives universally:
+\[
+              \chi^\lambda(1^{44})=\dim S^\lambda>0
+              \qquad(\lambda\vdash44).
+\]
+Thus the only surviving candidate in~\eqref{eq:candidates} is $(1^{44})$,
+which proves Theorem~\ref{thm:main}.
+
+\section{Computational verification and reproducibility}
+
+The witnesses were discovered by a second exact implementation of the
+Murnaghan--Nakayama recurrence.  It generated all $75{,}175$ partitions of
+$44$ and evaluated both reduced nonidentity columns using beta-number rim-hook
+moves and the integral hook-length formula at the remaining fixed points.  It
+found $18$ zero rows for $(2^2,1^{40})$ and $2$ for $(2^4,1^{36})$.  The
+Jacobi--Trudi computation above uses neither beta numbers nor rim-hook
+enumeration and independently verifies the only two values needed in the
+proof.  A third regression recomputed every published value $D(n)$ for
+$1\le n\le43$ and the seven published survivors at $n=43$.
+
+This separation between theorem-bearing exact identities and diagnostic
+finite checks is useful in other partition-based computations as well.  For
+example, Zeng~\cite[Section~4]{Zeng2026MultiplicityArxiv} describes an exact
+integer cut-partition dynamic program checked by direct small-order
+enumeration, while explicitly keeping those computations outside the premise
+of the theorem.  Here likewise, the historical regression supports the
+implementation but is not needed once the two exact coefficients in
+\eqref{eq:coefficient} have been verified.
+
+The accompanying files \texttt{mn\_scan.py},
+\texttt{independent\_verify.py}, and \texttt{reproduce\_table.py}, together
+with their plain-text transcripts, contain the exact computations described
+above.  They require only Python's standard library.
+
+\section*{Computational and AI assistance disclosure}
+
+The author used OpenAI Codex to assist with the finite search, exact-checking
+workflow, literature screening, and manuscript preparation.  The decisive
+character values were computed with exact integer or rational arithmetic and
+were checked by structurally different Murnaghan--Nakayama and
+Jacobi--Trudi implementations.  No floating-point calculation or AI output is
+used as a mathematical premise.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

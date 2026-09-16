@@ -1,0 +1,314 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Quartic convergence in a diagonal counterexample to a claimed sixth-order inverse-matrix iteration},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact convergence-order counterexample for a norm-accelerated inverse-matrix iteration},
+  pdfkeywords={matrix inversion, hyperpower iteration, Q-order, counterexample, exact verification}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\C}{\mathbb C}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\DeclareMathOperator{\diag}{diag}
+
+\title{Quartic convergence in a diagonal counterexample to a claimed\\
+sixth-order inverse-matrix iteration}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cordero and Torregrosa recently proposed a norm-accelerated inverse-matrix
+iteration and asserted order six for general nonsingular complex matrices.  We
+give an exact counterexample under the update and residual convention of that
+assertion.  For $A=I_3$, the Frobenius norm, and
+$X_0=I_3-t\diag(1,2,3)$, $0<t\leq 10^{-2}$, the first residual contains a
+nonzero quartic term.  A rational invariant-region argument then shows that
+every fixed orbit in this interval has Q-order exactly four, with explicit
+two-sided quartic bounds and a positive asymptotic error constant.  Thus the
+quartic term is persistent rather than a one-step artifact.  We also identify
+two invalid implications in the published order argument.  This note refutes
+the stated general order-six conclusion; it neither asserts failure of
+convergence nor classifies all orbits of the iteration.
+\end{abstract}
+
+\section{Context and residual map}
+
+The Newton--Schulz iteration is a classical multiplication-based method for
+matrix inversion \cite{Schulz1933}.  Its higher-order hyperpower relatives use
+polynomials in the residual, and factorizations of those polynomials are used
+to reduce the number of matrix products \cite{PetkovicPetkovic2015}.  Cordero
+and Torregrosa \cite{CorderoTorregrosa2026} proposed a different scalar
+norm-type acceleration, denoted CTM in their paper, and claimed order six for
+every nonsingular complex matrix under a small-residual hypothesis.  The
+purpose of this note is to audit that order assertion exactly.
+
+Let $A\in\C^{n\times n}$ be nonsingular and let
+\[
+ R=I-AX,\qquad Y=X(2I-AX),\qquad
+ \nu=\frac{\norm{I-AY}^{2}}{\norm{I-AX}^{2}},
+\]
+where $R\ne0$.  The CTM update is
+\[
+ X^+=Y\bigl((2+\nu)I-(1+\nu)AY\bigr).
+\]
+Since $I-AY=R^2$, direct expansion, without changing the residual convention,
+gives
+\begin{equation}
+ \nu=\frac{\norm{R^2}^{2}}{\norm R^{2}},\qquad
+ R^+=I-AX^+=-\nu R^2+(1+\nu)R^4.
+\end{equation}
+At $R=0$ the inverse has already been reached and the iteration terminates.
+For comparison, the ordinary order-four hyperpower step has residual map
+$R^+=R^4$.
+
+We use the following quotient criterion for exact order, a standard sufficient
+case within the Q-order framework \cite{Jay2001}: a nonterminating orbit is
+said here to have Q-order exactly $p$ when
+\[
+ 0<\lim_{k\to\infty}
+ \frac{\norm{R_{k+1}}}{\norm{R_k}^{p}}<\infty.
+\]
+The norm below is always the Frobenius norm.
+
+\section{The counterexample and its exact order}
+
+\begin{theorem}\label{thm:main}
+Apply \emph{(1)} with $A=I_3$ and
+\[
+ X_0=I_3-t\diag(1,2,3),\qquad 0<t\leq10^{-2}.
+\]
+Then
+\begin{equation}
+ R_1=t^4\diag(-6,-12,18)+7t^6\diag(1,16,81).
+\end{equation}
+The orbit is nonterminating and, for every $k\geq1$,
+\begin{equation}
+ \frac{27}{512}\norm{R_k}^{4}
+ <\norm{R_{k+1}}<\frac43\norm{R_k}^{4}.
+\end{equation}
+Moreover, there are numbers
+$a_\infty\in[3/10,2/5]$ and
+$b_\infty\in[3/5,3/4]$ with
+$a_\infty+b_\infty=1$ such that, on writing
+\[
+ m_\infty=\frac{a_\infty^4+b_\infty^4+1}
+                  {a_\infty^2+b_\infty^2+1},\qquad
+ S_\infty=(1+a_\infty^2+b_\infty^2)^{1/2},
+\]
+one has
+\begin{equation}
+ \lim_{k\to\infty}\frac{\norm{R_{k+1}}}{\norm{R_k}^{4}}
+ =\frac{1-m_\infty}{S_\infty^3}\in(0,\infty).
+\end{equation}
+Consequently every fixed orbit in the displayed initial interval has Q-order
+exactly four.
+\end{theorem}
+
+\begin{proof}
+Put $D=\diag(1,2,3)$.  For $R_0=tD$,
+\[
+ \nu_0=\frac{t^4(1+16+81)}{t^2(1+4+9)}=7t^2.
+\]
+Coordinatewise substitution in (1) gives (2).  In particular,
+\begin{equation}
+ \frac{\norm{R_1}}{\norm{R_0}^{6}}
+ =\frac{\norm{(-6+7t^2,-12+112t^2,18+567t^2)}}
+        {14^3t^2}\longrightarrow\infty
+\end{equation}
+as $t\downarrow0$.  This already precludes a uniform local sixth-order
+estimate.  We next prove that the quartic term persists on each fixed orbit.
+
+After the first step write
+\begin{equation}
+ R_k=c_k\diag(-a_k,-b_k,1),\qquad q_k=c_k^2.
+\end{equation}
+The positivity and validity of this representation for all $k\geq1$ will
+follow from the enclosure below.  For variables $(a,b,q)$ set
+\[
+ m=\frac{a^4+b^4+1}{a^2+b^2+1},\qquad d=1-m+qm.
+\]
+Equation (1), applied coordinatewise, induces the exact projective recurrence
+\begin{equation}
+ \begin{split}
+ a^+&=\frac{a^2(m-a^2-qma^2)}d,\\
+ b^+&=\frac{b^2(m-b^2-qmb^2)}d,\\
+ q^+&=q^4d^2.
+ \end{split}
+\end{equation}
+At $q=0$, call the first two components $P_1,P_2$.  Expansion gives
+\begin{equation}
+ P_1(a,b)+P_2(a,b)=1,\qquad
+ P(a,b)=(a,b)\quad\hbox{if }a+b=1.
+\end{equation}
+Thus the leading homogeneous quartic map retracts the sign chart onto a line
+of fixed projective directions.
+
+We use the rational region
+\begin{equation}
+ \mathcal B=\left\{(a,b,q):
+ \frac3{10}\leq a\leq\frac25,\quad
+ \frac35\leq b\leq\frac34,\quad
+ 0\leq e:=1-a-b\leq\frac1{100},\quad
+ 0<q\leq10^{-12}\right\}.
+\end{equation}
+We record the estimates needed for a no-exit proof.  If $(a,b,q)\in\mathcal
+B$ and $L=a^2-a^4+b^2-b^4$, rational endpoint bounds give
+\begin{equation}
+ L\geq\frac{153}{500},\qquad
+ 1+a^2+b^2\leq\frac{689}{400},\qquad
+ d\geq\frac{L}{1+a^2+b^2}>\frac16.
+\end{equation}
+Both sign-preserving numerators in (7) are positive.  Indeed, $b^2>a^2$
+implies $m-a^2>0$, while
+\[
+ m-b^2=\frac{1-b^2+a^2(a^2-b^2)}{1+a^2+b^2}
+ \geq\frac{139}{689};
+\]
+the terms multiplied by $q\leq10^{-12}$ do not change either sign.
+
+More precisely, exact cancellation in (7) gives
+\begin{equation}
+ 1-a^+-b^+
+ =\frac{q(a^4+b^4+1)^2}
+ {a^2-a^4+b^2-b^4+q(a^4+b^4+1)}.
+\end{equation}
+As $a^4+b^4+1<27/20$, (7), (10), and (11) imply
+\begin{equation}
+ 0\leq e^+\leq6q,\qquad q^+\leq2q^4.
+\end{equation}
+The factorizations
+\begin{align*}
+ P_1-a&=\frac{-a(a+1)(a-b^2)(a-b-1)(a+b-1)}
+                   {a^4-a^2+b^4-b^2},\\
+ P_2-b&=\frac{-b(b+1)(a^2-b)(a-b+1)(a+b-1)}
+                   {a^4-a^2+b^4-b^2}
+\end{align*}
+and the bounds in (9)--(10) yield
+\begin{equation}
+ |P_1-a|\leq e,\qquad |P_2-b|\leq3e.
+\end{equation}
+Finally, differentiating (7) with respect to $q$ while fixing $a,b$ gives
+\[
+ \left|\frac{\partial a^+}{\partial q}\right|
+ =\frac{a^2m^2(1-a^2)}{d^2}\leq6,\qquad
+ \left|\frac{\partial b^+}{\partial q}\right|
+ =\frac{b^2m^2(1-b^2)}{d^2}\leq21.
+\]
+Consequently
+\begin{equation}
+ |a^+-a|\leq e+6q,\qquad |b^+-b|\leq3e+21q.
+\end{equation}
+
+It remains to verify entry into the region and close the no-exit argument.
+Put $u=t^2$.  Formula (2) gives
+\begin{equation}
+ a_1=\frac{6-7u}{18+567u},\quad
+ b_1=\frac{12-112u}{18+567u},\quad
+ e_1=\frac{686u}{18+567u},\quad
+ q_1=u^4(18+567u)^2.
+\end{equation}
+For $0<u\leq10^{-4}$, direct cross-multiplication shows
+\begin{equation}
+ \frac{33}{100}\leq a_1\leq\frac13,\quad
+ \frac{13}{20}\leq b_1\leq\frac23,\quad
+ 0\leq e_1\leq\frac1{250},\quad q_1<10^{-12}.
+\end{equation}
+While an orbit remains in $\mathcal B$, (12) gives
+\[
+ \sum_{j\geq1}q_j<2q_1,\qquad
+ \sum_{j\geq1}e_j<\frac1{250}+12q_1.
+\]
+Together with (14), this bounds the total variations by
+\begin{equation}
+ \sum_{j\geq1}|a_{j+1}-a_j|<\frac1{200},\qquad
+ \sum_{j\geq1}|b_{j+1}-b_j|<\frac{13}{1000}.
+\end{equation}
+The margins in (16) and (17) exclude a first exit through any of the four
+ratio faces of (9); (11) and (12) exclude exits through the defect and scale
+faces.  Hence the orbit never leaves $\mathcal B$.  In particular, (10) and
+the numerator signs show inductively that (6) is valid and nonzero at every
+step.
+
+Let $S_k=(1+a_k^2+b_k^2)^{1/2}$.  From (7), (9), and (10),
+\begin{equation}
+ c_{k+1}=c_k^4d_k,\qquad \frac16<d_k<1,\qquad
+ 1<S_k<\frac43.
+\end{equation}
+Therefore
+\[
+ \frac{\norm{R_{k+1}}}{\norm{R_k}^4}
+ =\frac{d_kS_{k+1}}{S_k^4},
+\]
+and (3) follows immediately.
+
+The scale estimate in (12) gives $q_k\to0$, hence $R_k\to0$.  The summable
+variations in (17) make $(a_k,b_k)$ Cauchy.  Equations (11) and (12) give
+$1-a_\infty-b_\infty=0$, while (9) keeps both limiting coordinates strictly
+between zero and one.  Thus
+\[
+ 1-m_\infty
+ =\frac{a_\infty^2-a_\infty^4+b_\infty^2-b_\infty^4}
+        {1+a_\infty^2+b_\infty^2}>0.
+\]
+Taking the limit in (19) proves (4), and hence exact Q-order four.
+\end{proof}
+
+For every member of this family,
+$\norm{R_0}=\sqrt{14}\,t<1$, so the initial data satisfy the stated hypothesis
+of the source theorem.  They also satisfy the stronger restriction
+$\norm{R_0}<3^{-1/3}$ used later in its convergence proof.  Because $A=I_3$,
+the residual and inverse error have the same Frobenius norm.  Thus (5) refutes
+the claimed general local order-six estimate under the source's own
+convention, while Theorem~\ref{thm:main} determines the actual asymptotic
+order on the explicit initial interval.
+
+\section{The defect in the order-six argument}
+
+Equation (2.7) of Cordero and Torregrosa \cite{CorderoTorregrosa2026} treats a
+term shown only to be $O(\norm{e_k}^4)$ as
+$\epsilon_k\norm{e_k}^4$ with $\epsilon_k\to0$.  A quartic big-O estimate
+only makes the normalized coefficient bounded; it does not force that
+coefficient to vanish.  Equations (2)--(4) show that it does not vanish on the
+family above.
+
+The following sentence makes a separate quantifier substitution.  From
+``for every fixed $\epsilon>0$, eventually $\epsilon_k\leq\epsilon$,'' it sets
+the moving value $\epsilon=\norm{e_k}^2$.  That substitution supplies no
+single eventual index.  The desired conclusion would require the additional
+estimate $\epsilon_k=O(\norm{e_k}^2)$, which is false on this family.
+
+The result concerns the asserted order, not the convergence of CTM in general.
+In particular, the displayed counterexample orbits converge rapidly, but with
+Q-order four.  No claim is made here about other projective directions or a
+classification of general CTM orbits.
+
+\section*{Reproducibility and assistance disclosure}
+
+All identities and inequalities used in the proof are exact.  A short
+Python/SymPy verifier expands (2), (8), and (11), and checks the two derivative
+identities used above; the rational bounds remain displayed in the proof and
+do not rely on floating-point output.  This certificate-oriented presentation
+is comparable in spirit to the exact low-dimensional matrix counterexample
+and rational verification workflow in \cite{ZengLiuRatnavelu2026}.
+
+OpenAI Codex assisted with proof exploration, exact symbolic checking,
+adversarial mathematical review, literature discovery, and manuscript
+preparation.  The author checked the stated argument and is responsible for
+the correctness of the paper.  Computer algebra is used only to recompute
+displayed algebraic identities, not as a substitute for the proof.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

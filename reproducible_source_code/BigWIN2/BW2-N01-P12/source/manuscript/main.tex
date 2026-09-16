@@ -1,0 +1,520 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,longtable,listings,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={All partition-restricted counts of nondegenerate 2 by 4 by 3 hypermatrices},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\inv}{\operatorname{inv}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\qint}[1]{[#1]_q}
+
+
+
+\title{All partition-restricted counts of nondegenerate\\$2\times4\times3$ hypermatrices}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190, China\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove the format $2\times4\times3$ specialization of the
+Koprowski--Lewis product conjecture for nondegenerate hypermatrices over
+finite fields with partition-shaped zero restrictions. The proof evaluates
+their augmented-cell sum for all 55 admissible pairs of partitions and
+all prime powers. An explicit order for coefficient-one elimination makes
+the cell parametrizations valid in every characteristic. The finite part
+consists of 55 integer polynomial identities, for which we give the complete
+coefficient table and an executable census. Separate sparse and dense
+polynomial computations verify the elimination certificates; exhaustive
+binary enumeration supplies an additional check. The result includes the
+40 shapes outside the two previously proved product families in this
+format. It makes no assertion for larger formats.
+\end{abstract}
+\noindent\textbf{Keywords:} hyperdeterminant; finite field; restricted enumeration;
+partition; exact computation.
+
+\section{Statement and relation to prior work}
+
+Let $q$ be a prime power and let $\lambda,\mu$ be weakly decreasing triples
+of nonnegative integers satisfying
+\begin{equation}\label{eq:shapes}
+ \mu_j\leq\lambda_j,\qquad \lambda_j\leq4-j,\qquad
+ \mu_j\leq3-j\qquad(1\leq j\leq3).
+\end{equation}
+For $P=(\lambda,\mu)$, an ordered pair of matrices
+$A,B\in\F_q^{4\times3}$ \emph{respects $P$} if
+\begin{equation}\label{eq:zeros}
+ A_{rj}=0\quad\text{when }r>4-\lambda_j,\qquad
+ B_{rj}=0\quad\text{when }r>4-\mu_j.
+\end{equation}
+Every unrestricted entry may take any value, including zero. We count
+arrays individually, without identifying them under a group action.
+Nondegeneracy means that the boundary-format hyperdeterminant is nonzero.
+In this format it is equivalent to
+\begin{equation}\label{eq:rank}
+ \rank(sA+tB)=3\quad\text{for every }(s,t)\in
+ \overline{\F}_q^{\,2}\setminus\{(0,0)\};
+\end{equation}
+see Aitken's rank criterion, as stated in
+\cite[Lemma 2.1]{KL} (Lemma 2.5 in the arXiv version).
+The algebraic closure in \eqref{eq:rank} is essential.
+Write $N_P(q)$ for this count and $[r]_q=\sum_{a=0}^{r-1}q^a$.
+
+\begin{theorem}\label{thm:main}
+For every prime power $q$ and every pair satisfying \eqref{eq:shapes},
+\begin{equation}\label{eq:main}
+ N_P(q)=q^9(q-1)^6
+ \prod_{j=1}^3[5-j-\lambda_j]_q
+ \prod_{j=1}^3[4-j-\mu_j]_q.
+\end{equation}
+\end{theorem}
+
+Haglund's interpretation of $q$-rook polynomials counts matrices of
+prescribed rank supported on Ferrers boards
+\cite[Theorem 1 in the preprint]{Haglund}.
+Aitken obtained the unrestricted boundary-format hypermatrix count from
+a free transitive action modulo scalar matrices \cite{Aitken}.
+Koprowski and Lewis refined that enumeration to the restrictions
+\eqref{eq:zeros} and proposed the corresponding product for arbitrary
+$2\times(k+1)\times k$ format \cite[Conjecture 3.1]{KL}.
+Their Theorems 3.2 and 3.3 establish the cases $\mu=0$ and the maximal
+shape; their Section 3.3 also treats every shape for $k=2$.
+All numbering here refers to the journal version of \cite{KL}, unless
+otherwise specified.
+
+For $k=3$, the $\mu=0$ family has 14 shapes, and the maximal shape
+$((3,2,1),(2,1,0))$ is a further case. Section 3.3 of \cite{KL}
+identifies 40 other shapes without giving their complete product
+evaluation. Theorem~\ref{thm:main} supplies that evaluation, using exactly
+the permutation sum proposed in their Section 5.1. The orbit reduction,
+the pure-power cell count, and polynomial positivity are established
+ingredients. Our contribution is the complete finite calculation in this
+format, with explicit integral elimination and reproducible certificates.
+The comparison is with the inspected journal and arXiv versions and a
+targeted literature search through 12 September 2026; it is not a claim of
+exhaustive priority verification. The general-$k$ conjecture is outside
+the theorem.
+
+\section{The augmented-cell reduction}
+
+Let $e_1,\ldots,e_4$ be the standard basis and put
+$E_0=(e_1,e_2,e_3)$ and $E_1=(e_2,e_3,e_4)$.
+For $\sigma\in S_4$ and $\pi\in S_3$, introduce distinct variables
+$x_{ab}$ for inversions $a<b$, $\sigma(a)>\sigma(b)$, and $y_{ij}$
+for inversions $i<j$, $\pi(i)>\pi(j)$. Define $L$ and $R$ by
+\begin{align}
+ L_{\sigma(a),a}&=1,&
+ L_{\sigma(a),b}&=x_{ab}
+       &&(a<b,\ \sigma(a)>\sigma(b)),\label{eq:L}\\
+ R_{\pi(i),i}&=1,&
+ R_{\pi(j),i}&=y_{ij}
+       &&(i<j,\ \pi(i)>\pi(j)),\label{eq:R}
+\end{align}
+with every other entry zero. Thus $L$ is $4\times4$, $R$ is $3\times3$,
+and the two augmented slices are
+\begin{equation}\label{eq:H}
+ H_0=LE_0R,\qquad H_1=LE_1R.
+\end{equation}
+These are the conventions of \cite[Definitions 4.5--4.7]{KL}.
+In the group-action notation of that paper the second acting matrix is
+$R^{\mathsf T}$; $R$ itself multiplies on the right in \eqref{eq:H}.
+There are $n=\inv(\sigma)+\inv(\pi)$ variables.
+
+Let $C_{\sigma,\pi}(P,q)$ count their assignments in $\F_q$ for which
+\eqref{eq:H} respects $P$. The established reduction is
+\begin{equation}\label{eq:reduction}
+ N_P(q)=q^9(q-1)^6
+       \sum_{\sigma\in S_4,\,\pi\in S_3}C_{\sigma,\pi}(P,q).
+\end{equation}
+This is \cite[Corollary 4.2]{KL}. We recall the normalization to fix the
+counting convention. Aitken's action of
+\[
+ (\GL_4(\F_q)\times\GL_3(\F_q))/
+ \{(cI_4,c^{-1}I_3):c\in\F_q^\times\}
+\]
+on nondegenerate arrays is free and transitive \cite{Aitken}.
+Bruhat decomposition, in the form used in \cite[Theorem 4.3]{KL},
+separates the augmented matrices from two triangular factors of orders
+$q^6(q-1)^4$ and $q^3(q-1)^3$. Division by the $q-1$ scalar
+representatives gives $q^9(q-1)^6$.
+Left upper triangular multiplication preserves each column's forbidden
+bottom segment. Right upper triangular multiplication preserves the zero
+pattern because permitted column heights are nondecreasing. The inverse
+operations have the same properties. Finally, distinct normalized
+assignments within one augmented cell give distinct arrays: equality
+would imply a scalar relation between the acting matrices, and the
+prescribed unit pivots force this scalar to be one. These observations
+explain why \eqref{eq:reduction} counts ordered arrays with the stated
+restrictions.
+
+\section{Integral elimination in each cell}
+
+The pure-power conclusion below is the counting principle of
+\cite[Theorem 4.4 and Section 5.1]{KL}. We give its explicit elimination
+order here to explain why the finite certificate applies in every
+characteristic.
+
+\begin{lemma}\label{lem:cell}
+The augmented cell is empty if one of the six positions
+\begin{equation}\label{eq:pivots}
+ (\sigma(\pi(c)),c)\text{ in }H_0,\qquad
+ (\sigma(\pi(c)+1),c)\text{ in }H_1\qquad(1\leq c\leq3)
+\end{equation}
+is forbidden. Otherwise let $h$ be the number of forbidden entries of
+\eqref{eq:H} that are nonzero polynomials over $\Z$. Then
+\begin{equation}\label{eq:cell}
+ C_{\sigma,\pi}(P,q)=q^{n-h}
+\end{equation}
+for every prime power $q$.
+\end{lemma}
+
+\begin{proof}
+Each entry in \eqref{eq:pivots} is exactly 1. Indeed, in the front slice
+the two triangular supports meet only at the intermediate index $\pi(c)$;
+in the back slice the same argument uses $\pi(c)+1$ on the left.
+These are the only entries with a constant term. A forbidden pivot is
+therefore impossible to cancel. If every pivot is allowed, setting all
+variables to zero respects the shape.
+
+Assume henceforth that the pivots are allowed. For a forbidden front
+entry $(r,c)$ put $a=\sigma^{-1}(r)$ and $v=\pi(c)$. Contributing
+intermediate indices satisfy $a\leq t\leq v$. If $a>v$ the entry is
+zero; $a=v$ would be a forbidden pivot. If $a<v$, the allowed pivot
+in column $c$ and the forbidden row $r$ imply $r>\sigma(v)$, so
+$x_{av}$ exists. Put $b=\pi^{-1}(a)$. We have $b>c$: otherwise the
+front pivot in the earlier column $b$ would give
+$r\leq4-\lambda_b\leq4-\lambda_c$, a contradiction.
+Consequently the equation for this entry is
+\begin{equation}\label{eq:front}
+ y_{cb}+x_{av}
+   +\sum_{\substack{a<t<v\\\text{both variables exist}}}
+          x_{at}y_{c,\pi^{-1}(t)}=0.
+\end{equation}
+Its target variable is $y_{cb}$, which occurs only in the displayed
+linear term.
+
+For a forbidden back entry, again put $a=\sigma^{-1}(r)$ and
+$v=\pi(c)$, and set $d=v+1$. If $a>d$ the entry is zero; $a=d$
+would be a forbidden pivot. For $a<d$ we have $r>\sigma(d)$, so the
+entry contains $x_{ad}$ with coefficient one. Every other term uses
+only $x_{a,t+1}$ with $t<v$, a variable $y_{cj}$, or a product of
+such variables. We take $x_{ad}$ as its target.
+
+Order the variables lexicographically by
+\begin{equation}\label{eq:order}
+ K(x_{ab})=(b,0,0,a),\qquad
+ K(y_{ij})=(\pi(i),1,-\pi(j),0).
+\end{equation}
+In \eqref{eq:front}, $x_{av}$ precedes the target at the second key
+coordinate, and $x_{at}$ at the first. The intermediate
+$y_{c,\pi^{-1}(t)}$ precedes it at the third coordinate because $t>a$.
+In a back equation the target has first coordinate $v+1$, whereas
+every other variable has first coordinate at most $v$.
+
+The front targets are distinct: $(c,b)$ determines the column and the
+row $\sigma(\pi(b))$. The back targets are distinct because $(a,d)$
+determines the row and the column $\pi^{-1}(d-1)$. The two target
+sets use disjoint variable types. Thus the $h$ nonzero equations have
+$h$ distinct targets and each has the form $z+f=0$, where $f$ depends
+only on earlier variables. Assign the remaining $n-h$ variables
+freely and solve in order \eqref{eq:order}. This is a bijection, with
+inverse the projection to the free coordinates. All solved expressions
+are integer polynomials; no division or exceptional characteristic
+enters the argument. This proves \eqref{eq:cell}.
+\end{proof}
+
+\section{The complete finite evaluation}
+
+The following ranges enumerate exactly \eqref{eq:shapes}:
+\begin{align*}
+ 0\leq\lambda_1&\leq3,&
+ 0\leq\lambda_2&\leq\min(\lambda_1,2),&
+ 0\leq\lambda_3&\leq\min(\lambda_2,1),\\
+ 0\leq\mu_1&\leq\min(\lambda_1,2),&
+ 0\leq\mu_2&\leq\min(\mu_1,\lambda_2,1),&\mu_3&=0.
+\end{align*}
+They give 55 shapes. For each one we use every pair in $S_4\times S_3$,
+with no symmetry quotient. Discard the pairs with a forbidden pivot and
+let $c_d(P)$ be the number of remaining pairs with $n-h=d$.
+Table~\ref{tab:census} gives every coefficient vector, in ascending
+powers of $q$. In each row it is equal to the coefficient vector of
+\begin{equation}\label{eq:product}
+ \prod_{i=1}^{6}(1+q+\cdots+q^{r_i-1}),\qquad
+ (r_1,\ldots,r_6)=
+ (4-\lambda_1,3-\lambda_2,2-\lambda_3,
+  3-\mu_1,2-\mu_2,1-\mu_3).
+\end{equation}
+All six lengths are positive. This is coefficient comparison in
+$\Z[q]$, rather than evaluation at selected field sizes.
+
+The short program in Appendix~\ref{app:code} reproduces the census.
+For this purpose, nonzero support of a generic entry can be detected
+by setting every inversion variable to 1 and multiplying over the
+ordinary integers. The matrices in \eqref{eq:L}--\eqref{eq:R} have
+only positive monomial coefficients, and multiplication introduces
+no subtraction. Hence an entry is the zero polynomial if and only if
+this integer evaluation is zero. The evaluation is used only to count
+$h$; the pivot test and Lemma~\ref{lem:cell} supply the field-independent
+solution count. The right side of \eqref{eq:product} is computed by
+integer convolution.
+
+The full polynomial certificate separately reconstructs all 3,456
+entries in the 144 augmented arrays over $\Z$. Among the 7,920
+shape--cell cases, 6,759 have a forbidden unit entry and 1,161 survive.
+The surviving cases contain 997 constrained nonzero entries. Their
+targets are distinct, the order \eqref{eq:order} is valid, and
+substitution of the serialized solutions gives zero in every original
+equation. The largest solution-polynomial degree is 3. A second
+implementation using dense symbolic matrices in SymPy~1.14.0
+\cite{SymPy} reconstructs the entries, checks every elimination
+identity, and verifies all 55 product identities without importing the
+sparse implementation.
+
+Separating exhaustive coverage from exact certificate checks is useful
+in finite computer-assisted proofs. For example, Zeng, Liu, Ratnavelu
+and Ong \cite{ZengCertificates} reconstruct the finite
+objects and verify integer predicates in their ternary-geometry
+computations. Here the corresponding obligations are complete
+shape/permutation coverage, integral elimination, and equality of
+integer coefficient vectors; the geometry results are not assumptions
+of our argument.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By \eqref{eq:reduction} and Lemma~\ref{lem:cell}, the normalized count
+$N_P(q)/(q^9(q-1)^6)$ is $\sum_d c_d(P)q^d$.
+The complete census identifies this polynomial with \eqref{eq:product}
+for every shape in \eqref{eq:shapes}. Its six factors are precisely the
+six $q$-integers in \eqref{eq:main}, proving the assertion for every
+prime power.
+\end{proof}
+
+As boundary checks, the unrestricted coefficient vector is
+$(1,5,13,23,30,30,23,13,5,1)$, representing $[4]!_q[3]!_q$, where
+$[r]!_q=\prod_{i=1}^r[i]_q$. The maximal shape has coefficient vector
+$(1)$ and exactly one surviving cell. Both cases are included in the
+census, not used as substitutes for it.
+
+\section{Binary verification and reproducibility}
+
+A separate exhaustive test covers the $2^{24}$ ordered binary arrays.
+The necessary full-rank conditions on $A$ and $B$ reduce this to
+$2520^2=6{,}350{,}400$ pairs. For each pair the program computes the
+greatest common divisor in $\F_2[t]$ of the four maximal minors of
+$A+tB$. A gcd equal to 1 rules out a finite algebraic-closure root
+common to all minors; rank 3 of $B$ handles the point at infinity.
+Thus the test implements \eqref{eq:rank} exactly. Integer array
+operations use NumPy~2.2.6 \cite{NumPy}.
+
+All 55 binary counts agree with \eqref{eq:main}; the unrestricted count
+is $3{,}386{,}880$. Testing only the three rational pencil directions
+would admit $403{,}200$ additional arrays. For instance,
+\[
+ A=\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\\0&0&0\end{pmatrix},\qquad
+ B=\begin{pmatrix}1&1&0\\0&0&1\\0&1&0\\0&0&0\end{pmatrix}
+\]
+have rank 3 in all three rational directions, but their only nonzero
+maximal minor is $1+t^2+t^3$, which has a root over $\overline{\F}_2$.
+This binary test is corroboration; the all-$q$ proof is the integral
+argument and the finite polynomial census above.
+
+The companion directory includes both polynomial verifiers, all cell
+certificates, and the binary enumeration program with its recorded
+counts. The accompanying reproduction guide specifies their filenames,
+directory layout and commands. The sparse verifier and the census in
+Appendix~\ref{app:code} use only the Python standard library.
+The dense reconstruction and the binary enumeration use the software
+versions specified above. The dense verification did not rerun the
+full binary enumeration; it did check its recorded counts against the
+polynomials and independently recompute the diagnostic witness.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with literature searches, development of the
+elimination argument, writing and executing the verification programs,
+and manuscript preparation. A separate model-context review wrote and
+ran the dense symbolic reconstruction. This provides a separate
+implementation check, not external peer review or proof-assistant
+certification. The mathematical conclusions rest on the stated
+dependencies, the integral elimination argument, and the inspectable
+exact computations.
+
+\appendix
+\section{Executable coefficient census}\label{app:code}
+This standard-library Python program prints the 55 vectors in
+Table~\ref{tab:census}, padded with trailing zeros to length ten.
+Permutations store one-based values; matrix indices in the code are
+zero-based. Its integer template entries are evaluations at 1, as
+justified in Section~4. Running \texttt{python3 manuscript/census.py}
+from the companion directory reproduces the output.
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\footnotesize,columns=fullflexible,keepspaces=true,showstringspaces=false,frame=single,breaklines=true,tabsize=4]
+"""Exact coefficient census; run with Python 3 (standard library only)."""
+from itertools import permutations, product
+
+
+def inv(p):
+    return sum(p[i] > p[j] for i in range(len(p))
+               for j in range(i + 1, len(p)))
+
+
+def multiply(a, b):
+    return [[sum(x * y for x, y in zip(row, col))
+             for col in zip(*b)] for row in a]
+
+
+def templates(s, p):
+    left = [[0] * 4 for _ in range(4)]
+    right = [[0] * 3 for _ in range(3)]
+    for a in range(4):
+        left[s[a] - 1][a] = 1
+        for b in range(a + 1, 4):
+            left[s[a] - 1][b] = int(s[a] > s[b])
+    for i in range(3):
+        right[p[i] - 1][i] = 1
+        for j in range(i + 1, 3):
+            right[p[j] - 1][i] = int(p[i] > p[j])
+    return [multiply([row[f:f + 3] for row in left], right)
+            for f in range(2)]
+
+
+def census():
+    pairs = list(product(permutations(range(1, 5)),
+                         permutations(range(1, 4))))
+    data = [(s, p, inv(s) + inv(p), templates(s, p))
+            for s, p in pairs]
+    rows = []
+    for six in product(range(4), repeat=6):
+        lam, mu = six[:3], six[3:]
+        if not (lam[0] >= lam[1] >= lam[2]
+                and mu[0] >= mu[1] >= mu[2]):
+            continue
+        if not all(mu[j] <= lam[j] <= 3 - j
+                   and mu[j] <= 2 - j for j in range(3)):
+            continue
+        counts = [0] * 10
+        for s, p, n, hmat in data:
+            if any(s[p[c] - 1 + f] > 4 - sh[c]
+                   for f, sh in enumerate((lam, mu))
+                   for c in range(3)):
+                continue
+            h = sum(hmat[f][r][c] != 0
+                    for f, sh in enumerate((lam, mu))
+                    for r in range(4) for c in range(3)
+                    if r + 1 > 4 - sh[c])
+            assert 0 <= n - h <= 9
+            counts[n - h] += 1
+        lengths = [4 - j - lam[j] for j in range(3)]
+        lengths += [3 - j - mu[j] for j in range(3)]
+        coeff = [1]
+        for length in lengths:
+            out = [0] * (len(coeff) + length - 1)
+            for i, a in enumerate(coeff):
+                for j in range(length):
+                    out[i + j] += a
+            coeff = out
+        assert counts == coeff + [0] * (10 - len(coeff))
+        rows.append((lam, mu, counts))
+    assert len(rows) == 55 and len(pairs) == 144
+    return rows
+
+
+if __name__ == "__main__":
+    for lam, mu, counts in census():
+        print(lam, mu, counts)
+\end{lstlisting}
+
+\clearpage
+\section{All coefficient vectors}
+In Table~\ref{tab:census}, a string such as $210$ denotes the triple
+$(2,1,0)$. The column $s$ is the number of surviving permutation pairs,
+and equals the sum of the displayed coefficients. Trailing zero
+coefficients are omitted. The factor lengths are determined by
+\eqref{eq:product}.
+{
+\small
+
+\begin{longtable}{@{}ccrl@{}}
+\caption{Complete coefficient census for $N_P(q)/(q^9(q-1)^6)$.}\label{tab:census}\\
+\toprule
+$\lambda$ & $\mu$ & $s$ & $(c_0,c_1,\ldots)$ \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{Table \ref{tab:census}\ (continued)}\\
+\toprule
+$\lambda$ & $\mu$ & $s$ & $(c_0,c_1,\ldots)$ \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+$000$ & $000$ & 144 & $(1,5,13,23,30,30,23,13,5,1)$ \\
+$100$ & $000$ & 108 & $(1,5,13,22,26,22,13,5,1)$ \\
+$100$ & $100$ & 72 & $(1,5,12,18,18,12,5,1)$ \\
+$110$ & $000$ & 72 & $(1,5,12,18,18,12,5,1)$ \\
+$110$ & $100$ & 48 & $(1,5,11,14,11,5,1)$ \\
+$110$ & $110$ & 24 & $(1,4,7,7,4,1)$ \\
+$111$ & $000$ & 36 & $(1,4,8,10,8,4,1)$ \\
+$111$ & $100$ & 24 & $(1,4,7,7,4,1)$ \\
+$111$ & $110$ & 12 & $(1,3,4,3,1)$ \\
+$200$ & $000$ & 72 & $(1,5,12,18,18,12,5,1)$ \\
+$200$ & $100$ & 48 & $(1,5,11,14,11,5,1)$ \\
+$200$ & $200$ & 24 & $(1,4,7,7,4,1)$ \\
+$210$ & $000$ & 48 & $(1,5,11,14,11,5,1)$ \\
+$210$ & $100$ & 32 & $(1,5,10,10,5,1)$ \\
+$210$ & $110$ & 16 & $(1,4,6,4,1)$ \\
+$210$ & $200$ & 16 & $(1,4,6,4,1)$ \\
+$210$ & $210$ & 8 & $(1,3,3,1)$ \\
+$211$ & $000$ & 24 & $(1,4,7,7,4,1)$ \\
+$211$ & $100$ & 16 & $(1,4,6,4,1)$ \\
+$211$ & $110$ & 8 & $(1,3,3,1)$ \\
+$211$ & $200$ & 8 & $(1,3,3,1)$ \\
+$211$ & $210$ & 4 & $(1,2,1)$ \\
+$220$ & $000$ & 24 & $(1,4,7,7,4,1)$ \\
+$220$ & $100$ & 16 & $(1,4,6,4,1)$ \\
+$220$ & $110$ & 8 & $(1,3,3,1)$ \\
+$220$ & $200$ & 8 & $(1,3,3,1)$ \\
+$220$ & $210$ & 4 & $(1,2,1)$ \\
+$221$ & $000$ & 12 & $(1,3,4,3,1)$ \\
+$221$ & $100$ & 8 & $(1,3,3,1)$ \\
+$221$ & $110$ & 4 & $(1,2,1)$ \\
+$221$ & $200$ & 4 & $(1,2,1)$ \\
+$221$ & $210$ & 2 & $(1,1)$ \\
+$300$ & $000$ & 36 & $(1,4,8,10,8,4,1)$ \\
+$300$ & $100$ & 24 & $(1,4,7,7,4,1)$ \\
+$300$ & $200$ & 12 & $(1,3,4,3,1)$ \\
+$310$ & $000$ & 24 & $(1,4,7,7,4,1)$ \\
+$310$ & $100$ & 16 & $(1,4,6,4,1)$ \\
+$310$ & $110$ & 8 & $(1,3,3,1)$ \\
+$310$ & $200$ & 8 & $(1,3,3,1)$ \\
+$310$ & $210$ & 4 & $(1,2,1)$ \\
+$311$ & $000$ & 12 & $(1,3,4,3,1)$ \\
+$311$ & $100$ & 8 & $(1,3,3,1)$ \\
+$311$ & $110$ & 4 & $(1,2,1)$ \\
+$311$ & $200$ & 4 & $(1,2,1)$ \\
+$311$ & $210$ & 2 & $(1,1)$ \\
+$320$ & $000$ & 12 & $(1,3,4,3,1)$ \\
+$320$ & $100$ & 8 & $(1,3,3,1)$ \\
+$320$ & $110$ & 4 & $(1,2,1)$ \\
+$320$ & $200$ & 4 & $(1,2,1)$ \\
+$320$ & $210$ & 2 & $(1,1)$ \\
+$321$ & $000$ & 6 & $(1,2,2,1)$ \\
+$321$ & $100$ & 4 & $(1,2,1)$ \\
+$321$ & $110$ & 2 & $(1,1)$ \\
+$321$ & $200$ & 2 & $(1,1)$ \\
+$321$ & $210$ & 1 & $(1)$ \\
+\end{longtable}
+}
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

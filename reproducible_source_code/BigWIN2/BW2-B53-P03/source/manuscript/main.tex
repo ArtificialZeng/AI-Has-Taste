@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+  pdftitle={A Uniform Four-Attack Obstruction for the Order Gadget at M = 4 mod 8},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\IM}{I_M}
+\newcommand{\OG}{\operatorname{OG}}
+\newcommand{\Cfour}{\mathrm{C4}}
+
+\title{A Uniform Four-Attack Obstruction for the Order Gadget\\
+at \texorpdfstring{$M\equiv4\pmod 8$}{M = 4 mod 8}}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\OG(M)$ be Kasel's finite order gadget on $(M,2M]$: its order must
+avoid monotone three-term arithmetic progressions and satisfy fifteen
+precedence constraints induced by the attacking values $15$ and $16$.
+We prove that $\OG(M)$ is infeasible for every $M\geq20$ with
+$M\equiv4\pmod 8$.  In fact, four of its precedence constraints already
+suffice.  The proof extends the mirror-flood argument from steps $2$ and $4$
+to every positive even step and uses step $8$ after splitting the target
+class modulo $16$.  Exact finite checks audit the displayed proof schemas but
+are not used in the universal argument.  The result concerns this finite
+gadget and residue class; it does not decide the Erd\H{o}s--Graham two-set
+permutation problem.
+\end{abstract}
+
+\section{Statement and context}
+
+For an integer $M\geq20$, put
+\[
+  \IM=(M,2M]\cap\mathbb Z,
+  \qquad b_j=M+j,
+  \qquad t_i=2M-i.
+\]
+A strict total order $\prec$ on $\IM$ is \emph{AP-free} if no numerical
+three-term arithmetic progression $a<b<c$ in $\IM$ is monotone in the order:
+neither $a\prec b\prec c$ nor $c\prec b\prec a$ may hold.  Equivalently, the
+numerical midpoint is before both endpoints or after both endpoints.
+
+The order gadget $\OG(M)$ was introduced in Definition~15 of
+Kasel~\cite{Kasel2026}.  Besides AP-freeness, it imposes the fifteen
+precedence relations obtained from the attacking values $15$ and $16$.
+The source proves a three-relation obstruction when $M\equiv0\pmod8$, and it
+reports finite solver observations for other attack cores, but it does not
+give a uniform theorem for the present residue class
+\cite[Proposition~19, Theorem~22, and Remark~30]{Kasel2026}.  The underlying
+two-set question arose in work of Davis, Entringer, Graham, and
+Simmons~\cite{DavisEtAl1977} and was subsequently emphasized by Erd\H{o}s and
+Graham~\cite{ErdosGraham1979}.
+
+Consider the four constraints
+\begin{equation}\label{eq:C4}
+\begin{aligned}
+ P&:\ t_{13}\prec b_1, &
+ Q&:\ t_{11}\prec b_2,\\
+ A_1&:\ t_5\prec b_5, &
+ A_3&:\ t_{10}\prec b_3.
+\end{aligned}
+\end{equation}
+They are all among the fifteen constraints of $\OG(M)$.
+
+\begin{theorem}\label{thm:main}
+For every integer $M\geq20$ with $M\equiv4\pmod8$, no AP-free strict total
+order on $\IM$ satisfies the four constraints in \eqref{eq:C4}.  Consequently
+$\OG(M)$ is infeasible for every such $M$.
+\end{theorem}
+
+The theorem is a uniform statement, not an extrapolation from finite solver
+outcomes.  Its proof occupies Sections~\ref{sec:tools}--\ref{sec:proof}.
+
+\section{Ladders and a phase-blind flood lemma}\label{sec:tools}
+
+For a numerical progression $a<b<c$, midpoint extremality gives the four
+implications
+\begin{equation}\label{eq:R}
+\begin{aligned}
+ a\prec b&\Longrightarrow c\prec b, &
+ c\prec b&\Longrightarrow a\prec b,\\
+ b\prec c&\Longrightarrow b\prec a, &
+ b\prec a&\Longrightarrow b\prec c.
+\end{aligned}
+\end{equation}
+Fix a positive step $g$.  On the elements of $\IM$ in one residue class
+modulo $g$, consecutive numerical triples and \eqref{eq:R} force a zigzag:
+one of the two classes modulo $2g$ precedes both neighboring rungs, and the
+other class follows both neighboring rungs.  We call the former rungs
+\emph{leaders} and the latter \emph{trailers}.  Either zigzag phase may occur.
+
+We use the following phase-blind form of the flood lemma.  For $g=2,4$ this
+is the mechanism of Kasel's Lemma~26~\cite{Kasel2026}; the same elementary
+induction applies to every positive even $g$.
+
+\begin{lemma}[general flood lemma]\label{lem:flood}
+Let $g$ be a positive even integer, and let $C$ be the intersection of
+$\IM$ with one residue class modulo $g$.  Suppose that $c\in\IM$ is displaced
+by $g/2$ from that residue class.  Define
+\[
+ W_c=\{w\in C:2c-w\in\IM\}.
+\]
+If $c\prec w_0$ for one $w_0\in W_c$, then $c\prec w$ for every $w\in W_c$.
+If $w_0\prec c$ for one $w_0\in W_c$, then $w\prec c$ for every $w\in W_c$.
+The conclusion is independent of the zigzag phase of the $g$-ladder.
+\end{lemma}
+
+\begin{proof}
+The two elements $c-e$ and $c+e$ of any admissible mirror pair belong to
+opposite classes modulo $2g$, because $e\equiv g/2\pmod g$.  Thus exactly one
+is a leader.  The progression $(c-e,c,c+e)$ and \eqref{eq:R} first copy any
+seed comparison with $c$ to the other member of its mirror pair.
+
+Suppose first that the pair at distance $e$ lies above $c$ in the order.  To
+reach an admissible pair at distance $e+g$, choose the leader in the first
+pair.  It precedes its outward ladder neighbor, so transitivity places that
+neighbor above $c$; the mirror rule then reaches the other member of the new
+pair.  To reach an admissible pair at distance $e-g$, choose the trailer in
+the nearer pair.  Its outward neighbor at distance $e$ is a leader, so the
+known comparison, the leader--trailer edge, and transitivity reach the nearer
+trailer; reflection reaches its partner.
+
+For comparisons directed toward $c$, use the same two moves with inequalities
+reversed: at distance $e+g$ its leader precedes the already-reached inward
+neighbor, while at distance $e-g$ the nearer leader precedes its
+already-reached outward neighbor.  Reflection completes each pair.  The
+admissible positive distances form a finite consecutive interval in the
+class $g/2\pmod g$.  Induction in both directions therefore reaches every
+member of $W_c$, in either zigzag phase.
+\end{proof}
+
+We shall also repeatedly use a direct corollary.  On the odd step-$2$ ladder,
+any odd value $c$ is displaced by $2$ from the opposite class modulo $4$.
+An adjacent leader--trailer comparison seeds Lemma~\ref{lem:flood} with
+$g=4$.  Thus, if $c$ is a leader, it precedes every mirror-admissible trailer
+in the opposite class; if $c$ is a trailer, every mirror-admissible leader in
+the opposite class precedes $c$.
+
+\section{The four-attack obstruction}\label{sec:proof}
+
+Throughout this section assume $M\geq20$ and $M\equiv4\pmod8$, and put
+\[
+  m=\frac{3M}{2}.
+\]
+Then $m\equiv2\pmod4$ and $m\in\IM$.
+
+\begin{lemma}\label{lem:phase}
+In an AP-free order, $Q$ and $A_3$ imply $b_5\prec b_3$.
+\end{lemma}
+
+\begin{proof}
+Suppose instead that $b_3\prec b_5$.  The odd step-$2$ ladder then has leader
+class $3\pmod4$.  Set
+\[
+  c^*=m-1\equiv1\pmod4,
+  \qquad
+  c^{**}=m+1\equiv3\pmod4.
+\]
+Compare $t_5$ and $m$ in the total order.
+
+If $t_5\prec m$, the step-$2$ flood centered at $m$, seeded by the mirror
+pair $\{b_5,t_5\}$, puts every odd value below $m$.  In particular
+$c^*\prec m$.  The odd-ladder phase and the step-$4$ flood centered at $c^*$
+give $b_3\prec c^*$; the reflection of $b_3$ about $c^*$ is $t_5$.
+The step-$2$ flood centered at $c^*$, seeded by $c^*\prec m$, then gives
+$c^*\prec t_{10}$; the reflection of $t_{10}$ is $b_8$.  Constraint $A_3$
+produces the strict cycle
+\[
+  b_3\prec c^*\prec t_{10}\prec b_3.
+\]
+
+If $m\prec t_5$, the same polar step-$2$ flood puts $m$ below every odd
+value, so $m\prec c^{**}$.  Since $c^{**}$ is an odd leader, the step-$4$
+flood at $c^{**}$ gives $c^{**}\prec t_{11}$, whose reflection is $b_{13}$.
+The step-$2$ flood at $c^{**}$, seeded by $m\prec c^{**}$, gives
+$b_2\prec c^{**}$, whose reflection is $t_0$.  Constraint $Q$ now gives
+\[
+  c^{**}\prec t_{11}\prec b_2\prec c^{**}.
+\]
+Both cases are impossible.  All displayed points and reflections lie in
+$\IM$ for $M\geq20$.
+\end{proof}
+
+\begin{lemma}\label{lem:flip}
+In an AP-free order satisfying $b_5\prec b_3$, the constraints $P$ and $A_1$
+cannot both hold.
+\end{lemma}
+
+\begin{proof}
+The assumed orientation makes the odd leader class $1\pmod4$.
+
+First suppose $M\equiv4\pmod{16}$.  Then $m\equiv6\pmod8$.  Put
+\[
+  c=m-5\equiv1\pmod8,
+  \qquad
+  d=m-1\equiv5\pmod8.
+\]
+Both $c$ and $d$ are odd leaders.  A step-$4$ flood at $c$ gives
+$c\prec t_{13}$, with reflection $b_3$; then $P$ gives $c\prec b_1$.
+The step-$8$ flood centered at $c$, over the class of $b_1$, gives
+$c\prec d$.  Its seed reflection is $t_{11}$ and its target reflection is
+$m-9$.
+
+Similarly, a step-$4$ flood at $d$ gives $d\prec t_5$, with reflection
+$b_3$, and $A_1$ gives $d\prec b_5$.  At $M=20$ one has $b_5=c$, already
+contradicting $c\prec d$.  For every remaining value in this subclass,
+$M\geq36$.  The step-$8$ flood centered at $d$, over the class of $b_5$,
+then gives $d\prec c$; its seed reflection is $t_7$ and its target reflection
+is $m+3$.  This contradicts $c\prec d$.  The tight boundary for the first
+step-$8$ flood is $m-9\geq M+1$, which is equivalent to $M\geq20$.
+
+Now suppose $M\equiv12\pmod{16}$.  Then $m\equiv2\pmod8$.  Put
+\[
+  c=m-1\equiv1\pmod8,
+  \qquad
+  d=m-5\equiv5\pmod8.
+\]
+A step-$4$ flood at $c$ gives $c\prec t_{13}$, with reflection $b_{11}$,
+and $P$ gives $c\prec b_1$.  The step-$8$ flood at $c$ over the class of
+$b_1$ gives $c\prec d$; its seed reflection is $t_3$ and its target
+reflection is $m+3$.
+
+For the reverse comparison, a step-$4$ flood at $d$ gives
+$d\prec t_{13}$, with reflection $b_3$, and hence $d\prec b_1$ by $P$.
+Numerically $(b_1,d,t_{11})$ is an arithmetic progression with midpoint $d$,
+so \eqref{eq:R} yields $d\prec t_{11}$.  The value $t_{11}$ is an odd leader;
+a step-$4$ flood centered there gives $t_{11}\prec t_5$, with reflection
+$t_{17}$.  By $A_1$, we obtain $d\prec b_5$.  Finally the step-$8$ flood at
+$d$, over the class of $b_5$, gives $d\prec c$; its seed reflection is
+$t_{15}$ and its target reflection is $m-9$.  This contradicts $c\prec d$.
+The least value in this subclass is $M=28$, where all named values and
+reflections already lie in $\IM$.
+
+The two cases exhaust $M\equiv4\pmod8$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Constraints $Q$ and $A_3$ force $b_5\prec b_3$ by Lemma~\ref{lem:phase}.
+Lemma~\ref{lem:flip} says that this orientation is incompatible with $P$ and
+$A_1$.  Thus the subsystem \eqref{eq:C4} is infeasible.  Since the full
+gadget contains these four constraints, the same is true of $\OG(M)$.
+\end{proof}
+
+\section{Computational checks, scope, and assistance}
+
+The written schemas were audited by exact computation.  One checker verifies
+every stated congruence, arithmetic progression, reflection, block boundary,
+and transitivity step for all $2{,}046$ target values
+$20\leq M\leq16{,}380$.  Separately, a tournament-with-transitivity encoding
+and an all-different integer-rank encoding agree on infeasibility at
+$M=20,28,36,116,204$.  These finite calculations are corroboration only:
+the quantified conclusion follows from the proof above.  This separation
+between a theorem's stated scope and exact finite certification is also
+emphasized in related finite-certificate work~\cite{ZengEtAl2026}.
+
+The closest inspected source is Kasel's preprint~\cite{Kasel2026}; exact-title
+and equivalent-description searches conducted on 7 September 2026 located no
+other primary paper addressing this order gadget.  This is a bounded search
+assessment, not a claim of priority or of the absence of unindexed work.
+The theorem resolves the specified full-gadget assertion on one residue class,
+but it does not prove infeasibility in the other residue classes and does not
+settle whether the positive integers can be partitioned into two admissibly
+permutable sets.
+
+OpenAI Codex assisted with literature search, proof-schema checking, exact
+finite-model code, adversarial audit organization, and initial manuscript
+preparation.  Language-model output is not used as mathematical evidence.
+The universal conclusion rests on the human-readable argument above; the
+reported machine checks use exact discrete constraints and no floating-point
+tolerances.  The author takes responsibility for the statement and proof.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

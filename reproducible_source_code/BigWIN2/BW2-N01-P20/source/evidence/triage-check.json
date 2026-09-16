@@ -1,0 +1,124 @@
+{
+  "job_id": "newwin-00001-p20-triage-041b4cdafc30",
+  "status": "exact finite identity checks and floating-point calibration only",
+  "python": "3.10.12",
+  "mpmath": "1.3.0",
+  "decimal_digits": 70,
+  "exact_checks": {
+    "symmetry": 4160,
+    "cdf_from_half": 4160,
+    "upper_ratio": 2080,
+    "center": 64
+  },
+  "sample_count": 4212,
+  "rows": [
+    {
+      "m": 25,
+      "A": 1,
+      "samples": 41,
+      "local_scaled": "0.251789846719904351",
+      "cdf_scaled": "0.183833975045715223",
+      "expectation_scaled": "1.91815510163356443"
+    },
+    {
+      "m": 25,
+      "A": 2,
+      "samples": 81,
+      "local_scaled": "1.14414839525711949",
+      "cdf_scaled": "0.183833975045715223",
+      "expectation_scaled": "11.4292909234221507"
+    },
+    {
+      "m": 25,
+      "A": 4,
+      "samples": 161,
+      "local_scaled": "38.3311469608298807",
+      "cdf_scaled": "0.183833975045715223",
+      "expectation_scaled": "71.1111273132834816"
+    },
+    {
+      "m": 100,
+      "A": 1,
+      "samples": 81,
+      "local_scaled": "0.229585867298160166",
+      "cdf_scaled": "0.184474295823763353",
+      "expectation_scaled": "2.04820563224619522"
+    },
+    {
+      "m": 100,
+      "A": 2,
+      "samples": 161,
+      "local_scaled": "0.957497626652568823",
+      "cdf_scaled": "0.184474295823763353",
+      "expectation_scaled": "13.3342963647841175"
+    },
+    {
+      "m": 100,
+      "A": 4,
+      "samples": 321,
+      "local_scaled": "43.3906073997890429",
+      "cdf_scaled": "0.184474295823763353",
+      "expectation_scaled": "91.428620464383218"
+    },
+    {
+      "m": 400,
+      "A": 1,
+      "samples": 161,
+      "local_scaled": "0.218850548030560007",
+      "cdf_scaled": "0.183056953168913495",
+      "expectation_scaled": "2.10815642576537276"
+    },
+    {
+      "m": 400,
+      "A": 2,
+      "samples": 321,
+      "local_scaled": "0.872541551757929609",
+      "cdf_scaled": "0.183056953168913495",
+      "expectation_scaled": "14.5465390066312977"
+    },
+    {
+      "m": 400,
+      "A": 4,
+      "samples": 641,
+      "local_scaled": "40.5796818263680427",
+      "cdf_scaled": "0.183056953168913495",
+      "expectation_scaled": "106.6667321376644"
+    },
+    {
+      "m": 1600,
+      "A": 1,
+      "samples": 321,
+      "local_scaled": "0.213566235972516859",
+      "cdf_scaled": "0.182603308975387243",
+      "expectation_scaled": "2.13625704655473423"
+    },
+    {
+      "m": 1600,
+      "A": 2,
+      "samples": 641,
+      "local_scaled": "0.83165704974359876",
+      "cdf_scaled": "0.182603308975387243",
+      "expectation_scaled": "15.2392402266366311"
+    },
+    {
+      "m": 1600,
+      "A": 4,
+      "samples": 1281,
+      "local_scaled": "38.0008860683122482",
+      "cdf_scaled": "0.182603308975387243",
+      "expectation_scaled": "116.363710048811784"
+    }
+  ],
+  "local_scaled_definition": "m*abs(p*sqrt(m)/f(d/sqrt(m))-(1-d/m))",
+  "cdf_scaled_definition": "m*abs(S-Phi(sqrt(2)*d/sqrt(m))-f(d/sqrt(m))/sqrt(m))",
+  "expectation_scaled_definition": "sqrt(m)*abs(E-sqrt(m)*F0-F1)",
+  "floor_offsets": [
+    "0",
+    "1/100000000",
+    "1/2",
+    "99999999/100000000"
+  ],
+  "script_sha256": "4bc629afdd184f6c93fd442aa73b497c8f4dde391a24cc4192fdfc86d2743a52",
+  "source_sha256": "b5dd0cb2ff5644a13c42b0b0e352a6a172be7c766f45a41ad37d89c83c4af495",
+  "limitations": "finite m and A only; no interval arithmetic and no universal remainder bound"
+}

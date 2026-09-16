@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,d}
+
+\title{An Exact Exterior Abel-Power Square Function\\
+for a Single Atom in $\R^3$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the Euclidean heat semigroup in dimension three, let
+$A_s=s(s-\Delta)^{-1}$ and let $A_s^N$ denote composition $N$ times at the
+same $s>0$.  If the cap-$\kappa$ Laplacian partial-balayage domain of
+$m\delta_0$ is the ball $\Omega$ of volume $m/\kappa$, we evaluate exactly
+the exterior square function of $s\partial_s(A_s^N(m\delta_0))$.  For every
+integer $N\geq1$ it equals
+\[
+ \kappa m\,
+ \frac{2\Gamma(N+\tfrac32)^2}
+ {3\pi(N+1)(N+2)(2N+1)\Gamma(N)^2}.
+\]
+In particular, after division by $\kappa m$ the expression converges to
+$1/(3\pi)$.  The calculation is restricted to one atom in dimension three;
+it makes no assertion for general atomic measures or other dimensions.
+\end{abstract}
+
+\section{Context and normalizations}
+
+Spector and Stockdale introduced the Abel-power square function considered
+here in their proof of a dimensional estimate for the Hardy--Littlewood
+maximal function \cite[eqs.~(1.10)--(1.11)]{SpectorStockdale}.  Their
+Theorem~1.3 proves, for a finite positive atomic measure of mass $m$ in
+dimension $n\geq3$, the general estimate
+\[
+ \int_{\Omega^c}\int_0^\infty
+ |s\partial_s(A_s^N\nu)(x)|^2\,\frac{\dd s}{s}\,\dd x
+ \leq C\sqrt N\,\kappa m,
+\]
+where $C$ is an absolute constant.
+The closed form proved below is a subsequently proposed single-atom
+calculation, not a formula stated in that paper.  Partial balayage is
+classically tied to an obstacle problem and a density cap; see, for example,
+Gustafsson and Sakai \cite{GustafssonSakai}.
+
+We fix all conventions.  On $\R^3$,
+\[
+ \Delta=\sum_{j=1}^3\partial_j^2,
+ \qquad
+ \widehat f(\xi)=\int_{\R^3}e^{-2\pi i x\cdot\xi}f(x)\,\dd x,
+\]
+so $\widehat{\Delta f}(\xi)=-4\pi^2|\xi|^2\widehat f(\xi)$.  Thus
+\[
+ H_tf=e^{t\Delta}f=h_t*f,
+ \qquad h_t(x)=(4\pi t)^{-3/2}e^{-|x|^2/(4t)},
+\]
+and
+\[
+ A_s=s(s-\Delta)^{-1}=\int_0^\infty se^{-st}H_t\,\dd t,
+ \qquad
+ \widehat{A_s^Nf}(\xi)=
+ \left(\frac{s}{s+4\pi^2|\xi|^2}\right)^N\widehat f(\xi).
+\]
+In particular, away from the origin,
+\[
+ (s-\Delta)^{-1}\delta_0(x)=\frac{e^{-\sqrt{s}|x|}}{4\pi|x|}.
+\]
+
+For $m,\kappa>0$ we use the cap-$\kappa$ convention
+\[
+ m\delta_0=\kappa\mathbf1_\Omega\,\dd x-\Delta u,
+ \qquad u\geq0,\qquad \Omega=\{u>0\}.
+\]
+In the radial case $\Omega=B(0,R)$, where
+\begin{equation}\label{eq:R}
+ R^3=\frac{3m}{4\pi\kappa},\qquad |\Omega|=\frac m\kappa.
+\end{equation}
+Indeed, the function that vanishes for $r\geq R$ and, for $0<r<R$, is
+\[
+ u(r)=\frac{m}{4\pi r}+\frac{\kappa r^2}{6}
+       -\frac{\kappa R^2}{2}
+\]
+has both value and radial derivative zero at $R$, and satisfies the displayed
+balayage identity distributionally.  Inclusion of the sphere $|x|=R$ in
+either region is immaterial.
+
+\begin{theorem}\label{thm:main}
+Let $m,\kappa>0$ and let $N\geq1$ be an integer.  With the conventions above,
+\begin{align}
+ I_N(m,\kappa)
+ &:=\int_{|x|\geq R}\int_0^\infty
+ \left|s\partial_s(A_s^N(m\delta_0))(x)\right|^2
+ \frac{\dd s}{s}\,\dd x \notag\\
+ &=\kappa m\,
+ \frac{2\Gamma(N+\tfrac32)^2}
+ {3\pi(N+1)(N+2)(2N+1)\Gamma(N)^2}.\label{eq:main}
+\end{align}
+Consequently,
+\[
+ \lim_{N\to\infty}\frac{I_N(m,\kappa)}{\kappa m}=\frac1{3\pi}.
+\]
+\end{theorem}
+
+\section{The Abel-power kernel}
+
+For $r=|x|>0$, the Laplace representation of a resolvent power gives
+\begin{align}
+ (s-\Delta)^{-N}\delta_0(r)
+ &=\frac1{\Gamma(N)}\int_0^\infty
+ t^{N-1}e^{-st}H_t\delta_0(r)\,\dd t\notag\\
+ &=\frac1{(4\pi)^{3/2}\Gamma(N)}\int_0^\infty
+ t^{N-5/2}e^{-st-r^2/(4t)}\,\dd t.\label{eq:heat}
+\end{align}
+Put
+\[
+ z=r\sqrt{s},\qquad \nu=N-\frac32,
+ \qquad c_N=\frac{2^{-\nu-2}}{\pi^{3/2}\Gamma(N)}.
+\]
+The standard integral representation of the modified Bessel function
+$K_\nu$ in Section 10.32 of \cite{NIST,Watson},
+\[
+ \int_0^\infty q^{\nu-1}e^{-q-z^2/(4q)}\,\dd q
+ =2(z/2)^\nu K_\nu(z),
+\]
+turns \eqref{eq:heat}, after multiplication by $s^N$, into
+\begin{equation}\label{eq:kernel}
+ A_s^N\delta_0(r)=s^{3/2}c_Nz^\nu K_\nu(z).
+\end{equation}
+Using
+$\frac{\dd}{\dd z}(z^\nu K_\nu(z))=-z^\nu K_{\nu-1}(z)$, we obtain
+\begin{equation}\label{eq:G}
+ s\partial_s(A_s^N\delta_0)(r)=s^{3/2}G_N(z),
+ \qquad
+ G_N(z)=\frac{c_N}{2}z^\nu
+ \bigl(3K_\nu(z)-zK_{\nu-1}(z)\bigr).
+\end{equation}
+Because $s=z^2/r^2$ and $\dd s/s=2\,\dd z/z$, linearity in the input measure
+now yields
+\begin{equation}\label{eq:separate}
+ \int_0^\infty
+ |s\partial_s(A_s^N(m\delta_0))(r)|^2\frac{\dd s}{s}
+ =\frac{2m^2}{r^6}Q_N,
+ \qquad Q_N:=\int_0^\infty z^5G_N(z)^2\,\dd z.
+\end{equation}
+
+\section{A Bessel product integral and the exact constant}
+
+We include the product integral needed to evaluate $Q_N$.
+
+\begin{lemma}\label{lem:product}
+If $\alpha,\beta\in\R$ and $\rho>|\alpha|+|\beta|$, then
+\begin{align}
+ \int_0^\infty z^{\rho-1}K_\alpha(z)K_\beta(z)\,\dd z
+ &=\frac{2^{\rho-3}}{\Gamma(\rho)}
+ \Gamma\!\left(\frac{\rho+\alpha+\beta}{2}\right)
+ \Gamma\!\left(\frac{\rho+\alpha-\beta}{2}\right)\notag\\
+ &\quad\times
+ \Gamma\!\left(\frac{\rho-\alpha+\beta}{2}\right)
+ \Gamma\!\left(\frac{\rho-\alpha-\beta}{2}\right).
+ \label{eq:product}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Insert twice the positive integral representation
+\[
+ K_\alpha(z)=\frac12(z/2)^\alpha
+ \int_0^\infty a^{-\alpha-1}e^{-a-z^2/(4a)}\,\dd a.
+\]
+Tonelli's theorem permits the $z$-integration first.  If
+$\lambda=(\rho+\alpha+\beta)/2$, that integral contributes
+\[
+ \frac12\left(\frac{4ab}{a+b}\right)^\lambda\Gamma(\lambda).
+\]
+In the remaining double integral set $w=a+b$ and $y=a/(a+b)$.  The
+$w$-integral is
+$\Gamma(\lambda-\alpha-\beta)$, while the $y$-integral is
+$B(\lambda-\alpha,\lambda-\beta)$.  Simplifying their Gamma factors and
+the power of $2$ gives \eqref{eq:product}.  The stated hypothesis makes all
+four Gamma arguments positive and also proves convergence.
+\end{proof}
+
+Expand the square in \eqref{eq:G} and set
+\[
+ M_0=M(2\nu+6;\nu,\nu),\quad
+ M_1=M(2\nu+7;\nu,\nu-1),\quad
+ M_2=M(2\nu+8;\nu-1,\nu-1),
+\]
+where $M(\rho;\alpha,\beta)$ denotes the integral on the left of
+\eqref{eq:product}.  Lemma~\ref{lem:product} applies to all three moments for
+every $N\geq1$; in particular, it applies directly when $N=1$ and
+$\nu=-1/2$, without endpoint continuation.  Substitution in
+\eqref{eq:product} and $\Gamma(x+1)=x\Gamma(x)$ give, with
+$S_N=2^{2N-1}\Gamma(N+3/2)^2$,
+\begin{equation}\label{eq:moments}
+ M_0=\frac{S_N}{N(N+1)(2N+1)},\qquad
+ M_1=3M_0,\qquad
+ M_2=\frac{6(2N+3)}{N+2}M_0.
+\end{equation}
+Therefore
+\[
+ 9M_0-6M_1+M_2=\frac{3N}{N+2}M_0,
+\]
+and, since $c_N^2/4=2^{-2N-3}/(\pi^3\Gamma(N)^2)$,
+\begin{equation}\label{eq:Q}
+ Q_N=\frac{c_N^2}{4}(9M_0-6M_1+M_2)
+ =\frac{3\Gamma(N+3/2)^2}
+ {16\pi^3(N+1)(N+2)(2N+1)\Gamma(N)^2}.
+\end{equation}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Equations \eqref{eq:R}, \eqref{eq:separate}, and \eqref{eq:Q} give
+\begin{align*}
+ I_N(m,\kappa)
+ &=4\pi\int_R^\infty r^2\frac{2m^2Q_N}{r^6}\,\dd r
+ =\frac{8\pi m^2Q_N}{3R^3}
+ =\kappa m\,\frac{32\pi^2}{9}Q_N,
+\end{align*}
+which is exactly \eqref{eq:main}.  Finally,
+$\Gamma(N+3/2)/\Gamma(N)\sim N^{3/2}$ and
+$(N+1)(N+2)(2N+1)\sim2N^3$ (see, e.g., \cite[Ch.~5]{NIST}), giving the
+claimed limit.
+\end{proof}
+
+\begin{remark}[The exact first gate]
+For $N=1$, one may avoid Bessel notation entirely:
+\[
+ A_s(m\delta_0)(r)=\frac{m}{4\pi r}se^{-r\sqrt{s}},\qquad
+ s\partial_sA_s(m\delta_0)(r)=
+ \frac{m}{4\pi r}se^{-r\sqrt{s}}\left(1-\frac{r\sqrt{s}}2\right).
+\]
+With $z=r\sqrt{s}$,
+$\int_0^\infty z^3e^{-2z}(1-z/2)^2\,\dd z=3/32$; radial integration then
+gives $I_1=m^2/(64\pi R^3)=\kappa m/48$, in agreement with
+\eqref{eq:main}.
+\end{remark}
+
+\section*{Computational and AI assistance}
+
+A supplementary standard-library Python program expands the half-integer
+Bessel kernels into exponential polynomials and checks \eqref{eq:main} with
+exact rational arithmetic for $1\leq N\leq30$.  This finite computation is
+corroboration only; the quantified theorem follows from the symbolic proof
+above.  Exact rational verification has also been used to delimit
+computer-assisted sharp-constant statements in a different
+operator-theoretic setting \cite{ZengLens}; that source is cited as a
+methodological comparison, not as evidence for Theorem~\ref{thm:main}.
+
+This draft was prepared with substantial assistance from an OpenAI Codex
+language model, including proof organization, algebraic cross-checks,
+literature discovery, and LaTeX preparation.  The accepted argument was also
+examined in a separate fresh-model mathematical audit.  Such an audit is not
+peer review, and no formal proof assistant was used.  The author retains
+responsibility for the mathematical content of any released version.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

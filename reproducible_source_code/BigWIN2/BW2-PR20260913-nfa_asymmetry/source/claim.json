@@ -1,0 +1,26 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Use epsilon-free NFAs over {0,1} with a finite nonempty state set, one initial state, an arbitrary accepting subset, and possibly missing transitions. Let nsep(w,x) be the minimum state count of an NFA accepting w and rejecting x, with unrestricted behavior on all other words. For every integer q>=3, the maximum of nsep(0^a 1 0^b,0^c 1 0^d), over all nonnegative integers a,b,c,d satisfying a+b=c+d, a!=c, and nsep(0^c 1 0^d,0^a 1 0^b)<=q, equals (q-1)^2+2. All word lengths are allowed and the maximum is attained. Consequently the unrestricted A(q) from source.md is at least (q-1)^2+2; its asymptotic growth remains unresolved.",
+  "contribution": "Determine the sharp directional extremal cost for the entire one-marker class containing Nicol's quadratic witness family, showing that this class cannot witness superquadratic growth. The upper bound combines Schwarz's classical all-relations index theorem with elementary separators; a strengthened cycle-insertion argument gives an attaining witness. This exact subclass optimum, rather than the additive one-state corollary alone, is the proposed contribution. No equivalent formula was found in the recorded bounded primary-source screen; correctness, novelty, and significance await fresh referee review.",
+  "proposer_job_id": "primary-20260913-nfa-asymmetry-research-71ec4a8ef3d7",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/one-marker-proof.md",
+    "evidence/research-literature.md",
+    "evidence/research-verification.md",
+    "evidence/research-checks.py",
+    "evidence/research-checks.json",
+    "evidence/external-source-manifest.json",
+    "evidence/external/nicol-2608.30928v1.pdf",
+    "evidence/external/nicol-2608.30928v1.html",
+    "evidence/external/schwarz-1974-sums.pdf",
+    "evidence/external/boolean-matrix-index-cai.pdf",
+    "evidence/external/demaine-etal-wordsep-author.pdf",
+    "evidence/source-views/schwarz-1974-p161.png",
+    "evidence/source-views/schwarz-1974-p167.png",
+    "evidence/source-views/zajac-jokay-p1331.png",
+    "evidence/source-views/nicol-p3.png"
+  ]
+}

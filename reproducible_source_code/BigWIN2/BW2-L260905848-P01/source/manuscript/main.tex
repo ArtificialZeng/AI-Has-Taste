@@ -1,0 +1,379 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={An Exact Computer-Assisted Resolution of the Binary (n,k,r)=(5,3,3) Frankl--Tokushige Instance},pdfauthor={Xiaojian Zeng},pdfsubject={Extremal finite geometry and exact SAT certification},pdfkeywords={cross-intersecting subspaces, Frankl--Tokushige conjecture, DRAT, exact certification}}
+\usepackage{microtype}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\cS}{\mathcal S}
+
+\title{An Exact Computer-Assisted Resolution of the
+ Binary (n,k,r)=(5,3,3) Frankl--Tokushige Instance}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $V=\F_2^5$, and let $\cF_1,\cF_2,\cF_3$ be families of
+three-dimensional linear subspaces such that
+$\dim(U_1\cap U_2\cap U_3)\geq 1$ whenever $U_i\in\cF_i$.
+We prove
+\[
+  |\cF_1|\,|\cF_2|\,|\cF_3|\leq 35^3=42875,
+\]
+and classify equality: all three families must be the complete star through
+one common one-dimensional subspace.  The proof is an exact finite
+certification.  It enumerates the 155 three-subspaces, encodes the forbidden
+triples and lossless symmetry reductions in two Boolean formulas, and uses
+binary DRAT streams containing independently checked refutation prefixes for
+the upper bound and for the non-star equality cases.  The archived streams
+have disclosed trailing data, including incomplete final records.  The result
+concerns only the displayed finite parameter instance; no broader parameter
+or priority claim is made.
+\end{abstract}
+
+\section{Context and statement}
+
+For a prime power $q$, write $\left[\begin{smallmatrix}V\\k\end{smallmatrix}\right]_q$ for the set of $k$-dimensional
+linear subspaces of $V$.  Families
+$\cF_i\subseteq \left[\begin{smallmatrix}V\\k_i\end{smallmatrix}\right]_q$ are called $r$-cross $t$-intersecting when
+\[
+ \dim(F_1\cap\cdots\cap F_r)\geq t
+ \qquad(F_i\in\cF_i,\ 1\leq i\leq r).
+\]
+Frankl and Tokushige proposed the corresponding product conjecture for
+vector spaces as Conjecture~8.1 of \cite{FranklTokushige2016}.  In the equal
+dimension, $t=1$ case it predicts
+\[
+ \prod_{i=1}^r |\cF_i|\leq \left[\begin{smallmatrix}n-1\\k-1\end{smallmatrix}\right]_q^r
+ \quad\text{when}\quad (r-1)n\geq rk,
+\]
+and a common full star attains the right-hand side.
+
+Two recent results locate the present parameter point relative to the known
+range.  Li, Lv, and Wen prove the product theorem, with equality
+classification, under
+$n\geq \frac{r}{r-1}(k_1+t)+1$ \cite[Theorem~1.1]{LiLvWen2026}; here that
+condition is $n\geq 7$.  Tokushige's two-family theorem applies when
+$n\geq 2k$ \cite[Theorem~2]{Tokushige2013}.  Applying it cyclically to
+nonempty $r$-cross families gives the $r$-family product bound for equal
+dimensions in that range, as observed explicitly in
+\cite[after Theorem~3]{ShimizuTokushige2026}; here it starts at $n=6$.
+Neither comparison reaches $n=5$.
+
+The computation below follows a proof-carrying finite-model pattern: the
+mathematical reduction, symmetry quotient, generated instance, and exact
+checker are kept distinct.  Exact predicates, symmetry-reduced exhaustion,
+and an independent verifier are also used for finite discrete-geometric
+models in \cite{ZengEtAl2026}.  That citation is methodological; the
+combinatorial objects and certificates here are different.
+
+Our result is the following precise instance.
+
+\begin{theorem}\label{thm:main}
+Let $V=\F_2^5$.  For $i=1,2,3$, let
+$\cF_i\subseteq \left[\begin{smallmatrix}V\\3\end{smallmatrix}\right]_2$, and suppose that
+\[
+ \dim(U_1\cap U_2\cap U_3)\geq 1
+ \qquad\text{for every }U_i\in\cF_i.
+\]
+Then
+\[
+ |\cF_1|\,|\cF_2|\,|\cF_3|\leq 35^3=42875.
+\]
+Equality holds if and only if there is a one-dimensional subspace $L\leq V$
+such that, for all $i$,
+\[
+ \cF_i=\cS(L):=\{U\in \left[\begin{smallmatrix}V\\3\end{smallmatrix}\right]_2:L\leq U\}.
+\]
+\end{theorem}
+
+The rest of the paper gives the complete correspondence between this theorem
+and the two refuted Boolean formulas.  A checked refutation is used only
+after the finite encoding and every normalization have been justified.
+
+\section{The exact finite model}
+
+The Gaussian counts are
+\[
+ |\left[\begin{smallmatrix}V\\3\end{smallmatrix}\right]_2|=\left[\begin{smallmatrix}5\\3\end{smallmatrix}\right]_2=155,
+ \qquad
+ |\cS(L)|=\left[\begin{smallmatrix}4\\2\end{smallmatrix}\right]_2=35.
+\]
+Over $\F_2$, each nonzero vector determines a distinct one-space, so there are
+31 possible stars.  Three copies of $\cS(L)$ are cross intersecting and attain
+$35^3$.
+
+Let $\cG=\left[\begin{smallmatrix}V\\3\end{smallmatrix}\right]_2$.  The generator enumerates $\cG$ by canonical
+row-reduced echelon bases.  Each resulting space is also represented by the
+32-bit mask of its eight vectors.  Independent triples of nonzero vectors
+give the same 155 distinct spaces.  For every ordered
+$(A,B,C)\in\cG^3$, declare the triple \emph{forbidden} when
+\[
+ A\cap B\cap C=\{0\}.
+\]
+The mask test finds 2,499,840 forbidden triples among
+$155^3=3,723,875$.  On every triple it agrees with a dual calculation: after
+orthogonal complementation, the six generators of the three resulting
+two-spaces have rank five exactly in the forbidden case.
+
+Introduce a membership variable $x_{i,U}$ for $1\leq i\leq3$ and
+$U\in\cG$.  For each forbidden triple include the clause
+\begin{equation}\label{eq:forbidden-clause}
+  \lnot x_{1,A}\vee\lnot x_{2,B}\vee\lnot x_{3,C}.
+\end{equation}
+
+\begin{lemma}\label{lem:base}
+The projections onto the 465 membership variables of the satisfying
+assignments of all clauses \eqref{eq:forbidden-clause} are exactly the ordered
+triples of cross-intersecting families in Theorem~\ref{thm:main}.
+\end{lemma}
+
+\begin{proof}
+Given three families, set $x_{i,U}=1$ precisely when $U\in\cF_i$.  Clause
+\eqref{eq:forbidden-clause} fails precisely when its forbidden triple is
+chosen, which is precisely a choice with zero common intersection.  Thus all
+clauses hold if and only if every allowed choice has positive-dimensional
+common intersection.
+\end{proof}
+
+This correspondence is exhaustive: the edge stream was independently
+reconstructed and compared record by record, and every generated clause of
+both final formulas was regenerated semantically and compared in order.
+
+\section{Lossless cardinality and symmetry reductions}
+
+For each family, the 155 membership bits are sorted in descending order by a
+Boolean insertion network.  Every comparator has outputs
+\[
+   h=p\vee q,\qquad \ell=p\wedge q,
+\]
+and six clauses encode these two equivalences.  Consequently the $j$th output
+$y_{i,j}$ satisfies
+\begin{equation}\label{eq:unary}
+ y_{i,j}=1 \quad\Longleftrightarrow\quad |\cF_i|\geq j
+ \qquad(1\leq j\leq155).
+\end{equation}
+The implications $y_{3,j}\Rightarrow y_{2,j}\Rightarrow y_{1,j}$ impose
+$a\geq b\geq c$, where $(a,b,c)=(|\cF_1|,|\cF_2|,|\cF_3|)$.  This loses
+nothing because the family labels may be permuted.
+
+For positive product, choose a member of the largest family.  The group
+$\operatorname{GL}(5,2)$ is transitive on $\cG$, so a simultaneous linear
+change of coordinates sends that member to a fixed vertex $U_0$.  The
+stabilizer of $U_0$ has three orbits on $\cG$, distinguished by
+$\dim(U_0\cap U)=1,2,3$.  Complete enumeration of its 64,512 elements gives
+orbit sizes
+\[
+ 112,\quad 42,\quad 1,
+\]
+and fixed representatives $R_1,R_2,R_3$, respectively.  Choosing a member of
+the second family and applying an element of the stabilizer therefore permits
+the additional clauses
+\begin{equation}\label{eq:normalization}
+ x_{1,U_0},\qquad
+ x_{2,R_1}\vee x_{2,R_2}\vee x_{2,R_3}.
+\end{equation}
+Transitivity witnesses for all 155 vertices and every stabilizer element were
+constructed directly over $\F_2$; the computed orbits agree exactly with the
+three intersection-dimension classes.
+
+\begin{lemma}\label{lem:normalization}
+Every cross-intersecting triple with positive product is carried, by a family
+permutation followed by one simultaneous element of $\operatorname{GL}(5,2)$,
+to a triple satisfying the cardinality ordering and
+\eqref{eq:normalization}.  These operations preserve family sizes,
+cross-intersection, and the property of being three copies of one full star.
+\end{lemma}
+
+\begin{proof}
+The preceding construction proves existence of the normalized triple.  A
+simultaneous invertible linear map preserves all intersection dimensions and
+cardinalities, and maps a full star through $L$ to the full star through the
+image of $L$.  Family permutation has the same invariance properties.
+\end{proof}
+
+\section{The certified product bound}
+
+On the complete sorted cardinality cube
+$1\leq c\leq b\leq a\leq155$, exhaustive integer enumeration gives 829
+componentwise-minimal triples $(\alpha,\beta,\gamma)$ whose upward closure is
+exactly
+\[
+  abc\geq42876.
+\]
+For each such boundary triple, a Tseitin variable is made equivalent to
+\[
+ y_{1,\alpha}\wedge y_{2,\beta}\wedge y_{3,\gamma},
+\]
+and one clause requires at least one of the 829 terms.  By
+\eqref{eq:unary}, this disjunction is true exactly when the product exceeds
+$42875$.
+
+Let $\Phi_{>}$ be the conjunction of the exact sorting-network clauses, the
+cardinality ordering, \eqref{eq:normalization}, all forbidden-triple clauses,
+the term equivalences, and their final disjunction.  The generated DIMACS
+formula has 72,904 variables and 2,718,299 clauses.  CaDiCaL 1.9.5 produced a
+343,067,661-byte binary DRAT stream containing a checked refutation prefix
+ending at byte 343,035,643.  The remaining 32,018 bytes include an incomplete
+final record and are not part of that prefix.  A system description of the
+CaDiCaL solver line is given in \cite{BiereEtAl2024}.  A separate
+\texttt{drat-trim} run reached the contradiction in the prefix and returned
+\texttt{s VERIFIED} after 603,299,890 resolution steps.  The DRAT format and
+the checker's role in validating unsatisfiability proofs are described in
+\cite{WetzlerHeuleHunt2014}.
+
+\begin{proposition}\label{prop:upper}
+No cross-intersecting triple has product at least $42876$.
+\end{proposition}
+
+\begin{proof}
+The checked DRAT refutation proves that $\Phi_{>}$ is unsatisfiable.  If a
+cross-intersecting triple with product at least $42876$ existed, all three
+families would be nonempty.  Lemma~\ref{lem:normalization} would normalize it.
+Lemma~\ref{lem:base} supplies all forbidden-triple clauses; the exact sorting
+network supplies \eqref{eq:unary}; and the exhaustive boundary equivalence
+would make the final disjunction true.  Extending by the uniquely determined
+comparator and Tseitin variables would give a satisfying assignment of
+$\Phi_{>}$, a contradiction.
+\end{proof}
+
+Since products are integers, Proposition~\ref{prop:upper} gives the asserted
+upper bound.  Together with the common-star construction, it also proves
+attainment.
+
+\section{Certified equality classification}
+
+The sorted positive integer triples bounded by 155 whose product is exactly
+$42875$ are, exhaustively,
+\begin{equation}\label{eq:size-triples}
+ (35,35,35),\qquad (49,35,25),\qquad (125,49,7).
+\end{equation}
+Using adjacent unary outputs in \eqref{eq:unary}, a second formula imposes the
+disjunction of these three \emph{exact} cardinality patterns.
+
+It remains to ask whether an equality assignment can fail to be a common
+star.  For every one-space $L$, include the single 465-literal clause
+\begin{equation}\label{eq:star-exclusion}
+ D_L:=\mathop{\vee}_{i=1}^3\left(
+   \mathop{\vee}_{U\in\cS(L)}\lnot x_{i,U}
+   \ \vee\!
+   \mathop{\vee}_{U\notin\cS(L)}x_{i,U}
+ \right).
+\end{equation}
+The clause $D_L$ is false on exactly one membership assignment: all three
+families are the complete star $\cS(L)$.  The 31 constructed stars are
+distinct, feasible, and have size 35.  Thus conjoining all $D_L$ excludes
+exactly the common-star equality triples and nothing else.
+
+Let $\Phi_{=}^{\mathrm{ns}}$ contain the base encoding and normalizations, the
+exact disjunction \eqref{eq:size-triples}, and the 31 clauses
+\eqref{eq:star-exclusion}.  It has 72,078 variables and 2,715,035 clauses.
+CaDiCaL produced a 59,270,689-byte binary DRAT stream whose checked
+refutation prefix ends at byte 59,266,795.  The remaining 3,894 bytes include
+an incomplete final record and are not part of that prefix.  An independent
+\texttt{drat-trim} run reached the contradiction in the prefix and returned
+\texttt{s VERIFIED} after 183,039,602 resolution steps.
+
+\begin{proposition}\label{prop:equality}
+Every cross-intersecting triple with product $42875$ consists of three copies
+of one full star.
+\end{proposition}
+
+\begin{proof}
+Suppose instead that a non-star equality triple exists.  Its product is
+positive, so Lemma~\ref{lem:normalization} produces a normalized equality
+triple.  The common-star property is invariant under both normalization
+operations; hence the normalized triple is still non-star and satisfies every
+$D_L$.  Lemma~\ref{lem:base}, the exact unary network, and
+\eqref{eq:size-triples} then extend it to a satisfying assignment of
+$\Phi_{=}^{\mathrm{ns}}$.  This contradicts the checked refutation.
+\end{proof}
+
+Propositions~\ref{prop:upper} and \ref{prop:equality}, together with the
+explicit common-star construction, prove Theorem~\ref{thm:main}.
+
+\section{Reproducibility, trust boundary, and limits}
+
+The accompanying archive separates the proof into inspectable stages.  The
+principal files and their roles are shown in Table~\ref{tab:files}.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+\toprule
+File & Role \\
+\midrule
+\texttt{build\_rref\_hypergraph.py} & Enumerate the 155 spaces and all
+ordered triples; cross-check primal intersection and dual rank. \\
+\texttt{verify\_reductions.py} & Rebuild transitivity witnesses, all
+stabilizer orbits, the threshold antichain, and the 31 full stars. \\
+\texttt{cnf\_product\_threshold.py} & Generate the exact product-threshold
+CNF from the edge stream. \\
+\texttt{cnf\_equality\_classification.py} & Generate the exact non-star
+equality CNF. \\
+\texttt{product\_above\_bound.cnf},
+\texttt{product\_above\_bound.bdrat} & Product formula and archived binary
+DRAT stream containing the checked refutation prefix, with trailing data
+disclosed in the text. \\
+\texttt{nonstar\_equality.cnf},
+\texttt{nonstar\_equality.bdrat} & Equality formula and archived binary DRAT
+stream containing the checked refutation prefix, with trailing data disclosed
+in the text. \\
+\bottomrule
+\end{tabular}
+\caption{Main certificate components.}
+\label{tab:files}
+\end{table}
+
+The decisive replay commands are
+\begin{verbatim}
+python3 evidence/build_rref_hypergraph.py
+python3 evidence/verify_reductions.py
+drat-trim evidence/product_above_bound.cnf \
+  evidence/product_above_bound.bdrat -i
+drat-trim evidence/nonstar_equality.cnf \
+  evidence/nonstar_equality.bdrat -i
+\end{verbatim}
+An independent audit additionally enumerated the spaces as eight-element
+spans rather than from submitted RREF bases, compared the complete forbidden
+edge stream, regenerated every CNF clause from its semantics, and replayed
+both refutation prefixes.  All decisive predicates are Boolean or integer; no
+floating-point conclusion, unverified solver status, or heuristic search
+claim enters the theorem.
+
+OpenAI Codex assisted with literature search, finite-model and encoding
+design, draft code, adversarial audit organization, and manuscript
+preparation.  Language-model output is not mathematical evidence.  The
+theorem rests on the stated reductions, archived exact instances, and checked
+refutations.  No proof assistant was used.
+
+Finally, Theorem~\ref{thm:main} is restricted to
+$(q,n,k,r,t)=(2,5,3,3,1)$.  It neither proves another parameter case nor
+asserts that the finite instance was not resolved elsewhere.  The literature
+comparison above records only what the cited results cover.
+
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The exact generalized-pancake spectral gap at (m,n)=(4,2)},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact spectra of a generalized pancake Cayley graph and its Schreier graph},
+  pdfkeywords={generalized pancake graph, spectral gap, Cayley graph, Schreier graph, finite Fourier analysis}
+}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Cay}{\mathrm{Cay}}
+\newcommand{\Sch}{\mathrm{Sch}}
+
+\title{The exact generalized-pancake spectral gap at $(m,n)=(4,2)$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the generalized pancake Cayley graph on
+$\Z_4\wr S_2$ and its color--position Schreier multigraph, we compute the
+unnormalized adjacency spectral gaps exactly.  A Fourier decomposition gives
+sixteen explicit $2\times2$ blocks for the $32$-vertex Cayley operator and
+four such blocks for the $8$-vertex Schreier operator.  Their characteristic
+polynomials show that both second adjacency eigenvalues are $2\sqrt2$.
+Consequently
+\[
+  \psi_{4,2}=\beta_{4,2}=4-2\sqrt2.
+\]
+This resolves only the single parameter cell $(4,2)$; it makes no assertion
+about any other case of the proposed equality.
+\end{abstract}
+
+\section{Context and statement}
+
+For $m\geq 3$, a generalized prefix reversal $r_i^\varepsilon$
+($\varepsilon\in\{-1,+1\}$) reverses the first $i$ positions of a colored
+permutation and adds $\varepsilon$ modulo $m$ to the colors in that prefix.
+These reversals generate generalized pancake Cayley graphs; see
+\cite{BlancoBuehrle2025,GreavesZhu2026,Blanco2026} for their spectral
+context.  Greaves and Zhu conjectured equality between the adjacency gap of
+the Cayley graph and that of its color--position quotient
+\cite[Conjecture~2]{GreavesZhu2026}.  Blanco subsequently exhibited strict
+inequality at $(6,2)$ and proposed a revised parameter classification
+\cite[Section~5]{Blanco2026}.  The latter article evaluates $(3,2)$ but does
+not state the exact value at $(4,2)$.
+
+We now fix that one cell.  Let
+\[
+ G=\Z_4\wr S_2,\qquad
+ R=\{r_1^-,r_1^+,r_2^-,r_2^+\}.
+\]
+A vertex of $\Cay(G,R)$ is a two-letter colored permutation, so the Cayley
+graph has $2!\,4^2=32$ vertices.  Its generator-sum adjacency matrix is
+\[
+ A_{\rm Cay}(x,y)=\#\{r\in R:r(x)=y\}.
+\]
+For the color--position action on $X=\Z_4\times\{1,2\}$, set
+\[
+ r_i^\varepsilon(a,p)=
+ \begin{cases}
+   (a+\varepsilon,i+1-p),&p\leq i,\\
+   (a,p),&p>i.
+ \end{cases}
+\]
+Its Schreier generator-sum matrix is
+\[
+ A_{\rm Sch}(u,v)=\#\{r\in R:r(u)=v\}.
+\]
+Thus fixed generators are counted as loops.  Both matrices are real
+symmetric and have row sum four.  If the eigenvalues of a symmetric matrix
+$A$ are ordered with multiplicity as
+$\lambda_1(A)\geq\lambda_2(A)\geq\cdots$, define
+\[
+ \psi_{4,2}=4-\lambda_2(A_{\rm Cay}),\qquad
+ \beta_{4,2}=4-\lambda_2(A_{\rm Sch}).
+\]
+
+\begin{theorem}\label{thm:main}
+For the operators just defined,
+\[
+ \lambda_2(A_{\rm Cay})=\lambda_2(A_{\rm Sch})=2\sqrt2.
+\]
+Hence $\psi_{4,2}=\beta_{4,2}=4-2\sqrt2$.
+\end{theorem}
+
+\section{Exact Fourier blocks}
+
+Put $\zeta=i$ and, with subscripts taken modulo four,
+\[
+ d_j=\zeta^j+\zeta^{-j}=2\cos(\pi j/2),\qquad
+ (d_0,d_1,d_2,d_3)=(2,0,-2,0).
+\]
+We use only the elementary Fourier basis of the cyclic group $\Z_4$; general
+background on finite-group Fourier decompositions may be found in
+\cite{Terras1999}.
+
+\subsection{The Schreier operator}
+
+The defining action gives, for $f:X\to\C$,
+\begin{align*}
+ (A_{\rm Sch}f)(a,1)
+   &=\sum_{\varepsilon=\pm1}
+        \bigl(f(a+\varepsilon,1)+f(a+\varepsilon,2)\bigr),\\
+ (A_{\rm Sch}f)(a,2)
+   &=2f(a,2)+\sum_{\varepsilon=\pm1}f(a+\varepsilon,1).
+\end{align*}
+On functions of the form $f(a,p)=\zeta^{ja}u_p$, the matrix in the position
+basis $(1,2)$ is therefore
+\[
+ S_j=\begin{pmatrix}d_j&d_j\\d_j&2\end{pmatrix}.
+\]
+The four Fourier modes are mutually orthogonal and exhaust $\C^X$.  Direct
+determinant calculation gives, for $j=0,1,2,3$ respectively,
+\[
+ \det(xI-S_j)=x(x-4),\quad x(x-2),\quad x^2-8,\quad x(x-2).
+\]
+Consequently
+\begin{equation}\label{eq:sch-char}
+ \chi_{\rm Sch}(x)=x^3(x-4)(x-2)^2(x^2-8).
+\end{equation}
+
+\subsection{The Cayley operator}
+
+Represent a colored word by $(t,a,b)$, where $t=0$ denotes label order
+$(1,2)$, $t=1$ denotes label order $(2,1)$, and $a,b\in\Z_4$ are the colors
+in the first and second positions.  The four transitions are
+\[
+ r_1^\varepsilon(t,a,b)=(t,a+\varepsilon,b),\qquad
+ r_2^\varepsilon(t,a,b)=(1-t,b+\varepsilon,a+\varepsilon).
+\]
+Because $R=R^{-1}$, the generator-sum action on functions may equivalently
+be written using these forward transitions.  Define
+\[
+ F_{s,k,l}(t,a,b)=\mathbf 1_{t=s}\zeta^{ka+lb}.
+\]
+Substitution into the four transitions yields
+\begin{equation}\label{eq:intertwine}
+ A_{\rm Cay}F_{s,k,l}
+   =d_kF_{s,k,l}+d_{k+l}F_{1-s,l,k}.
+\end{equation}
+It follows that, for $(k,l)\in\Z_4^2$,
+\[
+ W_{k,l}=\operatorname{span}\{F_{0,k,l},F_{1,l,k}\}
+\]
+is invariant and has the exact block
+\[
+ B_{k,l}=\begin{pmatrix}d_k&d_{k+l}\\d_{k+l}&d_l\end{pmatrix}.
+\]
+The first basis vectors of the sixteen spaces give every Fourier character
+on the $t=0$ slice exactly once; the second basis vectors do the same on the
+$t=1$ slice.  Thus the spaces are mutually orthogonal and account for all
+$32$ dimensions.
+
+For completeness, the determinant factors of all blocks are displayed
+below; rows are indexed by $k$ and columns by $l$:
+\[
+\begin{array}{c|cccc}
+ &0&1&2&3\\ \hline
+0&x(x-4)&x(x-2)&x^2-8&x(x-2)\\
+1&x(x-2)&(x-2)(x+2)&x(x+2)&(x-2)(x+2)\\
+2&x^2-8&x(x+2)&x(x+4)&x(x+2)\\
+3&x(x-2)&(x-2)(x+2)&x(x+2)&(x-2)(x+2)
+\end{array}
+\]
+Multiplying the sixteen factors gives
+\begin{equation}\label{eq:cay-char}
+ \chi_{\rm Cay}(x)
+ =x^{10}(x-4)(x-2)^8(x+2)^8(x+4)(x^2-8)^2.
+\end{equation}
+
+\subsection{Ordering the eigenvalues}
+
+Equations \eqref{eq:sch-char} and \eqref{eq:cay-char} show that the largest
+three distinct eigenvalues of each operator are
+\[
+ 4>2\sqrt2>2.
+\]
+These inequalities are exact: all terms are positive and their squares are
+$16>8>4$.  In particular, the factor $x-4$ occurs once in each
+characteristic polynomial, and the next eigenvalue, counted with
+multiplicity, is $2\sqrt2$.  Subtracting it from the common degree four
+proves Theorem~\ref{thm:main}.
+
+\section{Verification and scope}
+
+The proof above is self-contained; computation is not needed for its logical
+conclusion.  Two deterministic Python programs were nevertheless used as
+cross-checks.  One constructs the $32\times32$ and $8\times8$ integer
+matrices directly from the transitions and factors their characteristic
+polynomials.  The other verifies equation \eqref{eq:intertwine} and its
+Schreier analogue entry by entry over the Gaussian integers, checks block
+exhaustion, and compares the block products with direct characteristic
+polynomials.  These checks use SymPy \cite{MeurerEtAl2017} and no
+floating-point eigenvalues.  Related computer-assisted work from the
+user-supplied bibliography likewise records exact rational or algebraic sign
+decisions together with independent definition-level verification programs
+\cite{ZengEtAl2026}; here, however, the programs are only corroborative.
+
+The result is confined to $(m,n)=(4,2)$.  In particular, it neither proves
+the revised classification proposed in \cite{Blanco2026} nor gives an exact
+formula for other generalized pancake graphs.  No claim of bibliographic
+priority is made.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex was used in proof reconstruction, exact-code development,
+literature triage, and organization and drafting of the manuscript.  The
+author reviewed the mathematical statements, source comparisons, exact
+certificates, and final text and takes responsibility for them.  AI systems
+were not treated as authors or as sources of mathematical authority.  The
+deterministic checks described above are corroboration of the displayed
+proof, not a substitute for it.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

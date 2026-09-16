@@ -1,0 +1,416 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Polynomial-time counting of two-level transpose fibres},
+  pdfauthor={Xiaojian Zeng},pdfsubject={Exact enumeration of two-level transpose fibres}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+
+
+\newcommand{\card}[1]{\lvert #1\rvert}
+\DeclareMathOperator{\degp}{deg}
+\title{Polynomial-time counting of two-level transpose fibres}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Barrese, Loehr, Remmel and Sagan asked how many Ferrers boards have a
+specified singleton image under the $m$-level transpose. We give an exact
+algorithm for the entire $m=2$ case. A row-pair bijection identifies each
+fibre with nonnegative integer vectors satisfying adjacent-sum bounds and
+one terminal bound. For $t$ coordinates and arbitrary nonnegative
+capacities of maximum $A$, a discrete polynomial algorithm uses $O(t^4)$
+integer operations on $O(t\log(A+t+2))$-bit integers and stores $O(t^2)$
+integers. Thus $O(t^6\log^2(A+t+2))$ elementary bit operations suffice.
+The key is a representation with at most $i$ integer-interval polynomial
+pieces at layer $i$, normalized by samples inside each interval.
+The original arbitrary-$m$ question remains unresolved here.
+\end{abstract}
+
+\section{The fibre problem and the result}
+
+A Ferrers shape is a finite weakly increasing sequence of positive
+column heights $B=(b_1,\ldots,b_n)$. The empty sequence is allowed.
+We identify representations that differ only by leading zero columns,
+as in Barrese's convention \cite[Section~3]{Barrese2021}.
+For an integer $m\geq1$, level $p$ consists of rows
+$(p-1)m+1,\ldots,pm$, counted from the bottom. Its cell total is
+\[
+ L_p(B)=\sum_{j=1}^n\min\{m,\max\{0,b_j-(p-1)m\}\}.
+\]
+If $B$ has $t$ nonempty levels, its \emph{$m$-level transpose} is
+\[
+ \ell_m(B)=(L_t(B),\ldots,L_1(B)),
+ \qquad \ell_m(\varnothing)=\varnothing.
+\]
+A shape is \emph{$m$-singleton} if at most one column has height strictly
+between $(p-1)m$ and $pm$, for each $p$. The level transpose maps Ferrers
+shapes onto singleton shapes and is an involution on the singleton
+shapes \cite[Definition~4 and the following paragraph]{BLRS2016}.
+For a singleton target $C$, write
+\[
+ F_m(C)=\card{\{B:\ell_m(B)=C\}}.
+\]
+The width of $B$ is unrestricted. This set is finite because its members
+have area $\sum_j c_j$.
+
+Barrese, Loehr, Remmel and Sagan posed this counting question in
+\cite[Section~6.2, p.~33]{BLRS2016}. Their earlier formula
+\cite[Theorem~5.2]{BLRS2014} counts singleton boards in a whole
+$m$-level rook-equivalence class. A fibre fixes one transpose image and
+includes nonsingleton boards, so it is a different enumeration problem.
+We evaluate every fibre for $m=2$. The arbitrary-$m$ question and the
+broader enumeration of whole equivalence classes remain unresolved here.
+
+For a nonnegative integer vector $a=(a_1,\ldots,a_t)$, define
+\begin{equation}\label{eq:polytope}
+ \mathcal D(a)=\{d\in\Z_{\geq0}^t:
+ d_i+d_{i+1}\leq a_i\ (1\leq i<t),\quad d_t\leq a_t\}.
+\end{equation}
+The empty vector has one solution. All logarithms below are to base two.
+
+\begin{theorem}\label{thm:main}
+For every $t\geq1$ and $a\in\Z_{\geq0}^t$, set $A=\max_i a_i$.
+The number $\card{\mathcal D(a)}$ can be computed exactly with
+$O(t^4)$ integer arithmetic operations on integers of
+$O(t\log(A+t+2))$ bits, using $O(t^2)$ stored integers.
+In particular, $O(t^6\log^2(A+t+2))$ elementary bit operations suffice.
+At layer $i$, the algorithm represents its count function on at most
+$i$ integer intervals, each by a polynomial of degree at most $i-1$.
+
+If $C=(c_1,\ldots,c_t)$ is a nonempty $2$-singleton shape, put
+\begin{equation}\label{eq:capacity}
+ s_i=c_{t+1-i},\qquad s_{t+1}=0,\qquad
+ a_i=\left\lfloor \frac{s_i}{2}\right\rfloor-\left\lceil \frac{s_{i+1}}{2}\right\rceil.
+\end{equation}
+Then $a_i\geq0$ and $F_2(C)=\card{\mathcal D(a)}$ by an explicit
+bijection. Consequently $F_2(C)$ is computable in time polynomial in
+the binary input length
+\[
+ L=\log(t+1)+\sum_{i=1}^t\log(c_i+1).
+\]
+The empty target has $F_2(\varnothing)=1$.
+\end{theorem}
+
+The quantitative issue is dependence on the \emph{bit lengths} of the
+capacities. A table indexed by every possible coordinate value can be
+exponentially large in those lengths. The theorem replaces such a table
+by a bounded number of univariate pieces; it does not require a fixed
+dimension or a repeated pattern in $a$.
+
+\paragraph{Relation to earlier counting methods.}
+For a common adjacent-sum capacity $q$, B\'ona, Ju and Yoshida
+\cite[Section~2.1]{BJY2007} express weighted-path counts through a
+$(q+1)$-square transfer matrix. Jiang, Yang and Zhong
+\cite[Theorem~1.1 and equation~(4)]{JYZ2026} extend this common-capacity
+model to blocks, compressing the transfer matrix to $q+1$ height states.
+Jiang, Wen and Zhong
+\cite[Section~2.1]{JWZ2026} use transfer matrices for bounds alternating
+between $q$ and $q+1$. Cigler and Krattenthaler
+\cite[Section~3, Theorem~4]{CK2024} enumerate alternating sequences in
+a common interval with specified endpoints, and develop weighted and
+tableau extensions. These works provide formulas for structured
+capacities; the present bound holds for every input vector $a$.
+
+There is also a bounded-poset interpretation. With
+$\beta_1=0$, $\beta_{i+1}=a_i-\beta_i$ and
+$y_i=(-1)^{i-1}(d_i-\beta_i)$, the edge inequalities become
+$y_1\leq y_2\geq y_3\leq\cdots$. The individual bounds on $d_i$
+become integer lower and upper bounds on $y_i$. Attaching marked lower
+and upper elements realizes a marked order polytope.
+Jochemko and Sanyal \cite[Theorem~2.6]{JS2014} prove piecewise
+polynomiality in its markings. Assaf and Bergeron
+\cite[Corollary~3.15]{AB2020} give a linear-extension decomposition
+for bounded $\mathcal P$-partitions. Neither statement by itself bounds
+the computation polynomially in the variable poset size. Our algorithm
+works at one input and maintains at most $i$ univariate pieces at layer $i$.
+
+Symbolic inference already uses piecewise polynomials and interpolation:
+Zhe Zeng and Van den Broeck \cite[Sections~4.1--4.3]{ZVB2020} develop
+these methods for integration over real variables. Here the operation is
+discrete prefix summation, with a separate coefficient-size analysis.
+The distinction between arithmetic operations and bit complexity is also
+explicit in Zijian Zeng's treatment of polynomial evaluation and
+interpolation \cite{Zeng2026}. Our proof supplies both
+bounds for consecutive integer sampling nodes.
+
+The contribution is the combination of the fibre bijection and the
+uniform interval and bit bounds. In the primary statements inspected
+through 13 September 2026, we found no equivalent binary-input fibre
+theorem. This is a bounded literature comparison; it does not exclude
+all possible specializations of earlier symbolic or tableau methods.
+
+\section{The row-pair bijection}
+
+For $m=2$, the singleton condition says exactly that odd column heights
+do not repeat. If $u\leq v$ are consecutive target heights, then
+$\left\lceil u/2\right\rceil\leq\left\lfloor v/2\right\rfloor$: failure would require $u=v$ odd.
+Thus the capacities in \eqref{eq:capacity} are nonnegative.
+
+\begin{proposition}\label{prop:bijection}
+With the notation of \eqref{eq:capacity}, the fibre of $C$ is in bijection
+with $\mathcal D(a)$. For $d\in\mathcal D(a)$, its preimage has row lengths
+\begin{equation}\label{eq:rows}
+ r_{2i-1}=\left\lceil \frac{s_i}{2}\right\rceil+d_i,
+ \qquad r_{2i}=\left\lfloor \frac{s_i}{2}\right\rfloor-d_i
+ \quad(1\leq i\leq t).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Given a preimage $B$, let $r_j$ be its number of columns of height at
+least $j$, padding with zero rows up to $2t$. These row lengths are
+weakly decreasing and nonnegative, and
+$r_{2i-1}+r_{2i}=s_i$. Setting
+$d_i=\left\lfloor s_i/2\right\rfloor-r_{2i}$ gives \eqref{eq:rows}.
+The within-pair order is equivalent to $d_i\geq0$; the between-pair
+order $r_{2i}\geq r_{2i+1}$ is equivalent to
+$d_i+d_{i+1}\leq a_i$. The last row is nonnegative precisely when
+$d_t\leq a_t$.
+
+Conversely these inequalities make every row in \eqref{eq:rows}
+weakly decreasing, with the last row nonnegative. Since $s_t>0$,
+there are exactly $t$ nonempty levels. Conjugating the rows gives a
+unique shape with positive column heights and the prescribed level
+totals. These constructions are inverse. Its width is $r_1$ and is
+allowed to vary. Finally only the empty shape has empty transpose.
+\end{proof}
+
+For example, $C=(2,4)$ gives $a=(1,1)$. The three vectors
+$(0,0),(1,0),(0,1)$ yield, respectively, the shapes
+$(2,4),(1,1,4),(3,3)$. This example exhibits both varying width and a
+nonsingleton preimage.
+
+Every nonnegative capacity vector actually arises from a singleton
+target. Set $s_t=2a_t+1$ and, backwards for $i<t$, set
+\[
+ s_i=2\left(a_i+\left\lceil \frac{s_{i+1}}2\right\rceil\right).
+\]
+The sequence $s$ is positive and weakly decreasing. Its entries other
+than $s_t$ are even, so reversing it gives a $2$-singleton shape.
+Substitution in \eqref{eq:capacity} recovers $a$.
+
+\section{Discrete polynomial propagation}
+
+For $t\geq1$ define the redundant individual bounds
+\[
+ U_1=a_1,\qquad U_i=\min(a_{i-1},a_i)\quad(2\leq i\leq t).
+\]
+Let $f_i(x)$ count prefixes $(d_1,\ldots,d_i)$ with last coordinate
+$x$, all edges within the prefix satisfied, and
+$0\leq d_j\leq U_j$ for every $j\leq i$. At an intermediate prefix
+this anticipates the next edge, but every full solution already obeys
+these bounds. Fixing the last coordinate gives
+\begin{align}
+ f_1(x)&=1 &&(0\leq x\leq U_1),\label{eq:initial}\\
+ H_i(z)&=\sum_{x=0}^z f_i(x) &&(0\leq z\leq U_i),\label{eq:prefix}\\
+ f_{i+1}(y)&=H_i(\min\{U_i,a_i-y\})
+ &&(0\leq y\leq U_{i+1}).\label{eq:transition}
+\end{align}
+The argument in \eqref{eq:transition} is nonnegative since
+$U_{i+1}\leq a_i$. The desired answer is $H_t(U_t)$.
+For $t=1$ this is simply $a_1+1$.
+
+Throughout, an interval $[l,r]$ means its integer points. On a
+nonempty interval store a polynomial in the shifted binomial basis,
+\begin{equation}\label{eq:piece}
+ f_i(x)=\sum_{k=0}^{d}c_k\binom{x-l}{k},\qquad
+ d\leq\min(i-1,r-l).
+\end{equation}
+Only values on the interval matter. In particular, a short interval
+may use a lower-degree interpolant even if a polynomial previously
+defined on a larger interval had higher degree.
+
+\begin{lemma}\label{lem:pieces}
+The recurrence \eqref{eq:initial}--\eqref{eq:transition} admits a
+representation \eqref{eq:piece} on at most $i$ disjoint consecutive
+nonempty intervals covering $[0,U_i]$. All coefficients are integers,
+and they can be computed without iterating over a capacity-sized domain.
+\end{lemma}
+\begin{proof}
+The first layer is $[0,U_1]$ with coefficient vector $(1)$.
+Suppose a layer-$i$ piece is \eqref{eq:piece}, and let $T$ be the
+total count on preceding intervals. The identity
+\[
+ \sum_{q=0}^n\binom qk=\binom{n+1}{k+1}
+\]
+and Pascal's identity show that the inclusive prefix on this interval
+has coefficients, relative to $l$,
+\begin{equation}\label{eq:prefixcoeff}
+ h_0=T+c_0,\qquad h_k=c_{k-1}+c_k\ (1\leq k\leq d),
+ \qquad h_{d+1}=c_d.
+\end{equation}
+Evaluating it at $r$ supplies the next value of $T$.
+Thus prefix summation preserves the intervals and raises the degree
+by at most one.
+
+For each prefix interval $[l,r]$, reflection in
+\eqref{eq:transition} gives the interval
+\begin{equation}\label{eq:reflect}
+ [a_i-r,a_i-l]\cap[0,U_{i+1}].
+\end{equation}
+Discard empty intersections. Each surviving interval carries the
+reflected prefix polynomial, of degree at most $i$.
+The only possible additional piece is the constant $H_i(U_i)$ on
+\begin{equation}\label{eq:saturation}
+ [0,\min\{U_{i+1},a_i-U_i-1\}],
+\end{equation}
+if this interval is nonempty. The strict endpoint is needed:
+$a_i-y=U_i$ belongs to \eqref{eq:reflect}, whereas
+\eqref{eq:saturation} accounts for $a_i-y>U_i$.
+The resulting intervals are disjoint and cover $[0,U_{i+1}]$.
+Reversing the old interval order puts the reflected pieces in
+increasing order, so sorting is unnecessary.
+
+On a surviving interval $[b,e]$ with reflected polynomial $Q$, set
+\[
+ D=\min\{i,\degp Q,e-b\}.
+\]
+Evaluate $Q$ at $b,b+1,\ldots,b+D$ and store their successive
+forward differences. If $D=e-b$, every point of the interval was
+sampled. Otherwise $\degp Q\leq D$, and Newton interpolation
+recovers $Q$ identically. Hence the stored representation is exact,
+integral, and has degree at most $\min(i,e-b)$.
+Each old piece produces at most one new piece, and saturation adds
+at most one. Induction proves the claim, including zero capacities,
+one-point intervals and coincident boundaries.
+\end{proof}
+
+Equations \eqref{eq:prefixcoeff}--\eqref{eq:saturation}, followed by
+the stated sampling rule, specify the algorithm completely: initialize
+\eqref{eq:initial}, form the prefix pieces, reflect and normalize for
+each next coordinate, and return the last prefix total. No symbolic
+expansion in a monomial basis is required.
+
+\section{Arithmetic, storage and bit bounds}
+
+The normalization on short intervals also controls integer sizes.
+The coefficient of \eqref{eq:piece} is
+\begin{equation}\label{eq:diffbound}
+ c_k=\Delta^k f_i(l)
+ =\sum_{j=0}^k(-1)^{k-j}\binom kj f_i(l+j),\qquad
+ |c_k|\leq 2^k(A+1)^{i-1}.
+\end{equation}
+Indeed all sampled arguments lie in the actual interval. Fixing the
+last coordinate leaves at most $(A+1)^{i-1}$ prefixes, which proves
+the bound. Moreover $0\leq T\leq(A+1)^i$, so the prefix coefficients
+in \eqref{eq:prefixcoeff} have $O(i\log(A+2))$ bits. Intermediate
+rows of the forward-difference table satisfy the same type of bound.
+
+An evaluation at an offset $0\leq n\leq A$ uses
+\[
+ \binom n0=1,\qquad
+ \binom n{k+1}=\binom nk\frac{n-k}{k+1}.
+\]
+Each division is exact. If $k>n$, the binomial value has already become
+zero. For $k\leq t$, each nonzero binomial factor is at most
+$(A+t+2)^t$. Combining this estimate with \eqref{eq:diffbound}
+and \eqref{eq:prefixcoeff} bounds coefficient products, signed partial
+sums, and temporary products before division by
+$O(t\log(A+t+2))$ bits. This controls intermediate cancellation as
+well as the final values. Endpoint arithmetic and counters fit in
+the same bound.
+
+At transition $i$ there are $O(i)$ pieces and $O(i)$ coefficients
+per piece. Each of the $O(i)$ sample evaluations costs $O(i)$ integer
+operations, and its forward-difference table costs $O(i^2)$ operations.
+The transition therefore costs $O(i^3)$ operations. Prefix construction
+and final summation cost less. Summing over the transitions yields
+$O(t^4)$ operations. Keeping the current, prefix and next layers, and
+one temporary difference table, takes $O(t^2)$ stored integers.
+Schoolbook multiplication and division of $b$-bit integers cost
+$O(b^2)$, giving the bit bound in Theorem~\ref{thm:main}.
+
+Finally $\card{\mathcal D(a)}\leq(A+1)^t$, so the output has
+$O(t\log(A+2))$ bits. For the target input,
+$A\leq c_t/2$, $t=O(L)$ and $\log(A+2)=O(L)$.
+Proposition~\ref{prop:bijection} and Lemma~\ref{lem:pieces} therefore
+complete the proof of Theorem~\ref{thm:main}.
+
+\section{Exact verification and limitations}
+
+The accompanying Python implementation uses arbitrary-precision
+integers throughout. A separate verifier constructs full inverse sets
+by column-multiplicity enumeration, counts directly from
+\eqref{eq:polytope}, and evaluates a suffix recurrence without
+polynomial compression. Its exact finite coverage is recorded in
+Table~\ref{tab:checks}. All these comparisons agreed.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}p{0.32\linewidth}p{0.61\linewidth}@{}}
+\toprule
+Check & Coverage \\
+\midrule
+Capacity enumeration & All $5\,461$ vectors in
+$\{0,1,2,3\}^t$, $0\leq t\leq6$ \\
+Ferrers shapes and inverse sets & All $7\,338$ shapes of area at most
+$24$, grouped into $1\,866$ fibres \\
+Every interval value & $400$ seeded vectors, lengths $1$--$25$ and
+capacities $0$--$40$; $74\,587$ count values \\
+Large heterogeneous dilations & $16$ vectors, lengths $2$--$14$ and
+$18$, at scales $10^{75}+31,\ldots,10^{75}+46$ \\
+\bottomrule
+\end{tabular}
+\caption{Exact implementation checks. The unlimited theorem is proved
+above; these finite comparisons test its implementation.}
+\label{tab:checks}
+\end{table}
+
+For the large-dilation check, let $P(b)\subseteq\R^t$ be the real
+polytope given by \eqref{eq:polytope} with capacities $b$.
+Signing alternate columns of the edge-constraint matrix turns it
+into the transpose of a directed incidence matrix. Such a matrix
+is totally unimodular: in a square submatrix, expand along a row
+with at most one nonzero entry; if every row has two, their opposite
+signs make the matrix singular. Adjoining the terminal and
+nonnegativity unit rows preserves this property by the same determinant
+expansion. Hence every vertex of $P(b)$ is integral, by Cramer's rule.
+It is bounded, and $P(kb)=kP(b)$ for $k\geq0$.
+Ehrhart's theorem \cite[Theorem~3.8]{BR2015} makes
+$\card{\mathcal D(kb)}$ a polynomial in $k$ of degree at most $t$,
+also when zero capacities lower the dimension. Values at $0,\ldots,t$
+from the suffix counter determine it by exact rational Lagrange
+interpolation. One further small scale checks each interpolant before
+evaluation at the large scale. This oracle shares neither the
+binomial evaluation nor the finite-difference routine with the counter.
+
+The files \texttt{count.py} and \texttt{verify.py} contain the counter
+and its tests. The file \texttt{verification.json} records the inputs,
+seeds and results. Running \texttt{python3 -B verify.py} from their
+directory reproduces Table~\ref{tab:checks}. The functions
+\texttt{fibre\_count(C)} and \texttt{compressed\_count(a)} return
+exact integers. For example,
+\texttt{python3 -B count.py '[1,1]'} reports the binary count
+\texttt{0b11}.
+
+Finite tests establish neither the unrestricted theorem nor priority.
+The proof is specific to pairing rows: it provides no evaluation
+theorem for arbitrary $m\geq3$, and it does not enumerate entire
+$m$-level rook-equivalence classes.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex language-model assistance was used in literature searches,
+the development and checking of the argument, exact test programs,
+and manuscript preparation. A separate model context reviewed the
+argument and constructed additional verification routines; this was
+neither external peer review nor proof-assistant certification.
+The mathematical justification is the displayed proof. No empirical
+data or floating-point computations are used.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

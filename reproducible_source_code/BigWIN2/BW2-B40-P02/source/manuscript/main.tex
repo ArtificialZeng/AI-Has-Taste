@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Schur-log-concavity for the complete eight-vertex layer of the multiweighted-bond symmetric function},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact verification of Schur-log-concavity for connected graphs on eight vertices},
+  pdfkeywords={symmetric functions, Schur positivity, graph invariants, exact computation}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\coeff}[2]{[#1]#2}
+
+\title{Schur-log-concavity for the complete eight-vertex layer\\
+of the multiweighted-bond symmetric function}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{6 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Gonz\'alez D'Le\'on and Wachs introduced a symmetric-function analogue
+$\Psi_G$ of the chromatic polynomial and conjectured that it is
+Schur-log-concave.  They reported exhaustive verification for connected
+graphs on at most seven vertices.  We settle the next complete finite layer:
+for every connected simple graph $G$ on eight vertices and every $d\geq 1$,
+the difference
+\[
+  (\Psi_G|_{\deg d})^2
+  -(\Psi_G|_{\deg(d-1)})(\Psi_G|_{\deg(d+1)})
+\]
+is Schur-positive.  An exact computation covers all $11{,}117$ isomorphism
+classes and all $294$ Schur coefficients arising in the seven nonzero
+degrees for each class.  In fact every one of the $3{,}268{,}398$
+coefficients tested is strictly positive, with global minimum $1$; all
+higher-degree differences vanish.  The computation uses an exhaustive
+atlas-extension argument, a connected-partition recurrence, and integer
+arithmetic in the complete-homogeneous and Schur bases.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $G=(V,E)$ be a finite simple graph.  A \emph{bond partition} of $G$ is
+a set partition of $V$ whose blocks induce connected subgraphs.  Write
+$\Pi_G$ for the set of bond partitions.  We use the multiweighted-bond
+symmetric function $\Psi_G\in\Sym$ and the M\"obius symmetric function $M_H$
+of Gonz\'alez D'Le\'on and Wachs~\cite{gonzalez-wachs2026}.  Put
+\[
+  F_{G,d}=\Psi_G|_{\deg d},\qquad
+  L_{G,d}=F_{G,d}^2-F_{G,d-1}F_{G,d+1}.
+\]
+The Schur-log-concavity conjecture in~\cite[Conjecture~7.3]{gonzalez-wachs2026}
+asserts that $L_{G,d}$ is Schur-positive for every graph and every $d$.
+It refines the ordinary chromatic-polynomial log-concavity proved by
+Huh~\cite{huh2012}.
+
+\begin{theorem}\label{thm:main}
+For every connected simple graph $G$ on exactly eight vertices and every
+integer $d\geq1$, the symmetric function $L_{G,d}$ is Schur-positive.
+More precisely, for $1\leq d\leq7$ every coefficient in
+\[
+  L_{G,d}=\sum_{\lambda\vdash 2d}c_{G,d,\lambda}s_\lambda
+\]
+is a positive integer, and the minimum of all these coefficients over all
+$G,d,\lambda$ is $1$.  For $d\geq8$, $L_{G,d}=0$.
+\end{theorem}
+
+This result concerns only the complete eight-vertex layer; it does not settle
+the conjecture for arbitrary order.  The source proves alternating
+$e$-positivity of the individual homogeneous pieces for chordal graphs, but
+that result does not imply Schur positivity of the quadratic differences.
+Accordingly, chordal and nonchordal graphs were both computed.  Table
+\ref{tab:minima} gives the number of classes in each stratum and the smallest
+Schur coefficient at each degree.
+
+\begin{table}[ht]
+\centering
+\caption{Exact coefficient minima by stratum.}
+\label{tab:minima}
+\begin{tabular}{lrrccccccc}
+\toprule
+ & classes & coefficients & $d=1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ \\
+\midrule
+chordal    & $1{,}614$ & $474{,}516$   & $7$  & $158$ & $490$  & $490$  & $196$ & $28$  & $1$ \\
+nonchordal & $9{,}503$ & $2{,}793{,}882$ & $18$ & $288$ & $1176$ & $1695$ & $946$ & $186$ & $9$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The closest prior result is the source computation through seven vertices.
+A search for the exact conjecture and the follow-up announced in that source,
+performed through 6 September 2026, located no separate primary paper settling
+the eight-vertex layer.  This is a dated, bounded literature comparison, not a
+claim of priority.  For nearby computational context, Zeng~\cite{zeng2026}
+uses selected coefficients of the classical chromatic symmetric function and
+an exact cut-partition implementation to reconstruct a class of trees.  That
+work concerns a different invariant and provides no evidence for
+Schur-log-concavity here.
+
+\section{Exact connected-partition recurrence}
+
+For $S\subseteq V$ and $k\geq0$, define
+\[
+ A_G(S,k)=
+ \sum_{\substack{\pi\in\Pi_{G[S]}\\|\pi|=k}}
+ \prod_{B\in\pi}M_{G[B]},
+ \qquad A_G(\varnothing,0)=1.
+\]
+All other impossible cases are zero.  Formula (7.1) and Theorem 7.2 of
+\cite{gonzalez-wachs2026} give, for $n=|V|$,
+\begin{equation}\label{eq:FfromA}
+  F_{G,d}=A_G(V,n-d).
+\end{equation}
+
+\begin{lemma}\label{lem:recurrence}
+Fix an order on $V$, and let $a$ be the least vertex of nonempty $S$.  For
+$k\geq2$,
+\begin{equation}\label{eq:anchored}
+ A_G(S,k)=
+ \sum_{\substack{a\in B\subsetneq S\\G[B]\text{ connected}}}
+ M_{G[B]}A_G(S\setminus B,k-1).
+\end{equation}
+If $G[S]$ is connected and $|S|\geq2$, then
+\begin{equation}\label{eq:mobius}
+ M_{G[S]}=-\sum_{k=2}^{|S|}h_{k-1}A_G(S,k).
+\end{equation}
+Together with $M_{G[\{v\}]}=1$, these equations compute every term in
+\eqref{eq:FfromA} by increasing $|S|$.
+\end{lemma}
+
+\begin{proof}
+In a connected-block partition of $S$, exactly one block contains $a$.
+Removing it gives a connected-block partition of its complement, and this is
+a bijection proving \eqref{eq:anchored}.  Theorem 5.7, formula (5.3), of
+\cite{gonzalez-wachs2026} expresses $M_{G[S]}$ as the negative sum over all
+nontrivial bond partitions, with the factor $h_{k-1}$ for a partition with
+$k$ blocks.  Grouping that formula by $k$ yields \eqref{eq:mobius}.  Every
+block in \eqref{eq:anchored} is proper, so increasing subset cardinality is a
+valid induction.
+\end{proof}
+
+The implementation represents a symmetric function as a sparse integer
+linear combination of $h_\mu=\prod_i h_{\mu_i}$.  Products in this basis
+concatenate and sort the parts.  Conversion to the Schur basis uses
+\begin{equation}\label{eq:kostka}
+  h_\mu=\sum_{\lambda\vdash |\mu|}K_{\lambda\mu}s_\lambda,
+\end{equation}
+where the nonnegative integers $K_{\lambda\mu}$ are generated by successive
+applications of the horizontal-strip Pieri rule; see
+Macdonald~\cite[Chapter~I]{macdonald1995}.  Thus the recurrence, products,
+basis conversion, and sign tests use integer arithmetic only.
+
+As a definition-level regression test, direct enumeration of the finite
+two-variable multiweighted-bond poset for the path $P_3$ agrees exactly with
+Lemma~\ref{lem:recurrence}.  It gives
+\[
+ \Psi_{P_3}=1-2e_1+e_{1,1}+e_2,
+ \qquad L_{P_3,1}=3s_2+2s_{1,1}.
+\]
+The last two coefficients are interchanged in the displayed equality in
+\cite[Example~7.4]{gonzalez-wachs2026}; the preceding expression for
+$\Psi_{P_3}$ in that paper gives the value above.  This example-level swap
+does not affect positivity or the eight-vertex calculation.
+
+\section{Exhaustive graph enumeration}
+
+The graph atlas of Read and Wilson~\cite{read-wilson1998}, exposed by
+NetworkX~\cite{hagberg-schult-swart2008}, contains one representative of every
+isomorphism class on seven vertices; there are $1{,}044$ such representatives.
+For every representative $H$, the program adjoins a new vertex and chooses
+each of the $2^7-1=127$ nonempty subsets of $V(H)$ as its neighborhood.  After
+discarding disconnected extensions, $119{,}980$ labeled candidates remain.
+
+Candidates are first bucketed by the degree multiset, triangle-count
+multiset, and a four-round Weisfeiler--Lehman graph hash.  These are used only
+as isomorphism invariants.  Inside each bucket, equality is decided by
+NetworkX's exact graph-isomorphism routine, based on the VF2 algorithm
+\cite{cordella-et-al2004}; a hash is never used to declare two graphs
+isomorphic.  Exactly $11{,}117$ representatives remain.
+
+\begin{lemma}\label{lem:graphs}
+The retained family contains exactly one representative of every isomorphism
+class of connected simple graphs on eight vertices.
+\end{lemma}
+
+\begin{proof}
+Let $G$ be such a graph and choose a vertex $v$.  The seven-vertex graph
+$G-v$, possibly disconnected, is isomorphic to an atlas representative $H$.
+Since $G$ is connected, $N_G(v)$ is nonempty.  Transporting $N_G(v)$ through
+the isomorphism from $G-v$ to $H$ shows that an extension isomorphic to $G$
+is generated.  Isomorphic candidates have equal bucket invariants and are
+therefore compared by the exact test.  Conversely, the exact test removes a
+candidate only when it is isomorphic to one already retained.  This proves
+existence and uniqueness.
+\end{proof}
+
+\section{Certificate and proof of the theorem}
+
+For every retained graph and every $d=1,\ldots,7$, the program computes
+$F_{G,d-1},F_{G,d},F_{G,d+1}$ from Lemma~\ref{lem:recurrence}, forms
+$L_{G,d}$ in the $h$ basis, and converts it using \eqref{eq:kostka}.  It then
+iterates over \emph{every} partition of $2d$, inserting zero for a coefficient
+absent from the sparse representation before taking the minimum.  The numbers
+of tested coordinates are
+\[
+ p(2)+p(4)+p(6)+p(8)+p(10)+p(12)+p(14)=294
+\]
+per graph and $11{,}117\cdot294=3{,}268{,}398$ in total.  The resulting
+minimum values are those in Table~\ref{tab:minima}; all are positive.
+
+Lemma~\ref{lem:graphs} supplies every graph class.  Lemma
+\ref{lem:recurrence} supplies the exact homogeneous pieces, and the Pieri
+conversion supplies their complete Schur expansions.  Hence the positive
+minimum certifies the assertion for $1\leq d\leq7$.  Because a connected
+eight-vertex graph has $F_{G,d}=0$ outside $0\leq d\leq7$, both terms in
+$L_{G,d}$ vanish for $d\geq8$.  This proves Theorem~\ref{thm:main}.
+
+The supplementary record contains one graph6 representative per line, its
+chordality flag, and the degree-by-degree coefficient summaries.  A clean
+replay under Python 3.10.12 and NetworkX 3.4.2 regenerated all records
+byte-for-byte.  From the artifact root, the full calculation is reproduced by
+\begin{verbatim}
+python3 evidence/eight_vertex_scan.py \
+  --records /tmp/eight_vertex_records.replay.jsonl \
+  --summary /tmp/eight_vertex_summary.replay.json \
+  --progress-every 0
+\end{verbatim}
+A complete run required only integer arithmetic and finished in about 136
+seconds in the documented environment.  These finite data do not suggest a
+proof for graphs on nine or more vertices, and strict positivity in this layer
+must not be extrapolated beyond the stated range.
+
+\paragraph{Computational and AI assistance.}
+Python and NetworkX were used for graph enumeration, exact isomorphism tests,
+and the integer symmetric-function computation.  OpenAI Codex assisted with
+implementation, proof organization, manuscript preparation, and a separate
+audit that included a full deterministic replay.  Model output was not treated
+as mathematical evidence: the theorem rests on the explicit recurrence,
+exhaustive enumeration argument, exact code, certificate, and replay described
+above.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

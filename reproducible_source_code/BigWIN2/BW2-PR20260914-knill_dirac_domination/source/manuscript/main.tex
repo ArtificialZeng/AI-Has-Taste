@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Sharp connection-Dirac spectral-sum domination for graph complexes},pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathsf{T}}
+\title{Sharp connection--Dirac spectral-sum domination\\for graph complexes}
+\author{Xiaojian Zeng\\[2pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $L$ be the face-intersection matrix of a nonempty finite simplicial
+complex of dimension at most one, and let $D$ be its signed incidence Dirac
+matrix. We prove that the sum of the $k$ largest eigenvalues of $L$ exceeds
+the corresponding sum for $D$ by at least one, for every admissible $k$.
+The constant is sharp for a single edge. The proof combines the unsigned
+incidence spectral transform with degree majorization, a cycle estimate,
+and a trace--rank bound. Disconnected graphs, isolated vertices and
+non-bipartite graphs are included. Knill's original comparison in arbitrary
+dimension remains unresolved.
+\end{abstract}
+
+\section{The graph-complex case}
+
+For a real symmetric $n\times n$ matrix $M$, write its eigenvalues, with
+multiplicity, as $\lambda_1(M)\geq\cdots\geq\lambda_n(M)$ and set
+\[
+ S_k(M)=\sum_{i=1}^k\lambda_i(M),\qquad 1\leq k\leq n.
+\]
+Let $G$ be a finite abstract simplicial complex: a family of nonempty sets
+closed under taking nonempty subsets. Its connection matrix and Dirac matrix
+are
+\[
+ (L_G)_{xy}=\mathbf{1}_{x\cap y\ne\varnothing},\qquad
+ D_G=d+d^{\T},\qquad x,y\in G,
+\]
+where $d_{xy}$ is the oriented incidence sign if $y\subset x$ has codimension
+one, and is zero otherwise. More explicitly, for an ordered face
+$x=(v_0<\cdots<v_p)$ with $p\geq1$, the coefficient at
+$y=x\setminus\{v_j\}$ is $(-1)^j$. The empty face is not a matrix index.
+These are the conventions in Knill's comparison
+\cite[Sections 1.1 and 5.1--5.3]{Knill2026}. Reorienting faces conjugates
+$D_G$ by a diagonal sign matrix, so the spectral sums are orientation
+independent.
+
+Knill conjectures $S_k(L_G)\geq S_k(D_G)$ for arbitrary finite complexes
+\cite[Conjecture 1]{Knill2026}. His earlier August 2025 post already proposes
+the stronger additive-one inequality and its sharpness
+\cite[August 17 update]{Knill2025}. We prove that proposed strengthening for
+the entire graph-complex class. The original arbitrary-dimensional problem
+remains unresolved.
+
+\begin{theorem}\label{thm:main}
+Let $G$ be a nonempty finite abstract simplicial complex whose faces all
+have cardinality at most two. Then
+\begin{equation}\label{eq:main}
+ S_k(L_G)\geq S_k(D_G)+1\qquad(1\leq k\leq |G|).
+\end{equation}
+The constant $1$ cannot be increased: equality holds at $k=1$ for the
+complex consisting of one edge and its two vertices.
+\end{theorem}
+
+The theorem allows any finite simple graph, with its vertices and edges as
+faces; connectedness and bipartiteness are not assumed. In particular, a
+triangle is allowed without inserting a filled two-dimensional face.
+
+The closest spectral input is Knill's hydrogen identity
+$L-L^{-1}=|D|_{\mathrm{ent}}^2$ for graph complexes, where
+$|D|_{\mathrm{ent}}$ denotes entrywise absolute value
+\cite[Theorem 1, Section 2.4]{Knill2018}. It concerns unsigned incidence;
+the signed and unsigned Laplacians are conjugate in the bipartite case
+\cite[Section 1.4]{Knill2018}. We derive the required spectral transform
+directly below. To handle all partial sums for non-bipartite graphs, we
+combine it with a degree-majorization estimate. This is the step beyond
+the unsigned spectral information and the spectral-radius comparison in
+\cite[Corollary 1, Section 2.7]{Knill2018}.
+
+\section{Incidence spectra}
+
+Write $v,e,c$ for the numbers of vertices, edges and connected components,
+counting isolated vertices as components, and put $n=v+e$. Thus
+$v\geq c\geq1$. Write $E$ for the edge set and abbreviate $L_G,D_G$ to
+$L,D$. Let $B,C\in\R^{v\times e}$ be the unsigned and signed
+vertex-by-edge incidence matrices. Each column of $B$ has two entries $1$;
+the corresponding column of $C$ has one entry $-1$ and one entry $1$.
+If $A$ is the adjacency matrix and $\Delta$ is the diagonal degree matrix,
+then
+\begin{equation}\label{eq:laplacians}
+ Q=BB^{\T}=\Delta+A,\qquad H=CC^{\T}=\Delta-A.
+\end{equation}
+Let $q_1\geq\cdots\geq q_v\geq0$ and
+$h_1\geq\cdots\geq h_v\geq0$ be their eigenvalues, and let
+$\delta_1\geq\cdots\geq\delta_v\geq0$ be the vertex degrees in decreasing
+order. With vertices preceding edges, the definitions give
+\begin{equation}\label{eq:blocks}
+ L=\begin{pmatrix}I_v&B\\ B^{\T}&B^{\T}B-I_e\end{pmatrix},\qquad
+ D=\begin{pmatrix}0&C\\ C^{\T}&0\end{pmatrix}.
+\end{equation}
+Indeed, the diagonal entries of $B^{\T}B$ equal two, and distinct edges
+share at most one vertex.
+
+\begin{lemma}\label{lem:spectra}
+Set
+\[
+ f(t)=\frac{t+\sqrt{t^2+4}}2\qquad(t\geq0).
+\]
+The matrix $L$ has exactly $v$ positive and $e$ negative eigenvalues, and
+its positive eigenvalues are $f(q_1),\ldots,f(q_v)$ in decreasing order.
+Consequently,
+\begin{align}
+ S_k(L)&=\sum_{i=1}^k f(q_i),&
+ S_k(D)&=\sum_{i=1}^k\sqrt{h_i} &&(1\leq k\leq v),\label{eq:initial}\\
+ S_k(L)&\geq n &&&&(v\leq k\leq n).\label{eq:trace}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+For each positive singular value $s$ of $B$, a singular-value decomposition
+reduces the corresponding part of $L$ to
+\[
+ \begin{pmatrix}1&s\\s&s^2-1\end{pmatrix}.
+\]
+Its characteristic polynomial is $z^2-s^2z-1$, so its eigenvalues are
+$f(s^2)$ and $-1/f(s^2)$. The spaces $\ker B^{\T}$ and $\ker B$ give the
+remaining eigenvalues $1$ and $-1$, respectively. Since $f$ is increasing
+and $f(0)=1$, this proves the asserted positive list and inertia. For
+$k\geq v$, all omitted eigenvalues are negative, and hence
+$S_k(L)\geq\tr L=n$.
+
+Similarly, the nonzero eigenvalues of $D$ are the pairs
+$\pm\sqrt{h_i}$ for $h_i>0$. If $r=\rank C$, then there are $n-2r$
+zeros. Because $r\leq e$, the number $n-r$ of nonnegative Dirac
+eigenvalues is at least $v$. Thus the first $v$ positions use precisely
+the positive square roots followed by enough zeros, as in
+\eqref{eq:initial}. These arguments also apply when $e=0$.
+\end{proof}
+
+\section{Proof of Theorem \ref{thm:main}}
+
+We first record two ordered comparisons:
+\begin{equation}\label{eq:degree}
+ \sum_{i=1}^kq_i\geq\sum_{i=1}^k\delta_i\quad(1\leq k\leq v),
+ \qquad h_i\leq2\delta_i\quad(1\leq i\leq v).
+\end{equation}
+For the first, use the Ky Fan variational formula \cite{Fan1949},
+\[
+ S_k(M)=\max\{\tr(PM):P=P^{\T}=P^2,\ \rank P=k\},
+\]
+with the coordinate projection onto the $k$ largest diagonal entries of
+$Q$. To recall its elementary proof, diagonalize $M$. In that basis the
+diagonal entries of $P$ lie in $[0,1]$ and sum to $k$, so their weighted
+eigenvalue sum is at most the sum of the largest $k$ eigenvalues; projection
+onto the corresponding eigenspaces attains the bound. For the second
+comparison, $2\Delta-H=Q\succeq0$ by \eqref{eq:laplacians}.
+Applying the eigenvalue min--max principle to this quadratic-form inequality
+gives $h_i\leq\lambda_i(2\Delta)=2\delta_i$.
+
+Define
+\[
+ R(t)=\frac{\sqrt{t^2+4}-2}{2}\geq0,
+ \qquad f(t)=1+\frac t2+R(t).
+\]
+For $1\leq k\leq v$, Lemma~\ref{lem:spectra} and \eqref{eq:degree} imply
+\begin{align}
+ S_k(L)-S_k(D)
+ &\geq\sum_{i=1}^kR(q_i)+k+\frac12\sum_{i=1}^kq_i
+                  -\sum_{i=1}^k\sqrt{2\delta_i}\notag\\
+ &\geq R(q_1)+\frac12\sum_{i=1}^k
+                    (\sqrt{\delta_i}-\sqrt2)^2
+ \geq R(q_1).\label{eq:bridge}
+\end{align}
+The second line uses degree majorization and discards only nonnegative
+terms $R(q_i)$.
+
+\paragraph{Non-bipartite graphs, $1\leq k\leq v$.}
+Such a graph contains an odd cycle. For example, coloring by distance
+parity in each component gives either a bipartition or an odd closed walk,
+from which an odd cycle can be extracted. Let its length be $\ell$, and
+let $x$ be $1/\sqrt\ell$ on its vertices and zero elsewhere. Then
+$\|x\|=1$, and the cycle edges alone give
+\[
+ q_1\geq x^{\T}Qx
+      =\sum_{ab\in E}(x_a+x_b)^2\geq4.
+\]
+Since $R$ is increasing, \eqref{eq:bridge} gives
+\[
+ S_k(L)-S_k(D)\geq R(4)=\sqrt5-1>1
+ \qquad(1\leq k\leq v).
+\]
+
+\paragraph{Bipartite graphs, $2\leq k\leq v$.}
+Let $J$ be diagonal with entries $1$ and $-1$ on the two vertex classes;
+choose either sign on each isolated vertex. Then $JHJ=Q$, so $h_i=q_i$,
+including zero multiplicities. For every $t\geq0$,
+\[
+ f(t)\geq1+t/2\geq\sqrt t+1/2,
+\]
+because the second difference is $(\sqrt t-1)^2/2$. Therefore
+\[
+ S_k(L)-S_k(D)\geq k/2\geq1\qquad(2\leq k\leq v).
+\]
+
+\paragraph{The endpoint $k=1$.}
+For every complex, the definitions give the entrywise inequality
+$|D|_{\mathrm{ent}}+I\leq L$. For a real unit vector $u$, put $w=|u|$
+coordinatewise. Then
+\[
+ u^{\T}Du\leq w^{\T}|D|_{\mathrm{ent}}w
+ \leq w^{\T}(L-I)w\leq\lambda_1(L)-1.
+\]
+Maximizing over $u$ proves the endpoint. This also handles $v=1$.
+
+\paragraph{The tail $v\leq k\leq n$.}
+The identity
+\[
+ x^{\T}Hx=\sum_{ab\in E}(x_a-x_b)^2
+\]
+shows that $\ker H$ consists exactly of functions constant on each
+connected component. Thus $r=\rank C=v-c$. Every partial sum of $D$ is
+at most the sum of its positive eigenvalues. Using
+$\sqrt t\leq(t+1)/2$ and $\tr H=2e$ gives
+\[
+ S_k(D)\leq\sum_{h_i>0}\sqrt{h_i}
+ \leq\frac{2e+r}{2}=e+\frac{v-c}{2}.
+\]
+By \eqref{eq:trace},
+\[
+ S_k(L)-S_k(D)\geq n-e-\frac{v-c}{2}
+                  =\frac{v+c}{2}\geq1\qquad(v\leq k\leq n).
+\]
+Together the ranges cover every $k$ in \eqref{eq:main}. For a nonempty
+edgeless complex one can also check directly that $L=I_v$ and $D=0$.
+
+\paragraph{Sharpness.}
+For one edge and its two vertices, direct diagonalization gives
+\[
+ \spec(L)=(1+\sqrt2,1,1-\sqrt2),\qquad
+ \spec(D)=(\sqrt2,0,-\sqrt2).
+\]
+The gap at $k=1$ is exactly one, completing the proof.\qed
+
+\section{Computational checks and scope}
+
+The proof above is independent of computation. As implementation checks,
+all $33\,867$ labeled graphs on one through six vertices were screened in
+double precision, covering $453\,098$ partial sums. The graph screen tested
+the additive-one bound and the intermediate inequalities with tolerance
+$10^{-6}$; all tests passed. It also included 32 larger structured graphs
+and seven exact characteristic-polynomial checks. These numerical screens
+are diagnostics, not certificates of a universal statement.
+
+A supplementary search addresses the original question on a fixed
+five-vertex universe, allowing unused vertices and faces of every dimension.
+Recursion through faces in increasing cardinality, admitting a face only
+after its boundary, gives $7\,579$ nonempty complexes. A separate
+enumeration of maximal-face antichains gives the same set. Full vertex
+permutation orbits reduce this set to 208 isomorphism classes. Thus no
+assumption of flagness or of having exactly five used vertices enters
+this finite search.
+
+For each representative, integral matrices were reconstructed directly
+from the face definitions, and all roots of their characteristic polynomials
+were isolated with rational endpoints and multiplicities. The computation
+uses SymPy~1.14.0 \cite{Meurer2017}; its real-root isolation routine implements
+a continued-fraction method of the type described by Akritas and
+Strzebo\'nski \cite{Akritas2005}. If the descending eigenvalues lie in
+$[a_i,b_i]$ for $L$ and $[c_i,d_i]$ for $D$, the certificate checks
+\[
+ S_k(L)-S_k(D)\geq\sum_{i=1}^k(a_i-d_i)>0.
+\]
+All $3\,151$ representative partial sums, representing $113\,716$ labeled
+partial sums, satisfy this strict inequality. The smallest recorded
+rational lower bound is $1583407980/1583407981$. A separately implemented
+verifier reconstructed the orbit coverage and characteristic polynomials
+and checked the intervals by exact rational Sturm counts. This is a
+strictly positive finite observation; the stated lower bound is less
+than one and does not certify the stronger additive-one assertion in
+higher dimensions.
+
+Rational separation of algebraic spectral quantities also appears in
+Zeng, Liu and Ratnavelu's exact Schatten-norm counterexample
+\cite[Section 2, equations (8)--(18)]{Zeng2026}. Their comparison uses
+rational bounds on radicals; the present finite search uses rational
+root intervals for integral characteristic polynomials. In both settings
+the sign decision is exact, whereas decimal approximations serve only
+as diagnostics.
+
+The accompanying computational files record the face masks, integral
+matrices, characteristic polynomials, rational intervals and partial-sum
+lower bounds, together with the enumeration and checking programs.
+They provide finite evidence for the remaining problem. Extending
+Theorem~\ref{thm:main} to complexes with higher-dimensional faces requires
+an argument beyond the graph incidence blocks in \eqref{eq:blocks}; no
+such extension or general obstruction is asserted here.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, Python implementation,
+literature searches and manuscript drafting. A separate model context
+checked the argument and the supplementary certificates. This was not
+external peer review or proof-assistant formalization. The numerical
+screens used NumPy~2.2.6; exact polynomial and rational computations used
+SymPy~1.14.0.
+
+
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

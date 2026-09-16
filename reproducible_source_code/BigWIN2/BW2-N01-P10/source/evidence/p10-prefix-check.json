@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "observed_at_utc": "2026-09-12T09:57:01.673300+00:00",
+  "python": "3.10.12",
+  "domain": "All positive integer partitions N=2..24, length>=2",
+  "arithmetic": "exact integers and multiplicity Counters",
+  "randomness": "none",
+  "partitions": 7313,
+  "true_first_pair_decodes": 7313,
+  "first_pair_attempts": 11918,
+  "outcomes": {
+    "exact": 7320,
+    "negative_remaining_multiplicity": 1635,
+    "nonintegral_or_out_of_order_next_part": 2963
+  },
+  "same_N_collisions": [],
+  "first_frontier_ambiguity": {
+    "N": 6,
+    "length": 3,
+    "pair_product": 4,
+    "a": [
+      4,
+      1,
+      1
+    ],
+    "b": [
+      2,
+      2,
+      2
+    ],
+    "full_multisets_equal": false
+  },
+  "algorithm": "Enumerate divisor pairs for sqrt(max S22); remove the complete known-prefix S22 multiset; the proposed next part is max residual divided by a1^2*a2.",
+  "limitations": "Finite decoder validation only. Universal recovery after the true first pair and uniqueness of a surviving first pair at fixed N require proofs. Shared N,length,largest monomial alone need not fix the first pair.",
+  "script_sha256": "0b3a1aec91eebede5f2d6fedc240fd70e9d3b3137ce94a9139a8a71f9d1cb838",
+  "imported_script_sha256": "9338b5af8235ce7ab236464e970ee45440cbfef4a58a29c6bc6fbe75f4ac40f2",
+  "elapsed_seconds": 2.895863054000074
+}

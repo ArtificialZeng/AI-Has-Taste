@@ -1,0 +1,342 @@
+% Canonical manuscript source.
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\HH}{\mathbb H}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\PP}{\mathcal P}
+\newcommand{\QQ}{\mathcal Q}
+\newcommand{\inner}[2]{\left\langle #1,#2\right\rangle_J}
+
+\title{An Exact Classification of Ideal Right-Angled\\
+$\mathrm{SW2}$-Polyhedra Through 84 Chambers}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{September 8, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\PP=\mathrm{SW2}$ be the Scharlau--Walhorn Coxeter polyhedron with
+the face numbering and reflective chamber tiling used by Allcock, Devlin,
+Felikson, Kontorovich, and Whitehead.  We prove, by an exact exhaustive
+classification, that every convex finite-volume ideal right-angled
+$\PP$-polyhedron containing at most $84$ $\PP$-chambers contains exactly
+$48$ chambers and is isometric to the ideal right-angled octahedron.
+The classification covers both canonical branches of the decomposition in
+their Proposition~7.10, including its non-reflective mixed-block branch.
+All geometric predicates use integer Lorentz arithmetic, and completeness
+follows from finite chamber- and block-expansion lemmas.  This is only a
+bounded result: no argument controls polyhedra with more than $84$ chambers,
+and Conjecture~7.11 of the cited work remains unresolved.
+\end{abstract}
+
+\section{Statement and relation to the unbounded problem}
+
+Throughout, a hyperbolic polyhedron is convex and of finite volume.  Put
+$\PP=\mathrm{SW2}$, with the face numbering of
+\cite[Appendix~B]{allcock2026arithmetic}.  Following
+\cite[Definition~2.1]{allcock2026arithmetic}, a $\PP$-polyhedron is a
+convex finite union of $\PP$-chambers in the fixed reflective tiling of
+$\HH^3$.  This is stronger than merely admitting an arbitrary tiling by
+isometric copies of $\PP$.
+
+Allcock et al. prove that the ideal right-angled octahedron $\OO$ is a
+$\PP$-polyhedron and that every ideal right-angled $\PP$-polyhedron is
+tiled by the right-angled triangular bipyramid $\tfrac14\OO$
+\cite[Proposition~7.10]{allcock2026arithmetic}.  They conjecture that every
+such polyhedron is tiled by full copies of $\OO$
+\cite[Conjecture~7.11]{allcock2026arithmetic}.  We establish the following
+finite subsidiary result.
+
+\begin{theorem}\label{thm:main}
+Let $\QQ$ be a convex finite-volume ideal right-angled $\PP$-polyhedron
+consisting of at most $84$ $\PP$-chambers.  Then $\QQ$ consists of exactly
+$48$ $\PP$-chambers and is isometric to $\OO$.  In particular, it is tiled
+by one copy of $\OO$.
+\end{theorem}
+
+The restriction in Theorem~\ref{thm:main} is essential to the present
+argument.  We neither bound the size of a minimal counterexample to the
+unbounded conjecture nor classify abstract gluings of quarter-octahedra.
+Whitehead's combinatorial characterization of abstract ideal right-angled
+polyhedra \cite{whitehead2026note} gives a useful realization screen, but it
+does not by itself certify convexity inside the fixed $\mathrm{SW2}$ chamber
+tiling.  Accordingly, our final tests use the actual embedded Lorentz
+half-spaces.
+
+The proof is computer-assisted but exact.  Its organization is comparable
+to exact finite-library results in discrete geometry that combine
+symmetry-reduced exhaustive enumeration with integer predicates while
+separating the bounded theorem from the ambient open problem
+\cite{zeng2026finite}.  Here the additional task is to prove that the two
+canonical block models from Proposition~7.10 exhaust the embedded
+$\mathrm{SW2}$ geometry.
+
+\section{An integral Lorentz model}
+
+Use the bilinear form
+\[
+  \inner uv=-u_0v_0+u_1v_1+u_2v_2+u_3v_3
+\]
+on $\mathbb R^4$.  A spacelike vector $n$ represents the oriented
+half-space $\inner nX\leq 0$ in the hyperboloid, or equivalently Klein,
+model.  The following four integral normals represent the faces of the base
+$\mathrm{SW2}$ chamber:
+\begin{equation}\label{eq:normals}
+\begin{aligned}
+ n_1&=(0,-1,1,0), & n_2&=(1,1,1,1),\\
+ n_3&=(0,0,0,-1),& n_4&=(0,0,-1,1).
+\end{aligned}
+\end{equation}
+The reflection in $n$ is
+\begin{equation}\label{eq:reflection}
+ R_nX=X-2\frac{\inner nX}{\inner nn}n.
+\end{equation}
+Every matrix obtained from \eqref{eq:reflection} for the normals in
+\eqref{eq:normals} is integral and preserves the Lorentz form.  Direct
+inner-product calculation gives the Coxeter orders
+\begin{equation}\label{eq:coxeter}
+ (m_{ij})=
+ \begin{pmatrix}
+ 1&2&2&3\\
+ 2&1&4&2\\
+ 2&4&1&4\\
+ 3&2&4&1
+ \end{pmatrix}.
+\end{equation}
+
+The subgroup generated by $R_{n_1},R_{n_3},R_{n_4}$ has $48$ elements.
+Closing the base chamber under this finite group and merging coplanar
+boundary patches produces the eight oriented supporting planes
+\begin{equation}\label{eq:standard-oct}
+  (1,\varepsilon_1,\varepsilon_2,\varepsilon_3),
+  \qquad \varepsilon_i\in\{-1,1\}.
+\end{equation}
+Their independent triple intersections give six projective null vectors,
+and adjacent supporting normals are Lorentz-orthogonal.  Thus the union is
+the standard ideal right-angled octahedron $\OO$.
+
+The same calculation reconstructs both $12$-chamber copies of
+$\tfrac14\OO$ used in Proposition~7.10.  Each has six facets, nine
+right-angled edges, three ideal vertices, and two finite vertices.  Their
+normalized facet Gram matrices agree after a permutation of the facets, so
+the two quarters are isometric even though their $\mathrm{SW2}$ chamber
+decompositions differ.
+
+\section{Reduction to two finite censuses}
+
+Lemma~7.9 of \cite{allcock2026arithmetic} gives a dichotomy for an ideal
+right-angled $\PP$-polyhedron $\QQ$: either every boundary face is tiled by
+face~3 of $\PP$, or no boundary face is.  Proposition~7.10 of the same work
+then gives canonical decompositions as follows.
+
+\begin{enumerate}
+\item In the all-face-3 branch, $\QQ$ is reflectively tiled by
+  $12$-chamber copies of $\tfrac14\OO$.
+\item In the no-face-3 branch, $\QQ$ is canonically partitioned into
+  $12$-, $24$-, and $48$-chamber copies of
+  $\tfrac14\OO$, $\tfrac12\OO$, and $\OO$, respectively.  These blocks
+  need not meet face-to-face as copies of the larger polyhedra, although
+  their constituent $\PP$-chambers belong to the fixed reflective tiling.
+\end{enumerate}
+
+Call $12$ $\PP$-chambers one \emph{quarter unit}.  The hypothesis of
+Theorem~\ref{thm:main} permits at most seven units.  The preceding dichotomy
+is exhaustive, so it remains to classify the two branches through seven
+units.
+
+\subsection{The reflective-quarter branch}
+
+Let $T=\tfrac14\OO$ with its right-angled reflection tiling.  We use the
+following standard chamber-complex observation in a finite form.
+
+\begin{lemma}[rooted interval expansion]\label{lem:interval}
+Every connected convex union of at most $k$ chambers in a Coxeter complex,
+after translating one chamber to the base chamber, is obtained by repeatedly
+adjoining an adjacent chamber and closing under all chambers on all minimal
+galleries.  It is contained in the Cayley ball of radius $k-1$.
+\end{lemma}
+
+\begin{proof}
+Connectedness gives the radius bound.  An intersection of roots is closed
+under every minimal gallery between two of its chambers: such a gallery
+crosses each separating wall at most once.  Conversely, interval closure is
+the chamber form of root convexity.  If a convex target has not yet been
+reached, choose a target chamber adjacent to the current connected subset.
+The interval closure after adjoining it stays inside every root containing
+the target.  Induction reaches the target.
+\end{proof}
+
+For $k=7$, the complete radius-six ball contains $2060$ $T$-chambers.
+Applying Lemma~\ref{lem:interval} with exact reflection matrices gives the
+first row of Table~\ref{tab:counts}.  The three ideal right-angled outputs at
+size four are rooted occurrences of the same octahedron; all other outputs
+have an exactly detected finite boundary vertex.
+
+\begin{table}[ht]
+\centering
+\caption{Exact census counts by quarter unit.  Reflective counts retain
+rooted symmetry duplicates; mixed counts are translation classes.}
+\label{tab:counts}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Quarter units &1&2&3&4&5&6&7\\
+\midrule
+Reflective rooted convex unions &1&6&18&57&150&450&1218\\
+Reflective ideal right-angled &0&0&0&3&0&0&0\\
+Mixed interface-compatible classes &1&2&4&17&52&235&1054\\
+Mixed convex classes &1&2&2&10&11&35&69\\
+Mixed ideal right-angled &0&0&0&2&0&0&0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The mixed canonical-block branch}
+
+Every $\PP$-chamber has a unique image of the finite $1$--$3$--$4$ vertex.
+Call it the chamber's $B_3$ center.  The canonical blocks in the no-face-3
+branch partition the chambers by this center.
+
+\begin{lemma}[local block completeness]\label{lem:local}
+At a fixed $B_3$ center there are exactly $25$ oriented canonical local
+blocks: twelve quarters, twelve halves, and one full octahedron.  Their
+oriented cut-plane descriptors are pairwise distinct.  Exactly three
+quarters, six halves, and one full octahedron contain any specified chamber
+at the center.
+\end{lemma}
+
+\begin{proof}
+The $48$ chambers around the center form the octahedron in
+\eqref{eq:standard-oct}.  The orbit of mirrors of types $1$ and $4$ through
+the center consists of six unoriented planes, hence twelve oriented
+half-spaces.  Intersecting the central octahedron with each oriented
+half-space gives twelve distinct $24$-chamber halves.  Testing every
+orthogonal pair of their primitive integral normals and retaining the
+$12$-chamber sectors gives twelve distinct quarters.  Adding the uncut star
+gives $12+12+1=25$.  Recording the oriented cut normals proves injectivity.
+Incidence counting, checked directly on the $48$ integral chamber matrices,
+gives the stated $3$, $6$, and $1$ choices through a specified chamber.
+\end{proof}
+
+Only type-2 chamber adjacencies change the $B_3$ center.  A potentially
+dangerous pruning in a block enumeration is to insist that adjacent blocks
+agree at every represented type-2 interface.  The following exact sign
+calculation proves that this loses no convex assembly.
+
+\begin{lemma}[interface obstruction]\label{lem:interface}
+If both $B_3$ centers adjacent across a type-2 chamber facet occur in a
+canonical assembly but that interface chamber is present on only one side,
+the assembly is not convex.
+\end{lemma}
+
+\begin{proof}
+At the base center $e_0=(1,0,0,0)$, equation~\eqref{eq:reflection} gives
+\[
+ R_{n_2}e_0=(2,1,1,1),\qquad
+ \inner{n_2}{e_0}=-1,\qquad
+ \inner{n_2}{R_{n_2}e_0}=1.
+\]
+Thus the neighboring center lies strictly beyond the oriented type-2
+supporting plane.  Lorentz equivariance gives the same pair of signs at
+every translated interface.  An unmatched interface is exposed, while the
+assembly contains the neighboring center on its forbidden side, contradicting
+convexity.
+\end{proof}
+
+The block adjacency graph of a connected chamber union is connected: moves
+within one center have types $1$, $3$, or $4$, while type $2$ is exactly the
+move between centers.  Starting with one representative of each block size,
+the enumeration therefore adjoins every neighboring center and each of the
+ten local choices from Lemma~\ref{lem:local} that contains the required
+interface chamber.  Lemma~\ref{lem:interface} permits immediate rejection
+of mismatches.  A state is the finite set of centers together with the
+oriented cut descriptor at each center.  Lemma~\ref{lem:local} makes this
+encoding injective.  Normalizing the state at each of its constituent
+chambers gives a complete quotient by left translation in the
+$\mathrm{SW2}$ Coxeter group.  Induction on the connected block graph proves
+that every canonical mixed assembly of at most seven units is enumerated.
+
+The compatible- and convex-state counts appear in the final three rows of
+Table~\ref{tab:counts}.  There are exactly two ideal right-angled survivors,
+both at four units.  Their canonical block-size patterns are $[4]$ and
+$[1,1,1,1]$.
+
+\subsection{Exact geometric filters and identification}
+
+For completeness, we describe the geometric predicate applied in both
+branches.  Exposed chamber facets lying in the same mirror are merged and
+represented by a primitive oriented integral normal.  A finite chamber union
+is convex precisely when every one of its chambers lies in every resulting
+inward half-space.  Necessity is immediate.  For sufficiency, if a point of
+the half-space intersection were outside the chamber union, a generic segment
+from a chamber interior point to it would first leave the union across an
+exposed facet and enter the forbidden side of that facet.
+
+Every boundary vertex is recovered by taking the projective intersection of
+each linearly independent triple of supporting planes and retaining the
+intersections satisfying all half-spaces.  Its Lorentz norm is negative for
+a finite vertex and zero for an ideal vertex.  Two boundary facets form an
+edge when they contain two recovered vertices, and that edge is right-angled
+exactly when the two facet normals have Lorentz product zero.  Thus all
+acceptance and rejection predicates are integer equalities and inequalities;
+there is no floating-point tolerance.
+
+For each of the two mixed survivors, after ordering its eight boundary
+normals, the full Gram matrix agrees with that of the eight normals in
+\eqref{eq:standard-oct}.  Four listed normals have coordinate determinant
+$-8$, so they span Lorentz four-space.  Equality of the full Gram matrices
+therefore extends the correspondence of normals to a Lorentz isometry,
+including the orientations of all half-spaces.  Both survivors are isometric
+to $\OO$.  The reflective survivors are identified in the same way (or by
+the uniqueness part of the ideal right-angled realization theorem).  This
+proves Theorem~\ref{thm:main}.
+
+\section{Reproducibility and limitations}
+
+The two ancillary verifiers use only the Python standard library and exact
+integer arithmetic.  From the directory containing the evidence files, the
+stored machine-readable outputs are reproduced by
+\begin{verbatim}
+python3 evidence/sw2_quarter_census.py --output /tmp/quarter.json
+PYTHONPATH=evidence python3 evidence/sw2_mixed_census.py --output /tmp/mixed.json
+\end{verbatim}
+The first program reconstructs the Lorentz source model and performs the
+reflective-quarter census.  The second imports that exact model, reconstructs
+all local mixed blocks, verifies Lemmas~\ref{lem:local} and
+\ref{lem:interface}, and performs the mixed census.  The stored JSON records
+the complete count tables, local completeness checks, survivor half-spaces,
+and Gram certificates.  Independent reruns during mathematical review
+reproduced both outputs byte for byte.
+
+This computation proves no assertion beyond seven quarter units.  In
+particular, failure to find a larger counterexample is not evidence of a
+global size bound, and the result does not upgrade the general tiling in
+Conjecture~7.11 to a reflective or face-to-face tiling.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the literature search, the design and writing of
+the finite enumeration programs, adversarial organization of the exact
+checks, and initial manuscript preparation.  Language-model output is not
+used as mathematical evidence: the claimed finite classification rests on
+the reductions above and the released deterministic exact verifiers.  No
+proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

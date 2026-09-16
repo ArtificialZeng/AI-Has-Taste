@@ -1,0 +1,344 @@
+{
+  "original_id": "legacy-b07-p10",
+  "archive_id": "BW2-B07-P10",
+  "title": "Certified bounds for the number of unlabeled posets on 17 points",
+  "batch_label": "7",
+  "kind": "historical-gated-manuscript",
+  "original_status": "partial theorem",
+  "scope": "Certified lower/upper bounds for U(17) and exact disconnected D(17); exact U(17) unresolved.",
+  "gate_basis": "Historical independent proof, citation, build/PDF and release gates passed for the stated manuscript scope; the current manuscript matches the archived final source. Independent Euler-transform, Burnside lower-bound and extension upper-bound certificate audits PASS.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B07-P10_Certified_bounds_for_the_number_of_unlabeled_posets_on_17_points.pdf",
+  "pdf_sha256": "e734db472bb18ee921e40f431667c747c3df79969759a42aafce8d7c45a46174",
+  "pages": 6,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B07-P10/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B07-P10/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B07-P10/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "The listed component checks use Python 3 standard library. The full certificate_gate.py additionally needs pdftotext and a cited external Brinkmann-McKay PDF."
+  ],
+  "limitations": [
+    "Do not redistribute the source literature PDF. The short component checks are self-contained; the full cited-table transcription gate needs the external PDF.",
+    "Original entrypoints: ['python3 code/verify_disconnected_euler.py certificates/disconnected17_inputs.json', 'python3 code/verify_lower_burnside.py certificates/bounds17_inputs.json', 'python3 code/verify_upper_extensions.py certificates/bounds17_inputs.json']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 20,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P10/audit/PROOF_AUDIT.md",
+      "sha256": "267520c8cd1db442b6762b3e9adb150a882e98b5aba3cdaf5fb623d38003d958",
+      "bytes": 3150
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P10/audit/CITATION_AUDIT.md",
+      "sha256": "67981a315327b0b0a013839c4b13b8c00bbd5e3479545c4c1988be0d269bff9e",
+      "bytes": 2364
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P10/audit/SUBMISSION_AUDIT.md",
+      "sha256": "4049360419586a59a5f36717ee5341cd7bc01f526ca671f840f89e88a1b23290",
+      "bytes": 1639
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P10/audit/PDF_AUDIT.md",
+      "sha256": "88a1ccd863bfb0ad06e32e12283b8b5b38121df55c63ebb08b054fe2236bcdf5",
+      "bytes": 1506
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P10/release/RELEASE_MANIFEST.json",
+      "sha256": "f1b8471ff719008b3c85ccb4cafda9c941ef3637453ea88c0a412c6b8b9df402",
+      "bytes": 578
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "6ca837acc5d73b3536ac5f7b6f9b255cac8e18a66e0e0e85679b21414a06c80c",
+      "original_bytes": 12847,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "6ca837acc5d73b3536ac5f7b6f9b255cac8e18a66e0e0e85679b21414a06c80c",
+          "bytes": 12847
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "710ef861bbae775f7ceb858a4d47a074d606b290fb17b54ed3bfd6dfe5056a92",
+      "original_bytes": 2010,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "710ef861bbae775f7ceb858a4d47a074d606b290fb17b54ed3bfd6dfe5056a92",
+          "bytes": 2010
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/bounds17_inputs.json",
+      "original_sha256": "485c16909cd2bca9c170631f6c9756cbc868667a3304da9ae13eafc4de4936d7",
+      "original_bytes": 2577,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/bounds17_inputs.json",
+          "sha256": "485c16909cd2bca9c170631f6c9756cbc868667a3304da9ae13eafc4de4936d7",
+          "bytes": 2577
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/disconnected17_inputs.json",
+      "original_sha256": "5b6fafe6d5c431e791b253c8afbe8dfa4dfd5af78599dbf2cc8a9116771fc187",
+      "original_bytes": 1208,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/disconnected17_inputs.json",
+          "sha256": "5b6fafe6d5c431e791b253c8afbe8dfa4dfd5af78599dbf2cc8a9116771fc187",
+          "bytes": 1208
+        }
+      ]
+    },
+    {
+      "path": "source/code/certificate_gate.py",
+      "original_sha256": "01ca586da8a414f0778073e2484718064edc71a6003e3d2a275725804b2407e1",
+      "original_bytes": 2863,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/certificate_gate.py",
+          "sha256": "01ca586da8a414f0778073e2484718064edc71a6003e3d2a275725804b2407e1",
+          "bytes": 2863
+        }
+      ]
+    },
+    {
+      "path": "source/code/test_small_exhaustive.py",
+      "original_sha256": "aa7b76a30f517d4328964c41cb311165bb2aa68cb66cb256448ed9d537220d6b",
+      "original_bytes": 4442,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/test_small_exhaustive.py",
+          "sha256": "aa7b76a30f517d4328964c41cb311165bb2aa68cb66cb256448ed9d537220d6b",
+          "bytes": 4442
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_disconnected_euler.py",
+      "original_sha256": "35efb0daf7482b567c110ae776ba8766185e054ce5421d3ccf22b3f6e9b6e663",
+      "original_bytes": 2032,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_disconnected_euler.py",
+          "sha256": "35efb0daf7482b567c110ae776ba8766185e054ce5421d3ccf22b3f6e9b6e663",
+          "bytes": 2032
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_disconnected_from_totals.py",
+      "original_sha256": "5ebfe152b5925babd7cd88ab98c6f5b2944476eb5bdebe0cdf2ae3c98b661e92",
+      "original_bytes": 1943,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_disconnected_from_totals.py",
+          "sha256": "5ebfe152b5925babd7cd88ab98c6f5b2944476eb5bdebe0cdf2ae3c98b661e92",
+          "bytes": 1943
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_disconnected_partitions.py",
+      "original_sha256": "69881e1203552cfbbfda2f9f7049b5c4ef0dd1df35b570ffa3351f1efe6e55da",
+      "original_bytes": 2092,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_disconnected_partitions.py",
+          "sha256": "69881e1203552cfbbfda2f9f7049b5c4ef0dd1df35b570ffa3351f1efe6e55da",
+          "bytes": 2092
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_lower_burnside.py",
+      "original_sha256": "c17557d1a2dd4d4f3bcd55012deff9fb02c77fd65df3698b6e2b08732493561e",
+      "original_bytes": 4562,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_lower_burnside.py",
+          "sha256": "c17557d1a2dd4d4f3bcd55012deff9fb02c77fd65df3698b6e2b08732493561e",
+          "bytes": 4562
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_lower_burnside_independent.py",
+      "original_sha256": "573bda6aac508ade0b1f24102ec0a44bc661683a6ddbaac24d97bd4dc716ef32",
+      "original_bytes": 4052,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_lower_burnside_independent.py",
+          "sha256": "573bda6aac508ade0b1f24102ec0a44bc661683a6ddbaac24d97bd4dc716ef32",
+          "bytes": 4052
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_table59_pdf.py",
+      "original_sha256": "e626af3234e14d2a5cf02cbddae21ee736cbb463474bf5f21437b38f488b36fe",
+      "original_bytes": 1779,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_table59_pdf.py",
+          "sha256": "e626af3234e14d2a5cf02cbddae21ee736cbb463474bf5f21437b38f488b36fe",
+          "bytes": 1779
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_upper_extensions.py",
+      "original_sha256": "a1fc9d00b74cce3797ca853c69a22ca38494891ddbae55e65435cf855ac07a22",
+      "original_bytes": 1669,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_upper_extensions.py",
+          "sha256": "a1fc9d00b74cce3797ca853c69a22ca38494891ddbae55e65435cf855ac07a22",
+          "bytes": 1669
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_upper_extensions_bruteforce.py",
+      "original_sha256": "f265d9286d8462817312cd79c32e0fd6fb99e13c2e1f613e6aaff5f633de312d",
+      "original_bytes": 1579,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_upper_extensions_bruteforce.py",
+          "sha256": "f265d9286d8462817312cd79c32e0fd6fb99e13c2e1f613e6aaff5f633de312d",
+          "bytes": 1579
+        }
+      ]
+    },
+    {
+      "path": "source/README.md",
+      "original_sha256": "aa7bb8cd6a8b34a634606aea7e5116d56a69c495be71979536386aaa409ec5bf",
+      "original_bytes": 858,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/README.md",
+          "sha256": "aa7bb8cd6a8b34a634606aea7e5116d56a69c495be71979536386aaa409ec5bf",
+          "bytes": 858
+        }
+      ]
+    },
+    {
+      "path": "source/results/partial_result.md",
+      "original_sha256": "11999a2a7a8860e977890904674afe57b9348a38166139255c4ddb53ffeec2b2",
+      "original_bytes": 5810,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/results/partial_result.md",
+          "sha256": "11999a2a7a8860e977890904674afe57b9348a38166139255c4ddb53ffeec2b2",
+          "bytes": 5810
+        }
+      ]
+    },
+    {
+      "path": "source/tests/fixtures/malformed_bounds.json",
+      "original_sha256": "ae38b3e106e933e44112154af4d17240a15c41c975b815e43f1ddea90057a9b8",
+      "original_bytes": 74,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/fixtures/malformed_bounds.json",
+          "sha256": "ae38b3e106e933e44112154af4d17240a15c41c975b815e43f1ddea90057a9b8",
+          "bytes": 74
+        }
+      ]
+    },
+    {
+      "path": "source/tests/fixtures/malformed_disconnected.json",
+      "original_sha256": "c12e90d1f355a30457f56ef77ef9355e46c445dbbbaa71eec87d8d7edd58c561",
+      "original_bytes": 72,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/fixtures/malformed_disconnected.json",
+          "sha256": "c12e90d1f355a30457f56ef77ef9355e46c445dbbbaa71eec87d8d7edd58c561",
+          "bytes": 72
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+      "original_sha256": "3396e1d6e029076946b3db493fad5d2e5c7b0e60f89d5485c98e66a03cf59fb2",
+      "original_bytes": 674,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+          "sha256": "3396e1d6e029076946b3db493fad5d2e5c7b0e60f89d5485c98e66a03cf59fb2",
+          "bytes": 674
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+      "original_sha256": "aa7bb8cd6a8b34a634606aea7e5116d56a69c495be71979536386aaa409ec5bf",
+      "original_bytes": 858,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+          "sha256": "aa7bb8cd6a8b34a634606aea7e5116d56a69c495be71979536386aaa409ec5bf",
+          "bytes": 858
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B07-P10",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

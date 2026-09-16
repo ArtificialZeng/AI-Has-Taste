@@ -1,0 +1,136 @@
+{
+  "adjacency": "for i=1,...,n-1 swap labels i and i+1, then rotate to start with 1; simple undirected graph",
+  "all_ordered_pairs_distance_histogram": {
+    "0": 5040,
+    "1": 35280,
+    "10": 3461236,
+    "11": 1486704,
+    "12": 319284,
+    "13": 20784,
+    "14": 80,
+    "2": 135936,
+    "3": 381656,
+    "4": 866404,
+    "5": 1676632,
+    "6": 2826516,
+    "7": 4131396,
+    "8": 5081316,
+    "9": 4973336
+  },
+  "canonical_representation": "unique cycle-word rotation (1,a2,...,an); reversal distinct",
+  "counts": {
+    "connected": true,
+    "degree": 7,
+    "undirected_edges": 17640,
+    "vertices": 5040
+  },
+  "diameter": 14,
+  "diameter_farthest_ordered_pair": [
+    "(1,2,3,4,7,8,5,6)",
+    "(1,8,5,4,2,7,6,3)"
+  ],
+  "diameter_shortest_path": {
+    "generators": [
+      6,
+      5,
+      6,
+      4,
+      5,
+      3,
+      4,
+      5,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "length": 14,
+    "vertices": [
+      "(1,2,3,4,7,8,5,6)",
+      "(1,2,3,4,6,8,5,7)",
+      "(1,2,3,4,5,8,6,7)",
+      "(1,2,3,4,5,8,7,6)",
+      "(1,2,3,5,4,8,7,6)",
+      "(1,2,3,6,4,8,7,5)",
+      "(1,2,4,6,3,8,7,5)",
+      "(1,2,5,6,3,8,7,4)",
+      "(1,2,6,5,3,8,7,4)",
+      "(1,3,6,5,2,8,7,4)",
+      "(1,4,6,5,2,8,7,3)",
+      "(1,5,6,4,2,8,7,3)",
+      "(1,6,5,4,2,8,7,3)",
+      "(1,7,5,4,2,8,6,3)",
+      "(1,8,5,4,2,7,6,3)"
+    ]
+  },
+  "n": 8,
+  "ordering": "vertices lexicographic; BFS neighbors ordered by (neighbor word,generator)",
+  "replay": "python3 evidence/verifier_a.py --n 8 --output evidence/verifier_a_n8.json",
+  "root": "(1,2,3,4,5,6,7,8)",
+  "rooted_distance_histogram": {
+    "0": 1,
+    "1": 7,
+    "10": 729,
+    "11": 344,
+    "12": 77,
+    "13": 2,
+    "2": 27,
+    "3": 76,
+    "4": 172,
+    "5": 329,
+    "6": 544,
+    "7": 784,
+    "8": 970,
+    "9": 978
+  },
+  "schema": "gamma-cycle-verifier-a-v1",
+  "sha256": {
+    "ordered_distance_rows": "4c1bc1c3e6aeeff3e22198a39dd09fe86841484c08ad5ef8183410ac26073fb6",
+    "undirected_edge_stream": "33bc18caa3367881413fa8f20e21dfe8936342291caf41187ce37f5c2405c83f",
+    "vertex_stream": "81c19e18a046ee68d22e66a3ad83cd7996604685829d84bf947f5320d33a8b11"
+  },
+  "software": {
+    "implementation": "CPython",
+    "libraries": "Python standard library only",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "python": "3.10.12"
+  },
+  "sorting_farthest_cycle": "(1,7,6,4,5,3,2,8)",
+  "sorting_shortest_path": {
+    "generators": [
+      7,
+      5,
+      6,
+      7,
+      4,
+      3,
+      4,
+      2,
+      3,
+      4,
+      1,
+      2,
+      3
+    ],
+    "length": 13,
+    "vertices": [
+      "(1,2,3,4,5,6,7,8)",
+      "(1,2,3,4,5,6,8,7)",
+      "(1,2,3,4,6,5,8,7)",
+      "(1,2,3,4,7,5,8,6)",
+      "(1,2,3,4,8,5,7,6)",
+      "(1,2,3,5,8,4,7,6)",
+      "(1,2,4,5,8,3,7,6)",
+      "(1,2,5,4,8,3,7,6)",
+      "(1,3,5,4,8,2,7,6)",
+      "(1,4,5,3,8,2,7,6)",
+      "(1,5,4,3,8,2,7,6)",
+      "(1,7,6,2,5,4,3,8)",
+      "(1,7,6,3,5,4,2,8)",
+      "(1,7,6,4,5,3,2,8)"
+    ]
+  },
+  "sorting_time": 13
+}

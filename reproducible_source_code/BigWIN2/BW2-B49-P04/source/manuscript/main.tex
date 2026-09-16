@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdftitle={All Identifying Edge Orbits in the Maximal-Planar Family Jm},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Edge-card reconstruction in maximal planar graphs}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\cM}{\mathcal M}
+
+\title{All Identifying Edge Orbits in the Maximal-Planar Family $J_m$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $m\geq6$, let $J_m$ be obtained by stacking a vertex $w$ in one
+face $pr_0r_1$ of the bipyramid over an $m$-cycle.  An edge is called
+identifying when its unlabeled edge-deleted card has no nonisomorphic
+maximal-planar parent.  We prove that the identifying edges of $J_m$ are
+exactly
+\[
+  pw,\qquad wr_0,\qquad wr_1.
+\]
+The full automorphism group has order two, and these edges form the two
+orbits $\{pw\}$ and $\{wr_0,wr_1\}$.  Thus there are three identifying
+edges, and their two card types have full-deck multiplicities one and two.
+We also determine every edge orbit and give an explicit nonisomorphic
+maximal-planar completion for every remaining orbit.  This completes a
+proposed classification within the family; it is not presented as an
+author-declared open problem from the preceding literature.
+\end{abstract}
+
+\section{Context and statement}
+
+All graphs below are finite and simple.  An \emph{edge card} of a graph $G$
+is the unlabeled graph $G-e$, with both endpoints of $e$ retained.  Let
+$\cM$ denote the class of maximal planar graphs.  An edge $e\in E(G)$ is
+\emph{identifying in $\cM$} if
+\[
+ H-f\cong G-e,\quad H\in\cM,\quad f\in E(H)
+ \quad\Longrightarrow\quad H\cong G.                 \tag{1}
+\]
+Equivalently, every maximal-planar parent of the card is isomorphic to
+$G$.  Ivanov proved that every maximal planar graph is identified by at
+most two selected edge cards and gave this parent criterion for the
+one-card case~\cite{Ivanov2026}.  He also introduced the family used here
+and proved that $J_m-pw$ identifies $J_m$ for $m\geq4$
+\cite[Proposition~5.2]{Ivanov2026}.  That result supplies one identifying
+edge, but it does not classify all edges of $J_m$, their automorphism
+orbits, or their card multiplicities.  The classification below is the
+corresponding internal refinement for $m\geq6$.
+
+Graph determination also occurs for invariants unrelated to edge cards.
+For example, Zeng gives a reconstruction criterion for proper trees whose
+nonleaf weighted-core vertices have multiplicity-isolated weights, using
+the chromatic symmetric function~\cite{Zeng2026Multiplicity}.  That result
+is a separate reconstruction setting and is cited here only to distinguish
+invariant reconstruction from the maximal-planar parent problem in (1).
+
+Write the rim of a bipyramid as
+$r_0r_1\cdots r_{m-1}r_0$, with nonadjacent hubs $p,q$ joined to every
+rim vertex.  Insert $w$ in the facial triangle $pr_0r_1$ and join it to
+$p,r_0,r_1$.  This defines $J_m$.  Subscripts are henceforth taken modulo
+$m$, and $e_i=r_ir_{i+1}$.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\geq6$, the identifying edges of $J_m$ are exactly
+$pw,wr_0,wr_1$.  Moreover,
+\[
+ \Aut(J_m)=\langle r_i\mapsto r_{1-i}\rangle\cong C_2,
+\]
+where $p,q,w$ are fixed.  The two identifying-edge orbits are
+$\{pw\}$ and $\{wr_0,wr_1\}$; their card types are distinct and have
+full-deck multiplicities $1$ and $2$, respectively.
+
+The complete edge-orbit count is
+\[
+ \frac{3m}{2}+3\quad\text{if $m$ is even},
+ \qquad
+ \frac{3m+7}{2}\quad\text{if $m$ is odd}.
+\]
+Every other orbit has a nonisomorphic maximal-planar parent of its card,
+given explicitly in Table~\ref{tab:flips}.
+\end{theorem}
+
+\section{The identifying cards}
+
+We first record the elementary fact that makes the parent search
+exhaustive.
+
+\begin{lemma}\label{lem:parent}
+If $C=G-e$ and $H-f\cong C$, then, after transporting the isomorphism to
+$C$, the graph $H$ is $C+xy$ for one nonedge $xy$ of $C$.
+\end{lemma}
+
+\begin{proof}
+Edge deletion retains all vertices and removes exactly one edge.  Hence
+transporting an isomorphism $H-f\to C$ identifies $H$ with $C$ plus the
+single transported edge $f$.
+\end{proof}
+
+The degrees in $J_m$ are
+\[
+ d(p)=m+1,\quad d(q)=m,\quad d(w)=3,\quad
+ d(r_0)=d(r_1)=5,
+ \quad d(r_i)=4\ (i\notin\{0,1\}).                    \tag{2}
+\]
+Deleting any one of $pw,wr_0,wr_1$ therefore makes $w$ the unique
+degree-two vertex.  Every maximal planar graph has minimum degree at least
+three, so Lemma~\ref{lem:parent} implies that the added edge in any parent
+must be incident with $w$.  In a plane triangulation, the three neighbors
+of a degree-three vertex form a triangle.  Thus, if the two neighbors of
+$w$ already present in the card are $a,b$, the new neighbor must be a
+common neighbor of $a$ and $b$.  Intersecting the neighborhoods displayed
+by the construction gives the exhaustive list
+\[
+\begin{array}{c@{\qquad}c@{\qquad}c}
+\toprule
+\text{deleted edge}&N_C(w)&\text{possible added edges}\\
+\midrule
+pw    &\{r_0,r_1\}&wp,wq\\
+wr_0  &\{p,r_1\}&wr_0,wr_2\\
+wr_1  &\{p,r_0\}&wr_1,wr_{m-1}\\
+\bottomrule
+\end{array}                                                   \tag{3}
+\]
+Each listed completion is planar and has $3|V|-6$ edges, hence is maximal
+planar.  The two completions in the first row are isomorphic by swapping
+the bipyramid hubs.  In the second row, $w$ is stacked in
+$pr_0r_1$ or $pr_1r_2$, so a rim rotation is an isomorphism between the
+completions.  The third row is symmetric.  It follows from the exhaustive
+parent list that all three edges are identifying.
+
+\section{Rivals for all remaining edges}
+
+We use the standard embedding inherited from the bipyramid.  In each row
+of Table~\ref{tab:flips}, the deleted edge is incident with two triangular
+faces whose displayed opposite vertices are nonadjacent.  Adding the other
+diagonal is therefore a legal edge flip and yields another maximal planar
+graph.  Edge flips in planar graphs are treated systematically in
+\cite{BoseHurtado2009}; only the immediate local operation is needed here.
+
+\begin{table}[ht]
+\centering
+\caption{A rival completion for every edge not incident with $w$.}
+\label{tab:flips}
+\begin{tabular}{lll}
+\toprule
+deleted edge&opposite vertices&added edge\\
+\midrule
+$pr_0$&$w,r_{m-1}$&$wr_{m-1}$\\
+$pr_1$&$w,r_2$&$wr_2$\\
+$pr_i$, $i\notin\{0,1\}$&$r_{i-1},r_{i+1}$&$r_{i-1}r_{i+1}$\\
+$qr_i$&$r_{i-1},r_{i+1}$&$r_{i-1}r_{i+1}$\\
+$e_0=r_0r_1$&$w,q$&$wq$\\
+$e_i$, $i\ne0$&$p,q$&$pq$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Let $H$ be any rival in the table.  Then
+$H-(\text{added edge})=J_m-(\text{deleted edge})$, so it remains only to
+show $H\not\cong J_m$.  Formula (2) makes this mostly a degree comparison.
+For the $e_0$ flip, $H$ has two vertices of maximum degree $m+1$, whereas
+$J_m$ has one.  For an $e_i$ flip with $i\ne0$, the added edge $pq$ raises
+the maximum degree to $m+2$.  Every $pr_i$ flip lowers the degree of $p$;
+the rival has maximum degree at most $m$, strictly below $m+1$.
+
+For a $qr_i$ flip and $m\geq7$, the degree of $q$ falls from $m$ to
+$m-1$, while every changed rim degree is at most six.  Thus the rival has
+no vertex of degree $m$, unlike $J_m$.  When $m=6$, degree multisets
+separate $i\in\{2,3,4,5\}$:
+\[
+\begin{array}{c@{\qquad}c}
+\toprule
+\text{graph or index}&\text{degree multiset}\\
+\midrule
+J_6&7,6,5^2,4^4,3\\
+i\in\{2,5\}&7,6,5^3,4^2,3^2\\
+i\in\{3,4\}&7,5^5,4,3^2\\
+\bottomrule
+\end{array}                                                   \tag{4}
+\]
+For $i=0,1$, both graphs have unique vertices of degrees seven and six.
+Those vertices are the nonadjacent pair $p,q$ in $J_6$, but they are
+adjacent in the rival: respectively $p,r_1$ or $p,r_0$.  Hence all rivals
+in Table~\ref{tab:flips} are nonisomorphic to $J_m$, proving that no other
+edge is identifying.
+
+\section{Automorphisms, orbits, and multiplicities}
+
+The degrees in (2) fix $p,q,w$ under every automorphism and preserve
+$\{r_0,r_1\}$.  The action on the induced rim cycle must stabilize the
+edge $r_0r_1$.  Its setwise stabilizer consists of the identity and the
+reflection
+\[
+ r_i\longmapsto r_{1-i}.
+\]
+Both extend to automorphisms of $J_m$, proving the asserted description of
+$\Aut(J_m)$.  The edge orbits are therefore
+\[
+ \{pw\},\quad \{wr_0,wr_1\},\quad
+ \{pr_i,pr_{1-i}\},\quad
+ \{qr_i,qr_{1-i}\},\quad
+ \{e_i,e_{-i}\},                                      \tag{5}
+\]
+where repeated members are kept only once.  For even $m$, the last three
+families contribute $m/2,m/2,m/2+1$ orbits; for odd $m$, each contributes
+$(m+1)/2$.  Adding the first two orbits gives the counts in
+Theorem~\ref{thm:main}.
+
+Deleting a non-$w$ edge leaves minimum degree at least three, whereas each
+identifying card has the unique degree-two vertex $w$.  Thus no other edge
+contributes to either identifying card type.  The $pw$ card has maximum
+degree $m$, while the $wr_0$ and $wr_1$ cards have maximum degree $m+1$;
+these types are distinct.  Finally the reflection in (5) interchanges
+$wr_0$ and $wr_1$, proving multiplicities one and two.
+
+\section{Exact boundary check and assistance disclosure}
+
+An exact finite check supplements, but is not used in, the proof.  For
+each $m=6,7,8,9$ and each edge card, a Python program tested every nonedge
+as the single possible added edge, retained all planar $3n-6$-edge
+completions, and grouped cards, parents, and automorphisms using exact graph
+isomorphism.  The implementation uses NetworkX~3.4.2
+\cite{HagbergSchultSwart2008}; it contains no randomized or floating-point
+step.  It found automorphism-group order two, respectively $12,14,15,17$
+edge orbits, and exactly $pw,wr_0,wr_1$ as identifying in all four cases.
+The computation can be rerun from the project root with
+\begin{verbatim}
+python3 evidence/enumerate_cards.py 6 7 8 9 > reproduced.json
+\end{verbatim}
+and compared with \texttt{evidence/census-m6-m9.json}.
+
+AI assistance was used during proof development, consistency checking, and
+manuscript drafting.  The finite enumeration was also developed with AI
+assistance.  All quantified conclusions in Theorem~\ref{thm:main} follow
+from the displayed uniform proof; the computation is only a boundary
+check, and the complete code and serialized output are retained for
+inspection.
+
+\section{Literature scope}
+
+The result is a complete resolution of the stated classification problem
+for $J_m$, $m\geq6$.  The problem itself is a proposed refinement of
+Ivanov's infinite family, not a question claimed there as open.  A bounded
+literature search located no equivalent family-wide classification, but
+that absence is not a claim of priority.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

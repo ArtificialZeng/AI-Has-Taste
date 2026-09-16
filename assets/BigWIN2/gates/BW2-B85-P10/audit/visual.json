@@ -1,0 +1,57 @@
+{
+  "verdict": "accept",
+  "job_id": "win-00085-p10-release-67ea8095309a",
+  "report": "audit/visual.md",
+  "snapshot_digest": "20391ab6f51b0997b80c27263d41a7b0d2bbe59e19670d2ed1b74c2045e309ca",
+  "manuscript_digest": "0e80a931838a6f224645a5071709801b7223a5d3da0debc75d33ae87dcdd5c2f",
+  "pdf_digest": "3946c21b85a04af0d5360597d5eef83e38c151ca51ab7a694dfe49cf1faf430d",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "checked_at": "2026-09-12T13:32:59.154250+00:00",
+  "render_command": "pdftoppm -r 120 -png manuscript/build/main.pdf audit/release-page",
+  "inspection_method": "Actual image-tool viewing of every final rendered page",
+  "page_evidence": [
+    {
+      "page": 1,
+      "path": "audit/release-page-1.png",
+      "sha256": "cb38d1cd6a522310d8b7b2c8c876ecd40408c2864bd6e2d9ec054974925bb5bf",
+      "finding": "Title, author, affiliation, abstract, definitions, positive-leg comparison and Theorem 1 are legible; initial-zero convention and library citation appear in ordinary text."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-page-2.png",
+      "sha256": "7bd29c3d6034883260ec8a4c00f9e67d25915541392c291ff6ecc972542eed20",
+      "finding": "Endpoint-state decomposition, equations (2)-(4), and the full convolution lemma/proof are unclipped. Equation numbers and proof square are aligned."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-page-3.png",
+      "sha256": "f812d9b5c78db569385c4d004c54d547b91381d49f656552c95208fb4cda6a24",
+      "finding": "Coefficient formulas, ten-center lemma and main proof are legible. The exact-verification section and filenames fit; no missing glyphs or unresolved cross-references."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-page-4.png",
+      "sha256": "99c780c8473f40e3d984a0a1db5c87daf0a0271014dc1caef00dc6071d96e075",
+      "finding": "Finite ranges and counts are printed correctly. Limitations and AI disclosure are explicit. All five compact formulas and the R,2 coefficient table are complete."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-page-5.png",
+      "sha256": "214170c84ccd9c55eea5d5a5cd5325056fe984d7c237e9f10b5c2646586e8147",
+      "finding": "The R,3, S,2, S,3 and S,4 coefficient tables have clear exponent headers, integer cells and zero-as-blank convention. The widest nine-column table fits within margins."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-page-6.png",
+      "sha256": "dc2c1a4cee3be2ecb785861585e1067c5d4461655c92b81f50d8d7809162787c",
+      "finding": "All five bibliography entries are visible and legible, including the 27-author SymPy entry and distinction between Zijian and Xiaojian. URLs break within margins."
+    }
+  ]
+}

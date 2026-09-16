@@ -1,0 +1,129 @@
+{
+  "registry": "/home/ailab/4math-open-problems/registry/problems.jsonl",
+  "row_count": 639,
+  "search_regex": "subtree|Brown.{0,20}Mol|annulus|子树",
+  "hits": [
+    {
+      "id": "primary-20260913-subtree-annulus",
+      "batch": null,
+      "intake_origin": "authorized_primary_literature_fallback",
+      "browser_generated": false,
+      "batch_number_consumed": false,
+      "observed_at": "2026-09-13T00:53:18+08:00",
+      "title": "Brown-Mol shifted-annulus conjecture for subtree roots",
+      "source_id": "Brown-Mol1810.08655v1-Conjecture4.2; Jin-Ma-Wang2608.07898v1-Conjecture5.1",
+      "source_path": "batches/inbox/primary-20260913-subtree-annulus-source.md",
+      "source_sha256": "780c2b23b0b5c8ff23910d73403f7abbeb0f811ea709caaf64323eefbab29f94",
+      "status": "triage-running",
+      "original_status": "unresolved",
+      "candidate_kind": "none",
+      "object": "Subtree polynomial Phi_T(z) counting nonempty connected induced vertex sets of finite simple trees",
+      "quantifiers": "Every n>=2, every n-vertex tree T, every complex zero z including0: 1/2<=|z+1/2|<=1/2+(n-1)^(1/(n-1))",
+      "nearest_result": "Origin-centred radius1+(n-1)^(1/(n-1)) proved by Jin-Ma-Wang Thm1.3; Brown-Mol reported finite n<=18 shifted-annulus check",
+      "proposed_delta": "Original shifted inner/outer circles; not a new radial bound or an extra fixed-size census",
+      "next_test": "Bounded triage: exact convention calibration then one root-free-region invariant or parametrized-family discriminator; park if no useful new route",
+      "dedup_scope": "All2883 boundExcel and638unique native entries; main reread5complete closest originals; target conversation inaccessible and unchecked",
+      "semantic_neighbors": [
+        "smallmac-00056-p08",
+        "win-00063-p04",
+        "win-00075-p07",
+        "smallmac-00079-p02",
+        "win-00085-p10"
+      ],
+      "active_job": "primary-20260913-subtree-annulus-triage-1ad02ce248b4",
+      "research_passes": 0,
+      "evidence_paths": [
+        "batches/normalized/primary-20260913-subtree-annulus-admission.md",
+        "supervisor/primary-intake-20260913/screening.md",
+        "supervisor/primary-intake-20260913/brown-mol-1810.08655v1.pdf",
+        "supervisor/primary-intake-20260913/subtree-roots-2608.07898v1.html"
+      ],
+      "status_authority": "Formal add admitted00:52:47; sole existing launcher355823 launched owner382718; triage382787 since00:52:56, deadline01:00:56.92786+08. Actual live CLI argv verifiedgpt-6-astra/max."
+    }
+  ],
+  "semantic_neighbors": [
+    {
+      "id": "win-00063-p04",
+      "batch": 63,
+      "source_id": "DW63-04",
+      "title": "Stability census for independence polynomials of all 21-vertex trees",
+      "object": "independence polynomials of unlabeled trees on exactly 21 vertices",
+      "quantifiers": "every tree isomorphism class on 21 vertices and every complex root of its polynomial",
+      "nearest_result": "arXiv:2609.04694v1 reports prior computation that all trees through 20 vertices are stable and proves every spider stable",
+      "proposed_delta": "decide the next complete order, classify unstable classes if any, and give exact Hurwitz or real-algebraic certificates",
+      "status": "blocked",
+      "novelty_status": "fresh-referee-accepted-release-incomplete-at-budget",
+      "result": "all 2,144,505 unlabeled 21-vertex trees passed the exact Routh stability census; release audit was interrupted at the fixed deadline",
+      "source_path": "batches/inbox/win-00063-p04-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-63.raw.md",
+        "batches/normalized/bigWin-63.md",
+        "batches/inbox/bigWin-63-materials/2609.04694.pdf",
+        "projects/win-00063-p04"
+      ],
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00075-p07",
+      "batch": 75,
+      "source_id": "DW75-07",
+      "title": "First nonstable independence polynomial among trees",
+      "object": "minimum-order tree with an independence root in the open right half-plane",
+      "quantifiers": "all unlabeled trees by increasing order starting at 21",
+      "nearest_result": "arXiv:2609.04694v1 proves every spider is Hurwitz stable and reports computations through 20 vertices",
+      "proposed_delta": "find and exactly certify the first counterexample or extend the verified frontier",
+      "status": "parked",
+      "reason": "the prior exhaustive coverage and novelty of a first example need verification before enumeration",
+      "source_path": "batches/inbox/bigWin-75.raw.md",
+      "semantic_neighbors": []
+    },
+    {
+      "id": "win-00085-p10",
+      "batch": 85,
+      "source_id": "ARXIV-2605.02193-B85",
+      "title": "Domination-polynomial log-concavity for caterpillars with zero legs",
+      "object": "domination polynomials of caterpillars T(a_1,...,a_k) allowing zero leg counts",
+      "quantifiers": "every k>=1 and every tuple of nonnegative integers has a log-concave coefficient sequence",
+      "nearest_result": "arXiv:2605.02193v1 Theorem 3.3 proves the positive-leg case and Remark 3.4 states the authors believe the zero-leg case",
+      "proposed_delta": "find a counterexample or prove the transfer-matrix statement for internal zero legs",
+      "status": "released-result-note",
+      "reason": "Actual fresh release completed and passed the pure active gate. Final six-page partial result, five claim-driven references (four non-library plus relevant library row 17), current PDF and exact reproduction assets delivered with byte-identical copies. General zero-leg caterpillar original remains unresolved.",
+      "source_path": "batches/inbox/win-00085-p10-source.md",
+      "evidence_paths": [
+        "batches/inbox/bigWin-85.raw.md",
+        "batches/inbox/bigWin-85.capture.json",
+        "batches/normalized/bigWin-85.md",
+        "batches/inbox/win-00085-p10-source.md",
+        "projects/win-00085-p10/audit/math.json",
+        "projects/win-00085-p10/audit/math.md",
+        "projects/win-00085-p10/literature/du-heilman-panova-2605.02193v1-20260912.html",
+        "projects/win-00085-p10/literature/write-recovery-context-20260912.md",
+        "supervisor/pending-recovery-win-00085-p10.json",
+        "supervisor/drain-p85-p10-write-20260912T1257Z.json",
+        "projects/win-00085-p10/release/manifest.json",
+        "projects/win-00085-p10/audit/citations.md",
+        "projects/win-00085-p10/audit/visual.md",
+        "supervisor/win-00085-p10-delivery-copy.json",
+        "supervisor/win-00085-p10-resources.json"
+      ],
+      "semantic_neighbors": [
+        "win-00049-p03",
+        "win-00049-p14",
+        "win-00063-p04",
+        "win-00072-p07"
+      ],
+      "status_observed_at": "2026-09-12T21:45:49.1105034+08:00",
+      "status_authority": "Actual runner queue/process, pure installed gate and named artifacts; administrative status only, no invented audit verdict.",
+      "candidate_kind": "result-note",
+      "original_status": "unresolved",
+      "candidate_scope": "For all integers p,q>=1, the complete coefficient sequence of D_T for T(p,0,0,q) is log-concave; the general zero-leg caterpillar problem stays unresolved.",
+      "candidate_review_status": "Existing referee b2b6a2dd2a27 acceptance preserved. Recovered writer19d96cf4ee27 completed; fresh release67ea8095309a completed 21:34:46 China with runner prepublish/publish passed. Pure active gate and actual final six-page image-return binding verified. Research3/3, revisions0/2, all nine jobs and four unknown usages retained.",
+      "windows_pdf": "C:/Users/87510/Documents/ChatGPT/math_WIN/outputs/win-00085-p10-domination-log-concavity-two-zero-caterpillars.pdf",
+      "windows_latex": "C:/Users/87510/Documents/ChatGPT/math_WIN/outputs/win-00085-p10-3946c21b85a0/manuscript/main.tex",
+      "windows_delivery": "C:/Users/87510/Documents/ChatGPT/math_WIN/outputs/win-00085-p10-3946c21b85a0/DELIVERY.md",
+      "pdf_sha256": "3946c21b85a04af0d5360597d5eef83e38c151ca51ab7a694dfe49cf1faf430d",
+      "delivery_sha256": "4995a65110fe37a44175f6c6731624b15e1d68e0e1b7186f4343b8e1c16cb326"
+    }
+  ],
+  "assessment": "Only keyword match is current intake. Three native semantic neighbor records were inspected and count independent or dominating subsets. The two smallmac neighbors and Excel screen remain supervisor-supplied, not independently repeated."
+}

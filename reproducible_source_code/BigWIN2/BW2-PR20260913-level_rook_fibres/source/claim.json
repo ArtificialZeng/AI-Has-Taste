@@ -1,0 +1,22 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "For every finite weakly increasing sequence C=(c_1,...,c_t) of positive integers that is 2-singleton (no repeated odd height), the number F_2(C) of Ferrers shapes B with l_2(B)=C, with leading zero columns identified and preimage width unrestricted, is computable in time polynomial in the binary input length log(t+1)+sum_i log(c_i+1). The empty target has count 1. For t>=1, put s_i=c_(t+1-i), s_(t+1)=0 and a_i=floor(s_i/2)-ceil(s_(i+1)/2). There is an explicit bijection between the fibre and integer vectors d>=0 satisfying d_i+d_(i+1)<=a_i for i<t and d_t<=a_t. More generally, for every nonnegative integer vector a of length t>=1, with A=max_i a_i, the proposed exact algorithm counts these vectors in O(t^4) integer arithmetic operations on O(t log(A+t+2))-bit integers and O(t^2) stored integers. Thus O(t^6 log^2(A+t+2)) elementary bit operations suffice. Its layer-i count function has at most i integer-interval polynomial pieces of degree at most i-1. The claim is restricted to m=2 and does not resolve the original arbitrary-m problem.",
+  "contribution": "A uniform exact binary-input algorithm for the full m=2 slice of the level-transpose fibre question, combining the row-pair bijection with bounded-size discrete polynomial prefix propagation. This replaces capacity-sized transfer tables by polynomial storage and bit cost. Uniform weighted-path formulas, general piecewise polynomiality, polynomial interpolation, and symbolic message passing are acknowledged prior methods. No equivalent binary-input F_2 theorem was found in the primary statements inspected on 2026-09-13; worldwide priority and publication value remain for fresh review.",
+  "proposer_job_id": "primary-20260913-level-rook-fibres-research-4655afa47dc0",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/m2-compressed-proof.md",
+    "evidence/m2-compressed.py",
+    "evidence/m2-compressed-check.py",
+    "evidence/m2-compressed-check.json",
+    "evidence/m2-path-check.py",
+    "evidence/m2-path-check.json",
+    "literature/research-comparison.md",
+    "evidence/external-source-copies.json",
+    "evidence/external/blrs-bijections-1508.05944v1.pdf",
+    "evidence/external/blrs-level-rooks-1308.4081.pdf",
+    "evidence/external/barrese-rook-graphs-1812.00533v2.html"
+  ]
+}

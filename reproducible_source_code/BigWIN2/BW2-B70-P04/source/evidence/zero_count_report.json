@@ -1,0 +1,104 @@
+{
+  "analytic_bounds": {
+    "arb_precision_bits": 256,
+    "first_derivative_bound_expression": "[3.7890749858731762241011850916071645540484293027824 +/- 3.74e-50]",
+    "first_derivative_upper_used": "379/100",
+    "second_derivative_bound_expression": "[14.947982257825255886321470430297301481522141404563 +/- 4.90e-49]",
+    "second_derivative_upper_used": "16/1",
+    "tail_derivative_expression": "[1.4394200829217145596435058189049367633543661421184e-19 +/- 3.26e-69]",
+    "tail_derivative_upper_used": "1/1000000000000000000",
+    "tail_value_expression": "[2.1009453694562177767033408715168783709726261410017e-21 +/- 1.51e-71]",
+    "tail_value_upper_used": "1/100000000000000000000",
+    "truncation_index": 140
+  },
+  "box_cover": {
+    "certified_nonzero_leaf_boxes": 122,
+    "coverage": "Each initial closed rectangle is recursively bisected into two closed children; every final child is either certified nonzero or contained in the frozen disk.",
+    "criterion": "At box centre m, |P_N(m)| > TAIL0_UP + M1_UP*((sigma width+t width)/2).",
+    "leaf_boxes": 127,
+    "leaf_boxes_inside_frozen_disk": 5,
+    "leaf_file": "evidence/zero_count_boxes.tsv",
+    "leaf_file_sha256": "aa4a09a04adee10225cf4936b605e16981ad6fd9febf95a97e87ce00cbfbaa76",
+    "maximum_depth": 36,
+    "per_interval": {
+      "1": {
+        "disk_boxes": 0,
+        "excluded_boxes": 1,
+        "maximum_depth": 0
+      },
+      "2": {
+        "disk_boxes": 0,
+        "excluded_boxes": 1,
+        "maximum_depth": 0
+      },
+      "3": {
+        "disk_boxes": 0,
+        "excluded_boxes": 1,
+        "maximum_depth": 0
+      },
+      "4": {
+        "disk_boxes": 0,
+        "excluded_boxes": 1,
+        "maximum_depth": 0
+      },
+      "5": {
+        "disk_boxes": 0,
+        "excluded_boxes": 4,
+        "maximum_depth": 3
+      },
+      "6": {
+        "disk_boxes": 0,
+        "excluded_boxes": 1,
+        "maximum_depth": 0
+      },
+      "7": {
+        "disk_boxes": 0,
+        "excluded_boxes": 1,
+        "maximum_depth": 0
+      },
+      "8": {
+        "disk_boxes": 5,
+        "excluded_boxes": 112,
+        "maximum_depth": 36
+      }
+    },
+    "visited_boxes": 246
+  },
+  "conclusion": {
+    "N_0.73_8596696": 1,
+    "frozen_closed_disk_zero_count_with_multiplicity": 1,
+    "frozen_disk_unique_zero_is_simple": true
+  },
+  "domain_reduction": {
+    "direct_box_domain": "All eight closed products [0.73,0.75] x phase interval",
+    "included_boundaries": "The products and all leaf boxes are closed; hence sigma=0.73 and every retained ordinate endpoint are included. The phase cover also covers the possible top boundary t=8596696.",
+    "phase_cover": "Every remaining zero with 0.73<=Re(s)<sigma_F and 0<t<=8596696 has t in one of the eight closed input intervals.",
+    "source_theorem": "Mantovanelli Theorem 1.1: no zeros for Re(s)>=sigma_F and sigma_F<0.75"
+  },
+  "input_hashes": {
+    "evidence/phase_cover_intervals.tsv": "9f574a6d680d682f931d6f1e09580815e693a7e6b70760563da2020df01f3c70",
+    "evidence/phase_cover_report.json": "89a5fbba37b1ca8ae180fe4ec4efd38a24b492c6dbabcc07f1e9e714040edbbd",
+    "source.md": "428ca0cb32177fac8b016408059181d851fd2e86db0559ed57263745527dd932"
+  },
+  "job_id": "win-00070-p04-research-afa9b8e545d5",
+  "method_notes": [
+    "Arb comparisons are strict interval comparisons; an assertion succeeds only when the displayed inequality is certified.",
+    "The value and derivative tails use F_n>=phi^(n-2), F_n<=phi^(n-1), and exact geometric-series sums; both Fibonacci inequalities follow by induction from phi^2=phi+1.",
+    "The nonzero box criterion follows by integrating Z_F' along the line segment from the box centre and using the uniform derivative bound on Re(s)>=0.73.",
+    "Exactly one zero counted with multiplicity implies existence, uniqueness as a distinct zero, and simplicity."
+  ],
+  "rouche_disk": {
+    "argument": "The linear function has one zero inside the disk. On the circle its modulus lower bound exceeds the value-tail + derivative-tail*r + M2*r^2/2 bound for Z_F minus the linear function, so Rouche gives exactly one zero counted with multiplicity and none on the circle.",
+    "centre_exact": "730178633163/1000000000000 + (8596695206382/1000000)i",
+    "difference_upper": "[8.000000010001000000000000000000000000000000000000000000e-12 +/- 3e-70]",
+    "linear_boundary_lower": "[1.771911623998071680633125224199268796933359446390491962e-6 +/- 3.83e-61]",
+    "linear_zero_distance_upper": "[4.585549443576651720113192917175415607809261508122005318e-7 +/- 4.48e-62]",
+    "partial_derivative_at_centre": "[3.272504033161629253114083317488570448914790105608624198 +/- 4.94e-55] + [0.01919989605186216450407415175819732086618847880007752830 +/- 3.68e-57]j",
+    "partial_derivative_modulus": "[3.272560355909044524079573303171215278632948658421897975 +/- 1.43e-56]",
+    "partial_value_at_centre": "[-8.805586359380602513575968302603594214570523883553140428e-9 +/- 3.86e-64] + [1.500622896744841200439856018224326423585962506836867561e-6 +/- 3.63e-61]j",
+    "partial_value_modulus": "[1.500648731910972843446448078971946481699589212031406013e-6 +/- 3.68e-61]",
+    "radius_exact": "1/1000000",
+    "rouche_gap": "[1.771903623998061679633125224199268796933359446390491962e-6 +/- 3.83e-61]"
+  },
+  "status": "certified_exact_zero_count"
+}

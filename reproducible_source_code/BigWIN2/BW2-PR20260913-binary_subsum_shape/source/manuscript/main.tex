@@ -1,0 +1,574 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array,microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\hypersetup{pdftitle={Boundary log-concavity of binary reciprocal-subsum numerators},
+ pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\B}{\mathcal B}
+\newcommand{\T}{\mathcal T}
+
+\newcommand{\ind}{\mathbf1}
+\DeclareMathOperator{\degp}{deg}
+\title{Boundary log-concavity of binary reciprocal-subsum numerators}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $N_n(x)$ be the binary reciprocal-subsum numerator introduced by
+Ballantine, Beck, Feigon and Maurischat. We prove strict coefficient
+log-concavity, uniformly for every fixed $0<\varepsilon<1$ and sufficiently
+large $n$, at the first
+$\lfloor(1-\varepsilon)\sqrt{\log_2 n/2}\rfloor$ positions and their
+reflections. An elementary bound for the mean multiplicity of ones and two
+coefficient envelopes also give an explicit rational sufficient test without
+enumerating binary partitions. For every $n\ge6$, the first three positions
+and their reflections satisfy strict inequalities; at even $n$ we prove a
+stronger comparison with the first recurrence summand. The third-position
+proof uses exact polynomial identities on a complete set of parameter
+chambers. The full log-concavity conjecture remains unresolved here.
+\end{abstract}
+
+\section{The polynomial family and the boundary results}
+Let $\B(n)$ be the set of partitions of $n$ into powers of two, and let
+$m_\lambda(q)$ denote the multiplicity of $q$ in $\lambda$.
+Write $b(n)=|\B(n)|$, including $b(0)=1$. For $n\ge1$, put
+\begin{equation}\label{eq:def}
+ N_n(x)=\sum_{\lambda\in\B(n)}h_{n,\lambda}(x),\qquad
+ h_{n,\lambda}(x)=\prod_{2^k\le n}
+ (1+x^{2^k})^{\lfloor n/2^k\rfloor-m_\lambda(2^k)},
+\end{equation}
+and set $N_0=1$. This is precisely $\operatorname{num}_{\B}(n,x)$ of
+\cite[Remark 6]{BBFM}: the common divisor of the individual summands used
+in that normalization is $1$.
+Let $c_{n,j}=[x^j]N_n$ and
+\[
+ d(n)=\degp N_n=\sum_{k\ge1}2^k\lfloor n/2^k\rfloor.
+\]
+For $P(x)=\sum p_jx^j$, define
+$\T_j(P)=p_j^2-p_{j-1}p_{j+1}$.
+An internal position means $1\le j<\degp P$; no parity subsequence or
+coefficient normalization is used.
+
+The originating paper proves positivity of all coefficients,
+palindromicity, and $N_{2m+1}=N_{2m}$
+\cite[Proposition 4.1]{BBFM}. Each summand in \eqref{eq:def} has degree
+$d(n)$ and is palindromic, which also explains the reflection symmetry.
+The conjecture under consideration is
+\begin{equation}\label{eq:original}
+ \T_j(N_n)\ge0\qquad(n\ge6,\ 1\le j<d(n)),
+\end{equation}
+as stated in \cite[Conjecture 7]{BBFM}.
+The remark in Section 1.2.2 of \cite[version 2]{COZ} records that the
+failures at $n=4,5$ concern an earlier range and leave the corrected question
+unresolved. Our results are restricted to boundary positions.
+
+For even $n$, write
+\begin{equation}\label{eq:rec}
+ N_n=A_n+B_n,\qquad A_n=(1+x)^nN_{n/2}(x^2),\qquad
+ B_n=\prod_{i=1}^{v_2(n)}(1+x^{2^i})N_{n-2}(x),
+\end{equation}
+where $v_2(n)$ is the exponent of $2$ in $n$.
+This is \cite[Theorem 4.7]{BBFM}. Both summands have degree $d(n)$.
+The recurrence separates partitions with no ones, whose parts can be
+halved, from those with at least two ones, from which two ones can be deleted.
+
+\begin{theorem}\label{thm:main}
+For the numerators \eqref{eq:def}, the following assertions hold.
+\begin{enumerate}
+\item For every real $0<\varepsilon<1$ there is an integer $n_\varepsilon$
+such that, for every integer $n\ge n_\varepsilon$,
+\[
+ \T_j(N_n)>0\quad\text{for }1\le j\le
+ \left\lfloor(1-\varepsilon)\sqrt{\frac{\log_2 n}{2}}\right\rfloor
+ \quad\text{and at each }d(n)-j.
+\]
+\item For every integer $n\ge6$, strict positivity holds at
+$j=1,2,3,d(n)-1,d(n)-2,d(n)-3$. For even $n\ge6$, at these positions,
+\[
+ \T_j(N_n)>\T_j(A_n)>0.
+\]
+\item Define the rational number
+\begin{equation}\label{eq:M}
+ M_n=\min_{\substack{K\in\mathbb Z\\0\le K\le\lfloor\log_2n\rfloor}}
+ \frac{n+2^{K+1}-K-2}{K+1}.
+\end{equation}
+For $n\ge2$ and an internal integer position $1\le j\le n$, the conditions
+$jM_n<n$ and
+\begin{equation}\label{eq:test}
+ \binom nj^2\left(1-\frac{jM_n}{n}\right)^2>
+ \binom{n+j-2}{j-1}\binom{n+j}{j+1}
+\end{equation}
+imply $\T_j(N_n)>0$.
+\end{enumerate}
+\end{theorem}
+
+The added conclusion relative to the structural and initial-coefficient
+formulas in \cite[Section 4]{BBFM} is a uniform range whose width tends
+to infinity, together with a count-free sufficient test and the three-position
+comparison for all admissible $n$. The growing range requires control of
+coefficient errors while $j$ grows; a fixed-index limit does not suffice.
+No equivalent boundary statement was found in the primary sources inspected
+for this note as of 13 September 2026. This is a bounded literature assessment,
+not a claim of exhaustive priority. Neither the width constant nor the
+sufficient criterion is asserted to be optimal.
+
+\section{Occupation estimates and the growing range}
+Choose $\lambda\in\B(n)$ uniformly. For a power of two $q$, let
+$\mu_q=\mathbb E m_\lambda(q)$ and put $\mu=\mu_1$.
+
+\begin{lemma}\label{lem:mean}
+For $n\ge2$, one has $\mu\le M_n$. If $L=\log_2n$ and $n\ge4$, then
+\begin{equation}\label{eq:mean}
+ \frac{\mu}{n}\le\frac{M_n}{n}
+ \le\frac{1+2/L}{L-\log_2L}=\frac{1+o(1)}L.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Adding a one shows that $b(h)$ is nondecreasing for $h\ge0$; extend it by
+$b(h)=0$ for $h<0$. Deleting $r$ copies of $q$ gives
+\[
+ \mu_q=\sum_{r\ge1}\frac{b(n-rq)}{b(n)}.
+\]
+In the corresponding sum for $\mu$, isolate its first $q-1$ terms, each
+at most $1$, and group the rest into blocks $rq,\ldots,(r+1)q-1$.
+Monotonicity bounds each block by $qb(n-rq)/b(n)$. Hence
+$\mu\le q-1+q\mu_q$.
+Since the total partition weight has expectation $n$, for every admissible $K$,
+\[
+ n=\sum_{k\ge0}2^k\mu_{2^k}
+ \ge (K+1)\mu-\sum_{k=0}^K(2^k-1)
+ =(K+1)\mu-(2^{K+1}-K-2).
+\]
+Minimizing proves the first assertion.
+For the second, take $K=\lfloor L-\log_2L\rfloor$.
+Then $2^{K+1}\le2n/L$ and $K+1\ge L-\log_2L>0$.
+Dropping the nonpositive term $-K-2$ in the numerator gives \eqref{eq:mean}.
+\end{proof}
+
+\begin{lemma}\label{lem:envelopes}
+For $0\le j\le n$,
+\begin{align}
+ c_{n,j}&\ge b(n)\binom nj(1-j\mu/n),\label{eq:lower1}\\
+ c_{n,j}&\ge b(n)\frac{n^j}{j!}(1-\delta_{n,j}),\qquad
+ \delta_{n,j}=\frac{j\mu}{n}+\frac{j(j-1)}{2n}.\label{eq:lower2}
+\end{align}
+For every $j\ge0$ and $n\ge1$,
+\begin{equation}\label{eq:upper}
+ c_{n,j}\le b(n)\binom{n+j-1}{j}
+ \le b(n)\frac{n^j}{j!}\exp\left(\frac{j(j-1)}{2n}\right).
+\end{equation}
+Here coefficients outside the polynomial's degree range are zero.
+\end{lemma}
+\begin{proof}
+The factor $(1+x)^{n-m_\lambda(1)}$ in each summand gives the lower bound
+$\binom{n-m_\lambda(1)}j$. A uniform $j$-subset of $n$ labels avoids a
+specified set of $m$ forbidden labels with probability at least $1-jm/n$,
+by the union bound. Averaging over $m=m_\lambda(1)$ proves
+\eqref{eq:lower1}. Alternatively draw $j$ labels independently. The
+probability of a forbidden draw or a collision is at most
+$jm/n+\binom j2/n$. The number of ordered acceptable tuples is
+$j!\binom{n-m}j$, which proves \eqref{eq:lower2} after averaging.
+These lower bounds remain valid when their right sides are negative.
+
+Let $\preceq$ denote coefficientwise order of formal series. Every exponent
+in \eqref{eq:def} is between $0$ and $n$. Unique finite binary expansion gives
+\[
+ h_{n,\lambda}(x)\preceq
+ \prod_{k\ge0}(1+x^{2^k})^n=(1-x)^{-n}.
+\]
+Only finitely many factors contribute to a fixed coefficient, so this uses
+no analytic infinite-product limit. Summing over $\lambda$ proves the first
+upper bound. The second follows from
+$\prod_{r=0}^{j-1}(1+r/n)\le\exp(\sum_{r=0}^{j-1}r/n)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:main}(3)]
+The condition $jM_n<n$ makes the lower envelope in \eqref{eq:lower1}
+positive. Square it, replace $\mu$ by its upper bound $M_n$, and apply the
+first bound in \eqref{eq:upper} at $j-1$ and $j+1$.
+After canceling $b(n)^2$, \eqref{eq:test} gives the claimed strict inequality.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:main}(1)]
+Fix $\alpha=1-\varepsilon$ and set
+$J_n=\lfloor\alpha\sqrt{L/2}\rfloor$, where $L=\log_2n$.
+Since $d(n)\ge2\lfloor n/2\rfloor\ge n-1$, these positions are internal
+and $J_n<n$ for sufficiently large $n$.
+Uniformly for $1\le j\le J_n$, Lemma \ref{lem:mean} yields
+\begin{equation}\label{eq:uniform}
+ \delta_{n,j}=o(1),\quad
+ j\delta_{n,j}\le\alpha^2/2+o(1),\quad
+ j\delta_{n,j}^2=o(1),\quad
+ \frac{j(j^2-j+1)}n=o(1).
+\end{equation}
+Indeed, $j^2\mu/n\le\alpha^2/2+o(1)$ and the remaining contribution to
+$j\delta_{n,j}$ is $O(L^{3/2}/n)$. Also
+$\delta_{n,j}=O(L^{-1/2})$, proving the other assertions.
+The positive lower envelope and the upper envelopes give
+\begin{equation}\label{eq:ratio}
+ \frac{c_{n,j}^2}{c_{n,j-1}c_{n,j+1}}
+ \ge R_{n,j}:=\frac{j+1}{j}(1-\delta_{n,j})^2
+ \exp\left(-\frac{j^2-j+1}{n}\right).
+\end{equation}
+Using
+$\log(1+x)\ge x-x^2/2$ for $x\ge0$ and
+$\log(1-y)\ge-y-y^2/(2(1-y))$ for $0\le y<1$, equations
+\eqref{eq:uniform}--\eqref{eq:ratio} imply, with a uniform remainder,
+\[
+ j\log R_{n,j}\ge1-\frac1{2j}-\alpha^2-o(1).
+\]
+Choose a fixed integer $J$ with $1/(2J)<(1-\alpha^2)/2$.
+For all sufficiently large $n$ this is positive simultaneously for
+$J\le j\le J_n$. For the finitely many $1\le j<J$, one has
+$R_{n,j}\to(j+1)/j>1$. Enlarging the same threshold handles these as well.
+Palindromicity gives the reflected inequalities.
+\end{proof}
+
+\section{The first three positions for every admissible parameter}
+Put $n=2m$, $w_k=b(k)$, $w=w_m$, and
+\[
+ S_r=\sum_{k=0}^m k^rw_k,\qquad R_r=\sum_{k=0}^{m-1}k^rw_k,
+\]
+with $k^0=1$ at $k=0$. Write $c_j=[x^j]N_{2m}$ and $a_j=[x^j]A_{2m}$.
+The coefficient identities needed below are
+\begin{align}
+ c_0&=S_0,&c_1&=2S_1,&c_2&=2S_2,\label{eq:low}\\
+ c_3&=\sum_{k=0}^m H_m(k)w_k,&
+ H_m(k)&=\frac{4k^3+2k}{3}-(m-k)(m-k+1).\label{eq:cubic}
+\end{align}
+The first three formulas are prior identities
+\cite[Corollary 4.5 and Remark 8]{BBFM}.
+To obtain the next one, first note that deletion of ones gives
+\begin{equation}\label{eq:linear}
+ [x]N_k=kw_k-\sum_{h<k}w_h,
+\end{equation}
+also \cite[Corollary 4.2]{BBFM}. The carry factor in \eqref{eq:rec} is
+$1+x^2+O(x^4)$. Its cubic increment is therefore
+\[
+ \binom{2k}{3}w_k+2k[x]N_k+[x]N_{2k-2}
+ =\frac{4k^3+2k}{3}w_k-2\sum_{h<k}(k-h)w_h.
+\]
+Summing over $k=1,\ldots,m$ gives \eqref{eq:cubic}.
+Direct extraction in $A_{2m}$ gives
+\begin{align*}
+ a_0&=w,&a_1&=2mw,&a_2&=2m^2w-R_0,&
+ a_3&=\frac{4m^3+2m}{3}w-2mR_0.
+\end{align*}
+Consequently
+\begin{equation}\label{eq:apos}
+ \T_1(A_{2m})=2m^2w^2+wR_0>0,\qquad
+ \T_2(A_{2m})=\frac{4m^2(m^2-1)}3w^2+R_0^2>0
+\end{equation}
+for $m\ge3$.
+
+\subsection{First and second positions}
+Expanding \eqref{eq:low} gives
+\begin{align}
+ \T_1(N_{2m})-\T_1(A_{2m})
+ &=w\sum_{k<m}g_m(k)w_k+4R_1^2-2R_0R_2,\label{eq:first}\\
+ g_m(k)&=8mk-2k^2-2m^2-1.\notag
+\end{align}
+For increasing sequences $f_k,w_k$, summing
+$(f_i-f_j)(w_i-w_j)\ge0$ gives Chebyshev's sum inequality.
+It implies $2R_1\ge(m-1)R_0$. Since $R_2\le(m-1)R_1$, the last two terms
+in \eqref{eq:first} have nonnegative sum. The function $g_m$ increases on
+$0\le k<m$, and its average there is $(4m^2-9m-4)/3$. Thus
+\[
+ \T_1(N_{2m})-\T_1(A_{2m})
+ \ge wR_0\frac{4m^2-9m-4}{3}>0\qquad(m\ge3).
+\]
+
+For the second position, put
+\[
+ U_z=\sum_{k=z}^m k,\qquad V_z=\sum_{k=z}^m k^2,\qquad
+ W_z=\sum_{k=z}^m H_m(k)
+\]
+and define
+\begin{equation}\label{eq:k2}
+ K_m(l,t)=4V_lV_t-U_lW_t-U_tW_l
+ -\frac{4m^2(m^2-1)}3-(m-l)(m-t).
+\end{equation}
+Let $e_0=w_0=1$ and $e_l=w_l-w_{l-1}\ge0$ for $l\ge1$.
+The tail decomposition $w_k=\sum_{l\le k}e_l$ and polarization give
+\begin{equation}\label{eq:comp2}
+ \T_2(N_{2m})-\T_2(A_{2m})=\sum_{l,t=0}^m e_le_tK_m(l,t).
+\end{equation}
+Here $K_m(l,t)\ge0$ for all $0\le l\le t\le m$.
+For an explicit certificate, substitute the four rows of
+Table \ref{tab:k2}; each expansion of $36K_m(l,t)$ has only nonnegative
+integer coefficients. The complete coefficient lists, totaling 105
+monomials, are supplied in \texttt{kernel2.json}. Their exact verification
+is explained in Section \ref{sec:verify}.
+The four cases exhaust the domain according as $l\ge1$, or $l=0$ and
+$t\ge2$, $t=0$, or $t=1$.
+\begin{table}[ht]
+\centering
+\begin{tabular}{c c c c}
+\toprule
+Case & $l$ & $t$ & $m$\\\midrule
+1 & $u+1$ & $u+1+b$ & $u+1+b+c$\\
+2 & $0$ & $b+2$ & $b+2+c$\\
+3 & $0$ & $0$ & $c$\\
+4 & $0$ & $1$ & $c+1$\\\bottomrule
+\end{tabular}
+\caption{Second-position certificate substitutions. All free variables are
+nonnegative integers.}\label{tab:k2}
+\end{table}
+In particular,
+\[
+ 36K_m(0,0)=4m^6+24m^5+4m^4+48m^3+28m^2>0\quad(m\ge1).
+\]
+The $e_0^2$ term in \eqref{eq:comp2} proves strictness. Together with
+\eqref{eq:apos}, this settles the first two positions.
+
+\subsection{The third-position kernel}
+For formal weights $w_0,\ldots,w_m$, set
+$L_k=kw_k-\sum_{h<k}w_h$ and
+$Q_k=2\sum_{h=0}^{\lfloor k/2\rfloor}h^2w_h$.
+The quartic coefficient functionals extending those above are
+\begin{align}
+ c_4&=\sum_{k=1}^m\left[
+ \binom{2k}{4}w_k+\binom{2k}{2}L_k+Q_k
+ +2\sum_{h<k}h^2w_h+\ind_{2\mid k}\sum_{h<k}w_h\right],\label{eq:quartic}\\
+ a_4&=\binom{2m}{4}w_m+\binom{2m}{2}L_m+Q_m.\notag
+\end{align}
+Indeed, the carry factor has $x^2$ coefficient $1$, $x^4$ coefficient
+$\ind_{2\mid k}$, and no odd coefficients. Extract $x^4$ in
+\eqref{eq:rec} and telescope.
+For the formal tail vector $w_k=\ind_{k\ge z}$, denote the resulting
+functionals by $p_j(z)$ and $a_j(z)$. Define the symmetric kernel
+\begin{align}\label{eq:k3}
+ 2K^{(3)}_m(l,t)={}&2p_3(l)p_3(t)-p_2(l)p_4(t)-p_2(t)p_4(l)\notag\\
+ &-2a_3(l)a_3(t)+a_2(l)a_4(t)+a_2(t)a_4(l).
+\end{align}
+This definition uses exactly the formal extension in
+\eqref{eq:low}, \eqref{eq:cubic} and \eqref{eq:quartic}.
+
+\begin{lemma}\label{lem:k3}
+For integers $m\ge5$ and $0\le l\le t\le m$,
+$K^{(3)}_m(l,t)\ge0$, and $K^{(3)}_m(0,0)>0$.
+\end{lemma}
+\begin{proof}
+We give the piecewise polynomial formulas and the complete coverage argument
+for an exact certificate. Put $q=\lfloor m/2\rfloor$, $\delta=m\bmod2$,
+$\eta=z\bmod2$, and
+\[
+ v_r=\sum_{k=z}^m k^r,\qquad
+ H_r=\begin{cases}\sum_{k=z}^q k^r,&z\le q,\\0,&z>q,\end{cases}
+ \qquad E_z=\left(q-\frac{z-\eta}{2}\right)
+ \left(q-\frac{z-\eta}{2}+1-\eta\right).
+\]
+Reversing the finite sums in \eqref{eq:quartic} gives
+\begin{align}
+ p_2(z)&=2v_2,\notag\\
+ p_3(z)&=\tfrac43v_3-v_2+(2m+\tfrac53)v_1-(m^2+m)v_0,\notag\\
+ p_4(z)&=\tfrac23v_4-2v_3+\tfrac{11}6v_2-\tfrac12v_1
+       +z(2v_2-v_1)+2mv_2-2v_3\notag\\
+       &\quad+2(m+1)H_2-4H_3+E_z,\label{eq:tails}\\
+ a_2(z)&=2m^2-m+z,\notag\\
+ a_3(z)&=(4m^3+2m)/3-2m(m-z),\notag\\
+ a_4(z)&=\binom{2m}{4}+\binom{2m}{2}z+2H_2.\notag
+\end{align}
+For clarity, the four contributions to $p_4$ before expansion are
+\[
+ \sum_{k=z}^m\left[\binom{2k}{4}+z\binom{2k}{2}\right],\quad
+ 2\sum_{h=z}^q h^2(m-2h+1),\quad
+ 2\sum_{h=z}^m h^2(m-h),\quad E_z.
+\]
+The second sum is zero on its inactive branch, and
+$E_z=\sum_{\substack{k\le m\\2\mid k}}(k-z)_+$.
+The power sums are differences $F_r(m)-F_r(z-1)$, where
+\begin{align*}
+ F_0(y)&=y+1,& F_1(y)&=y(y+1)/2,& F_2(y)&=y(y+1)(2y+1)/6,\\
+ F_3(y)&=y^2(y+1)^2/4,&
+ F_4(y)&=y(y+1)(2y+1)(3y^2+3y-1)/30.
+\end{align*}
+Thus the formulas include $z=0$ and both sides of the halfway boundary.
+
+Table \ref{tab:k3} gives chambers with $m=2(u+b+c)+\delta$.
+For LL the inverse gaps $(u,b,c)$ are $(l,t-l,q-t)$; for HH they are
+$(l-q-\delta,t-l,m-t)$. In the mixed case $l\le q<t$, use LH1 when
+$t\ge q+l+\delta$, with inverse $(l,m-t,t-q-l-\delta)$, and otherwise
+use LH2, with inverse $(t-q-\delta,q+l+\delta-t,q-l)$.
+These formulas prove coverage.
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{c c c c c}
+\toprule
+Chamber & $l$ & $t$ & Extra condition & Active $H$ terms\\\midrule
+LL & $u$ & $u+b$ & none & both\\
+HH & $2u+b+c+\delta$ & $2u+2b+c+\delta$ & $u\ge1-\delta$ & neither\\
+LH1 & $u$ & $2u+b+2c+\delta$ & $u+c+\delta\ge1$ & $l$ only\\
+LH2 & $b+u$ & $b+2u+c+\delta$ & $u\ge1-\delta$ & $l$ only\\\bottomrule
+\end{tabular}
+\caption{Third-position chambers, with $u,b,c\ge0$ and
+$\delta\in\{0,1\}$.}\label{tab:k3}
+\end{table}
+
+For $\delta=0$, split LH1 into $u\ge1$ and $u=0,c\ge1$.
+Shift all required lower bounds, then split each free gap by parity.
+The resulting 68 roots have gaps $g_i=g_i^0+2X_i$, with $X_i\ge0$;
+the fixed first coordinate in the second LH1 subcase is zero.
+The remaining restriction $m\ge5$ is
+\begin{equation}\label{eq:threshold}
+ X_0+X_1+X_2\ge
+ \max\left(0,\left\lceil\frac{3-\delta-\sum_i g_i^0}{2}\right\rceil\right),
+\end{equation}
+whose right side is at most $2$.
+The supplementary file \texttt{kernel3.json} lists 144 leaves. A leaf
+specifies its root, an offset $o_i$, and whether each axis is fixed;
+on a free axis $X_i=o_i+Y_i$, $Y_i\ge0$, and on a fixed axis $X_i=o_i$.
+For every leaf the supplied list is the complete expansion
+\begin{equation}\label{eq:cert}
+ 1440K^{(3)}_m(l,t)=\sum_{\boldsymbol a}
+ C_{\boldsymbol a}Y_0^{a_0}Y_1^{a_1}Y_2^{a_2},\qquad
+ C_{\boldsymbol a}\in\mathbb Z_{\ge0}.
+\end{equation}
+There are 12,325 listed monomials; omitted coefficients are zero.
+Section \ref{sec:verify} gives a direct exact identity test for every row.
+Every offset is at most $2$. Clipping $X_i$ to $\min(X_i,4)$ preserves
+membership in each leaf and preserves \eqref{eq:threshold}.
+The finite check on these clipped vectors covers all 68 roots and all
+8,059 valid vectors. Each whole leaf satisfies the domain, parity and
+halfway inequalities, as checked at its origin and on its free directions.
+Thus \eqref{eq:cert} proves nonnegativity on the entire infinite domain.
+Finally, the two expansions of $1440K^{(3)}_m(0,0)$ for $m=2z+5$ and
+$m=2z+6$ have strictly positive coefficients; they are displayed in
+Appendix \ref{app:strict}. This proves strictness.
+\end{proof}
+
+\begin{proof}[Completion of Theorem \ref{thm:main}(2)]
+The same tail decomposition used in \eqref{eq:comp2} yields
+\[
+ \T_3(N_{2m})-\T_3(A_{2m})
+ =\sum_{l,t=0}^m e_le_tK^{(3)}_m(l,t)>0\qquad(m\ge5),
+\]
+by Lemma \ref{lem:k3} and $e_0=1$.
+It remains to prove $\T_3(A_{2m})>0$ separately. Let
+$L=mw-R_0\ge0$, $C_i=\binom{2m}{i}$, and
+$q_2=2\sum_{h=0}^{\lfloor m/2\rfloor}h^2$.
+Monotonicity gives $Q_m\le q_2w$. Since
+\[
+ a_2=C_2w+L,\quad a_3=C_3w+2mL,\quad
+ a_4=C_4w+C_2L+Q_m,
+\]
+we have
+\begin{align}\label{eq:thirdA}
+ \T_3(A_{2m})&\ge a(m)w^2+b(m)wL+(2m^2+m)L^2,\\
+ a(m)&=C_3^2-C_2(C_4+q_2),\qquad
+ b(m)=4mC_3-C_2^2-C_4-q_2.\notag
+\end{align}
+The expansions of $9a(m)$ and $3b(m)$ at $m=2z+4$ and $m=2z+5$
+have strictly positive coefficients (Appendix \ref{app:strict}).
+Hence \eqref{eq:thirdA} is positive for $m\ge4$.
+For the remaining comparisons the exact triples are
+\[
+\begin{array}{c|c|c|c}
+ n&(c_2,c_3,c_4)&(a_2,a_3,a_4)&\T_3(N_n)>\T_3(A_n)\\\hline
+ 6&(54,80,100)&(32,52,62)&1000>720\\
+ 8&(182,406,738)&(122,304,578)&30520>21900.
+\end{array}
+\]
+This settles every even $n\ge6$. Both $A_{2m}$ and $N_{2m}$ are
+palindromic of degree $2m+2d(m)=d(2m)$, so the comparisons reflect.
+The identity $N_{2m+1}=N_{2m}$ proves the claimed odd-index statements.
+\end{proof}
+
+\section{Exact verification and limitations}\label{sec:verify}
+The supplementary directory contains the complete polynomial coefficients
+and a stand-alone Python 3 checker, \texttt{verify.py}, which imports no
+symbolic algebra package. Its checks are polynomial identities, rather
+than sampled positivity assertions. On each fixed parity and halfway chamber,
+\eqref{eq:tails} gives total degrees at most $3,4,5$ for $p_2,p_3,p_4$
+and $2,3,4$ for $a_2,a_3,a_4$. Thus $K^{(3)}$ has total degree at most $8$
+after every affine leaf substitution; $K$ in \eqref{eq:k2} has degree at most
+$6$. The checker verifies these bounds on the supplied expansions and
+compares them to the literal defining sums on every nonnegative integer
+simplex point of total degree at most $8$ or $6$, respectively.
+
+For completeness, a polynomial of total degree at most $D$ is determined
+by its values at $\boldsymbol v\in\mathbb Z_{\ge0}^r$ with
+$|\boldsymbol v|\le D$. Expand it in the basis
+$\prod_i\binom{X_i}{a_i}$, $|\boldsymbol a|\le D$.
+The coefficients are mixed forward differences at the origin; each uses
+only values at $\boldsymbol v\le\boldsymbol a$ and hence only this simplex.
+Agreement there is therefore an identity. This is the lower-set Newton
+interpolation principle; see \cite{Neidinger} for its general formulation.
+The present finite-difference argument supplies the precise special case used.
+
+The resulting checks comprise 144 third-position identities at 12,720
+exact simplex evaluations, four second-position identities at 126 evaluations,
+and six strictness identities at 42 univariate evaluations. The separate
+coverage check is essential: polynomial identity verification alone would
+not show that the leaves exhaust the allowed parameters.
+The original expansions were generated with SymPy \cite{SymPy} and also
+checked by a separate rational polynomial implementation.
+Related exact verification of algebraic positivity occurs in
+Section 7 of \cite{ZengChollet}, where symbolic integer and rational
+calculations check sum-of-squares and positive-semidefinite Gram identities
+for a restricted matrix inequality. Our certificates use nonnegative monomial
+expansions on the unbounded chambers above.
+
+The rational test \eqref{eq:test} can be evaluated without computing either
+$b(n)$ or $N_n$. For example, exact evaluations at $n=2^r$ give the following
+initial consecutive ranges. These are applications of the proved sufficient
+criterion, not coefficient enumerations at those parameters.
+\[
+\begin{array}{c|rrrrrrrr}
+ r&8&16&32&64&128&256&512&1024\\\hline
+ \text{positions }1\le j\le&1&2&3&4&7&10&15&22
+\end{array}
+\]
+A second supplementary script, \texttt{criterion.py}, reproduces this table
+using exact fractions. Finite calibration during the derivation checked the
+mean bound for $2\le n\le4096$ and coefficient envelopes through degree
+$13$; it does not replace any infinite argument above.
+The range between the proven boundary positions remains uncontrolled.
+In particular, neither full unimodality nor \eqref{eq:original} follows from
+these results. The sufficient test may be conservative, and no optimal
+threshold $n_\varepsilon$ is claimed.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with mathematical derivations, symbolic certificate
+construction, exact verification code, literature checking, and preparation
+of this manuscript. A separate model context reconstructed the submitted
+arguments and checked the certificates from their defining sums using
+the interpolation method above. Such a pass is not external peer review.
+All certificate sign decisions described here use integers or rational
+numbers. No Lean or other proof-assistant formalization is claimed.
+
+\appendix
+\section{Strictness polynomials}\label{app:strict}
+In each row below the displayed list gives the coefficients in ascending
+powers of $z\ge0$; line breaks do not start a new list. All are positive.
+The supplementary \texttt{strictness.json} contains the same arrays.
+\begin{align*}
+1440K^{(3)}_{2z+6}(0,0):\quad&[46638720,139543488,175898688,123122688,\\
+ &52593728,14069952,2302592,210432,8192],\\
+1440K^{(3)}_{2z+5}(0,0):\quad&[8985600,34793280,55319456,48077056,\\
+ &25219648,8213440,1623424,177664,8192],\\
+9a(2z+4):\quad&[8064,28632,41224,31014,12916,2832,256],\\
+9a(2z+5):\quad&[40500,105300,113725,65304,21028,3600,256],\\
+3b(2z+4):\quad&[96,406,463,206,32],\\
+3b(2z+5):\quad&[465,1056,823,270,32].
+\end{align*}
+The first two polynomial identities have degree $8$, the next two degree
+$6$, and the last two degree $4$. Their exact univariate verification uses
+$9$, $7$, and $5$ integer arguments per row, respectively. The degree
+bounds follow from \eqref{eq:tails} and \eqref{eq:thirdA}.
+
+
+\raggedright
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

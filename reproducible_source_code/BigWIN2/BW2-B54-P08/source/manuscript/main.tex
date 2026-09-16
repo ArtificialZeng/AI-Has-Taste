@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\gap}{\operatorname{gap}}
+
+\title{An Exact Computational Lower Bound $m_2(4)\geq 18$\\
+for a Width-Two Chain-Gap Threshold}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{7 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite poset $P$, let $h_P(x)$ be the expected rank of $x$ in a
+uniformly random linear extension.  The chain gap of an inclusion-maximal
+chain is the largest spacing in its expected ranks after adjoining the
+endpoints $0$ and $|P|+1$.  Let $m_2(4)$ be the least order of a poset of
+width exactly two for which every nonempty inclusion-maximal chain has chain
+gap strictly greater than $4$.  We prove the exact computational lower bound
+$m_2(4)\geq18$.  The proof exhausts all two-chain presentations through order
+$17$, tests expected ranks using integer path counts, and reduces the
+universal maximal-chain condition to exact reachability in the cover graph.
+Altogether, $346{,}767{,}961$ width-two presentations are tested, with no
+qualifier.  A structurally different verifier exhaustively agrees through
+order $6$.  This is a partial result: order $18$ is not tested, the value of
+$m_2(4)$ is not determined, and no minimizers are classified.
+\end{abstract}
+
+\section{The finite-threshold question}
+
+Let $P=(V,\leq_P)$ be a finite nonempty poset of order $n$.  A linear
+extension is an order-preserving bijection $f:V\to\{1,\ldots,n\}$.  With the
+uniform distribution on the finite set $\cE(P)$ of linear extensions, put
+\[
+  h_P(x)=\E[f(x)]
+  =\frac{1}{|\cE(P)|}\sum_{f\in\cE(P)}f(x).
+\]
+If $C=\{y_1<_P\cdots<_P y_m\}$ is a nonempty chain, define
+\[
+ \gap_P(C)=\max\{h_P(y_1),h_P(y_2)-h_P(y_1),\ldots,
+ h_P(y_m)-h_P(y_{m-1}),n+1-h_P(y_m)\}.
+\]
+This is the chain-gap definition of Haqi~\cite{haqi2026gap}.  Here and below,
+``maximal chain'' means inclusion-maximal, not maximum-cardinality.
+
+Write $w(P)$ for the width of $P$ and set
+\begin{align*}
+ m_2(4)=\min\bigl\{n:{}&\text{there is an order-$n$ poset $P$ with }w(P)=2,\\
+ &\gap_P(C)>4\text{ for every maximal chain }C\bigr\}.
+\end{align*}
+Haqi's construction gives, for every $L>0$, a width-two poset for which every
+nonempty chain has gap at least $L$~\cite[Theorem~5.1]{haqi2026gap}; hence the
+minimum exists.  That asymptotic existence theorem does not locate the first
+order.  The contribution here is the following finite exclusion.
+
+\begin{theorem}\label{thm:main}
+No poset of width exactly two and order at most $17$ has
+$\gap_P(C)>4$ for every nonempty inclusion-maximal chain $C$.  Consequently,
+\[
+  m_2(4)\geq18.
+\]
+\end{theorem}
+
+The theorem does not decide whether an order-$18$ example exists and does not
+classify minimizers.  A bounded search of the nearby literature located the
+existence theorem above but no computation of this finite threshold; this is
+not a claim of priority.
+
+The computational scope is deliberately distinguished from a census of all
+unlabeled posets.  It is enough for nonexistence to enumerate a redundant
+family containing every width-two isomorphism class.  Related exact finite
+work has instead combined symmetry-reduced enumeration with exact predicates
+and an independently reconstructing verifier~\cite{zeng2026finite}; that
+certificate architecture motivates the separate small-order check described
+in Section~\ref{sec:verification}, but no result from that paper is used in
+the proof.
+
+\section{Complete two-chain encoding}
+
+Fix positive integers $a\leq b$ with $a+b=n$, and consider two displayed
+chains
+\[
+ A_0<\cdots<A_{a-1},\qquad B_0<\cdots<B_{b-1}.
+\]
+For each $i$, encode all cross-relations by
+\[
+ L_i=|\{j:B_j<A_i\}|,
+ \qquad
+ U_i=\min\bigl(\{j:A_i<B_j\}\cup\{b\}\bigr).
+\]
+
+\begin{lemma}[Two-chain boundary encoding]\label{lem:encoding}
+The two-chain presentations are in bijection with pairs of sequences satisfying
+\[
+ 0\leq L_0\leq\cdots\leq L_{a-1}\leq b,
+ \qquad
+ 0\leq U_0\leq\cdots\leq U_{a-1}\leq b,
+ \qquad L_i\leq U_i.
+\]
+For such a pair, the cross-relations are precisely
+\[
+ B_j<A_i\iff j<L_i,\qquad A_i<B_j\iff j\geq U_i.
+\]
+The presented order has width exactly two if and only if $L_i<U_i$ for at
+least one $i$.
+\end{lemma}
+
+\begin{proof}
+In a two-chain presentation, transitivity along the $A$-chain makes both
+boundary sequences nondecreasing, and antisymmetry gives $L_i\leq U_i$.
+Conversely, the displayed rules and monotonicity make every relation forced
+by either chain transitive across the other chain; $L_i\leq U_i$ prevents a
+cross-cycle.  Thus they define a partial order and recover the stated
+boundaries.
+
+If all $L_i=U_i$, every $A_i$ is comparable with every $B_j$, so the order is
+a chain.  If some $L_i<U_i$, the pair $A_i,B_{L_i}$ is incomparable; the
+displayed two-chain cover shows width at most two, so the width is exactly
+two.
+\end{proof}
+
+By Dilworth's decomposition theorem~\cite{dilworth1950}, every finite
+width-at-most-two poset is the union of two chains.  For width exactly two
+these can be taken nonempty, and swapping them gives $a\leq b$.  Therefore,
+as $a$ ranges from $1$ to $\lfloor n/2\rfloor$, Lemma~\ref{lem:encoding}
+generates every width-two isomorphism class, possibly more than once.  Such
+duplication cannot invalidate a nonexistence result.  It would, however, be
+insufficient for the minimizer-classification part of the original question.
+
+\section{Exact ranks from lattice paths}
+
+For a fixed presentation, a state $(i,j)$ records an extension prefix
+containing $A_0,\ldots,A_{i-1}$ and $B_0,\ldots,B_{j-1}$.  Let
+\[
+ K_j=|\{i:U_i\leq j\}|.
+\]
+From $(i,j)$ the next $A$-element is available exactly when $i<a$ and
+$j\geq L_i$; the next $B$-element is available exactly when $j<b$ and
+$i\geq K_j$.  Thus linear extensions are precisely the feasible monotone
+lattice paths from $(0,0)$ to $(a,b)$.
+
+Let $F(i,j)$ be the number of feasible prefixes ending at $(i,j)$ and
+$G(i,j)$ the number of feasible suffixes beginning there.  They are computed
+by the preceding two transition rules, with $F(0,0)=G(a,b)=1$.  In
+particular,
+\[
+ e(P):=|\cE(P)|=F(a,b).
+\]
+If $S(x)=\sum_{f\in\cE(P)}f(x)$ is the integer rank sum, splitting paths at
+the unique step that inserts an element gives
+\begin{align}
+ S(A_i)&=\sum_{j=L_i}^{b}F(i,j)G(i+1,j)(i+j+1),\label{eq:rankA}\\
+ S(B_j)&=\sum_{i=K_j}^{a}F(i,j)G(i,j+1)(i+j+1).\label{eq:rankB}
+\end{align}
+Hence $h_P(x)=S(x)/e(P)$ is obtained without floating-point arithmetic.
+
+\begin{lemma}[Exact maximal-chain test]\label{lem:chain}
+A finite poset $P$ has a maximal chain $C$ with $\gap_P(C)\leq4$ if and only
+if its cover graph has a directed path $x_1\lessdot\cdots\lessdot x_t$ from
+a minimal element to a maximal element such that
+\[
+ S(x_1)\leq4e(P),\quad
+ S(x_{r+1})-S(x_r)\leq4e(P),\quad
+ (n+1)e(P)-S(x_t)\leq4e(P).
+\]
+\end{lemma}
+
+\begin{proof}
+An inclusion-maximal chain in a finite poset begins at a minimal element,
+ends at a maximal element, and uses only cover relations; conversely every
+such saturated path is an inclusion-maximal chain.  Multiplying all expected
+ranks by the positive integer $e(P)$ turns each gap comparison into the
+corresponding displayed integer inequality.
+\end{proof}
+
+Lemma~\ref{lem:chain} permits a reachability test rather than explicit
+enumeration of maximal chains.  Start from the minimal vertices satisfying
+the first inequality, traverse exactly the cover edges satisfying the middle
+inequality, and accept a bad chain when a reached maximal vertex satisfies the
+last inequality.  A presentation qualifies for the strict condition in the
+definition of $m_2(4)$ precisely when this search finds no path.  Notice that
+equality with $4$ is treated correctly: it makes the strict source condition
+fail.
+
+All computations for the theorem use unsigned $64$-bit integers.  For
+$n\leq19$, extension counts are at most $n!$; the nonnegative terms in each
+rank sum partition the extensions according to the insertion state, so a
+rank sum is at most $n\,n!$.  The endpoint quantity is at most
+$(n+1)n!$.  These bounds are below $2^{64}$ throughout the implemented range,
+so neither the dynamic programs nor the comparisons overflow.
+
+\section{Exhaustive computation}
+
+The generator recursively emits every coordinatewise nondecreasing sequence
+of pairs $(L_i,U_i)$ in the triangle $0\leq L_i\leq U_i\leq b$.  For every
+$n=4,\ldots,17$ and every $1\leq a\leq\lfloor n/2\rfloor$, the program
+applies Lemma~\ref{lem:encoding}, the dynamic programs
+\eqref{eq:rankA}--\eqref{eq:rankB}, and Lemma~\ref{lem:chain}.  Table
+\ref{tab:counts} reports the complete closed runs.  The implementation uses
+NumPy~\cite{harris2020numpy} and Numba~\cite{lam2015numba}; these packages
+accelerate the loops but are not mathematical or floating-point oracles.
+
+\begin{table}[ht]
+\centering
+\caption{Complete two-chain-presentation counts.  The last column is zero at
+every order.}\label{tab:counts}
+\small
+\begin{tabular}{r@{\qquad}r@{\qquad}r@{\qquad}r}
+\toprule
+$n$ & all presentations & width-two presentations & qualifiers\\
+\midrule
+4  & 30          & 20          & 0\\
+5  & 65          & 50          & 0\\
+6  & 301         & 260         & 0\\
+7  & 714         & 651         & 0\\
+8  & 3,312       & 3,150       & 0\\
+9  & 8,397       & 8,142       & 0\\
+10 & 39,094      & 38,457      & 0\\
+11 & 104,005     & 102,982     & 0\\
+12 & 484,705     & 482,196     & 0\\
+13 & 1,337,219   & 1,333,124   & 0\\
+14 & 6,227,729   & 6,217,822   & 0\\
+15 & 17,678,834  & 17,662,451  & 0\\
+16 & 82,204,044  & 82,164,842  & 0\\
+17 & 238,819,349 & 238,753,814 & 0\\
+\midrule
+total & 346,907,798 & 346,767,961 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+There is also a simple independent check on the width filter.  For fixed
+$(a,b)$, the discarded width-one presentations have $L_i=U_i$ and are exactly
+the weakly increasing length-$a$ sequences in $\{0,\ldots,b\}$, of which
+there are $\binom{a+b}{a}=\binom{n}{a}$.  Thus the difference between the
+second and third columns at order $n$ is
+\[
+ \sum_{a=1}^{\lfloor n/2\rfloor}\binom{n}{a},
+\]
+as the table data satisfy.  A separate dynamic count over the triangular
+pair states also reproduces every entry in the presentation column.
+
+Orders $1$--$3$ require no computation.  Order $1$ has width one.  At order
+$2$ the unique width-two type is the antichain, whose singleton chains have
+gap $3/2$.  At order $3$ the three width-two types are a two-element chain
+plus an isolated point, the three-element V-poset, and its dual; each has a
+maximal chain of gap at most $2$.  Combining these cases with the zero counts
+in Table~\ref{tab:counts} proves Theorem~\ref{thm:main}.
+
+\section{Independent verification and reproducibility}\label{sec:verification}
+
+The primary program enumerates presentations, rather than canonical
+isomorphism classes.  A second verifier deliberately changes all three
+decisive components for $n\leq6$:
+\begin{enumerate}
+\item it enumerates subsets of forward relations, retains the transitive
+relations of width exactly two, and canonicalizes over all permutations;
+\item it recomputes extension counts and all rank sums by dynamic programming
+over arbitrary order ideals; and
+\item it explicitly enumerates every minimal-to-maximal cover path and tests
+its gaps.
+\end{enumerate}
+The canonical domains from this verifier and from the two-chain generator are
+identical.  Their numbers of unlabeled width-two posets for
+$n=2,3,4,5,6$ are respectively
+\[
+  1,\ 3,\ 9,\ 25,\ 74.
+\]
+Every extension count, every rank sum, and every chain decision agrees on all
+presentations through order $6$.  A separate audit also reran both full closed
+computations, independently checked the presentation counts, and found the
+same zero-qualifier totals.
+
+The ancillary bundle contains the following decisive files:
+\begin{itemize}
+\item \texttt{evidence/enumerate\_width2.py}, the primary generator and exact
+test;
+\item \texttt{evidence/search-through-16.json} and
+\texttt{evidence/search-order-17.json}, the closed run records;
+\item \texttt{evidence/verify\_width2.py}, the independent small-order
+verifier; and
+\item \texttt{evidence/independent-audit-through-6.json}, its closed record.
+\end{itemize}
+From the bundle root, the computations can be replayed with
+\begin{verbatim}
+python3 evidence/enumerate_width2.py 16 > /tmp/search-through-16.json
+python3 evidence/enumerate_width2.py 17 --min-n 17 > /tmp/search-order-17.json
+(cd evidence && python3 verify_width2.py > /tmp/independent-through-6.json)
+\end{verbatim}
+The output JSON records exact integer counts; elapsed-time fields are
+machine-dependent and play no role in the theorem.
+
+\section{Limitations and next computation}
+
+The proof establishes only $m_2(4)\geq18$.  The direct presentation generator
+has $1{,}108{,}202{,}512$ presentations at order $18$, so extending the same
+computation is materially larger.  No order-$18$ qualifier or other witness
+is supplied here.  Moreover, presentation duplication is harmless for the
+lower bound but would not meet the original question's requirement to give a
+canonical, complete list of all minimizers.  A full resolution therefore
+still requires an order-$18$ search (or a stronger structural argument), a
+qualifying construction at the first possible order, and canonical
+deduplication of every equality-order witness.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex assisted with formalizing the finite question, developing and
+auditing the enumeration and verification programs, conducting the bounded
+literature search, and preparing an initial manuscript.  Language-model
+output is not used as mathematical evidence.  The theorem rests on the
+explicit reductions above, exact integer computations, stored run records,
+and independently reconstructing checks.  No proof assistant was used.
+
+\section*{Data and code availability}
+
+All code and finite run records needed for the reported result are included
+in the ancillary bundle under the paths listed in
+Section~\ref{sec:verification}.  No external dataset is used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

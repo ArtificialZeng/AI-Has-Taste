@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "result-note",
+  "title": "The Order-Seven Degree-Square Turan Problem for the Regular Five-Vertex Tournament",
+  "source": "manuscript/main.tex",
+  "pdf": "manuscript/main.pdf",
+  "inputs": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+  }
+}

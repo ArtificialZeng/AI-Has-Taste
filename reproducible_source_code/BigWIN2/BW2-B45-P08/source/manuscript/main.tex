@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{A Complete Margin-One Five-Voter Census\\
+for 254 Nine-Vertex Boundary Tournaments}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Chindelevitch and Harutyunyan reported 254 non-isomorphic tournaments on nine
+vertices that are inducible by three voters but not by a three-voter profile
+of margin one on every arc.  We determine the corresponding finite question
+at five voters: every one of these 254 tournaments has a five-voter profile in
+which every majority arc is supported by exactly three voters.  The proof is a
+complete collection of 1,270 explicit permutations, checked on all 9,144
+tournament arcs by a separate exact verifier.  Thus the reported boundary
+family is contained in $I_{5,1}$.  This finite census does not settle whether
+the global inclusion $I_{5,1}\subseteq I_{5,3}$ is strict.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $T=(V,A)$ be a tournament.  For an odd integer $m$, an $m$-profile
+$P=(\pi_1,\ldots,\pi_m)$ is a list of strict total orders of $V$; repetitions
+are allowed.  If $x\to y$ is an arc of $T$, write
+\[
+ s_P(x,y)=\bigl|\{r:x\text{ precedes }y\text{ in }\pi_r\}\bigr|,
+ \qquad \mu_P(x,y)=2s_P(x,y)-m.
+\]
+For odd $t\leq m$, let $I_{m,t}$ be the class of tournaments admitting an
+$m$-profile for which $s_P(x,y)>(m/2)$ and $\mu_P(x,y)\leq t$ on every arc.
+These margin classes and the motivating hierarchy are defined in
+\cite{ChindelevitchHarutyunyan2026}.  In particular, a certificate for
+$T\in I_{5,1}$ consists of five orders with $s_P(x,y)=3$ for every arc.
+
+The same source reports exactly 254 non-isomorphic nine-vertex tournaments in
+$I_{3,3}\setminus I_{3,1}$ and supplies their serialized adjacency matrices
+\cite{ChindelevitchHarutyunyan2026,CHData2026}.  It also conjectures strictness
+of every adjacent margin layer.  At five voters, the first inclusion in that
+conjecture is
+\[
+                 I_{5,1}\subsetneq I_{5,3}.
+\]
+The 254 tournaments form a natural first boundary family to test because each
+lies in $I_{5,3}$: append an arbitrary order and its reverse to an inducing
+three-profile, thereby leaving every majority margin unchanged.
+
+\begin{theorem}\label{thm:census}
+Every one of the 254 source-reported non-isomorphic nine-vertex tournaments
+in $I_{3,3}\setminus I_{3,1}$ belongs to $I_{5,1}$.
+\end{theorem}
+
+The theorem resolves this finite question positively.  It neither proves nor
+disproves the displayed global strict inclusion.
+
+\section{Certificate and proof}
+
+Label the vertices $0,\ldots,8$.  For each representative, the accompanying
+certificate gives a 36-bit word in lexicographic upper-triangle order:
+for $i<j$, bit $1$ denotes $i\to j$ and bit $0$ denotes $j\to i$.  The same
+record gives five permutations of $0,\ldots,8$, read from first to last.
+All 254 adjacency words and all five permutations for every word are contained
+in the machine-readable supplement
+\texttt{evidence/research\_pass2\_results.json}.
+
+For orientation, the first record has adjacency word
+\[
+\texttt{000001001100000001010110000001110101}
+\]
+and the following five orders:
+\begin{align*}
+ &(8,6,5,4,1,3,2,7,0),\\
+ &(1,5,0,6,2,7,3,4,8),\\
+ &(8,7,1,0,3,4,2,5,6),\\
+ &(6,2,3,5,4,0,7,1,8),\\
+ &(7,4,8,3,2,0,5,6,1).
+\end{align*}
+This displayed case is only an illustration; the theorem uses every record in
+the supplement.
+
+\begin{lemma}\label{lem:local}
+Suppose a certificate record contains a tournament adjacency word and five
+permutations such that, for each of the 36 unordered vertex pairs, exactly
+three permutations place the tail of the encoded arc before its head.  Then
+the encoded tournament belongs to $I_{5,1}$.
+\end{lemma}
+
+\begin{proof}
+Each permutation is a strict total order.  On an encoded arc $x\to y$, the
+hypothesis gives $s_P(x,y)=3$, so the five orders induce that arc and its
+margin is $2\cdot3-5=1$.  This holds for every pair, hence the profile witnesses
+membership in $I_{5,1}$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:census}]
+The standalone verifier
+\texttt{evidence/research\_pass2\_verify.py} reads the certificate JSON and
+checks, for each record, that the adjacency word has 36 binary entries and
+that each of the five listed orders is a permutation of $0,\ldots,8$.  It then
+constructs inverse positions and recounts support on all 36 pairs.  Every
+encoded target arc has support exactly three.  Applying
+Lemma~\ref{lem:local} to all 254 records proves that every serialized
+representative lies in $I_{5,1}$.
+
+The verifier also checks the adjacency digests and confirms by exact directed
+graph isomorphism tests that the 254 representatives are pairwise
+non-isomorphic.  Membership in $I_{5,1}$ is invariant under relabelling, so one
+certificate for each representative proves the asserted classwise statement.
+\end{proof}
+
+The verification totals are recorded in Table~\ref{tab:totals}.  They are
+counts of exact comparisons, not floating-point tests.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lr}
+\toprule
+Checked object & Count \\
+\midrule
+Tournament representatives & 254 \\
+Five-order profiles & 254 \\
+Individual permutations & 1,270 \\
+Arc-support recounts & 9,144 \\
+Degree-compatible isomorphism pairs tested & 5,284 \\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive checks performed by the standalone verifier.}
+\label{tab:totals}
+\end{table}
+
+The certificate architecture deliberately separates profile discovery from
+the proof check: solver output is not trusted after the explicit permutations
+have been emitted.  A related separation between generation and independent
+exact verification is used for finite discrete models in
+\cite{ZengEtAl2026FiniteCertificates}; no mathematical result from that paper
+is needed here.
+
+\section{Reproducibility and limits}
+
+The source data are preserved as
+\texttt{evidence/n9\_margin1only\_tournaments.rds.base64}.  The program
+\texttt{evidence/research\_pass2.py} parses the complete version-3 XDR R
+serialization, validates every $9\times9$ matrix, and emits the certificate
+records.  It used an SMT solver only to find the orders.  The proof-bearing
+verification command is
+\begin{verbatim}
+python3 evidence/research_pass2_verify.py
+\end{verbatim}
+Its saved output is
+\texttt{evidence/research\_pass2\_verification.json}.  The verifier imports
+neither the XDR parser nor the solver code and directly checks the emitted
+finite witnesses.  An independent audit additionally reparsed the pinned RDS
+bytes and matched all 254 adjacency words before repeating the full support
+recount.
+
+The source paper and data repository identify the serialized list as the
+reported boundary family.  The present computation checks the list's size,
+tournament identities, pairwise non-isomorphism, and all claimed five-order
+profiles; it does not redo the substantially larger source enumeration that
+selected these 254 classes.  There are no negative membership instances in
+this census, so no unsatisfiability certificate is involved.  Finally, this
+result supplies no witness in $I_{5,3}\setminus I_{5,1}$ and makes no claim
+about the minimum order of a tournament not inducible by five voters.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with literature search, profile-search code, exact
+verification code, audit organization, and initial manuscript preparation.
+Z3 version 4.15.3 was used to discover the five-order profiles.  The theorem
+does not rely on a solver status: all profiles are explicit and their defining
+property is recounted by a separate checker.  No proof assistant was used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "purpose": "attack fixed-window candidate state descriptions for the zero-lift child map",
+  "semantics": "exact recurrence modulo powers of two using direct XOR",
+  "max_parent_k": 24,
+  "max_window_bits": 12,
+  "zero_nodes_with_defined_previous_state": 1144,
+  "child_outcome_encoding": {
+    "0": "dead",
+    "1": "lower only",
+    "2": "upper only",
+    "3": "both"
+  },
+  "tests": [
+    {
+      "feature_classes": 3,
+      "ambiguous_feature_classes": 3,
+      "records_in_ambiguous_classes": 1144,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 1,
+      "records": 1144
+    },
+    {
+      "feature_classes": 9,
+      "ambiguous_feature_classes": 9,
+      "records_in_ambiguous_classes": 1144,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 1,
+      "records": 1144
+    },
+    {
+      "feature_classes": 18,
+      "ambiguous_feature_classes": 18,
+      "records_in_ambiguous_classes": 1144,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 1,
+      "records": 1144
+    },
+    {
+      "feature_classes": 5,
+      "ambiguous_feature_classes": 5,
+      "records_in_ambiguous_classes": 1142,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 2,
+      "records": 1142
+    },
+    {
+      "feature_classes": 14,
+      "ambiguous_feature_classes": 12,
+      "records_in_ambiguous_classes": 1140,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 2,
+      "records": 1142
+    },
+    {
+      "feature_classes": 50,
+      "ambiguous_feature_classes": 47,
+      "records_in_ambiguous_classes": 1139,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 2,
+      "records": 1142
+    },
+    {
+      "feature_classes": 8,
+      "ambiguous_feature_classes": 7,
+      "records_in_ambiguous_classes": 1137,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 3,
+      "records": 1138
+    },
+    {
+      "feature_classes": 22,
+      "ambiguous_feature_classes": 21,
+      "records_in_ambiguous_classes": 1137,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 3,
+      "records": 1138
+    },
+    {
+      "feature_classes": 160,
+      "ambiguous_feature_classes": 132,
+      "records_in_ambiguous_classes": 1093,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 3,
+      "records": 1138
+    },
+    {
+      "feature_classes": 10,
+      "ambiguous_feature_classes": 10,
+      "records_in_ambiguous_classes": 1131,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 4,
+      "records": 1131
+    },
+    {
+      "feature_classes": 30,
+      "ambiguous_feature_classes": 30,
+      "records_in_ambiguous_classes": 1131,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 4,
+      "records": 1131
+    },
+    {
+      "feature_classes": 362,
+      "ambiguous_feature_classes": 223,
+      "records_in_ambiguous_classes": 943,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 4,
+      "records": 1131
+    },
+    {
+      "feature_classes": 16,
+      "ambiguous_feature_classes": 15,
+      "records_in_ambiguous_classes": 1121,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 5,
+      "records": 1122
+    },
+    {
+      "feature_classes": 46,
+      "ambiguous_feature_classes": 44,
+      "records_in_ambiguous_classes": 1120,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 5,
+      "records": 1122
+    },
+    {
+      "feature_classes": 580,
+      "ambiguous_feature_classes": 179,
+      "records_in_ambiguous_classes": 689,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 5,
+      "records": 1122
+    },
+    {
+      "feature_classes": 22,
+      "ambiguous_feature_classes": 22,
+      "records_in_ambiguous_classes": 1107,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 6,
+      "records": 1107
+    },
+    {
+      "feature_classes": 63,
+      "ambiguous_feature_classes": 52,
+      "records_in_ambiguous_classes": 1092,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 6,
+      "records": 1107
+    },
+    {
+      "feature_classes": 681,
+      "ambiguous_feature_classes": 121,
+      "records_in_ambiguous_classes": 523,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 6,
+      "records": 1107
+    },
+    {
+      "feature_classes": 22,
+      "ambiguous_feature_classes": 22,
+      "records_in_ambiguous_classes": 1086,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 7,
+      "records": 1086
+    },
+    {
+      "feature_classes": 63,
+      "ambiguous_feature_classes": 48,
+      "records_in_ambiguous_classes": 1067,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 7,
+      "records": 1086
+    },
+    {
+      "feature_classes": 708,
+      "ambiguous_feature_classes": 108,
+      "records_in_ambiguous_classes": 462,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 7,
+      "records": 1086
+    },
+    {
+      "feature_classes": 22,
+      "ambiguous_feature_classes": 22,
+      "records_in_ambiguous_classes": 1065,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 8,
+      "records": 1065
+    },
+    {
+      "feature_classes": 61,
+      "ambiguous_feature_classes": 47,
+      "records_in_ambiguous_classes": 1051,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 8,
+      "records": 1065
+    },
+    {
+      "feature_classes": 725,
+      "ambiguous_feature_classes": 95,
+      "records_in_ambiguous_classes": 412,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 8,
+      "records": 1065
+    },
+    {
+      "feature_classes": 38,
+      "ambiguous_feature_classes": 38,
+      "records_in_ambiguous_classes": 1044,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 9,
+      "records": 1044
+    },
+    {
+      "feature_classes": 94,
+      "ambiguous_feature_classes": 62,
+      "records_in_ambiguous_classes": 1004,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 9,
+      "records": 1044
+    },
+    {
+      "feature_classes": 746,
+      "ambiguous_feature_classes": 77,
+      "records_in_ambiguous_classes": 351,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 9,
+      "records": 1044
+    },
+    {
+      "feature_classes": 38,
+      "ambiguous_feature_classes": 25,
+      "records_in_ambiguous_classes": 994,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 10,
+      "records": 1007
+    },
+    {
+      "feature_classes": 82,
+      "ambiguous_feature_classes": 59,
+      "records_in_ambiguous_classes": 976,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 10,
+      "records": 1007
+    },
+    {
+      "feature_classes": 727,
+      "ambiguous_feature_classes": 76,
+      "records_in_ambiguous_classes": 334,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 10,
+      "records": 1007
+    },
+    {
+      "feature_classes": 34,
+      "ambiguous_feature_classes": 34,
+      "records_in_ambiguous_classes": 970,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 11,
+      "records": 970
+    },
+    {
+      "feature_classes": 83,
+      "ambiguous_feature_classes": 59,
+      "records_in_ambiguous_classes": 938,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 11,
+      "records": 970
+    },
+    {
+      "feature_classes": 710,
+      "ambiguous_feature_classes": 76,
+      "records_in_ambiguous_classes": 314,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 11,
+      "records": 970
+    },
+    {
+      "feature_classes": 34,
+      "ambiguous_feature_classes": 25,
+      "records_in_ambiguous_classes": 928,
+      "predictive": false,
+      "family": "low-state-window",
+      "window_bits": 12,
+      "records": 937
+    },
+    {
+      "feature_classes": 74,
+      "ambiguous_feature_classes": 59,
+      "records_in_ambiguous_classes": 914,
+      "predictive": false,
+      "family": "low-window-plus-component-and-block",
+      "window_bits": 12,
+      "records": 937
+    },
+    {
+      "feature_classes": 702,
+      "ambiguous_feature_classes": 74,
+      "records_in_ambiguous_classes": 288,
+      "predictive": false,
+      "family": "low-window-plus-leading-time-window",
+      "window_bits": 12,
+      "records": 937
+    }
+  ],
+  "conclusion_scope": "A family with an ambiguous class is refuted only for the named fixed-window feature map. This does not rule out a richer or level-dependent finite quotient.",
+  "python": "3.10.12",
+  "numba": "0.67.0"
+}

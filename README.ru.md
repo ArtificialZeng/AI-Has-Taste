@@ -98,7 +98,7 @@
 
 **Исследование породило не только ответ. Оно породило следующий вопрос.**
 
-Материал: [SM2-P11 · A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjectures/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf).
+Материал: [SM2-P11 · A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjecture/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf).
 
 </details>
 
@@ -141,7 +141,7 @@
 
 | Серия + ID + Статья (PDF) | Постановка задачи (английский оригинал) | Вклад (английский оригинал) |
 |---|---|---|
-| **Batch 42 · SM42-10**<br>SM2-P11<br>[A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjectures/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf) | For fractional Gaussian binomial series, is the integer trace at parameter $1/2$ coefficientwise at least the trace at $1/4$, for every positive integer index? | **Historical conjecture paper, not a solution.** Proposes a sharp ten-term fixed-defect correction, necessary already at index 13, and proves that its uniform validity would imply the trace comparison. Archived exact tests reach index 1004; independent reconstruction has explicitly smaller coverage. Stabilization proves the bounded-degree extension, not the full conjecture. |
+| **Batch 42 · SM42-10**<br>SM2-P11<br>[A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjecture/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf) | For fractional Gaussian binomial series, is the integer trace at parameter $1/2$ coefficientwise at least the trace at $1/4$, for every positive integer index? | **Historical conjecture paper, not a solution.** Proposes a sharp ten-term fixed-defect correction, necessary already at index 13, and proves that its uniform validity would imply the trace comparison. Archived exact tests reach index 1004; independent reconstruction has explicitly smaller coverage. Stabilization proves the bounded-degree extension, not the full conjecture. |
 
 </details>
 

@@ -1,0 +1,156 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,booktabs,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\title[Line-Graph Signature at Order Nine]{Exact Verification of the Line-Graph Signature Inequality at Order Nine}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{31 August 2026}
+\hypersetup{pdftitle={Exact Verification of the Line-Graph Signature Inequality at Order Nine},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+For a connected simple graph $G$, let $c(G)=|E(G)|-|V(G)|+1$ and let
+$s(L(G))$ denote the positive minus negative adjacency inertia of its line
+graph. We certify that $2s(L(G))\leq c(G)+1$ for every graph $G$ of order
+nine. The verification exhausts all $261{,}080$ connected isomorphism
+classes and uses exact rational congruence, with an independent verification
+by integer characteristic polynomials and Sturm root counts. There are six
+equality classes, all unicyclic, and the inequality is strict on the other
+$261{,}074$ classes. This is a finite result; the universal inequality
+remains open.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+The adjacency signature of a graph $H$ is
+$s(H)=n_+(A(H))-n_-(A(H))$, with zero eigenvalues omitted. A recent
+preprint of Paone and Paone proposes the cyclomatic refinement
+\begin{equation}\label{eq:conj}2s(L(G))\leq c(G)+1\end{equation}
+for finite simple connected graphs~\cite{paone_2026_21706797}. Their exact
+computations reached order eight, while their order-nine traversal was only a
+floating-point screening. The earlier constant bound $s(L(G))\leq1$ of
+Akbari et al.~\cite{Akbari_2026} is false and the signature of connected line
+graphs is unbounded~\cite{francis2026signatureconnectedlinegraphs}; those results do not contradict
+\eqref{eq:conj}, whose right side grows with the cycle rank. Related older
+signature bounds for line graphs are due to Wang and Fan~\cite{Wang_2014}.
+
+Our result closes precisely the finite order-nine certification gap. No
+claim is made here about the universal conjecture or absolute priority beyond
+the literature search recorded with the supporting data.
+
+\section{Exact reduction}
+All graphs below are finite, undirected and simple. Let $G$ be connected,
+with $n$ vertices and $m$ edges, and let $B$ be its unsigned vertex--edge
+incidence matrix. Put $Q=D+A=BB^{\mathsf T}$.
+
+\begin{lemma}\label{lem:transfer}
+For every connected $G$ with at least one edge,
+\[s(L(G))=\operatorname{sig}(Q(G)-2I)-c(G)+1.\]
+\end{lemma}
+\begin{proof}
+Entrywise multiplication gives
+$B^{\mathsf T}B=A(L(G))+2I$. The nonzero spectra of
+$B^{\mathsf T}B$ and $BB^{\mathsf T}=Q$ agree, including multiplicity.
+If $z_Q$ is the nullity of $Q$, the additional zero eigenvalues of
+$B^{\mathsf T}B$ have multiplicity $m-n+z_Q$ and become eigenvalues $-2$ of
+$A(L(G))$. Counting eigenvalues of $Q$ above, at, and below $2$ gives the
+formula; the $z_Q$ terms cancel. This also covers the bipartite case, where
+$z_Q=1$.
+\end{proof}
+
+If $a$ and $z$ count the eigenvalues of $Q$ above and equal to $2$, the same
+bookkeeping yields
+\begin{equation}\label{eq:threshold}
+s(L(G))=2a+z-m,\qquad 4a+2z\leq3m-n+2.
+\end{equation}
+The crude estimate $2a+z\leq2n$ proves \eqref{eq:conj} whenever
+$3m\geq5n-2$. Thus at order nine the range $m\geq15$ also has a short
+noncomputational proof. The census nevertheless checks every edge range.
+
+\section{Certified finite theorem}
+\begin{theorem}\label{thm:main}
+If $G$ is a connected simple graph with $|V(G)|=9$, then
+$2s(L(G))\leq c(G)+1$. Exactly six isomorphism classes attain equality.
+\end{theorem}
+\begin{proof}
+Using \texttt{nauty-geng -cd1D8 9 8:36} from the nauty~2.7r3 distribution
+\cite{McKay_2014,NautyGuide}, we generated one graph6 representative from
+each isomorphism class of connected simple graphs on nine vertices. The
+resulting $261{,}080$ records agree with McKay's published online census
+\cite{McKayData}. For each representative, the first verifier formed the integer
+symmetric matrix $Q-2I$ and computed its inertia by congruence over
+$\mathbb Q$. A nonzero diagonal pivot was removed by its exact Schur
+complement. If every remaining diagonal entry was zero but an off-diagonal
+entry was nonzero, the corresponding two-dimensional principal block was a
+hyperbolic plane and contributed one positive and one negative square. An
+all-zero remainder contributed its dimension to the nullity. These steps are
+congruences, terminate by decreasing dimension, and give the exact inertia,
+including singular cases. Lemma~\ref{lem:transfer} then evaluated the integer
+slack $\delta(G)=c(G)+1-2s(L(G))$. The result was $\delta=0$ for six records
+and $\delta>0$ for the other $261{,}074$ records.
+
+Independently, a second verifier reparsed the graph6 data, recomputed the
+integer characteristic polynomial of every $Q-2I$, square-free factored it,
+and used a rational Sturm sequence on each factor, restoring its
+multiplicity. It reproduced the input digest, graph count, and outcome
+counts. Thus every isomorphism class is covered and every sign decision is
+exact.
+\end{proof}
+
+Table~\ref{tab:edgecounts} gives an audit-friendly aggregation. The entries
+sum to $261{,}080$; equality occurs only at $m=9$.
+\begin{table}[ht]
+\centering\scriptsize
+\caption{Number of connected order-nine classes by edge count.}\label{tab:edgecounts}
+\begin{tabular}{crrrrrrrrrr}\toprule
+$m$&8&9&10&11&12&13&14&15&16&17\\\midrule
+count&47&240&797&2075&4495&8404&13855&20303&26631&31400\\\bottomrule
+\end{tabular}
+\vspace{4pt}
+\begin{tabular}{crrrrrrrrr}\toprule
+$m$&18&19&20&21&22&23&24&25&26\\\midrule
+count&33366&31996&27764&21817&15558&10096&5984&3247&1635\\\bottomrule
+\end{tabular}
+\vspace{4pt}
+\begin{tabular}{crrrrrrrrrr}\toprule
+$m$&27&28&29&30&31&32&33&34&35&36\\\midrule
+count&770&344&148&63&25&11&5&2&1&1\\\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Equality certificates and reproducibility}
+The six equality representatives are the following literal graph6 strings:
+\begin{verbatim}
+H?`@C`w  H?`@E_w  H?`DA`g  H?`DA_w  H?`D@`g  H?bB@_W
+\end{verbatim}
+Each has $(n,m,c)=(9,9,1)$, inertia
+$\operatorname{In}(Q-2I)=(5,0,4)$, and hence $s(L(G))=1$. The certificate
+file records the six integer characteristic polynomials. A third check
+constructs each line graph explicitly and applies exact characteristic-
+polynomial root isolation directly to $A(L(G))$.
+
+The archival package includes the literal graph6 census, generator and timing
+logs, full verifiers, the direct equality checker, exact outputs, and a file
+manifest. The complete command sequence is in \texttt{REPRODUCE.md}.
+Computation used no random choices and no floating-point eigenvalue
+classification.
+
+\section{Limitations}
+Theorem~\ref{thm:main} is a certified finite result, not a proof of
+\eqref{eq:conj} for arbitrary order. It does not classify equality graphs
+structurally beyond order nine. The direct source of the cyclomatic
+conjecture is a non-peer-reviewed preprint as of the search date. The author
+has reviewed the statement, exact certificates, citations, and final
+manuscript and accepts responsibility for them.
+
+\section*{Data availability}
+The code, data, exact certificates, logs, and release manifest accompany this
+article.
+\enlargethispage{5\baselineskip}
+\footnotesize
+\bibliographystyle{amsplain}\bibliography{references}
+\end{document}

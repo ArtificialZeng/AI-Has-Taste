@@ -1,0 +1,56 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260914-lorentzian-cliques-release-1bb091df0970",
+  "snapshot_digest": "433d775ecce23495c57cb0b57f8bf311721ff57d30a9c8a2b19e2d8bf4270d2d",
+  "manuscript_digest": "5520840a8b7f7353be231676b0d5f9e3faeee90c4ea30ea71662c211cbda9974",
+  "pdf_digest": "bd3460c9c0fda440e051949450b2933709fa2bf8d6d15fa80178d98be4490f65",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "render_command": "pdftoppm -r 130 -png manuscript/main.pdf audit/recovery-page",
+  "page_images": [
+    {
+      "page": 1,
+      "file": "audit/recovery-page-1.png",
+      "sha256": "f274ee86d28b557e94c68aa63eaa6b04c835610850a4b04d614e55528539efbc",
+      "observed": "Title, author footnote, abstract, the assignment sum and Hessian criterion are legible; all indices and citations [1,3,4] render correctly. No clipping or overlap."
+    },
+    {
+      "page": 2,
+      "file": "audit/recovery-page-2.png",
+      "sha256": "66f24d8da09029ebfa3b4c78333b0d91862eb675325b04c7d701c52acb0b6310",
+      "observed": "Bistability attribution, target, theorem hypotheses, separator formula, factorial-scaled Hessian and both spectral cases are readable. Citations [2,5,6,7] and the full selected library sentence are visible in ordinary body flow."
+    },
+    {
+      "page": 3,
+      "file": "audit/recovery-page-3.png",
+      "sha256": "eca4df757f0f7d6e7b30b1473c8dc771fca44a1949c187f28f85d1a26bc514b0",
+      "observed": "Expansion and deletion proofs are intact, with correctly rendered inequalities and the singleton-component and k=2 discussion. The final proof paragraph fits within the page."
+    },
+    {
+      "page": 4,
+      "file": "audit/recovery-page-4.png",
+      "sha256": "628e6020636e5372558f4752f5aad22329585677c4a5a6f1b9fb3688db64259f",
+      "observed": "All coefficient factorials, the 2x2 inertia block and characteristic polynomial are legible. Cycle and complete-bipartite boundary formulas and the scope-limitation paragraph are intact."
+    },
+    {
+      "page": 5,
+      "file": "audit/recovery-page-5.png",
+      "sha256": "f3b70f22034ce17ef482fb3e26b707bc08a7d3b7efa38c6c64782958f3de039f",
+      "observed": "Every one of the 15 numerical table cells agrees with the exact evidence. The 6820 total, 22/15 record caveat, cube value 32 and assistance disclosure are readable. Bibliography entries [1]-[4] fit without clipping."
+    },
+    {
+      "page": 6,
+      "file": "audit/recovery-page-6.png",
+      "sha256": "3b8967e3fe3aaefc0488cc24701937e2409e5a089bb908afb3e1faaaedcaadb3",
+      "observed": "Bibliography entries [5]-[7] show the correct author names, article 42, 2024/2025 version distinction, and DOI/arXiv identifiers. Whitespace is harmless; no clipping, overlaps or missing glyphs."
+    }
+  ],
+  "checked_at": "2026-09-13T23:58:16.133131+00:00"
+}

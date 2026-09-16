@@ -1,0 +1,359 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=1em
+\hypersetup{
+  pdftitle={The First Stabilisation Kernel for the Horvath--Kania Motakis Space},
+  pdfauthor={Xiaojian Zeng},
+  pdfkeywords={Banach operator algebra, Calkin algebra, invertible group, stabilisation}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\B}{\mathcal B}
+\newcommand{\K}{\mathcal K}
+\newcommand{\Q}{\mathcal Q}
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\Invzero}{\operatorname{Inv}_0}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\Id}{\mathfrak I}
+
+\title{The First Stabilisation Kernel for the\\Horv\'ath--Kania Motakis Space}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Let $X$ be the particular complex Motakis realisation over $S^4$ used by
+Horv\'ath and Kania, let $E=X\oplus X$, and let $S,T\in\B(E)$ be their fixed
+operators.  We compute the two component groups relevant to their first
+stabilisation question:
+\[
+  \Id(\B(E))\cong \mathbb Z/2,
+  \qquad
+  \Id(M_2(\B(E)))=1.
+\]
+The nonidentity element in the first group is $[I_E-2ST]$.  Consequently the
+kernel of the first stabilisation is
+\(
+\{[I_E],[I_E-2ST]\}\cong\mathbb Z/2
+\), and $[I_E-2ST]$ has order two.  The main step is a norm-controlled lemma:
+for a complex Banach space with a Schauder basis, the Calkin quotient induces
+an injection on components of invertibles.  This answers Question~9.1 of the
+cited source for exactly the realisation and lifts occurring there.
+\end{abstract}
+
+\noindent\textbf{Keywords.}
+Banach operator algebra; Calkin algebra; invertible group; stabilisation;
+Schauder basis; component group.
+
+\medskip
+\noindent\textbf{2020 Mathematics Subject Classification.}
+Primary 46H05, 47L10; Secondary 46B25, 55Q15.
+
+\section{The question and the answer}
+
+For a complex Banach space $Y$, write $\B(Y)$ and $\K(Y)$ for its bounded and
+compact operators, and put
+\[
+  \Q(Y)=\B(Y)/\K(Y).
+\]
+For a complex unital Banach algebra $A$, let $\Invzero(A)$ be the norm-connected
+component of $1_A$ in $\Inv(A)$ and set
+\[
+  \Id(A)=\Inv(A)/\Invzero(A).
+\]
+The identity component is a normal subgroup, so $\Id(A)$ is the group of
+components of the invertible group.  The first stabilisation homomorphism is
+\[
+ s_A:\Id(A)\longrightarrow\Id(M_2(A)),
+ \qquad
+ s_A([a])=
+ \left[\begin{pmatrix}a&0\\0&1_A\end{pmatrix}\right].
+\]
+This is an unstable component invariant, rather than the direct-limit group
+$K_1(A)$.  The stable $K$-theory of algebras of operators on Banach spaces has
+also been studied; see, for example, Laustsen~\cite{Laustsen1997}.
+
+Motakis constructed, for every compact metrisable $K$, a Banach space whose
+Calkin algebra is isomorphic to $C(K)$~\cite{Motakis2024}.  Horv\'ath and
+Kania use a prescribed-family form of that construction over $S^4$ to obtain a
+particular complex space $X$, put $E=X\oplus X$, and construct operators
+$S,T\in\B(E)$~\cite[Theorems~4.1 and~5.1]{HorvathKania2026}.  The choices of
+realisation and lifts matter throughout this note: $X,E,S,T$ always denote
+exactly those objects, and no assertion is made about arbitrary Motakis
+realisations or arbitrary lifts.
+
+Their construction lifts the topological obstruction used by Klaja and
+Ransford~\cite{KlajaRansford2017}.  That obstruction lies in the invertible
+group of $C(S^4,M_2(\mathbb C))$.  If
+\[
+  u=I_E-2ST,
+\]
+then $u$ is invertible, its class is not in the identity component of
+$\Inv(\B(E))$, and its Calkin image represents the nonzero element of
+$\pi_4(\GL_2(\mathbb C))\cong\mathbb Z/2$.  The source also proves that
+$[u]$ is killed by first stabilisation, but observes that the order of the
+Calkin image does not by itself determine the order upstairs.  Its
+Question~9.1 asks for the full kernel and for the order of $[u]$
+\cite[pp.~23 and~26]{HorvathKania2026}.
+
+The problem here is topological: it concerns components of invertibles, not a
+quantitative functional-calculus estimate.  For comparison with that distinct
+operator-theoretic direction, Zeng~\cite{Zeng2026Lens} studies spectral-set
+constants for sectorial numerical-range models and determines exact restricted
+operator classes.  None of those quantitative results is used below.
+
+Our answer is as follows.
+
+\begin{theorem}\label{thm:main}
+For the particular $X,E,S,T$ just specified,
+\[
+  \Id(\B(E))=\{[I_E],[I_E-2ST]\}\cong\mathbb Z/2
+  \quad\text{and}\quad
+  \Id(M_2(\B(E)))=1.
+\]
+Therefore
+\[
+ \ker s_{\B(E)}
+   =\{[I_E],[I_E-2ST]\}\cong\mathbb Z/2,
+ \qquad
+ \operatorname{ord}[I_E-2ST]=2.
+\]
+\end{theorem}
+
+The only missing passage from the Calkin calculation to the upstairs
+calculation is supplied by the next lemma.  Its proof includes the relevant
+norm controls because an arbitrary quotient path need not possess a global
+lift.
+
+\section{Injectivity of Calkin components}
+
+\begin{lemma}[Calkin-component injection]\label{lem:injection}
+Let $Y$ be an infinite-dimensional complex Banach space with a Schauder basis,
+and let
+\[
+ q:\B(Y)\longrightarrow\Q(Y)
+\]
+be the quotient map.  Then the induced homomorphism
+\[
+ q_*:\Id(\B(Y))\longrightarrow\Id(\Q(Y))
+\]
+is injective.
+\end{lemma}
+
+\begin{proof}
+Let $(P_n)$ be the partial-sum projections associated with the basis.  They
+converge strongly to $I_Y$, and the uniform boundedness principle gives
+\[
+  \beta:=\sup_n\lVert P_n\rVert<\infty.
+\]
+We first record explicitly that every compact operator on $Y$ is a norm limit
+of finite-rank operators.  Given $K\in\K(Y)$, the set
+\(
+C=\overline{K(B_Y)}
+\)
+is compact.  For $\varepsilon>0$, choose a finite
+$\varepsilon/(3(1+\beta))$-net $z_1,\dots,z_r$ in $C$.  Strong convergence
+allows one to choose $n$ so that
+\[
+ \max_{1\le j\le r}\lVert(I_Y-P_n)z_j\rVert<\varepsilon/3.
+\]
+For any $z\in C$, take $z_j$ in the chosen net.  Then
+\[
+ \lVert(I_Y-P_n)z\rVert
+ \le (1+\beta)\lVert z-z_j\rVert
+       +\lVert(I_Y-P_n)z_j\rVert
+ <\frac{2\varepsilon}{3}<\varepsilon.
+\]
+It follows that
+\[
+ \lVert K-P_nK\rVert<\varepsilon,                       \tag{2.1}
+\]
+and $P_nK$ has finite rank.
+
+We next show that the invertible fibre over $1_{\Q(Y)}$ is path connected.
+Take
+\(
+a=I_Y+K\in\Inv(\B(Y))
+\)
+with $K$ compact.  By (2.1), choose a finite-rank $F$ satisfying
+\[
+ \lVert a^{-1}\rVert\,\lVert F-K\rVert<1.              \tag{2.2}
+\]
+For $0\le t\le1$,
+\[
+ a+t(F-K)=a\bigl(I_Y+t a^{-1}(F-K)\bigr)
+\]
+is invertible by the Neumann series, so $I_Y+K$ is joined to $I_Y+F$.
+Put $M=F(Y)$ and choose a closed complement $N$, so $Y=M\oplus N$.  Relative
+to this decomposition,
+\[
+ I_Y+F=
+ \begin{pmatrix}C&B\\0&I_N\end{pmatrix}
+ \quad\text{with}\quad C\in\GL(M).
+\]
+Indeed, invertibility of the triangular operator forces invertibility of its
+finite-dimensional diagonal block $C$.  The path
+\[
+ t\longmapsto
+ \begin{pmatrix}C&(1-t)B\\0&I_N\end{pmatrix}
+\]
+removes the off-diagonal block through invertibles.  Finally,
+$\GL(M)$ is path connected over the complex scalars.  For example, after
+choosing a Hermitian structure on $M$, polar decomposition joins $C$ to a
+unitary matrix through positive invertible matrices, and a unitary logarithm
+joins that unitary matrix to $I_M$.  Extending this path by $I_N$ gives a path
+to $I_Y$.  We have therefore proved that
+\[
+ \{I_Y+K:K\in\K(Y),\ I_Y+K\in\Inv(\B(Y))\}             \tag{2.3}
+\]
+is path connected.
+
+Now suppose that $v\in\Inv(\B(Y))$ and that $q(v)$ belongs to
+$\Invzero(\Q(Y))$.  Choose a continuous path
+\[
+ \gamma:[0,1]\longrightarrow\Inv(\Q(Y)),
+ \qquad \gamma(0)=q(v),\quad \gamma(1)=1_{\Q(Y)}.
+\]
+The quantity
+\(
+L=\max_{0\le t\le1}\lVert\gamma(t)^{-1}\rVert
+\)
+is finite.  By uniform continuity, there is a partition
+$0=t_0<\cdots<t_m=1$ such that
+\[
+ \lVert\gamma(t_{i+1})-\gamma(t_i)\rVert<\frac{1}{2L}
+ \quad(0\le i<m).
+\]
+Thus, for
+\(
+\delta_i=\gamma(t_i)^{-1}\gamma(t_{i+1})
+\),
+\[
+ \lVert\delta_i-1_{\Q(Y)}\rVert<\frac12.
+\]
+The definition of the quotient norm supplies $h_i\in\B(Y)$ such that
+\[
+ q(h_i)=\delta_i-1_{\Q(Y)},
+ \qquad \lVert h_i\rVert<1.                            \tag{2.4}
+\]
+Starting with $v_0=v$, define $v_{i+1}=v_i(I_Y+h_i)$.  The segment
+\[
+ s\longmapsto v_i(I_Y+s h_i),\qquad 0\le s\le1,
+\]
+consists of invertibles by (2.4).  Inductively,
+$q(v_i)=\gamma(t_i)$; in particular, $q(v_m)=1_{\Q(Y)}$.  Hence
+$v_m=I_Y+K_0$ for a compact $K_0$, and (2.3) joins $v_m$ to $I_Y$.
+Concatenating the finitely many paths proves
+$v\in\Invzero(\B(Y))$.  Thus the kernel of $q_*$ is trivial.
+\end{proof}
+
+\begin{remark}\label{rem:hypotheses}
+The proof uses the Schauder basis only to obtain the explicit finite-rank
+approximation (2.1), and it uses complex scalars in the connectedness of the
+finite-dimensional general linear group.  It neither lifts the whole quotient
+path nor contracts $I_Y+K$ along the generally unsafe segment $I_Y+tK$.
+\end{remark}
+
+\section{Application to the fixed construction}
+
+We now use only properties of the fixed Horv\'ath--Kania construction.  Their
+Theorem~4.1 gives $X$ a Schauder basis and a unital Banach-algebra isomorphism
+\[
+  \Q(X)\cong C(S^4).
+\]
+Their block-matrix identification gives, for each positive integer $n$,
+\[
+  \Q(X^n)\cong M_n(C(S^4))
+             \cong C(S^4,M_n(\mathbb C)).              \tag{3.1}
+\]
+These statements, including the prescribed diagonal lifts needed to define
+$S$ and $T$, are part of the cited construction
+\cite[Theorem~4.1 and Lemma~4.5]{HorvathKania2026}.
+
+Put $u=I_E-2ST$.  Theorem~5.1 of the source proves that $u$ is invertible and
+identifies $q(u)$ with the Klaja--Ransford matrix function.  The component
+calculation in the same source gives
+\[
+ \Id(\Q(E))
+ \cong \Id(C(S^4,M_2(\mathbb C)))
+ \cong \pi_4(\GL_2(\mathbb C))
+ \cong \mathbb Z/2,                                    \tag{3.2}
+\]
+and $q(u)$ represents the nonzero class
+\cite[Theorem~5.1 and p.~23]{HorvathKania2026}.  Since $E=X^2$ has a
+Schauder basis, Lemma~\ref{lem:injection} makes
+\[
+ q_*:\Id(\B(E))\longrightarrow\Id(\Q(E))
+\]
+injective.  Its image contains the identity and, by the existence of the
+invertible lift $u$, the nonzero element of (3.2).  It is therefore an
+isomorphism, and
+\[
+ \Id(\B(E))=\{[I_E],[u]\}\cong\mathbb Z/2.             \tag{3.3}
+\]
+
+For the stabilised group, the canonical block-operator isomorphism and (3.1)
+give
+\[
+ M_2(\B(E))\cong\B(E\oplus E),
+ \qquad
+ \Q(E\oplus E)\cong C(S^4,M_4(\mathbb C)).             \tag{3.4}
+\]
+Polar decomposition retracts $\GL_n(\mathbb C)$ onto $U(n)$.  The stable-range
+maps and Bott periodicity~\cite{Bott1957} yield
+\[
+ \pi_4(\GL_4(\mathbb C))=0;                            \tag{3.5}
+\]
+this is also the stable-range computation recorded in the source
+\cite[p.~2]{HorvathKania2026}.  For completeness, (3.5) indeed controls free
+maps from $S^4$: given $f:S^4\to\GL_4(\mathbb C)$ and a base point $x_0$,
+the map $x\mapsto f(x_0)^{-1}f(x)$ is based and hence null-homotopic, while
+$\GL_4(\mathbb C)$ is path connected.  Thus every such $f$ is homotopic to the
+constant identity map.  Pointwise invertibility now gives
+\[
+ \Id(C(S^4,M_4(\mathbb C)))=1.                         \tag{3.6}
+\]
+
+The space $E\oplus E=X^4$ again has a Schauder basis.  Lemma
+\ref{lem:injection}, (3.4), and (3.6) therefore imply
+\[
+ \Id(M_2(\B(E)))\cong\Id(\B(E\oplus E))=1.             \tag{3.7}
+\]
+Consequently the first stabilisation map has all of (3.3) as its kernel.
+Since $[u]$ is the nonidentity element of a two-element group, its order is
+exactly two.  This proves Theorem~\ref{thm:main}.
+
+\section*{Scope and assistance disclosure}
+
+The conclusion resolves the two questions posed in Question~9.1 of
+Horv\'ath--Kania~\cite{HorvathKania2026} for the exact $X,E,S,T$ constructed
+there.  It does not assert a corresponding computation for other Motakis
+realisations, real Banach spaces, arbitrary operator lifts, or arbitrary Calkin
+extensions.  The general Lemma~\ref{lem:injection} is used only for $X^2$ and
+$X^4$ in the application.
+
+OpenAI Codex assisted with source inspection, bibliographic record checking,
+proof stress-testing, manuscript drafting, and the deterministic LaTeX build.
+No numerical experiment or computer algebra calculation is used as evidence
+for the theorem; all mathematical steps needed for the conclusion appear in
+the text.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

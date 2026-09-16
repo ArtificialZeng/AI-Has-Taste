@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "cd manuscript && latexmk -gg -pdf -interaction=nonstopmode -halt-on-error main.tex"
+}

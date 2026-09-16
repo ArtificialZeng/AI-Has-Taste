@@ -1,0 +1,357 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+\theoremstyle{definition}
+\newtheorem{conjecture}[proposition]{Conjecture}
+\newtheorem{remark}[proposition]{Remark}
+
+\title[Conjectural Bipartite--Subcubic Partition]{A Conjectural Bipartite-(2)/Subcubic Partition for Triangle-Free Graphs of Maximum Degree Six}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{2026-09-04}
+\hypersetup{
+  pdftitle={A Conjectural Bipartite-(2)/Subcubic Partition for Triangle-Free Graphs of Maximum Degree Six},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+The original problem---whether every finite simple triangle-free graph of
+maximum degree at most six is five-colourable---remains unresolved, and the
+partition conjecture formulated here is unproved.  The conjecture asks for a
+partition into a bipartite induced subgraph of maximum degree at most two and
+a subcubic induced subgraph.  It is motivated by the standard bounded-degree
+decomposition and would imply the original five-colour statement.  We record
+exact partial reductions, two exact obstructions to stronger proof routes,
+directly checkable partitions for 2,298 finite graphs, bounded solver searches
+through order ten, and an independent adversarial audit.  No proof trace was
+exported for the bounded unsatisfiability results, no exhaustive search at
+order eleven or above was completed, and no target-near critical catalogue
+from order thirty-three was generated.  Thus the evidence is finite and does
+not prove either claim.
+\end{abstract}
+
+\maketitle
+
+\section{Original problem and verified frontier}
+
+All graphs in this note are finite, simple, and undirected.  A proper
+$k$-colouring is a map from the vertex set to $\{1,\ldots,k\}$ that assigns
+different colours to adjacent vertices.  We write $\chi(G)$ for the least
+such $k$, $\Delta(G)$ for the maximum degree, and $G[X]$ for the subgraph
+induced by $X\subseteq V(G)$.  Empty and disconnected graphs are included.
+
+The original question is the following specialization of Reed's conjectured
+bound \cite{Reed1998}:
+\begin{equation}\label{eq:original}
+  G\text{ triangle-free and }\Delta(G)\leq 6
+  \quad\Longrightarrow\quad \chi(G)\leq 5.
+\end{equation}
+The recorded source search found no accepted proof or counterexample to
+\eqref{eq:original}.  In particular, the current triangle-free frontier is
+still presented as a conjecture by Kang and Rosenfeld; their theorem applies
+for maximum degree at least $524$, not at degree six \cite{KangRosenfeld2025}.
+Accordingly, this note does not claim a resolution.
+
+Brooks' theorem \cite{Brooks1941} makes the part with $\Delta(G)\leq5$
+automatic, so only maximum degree exactly six is difficult for the
+five-colour statement.  Goedgebeur found that the least order of an
+unrestricted triangle-free $6$-chromatic graph lies between $32$ and $40$
+\cite{Goedgebeur2020}.  Abrishami and Erfanian subsequently verified Reed's
+bound through order $32$ for triangle-free graphs whose chromatic number is
+not five \cite{AbrishamiErfanian2023}.  Hence a counterexample to
+\eqref{eq:original}, which Brooks forces to have chromatic number six, has at
+least $33$ vertices.  The known order-$40$ upper construction is not a
+counterexample to \eqref{eq:original} unless its maximum degree also satisfies
+the degree-six cap.
+
+\section{Proved partial structure}
+
+The following statements are partial reductions.  None resolves
+\eqref{eq:original}.
+
+\begin{proposition}[Bounded-degree decomposition]\label{prop:decomposition}
+Every graph $G$ with $\Delta(G)\leq6$ has a partition
+$V(G)=A\mathbin{\dot\cup}B$ such that
+\[
+  \Delta(G[A])\leq2
+  \qquad\text{and}\qquad
+  \Delta(G[B])\leq3.
+\]
+\end{proposition}
+
+\begin{proof}
+Choose a partition minimizing the nonnegative integer
+$4|E(G[A])|+3|E(G[B])|$.  If a vertex $v\in A$ has at least three neighbours
+in $A$, then it has at most three neighbours in $B$.  Moving $v$ from $A$ to
+$B$ changes the potential by at most $-4\cdot3+3\cdot3=-3$, a contradiction.
+Similarly, if $v\in B$ has at least four neighbours in $B$, then it has at
+most two neighbours in $A$, and moving it to $A$ changes the potential by at
+most $-3\cdot4+4\cdot2=-4$.  Thus neither violation occurs.
+\end{proof}
+
+This is the $(2,3)$ instance of the classical maximum-degree decomposition
+framework of Lov\'asz \cite{Lovasz1966}.  For comparison, Matamala's adjacent
+theorem can make the first induced part a maximum-degree-two forest at the
+cost of allowing maximum degree four on the other side
+\cite{Matamala2007}.  Proposition \ref{prop:decomposition} has the desired
+degree bounds, but its degree-two side may contain odd cycles.
+
+\begin{proposition}[Necessary structure of an extremal counterexample]
+If \eqref{eq:original} is false, there is a counterexample $G$ such that:
+\begin{enumerate}
+  \item $G$ is $6$-vertex-critical and every vertex has degree five or six;
+  \item every two degree-five vertices have distance at most two;
+  \item the set $L$ of degree-five vertices satisfies $|L|\leq26$ when it is
+        nonempty; and
+  \item for each degree-five vertex $v$ and each $5$-colouring of $G-v$, all
+        five colours occur on $N(v)$, and the neighbours receiving any chosen
+        pair of colours lie in the same bichromatic component.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Choose a counterexample with minimum order and, subject to that, maximum size.
+Brooks' theorem gives $\chi(G)=6$.  Vertex minimality makes $G$
+$6$-vertex-critical, hence its minimum degree is at least five, while the
+hypothesis gives the upper bound six.  If two nonadjacent degree-five
+vertices $x,y$ had no common neighbour, adding $xy$ would preserve
+triangle-freeness, the degree cap, and non-five-colourability while increasing
+the size.  This proves the distance-two assertion.
+
+For $v\in L$, suppose that $t$ of its five neighbours lie in $L$.
+Triangle-freeness and the degree cap give the deliberately overlap-ignoring
+upper bound
+\[
+ |L|\leq1+t+4t+5(5-t)=26.
+\]
+Finally, a $5$-colouring of $G-v$ must use every colour on $N(v)$, or it
+extends to $v$.  If two differently coloured neighbours lie in different
+components of their bichromatic subgraph, swapping the two colours in one
+component again frees a colour for $v$, which is impossible.
+\end{proof}
+
+The degree-five vertices in a spanning $6$-critical subgraph additionally
+induce a Gallai forest \cite{Gallai1963}; triangle-freeness restricts its
+nontrivial blocks to edges and odd cycles.  The handshake lemma makes the
+number of degree-five vertices even.  Applying the Gao--Postle density bound
+for $K_4$-free $6$-critical graphs \cite{GaoPostle2018} gives at least
+\[
+  \left\lceil\frac{316n-1890}{525}\right\rceil
+\]
+degree-six vertices in an $n$-vertex counterexample.  At $n=33$ this is at
+least $17$.  These necessary conditions have not been combined into a
+contradiction.
+
+\begin{lemma}[A minimal obstruction to the partition has no leaf]
+If the partition assertion in Conjecture \ref{conj:C001} is false, a
+vertex-minimal counterexample has minimum degree at least two.
+\end{lemma}
+
+\begin{proof}
+After deleting an isolated vertex, add it to either part.  After deleting a
+leaf $v$, add $v$ to the part not containing its unique neighbour.  No old
+induced degree changes and no cycle is created in the first part.
+\end{proof}
+
+\section{The robust candidate conjecture}
+
+The sole candidate promoted by the independent communication-quality audit
+is the following.  It remains unproved.
+
+\begin{conjecture}[Registry C001]\label{conj:C001}
+For every finite simple triangle-free graph \(G\) with \(\Delta(G)\le 6\), there is a partition \(V(G)=A\mathbin{\dot\cup}B\) such that \(\Delta(G[A])\le2\), \(G[A]\) is bipartite, and \(\Delta(G[B])\le3\).
+\par\smallskip
+{\raggedright\noindent\emph{Plain-language statement.} Every finite simple triangle-free graph of \mbox{maximum} degree at most six has a vertex partition into a bipartite part of \mbox{induced} \mbox{maximum} degree at most two and a part of \mbox{induced} \mbox{maximum} degree at most three.\par}
+\end{conjecture}
+
+Conjecture \ref{conj:C001} is not a renamed colouring assertion.  It adds
+parity control to Proposition \ref{prop:decomposition}: because $G[A]$ has
+maximum degree two, requiring it to be bipartite is exactly the exclusion of
+odd-cycle components.  If the conjecture is true, two colours suffice on
+$A$, and Brooks' theorem gives three colours on the triangle-free subcubic
+graph $G[B]$; disjoint palettes then prove \eqref{eq:original}.  No audited
+example establishes that the converse implication fails, so no strictness
+claim is made.
+
+The statement is natural as a missing parity condition and is locally
+certificate-friendly.  Its sharpness is less certain: the closest theorem
+located in the recorded search, Matamala's result cited above, permits degree
+four on the second side when the first side is acyclic, and the present record
+contains no theorem showing that each of C001's numerical bounds is
+individually best possible.
+
+\section{Research routes and failure diagnosis}
+
+\subsection{Odd-cycle elimination}
+One proof route refines the minimization in Proposition
+\ref{prop:decomposition} by secondarily minimizing the number and total length
+of odd cycles in $G[A]$.  The missing implication is a finite alternating
+exchange that removes a shortest such cycle while preserving both degree
+bounds.  No such exchange has been proved.
+
+A stronger fixed-partition induction is exactly false.  A serialized
+eight-vertex tree comes with a valid C001 partition after deletion of a
+degree-two vertex, yet none of the three one-vertex insertions extends that
+fixed partition: one produces a same-side edge in the proposed bipartition of
+$A$, one raises an old $A$-degree from two to three, and one raises an old
+$B$-degree from three to four.  The full tree has a different C001 partition.
+Thus the example obstructs the induction method, not Conjecture
+\ref{conj:C001}; any repair must permit a multi-vertex recolouring.
+
+\subsection{Independent two-domination}
+Another route sought an independent set $I$ such that every vertex outside
+$I$ has at least two neighbours in $I$.  In a graph of maximum degree six,
+deleting such an $I$ would leave maximum degree at most four.  This universal
+lemma is false even for triangle-free graphs with all degrees in
+$\{5,6\}$.  The exact $16$-vertex graph encoded by
+\verb|OqEK`UGDWiKsWIQe@QPhB| has degree multiset $5^8 6^8$, is
+triangle-free and $3$-colourable, and has no independent two-dominating set.
+An exhaustive verifier checks all $422$ independent sets.  This refutes only
+the auxiliary lemma; it is not a counterexample to \eqref{eq:original}.
+
+\subsection{Direct disproof search}
+No triangle-free graph respecting the degree cap and failing five-colourability
+was found.  The target-relevant exhaustive range starts at order $33$, and no
+catalogue of $6$-vertex-critical degree-$\{5,6\}$ graphs at or above that
+order was generated.  Negative results on smaller or sampled graphs therefore
+have no direct universal consequence for \eqref{eq:original}.
+
+\section{Exact evidence and reproducibility}
+
+The principal positive dataset contains $2{,}298$ serialized graphs with
+explicit C001 partitions: all $173$ eligible unlabelled graphs in the
+NetworkX graph atlas through order seven, five named boundary graphs, and
+$2{,}120$ deterministic greedy triangle-free graphs (forty at every order
+from eight through sixty).  The named cases include Petersen, Chv\'atal,
+Gr\"otzsch, Clebsch, and $K_{6,6}$; the generated sample includes a
+$60$-vertex $6$-regular case.  A separate checker reconstructed each graph
+and verified triangle-freeness, the degree cap, partition exhaustiveness,
+bipartiteness, and both induced-degree bounds.
+
+An explicit three-state SMT encoding searched all labelled graphs through
+order ten by alternately choosing graph edges and blocking every potential
+$A_0/A_1/B$ assignment.  With Z3 version 4.15.3 it returned unsatisfiable at
+orders eight, nine, and ten after respectively $6{,}561$, $19{,}683$, and
+$59{,}049$ assignment blockers.  These answers do not have exported DRAT,
+LRAT, or QBF proof traces, so they are reported as bounded solver evidence,
+not independently checkable universal certificates.
+
+A lazy order-eleven CEGIS run returned unsatisfiable only in the imposed
+minimum-degree-five stratum, after $462$ graph candidates and $125.294$
+seconds.  That stratum is target-motivated but is not a proved reduction for
+C001.  The unrestricted run timed out after $302.910$ seconds and $791$
+blockers; the sound minimum-degree-two run timed out after $303.820$ seconds
+and $808$ blockers; a degree-ordered variant returned unknown after $300.028$
+seconds and $354$ blockers.  A minimum-degree-five order-twelve run also
+timed out after $302.746$ seconds and $430$ blockers.  Every timeout and
+unknown result is inconclusive.
+
+The independent audit regenerated the $2{,}298$-record dataset byte for byte,
+replayed both exact route-obstruction witnesses, repeated labelled synthesis
+through order ten, tested $73$ canonical construction cases through order
+$462$, checked $530$ fresh random graphs at orders eight through sixty, and
+cross-checked three solver encodings at order six.  It found neither a C001
+counterexample nor a certificate mismatch in these declared finite scopes.
+This was an independent model context and evidence audit, not human peer
+review and not a proof of the conjecture.
+
+The reproduction commands, run from the project root, are:
+\begin{verbatim}
+python3 code/partition_probe.py \
+  --seed 3405 --random-per-order 40 \
+  --output data/partition-probe-seed3405.json
+python3 code/verify_partition_data.py \
+  data/partition-probe-seed3405.json
+python3 code/synthesize_partition_counterexample.py 10 \
+  --timeout-ms 300000
+python3 code/verify_false_fixed_partition_extension.py \
+  data/false-fixed-partition-extension.json
+python3 code/verify_false_independent_2dom.py \
+  data/false-independent-2dom.json
+\end{verbatim}
+The same synthesis command with orders eight and nine reproduces the smaller
+bounded searches.  Solver output should not be called a certificate unless a
+separately checkable proof trace is added.
+
+\section{Adversarial falsification and literature boundary}
+
+The counterexample-oriented tests included empty and disconnected graphs,
+isolated vertices and leaves, trees, odd and even cycles, every
+$K_{a,b}$ with $1\leq a,b\leq6$, odd-cycle blowups, Andr\'asfai graphs,
+Kneser odd graphs of degrees three through six, standard cubic examples,
+maximum-degree-six cases, and six $6$-regular cases.  The fixed-partition tree
+was deliberately retained to prevent the refuted induction assumption from
+entering the search.
+
+A fresh literature search on 2026-09-04 used the exact statement, synonyms,
+equivalent partition formulations, the constants two and three, and the
+closest Lov\'asz and Matamala theorems.  It inspected publisher, journal, and
+arXiv records, including recent partition work.  No equivalent C001 statement
+was found in that finite search.  This is a bounded search report, not a claim
+of priority, exhaustive novelty, or community recognition.
+
+The fastest decisive falsifier is a concrete finite triangle-free graph
+$G$ with $\Delta(G)\leq6$, together with a separately checkable proof that no
+$A_0/A_1/B$ assignment satisfies the three partition conditions.  The most
+immediate computational target is a proof-producing unrestricted order-eleven
+SAT or QBF encoding.  A positive partition, a timeout, or an untraced
+unsatisfiable solver response is not such a falsifier.
+
+\section{Potential value and research agenda}
+
+If C001 is true, it proves \eqref{eq:original} and identifies parity control
+inside a standard degree decomposition as the endpoint mechanism.  Its
+positive witnesses are also cheaper to verify than global non-five-colourability.
+If C001 is false, the witness has two informative possibilities: a
+$6$-chromatic witness simultaneously refutes \eqref{eq:original}, whereas a
+$5$-colourable witness refutes only this partition route and isolates a real
+parity-versus-degree obstruction.
+
+The highest-value proof test is to classify blocked moves around a shortest
+odd $A$-cycle and decide whether a bounded multi-vertex alternating exchange
+lowers the secondary odd-cycle potential.  In parallel, a critical-graph
+generator can impose the degree, distance-two, Gallai-forest, density, and
+Kempe constraints above starting at order $33$, with proof-producing
+five-colourability checks.  These two tests attack the conjectural partition
+and the original statement from different directions.
+
+\section{Limitations and open scope}
+
+Both \eqref{eq:original} and Conjecture \ref{conj:C001} remain unresolved.
+The evidence covers only finite graph sets and bounded solver instances.  In
+particular, the record contains no completed exhaustive order-eleven search,
+no proof trace for the solver exclusions through order ten, no unbounded
+family theorem beyond the elementary decomposition, no general odd-cycle
+exchange, and no exhaustive target-near graph generation from order $33$.
+The literature search is finite and may have missed equivalent language or
+unindexed work.  The independent audit certifies the precision,
+reproducibility, falsification effort, disclosure, and bounded literature
+wording of C001; it does not certify truth.  The conjecture may be refuted by
+future exact computation or construction.
+
+\section*{Data, code, and computational disclosure}
+
+The project stores the serialized graph data, exact finite witnesses, Python
+generators, and independent checkers alongside this source.  Python,
+NetworkX, and Z3 were used for finite experiments.  No proof assistant was
+used.  A generative AI system assisted with literature-query formulation,
+proof and counterexample exploration, code generation and review, evidence
+organization, independent model-context auditing, and manuscript drafting.
+All mathematical status decisions above are tied to located sources, explicit
+arguments, serialized data, or checker output; model confidence and numerical
+scores were not treated as proof.  The independent model audit is not a
+substitute for expert peer review.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

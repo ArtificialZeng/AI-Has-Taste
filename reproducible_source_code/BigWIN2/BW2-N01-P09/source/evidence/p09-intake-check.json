@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "python": "3.10.12",
+  "table": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ]
+  ],
+  "randomness": "none",
+  "arithmetic": "integers and exact rational formal series",
+  "rows": [
+    {
+      "n": 1,
+      "distinct_functions": 1,
+      "assignments_per_function": 3,
+      "mask_compositions": 0,
+      "literal_all_supports_agree": true,
+      "truth_set_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    },
+    {
+      "n": 2,
+      "distinct_functions": 2,
+      "assignments_per_function": 9,
+      "mask_compositions": 2,
+      "literal_all_supports_agree": true,
+      "truth_set_sha256": "d9927fa899458500f018fe3974ffd5317f9e85c2153baa684f18a683ea448493"
+    },
+    {
+      "n": 3,
+      "distinct_functions": 12,
+      "assignments_per_function": 27,
+      "mask_compositions": 18,
+      "literal_all_supports_agree": true,
+      "truth_set_sha256": "f47dc9e047c0aedb547cd56df6bdbcfbd239a9fd3b61faee8dd1e53aafa52ff4"
+    },
+    {
+      "n": 4,
+      "distinct_functions": 108,
+      "assignments_per_function": 81,
+      "mask_compositions": 180,
+      "literal_all_supports_agree": true,
+      "truth_set_sha256": "9996ef1afffd3f3643dc19571507d96ebc14710b77bfbbdf739f60de8eda493a"
+    },
+    {
+      "n": 5,
+      "distinct_functions": 1340,
+      "assignments_per_function": 243,
+      "mask_compositions": 2300,
+      "literal_all_supports_agree": true,
+      "truth_set_sha256": "5803162b3ebeaae65c498c1b2458d9ff6103f369771f1055a0269ddcb87f6ff0"
+    },
+    {
+      "n": 6,
+      "distinct_functions": 21150,
+      "assignments_per_function": 729,
+      "mask_compositions": 36870,
+      "literal_all_supports_agree": null,
+      "truth_set_sha256": "d1c6e31c48b1fd98084bbc2198de5ef5653cfcb2ec7374d94197baa9b98831a7"
+    }
+  ],
+  "literal_assignment_cells_checked": 506613,
+  "proposed_egf": "T=x*(1+T*exp(T))",
+  "proposed_counts_n1_to_12": [
+    1,
+    2,
+    12,
+    108,
+    1340,
+    21150,
+    405762,
+    9168488,
+    238504968,
+    7020691290,
+    230717401310,
+    8373057144012
+  ],
+  "scope": "Exhaustive functions n<=6; independent literal-table comparison n<=5. Two formal-series formulas agree through n=12. Neither finite agreement nor a guessed species proves all-n term-function injectivity.",
+  "code_sha256": "0d918a604a569fc8b7da90883357cb3c504b55f32b4d526a8827c9453bb48912"
+}

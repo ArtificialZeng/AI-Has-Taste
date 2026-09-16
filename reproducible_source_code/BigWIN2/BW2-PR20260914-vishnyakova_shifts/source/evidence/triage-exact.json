@@ -1,0 +1,105 @@
+{
+  "job_id": "primary-20260914-vishnyakova-shifts-triage-b88a2e27f2c3",
+  "source_sha256": "599d20eb671a5110cc3ae01b0f602ff5460c237a42052ac704e602aca2e4dda8",
+  "python": "3.10.12",
+  "sympy": "1.14.0",
+  "arithmetic": "exact symbolic identities and rational Sturm counts",
+  "randomness": false,
+  "q2": "t**2 + 2*t*z + 2*z**2 + z",
+  "discriminant_q2": "-4*t**2 + 4*t + 1",
+  "q4": "t**4 + 4*t**3*z + 12*t**2*z**2 + 6*t**2*z + 24*t*z**3 + 24*t*z**2 + 4*t*z + 24*z**4 + 36*z**3 + 14*z**2 + z",
+  "discriminant_q4": "768*(t**2 - t - 1)*(432*t**10 - 2160*t**9 + 3672*t**8 - 1728*t**7 - 1233*t**6 + 675*t**5 + 638*t**4 - 97*t**3 - 143*t**2 - 56*t - 8)",
+  "H": "3456*v**5 - 9504*v**4 + 11304*v**3 - 7046*v**2 + 2378*v - 361",
+  "H_sturm_signs": {
+    "-oo": [
+      -1,
+      1,
+      1,
+      1,
+      -1,
+      1
+    ],
+    "0": [
+      -1,
+      1,
+      1,
+      1,
+      -1,
+      1
+    ],
+    "oo": [
+      1,
+      1,
+      -1,
+      1,
+      1,
+      1
+    ]
+  },
+  "H_sturm_variations": {
+    "-oo": 3,
+    "0": 3,
+    "oo": 2
+  },
+  "H_unique_real_root_bracket": [
+    "42488/77697",
+    "77417/141571"
+  ],
+  "alpha_definition": "1/2-sqrt(v_*), where H(v_*)=0",
+  "alpha_rational_bracket": [
+    "-6/25",
+    "-239/1000"
+  ],
+  "quartic_samples": [
+    {
+      "t": "-1",
+      "roots_in_closed_interval": 0,
+      "discriminant_sign": 1
+    },
+    {
+      "t": "-1/2",
+      "roots_in_closed_interval": 2,
+      "discriminant_sign": -1
+    },
+    {
+      "t": "-1/4",
+      "roots_in_closed_interval": 2,
+      "discriminant_sign": -1
+    },
+    {
+      "t": "-23/100",
+      "roots_in_closed_interval": 4,
+      "discriminant_sign": 1
+    },
+    {
+      "t": "0",
+      "roots_in_closed_interval": 4,
+      "discriminant_sign": 1
+    },
+    {
+      "t": "1/2",
+      "roots_in_closed_interval": 4,
+      "discriminant_sign": 1
+    },
+    {
+      "t": "1",
+      "roots_in_closed_interval": 4,
+      "discriminant_sign": 1
+    },
+    {
+      "t": "3/2",
+      "roots_in_closed_interval": 2,
+      "discriminant_sign": -1
+    },
+    {
+      "t": "2",
+      "roots_in_closed_interval": 0,
+      "discriminant_sign": 1
+    }
+  ],
+  "identity_check_degrees": [
+    1,
+    6
+  ],
+  "scope": "Quartic cell certificate plus identities; see triage-exact.md for the completeness argument. No uniform even-degree theorem, novelty certification, or independent review."
+}

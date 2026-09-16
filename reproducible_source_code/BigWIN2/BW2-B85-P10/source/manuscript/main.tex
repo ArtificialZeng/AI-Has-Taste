@@ -1,0 +1,369 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={Domination log-concavity for the caterpillars T(p,0,0,q)},pdfauthor={Xiaojian Zeng},pdfsubject={Log-concavity for a two-parameter caterpillar family}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\LC}{\operatorname{LC}}
+\title{Domination log-concavity for the caterpillars\\$T(p,0,0,q)$}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that the domination polynomial of the caterpillar $T(p,0,0,q)$
+has a log-concave coefficient sequence for all integers $p,q\geq1$.
+This family has four spine vertices, with leaves attached only at the two
+endpoints, and lies outside the known all-positive-leg theorem.
+An endpoint-state decomposition, followed by reversal, expresses the polynomial
+through binomial convolutions and three sparse additions. The additions affect
+only ten log-concavity differences, for which we give explicit nonnegative
+coefficient certificates. The general claim for caterpillars with arbitrary
+zero-leg patterns remains unresolved by this result.
+\end{abstract}
+
+\section{The restricted problem}
+
+For a finite simple graph $G$, a set $W\subseteq V(G)$ is \emph{dominating}
+if every vertex belongs to $W$ or has a neighbor in $W$. Write
+\[
+  D_G(x)=\sum_{j=0}^{|V(G)|}d_j(G)x^j,
+  \qquad d_j(G)=\#\{W: W\text{ is dominating and }|W|=j\}.
+\]
+This is the domination polynomial; see Kotek, Preen, Simon, Tittmann,
+and Trinks~\cite[Definition~1.1]{Kotek2012}.
+A nonnegative sequence $(c_0,\ldots,c_n)$ is \emph{log-concave} if
+$c_j^2\geq c_{j-1}c_{j+1}$ for $1\leq j\leq n-1$.
+All coefficients, including initial zeros, are included in this convention.
+
+Let $T(a_1,\ldots,a_k)$ consist of a path $v_1\cdots v_k$, called its
+spine, with $a_i$ additional leaves attached to $v_i$.
+Du, Heilman, and Panova~\cite[Theorem~3.3]{Du2026} prove log-concavity when
+every $a_i\geq1$, using the factorization
+\begin{equation}\label{eq:positive}
+  D_{T(a_1,\ldots,a_k)}(x)
+    =\prod_{i=1}^k\bigl(x^{a_i}+x(1+x)^{a_i}\bigr).
+\end{equation}
+Their Remark~3.4 expresses the belief that the conclusion also holds when
+some $a_i=0$. The corresponding universal question, for every $k\geq1$
+and every nonnegative integer vector $(a_1,\ldots,a_k)$, remains unresolved
+here. Our contribution is the following proper subfamily.
+
+\begin{theorem}\label{thm:main}
+For all integers $p,q\geq1$, let $T=T(p,0,0,q)$ and $N=p+q+4$.
+Then
+\[
+  d_j(T)^2\geq d_{j-1}(T)d_{j+1}(T)
+  \qquad(1\leq j\leq N-1).
+\]
+\end{theorem}
+
+The role of positive legs can also be described through leaf components.
+In the terminology used by Zeng~\cite[Section~2]{Zeng2026}, the internal
+core is induced by the nonleaf vertices, and a tree is proper if each core
+vertex is adjacent to a leaf. Deleting the internal edges of a proper tree
+leaves stars, each of order at least two. For $T(p,0,0,q)$ the same deletion
+instead gives component orders $p+1,1,1,q+1$: the two singleton components
+are precisely the bare spine vertices. This shared core description explains
+the structural change from the all-positive case; the cited reconstruction
+results concern the chromatic symmetric function, a different invariant.
+
+In~\eqref{eq:positive}, an unselected spine vertex is dominated by its
+forced leaves. A bare vertex has no such guarantee, so its state couples to
+its spine neighbors. We resolve that coupling explicitly for two consecutive
+bare vertices. We then use the standard convolution principle
+\cite[Section~2]{Gross2015} and check the few differences altered by the
+remaining additions. The cited caterpillar theorem does not contain this case.
+Our bounded literature search through 12 September 2026 found no treatment of
+this precise family; this is not a claim of exhaustive priority.
+
+\section{Polynomial decomposition and log-concavity}
+
+Put $r=p+q$. If the left endpoint of the spine is selected, it and its
+leaves contribute $U_p=x(1+x)^p$. If it is unselected, every leaf must be
+selected, giving $V_p=x^p$; these leaves also dominate the endpoint because
+$p\geq1$. Define $U_q,V_q$ at the right endpoint in the same way.
+When both endpoints are selected, the two middle vertices can be chosen
+freely. In each other endpoint state, at least one middle vertex must be
+selected: without one, a middle vertex next to an unselected endpoint is
+undominated. Conversely, selecting either middle vertex dominates both of
+them. Thus their contribution is $(1+x)^2$ in the first state and
+$(1+x)^2-1=x(2+x)$ in the other three states. This gives
+\[
+ D_T(x)=U_pU_q(1+x)^2+(U_pV_q+V_pU_q+V_pV_q)x(2+x).
+\]
+Consequently $D_T(x)=x^2H(x)$, where
+\begin{equation}\label{eq:H}
+\begin{split}
+ H(x)={}&(1+x)^{r+2}
+       +x^p(2+x)(1+x)^q+x^q(2+x)(1+x)^p\\
+       &+x^{r-1}(2+x).
+\end{split}
+\end{equation}
+The degree of $H$ is $r+2$. Reverse its coefficients by setting
+$H^*(x)=x^{r+2}H(1/x)$. Directly from~\eqref{eq:H},
+\begin{equation}\label{eq:reverse}
+ H^*(x)=(1+x)^{r+2}
+ +(x+2x^2)\bigl((1+x)^p+(1+x)^q\bigr)+x^2+2x^3.
+\end{equation}
+By symmetry assume $p\leq q$ and set $u=q-p\geq0$. Define
+\begin{equation}\label{eq:nested}
+\begin{aligned}
+ K_p(x)&=(1+x)^{p+2}+x+2x^2,\\
+ R_{p,u}(x)&=(1+x)^uK_p(x)+x+2x^2,\\
+ H^*(x)&=(1+x)^pR_{p,u}(x)+x^2+2x^3.
+\end{aligned}
+\end{equation}
+The last identity follows by expanding the preceding two and comparing
+with~\eqref{eq:reverse}.
+
+\begin{lemma}[Convolution closure]\label{lem:convolution}
+The product of two polynomials with nonnegative log-concave coefficient
+sequences and no internal zeros again has these properties.
+\end{lemma}
+
+\begin{proof}
+We recall the order-two Cauchy--Binet argument for convolution closure
+\cite[Section~2]{Gross2015}. Extend each sequence by zeros outside its
+support. For a sequence $c$, form the upper triangular Toeplitz matrix
+$M(c)_{ij}=c_{j-i}$, $i,j\geq0$.
+The ratios $c_{t+1}/c_t$ are nonincreasing on its positive support. It follows
+that, for positive integers $A,B$ and any integer $m$,
+\[
+ c_{m+A}c_{m+B}\geq c_m c_{m+A+B}.
+\]
+Indeed, when the right side is positive all intervening terms are positive,
+and comparison of $A$ successive ratios proves the inequality. When it is
+zero the inequality is immediate. These are exactly the order-two minors
+of $M(c)$; conversely the adjacent minors give log-concavity.
+For convolution $c=a*b$ one has $M(c)=M(a)M(b)$.
+Every relevant entry and minor can be computed in a finite truncation, so
+Cauchy--Binet writes each order-two minor of $M(c)$ as a sum of products of
+nonnegative minors. Finally, convolution of two positive interval supports
+again has positive interval support.
+\end{proof}
+
+For fixed $h\geq0$ let
+\[
+ C(z,h)=\frac{z(z-1)\cdots(z-h+1)}{h!},\qquad C(z,0)=1,
+\]
+and set $C(z,h)=0$ for $h<0$. For a nonnegative integer $z$, these are
+the binomial coefficients, including zero when $h>z$.
+Writing $k_h,r_h,s_h$ for the coefficients of $K_p,R_{p,u},H^*$,
+respectively,~\eqref{eq:nested} gives
+\begin{equation}\label{eq:coefficients}
+\begin{aligned}
+ k_h&=C(p+2,h)+\ind_{h=1}+2\ind_{h=2},\\
+ r_h&=\sum_{i=0}^h C(u,i)k_{h-i}+\ind_{h=1}+2\ind_{h=2},\\
+ s_h&=\sum_{i=0}^h C(p,i)r_{h-i}+\ind_{h=2}+2\ind_{h=3}.
+\end{aligned}
+\end{equation}
+Here each indicator is one when its subscripted condition holds and zero
+otherwise. Define the differences, with zero coefficients outside support, by
+\[
+ \Delta^K_h=k_h^2-k_{h-1}k_{h+1},\quad
+ \Delta^R_h=r_h^2-r_{h-1}r_{h+1},\quad
+ \Delta^S_h=s_h^2-s_{h-1}s_{h+1}.
+\]
+
+\begin{lemma}\label{lem:certificates}
+After substituting $p=a+1$, each of
+\[
+ \Delta^K_1,\Delta^K_2,\Delta^K_3,\quad
+ \Delta^R_1,\Delta^R_2,\Delta^R_3,\quad
+ \Delta^S_1,\Delta^S_2,\Delta^S_3,\Delta^S_4
+\]
+is a polynomial in $a,u$ with nonnegative rational coefficients.
+\end{lemma}
+
+\begin{proof}
+Substitution and multiplication in~\eqref{eq:coefficients} give the
+ten explicit expansions in Appendix~\ref{app:certificates}. All displayed
+coefficients are nonnegative and the denominators are positive.
+The identities involve only falling factorials through degree five, so they
+are finite polynomial identities over $\mathbb{Q}[a,u]$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Every binomial row is log-concave and has positive interval support.
+Adding $x+2x^2$ can alter a log-concavity difference only at centers $1,2,3$;
+adding $x^2+2x^3$ can alter one only at centers $1,2,3,4$.
+For instance, a difference uses only the coefficients at its center and
+its two neighbors. Center zero is unchanged because the coefficient at
+index $-1$ is zero.
+
+Start with $(1+x)^{p+2}$. The three $K$ certificates prove that $K_p$ is
+log-concave. Lemma~\ref{lem:convolution} then makes $(1+x)^uK_p$
+log-concave, and the three $R$ certificates establish the same property
+for $R_{p,u}$. Apply the convolution lemma once more, then the four $S$
+certificates, to conclude that $H^*$ is log-concave.
+Each intermediate polynomial has positive coefficients throughout its
+support: its binomial part is positive there, and every sparse addition
+lies inside that support. The argument includes $u=0$ and $p=1$.
+
+Reversal preserves all log-concavity inequalities, so $H$ is log-concave.
+Multiplying by $x^2$ gives $d_0=d_1=0$ and $d_2=H(0)>0$.
+The inequalities at $j=1,2$ are therefore immediate; the remaining centers
+$3\leq j\leq p+q+3$ are exactly the internal differences of $H$.
+\end{proof}
+
+\section{Exact verification and scope}
+
+The symbolic identities above provide the quantified proof. Their transcription
+was checked using exact rational arithmetic in SymPy~\cite{Meurer2017}.
+The script \texttt{generate\_certificates.py} reconstructs
+all ten differences directly from~\eqref{eq:coefficients}; its
+\texttt{--check} option verifies the accompanying integer arrays and the
+generated table source. All certificate entries are printed below, so the
+mathematical argument does not require trusting a saved program verdict.
+
+Additional integer checks compared~\eqref{eq:H} with a three-state tree
+dynamic program for all $400$ ordered pairs $1\leq p,q\leq20$ and with
+direct vertex-subset enumeration for all $36$ ordered pairs with
+$p+q+4\leq13$. The states distinguish a selected root, an unselected root
+dominated by a child, and an unselected root requiring its parent; their
+recurrences are given in Du--Heilman--Panova~\cite[Section~4.1]{Du2026}.
+A further check evaluated all $1{,}744{,}050$ differences for the
+$11{,}325$ pairs $1\leq p\leq q\leq150$. No negative difference occurred.
+These finite comparisons check the formula and implementation; they do not
+establish an unbounded parameter claim.
+
+The theorem concerns one block of exactly two bare vertices between two
+leaf-bearing endpoints. Its nested decomposition supplies neither an
+induction on arbitrary block length nor a treatment of interactions between
+separated zero blocks. Thus it does not resolve the original universal
+caterpillar question.
+
+\paragraph{Computational and AI assistance.}
+OpenAI language models assisted with proof development, exact verification
+code, literature screening, and manuscript preparation. A separate model
+context reconstructed the mathematical argument and performed additional
+exact checks; this was an internal verification pass, not external peer
+review. The reported computations used Python integers and rational symbolic arithmetic,
+with no numerical root tests or floating-point sign decisions. The proof is
+the displayed endpoint decomposition, convolution argument, and explicit
+polynomial certificates.
+
+\appendix
+\section{The ten coefficient certificates}\label{app:certificates}
+
+Throughout this appendix $p=a+1$ and $u=q-p$, so $a,u\geq0$ on the
+parameter range of the theorem. Five of the expansions are short enough
+to display directly:
+\begin{align*}
+ 2\Delta^K_1&=a^2+11a+22,\\
+ 12\Delta^K_2&=a^4+10a^3+65a^2+200a+252,\\
+ 144\Delta^K_3&=(a+1)(a+2)(a+3)(a^3+9a^2+14a+24),\\
+ 2\Delta^R_1&=a^2+2au+15a+u^2+13u+36,\\
+ 2\Delta^S_1&=4a^2+4au+30a+u^2+15u+46.
+\end{align*}
+For each remaining difference, the array $C^{A,h}$ below means
+\[
+  b_h\Delta^A_h(a,u)=\sum_{i,j\geq0}C^{A,h}_{ij}a^iu^j,
+  \qquad b_2=12,\quad b_3=144,\quad b_4=2880.
+\]
+Rows are indexed by the exponent $i$ of $a$, columns by the exponent $j$
+of $u$, and every blank or unlisted entry is zero. These arrays and the
+five formulas above specify all ten certificates completely. They can be
+reconstructed by ordinary polynomial multiplication from
+\eqref{eq:coefficients}; no parameter sampling is involved.
+
+% Generated by generate_certificates.py; all entries are exact integers.
+\begin{center}
+\begin{minipage}{1\textwidth}
+\centering\small
+$C^{R,2}$: coefficients of $12\Delta^{R}_{2}$ in $a^i u^j$.\par\smallskip
+\begin{tabular}{r|rrrrr}
+$i\backslash j$ & 0 & 1 & 2 & 3 & 4 \\
+\hline
+0 & 528 & 376 & 101 & 14 & 1 \\
+1 & 298 & 196 & 42 & 4 &  \\
+2 & 77 & 36 & 6 &  &  \\
+3 & 8 & 4 &  &  &  \\
+4 & 1 &  &  &  &  \\
+\end{tabular}
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{1\textwidth}
+\centering\small
+$C^{R,3}$: coefficients of $144\Delta^{R}_{3}$ in $a^i u^j$.\par\smallskip
+\begin{tabular}{r|rrrrrrr}
+$i\backslash j$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+0 & 144 & 1380 & 1276 & 615 & 163 & 21 & 1 \\
+1 & 276 & 1436 & 1335 & 532 & 99 & 6 &  \\
+2 & 220 & 837 & 618 & 174 & 15 &  &  \\
+3 & 141 & 304 & 150 & 20 &  &  &  \\
+4 & 67 & 69 & 15 &  &  &  &  \\
+5 & 15 & 6 &  &  &  &  &  \\
+6 & 1 &  &  &  &  &  &  \\
+\end{tabular}
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{1\textwidth}
+\centering\small
+$C^{S,2}$: coefficients of $12\Delta^{S}_{2}$ in $a^i u^j$.\par\smallskip
+\begin{tabular}{r|rrrrr}
+$i\backslash j$ & 0 & 1 & 2 & 3 & 4 \\
+\hline
+0 & 1308 & 792 & 173 & 18 & 1 \\
+1 & 1584 & 764 & 120 & 8 &  \\
+2 & 764 & 252 & 24 &  &  \\
+3 & 168 & 32 &  &  &  \\
+4 & 16 &  &  &  &  \\
+\end{tabular}
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{1\textwidth}
+\centering\small
+$C^{S,3}$: coefficients of $144\Delta^{S}_{3}$ in $a^i u^j$.\par\smallskip
+\begin{tabular}{r|rrrrrrr}
+$i\backslash j$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+0 & 12528 & 13572 & 5920 & 1521 & 271 & 27 & 1 \\
+1 & 27144 & 24544 & 9390 & 2060 & 258 & 12 &  \\
+2 & 24544 & 19044 & 6108 & 996 & 60 &  &  \\
+3 & 12696 & 8096 & 1944 & 160 &  &  &  \\
+4 & 4048 & 1920 & 240 &  &  &  &  \\
+5 & 768 & 192 &  &  &  &  &  \\
+6 & 64 &  &  &  &  &  &  \\
+\end{tabular}
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{minipage}{1\textwidth}
+\centering\small
+$C^{S,4}$: coefficients of $2880\Delta^{S}_{4}$ in $a^i u^j$.\par\smallskip
+\begin{tabular}{r|rrrrrrrrr}
+$i\backslash j$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+\hline
+0 & 2880 & 18240 & 28844 & 21968 & 11049 & 2960 & 426 & 32 & 1 \\
+1 & 36480 & 101456 & 115144 & 71832 & 24920 & 4632 & 432 & 16 &  \\
+2 & 101456 & 213624 & 191736 & 87600 & 21000 & 2472 & 112 &  &  \\
+3 & 142416 & 239808 & 160400 & 51600 & 7840 & 448 &  &  &  \\
+4 & 119904 & 153000 & 72960 & 15000 & 1120 &  &  &  &  \\
+5 & 61200 & 56592 & 17424 & 1792 &  &  &  &  &  \\
+6 & 18864 & 11424 & 1792 &  &  &  &  &  &  \\
+7 & 3264 & 1024 &  &  &  &  &  &  &  \\
+8 & 256 &  &  &  &  &  &  &  &  \\
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

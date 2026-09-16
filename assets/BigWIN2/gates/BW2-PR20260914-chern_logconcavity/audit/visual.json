@@ -1,0 +1,63 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260914-chern-logconcavity-release-7e11daba3cdd",
+  "snapshot_digest": "c7a3ce92d5a241cbc4872e171dadffe3e04b62c10715996352a37acb1320381b",
+  "manuscript_digest": "145b8c81d2cd674fcc1767714d1688fe43dd48c01cf273c3c467bb133dfdc58d",
+  "pdf_digest": "abe63f373f718351de822ad6550e7ce7bc9279c9657fbd346b61f35d19f65ca5",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "checked_at": "2026-09-14T03:02:31.626173+00:00",
+  "render_command": "pdftoppm -r 130 -png build/main.pdf audit/release-pages/page",
+  "page_images": [
+    {
+      "page": 1,
+      "path": "audit/release-pages/page-1.png",
+      "sha256": "ada049d7ace4e21fde92bb33f12509db4013a09de059fb6f2dab464518c1b724",
+      "observation": "Title, author/affiliation/email, abstract, and equations (1)-(3) are legible and inside the margins. Polynomiality citation resolves visibly."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-pages/page-2.png",
+      "sha256": "dd4a50f938fd6c59f6a2e01787766edd2a7b03327d4efee884f29588835da8c1",
+      "observation": "Theorem 1, all four forcing terms, recurrence, prior-work comparison and support recurrence are visible. Long equation (4) is split without clipping; equation numbers do not overlap text."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-pages/page-3.png",
+      "sha256": "d4d5b656f348c85f430abee7b4d8cf7b22bb09d1845e512dd8df80899edf0b7e",
+      "observation": "Zeroth/first-mode identities, four-term formula and all four support intervals are readable. Lemma 2 begins at the page end with its complete statement and continues normally on the next page."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-pages/page-4.png",
+      "sha256": "d1df79c57ef84a8601c4524829358b67b73db24fb4ee85bfe1f3c1b70f5f0f91",
+      "observation": "Lemma 2 proof and both citations are readable. Equations (12)-(17), the two-line pair set and Abel identity fit within the margins."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-pages/page-5.png",
+      "sha256": "0c786b929036e050aadf22ee69c59d2151a56234ce8531da8c3e7f99b02968ef",
+      "observation": "Support substitution, certificate reasoning, direct Zeng citation and theorem locator, mixed inequality (20), finite-check ranges and the complete first residual row are legible. The unproved status is explicit."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-pages/page-6.png",
+      "sha256": "032eb9105c9128e62e34223f85bf06b92f58c66cf0163c0a61d8e7116da36b68",
+      "observation": "Attachment instructions and literal --check command are readable. All 41 table records are present in two blocks; column labels, negative traces, pair indices, degrees, counts, and fractional minima 43/4 and 77/2 are distinct and legible. No table clipping or overlapping cells was observed."
+    },
+    {
+      "page": 7,
+      "path": "audit/release-pages/page-7.png",
+      "sha256": "2ac183b84fa5a0a27d76f1f10fb21f71adc737afe8e6e33818ea65f3959dc50b",
+      "observation": "AI/computation disclosure and all five complete bibliography entries are visible. Author accents and the full SymPy author list render correctly; long URLs wrap inside the margins. No missing-reference question marks occur."
+    }
+  ]
+}

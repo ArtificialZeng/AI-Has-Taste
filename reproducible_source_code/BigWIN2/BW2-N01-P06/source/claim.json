@@ -1,0 +1,26 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "disproved",
+  "statement": "Let C_n be the permutations pi in S_n avoiding the classical subsequence patterns 312 and 54321 such that the composition square pi^2 avoids 132, and let a_n=|C_n| with a_0=1. Then (a_0,...,a_11)=(1,1,2,5,11,22,45,89,174,338,655,1265). The recurrence a_n=a_(n-1)+a_(n-2)+a_(n-3)+a_(n-4)+n-1 holds for 6<=n<=10 and first fails at n=11, where its right-hand side is 1266 instead of 1265. Thus the universally quantified original claim is false. The computer-assisted proof uses the complete nine-member classification of C_11 permutations ending in 1, the exact endpoint census through 11, and a proved direct-sum reduction; it makes no claim about a corrected all-n recurrence.",
+  "contribution": "An exact first counterexample to the Archer--Bourne Section 5 recurrence, with a complete finite endpoint certificate, explicit square-pattern exclusion witnesses, and a self-contained proof of domain completeness and the counting reduction. The bounded primary-source search on 2026-09-12 found no equivalent disproof; priority is not asserted. Submitted for fresh mathematical review, with no acceptance claimed.",
+  "proposer_job_id": "newwin-00001-p06-research-8a0fdffcb5e5",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/disproof.md",
+    "evidence/endpoint_exhaustive.py",
+    "evidence/endpoint_exhaustive.json",
+    "evidence/endpoint_classical_n11.json",
+    "evidence/verify_endpoint_certificate.py",
+    "evidence/endpoint_certificate_verification.json",
+    "evidence/triage_count.py",
+    "evidence/triage_counts.json",
+    "evidence/insertion_verify.py",
+    "evidence/insertion_counts.json",
+    "evidence/insertion_members_n11.json",
+    "evidence/compare_enumerations.py",
+    "evidence/enumeration_comparison.json",
+    "literature/research-literature.md",
+    "evidence/external/archer-bourne-v3.html"
+  ]
+}

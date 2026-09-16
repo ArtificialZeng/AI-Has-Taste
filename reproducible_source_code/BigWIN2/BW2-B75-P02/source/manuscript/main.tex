@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={All Deformation Maps in Example 8.7 of Extending Structures for n-Lie Algebras},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\K}{\mathbb K}
+
+\title{All Deformation Maps in Example 8.7 of\\
+\emph{Extending Structures for $n$-Lie Algebras}}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $n\geq4$ and let $\K$ be a field of characteristic zero.  For the
+$n$-Lie matched pair in Example 8.7 of Zhang's \emph{Extending Structures
+for $n$-Lie Algebras}, we classify every linear deformation map
+$r\colon V\to\mathfrak g$.  In the column convention
+\[
+R=\begin{pmatrix}A&v\\ w^{\mathsf T}&\alpha\end{pmatrix},
+\]
+the complete criterion is
+$\det(A)v=0$ and $\det(R)=\alpha\det(A)$.  Thus, if $A$ is invertible,
+then $v=0$ and $w,\alpha$ are arbitrary; if $A$ is singular, the sole
+condition is $\det(R)=0$.  The proof reduces the deformation equation on
+arbitrary inputs to two determinant-valued alternating maps and includes an
+explicit audit of the Laplace-expansion sign.
+\end{abstract}
+
+\section{Context and statement}
+
+Filippov introduced $n$-Lie algebras as algebras with an alternating
+$n$-linear bracket satisfying the fundamental identity
+\cite{Filippov1985}.  Zhang developed extending structures and deformation
+maps first for $3$-Lie algebras \cite{Zhang2022} and subsequently for
+$n$-Lie algebras \cite{Zhang2026}.  The latter paper's Example 8.7 gives a
+matched pair for every $n>3$, displays one deformation map, and uses it in
+the subsequent classification of complement isomorphism types.  Here we
+answer the separate all-matrices question for that example.  We make no
+novelty or priority claim relative to specializations not compared in full.
+
+Fix an integer $n\geq4$ and a characteristic-zero field $\K$.  Let
+\[
+ \mathfrak g=\operatorname{span}_{\K}\{x_1,\ldots,x_n\},\qquad
+ V=\operatorname{span}_{\K}\{u_1,\ldots,u_n\}.
+\]
+The only nonzero ordered basis value of the bracket of $\mathfrak g$ is
+\[
+ [x_1,\ldots,x_n]_{\mathfrak g}=x_n,
+\]
+and $V$ is abelian.  The only nonzero ordered basis value of the action
+$\rho_{\mathfrak g}\colon\Lambda^{n-1}\mathfrak g\to
+\operatorname{End}(V)$ is
+\[
+ \rho_{\mathfrak g}(x_1,\ldots,x_{n-1})u_n=u_n.
+\]
+All other matched-pair structure maps in the example vanish.  Consequently,
+the deformation-map condition in Definition 7.1 of \cite{Zhang2026}
+specializes to
+\begin{equation}\label{eq:DM}
+ [r(q_1),\ldots,r(q_n)]_{\mathfrak g}
+ =r\!\left(\sum_{i=1}^n(-1)^{n-i}
+ \rho_{\mathfrak g}\bigl(r(q_1),\ldots,\widehat{r(q_i)},\ldots,
+ r(q_n)\bigr)q_i\right)
+\end{equation}
+for every $q_1,\ldots,q_n\in V$.
+
+Use the column convention
+\[
+ r(u_j)=\sum_{i=1}^n R_{ij}x_i,
+ \qquad
+ R=\begin{pmatrix}A&v\\ w^{\mathsf T}&\alpha\end{pmatrix},
+\]
+where $A\in M_{n-1}(\K)$, $v,w\in\K^{n-1}$ and $\alpha\in\K$.
+
+\begin{theorem}\label{thm:classification}
+The map $r$ satisfies \eqref{eq:DM} if and only if
+\begin{equation}\label{eq:criterion}
+ \det(A)v=0,
+ \qquad
+ \det(R)=\alpha\det(A).
+\end{equation}
+Equivalently, the complete solution set has the following two disjoint
+parts:
+\begin{enumerate}
+ \item if $\det(A)\ne0$, then $v=0$, while $w$ and $\alpha$ are arbitrary;
+ \item if $\det(A)=0$, then the sole condition is $\det(R)=0$.
+\end{enumerate}
+\end{theorem}
+
+\section{Determinant reduction and proof}
+
+For $1\leq a\leq n$, let
+$p_a\colon\mathfrak g\to\K$ be the $x_a$-coordinate functional, and put
+$\varepsilon=u_n^*\colon V\to\K$.  Alternation and multilinearity of the
+displayed basis values give
+\begin{align}
+ [y_1,\ldots,y_n]_{\mathfrak g}
+ &=\det\bigl(p_a(y_b)\bigr)_{1\leq a,b\leq n}\,x_n,
+ \label{eq:bracketdet}\\
+ \rho_{\mathfrak g}(y_1,\ldots,y_{n-1})q
+ &=\det\bigl(p_a(y_b)\bigr)_{1\leq a,b\leq n-1}
+   \varepsilon(q)u_n.
+ \label{eq:actiondet}
+\end{align}
+
+Let $q_1,\ldots,q_n\in V$, and let $Q$ be the matrix whose $j$th column
+is the coordinate vector of $q_j$ in the ordered $u$-basis.  The coordinate
+matrix of $r(q_1),\ldots,r(q_n)$ is $RQ$.  Hence \eqref{eq:bracketdet}
+gives
+\begin{equation}\label{eq:G}
+ [r(q_1),\ldots,r(q_n)]_{\mathfrak g}
+ =\det(R)\det(Q)x_n.
+\end{equation}
+
+It remains to compute the vector inside $r$ on the right of
+\eqref{eq:DM}.
+Form
+\[
+ B=
+ \begin{pmatrix}
+ p_1(r(q_1))&\cdots&p_1(r(q_n))\\
+ \vdots&&\vdots\\
+ p_{n-1}(r(q_1))&\cdots&p_{n-1}(r(q_n))\\
+ \varepsilon(q_1)&\cdots&\varepsilon(q_n)
+ \end{pmatrix}.
+\]
+After substituting \eqref{eq:actiondet}, the scalar multiplying $u_n$ in
+that vector is
+\[
+ \sum_{i=1}^n(-1)^{n-i}\varepsilon(q_i)
+ \det(B_{\widehat n,\widehat i}).
+\]
+This is precisely the last-row Laplace expansion of $\det B$: its cofactor
+sign is $(-1)^{n+i}$, which equals $(-1)^{n-i}$ because the exponents differ
+by $2i$.  Moreover,
+\[
+ B=DQ,
+ \qquad
+ D=\begin{pmatrix}A&v\\0&1\end{pmatrix},
+ \qquad
+ \det D=\det A.
+\]
+Therefore the complete signed action sum is
+\begin{equation}\label{eq:H}
+ \sum_{i=1}^n(-1)^{n-i}
+ \rho_{\mathfrak g}\bigl(r(q_1),\ldots,\widehat{r(q_i)},\ldots,
+ r(q_n)\bigr)q_i
+ =\det(A)\det(Q)u_n.
+\end{equation}
+
+\begin{proof}[Proof of Theorem~\ref{thm:classification}]
+Equations \eqref{eq:G} and \eqref{eq:H} show that the residual in
+\eqref{eq:DM} on an arbitrary tuple is
+\[
+ \det(Q)\bigl(\det(R)x_n-\det(A)r(u_n)\bigr).
+\]
+Thus \eqref{eq:DM} holds for every tuple if and only if it holds for the
+ordered basis tuple, for which $Q=I_n$.  Since
+\[
+ r(u_n)=\sum_{j=1}^{n-1}v_jx_j+\alpha x_n,
+\]
+the resulting vector equation
+$\det(R)x_n=\det(A)r(u_n)$ is equivalent, coordinate by coordinate, to
+\eqref{eq:criterion}.  This proves necessity and sufficiency without
+cancelling either determinant.
+
+If $\det A\ne0$, the first equation forces $v=0$.  The matrix $R$ is then
+block lower triangular, so the second equation holds automatically for
+arbitrary $w$ and $\alpha$.  If $\det A=0$, the first equation is automatic
+and the second is exactly $\det R=0$.  These cases are exhaustive.
+\end{proof}
+
+\section{Exact finite check and scope}
+
+For $n=4$, a supplementary SymPy \cite{MeurerEtAl2017} calculation expands
+the specialized equation over $\mathbb Z[r_{ij}]$.  With $A$ the upper-left
+$3\times3$ block, its four residual coordinates are exactly
+\[
+ -\det(A)r_{14},\quad -\det(A)r_{24},\quad -\det(A)r_{34},\quad
+ \det(R)-r_{44}\det(A).
+\]
+This is an exact sign and coordinate check, not a substitute for the
+arbitrary-$n$ proof.  Exact rational matrix certificates provide a related
+example of keeping finite algebraic verification distinct from broader
+claims \cite{ZengLiuRatnavelu2026}; the present verification instead checks
+a polynomial identity and the theorem follows from the determinant argument
+above.
+
+The theorem retains the source's scope $n\geq4$ over characteristic-zero
+fields.  Zhang's earlier paper establishes the ternary extending-structure
+and deformation-map framework \cite{Zhang2022}, but no claim is made here
+about whether a ternary matrix specialization equivalent to
+Theorem~\ref{thm:classification} has appeared elsewhere.
+
+\section*{Computational and AI assistance disclosure}
+
+OpenAI Codex assisted with source inspection, proof derivation, adversarial
+sign checking, exact symbolic verification, and manuscript preparation.
+The finite check was run in Python with SymPy and used exact symbolic
+arithmetic; no floating-point evidence is used in the proof.  The submitting
+author remains responsible for verifying every statement and for complying
+with the disclosure and authorship policies of any venue.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,17 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every finite instance with two dedicated machines, nonpreemptive unit-time operations, at most three operations per job in a prescribed route whose consecutive operations use different machines, one unit-capacity auxiliary resource, and a job-level demand bit in {0,1} shared by all operations of that job, an optimal makespan schedule can be computed in polynomial time. Specifically, shortest-path dynamic programming over counts of the twelve (route, demand) types at each completed prefix has at most (n+3)^24 states and exactly represents all feasible schedules after an integral-slot normalization. Thus J2 | res^t 111, p_ij=1, m_j<=3 | C_max is polynomial-time solvable under the frozen reading in problem.md. Zero-demand jobs are legal under the cited printed definition; if a nonempty instance is additionally required to contain a demand-one job, marking one existing job as the sole demand-one job leaves the resource constraint vacuous and preserves every feasible schedule and makespan.",
+  "contribution": "This settles the frozen first operation-count boundary as polynomial-time solvable and corrects the proposed hardness shortcut: the cited 1977 at-most-three-operation reduction uses variable processing times, whereas the all-zero resource restriction here is only the known polynomial unit-time two-machine job shop. Relative to Tellache--Azerine arXiv:2609.04161v1, the proof extends the printed m_j<=2 polynomial boundary to m_j<=3 by a finite-type aggregate-prefix DP. A bounded current search found no exact prior statement, but no priority claim is made; the paper's unrestricted-operation open problem is not settled.",
+  "proposer_job_id": "win-00057-p03-research-f59b9b9dfc38",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/polynomial-dp-proof.md",
+    "evidence/aggregate_dp_check.py",
+    "evidence/aggregate-dp-output.json",
+    "evidence/literature-screen.md",
+    "evidence/triage-sources.md",
+    "evidence/external/2609.04161v1.pdf"
+  ]
+}

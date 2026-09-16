@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\inj}{\operatorname{Inj}}
+\newcommand{\Tot}{\operatorname{Tot}}
+
+\title{Torsion-free integral homology for anchored configuration spaces of finite simple graphs}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite graph $G$, a vertex set $K\subseteq V(G)$, and $n\geq |K|$, the anchored configuration space $\Sigma(G,K,n)$ is the subcomplex of $G^n$ in which every anchor occurs as a coordinate.  We prove that $H_i(\Sigma(G,K,n);\Z)$ is free abelian for every $i$.  For connected $G$ we obtain an additive decomposition in terms of tensor powers of $H_1(G;\Z)$ and the homology of a compatibility nerve.  A cellular Cech resolution identifies that nerve with the corresponding anchored space of a tree, so its homology is free by Kozlov's wedge-of-spheres theorem.  The disconnected case follows by a component decomposition and the integral K\"unneth theorem.  In particular, anchored configuration spaces of cographs have no integral homology torsion, resolving the associated existence question in the negative.
+\end{abstract}
+
+\section{Statement and context}
+
+Regard a finite simple graph $G$ as a one-dimensional CW complex, with the product cubical structure on $G^n$.  For $K\subseteq V(G)$ and $n\geq |K|$, set
+\[
+ \Sigma(G,K,n)=\{(x_1,\ldots,x_n)\in G^n:K\subseteq\{x_1,\ldots,x_n\}\}.
+\]
+Thus the coordinates are labelled and collisions are allowed.  This is the anchored configuration space of Kozlov and of Definition~4.13 in Mamun--Nalikka--Ramos~\cite{kozlov2023,mamun2026}.  Kozlov determined the homotopy type for trees and later computed the homology of generalized anchored spaces on circle graphs~\cite{kozlov2023,kozlov2024}.  Mamun--Nalikka--Ramos proved finite-generation and uniform-exponent statements for anchored spaces of cographs and asked whether any anchored configuration space has integral homology torsion~\cite[Corollary~4.18 and p.~28]{mamun2026}.
+
+We answer that existence question negatively, in the stronger class of all finite graphs.  No priority claim beyond the cited and bounded comparison is intended.
+
+\begin{theorem}\label{thm:main}
+Let $G$ be a finite simple graph, let $K\subseteq V(G)$, and let $n\geq |K|$.  Then
+\[
+ H_i(\Sigma(G,K,n);\Z)
+\]
+is free abelian for every $i\geq0$.
+\end{theorem}
+
+The proof gives more information when $G$ is connected.  Put $r=|K|$ and $L=H_1(G;\Z)$.  For integers $m\geq r\geq1$, define a simplicial complex $N_{r,m}$ as follows.  Its vertices are the injections from a fixed $r$-element set $K$ to $[m]=\{1,\ldots,m\}$.  A set $\{f_0,\ldots,f_p\}$ is a simplex precisely when its requirements are compatible:
+\begin{equation}\label{eq:compatibility}
+ f_a(k)=f_b(k')\quad\Longrightarrow\quad k=k'
+ \qquad(0\leq a,b\leq p;\ k,k'\in K).
+\end{equation}
+The isomorphism type depends only on $(r,m)$.
+
+\begin{theorem}[Additive decomposition]\label{thm:decomposition}
+If $G$ is connected and $r=|K|\geq1$, then, for every $i$,
+\begin{equation}\label{eq:decomposition}
+ H_i(\Sigma(G,K,n);\Z)\cong
+ \bigoplus_{\substack{J\subseteq[n]\\ |J|\leq n-r}}
+ L^{\otimes |J|}\otimes
+ H_{i-|J|}(N_{r,n-|J|};\Z),
+\end{equation}
+where homology in negative degrees is zero.  This is an isomorphism of abelian groups; no naturality with respect to the choice of a basis of $L$ is asserted.
+\end{theorem}
+
+\section{The anchor-injection resolution}
+
+Assume throughout this section that $G$ is connected and $K\neq\varnothing$.  For every $f\in\inj(K,[n])$, let
+\[
+ U_f=\{(x_1,\ldots,x_n)\in G^n:x_{f(k)}=k\text{ for all }k\in K\}.
+\]
+These cubical subcomplexes cover $\Sigma(G,K,n)$.  A finite intersection is empty exactly when two of its requirements assign distinct anchors to the same coordinate.  Otherwise, if $S\subseteq[n]$ is the set of constrained coordinates, the intersection is canonically $G^{[n]\setminus S}$.
+
+Fix an order on $\inj(K,[n])$ and form the cellular Cech double complex
+\begin{equation}\label{eq:cech}
+ D_{p,q}=\bigoplus_{f_0<\cdots<f_p}
+ C_q(U_{f_0}\cap\cdots\cap U_{f_p};\Z),
+\end{equation}
+where empty intersections are omitted.  The horizontal differential is the alternating sum of inclusions, and the vertical differential is the cellular boundary, with the usual total-complex sign convention.
+
+\begin{lemma}\label{lem:augmentation}
+The augmentation $\Tot D\to C_*(\Sigma(G,K,n);\Z)$ is a quasi-isomorphism.
+\end{lemma}
+
+\begin{proof}
+This is a cellwise calculation, so no open-cover hypothesis is involved.  Fix a product cell $c$ of the union.  The horizontal summands having basis element $c$ form the augmented simplicial chain complex on the nonempty set
+\[
+ \{f\in\inj(K,[n]):c\subseteq U_f\}.
+\]
+Every subset of this index set has nonempty intersection because all its requirements already hold on $c$.  The resulting augmented simplex is exact.  Decomposing the horizontal augmentation by product cells proves the assertion.
+\end{proof}
+
+Choose a spanning tree $T\subseteq G$, orient the edges, and enumerate the chords by $e_1,\ldots,e_b$.  Let
+\[
+ H=\Z\mathbf 1[0]\oplus L[1]
+\]
+with zero differential, identifying a basis $\ell_1,\ldots,\ell_b$ of $L$ with the fundamental cycles of the chords.  Define a cellular chain map
+\begin{equation}\label{eq:pi}
+ \pi:C_*(G;\Z)\longrightarrow H,
+ \qquad
+ \pi_0(v)=\mathbf1,
+ \quad \pi_1(e_a)=\ell_a,
+ \quad \pi_1(t)=0\ (t\in E(T)).
+\end{equation}
+It is a chain map because both endpoints of every edge map to $\mathbf1$.  It is an isomorphism on $H_0$.  On $H_1$, it records the chord coefficients; the fundamental cycles have chord-coefficient matrix equal to the identity.  Hence $\pi$ is an integral quasi-isomorphism.
+
+For an intersection whose free-coordinate set is $F$, take the ordered tensor product $\pi_F=\bigotimes_{j\in F}\pi$.  Since the complexes are bounded and degreewise free, $\pi_F$ is a quasi-isomorphism.  These maps also commute strictly with every horizontal map in~\eqref{eq:cech}.  Indeed, removing one intersection requirement makes some formerly constrained coordinates free; the corresponding inclusion inserts their anchor vertices.  Formula~\eqref{eq:pi} sends every inserted vertex to the same degree-zero element $\mathbf1$.
+
+We therefore obtain a map from $D$ to a finite double complex $E$ whose intersection term is $H^{\otimes F}$ and whose horizontal maps insert $\mathbf1$ in newly free coordinates.  It is a quasi-isomorphism in every vertical column.  The vertical filtrations of the bounded total complexes consequently give
+\begin{equation}\label{eq:total-qiso}
+ H_*(\Tot D)\cong H_*(\Tot E).
+\end{equation}
+
+The vertical differential of $E$ is zero.  Expand each tensor factor as $H=\Z\mathbf1\oplus L[1]$.  A summand is specified by the subset $J\subseteq[n]$ of coordinates carrying an $L$ factor.  It appears in an intersection precisely when no anchor requirement uses a coordinate of $J$.  Thus, for fixed $J$, its horizontal complex is the simplicial chain complex of the compatible injections into $[n]\setminus J$, tensored with $L^{\otimes |J|}$ and shifted by $|J|$.  After the order-preserving identification $[n]\setminus J\cong[n-|J|]$, this is the chain complex of $N_{r,n-|J|}$.  There are no such injections when $|J|>n-r$.  Lemma~\ref{lem:augmentation} and~\eqref{eq:total-qiso} now prove Theorem~\ref{thm:decomposition}.
+
+\section{Reduction of the nerve to a tree}
+
+\begin{lemma}\label{lem:nerve-free}
+For every $m\geq r\geq1$, all groups $H_*(N_{r,m};\Z)$ are free abelian.
+\end{lemma}
+
+\begin{proof}
+For $r=1$, every collection of injections is compatible, so $N_{1,m}$ is a simplex.  Suppose $r\geq2$.  Choose any finite tree $T_r$ containing $r$ distinguished vertices, denoted again by $K$.  Cover $\Sigma(T_r,K,m)$ by the subcomplexes $U_f$ indexed by $f\in\inj(K,[m])$ as above.  Its compatibility nerve is exactly $N_{r,m}$.
+
+Every nonempty intersection is a product of trees and hence contractible.  Apply Lemma~\ref{lem:augmentation} to this cover.  In the resulting double complex, augmenting the cellular chains of each nonempty intersection to $\Z$ is a columnwise quasi-isomorphism, compatible with all inclusions.  Its target is the simplicial chain complex of $N_{r,m}$, concentrated in vertical degree zero.  The vertical filtration therefore yields
+\[
+ H_*(N_{r,m};\Z)\cong H_*(\Sigma(T_r,K,m);\Z).
+\]
+Kozlov's Theorem~2.5 states that the latter space is homotopy equivalent to a wedge of $(m-r)$-spheres; importantly, the anchor set in that theorem is an arbitrary subset of the tree's vertices~\cite[Definition~2.4 and Theorem~2.5]{kozlov2023}.  Its integral homology is thus free.
+\end{proof}
+
+For connected $G$ and nonempty $K$, Theorem~\ref{thm:decomposition} and Lemma~\ref{lem:nerve-free} prove freeness because $L$ is free and all sums are finite.  If $K=\varnothing$, then $\Sigma(G,\varnothing,n)=G^n$; the cellular homology of a graph is free, and the integral K\"unneth theorem gives the same conclusion for the product~\cite[Theorem~3B.6]{hatcher2002}.
+
+\section{Disconnected graphs and the cograph question}
+
+Write a nonempty finite graph as $G=\bigsqcup_{a\in A}G_a$, with each $G_a$ connected, and set $K_a=K\cap V(G_a)$.  The product $G^n$ is the finite disjoint union indexed by maps $\alpha:[n]\to A$.  Put $I_a=\alpha^{-1}(a)$.  The part of the anchored space in this component is empty unless $|I_a|\geq |K_a|$ for every $a$; otherwise, after reordering labelled coordinates, it is
+\begin{equation}\label{eq:components}
+ \prod_{a\in A}\Sigma(G_a,K_a,|I_a|).
+\end{equation}
+Every factor has free homology by the connected case, including the convention $\Sigma(G_a,\varnothing,0)=\{*\}$.  The integral K\"unneth theorem makes the homology of~\eqref{eq:components} free, and a finite disjoint union gives a finite direct sum.  If $G$ is empty, then $K=\varnothing$; the space is a point for $n=0$ and empty for $n>0$, again with free homology.  This completes the proof of Theorem~\ref{thm:main}.
+
+\begin{corollary}
+There is no cograph tuple $(G,K,n,i)$ with $n\geq|K|$ for which $\operatorname{Tor}H_i(\Sigma(G,K,n);\Z)$ is nonzero.
+\end{corollary}
+
+\section{Exact checks and scope}
+
+The proof above is independent of computation.  Two accompanying Python implementations were used only to test cell conventions, signs, and rank consequences.  They construct cubical boundaries with integer coefficients, check $\partial^2=0$, and compare ranks over $\mathbb F_2$, $\mathbb F_3$, and $\mathbb F_5$.  The independent implementation exhausts all connected labelled simple graphs on at most four vertices: 167 graph/one-anchor cases at $n=3$ and 241 graph/two-anchor cases at $n=4$.  Every case agrees with~\eqref{eq:decomposition}.  Exact Smith computations additionally give
+\[
+ (\beta_0,\beta_1,\beta_2)=(1,9,27)
+ \quad\text{for }(K_4,\{0\},3)
+\]
+and $(1,12,121)$ for $(K_4,\{0,1\},4)$, with all nonzero Smith factors equal to one.  These are finite consistency checks, not a proof of universal torsion-freeness.
+
+For methodological comparison, Zeng's exact graph enumeration~\cite{zeng2026whiskered} likewise uses canonical graph representatives, exact integer arithmetic, and an independently checkable verifier that reconstructs matrices from graph encodings.  Here the two scripts reconstruct the anchored cubical chains independently; neither a bounded census nor agreement across several fields is promoted to an integral theorem.
+
+The literature comparison for this note inspected the problem source and the cited tree and circle results through September~8, 2026.  It found no equivalent chain-level decomposition in those sources; that bounded observation is not evidence of exhaustive priority.
+
+\section*{Computational and AI assistance}
+
+OpenAI Codex assisted with proof exploration, implementation of the exact checks, verification planning, and LaTeX drafting.  Its output was not treated as mathematical evidence.  The chain argument was reconstructed in a separate audit, and the finite checks were rerun through two independently written implementations.  All reported computations use integer or finite-field arithmetic, with no floating-point inference.  The author reviewed the manuscript and is responsible for its claims.
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,362 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{lmodern,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Pruned combs and the associative spectrum of SC258},
+  pdfauthor={Xiaojian Zeng},pdfsubject={Associative spectrum of a three-element groupoid},
+  pdfkeywords={associative spectrum, bracketing, labeled comb, normal form}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Sset}{\mathcal{S}}
+\newcommand{\Cset}{\mathcal{C}}
+\newcommand{\SC}{\mathsf{SC}258}
+\title[The associative spectrum of SC258]{Pruned combs and the associative spectrum of SC258}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{}
+\thanks{2020 Mathematics Subject Classification. 05A15, 20N02, 08B05.}
+\keywords{Associative spectrum, binary operation, bracketing, labeled tree, normal form}
+
+\begin{document}
+\begin{abstract}
+We determine the associative spectrum of the three-element groupoid
+\(\SC\). If \(a_n\) counts the distinct functions induced by the full
+binary bracketings of \(x_1\cdots x_n\) in this fixed order, then
+\(a_1=a_2=1\), \(a_3=2\), and
+\(a_n=3a_{n-1}-2a_{n-2}+a_{n-3}\) for every \(n\geq4\).
+The proof gives a complete equality criterion for the term functions:
+recursively discard the right subtree whenever both children are composite,
+retaining all surviving leaf labels. Two bracketings induce the same function
+exactly when these pruned trees coincide. We reconstruct each pruned comb
+from its essential variables and coordinate restrictions, then enumerate the
+attainable forms by their largest retained label. This establishes the
+all-arity recurrence suggested by the finite data of Huang and Lehtonen.
+\end{abstract}
+\maketitle
+
+\section{The spectrum and the main result}
+
+The associative spectrum of a binary operation counts the different term
+functions obtained by changing parentheses while keeping the variables in
+their original order; this notion was introduced by Cs\'ak\'any and
+Waldhauser~\cite{CsakanyWaldhauser2000}. We consider the groupoid
+\(A=\{0,1,2\}\) with the following operation, called \(\SC\) in
+Huang and Lehtonen~\cite[Section~7]{HuangLehtonen2024}:
+\begin{equation}\label{eq:table}
+\begin{array}{c|ccc}
+ *&0&1&2\\\hline
+ 0&0&0&0\\
+ 1&1&1&0\\
+ 2&1&0&1
+\end{array}.
+\end{equation}
+Rows index left operands and columns index right operands.
+Let \(\B_n\) be the set of full binary bracketings whose leaves, read
+from left to right, are exactly \(x_1,\ldots,x_n\), each used once.
+For \(t\in\B_n\), write \(t^A\colon A^n\to A\) for its induced
+function, and put
+\[
+ a_n=\bigl|\{t^A:t\in\B_n\}\bigr|\qquad(n\geq1).
+\]
+Equality is tested on every input in \(A^n\); the positions of ignored
+variables are retained. Allowing permutations of the variables instead
+gives the associative-commutative spectrum of Huang and
+Lehtonen~\cite{HuangLehtonen2023}, which is outside the present result.
+
+Huang and Lehtonen~\cite[Section~7]{HuangLehtonen2024} reported
+\[
+ 1,1,2,5,12,28,65,151,351
+\]
+as the first nine values for \(\SC\), observed agreement with a trisection
+of the Padovan sequence, and asked for a general determination. The following
+theorem settles that fixed-order counting problem.
+
+\newpage
+\begin{theorem}\label{thm:main}
+For the operation~\eqref{eq:table},
+\begin{equation}\label{eq:recurrence}
+ a_1=a_2=1,\qquad a_3=2,\qquad
+ a_n=3a_{n-1}-2a_{n-2}+a_{n-3}\quad(n\geq4).
+\end{equation}
+Equivalently, in the ring of formal power series,
+\begin{equation}\label{eq:gf}
+ \sum_{n\geq1}a_nz^n=\frac{z(1-z)^2}{1-3z+2z^2-z^3}.
+\end{equation}
+Moreover, for every \(n\geq1\) and \(s,t\in\B_n\),
+\begin{equation}\label{eq:classification}
+ s^A=t^A\quad\Longleftrightarrow\quad P(s)=P(t),
+\end{equation}
+where \(P\) is the label-preserving pruning map defined in
+\eqref{eq:pruning} below.
+\end{theorem}
+
+The structural approach has precedents in the spectrum literature.
+Cs\'ak\'any and Waldhauser~\cite[Section~4.2]{CsakanyWaldhauser2000}
+use essential variables and recovery of subterms to separate bracketings
+for the Sheffer operation. Huang and
+Lehtonen~\cite[Section~7]{HuangLehtonen2023} study operations whose term
+functions are classified by leaf-depth congruences. Here the complete
+invariant is a pruned labeled comb, including the gaps in its leaf labels.
+The contribution relative to the reported \(\SC\) data is the equality
+classification and its all-arity enumeration.
+
+\section{Pruning and reconstruction}
+
+A tree is \emph{composite} if it is not a single leaf. A \emph{comb} is a
+binary tree in which every internal node has a leaf child; a single leaf
+also counts as a comb. Throughout, labels increase from left to right.
+For any such labeled tree define
+\begin{equation}\label{eq:pruning}
+ P(x_i)=x_i,\qquad
+ P(u*v)=
+ \begin{cases}
+  P(u),&u\text{ and }v\text{ are composite},\\
+  P(u)*P(v),&\text{otherwise}.
+ \end{cases}
+\end{equation}
+The test in this definition concerns the original children \(u,v\).
+Surviving labels are never renumbered. A tree on a subset of the labels
+defines a function on any common ambient set by ignoring the other variables.
+
+\begin{lemma}\label{lem:pruning}
+Pruning preserves the induced function. The tree \(P(t)\) is a comb,
+retains the first leaf of \(t\), and has at least two leaves if \(t\)
+is composite.
+\end{lemma}
+\begin{proof}
+Every composite term has values in \(\{0,1\}\), and the restriction of
+\(*\) to \(\{0,1\}\) is left projection. Thus \(u^A*v^A=u^A\)
+whenever both children are composite. Structural induction now proves
+preservation of the function in both cases of~\eqref{eq:pruning}.
+
+The same induction gives the structural assertions. At a deleted root,
+the pruned composite left child has at least two leaves and retains the
+first leaf. At a retained root, at least one original child is a leaf;
+the root therefore remains a comb node, and neither child is empty.
+The two-leaf tree starts the composite case. In particular, pruning never
+turns a composite child into a single leaf.
+\end{proof}
+
+A variable of a function is \emph{essential} if changing only that
+coordinate can change the value.
+
+\begin{lemma}\label{lem:essential}
+For a comb with any increasing set of distinct labels, its leaf labels
+are exactly the essential coordinates of its induced function.
+\end{lemma}
+\begin{proof}
+The one-leaf case is immediate. For \(x_i*x_j\), varying \(x_i\)
+between 0 and 1 at \(x_j=0\) witnesses the first coordinate;
+varying \(x_j\) between 0 and 2 at \(x_i=1\) witnesses the second.
+
+A comb with at least three leaves has exactly one composite child at
+the root. If its function is \(g\), then \(g\) is Boolean-valued,
+and the operation table gives the following three sections:
+\begin{equation}\label{eq:sections}
+\begin{aligned}
+ \bigl((x_i*g)|_{x_i=0},(x_i*g)|_{x_i=1},(x_i*g)|_{x_i=2}\bigr)
+   &=(0,1,1-g),\\
+ \bigl((g*x_j)|_{x_j=0},(g*x_j)|_{x_j=1},(g*x_j)|_{x_j=2}\bigr)
+   &=(g,g,0).
+\end{aligned}
+\end{equation}
+Every essential coordinate of \(g\) remains essential, using \(x_i=2\)
+in the first case and \(x_j=0\) in the second. The new left coordinate
+is essential because its 0 and 1 sections differ. The new right coordinate
+is essential because \(g=1\) when all its leaves equal 1, so its 0 and 2
+sections differ. Absent coordinates have no effect. Induction completes
+the proof.
+\end{proof}
+
+
+\begin{proposition}\label{prop:separation}
+Two increasing-label combs induce the same function on a common ambient
+set of variables if and only if they are identical as labeled trees.
+\end{proposition}
+\begin{proof}
+Equality of functions gives equality of the leaf sets by
+Lemma~\ref{lem:essential}. Induct on their common size \(k\). For
+\(k=1,2\), the ordered tree on that set is unique. Suppose \(k\geq3\)
+and let \(i,j\) be the least and greatest labels.
+
+A root with a left leaf has the form \(x_i*u\). By
+\eqref{eq:sections}, its \(x_i=1\) section is identically 1.
+A root with a right leaf has the form \(u*x_j\), and its \(x_i=1\)
+section is not constant: set every leaf of \(u\) to 1 and vary
+\(x_j\) from 0 to 2. Thus the function determines the root type.
+If \(f\) is the parent function, its composite child function is
+recovered as
+\[
+ 1-f|_{x_i=2}\quad\text{for a left leaf},\qquad
+ f|_{x_j=0}\quad\text{for a right leaf}.
+\]
+The recovered functions agree on the remaining labels. Induction
+determines the child trees, and hence the parent trees. The reverse
+implication is immediate.
+\end{proof}
+
+Lemmas~\ref{lem:pruning} and~\ref{lem:essential} and
+Proposition~\ref{prop:separation} prove~\eqref{eq:classification}.
+The essential-coordinate set explains why gaps in the labels must be kept.
+The reconstruction lemma applies even to combs that cannot arise by pruning
+a bracketing on a consecutive interval.
+
+There is a related reconstruction principle for weighted trees:
+Zeng's Lemma~3.1~\cite{Zeng2026MultiplicityArxiv} recovers a weighted tree
+with at least three vertices from weight multiplicities and counts of edges of each endpoint-weight
+type when every nonleaf weight has multiplicity one. Here essential
+coordinates identify the surviving labels, and the sections in
+\eqref{eq:sections} successively recover the root and its child.
+This comparison concerns recovery from an invariant; no weighted-tree
+result is used in the proof.
+
+\section{Enumeration of the attainable forms}
+
+For \(n\geq2\), put
+\[
+ \Sset_n=\{P(t):t\in\B_n\},\qquad
+ \Cset_n=\{p\in\Sset_n:\text{the largest label of }p\text{ is }n\},
+ \qquad c_n=|\Cset_n|.
+\]
+By~\eqref{eq:classification}, \(a_n=|\Sset_n|\). Forms in different
+sets \(\Cset_m\) have different largest labels. When comparing such
+sets across arities, we retain their original labels.
+
+\begin{lemma}\label{lem:terminal}
+If \(p\in\Sset_n\) has largest label \(m\), then \(m\geq2\),
+\(p\in\Cset_m\), and either \(m=n\) or \(m\leq n-2\).
+Conversely, if \(p\in\Cset_m\) and \(n\geq m+2\), then
+\(p\in\Sset_n\).
+\end{lemma}
+\begin{proof}
+Lemma~\ref{lem:pruning} gives \(m\geq2\). Prove the forward
+assertion by induction on the length of the label interval, allowing
+uniform shifts of that interval. The case of two labels is immediate.
+If \(m=n\), there is nothing to prove. Otherwise choose
+\(t\in\B_n\) with \(P(t)=p\).
+
+The root of \(t\) cannot have right child \(x_n\), which would
+survive. If its left child is \(x_1\), its right child \(v\) is
+composite on labels \(2,\ldots,n\). The shifted induction hypothesis
+gives \(n-m\geq2\) and a bracketing \(v'\) on
+\(2,\ldots,m\) with \(P(v')=P(v)\). Hence \(x_1*v'\) realizes
+\(p\) on \(1,\ldots,m\).
+
+In the remaining case both children are composite. Write the left
+child \(u\) on \(1,\ldots,k\), where \(k\leq n-2\).
+Then \(p=P(u)\) and \(m\leq k\). If \(m=k\), the child \(u\)
+already realizes \(p\) on \(1,\ldots,m\); if \(m<k\), induction
+provides such a realization. In both cases \(m\leq n-2\).
+This proves \(p\in\Sset_m\), and therefore \(p\in\Cset_m\).
+
+Conversely, take a realization \(t\in\B_m\) of \(p\) and any
+bracketing \(v\) on the following \(n-m\geq2\) labels. Both
+\(t\) and \(v\) are composite, so \(P(t*v)=P(t)=p\).
+\end{proof}
+
+Thus a deleted terminal interval cannot have length one. The lemma gives
+the disjoint union and its counting identity
+\begin{equation}\label{eq:decomposition}
+ \Sset_n=\Cset_n\sqcup\bigsqcup_{m=2}^{n-2}\Cset_m,
+ \qquad
+ a_n=c_n+\sum_{m=2}^{n-2}c_m\qquad(n\geq2),
+\end{equation}
+with empty unions and sums understood in the usual way.
+
+
+\begin{lemma}\label{lem:count}
+We have \(c_2=1\) and
+\begin{equation}\label{eq:c-rec}
+ c_n=c_{n-1}+a_{n-1}\qquad(n\geq3).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The unique element of \(\Cset_2\) is \(x_1*x_2\). A bracketing
+realizing an element of \(\Cset_n\) cannot have two composite
+children at its root, because that would delete \(x_n\).
+For \(n\geq3\), there are two disjoint possibilities.
+
+A left leaf \(x_1\) is joined to a pruned subtree on
+\(2,\ldots,n\) retaining \(n\). These forms are in bijection with
+\(\Cset_{n-1}\) by shifting all child labels by one. A right leaf
+\(x_n\) is joined to any member of \(\Sset_{n-1}\), giving
+\(a_{n-1}\) possibilities. Every form constructed this way has a
+realization. The child opposite the leaf remains composite by
+Lemma~\ref{lem:pruning}, so the two root types are disjoint. Each
+construction is injective as a construction of labeled trees; multiple
+realizations of a form are not counted separately.
+\end{proof}
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:main}]
+Let
+\[
+ C(z)=\sum_{n\geq2}c_nz^n,\qquad F(z)=\sum_{n\geq2}a_nz^n.
+\]
+Equations~\eqref{eq:decomposition} and~\eqref{eq:c-rec} give
+\[
+ F(z)=\left(1+\frac{z^2}{1-z}\right)C(z),\qquad
+ C(z)=z^2+zC(z)+zF(z).
+\]
+Solving in formal power series yields
+\[
+ C(z)=\frac{z^2(1-z)}{1-3z+2z^2-z^3},\qquad
+ F(z)=\frac{z^2(1-z+z^2)}{1-3z+2z^2-z^3}.
+\]
+Since the sole one-variable term is the identity, \(a_1=1\).
+Adding \(z\) to \(F(z)\) proves~\eqref{eq:gf}. Multiplication by
+its denominator gives \(z-2z^2+z^3\); comparison of coefficients
+gives the three initial values and~\eqref{eq:recurrence} for every
+\(n\geq4\). All denominators have constant term one. As a boundary
+check, \(c_3=2\), \(c_4=4\), and \(a_4=c_4+c_2=5\).
+\end{proof}
+
+\section{Exact checks and scope}
+
+The accompanying Python verifier enumerates full binary trees by splitting
+each consecutive label interval at every possible root position.
+It evaluates each tree on all ternary assignments, representing the positions
+of values 1 and 2 by integer bit planes and applying all nine entries of
+\eqref{eq:table}. Function equality is complete table equality. A separate
+scalar table-lookup evaluator checks every tree and assignment through
+\(n=7\). Tree generation and equality testing do not use the recurrence.
+
+For every \(1\leq n\leq10\), the computation checks pruning preservation,
+the equivalence~\eqref{eq:classification}, and equality of essential
+support with the retained leaf set. It covers 6,918 bracketings in total,
+including 4,862 bracketings and \(3^{10}=59,049\) assignments per bracketing
+at \(n=10\). The resulting counts are
+\[
+\begin{array}{c|rrrrrrrrrr}
+ n&1&2&3&4&5&6&7&8&9&10\\\hline
+ a_n&1&1&2&5&12&28&65&151&351&816.
+\end{array}
+\]
+The same program checks all 1,644 increasing-label combs on nonempty
+subsets of eight labels, evaluating each on all \(3^8\) ambient
+assignments. Their functions are distinct and their essential supports
+are their leaf sets. This includes forms with gaps and forms not attainable
+at that ambient arity. These are finite checks; the universal statements
+follow from the preceding proofs.
+
+The theorem concerns exactly the operation~\eqref{eq:table} and the
+fixed-order spectrum. It supplies an equality test by pruning and counting
+identities for every arity. The spectrum with variable permutations and
+the other tables listed alongside \(\SC\) in
+\cite[Section~7]{HuangLehtonen2024} are not treated here.
+
+\subsection*{Computation and assistance}
+The source package includes the standard-library Python verifier, its
+recorded output, and reproduction instructions. OpenAI Codex assisted with
+proof exploration, drafting, code generation, and a separate model-assisted
+review of the argument. That review is not journal peer review. The checks
+use exact integers, without sampling or floating-point decisions. No
+proof-assistant formalization was performed.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

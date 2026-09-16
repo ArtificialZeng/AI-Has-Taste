@@ -1,0 +1,407 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\eps}{\varepsilon}
+
+\title{Quantitative Endpoint Classification of a Sufficient Condition in a Weighted Bergman Hilbert-Operator Norm Argument}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We audit a specific endpoint step in the proof of a recent norm claim for a
+generalized Hilbert operator on weighted Bergman spaces.  Put
+$A=\alpha+2\geq2$, $h=p-A$, and
+$C_A=B(A-1,1+A/2)$.  For the exact left-hand side $L_{A,b}(h)$ of the
+sufficient condition in Corollary~3.5 of Li--Li--Pan--Wulan--Zhou, we prove
+an explicit second-order remainder estimate
+\[
+ L_{A,b}(h)=\frac{\pi^2b}{3}
+ +\left\{\frac{\pi^2}{3A}-2b\zeta(3)\left(2-\frac1A\right)\right\}h
+ +O_{A,b}(h^2).
+\]
+The displayed error is made fully quantitative below.  It yields the exact
+fixed-$b$ local classification
+\[
+ \exists\eps>0\ \forall h\in(0,\eps):L_{A,b}(h)\leq C_A
+ \quad\Longleftrightarrow\quad
+ 0\leq b<\frac{3C_A}{\pi^2},
+\]
+for $0\leq b<1$; equality belongs to the failing side.  We also prove that
+the auxiliary upper bound used in the source has right endpoint limit $4b$
+and give an explicit neighborhood on which it exceeds $C_A$ when
+$b>C_A/4$.  Consequently, the Corollary~3.5 route does not establish the
+natural uniform-in-$b$ reading of the source theorem.  Since that corollary
+is only sufficient, this result is neither a counterexample to the operator
+norm identity nor a disproof of the theorem; the operator-level question
+remains unresolved.
+\end{abstract}
+
+\section{Context and scope}
+
+Hilbert and generalized Hilbert operators on analytic function spaces have a
+substantial literature, including work on generalized operators and exact
+norm questions on weighted Bergman spaces
+\cite{galanopoulos2014generalized,dai2024norm}.  For $\alpha>-1$, the
+standard weighted Bergman space $A_\alpha^p$ consists of analytic functions
+on $\D$ with
+\[
+ \|f\|_{A_\alpha^p}^p
+  =(\alpha+1)\int_{\D}|f(z)|^p(1-|z|^2)^\alpha\,dA(z),
+\]
+where $dA$ is normalized area measure.  The generalized Hilbert operator in
+\cite{li2026norm} has the integral representation
+\[
+ \mathcal H_bf(z)=\int_0^1
+ \frac{f(t)(1-t)^b}{(1-tz)^{b+1}}\,dt.
+\]
+Li et al. study, among other parameter regimes, the identity
+\begin{equation}
+ \|\mathcal H_b\|_{A_\alpha^p\to A_\alpha^p}
+ =B\left(\frac{\alpha+2}{p},
+ b+1-\frac{\alpha+2}{p}\right),                         \label{eq:norm}
+\end{equation}
+and their Theorem~3.4 states a near-endpoint conclusion with a threshold
+said to depend only on $\alpha$ \cite[Theorem~3.4]{li2026norm}.
+
+Our result concerns only the sufficient condition (3.38) in
+\cite[Corollary~3.5]{li2026norm}.  Set
+\[
+ A=\alpha+2\geq2,\qquad h=p-A>0,
+ \qquad C_A=B\left(A-1,1+\frac A2\right).
+\]
+The source condition is
+\begin{equation}
+ L_{A,b}(h)\leq C_A,                                      \label{eq:condition}
+\end{equation}
+where direct substitution in its exact left-hand side gives
+\begin{equation}
+ L_{A,b}(h)=\frac{Ab+(b+1)h}{h^2}
+ \left\{1-\frac{1}{2hB(A/(A+h),2h)}\right\}.             \label{eq:L}
+\end{equation}
+The source domain also imposes $0\leq b<A/(A+h)$.  Thus a fixed $b$ has
+admissible points arbitrarily close to $h=0$ exactly when $0\leq b<1$.
+Corollary~3.5 additionally requires $p<p_\alpha$, where
+\[
+ p_\alpha=\frac{3\alpha}{4}+2+
+ \frac14\sqrt{9\alpha^2+40\alpha+48}>A+\frac12.
+\]
+All neighborhoods below are capped at $h\leq1/4$, so this latter restriction
+is automatic.
+
+The closest prior statement is precisely Corollary~3.5: it proves
+\eqref{eq:norm} when \eqref{eq:condition} holds.  The delta here is an
+explicit endpoint expansion, a sharp fixed-$b$ local classification
+including the equality case, and the resulting diagnosis of the particular
+proof route.  No necessity claim for \eqref{eq:condition} is made.
+
+\section{The auxiliary endpoint bound}
+
+The proof of Theorem~3.4 in \cite{li2026norm} uses the function
+\begin{equation}
+ G_{\alpha,b}(p)=
+ \frac{p(b+1)-\alpha-2}{p-\alpha-2}
+ \frac{2\left[1-\left((\alpha+2)/p\right)^2\right]}
+ {\, (\alpha+2)/p+2(p-\alpha-2)\,}.                     \label{eq:Gsource}
+\end{equation}
+
+\begin{proposition}\label{prop:G}
+Let $A\geq2$ and $0\leq b<1$.  With $p=A+h$,
+\[
+ \lim_{h\downarrow0}G_{A-2,b}(A+h)=4b.
+\]
+Moreover, let $C_A=B(A-1,1+A/2)$ and suppose $b>C_A/4$.  Define
+\[
+ M(A,b)=4A^2b+9Ab+2A+5b+1,
+ \qquad K(A,b)=\frac{2M(A,b)}{A^2},
+\]
+and $\Delta=4b-C_A$.  Then
+\begin{equation}
+ \eps_G=\min\left\{\frac12,\frac{A(1-b)}{2b},
+                  \frac{\Delta}{2K(A,b)}\right\}>0      \label{eq:epsG}
+\end{equation}
+has the following property: every $0<h<\eps_G$ is admissible,
+$b<A/(A+h)$, and satisfies
+$G_{A-2,b}(A+h)>C_A$.
+\end{proposition}
+
+\begin{proof}
+Cancellation in \eqref{eq:Gsource} gives
+\begin{equation}
+ G_{A-2,b}(A+h)=
+ \frac{2(Ab+(b+1)h)(2A+h)}
+ {(A+h)(A+2Ah+2h^2)}.                                   \label{eq:Grational}
+\end{equation}
+The denominator tends to $A^2$ and the numerator to $4A^2b$, proving the
+limit.  More quantitatively,
+\begin{equation}
+ G_{A-2,b}(A+h)-4b
+ =-\frac{2hQ(A,b,h)}{(A+h)(A+2Ah+2h^2)},                 \label{eq:Gdiff}
+\end{equation}
+where
+\[
+ Q(A,b,h)=4A^2b+8Abh-Ab-2A+4bh^2-bh-h.
+\]
+For $0<h\leq1$, the denominator in \eqref{eq:Gdiff} is at least $A^2$
+and $|Q(A,b,h)|\leq M(A,b)$.  Hence
+\begin{equation}
+ |G_{A-2,b}(A+h)-4b|\leq K(A,b)h.                       \label{eq:Glinear}
+\end{equation}
+The second entry in \eqref{eq:epsG} implies
+$bh<A(1-b)$, hence $b<A/(A+h)$.  The third entry and
+\eqref{eq:Glinear} give
+\[
+ G_{A-2,b}(A+h)>4b-\frac\Delta2
+  =C_A+\frac\Delta2>C_A.
+\]
+\end{proof}
+
+The conclusion $G>C_A$ says only that this particular upper estimate no
+longer closes; an upper bound larger than $C_A$ cannot by itself show that
+the exact quantity $L_{A,b}$ exceeds $C_A$.  The next section determines
+the latter question directly.
+
+\section{Quantitative expansion of the exact condition}
+
+We use the classical power series for $\log\Gamma(1+z)$; a standard
+reference is DLMF~\S5.7(i) \cite{dlmf}.
+
+\begin{theorem}[Explicit endpoint remainder]\label{thm:remainder}
+Let $A\geq2$, $0\leq b<1$, and $0<h\leq1/4$.  Define
+\begin{align*}
+ c_2&=\frac{\pi^2}{3A},\\
+ c_3&=-\frac{\pi^2}{3A^2}
+       +\zeta(3)\left(\frac2{A^2}-\frac4A\right),\\
+ K_\Phi&=\frac{\pi^2}{3A^3}+\frac{\zeta(3)}2+\frac{897}{28},\\
+ P&=c_2+\frac{|c_3|}{4}+\frac{K_\Phi}{16},\\
+ E&=\frac12 e^{P/16}P^2,\qquad K_N=K_\Phi+E,
+\end{align*}
+and
+\begin{align}
+ D(A,b)&=\frac{\pi^2}{3A}
+       -2b\zeta(3)\left(2-\frac1A\right),                \label{eq:D}\\
+ K_L(A,b)&=AbK_N+(b+1)|c_3|+\frac{b+1}{4}K_N.             \label{eq:KL}
+\end{align}
+Then
+\begin{equation}
+ \left|L_{A,b}(h)-\frac{\pi^2b}{3}-D(A,b)h\right|
+ \leq K_L(A,b)h^2.                                      \label{eq:mainbound}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+ d=-\frac{h}{A+h},\qquad u=2h,\qquad F(z)=\log\Gamma(1+z).
+\]
+The beta--gamma identity gives
+\begin{equation}
+ 2hB\left(\frac{A}{A+h},2h\right)=e^{\Phi(h)},
+ \qquad
+ \Phi(h)=F(d)+F(u)-F(d+u).                               \label{eq:Phi}
+\end{equation}
+and therefore
+\begin{equation}
+ L_{A,b}(h)=\frac{Ab+(b+1)h}{h^2}\bigl(1-e^{-\Phi(h)}\bigr).
+                                                                    \label{eq:Lphi}
+\end{equation}
+For $0<h\leq1/4$, we have $|d|\leq h/2$, $u\leq1/2$, and
+$0<d+u\leq2h$.  Thus the absolutely convergent series
+\begin{equation}
+ F(z)=-\gamma z+\sum_{n=2}^{\infty}
+       \frac{(-1)^n\zeta(n)}{n}z^n,\qquad |z|<1,         \label{eq:loggamma}
+\end{equation}
+may be applied to all three terms in \eqref{eq:Phi}.
+
+The linear terms cancel.  The quadratic term is
+\[
+ -\zeta(2)du=\frac{\pi^2h^2}{3(A+h)}
+ =\frac{\pi^2}{3A}h^2-\frac{\pi^2}{3A^2}h^3+R_2,
+ \qquad |R_2|\leq\frac{\pi^2}{3A^3}h^4.
+\]
+The cubic term is
+\[
+ \zeta(3)(d^2u+du^2)
+ =\zeta(3)h^3\left(\frac2{(A+h)^2}-\frac4{A+h}\right).
+\]
+For $s\geq2$, the derivative of $2s^{-2}-4s^{-1}$ has absolute value at
+most $1/2$.  Replacing $A+h$ by $A$ in the last display therefore creates
+an error at most $\zeta(3)h^4/2$.
+
+For the remaining terms, $\zeta(n)<2$ and $2/n\leq1/2$ for $n\geq4$,
+so
+\begin{align*}
+ |R_{\geq4}|
+ &\leq\frac12\sum_{n=4}^{\infty}
+   \left\{(h/2)^n+2(2h)^n\right\}\\
+ &\leq\left(\frac1{28}+32\right)h^4
+   =\frac{897}{28}h^4.
+\end{align*}
+Combining these estimates yields
+\begin{equation}
+ |\Phi(h)-c_2h^2-c_3h^3|\leq K_\Phi h^4.                 \label{eq:Phibound}
+\end{equation}
+
+In particular, $|\Phi(h)|\leq Ph^2\leq P/16$.  The elementary inequality
+\[
+ |1-e^{-y}-y|\leq\frac12e^{|y|}y^2\qquad(y\in\R)
+\]
+and \eqref{eq:Phibound} now imply
+\begin{equation}
+ 1-e^{-\Phi(h)}=c_2h^2+c_3h^3+R_N(h),
+ \qquad |R_N(h)|\leq K_Nh^4.                            \label{eq:Nbound}
+\end{equation}
+Multiplying \eqref{eq:Nbound} by the prefactor in \eqref{eq:Lphi}, the
+constant and linear coefficients are
+\[
+ Abc_2=\frac{\pi^2b}{3},
+ \qquad
+ Abc_3+(b+1)c_2
+ =\frac{\pi^2}{3A}-2b\zeta(3)\left(2-\frac1A\right).
+\]
+The remaining terms have absolute value at most
+\[
+ \left\{AbK_N+(b+1)|c_3|+\frac{b+1}{4}K_N\right\}h^2,
+\]
+which is exactly \eqref{eq:mainbound}.
+\end{proof}
+
+\section{Sharp local classification}
+
+\begin{theorem}[Endpoint classification]\label{thm:classification}
+Let $A\geq2$, $0\leq b<1$, and $C_A=B(A-1,1+A/2)$.  There is an
+admissible punctured right neighborhood on which the source condition
+\eqref{eq:condition} holds if and only if
+\begin{equation}
+ 0\leq b< b_*(A),\qquad b_*(A)=\frac{3C_A}{\pi^2}.        \label{eq:bstar}
+\end{equation}
+At $b=b_*(A)$ the condition fails throughout an explicit punctured right
+neighborhood.
+\end{theorem}
+
+\begin{proof}
+The beta integral gives
+\[
+ 0<C_A=\int_0^1t^{A-2}(1-t)^{A/2}\,dt\leq\frac12,
+\]
+and $\pi^2>9$, so $0<b_*(A)<1$.  To keep every point admissible, define
+\begin{equation}
+ \rho(A,b)=
+ \begin{cases}
+  1/4,&b=0,\\[2mm]
+  \min\{1/4,A(1-b)/(2b)\},&b>0.
+ \end{cases}                                             \label{eq:rho}
+\end{equation}
+For $0<h<\rho(A,b)$, one has $b<A/(A+h)$ and $p=A+h<p_\alpha$.
+
+First suppose $b\neq b_*(A)$ and set
+\[
+ J(A,b)=|D(A,b)|+\frac14K_L(A,b),
+\]
+where $D$ and $K_L$ are given in \eqref{eq:D}--\eqref{eq:KL}.  The explicit
+choice
+\begin{equation}
+ \eps_{\neq}=\min\left\{\rho(A,b),
+ \frac{|C_A-\pi^2b/3|}{2J(A,b)}\right\}                 \label{eq:epsneq}
+\end{equation}
+is positive.  Theorem~\ref{thm:remainder} implies, for
+$0<h<\eps_{\neq}$,
+\[
+ \left|L_{A,b}(h)-\frac{\pi^2b}{3}\right|
+ \leq J(A,b)h<\frac12\left|C_A-\frac{\pi^2b}{3}\right|.
+\]
+Consequently $L_{A,b}(h)<C_A$ for $b<b_*(A)$, while
+$L_{A,b}(h)>C_A$ for $b>b_*(A)$.
+
+It remains to decide equality, where the constant term is exactly $C_A$.
+Substitution of \eqref{eq:bstar} into \eqref{eq:D} shows that
+$D(A,b_*)>0$ is equivalent to
+\begin{equation}
+ \pi^4>18C_A\zeta(3)(2A-1).                              \label{eq:Dequiv}
+\end{equation}
+Now $C_A\leq1/(A-1)$, the integral test gives $\zeta(3)<5/4$, and
+$(2A-1)/(A-1)\leq3$ for $A\geq2$.  Hence
+\[
+ 18C_A\zeta(3)(2A-1)
+ \leq\frac{45}{2}\frac{2A-1}{A-1}
+ \leq\frac{135}{2}<81<\pi^4,
+\]
+which proves \eqref{eq:Dequiv}.  Therefore
+\begin{equation}
+ \eps_{=}=\min\left\{\rho(A,b_*),
+ \frac{D(A,b_*)}{2K_L(A,b_*)}\right\}>0                \label{eq:epseq}
+\end{equation}
+satisfies, for $0<h<\eps_{=}$,
+\[
+ L_{A,b_*}(h)-C_A
+ \geq D(A,b_*)h-K_L(A,b_*)h^2
+ >\frac12D(A,b_*)h>0.
+\]
+This assigns equality to the failing side and completes the classification.
+\end{proof}
+
+\section{Implication for the source proof and limitations}
+
+Equation~(3.41) of \cite{li2026norm} is the quantity
+$G_{\alpha,b}(p)$ in \eqref{eq:Gsource}.  Although its second factor tends
+to zero at $p=\alpha+2$, its first factor is singular there; the product
+tends to $4b$, not to zero.  Proposition~\ref{prop:G} makes the resulting
+failure of that upper-bound argument quantitative.  Theorem
+\ref{thm:classification} goes further: for every fixed
+$b\in[b_*(A),1)$, the exact sufficient condition (3.38) itself is false at
+all sufficiently close admissible points to the right of the endpoint.
+
+Theorem~3.4 of \cite{li2026norm} places $p$ in a hypothesis before later
+quantifying over $p$.  Under its natural reading---a threshold depending
+only on $\alpha$, uniform over admissible $b$---the proof explicitly ends
+by invoking Corollary~3.5.  Since the corollary's hypothesis fails locally
+for the nonempty range $b\in[b_*(A),1)$, that route does not prove this
+uniform reading.  The result above does not determine whether a different
+argument proves the norm identity, whether a valid threshold must depend on
+$b$, or whether another additional hypothesis suffices.
+
+Most importantly, condition \eqref{eq:condition} is sufficient, not known
+to be necessary.  Its failure supplies no function witnessing a violation
+of \eqref{eq:norm}.  For comparison, an actual finite-dimensional
+matrix-norm disproof by Zeng--Liu--Ratnavelu exhibits explicit matrices
+and separates the attained and conjectured constants by exact rational
+inequalities \cite{zeng2026counterexample}.  No analogous operator-level
+witness or necessary-condition argument is supplied here.  Accordingly,
+the status of the source's operator-norm assertion is left unresolved.
+
+\section*{Computational and AI assistance}
+
+Two accompanying Python scripts were used for error detection.  SymPy
+1.14 \cite{meurer2017sympy} checked the rational simplification, endpoint
+limits, and symbolic coefficients.  A separate mpmath 1.3.0 computation at
+90 decimal digits compared the beta and log-gamma representations and
+tested the remainder bound at 144 finite parameter points; the largest
+observed error-to-bound ratio was approximately $0.187283$.  These finite
+checks are supplementary and prove none of the quantified statements above.
+OpenAI Codex assisted with proof exploration, source comparison, adversarial
+checking, and manuscript preparation.  The author checked the mathematical
+arguments and is responsible for the final text and for compliance with any
+venue's authorship and disclosure policies.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

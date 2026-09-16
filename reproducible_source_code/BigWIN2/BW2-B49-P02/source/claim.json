@@ -1,0 +1,29 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the exact two-color Permutation Wordle game at n=3 frozen in source.md and interpreted in problem.md, the optimal deterministic success counts are (N_1,N_2,N_3,N_4,N_5,N_6)=(1,8,24,40,47,48), and N_r=48 for every r>=6. The Kutin--Smithline multicolor CircularShift algorithm, read by its circuit-completion prose, Figure 6, and the proof of Lemma 4.4 in arXiv:2408.00903v3, has exact-round counts (1,7,16,16,7,1) and therefore attains N_r simultaneously for every r>=1. The displayed color-update cases in Definition 4.3 conflict with those parts of the primary source; this claim uses the exact operational interpretation documented in evidence/circular-shift-interpretation.md and does not assert that the inconsistent displayed cases literally produce the same strategy.",
+  "contribution": "A complete computer-assisted resolution of the frozen 48-secret finite claim: an unpruned exact Bellman census with an independently implemented every-action replay certificate, together with an independent 48-secret CircularShift transcript census and replay. The result is restricted to (n,s)=(3,2); it does not resolve the general multicolor conjecture, and priority is provisional because the cited 2026 source mentions unavailable work in preparation.",
+  "proposer_job_id": "win-00049-p02-research-683b4b87670a",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/resolution.md",
+    "evidence/circular-shift-interpretation.md",
+    "evidence/external/2408.00903v3.pdf",
+    "evidence/external/2609.01874v1.pdf",
+    "evidence/bellman_exact.py",
+    "evidence/verify_bellman_certificate.py",
+    "evidence/bellman-output/items.csv",
+    "evidence/bellman-output/feedback.csv",
+    "evidence/bellman-output/states.csv",
+    "evidence/bellman-output/root-decompositions.csv",
+    "evidence/bellman-output/summary.json",
+    "evidence/bellman-output/verification.json",
+    "evidence/circular_shift_sim.py",
+    "evidence/verify_circular_shift_transcripts.py",
+    "evidence/circular-shift-output/per-secret.csv",
+    "evidence/circular-shift-output/transcripts.csv",
+    "evidence/circular-shift-output/summary.json",
+    "evidence/circular-shift-output/verification.json"
+  ]
+}

@@ -1,0 +1,1503 @@
+{
+  "aggregate": {
+    "a_domain_count": 521855,
+    "a_domain_sha256": "913120c3bdfab5045bb7d279bf4aae6345d0ac07b943d1ed97e65ae474ce49ca",
+    "a_records_sha256": "c6d261d6c772711bb690646e52f4947ead8aaa0a79c184b0f148b0b45c2fd519",
+    "b_domain_count": 521855,
+    "b_domain_sha256": "913120c3bdfab5045bb7d279bf4aae6345d0ac07b943d1ed97e65ae474ce49ca",
+    "b_records_sha256": "f5ad21796244afa350579aad695fd77b8dc53ee6bedaa89cd9a5919064d42be5",
+    "expected_domain_identity": "sum_{s=4}^{61} binom(s-1,3) = binom(61,4)",
+    "match_count": 4,
+    "matches_sha256": "f7f52b240dcb0deb6aee7755d48c64226109eb156754bed5ade1d8bf8ea1edf7"
+  },
+  "anomalies": [],
+  "arithmetic": "Python arbitrary-precision integers only",
+  "classification": {
+    "allowed_orbit_count_at_first_layer": 1,
+    "allowed_orbit_representatives": [
+      {
+        "a": [
+          4,
+          9,
+          16,
+          32
+        ],
+        "b": [
+          1,
+          16,
+          8,
+          36
+        ]
+      }
+    ],
+    "ordered_match_count_at_first_layer": 4
+  },
+  "code_version": "1.0.0",
+  "completed_through": 61,
+  "digest_contract": {
+    "algorithm": "SHA-256",
+    "encoding": "ASCII",
+    "matches": "b0,b1,b2,b3|a0,a1,a2,a3|s,c2,c3,c4\\n in sorted (b,a) order",
+    "side_records": "x0,x1,x2,x3|s,c2,c3,c4\\n in enumeration order",
+    "signature_multiset": "s,c2,c3,c4|multiplicity\\n in sorted-signature order",
+    "tuple_records": "x0,x1,x2,x3\\n in enumeration order"
+  },
+  "domain": {
+    "enumeration_order": "lexicographic x0,x1,x2,x3, separately on each side",
+    "expected_count_each_side": 521855,
+    "maximum_sum": 61,
+    "minimum_sum": 4,
+    "objects": "ordered quadruples in Z_{>0}^4",
+    "pruning": "none"
+  },
+  "first_matching_layer": 61,
+  "guard": {
+    "purpose": "stop on any hit below 61 or any layer-61 orbit beyond the source orbit",
+    "source_representative": {
+      "a": [
+        4,
+        9,
+        16,
+        32
+      ],
+      "b": [
+        1,
+        16,
+        8,
+        36
+      ]
+    }
+  },
+  "layers": [
+    {
+      "a": {
+        "collision_excess": 0,
+        "distinct_signature_count": 1,
+        "domain_count": 1,
+        "domain_sha256": "39ee36e6ba0e57530d57d2cb59ca341bdd06810276766852fc3ee00606cc38b8",
+        "records_sha256": "d7a8cf34b4e725c069b881ef9fcdbd74e44d22fb223357912c9ef4ac599311a6",
+        "signature_multiset_sha256": "e272e9bd92852f9ec15d67ffaad1247f3d66ba662ad27f34bd26a7e943a1c8d5"
+      },
+      "b": {
+        "collision_excess": 0,
+        "distinct_signature_count": 1,
+        "domain_count": 1,
+        "domain_sha256": "39ee36e6ba0e57530d57d2cb59ca341bdd06810276766852fc3ee00606cc38b8",
+        "records_sha256": "8574d0c0a45ca8cc291315bfec9d7c4fd5720c393ba5667dd4bd39fefd42c40e",
+        "signature_multiset_sha256": "92cf1037f4754ecb73deb81fd59c4c4ac10e864e59c1eafd495d53c8a3fbe1ef"
+      },
+      "expected_domain_count_each_side": 1,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 4
+    },
+    {
+      "a": {
+        "collision_excess": 1,
+        "distinct_signature_count": 3,
+        "domain_count": 4,
+        "domain_sha256": "3dd60b670e67f5590c4129809f0c7e09bcd1f6a7a8b1cc45a66dcb48ea08c8ef",
+        "records_sha256": "011d6c57a8f27050e0bcf0962cc541a12dbeb7a6f56747aa30d339ea1db553bf",
+        "signature_multiset_sha256": "6b122cd2a52d0223d6e21fe3b7ff2b7547ddb3fd0ac0a1aa390c7fea73fb1822"
+      },
+      "b": {
+        "collision_excess": 2,
+        "distinct_signature_count": 2,
+        "domain_count": 4,
+        "domain_sha256": "3dd60b670e67f5590c4129809f0c7e09bcd1f6a7a8b1cc45a66dcb48ea08c8ef",
+        "records_sha256": "9e4d34c81128dd3f54f873149c5107ef7d84217a713b70df11cb941056c519bf",
+        "signature_multiset_sha256": "8f67994ddb4c09ff1d94f228f49f42a8cf03e39f38fb0966b16b4a890153adf8"
+      },
+      "expected_domain_count_each_side": 4,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 5
+    },
+    {
+      "a": {
+        "collision_excess": 3,
+        "distinct_signature_count": 7,
+        "domain_count": 10,
+        "domain_sha256": "8205090256758a030612d869ed25c79d774c9e35e489c1cfabae2705f25b43d4",
+        "records_sha256": "a1f890149084fcb78b213f92f95ea2ef69249b37e0cbfb94d5bc30be7f2dcfa5",
+        "signature_multiset_sha256": "39c4bd42fd9052205d6419b38b67a5f82c901b616f334532cd0da31a29655acb"
+      },
+      "b": {
+        "collision_excess": 4,
+        "distinct_signature_count": 6,
+        "domain_count": 10,
+        "domain_sha256": "8205090256758a030612d869ed25c79d774c9e35e489c1cfabae2705f25b43d4",
+        "records_sha256": "ff6bc03049084a366790a5d8eeb1fa0bac6212fbfe3a3b4a927934feaf156ac2",
+        "signature_multiset_sha256": "638aac6a9ec6932a36fe9935a9869e157408f1f58a0eb1a860574c72fb948bd1"
+      },
+      "expected_domain_count_each_side": 10,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 6
+    },
+    {
+      "a": {
+        "collision_excess": 7,
+        "distinct_signature_count": 13,
+        "domain_count": 20,
+        "domain_sha256": "a17f339df2770261b3844213a3ab2216d7d34128f2c4fe279e75359f265c052d",
+        "records_sha256": "6271099fd3850c2b7d0a95e3967d2fe6c2ee4d72a2b5cf138a2a171c8b28ed64",
+        "signature_multiset_sha256": "555e2b93f175f31446d8fb712e2c673a45b090cda54c7b9b0565f4510cda4b92"
+      },
+      "b": {
+        "collision_excess": 10,
+        "distinct_signature_count": 10,
+        "domain_count": 20,
+        "domain_sha256": "a17f339df2770261b3844213a3ab2216d7d34128f2c4fe279e75359f265c052d",
+        "records_sha256": "6908a402c4cfdbb706e339c8579cea1d6ec6c6308a62f899c474fa867d3506e4",
+        "signature_multiset_sha256": "556d9cacf9bf499b071b4680f82f4ec1f5054a69e393e1a2b33789d4ff853132"
+      },
+      "expected_domain_count_each_side": 20,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 7
+    },
+    {
+      "a": {
+        "collision_excess": 13,
+        "distinct_signature_count": 22,
+        "domain_count": 35,
+        "domain_sha256": "e614497bc82d35049213c7ad0634eb1744b1e7c8576694afe4794576c1056c90",
+        "records_sha256": "abbf802952943e9b59f0c584c4165e4150efeb5b4422a033313bd165a8b9b19c",
+        "signature_multiset_sha256": "e6dd62201e97cf69e9ca3a935b3b5e0bd04ce4b9a51ed1d25a44659acc8ab76f"
+      },
+      "b": {
+        "collision_excess": 16,
+        "distinct_signature_count": 19,
+        "domain_count": 35,
+        "domain_sha256": "e614497bc82d35049213c7ad0634eb1744b1e7c8576694afe4794576c1056c90",
+        "records_sha256": "240fc731c14665cab26c356a16cbfccf6831b5d5f65609b9d83e3c7ff3a80807",
+        "signature_multiset_sha256": "3eef81e8b45c36830f1556c84a6ee669af7449491e8cfc7ee00b66fb2526b125"
+      },
+      "expected_domain_count_each_side": 35,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 8
+    },
+    {
+      "a": {
+        "collision_excess": 23,
+        "distinct_signature_count": 33,
+        "domain_count": 56,
+        "domain_sha256": "64d1daab4915d66dc67ee6a1e82f2d17e24e8b9aca8d53718e1ee4aeeac98e95",
+        "records_sha256": "483b9395b3a3fb946ecbb77ef20d24af7a1271b0fce12dd80aa736f2e2c362e1",
+        "signature_multiset_sha256": "a203a8c800998c7cedb473571739e0bf11b575de9c87ade0d4f090446cab5865"
+      },
+      "b": {
+        "collision_excess": 28,
+        "distinct_signature_count": 28,
+        "domain_count": 56,
+        "domain_sha256": "64d1daab4915d66dc67ee6a1e82f2d17e24e8b9aca8d53718e1ee4aeeac98e95",
+        "records_sha256": "f940b4beab24d4ecbd2e0f175294e54298cea26707becebab71990c953a37ebc",
+        "signature_multiset_sha256": "ed77def6322a8d561877b55d65f743f9f9cff7879814eae5654184f7b5c9a495"
+      },
+      "expected_domain_count_each_side": 56,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 9
+    },
+    {
+      "a": {
+        "collision_excess": 34,
+        "distinct_signature_count": 50,
+        "domain_count": 84,
+        "domain_sha256": "85a5f7e6950893e9bfc33b49287ef2e4d31036c09d3091b4404a313b4cf883d6",
+        "records_sha256": "968de6940f88e0d17e5968876f0501be5b357cb024bfa61c0beaf2a3a97811b5",
+        "signature_multiset_sha256": "b24e6127234e03687b19a8ac98431976ae8b63bd34beaef537f44e143148c548"
+      },
+      "b": {
+        "collision_excess": 40,
+        "distinct_signature_count": 44,
+        "domain_count": 84,
+        "domain_sha256": "85a5f7e6950893e9bfc33b49287ef2e4d31036c09d3091b4404a313b4cf883d6",
+        "records_sha256": "e500c605845d0af2e8ef5166cca3eb97d406afd7cf0e319fc8115775aa08bfab",
+        "signature_multiset_sha256": "454e348e0cc15a584e53df17ebe97188422f7e518a1e48d4aad1364aa4aebb50"
+      },
+      "expected_domain_count_each_side": 84,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 10
+    },
+    {
+      "a": {
+        "collision_excess": 50,
+        "distinct_signature_count": 70,
+        "domain_count": 120,
+        "domain_sha256": "a2679490a121d79ba75dfeda5f2ab0c8415a14ce6c1f81e5f551653597e70da1",
+        "records_sha256": "3a0af162c905ece4019f78b4e75df3561a6de809a1040127fadaedfcf9e497ab",
+        "signature_multiset_sha256": "dd259d3ce6645ce6d631d2cf1cff331c260278f4fc9b04538530c54958b9090f"
+      },
+      "b": {
+        "collision_excess": 60,
+        "distinct_signature_count": 60,
+        "domain_count": 120,
+        "domain_sha256": "a2679490a121d79ba75dfeda5f2ab0c8415a14ce6c1f81e5f551653597e70da1",
+        "records_sha256": "c8f4c8586a428faa5ba1cbcb586b352d8ae5d28f217d00c19c6ec91498e0e97a",
+        "signature_multiset_sha256": "b7d21461341a3e69a6c22b21abd2491264ec69ff6ee28959a1cb01fffaf26bb2"
+      },
+      "expected_domain_count_each_side": 120,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 11
+    },
+    {
+      "a": {
+        "collision_excess": 71,
+        "distinct_signature_count": 94,
+        "domain_count": 165,
+        "domain_sha256": "8dd3323dca8fb6bf9efa86ec9b6672e1b48f10c0873c62713311cc3c1da47265",
+        "records_sha256": "8a5e790b3a07e49fd15046e559ed3ec8edc7b41eb9e191437d63e899283b254c",
+        "signature_multiset_sha256": "5f271f808764cf9a186d0ec6dfcd807d880f4c1cda6bf315607d02a6bf6717a3"
+      },
+      "b": {
+        "collision_excess": 80,
+        "distinct_signature_count": 85,
+        "domain_count": 165,
+        "domain_sha256": "8dd3323dca8fb6bf9efa86ec9b6672e1b48f10c0873c62713311cc3c1da47265",
+        "records_sha256": "57613a0392c0af0734a262ec20c720f7b747f963ceacce13bda54dcc8678e49e",
+        "signature_multiset_sha256": "608145ea7baf022682d73979d68290954b803430c58fc1e19309c35ba1c9ef7e"
+      },
+      "expected_domain_count_each_side": 165,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 12
+    },
+    {
+      "a": {
+        "collision_excess": 96,
+        "distinct_signature_count": 124,
+        "domain_count": 220,
+        "domain_sha256": "874df6ea7793df3a30f55ad3e71297ba2561de2b8e7eb68938a70c9c9e669173",
+        "records_sha256": "c716860a58183bae6d96195d84f134c93b357d81655f9f1d742937f6393bbadc",
+        "signature_multiset_sha256": "a5582b3be0b6cbbf8e0bf59d38910ba60e6c08736aa1c18f9d37924b824ddd04"
+      },
+      "b": {
+        "collision_excess": 110,
+        "distinct_signature_count": 110,
+        "domain_count": 220,
+        "domain_sha256": "874df6ea7793df3a30f55ad3e71297ba2561de2b8e7eb68938a70c9c9e669173",
+        "records_sha256": "90c9a4ba51f6a8799c81d0244dc6aa76f54a8871b12a082e5100ea810e83a9dc",
+        "signature_multiset_sha256": "d5f758c59f66fe5fd4d8e73841bcfa4ff223f6fb13048161201dc9c0b198dc47"
+      },
+      "expected_domain_count_each_side": 220,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 13
+    },
+    {
+      "a": {
+        "collision_excess": 125,
+        "distinct_signature_count": 161,
+        "domain_count": 286,
+        "domain_sha256": "77e9b85b578aaf8fb72ffec4c445c2b25b671543bad2698e1814aa9e8405ce05",
+        "records_sha256": "c2071051fe5e29bb3a5f6ba94494ebdd043c6415245a583cd10042fb863e3c30",
+        "signature_multiset_sha256": "341928cf2fe7a2a3b54b7e9c3085f53f5513050a11118d3dcf90f090cb6dbdaf"
+      },
+      "b": {
+        "collision_excess": 140,
+        "distinct_signature_count": 146,
+        "domain_count": 286,
+        "domain_sha256": "77e9b85b578aaf8fb72ffec4c445c2b25b671543bad2698e1814aa9e8405ce05",
+        "records_sha256": "5fb5fd4d8e34fcba780e353097d3167671b9be838fb7087a5590cca03de6ff95",
+        "signature_multiset_sha256": "188e00055e2c3b19a0520c34a74db1ded0b5ab864e81f475705d8fd9f697ad2a"
+      },
+      "expected_domain_count_each_side": 286,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 14
+    },
+    {
+      "a": {
+        "collision_excess": 163,
+        "distinct_signature_count": 201,
+        "domain_count": 364,
+        "domain_sha256": "f5d9655e7784723406f9f448c23d0126cf19908f757c809fa3250611a6331a34",
+        "records_sha256": "a873d3b6f95da016a74cfe5ebe1213b2260d7d80b5e480973e092b29e5e9bc1f",
+        "signature_multiset_sha256": "d90cfe69f6b8a011ac6d3bf35d865066517b8dfc7c7506219f5e2998acb2419e"
+      },
+      "b": {
+        "collision_excess": 182,
+        "distinct_signature_count": 182,
+        "domain_count": 364,
+        "domain_sha256": "f5d9655e7784723406f9f448c23d0126cf19908f757c809fa3250611a6331a34",
+        "records_sha256": "b50d9f3ed03648bf3224a2e633ecb46dc380908cf26d153428d743ebb005defd",
+        "signature_multiset_sha256": "c26d4be85bc46387f8f198748211a854e9ee38c3f39e06e51fafd596927db165"
+      },
+      "expected_domain_count_each_side": 364,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 15
+    },
+    {
+      "a": {
+        "collision_excess": 203,
+        "distinct_signature_count": 252,
+        "domain_count": 455,
+        "domain_sha256": "72b151a6cd4b64211ae561148dd4b841e32d4c6dd6d1d44a8afca883cb0b9b55",
+        "records_sha256": "659e0044782cc6bd68ff55eb2f68729c34e52d71ac85563695ad174ce3a3ab16",
+        "signature_multiset_sha256": "d10fc2c7b70fa2e9c1aba2bfa0cfc1180451bb25cf2c18398c853c5f9be91721"
+      },
+      "b": {
+        "collision_excess": 224,
+        "distinct_signature_count": 231,
+        "domain_count": 455,
+        "domain_sha256": "72b151a6cd4b64211ae561148dd4b841e32d4c6dd6d1d44a8afca883cb0b9b55",
+        "records_sha256": "7d406ccb5f45e27c254d06b87fcf54891634fa508e034aedde1cf9a141af7c18",
+        "signature_multiset_sha256": "18dc7469842580c6d63b4822a7a49ac14a1157283c4bfae42b3048573d773877"
+      },
+      "expected_domain_count_each_side": 455,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 16
+    },
+    {
+      "a": {
+        "collision_excess": 252,
+        "distinct_signature_count": 308,
+        "domain_count": 560,
+        "domain_sha256": "df924dc61a1eed70731730b16f6c4ccf04d6a012e619a71e281ba277ccdcd859",
+        "records_sha256": "a15eabd9fefaeca692cca5b5ec577db23f067df81402e75d4f4d6349d5b40513",
+        "signature_multiset_sha256": "c35d4306b50638b2d996b4c65622d415d66d1f9ba74a5b29f47c9d7bb978587f"
+      },
+      "b": {
+        "collision_excess": 280,
+        "distinct_signature_count": 280,
+        "domain_count": 560,
+        "domain_sha256": "df924dc61a1eed70731730b16f6c4ccf04d6a012e619a71e281ba277ccdcd859",
+        "records_sha256": "5df458025215ae03bc1969cb4ab5132af48b0973160c5b863351a3bf347a556e",
+        "signature_multiset_sha256": "5350111c03e1652bf2fbc2ebd2e69420894830cd8f30a83f40297147b3a16280"
+      },
+      "expected_domain_count_each_side": 560,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 17
+    },
+    {
+      "a": {
+        "collision_excess": 310,
+        "distinct_signature_count": 370,
+        "domain_count": 680,
+        "domain_sha256": "70cd512866ab5ed630659d3faff4cfba0a9c64b576925a4d92980133c3097beb",
+        "records_sha256": "a05ce1bfa791499a6906badbe19a3fd3a877b39f634de3297e679d21a3be2e2f",
+        "signature_multiset_sha256": "87725ced7123633d114c0643cf5aabd09083a5bf739afd16e77111c8439b58b8"
+      },
+      "b": {
+        "collision_excess": 336,
+        "distinct_signature_count": 344,
+        "domain_count": 680,
+        "domain_sha256": "70cd512866ab5ed630659d3faff4cfba0a9c64b576925a4d92980133c3097beb",
+        "records_sha256": "726e0d61854e1443818df6b28b7f2434fcb63b2d7e97b0d559220b9b10826916",
+        "signature_multiset_sha256": "4a934f492329fe725d808a5644bd96d7f80ae4f09188fa8f93f92df5f1e6582d"
+      },
+      "expected_domain_count_each_side": 680,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 18
+    },
+    {
+      "a": {
+        "collision_excess": 372,
+        "distinct_signature_count": 444,
+        "domain_count": 816,
+        "domain_sha256": "201317753003c81c8864e13403fc94ae690247a6edca9391ff409ce0e6d5cc6d",
+        "records_sha256": "9447fa33727e5a57aceee29719da7f0c53a0da39105125fa4e22d1f3455afec7",
+        "signature_multiset_sha256": "2a752352acae661464a3c450863d8253559a366668561cfff2765c6b44f7099d"
+      },
+      "b": {
+        "collision_excess": 408,
+        "distinct_signature_count": 408,
+        "domain_count": 816,
+        "domain_sha256": "201317753003c81c8864e13403fc94ae690247a6edca9391ff409ce0e6d5cc6d",
+        "records_sha256": "01740b444c56bf71a117b473176839b6f933f5088d0e848dac2219f06cf2bf04",
+        "signature_multiset_sha256": "095fcaf9126136f6dc4c60908c22beed2984189573c90af79442c63b85f1bad2"
+      },
+      "expected_domain_count_each_side": 816,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 19
+    },
+    {
+      "a": {
+        "collision_excess": 444,
+        "distinct_signature_count": 525,
+        "domain_count": 969,
+        "domain_sha256": "7e5dd079cbfa5774735c3d12b97ba493152033eaf631f56503eb693b510bb6b1",
+        "records_sha256": "28504b9dcdfb7ec2ad793992986e977d75cf52c3b46828b32feabb01b6e09096",
+        "signature_multiset_sha256": "16e46990297f161d8ea514d5b6c791fe9e94da0e83c8aed91cee78bbe9f6b574"
+      },
+      "b": {
+        "collision_excess": 480,
+        "distinct_signature_count": 489,
+        "domain_count": 969,
+        "domain_sha256": "7e5dd079cbfa5774735c3d12b97ba493152033eaf631f56503eb693b510bb6b1",
+        "records_sha256": "be4ab98ca36382ea9101a37af69f0092e614ed9aa37ed849c47d9aed493a873b",
+        "signature_multiset_sha256": "95e679836567b70726f862da7944c107f7befe19cb242d9c079caf8d11cc16ef"
+      },
+      "expected_domain_count_each_side": 969,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 20
+    },
+    {
+      "a": {
+        "collision_excess": 528,
+        "distinct_signature_count": 612,
+        "domain_count": 1140,
+        "domain_sha256": "a4acbde309e28235b60309dd339e4c7aa47d5909973279fc8ffbe9562521cc92",
+        "records_sha256": "102e012faacbba4bb2656e2d12f7654530a9be916a42f3c6437678b1a4c5410a",
+        "signature_multiset_sha256": "9759ca4bd04c1686fe76cc40f5b9535f87e536cd9eacab728d66450e3c844352"
+      },
+      "b": {
+        "collision_excess": 570,
+        "distinct_signature_count": 570,
+        "domain_count": 1140,
+        "domain_sha256": "a4acbde309e28235b60309dd339e4c7aa47d5909973279fc8ffbe9562521cc92",
+        "records_sha256": "6f0725d97239a1a77a5d0d9de65c86a574f5eb01c25596a1a8bf5de0d02808aa",
+        "signature_multiset_sha256": "878ec1db7f8a21e17054fc9663305d3b97005e15930b100b0f2af5a57f8ddf0e"
+      },
+      "expected_domain_count_each_side": 1140,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 21
+    },
+    {
+      "a": {
+        "collision_excess": 615,
+        "distinct_signature_count": 715,
+        "domain_count": 1330,
+        "domain_sha256": "62c1b93ad1dac829c3cd715fa77bd5863ba569251e4062afd0ed2680d057d831",
+        "records_sha256": "8c8ddc814704140d0e4e38ec337646dbfe69e0062adf2848ff7e1fecbad8a33b",
+        "signature_multiset_sha256": "7ebad96b7762703fa9e07671451e02daa4830a0d343328f78b82f2e6cd2b9b33"
+      },
+      "b": {
+        "collision_excess": 660,
+        "distinct_signature_count": 670,
+        "domain_count": 1330,
+        "domain_sha256": "62c1b93ad1dac829c3cd715fa77bd5863ba569251e4062afd0ed2680d057d831",
+        "records_sha256": "360f01f2c4bc54261f4e691c694fbac4c035b20cfe996c2b1389f970b5ff142f",
+        "signature_multiset_sha256": "61cf05845c1ddbc1ddc7bae435f76d6dd90ff518d4b07e9f5f6c014f4f3e7067"
+      },
+      "expected_domain_count_each_side": 1330,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 22
+    },
+    {
+      "a": {
+        "collision_excess": 715,
+        "distinct_signature_count": 825,
+        "domain_count": 1540,
+        "domain_sha256": "4fb82b76ecc1f531538cc368faa27014026e66ca833f166b2a5222106a993213",
+        "records_sha256": "9bf522afcd22313052618dbdbe339d8e71f038e658587bf1ec76587de8db101c",
+        "signature_multiset_sha256": "9f47d524e287ed0690fd9a4fd0195a411004c6e61c9c7d3964243434819f57fe"
+      },
+      "b": {
+        "collision_excess": 770,
+        "distinct_signature_count": 770,
+        "domain_count": 1540,
+        "domain_sha256": "4fb82b76ecc1f531538cc368faa27014026e66ca833f166b2a5222106a993213",
+        "records_sha256": "0c01a0f3847a1703a908ecf4548d545d98d88c0fe1693ff5b396c256720765ef",
+        "signature_multiset_sha256": "6810d527dba55ee87b40cd9a44a5933a4b98307b1c52a28635620d50feb57612"
+      },
+      "expected_domain_count_each_side": 1540,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 23
+    },
+    {
+      "a": {
+        "collision_excess": 828,
+        "distinct_signature_count": 943,
+        "domain_count": 1771,
+        "domain_sha256": "a2ed476f1f94ba0f9a6d4acc5daf9b85e615cd83cadf200525504612ab92d300",
+        "records_sha256": "cc9847b1156a07705737402048231934469da49235f64754f688009866141bac",
+        "signature_multiset_sha256": "b0d8af0724acbf980d7bc21ec7f29b5698ba0dc18e06710bb402b8b8281c9b0c"
+      },
+      "b": {
+        "collision_excess": 880,
+        "distinct_signature_count": 891,
+        "domain_count": 1771,
+        "domain_sha256": "a2ed476f1f94ba0f9a6d4acc5daf9b85e615cd83cadf200525504612ab92d300",
+        "records_sha256": "e8515238891a212dade69cc1fa92a33b6bfb4d3c1d401c6ae9733c477767285f",
+        "signature_multiset_sha256": "a06b7f1968426e9221e53b5f21b6e19c6074f6c54fa7c80274dde0999a5a93c4"
+      },
+      "expected_domain_count_each_side": 1771,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 24
+    },
+    {
+      "a": {
+        "collision_excess": 946,
+        "distinct_signature_count": 1078,
+        "domain_count": 2024,
+        "domain_sha256": "29c8afab6fe76a074c09e67160309ea7b0c07d4e18c7dd0f99eec8b08d86c515",
+        "records_sha256": "c4b4fbc482691426842201eb6022ae6298d2e7309632c60f0d24b1bb81606385",
+        "signature_multiset_sha256": "101f3d584f2016fc7dd89d7d12c0bb57d6c9ce7833a486b2ca695df05d82d2af"
+      },
+      "b": {
+        "collision_excess": 1012,
+        "distinct_signature_count": 1012,
+        "domain_count": 2024,
+        "domain_sha256": "29c8afab6fe76a074c09e67160309ea7b0c07d4e18c7dd0f99eec8b08d86c515",
+        "records_sha256": "d8a525b57ebecbaed6e23a94efc5550d354f1fa638eb9c5cfdc72443c355f56e",
+        "signature_multiset_sha256": "54ed3c997591607c43fcb52527a96df670f6449c7bee83cf545188dce9f01029"
+      },
+      "expected_domain_count_each_side": 2024,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 25
+    },
+    {
+      "a": {
+        "collision_excess": 1079,
+        "distinct_signature_count": 1221,
+        "domain_count": 2300,
+        "domain_sha256": "ee7ceb62edd1662f5e02b78e463a31fbc2901a4e3470bf91a510fd51194c6224",
+        "records_sha256": "332540c625d3f2a5381be253b2e851295fcfd560d68c976e3811393e4f1ef07f",
+        "signature_multiset_sha256": "718eb651ec14d0aea9d77a192e7f01a1f7b5161ae8b072f936355de07b9283f4"
+      },
+      "b": {
+        "collision_excess": 1144,
+        "distinct_signature_count": 1156,
+        "domain_count": 2300,
+        "domain_sha256": "ee7ceb62edd1662f5e02b78e463a31fbc2901a4e3470bf91a510fd51194c6224",
+        "records_sha256": "c8cc65226493ea11fdf7a9ba648fc144a88f91514b63ecf60bb5339b2a88b4c2",
+        "signature_multiset_sha256": "0df46faf4009f75ca17fc60626bcbf6d0ab4f752acb056e311a58cf4fd6ed61f"
+      },
+      "expected_domain_count_each_side": 2300,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 26
+    },
+    {
+      "a": {
+        "collision_excess": 1226,
+        "distinct_signature_count": 1374,
+        "domain_count": 2600,
+        "domain_sha256": "741a0f37e0643ac3b6cb5ffcdf6354d19d01d5d8332858ad468badb202d013ae",
+        "records_sha256": "55e1550d4b23d853f41cb4543f90805f8f3b82f80a3e5203831ae9bd00baacef",
+        "signature_multiset_sha256": "2d6c4c2a7b515d0e74730de2f48167dc4a74ec4ed9672f20dddc6239572a64cd"
+      },
+      "b": {
+        "collision_excess": 1300,
+        "distinct_signature_count": 1300,
+        "domain_count": 2600,
+        "domain_sha256": "741a0f37e0643ac3b6cb5ffcdf6354d19d01d5d8332858ad468badb202d013ae",
+        "records_sha256": "267fc1e4e394ecd13fdb7716fa7a3de4e9936616ebec6c6afeca89a18419334b",
+        "signature_multiset_sha256": "9e210655852a4bb1e76a2ce4e3bd08d2f140674b0ab5e272b8396e2e666df159"
+      },
+      "expected_domain_count_each_side": 2600,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 27
+    },
+    {
+      "a": {
+        "collision_excess": 1378,
+        "distinct_signature_count": 1547,
+        "domain_count": 2925,
+        "domain_sha256": "e4e7c1769ca9fd3be4d1438cd979567b2ca13b6f4cc718685ebd7302d689f950",
+        "records_sha256": "56475d5c2065de8dde4ebb6fcb7c9d33bfb7e480844664ec997ef6fda3e48f79",
+        "signature_multiset_sha256": "b393f53cd49e650c926689267929af9619b038747915031eb2fbd0be60ba5015"
+      },
+      "b": {
+        "collision_excess": 1456,
+        "distinct_signature_count": 1469,
+        "domain_count": 2925,
+        "domain_sha256": "e4e7c1769ca9fd3be4d1438cd979567b2ca13b6f4cc718685ebd7302d689f950",
+        "records_sha256": "d83f53b216cae2f81fa75ab858d21c8d0f23740f2bba7130c931b43aef4bc6f1",
+        "signature_multiset_sha256": "3e251af569bc3ac71d7fd40c517528712da138ea846a2422b07291400592215e"
+      },
+      "expected_domain_count_each_side": 2925,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 28
+    },
+    {
+      "a": {
+        "collision_excess": 1547,
+        "distinct_signature_count": 1729,
+        "domain_count": 3276,
+        "domain_sha256": "69fecb0804fc2709cefcd5ed67852f778c437149b2640782fbabff6ca4a2178b",
+        "records_sha256": "7ce68251970d1bbf8e0fb0f84c50bf68f64d60938ba8105e9adf0880178513be",
+        "signature_multiset_sha256": "b241db254813251462614281b8d2da24e716f66c7e097ac0b12e1b408f39b87b"
+      },
+      "b": {
+        "collision_excess": 1638,
+        "distinct_signature_count": 1638,
+        "domain_count": 3276,
+        "domain_sha256": "69fecb0804fc2709cefcd5ed67852f778c437149b2640782fbabff6ca4a2178b",
+        "records_sha256": "2fe0780c4893e89ba38d3f69f31bb164462384a2461edc598c08de374228aa20",
+        "signature_multiset_sha256": "2af11c9b00d8d42d7f29b1ce699afac03fd974c44f71db3ab37fa57ad55cdd93"
+      },
+      "expected_domain_count_each_side": 3276,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 29
+    },
+    {
+      "a": {
+        "collision_excess": 1733,
+        "distinct_signature_count": 1921,
+        "domain_count": 3654,
+        "domain_sha256": "6b902dde28bae8bec5fd73f101aea1e385b849ff53bbd47bb5aff44dc5905fa3",
+        "records_sha256": "4603b542d3616b399fddde9af6dd37ad13b4d66bafd02750ccc489d9ea4219da",
+        "signature_multiset_sha256": "409a58fa74c8b04564b4ce123d27fc5b8ad235f7c749e1bf2e204fe92c99a1a0"
+      },
+      "b": {
+        "collision_excess": 1820,
+        "distinct_signature_count": 1834,
+        "domain_count": 3654,
+        "domain_sha256": "6b902dde28bae8bec5fd73f101aea1e385b849ff53bbd47bb5aff44dc5905fa3",
+        "records_sha256": "de963b61d617ea83e5c3bc2259294c0d9fdb5f9e265dad680ea8e37ad477ff4f",
+        "signature_multiset_sha256": "c83001502fbff5686a1adbc789f1bd7748c209b8f288bd1f5ab5567b21d6fbc5"
+      },
+      "expected_domain_count_each_side": 3654,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 30
+    },
+    {
+      "a": {
+        "collision_excess": 1926,
+        "distinct_signature_count": 2134,
+        "domain_count": 4060,
+        "domain_sha256": "99e23d7f92fec221dc69ce1a4376a4613376ad9e575f8568a09302fcad017773",
+        "records_sha256": "5172a3d7af3694851cfad9ddb8c052c6e4aa0296aa00b5668a4f96455aad999f",
+        "signature_multiset_sha256": "39657481dd6ff736de32d36927453934f8c8492a9480fb9bcdc340a0ff798d5f"
+      },
+      "b": {
+        "collision_excess": 2030,
+        "distinct_signature_count": 2030,
+        "domain_count": 4060,
+        "domain_sha256": "99e23d7f92fec221dc69ce1a4376a4613376ad9e575f8568a09302fcad017773",
+        "records_sha256": "ab4de00104b89814fde9b7e17406389e2f679a25ae4379ffdd6f002fc03763ea",
+        "signature_multiset_sha256": "d8ad02a0bdf2a06bac0f0b3cac31a2897c5fd6b2b4dd66e65a6df235d3987bbb"
+      },
+      "expected_domain_count_each_side": 4060,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 31
+    },
+    {
+      "a": {
+        "collision_excess": 2135,
+        "distinct_signature_count": 2360,
+        "domain_count": 4495,
+        "domain_sha256": "2ef5ccc262a350bdc01297870188f1614f756bd3b265e85bffa0372d28c3d79b",
+        "records_sha256": "6252adc5da9d63e956a76a5ac03e9464e2a4a75b8352b3760e85e37a5b9ea7a7",
+        "signature_multiset_sha256": "7a29a858da12c9693373552be45b2ebf636e9044d89f62b8567579e92240b9cf"
+      },
+      "b": {
+        "collision_excess": 2240,
+        "distinct_signature_count": 2255,
+        "domain_count": 4495,
+        "domain_sha256": "2ef5ccc262a350bdc01297870188f1614f756bd3b265e85bffa0372d28c3d79b",
+        "records_sha256": "66f256594fdfcad3c6de69288911bcacfdffe0d5346da7d347f1f1b151062e80",
+        "signature_multiset_sha256": "12d43c8351d5f0d41cfadc9281dd2963b34eca6eb9ffbf9ea00e735335164ef9"
+      },
+      "expected_domain_count_each_side": 4495,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 32
+    },
+    {
+      "a": {
+        "collision_excess": 2365,
+        "distinct_signature_count": 2595,
+        "domain_count": 4960,
+        "domain_sha256": "03a7063e117d13ed56acdeedeab4c5e4e1e8a925e2eb90a5ef3898b06477287b",
+        "records_sha256": "4da8c7951ac1bd2ab818f22c00a56572925c736da918ef03612356d61fd20cfc",
+        "signature_multiset_sha256": "13aa39f09b7ed7b290e93a42e66471a1047f453c37b677101336e66c2e283547"
+      },
+      "b": {
+        "collision_excess": 2480,
+        "distinct_signature_count": 2480,
+        "domain_count": 4960,
+        "domain_sha256": "03a7063e117d13ed56acdeedeab4c5e4e1e8a925e2eb90a5ef3898b06477287b",
+        "records_sha256": "04899c65f3ba0a2eea9a8ec56b903ceeb65fa4d16367491643b54dfc21ead14a",
+        "signature_multiset_sha256": "a89581191ce6c0f81e3abf4883926946b738129d1902c49827641505cda43bf9"
+      },
+      "expected_domain_count_each_side": 4960,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 33
+    },
+    {
+      "a": {
+        "collision_excess": 2600,
+        "distinct_signature_count": 2856,
+        "domain_count": 5456,
+        "domain_sha256": "14c0d85251fe7146a8ca29529c6f392eaab458f5f0805cd77a09e8d6a57667df",
+        "records_sha256": "ddd49094bd11f1a05c3814133af02df9e0c771d0cb144033a1ad5bbe754814ec",
+        "signature_multiset_sha256": "136a8d9ce1c091c9959d99b362e0fdd85e7067fbed98ff96237cfa5de637c74d"
+      },
+      "b": {
+        "collision_excess": 2720,
+        "distinct_signature_count": 2736,
+        "domain_count": 5456,
+        "domain_sha256": "14c0d85251fe7146a8ca29529c6f392eaab458f5f0805cd77a09e8d6a57667df",
+        "records_sha256": "9f68a84ac29644285ac674fb3b276c7dbc096be05365ec6487a68ab3391cccd7",
+        "signature_multiset_sha256": "1584257cfbed0f5bd3d948cb1fd97fdbbe55557428e6c06c5574da0c31f4b003"
+      },
+      "expected_domain_count_each_side": 5456,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 34
+    },
+    {
+      "a": {
+        "collision_excess": 2860,
+        "distinct_signature_count": 3124,
+        "domain_count": 5984,
+        "domain_sha256": "48fcdf02f52ab21a47554044337c28d72a93c3c3ff1e11361247a9d6a34c2227",
+        "records_sha256": "0c945d9e41a5f3196fafc45bfad770a3943db7945709b8ca93db2f4fe6b144cf",
+        "signature_multiset_sha256": "7df33cfcba24de3c523f897494bd806770d1c455823a70a63a3ece9125decc36"
+      },
+      "b": {
+        "collision_excess": 2992,
+        "distinct_signature_count": 2992,
+        "domain_count": 5984,
+        "domain_sha256": "48fcdf02f52ab21a47554044337c28d72a93c3c3ff1e11361247a9d6a34c2227",
+        "records_sha256": "a6d94fe08de960aeec62614f3abec66a7ed56b6d1bbb1c9d11ec1dfea82fd3c2",
+        "signature_multiset_sha256": "6d0cc90040f93e3a4989c0559286036841bff1279ca16d990b8cb53dd35ef0c3"
+      },
+      "expected_domain_count_each_side": 5984,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 35
+    },
+    {
+      "a": {
+        "collision_excess": 3133,
+        "distinct_signature_count": 3412,
+        "domain_count": 6545,
+        "domain_sha256": "6004f62f8d6003c7e3afc186be71a0a4611aa3c732be7f411cac2ef3cea7f4f1",
+        "records_sha256": "0d814369a395e0c95786d0d32755b5a83a4e1b88278f617669a30aea3ea7bfe3",
+        "signature_multiset_sha256": "265c4ba21d223e29fc4c247a7fdb6aef00ac591cfde607d9c32e745daf2618a9"
+      },
+      "b": {
+        "collision_excess": 3265,
+        "distinct_signature_count": 3280,
+        "domain_count": 6545,
+        "domain_sha256": "6004f62f8d6003c7e3afc186be71a0a4611aa3c732be7f411cac2ef3cea7f4f1",
+        "records_sha256": "3129bacd62fa8201d5d743f176df0f7974502926a5b255cce5902046e529a728",
+        "signature_multiset_sha256": "4e5964ad4f06d414495862023cee4fa35c460b2888a952b075a4d03502ad537f"
+      },
+      "expected_domain_count_each_side": 6545,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 36
+    },
+    {
+      "a": {
+        "collision_excess": 3418,
+        "distinct_signature_count": 3722,
+        "domain_count": 7140,
+        "domain_sha256": "429c0e83e52c3c63f14ba91936e38dc0d56af8518c1596662b2653fdb22672cb",
+        "records_sha256": "e72289e78a1bec4b5df4be28b9eebc6df18136688816f8222387b12550b547a0",
+        "signature_multiset_sha256": "bb94b79c7c3462137ac90bde6b74f5adf9ceaf0d907acdb08c1351180b68810b"
+      },
+      "b": {
+        "collision_excess": 3570,
+        "distinct_signature_count": 3570,
+        "domain_count": 7140,
+        "domain_sha256": "429c0e83e52c3c63f14ba91936e38dc0d56af8518c1596662b2653fdb22672cb",
+        "records_sha256": "236ea7cc649ca6d4d245f972c12276a9e8db2eef8d060b4adb3c4ec0c97bff06",
+        "signature_multiset_sha256": "cfe48fc1b00ff449e1636bb068099d109dee3b7db7fcbd2716c5ed5768854de7"
+      },
+      "expected_domain_count_each_side": 7140,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 37
+    },
+    {
+      "a": {
+        "collision_excess": 3724,
+        "distinct_signature_count": 4046,
+        "domain_count": 7770,
+        "domain_sha256": "9b7270539ec3b67cf5508cfd93d24ce53c465184f7ed05c6cf529083b80c0507",
+        "records_sha256": "1d146d4417f8a47f3c37f851e52bde0ed8466d6c3e75f0cf7e80308a639f60c5",
+        "signature_multiset_sha256": "dba06194453e2012c824513fabf57bbdd1c7f1084e7993e9ee69e5210c4870c0"
+      },
+      "b": {
+        "collision_excess": 3876,
+        "distinct_signature_count": 3894,
+        "domain_count": 7770,
+        "domain_sha256": "9b7270539ec3b67cf5508cfd93d24ce53c465184f7ed05c6cf529083b80c0507",
+        "records_sha256": "087d83791813df0aa8473cc1858ce93a8fb94884215dff311185d20b55f5780f",
+        "signature_multiset_sha256": "72d0b1963eca4bfb6dc342b4f93287fbf4ea84ed95fb5259b80a69bf6f675839"
+      },
+      "expected_domain_count_each_side": 7770,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 38
+    },
+    {
+      "a": {
+        "collision_excess": 4056,
+        "distinct_signature_count": 4380,
+        "domain_count": 8436,
+        "domain_sha256": "a7a0d79d2eb1374de012c4e30d1bdbf1ee5ca966c585b4014afe08cbde4f80ca",
+        "records_sha256": "1f4f2de8be6715eaaa33ce219edceafada643ce9f7657f59d22e9fee5ea4107b",
+        "signature_multiset_sha256": "f2c7e86a695ff5d577c51415226b8170e9c34466a30956398845426c6c5e571c"
+      },
+      "b": {
+        "collision_excess": 4219,
+        "distinct_signature_count": 4217,
+        "domain_count": 8436,
+        "domain_sha256": "a7a0d79d2eb1374de012c4e30d1bdbf1ee5ca966c585b4014afe08cbde4f80ca",
+        "records_sha256": "3b4263a10b211a81595363c75ac7041a0266c9713ee2059c875023c6ccb44931",
+        "signature_multiset_sha256": "5a2122f0abe607760ae68b7fabe86d13df8ac548f9025f9d5429f337448eccfd"
+      },
+      "expected_domain_count_each_side": 8436,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 39
+    },
+    {
+      "a": {
+        "collision_excess": 4389,
+        "distinct_signature_count": 4750,
+        "domain_count": 9139,
+        "domain_sha256": "f972cf63cc7a9d4a59948f3afbcc4e6bbd3475e9f6907e193dcf9d64ab69920c",
+        "records_sha256": "38b652d4bd8059d063688e25d062240f36d0a3bef0588d900a581f98310a1ecd",
+        "signature_multiset_sha256": "fbe767ea6baa5384e1f1c58a01420d213af7cd82e3f38205ee74ba8a38f4741d"
+      },
+      "b": {
+        "collision_excess": 4560,
+        "distinct_signature_count": 4579,
+        "domain_count": 9139,
+        "domain_sha256": "f972cf63cc7a9d4a59948f3afbcc4e6bbd3475e9f6907e193dcf9d64ab69920c",
+        "records_sha256": "bcf027972bdc3ce70b753ccf2a5fe9c27e9305d7f82f37643e060f17e37c9831",
+        "signature_multiset_sha256": "13697f5ca7ca57395696d56ca3b2fcbb2b4a099521e1b2a82c06d7405521711c"
+      },
+      "expected_domain_count_each_side": 9139,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 40
+    },
+    {
+      "a": {
+        "collision_excess": 4752,
+        "distinct_signature_count": 5128,
+        "domain_count": 9880,
+        "domain_sha256": "7b7e1f4b436433d80b3ba8ba59a3c201f01e3e29a370c48bd5fb4b08a219bbab",
+        "records_sha256": "f4019c1d779661b268e6159325512a86667f428353a4fe995e318179d25d3869",
+        "signature_multiset_sha256": "608f20298142d1845a7d2a3dcacb5372350e69506016908c1abfe6f1fd37dc3e"
+      },
+      "b": {
+        "collision_excess": 4940,
+        "distinct_signature_count": 4940,
+        "domain_count": 9880,
+        "domain_sha256": "7b7e1f4b436433d80b3ba8ba59a3c201f01e3e29a370c48bd5fb4b08a219bbab",
+        "records_sha256": "88c755b5c0400dd05142ccf11170df969eefc2ee7f0b390db22d3d8c8fe7e058",
+        "signature_multiset_sha256": "2c6c6836201fcaf902319ec784f6dddc69e4c1399cd900cf2f74bf3fb8b6ff53"
+      },
+      "expected_domain_count_each_side": 9880,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 41
+    },
+    {
+      "a": {
+        "collision_excess": 5136,
+        "distinct_signature_count": 5524,
+        "domain_count": 10660,
+        "domain_sha256": "63ff3d769ff0e44c834ecaccc52f80eb02ceb6d1a518f46e5519a9fecc2f168d",
+        "records_sha256": "cab2bb4c6c0e215b5a3af22d1e30d06ee96833702f59b2d5be65eee781a21291",
+        "signature_multiset_sha256": "bc689661a228c57265ea4a76966afbf07e766b44fb4f17a74efbe654aefd70d6"
+      },
+      "b": {
+        "collision_excess": 5320,
+        "distinct_signature_count": 5340,
+        "domain_count": 10660,
+        "domain_sha256": "63ff3d769ff0e44c834ecaccc52f80eb02ceb6d1a518f46e5519a9fecc2f168d",
+        "records_sha256": "8d34ad2492409934fe097107df6b16e5a0da0bee098fa958ea43d86f19feb0f8",
+        "signature_multiset_sha256": "478eb0574dfb7f1b465743ba9e209998a3f36323387bc17509f18e38ec2343b3"
+      },
+      "expected_domain_count_each_side": 10660,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 42
+    },
+    {
+      "a": {
+        "collision_excess": 5533,
+        "distinct_signature_count": 5947,
+        "domain_count": 11480,
+        "domain_sha256": "0ec4d4c86e2d3cfd0e19bb17dcf7c49cb704ba4de18104fad7247f33c820896d",
+        "records_sha256": "7e3aaec15c36954b649daead84943f69410303c802eb41efb32f78cd62707e68",
+        "signature_multiset_sha256": "d6a8118ad42d0b3befeb57dff2ff295832ef1eee360e8a1f9a3ebb6973020a5c"
+      },
+      "b": {
+        "collision_excess": 5740,
+        "distinct_signature_count": 5740,
+        "domain_count": 11480,
+        "domain_sha256": "0ec4d4c86e2d3cfd0e19bb17dcf7c49cb704ba4de18104fad7247f33c820896d",
+        "records_sha256": "e900ff57c5bbe04e79c7840c9c9e942039286cdba2f4ded8f2c6f9010b2f1a4c",
+        "signature_multiset_sha256": "c3c1fa8a601b35fd6a5d11cc288b52c0766b0ffa9363961396002b98a938fd76"
+      },
+      "expected_domain_count_each_side": 11480,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 43
+    },
+    {
+      "a": {
+        "collision_excess": 5950,
+        "distinct_signature_count": 6391,
+        "domain_count": 12341,
+        "domain_sha256": "1f0da210d15d4ecb4a30cbda946389945491fb70dd2ed573c6d8e7acb7256a77",
+        "records_sha256": "2b6748f1d521c533b72b434ed7d3298a68cba4737fce082b1cfe97d410a80c3e",
+        "signature_multiset_sha256": "1c7ec70f1f3640531ee9316a690f699bb0c37a86b484355ac04e99baff3203cd"
+      },
+      "b": {
+        "collision_excess": 6161,
+        "distinct_signature_count": 6180,
+        "domain_count": 12341,
+        "domain_sha256": "1f0da210d15d4ecb4a30cbda946389945491fb70dd2ed573c6d8e7acb7256a77",
+        "records_sha256": "f43de87fdd83673b9c8f8b961a59ffa1993461cef51e73b2fe6e1e09a0105a57",
+        "signature_multiset_sha256": "1946a95bf3bfff873abd3afe1650fbf1452fea7b568460c41660736821b92b69"
+      },
+      "expected_domain_count_each_side": 12341,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 44
+    },
+    {
+      "a": {
+        "collision_excess": 6400,
+        "distinct_signature_count": 6844,
+        "domain_count": 13244,
+        "domain_sha256": "1ab969c0e871bda212b434b1cfee60b85f8c8b87e28cfc89a2444cd429e759ae",
+        "records_sha256": "d4c31602a5c5ef398b5794d3607af4ed2c1f6c0b553ba04536f4d5b29e5b03cd",
+        "signature_multiset_sha256": "ee29e9cac60a047819fb8115e073ebb47993eba438f1476456aed15d29b49723"
+      },
+      "b": {
+        "collision_excess": 6622,
+        "distinct_signature_count": 6622,
+        "domain_count": 13244,
+        "domain_sha256": "1ab969c0e871bda212b434b1cfee60b85f8c8b87e28cfc89a2444cd429e759ae",
+        "records_sha256": "e0dc9aab9ec8e0c55c4d2237217667a1e72193abdd5e9d46881faf515940177d",
+        "signature_multiset_sha256": "77f2e1ef87028c0c172e76bc1033bec00f54b1da7e1c5ebf7994eaa0515b7cfb"
+      },
+      "expected_domain_count_each_side": 13244,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 45
+    },
+    {
+      "a": {
+        "collision_excess": 6855,
+        "distinct_signature_count": 7335,
+        "domain_count": 14190,
+        "domain_sha256": "b1d4d540f2036ecc6abf06a8b1a4ec3a739f2af2f851223ceb7561d719937b2a",
+        "records_sha256": "061d4f1d392a13ae712e32388ead87d60f8f004d5f2b74b6e2b5c66d8d537243",
+        "signature_multiset_sha256": "44a74e06251a51dbd8cd5a242a5ebcf3d3b992c277c6a169f12529dbee8e24de"
+      },
+      "b": {
+        "collision_excess": 7084,
+        "distinct_signature_count": 7106,
+        "domain_count": 14190,
+        "domain_sha256": "b1d4d540f2036ecc6abf06a8b1a4ec3a739f2af2f851223ceb7561d719937b2a",
+        "records_sha256": "fe33b81582c12740f66933858abcc95ccaa941177088269a463a4eeb3bbbffe9",
+        "signature_multiset_sha256": "f4bc150e36347596dd3bb3836e1e783dbcfe109b8abcff6122d138fab8112d51"
+      },
+      "expected_domain_count_each_side": 14190,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 46
+    },
+    {
+      "a": {
+        "collision_excess": 7337,
+        "distinct_signature_count": 7843,
+        "domain_count": 15180,
+        "domain_sha256": "a804b601a4732b7663a1dfbf0197726dce480d1938ce4d0e7c838fac5b851da5",
+        "records_sha256": "d2cdfa3d9a2b9d9ee0805974e67a84674f89c2e4356b1cb0f03c241be098a845",
+        "signature_multiset_sha256": "c304eb1e0d57154f59ece318971e2f145ba377e7692ae42d8924be5c752f91c1"
+      },
+      "b": {
+        "collision_excess": 7590,
+        "distinct_signature_count": 7590,
+        "domain_count": 15180,
+        "domain_sha256": "a804b601a4732b7663a1dfbf0197726dce480d1938ce4d0e7c838fac5b851da5",
+        "records_sha256": "3eb9970c1ca2012cc873c7996ad7c94734484dff9f042761d0856fa17fe752db",
+        "signature_multiset_sha256": "a3b6ac808d1aa18870f1dd9822bdac5195e1780770b826ca98186f9412b2223e"
+      },
+      "expected_domain_count_each_side": 15180,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 47
+    },
+    {
+      "a": {
+        "collision_excess": 7850,
+        "distinct_signature_count": 8365,
+        "domain_count": 16215,
+        "domain_sha256": "0440ab5e47dafb35bae4e66b2abdb51b32f71ba4d3b3019ef6d8746e6e92a11d",
+        "records_sha256": "55757fbdf739d55863d8e9d5477a9d1b60c8729e4d638f75dbb2519a0c9ce61c",
+        "signature_multiset_sha256": "d23dbbe71cba15565e6065678dab64796515d025bebc5c6714cbb390f2e59f72"
+      },
+      "b": {
+        "collision_excess": 8096,
+        "distinct_signature_count": 8119,
+        "domain_count": 16215,
+        "domain_sha256": "0440ab5e47dafb35bae4e66b2abdb51b32f71ba4d3b3019ef6d8746e6e92a11d",
+        "records_sha256": "a0aac1555f982f2b96d1dacce89cceaf1922c5bff2c8e0a46b8060682ebe9a88",
+        "signature_multiset_sha256": "9f81b20dfb6e5569c32e2c156076d2a5e6ff2ae91b4b092e0cfd865047494e35"
+      },
+      "expected_domain_count_each_side": 16215,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 48
+    },
+    {
+      "a": {
+        "collision_excess": 8374,
+        "distinct_signature_count": 8922,
+        "domain_count": 17296,
+        "domain_sha256": "fb3da145c7b5dc721a6c988e4b5f2c4760bcd4fdd6a029c8c752448e0c5d7677",
+        "records_sha256": "4e066bd3a3df8e76233942f775e68b5c49da95f3b7350fae7e3801e093ec9385",
+        "signature_multiset_sha256": "54985e23fc49b124d0ed2463876fe9cab6f97f67a4e0b739af84bba50c93d879"
+      },
+      "b": {
+        "collision_excess": 8648,
+        "distinct_signature_count": 8648,
+        "domain_count": 17296,
+        "domain_sha256": "fb3da145c7b5dc721a6c988e4b5f2c4760bcd4fdd6a029c8c752448e0c5d7677",
+        "records_sha256": "51bcbca2fb2ee86117fc82e8ee2b6b54e61814b0036e2f306377e7d4d9a27166",
+        "signature_multiset_sha256": "a5c5e0cc263aecaf437efa2cabe1d4027587d0917cab64e9c9939d893dc41325"
+      },
+      "expected_domain_count_each_side": 17296,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 49
+    },
+    {
+      "a": {
+        "collision_excess": 8924,
+        "distinct_signature_count": 9500,
+        "domain_count": 18424,
+        "domain_sha256": "06cc6b1d2e203e6b377dfe51f3f85652740df2d886c258b67013deca9f277f8d",
+        "records_sha256": "301f9d7a4bd6ede9250e080f71af994011af85746cf817b60301ee0c1e2add62",
+        "signature_multiset_sha256": "be1612f7341e53d59cff0682d7cdbfe156d18c80748ce58b1725685ce3c551a0"
+      },
+      "b": {
+        "collision_excess": 9200,
+        "distinct_signature_count": 9224,
+        "domain_count": 18424,
+        "domain_sha256": "06cc6b1d2e203e6b377dfe51f3f85652740df2d886c258b67013deca9f277f8d",
+        "records_sha256": "92456d53e04fec79cd74f04726123df6c52b56210ff40485c2cee4e242489940",
+        "signature_multiset_sha256": "5ed8d53abb5cf92ab4772cde53a513ac68c8ef3f44a9e2671dc48cf5652fbbb6"
+      },
+      "expected_domain_count_each_side": 18424,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 50
+    },
+    {
+      "a": {
+        "collision_excess": 9508,
+        "distinct_signature_count": 10092,
+        "domain_count": 19600,
+        "domain_sha256": "20655edaff70b465b5af1c34d52a684fb7348f56f66f3a228dee1a180b89e2ae",
+        "records_sha256": "db3d520718c7f0f8d80f781d007b17342b056a926ac40c0d81bd4cdabba9290f",
+        "signature_multiset_sha256": "2b9163911b1fc36ac67afc93207d2fea5c10d9ffcecd7ee3369719d96155192e"
+      },
+      "b": {
+        "collision_excess": 9800,
+        "distinct_signature_count": 9800,
+        "domain_count": 19600,
+        "domain_sha256": "20655edaff70b465b5af1c34d52a684fb7348f56f66f3a228dee1a180b89e2ae",
+        "records_sha256": "f088b6ea4abb3ac5de941b2d3666703649a084433d2fd93f7135f910c9a985a9",
+        "signature_multiset_sha256": "fef072f30fbcafd06cced54b7e9fb2ddf57bb8f494b32aedfc6719820d48a334"
+      },
+      "expected_domain_count_each_side": 19600,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 51
+    },
+    {
+      "a": {
+        "collision_excess": 10101,
+        "distinct_signature_count": 10724,
+        "domain_count": 20825,
+        "domain_sha256": "3fb1fd585a9f228d05bfb61f2634120dd15fc25df64012ba4f0aa82bb440d7b8",
+        "records_sha256": "02f09d86fe6cdbeb67c72ce7dd71b325ce4542e0d03d144e41f00fbab7987eec",
+        "signature_multiset_sha256": "d6a4c3c48bbcb6b6990948fd58cac11c0088a616f25a2fef49df2f639c516d0d"
+      },
+      "b": {
+        "collision_excess": 10400,
+        "distinct_signature_count": 10425,
+        "domain_count": 20825,
+        "domain_sha256": "3fb1fd585a9f228d05bfb61f2634120dd15fc25df64012ba4f0aa82bb440d7b8",
+        "records_sha256": "5cbe7b61cb890a43df6f5c06a2981f96054cfe97acb47467af174c67939d57a8",
+        "signature_multiset_sha256": "697c07929342bdbb5839037c5db5092016bc4c163eca5c22429d281f4efe9995"
+      },
+      "expected_domain_count_each_side": 20825,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 52
+    },
+    {
+      "a": {
+        "collision_excess": 10726,
+        "distinct_signature_count": 11374,
+        "domain_count": 22100,
+        "domain_sha256": "d2ced0c422b57ebd58833a2d1e0901da099f38e834425856a9e27dba461b1bac",
+        "records_sha256": "ea98fba0958b9e3e2b8fe375bade5a45d7baa8c9171efed86514021d60e812cb",
+        "signature_multiset_sha256": "e278fadddadae617b6f1cbddc3d1d12bcb40d4c47f72a9778e4969f7930a8098"
+      },
+      "b": {
+        "collision_excess": 11050,
+        "distinct_signature_count": 11050,
+        "domain_count": 22100,
+        "domain_sha256": "d2ced0c422b57ebd58833a2d1e0901da099f38e834425856a9e27dba461b1bac",
+        "records_sha256": "deb2aeb3ff98ee389f51d49f6a754c7bf46b1a9bc1f50d2a0f89546fe3c927db",
+        "signature_multiset_sha256": "dafaabcb0ed3635b74bc3012093364bdb1396ea2b2542ba960eed429466ad96f"
+      },
+      "expected_domain_count_each_side": 22100,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 53
+    },
+    {
+      "a": {
+        "collision_excess": 11383,
+        "distinct_signature_count": 12043,
+        "domain_count": 23426,
+        "domain_sha256": "e69df5f61e58d59c34c2c0dd2f0ed99686bcb7e4850106796345527e2f3fe80f",
+        "records_sha256": "54d7e64f8547b446e9682e6b61cac19bec59db665f86faeb107c679d2750c52d",
+        "signature_multiset_sha256": "36356a1499ce1fcc712ad37200d0634102b460ca33fcf52b3643e8e21f50e2ea"
+      },
+      "b": {
+        "collision_excess": 11700,
+        "distinct_signature_count": 11726,
+        "domain_count": 23426,
+        "domain_sha256": "e69df5f61e58d59c34c2c0dd2f0ed99686bcb7e4850106796345527e2f3fe80f",
+        "records_sha256": "e6d9dcb169944e3131b76ea3ad51525964960f396630efcffc0afad698182685",
+        "signature_multiset_sha256": "15206d21a8320a30c303aa1a1d96cc9c138f9bba5bec70b0449bca57b142521b"
+      },
+      "expected_domain_count_each_side": 23426,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 54
+    },
+    {
+      "a": {
+        "collision_excess": 12051,
+        "distinct_signature_count": 12753,
+        "domain_count": 24804,
+        "domain_sha256": "6c40d52c465ef3e7b8651d50490d6c87590f975b1bef17454d7fce61aea22d4c",
+        "records_sha256": "9628312fa54af88f7c7f6d149eab93e5bc17672dedb4c34efcfed4aba7f524b2",
+        "signature_multiset_sha256": "bcd208e6dcc08dbd26eb1f353b6574866a0431544b7c28827b88c06d86c15449"
+      },
+      "b": {
+        "collision_excess": 12402,
+        "distinct_signature_count": 12402,
+        "domain_count": 24804,
+        "domain_sha256": "6c40d52c465ef3e7b8651d50490d6c87590f975b1bef17454d7fce61aea22d4c",
+        "records_sha256": "dde52bcde0774fd3b923e206148c2a2c13350f5182f86062802970c2920387ff",
+        "signature_multiset_sha256": "fa7e5613d62b1323a494b39efd0af49d85863747754076e003a4cfc523611a3e"
+      },
+      "expected_domain_count_each_side": 24804,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 55
+    },
+    {
+      "a": {
+        "collision_excess": 12753,
+        "distinct_signature_count": 13482,
+        "domain_count": 26235,
+        "domain_sha256": "4d2162ccd87927b839e563a4442036ca4a706ffa0967ec980384c2034cbe6bbc",
+        "records_sha256": "15681e868fb9eb82057c614a4efc121ebbae4823a820428c4b0af8a99f1cc80a",
+        "signature_multiset_sha256": "d09dc0a2268a9dd5d288438cb0a937d53ef23732554395ca7b2a6a71231326c5"
+      },
+      "b": {
+        "collision_excess": 13107,
+        "distinct_signature_count": 13128,
+        "domain_count": 26235,
+        "domain_sha256": "4d2162ccd87927b839e563a4442036ca4a706ffa0967ec980384c2034cbe6bbc",
+        "records_sha256": "cef35305761a34670239d5517cf9cc8032b092afde85501e43e91bfe1a608c18",
+        "signature_multiset_sha256": "ee1a70b142b739569ed2f7adb3f208c37d8b9a043df9124b1925b16e34be7851"
+      },
+      "expected_domain_count_each_side": 26235,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 56
+    },
+    {
+      "a": {
+        "collision_excess": 13491,
+        "distinct_signature_count": 14229,
+        "domain_count": 27720,
+        "domain_sha256": "f502a579cb573929e2d7a616177731dd6127cb3a776025652334b8f6484f72cd",
+        "records_sha256": "7192587c00002d64a0d9d33a6bced0efddbe79c78293d88c79ea3f5467d72bd5",
+        "signature_multiset_sha256": "9279ee4afd8262fbc69b901e27f3d9e857a8c58e758cbf642912090651ed2034"
+      },
+      "b": {
+        "collision_excess": 13860,
+        "distinct_signature_count": 13860,
+        "domain_count": 27720,
+        "domain_sha256": "f502a579cb573929e2d7a616177731dd6127cb3a776025652334b8f6484f72cd",
+        "records_sha256": "e686e7ece3871f1efb670a450eb70e3230ce4c305f097b72749620aaeb46d414",
+        "signature_multiset_sha256": "ca2e43d1a1a019a170030acf87db6e9fd96ad347bc27e88b064d414c2eeda412"
+      },
+      "expected_domain_count_each_side": 27720,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 57
+    },
+    {
+      "a": {
+        "collision_excess": 14238,
+        "distinct_signature_count": 15022,
+        "domain_count": 29260,
+        "domain_sha256": "c5b2d9da57abe555cbdeee600a8a440e6bb93aca8f6852081aceae9f38b4e323",
+        "records_sha256": "860ef91a29d37892ee4fb6dbcd923214fece6656533856eadd81b2b9f9d549fc",
+        "signature_multiset_sha256": "4719f780987ea6139f3baacd7a93c28a0c9fbc718a65c6f1aa7b166f0c4caf3e"
+      },
+      "b": {
+        "collision_excess": 14616,
+        "distinct_signature_count": 14644,
+        "domain_count": 29260,
+        "domain_sha256": "c5b2d9da57abe555cbdeee600a8a440e6bb93aca8f6852081aceae9f38b4e323",
+        "records_sha256": "115a1b1ec89dd0c1f9f7185722f95258ccae6e580da1df95519ef1d8db3f24a9",
+        "signature_multiset_sha256": "de6cd8dc08afe044b26a736412bca991c1fd9973f52e9ff2dc1c6cc90970ecbc"
+      },
+      "expected_domain_count_each_side": 29260,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 58
+    },
+    {
+      "a": {
+        "collision_excess": 15022,
+        "distinct_signature_count": 15834,
+        "domain_count": 30856,
+        "domain_sha256": "056de43de4559cea619612c513247356c2e9f5746edd12df2e00d4975113b7fb",
+        "records_sha256": "d7d0875bdfd58b3e60822e9fbce994f972233c15d56a26bc4db4fc46db865034",
+        "signature_multiset_sha256": "c19bebbe17b4b48037775fe65cda9636d4f8200de4bd9d3456c56db1f2ec47a2"
+      },
+      "b": {
+        "collision_excess": 15428,
+        "distinct_signature_count": 15428,
+        "domain_count": 30856,
+        "domain_sha256": "056de43de4559cea619612c513247356c2e9f5746edd12df2e00d4975113b7fb",
+        "records_sha256": "c821fb5d68bbde859a85112aa3b58db6f4bf36bc2023f096f26608c375227aa1",
+        "signature_multiset_sha256": "9074ff9e69041bc1e5329319521033f616f005d80d718a0251c518dff375cd17"
+      },
+      "expected_domain_count_each_side": 30856,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 59
+    },
+    {
+      "a": {
+        "collision_excess": 15843,
+        "distinct_signature_count": 16666,
+        "domain_count": 32509,
+        "domain_sha256": "e8343fd7fcc103b33dac4886bc25e4af4d1174213903928ed93d192aa37af0ae",
+        "records_sha256": "1893c94cbe4c5477701926cef6d1881f446028c0b60498e126a4ef8db7a5816b",
+        "signature_multiset_sha256": "20e1fbc83497e2712911c2e7508f58db32d8453ff0f49912bad6ce7b346d2db5"
+      },
+      "b": {
+        "collision_excess": 16240,
+        "distinct_signature_count": 16269,
+        "domain_count": 32509,
+        "domain_sha256": "e8343fd7fcc103b33dac4886bc25e4af4d1174213903928ed93d192aa37af0ae",
+        "records_sha256": "c56f460bace43d0883168c8a1c86c12b39d4408dd518541ba1c54ffb1f0c5288",
+        "signature_multiset_sha256": "61b7306ae7371568b16b4d6d61a0611fad88822f0c5e6efca4d47782b424d97f"
+      },
+      "expected_domain_count_each_side": 32509,
+      "match_count": 0,
+      "matches_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "orbit_count_under_allowed_involutions": 0,
+      "s": 60
+    },
+    {
+      "a": {
+        "collision_excess": 16675,
+        "distinct_signature_count": 17545,
+        "domain_count": 34220,
+        "domain_sha256": "a702d26eabfb353b691b51c2305a456735ba59aae21a52ef126aa5bbcd93486a",
+        "records_sha256": "f98d7bdfbee0919ea5456c81d43db399e643f5acb25e455f030d5228cd77db85",
+        "signature_multiset_sha256": "7173b1ad5a5abfff7601dbc1f0d3d4a150652daf3f2316f011b9a87cde79aa50"
+      },
+      "b": {
+        "collision_excess": 17110,
+        "distinct_signature_count": 17110,
+        "domain_count": 34220,
+        "domain_sha256": "a702d26eabfb353b691b51c2305a456735ba59aae21a52ef126aa5bbcd93486a",
+        "records_sha256": "6742aed054739af28145c2943141cccf5a9a8e1f05b6604f753769fb1967a9b9",
+        "signature_multiset_sha256": "20beaef3301c4bbe2a43cbb1f1a705b299f8fb3b51cbd1127774b3719b2a29fd"
+      },
+      "expected_domain_count_each_side": 34220,
+      "match_count": 4,
+      "matches_sha256": "f7f52b240dcb0deb6aee7755d48c64226109eb156754bed5ade1d8bf8ea1edf7",
+      "orbit_count_under_allowed_involutions": 1,
+      "s": 61
+    }
+  ],
+  "matches": [
+    {
+      "a": [
+        4,
+        9,
+        16,
+        32
+      ],
+      "b": [
+        1,
+        16,
+        8,
+        36
+      ],
+      "s": 61,
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    },
+    {
+      "a": [
+        4,
+        16,
+        9,
+        32
+      ],
+      "b": [
+        1,
+        16,
+        8,
+        36
+      ],
+      "s": 61,
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    },
+    {
+      "a": [
+        4,
+        9,
+        16,
+        32
+      ],
+      "b": [
+        36,
+        8,
+        16,
+        1
+      ],
+      "s": 61,
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    },
+    {
+      "a": [
+        4,
+        16,
+        9,
+        32
+      ],
+      "b": [
+        36,
+        8,
+        16,
+        1
+      ],
+      "s": 61,
+      "signature": [
+        61,
+        1116,
+        6912,
+        18432
+      ]
+    }
+  ],
+  "program": "evidence/enumerate_signatures.py",
+  "program_sha256": "e61328e6d80e57aed68437a54d50632ac2712b393894d9f6adb98552cf1ee3d4",
+  "randomness": "none",
+  "runtime": {
+    "implementation": "CPython",
+    "python": "3.10.12"
+  },
+  "schema": "p4-paw-exact-signature-join-v1",
+  "source_sha256": "8d8a6f5be118d806bdf9f54d67f6449d423a1d80b50779c1567b7c3d66262300",
+  "status": "complete"
+}

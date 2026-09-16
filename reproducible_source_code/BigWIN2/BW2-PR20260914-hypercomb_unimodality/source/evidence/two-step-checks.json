@@ -1,0 +1,109 @@
+{
+  "job_id": "primary-20260914-hypercomb-unimodality-research-c86b16750561",
+  "arithmetic": "arbitrary-precision integers; exact symbolic identities",
+  "proof": "evidence/two-step-mode-proof.md",
+  "domains": [
+    {
+      "ell": [
+        3,
+        16
+      ],
+      "n": [
+        2,
+        30
+      ],
+      "minor_test": "all pairs i<j"
+    },
+    {
+      "ell_values": [
+        17,
+        31,
+        101,
+        1009,
+        1000003
+      ],
+      "n": [
+        2,
+        80
+      ],
+      "minor_test": "adjacent minors plus interval-support endpoints"
+    },
+    {
+      "ell_values": [
+        3,
+        4,
+        5
+      ],
+      "n": [
+        31,
+        240
+      ],
+      "minor_test": "adjacent minors plus interval-support endpoints"
+    }
+  ],
+  "polynomials_tested": 1431,
+  "all_pair_minors": 1074276,
+  "adjacent_minors": 811455,
+  "closed_formula_comparisons": 87,
+  "mode_difference_range": [
+    0,
+    2
+  ],
+  "counterexamples": [],
+  "symbolic_checks": {
+    "sympy_version": "1.14.0",
+    "polynomial_identities": [
+      "factorization",
+      "first_cubic_minor",
+      "second_cubic_minor",
+      "second_minor_at_y1_uniform",
+      "initial_z1_uniform"
+    ],
+    "all_zero_residuals": true,
+    "second_minor_y_derivative": "-4*s**2*t"
+  },
+  "sharpness_witness": {
+    "ell": 5,
+    "n": 3,
+    "W": [
+      1,
+      28,
+      320,
+      1937,
+      6744,
+      13632,
+      14976,
+      6912
+    ],
+    "Y": [
+      0,
+      1,
+      16,
+      95,
+      248,
+      240
+    ],
+    "C": [
+      1,
+      29,
+      336,
+      2032,
+      6992,
+      13872,
+      14976,
+      6912
+    ],
+    "W_modes": [
+      6
+    ],
+    "Y_modes": [
+      4
+    ],
+    "mode_distance": 2,
+    "C_log_concave": true
+  },
+  "tie_and_zero_support_boundary_cases": 4,
+  "coefficient_stream_sha256": "cb578cbb8a89cfc42d6649ecae6ba0b13e0c7020423c0e7f3890b8e23a02969c",
+  "source_sha256": "66bd66f1a94163be3cb7f8929629c0f122d7f7490759017615c0d690a842773c",
+  "limitations": "Finite checks support the written all-parameter structural proof; they are not an exhaustive infinite verification or an independent referee. Extra test domains were selected after the proof was written in the same research context. Full hypercomb unimodality is not proved."
+}

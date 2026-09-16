@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "purpose": "finite exact obstruction to low-rank rational 2-kernel representations",
+  "sequence_definitions": {
+    "U": "U(q)=(a_(6q+1)-1)/4",
+    "V": "V(q)=(a_(12q+8)-1)/4",
+    "W": "W(q)=(a_(6q+3)+1)/4"
+  },
+  "row_definition": "rows (e,r), ordered by e then r, are s(2^e*q+r), 0<=e<level_count, 0<=r<2^e; columns are q=0,...,2^level_count-2",
+  "parameters": {
+    "min_level_count": 3,
+    "max_level_count": 10,
+    "primes": [
+      1000003,
+      1000033
+    ],
+    "recurrence_limit": 6285308,
+    "largest_dimension": 1023,
+    "maximum_q_index": 523775
+  },
+  "recurrence": {
+    "implementation": "direct signed XOR in guarded int64",
+    "maximum_conservative_step_bound": 134687092199,
+    "int64_max": 9223372036854775807,
+    "final_pair": [
+      48683866109,
+      56380893185
+    ]
+  },
+  "results": {
+    "U": {
+      "largest_matrix_sha256": "7601c87a66db7f0c731ce6e3ef8036bd6086c13935e7e72b760378173aecbbd9",
+      "boundary_tests": [
+        {
+          "level_count": 1,
+          "dimension": 1,
+          "determinants_mod_primes": {
+            "1000003": 0,
+            "1000033": 0
+          },
+          "all_nonzero": false
+        },
+        {
+          "level_count": 2,
+          "dimension": 3,
+          "determinants_mod_primes": {
+            "1000003": 999985,
+            "1000033": 1000015
+          },
+          "all_nonzero": true
+        }
+      ],
+      "tests": [
+        {
+          "level_count": 3,
+          "dimension": 7,
+          "determinants_mod_primes": {
+            "1000003": 862089,
+            "1000033": 741219
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 4,
+          "dimension": 15,
+          "determinants_mod_primes": {
+            "1000003": 870008,
+            "1000033": 846856
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 5,
+          "dimension": 31,
+          "determinants_mod_primes": {
+            "1000003": 783737,
+            "1000033": 812799
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 6,
+          "dimension": 63,
+          "determinants_mod_primes": {
+            "1000003": 455292,
+            "1000033": 473906
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 7,
+          "dimension": 127,
+          "determinants_mod_primes": {
+            "1000003": 258864,
+            "1000033": 177801
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 8,
+          "dimension": 255,
+          "determinants_mod_primes": {
+            "1000003": 50360,
+            "1000033": 426082
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 9,
+          "dimension": 511,
+          "determinants_mod_primes": {
+            "1000003": 864325,
+            "1000033": 244299
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 10,
+          "dimension": 1023,
+          "determinants_mod_primes": {
+            "1000003": 186018,
+            "1000033": 140595
+          },
+          "all_nonzero": true
+        }
+      ]
+    },
+    "V": {
+      "largest_matrix_sha256": "30fbebf6917b2b4667cdafe2002e3378e2ca11cffa0a336f9006799e1dda0c23",
+      "boundary_tests": [
+        {
+          "level_count": 1,
+          "dimension": 1,
+          "determinants_mod_primes": {
+            "1000003": 0,
+            "1000033": 0
+          },
+          "all_nonzero": false
+        },
+        {
+          "level_count": 2,
+          "dimension": 3,
+          "determinants_mod_primes": {
+            "1000003": 0,
+            "1000033": 0
+          },
+          "all_nonzero": false
+        }
+      ],
+      "tests": [
+        {
+          "level_count": 3,
+          "dimension": 7,
+          "determinants_mod_primes": {
+            "1000003": 96606,
+            "1000033": 578266
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 4,
+          "dimension": 15,
+          "determinants_mod_primes": {
+            "1000003": 247609,
+            "1000033": 104594
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 5,
+          "dimension": 31,
+          "determinants_mod_primes": {
+            "1000003": 298084,
+            "1000033": 686315
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 6,
+          "dimension": 63,
+          "determinants_mod_primes": {
+            "1000003": 721771,
+            "1000033": 600719
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 7,
+          "dimension": 127,
+          "determinants_mod_primes": {
+            "1000003": 921234,
+            "1000033": 416392
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 8,
+          "dimension": 255,
+          "determinants_mod_primes": {
+            "1000003": 881266,
+            "1000033": 772013
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 9,
+          "dimension": 511,
+          "determinants_mod_primes": {
+            "1000003": 752081,
+            "1000033": 501492
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 10,
+          "dimension": 1023,
+          "determinants_mod_primes": {
+            "1000003": 894978,
+            "1000033": 527157
+          },
+          "all_nonzero": true
+        }
+      ]
+    },
+    "W": {
+      "largest_matrix_sha256": "2b8ff10daa76bb6b7a05103baf2362594a76d381040443cb1b443e1916177acf",
+      "boundary_tests": [
+        {
+          "level_count": 1,
+          "dimension": 1,
+          "determinants_mod_primes": {
+            "1000003": 0,
+            "1000033": 0
+          },
+          "all_nonzero": false
+        },
+        {
+          "level_count": 2,
+          "dimension": 3,
+          "determinants_mod_primes": {
+            "1000003": 0,
+            "1000033": 0
+          },
+          "all_nonzero": false
+        }
+      ],
+      "tests": [
+        {
+          "level_count": 3,
+          "dimension": 7,
+          "determinants_mod_primes": {
+            "1000003": 891621,
+            "1000033": 889431
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 4,
+          "dimension": 15,
+          "determinants_mod_primes": {
+            "1000003": 933578,
+            "1000033": 206868
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 5,
+          "dimension": 31,
+          "determinants_mod_primes": {
+            "1000003": 745708,
+            "1000033": 132844
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 6,
+          "dimension": 63,
+          "determinants_mod_primes": {
+            "1000003": 352719,
+            "1000033": 439446
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 7,
+          "dimension": 127,
+          "determinants_mod_primes": {
+            "1000003": 975318,
+            "1000033": 325090
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 8,
+          "dimension": 255,
+          "determinants_mod_primes": {
+            "1000003": 13703,
+            "1000033": 263185
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 9,
+          "dimension": 511,
+          "determinants_mod_primes": {
+            "1000003": 580122,
+            "1000033": 393730
+          },
+          "all_nonzero": true
+        },
+        {
+          "level_count": 10,
+          "dimension": 1023,
+          "determinants_mod_primes": {
+            "1000003": 246453,
+            "1000033": 74698
+          },
+          "all_nonzero": true
+        }
+      ]
+    }
+  },
+  "proved_finite_consequence": "Each of U,V,W has rational 2-kernel rank at least 1023.",
+  "limitations": [
+    "Finite rank 1023 does not prove infinite 2-kernel rank or non-2-regularity.",
+    "The result does not exclude nonlinear finite-state or unbounded-carry descriptions.",
+    "It does not resolve any of the three universal unit-value classifications."
+  ],
+  "python": "3.10.12",
+  "numpy": "2.2.6"
+}

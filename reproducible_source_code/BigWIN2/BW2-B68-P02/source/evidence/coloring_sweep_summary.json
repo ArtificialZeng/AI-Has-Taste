@@ -1,0 +1,80 @@
+{
+  "epistemic_status": "Every SAT row includes a coloring checked directly. UNSAT rows are solver observations, not certificates and not mathematical conclusions.",
+  "orders": [
+    {
+      "A_sat_after_E_unsat": 0,
+      "A_unsat": 1,
+      "E_sat": 0,
+      "E_unsat": 1,
+      "graphs": 1,
+      "n": 4,
+      "seconds": 0.001239
+    },
+    {
+      "A_sat_after_E_unsat": 0,
+      "A_unsat": 1,
+      "E_sat": 1,
+      "E_unsat": 1,
+      "graphs": 2,
+      "n": 6,
+      "seconds": 0.003109
+    },
+    {
+      "A_sat_after_E_unsat": 0,
+      "A_unsat": 1,
+      "E_sat": 4,
+      "E_unsat": 1,
+      "graphs": 5,
+      "n": 8,
+      "seconds": 0.010969
+    },
+    {
+      "A_sat_after_E_unsat": 0,
+      "A_unsat": 10,
+      "E_sat": 9,
+      "E_unsat": 10,
+      "graphs": 19,
+      "n": 10,
+      "seconds": 0.091347
+    },
+    {
+      "A_sat_after_E_unsat": 0,
+      "A_unsat": 25,
+      "E_sat": 60,
+      "E_unsat": 25,
+      "graphs": 85,
+      "n": 12,
+      "seconds": 0.474302
+    },
+    {
+      "A_sat_after_E_unsat": 0,
+      "A_unsat": 48,
+      "E_sat": 461,
+      "E_unsat": 48,
+      "graphs": 509,
+      "n": 14,
+      "seconds": 2.832895
+    },
+    {
+      "A_sat_after_E_unsat": 16,
+      "A_unsat": 227,
+      "E_sat": 3817,
+      "E_unsat": 243,
+      "graphs": 4060,
+      "n": 16,
+      "seconds": 32.871512
+    }
+  ],
+  "scope": "orders <= 16",
+  "script": "evidence/scripts/sweep_colorings.py",
+  "seconds": 36.287576,
+  "solver": "PySAT cadical195",
+  "totals": {
+    "A_sat_after_E_unsat": 16,
+    "A_unsat": 313,
+    "E_sat": 4352,
+    "E_unsat": 329
+  },
+  "witness_file": "evidence/coloring_witnesses.jsonl",
+  "witness_file_sha256": "56253560e01bf122eec25b56f9b52e3989726f406eb29f9a910be76d4e3960b5"
+}

@@ -1,0 +1,61 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260913-chen-ulc-failure-release-6faab700d5ab",
+  "citation_attempt": 2,
+  "citation_release_launch_id": "efe2192d-0671-4b15-8b62-77098852a806",
+  "checked_at_utc": "2026-09-12T22:57:21.251568+00:00",
+  "snapshot_digest": "4556257bb02194676513831cafeed05699982a8fd956a67820a92eda025f8ae5",
+  "manuscript_digest": "3ceea70d8cc6150305a1e7803d7c68e99dca884218ce450049e222720edc65fc",
+  "pdf_digest": "5a8c9b3de7676d91dac6e3836d8d4b43d2fe8301c99567a45480fbc9af995028",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "render_command": "pdftoppm -png -r 140 manuscript/build/main.pdf audit/release-6faab700d5ab/render/page",
+  "inspection_method": "All five raster page images were opened and visually inspected in this fresh release context using view_image.",
+  "pages": [
+    {
+      "page": 1,
+      "image": "audit/release-6faab700d5ab/render/page-1.png",
+      "sha256": "ab43b03ac7d3bcf0efdc94ed3077fa26fe3bcbd7f161c7ca6dff18345964ffbd",
+      "actually_viewed": true,
+      "finding": "Title, abstract, family definitions, normalization, Theorem 1 and affiliation footnote are legible; the full theorem fits without overlap."
+    },
+    {
+      "page": 2,
+      "image": "audit/release-6faab700d5ab/render/page-2.png",
+      "sha256": "6924eb2100a8b2516bfe58b9980def44f617101b71018768895d141b55642f35",
+      "actually_viewed": true,
+      "finding": "Versioned prior-work qualification, Wang–Zhu citation, Lemma 2, reflection, auxiliary determinant, base and moment step are clear; equation (9) remains inside the bottom margin."
+    },
+    {
+      "page": 3,
+      "image": "audit/release-6faab700d5ab/render/page-3.png",
+      "sha256": "6edcd789a028f6490f8cb7a74d7ec92081da21a9bab7e5def6e75428426ab232",
+      "actually_viewed": true,
+      "finding": "Induction identity and coefficient proof are legible; wide geometric sums and top coefficients fit; equation (17) does not overlap the footer."
+    },
+    {
+      "page": 4,
+      "image": "audit/release-6faab700d5ab/render/page-4.png",
+      "sha256": "cb5045b654b579f447d6d28cd7acb8f8a63fcf5b2ff020bfa0e1b1eb5215b18e",
+      "actually_viewed": true,
+      "finding": "Coefficient-integral reduction, parameter range, boundary example, exact-check counts and library citation are clear; equations (18)–(21) fit without clipping."
+    },
+    {
+      "page": 5,
+      "image": "audit/release-6faab700d5ab/render/page-5.png",
+      "sha256": "f472aeb1e3401ee8be52f51eaf02693a35fbd3c8208082397a59f90057d4a00d",
+      "actually_viewed": true,
+      "finding": "AI/computational disclosure and all six bibliography entries are legible. Accented names and complete long author list render correctly; URLs wrap inside the margins."
+    }
+  ],
+  "clipping": false,
+  "overlaps": false,
+  "illegible_content": false,
+  "charts_tables_diagrams": 0
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "candidate_kind": "resolution-paper",
+  "original_status": "proved",
+  "title": "An Exact Hall-Universality Census Through Six Vertices",
+  "main_tex": "manuscript/main.tex",
+  "bibliography": [
+    "manuscript/references.bib"
+  ],
+  "figures": [],
+  "pdf": "manuscript/main.pdf",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "supplementary_files": [
+    "evidence/generate_reps.py",
+    "evidence/representatives.tsv",
+    "evidence/census_numba.py",
+    "evidence/census_exact.tsv",
+    "evidence/classify_source_families.py",
+    "evidence/census_classification.tsv",
+    "evidence/make_manifest.py",
+    "evidence/census_manifest.json",
+    "evidence/verify_census.py",
+    "evidence/verification.json"
+  ]
+}

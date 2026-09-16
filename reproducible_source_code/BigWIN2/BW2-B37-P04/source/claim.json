@@ -1,0 +1,24 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "Let p_n be the nth prime, let a_0=0, and define a_n=oddpart(a_(n-1)+p_n) for n>=1. Then a_n is not equal to 1 for every integer n satisfying 78,493,252<n<=100,000,000.",
+  "contribution": "A reproducible exhaustive exact finite exclusion resolving the frozen task's negative branch. Two separately implemented prime-enumeration and recurrence paths replay from a_0=0, agree on all 100 periodic checkpoints and the complete hit list through 100,000,000, and find no hit in the target interval. No priority claim or assertion beyond 100,000,000 is made.",
+  "proposer_job_id": "win-00037-p04-research-3ba277764c56",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/exact_certificate.md",
+    "evidence/path_a_numpy.py",
+    "evidence/path_b_numba.py",
+    "evidence/compare_exact_runs.py",
+    "evidence/anchor_path_a.json",
+    "evidence/anchor_path_b.json",
+    "evidence/anchor_comparison.json",
+    "evidence/full_path_a.json",
+    "evidence/full_path_b.json",
+    "evidence/full_comparison.json",
+    "evidence/stress_path_a.json",
+    "evidence/stress_path_b.json",
+    "evidence/stress_comparison.json"
+  ]
+}

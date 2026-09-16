@@ -1,0 +1,285 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={Eventual Strict Positivity for the Two e=6 Charged-Core Series},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+
+\title{Eventual Strict Positivity for the Two \texorpdfstring{$e=6$}{e=6}
+Charged-Core Series}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Gerber and Norton reduced the remaining level-two, charge-six case of their
+charged-core positivity conjecture to strict coefficientwise positivity of
+two series, $c_{6,(0,1)}(q)$ and $c_{6,(0,3)}(q)$, and reported finite
+computational support.  We prove the restricted all-orders statement that
+each series has only finitely many zero coefficients.  The argument gives an
+exact decomposition into shifted rank-five $A_5$ theta series, proves local
+representation at every prime using two parity-selected cosets for each
+charge, and invokes the rank-at-least-five asymptotic theorem of Chan and Oh
+for integral quadratic cosets.  The resulting cutoff is ineffective here.
+Consequently the original assertion of strict positivity in every degree
+remains unresolved.
+\end{abstract}
+
+\section{Statement and context}
+
+For a partition $\lambda$ and an integer charge $s$, use the beta-set
+convention
+\[
+ S(\lambda,s)=\{\lambda_k-k+1+s:k\geq 1\}.
+\]
+Following Gerber--Norton \cite{GerberNorton2026}, a bipartition
+$\boldsymbol\lambda=(\lambda^{(1)},\lambda^{(2)})$ is a
+$(6,(0,a))$-core, for $a\in\{1,3\}$, when
+\[
+ S(\lambda^{(1)},0)\subseteq S(\lambda^{(2)},a)
+ \subseteq S(\lambda^{(1)},6).
+\]
+Write
+\[
+ c_{6,(0,a)}(q)=\sum_{n\geq 0}c_{6,(0,a)}(n)q^n,
+\]
+where $c_{6,(0,a)}(n)$ counts such bipartitions of total size $n$.
+The coefficients are therefore nonnegative integers; the substantive source
+question is whether they are strictly positive in every degree.
+
+Gerber and Norton state this question as the $e=6$ remainder of their
+Conjecture~3.10 and mark both series as conjecturally positive in their
+Theorem~5.6 \cite{GerberNorton2026}.  Their identity
+\[
+ \phi(q)c_3(q)^2=c_{6,(0,3)}(q)+2q\,c_{6,(0,1)}(q)
+\]
+controls a weighted sum but does not force positivity of either summand.
+Our contribution is the following finite-exception theorem.  It neither
+supplies a cutoff nor settles the remaining finite range.
+
+\begin{theorem}\label{thm:main}
+For each $a\in\{1,3\}$ there is an integer $N_a$ such that
+\[
+ c_{6,(0,a)}(n)>0\qquad(n\geq N_a).
+\]
+Equivalently, each of the two coefficient sequences has only finitely many
+zeros.
+\end{theorem}
+
+\section{An exact rank-five theta decomposition}
+
+Let $A_5=\{u\in\Z^6:\sum_{r=1}^6u_r=0\}$.  If
+$\varepsilon=(\varepsilon_1,\ldots,\varepsilon_6)\in\{0,1\}^6$ has weight
+$a$, define on $A_5$
+\begin{equation}\label{eq:Q}
+ Q_\varepsilon(u)=
+ \sum_{r=1}^6\left(6u_r^2+2(r-3)u_r
+       +\varepsilon_r(6u_r+r)\right)-\frac{a(a+1)}2.
+\end{equation}
+
+\begin{proposition}\label{prop:theta}
+For $a\in\{1,3\}$ one has the identity of formal power series
+\begin{equation}\label{eq:theta}
+ c_{6,(0,a)}(q)=
+ \sum_{\substack{\varepsilon\in\{0,1\}^6\\ |\varepsilon|=a}}
+ \ \sum_{u\in A_5}q^{Q_\varepsilon(u)}.
+\end{equation}
+In particular, $c_{6,(0,a)}(n)>0$ whenever one of the polynomials
+$Q_\varepsilon$ represents $n$ over $\Z$.
+\end{proposition}
+
+\begin{proof}
+We make the inverse level-rank calculation explicit.  Write a source abacus
+position as $k=6m+r$, with $1\leq r\leq6$.  Under the level-two/level-six
+map of \cite[Section~2.2]{GerberNorton2026}, a bead in source row $1$ maps
+to column $2m+2$ of target row $r$, while a bead in source row $2$ maps to
+column $2m+1$.  The beta set of the empty partition of charge $t_r$ consists
+of all columns at most $t_r$.  Its inverse therefore has residue cutoffs
+\[
+ M_{1,r}=\left\lfloor\frac{t_r-2}{2}\right\rfloor,
+ \qquad
+ M_{2,r}=\left\lfloor\frac{t_r-1}{2}\right\rfloor.
+\]
+Write uniquely $t_r=2u_r+\varepsilon_r$, with
+$\varepsilon_r\in\{0,1\}$.  Then $M_{1,r}=u_r-1$ and
+$M_{2,r}=u_r+\varepsilon_r-1$.  Since a six-residue cutoff beta set has
+charge $\sum_r(M_r+1)$, the inverse has charge $(0,a)$ exactly when
+\[
+ \sum_ru_r=0,\qquad \sum_r\varepsilon_r=a.
+\]
+Definition~2.8 and the charge-preserving level-rank bijection of
+\cite{GerberNorton2026} show that this parametrization is bijective.
+
+For completeness, the regularized beta-set energy contributed by the cutoff
+$\{6m+r:m\leq M\}$ is
+\[
+ (M+1)(3M+r).
+\]
+For a beta set of charge $s$, its total energy is
+$|\lambda|+s(s+1)/2$.  Substituting the two cutoff vectors above and the
+charges $0,a$ gives exactly \eqref{eq:Q}.  Summing over the bijective
+parameters proves \eqref{eq:theta}.
+\end{proof}
+
+The representation problem has a useful centered form.  Put
+\[
+ d=(-2,-1,0,1,2,3),\qquad
+ x=6u+3\varepsilon+d.
+\]
+A direct expansion of \eqref{eq:Q} gives
+\begin{equation}\label{eq:sixsquare}
+ \sum_{r=1}^6x_r=3(a+1),\qquad
+ \sum_{r=1}^6x_r^2=6Q_\varepsilon(u)+C_a,
+ \quad C_1=16,\ C_3=28.
+\end{equation}
+Center the affine hyperplane by setting
+\[
+ v_\varepsilon=3\varepsilon+d-\frac{a+1}{2}(1,1,1,1,1,1),
+ \qquad M=6A_5.
+\]
+Both $v_\varepsilon$ and $M$ lie in
+$V=\{y\in\mathbb Q^6:\sum_ry_r=0\}$.  With
+$Q(y)=\sum_ry_r^2$, equation \eqref{eq:sixsquare} becomes
+\begin{equation}\label{eq:centered}
+ Q(6u+v_\varepsilon)=6Q_\varepsilon(u)+D_a,
+ \qquad D_1=10,\quad D_3=4.
+\end{equation}
+Thus $M+v_\varepsilon$ is an integral positive-definite quadratic coset of
+rank five.
+
+\section{Local representation}
+
+We next isolate four cosets.  We identify a binary vector with its support.
+
+\begin{lemma}\label{lem:local}
+For every $n\in\N$, choose $\varepsilon$ by the following table.
+\[
+\begin{array}{c@{\qquad}cc}
+\toprule
+ & n\text{ even} & n\text{ odd}\\
+\midrule
+a=1 & \{1\} & \{2\}\\
+a=3 & \{1,2,3\} & \{1,2,4\}\\
+\bottomrule
+\end{array}
+\]
+Then $Q_\varepsilon(u)=n$ is soluble with $u\in A_5\otimes\Z_p$ for every
+prime $p$.
+\end{lemma}
+
+\begin{proof}
+Eliminate $u_6$ by $u_6=-\sum_{i=1}^5u_i$.  For $p\geq5$, the quadratic
+part of $Q_\varepsilon$ has matrix
+\[
+ 6(I_5+J_5),\qquad \det(6(I_5+J_5))=6^6,
+\]
+and is nondegenerate over $\F_p$.  Completing the square reduces to a
+nondegenerate quadratic form in five variables.  Such a form over a finite
+field of odd order is isotropic and contains a hyperbolic plane, so every
+field element, including zero, has a nonsingular representative.  Hensel
+lifting gives representation of every element of $\Z_p$.
+
+At $p=3$, differentiation after eliminating $u_6$ gives
+\[
+ \frac{\partial Q_\varepsilon}{\partial u_i}
+ =12(u_i-u_6)+2(i-6)+6(\varepsilon_i-\varepsilon_6)
+ \equiv 2i\pmod3.
+\]
+The reduction is therefore a surjective affine function with a unit partial
+derivative.  Again every $3$-adic target lifts.
+
+It remains to choose the dyadic coset.  Set
+\[
+ C_\varepsilon=\sum_{r=1}^6r\varepsilon_r-\frac{a(a+1)}2.
+\]
+Then $Q_\varepsilon=C_\varepsilon+2F_\varepsilon$ for an integral
+quadratic polynomial, and
+\begin{equation}\label{eq:gradient}
+ \frac{\partial F_\varepsilon}{\partial u_i}
+ \equiv i+\varepsilon_i+\varepsilon_6\pmod2,
+ \qquad 1\leq i\leq5.
+\end{equation}
+For each of the four displayed supports, this gradient is nonzero.  Hence
+$F_\varepsilon$ represents both residues modulo $2$ at a point with a unit
+partial derivative and consequently represents every element of $\Z_2$.
+Moreover, $C_\varepsilon$ is even for the two cosets in the even column and
+odd for the two cosets in the odd column.  Therefore the parity-selected
+$Q_\varepsilon$ represents $n$ over $\Z_2$, completing the proof.
+\end{proof}
+
+For later reference, the four centered shifts in the order used in
+Lemma~\ref{lem:local} are
+\begin{align*}
+ a=1, \varepsilon=\{1\}:&\quad (0,-2,-1,0,1,2),\\
+ a=1, \varepsilon=\{2\}:&\quad (-3,1,-1,0,1,2),\\
+ a=3, \varepsilon=\{1,2,3\}:&\quad (-1,0,1,-1,0,1),\\
+ a=3, \varepsilon=\{1,2,4\}:&\quad (-1,0,-2,2,0,1).
+\end{align*}
+
+\section{The asymptotic passage to integral representations}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Fix $a$ and the parity of $n$, and let $M+v_\varepsilon$ be the corresponding
+coset above.  Lemma~\ref{lem:local} and \eqref{eq:centered} show that this
+coset represents the positive integer $6n+D_a$ over $\Z_p$ at every finite
+place.  At the real place the positive-definite space $(V,Q)$ represents
+every positive real number.  Thus the genus of $M+v_\varepsilon$ represents
+$6n+D_a$.
+
+Chan and Oh's Theorem~4.9(1) \cite{ChanOh2012} applies to an integral coset
+on a positive-definite quadratic space over a totally real field.  In
+dimension at least five it says that a nonzero target represented by the
+genus is represented by the fixed coset once its field norm exceeds a
+constant depending only on that coset.  Here the field is $\mathbb Q$,
+$M=6A_5$ has rank five, and the target $6n+D_a$ tends to infinity.  Apply the
+theorem separately to the even and odd cosets for $a=1$ and $a=3$.  Taking
+the relevant maxima of the four coset-dependent constants gives integers
+$N_1,N_3$ such that, for $n\geq N_a$, the selected coset contains a vector
+of norm $6n+D_a$.  By \eqref{eq:centered}, $Q_\varepsilon$ then represents
+$n$ integrally.  Proposition~\ref{prop:theta} yields
+$c_{6,(0,a)}(n)>0$.
+\end{proof}
+
+\section{Finite checks, limitations, and assistance}
+
+Exact enumeration of \eqref{eq:theta} found no zero coefficient for either
+series through degree $100$.  Through degree $40$, the coefficients also
+agree with an independent enumeration based directly on nested beta sets.
+These computations check the algebra and the implementation only; they are
+not used to infer the all-orders conclusion.  Keeping an exact implementation
+separate from an unresolved unrestricted parent assertion is also the
+reproducibility pattern used, in a different reconstruction setting, by
+Zeng \cite{Zeng2026MultiplicityArxiv}: there the exact cut-partition
+implementation accompanies a partial theorem while the unrestricted
+diameter-six case remains unresolved.
+
+The present proof is ineffective because the cited Chan--Oh theorem does not
+provide a usable value of its coset-dependent constant here.  Consequently
+the finite computation through degree $100$ cannot be joined to the
+asymptotic argument to prove positivity in every degree.  The original two
+strict coefficientwise assertions therefore remain unresolved.
+
+OpenAI Codex assisted with algebraic derivations, exact enumeration and
+local-congruence scripts, and manuscript drafting.  The finite computations
+used integer arithmetic.  The all-orders conclusion rests on the displayed
+symbolic argument and the cited Chan--Oh theorem, not on numerical fitting or
+AI-generated empirical evidence.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

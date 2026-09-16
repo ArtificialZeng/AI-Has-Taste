@@ -1,0 +1,1545 @@
+{
+  "job_id": "newwin-00001-p08-triage-3c7429bdb0aa",
+  "python": "3.10.12",
+  "domain": "exact integers and rationals",
+  "source_sha256": "e6b61e96d2298cfd85d301038ae9142fc908f4efaee7c7ab1638993c5cbf7696",
+  "handoff_files": [],
+  "formula_scope": {
+    "m": [
+      2,
+      4
+    ],
+    "n": [
+      1,
+      8
+    ],
+    "k": "all 1..n"
+  },
+  "tested_polynomials": 108,
+  "fresh_dynamic_programming_match": true,
+  "saved_table_match": true,
+  "ordinary_scalar_identity_match": true,
+  "decomposition_scope": {
+    "m": [
+      2,
+      4
+    ],
+    "n": [
+      1,
+      4
+    ],
+    "coverage": "all admissible words"
+  },
+  "decomposition_words": 564,
+  "decomposition_case_counts": {
+    "extra_peaks=1,extra_nne=1": 239,
+    "extra_peaks=0,extra_nne=0": 179,
+    "extra_peaks=1,extra_nne=0": 146
+  },
+  "word_counts": [
+    {
+      "m": 2,
+      "n": 1,
+      "words": 1
+    },
+    {
+      "m": 2,
+      "n": 2,
+      "words": 3
+    },
+    {
+      "m": 2,
+      "n": 3,
+      "words": 12
+    },
+    {
+      "m": 2,
+      "n": 4,
+      "words": 55
+    },
+    {
+      "m": 3,
+      "n": 1,
+      "words": 1
+    },
+    {
+      "m": 3,
+      "n": 2,
+      "words": 4
+    },
+    {
+      "m": 3,
+      "n": 3,
+      "words": 22
+    },
+    {
+      "m": 3,
+      "n": 4,
+      "words": 140
+    },
+    {
+      "m": 4,
+      "n": 1,
+      "words": 1
+    },
+    {
+      "m": 4,
+      "n": 2,
+      "words": 5
+    },
+    {
+      "m": 4,
+      "n": 3,
+      "words": 35
+    },
+    {
+      "m": 4,
+      "n": 4,
+      "words": 285
+    }
+  ],
+  "failures": [],
+  "rows": [
+    {
+      "m": 2,
+      "n": 1,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 3,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 2,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 5,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 2,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        1,
+        1
+      ],
+      "ordinary_size": 5,
+      "ordinary_scalar": "1/5"
+    },
+    {
+      "m": 2,
+      "n": 3,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 7,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 3,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        2,
+        4
+      ],
+      "ordinary_size": 7,
+      "ordinary_scalar": "2/7"
+    },
+    {
+      "m": 2,
+      "n": 3,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        1,
+        3,
+        1
+      ],
+      "ordinary_size": 7,
+      "ordinary_scalar": "1/21"
+    },
+    {
+      "m": 2,
+      "n": 4,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 9,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 4,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        3,
+        9
+      ],
+      "ordinary_size": 9,
+      "ordinary_scalar": "1/3"
+    },
+    {
+      "m": 2,
+      "n": 4,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        3,
+        15,
+        10
+      ],
+      "ordinary_size": 9,
+      "ordinary_scalar": "1/12"
+    },
+    {
+      "m": 2,
+      "n": 4,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        1,
+        6,
+        6,
+        1
+      ],
+      "ordinary_size": 9,
+      "ordinary_scalar": "1/84"
+    },
+    {
+      "m": 2,
+      "n": 5,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 11,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 5,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        4,
+        16
+      ],
+      "ordinary_size": 11,
+      "ordinary_scalar": "4/11"
+    },
+    {
+      "m": 2,
+      "n": 5,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        6,
+        42,
+        42
+      ],
+      "ordinary_size": 11,
+      "ordinary_scalar": "6/55"
+    },
+    {
+      "m": 2,
+      "n": 5,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        4,
+        36,
+        60,
+        20
+      ],
+      "ordinary_size": 11,
+      "ordinary_scalar": "4/165"
+    },
+    {
+      "m": 2,
+      "n": 5,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        1,
+        10,
+        20,
+        10,
+        1
+      ],
+      "ordinary_size": 11,
+      "ordinary_scalar": "1/330"
+    },
+    {
+      "m": 2,
+      "n": 6,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 6,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        5,
+        25
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "5/13"
+    },
+    {
+      "m": 2,
+      "n": 6,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        10,
+        90,
+        120
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "5/39"
+    },
+    {
+      "m": 2,
+      "n": 6,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        10,
+        120,
+        280,
+        140
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "5/143"
+    },
+    {
+      "m": 2,
+      "n": 6,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        5,
+        70,
+        210,
+        175,
+        35
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1/143"
+    },
+    {
+      "m": 2,
+      "n": 6,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        1,
+        15,
+        50,
+        50,
+        15,
+        1
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1/1287"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        6,
+        36
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "2/5"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        15,
+        165,
+        275
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "1/7"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        20,
+        300,
+        900,
+        600
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "4/91"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        15,
+        270,
+        1080,
+        1260,
+        378
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "1/91"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        6,
+        120,
+        560,
+        840,
+        420,
+        56
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "2/1001"
+    },
+    {
+      "m": 2,
+      "n": 7,
+      "k": 7,
+      "coefficients_ascending": [
+        0,
+        1,
+        21,
+        105,
+        175,
+        105,
+        21,
+        1
+      ],
+      "ordinary_size": 15,
+      "ordinary_scalar": "1/5005"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        7,
+        49
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "7/17"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        21,
+        273,
+        546
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "21/136"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        35,
+        630,
+        2310,
+        1925
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "7/136"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        35,
+        770,
+        3850,
+        5775,
+        2310
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "1/68"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        21,
+        525,
+        3150,
+        6300,
+        4410,
+        882
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "3/884"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 7,
+      "coefficients_ascending": [
+        0,
+        7,
+        189,
+        1260,
+        2940,
+        2646,
+        882,
+        84
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "1/1768"
+    },
+    {
+      "m": 2,
+      "n": 8,
+      "k": 8,
+      "coefficients_ascending": [
+        0,
+        1,
+        28,
+        196,
+        490,
+        490,
+        196,
+        28,
+        1
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "1/19448"
+    },
+    {
+      "m": 3,
+      "n": 1,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 4,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 2,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 7,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 2,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        1,
+        2
+      ],
+      "ordinary_size": 7,
+      "ordinary_scalar": "1/7"
+    },
+    {
+      "m": 3,
+      "n": 3,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 10,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 3,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        2,
+        7
+      ],
+      "ordinary_size": 10,
+      "ordinary_scalar": "1/5"
+    },
+    {
+      "m": 3,
+      "n": 3,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        1,
+        6,
+        5
+      ],
+      "ordinary_size": 10,
+      "ordinary_scalar": "1/45"
+    },
+    {
+      "m": 3,
+      "n": 4,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 4,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        3,
+        15
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "3/13"
+    },
+    {
+      "m": 3,
+      "n": 4,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        3,
+        27,
+        36
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1/26"
+    },
+    {
+      "m": 3,
+      "n": 4,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        1,
+        12,
+        28,
+        14
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1/286"
+    },
+    {
+      "m": 3,
+      "n": 5,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 16,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 5,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        4,
+        26
+      ],
+      "ordinary_size": 16,
+      "ordinary_scalar": "1/4"
+    },
+    {
+      "m": 3,
+      "n": 5,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        6,
+        72,
+        132
+      ],
+      "ordinary_size": 16,
+      "ordinary_scalar": "1/20"
+    },
+    {
+      "m": 3,
+      "n": 5,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        4,
+        66,
+        220,
+        165
+      ],
+      "ordinary_size": 16,
+      "ordinary_scalar": "1/140"
+    },
+    {
+      "m": 3,
+      "n": 5,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        1,
+        20,
+        90,
+        120,
+        42
+      ],
+      "ordinary_size": 16,
+      "ordinary_scalar": "1/1820"
+    },
+    {
+      "m": 3,
+      "n": 6,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 19,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 6,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        5,
+        40
+      ],
+      "ordinary_size": 19,
+      "ordinary_scalar": "5/19"
+    },
+    {
+      "m": 3,
+      "n": 6,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        10,
+        150,
+        350
+      ],
+      "ordinary_size": 19,
+      "ordinary_scalar": "10/171"
+    },
+    {
+      "m": 3,
+      "n": 6,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        10,
+        210,
+        910,
+        910
+      ],
+      "ordinary_size": 19,
+      "ordinary_scalar": "10/969"
+    },
+    {
+      "m": 3,
+      "n": 6,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        5,
+        130,
+        780,
+        1430,
+        715
+      ],
+      "ordinary_size": 19,
+      "ordinary_scalar": "5/3876"
+    },
+    {
+      "m": 3,
+      "n": 6,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        1,
+        30,
+        220,
+        550,
+        495,
+        132
+      ],
+      "ordinary_size": 19,
+      "ordinary_scalar": "1/11628"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        6,
+        57
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "3/11"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        15,
+        270,
+        765
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "5/77"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        20,
+        510,
+        2720,
+        3400
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "1/77"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        15,
+        480,
+        3600,
+        8400,
+        5460
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "3/1463"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        6,
+        225,
+        2100,
+        6825,
+        8190,
+        3003
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "1/4389"
+    },
+    {
+      "m": 3,
+      "n": 7,
+      "k": 7,
+      "coefficients_ascending": [
+        0,
+        1,
+        42,
+        455,
+        1820,
+        3003,
+        2002,
+        429
+      ],
+      "ordinary_size": 22,
+      "ordinary_scalar": "1/74613"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        7,
+        77
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "7/25"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        21,
+        441,
+        1470
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "7/100"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        35,
+        1050,
+        6650,
+        9975
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "7/460"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        35,
+        1330,
+        11970,
+        33915,
+        27132
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "7/2530"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        21,
+        945,
+        10710,
+        42840,
+        64260,
+        29988
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/2530"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 7,
+      "coefficients_ascending": [
+        0,
+        7,
+        357,
+        4760,
+        23800,
+        49980,
+        43316,
+        12376
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/25300"
+    },
+    {
+      "m": 3,
+      "n": 8,
+      "k": 8,
+      "coefficients_ascending": [
+        0,
+        1,
+        56,
+        840,
+        4900,
+        12740,
+        15288,
+        8008,
+        1430
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/480700"
+    },
+    {
+      "m": 4,
+      "n": 1,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 5,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 2,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 9,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 2,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        1,
+        3
+      ],
+      "ordinary_size": 9,
+      "ordinary_scalar": "1/9"
+    },
+    {
+      "m": 4,
+      "n": 3,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 3,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        2,
+        10
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "2/13"
+    },
+    {
+      "m": 4,
+      "n": 3,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        1,
+        9,
+        12
+      ],
+      "ordinary_size": 13,
+      "ordinary_scalar": "1/78"
+    },
+    {
+      "m": 4,
+      "n": 4,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 4,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        3,
+        21
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "3/17"
+    },
+    {
+      "m": 4,
+      "n": 4,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        3,
+        39,
+        78
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "3/136"
+    },
+    {
+      "m": 4,
+      "n": 4,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        1,
+        18,
+        66,
+        55
+      ],
+      "ordinary_size": 17,
+      "ordinary_scalar": "1/680"
+    },
+    {
+      "m": 4,
+      "n": 5,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 21,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 5,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        4,
+        36
+      ],
+      "ordinary_size": 21,
+      "ordinary_scalar": "4/21"
+    },
+    {
+      "m": 4,
+      "n": 5,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        6,
+        102,
+        272
+      ],
+      "ordinary_size": 21,
+      "ordinary_scalar": "1/35"
+    },
+    {
+      "m": 4,
+      "n": 5,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        4,
+        96,
+        480,
+        560
+      ],
+      "ordinary_size": 21,
+      "ordinary_scalar": "2/665"
+    },
+    {
+      "m": 4,
+      "n": 5,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        1,
+        30,
+        210,
+        455,
+        273
+      ],
+      "ordinary_size": 21,
+      "ordinary_scalar": "1/5985"
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        5,
+        55
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/5"
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        10,
+        210,
+        700
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/30"
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        10,
+        300,
+        1900,
+        2850
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/230"
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        5,
+        190,
+        1710,
+        4845,
+        3876
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/2530"
+    },
+    {
+      "m": 4,
+      "n": 6,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        1,
+        45,
+        510,
+        2040,
+        3060,
+        1428
+      ],
+      "ordinary_size": 25,
+      "ordinary_scalar": "1/53130"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        6,
+        78
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "6/29"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        15,
+        375,
+        1500
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "15/406"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        20,
+        720,
+        5520,
+        10120
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "10/1827"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        15,
+        690,
+        7590,
+        26565,
+        26565
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "5/7917"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        6,
+        330,
+        4620,
+        23100,
+        43890,
+        26334
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "2/39585"
+    },
+    {
+      "m": 4,
+      "n": 7,
+      "k": 7,
+      "coefficients_ascending": [
+        0,
+        1,
+        63,
+        1050,
+        6650,
+        17955,
+        20349,
+        7752
+      ],
+      "ordinary_size": 29,
+      "ordinary_scalar": "1/475020"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 1,
+      "coefficients_ascending": [
+        0,
+        1
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "1"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 2,
+      "coefficients_ascending": [
+        0,
+        7,
+        105
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "7/33"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 3,
+      "coefficients_ascending": [
+        0,
+        21,
+        609,
+        2842
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "7/176"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 4,
+      "coefficients_ascending": [
+        0,
+        35,
+        1470,
+        13230,
+        28665
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "35/5456"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 5,
+      "coefficients_ascending": [
+        0,
+        35,
+        1890,
+        24570,
+        102375,
+        122850
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "7/8184"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 6,
+      "coefficients_ascending": [
+        0,
+        21,
+        1365,
+        22750,
+        136500,
+        313950,
+        230230
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "7/79112"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 7,
+      "coefficients_ascending": [
+        0,
+        7,
+        525,
+        10500,
+        80500,
+        265650,
+        371910,
+        177100
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "1/158224"
+    },
+    {
+      "m": 4,
+      "n": 8,
+      "k": 8,
+      "coefficients_ascending": [
+        0,
+        1,
+        84,
+        1932,
+        17710,
+        74382,
+        148764,
+        134596,
+        43263
+      ],
+      "ordinary_size": 33,
+      "ordinary_scalar": "1/4272048"
+    }
+  ],
+  "conclusion": "Finite exact corroboration of a derivation; not independent proof acceptance."
+}

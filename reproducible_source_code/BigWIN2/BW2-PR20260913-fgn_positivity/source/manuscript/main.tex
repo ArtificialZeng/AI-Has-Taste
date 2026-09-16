@@ -1,0 +1,512 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{
+  pdftitle={Positivity of one-sided fractional Gaussian noise predictors for five increments},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={A finite-case theorem with an exact rational certificate},
+  pdfkeywords={fractional Gaussian noise, prediction, positivity, Bernstein certificate}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\dd}{\,\mathrm{d}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\title{Positivity of one-sided fractional Gaussian noise\protect\\ predictors for five increments}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For fractional Gaussian noise with Hurst index $1/2<H<1$, we prove that
+every coefficient of the projection of the first increment onto the next
+four increments is strictly positive. Together with the preceding cases,
+this establishes one-sided predictor positivity for $2\le n\le5$ in the
+usual $n$-increment notation. The original conjecture for arbitrary $n$
+remains unresolved. The main step treats the penultimate coefficient at
+$n=5$, singled out for numerical treatment in earlier work. Its Cramer
+numerator is a thirty-term exponential sum. After removing its exact
+endpoint zeros, a rational Taylor--Bernstein certificate proves a uniform
+lower bound of $27/10$ for the normalized sum, including its analytic
+endpoint continuations. All certificate data and a standard-library
+Python verifier are supplied.
+\end{abstract}
+
+\section{The finite case and its context}
+
+Put $t=2H\in(1,2)$ and write the fractional Gaussian noise covariance as
+\begin{equation}\label{eq:rho}
+ \rho_0=1,\qquad
+ \rho_j=\frac{(j+1)^t-2j^t+|j-1|^t}{2}\quad(j\ge1).
+\end{equation}
+For $n\ge2$, define $\Gamma_n^k$, $2\le k\le n$, by
+\begin{equation}\label{eq:normal}
+ \sum_{k=2}^{n}\Gamma_n^k\rho_{|\ell-k|}=\rho_{\ell-1},
+ \qquad 2\le\ell\le n.
+\end{equation}
+These are the coefficients of $\E(X_1\mid X_2,\ldots,X_n)$ for centered
+Gaussian increments with covariance~\eqref{eq:rho}. The all-$n$ positivity
+conjecture was posed by Mishura, Ralchenko and Schilling
+\cite{Mishura2022} (Conjecture~(A) in the first arXiv version) and restated
+as Conjecture~3 by Bodnarchuk, Mishura and Ralchenko
+\cite{Bodnarchuk2025}. We prove the following restricted statement.
+
+For $m\ge1$, let
+\[
+ T_m(t)=(\rho_{|i-j|})_{i,j=1}^{m},\qquad
+ b_m(t)=(\rho_1,\ldots,\rho_m)^{\mathsf T},\qquad D_m(t)=\det T_m(t).
+\]
+Let $N_{nk}(t)$ be the determinant obtained by replacing column $k-1$
+of $T_{n-1}(t)$ by $b_{n-1}(t)$. Thus $\Gamma_n^k=N_{nk}/D_{n-1}$.
+
+\begin{theorem}\label{thm:main}
+For every real $1/2<H<1$, every integer $2\le n\le5$, and every
+$2\le k\le n$, one has $\Gamma_n^k(H)>0$.
+Moreover, set $P(t)=16N_{54}(t)$, so that column~3 of $T_4$ is replaced
+by $b_4$. The function
+\begin{equation}\label{eq:margin}
+ \frac{P(t)}{(t-1)(2-t)^3}
+\end{equation}
+extends analytically across both endpoints of $[1,2]$, and its continued
+value is strictly greater than $27/10$ at every point of that interval.
+\end{theorem}
+
+Proposition~1 of \cite{Bodnarchuk2025} already states the $n=4$
+inequality; its proof combines analytic subintervals with a graph.
+Remark~4 of that paper identifies $\Gamma_5^4$ as a more difficult
+penultimate coefficient and discusses it numerically. The contribution
+here is a proof over the entire Hurst interval for this specified $n=5$
+case, together with the quantitative bound~\eqref{eq:margin}. The
+smaller cases and the general prediction machinery are supporting facts.
+A bounded primary-source search through 13 September 2026 found no
+equivalent full-interval $n=5$ certificate; this is not an exhaustive
+priority claim. Cai's version~2 preprint \cite{Cai2026}, Theorems~2.2--2.3,
+studies second-order asymptotics of the partial autocorrelation function.
+Those asymptotic statements concern the last, or reflection, coefficient
+and do not determine the finite interior coefficient treated here.
+
+The proof uses elementary projection identities, an exponential zero
+count, and a Taylor polynomial expressed in the Bernstein basis. The
+last step is related to established Bernstein-form computation
+\cite{FaroukiRajan1988}. Exact rational Bernstein controls also occur in
+Zeng's restricted matrix-positivity certificates
+\cite[Theorem~10 and equations~(8.25)--(8.27)]{Zeng2026Lens}.
+For the present exponential sum, an explicit remainder estimate is
+needed in addition to the polynomial controls. No general approximation
+method is claimed as a contribution of this note.
+
+\section{Covariance inequalities and the outer coefficients}
+
+\begin{lemma}\label{lem:covariance}
+All finite matrices $T_m(t)$ are strictly positive definite for $0<t<2$.
+For $1<t<2$,
+\[
+ 1=\rho_0>\rho_1>\rho_2>\cdots>0,
+ \qquad \rho_j^2<\rho_{j-1}\rho_{j+1}\quad(j\ge1).
+\]
+In particular, $\rho_{j+1}/\rho_j$ increases strictly for $j\ge0$.
+\end{lemma}
+
+\begin{proof}
+Let $C_t=\int_0^\infty(1-\cos u)u^{-1-t}\dd u$.
+This integral is finite and positive for $0<t<2$. Scaling gives an
+integral representation of $|j|^t$; taking its centered second difference
+gives, also at $j=0$,
+\[
+ \rho_{|j|}=\frac1{C_t}\int_0^\infty
+       \cos(ju)(1-\cos u)u^{-1-t}\dd u.
+\]
+Consequently, for a nonzero real vector $v$,
+\[
+ v^{\mathsf T}T_m v=\frac1{C_t}\int_0^\infty
+   \left|\sum_{j=1}^m v_j e^{iju}\right|^2
+   (1-\cos u)u^{-1-t}\dd u>0.
+\]
+Indeed, the weight is positive apart from a discrete set, and a nonzero
+trigonometric polynomial cannot vanish on an open interval.
+
+For $j\ge1$ and $1<t<2$, the integral form of a second difference yields
+\begin{equation}\label{eq:second-difference}
+ \rho_j=\frac{t(t-1)}2\int_{-1}^1
+             (1-|u|)(j+u)^{t-2}\dd u.
+\end{equation}
+The singularity at $j=1,u=-1$ is integrable. This proves strict decrease
+and positivity for $j\ge1$, while $\rho_1=2^{t-1}-1\in(0,1)$.
+For $j\ge2$, strict log-convexity of $z^{t-2}$ gives the pointwise
+geometric-mean inequality between its values at $j-1+u,j+u,j+1+u$.
+Integration and Cauchy--Schwarz imply
+$\rho_j^2<\rho_{j-1}\rho_{j+1}$. At $j=1$, direct substitution gives
+\begin{equation}\label{eq:special-identity}
+ \rho_2-\rho_1^2=\frac{\rho_1-\rho_3}{2}>0.
+\end{equation}
+Dividing these strict inequalities by positive factors proves the ratio
+statement. These covariance properties are also developed
+in~\cite{Mishura2022}.
+\end{proof}
+
+\begin{lemma}\label{lem:edges}
+If $\Gamma_n^k>0$ for every $2\le k\le n$, then
+$\Gamma_{n+1}^{2}>0$ and $\Gamma_{n+1}^{n+1}>0$.
+\end{lemma}
+
+\begin{proof}
+Write $g_k=\Gamma_n^k$. Residualize $X_2$ against
+$X_3,\ldots,X_{n+1}$. Stationarity identifies its projection coefficients
+with the $g_k$. The coefficient of $X_2$ in the enlarged predictor has
+a positive residual-variance denominator and numerator
+\[
+ \rho_1-\sum_{k=2}^n g_k\rho_k
+   =\sum_{k=2}^n g_k(\rho_{k-2}-\rho_k)>0,
+\]
+where the equality uses~\eqref{eq:normal} at $\ell=2$.
+For the other edge, residualize $X_{n+1}$ against $X_2,\ldots,X_n$.
+Time reversal gives
+\begin{equation}\label{eq:last}
+ \Gamma_{n+1}^{n+1}=
+ \frac{\rho_n-\sum_{k=2}^n g_k\rho_{n+1-k}}
+      {1-\sum_{k=2}^n g_k\rho_{k-1}}.
+\end{equation}
+The denominator is again a strictly positive residual variance.
+Since $\rho_{n-1}=\sum_{k=2}^n g_k\rho_{n-k}$, its numerator is
+\[
+ \sum_{k=2}^n g_k\rho_{n-k}
+ \left(\frac{\rho_n}{\rho_{n-1}}
+              -\frac{\rho_{n+1-k}}{\rho_{n-k}}\right)>0
+\]
+by Lemma~\ref{lem:covariance}. This is the conditional last-coefficient
+argument of \cite[Proposition~2]{Bodnarchuk2025}. Positivity of the
+entire preceding row is an explicit hypothesis in both edge steps.
+\end{proof}
+
+\section{The smaller interior signs}
+
+Put
+\begin{equation}\label{eq:qK}
+ \begin{split}
+ q&=\rho_2+\rho_2^2-\rho_1^2-\rho_1\rho_3,\\
+ K&=(1-\rho_2)(1-\rho_4)-(\rho_1-\rho_3)^2.
+ \end{split}
+\end{equation}
+Expanding the defining Cramer determinants gives
+\begin{equation}\label{eq:factorizations}
+ N_{43}=(1-\rho_2)q,\qquad N_{53}=qK.
+\end{equation}
+The covariance matrix of $X_1-X_5$ and $X_2-X_4$ is
+\[
+ 2\begin{pmatrix}
+ 1-\rho_4&\rho_1-\rho_3\\
+ \rho_1-\rho_3&1-\rho_2
+ \end{pmatrix}.
+\]
+Its coefficient vectors are linearly independent, so
+Lemma~\ref{lem:covariance} makes this matrix positive definite.
+Its determinant is $4K$, hence $K>0$.
+
+To prove $q>0$, substitution in~\eqref{eq:rho} gives
+\begin{equation}\label{eq:F}
+ F(t):=4q=9^t-8^t-2\cdot6^t+4\cdot4^t-2\cdot2^t-1.
+\end{equation}
+We use the following form of the generalized Descartes rule. Background
+on zero counting by sign changes and Rolle's theorem is given
+in~\cite{Jameson2006}; the needed argument is included here.
+
+\begin{lemma}\label{lem:zeros}
+If $\lambda_1<\cdots<\lambda_r$ are real and each $c_i\ne0$, the real
+zeros of $\sum_{i=1}^r c_i e^{\lambda_i t}$, counted with multiplicity,
+number at most the sign variations in $(c_1,\ldots,c_r)$.
+\end{lemma}
+
+\begin{proof}
+Induct on the number $V$ of variations. For $V=0$, every summand has
+the same sign. If $V>0$, choose $\lambda$ strictly between two consecutive
+exponents at a sign change. Differentiating the exponential sum after
+multiplication by $e^{-\lambda t}$ changes every coefficient to
+$(\lambda_i-\lambda)c_i$. All signs to the left of $\lambda$ are reversed,
+so exactly one variation disappears. The derivative has at most $V-1$
+zeros by induction. Rolle's theorem, including multiplicities, bounds the
+original number by $V$. Apply this on any finite interval containing a
+proposed collection of zeros.
+\end{proof}
+
+In increasing order of bases, the coefficients of $F$ are
+$-1,-2,4,-2,-1,1$, with three variations. Direct calculation gives
+\[
+ F(1)=F(2)=0,\quad F(3)=24,\quad
+ F'(1)=2\log(27/16)>0,\quad F'(2)=18\log(243/256)<0.
+\]
+There is a third zero in $(2,3)$, because $F$ is negative just to the
+right of $2$. These zeros exhaust the bound in Lemma~\ref{lem:zeros}.
+It follows that $F>0$ on $(1,2)$, hence $q>0$. Thus
+\eqref{eq:factorizations} proves $\Gamma_4^3>0$ and $\Gamma_5^3>0$.
+The $n=4$ statement itself is already in
+\cite[Proposition~1]{Bodnarchuk2025}.
+
+\section{The penultimate cofactor at five increments}
+
+The remaining sign is that of $P(t)=16N_{54}(t)$. Its exact expansion is
+\begin{equation}\label{eq:P}
+ P(t)=\sum_b c_b b^t,
+\end{equation}
+with the thirty integer pairs $(b,c_b)$ in Table~\ref{tab:terms}.
+They can be reconstructed by expanding the defining determinant using
+the polynomial entries
+\[
+ 2\rho_0=2,\quad 2\rho_1=a-2,\quad
+ 2\rho_2=b-2a+1,\quad 2\rho_3=a^2-2b+a,\quad
+ 2\rho_4=c-2a^2+b,
+\]
+where in this identity only $a=2^t,b=3^t,c=5^t$.
+The factor $16$ comes from scaling all four matrix columns by $2$.
+Differentiation of~\eqref{eq:P} gives the exact identities
+\begin{equation}\label{eq:endpoints}
+ P(1)=0,\qquad P(2)=P'(2)=P''(2)=0,
+ \qquad P'(1)=80\log2-48\log3.
+\end{equation}
+For example, each derivative at an endpoint is a polynomial in
+$\log2,\log3,\log5$ with integer coefficients. Expanding these formal
+polynomials verifies each zero coefficient exactly. This does not require
+algebraic independence of the three logarithms. Since $P$ is entire,
+the zeros in~\eqref{eq:endpoints} justify the analytic continuations
+in Theorem~\ref{thm:main}.
+
+\subsection{Removing the endpoint zeros before approximation}
+
+Set $x=2-t$ and $A_k=(-1)^kP^{(k)}(2)/k!$. Then
+\[
+ P(2-x)=x^3G(x),\qquad
+ G(x)=\sum_{k=3}^{\infty}A_kx^{k-3},\qquad G(1)=0.
+\]
+The continued expression~\eqref{eq:margin} is $R(x)=G(x)/(1-x)$.
+For $N=26$, define
+\begin{equation}\label{eq:RN}
+ R_N(x)=\frac{G_N(x)-G_N(1)}{1-x}
+       =-\sum_{k=4}^N A_k\sum_{j=0}^{k-4}x^j,
+ \qquad G_N(x)=\sum_{k=3}^N A_kx^{k-3}.
+\end{equation}
+This is an exactly divisible polynomial of degree $22$; an approximate
+endpoint zero is never divided by $1-x$. Absolute convergence and
+$G(1)=0$ give, uniformly on $[0,1]$,
+\begin{equation}\label{eq:tail}
+ |R(x)-R_N(x)|\le\sum_{k=N+1}^{\infty}(k-3)|A_k|.
+\end{equation}
+This also controls the continued endpoint $x=1$.
+
+Table~\ref{tab:terms} gives $b\le108$, $\log b<5$, and
+$S:=\sum_b|c_b|b^2=212096$. Therefore $|A_k|\le S5^k/k!$.
+For $k\ge27$, the ratio of consecutive majorant terms
+$(k-3)5^k/k!$ is at most $5/24$. Summing a geometric majorant in
+\eqref{eq:tail} yields
+\begin{equation}\label{eq:B}
+ |R-R_N|\le
+ \frac{212096\cdot24\cdot5^{27}}{27!}\frac1{1-5/24}
+ =\frac{790119171142578125}{179590728782941572096}
+ <\frac1{200}.
+\end{equation}
+
+\subsection{Rational Bernstein controls}
+
+All finite arithmetic bounds are rational. For $p\in\{2,3,5\}$ put
+$z_p=(p-1)/(p+1)$ and
+\begin{equation}\label{eq:logs}
+ L_p=2\sum_{j=0}^{119}\frac{z_p^{2j+1}}{2j+1},\qquad
+ 0<\log p-L_p\le
+       \frac{2z_p^{241}}{241(1-z_p^2)}.
+\end{equation}
+The estimate follows by bounding every omitted denominator below by
+$241$ and summing a geometric series. Outward rounding at denominator
+$10^{30}$ gives the log intervals in Table~\ref{tab:logs}.
+Prime factorization then encloses every $\log b$ in~\eqref{eq:P}.
+Substitute these positive intervals into
+\begin{equation}\label{eq:A}
+ A_k=\frac{(-1)^k}{k!}\sum_b c_b b^2(\log b)^k,
+ \qquad 3\le k\le26,
+\end{equation}
+reversing lower and upper endpoints for a negative multiplier.
+Outward rounding at denominator $10^{12}$ gives
+Table~\ref{tab:A}.
+
+Write $R_N(x)=\sum_{j=0}^{22}d_jx^j$. Its Bernstein representation is
+\begin{equation}\label{eq:bernstein}
+ \begin{split}
+ R_N(x)&=\sum_{i=0}^{22}\beta_i\binom{22}{i}x^i(1-x)^{22-i},\\
+ d_j&=-\sum_{k=j+4}^{26}A_k,\qquad
+ \beta_i=\sum_{j=0}^{i}\frac{\binom{i}{j}}{\binom{22}{j}}d_j.
+ \end{split}
+\end{equation}
+The conversion follows from
+\[
+ x^j=\sum_{i=j}^{22}\frac{\binom{i}{j}}{\binom{22}{j}}
+                         \binom{22}{i}x^i(1-x)^{22-i},
+\]
+which is the binomial theorem after factoring out $x^j$.
+All conversion factors are positive. Thus the upper bounds for $A_k$
+give lower bounds for $d_j$, which in turn give lower bounds for
+$\beta_i$. Table~\ref{tab:beta} lists the resulting bounds rounded down
+at denominator $10^6$. Their least value is
+\[
+ \frac{2718387}{10^6}>\frac{271}{100}.
+\]
+The Bernstein basis is nonnegative and sums to one on $[0,1]$.
+Consequently $R_N(x)>271/100$, and~\eqref{eq:B} proves
+\begin{equation}\label{eq:final-bound}
+ R(x)>\frac{271}{100}-\frac1{200}
+      =\frac{541}{200}>\frac{27}{10}
+ \qquad(0\le x\le1).
+\end{equation}
+The strict inequalities hold at the continued endpoints as well.
+
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
+The $n=2$ row consists of $\Gamma_2^2=\rho_1>0$.
+Lemma~\ref{lem:edges} gives both entries at $n=3$ and then the two outer
+entries at $n=4$. Equation~\eqref{eq:factorizations} and $q>0$ give the
+remaining entry at $n=4$. Apply Lemma~\ref{lem:edges} once more for the
+outer entries at $n=5$. Its first interior entry is positive because
+$N_{53}=qK>0$. The second is positive because
+\eqref{eq:final-bound} gives $P(t)>0$ for $1<t<2$, and
+$\Gamma_5^4=P/(16D_4)$ with $D_4>0$.
+The analytic continuation and its lower bound were established above.
+\end{proof}
+
+\section{Reproducibility and limitations}
+
+The accompanying file \texttt{verify\_certificate.py} uses only Python's
+standard library. It expands the Cramer determinants with integer
+polynomials, verifies the formal endpoint identities, constructs the
+rational log intervals, and checks every coefficient bound used above.
+It runs without external data and without writing files:
+\begin{center}\texttt{python3 verify\_certificate.py}\end{center}
+The finite assertions must be read together with the covariance,
+zero-count and uniform remainder arguments; successful execution alone
+is not a proof of those analytic steps.
+
+A supplementary check used Arb ball arithmetic~\cite{Johansson2017}
+through python-flint 0.9.0. At 192-bit precision, Taylor bounds verified
+$P'>0$ on $[1,17/16]$, $P'''<0$ on $[31/16,2]$, and $P>0$ on the
+112 adjacent intervals of length $1/128$ covering $[17/16,31/16]$.
+Together with~\eqref{eq:endpoints}, these signs give a second interval
+check of positivity. Seven direct determinant checks, including
+$t=1+2^{-30}$ and $t=2-2^{-30}$, were additional finite diagnostics.
+The rational certificate is the proof of the stronger bound in
+Theorem~\ref{thm:main}. Rounded ball displays are not used as standalone
+certificates; two stored short displays include zero even though the
+recomputed underlying intervals have positive lower endpoints.
+
+The theorem makes no assertion for $n\ge6$, for bilateral conditioning,
+or about an optimal normalized lower bound. At $H=1/2$ the predictor
+coefficients vanish; at $H=1$ the covariance matrix is singular.
+Analytic continuation of~\eqref{eq:margin} does not define a predictor
+at that singular endpoint. The outer-coefficient lemma supplies no
+general propagation of the interior signs; the proof gives no
+interior-sign argument for $n\ge6$.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted the proof development, literature screening,
+implementation of exact and ball-arithmetic checks, and preparation of
+this manuscript. A separate Codex context checked the mathematical
+argument and recomputed the finite certificate using a different
+symbolic determinant calculation and exponential bounds for the
+logarithmic endpoints. That additional check is not external peer
+review. The mathematical support consists of the arguments and exact
+data given here, not of the model's assessment.
+
+\appendix
+\section{Exact certificate data}\label{app:data}
+
+These tables specify the exponential sum and every rounded coefficient
+bound used in the proof. The verifier reconstructs them from the
+definitions; no floating-point values enter Tables~\ref{tab:logs}--\ref{tab:beta}.
+\begin{table}[htbp]
+\centering
+\small
+\caption{The pairs $(b,c_b)$ in $P(t)=\sum_b c_b b^t$.}\label{tab:terms}
+\begin{tabular}{rr@{\qquad}rr@{\qquad}rr}
+\toprule
+$b$ & $c_b$ & $b$ & $c_b$ & $b$ & $c_b$ \\
+\midrule
+1 & -2 & 15 & 4 & 48 & 5 \\
+2 & 2 & 16 & -20 & 54 & -1 \\
+3 & 6 & 18 & 12 & 60 & 8 \\
+4 & -11 & 24 & -12 & 64 & -6 \\
+5 & -2 & 27 & -2 & 72 & -4 \\
+6 & -13 & 30 & -6 & 80 & -1 \\
+8 & 20 & 32 & 17 & 81 & 2 \\
+9 & -4 & 36 & -1 & 90 & -1 \\
+10 & 7 & 40 & -4 & 96 & 3 \\
+12 & 5 & 45 & -2 & 108 & -1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Integers $l_p$ such that $\log p\in[l_p,l_p+1]/10^{30}$.}\label{tab:logs}
+\begin{tabular}{rr}
+\toprule
+$p$ & $l_p$ \\
+\midrule
+2 & 693147180559945309417232121458 \\
+3 & 1098612288668109691395245236922 \\
+5 & 1609437912434100374600759333226 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Integers $a_k$ such that $A_k\in[a_k,a_k+1]/10^{12}$.}\label{tab:A}
+\begin{tabular}{rr@{\qquad}rr}
+\toprule
+$k$ & $a_k$ & $k$ & $a_k$ \\
+\midrule
+3 & 27182814079941 & 15 & 517016292820 \\
+4 & -83550320679337 & 16 & -267302499770 \\
+5 & 104183752676488 & 17 & 113465614115 \\
+6 & -59505510096329 & 18 & -41923038480 \\
+7 & -5716721037909 & 19 & 13880603694 \\
+8 & 42148576442014 & 20 & -4191132471 \\
+9 & -42718780434576 & 21 & 1167752733 \\
+10 & 26787425848906 & 22 & -302833624 \\
+11 & -11651227519997 & 23 & 73580734 \\
+12 & 3127754437162 & 24 & -16839439 \\
+13 & 74554594434 & 25 & 3645733 \\
+14 & -694188830910 & 26 & -749424 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Integers $b_i$ giving the certified bounds $\beta_i\ge b_i/10^6$.}\label{tab:beta}
+\begin{tabular}{rr@{\qquad}rr@{\qquad}rr}
+\toprule
+$i$ & $b_i$ & $i$ & $b_i$ & $i$ & $b_i$ \\
+\midrule
+0 & 27182814 & 8 & 11936093 & 16 & 5107496 \\
+1 & 24620654 & 9 & 10737778 & 17 & 4594788 \\
+2 & 22265492 & 10 & 9657511 & 18 & 4134485 \\
+3 & 20109735 & 11 & 8684622 & 19 & 3721266 \\
+4 & 18143415 & 12 & 7809147 & 20 & 3350327 \\
+5 & 16355122 & 13 & 7021851 & 21 & 3017335 \\
+6 & 14732704 & 14 & 6314230 & 22 & 2718387 \\
+7 & 13263778 & 15 & 5678484 &  &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

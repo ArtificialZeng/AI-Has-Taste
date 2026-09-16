@@ -1,0 +1,401 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A coefficient obstruction for antiprism initial flag determinants},
+pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\fall}[2]{(#1)_{\underline{#2}}}
+\newcommand{\coef}[1]{\left[#1\right]}
+\title{A coefficient obstruction for antiprism initial flag determinants}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small\texttt{xiaojianzeng@foxmail.com}}
+\date{September 14, 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The total nonnegativity question for antiprism $h$-vector transformation
+matrices remains unresolved. We study a specific stronger certificate:
+coefficient nonnegativity of a formal determinant whose specialization at
+nonnegative parameters gives consecutive initial flags. We compute a family of
+coefficients in its next-highest degree and obtain an explicit quartic
+formula that is negative at every order at least $76$. An exact negative
+coefficient already occurs at order $22$, while a second family is positive
+at every order. These identities rule out the proposed certificate in the
+specified variables. They do not provide a negative minor of an antiprism
+matrix or an obstruction to other proofs of total nonnegativity.
+\end{abstract}
+
+\section{The matrix question and the auxiliary determinant}
+
+Write $S(u,v)$ for a Stirling number of the second kind, with $S(0,0)=1$.
+Binomial coefficients and Stirling numbers with invalid indices are zero.
+For $d\geq1$ and $0\leq i,j\leq d$, define
+\begin{equation}\label{eq:H}
+ H_d(i,j)=\sum_{r=0}^d\sum_{s=0}^i
+ \binom{j}{s}\binom{d-j}{d-r-s}\binom{r}{i-s}
+ \sum_{\ell\geq0}(\ell!)^2S(i-s,\ell)S(r-i+s,\ell).
+\end{equation}
+The sums are finite. This is the matrix taking the $h$-vector of a
+$(d-1)$-dimensional simplicial complex to that of its antiprism subdivision.
+Athanasiadis, Brunink and Juhnke-Kubitzke give the transformation and its
+combinatorial interpretation in Section~5.3 of \cite{ABJ2022}; see also
+their Proposition~5.7(b) for the local Stirling formula.
+
+A matrix is \emph{totally nonnegative} if every minor, with its row and
+column indices in increasing order, is nonnegative. The subdivision
+literature cited here calls this weak inequality total positivity.
+Mu and Welker report positive antiprism experiments in small dimensions
+\cite[Section~2, final paragraph]{MW2026}.
+Liu and Mao prove total nonnegativity for barycentric and interval
+subdivision matrices and raise the corresponding antiprism question
+\cite[Remark~5.8 in the PDF]{LM2026}. Their HTML version numbers that
+remark~5.20. The original question is whether every $H_d$ is totally
+nonnegative, for every $d\geq1$; this note leaves it unresolved.
+
+We consider the flags with rows $1,\ldots,k$ and columns
+$j-k+1,\ldots,j$, where $d\geq j\geq k\geq1$. The following formal
+polynomial arises by replacing the exponential factors in these flags by
+independent partial sums. All variables $a,n,z_1,\ldots,z_k$ below are
+algebraically independent. Put
+\begin{equation}\label{eq:T}
+ T_{r,\ell}(x,y)=\coef{t^r}e^{-ty}
+       (1-e^{-t(x+y)})^\ell,\qquad
+ w_\ell=\sum_{h=1}^{\ell}z_h,\qquad q_\ell=\frac{\ell}{\ell+1}.
+\end{equation}
+Here $T_{r,\ell}$ is homogeneous of degree $r$ and is zero if $\ell>r$.
+With $\fall{v}{p}=\prod_{h=0}^{p-1}(v-h)$ and $\fall{v}{0}=1$, set
+\begin{align}
+ M_{r,s}&=\sum_{\ell=1}^r\ell^k w_\ell q_\ell^s
+ \sum_{p+q=r}\coef{x^py^q}T_{r,\ell}(x,y)
+ \frac{\fall{a+k+s}{p}\fall{n-s}{q}}{\ell^p(\ell+1)^q},
+ \label{eq:M}\\
+ R_k&=\det(M_{r,s})_{\substack{1\leq r\leq k\\1-k\leq s\leq0}},
+ \qquad K=\frac{k(k+1)}2,\qquad
+ \lambda_k=\frac{\prod_{r=1}^k r!}{\prod_{\ell=1}^k\ell^\ell}>0.
+ \label{eq:R}
+\end{align}
+Both index orders in this determinant are increasing, and $p,q$ in
+\eqref{eq:M} are nonnegative integers. In particular,
+$R_k\in\Q[a,n,z_1,\ldots,z_k]$.
+
+\begin{theorem}\label{thm:main}
+For every integer $k\geq5$,
+\begin{equation}\label{eq:quartic}
+ \coef{a^{K-1}n^0z_1^5z_6\cdots z_k}R_k
+ =-\frac{\lambda_k}{20736}
+  \bigl(125k^4-9555k^3+17736k^2-346478k+858264\bigr).
+\end{equation}
+The final product is $1$ when $k=5$. This coefficient is negative for
+every integer $k\geq76$. In addition,
+\begin{equation}\label{eq:22}
+ \coef{a^{252}n^0z_1^9z_{10}\cdots z_{22}}R_{22}
+ =-\lambda_{22}\frac{4429926944297146258237}{14051921264640000000}<0.
+\end{equation}
+For every integer $k\geq1$,
+\begin{equation}\label{eq:positive}
+ \coef{a^{K-1}n^0z_1z_2\cdots z_k}R_k
+ =\lambda_k\frac{k(k+1)(2k+1)}6>0.
+\end{equation}
+Thus the homogeneous component of total $(a,n)$-degree $K-1$ has
+coefficients of both signs for every $k\geq76$, and also for $k=22$.
+\end{theorem}
+
+The assertion that all coefficients of this particular $R_k$ are
+nonnegative was a working hypothesis introduced in the present
+investigation, motivated by exact low-order expansions. It is not a
+conjecture attributed to any of the cited authors. The theorem identifies
+an obstruction to that specific certificate. Our comparison with the
+primary subdivision papers and bounded searches through September~14,
+2026 found no equivalent coefficient formula; this is a limited literature
+assessment, not an exhaustive priority claim.
+
+To verify the connection with \eqref{eq:H}, extend the notation by
+$H_0(0,0)=1$ and form the formal generating series
+\begin{equation}\label{eq:G}
+ G(x,y,t)=\sum_{j,n\geq0}\sum_{r=0}^{j+n}
+ H_{j+n}(r,j)t^r\frac{x^jy^n}{j!n!}
+ =\frac{e^{tx+y}}{1-(e^{t(x+y)}-1)(e^{x+y}-1)}.
+\end{equation}
+Indeed, in \eqref{eq:H} put $p=i-s$ and $q=r-i+s$. Summing the three
+binomial factors against $x^jy^n/(j!n!)$ gives
+$x^s e^y(x+y)^{p+q}/(s!p!q!)$.
+Summing $s$, then using
+$\sum_{u\geq0}S(u,\ell)v^u/u!=(e^v-1)^\ell/\ell!$
+for each of $p,q$, proves \eqref{eq:G}.
+Rewriting its denominator gives
+\[
+ \coef{t^r}G=\sum_{\ell=0}^r
+ T_{r,\ell}(x,y)e^{\ell x+(\ell+1)y}.
+\]
+The $\ell=0$ term has no $x$ dependence. For $j+s\geq1$, exponential
+coefficient extraction, multiplied by $(j+s)!(d-j-s)!$, therefore gives
+$M_{r,s}=H_d(r,j+s)$ under the specialization
+\begin{align}
+ a&=j-k,\qquad n=d-j,\qquad z_1=2^n,\label{eq:special}\\
+ z_\ell&=\ell^a(\ell+1)^n-(\ell-1)^a\ell^n\quad(2\leq\ell\leq k).
+ \notag
+\end{align}
+All these parameters are nonnegative, and the partial sums telescope to
+$w_\ell=\ell^a(\ell+1)^n$. All series manipulations are formal and locally
+finite. Coefficient nonnegativity of $R_k$ would consequently certify
+nonnegativity of these flags. A negative formal coefficient need not give
+a negative value at \eqref{eq:special}.
+
+\section{The next coefficient in the row-degree expansion}
+
+Since every coefficient in Theorem~\ref{thm:main} has $n$-exponent zero,
+we may set $n=0$. Define constant lower triangular matrices $A,E,F$ by
+\begin{align}
+ A_{r,\ell}&=\frac{\coef{x^r}T_{r,\ell}}{\ell^r},&
+ E_{r,\ell}&=rA_{r,\ell}
+ -\frac{\coef{x^{r-1}y}T_{r,\ell}}{\ell^{r-1}(\ell+1)},&
+ F&=A^{-1}E.\label{eq:AE}
+\end{align}
+The diagonal entries of $A$ are $\ell^{-\ell}$, so $A$ is invertible.
+Let
+\[
+ B=\diag(\ell^k w_\ell)_{\ell=1}^k,\quad
+ V=(q_\ell^s)_{\ell,s},\quad S=\diag(1-k,\ldots,0),\quad
+ D=\diag\left(kr-\frac{r(r-1)}2\right)_{r=1}^k.
+\]
+In row $r$ of $M|_{n=0}$, the coefficient of $a^r$ is the corresponding
+row of $U=ABV$, and that of $a^{r-1}$ is the row of
+\begin{equation}\label{eq:N}
+ N=DABV+EBVS.
+\end{equation}
+For the latter assertion, the $q=0$ term of \eqref{eq:M} contributes
+$r(k+s)-r(r-1)/2$ from the falling factorial. The $q=1$ term contributes
+$-s$; all $q\geq2$ terms have $a$-degree at most $r-2$.
+No other term contributes to degree $K-1$ in the determinant.
+
+Factoring $q_\ell^{1-k}$ from each row of $V$ reduces its determinant to
+an ordinary Vandermonde determinant. Since
+$q_v-q_u=(v-u)/((u+1)(v+1))$ for $u<v$, this gives
+\begin{equation}\label{eq:detU}
+ \det V=\frac{\prod_{p<q}(q-p)}{\prod_{\ell=1}^k\ell^{k-1}},
+ \qquad \det U=\lambda_k\prod_{\ell=1}^k w_\ell.
+\end{equation}
+In the field $\Q(z_1,\ldots,z_k)$, determinant multilinearity now yields
+\[
+ \coef{a^{K-1}n^0}R_k=\det U\,\tr(U^{-1}N).
+\]
+Put $W=VSV^{-1}$. Cyclicity of trace and lower triangularity of $F$ give
+\begin{equation}\label{eq:trace}
+ \tr(U^{-1}N)=\tr D+
+ \sum_{1\leq\ell\leq i\leq k}
+ F_{i,\ell}W_{\ell,i}\left(\frac\ell i\right)^k\frac{w_\ell}{w_i}.
+\end{equation}
+Multiplication by $\prod w_\ell$ clears every denominator involving $z$,
+so the resulting identity is polynomial and also holds when some $w_i=0$.
+
+We next evaluate the needed entries of $W$. Write
+$\mathcal H_v=\sum_{h=1}^v1/h$, with $\mathcal H_0=0$. Then
+\begin{align}
+ W_{\ell,\ell}
+ &= (\ell+1)\bigl(\ell(\mathcal H_{\ell-1}-\mathcal H_{k-\ell})-(k-1)\bigr),
+ \label{eq:Wdiag}\\
+ \left(\frac\ell i\right)^k W_{\ell,i}
+ &=(-1)^{i-\ell+1}\frac{\ell(\ell+1)}{i-\ell}
+ \frac{\binom{k-\ell}{i-\ell}}{\binom{i}{i-\ell}}\quad(\ell<i).
+ \label{eq:Woff}
+\end{align}
+Here is a direct interpolation derivation, including the sign.
+Let $P(q)=\prod_{h=1}^k(q-q_h)$ and
+$L_i(q)=P(q)/((q-q_i)P'(q_i))$.
+These are the usual Lagrange cardinal polynomials; differentiation of this
+representation is the standard construction of an interpolation
+differentiation matrix \cite[Sections~2 and~9.3]{BT2004}.
+The reciprocal derivatives $1/P'(q_i)$ also occur as the values of the
+canonical inverse of $P'$ modulo $P$ in Lemma~2.1 of
+Zeng \cite{Zeng2026}. We use this elementary
+weight identity, without a complexity assertion.
+
+For the Laurent basis $q^{1-k},\ldots,1$, the cardinal functions are
+$C_i(q)=(q_i/q)^{k-1}L_i(q)$. Hence
+\[
+ W_{\ell,i}=q_\ell C_i'(q_\ell),\qquad
+ W_{\ell,i}=q_\ell(q_i/q_\ell)^{k-1}L_i'(q_\ell)\quad(\ell\ne i).
+\]
+Inserting $q_\ell-q_h=(\ell-h)/((\ell+1)(h+1))$ gives
+\eqref{eq:Woff}. On the diagonal, the same calculation gives
+$W_{\ell,\ell}=1-k+q_\ell\sum_{h\ne\ell}(q_\ell-q_h)^{-1}$,
+which simplifies to \eqref{eq:Wdiag}.
+Also $F_{\ell,\ell}=\ell/(\ell+1)$. Thus the diagonal contribution
+to \eqref{eq:trace} is
+\begin{align}
+ \tr D+\sum_{\ell=1}^kF_{\ell,\ell}W_{\ell,\ell}
+ &=\sum_{\ell=1}^k\left\{\frac{\ell(3-\ell)}2+
+ \ell^2(\mathcal H_{\ell-1}-\mathcal H_{k-\ell})\right\}\notag\\
+ &=\frac{k(k+1)(2k+1)}6.\label{eq:diagsum}
+\end{align}
+To check the cancellation, pair the harmonic terms with indices $p<q$:
+their sum is $\sum_{p<q}(q^2-p^2)/(q-p)=\sum_{p<q}(p+q)$.
+
+\begin{lemma}\label{lem:family}
+For $1\leq m\leq k$, put $Z_{k,m}=z_1^m z_{m+1}\cdots z_k$.
+Then
+\begin{equation}\label{eq:family}
+ \frac{\coef{a^{K-1}n^0Z_{k,m}}R_k}{\lambda_k}
+ =\frac{k(k+1)(2k+1)}6+
+ \sum_{1\leq\ell<i\leq m}
+ (-1)^{i-\ell+1}\frac{\ell(\ell+1)}{i-\ell}
+ \frac{\binom{k-\ell}{i-\ell}}{\binom{i}{i-\ell}}F_{i,\ell}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The coefficient of $Z_{k,m}$ in $\prod w_h$ is $1$. For $\ell<i$, its
+coefficient in $(\prod w_h)w_\ell/w_i$ is $1$ if $i\leq m$, and $0$
+otherwise. Indeed, $z_k$ must come from $w_k$; continue downwards through
+$z_{m+1}$. A missing factor $w_i$ in this range makes the assignment
+impossible. Otherwise all remaining factors must supply $z_1$, uniquely.
+Apply this observation to \eqref{eq:trace}, using
+\eqref{eq:detU}--\eqref{eq:diagsum}.
+\end{proof}
+
+\section{Evaluation of the negative coefficients}
+
+The entries needed in \eqref{eq:AE} admit the explicit formulas
+\begin{align}
+ A_{r,\ell}&=\frac{(-1)^{r-\ell}\ell!S(r,\ell)}{r!\ell^r},&
+ E_{r,\ell}&=\frac{(-1)^{r-\ell}(\ell-1)!S(r-1,\ell-1)}
+ {(\ell+1)(r-1)!\ell^{r-1}}.\label{eq:stirlingAE}
+\end{align}
+The first follows from \eqref{eq:T}. For the second, apply
+$\partial_a-\partial_n$ to
+$e^{-tn/(\ell+1)}(1-e^{-t(a/\ell+n/(\ell+1))})^\ell$.
+The result is
+\[
+ \frac{t}{\ell+1}e^{-tn/(\ell+1)}
+ (1-e^{-t(a/\ell+n/(\ell+1))})^{\ell-1}.
+\]
+Take the $t^r$ coefficient at $(a,n)=(1,0)$.
+Forward substitution in $AF=E$ gives the first five rows
+\begin{equation}\label{eq:Ftable}
+ \begin{pmatrix}
+ 1/2&0&0&0&0\\
+ 1&2/3&0&0&0\\
+ 9/8&9/8&3/4&0&0\\
+ 4/3&8/9&32/27&4/5&0\\
+ 625/432&3125/3456&3125/3888&625/512&5/6
+ \end{pmatrix}.
+\end{equation}
+Lower triangularity makes these entries independent of $k$ once $k\geq5$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $m=5$, substitute \eqref{eq:Ftable} into \eqref{eq:family} and expand
+the binomial polynomials. The result is \eqref{eq:quartic}. This is a
+polynomial identity of degree at most four, obtained from ten explicit
+rational terms. If $Q(k)$ is its quartic numerator, then
+\begin{equation}\label{eq:shift}
+ Q(76+t)=125t^4+28445t^3+2171196t^2+56268354t+52825392.
+\end{equation}
+Every coefficient is positive, so $Q(k)>0$ for real $k\geq76$.
+This proves the uniform negative sign.
+
+For completeness, the larger arithmetic in \eqref{eq:22} is specified
+by a short recurrence and table. Compute $S(r,\ell)$ using
+$S(r,\ell)=S(r-1,\ell-1)+\ell S(r-1,\ell)$ through $r=9$, and compute
+\begin{equation}\label{eq:forward}
+ F_{r,\ell}=\frac{E_{r,\ell}-\sum_{h=\ell}^{r-1}A_{r,h}F_{h,\ell}}
+ {A_{r,r}}\quad(1\leq\ell\leq r\leq9)
+\end{equation}
+from \eqref{eq:stirlingAE}. For $k=22$, group the summands in
+\eqref{eq:family} by $i$, calling the resulting sum $c_i$.
+The exact values are in Table~\ref{tab:22}.
+\begin{table}[htbp]
+\centering
+\caption{Off-diagonal contributions $c_i$ for $k=22$, $m=9$.}
+\label{tab:22}
+\begin{tabular}{cr}
+\toprule
+$i$ & $c_i$\\
+\midrule
+2 & $21$\\
+3 & $-135/4$\\
+4 & $836/3$\\
+5 & $-41875/64$\\
+6 & $34868547/20000$\\
+7 & $-1924165512913/583200000$\\
+8 & $315237249593344/53603825625$\\
+9 & $-155107959187079458053/19275612160000000$\\
+\bottomrule
+\end{tabular}
+\end{table}
+Since $22\cdot23\cdot45/6=3795$, exact summation gives
+\[
+ 3795+\sum_{i=2}^9 c_i
+ =-\frac{4429926944297146258237}{14051921264640000000}.
+\]
+Lemma~\ref{lem:family}, with $K-1=252$, proves \eqref{eq:22}.
+Finally, taking $m=1$ in that lemma leaves an empty off-diagonal sum and
+proves \eqref{eq:positive}, including $k=1$.
+\end{proof}
+
+\section{Exact verification and limits}
+
+The companion Python script \texttt{verify.py} computes the displayed
+tables and checks the quartic identity with integer and rational
+arithmetic. It also checks the order-$22$ coefficient directly from
+\eqref{eq:M}, without using $F$, $W$, or \eqref{eq:family} for that
+extraction. Here is the completeness argument for the second calculation.
+In a determinant term contributing $Z_{k,m}$, row $k$ must supply $z_k$,
+then row $k-1$ must supply $z_{k-1}$, down through row $m+1$.
+Consequently keep only $\ell=r$ in rows $r>m$ of \eqref{eq:M}, and all
+$\ell\leq r$ in the first $m$ rows, removing the chosen $z$ factors.
+The determinant of the resulting row vectors is exactly
+$\coef{Z_{k,m}}R_k$.
+
+At $n=0$, its two leading row coefficients use only
+$\coef{x^r}T_{r,\ell}$ and $\coef{x^{r-1}y}T_{r,\ell}$. These may be
+computed directly from
+\begin{equation}\label{eq:powersum}
+ \coef{x^py^{r-p}}T_{r,\ell}
+ =\frac{(-1)^r}{p!(r-p)!}
+ \sum_{h=0}^{\ell}(-1)^h\binom{\ell}{h}h^p(h+1)^{r-p},
+\end{equation}
+with $0^0=1$. Clear the rational denominators in each pair of row
+coefficients. The coefficient of $a^{K-1}$ is the sum of the integer
+determinants obtained by replacing one leading row by its next row,
+divided by the product of the clearing denominators. The implementation
+uses fraction-free elimination of Bareiss \cite[Section~I]{Bareiss1968},
+checking every division for zero remainder. This gives the same value
+in \eqref{eq:22}.
+
+The exploratory search covered only
+$\coef{a^{K-1}n^0Z_{k,m}}R_k$ for $2\leq k\leq32$ and
+$1\leq m\leq k$. Its first negative order was $22$ within that family
+and range. No minimality among all coefficients is asserted. The earlier
+complete rational expansions at orders five and six have, respectively,
+$5712$ and $33396$ nonzero coefficients, all positive; these finite
+observations motivated the certificate and are not premises of the proof.
+
+The obstruction applies to coefficient nonnegativity in the unchanged
+variables of \eqref{eq:M}. The exponential relations in
+\eqref{eq:special} may still permit nonnegative flag values. Moreover,
+these flags cover only selected rows and consecutive positive columns;
+they do not by themselves settle all minors of $H_d$. Alternative
+parametrizations and other total-nonnegativity arguments remain possible.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with the symbolic derivation, exact-arithmetic
+programs, literature checks, and manuscript preparation. A separate model
+context checked the proof and recomputed the finite witness by exact
+elimination over $\Q[\varepsilon]/(\varepsilon^2)$. That check is not
+external peer review. No floating-point calculation or proof-assistant
+formalization is used to establish the theorem. The companion script
+requires only the Python standard library; the separate verification
+also used SymPy~1.14.0.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

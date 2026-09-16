@@ -1,0 +1,144 @@
+{
+  "job_id": "primary-20260913-ascent-0120-0121-triage-8e85505dad88",
+  "max_prefix_length": 11,
+  "reference_counts_n0_to_n12": [
+    1,
+    1,
+    2,
+    5,
+    13,
+    34,
+    90,
+    244,
+    683,
+    1980,
+    5945,
+    18470,
+    59306
+  ],
+  "coverage": [
+    {
+      "prefix_length": 1,
+      "exact_states": 1,
+      "represented_prefix_words": 1,
+      "postbinary_successor_multiset_checks": 0,
+      "binary_successor_multiset_checks": 1,
+      "binary_to_postbinary_edges": 0,
+      "exact_state_edges": 2
+    },
+    {
+      "prefix_length": 2,
+      "exact_states": 2,
+      "represented_prefix_words": 2,
+      "postbinary_successor_multiset_checks": 0,
+      "binary_successor_multiset_checks": 2,
+      "binary_to_postbinary_edges": 1,
+      "exact_state_edges": 5
+    },
+    {
+      "prefix_length": 3,
+      "exact_states": 4,
+      "represented_prefix_words": 5,
+      "postbinary_successor_multiset_checks": 1,
+      "binary_successor_multiset_checks": 3,
+      "binary_to_postbinary_edges": 2,
+      "exact_state_edges": 10
+    },
+    {
+      "prefix_length": 4,
+      "exact_states": 6,
+      "represented_prefix_words": 13,
+      "postbinary_successor_multiset_checks": 2,
+      "binary_successor_multiset_checks": 4,
+      "binary_to_postbinary_edges": 4,
+      "exact_state_edges": 16
+    },
+    {
+      "prefix_length": 5,
+      "exact_states": 10,
+      "represented_prefix_words": 34,
+      "postbinary_successor_multiset_checks": 5,
+      "binary_successor_multiset_checks": 5,
+      "binary_to_postbinary_edges": 6,
+      "exact_state_edges": 28
+    },
+    {
+      "prefix_length": 6,
+      "exact_states": 16,
+      "represented_prefix_words": 90,
+      "postbinary_successor_multiset_checks": 10,
+      "binary_successor_multiset_checks": 6,
+      "binary_to_postbinary_edges": 9,
+      "exact_state_edges": 47
+    },
+    {
+      "prefix_length": 7,
+      "exact_states": 28,
+      "represented_prefix_words": 244,
+      "postbinary_successor_multiset_checks": 21,
+      "binary_successor_multiset_checks": 7,
+      "binary_to_postbinary_edges": 12,
+      "exact_state_edges": 86
+    },
+    {
+      "prefix_length": 8,
+      "exact_states": 51,
+      "represented_prefix_words": 683,
+      "postbinary_successor_multiset_checks": 43,
+      "binary_successor_multiset_checks": 8,
+      "binary_to_postbinary_edges": 16,
+      "exact_state_edges": 163
+    },
+    {
+      "prefix_length": 9,
+      "exact_states": 100,
+      "represented_prefix_words": 1980,
+      "postbinary_successor_multiset_checks": 91,
+      "binary_successor_multiset_checks": 9,
+      "binary_to_postbinary_edges": 20,
+      "exact_state_edges": 334
+    },
+    {
+      "prefix_length": 10,
+      "exact_states": 208,
+      "represented_prefix_words": 5945,
+      "postbinary_successor_multiset_checks": 198,
+      "binary_successor_multiset_checks": 10,
+      "binary_to_postbinary_edges": 25,
+      "exact_state_edges": 722
+    },
+    {
+      "prefix_length": 11,
+      "exact_states": 458,
+      "represented_prefix_words": 18470,
+      "postbinary_successor_multiset_checks": 447,
+      "binary_successor_multiset_checks": 11,
+      "binary_to_postbinary_edges": 30,
+      "exact_state_edges": 1649
+    }
+  ],
+  "all_projected_successor_multisets_match": true,
+  "all_checked_postbinary_widths_nonincreasing": true,
+  "reference_counts_match_saved_canonical_counts_through_n12": true,
+  "saved_test_reproduction": [
+    {
+      "script": "evidence/triage_test.py",
+      "result": "evidence/triage-test-results.json",
+      "byte_identical": true
+    },
+    {
+      "script": "evidence/canonical_state_test.py",
+      "result": "evidence/canonical-state-results.json",
+      "byte_identical": true
+    }
+  ],
+  "protected_sha256": {
+    "source.md": "c3511d885d5d487049ba8d52247444c1e27c6005f320a593c5aa5ffbb7bfd48b",
+    "evidence/triage_test.py": "a9e874d51311ea1cbbcdceb7c87980a13483468aeb0a75960cb651e1253fd1ac",
+    "evidence/triage-test-results.json": "9531f8453c034676a51d99f9120ba95c96aa1fd8d8337e71c1ec137e5585ddd4",
+    "evidence/canonical_state_test.py": "cd8b1b80cf6e81388e2f95f81326a1def2b408445d9636fed6c305ab7078eeac",
+    "evidence/canonical-state-results.json": "ea8583706617a7b0ce2bf4d2af2ee96a68e76746839e8dfa51d63bfd1db790b4"
+  },
+  "protected_files_unchanged": true,
+  "qualification": "Exact finite verification only. Every reachable exact state through prefix length 11 is checked, including binary transitions. Totals through length 12 come from the exact pair/banned recurrence. This is not a uniform quotient proof or a novelty certificate."
+}

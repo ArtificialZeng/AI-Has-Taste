@@ -1,0 +1,290 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\Nzero}{\mathbb N_0}
+\newcommand{\TP}{T_{\mathrm P}}
+\newcommand{\TL}{T_{\mathrm L}}
+
+\title{No New Construction Is Needed for the Product and
+\L{}ukasiewicz Cases of a Fuzzy-Metric Problem}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Xu, Ji, and Qiu constructed a George--Veeramani fuzzy metric on
+$\Nzero$ for the minimum t-norm and exhibited the sequence $x_n=n$ as
+strictly fuzzy $\psi$-contractive but not Cauchy.  They asked whether such a
+sequence exists for the product or the \L{}ukasiewicz t-norm.  We prove that
+their function, sequence, and control function work unchanged for both
+t-norms.  The decisive point is the direction of the fuzzy triangle
+inequality: each requested t-norm is bounded above by the minimum t-norm.
+For completeness, we verify both operations as continuous t-norms, all five
+fuzzy-metric axioms, the exact contractivity identity, and a quantified
+non-Cauchy witness.
+\end{abstract}
+
+\section{Context and statement}
+
+George and Veeramani introduced the fuzzy-metric framework used here
+\cite{GeorgeVeeramani1994}; standard background on continuous triangular
+norms may be found in \cite{KlementMesiarPap2000}.  Gregori, Mi\~nana, and
+Miravet introduced strictly fuzzy contractive sequences and asked whether
+they must be Cauchy \cite{GregoriMinanaMiravet2020}.  Xu, Ji, and Qiu answered
+that question negatively for a particular fuzzy metric equipped with the
+minimum t-norm, and then asked for examples with the product and
+\L{}ukasiewicz t-norms \cite[Problem~3]{XuJiQiu2026}.
+
+The contribution below is source-local: no alternative fuzzy metric and no
+alternative sequence are introduced.  Its proof is also an exact certificate,
+with no numerical separation or search.  For comparison, explicit-certificate
+arguments in other inequality problems can require several exact rational
+separations to validate a proposed counterexample
+\cite{ZengLiuRatnavelu2026}; here the entire transfer is instead forced by an
+order relation between t-norms.
+
+Let $\Nzero=\{0,1,2,\ldots\}$, and for $x,y\in\Nzero$ write
+\[
+ \ell(x,y)=\min\{x,y\},\qquad h(x,y)=\max\{x,y\}.
+\]
+For $t>0$, define
+\[
+ \mu_t(x,y)=\frac{|x-y|}{2^t-1}-\ell(x,y),
+ \qquad
+ q_t(x,y)=
+ \begin{cases}
+  0,&x=y,\\
+  2^{\mu_t(x,y)-t},&x\ne y,
+ \end{cases}
+\]
+and
+\[
+ M(x,y,t)=\frac{1}{1+q_t(x,y)}.
+\]
+The two operations under consideration are
+\[
+ \TP(a,b)=ab,
+ \qquad
+ \TL(a,b)=\max\{0,a+b-1\}
+ \quad (a,b\in[0,1]).
+\]
+
+Recall that $(X,M,T)$ is a George--Veeramani fuzzy metric space if $T$ is a
+continuous t-norm and, for all $x,y,z\in X$ and $s,t>0$,
+\begin{align*}
+ &M(x,y,t)>0, \tag{GV1}\\
+ &M(x,y,t)=1\quad\Longleftrightarrow\quad x=y, \tag{GV2}\\
+ &M(x,y,t)=M(y,x,t), \tag{GV3}\\
+ &T\bigl(M(x,y,t),M(y,z,s)\bigr)\le M(x,z,t+s), \tag{GV4}\\
+ &M(x,y,\mathord\cdot):(0,\infty)\longrightarrow(0,1]
+     \text{ is continuous}. \tag{GV5}
+\end{align*}
+The orientation in (GV4) will be essential.
+
+\begin{theorem}\label{thm:main}
+For each $T\in\{\TP,\TL\}$, the triple $(\Nzero,M,T)$ is a
+George--Veeramani fuzzy metric space.  Moreover, for
+\[
+ x_n=n\quad(n\in\mathbb N),
+ \qquad
+ \psi(u)=\frac{2u}{1+u}\quad(0<u\le1),
+\]
+the sequence $(x_n)$ is strictly fuzzy $\psi$-contractive and is not Cauchy.
+Thus the same objects used by Xu, Ji, and Qiu for the minimum t-norm answer
+their Problem~3 affirmatively for both requested t-norms.
+\end{theorem}
+
+\section{The triangle inequality}
+
+We first rederive the stronger minimum-t-norm inequality, including the
+degenerate cases needed below.
+
+\begin{lemma}\label{lem:mintriangle}
+For all $x,y,z\in\Nzero$ and $s,t>0$,
+\[
+ \min\{M(x,y,t),M(y,z,s)\}\le M(x,z,t+s).
+\]
+\end{lemma}
+
+\begin{proof}
+For $u,v\in\Nzero$, $r>0$, and $c\in\mathbb R$, multiplication by the
+positive number $2^r-1$ gives the equivalence
+\begin{equation}\label{eq:equivalence}
+ \mu_r(u,v)\le c
+ \quad\Longleftrightarrow\quad
+ h(u,v)+c\le 2^r\bigl(\ell(u,v)+c\bigr).
+\end{equation}
+Fix $x,y,z,s,t$ and set
+\[
+ c=\max\{\mu_t(x,y),\mu_s(y,z)\}.
+\]
+Since $c\ge\mu_t(x,y)$, \eqref{eq:equivalence} gives
+\[
+ h(x,y)+c\le2^t\bigl(\ell(x,y)+c\bigr).
+\]
+Furthermore, $\ell(x,y)+c\ge0$: if $x\ne y$, it is at least
+$|x-y|/(2^t-1)>0$, while if $x=y$, it is at least
+$x+\mu_t(x,x)=0$.  Because $h(x,y)+c\ge\ell(x,y)+c\ge0$ and $2^t>1$,
+we also have
+\[
+ \ell(x,y)+c\le2^t\bigl(h(x,y)+c\bigr).
+\]
+Irrespective of the order of $x$ and $y$, these two inequalities say
+\[
+ x+c\le2^t(y+c),\qquad y+c\le2^t(x+c).
+\]
+The same argument for $(y,z,s)$ gives
+\[
+ y+c\le2^s(z+c),\qquad z+c\le2^s(y+c).
+\]
+Composing in both directions and using $2^t2^s=2^{t+s}$ yields
+\[
+ h(x,z)+c\le2^{t+s}\bigl(\ell(x,z)+c\bigr).
+\]
+Another application of \eqref{eq:equivalence} therefore gives
+\begin{equation}\label{eq:mu-triangle}
+ \mu_{t+s}(x,z)\le
+ \max\{\mu_t(x,y),\mu_s(y,z)\}.
+\end{equation}
+
+If $x,y,z$ are pairwise distinct, subtracting $t+s$ in
+\eqref{eq:mu-triangle}, using $s,t>0$, and exponentiating gives
+\begin{equation}\label{eq:qtriangle}
+ q_{t+s}(x,z)\le\max\{q_t(x,y),q_s(y,z)\}.
+\end{equation}
+The remaining cases satisfy the same inequality.  If $x=z$, its left side
+is zero.  If $x=y\ne z$, it reduces to
+$q_{t+s}(x,z)\le q_s(x,z)$; this holds because, for a fixed off-diagonal
+pair, the exponent
+\[
+ r\longmapsto \frac{|x-z|}{2^r-1}-\ell(x,z)-r
+\]
+is strictly decreasing on $(0,\infty)$.  The case $y=z\ne x$ is symmetric,
+and the all-equal case is immediate.  Finally,
+$q\mapsto(1+q)^{-1}$ is decreasing, so \eqref{eq:qtriangle} is precisely the
+claimed inequality.
+\end{proof}
+
+\section{Proof of the theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+We first check the operations rather than merely naming them.  Multiplication
+maps $[0,1]^2$ into $[0,1]$, is commutative, associative, coordinatewise
+nondecreasing, continuous, and has neutral element $1$.  Thus $\TP$ is a
+continuous t-norm.  The operation $\TL$ also maps $[0,1]^2$ into $[0,1]$,
+is commutative, coordinatewise nondecreasing, continuous, and satisfies
+$\TL(a,1)=a$.  For associativity, both bracketings of $a,b,c\in[0,1]$
+equal
+\[
+ \max\{0,a+b+c-2\};
+\]
+indeed, if the inner sum in a bracketing is at most $1$, both that
+bracketing and the displayed expression are zero, and otherwise direct
+substitution gives the display.  Hence $\TL$ is a continuous t-norm as well.
+Their endpoint behavior is $\TP(0,b)=\TL(0,b)=0$ and
+$\TP(1,b)=\TL(1,b)=b$.
+
+For every $a,b\in[0,1]$, including the endpoints,
+\begin{equation}\label{eq:tnormorder}
+ ab\le\min\{a,b\},
+ \qquad
+ \max\{0,a+b-1\}\le\min\{a,b\}.
+\end{equation}
+The first pair of inequalities follows from $a,b\le1$.  For the second,
+$a+b-1\le a$ follows from $b\le1$, and $a+b-1\le b$ follows from
+$a\le1$; zero is also at most both inputs.
+
+We next verify all five fuzzy-metric axioms.  Since $t>0$, the denominator
+$2^t-1$ is positive.  By definition $q_t(x,y)\ge0$, with equality exactly
+on the diagonal.  Therefore $M(x,y,t)$ belongs to $(0,1]$ and equals $1$
+exactly when $x=y$, proving (GV1) and (GV2).  Symmetry of $|x-y|$ and
+$\ell(x,y)$ proves (GV3).  For fixed $x,y$, the function of $t$ is constant
+equal to $1$ on the diagonal; off the diagonal it is a composition of
+continuous functions on $(0,\infty)$.  This proves (GV5).
+
+For (GV4), the two inputs to either t-norm belong to $(0,1]\subset[0,1]$.
+Combining \eqref{eq:tnormorder} with Lemma~\ref{lem:mintriangle}, for either
+$T\in\{\TP,\TL\}$ we obtain
+\[
+ T\bigl(M(x,y,t),M(y,z,s)\bigr)
+ \le \min\{M(x,y,t),M(y,z,s)\}
+ \le M(x,z,t+s).
+\]
+This is the required direction of (GV4), so all five axioms hold separately
+under both labels.
+
+It remains to check the sequence notions from their definitions.  Let
+$\Psi$ be the set of continuous nondecreasing maps
+$\psi:(0,1]\to(0,1]$ satisfying $\psi(u)>u$ for $0<u<1$.  The displayed
+$\psi(u)=2u/(1+u)$ maps $(0,1]$ into itself, is continuous and increasing,
+and
+\[
+ \psi(u)-u=\frac{u(1-u)}{1+u}>0\qquad(0<u<1).
+\]
+Thus $\psi\in\Psi$.
+
+Shifting both arguments by one preserves their distance and increases their
+minimum by one.  Off the diagonal this subtracts one from $\mu_t$, while on
+the diagonal both $q$-values are zero.  Hence, in every case,
+\begin{equation}\label{eq:shift}
+ q_t(x+1,y+1)=\frac12q_t(x,y).
+\end{equation}
+Using $x_n=n$, equation \eqref{eq:shift} yields, for every
+$m,n\in\mathbb N$ and $t>0$,
+\begin{align*}
+ M(x_{m+1},x_{n+1},t)
+ &=\frac{1}{1+q_t(x_m,x_n)/2}\\
+ &=\frac{2}{2+q_t(x_m,x_n)}\\
+ &=\psi\bigl(M(x_m,x_n,t)\bigr).
+\end{align*}
+This equality implies the defining inequality for strict fuzzy
+$\psi$-contractivity.  Neither the definition nor the identity evaluates
+the selected t-norm.
+
+Finally, a sequence is Cauchy here if for every $\varepsilon\in(0,1)$ and
+$t>0$ there is $N\in\mathbb N$ such that
+$M(x_n,x_m,t)>1-\varepsilon$ whenever $m,n\ge N$.  Given any proposed $N$,
+take $n=N$, $m=2N+1$, $t=1$, and $\varepsilon=1/2$.  Then
+\[
+ \ell(x_N,x_{2N+1})=N,\qquad |x_N-x_{2N+1}|=N+1,
+\]
+so $\mu_1(x_N,x_{2N+1})=1$, $q_1(x_N,x_{2N+1})=1$, and
+\[
+ M(x_N,x_{2N+1},1)=\frac12.
+\]
+Both indices are at least $N$, but the Cauchy definition requires the strict
+inequality $M>1/2$.  Thus the sequence is not Cauchy.  This definition also
+contains no t-norm evaluation, so the same witness applies to both spaces.
+\end{proof}
+
+\section{Scope and assistance disclosure}
+
+The result resolves the literal existence question in Problem~3 of the cited
+version of Xu--Ji--Qiu by reusing its exact function, sequence, and control
+function.  It does not assert a classification of all continuous t-norms or
+of all strictly fuzzy contractive sequences, and it makes no priority claim
+beyond this comparison with the cited sources.
+
+An OpenAI Codex model assisted in organizing the proof, checking algebraic
+case divisions, and preparing the manuscript.  A separate model pass
+recomputed the decisive inequalities as an internal mathematical audit.  A
+finite floating-point stress test of triangle cases was used only as a
+diagnostic and is not evidence for any quantified statement.  Every theorem
+in this note follows from the exact displayed argument.  The author reviewed
+the final text and takes responsibility for its claims.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

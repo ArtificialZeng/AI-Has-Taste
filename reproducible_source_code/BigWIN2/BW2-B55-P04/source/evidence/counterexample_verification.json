@@ -1,0 +1,171 @@
+{
+  "admissibility_verified": true,
+  "all_permutation_costs": {
+    "1,2,3,4": 2,
+    "1,2,4,3": 2,
+    "1,3,2,4": 2,
+    "1,3,4,2": 2,
+    "1,4,2,3": 3,
+    "1,4,3,2": 3,
+    "2,1,3,4": 2,
+    "2,1,4,3": 2,
+    "2,3,1,4": 2,
+    "2,3,4,1": 3,
+    "2,4,1,3": 2,
+    "2,4,3,1": 2,
+    "3,1,2,4": 2,
+    "3,1,4,2": 2,
+    "3,2,1,4": 2,
+    "3,2,4,1": 3,
+    "3,4,1,2": 2,
+    "3,4,2,1": 2,
+    "4,1,2,3": 2,
+    "4,1,3,2": 2,
+    "4,2,1,3": 2,
+    "4,2,3,1": 2,
+    "4,3,1,2": 2,
+    "4,3,2,1": 2
+  },
+  "conclusion": "For either orientation of the unique maximizing root pair, the tree generates a node that is fathomed for every KTNS tie outcome and has a globally optimal completion; the remaining job is not covered by any node configuration, so Section 6.2 does not prune first.",
+  "format": "win-00055-p04 independent counterexample replay v1",
+  "global_optimum": 2,
+  "instance": {
+    "c": 3,
+    "m": 4,
+    "n": 4,
+    "tool_sets": {
+      "1": [
+        1
+      ],
+      "2": [
+        1,
+        2
+      ],
+      "3": [
+        1,
+        3,
+        4
+      ],
+      "4": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "next_job_scores": {
+    "2": 2,
+    "3": 3
+  },
+  "orientation_cases": [
+    {
+      "completion_cost": 2,
+      "forced_over_all_ktns_ties": true,
+      "generated_unsafe_node": [
+        3,
+        1,
+        4
+      ],
+      "ktns_histories": [
+        {
+          "configurations": [
+            [
+              1,
+              3,
+              4
+            ],
+            [
+              1,
+              3,
+              4
+            ],
+            [
+              2,
+              3,
+              4
+            ]
+          ],
+          "trigger_indices_1_based": [
+            1
+          ]
+        }
+      ],
+      "node_optimum": 1,
+      "optimal_completion": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "remaining_job": 2,
+      "remaining_job_covered_by_a_node_configuration": [
+        false
+      ],
+      "root": [
+        1,
+        4
+      ]
+    },
+    {
+      "completion_cost": 2,
+      "forced_over_all_ktns_ties": true,
+      "generated_unsafe_node": [
+        4,
+        3,
+        1
+      ],
+      "ktns_histories": [
+        {
+          "configurations": [
+            [
+              2,
+              3,
+              4
+            ],
+            [
+              1,
+              3,
+              4
+            ],
+            [
+              1,
+              3,
+              4
+            ]
+          ],
+          "trigger_indices_1_based": [
+            2
+          ]
+        }
+      ],
+      "node_optimum": 1,
+      "optimal_completion": [
+        2,
+        4,
+        3,
+        1
+      ],
+      "remaining_job": 2,
+      "remaining_job_covered_by_a_node_configuration": [
+        false
+      ],
+      "root": [
+        4,
+        1
+      ]
+    }
+  ],
+  "root_pair_symmetric_difference_scores": {
+    "1,2": 1,
+    "1,3": 2,
+    "1,4": 4,
+    "2,3": 3,
+    "2,4": 3,
+    "3,4": 2
+  },
+  "unique_next_job": 3,
+  "unique_unordered_root_pair": [
+    1,
+    4
+  ]
+}

@@ -1,0 +1,24 @@
+Command (run from the project directory on 2026-09-09):
+python3 evidence/verify_character_sum_curve.py
+
+m= 1 modulus=0x3 sigma=     0 D=     0 #E=     2 OK
+m= 2 modulus=0x7 sigma=     2 D=     0 #E=     8 OK
+m= 3 modulus=0xb sigma=     6 D=     0 #E=    14 OK
+m= 4 modulus=0x13 sigma=    -2 D=     4 #E=    16 OK
+m= 5 modulus=0x25 sigma=   -10 D=    10 #E=    22 OK
+m= 6 modulus=0x43 sigma=   -10 D=    18 #E=    56 OK
+m= 7 modulus=0x83 sigma=    14 D=    28 #E=   142 OK
+m= 8 modulus=0x11b sigma=    30 D=    56 #E=   288 OK
+m= 9 modulus=0x203 sigma=     6 D=   126 #E=   518 OK
+m=10 modulus=0x409 sigma=   -58 D=   270 #E=   968 OK
+m=11 modulus=0x805 sigma=   -66 D=   528 #E=  1982 OK
+m=12 modulus=0x1009 sigma=    46 D=  1012 #E=  4144 OK
+m=13 modulus=0x201b sigma=   182 D=  2002 #E=  8374 OK
+m=14 modulus=0x4021 sigma=    86 D=  4074 #E= 16472 OK
+m=15 modulus=0x8003 sigma=  -274 D=  8260 #E= 32494 OK
+
+This exact package-free run checks, for every 1 <= m <= 15, all three
+finite identities used in the proof dossier: the character-sum evaluation,
+equality of the trace-indicator and direct collision counts, and the
+genus-one curve point count.  It is corroborating finite evidence, not the
+proof for arbitrary m.

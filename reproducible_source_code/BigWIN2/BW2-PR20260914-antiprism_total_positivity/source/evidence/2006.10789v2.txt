@@ -1,0 +1,1668 @@
+                                                    COMBINATORICS OF ANTIPRISM TRIANGULATIONS
+
+                                          CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+arXiv:2006.10789v2 [math.CO] 5 Sep 2021
+
+
+
+
+                                                  Abstract. The antiprism triangulation provides a natural way to subdivide a simplicial
+                                                  complex ∆, similar to barycentric subdivision, which appeared independently in com-
+                                                  binatorial algebraic topology and computer science. It can be defined as the simplicial
+                                                  complex of chains of multi-pointed faces of ∆, from a combinatorial point of view, and
+                                                  by successively applying the antiprism construction, or balanced stellar subdivisions, on
+                                                  the faces of ∆, from a geometric point of view.
+                                                     This paper studies enumerative invariants associated to this triangulation, such as the
+                                                  transformation of the h-vector of ∆ under antiprism triangulation, and algebraic proper-
+                                                  ties of its Stanley–Reisner ring. Among other results, it is shown that the h-polynomial
+                                                  of the antiprism triangulation of a simplex is real-rooted and that the antiprism triangu-
+                                                  lation of ∆ has the almost strong Lefschetz property over R for every shellable complex
+                                                  ∆. Several related open problems are discussed.
+
+
+
+                                                                                   1. Introduction
+                                             Barycentric subdivision provides a natural way to triangulate a simplicial complex ∆,
+                                          of fundamental importance in algebraic topology. Because of its especially nice enumera-
+                                          tive and algebraic properties, it has also been studied intensely from the point of view of
+                                          enumerative and algebraic combinatorics [11, 12, 21, 22, 23, 28, 29], [30, Chapter 9]. For
+                                          instance, Brenti and Welker [11] described in explicit combinatorial terms the transforma-
+                                          tion of the h-vector (a fundamental enumerative invariant) of ∆, under barycentric sub-
+                                          division, and showed that the h-polynomial (the generating polynomial for the h-vector)
+                                          of the barycentric subdivision of ∆ has only real roots (and in particular, log-concave and
+                                          unimodal coefficients) for every simplicial complex ∆ with nonnegative h-vector.
+                                             A similar, but combinatorially more intricate and much less studied than barycentric
+                                          subdivision, way to subdivide ∆ is provided by the antiprism triangulation, denoted here
+                                          by sdA (∆). To give the reader a hint on the comparison between the two triangulations,
+                                          we recall that the barycentric subdivision of a geometric simplex Σ can be constructed by
+                                          inserting a vertex in the interior of Σ and coning over its proper faces, which have been
+                                          barycentrically subdivided by induction. The antiprism triangulation sdA (Σ) instead can
+                                          be constructed by inserting another simplex of the same dimension in the interior of Σ,
+                                          whose vertices are in a given one-to-one correspondence with those of Σ, and joining each
+                                          nonempty face of that simplex with the antiprism triangulation of the complementary face
+                                          of Σ. Figure 1 shows the antiprism triangulation of a 2-dimensional simplex (the labeling
+                                             Date: August 18, 2021.
+                                             Key words and phrases. Simplicial complex, triangulation, antiprism, face enumeration, h-polynomial,
+                                          real-rootedness, Lefschetz property.
+
+                                                                                              1
+2   CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+                                                     ((2),(2))
+
+
+
+                              ((2,13),(2,3))
+
+
+
+
+                                                                         ((23),(23))
+
+
+
+
+                                   ((1,23),(1,23))
+
+
+                                                                 ((3,1,2),(3,1,2))
+
+                  ((1),(1))            ((13),(3))                                      ((3),(3))
+
+                   Figure 1. Antiprism triangulation of the 2-simplex
+
+of faces is explained in Section 4). As an abstract simplicial complex, the barycentric sub-
+division of ∆, denoted here by sd(∆), has faces which correspond bijectively to the ordered
+partitions of the faces of ∆; in particular, the vertices and facets of sd(∆) correspond bi-
+jectively to the nonempty faces and the permutations of the facets of ∆, respectively. The
+faces of sdA (∆) instead correspond bijectively to certain multi-pointed ordered partitions
+of the faces of ∆; in particular, the vertices and facets of sdA (∆) correspond bijectively
+to the pointed faces and the ordered partitions of the facets of ∆, respectively.
+   The antiprism triangulation was introduced by Izmestiev and Joswig [19] as a technical
+device in their effort to understand combinatorially branched coverings of manifolds, and
+arose independently and was studied under the name chromatic subdivision in computer
+science (specifically, in theoretical distributed computing); see [20] and references therein.
+This paper aims to show that, as is the case with barycentric subdivision, the antiprism
+triangulation has very interesting enumerative and algebraic properties and that its study
+leads to combinatorial problems which are often more challenging than the corresponding
+ones for the barycentric subdivision. We denote by h(∆, x) the h-polynomial of a simplicial
+complex ∆ and by σn the (abstract) simplex on an n-element vertex set. Our main
+motivation comes from the following conjectural analogue of the main result of [11].
+Conjecture 1.1. The polynomial h(sdA (∆), x) is real-rooted for every simplicial complex
+∆ with nonnegative h-vector.
+   This conjecture is part of the general problem to understand when the h-polynomial
+of a triangulation of a simplicial complex is real-rooted. The present study of antiprism
+triangulations has partly motivated the study of this problem for the much more general
+class of uniform triangulations [5]. Although we are unable to fully settle Conjecture 1.1
+                    COMBINATORICS OF ANTIPRISM TRIANGULATIONS                             3
+
+in this paper, we reduce it to an interlacing relation between the members of two con-
+crete infinite sequences of polynomials (see Conjecture 5.3), given the following important
+special case of the conjecture and [5, Theorem 1.2].
+
+Theorem 1.2. The polynomial h(sdA (σn ), x) is real-rooted and has a nonnegative, real-
+rooted and interlacing symmetric decomposition with respect to n − 1 for every positive
+integer n.
+
+   We also prove the unimodality of h(sdA (∆), x) for every Cohen–Macaulay simplicial
+complex ∆ and show that the peak appears in the middle, by studying Lefschetz properties
+of the Stanley–Reisner ring of sdA (∆). The following result is an analogue of the main
+result of [22] for the barycentric subdivision.
+
+Theorem 1.3. The complex sdA (∆) has the almost strong Lefschetz property over R for
+every shellable simplicial complex ∆.
+  Moreover, for every (n − 1)-dimensional Cohen–Macaulay simplicial complex ∆, the
+h-vector of sdA (∆) is unimodal, with the peak being at position n/2, if n is even, and at
+(n − 1)/2 or (n + 1)/2, if n is odd.
+
+   This paper is structured as follows. The antiprism triangulation sdA (∆) is described
+combinatorially as an abstract simplicial complex and defined geometrically as a triangu-
+lation, using either the antiprism construction, or balanced stellar subdivisions (crossing
+operations), in Section 4. The antiprism construction is defined in Section 3, where its
+face enumeration is studied within the framework of uniform triangulations, introduced
+in [5]. These results are then applied in Section 5 to find combinatorial interpretations
+and recurrences for the basic enumerative invariants of the antiprism triangulation of the
+simplex. The face enumeration of antiprism triangulations turns out to be related to tradi-
+tional combinatorial themes, such as ordered set partitions, colorings and the enumeration
+of permutations by excedances (for example, the number of facets of sdA (σn ) is equal to
+the number of ordered partitions of an n-element set). Section 5 also proves Theorem 1.2
+and describes combinatorially the transformation of the h-vector of a simplicial complex,
+under antiprism triangulation. The proof of Theorem 1.2 is different from all proofs of the
+corresponding result for the barycentric subdivision known to the authors; it exploits the
+recurrence for the h-polynomial of sdA (σn ) and uses the concept of interlacing sequence
+of polynomials. Theorem 1.3 is proved in Section 7; the method generally follows those
+of [22, 27], with certain complications and shortcuts.
+   Basic background and definitions, together with some preliminary technical results, are
+included in Section 2 for simplicial complexes, their triangulations and face enumeration,
+and for the unimodality and real-rootedness of polynomials and their symmetric decompo-
+sitions, and in Section 6 for Lefschetz properties of simplicial complexes. Open problems,
+other than those proposed earlier in the paper, and further directions for research are
+discussed in Section 8.
+4   CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+                                      2. Preliminaries
+   This section includes preliminaries on simplicial complexes and triangulations, their
+basic enumerative invariants and the unimodality of polynomials and related properties.
+Throughout this paper we set N := {0, 1, 2, . . . } and [n] := {1, 2, . . . , n} for n ∈ N. We
+also denote by Sn the symmetric group of permutations of [n] and by |V | and 2V the
+cardinality and the powerset, respectively, of a finite set V .
+
+2.1. Simplicial complexes. We start with several definitions and refer to Stanley’s book
+[37] for background and more information.
+   Let V be a finite set. An (abstract) simplicial complex ∆ on the vertex set V is a
+collection of subsets of V that is closed under inclusion and such that {v} ∈ ∆ for every
+v ∈ V . Throughout this article, we assume that all simplicial complexes are finite. The
+elements of ∆ are called faces and the inclusionwise maximal ones are called facets. The
+dimension of a face F ∈ ∆ is defined as dim(F ) = |F | − 1; the dimension of ∆, denoted
+by dim(∆), is the maximum dimension of its faces. Zero-dimensional and one-dimensional
+faces of ∆ are called vertices and edges, respectively. We say that ∆ is pure if all facets of
+∆ have the same dimension. As in [5], we denote by σn the abstract (n − 1)-dimensional
+simplex 2V on an n-element vertex set V (often taken to be [n]).
+   The cone over ∆ is the simplicial complex consisting of the faces of ∆, together with all
+sets F ∪ {u} for F ∈ ∆, where u ∈      / V is a new vertex, called the apex. We will denote this
+cone by u ∗ ∆. More generally, the (simplicial) join of two simplicial complexes ∆1 and
+∆2 with disjoint vertex sets is defined as ∆1 ∗ ∆2 = {F1 ∪ F2 : F1 ∈ ∆1 , F2 ∈ ∆2 }. Given
+a face F ∈ ∆, the link and the star of F in ∆ are defined as the simplicial complexes
+                  link∆ (F ) = {G ∈ ∆ : F ∪ G ∈ ∆, F ∩ G = ∅} and
+                  star∆ (F ) = {G ∈ ∆ : F ∪ G ∈ ∆},
+respectively. For G1 , G2 , . . . , Gm ⊆ V we set
+                   hG1 , G2 , . . . , Gm i = {F : F ⊆ Gi for some i ∈ [m]}.
+   In the sequel, ∆ is a pure (n − 1)-dimensional simplicial complex with vertex     Q     set V
+and F is a field. Let A be the polynomial ring F[xv : v ∈ V ] and write xF = v∈F xv for
+F ⊆ V . The Stanley-Reisner ring (or face ring) of ∆ (over F) is defined as the quotient
+ring F[∆] = A/I∆ , where I∆ = (xF : F ⊆ V, F 6∈ ∆) is the ideal of A known as the
+Stanley-Reisner ideal (or face ideal ) of ∆. The ring F[∆] is graded by degree; subscripts
+on F[∆] and its (standard) graded quotients will always refer to homogeneous components.
+   A linear system of parameters (l.s.o.p. for short) for F[∆] is a sequence Θ = θ1 , . . . , θn
+of linear forms in F[∆] such that the quotient F[∆]/ΘF[∆] has finite dimension, as a vector
+space over F. The complex ∆ is called Cohen–Macaulay over F if F[∆] is a free module
+over the polynomial ring F[Θ] for some (equivalently, for every) l.s.o.p. Θ for F[∆] and
+shellable if there exists a linear ordering G1 , G2 , . . . , Gm of the facets of ∆ such that for
+each 2 ≤ j ≤ m, the set
+                             {F ⊆ Gj : F 6⊆ Gi for 1 ≤ i < j}
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                5
+
+has a unique minimal element, with respect to inclusion. Even though shellable simplicial
+complexes constitute a proper subclass of that of Cohen–Macaulay complexes, the sets
+of possible f -vectors for the two classes of simplicial complexes coincide (see, e.g., [37,
+Theorem 3.3]).
+   Given an (n − 1)-dimensional simplicial complex ∆, the f -vector of ∆ is defined as
+the sequence f (∆) = (f−1 (∆), f0 (∆), . . . , fn−1 (∆)), where fi (∆) denotes the number of i-
+dimensional faces of ∆. The h-vector of ∆ is defined as h(∆) = (h0 (∆), h1 (∆), . . . , hn (∆)),
+where hi (∆) is given by the formula
+                                         i                  
+                                                 i−j n − j
+                                       X
+                           hi (∆) =         (−1)               fj−1 (∆),
+                                        j=0
+                                                       i − j
+                 Pn            i
+and h(∆, x) = i=0 hi (∆)x is the h-polynomial of ∆. Equivalently, the latter can be
+defined by the formula
+                            X n                               X
+(1)            h(∆, x) =         fi−1 (∆) xi (1 − x)n−i =         x|F | (1 − x)n−|F | .
+                            i=0                                 F ∈∆
+
+Assume now that ∆ triangulates an (n − 1)-dimensional ball, meaning that the geometric
+realization of ∆ is homeomorphic to an (n − 1)-dimensional ball (we also say that ∆ is a
+an (n − 1)-dimensional simplicial ball). The boundary complex of ∆ is then defined as
+                   ∂∆ = hF ∈ ∆ : F ⊆ G for a unique facet G ∈ ∆i.
+The set ∆ = ∆r∂∆ consists of the interior faces of ∆ and h◦ (∆, x) is defined by the
+           ◦
+
+sum on the far right of (1) in which ∆ has been replaced by ∆◦ . The following well known
+statement is a special case of [33, Lemma 6.2].
+Proposition 2.1. ([33]) We have xn h(∆, 1/x) = h◦ (∆, x) for every triangulation ∆ of
+an (n − 1)-dimensional ball.
+2.2. Triangulations. Let ∆ and ∆0 be simplicial complexes. We say that ∆0 is a triangu-
+lation of ∆ if there exist geometric realizations K 0 and K of ∆0 and ∆, respectively, such
+that K 0 geometrically subdivides K. Let L ∈ K be a simplex and F be the corresponding
+face of ∆. Then, K 0 restricts to a triangulation KL0 of L. The subcomplex ∆0F of ∆0 which
+corresponds to KL0 is a triangulation of the abstract simplex 2F , called the restriction of
+∆0 to F . The carrier of a face G ∈ ∆0 is the smallest face F ∈ ∆ such that G ∈ ∆0F .
+   A fundamental enumerative invariant of a triangulation of a simplex is the local h-
+polynomial. Given a triangulation Γ of an (n−1)-dimensional simplex 2V , this polynomial
+is defined [36, Definition 2.1] by the formula
+                                          X
+(2)                          `V (Γ, x) =      (−1)n−|F | h(ΓF , x).
+                                         F ⊆V
+
+By the principle of inclusion-exclusion,
+                                                X
+(3)                               h(Γ, x) =            `F (ΓF , x).
+                                                F ⊆V
+6   CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+   Stanley [36] showed that `V (Γ, x) has nonnegative and symmetric coefficients, so that
+xn `V (Γ, 1/x) = `V (Γ, x), for every triangulation Γ of 2V , and that it has unimodal coef-
+ficients for every regular triangulation, meaning that Γ can be realized as the collection
+of projections on a geometric simplex of the lower faces of a simplicial polytope of one
+dimension higher.
+   The barycentric subdivision of a simplicial complex ∆ is defined as the simplicial com-
+plex sd(∆) on the vertex set ∆r{∅} whose faces are the chains F0 ( F1 ( · · · ( Fk of
+nonempty faces of ∆. The carrier of such a chain is its top element Fk . To describe the
+h-polynomial and local h-polynomial of sd(σn ), we need to recall a few definitions from
+permutation enumeration. An excedance of a permutation w ∈ Sn is an index i ∈ [n − 1]
+such that w(i) > i. Let exc(w) be the number of excedances of w. The polynomial
+                                                X
+                                    An (x) =        xexc(w)
+                                              w∈Sn
+
+is called nth Eulerian polynomial An (x); see [38, Section 1.4] for more information on this
+important concept. Similarly, the nth derangement polynomial is defined by the formula
+                                              X
+                                  dn (x) =         xexc(w) ,
+                                             w∈Dn
+
+where Dn the set of all derangements (permutations without fixed points) in Sn . Then,
+h(sd(σn ), x) = An (x) and `V (sd(σn ), x) = dn (x) for every n (see [36, Section 2]), where V
+is the vertex set of σn .
+   Let F = (fF (i, j)) be a triangular array of nonnegative integers, defined for 0 ≤ i ≤ j.
+A triangulation ∆0 of a simplicial complex ∆ is called F-uniform if for every (n − 1)-
+dimensional face F ∈ ∆, the restriction ∆0F has exactly fF (k, n) faces of dimension k − 1
+for all 0 ≤ k ≤ n. The barycentric subdivision is a prototypical example of an F-uniform
+triangulation, for a suitable array F; the antiprism triangulation is another. The class of
+F-uniform triangulations was introduced and studied in [5]. The h-polynomial and local
+h-polynomial of an F-uniform triangulation of an (n − 1)-dimensional simplex depend
+only on F and n and will be denoted by hF (σn , x) and `F (σn , x), respectively.
+
+2.3. Polynomials. We recall some basic definitions and useful facts about unimodal and
+real-rooted polynomials. A polynomial p(x) = a0 + a1 x + · · · + an xn ∈ R[x] is called
+      • symmetric, with center of symmetry n/2, if ai = an−i for all 0 ≤ i ≤ n,
+      • unimodal, with a peak at position k, if a0 ≤ a1 ≤ · · · ≤ ak ≥ ak+1 ≥ · · · ≥ an ,
+      • alternatingly increasing with respect to n, if a0 ≤ an ≤ a1 ≤ an−1 ≤ · · · ≤ adn/2e ,
+                                                            Pbn/2c
+      • γ-positive, with center of symmetry n/2, if p(x) = j=0      γj xj (1 + x)n−2j for some
+        nonnegative real numbers γ0 , γ1 , . . . , γbn/2c .
+Gamma-positivity implies palindromicity and unimodality; see [3] for a survey about this
+very interesting concept.
+   A polynomial p(x) ∈ R[x] is real-rooted if all complex roots of p(x) are real, or p(x)
+is the zero polynomial. A real-rooted polynomial, with roots α1 ≥ α2 ≥ · · · , is said to
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                   7
+
+interlace another real-rooted polynomial, with roots β1 ≥ β2 ≥ · · · , if
+                                   · · · ≤ α2 ≤ β2 ≤ α1 ≤ β1 .
+By convention, the zero polynomial interlaces and is interlaced by every real-rooted poly-
+nomial and constant polynomials interlace all polynomials of degree at most one. Back-
+ground on real-rooted polynomials and the theory of interlacing can be found in [9, 15, 35]
+and references therein. We recall here the crucial facts that every real-rooted polynomial
+with nonnegative coefficients is unimodal and that (see [15, Lemma 3.4]) if two real-rooted
+polynomials p(x) and q(x) have positive leading coefficients and p(x) interlaces q(x), then
+p(x)+q(x) is real-rooted as well and it is interlaced by p(x) and interlaces q(x). Moreover,
+every symmetric real-rooted polynomial with nonnegative coefficients is γ-positive.
+    A sequence (p0 (x), p1 (x), . . . , pm (x)) of real-rooted polynomials is called interlacing if
+pi (x) interlaces pj (x) for 0 ≤ i < j ≤ m. The following lemma will be used for the proof
+of Theorem 1.2 in Section 5.1.
+Lemma 2.2.          (a) ([8, Lemma 2.3], [39, Proposition 3.3]) Let p1 (x), p2 (x), . . . , pm (x)
+      be real-rooted polynomials in R[x]. If p1 (x) interlaces pm (x) and pi (x) interlaces
+      pi+1 (x) for all i ∈ [m−1], then (p1 (x), p2 (x), . . . , pm (x)) is an interlacing sequence.
+  (b) (cf. [15, Lemma 3.4]) If (p1 (x), p2 (x), . . . , pm (x)) is an interlacing sequence of real-
+      rooted polynomials in R[x] with positive leading coefficients, then so is (p1 (x) +
+      p2 (x) + · · · + pm (x), . . . , pm−1 (x) + pm (x), pm (x)).
+  (c) Let (p1 (x), p2 (x), . . . , pm (x)) be an interlacing sequence of real-rooted polynomials
+      in R[x] with positive leading coefficients. Then, p1 (x)+p2 (x)+· · ·+pm (x) interlaces
+      c1 p1 (x) + c2 p2 (x) + · · · + cm pm (x) for all positive real numbers c1 ≤ c2 ≤ · · · ≤ cm .
+      In particular, p1 (x)+p2 (x)+· · ·+pm−1 (x) interlaces p1 (x)+2p2 (x)+· · ·+mpm (x).
+Proof. We only need to prove part (c) and for that, we proceed by induction on m. The
+case m = 1 being trivial, let us assume that the result holds for a positive integer m − 1,
+consider a sequence (p1 (x), p2 (x), . . . , pm (x)) and positive real numbers c1 ≤ c2 ≤ · · · ≤
+cm as in the statement of the lemma and set sm (x) := p1 (x) + p2 (x) + · · · + pm (x).
+Since the sequence (p1 (x), . . . , pm−2 (x), pm−1 + pm (x)) is also interlacing [15, Lemma 3.4],
+the induction hypothesis implies that sm (x) interlaces c1 p1 (x) + · · · + cm−2 pm−2 (x) +
+cm−1 (pm−1 (x) + pm (x)). Since sm (x) also interlaces (cm − cm−1 )pm (x) (because each of its
+summands does so), it must interlace the sum of these two polynomials. This completes
+the induction.
+  For the second statement, let sm−1 (x) := p1 (x) + p2 (x) + · · · + pm−1 (x). From the first
+statement we have that sm−1 (x) interlaces p1 (x) + 2p2 (x) + · · · + (m − 1)pm−1 (x). Since
+sm−1 (x) also interlaces mpm (x), it must interlace the sum of these two polynomials and
+the proof follows.                                                                             
+  Every polynomial p(x) ∈ R[x] of degree at most n can be written uniquely in the form
+p(x) = a(x)+xb(x), where a(x) and b(x) are symmetric with centers of symmetry n/2 and
+(n−1)/2, respectively. We say that p(x) has a nonnegative symmetric decomposition with
+respect to n, if a(x) and b(x) have nonnegative coefficients. Following [10], we also say that
+p(x) has a real-rooted symmetric decomposition (respectively, real-rooted and interlacing
+8   CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+symmetric decomposition) with respect to n, if a(x) and b(x) are real-rooted (respectively,
+if a(x) and b(x) are real-rooted and xn p(1/x) interlaces p(x)). By [10, Theorem 2.6], if p(x)
+has a nonnegative, real-rooted and interlacing symmetric decomposition with respect to n,
+then b(x) interlaces a(x) and each one of them interlaces p(x). The alternatingly increasing
+property for p(x), defined earlier, with respect to n is equivalent to the unimodality of
+both a(x) and b(x).
+
+
+                            3. The antiprism construction
+   The antiprism triangulation of a simplicial complex can be defined geometrically by
+iterating the antiprism construction. This section reviews the latter and studies its face
+enumeration, in the framework of uniform triangulations [5]. The results will be applied
+in Section 5, but may be of independent interest too.
+   Let V = {v1 , v2 , . . . , vn } be an n-element set and ∆ be a triangulation of the boundary
+complex of the simplex 2V . We pick an n-element set U = {u1 , u2 , . . . , un } which is disjoint
+from the vertex set of ∆ and denote by ΓA (∆) the collection of faces of ∆ together with all
+sets of the form E ∪ G, where E = {ui : i ∈ I} is a nonempty face of the simplex 2U for
+some ∅ ( I ⊆ [n] and G is a face of the restriction of ∆ to the face F = {vi : i ∈ [n]rI}
+of ∂(2V ) which is complementary to E. The collection ΓA (∆) is a simplicial complex which
+contains 2U and ∆ as subcomplexes; we call it the antiprism over ∆. When ∆ = ∂(2V )
+is the trivial triangulation, the antiprism ΓA (∂(2V )) is combinatorially isomorphic to the
+Schlegel diagram [41, Section 5.2] of the n-dimensional cross-polytope behind any of its
+facets. For general ∆, the antiprism ΓA (∆) is a triangulation of ΓA (∂(2V )): the carrier
+of a face E ∪ G, as above, is the union of E with the carrier of G, the latter considered
+as a face of the triangulation ∆ of ∂(2V ). Since ΓA (∂(2V )) triangulates the simplex 2V ,
+ΓA (∆) is a triangulation of 2V as well with boundary complex equal to ∆.
+
+Remark 3.1. Given a triangulation Γ of the (n−1)-dimensional simplex 2V , an analogous
+procedure defines a triangulation, say ∆A (Γ), of the (n − 1)-dimensional sphere which
+contains 2U and Γ as subcomplexes and which we may call the antiprism over Γ. This
+construction was employed in [2, Section 4], in order to relate the γ-vector of a flag
+triangulation of the sphere to the local γ-vector of a flag triangulation of the simplex, and
+in [4, Section 4], in order to interpret geometrically binomial Eulerian polynomials (see
+Example 3.5) and certain analogues for r-colored permutations. The connection between
+the two constructions is that ∆A (Γ) = Γ ∪ ΓA (∂Γ).                                         
+
+    The following statement is closely related to [4, Proposition 4.1].
+
+Proposition 3.2. The simplicial complex ΓA (∆) triangulates the (n − 1)-dimensional
+simplex 2V for every triangulation ∆ of the boundary complex ∂(2V ). Moreover,
+                                           X
+                          h(ΓA (∆), x) =       x|F | h(∆F , 1/x).
+                                               F (V
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                 9
+
+Proof. We have already commented on the first sentence. For the second, using Proposi-
+tion 2.1 and the definition of the h-polynomial we find that
+
+                                                                  X
+             xn h(ΓA (∆), 1/x) = h◦ (ΓA (∆), x) =                       x|G| (1 − x)n−|G|
+                                                            G∈ΓA (∆)◦
+                                         X          X
+                                   =                         x|G| (1 − x)n−|G| .
+                                       ∅6=E⊆U G ∈ ΓA (∆),
+                                                 G∩U =E
+
+
+
+By definition of ΓA (∆), the inner sum is equal to x|E| h(∆F , x), where F ( V is the face of
+2V which is complementary to E. Replacing x by 1/x results in the proposed expression
+for h(ΓA (∆), x) and the proof follows.                                                    
+
+
+  We now turn our attention to uniform triangulations of ∂(2V ).
+
+Proposition 3.3. For every F-uniform triangulation ∆ of the boundary complex of an
+(n − 1)-dimensional simplex 2V :
+
+
+                                   n−1  
+                                   X    n
+(4)             h(ΓA (∆), x) =                 xk hF (σk , 1/x)
+                                   k=0
+                                           k
+                                   n−1   
+                                   X    n
+                                            `F (σk , x) (1 + x)n−k − xn−k ,
+                                                                         
+(5)                            =
+                                   k=0
+                                        k
+                                   n−1  
+                                   X    n
+                                            `F (σk , x) (1 + x)n−k − 1 − xn−k ,
+                                                                              
+(6)           `V (ΓA (∆), x) =
+                                   k=0
+                                        k
+                                   n−1  
+                                   X    n
+                                            `F (σk , x) (1 + x)n−k − 1 − x − · · · − xn−k
+                                                                                          
+(7) h(ΓA (∆), x) − h(∆, x) =
+                                   k=0
+                                        k
+                                   n−1  
+                                   X    n
+                                            hF (σk , x) xn−k − x(x − 1)n−k−1 .
+                                                                             
+(8)                            =
+                                   k=0
+                                        k
+
+
+
+
+   In particular, if all restrictions of ∆ to proper faces of 2V are regular triangulations, then
+the polynomials `V (ΓA (∆), x) and h(ΓA (∆), x) − h(∆, x) are unimodal and h(ΓA (∆), x)
+is alternatingly increasing with respect to n − 1.
+10 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+Proof. Equation (4) follows directly from Proposition 3.2. To deduce Equation (5) from
+that, we use (3) to express hF (σk , 1/x) in terms of local h-polynomials, apply the sym-
+metry property of the latter and change the order of summation to obtain
+               n−1           k                      n−1   Xk          
+               X     n kX k                             X    n        k−j k
+h(ΓA (∆), x) =          x               `F (σj , 1/x) =             x          `F (σj , x)
+               k=0
+                     k       j=0
+                                    j                   k=0
+                                                             k j=0          j
+               n−1              n−1                 n−1              n−1         
+               X               X      n k k−j           X    n             X     n − j k−j
+             =     `F (σj , x)                   x    =        `F (σj , x)                x
+               j=0              k=j
+                                      k     j           j=0
+                                                             j             k=j
+                                                                                n  − k
+               n−1
+               X n    
+                        `F (σj , x) (1 + x)n−j − xn−j .
+                                                         
+             =
+               j=0
+                     j
+
+For the fourth and fifth step we have used the identity nk kj = nj n−k
+                                                                 n−j 
+                                                                          and the binomial
+theorem, respectively.
+  Alternatively, Equation (5) follows from an application of Stanley’s locality formula [36,
+Theorem 3.2] to ΓA (∆), considered as a triangulation of the antiprism ΓA (∂(2V )) over
+the boundary complex of 2V . Equation (6) follows when combining (5) with
+                                                   n−1  
+                                                   X    n
+(9)                h(ΓA (∆), x) = `V (ΓA (∆), x) +        `F (σk , x),
+                                                   k=0
+                                                        k
+
+the latter being (3) applied to ΓA (∆). Equation (7) follows from (5) and
+                          n−1  
+                          X    n
+(10)            h(∆, x) =        `F (σk , x)(1 + x + x2 + · · · + xn−k−1 ),
+                          k=0
+                               k
+
+which is also a consequence of [36, Theorem 3.2]; see [21, Equation (4.2)]. Equation (8)
+follows from (7) by expressing `F (σk , x) in terms of the h-polynomials hF (σj , x), changing
+the order of summation and computing the inner sum, just as in the proof of Equation (5);
+we leave the details of this computation to the interested reader.
+   For the last statement we note that, by the regularity assumption, `F (σk , x) is (symmet-
+ric with center of symmetry k/2 and) unimodal for 0 ≤ k < n. As a result, Equations (6)
+and (7) imply the unimodality of `V (ΓA (∆), x) and h(ΓA (∆), x) − h(∆, x), respectively,
+and Equations (7) and (10) imply that the symmetric decomposition
+
+                    h(ΓA (∆), x) = h(∆, x) + (h(ΓA (∆), x) − h(∆, x))
+
+of h(ΓA (∆), x) with respect to n − 1 is nonnegative and unimodal. The latter statement
+is equivalent to h(ΓA (∆), x) being alternatingly increasing.                        
+
+Remark 3.4. Let ∆ be as in Proposition 3.3. Since coning a simplicial complex does not
+affect the h-polynomial, the right-hand side of (10) is also an expression for h(u ∗ ∆, x),
+                     COMBINATORICS OF ANTIPRISM TRIANGULATIONS                               11
+
+where u ∗ ∆ denotes the cone of ∆ with apex u. The formula
+                                   n−1  
+                                   X    n
+(11)                h(u ∗ ∆, x) =          hF (σk , x)(x − 1)n−k−1
+                                   k=0
+                                        k
+can be derived from that by expressing `F (σk , x) in terms of the h-polynomials hF (σj , x),
+changing the order of summation and computing the inner sum, just as in the proof
+of Equations (5) and (8) or, alternatively, by adapting the argument in the proof of
+Proposition 3.2. When ∆ is the barycentric subdivision of ∂σn , this yields the recursion
+                                    n−1  
+                                    X    n
+                         An (x) =            Ak (x)(x − 1)n−k−1
+                                    k=0
+                                         k
+for the Eulerian polynomial An (x), valid for n ≥ 1. This appears as Equation (2.7) in
+[16].
+Example 3.5. Suppose again that ∆ is the barycentric subdivision of ∂σn . Then, Equa-
+tion (4) yields that
+                     n−1                     n−1  
+                     X    n k                  X    n             en (x) − xAn (x)
+    h(ΓA (∆), x) =          x Ak (1/x) = 1 + x         Ak (x) = A
+                     k=0
+                          k                    k=1
+                                                    k
+
+and h(ΓA (∆), x) − hF (∂σn ) = Aen (x) − (1 + x)An (x), where
+                                                 n  
+                                               X     n
+                             An (x) := 1 + x
+                             e                          Ak (x)
+                                                k=1
+                                                     k
+is the nth binomial Eulerian polynomial studied, for instance, in [4, 32]. From Equation (9)
+we compute further that `V (ΓA (∆), x) = A      en (x) − (1 + x)An (x) − dn (x), where dn (x) =
+`F (σn , x) is the nth derangement polynomial (see Section 2.2).
+   Therefore, by Proposition 3.3, A   en (x) − xAn (x) is alternatingly increasing with respect
+to n − 1 and A   en (x) − (1 + x)An (x) is symmetric and unimodal.                            
+
+                           4. The antiprism triangulation
+   This section briefly describes combinatorially and geometrically the antiprism triangu-
+lation of a simplicial complex. For more information we refer to [19, Apendix A.1] and
+[20], where these descriptions are given in variant forms. We first review the corresponding
+descriptions of the barycentric subdivision, which we will parallel to treat the antiprism
+triangulation.
+   Let ∆ be a simplicial complex. Consider the (simple, undirected) graph G(∆) on the
+node set of nonempty faces of ∆ for which two nodes are adjacent if one is contained in
+the other. The barycentric subdivision sd(∆) is defined as the clique complex of G(∆),
+meaning the abstract simplicial complex whose vertices are the nodes of G(∆) and whose
+faces are the sets consisting of pairwise adjacent nodes. This is equivalent to the definition
+already given in Section 2.2.
+12 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+   Geometrically, sd(∆) can be described as a triangulation of ∆ as follows. Assume that
+all faces of ∆ of dimension at most j have been triangulated, for some j ∈ N. Then,
+triangulate each (j + 1)-dimensional face of ∆ by inserting one point in the interior of
+that face and coning over its boundary, which is already triangulated. By repeating this
+process, starting at j = 0 and moving to higher dimensional faces, we get a triangulation of
+∆ which is combinatorially isomorphic to sd(∆). Alternatively, sd(∆) can be constructed
+by applying successively the operation of stellar subdivision to each face of ∆ of positive
+dimension, starting from the facets and moving to lower dimensional faces in any order
+which respects reverse inclusion. A stellar subdivision on a face F ∈ ∆ replaces star∆ (F )
+by the join of link∆ (F ) with the cone over ∂(2F ).
+   The antiprism triangulation can be defined similarly, if the nonempty faces of ∆ are
+replaced by pointed faces and coning is replaced by the antiprism construction of Section 3.
+Recall that a pointed subset of a set V is any pair (S, v) such that v ∈ S ⊆ V . Similarly,
+a pointed face of a simplicial complex ∆ is any pair (F, v) such that F ∈ ∆ is a face and
+v ∈ F is a chosen vertex.
+Definition 4.1. Let ∆ be a simplicial complex. We denote by GA (∆) the (simple, undi-
+rected) graph on the node set of pointed faces of ∆ for which two distinct pointed faces
+(F, v) and (F 0 , v 0 ) are adjacent if
+     • F = F 0 , or
+     • F ( F 0 and v 0 ∈ (F 0 rF ), or
+     • F 0 ( F and v ∈ (F rF 0 ).
+The antiprism triangulation of ∆, denoted by sdA (∆), is the abstract simplicial complex
+defined as the clique complex of GA (∆).
+   Examples of antiprism triangulations are shown in Figures 1 and 2.
+   The faces of sdA (∆) can be described explicitly, in combinatorial terms [20, Section 2].
+Given a set S, an ordered set partition (or simply, ordered partition) of S is any sequence
+of nonempty, pairwise disjoint sets (called blocks) whose union is equal to S. A multi-
+pointed ordered partition of S is defined as a pair (π, τ ), where π = (B1 , B2 , . . . , Bm ) and
+τ = (C1 , C2 , . . . , Cm ) are ordered partitions of S and of a subset of S, respectively, with
+the same number of blocks, such that Ci is a nonempty subset of Bi for every i ∈ [m]. We
+think of such a pair as an ordered partition of S, together with a choice of a nonempty
+subset for every block. The sum of the cardinalities of these subsets Ci (total number of
+chosen elements) will be called the weight of (π, τ ). Then, the (k − 1)-dimensional faces
+of sdA (∆) are in one-to-one correspondence with the multi-pointed ordered partitions of
+faces of ∆ of weight k. More specifically, the multi-pointed ordered partition (π, τ ), with
+π = (B1 , B2 , . . . , Bm ) and τ = (C1 , C2 , . . . , Cm ), corresponds to the face of sdA (∆) with
+vertices the pointed faces (F, v) of ∆, where F = B1 ∪ B2 ∪ · · · ∪ Bi for some i ∈ [m] and
+v ∈ Ci . The faces of the antiprism triangulation of the simplex 2V are the multi-pointed
+ordered partitions of subsets of V ; they will be referred to as multi-pointed partial ordered
+partitions of V . Note that the facets of sdA (∆) are in one-to-one correspondence with the
+ordered partitions of the facets of ∆ (since all elements in the blocks should be chosen).
+                     COMBINATORICS OF ANTIPRISM TRIANGULATIONS                               13
+
+
+
+
+       Figure 2. Antiprism triangulation of the cone over the boundary of the
+       2-simplex
+
+Figure 1 shows the antiprism triangulation of the 2-simplex, including some faces labeled
+by multi-pointed ordered partitions.
+   As was the case with barycentric subdivision, sdA (∆) can be constructed geometrically
+by applying the antiprism construction of Section 3 to its faces, starting from the edges
+and moving to faces of higher dimension in any order which respects inclusion. This
+process is slightly different from the one in [19, 20] which uses crossing operations on the
+faces of ∆ instead, starting from facets and moving to faces of lower dimension in any
+order which respects reverse inclusion. A crossing operation (also known as a balanced
+stellar subdivision [7]) on a face F ∈ ∆ replaces star∆ (F ) by the join of link∆ (F ) with the
+antiprism (as defined in Section 3) over ∂(2F ). Both approaches result in a triangulation
+which is combinatorially isomorphic to sdA (∆). Under this isomorphism, the carrier of a
+multi-pointed ordered partition of a face F ∈ ∆ is equal to F . As a result, the interior
+faces of the antiprism triangulation of the simplex 2F are in one-to-one correspondence
+with the multi-pointed ordered partitions of F . A type of operation more general than
+stellar and balanced stellar subdivision was introduced in [18] and was applied there to
+all faces of a fixed dimension to produce a triangulation of ∆.
+
+                                  5. Face enumeration
+  This section studies the rich enumerative combinatorics of antiprism triangulations and
+proves Theorem 1.2. Following the notation of [5], we denote by hA (σn , x) and `A (σn , x)
+the h-polynomial and local h-polynomial of sdA (σn ), respectively. These two polynomials
+play an important role in this study. The main difficulty for proving the real-rootedness
+14 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+of hA (σn , x) comes from the fact that we know of no simpler recurrence relation for it than
+that of Proposition 5.1. Some of the combinatorial interpretations of hA (σn , x) extend to
+describe the effect of the antiprism triangulation on the h-polynomial of any simplicial
+complex.
+5.1. The antiprism triangulation of a simplex. As discussed in Section 4, the number
+of (k − 1)-dimensional faces of the antiprism triangulation sdA (σn ) is equal to the number
+of multi-pointed partial ordered set partitions of [n] of weight k. We now give a recurrence
+and combinatorial interpretations for the h-polynomial of sdA (σn ). For the first few values
+of n,
+                 
+                 
+                  1,                                                                if n = 0
+                 
+                 
+                 
+                  1,                                                                if n = 1
+                 
+                   1 + 2x,                                                           if n = 2
+                 
+                 
+                 
+                 
+                 1 + 9x + 3x2 ,
+                 
+                                                                                     if n = 3
+   hA (σn , x) =
+                 
+                  1 + 28x + 42x2 + 4x3 ,                                            if n = 4
+                 
+                   1 + 75x + 310x2 + 150x3 + 5x4 ,                                   if n = 5
+                 
+                 
+                 
+                 
+                   1 + 186x + 1725x2 + 2300x3 + 465x4 + 6x5 ,
+                 
+                 
+                 
+                 
+                                                                                    if n = 6
+                   1 + 441x + 8211x2 + 23625x3 + 13685x4 + 1323x5 + 7x6 ,
+                 
+                                                                                     if n = 7.
+   We first need to introduce some more terminology. Let ϕ = (π, τ ) be a multi-pointed
+partial ordered set partition of [n]. Thus, π = (B1 , B2 , . . . , Bm ) is an ordered partition of
+a subset S of [n] and τ = (C1 , C2 , . . . , Cm ), where Ci is a nonempty subset of Bi for every
+i ∈ [m]. We will say that ϕ is proper if Ci is a proper subset of Bi for every i ∈ [m]. We
+will use the same terminology with the adjective ‘partial’ dropped, when S = [n]. The
+excedance set of a permutation w ∈ Sn is defined as the set of indices i ∈ [n − 1] such
+that w(i) > i; see [13] for more information on this concept.
+Proposition 5.1.         (a) We have
+                                          n−1  
+                                          X    n k
+(12)                        hA (σn , x) =        x hA (σk , 1/x)
+                                          k=0
+                                               k
+       for every positive integer n.
+   (b) The coefficient of xk in hA (σn , x) is equal to:
+          • the number of proper multi-pointed partial ordered set partitions of [n] of
+            weight k,
+          • the number of ways to choose a subset S ⊆ [n] and an ordered set partition π
+            of S and to color k elements of S black and the remaining elements white, so
+            that no block of π is monochromatic,
+          • the number of ordered set partitions π = (B1 , B2 , . . . , Bm ) of [n] for which the
+                   Sbm/2c
+            union   i=1   Bi has exactly k elements,
+          • nk times the number of permutations in Sn with excedance set equal to [k],
+              
+                       COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                   15
+
+           • the explicit expression
+                            X  k+1
+                             n
+                                     (−1)k+1−j j!S(k + 1, j)j n−k−1 ,
+                             k j=1
+
+        where S(n, k) are the Stirling numbers of the second kind.
+Proof. Part (a) follows from Proposition 3.3, as a special case of Equation (4). For part
+(b), we first note that from Equation (6) of the same proposition and Equation (3) we get
+                               n−1  
+                               X    n
+                                       `A (σm , x) (1 + x)n−m − 1 − xn−m
+                                                                         
+                 `A (σn , x) =
+                               m=0
+                                    m
+
+for n ≥ 1 and
+                                               n  
+                                               X  n
+                               hA (σn , x) =              `A (σm , x),
+                                               m=0
+                                                      m
+respectively. By induction on n, the former equality implies that the coefficient of xk in
+`A (σn , x) is equal to the number of proper multi-pointed ordered set partitions of [n] of
+weight k. This and the latter equation yield the first interpretation of hA (σn , x) claimed
+in part (b). The second interpretation is a restatement of the first (where black elements
+correspond to the chosen elements in the blocks of the multi-pointed partition).
+   The third interpretation can be deduced from the first as follows. Let Q(n, k) denote
+the collection of proper multi-pointed partial ordered partitions of [n] of weight k. Each
+element of Q(n, k) is a triple consisting of a subset S ⊆ [n], an ordered partition π =
+(B1 , B2 , . . . , Br ) of S and a choice of nonempty proper subset Ci of Bi for every i ∈ [r],
+such that the union ∪ri=1 Ci has cardinality k. From such a triple one can define an ordered
+partition of [n] by listing the blocks C1 , . . . , Cr , B1 rC1 , . . . , Br rCr in this order and, if
+nonempty, adding [n]rS at the end as the last block. It is straightforward to verify that
+the resulting map is a bijection from Q(n, k) to the collection of ordered partitions of [n]
+described in the third proposed interpretation.
+   For the last two claimed interpretations, let us denote by c(n, k) the number of per-
+mutations in Sn with excedance set equal to [k], for k ∈ {0, 1, . . . , n}. Then, c(n, n) = 0
+and, as a consequence of Lemma 2.2 and Theorem 2.5 in [13] (see also Section 3 of this
+reference), c(n, k) = c(n, n − k − 1) and
+                                            k       
+                                           X    k+1
+                            c(n, k) = 1 +               c(n − k − 1 + m, m)
+                                          m=1
+                                                 m
+
+for k ∈ {0, 1, . . . , n − 1}. In view of c(n, k) = c(n, n − k − 1), the latter equality can be
+rewritten as
+                                            n−k−1
+                                             X n − k 
+(13)                        c(n, k) = 1 +                  c(k + m, m).
+                                             m=1
+                                                     m
+16 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+On the other hand, writing hA (σn , x) = nk=0 pA (n, k)xk for n ∈ N, the recursion of part
+                                         P
+(a) gives that
+                                        n−1  
+                                        X    n
+                         pA (n, k) =            pA (m, m − k)
+                                        m=k
+                                             m
+for k ∈ {0, 1, . . . , n − 1}. Setting
+                                                 
+                                                 n
+                                    pA (n, k) =    p̄A (n, k),
+                                                 k
+the last recursion can be rewritten as
+                      n−1   
+       n                X     n    m
+          p̄A (n, k) =                  p̄A (m, m − k) i.e.,
+       k                m=k
+                             m      k
+                        n−1                            n−k−1
+                                                           X n − k 
+                        X     n−k
+          p̄A (n, k) =                p̄A (m, m − k) =                p̄A (k + m, m).
+                        m=k
+                             m  −  k                       m=0
+                                                                m
+
+Comparing this recursion to (13) we get that p̄A (n, k) = c(n, k) for all n and all 0 ≤ k ≤ n.
+This proves the next to last interpretation, claimed in part (b). The last interpretation
+follows from this and the explicit formula for c(n, k) obtained in [13, Proposition 6.5]. 
+
+  The following statement is the main result of this section.
+Theorem 5.2. The polynomial hA (σn , x) is real-rooted and interlaces hA (σn+1 , x) for ev-
+ery n ∈ N. Moreover, hA (σn , x) has a nonnegative, real-rooted and interlacing symmetric
+decomposition with respect to n − 1, for every positive integer n.
+Proof. We consider the polynomials
+                                          n  
+                                         X   n k+r
+                             qn,r (x) :=       x hA (σk+r , 1/x),
+                                         k=0
+                                             k
+
+shown in Table 1 for small values of n, r ∈ N. By part (a) of Proposition 5.1 and the
+definition of qn,r (x) we have
+(14)                        qn,0 (x) = hA (σn , x) + xn hA (σn , 1/x),
+(15)                        q0,r (x) = xr hA (σr , 1/x)
+for every positive integer n and every r ∈ N, respectively. We claim that
+                  Qn := (qn,0 (x), qn−1,1 (x), . . . , q1,n−1 (x), q0,n (x), q0,n+1 (x))
+is an interlacing sequence of real-rooted polynomials for every n ∈ N. In particular,
+selecting the first and last two terms, we have the interlacing sequence
+               (hA (σn , x) + xn hA (σn , 1/x), xn hA (σn , 1/x), xn+1 hA (σn+1 , 1/x))
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                 17
+
+of real-rooted polynomials for every n ∈ N. Before we prove the claim let us ob-
+serve that, since xn hA (σn , 1/x) and xn+1 hA (σn+1 , 1/x) have degrees n and n + 1, re-
+spectively, the statement that the former polynomial interlaces the latter is equiva-
+lent to the statement that hA (σn , x) interlaces hA (σn+1 , x). Similarly, since hA (σn , x) +
+xn hA (σn , 1/x) is symmetric of degree n, the statement that this polynomial interlaces
+xn+1 hA (σn+1 , 1/x) is equivalent to each of the statements that the same polynomial is
+interlaced by xn hA (σn+1 , 1/x) and that it interlaces hA (σn+1 , x).
+   We now prove the claim by induction on n. This is true for n = 0, since Q0 = (1, x). We
+assume that it holds for n − 1 ∈ N. The standard recurrence for the binomial coefficients
+shows that qn,r (x) = qn−1,r (x) + qn−1,r+1 (x) for every r ∈ N. Writing this in the form
+                           qn−r,r (x) = qn−r−1,r (x) + qn−r−1,r+1 (x)
+and iterating, we get
+(16)        qn−r,r (x) = qn−r−1,r (x) + qn−r−2,r+1 (x) + · · · + q0,n−1 (x) + q0,n (x)
+for r ∈ {0, 1, . . . , n}. This means that the first n+1 terms of Qn are the partial sums of the
+reverse of Qn−1 and hence they form an interlacing sequence, by part (b) of Lemma 2.2.
+Thus, by part (a) of this lemma, to complete the induction it suffices to show that qn,0 (x)
+and q0,n (x) interlace q0,n+1 (x). As already discussed, and in view of (14) and (15), this is
+equivalent to showing that hA (σn , x) + xn hA (σn , 1/x) and hA (σn , x) interlace hA (σn+1 , x).
+To verify this we note that, setting r = 0 in Equation (16), comparing with (14) and (15)
+and replacing n with n + 1, we get
+(17)                 qn,0 (x) + qn−1,1 (x) + · · · + q0,n (x) = hA (σn+1 , x).
+Since the sum of the terms of an interlacing sequence is interlaced by the first term, we
+conclude that hA (σn , x) + xn hA (σn , 1/x) interlaces hA (σn+1 , x). Finally, applying part (c)
+of Lemma 2.2 to the interlacing sequence Qn−1 we conclude that the sum of the first n
+terms of this sequence, which equals hA (σn , x), interlaces the sum of the partial sums of
+the reverse of Qn−1 , which equals hA (σn+1 , x). This completes the proof of the claim.
+   Finally, note that xn hA (σn , 1/x) and xn+1 hA (σn+1 , 1/x) are the last two terms of Qn .
+Since this sequence is interlacing, the two polynomials are real-rooted and the former
+interlaces the latter. As already discussed, this means that hA (σn , x) is real-rooted and
+interlaces hA (σn+1 , x). Similarly, the sum of the first n terms of the sequence Qn−1 in-
+terlaces the last term. In view of (15) and (17), this means that hA (σn , x) interlaces
+xn hA (σn , 1/x) and, equivalently, that hA (σn , x) is interlaced by xn−1 hA (σn , 1/x). Since
+we already know from Proposition 3.3 that hA (σn , x) has a nonnegative symmetric de-
+composition with respect to n − 1, this decomposition must be real-rooted and interlacing
+by [10, Theorem 2.6].                                                                          
+   Let us write θA (σn , x) := hA (σn , x) − hA (∂σn , x). As mentioned in the proof of Propo-
+sition 3.3, the expression hA (σn , x) = hA (∂σn , x) + θA (σn , x) is the (nonnegative) sym-
+metric decomposition of hA (σn , x) with respect to n − 1. Thus, hA (∂σn , x) and θA (σn , x)
+are real-rooted by Theorem 5.2. Although the latter appears to be a very special case
+of Conjecture 1.1, according to [5, Theorem 1.2], it would imply the conjecture if the
+18 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+         r=0                    r=1                      r=2                         r=3
+  n=0    1                      x                        2x + x2                     3x + 9x2 + x3
+  n=1    1+x                    3x + x2                  5x + 10x2 + x3              7x + 51x2 + 29x3 + x4
+  n=2    1 + 4x + x2            8x + 11x2 + x3           12x + 61x2 + 30x3 + x4
+  n=3    1 + 12x + 12x2 + x3    20x + 72x2 + 31x3 + x4
+
+                               Table 1. Some polynomials qn,r (x).
+
+
+following statement (which we have verified computationally for n ≤ 20) also turns out
+to be true.
+Conjecture 5.3. The polynomial hA (σn−1 , x) interlaces θA (σn , x) for every positive in-
+teger n.
+Remark 5.4. The polynomial hA (σn , x) + xn hA (σn , 1/x), shown to be real-rooted in the
+proof of Theorem 5.2, is equal to the h-polynomial of a flag triangulation of the (n − 1)-
+dimensional sphere. Indeed, let Γ = sdA (σn ), so that h(Γ, x) = hA (σn , x). Then, in the
+notation of Section 3, in particular Remark 3.1, ∆ = ∆A (Γ) is a flag triangulation of the
+(n − 1)-dimensional sphere and h(∆, x) = h(Γ, x) + h◦ (Γ, x) = h(Γ, x) + xn h(Γ, 1/x) =
+hA (σn , x) + xn hA (σn , 1/x).
+Remark 5.5. The polynomial
+                                         n
+                                         X                       n
+                                                                 X
+                       p̄A (σn , x) :=          p̄A (n, k)xk =         c(n, k)xk ,
+                                          k=0                    k=0
+
+where, as in the proof of Proposition 5.1, c(n, k) is the number of permutations in Sn with
+excedance set equal to [k], was shown to be symmetric and unimodal in [13, Section 3].
+For the first few values of n,
+                       
+                       
+                        1,                                                if n = 1
+                       
+                       
+                       
+                       
+                        1 + x,                                            if n = 2
+                                   2
+                       1 + 3x + x ,                                       if n = 3
+                       
+                       
+                                      2
+        p̄A (σn , x) = 1 + 7x + 7x + x ,    3
+                                                                           if n = 4
+                                        2       3     4
+                       
+                       
+                       
+                       
+                        1 + 15x + 31x + 15x + x ,                         if n = 5
+                                         2       3        4   5
+                       
+                       
+                        1 + 31x + 115x + 115x + 31x + x ,                 if n = 6
+                       
+                                          2       3          4    5    6
+                         1 + 63x + 391x + 675x + 391x + 63x + x , if n = 7.
+                       
+
+  The following statement is stronger than the real-rootedness of hA (σn , x).
+Conjecture 5.6. The polynomial p̄A (σn , x) is real-rooted and interlaces p̄A (σn+1 , x) for
+every n ∈ N. In particular, p̄A (σn , x) is γ-positive for every n ∈ N.
+5.2. The local h-polynomial. We now focus on the local h-polynomial `A (σn , x) of the
+antiprism triangulation of σn . For the first few values of n,
+                     COMBINATORICS OF ANTIPRISM TRIANGULATIONS                              19
+
+
+                     
+                     
+                      1,                                                     if n = 0
+                     
+                     
+                     
+                      0,                                                     if n = 1
+                     
+                       2x,                                                    if n = 2
+                     
+                     
+                     
+                     
+                     3x + 3x2 ,
+                     
+                                                                              if n = 3
+       `A (σn , x) =
+                     4x + 30x2 + 4x3 ,
+                                                                             if n = 4
+                     
+                       5x + 130x2 + 130x3 + 5x4 ,                             if n = 5
+                     
+                     
+                     
+                     
+                       6x + 435x2 + 1460x3 + 435x4 + 6x5 ,
+                     
+                     
+                     
+                     
+                                                                             if n = 6
+                       7x + 1281x2 + 10535x3 + 10535x4 + 1281x5 + 7x6 ,
+                     
+                                                                              if n = 7.
+  We now provide a recurrence, combinatorial interpretations and formulas for the poly-
+nomials `A (σn , x).
+Proposition 5.7.         (a) We have
+                                n−1  
+                               X     n
+                                        `A (σk , x) (1 + x)n−k − 1 − xn−k
+                                                                          
+(18)             `A (σn , x) =
+                                k=0
+                                     k
+
+       for every positive integer n. In particular, `A (σn , x) is unimodal for every n ∈ N.
+   (b) The coefficient of xk in `A (σn , x) is equal to:
+          • the number of proper multi-pointed ordered set partitions of [n] of weight k,
+          • the number of ways to choose an ordered set partition π of [n] and to color k
+            elements of [n] black and the remaining n − k white, so that no block of π is
+            monochromatic,
+          • the number of ordered set partitions (B1 , B2 , . . . , Bm ) of [n] having an even
+                     of blocks for which the union m/2
+                                                      S
+            number                                      i=1 Bi has exactly k elements,
+             n
+               
+          • k times the number of derangements in Sn with excedance set equal to [k],
+          • the explicit expression
+                               X
+                                n
+                                       (j!)2 S(k, j)S(n − k, j),
+                                k j≥1
+
+        where S(n, k) are the Stirling numbers of the second kind.
+Proof. The recurrence of part (a) follows from Proposition 3.3, as a special case of Equa-
+tion (6). The unimodality of `A (σn , x) follows directly from the recurrence by induction
+on n (and, alternatively, from the regularity of the antiprism triangulation of the simplex;
+see the proof of Proposition 7.2).
+   For part (b), the first interpretation was already shown in the proof of Proposition 5.1
+and the second is a restatement of the first. The third interpretation follows from the
+first and the proof of the corresponding result of Proposition 5.1 by noting that in the
+provided bijection the set [n]rS is always empty.     Furthermore, the fifth interpretation
+follows from the second one since there are nk ways to choose the k black elements of
+                                                  
+20 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+[n] and for every such choice and every j ≥ 1, there are j!S(k, j) · j!S(n − k, j) ways to
+choose an ordered partition of [n] with j blocks, none of which is monochromatic.
+   Finally, we deduce the fourth interpretation from the corresponding result of part (b)
+of Proposition
+             Pn5.1. Let us use the notation adopted in the proof of that proposition, write
+                            k
+`A (σn , x) = k=0 `A (n, k)x for n ∈ N and set
+                                              
+                                              n ¯
+                                 `A (n, k) =      `A (n, k).
+                                              k
+Then, by the second interpretation, considering the elements 1, 2, . . . , k colored black
+and the other elements of [n] colored white, `¯A (n, k) is equal to the number of ordered
+set partitions of [n] with no monochromatic block. By Proposition 5.1, under the same
+coloring convention, p̄A (n, k) is equal to the number of ways to choose a set [k] ⊆ S ⊆ [n]
+and an ordered set partition of S with no monochromatic block. These interpretations
+imply that
+                                          n−k      
+                                          X     n−k ¯
+                            p̄A (n, k) =             `A (n − i, k)
+                                          i=0
+                                                  i
+
+for all n, k. Denoting by d(n, k) the number of derangements in Sn with excedance set
+equal to [k], it should also be clear that
+                                       n−k     
+                                       X    n−k
+                             c(n, k) =           d(n − i, k)
+                                       i=0
+                                             i
+
+for all n, k. By Proposition 5.1, we have p̄A (n, k) = c(n, k) for all n, k. Therefore, the two
+expressions for these numbers above and an easy induction show that `¯A (n, k) = d(n, k)
+for all n, k and the proof follows.                                                           
+
+   Following notation introduced in the previous proof, we set `¯A (σn , x) := nk=0 `¯A (n, k)xk .
+                                                                               P
+We note that, since the polynomial `A (σn , x) is symmetric with center of symmetry n/2,
+so is `¯A (σn , x).
+Conjecture 5.8.       (a) The polynomial `A (σn , x) is real-rooted and interlaces `A (σn+1 , x)
+      for every n ∈ N.
+  (b) The polynomial `¯A (σn , x) is real-rooted and interlaces `¯A (σn+1 , x) for every n ∈ N.
+      In particular, `¯A (σn , x) is γ-positive for every n ∈ N.
+   The following statement confirms a general conjecture of [2], claiming that all flag trian-
+gulations of simplices have γ-positive local h-polynomials, in the special case of antiprism
+triangulations and provides evidence in favor of Conjecture 5.8 (a). The γ-positivity of
+`A (σn , x) follows from that of the polynomial θA (σn , x) := hA (σn , x) − hA (∂σn , x), which
+appeared in Conjecture 5.3, and [21, Theorem 4.4].
+Proposition 5.9. The polynomial `A (σn , x) is γ-positive for every n ∈ N.
+                     COMBINATORICS OF ANTIPRISM TRIANGULATIONS                              21
+
+Proof. Theorem 4.4 in [21], applied to sdA (σn ), asserts that
+                                        n  
+                                      X     n
+                        `A (σn , x) =           θA (σk , x)dn−k (x),
+                                       k=0
+                                            k
+where dn (x) is the nth derangement polynomial discussed in Section 2.2. The polynomial
+θA (σk , x) is symmetric, with center of symmetry k/2, and, as discussed after the proof
+of Theorem 5.2, it has nonnegative coefficients and only real roots. As a result, it is γ-
+positive, with center of symmetry k/2. The same property is shared by the derangement
+polynomial dk (x); see [3, Theorem 2.13]. Therefore, the right-hand side of the previous
+formula for `A (σn , x) is a sum of γ-positive polynomials, each with center of symmetry
+k/2 + (n − k)/2 = n/2, and the proof follows.                                           
+  A combinatorial interpretation of θA (σn , x) can be deduced from Proposition 5.7.
+Corollary 5.10. The coefficient of xk in θA (σn , x) equals the number of ways to choose
+an ordered set partition π of [n] and to color k elements of [n] black and the remaining
+n − k white, so that no block of π is monochromatic and there is a black element which is
+larger than a white element in the last block of π.
+Proof. As a consequence of [21, Lemma 4.1] (and as already discussed in the proof of
+Proposition 3.3), we have
+                                      n−2  
+                                      X    n
+          θA (σn , x) = `A (σn , x) −         `A (σm , x)(x + x2 + · · · + xn−m−1 )
+                                      m=0
+                                           m
+for every positive integer n. By the second interpretation of `A (σn , x) provided by Propo-
+sition 5.7 (b), the coefficient of xk in the sum on the right-hand side is equal to the
+number of ways to choose an ordered set partition π of [n] and to color k elements of [n]
+black and the remaining n − k white, so that no block of π is monochromatic and every
+black element in the last block of π is smaller than every white element of that block.
+Thus, the proposed interpretation of θA (σn , x) follows from the previous equation and
+Proposition 5.7.                                                                          
+5.3. Face-vector transformations. The general results of [5] on uniform triangulations
+of simplicial complexes imply that there exist nonnegative integers qA (n, k) and pA (n, k, j)
+for n, k, j ∈ N with k, j ≤ n such that
+                                             X n
+(19)                       fj−1 (sdA (∆)) =      qA (k, j)fk−1 (∆)
+                                              k=j
+
+and
+                                             n
+                                             X
+(20)                        hj (sdA (∆)) =         pA (n, k, j)hk (∆)
+                                             k=0
+
+for every (n−1)-dimensional simplicial complex ∆ and every j ∈ {0, 1, . . . , n}. The former
+equation is easy to explain; a simple counting argument (see the proof of [5, Theorem 4.1])
+22 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+shows its validity when qA (n, k) is defined as the number of (k − 1)-dimensional faces in
+the interior of the antiprism triangulation of σn . This yields the following statement.
+Proposition 5.11. For all integers n ≥ 1 and k ∈ {0, 1, . . . , n}, qA (n, k) is equal to the
+number of multi-pointed ordered set partitions of [n] of weight k. Moreover, we have the
+explicit formula
+                                        X   k
+                                         n
+                          qA (n, k) =            j!S(k, j)j n−k
+                                          k j=0
+where, as usual, S(k, j) is a Stirling number of the second kind.
+Proof. The proposed combinatorial interpretation follows from our previous       discussion
+                                                                         n
+                                                                          
+and that in Section 4. To verify the formula, we note that there are k · j!S(k, j) ways
+to choose a k-element subset S of [n] and an ordered partition of S with j blocks and,
+for each such choice there are j n−k ways to distribute the remaining n − k elements of [n]
+in the blocks so as to form a multi-pointed ordered set partition of [n] with set of chosen
+elements equal to S.                                                                      
+   Equation (20) and the nonnegativity of the coefficients pA (n, k, j) which appear there
+are less obvious. Various interpretations, an explicit formula and a recurrence are given
+for these numbers in [5] in the general framework of uniform triangulations. In particular,
+as shown in [5, Corollary 5.6] (and originally by the second and third author of this paper),
+the recurrence
+(21)     pA (n, k, j) = pA (n, k − 1, j) + pA (n − 1, k − 1, j − 1) − pA (n − 1, k − 1, j)
+holds for all k, j ∈ {0, 1, . . . , n} with k ≥ 1. We will also keep in mind that pA (n, 0, j) =
+pA (n, j) is the coefficient of xj in hA (σn , x). This observation is the special case ∆ = σn
+of Equation (20).
+   The following combinatorial interpretations of pA (n, k, j) generalize some of those given
+for pA (n, k) in Proposition 5.1.
+Proposition 5.12. For all integers n ≥ 1 and k ∈ {0, 1, . . . , n}, pA (n, k, j) is equal to:
+    • the number of ways to choose a set [k] ⊆ S ⊆ [n] and an ordered set partition π
+      of S and to color j elements of S black and the remaining elements white, so that
+      the following condition holds: if a block B of π is monochromatic, then
+         ◦ B is the first block of π,
+         ◦ B ⊆ [k], and
+         ◦ all elements of B are colored black.
+    • the number of ordered set partitions (B1 , B2 , . . . , Bm ) of [n] for which the following
+      conditions hold:         Sbm/2c
+         ◦ if m is even, then i=1     Bi has exactly j elements, and
+         ◦ if m is odd, then the union of bm/2c
+                                          S
+                                             i=1  Bi and Bm ∩ [k] has exactly j elements.
+Proof. Let Q(n, k, j) be the collection of triples of sets S, partitions of S and colorings of
+the elements of S described in the first proposed combinatorial interpretation of pA (n, k, j)
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                23
+
+and let q(n, k, j) be the cardinality of Q(n, k, j). We will show that pA (n, k, j) = q(n, k, j).
+This is true for k = 0 by the first combinatorial interpretation of pA (n, j) = pA (n, 0, j)
+provided by Proposition 5.1. Thus, it suffices to show that the numbers q(n, k, j) satisfy
+recurrence (21) or, equivalently, that
+          q(n, k − 1, j) = q(n, k, j) + q(n − 1, k − 1, j) − q(n − 1, k − 1, j − 1)
+for k ≥ 1. By definition, q(n, k−1, j) is the number of triples in the collection Q(n, k−1, j),
+each one consisting of a set S, a partition of S and a coloring of the elements of S having
+certain properties. Clearly, we have k 6∈ S for exactly q(n − 1, k − 1, j) of these triples.
+Moreover, we have k ∈ S for exactly q(n, k, j) − q(n − 1, k − 1, j − 1) of them, since for
+exactly q(n − 1, k − 1, j − 1) of the triples in Q(n, k, j) there is a monochromatic block
+which contains k. This proves the first interpretation.
+   As an alternative proof, by computing the coefficient of xj in the right-hand side of [5,
+Equation (12)] we get the explicit expression
+                                     n X  j              
+                                   X          k    n−k
+                    pA (n, k, j) =                            `A (r, j − i).
+                                   r=0 i=0
+                                               i  n−r−i
+The double sum on the right side is also equal to q(n, k, j) since to choose a set S, a
+partition π and a coloring as in the statement of the proposition so that a monochromatic
+block B has exactly i elements, if present, and there is a total of r elements in the
+remaining blocks of π, there are ki n−r−i
+                                        n−k
+                                              ways to choose the i elements of B and the
+n−r −i elements of [n] not in the blocks of π and for each such choice, by Proposition 5.7,
+there are `A (r, j − i) ways to choose the blocks of π other than B.
+  To prove the second interpretation, it suffices to find a bijection from Q(n, k, j) to the
+collection of ordered set partitions described there. Such a bijection can be constructed
+as an obvious extension of the one provided in the proof of Proposition 5.1 for the special
+case k = 0. More specifically, the elements of the monochromatic block, if present, of a
+colored ordered partition in Q(n, k, j) should be included in the last block of the ordered
+partition produced by the bijection; the details are left to the interested reader.       
+
+                                 6. Lefschetz properties
+   This section reviews basic definitions and background on Lefschetz properties for sim-
+plicial complexes and includes some preliminary technical results, which will be applied
+in the following section in the context of antiprism triangulations.
+   Let ∆ be an (n − 1)-dimensional simplicial complex which is Cohen–Macaulay over an
+infinite field F and let s ≤ n be a positive integer. We say that ∆ has the s-Lefschetz
+property (over F) if there exists a linear system of parameters Θ for F[∆] and a linear
+form ω ∈ F[∆], such that the multiplication maps
+                         ·ω s−2i : (F[∆]/ΘF[∆])i → (F[∆]/ΘF[∆])s−i
+are injective for all 0 ≤ i ≤ b(s − 1)/2c. Following [22], we call ∆ almost strong Lef-
+schetz (over F) if it has the (n − 1)-Lefschetz property. Usually, if ∆ has the n-Lefschetz
+24 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+property and, additionally, the above multiplication maps are isomorphisms, one says
+that ∆ is strong Lefschetz (or ∆ has the strong Lefschetz property). Lefschetz properties
+are an important tool in the area of face enumeration of simplicial complexes; various
+classes of simplicial complexes, the most prominent probably being boundary complexes
+of simplicial polytopes [34], are known to have such properties. Barycentric subdivisions
+of shellable simplicial complexes were shown in [22] to be almost strong Lefschetz over F.
+   The proof of Theorem 1.3, which follows similar lines, is fairly elementary and does not
+require heavy machinery. Since it is rather lengthy, we now explain the main steps to
+guide the reader through it. The main idea to show that the antiprism triangulation of a
+shellable simplicial complex is almost strong Lefschetz is to use induction on the number of
+facets and the dimension. The inductive step (see Theorem 7.6) essentially follows from
+a short exact sequence and some standard arguments for commutative diagrams. The
+hardest part is the base of the induction, namely to prove the almost strong Lefschetz
+property for the antiprism triangulation of a simplex (see Theorem 7.4). The main idea
+there is to show that sdA (σn ) is almost strong Lefschetz if and only if so is its boundary
+complex (Proposition 7.2). Since the boundary complex can be realized as the boundary
+complex of a simplicial polytope (Proposition 7.3), the claim follows from [34]. To prove
+Proposition 7.2, we provide an explicit sequence of edge contractions which preserve the
+almost strong Lefschetz property and transform ∂sdA (σn ) into sdA (σn ). It is known that
+Lefschetz properties behave well if the mentioned edge contractions are sufficiently nice.
+Before we can make this more precise, we need to introduce some definitions.
+   Let ∆ be a simplicial complex on a vertex set V which is endowed with a total order <.
+Given an edge e = {a, b} ∈ ∆ with a < b, the contraction C∆ (e) of ∆ with respect to e is
+the simplicial complex on the vertex set V r{b} which is obtained from ∆ by identifying
+vertices a and b, i.e.,
+
+             C∆ (e) := {F ∈ ∆ : b ∈
+                                  / F } ∪ {(F r{b}) ∪ {a} : b ∈ F ∈ ∆}.
+
+We say that ∆ satisfies the Link Condition with respect to e if
+
+                           link∆ (e) = link∆ ({a}) ∩ link∆ ({b}).
+
+Proposition 6.1. Let F be an infinite field and let ∆ be an (n − 1)-dimensional Cohen–
+Macaulay complex over F. Suppose ∆ satisfies the Link Condition with respect to an edge
+e ∈ ∆. If C∆ (e) is Cohen–Macaulay over F of dimension n − 1 and both link∆ (e) and
+C∆ (e) are strong (respectively, almost strong) Lefschetz over F, then so is ∆.
+
+   We note that since, e.g., by Reisner’s criterion [31], the Cohen–Macaulay property is
+inherited by links, it is guaranteed that link∆ (e) is Cohen–Macaulay. On the contrary,
+the contraction of an edge does not even need to be pure. Proposition 6.1 was proved in
+[27, Proposition 3.2] for the strong Lefschetz property if F is an arbitrary infinite field of
+any characteristic (see also [6, Theorem 2.2] for the same result in characteristic zero).
+Since it is not entirely obvious, although reasonable to believe, that the proofs go through
+for the almost strong Lefschetz property, we sketch the main steps of the proof.
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                               25
+
+Proof of Proposition 6.1. Let V be the vertex set of ∆ and e = {a, b} ∈ ∆, where a < b.
+Following [27], we consider the shift operator
+                    (
+                     (F r{b}) ∪ {a}, if b ∈ F, a ∈  / F and (F r{b}) ∪ {a} ∈
+                                                                           / ∆,
+         Ce (F ) =
+                     F,                  otherwise,
+which goes back to [14], and set shifte (∆) = {Ce (F ) : F ∈ ∆}. Since the Link Condition
+holds for e, [27, Lemma 2.1] implies that
+                   shifte (∆) = C∆ (e) ∪ {{b} ∪ F : F ∈ a ∗ link∆ (e)}.
+This implies that shifte (∆) = C∆ (e) ∪ star∆ (e) and, as a result, there is the exact sequence
+of F[xv : v ∈ V ]-modules
+(22)                 0 → F[star∆ (e)] → F[shifte (∆)] → F[C∆ (e)] → 0,
+where the first map is given by multiplication with xb . Since link∆ (e) is (n − 3)-Lefschetz,
+so is star∆ (e) (see, e.g., [22, Lemma 2.1]). Hence, there exist Θ = (θ1 , θ2 , . . . , θn ) and
+a linear form ω ∈ F[xv : v ∈ V ] such that Θ is an l.s.o.p. for F[star∆ (e)], F[shifte (∆)]
+and F[C∆ (e)] simultaneously and ω is an (n − 1)- and (n − 3)-Lefschetz element for C∆ (e)
+and star∆ (e), respectively, with respect to Θ. Hence, from (22) we get the commutative
+diagram
+       0 →      F(star∆ (e))`−1    →      F(shifte (∆))`    →      F(C∆ (e))`     → 0
+
+                 ↓ ω n−3−2(`−1)              ↓ ω n−2`−1             ↓ ω n−2`−1
+
+               F(star∆ (e))n−2−` → F(shifte (∆))n−1−` → F(C∆ (e))n−1−` → 0
+for 0 ≤ ` ≤ b(n−1)/2c, where we have written F(star∆ (e)) for F[star∆ (e)]/Θ and similarly
+for F(shifte (∆)) and F(C∆ (e)), and we have set F(star∆ (e))−1 = 0.
+   Since the left and right vertical maps are injective by assumption, so is the middle map
+by the snake lemma. Thus, shifte (∆) has the almost strong Lefschetz property. Moreover,
+since ∆ satisfies the Link Condition with respect to e, we conclude from [27, Lemma 2.2]
+that Ishifte (∆) is an initial ideal of I∆ with respect to a certain term order. Finally, ∆ has
+the (n − 1)-Lefschetz property by [40, Proposition 2.9]. Wiebe’s orginal result was for
+m-primary homogeneous ideals having the strong Lefschetz property. However, the same
+proof works in our setting.                                                                  
+
+  Given a simplicial complex ∆ and face U = {u1 , u2 , . . . , un } ∈ ∆, we say that ∆ satisfies
+the strong Link Condition with respect to U if
+(23)                       link∆ (F ) ∩ link∆ (G) = link∆ (F ∪ G)
+for all F, G ⊆ U with F ∩ G = ∅. Note that, in this case, (23) holds for all (not
+necessarily disjoint) subsets F, G ⊆ U . The following technical lemma relates the strong
+Link Condition to the usual Link Condition.
+26 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+Lemma 6.2. Let ∆ be a simplicial complex which satisfies the strong Link Condition with
+respect to the face U = {u1 , u2 , . . . , un }. Then, C∆ ({un−1 , un }) satisfies the strong Link
+Condition with respect to U r{un }.
+  In particular, all edges of 2U can be contracted successively so that at each step, the
+Link Condition is satisfied with respect to the contracted edge.
+Proof. To simplify notation, we set ∆0 = C∆ ({un−1 , un }) and let U 0 = U r{un } ∈ ∆0 be
+the contraction of U . We consider disjoint sets F, G ⊆ U 0 and observe that, by definition
+of ∆0 ,
+(24)     link∆0 (F ) = {H ∈ link∆ (F ) : un ∈
+                                            / H} ∪
+                       {(Hr{un }) ∪ {un−1 } : un ∈ H ∈ link∆ (F ), un−1 ∈
+                                                                        / H}
+if un−1 ∈
+        / F , and
+(25)          link∆0 (F ) = {H ∈ link∆ (F ) : un ∈
+                                                 / H} ∪
+                            {Hr{un−1 } : H ∈ link∆ ((F r{un−1 }) ∪ {un })}
+if un−1 ∈ F . The inclusion
+                           link∆0 (F ∪ G) ⊆ link∆0 (F ) ∩ link∆0 (G)
+holds trivially. To prove the reverse inclusion, we consider a face H ∈ link∆0 (F )∩link∆0 (G)
+and distinguish two cases.
+   Case 1: un−1 ∈ / F ∪ G. By Equation (24) for link∆0 (F ) and link∆0 (G), four cases can
+occur. First, assume that H ∈ link∆ (F ) ∩ link∆ (G). Then, by the strong Link Condition,
+H ∈ link∆ (F ∪ G) and hence H ∈ link∆0 (F ∪ G) by (24). Next, suppose that H =
+(H 0 r{un }) ∪ {un−1 } for some H 0 ∈ link∆ (F ) ∩ link∆ (G) with un ∈ H 0 , un−1 ∈
+                                                                                  / H. Then,
+                                            0
+the strong Link Condition implies that H ∈ link∆ (F ∪G) and hence H ∈ link∆0 (F ∪G) by
+(24). Finally, assume that H ∈ link∆ (F ) and that H = (H 0 r{un })∪{un−1 } for some H 0 ∈
+link∆ (G) with un ∈ H 0 and un−1 ∈ / H 0 . Then, F ∪H ∈ ∆ and G∪(Hr{un−1 })∪{un } ∈ ∆.
+From the strong Link Condition, we conclude that Hr{un−1 } ∈ link∆ (F ∪ G ∪ {un }), i.e.,
+(Hr{un−1 }) ∪ {un } ∈ link∆ (F ∪ G). This, together with (24) applied to link∆0 (F ∪ G),
+implies again that H ∈ link∆0 (F ∪ G). The remaining case follows by symmetry from the
+previous one.
+   Case 2: un−1 ∈ F ∪ G. Since F ∩ G = ∅, we may assume without loss of generality that
+un−1 ∈ F and un−1 ∈   / G. Since H ∈ link∆0 (F ) and un−1 ∈ F , we must have un−1 ∈      / H.
+From Equation (24), which applies to link∆0 (G), and the fact that un−1 ∈    / H we conclude
+that H ∈ link∆ (G). Two subcases can occur. Suppose first that H ∈ link∆ (F ). Then,
+the strong Link Condition implies that H ∈ link∆ (F ∪ G) and thus H ∈ link∆0 (F ∪ G) by
+Equation (25), applied to link∆0 (F ∪ G). Otherwise, H ∈   / link∆ (F ) and we must have H ∈
+link∆ ((F r{un−1 }) ∪ {un }) by (25). This implies that H ∪ (F r{un−1 }) ∪ {un } ∈ ∆. Since
+H ∪G ∈ ∆, from the strong Link Condition we infer that H ∪(F r{un−1 })∪{un }∪G ∈ ∆.
+Since un−1 ∈ F , we conclude that H ∪ F ∪ G ∈ ∆0 and so, once again, H ∈ link∆0 (F ∪ G).
+This completes the proof of the first statement.
+                        COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                      27
+
+  For the second statement we note that if ∆ satisfies the strong Link Condition with
+respect to U , then it also satisfies the Link Condition with respect to any edge of 2U .
+Hence, the claim follows from successive applications of the first statement.         
+
+               7. Lefschetz properties of antiprism triangulations
+   This section aims to prove Theorem 1.3, i.e., to show that the antiprism triangulation
+of any shellable simplicial complex has the almost strong Lefschetz property over R. From
+this we will infer that the h-vector of the antiprism triangulation of any Cohen–Macaulay
+simplicial complex is unimodal and will locate its peak.
+   We first show that the antiprism triangulation of the simplex σn has the almost strong
+Lefschetz property over R. The next lemma will be crucial. Recall that the (strong) Link
+Condition was defined in Section 6.
+Lemma 7.1. Consider an (n − 1)-dimensional simplex 2V and a triangulation ∆ of its
+boundary complex ∂(2V ). Then, the antiprism ΓA (∆) satisfies the strong Link Condition
+with respect to the set of its interior vertices.
+  In particular, sdA (σn ) satisfies the strong Link Condition with respect to the set of its
+interior vertices.
+Proof. Set V = {v1 , v2 , . . . , vn } and let U = {u1 , u2 , . . . , un } be the set of interior vertices
+of ΓA (∆), linearly ordered so that {ui , vi } 6∈ ΓA (∆) for every i ∈ [n].
+   Let E = {ui : i ∈ I} ⊆ U for some I ⊆ [n] be nonempty and let Ē = {uj : j ∈ [n]rI}
+and F̄ = {vj : j ∈ [n]rI} be the faces of the simplices 2U and 2V , respectively, which are
+complementary to E. Then, by definition of ΓA (∆),
+                                     linkΓA (∆) (E) = ∆A (∆F̄ ),
+where the new vertices added for the ∆A construction (see Remark 3.1) are the elements
+of Ē and ∆F̄ is the restriction of ∆ to the (proper) face F̄ ∈ 2V . This directly implies
+that ΓA (∆) satisfies the strong Link Condition with respect to U .                     
+   Given a Cohen–Macaulay simplicial complex ∆ over a field F, we say that the contrac-
+tion of an edge e ∈ ∆ is admissible over F if ∆ satisfies the Link Condition with respect
+to e and link∆ (e) is strong Lefschetz over F. The following proposition is, essentially, a
+consequence of Lemmas 6.2 and 7.1.
+Proposition 7.2. There exists a sequence of admissible edge contractions over R which
+transforms sdA (σn ) into the cone over its boundary. In particular, sdA (σn ) is almost
+strong Lefschetz over R, if ∂(sdA (σn )) is strong Lefschetz over R.
+Proof. As before, we let V = {v1 , . . . , vn } and U = {u1 , . . . , un } be the vertices of σn and
+the interior vertices of sdA (σn ), respectively. By Lemma 7.1, sdA (σn ) satisfies the strong
+Link Condition with respect to U . Thus, using Lemma 6.2, we can successively contract
+edges from U , each satisfying the Link Condition, until we reach a single vertex u. The
+resulting complex is clearly the cone u ∗ ∂(sdA (σn )). If we can verify that the intermediate
+complexes, appearing in this sequence of contractions, are Cohen–Macaulay over R and
+28 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+that the links of the contracted edges are strong Lefschetz, then Proposition 6.1 implies
+that sdA (σn ) is almost strong Lefschetz, if so is the cone u ∗ ∂(sdA (σn )).
+   To prove the missing statements, we use the fact that sdA (σn ) can be constructed from
+σn by crossing operations on its faces, starting at the facet V and moving to faces of lower
+dimension (see Section 4). From this it follows that the intermediate complexes can be
+constructed by first contracting the corresponding edges in the antiprism ΓA (∂(2V )) and
+then performing crossing operations on its boundary faces. The antiprism ΓA (∂(2V )) is a
+regular triangulation of 2V and so is any subcomplex obtained from it by the performed
+edge contractions. Since, in addition, any crossing operation can be realized by a sequence
+of stellar subdivisions (see the proof of [7, Theorem 8]), which are well known to preserve
+regularity, we conclude that any intermediate complex in the sequence of edge contractions
+from sdA (σn ) to the cone u ∗ ∂(sdA (σn )) is a regular triangulation of 2V and, in particular,
+Cohen–Macaulay over R. Moreover, the regularity of the intermediate complexes implies
+that the link of any interior edge that is contracted is a polytopal sphere and hence strong
+Lefschetz over R [34]. Using Proposition 6.1, we conclude that sdA (σn ) is almost strong
+Lefschetz over R, if so is u ∗ ∂(sdA (σn )). By [22, Lemma 2.1], this is the case if ∂(sdA (σn ))
+is strong Lefschetz over R.                                                                    
+  The next statement suffices to conclude that sdA (σn ) has the almost strong Lefschetz
+property over R.
+Proposition 7.3. The simplicial complex ∂(sdA (σn )) is combinatorially isomorphic to
+the boundary complex of a simplicial polytope. In particular, it is strong Lefschetz over R.
+Proof. We use again the fact that ∂(sdA (σn )) can be constructed from ∂σn by a sequence
+of crossing operations (see Section 4). As already mentioned, it was shown in the proof of
+Theorem 8 in [7] that every crossing operation can be expressed as a sequence of stellar
+subdivisions. Since those preserve polytopality, the first statement follows. The second
+follows from the first and [34].                                                        
+  The next result follows by combining Propositions 7.2 and 7.3.
+Theorem 7.4. The simplicial complex sdA (σn ) is almost strong Lefschetz over R.
+Remark 7.5. Since the restriction of the antiprism triangulation sdA (σn ) to a face F of
+σn is the antiprism triangulation of 2F , we can apply the edge contractions from the proof
+of Proposition 7.2 to the subdivided faces of ∂(sdA (σn )), ordered by decreasing dimension.
+Clearly, the simplicial complex obtained in this way is combinatorially isomorphic to the
+barycentric subdivision of ∂σn . Using similar arguments as in the proof of Proposition 7.2,
+one can show that all edge contractions are admissible. Indeed, let ∆0 be the simplicial
+complex obtained from ∂(sdA (σn )) after i edge contractions. Consider a face F ∈ σn and
+let ∆0F be the restriction of ∆0 to F (which is the subcomplex of ∆0 consisting of all faces
+with carrier contained in F ). If G ∈ ∆0F is a face having all vertices in the interior of ∆0F ,
+then it can easily be verified that
+(26)       link∆0 (G) = link∆0F (G) ∗ {{uH1 , . . . , uHr } : F ( H1 ( · · · ( Hr ( [n]},
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                 29
+
+where uH denotes the last interior vertex in the sequence of contractions of a face H ∈ σn .
+If G is the edge to be contracted in ∆0 , then the previous equation, combined with the
+proof of Proposition 7.2, implies that ∆0 satisfies the Link Condition with respect to G.
+We further note that the second complex on the right-hand side of (26) is isomorphic to
+the barycentric subdivision of link∂σn (F ), which itself is the barycentric subdivision of
+the boundary complex of an (n − 2 − |F |)-dimensional simplex. Thus, by [22, Proposition
+2.3] and the proof of Proposition 7.2, both simplicial complexes on the right-hand side of
+(26) are strong Lefschetz over R. From this fact and [6, Theorem 1.2 (i)], it follows that
+link∆0 (G) is strong Lefschetz over R.
+   The previous discussion shows that there exists a sequence of admissible edge contrac-
+tions transforming ∂(sdA (σn )) into ∂(sd(σn )). This provides another proof of the second
+statement of Proposition 7.3. Moreover, the analogous edge contraction can be applied
+to the edge links. This shows that the antiprism triangulation of ∂σn is strongly edge
+decomposable (see [27, Definition 1.1]), since so is the barycentric subdivision of ∂σn . 
+
+   With Proposition 7.3 at hand, the key observation to complete the proof of the first
+statement of Theorem 1.3 is that the proof of [22, Theorem 1.1], showing that the barycen-
+tric subdivision of any shellable simplicial complex is almost strong Lefschetz over an in-
+finite field (in particular, over R), works for every uniform triangulation which fulfills this
+property for simplices. For the interested reader, and to keep this article as self-contained
+as possible, we provide a sketch of the proof.
+
+Theorem 7.6. The complex sdA (∆) is almost strong Lefschetz over R for every shellable
+simplicial complex ∆.
+
+Proof. Let dim(∆) = n − 1, as usual. The proof proceeds by double induction on n and
+the number of facets of ∆. At the base of the induction, either ∆ consists only of vertices,
+in which case there is nothing to show, or ∆ is a simplex, in which case the result follows
+from Proposition 7.3.
+   For the inductive step we assume that n ≥ 2, let V be the vertex set of ∆ and let A =
+R[xv : v ∈ V ]. Consider a shelling G1 , G2 , . . . , Gm = G of ∆ and set ∆
+                                                                          e := hG1 , . . . , Gm−1 i
+and τ := ∆e ∩ 2G . There is the following exact sequence of A-modules:
+
+(27)                                   e ⊕ R[sdA (2G )] → R[sdA (τ )] → 0.
+               0 → R[sdA (∆)] → R[sdA (∆)]
+
+  One now chooses generic linear forms Θ = θ1 , θ2 , . . . , θn so that Θ is an l.s.o.p. for
+                    e and R[sdA (2G )] simultaneously and θ1 , θ2 , . . . , θn−1 is an l.s.o.p. for
+R[sdA (∆)], R[sdA (∆)]
+R[sdA (τ )]. Dividing out by Θ in (27) gives rise to an exact sequence
+                        δ                     e ⊕ R(sdA (2G )) → R(sdA (τ )) → 0,
+Tor1 (R[sdA (τ )], A/Θ) → R(sdA (∆)) → R(sdA (∆))
+
+where we have written R(sdA (∆)) for R[sdA (∆)]/Θ and similarly for R(sdA (∆)),
+                                                                             e R(sdA (τ ))
+and R(sdA (2 )). Next, one shows that Tor1 (R[sdA (τ )], A/Θ)i = 0 for 0 ≤ i ≤ b n−2
+            G
+                                                                                  2
+                                                                                     c. This
+is done exactly as in the proof of [22, Theorem 1.1]. Since all maps in the previous exact
+30 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+sequence preserve the grading, one gets the commutative diagram
+               R(sdA (∆))i      →               e i ⊕ R(sdA (2G ))i
+                                         R(sdA (∆))
+
+                ↓ ω n−2i−1                    ↓ (ω n−2i−1 , ω n−2i−1 )
+
+                                     e n−1−i ⊕ R(sdA (2G ))n−1−i
+            R(sdA (∆))n−1−i → R(sdA (∆))
+where ω is a degree one element in A. The induction hypothesis implies that the multi-
+plication map on the right-hand side is injective for a generic ω. One concludes that the
+multiplication
+                          ω n−2i−1 : R(sdA (∆))i → R(sdA (∆))n−1−i
+is injective for 0 ≤ i ≤ b n−2
+                            2
+                               c and the proof follows.                                
+  To complete the proof of Theorem 1.3, we need the following properties of the numbers
+pA (n, k, j), discussed in Section 5.3.
+Lemma 7.7. Let n, k, j ∈ N with k, j ≤ n.
+  (a) pA (n, k, j) = pA (n, n − k, n − j),
+  (b)
+                     pA (n, k, 0) ≤ pA (n, k, 1) ≤ · · · ≤ pA (n, k, bn/2c)
+      and
+                  pA (n, k, n) ≤ pA (n, k, n − 1) ≤ · · · ≤ pA (n, k, dn/2e).
+Proof. Part (a) follows from [5, Proposition 4.6 (a)]; we will provide a direct bijective
+proof. Let Q(n, k, j) be defined as in the proof of Proposition 5.12, so that pA (n, k, j) =
+|Q(n, k, j)|. Also, let Q(n,
+                          e n − k, n − j) be the set of triples defining Q(n, n − k, n − j),
+except that the set S which is partitioned satisfies {k + 1, . . . , n} ⊆ S ⊆ [n], instead of
+[n − k] ⊆ S ⊆ [n], and that the monochromatic block, if present, must be contained in
+{k + 1, . . . , n}. Since, clearly, |Q(n,
+                                     e n − k, n − j)| = pA (n, n − k, n − j), to prove (a) it
+                                                e n − k, n − j). Given a triple in Q(n, k, j),
+suffices to find a bijection from Q(n, k, j) to Q(n,
+consisting of an ordered partition of [k] ⊆ S ⊆ [n] and a suitable coloring of the elements
+                                  e n − k, n − j) as follows. We first switch the colors of all
+of S, we construct a triple in Q(n,
+elements of S from white to black and vice versa. If the first block was monochromatic,
+we delete it from the partition. The block [n]rS, if nonempty, is then added to the
+constructed ordered partition as its new first block, with all its elements colored black.
+We leave to the reader to verify that this process gives a well defined map. The inverse
+map can be constructed by the same procedure, applied to the triples in Q(n,e n−k, n−j).
+   For part (b), we note that the proof of [22, Corollary 4.4] works, with the symmetry of
+[11, Lemma 2.5] replaced by that of part (a).                                                
+  We recall that a sequence (a0 , a1 , . . . , as ) ∈ Ns+1 is an M-sequence if it is the Hilbert
+function of a standard graded F-algebra, where F is a field. Macaulay [24] provided a char-
+acterization of M-sequences by means of numerical conditions (see, e.g., [37]). Theorem 7.6
+                      COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                31
+
+has the following numerical consequences for the h-vector of the antiprism triangulation
+of a Cohen–Macaulay complex.
+Corollary 7.8. Let ∆ be a Cohen–Macaulay simplicial complex of dimension n − 1 and
+let g(sdA (∆)) = (1, h1 (sdA (∆)) − h0 (sdA (∆)), . . . , hbn/2c (sdA (∆)) − hbn/2c−1 (sdA (∆))).
+    (a) g(sdA (∆)) is an M-sequence.
+    (b) h(sdA (∆)) is unimodal. The peak is at position n/2, if n is even, and at position
+        (n − 1)/2 or (n + 1)/2, if n is odd.
+    (c) hi (sdA (∆)) ≤ hn−1−i (sdA (∆)) for all 0 ≤ i ≤ b(n − 2)/2c.
+Proof. Parts (a) and (c) follow by standard arguments used when one works with Lefschetz
+properties, see, e.g., [17, Sections 3.1–3.2]. For part (b), the proof of [22, Corollary 4.7]
+works, with Lemma 7.7 replacing [22, Corollary 4.4 (ii)].                                  
+   We conclude this section by recording the following properties of the Stanley-Reisner
+ring of the antiprism triangulation of any simplicial complex.
+Proposition 7.9. Let ∆ be a simplicial complex.
+  (a) dim(F[sdA (∆)]) = dim(F[∆]).
+  (b) depth(F[sdA (∆)]) = depth(F[∆]).
+   (c)                          (
+                                 dim(∆),       if H
+                                                  e dim(∆) (∆; F) = 0,
+            reg(F[sdA (∆)]) =                       e dim(∆) (∆; F) 6= 0.
+                                 dim(∆) + 1, if H
+Proof. Part (a) is clear, since dim sdA (∆) = dim(∆). Part (b) follows from [26, Theorem
+3.1], since ∆ and sdA (∆) have homeomorphic geometric realizations. Part (c) follows
+from an application of Hochster’s formula [25, Corollary 5.12]; one can also mimick the
+detailed argument for the barycentric subdivision given in the proof of [23, Proposition
+2.6].                                                                                  
+
+                                  8. Further directions
+  This section concludes with comments, open problems and further directions for re-
+search.
+   1. The question asking which uniform triangulations transform h-polynomials with non-
+negative coefficients into polynomials with only real roots was raised in [5]. This property
+has been verified for several examples, including the prototypical one of the barycentric
+subdivision [11], and is conjectured in this paper for the antiprism triangulation. We
+believe that this property is not uncommon among uniform triangulations.
+   For instance, consider any word w = w1 w2 · · · wd with wi ∈ {a, b} for every i ∈ [d]
+and let ∆ be a d-dimensional simplicial complex. Let sdw (∆) be the triangulation of ∆
+defined inductively as follows. Assume that all faces of ∆ of dimension less than j have
+been triangulated, for some j ∈ [d]. Then, triangulate each j-dimensional face F ∈ ∆ by
+the antiprism construction, if wj = a, and by the coning construction, if wj = b, over the
+already triangulated boundary of F . By applying this process for j = 1, 2, . . . , d, in this
+32 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+order, we get a triangulation sdw (∆) of ∆ which coincides with sdA (∆), when w = aa · · · a,
+and with sd(∆), when w = bb · · · b. It seems plausible that this triangulation has the same
+property for every w, but it is not easy to deduce such a statement from the results of [5]
+and this paper. Example 3.5 corresponds to the word w = bb · · · ba.
+2. The symmetric polynomials `A (σn , x) and p̄A (σn , x) were shown and conjectured, re-
+spectively, to be γ-positive in Section 5. It is an interesting (and possibly challenging) open
+problem to find explicit combinatorial interpretations of the corresponding γ-coefficients.
+Similar remarks apply to the symmetric polynomials hA (∂σn , x) and θA (σn , x) = hA (σn , x)−
+hA (∂σn , x), shown to be real-rooted, and hence γ-positive, in Section 5.
+3. The local h-polynomial of the barycentric subdivision of any CW-regular subdivision of
+the simplex was shown to be γ-positive in [21]. Does this hold if ‘barycentric subdivision’
+and ‘CW-regular subdivision’ are replaced by ‘antiprism triangulation’ and ‘CW-regular
+simplicial subdivision’, respectively?
+4. The h-polynomial of the barycentric subdivision of any doubly Cohen–Macaulay sim-
+plicial complex and the barycentric subdivision of any triangulation of a ball were shown
+to have a nonnegative real-rooted symmetric decomposition in [10, Section 5] and [5, Sec-
+tion 8], respectively. Do these statements hold if ‘barycentric subdivision’ is replaced by
+‘antiprism triangulation’ ?
+Note added in revision. After this paper was written, the almost strong Lefschetz property
+was established for a very broad class of triangulations of Cohen–Macaulay polyhedral
+complexes (including antiprism triangulations of Cohen–Macaulay simplicial complexes)
+by Adiprasito and Yashfe [1, Theorem 46] using completely different methods and tools,
+including the partition complex.
+
+Acknowledgments. Part of this research was conducted while the first author was in
+residence at the Institute Mittag-Leffler in Djursholm, Sweden during the ‘Algebraic and
+Enumerative Combinatorics’ program in Spring 2020, supported by the Swedish Research
+Council under grant no. 2016-06596. The second and third author were partially sup-
+ported by the German Research Council DFG GRK-1916. The third author is grateful
+to Satoshi Murai for pointing out that his original proof of [27, Proposition 3.2] can be
+made less technical by using the exact sequence (22).
+  Data sharing not applicable to this article as no datasets were generated or analysed
+during the current study.
+
+                                         References
+ [1] K. Adiprasito and G. Yashfe, The Partition Complex: an invitation to combinatorial commutative
+     algebra, arXiv:2008.01044.
+ [2] C.A. Athanasiadis, Flag subdivisions and γ-vectors, Pacific J. Math. 259 (2012), 257–278.
+ [3] C.A. Athanasiadis, Gamma-positivity in combinatorics and geometry, Sém. Lothar. Combin. 77
+     (2018), Article B77i, 64pp (electronic).
+ [4] C.A. Athanasiadis, Binomial Eulerian polynomials for colored permutations, J. Combin. Theory
+     Series A 173 (2020), Article 105214, 38pp.
+                        COMBINATORICS OF ANTIPRISM TRIANGULATIONS                                       33
+
+ [5] C.A. Athanasiadis, Face numbers of uniform triangulations of simplicial complexes, Int. Math. Res.
+     Not. (to appear).
+ [6] E. Babson and E. Nevo, Lefschetz properties and basic constructions on simplicial spheres, J. Algebr.
+     Comb. 31 (2010), 111–129.
+ [7] L.J. Billera and K.E. Magurn, Balanced Subdivision and Enumeration in Balanced Spheres, Discrete
+     Comput. Geom. 2 (1987), 297–317.
+ [8] P. Brändén, On linear transformations preserving the Pólya frequency property, Trans. Amer. Math.
+     Soc. 358 (2006), 3697–3716.
+ [9] P. Brändén, Unimodality, log-concavity, real-rootedness and beyond, in Handbook of Combinatorics
+     (M. Bona, ed.), CRC Press, 2015, pp. 437–483.
+[10] P. Brändén and L. Solus, Symmetric decompositions and real-rootedness, Int. Math. Res. Not. (2021),
+     7764–7798.
+[11] F. Brenti and V. Welker, f -vectors of barycentric subdivisions, Math. Z. 259 (2008), 849–865.
+[12] A. Conca, M. Juhnke-Kubitzke and V. Welker, Asymptotic syzygies of Stanley–Reisner rings of
+     iterated subdivisions, Trans. Amer. Math. Soc. 370 (2018), 1661–1691.
+[13] R. Ehrenborg and E. Steingrı́msson, The excedance set of a permutation, Adv. in Appl. Math. 24
+     (2000), 284–299.
+[14] P. Erdős, C. Ko and R. Rado, Intersection theorems for systems of finite sets, Quart. J. Math. Oxford
+     Ser. (2) 12 (1961), 313–320.
+[15] S. Fisk, Polynomials, roots, and interlacing, arXiv:0612833.
+[16] D. Foata, Eulerian Polynomials: From Euler’s Time to the Present, in The Legacy of Alladi Ra-
+     makrishnan in the Mathematical Sciences, Springer, 2010, pp. 253–273.
+[17] T. Harima, T. Maeno, H. Morita, Y. Numata, A. Wachi and J. Watanabe, The Lefschetz Properties,
+     Lecture Notes in Mathematics 2080, Springer, 2013.
+[18] G. Hetyei and E. Nevo, Generalized Tchebyshev triangulations, J. Combin. Theory Series A 137
+     (2016), 88–125.
+[19] I. Izmestiev and M. Joswig, Branching coverings, triangulations and 3-manifolds, Adv. Geom. 3
+     (2003), 191–225.
+[20] D.N. Kozlov, Chromatic subdivision of a simplicial complex, Homology Homotopy Appl. 14 (2012),
+     197–209.
+[21] M. Juhnke-Kubitzke, S. Murai and R. Sieg, Local h-vectors of quasi-geometric and barycentric sub-
+     divisions, Discrete Comput. Geom. 61 (2019), 364–379.
+[22] M. Kubitzke and E. Nevo, The Lefschetz property for Barycentric Subdivisions of Shellable Com-
+     plexes, Trans. Amer. Math. Soc. 361 (2009), 6151–6163.
+[23] M. Kubitzke and V. Welker, The multiplicity conjecture for barycentric subdivisions, Comm. Alg. 36
+     (2008), 4223–4248.
+[24] F.S. Macaulay, Some properties of enumeration in the theory of modular systems, Proc. London
+     Math. Soc. 26 (1927), 531–555.
+[25] E. Miller and B. Sturmfels, Combinatorial Commutative Algebra, Graduate Texts in Mathemat-
+     ics 227, Springer, 2005.
+[26] J.R. Munkres, Topological results in combinatorics, Michigan Math. J. 31 (1984), 113–128.
+[27] S. Murai, Algebraic shifting of strongly edge decomposable spheres, J. Combin. Theory Series A 117
+     (2010), 1–16.
+[28] S. Murai, On face vectors of barycentric subdivisions of manifolds, SIAM J. Discrete Math. 24 (2010),
+     1019–1037.
+[29] E. Nevo, T.K. Petersen and B.E. Tenner, The gamma-vector of a barycentric subdivision, J. Combin.
+     Theory Series A 118 (2011), 1364–1380.
+[30] T.K. Petersen, Eulerian Numbers, Birkhäuser Advanced Texts, Birkhäuser, 2015.
+[31] G.A. Reisner, Cohen-Macaulay quotients of polynomial rings, Adv. Math. 21 (1976), 30–49.
+34 CHRISTOS A. ATHANASIADIS, JAN-MARTEN BRUNINK, AND MARTINA JUHNKE-KUBITZKE
+
+[32] J. Shareshian and M.L. Wachs, Gamma-positivity of variations of Eulerian polynomials, J. Comb. 11
+     (2020), 1–33.
+[33] R.P. Stanley, Generalized h-vectors, intersection cohomology of toric varieties and related results, in
+     Commutative Algebra and Combinatorics (N. Nagata and H. Matsumura, eds.), Adv. Stud. Pure
+     Math. 11, Kinokuniya, Tokyo and North-Holland, Amsterdam-New York, 1987, pp. 187–213.
+[34] R.P. Stanley, The number of faces of simplcial convex polytope, Adv. Math. 35 (1980), 236–238.
+[35] R.P. Stanley, Log-concave and unimodal sequences in algebra, combinatorics, and geometry, in Graph
+     Theory and its Applications: East and West, Annals of the New York Academy of Sciences 576,
+     New York Acad. Sci., New York, 1989, pp. 500–535.
+[36] R.P. Stanley, Subdivisions and local h-vectors, J. Amer. Math. Soc. 5 (1992), 805–851.
+[37] R.P. Stanley, Combinatorics and Commutative Algebra, second edition, Birkhäuser, Basel, 1996.
+[38] R.P. Stanley, Enumerative Combinatorics, vol. 1, Cambridge Studies in Advanced Mathematics 49,
+     Cambridge University Press, second edition, Cambridge, 2011.
+[39] D.G. Wagner, Total positivity of Hadamard products, J. Math. Anal. Appl. 163 (1992), 459–483.
+[40] A. Wiebe, The Lefschetz property for componentwise linear ideals and Gotzmann ideals, Comm.
+     Alg. 32 (2004), 4601–4611.
+[41] G.M. Ziegler, Lectures on Polytopes, Graduate Texts in Mathematics 152, Springer, 1995.
+
+  Department of Mathematics, National and Kapodistrian University of Athens, Panepis-
+timioupolis, 15784 Athens, Greece
+  Email address: caath@math.uoa.gr
+
+  Universität Osnabrück, Fakultät für Mathematik, Albrechtstrasse 28A, 49076 Os-
+nabrück, Germany
+  Email address: janmarten.brunink@uni-osnabrueck.de
+
+  Universität Osnabrück, Fakultät für Mathematik, Albrechtstrasse 28A, 49076 Os-
+nabrück, Germany
+  Email address: juhnke-kubitzke@uni-osnabrueck.de
+

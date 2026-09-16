@@ -1,0 +1,355 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Exact Condition-Number Asymptotics for Four Matrices in Sylvester Example 6},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\lVert#1\rVert_2}
+
+\title{Exact Condition-Number Asymptotics for Four Matrices in Sylvester Example~6}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For four right-hand sides in Example~6 of Fasi and Hashemi's study of
+Sylvester-equation solutions, numerical experiments suggested condition-number
+orders $\delta^{-2}$, $\delta^{-1}$, $1$, and $1$.  We determine the exact
+leading constants: respectively
+\[
+27,\qquad
+\sqrt{\frac{778752}{57905-5\sqrt{132562057}}},\qquad
+\sqrt{\rho_3/\rho_1},\qquad \frac{13}{3},
+\]
+where $\rho_1<\rho_2<\rho_3$ are explicitly isolated roots of a stated
+integer cubic.  The two bounded limits are thus obtained exactly.  We also
+give explicit linear relative-error bounds, including full-interval bounds in
+the first and fourth cases.  All four matrices are nonsingular throughout the
+parameter interval, so no rank-deficient convention is needed.
+\end{abstract}
+
+\section{Setting and result}
+
+Let $0<\delta\leq 1$ and
+\[
+A=\operatorname{diag}(1,4,7),\qquad
+B_\delta=\operatorname{diag}(10,1-\delta,20).
+\]
+For $C_1=I+E_{12}$, $C_2=\mathbf 1$, $C_3=\mathbf 1-E_{12}$, and
+$C_4=I$, let $X_i(\delta)$ solve
+\[
+ AX_i-X_iB_\delta=C_i.
+\]
+The spectra of $A$ and $B_\delta$ are disjoint, so the solution is unique.
+Entrywise solution of the equation gives
+\[
+X_1=\begin{pmatrix}
+-1/9&1/\delta&0\\0&1/(3+\delta)&0\\0&0&-1/13
+\end{pmatrix},
+\quad
+X_2=\begin{pmatrix}
+-1/9&1/\delta&-1/19\\
+-1/6&1/(3+\delta)&-1/16\\
+-1/3&1/(6+\delta)&-1/13
+\end{pmatrix},
+\]
+\[
+X_3=\begin{pmatrix}
+-1/9&0&-1/19\\
+-1/6&1/(3+\delta)&-1/16\\
+-1/3&1/(6+\delta)&-1/13
+\end{pmatrix},
+\quad
+X_4=\operatorname{diag}\!\left(-\frac19,\frac1{3+\delta},-\frac1{13}\right).
+\tag{1}
+\]
+For a full-rank matrix $Y$, write
+$\kappa_2(Y)=\sigma_1(Y)/\sigma_3(Y)$, with singular values in decreasing
+order.
+
+Fasi and Hashemi~\cite{FasiHashemi2026} plotted these four condition numbers
+at 30 parameter values and reported the four orders above, without exact
+constants or remainder estimates.  Exact algebraic constants supported by
+finite-dimensional matrix certificates also occur in the distinct
+spectral-set problem studied by Zeng~\cite{Zeng2026ConvexLens}; that work does
+not address Sylvester equations.  Our contribution here is confined to the
+four matrices in (1).  We use the standard singular-value perturbation bound
+$|\sigma_j(Y+E)-\sigma_j(Y)|\leq\norm{E}$; see, for example,
+Stewart and Sun~\cite[Theorem~IV.4.11]{StewartSun1990}.
+
+Define
+\[
+\mu_-:=\frac{57905-5\sqrt{132562057}}{778752},\qquad s:=\sqrt{\mu_-},
+\tag{2}
+\]
+and let $0<\rho_1<\rho_2<\rho_3$ be the roots of
+\[
+P(z)=45542974464z^3-13786630308z^2+429202697z-330625,
+\tag{3}
+\]
+uniquely specified by
+\[
+\rho_1\in(1/1300,1/1200),\quad
+\rho_2\in(1/30,1/29),\quad
+\rho_3\in(1/4,1/3).
+\tag{4}
+\]
+For the explicit error constants in the second case put
+\[
+U=\frac{\sqrt{442}}{171},\quad V=\frac{\sqrt5}{6},\quad
+a=UV=\frac{\sqrt{2210}}{1026},
+\]
+\[
+c=U+V+a,\quad F=2c+c^2,\quad b=a/s,
+\quad M_2=F+2b+2Fb,\quad
+\delta_2=\min\{1,s/(2a)\}.
+\tag{5}
+\]
+For the third case put
+\[
+e=\frac{\sqrt{17}}{36},\quad
+\alpha=\frac{e}{\sqrt{\rho_3}},\quad
+\beta=\frac{e}{\sqrt{\rho_1}},\quad
+M_3=\alpha+2\beta+2\alpha\beta.
+\tag{6}
+\]
+
+\begin{theorem}
+Every $X_i(\delta)$ in (1) is nonsingular for $0<\delta\leq1$.  As
+$\delta\to0^+$,
+\[
+\kappa_2(X_1)\sim27\delta^{-2},\qquad
+\kappa_2(X_2)\sim
+\sqrt{\frac{778752}{57905-5\sqrt{132562057}}}\,\delta^{-1},
+\tag{7}
+\]
+\[
+\kappa_2(X_3)\longrightarrow\sqrt{\rho_3/\rho_1},
+\qquad
+\kappa_2(X_4)\longrightarrow\frac{13}{3}.
+\tag{8}
+\]
+More precisely,
+\[
+\left|\frac{\kappa_2(X_1)}{27\delta^{-2}}-1\right|
+ \leq\frac{121}{243}\delta
+\quad(0<\delta\leq1),
+\tag{9}
+\]
+\[
+\left|\frac{\kappa_2(X_2)}{s^{-1}\delta^{-1}}-1\right|
+ \leq M_2\delta
+\quad(0<\delta\leq\delta_2),
+\tag{10}
+\]
+\[
+\left|\frac{\kappa_2(X_3)}{\sqrt{\rho_3/\rho_1}}-1\right|
+ \leq M_3\delta
+\quad(0<\delta\leq1/10),
+\tag{11}
+\]
+and, throughout $0<\delta\leq1$,
+\[
+\kappa_2(X_4)=\frac{13}{3+\delta},\qquad
+\left|\frac{\kappa_2(X_4)}{13/3}-1\right|\leq\frac\delta3.
+\tag{12}
+\]
+\end{theorem}
+
+\section{Proof}
+
+Direct determinant expansion gives
+\[
+\det X_1=\det X_4=\frac1{117(3+\delta)},
+\]
+\[
+\det X_2=\frac{5(\delta+9)(\delta+19)}
+ {5928\delta(\delta+3)(\delta+6)},\qquad
+\det X_3=-\frac{5(17\delta+115)}
+ {11856(\delta+3)(\delta+6)}.
+\tag{13}
+\]
+None vanishes on $(0,1]$, proving the full-rank assertion.
+
+\subsection*{The first matrix}
+
+The nontrivial $2\times2$ block of $X_1$ is
+\[
+T=\begin{pmatrix}-1/9&1/\delta\\0&1/(3+\delta)\end{pmatrix}.
+\]
+Let $\lambda_+\geq\lambda_->0$ be the eigenvalues of $T^TT$.  Rayleigh
+quotients and the trace give
+\[
+\delta^{-2}\leq\lambda_+\leq
+\delta^{-2}+\frac1{81}+\frac1{(3+\delta)^2}
+\leq\delta^{-2}+\frac{10}{81}.
+\tag{14}
+\]
+Since $\lambda_+\lambda_-=1/[81(3+\delta)^2]$,
+\[
+\lambda_-\leq\frac{\delta^2}{81(3+\delta)^2}
+\leq\frac1{1296}<\frac1{169}.
+\tag{15}
+\]
+Thus the largest and smallest squared singular values of $X_1$ are
+$\lambda_+$ and $\lambda_-$, rather than the scalar value $1/169$.
+Consequently
+\[
+\kappa_2(X_1)=\sqrt{\frac{\lambda_+}{\lambda_-}}
+=9(3+\delta)\lambda_+.
+\]
+Equations (14)--(15) yield
+\[
+1+\frac\delta3\leq
+\frac{\kappa_2(X_1)}{27\delta^{-2}}
+\leq\left(1+\frac\delta3\right)
+       \left(1+\frac{10\delta^2}{81}\right).
+\tag{16}
+\]
+After subtracting one, the right side of (16) is at most
+$121\delta/243$ for $0<\delta\leq1$.  This proves (7) and (9) for $X_1$.
+
+\subsection*{The second matrix}
+
+Permuting the columns of $X_2$ in the order $(2,1,3)$ preserves all singular
+values and gives
+\[
+M=\begin{pmatrix}t&u^T\\v&D\end{pmatrix},\quad t=\delta^{-1},\quad
+u=\begin{pmatrix}-1/9\\-1/19\end{pmatrix},\quad
+v=\begin{pmatrix}1/(3+\delta)\\1/(6+\delta)\end{pmatrix},
+\]
+\[
+D=\begin{pmatrix}-1/6&-1/16\\-1/3&-1/13\end{pmatrix}.
+\tag{17}
+\]
+Block multiplication verifies the exact factorization
+\[
+M=
+\begin{pmatrix}1&0\\\delta v&I_2\end{pmatrix}
+\begin{pmatrix}t&0\\0&D-\delta vu^T\end{pmatrix}
+\begin{pmatrix}1&\delta u^T\\0&I_2\end{pmatrix}.
+\tag{18}
+\]
+Here $\norm{u}=U$ and $\norm{v}\leq V$.  Moreover,
+\[
+\det(zI_2-D^TD)=z^2-\frac{57905}{389376}z+
+\frac{25}{389376},
+\tag{19}
+\]
+so (2) is positive and $s=\sigma_{\min}(D)$.  The perturbation bound gives
+\[
+s-a\delta\leq\sigma_{\min}(D-\delta vu^T)
+\leq s+a\delta.
+\tag{20}
+\]
+
+Each outer shear in (18), as well as its inverse, has norm at most
+$1+\delta V$ or $1+\delta U$.  Set
+$f=(1+\delta U)(1+\delta V)$.  Multiplication by the two shears therefore
+changes each singular value of the middle block by a factor in
+$[f^{-1},f]$.  Also
+\[
+\norm{D-\delta vu^T}\leq\norm{D}+a<1\leq t;
+\]
+the strict inequality follows, for example, from
+$\norm{D}\leq1/6+1/16+1/3+1/13<2/3$ and $a<1/20$.
+For $\delta\leq\delta_2$, (20) is positive, so the largest and smallest
+singular values of the middle block are $t$ and
+$\sigma_{\min}(D-\delta vu^T)$.  It follows that
+\[
+\frac1{f^2}\frac{s}{s+a\delta}
+\leq\frac{\kappa_2(X_2)}{s^{-1}\delta^{-1}}
+\leq f^2\frac{s}{s-a\delta}.
+\tag{21}
+\]
+For $0<\delta\leq1$,
+$f\leq1+c\delta$ and hence $f^2\leq1+F\delta$.  Since
+$b\delta\leq1/2$ on $(0,\delta_2]$, expanding the two rational bounds in
+(21) gives the stated coefficient below; direct comparison of the squares in
+(2) and (5) gives $a>s$, hence $b>1/2$:
+\[
+\left|\frac{\kappa_2(X_2)}{s^{-1}\delta^{-1}}-1\right|
+\leq(F+2b+2Fb)\delta.
+\]
+Together with (2), this is (7) and (10).
+
+\subsection*{The third matrix}
+
+Let $X_{3,0}=X_3(0)$, where the notation means continuous substitution in
+the bounded entries of (1).  Exact expansion gives
+\[
+\det(zI_3-X_{3,0}^TX_{3,0})=\frac{P(z)}{45542974464}.
+\tag{22}
+\]
+For completeness, the signs of the exact Sturm chain of $P$ at the endpoints
+in (4), together with the variation counts, are
+\[
+\begin{array}{c|c|c|c}
+\text{interval}&\text{left signs}&\text{right signs}&\text{variations}\\ \hline
+(1/1300,1/1200)&(-,+,-,+)&(+,+,-,+)&3\to2\\
+(1/30,1/29)&(+,-,+,+)&(-,-,+,+)&2\to1\\
+(1/4,1/3)&(-,+,+,+)&(+,+,+,+)&1\to0.
+\end{array}
+\tag{23}
+\]
+Sturm's theorem gives exactly one root in each interval.  Since $P$ is cubic,
+these are all its roots, and (4) proves their positivity and ordering.  Thus
+the limiting squared singular values are $\rho_1<\rho_2<\rho_3$, proving the
+limit in (8).
+
+Only entries $(2,2)$ and $(3,2)$ vary with $\delta$, and direct subtraction
+gives
+\[
+\norm{X_3(\delta)-X_{3,0}}
+\leq\lVert X_3(\delta)-X_{3,0}\rVert_F
+\leq e\delta.
+\tag{24}
+\]
+The singular-value perturbation bound now gives
+\[
+\sqrt{\rho_3}-e\delta\leq\sigma_1(X_3(\delta))
+\leq\sqrt{\rho_3}+e\delta,
+\]
+\[
+\sqrt{\rho_1}-e\delta\leq\sigma_3(X_3(\delta))
+\leq\sqrt{\rho_1}+e\delta.
+\tag{25}
+\]
+Because $\rho_1>1/1300$, one has $\beta\delta<1/2$ for
+$0<\delta\leq1/10$.  Dividing (25) by the limiting extreme singular values
+therefore bounds the normalized condition number between
+$(1-\alpha\delta)/(1+\beta\delta)$ and
+$(1+\alpha\delta)/(1-\beta\delta)$.  Elementary expansion gives (11): the
+stated $M_3$ dominates the two resulting coefficients (in particular,
+$\beta>1/2$).  This completes the third case.
+
+\subsection*{The fourth matrix}
+
+For $0<\delta\leq1$, the largest magnitude among the three diagonal entries
+of $X_4$ is $1/(3+\delta)$ and the smallest is $1/13$.  Hence (12) follows
+immediately, completing the proof.
+
+\section*{Computational and AI assistance}
+
+An AI language model assisted with algebraic derivation and manuscript
+drafting.  During preparation, a deterministic SymPy script using exact
+rational and symbolic arithmetic independently expanded the four Gram-matrix
+characteristic polynomials, checked (13), (19), and (22), and verified the
+three Sturm root counts in (23).  Decimal singular-value evaluations were used
+only as diagnostics and play no role in the proof.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

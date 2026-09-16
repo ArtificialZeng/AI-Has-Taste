@@ -1,4 +1,4 @@
-# Manuscript LaTeX is retained locally, not published to Git.
+# Older collections retain their local-only LaTeX policy; BigWIN2 is excepted below.
 /latex_source_code/
 # Reproduction bundles also contain copies of manuscript source files.
 *.tex
@@ -42,3 +42,26 @@ node_modules/
 
 # Keep mathematical data and proof traces: no blanket *.json, *.txt,
 # *.log, *.sha256, *.cnf, *.drat, *.lrat, *.done or *.pdf exclusions.
+
+# BigWIN2 explicitly includes its paired manuscript sources.
+!/reproducible_source_code/BigWIN2/**/*.tex
+!/reproducible_source_code/BigWIN2/**/*.bib
+!/reproducible_source_code/BigWIN2/**/*.bbl
+!/reproducible_source_code/BigWIN2/**/*.bst
+!/reproducible_source_code/BigWIN2/**/*.sty
+!/reproducible_source_code/BigWIN2/**/*.cls
+!/reproducible_source_code/BigWIN2/**/*.ltx
+!/reproducible_source_code/BigWIN2/**/*.dtx
+!/reproducible_source_code/BigWIN2/**/*.ins
+!/reproducible_source_code/BigWIN2/**/.latexmkrc
+!/reproducible_source_code/BigWIN2/**/latexmkrc
+/reproducible_source_code/BigWIN2/BW2-B06-P04/source/certificates/nac11_four_way.cert
+/reproducible_source_code/BigWIN2/BW2-B06-P04/source/experiments/upstream/LamanGraphs11.txt
+/reproducible_source_code/BigWIN2/BW2-B06-P06/source/certificates/p11_radius_certificate.bin
+/reproducible_source_code/BigWIN2/BW2-B17-P02/source/certificates/f3_126_ge17.drat
+/reproducible_source_code/BigWIN2/BW2-B17-P13/source/certificates/no_66.drup
+/reproducible_source_code/BigWIN2/BW2-B36-P02/source/evidence/k17.drat
+/reproducible_source_code/BigWIN2/BW2-B70-P02/source/evidence/research_taylor_cover_1024_certificate.json
+/reproducible_source_code/BigWIN2/BW2-L260905848-P01/source/evidence/nonstar_equality.cnf
+/reproducible_source_code/BigWIN2/BW2-L260905848-P01/source/evidence/product_above_bound.cnf
+/reproducible_source_code/BigWIN2/BW2-PR20260913-subsum_denominator/source/evidence/research3_sharp_probe.json

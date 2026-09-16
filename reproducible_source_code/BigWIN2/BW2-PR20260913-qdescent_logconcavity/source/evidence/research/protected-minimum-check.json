@@ -1,0 +1,142 @@
+{
+  "job_id": "primary-20260913-qdescent-logconcavity-research-8293ab93d85b",
+  "arithmetic": "exact integer polynomials and exhaustive finite sets; standard library only",
+  "python": "3.10.12",
+  "transfer_range": "all 1<=i<=j<m<=10; all (i-1)-subsets A and (j+1)-subsets B of [m]",
+  "transfer_checks_by_m": {
+    "1": 0,
+    "2": 1,
+    "3": 7,
+    "4": 37,
+    "5": 176,
+    "6": 794,
+    "7": 3473,
+    "8": 14893,
+    "9": 63004,
+    "10": 263950
+  },
+  "transfer_checks_total": 346335,
+  "transfer_properties": [
+    "sizes and ground set",
+    "distinct elements",
+    "sum shift",
+    "normalized weight",
+    "min D = min B",
+    "min C <= min A when A nonempty",
+    "explicit inverse",
+    "no collisions for fixed m,i,j"
+  ],
+  "kernel_identity_range": "all 1<=k,r<=m<=12; subset H vs q-Pascal Gaussian difference vs reversed K",
+  "kernel_identity_checks": 650,
+  "directed_range": "all 1<=i<=j<=m<=12 and all ordered 1<=r,s<=m, including zero boundaries",
+  "directed_checks": {
+    "strict": 27313,
+    "diagonal": 6084
+  },
+  "directed_checks_by_m": {
+    "1": {
+      "strict": 0,
+      "diagonal": 1
+    },
+    "2": {
+      "strict": 4,
+      "diagonal": 8
+    },
+    "3": {
+      "strict": 27,
+      "diagonal": 27
+    },
+    "4": {
+      "strict": 96,
+      "diagonal": 64
+    },
+    "5": {
+      "strict": 250,
+      "diagonal": 125
+    },
+    "6": {
+      "strict": 540,
+      "diagonal": 216
+    },
+    "7": {
+      "strict": 1029,
+      "diagonal": 343
+    },
+    "8": {
+      "strict": 1792,
+      "diagonal": 512
+    },
+    "9": {
+      "strict": 2916,
+      "diagonal": 729
+    },
+    "10": {
+      "strict": 4500,
+      "diagonal": 1000
+    },
+    "11": {
+      "strict": 6655,
+      "diagonal": 1331
+    },
+    "12": {
+      "strict": 9504,
+      "diagonal": 1728
+    }
+  },
+  "direct_permutation_range": "all nonempty S with max S<=4, and all 1<=k<=max S",
+  "direct_a_cases": 49,
+  "permutations_enumerated": 47096,
+  "sigma_U_reconstructions": 334,
+  "unmodified_map_obstruction": {
+    "scope": "failure of the unmodified map to preserve a cutoff; not a negative determinant",
+    "m": 4,
+    "i": 2,
+    "j": 2,
+    "r": 2,
+    "s": 2,
+    "A": [
+      2
+    ],
+    "B": [
+      2,
+      3,
+      4
+    ],
+    "unmodified_output": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "protected_output": [
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "H_determinant_coefficients": {
+      "2": 3,
+      "3": 4,
+      "4": 5,
+      "5": 4,
+      "6": 1
+    }
+  },
+  "failures": [],
+  "sha256": {
+    "source.md": "09b28e35bf37a42405472803e963d8cd37dce27edee55c075e7689eab2781fcb",
+    "evidence/external/gaetz-gao-1912.04933v2.html": "aac7bacf054929a792ad5cf9422c2902249bb636eec8fdc6ab11a6957fa7d6aa",
+    "evidence/research/protected-minimum-proof.md": "09d15a1f244fde7cb5fbeb4e2c91c5715f93e3f1a74552aedaf9bb4b08361876",
+    "evidence/research/protected-minimum-check.py": "25645f3e235520dd55743d092bd87f3720e7eb166abcf412c97c4c32fd0155aa"
+  },
+  "elapsed_seconds": 4.313839178998023,
+  "conclusion": "Finite checks passed; the uniform argument is in the proof artifact and requires fresh review."
+}

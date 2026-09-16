@@ -1,0 +1,323 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=29mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Marginal-Rank Obstructions to Product-Local Equivalence for Two Pairs of Stabilizer Codes},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\cQ}{\mathcal Q}
+\newcommand{\cH}{\mathcal H}
+
+\title{Marginal-Rank Obstructions to Product-Local Equivalence\\
+for Two Pairs of Stabilizer Codes}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Mahmoud exhibited a five-qubit pair and a six-qubit pair of stabilizer
+codes that are related by weight-preserving stabilizer-group isomorphisms
+which do not extend to monomial maps, and asked whether the code spaces
+might nevertheless be equivalent under arbitrary one-qubit unitaries and a
+qubit permutation.  We answer both concrete questions in the negative.
+For a normalized stabilizer-code projector $\rho_S$ and a coordinate set
+$A$, the marginal rank is
+\[
+ \rank\!\left(\Tr_{A^c}\rho_S\right)=2^{|A|-d_S(A)},
+\]
+where $d_S(A)$ is the binary dimension of the stabilizers supported inside
+$A$.  This is an explicit rank form of a previously known local-unitary
+invariant.  For the five-qubit pair, the two exceptional rank-$4$
+three-coordinate sets intersect in one and two coordinates, respectively.
+For the six-qubit pair, the rank histograms on four-coordinate sets already
+differ.  These permutation obstructions apply to arbitrary product
+unitaries, not merely to local Clifford operations.  Complete signed Pauli
+and support tables are included, together with a description of exact
+reconstruction checks.
+\end{abstract}
+
+\section{Context and statement}
+
+The stabilizer formalism describes a quantum code as the common $+1$
+eigenspace of an abelian Pauli subgroup not containing $-I$; see, for
+example, Gottesman's account~\cite{Gottesman1997}.  Mahmoud's
+Theorem~5.3(ii),(iii) gives the following full-support pairs and establishes
+their weight-isometry and non-monomial-equivalence properties
+\cite{Mahmoud2026}.  Question~5.4 of that paper asks whether either pair is
+equivalent at the level of code spaces under a product unitary and a qubit
+permutation.
+
+Write $I,X,Y,Z$ for the usual Hermitian one-qubit Pauli matrices.  All
+displayed generators below have scalar phase $+1$:
+\begin{align*}
+ S_A&=\langle ZZZZI,\ XXIIX,\ IIXXX\rangle,&
+ S_B&=\langle ZZIZX,\ XIZXI,\ IXXYI\rangle,\\
+ S_+&=\langle XXIIXX,\ IIXXXX,\ ZZZZIX\rangle,&
+ S_-&=\langle XXZXII,\ ZZXYII,\ IZZZXX\rangle.
+\end{align*}
+For a stabilizer group $S$, let $\cQ(S)$ denote its common $+1$
+eigenspace.  On $n$ qubits, for $\pi\in\operatorname{Sym}(n)$, fix
+\[
+ P_\pi(v_1\otimes\cdots\otimes v_n)
+ =v_{\pi^{-1}(1)}\otimes\cdots\otimes v_{\pi^{-1}(n)}.
+\]
+Changing this convention to its inverse does not affect the existential
+statements.
+
+\begin{theorem}\label{thm:main}
+There are no $\pi\in\operatorname{Sym}(5)$ and $U_1,\ldots,U_5\in U(2)$
+such that
+\[
+ (U_1\otimes\cdots\otimes U_5)P_\pi\cQ(S_A)=\cQ(S_B).
+\]
+Separately, there are no $\pi\in\operatorname{Sym}(6)$ and
+$U_1,\ldots,U_6\in U(2)$ such that
+\[
+ (U_1\otimes\cdots\otimes U_6)P_\pi\cQ(S_+)=\cQ(S_-).
+\]
+\end{theorem}
+
+The general invariant used below is not introduced here.  Van den Nest,
+Dehaene, and De Moor identify the dimensions of the binary stabilizer
+subspaces supported in prescribed coordinate sets as degree-two
+local-unitary invariants~\cite[Eq.~(14)]{VanDenNestEtAl2004}.  Our
+contribution is the explicit application to Mahmoud's two pairs and the
+small separating incidence certificates.
+
+\section{Marginal ranks and local-unitary covariance}
+
+Let $[n]=\{1,\ldots,n\}$.  For a Pauli operator $g$, its support is the set
+of tensor factors on which it is not the identity.  For $A\subseteq[n]$ put
+\[
+ S[A]=\{g\in S:\supp(g)\subseteq A\},\qquad
+ d_S(A)=\log_2|S[A]|.
+\]
+For the groups in this note, $d_S(A)$ is equivalently the dimension over
+$\mathbb F_2$ of the supported binary stabilizer subspace.
+
+\begin{lemma}[Marginal-rank formula]\label{lem:rank}
+Let $S$ be an abelian $n$-qubit Pauli subgroup of order $2^r$ with
+$-I\notin S$, and let $\rho_S$ be the trace-one normalization of the
+orthogonal projector onto $\cQ(S)$.  Then, for every $A\subseteq[n]$,
+\begin{equation}\label{eq:rank}
+ \rank\!\left(\Tr_{A^c}\rho_S\right)=2^{|A|-d_S(A)}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The orthogonal code projector and its trace-one normalization are
+\[
+ \Pi_S=2^{-r}\sum_{g\in S}g,
+ \qquad
+ \rho_S=\frac{\Pi_S}{2^{n-r}}=2^{-n}\sum_{g\in S}g.
+\]
+A Pauli term that is nonidentity on a traced-out coordinate has zero partial
+trace.  Every term supported in $A$ acquires a factor $2^{n-|A|}$.
+Consequently
+\begin{equation}\label{eq:partialtrace}
+ \Tr_{A^c}\rho_S
+ =2^{-|A|}\sum_{g\in S[A]}g|_A.
+\end{equation}
+The restrictions $g|_A$ form a stabilizer subgroup of order
+$2^{d_S(A)}$.  Its normalized group sum is an orthogonal projector of rank
+$2^{|A|-d_S(A)}$.  Equation~\eqref{eq:partialtrace} is a nonzero scalar
+multiple of that projector, which proves~\eqref{eq:rank}.
+\end{proof}
+
+\begin{lemma}[Covariance]\label{lem:covariance}
+If two $n$-qubit code spaces are related by a product of one-qubit
+unitaries and a coordinate permutation, then their functions
+\[
+ A\longmapsto\rank\!\left(\Tr_{A^c}\rho\right)
+\]
+are related by the same permutation of $[n]$.
+\end{lemma}
+
+\begin{proof}
+Equality of the code spaces gives conjugacy of their uniquely defined
+trace-one normalized code projectors.  Under partial trace, unitary factors
+on $A^c$ cancel, while those on $A$ conjugate the reduced operator.
+Conjugation does not change rank.  A tensor-factor permutation only relabels
+the kept set $A$.
+\end{proof}
+
+This argument uses no Clifford hypothesis: each $U_i$ may be an arbitrary
+member of $U(2)$.
+
+\section{Exact finite certificate}
+
+The three generators in each displayed triple commute and are independent,
+so every group below has eight elements.  Table~\ref{tab:paulis} records
+all signed products.  If the listed generators are $(g_1,g_2,g_3)$, the
+selector $b_3b_2b_1$ denotes $g_1^{b_1}g_2^{b_2}g_3^{b_3}$.  Thus the
+table retains the signs forced by Pauli multiplication; they are not
+discarded support labels.  A string such as $125$ denotes the subset
+$\{1,2,5\}$.
+
+\begin{longtable}{@{}cllc@{}}
+\caption{Complete signed Pauli and support tables.}\label{tab:paulis}\\
+\toprule
+Group & Selector & Signed Pauli word & Support\\
+\midrule
+\endfirsthead
+\toprule
+Group & Selector & Signed Pauli word & Support\\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+$S_A$ & $000$ & $+\mathtt{IIIII}$ & $\varnothing$\\
+      & $001$ & $+\mathtt{ZZZZI}$ & $1234$\\
+      & $010$ & $+\mathtt{XXIIX}$ & $125$\\
+      & $011$ & $-\mathtt{YYZZX}$ & $12345$\\
+      & $100$ & $+\mathtt{IIXXX}$ & $345$\\
+      & $101$ & $-\mathtt{ZZYYX}$ & $12345$\\
+      & $110$ & $+\mathtt{XXXXI}$ & $1234$\\
+      & $111$ & $+\mathtt{YYYYI}$ & $1234$\\
+$S_B$ & $000$ & $+\mathtt{IIIII}$ & $\varnothing$\\
+      & $001$ & $+\mathtt{ZZIZX}$ & $1245$\\
+      & $010$ & $+\mathtt{XIZXI}$ & $134$\\
+      & $011$ & $-\mathtt{YZZYX}$ & $12345$\\
+      & $100$ & $+\mathtt{IXXYI}$ & $234$\\
+      & $101$ & $+\mathtt{ZYXXX}$ & $12345$\\
+      & $110$ & $-\mathtt{XXYZI}$ & $1234$\\
+      & $111$ & $+\mathtt{YYYIX}$ & $1235$\\
+$S_+$ & $000$ & $+\mathtt{IIIIII}$ & $\varnothing$\\
+      & $001$ & $+\mathtt{XXIIXX}$ & $1256$\\
+      & $010$ & $+\mathtt{IIXXXX}$ & $3456$\\
+      & $011$ & $+\mathtt{XXXXII}$ & $1234$\\
+      & $100$ & $+\mathtt{ZZZZIX}$ & $12346$\\
+      & $101$ & $-\mathtt{YYZZXI}$ & $12345$\\
+      & $110$ & $-\mathtt{ZZYYXI}$ & $12345$\\
+      & $111$ & $+\mathtt{YYYYIX}$ & $12346$\\
+$S_-$ & $000$ & $+\mathtt{IIIIII}$ & $\varnothing$\\
+      & $001$ & $+\mathtt{XXZXII}$ & $1234$\\
+      & $010$ & $+\mathtt{ZZXYII}$ & $1234$\\
+      & $011$ & $+\mathtt{YYYZII}$ & $1234$\\
+      & $100$ & $+\mathtt{IZZZXX}$ & $23456$\\
+      & $101$ & $-\mathtt{XYIYXX}$ & $12456$\\
+      & $110$ & $+\mathtt{ZIYXXX}$ & $13456$\\
+      & $111$ & $-\mathtt{YXXIXX}$ & $12356$\\
+\end{longtable}
+
+\newpage
+For completeness, Table~\ref{tab:paulis} and Lemma~\ref{lem:rank} give the
+following compact enumeration of every marginal rank, including the empty
+and full coordinate sets.
+
+\begin{proposition}[Complete marginal-rank profiles]\label{prop:profiles}
+Let $r_S(A)=\rank(\Tr_{A^c}\rho_S)$.
+\begin{enumerate}
+\item For $S_A$, $r_{S_A}(A)=2^{|A|}$ when $|A|\leq2$.
+Among triples the rank is $4$ exactly at $125$ and $345$, and is $8$
+otherwise.  Among four-sets the rank is $4$ at $1234$ and $8$ otherwise;
+$r_{S_A}([5])=4$.
+\item For $S_B$, $r_{S_B}(A)=2^{|A|}$ when $|A|\leq2$.
+Among triples the rank is $4$ exactly at $134$ and $234$, and is $8$
+otherwise.  Among four-sets the rank is $4$ at $1234$ and $8$ otherwise;
+$r_{S_B}([5])=4$.
+\item For $S_+$, $r_{S_+}(A)=2^{|A|}$ when $|A|\leq3$.
+Among four-sets the rank is $8$ exactly at $1234,1256,3456$, and is $16$
+otherwise.  Among five-sets the rank is $8$ at $12345,12346$ and $16$
+otherwise; $r_{S_+}([6])=8$.
+\item For $S_-$, $r_{S_-}(A)=2^{|A|}$ when $|A|\leq3$.
+Among four-sets the rank is $4$ exactly at $1234$, and is $16$ otherwise.
+Among five-sets the rank is $8$ at $12345,12346$ and $16$ otherwise;
+$r_{S_-}([6])=8$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For each $A$, count in Table~\ref{tab:paulis} the group elements whose
+support is contained in $A$, take the base-two logarithm, and apply
+Lemma~\ref{lem:rank}.  The four stated rules exhaust all $32$ or $64$
+subsets.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $S_A$, the three-coordinate sets with marginal rank $4$ are precisely
+$125$ and $345$; their intersection is $\{5\}$ and has size one.  For
+$S_B$, they are precisely $134$ and $234$; their intersection is
+$\{3,4\}$ and has size two.  A coordinate permutation preserves
+intersection cardinality.  It therefore cannot identify the two indexed
+rank profiles.  Lemma~\ref{lem:covariance} rules out the five-qubit
+equivalence.
+
+For $S_+$, the histogram of marginal ranks over the fifteen four-coordinate
+sets is
+\[
+ \{8:3,\ 16:12\}.
+\]
+For $S_-$, it is
+\[
+ \{4:1,\ 16:14\}.
+\]
+A coordinate permutation preserves this unlabelled histogram, so it cannot
+identify these two profiles either.  Lemma~\ref{lem:covariance} rules out
+the six-qubit equivalence.
+\end{proof}
+
+\section{Verification, scope, and disclosure}
+
+The certificate is small enough to check directly: multiply each generator
+triple, retain the scalar signs, and read $d_S(A)$ from
+Table~\ref{tab:paulis}.  Two accompanying standard-library Python programs
+also reconstruct the finite calculation.  The first builds ordinary dense
+Pauli matrices over the Gaussian integers, checks commutation, eight
+distinct Hermitian products, the projector identity $R_S^2=8R_S$, and the
+code rank.  It then forms every partial trace entry by entry and ranks all
+$192$ code--subsystem pairs by exact elimination over $\mathbb Q(i)$.  The
+second uses binary symplectic labels, independently reconstructs all four
+support-dimension profiles, and exhausts all $5!$ and $6!$ coordinate
+permutations.  No floating-point tolerance or random choice enters either
+check.  From the project root they can be replayed with
+\begin{verbatim}
+python3 evidence/research_projector_audit.py
+python3 evidence/triage_exact_check.py
+\end{verbatim}
+
+Separating discovery output from an exact reconstruction program is also
+used in finite computational mathematics outside the present setting; one
+explicit certificate architecture, based on integer predicates and an
+independent implementation, is described in
+\cite[Sec.~6]{ZengEtAl2026ExactFinite}.  That paper concerns finite
+geometric models and is not an input to the stabilizer argument here.
+
+Theorem~\ref{thm:main} resolves only the two concrete equivalence questions
+for the four displayed generator triples, with their specified $+1$
+phases.  It does not settle the broader LU--LC-type question in
+Mahmoud's Question~5.4.  Agreement of marginal-rank profiles is only a
+necessary condition for product-local equivalence; the strict mismatches
+above are sufficient for non-equivalence.  Entangling unitaries and
+antiunitaries are outside the statement.
+
+OpenAI Codex assisted with primary-source searching, exact-check
+organization, and preparation of the manuscript.  Language-model output is
+not used as mathematical evidence: the proof rests on the displayed
+projector identities and the finite signed table, with the accompanying
+exact programs providing reproducible checks.  The author is responsible
+for the final claims and presentation.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

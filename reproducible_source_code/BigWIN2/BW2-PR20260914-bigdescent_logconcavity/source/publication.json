@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "title": "Conditional Schur positivity for binary-word events with at most four free positions",
+  "author": "Xiaojian Zeng",
+  "writer_job_id": "primary-20260914-bigdescent-logconcavity-write-952ca587222c",
+  "source_files": [
+    "manuscript/main.bbl",
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/supplement/README.md",
+    "manuscript/supplement/coefficients.json",
+    "manuscript/supplement/verify_certificate.py"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "clean_command": "latexmk -C -silent main.tex",
+    "command": "latexmk -pdf -silent -interaction=nonstopmode -halt-on-error -file-line-error main.tex",
+    "engine": "pdfTeX 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian)",
+    "bibliography_engine": "BibTeX 0.99d",
+    "packages_installed": []
+  },
+  "supplement": {
+    "command": "python3 manuscript/supplement/verify_certificate.py",
+    "python_tested": "3.10.12",
+    "numpy_tested": "2.2.6",
+    "arithmetic": "arbitrary-precision Python integers; NumPy dtype=object",
+    "generated_report": "manuscript/supplement/verification.json"
+  },
+  "user_library_entries": [
+    {
+      "registry_row": 9,
+      "registry_key": "202608.1658",
+      "manuscript_key": "ZengCertificates",
+      "doi": "10.20944/preprints202608.1658.v1",
+      "support": "Section 6: complete-domain reconstruction and separate exact verification of stored finite certificates",
+      "primary_url": "https://www.preprints.org/manuscript/202608.1658/v1"
+    }
+  ],
+  "source_verification_record": "audit/writing-sources.md"
+}

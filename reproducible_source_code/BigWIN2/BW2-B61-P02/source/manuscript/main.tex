@@ -1,0 +1,275 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{pdftitle={An Exact Hall-Universality Census Through Six Vertices},pdfauthor={Xiaojian Zeng},pdfsubject={Exact computational graph census},pdfkeywords={Hall condition, graphic list coloring, graph census, exact verification}}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cA}{\mathcal A}
+
+\title{An Exact Hall-Universality Census Through Six Vertices}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For finite simple graphs $G$ and $H$ on the same labelled vertex set, give
+vertex $v$ the graphic list $N_G(v)$.  A graph $G$ is Hall-universal when the
+Hilton--Johnson Hall condition is sufficient for a proper coloring of every
+$H$ from these lists.  We give an exact exhaustive census for $|V(G)|\leq 6$:
+every one of the $1,1,2,4,11,34,156$ isomorphism classes in orders zero through
+six is Hall-universal.  The certificate stores the Hall-feasibility and
+colorability bit of every labelled $H$ for every canonical $G$.  An independent
+verifier reconstructs the complete domain of $G$-orbits, tests all vertex
+subsets by brute force, and checks colorability directly from admissible
+assignments.  Of the 209 positive classes, 199 follow from families identified
+in the source paper; the first remaining class in $(|V|,\texttt{graph6})$ order
+is the five-vertex bull graph.  This finite theorem does not resolve the
+unrestricted characterization problem.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $V=\{0,\ldots,n-1\}$, and let $G,H$ be simple undirected graphs on $V$.
+A \emph{$G$-coloring} of $H$ is a map $\varphi:V\to V$ such that
+\[
+  \varphi(v)\in N_G(v)\quad(v\in V),
+  \qquad
+  \varphi(u)\ne\varphi(v)\quad(uv\in E(H)).
+\]
+Thus the list attached to $v$ is the open neighborhood of $v$ in $G$.
+For $U\subseteq V$ and $c\in V$, put
+\[
+  a_{H,G}(U,c)=\alpha\bigl(H[U\cap N_G(c)]\bigr),
+\]
+where $\alpha$ is the independence number and $\alpha(\varnothing)=0$.
+Here the vertices eligible for color $c$ are exactly $N_G(c)$, because $G$ is
+undirected.
+The Hilton--Johnson Hall condition is
+\begin{equation}\label{eq:hall}
+  |U|\leq \sum_{c\in V}a_{H,G}(U,c)
+  \qquad\text{for every }U\subseteq V.
+\end{equation}
+Its general list-coloring form is necessary for a proper list coloring
+\cite{HiltonJohnson1990}; it extends the classical systems-of-representatives
+condition of Hall \cite{Hall1935}.  In the graphic-list setting above, Chalise
+defined $G$ to be \emph{Hall-universal} if \eqref{eq:hall} implies that $H$ has
+a $G$-coloring for every $H$ on the common vertex set
+\cite{Chalise2026}.
+
+Chalise proved Hall-universality for several families, including forests,
+appropriate complete multipartite graphs, grids, and graphs with a spanning
+$\{1,2\}$-factor, and asked for the unrestricted characterization
+\cite{Chalise2026}.  The result here concerns only the bounded census requested
+through order six.
+
+\begin{theorem}\label{thm:main}
+For every integer $n$ with $0\leq n\leq6$, every finite simple graph $G$ on
+$n$ vertices is Hall-universal.  Up to isomorphism, the complete positive
+census in orders $0,1,\ldots,6$ has respectively
+\[
+  1,\ 1,\ 2,\ 4,\ 11,\ 34,\ 156
+\]
+classes, and there are no negative classes.
+\end{theorem}
+
+We include the null graph at $n=0$: its unique coloring is empty and its Hall
+condition is vacuous.  Under a convention excluding the null graph, only this
+one trivial class is removed.
+
+Exact finite graph certification using canonical \texttt{graph6}
+representatives and independently checkable per-class data has also been used,
+for example, in an eight-vertex whiskered-graph problem
+\cite{Zeng2026SSRN7385138}.  Here the objects being certified are different:
+for each canonical $G$ we retain two predicates for every labelled $H$, not a
+single certificate per isomorphism class.  This comparison is methodological;
+it supplies no mathematical input to Theorem~\ref{thm:main}.  The literature
+assessment is correspondingly bounded: no claim of priority is made.
+
+\section{Finite certificate}
+
+Order the $\binom n2$ possible edges by increasing larger endpoint and then
+increasing smaller endpoint, and identify every labelled $H$ with its edge
+mask in $\{0,\ldots,2^{\binom n2}-1\}$.  One canonical \texttt{graph6}
+representative is retained for each isomorphism class of $G$.
+
+\subsection{Hall predicate}
+
+For a fixed $H$, the main enumerator obtains all independence numbers from the
+integer recurrence
+\begin{equation}\label{eq:alpha}
+ \alpha_H(S)=\max\bigl\{\alpha_H(S\setminus\{v\}),
+ 1+\alpha_H((S\setminus\{v\})\setminus N_H(v))\bigr\}.
+\end{equation}
+It tests \eqref{eq:hall} on every nonempty $U$ for which $H[U]$ is connected.
+
+\begin{lemma}\label{lem:connected}
+Condition \eqref{eq:hall} holds for every $U\subseteq V$ if and only if it
+holds for every nonempty $U$ such that $H[U]$ is connected.
+\end{lemma}
+
+\begin{proof}
+Only the reverse implication needs proof.  If the components of $H[U]$ have
+vertex sets $U_1,\ldots,U_t$, then for every color $c$ the induced graphs
+$H[U_i\cap N_G(c)]$ are mutually anticomplete.  Independence number is
+therefore additive over the components.  Summing the inequalities for the
+$U_i$ gives the inequality for $U$.  The empty set is immediate.
+\end{proof}
+
+This also explains why induced subgraphs suffice in the equivalent formulation
+that quantifies over all subgraphs: deleting edges cannot decrease any
+independence number.
+
+\subsection{Colorability predicate}
+
+For a fixed $G$, define the finite set of admissible assignments
+\[
+  \cA_G=\{\varphi:V\to V:\varphi(v)\in N_G(v)\text{ for every }v\}.
+\]
+For $\varphi\in\cA_G$, its conflict edge set is
+\[
+  Q_\varphi=\{uv\in\tbinom V2:\varphi(u)=\varphi(v)\}.
+\]
+
+\begin{lemma}\label{lem:conflict}
+A labelled graph $H$ has a $G$-coloring if and only if
+$E(H)\cap Q_\varphi=\varnothing$ for some $\varphi\in\cA_G$.
+\end{lemma}
+
+\begin{proof}
+Membership in $\cA_G$ is exactly the list constraint.  The displayed
+disjointness says exactly that no edge of $H$ has equally colored endpoints.
+\end{proof}
+
+The main enumerator visits all at most $n^n$ maps $V\to V$, retains the
+admissible ones, and marks the downward closure of their allowable edge masks.
+Thus no satisfiability or floating-point oracle enters either predicate.
+
+\subsection{Independent verification}
+
+The independent verifier deliberately avoids the decisive reductions used by
+the main enumeration.  It
+\begin{enumerate}
+  \item enumerates all $2^{\binom n2}$ labelled graphs $G$ and applies all
+        vertex permutations, recovering exactly the recorded canonical orbit
+        set and hence deriving the seven class counts;
+  \item computes each independence number by testing every submask for
+        independence, rather than using \eqref{eq:alpha};
+  \item checks \eqref{eq:hall} for every nonempty $U$, including disconnected
+        sets; and
+  \item regenerates the distinct $Q_\varphi$ and tests every $H$ directly
+        against them, rather than using a downward closure.
+\end{enumerate}
+Every operation is on bounded integers and Boolean arrays.  The representative
+generation and \texttt{graph6} decoding use NetworkX
+\cite{HagbergSchultSwart2008}; completeness is independently established by
+the full labelled-$G$ orbit computation rather than assumed from the software's
+atlas counts.
+
+For every canonical $G$, the certificate stores two little-endian packed bit
+arrays indexed by increasing $H$ edge mask: one for \eqref{eq:hall} and one for
+colorability.  The verifier found the arrays identical in every row.  It also
+checked row keys, unused padding bits, row bindings, the aggregate binding, and
+the complete set of canonical representatives.  The supplementary manifest
+records the integrity bindings for the data and verifier inputs.
+
+The complete numerical summary is Table~\ref{tab:census}.  Its ``pairs'' column
+counts canonical-$G$/labelled-$H$ pairs, not labelled choices of both graphs.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrrr}
+\toprule
+$n$ & $G$ classes & $H$ per class & pairs & Hall & colorable & source-covered $G$\\
+\midrule
+0 & 1   & 1      & 1         & 1         & 1         & 1\\
+1 & 1   & 1      & 1         & 0         & 0         & 1\\
+2 & 2   & 2      & 4         & 2         & 2         & 2\\
+3 & 4   & 8      & 32        & 12        & 12        & 4\\
+4 & 11  & 64     & 704       & 392       & 392       & 11\\
+5 & 34  & 1,024  & 34,816    & 19,984    & 19,984    & 31\\
+6 & 156 & 32,768 & 5,111,808 & 3,597,344 & 3,597,344 & 149\\
+\bottomrule
+\end{tabular}
+\caption{Exact census.  ``Hall'' and ``colorable'' are counts of positive bits
+over canonical-$G$/labelled-$H$ pairs.}
+\label{tab:census}
+\end{table}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Simultaneously relabelling the vertices and the colors preserves both
+\eqref{eq:hall} and the existence of a $G$-coloring, so one representative of
+each $G$-isomorphism class suffices.  The verifier's labelled-orbit computation
+shows that the certificate contains every such class for $0\leq n\leq6$.
+For each representative it exhausts every labelled $H$.  Lemmas
+\ref{lem:connected} and \ref{lem:conflict} justify the two exact predicates,
+and the independent verifier recomputes both predicates by the distinct routes
+described above.  In every row and at every $H$ mask, a positive Hall bit has a
+positive colorability bit.  Hence every represented $G$ is Hall-universal.
+The derived orbit counts give the asserted census.
+\end{proof}
+
+If $G$ has an isolated vertex $v$, there is no admissible coloring, but Hall
+already fails at $U=\{v\}$.  Such classes are therefore positive vacuously;
+in particular, the zero Hall and colorability counts at $n=1$ do not hide an
+exception.
+
+\section{Comparison with the source families}
+
+A separate exact classifier applies the sufficient families and observations
+in the source paper: isolated-vertex vacuity, spanning $\{1,2\}$-factors,
+star attachment, forests, the complete multipartite criterion, grids, and the
+disjoint-union observation \cite{Chalise2026}.  It classifies 199 of the 209
+positive classes.  The remaining ten \texttt{graph6} representatives, in
+$(n,\texttt{graph6})$ order, are
+\begin{center}
+\small\ttfamily
+DBk, DBw, DB\{, E?NW, E?No, E?Nw, E?]o, E?]w, E?\char94 o, E?\char94 w.
+\end{center}
+The first is \texttt{DBk}, edge mask $880$, the bull graph.  In the certificate's
+zero-based labels its triangle has edges $23,24,34$ and its pendant edges are
+$13,04$.  ``First'' here refers only to the stated reproducible ordering, not
+to a priority assertion.
+
+The ten residual classes show why the census is not merely a count of instances
+covered by the cited sufficient families.  They do not, however, imply that
+those families are exhaustive beyond six vertices, and the unrestricted
+characterization remains outside the scope of this theorem.
+
+\section{Reproducibility and assistance disclosure}
+
+The supplementary files contain the canonical representative table, the main
+enumerator, the packed per-$H$ census, the source-family classifier, the row
+manifest, the independent verifier, and its machine-readable report.  From the
+project root, the complete verification is run by
+\begin{verbatim}
+python3 evidence/verify_census.py evidence/census_exact.tsv \
+  evidence/census_manifest.json evidence/representatives.tsv
+\end{verbatim}
+The original enumeration used Python~3, NetworkX~3.4.2, NumPy~2.2.6, and
+Numba~0.67.0.  All proof-essential predicates use exact integer or Boolean
+arithmetic.
+
+OpenAI Codex was used during the research workflow to organize the search,
+implement and run the exact enumerators, construct a separately routed
+verifier, screen the cited sources, and assist in drafting this manuscript.
+The full verifier was rerun separately, together with checks of the
+quantifiers, bit ordering, orbit completeness, source-family classifier, and
+edge cases.  These checks are computational evidence for the explicitly
+described finite theorem and do not extend its scope.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

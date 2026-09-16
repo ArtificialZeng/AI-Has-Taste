@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "verdict": "accept",
+  "job_id": "newwin-00001-p08-release-467bc3c43b74",
+  "citation_attempt": 1,
+  "citation_release_launch_id": "c3aab28f-58b2-45c9-9e56-3b53b7753dae",
+  "checked_at_utc": "2026-09-12T09:48:39.283125+00:00",
+  "snapshot_digest": "c96c6b7b2814f0a2007caa6a6a99496edbecadac9ef9bc71fe55d3ecd76309f0",
+  "manuscript_digest": "4c76e5c2d8e61b75a85b57cf165889afc1b82282f4c36bfce8d9575114e62dd6",
+  "pdf_digest": "9e7ebe7f07e45ddd1ff6e9e524e8cd63ce4060627680c871a96a8815807e76ff",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "render_command": "pdftoppm -png -r 130 manuscript/build/main.pdf audit/release-page",
+  "inspection_method": "Actual view_image inspection of every full final rendered page after the final rebuild; table entries cross-checked with the accepted boundary analysis.",
+  "images": [
+    {
+      "page": 1,
+      "image": "audit/release-page-1.png",
+      "sha256": "f8d00f373523387cfc2dea06465ed5da83a3fa301711ab45d3b1932c593638f9",
+      "actually_viewed": true,
+      "finding": "Title, author and affiliation, abstract, definition and full Theorem 1 inspected. Formula indices, root multiplicities, citation labels and margins legible."
+    },
+    {
+      "page": 2,
+      "image": "audit/release-page-2.png",
+      "sha256": "ef14c39dd4ce848ad7fe58aa5914cd290708b869dc77da07af4269193063101b",
+      "actually_viewed": true,
+      "finding": "Ordinary scalar formula, comparison paragraph and unique first-return lemma inspected. Bottom boundary-case table is complete, including all three rows (0,0), (1,0), (1,1), with no collision with the footer."
+    },
+    {
+      "page": 3,
+      "image": "audit/release-page-3.png",
+      "sha256": "4fcd6bc20d24718773b415766657ff4d7a7077c223c388fd11545929f845e546",
+      "actually_viewed": true,
+      "finding": "Generating equation, formal Lagrange extraction, positive coefficients, Vandermonde specialization and ordinary reduction inspected. Aligned equations and citations remain within the text area."
+    },
+    {
+      "page": 4,
+      "image": "audit/release-page-4.png",
+      "sha256": "231826457540a61d068695fdb38f90832f1b233518122db12d192999320e654f",
+      "actually_viewed": true,
+      "finding": "Jacobi normalization, Rodrigues identity, orthogonality, root transform, boundary cases and section transition inspected. Mathematical exponents and limits are clear; the continuation onto page 5 is ordinary pagination."
+    },
+    {
+      "page": 5,
+      "image": "audit/release-page-5.png",
+      "sha256": "1bb19cab70eedd810d290ae0173eae061d32d5abd056b96b06ebbefbb213131a",
+      "actually_viewed": true,
+      "finding": "All parameter pairs, exact counts 49/303/11, the visible selected Zeng citation, Bézout spelling, computation/AI disclosure and first five references inspected. No hidden or clipped citation, unexpanded key or overlapping DOI."
+    },
+    {
+      "page": 6,
+      "image": "audit/release-page-6.png",
+      "sha256": "7d960f4b23fae9ef8d637435d97146b4a6d899769f36b7c48f1e7b2f07d1e88e",
+      "actually_viewed": true,
+      "finding": "Final four references inspected, including the selected preprint title, version, URL and restored exact DOI. URLs wrap legibly. Remaining whitespace after the bibliography is normal; no content is cut off."
+    }
+  ],
+  "issues": []
+}

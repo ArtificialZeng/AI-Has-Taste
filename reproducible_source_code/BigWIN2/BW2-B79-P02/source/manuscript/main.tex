@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  pdftitle={Finite Corners Do Not Determine Closed Cones of Normal Completely Positive Maps Without Cut--Pad Stability},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\B}{\mathcal B}
+\newcommand{\T}{\mathcal T}
+\newcommand{\CP}{\mathsf{CP}}
+\newcommand{\Kcone}{\mathsf K}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\title{Finite Corners Do Not Determine Closed Cones of Normal Completely
+Positive Maps Without Cut--Pad Stability}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $H$ be any infinite-dimensional complex Hilbert space.  We construct a
+point-ultraweakly closed proper convex cone $\Kcone$ of normal completely
+positive maps on $\B(H)$ whose $(Q,P)$-compression cone is the full cone of
+completely positive maps $\B(PH)\to\B(QH)$ for every pair of finite-rank
+projections $P,Q$.  The cone is an explicit homogeneous half-space inside the
+normal completely positive cone, and an explicit rank-one map shows that it is
+not cut--pad stable.  Thus point-ultraweak closedness does not suffice for
+finite-corner reconstruction when cut--pad stability is removed.  No
+separability assumption or computational evidence is used.
+\end{abstract}
+
+\section{Context and statement}
+
+Completely positive maps have a global representation theory through
+Stinespring's theorem~\cite{Stinespring1955}, while in matrix algebras complete
+positivity is detected by the Choi matrix~\cite{Choi1975}.  Kian and Kittaneh
+recently formulated a finite-corner substitute for the latter test on maps
+between infinite-dimensional operator algebras~\cite{KianKittaneh2026}.  Their
+Theorem~3.9 shows that a convex cone of normal maps is reconstructed from its
+finite corner cones when it is both point-ultraweakly closed and cut--pad
+stable.  Their Proposition~5.5 shows that closedness cannot be deleted while
+cut--pad stability is retained.  The result below gives the complementary
+sharpness statement: closedness is retained and cut--pad stability is deleted.
+
+Explicit low-rank witnesses can be particularly effective at exposing a
+failed dimension-free assertion.  In a different matrix problem,
+Zeng--Liu--Ratnavelu give an exact counterexample carried by two real
+$2\times2$ rank-one matrices~\cite{ZengLiuRatnavelu2026}.  Here rank-one maps
+instead let us alter a global half-space constraint while leaving any
+prescribed finite input corner unchanged.
+
+We now fix the notation needed for the precise statement.  Let $H$ be a
+complex Hilbert space and let
+\[
+ \CP^\sigma(H)=\{\Phi:\B(H)\to\B(H):
+     \Phi\text{ is complex-linear, normal, and completely positive}\}.
+\]
+The ambient vector space is the space of normal maps.  It carries the
+point-ultraweak topology: $\Phi_\alpha\to\Phi$ when
+\[
+ \Tr(S\Phi_\alpha(T))\longrightarrow \Tr(S\Phi(T))
+ \quad(T\in\B(H),\ S\in\T(H)).
+\]
+All topological closedness below is relative to this ambient space.
+Here ``proper'' means strict inclusion in $\CP^\sigma(H)$.
+
+For finite-rank orthogonal projections $P,Q$, the $(Q,P)$-compression of a
+normal map is
+\[
+ \Phi_{Q,P}(X)=Q\Phi(X)Q,
+ \qquad X\in P\B(H)P\cong\B(PH),
+\]
+and, for a set $\mathcal C$ of maps,
+\[
+ \mathcal C_{Q,P}=\{\Phi_{Q,P}:\Phi\in\mathcal C\}.
+\]
+This compression-image notation remains meaningful without cut--pad
+stability.  Write $\CP_{Q,P}$ for all completely positive maps
+$\B(PH)\to\B(QH)$.  The cut--pad map associated with $\Phi$ is
+\[
+ \Phi^{(Q,P)}(T)=Q\Phi(PTP)Q,
+ \qquad T\in\B(H).
+\]
+These are the conventions of~\cite[Definitions~3.1 and 3.3,
+Remark~5.4]{KianKittaneh2026}.
+
+\begin{theorem}\label{thm:main}
+For every infinite-dimensional complex Hilbert space $H$, there is a
+point-ultraweakly closed convex cone
+\[
+  \Kcone\subsetneq\CP^\sigma(H)
+\]
+such that
+\[
+  \Kcone_{Q,P}=\CP_{Q,P}
+\]
+for every pair of finite-rank orthogonal projections $P,Q$.  Moreover,
+$\Kcone$ is not cut--pad stable.
+\end{theorem}
+
+In particular, the theorem disproves the assertion that every
+point-ultraweakly closed convex subcone of $\CP^\sigma(H)$ is determined by
+its finite corner cones without the cut--pad hypothesis.
+
+\section{The half-space construction}
+
+Fix a unit vector $e\in H$, let $E=|e\rangle\langle e|$ be the orthogonal
+projection onto $\mathbb Ce$, and put
+\[
+ A=2E-I.
+\]
+For a unit vector $z\in H$, denote by $\omega_z$ the normal vector state and
+define
+\[
+ \Theta_z(T)=\omega_z(T)E,
+ \qquad T\in\B(H).
+\]
+This notation is independent of which argument of the Hilbert-space inner
+product is taken to be linear.
+
+Each $\Theta_z$ is normal: for $S\in\T(H)$,
+\[
+ \Tr(S\Theta_z(T))=\Tr(SE)\,\omega_z(T),
+\]
+an ultraweakly continuous functional of $T$.  It is also completely positive.
+Indeed, if $[T_{ij}]\in M_n(\B(H))$ is positive, then
+$[\omega_z(T_{ij})]\in M_n(\mathbb C)$ is positive, and hence
+\[
+ [\Theta_z(T_{ij})]=[\omega_z(T_{ij})]\otimes E\geq0.
+\]
+
+On normal maps define the point-ultraweakly continuous functional
+\[
+ f(\Phi)=\omega_e(\Phi(A))=\Tr(E\Phi(A)).
+\]
+For a positive map $\Phi$, the self-adjoint operator $A$ is sent to a
+self-adjoint operator, so $f(\Phi)$ is real.  Set
+\begin{equation}\label{eq:cone}
+ \Kcone=\{\Phi\in\CP^\sigma(H): f(\Phi)\leq0\}.
+\end{equation}
+
+We first verify the topological point that is needed here.  The cone
+$\CP^\sigma(H)$ is point-ultraweakly closed in the ambient space of normal
+maps.  Suppose that normal completely positive maps $\Phi_\alpha$ converge
+point-ultraweakly to a normal map $\Phi$.  For every
+$[T_{ij}]\in M_n(\B(H))_+$, the block matrices
+$[\Phi_\alpha(T_{ij})]$ converge ultraweakly in $\B(H^n)$ to
+$[\Phi(T_{ij})]$.  (The matrix size is finite, so a trace-class block
+functional has only finitely many trace-class entries.)  The positive cone of
+$\B(H^n)$ is ultraweakly closed; consequently
+$[\Phi(T_{ij})]\geq0$ for every $n$.  Thus $\Phi$ is completely positive.
+Because $f$ is continuous, \eqref{eq:cone} is point-ultraweakly closed.
+Linearity of $f$ and the conic convexity of $\CP^\sigma(H)$ show that
+$\Kcone$ is a convex cone.
+
+The cone is proper.  The rank-one map $\Theta_e$ belongs to
+$\CP^\sigma(H)$, whereas
+\[
+ f(\Theta_e)=\omega_e(A)\omega_e(E)=1>0.
+\]
+Hence $\Theta_e\notin\Kcone$.
+
+\section{All finite corner cones are full}
+
+Fix arbitrary finite-rank projections $P,Q$.  Compression preserves complete
+positivity, so
+\[
+ \Kcone_{Q,P}\subseteq\CP_{Q,P}.
+\]
+For the reverse inclusion, let $\psi\in\CP_{Q,P}$.  Regard its output as an
+operator on $H$ acting by zero on $(QH)^\perp$, and define
+\[
+ \widehat\psi(T)=\psi(PTP),
+ \qquad T\in\B(H).
+\]
+This is completely positive: at every matrix level it is the composition of
+compression to $(PH)^n$, the amplification of $\psi$, and extension by zero
+from $(QH)^n$ to $H^n$.  It is normal as well.  Indeed, $T\mapsto PTP$ has
+finite-dimensional range, and entrywise ultraweak convergence on this range
+is convergence in its unique finite-dimensional linear topology.  Applying
+$\psi$ and the zero embedding therefore preserves ultraweak convergence.
+
+The space $PH+\mathbb Ce$ is finite-dimensional.  Since $H$ is
+infinite-dimensional, choose a unit vector
+\[
+ v\perp(PH+\mathbb Ce).
+\]
+For $X\in P\B(H)P$ we have $Xv=0$, so
+$(\Theta_v)_{Q,P}(X)=0$.  Also $Av=-v$, and therefore
+\[
+ f(\Theta_v)=\omega_v(A)\omega_e(E)=-1.
+\]
+Let
+\[
+ b=f(\widehat\psi)\in\mathbb R,
+ \qquad t=\max\{0,b\},
+ \qquad \Phi=\widehat\psi+t\Theta_v.
+\]
+Then $\Phi$ is normal and completely positive, while
+\[
+ f(\Phi)=b-t\leq0.
+\]
+Thus $\Phi\in\Kcone$.  Since the perturbation has zero $(Q,P)$-corner,
+\[
+ \Phi_{Q,P}=\widehat\psi_{Q,P}+t(\Theta_v)_{Q,P}=\psi.
+\]
+This proves $\CP_{Q,P}\subseteq\Kcone_{Q,P}$ and hence equality.  The same
+argument includes $P=0$ or $Q=0$, when the corresponding CP cone contains
+only the zero map.  No vector chosen here must work for two different
+corners: the definition of $\Kcone_{Q,P}$ permits the representing global map
+to depend on $(Q,P)$, exactly as emphasized in
+\cite[Remark~5.4]{KianKittaneh2026}.
+
+\section{Failure of cut--pad stability}
+
+Choose a unit vector $u\perp e$, set $w=(e+u)/\sqrt2$, and let
+$\Phi=\Theta_w$.  Since $\omega_w(A)=0$, we have $f(\Phi)=0$ and hence
+$\Phi\in\Kcone$.  Take $P=Q=E$.  For every $T\in\B(H)$,
+\begin{align*}
+ \Phi^{(E,E)}(T)
+  &=E\Theta_w(ETE)E \\
+  &=\omega_w(ETE)E \\
+  &=\tfrac12\omega_e(T)E
+   =\tfrac12\Theta_e(T).
+\end{align*}
+Consequently,
+\[
+ f(\Phi^{(E,E)})=\tfrac12>0,
+\]
+so $\Phi^{(E,E)}\notin\Kcone$.  This explicitly proves that $\Kcone$ is not
+cut--pad stable and completes the proof of Theorem~\ref{thm:main}.
+
+The excluded map $\Theta_e$ makes the reconstruction failure concrete:
+$\Theta_e\notin\Kcone$, but every finite compression of $\Theta_e$ belongs to
+$\CP_{Q,P}=\Kcone_{Q,P}$.  Thus the finite corner data alone cannot detect its
+nonmembership.
+
+\section*{Scope and assistance disclosure}
+
+The proof is analytic and uses no numerical experiment, computer algebra, or
+finite search.  It establishes the stated counterexample for arbitrary,
+possibly nonseparable, infinite-dimensional $H$.  It does not make a priority
+or open-status claim.  OpenAI Codex assisted with proof exploration,
+adversarial checking of the matrix-level and topological arguments,
+literature triage, and manuscript preparation.  The author checked the
+mathematical argument and the cited claims and is responsible for the final
+text.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

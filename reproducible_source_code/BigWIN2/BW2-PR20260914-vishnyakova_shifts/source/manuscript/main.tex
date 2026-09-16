@@ -1,0 +1,561 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{
+  pdftitle={Interval shape and endpoint collisions for totally positive shifted even powers},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={The interval-shape assertion of Vishnyakova's Conjecture 5.8},
+  pdfkeywords={total positivity, Euler-Frobenius polynomials, real zeros, Bernstein certificates}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Lop}{\mathcal{L}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\disc}{disc}
+\title{Interval shape and endpoint collisions for\protect\\
+totally positive shifted even powers}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+For an even integer $n\ge2$, let $M_n$ be the set of real shifts $t$ for
+which the sequence $((k+t)^n)_{k\ge0}$ has a totally nonnegative Toeplitz
+matrix. We prove that $M_n=[-c_n,1+c_n]$, where
+$(\sqrt2-1)/2\le c_n<1-1/\sqrt2$. Each exterior endpoint corresponds to
+one double zero of the finite-difference polynomial, with all other zeros
+simple and with nondegenerate splitting toward the admissible interval.
+The proof uses a coefficient-constrained two-step differential operator
+and a uniform sign estimate based on Cauchy--Schwarz. It also locates all
+zeros of every odd-degree shifted-power transform for $-3/10\le t<0$.
+This proves the interval-shape assertion of Vishnyakova's Conjecture 5.8.
+The successive-nesting assertion $c_n\le c_{n+2}$ remains unresolved here,
+so the full conjecture is not settled.
+\end{abstract}
+
+\section{Statement and context}
+
+For a real sequence $(a_j)_{j\ge0}$, extend $a_j=0$ for $j<0$.
+Following the terminology of Vishnyakova \cite{Vishnyakova2026}, call the
+sequence totally positive if every finite minor of
+$(a_{j-i})_{i,j\ge0}$ is nonnegative. Thus zero minors are allowed.
+For an integer $n\ge1$ put
+\[
+ M_n=\{t\in\R: ((k+t)^n)_{k\ge0}\text{ is totally positive}\}.
+\]
+Vishnyakova \cite[Example 5.7 and Conjecture 5.8]{Vishnyakova2026}
+asks whether, for every $k\ge1$,
+\begin{equation}\label{eq:original}
+ M_{2k}=[-c_{2k},1+c_{2k}],\qquad 0<c_{2k}<2,
+ \qquad c_{2k}\le c_{2k+2}.
+\end{equation}
+We establish the interval and bound assertions, together with a description
+of the boundary roots. The last assertion of \eqref{eq:original} remains
+unresolved in this paper.
+
+Define $\Lop\binom{x}{j}=z^j$ and write
+\begin{equation}\label{eq:Q}
+ Q_{n,t}(z)=\Lop((x+t)^n)
+ =\sum_{j=0}^{n}z^j\sum_{\ell=0}^{j}
+       (-1)^\ell\binom{j}{\ell}(j-\ell+t)^n.
+\end{equation}
+This polynomial has degree $n$ and leading coefficient $n!$.
+The generating-function characterization of total positivity
+\cite{Edrei1953}, applied as in \cite[Section 1]{Vishnyakova2026}, gives
+\begin{equation}\label{eq:criterion}
+ t\in M_n\quad\Longleftrightarrow\quad
+ \text{all $n$ zeros of $Q_{n,t}$, with multiplicity, lie in $[-1,0]$}.
+\end{equation}
+Indeed,
+\begin{equation}\label{eq:gen}
+ \sum_{k\ge0}(k+t)^n x^k
+ =\frac{E_{n,t}(x)}{(1-x)^{n+1}},\qquad
+ E_{n,t}(x)=(1-x)^nQ_{n,t}\!\left(\frac{x}{1-x}\right).
+\end{equation}
+If $Q_{n,t}(z)=n!\prod_{i=1}^n(z+a_i)$ with $0\le a_i\le1$, then
+$E_{n,t}(x)=n!\prod_i(a_i+(1-a_i)x)$, so its coefficients are nonnegative
+and its finite zeros nonpositive. The converse follows from the same
+generating-function criterion. A factor with $a_i=1$ is constant in the
+numerator; the possible degree drop loses no endpoint case. Also
+$E_{n,t}(1)=n!$, so the denominator in \eqref{eq:gen} has no cancellation.
+
+\begin{theorem}\label{thm:main}
+For every even integer $n\ge2$ there exists $c_n$ such that
+\begin{equation}\label{eq:main}
+ M_n=[-c_n,1+c_n],\qquad
+ \frac{\sqrt2-1}{2}\le c_n<1-\frac1{\sqrt2}.
+\end{equation}
+At $t=-c_n$, $Q_{n,t}$ has exactly one double zero $r\in(-1,0)$.
+All its other zeros are simple and smaller than $r$, and
+\begin{equation}\label{eq:collision-signs}
+ \partial_z^2Q_{n,t}(r)>0,\qquad \partial_tQ_{n,t}(r)<0.
+\end{equation}
+The endpoint $t=1+c_n$ has the reflected configuration. At either
+endpoint the double zero splits into two simple real zeros on the inward
+side and into a nonreal conjugate pair on the outward side.
+\end{theorem}
+
+The numerator $E_{n,t}$ in \eqref{eq:gen} is the Euler--Frobenius
+polynomial $P_{n,\rho}$ with $\rho=t$ in Janson's notation
+\cite[Section 1]{Janson2013}. The standard simple-negative-root assertion in
+\cite[Remark A.2]{Janson2013} concerns $0<\rho\le1$.
+The result below supplies an exterior parameter strip. A related
+interlacing lemma of Karp and Vishnyakova
+\cite[Lemma 3]{KarpVishnyakova2025} assumes that every input numerator
+zero avoids $[0,1]$. Our positive $Q$-zero $\lambda$ corresponds to the
+numerator zero $\lambda/(1+\lambda)\in(0,1)$, so direct iteration of that
+lemma does not give our induction.
+
+Dubeau and Savoie \cite[Theorems 12--13]{DubeauSavoie1998} study
+two-degree root comparisons for their recurrence (G), whose differential
+operator is $(x^2-1)D+2r_nx$ with $r_n>0$. Under $x=2z+1$, twice our
+operator becomes $(x^2-1)D+x+(2t-1)$. Its constant term persists on the
+exterior strip. These particular hypotheses therefore do not directly
+supply the theorem proved here. The contribution is an all-degree
+exterior induction and the exclusion of separated admissible components.
+No equivalent was found in these inspected statements; this comparison
+does not exhaust the older literature or establish priority.
+
+\section{A coefficient-constrained two-step operator}
+
+For fixed $t$ define
+\begin{equation}\label{eq:T}
+ \T_t p=z(1+z)p'+(z+t)p.
+\end{equation}
+
+\begin{theorem}\label{thm:operator}
+Let $-3/10\le t<0$, and let $h$ have even degree $d\ge2$, positive
+leading coefficient, and $d$ simple zeros in $(-1,0)$. Put
+\[
+ S=\frac{h'(0)}{h(0)},\qquad
+ \delta=\frac{1+2t}{(1+t)^2},\qquad
+ \Lambda=\frac1{S+\delta}.
+\]
+For every $0<\lambda\le\Lambda$, the polynomial
+$q=\T_t^2[(z-\lambda)h]$ has $d+2$ simple zeros in $(-1,0)$ and one
+simple positive zero. These are all its zeros.
+\end{theorem}
+
+The coefficient constraint includes equality. It can be read directly
+from the output: for $p=(z-\lambda)h$,
+\begin{equation}\label{eq:coefficient}
+ [z]\T_t^2p=(1+t)^2h(0)\{1-\lambda(S+\delta)\}.
+\end{equation}
+To check this, if $p=p_0+p_1z+\cdots$, then
+$[z]\T_t^2p=(1+t)^2p_1+(1+2t)p_0$.
+Thus the hypothesis is precisely nonnegativity of this linear coefficient.
+
+\begin{proof}[Proof of Theorem \ref{thm:operator}]
+Write $h(z)=c\prod_{i=1}^d(z+a_i)$, where $c>0$ and $0<a_i<1$.
+Set
+\begin{gather*}
+ y=\Lambda/2,\qquad r_i=y/a_i,\qquad
+ R=\sum_i r_i=yS=\tfrac12-\delta y,\qquad
+ \eta=\frac{y}{y+\lambda},\\
+ w_i=\frac{r_i}{1-r_i},\qquad W=\sum_i w_i,\qquad V=\sum_i w_i^2.
+\end{gather*}
+Since $S=\sum_i a_i^{-1}>d\ge2$, we have
+\begin{equation}\label{eq:bounds}
+ \frac{40}{49}\le\delta\le1,\qquad
+ 0<y<Y:=\frac1{2(2+\delta)}<\frac5{28},\qquad
+ 0<R<\frac12,\qquad \eta\ge\frac13.
+\end{equation}
+Also $y<1/(2S)<a_i/2$, so $y<r_i<1/2$.
+In particular, $-y$ lies to the right of every negative zero of $p$, and
+$p(-y)<0$. We will prove $q(-y)>0$.
+
+First,
+\begin{equation}\label{eq:Wlower}
+ W\ge\frac{R}{1-y}.
+\end{equation}
+Weighted Cauchy--Schwarz gives the further estimate
+\[
+ W^2=\left(\sum_i\frac{r_i}{1-r_i}\right)^2
+ \le\left(\sum_i r_i\right)
+      \left(\sum_i\frac{r_i}{(1-r_i)^2}\right)=R(W+V),
+\]
+and hence
+\begin{equation}\label{eq:cauchy}
+ W^2-V\le W-\frac{1-R}{R}W^2.
+\end{equation}
+With $a=z(1+z)$, direct differentiation in \eqref{eq:T} yields
+\[
+ \T_t^2p=a^2p''+a(1+4z+2t)p'
+              +\{2z^2+(1+2t)z+t^2\}p.
+\]
+At $z=-y$, logarithmic differentiation gives
+\[
+ \frac{p'}p=\frac{W-\eta}{y},\qquad
+ \frac{p''}p=\frac{W^2-V-2\eta W}{y^2}.
+\]
+For $B=1-4y+2t$ and $C=2y^2-(1+2t)y+t^2$, this becomes
+\begin{equation}\label{eq:quotient}
+ \frac{q(-y)}{p(-y)}
+ =(1-y)^2(W^2-V-2\eta W)-(1-y)B(W-\eta)+C.
+\end{equation}
+The coefficient of $\eta$ is negative, because \eqref{eq:Wlower} implies
+\[
+ B-2(1-y)W\le B-2R=2t+2(\delta-2)y<0.
+\]
+Consequently, replacing $\eta$ by $1/3$ gives an upper bound even when
+$\lambda=\Lambda$. Let
+\[
+ K=(1-y)\left(\frac53-\frac{14}3y+2t\right)>0.
+\]
+The bracket is greater than
+$5/3-(14/3)(5/28)-3/5=7/30$. By \eqref{eq:cauchy},
+\[
+ \frac{q(-y)}{p(-y)}\le F(W)+\frac{(1-y)B}{3}+C,
+ \quad F(W)=(1-y)^2\left(W-\frac{1-R}{R}W^2\right)-KW.
+\]
+For $W\ge R$,
+$F'(W)\le(1-y)^2(2R-1)-K<0$. We may therefore substitute the
+lower bound $W=R/(1-y)$. After using $R=1/2-\delta y$, we obtain
+\begin{align}
+ \frac{q(-y)}{p(-y)}&\le U_t(y),\label{eq:Ubound}\\
+ U_t(y)&=t^2-\frac t3-\frac14
+ +\left(2\delta t+\frac{2\delta}3-\frac{8t}3-\frac56\right)y
+ +\left(\delta^2-\frac{11\delta}3+\frac{10}3\right)y^2.
+ \label{eq:U}
+\end{align}
+The quadratic coefficient is $(\delta-5/3)(\delta-2)>0$.
+It suffices by convexity to check $U_t(0)<0$ and $U_t(Y)<0$.
+The first value is at most $-3/50$. For the second,
+\begin{equation}\label{eq:N}
+ U_t(Y)=\frac{N(t)}{3(2t^2+6t+3)^2},\qquad
+ N(t)=12t^6+60t^5+89t^4+12t^3-60t^2-40t-7.
+\end{equation}
+Its denominator is positive since
+$2t^2+6t+3=(1+t)^2(2+\delta)>0$.
+
+Here a short exact Bernstein identity supplies the sign on the entire
+interval. Set $b_{j,6}(u)=\binom6j u^j(1-u)^{6-j}$. Then
+\begin{equation}\label{eq:bernsteinN}
+ N\!\left(\frac3{10}(u-1)\right)=\sum_{j=0}^6 B_j b_{j,6}(u),
+ \qquad 0\le u\le1,
+\end{equation}
+where
+\[
+ (B_0,\ldots,B_6)=\left(
+ -\frac{17519}{125000},-\frac{273}{500},-\frac{58837}{50000},
+ -\frac{10481}{5000},-\frac{84}{25},-5,-7\right).
+\]
+These identities can be checked by expansion. The basis functions are
+nonnegative and sum to one, so $N(t)<0$ on $[-3/10,0]$.
+Thus \eqref{eq:Ubound} is strictly negative and
+\begin{equation}\label{eq:extra-sign}
+ q(-y)>0.
+\end{equation}
+
+It remains to count the roots. Order the negative zeros of $p$ as
+$\beta_1<\cdots<\beta_d$ and put $g=\T_t p$. Off its poles,
+\begin{equation}\label{eq:H}
+ \frac{g(z)}{z(1+z)p(z)}=H(z)
+ =\sum_{i=1}^d\frac1{z-\beta_i}+\frac1{z-\lambda}
+       +\frac t z+\frac{1-t}{1+z}.
+\end{equation}
+On $(-1,\beta_d)$, away from the poles, $H'(z)<0$.
+Indeed its only positive summand is $-t/z^2$, and
+$1/(z-\beta_d)^2>1/z^2>-t/z^2$.
+The pole limits show that each interval
+\[
+ (-1,\beta_1),\ (\beta_1,\beta_2),\ldots,
+ (\beta_{d-1},\beta_d)
+\]
+contains exactly one simple zero $\xi_i$ of $g$.
+At this zero,
+$g'(\xi_i)=\xi_i(1+\xi_i)p(\xi_i)H'(\xi_i)$, so
+\[
+ \sgn g'(\xi_i)=\sgn p(\xi_i)=(-1)^i,
+ \qquad \sgn q(\xi_i)=(-1)^{i+1}.
+\]
+Moreover,
+$q(-1)=(t-1)^2p(-1)<0$, $q(0)=t^2p(0)<0$, and
+$\xi_d<\beta_d<-y<0$. These signs and \eqref{eq:extra-sign} give
+one zero of $q$ in each of
+\[
+ (-1,\xi_1),\ (\xi_1,\xi_2),\ldots,(\xi_{d-1},\xi_d),\quad
+ (\xi_d,-y),\quad(-y,0),\quad(0,\infty).
+\]
+The last interval uses the positive leading coefficient of $q$.
+Since $\deg q=d+3$, the exhibited $d+3$ distinct zeros exhaust its degree
+and are all simple.
+\end{proof}
+
+The sign argument uses the elementary convex-hull property of the
+Bernstein basis. Polynomial arithmetic in this basis is developed by
+Farouki and Rajan \cite{FaroukiRajan1988}. A related exact-arithmetic
+application appears in Zeng \cite{ZengLens2026}: the proof of Theorem 9,
+equation (8.18), certifies a degree-six parameter polynomial by seven
+positive rational Bernstein coefficients in a spectral inequality.
+Here both coefficient lists are displayed in full, so the sign certificates
+require only rational polynomial expansion.
+
+\section{Odd shifted powers outside the classical interval}
+
+The identity
+$x\binom{x}{j}=j\binom{x}{j}+(j+1)\binom{x}{j+1}$ gives
+\begin{equation}\label{eq:recurrence}
+ Q_{0,t}=1,\qquad Q_{n+1,t}=\T_tQ_{n,t},\qquad
+ \partial_tQ_{n,t}=nQ_{n-1,t}.
+\end{equation}
+The last equality follows directly by differentiating before applying
+$\Lop$. The recurrence and finite differences also give
+\begin{gather}
+ Q_{n,t}(0)=t^n,\quad Q_{n,t}(-1)=(t-1)^n,\quad
+ [z^n]Q_{n,t}=n!,\quad [z]Q_{n,t}=(1+t)^n-t^n,
+ \label{eq:values}\\
+ Q_{n,t}(-1-z)=(-1)^nQ_{n,1-t}(z).
+ \label{eq:reflection}
+\end{gather}
+The reflection follows by substituting into \eqref{eq:recurrence}, starting
+with $Q_{0,t}=1$.
+
+\begin{theorem}\label{thm:odd}
+For every odd integer $m\ge1$ and every $-3/10\le t<0$, the polynomial
+$Q_{m,t}$ has $m-1$ simple zeros in $(-1,0)$ and one simple positive zero.
+\end{theorem}
+
+\begin{proof}
+The case $m=1$ is $Q_{1,t}=z+t$. For $m=3$,
+\begin{align*}
+ Q_{3,t}&=6z^3+6(1+t)z^2+(3t^2+3t+1)z+t^3,\\
+ D_3(t):=\disc_zQ_{3,t}
+ &=-12(18t^6-54t^5+36t^4+18t^3-12t^2-6t-1).
+\end{align*}
+The identity
+\begin{equation}\label{eq:bernsteinD}
+ D_3\!\left(\frac3{10}(u-1)\right)=\sum_{j=0}^6 C_jb_{j,6}(u)
+\end{equation}
+has coefficient vector
+\[
+ (C_0,\ldots,C_6)=\left(
+ \frac{495087}{125000},\frac{103179}{25000},\frac{11616}{3125},
+ \frac{10209}{2500},\frac{708}{125},\frac{42}{5},12\right).
+\]
+Hence $D_3(t)>0$ on $[-3/10,0]$, so the cubic has three distinct real
+zeros. For $t<0$ its nonconstant coefficients are positive and its
+constant coefficient negative. Descartes' rule gives exactly one positive
+zero. Reflection \eqref{eq:reflection} excludes a zero at or below $-1$,
+since every coefficient of $Q_{3,1-t}$ is positive. The other two zeros
+therefore lie in $(-1,0)$.
+
+Suppose the result holds for odd $m\ge3$, and write
+$Q_{m,t}=(z-\lambda)h$ with $\lambda>0$. Then $h$ satisfies the hypotheses
+of Theorem~\ref{thm:operator}. Its two-step output is $Q_{m+2,t}$, whose
+linear coefficient is
+\[
+ (1+t)^{m+2}-t^{m+2}>0.
+\]
+Equation \eqref{eq:coefficient}, with $h(0)>0$, implies
+$\lambda<1/(S+\delta)$. Theorem~\ref{thm:operator} completes the induction.
+\end{proof}
+
+The positivity used to obtain the coefficient constraint is an explicit
+coefficient identity, independent of the output root configuration.
+No assertion that odd shifted powers in this exterior strip are totally
+positive is involved: their transform has a positive zero.
+
+\section{The even-degree admissible interval}
+
+Write
+\[
+ b=1-1/\sqrt2,\qquad c_2=(\sqrt2-1)/2.
+\]
+We first record the elementary restrictions and inclusions.
+
+\begin{lemma}\label{lem:bounds}
+For every even $n\ge2$, $M_n$ is compact and
+\[
+ [-c_2,1+c_2]\subseteq M_n\subset(-b,1+b).
+\]
+For $0<t<1$, all zeros of $Q_{n,t}$ are simple and lie in $(-1,0)$.
+\end{lemma}
+
+\begin{proof}
+If $t\in M_n$, \eqref{eq:criterion} implies
+$[z]Q_{n,t}=(1+t)^n-t^n\ge0$, so $t\ge-1/2$.
+For $-1/2\le t<0$, the Toeplitz minor with rows $0,1$ and columns $1,2$
+requires
+\[
+ (1+t)^{2n}\ge t^n(2+t)^n.
+\]
+As $n$ is even, this is equivalent to
+$(1+t)^2\ge-t(t+2)$, whence $t\ge-b$.
+At $t=-b$, let $a_j=(j-b)^n$. Then $a_1^2=a_0a_2>0$, and the
+minor with rows $0,1,2$ and columns $1,2,3$ is
+\begin{align*}
+ \det\begin{pmatrix}a_1&a_2&a_3\\a_0&a_1&a_2\\0&a_0&a_1\end{pmatrix}
+ &=a_1^3-2a_0a_1a_2+a_0^2a_3\\
+ &=\frac{a_0^2}{a_1}(a_1a_3-a_2^2)<0.
+\end{align*}
+The strict sign follows from
+$(1-b)(3-b)-(2-b)^2=-1$. Thus $-b\notin M_n$.
+Reflection gives the upper restriction. Each defining minor is continuous
+in $t$, so $M_n$ is closed and bounded, hence compact.
+
+For the lower inclusion,
+\[
+ Q_{2,t}=2z^2+(1+2t)z+t^2,\qquad
+ \disc_zQ_{2,t}=1+4t-4t^2.
+\]
+On the discriminant interval the two roots are nonpositive; reflection
+makes them at least $-1$. Thus
+$M_2=[-c_2,1+c_2]$, as in \cite[Example 5.3]{Vishnyakova2026}.
+Wagner's multiplication theorem \cite{Wagner1992}, also stated as
+Theorem C in \cite{Vishnyakova2026}, says that the class of polynomials
+interpolating totally positive sequences is closed under polynomial
+multiplication. Applying it repeatedly to $(x+t)^2$ yields $M_2\subseteq M_n$.
+
+Finally, if $0<t<1$ and a polynomial $p$ has simple zeros in $(-1,0)$,
+then
+\[
+ \frac{\T_tp}{z(1+z)p}=\frac{p'}p+\frac t z+\frac{1-t}{1+z}
+\]
+is strictly decreasing between its poles. All residues are positive,
+and the pole limits give one simple zero in every interval between
+successive poles from $-1$ to $0$. Induction from $Q_{1,t}=z+t$ proves
+the assertion. Closedness includes $t=0,1$ in $M_n$.
+\end{proof}
+
+\begin{lemma}\label{lem:collision}
+Let $n\ge2$ be even, let $-b<t_0<0$, and suppose $Q_{n,t_0}$ is
+admissible and has a multiple zero. It has exactly the root configuration
+and derivative signs in \eqref{eq:collision-signs}. Admissibility holds
+immediately to the right of $t_0$ and fails immediately to its left.
+\end{lemma}
+
+\begin{proof}
+For $n\ge4$, put $f=Q_{n,t_0}$ and $g=Q_{n-1,t_0}$.
+Since $b<3/10$, Theorem~\ref{thm:odd} gives $n-2$ simple negative zeros
+$\beta_1<\cdots<\beta_{n-2}$ of $g$ and one simple positive zero
+$\lambda$. The strictly decreasing expression \eqref{eq:H}, now for
+$f=\T_{t_0}g$, gives exactly one simple zero of $f$ in each of
+\[
+ (-1,\beta_1),\ (\beta_1,\beta_2),\ldots,
+ (\beta_{n-3},\beta_{n-2}).
+\]
+No $\beta_i$ is a zero of $f$, since
+$f(\beta_i)=\beta_i(1+\beta_i)g'(\beta_i)\ne0$.
+Neither endpoint $-1,0$ is a zero. Admissibility and the degree count
+therefore force every multiple zero into $(\beta_{n-2},0)$, where only
+two degrees remain. There is exactly one double zero $r$, and all other
+zeros $\gamma$ of $f$ are simple and smaller than $r$. Hence
+\[
+ f''(r)=2n!\prod_{\gamma}(r-\gamma)>0,\qquad
+ \partial_tQ_{n,t_0}(r)=ng(r)<0.
+\]
+For the second sign, all negative-root factors of $g$ are positive at
+$r$, and its positive-root factor is negative.
+
+For $n=2$ the only negative multiple-root parameter is $t_0=-c_2$.
+Its double root is $r=-(1+2t_0)/4\in(-1,0)$, and direct differentiation
+gives $\partial_z^2Q_{2,t_0}(r)=4$ and
+$\partial_tQ_{2,t_0}(r)=t_0-1/2<0$.
+
+To determine the direction of the collision, put $s=t-t_0$ and factor
+off the persistent simple roots near $s=0$. The remaining monic factor
+has the form
+\[
+ (z-r)^2+A(s)(z-r)+B(s),\qquad A(0)=B(0)=0.
+\]
+The implicit function theorem for the simple roots makes $A,B$ real
+analytic, and differentiation at $s=0$ gives
+\[
+ B'(0)=\frac{2\partial_tQ_{n,t_0}(r)}{\partial_z^2Q_{n,t_0}(r)}<0.
+\]
+Thus $(A^2-4B)'(0)=-4B'(0)>0$. The two roots are distinct and real for
+small $s>0$, and are nonreal conjugates for small $s<0$.
+All persistent simple roots, and the split real roots, stay in $(-1,0)$.
+This proves both the nondegeneracy and the asserted orientation.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:main}]
+The discriminant of $Q_{n,t}$ is a polynomial in $t$ that is nonzero at
+$t=1/2$ by Lemma~\ref{lem:bounds}. It has finitely many zeros.
+Away from those zeros in $(-b,0)$, the roots vary continuously, remain
+simple, and cannot cross $-1$ or $0$ by \eqref{eq:values}. Thus
+admissibility is locally constant there, and there are only finitely
+many admissible components in $(-b,0]$.
+
+Every admissible parameter with simple roots is interior. By
+Lemma~\ref{lem:collision}, every negative admissible collision has
+admissibility to its right and failure to its left. It cannot be a
+right boundary or an isolated admissible point. The lower inclusion
+in Lemma~\ref{lem:bounds} supplies a component meeting $0$. Any further
+component would have a negative right boundary, necessarily admissible
+by closedness, contradicting the preceding alternatives.
+Consequently $M_n\cap(-b,0]=[-c_n,0]$. Compactness and the exclusion of
+$-b$ give $c_n<b$, while $M_2\subseteq M_n$ gives $c_n\ge c_2$.
+Reflection and $[0,1]\subseteq M_n$ prove \eqref{eq:main}.
+
+At $-c_n$ the roots cannot all be simple, because that would make the
+parameter interior. Lemma~\ref{lem:collision} gives the endpoint
+configuration and signs. Equation \eqref{eq:reflection} supplies the
+configuration at $1+c_n$ and reverses the parameter direction.
+\end{proof}
+
+\section{Exact checks, assistance, and remaining scope}
+
+The proof above is deductive. Its two polynomial sign certificates
+\eqref{eq:bernsteinN} and \eqref{eq:bernsteinD} are finite identities
+valid throughout the stated parameter interval, not samples of it.
+They can be verified by expansion over $\Q$ or by matching coefficients.
+Equivalently, for $P(u)=\sum_{k=0}^6p_ku^k$, its degree-six Bernstein
+coefficients are
+\[
+ B_j=\sum_{k=0}^j p_k\frac{\binom jk}{\binom6k},\qquad 0\le j\le6.
+\]
+This formula follows by expanding $(u+(1-u))^{6-k}$ after multiplying by
+$u^k$.
+
+The accompanying verification programs use Python 3.10 and SymPy 1.14
+\cite{Meurer2017}. They check ten symbolic identities and 72 rational
+operator inputs, including 36 inputs with $\lambda=\Lambda$. A second
+implementation reconstructs the two Bernstein lists by rational
+interpolation, checks those 72 inputs, and checks 27 further inputs and
+six odd shifted powers. The latter have degrees $15,17,21$, each at
+$t=-3/10$ and $t=-1/1000$. The operator inputs, exact coefficients,
+evaluation signs, and root counts are recorded with the programs.
+Rational Euclidean Sturm chains and exact polynomial gcds check location
+and simplicity; no floating-point root decision enters these checks.
+The finite tests check algebra and implementation and do not replace
+the all-degree argument.
+
+\paragraph{Assistance and reproducibility.}
+OpenAI language-model assistance was used in proof development,
+counterexample exploration, code generation, literature searches,
+mathematical checking, and manuscript preparation. A separate model
+context reconstructed the argument and recomputed the exact certificates
+with a different implementation. This was an internal check, not external
+peer review or proof-assistant formalization. The accompanying source
+package contains the exact verifier inputs and a reproduction guide;
+the two sign certificates needed in the proof are also displayed above.
+
+Theorem~\ref{thm:main} concerns every even degree, but it compares no two
+successive boundary constants. The inequality $c_n\le c_{n+2}$ in
+\eqref{eq:original} remains unproved here, as does the contextual question
+of a possible limit. The endpoint $-3/10$ in
+Theorem~\ref{thm:operator} is a sufficient endpoint; no sharpness is
+asserted. The quadratic inclusion from multiplication closure alone does
+not imply successive nesting.
+
+\bibliographystyle{plainnat}
+\small
+\bibliography{references}
+
+\end{document}

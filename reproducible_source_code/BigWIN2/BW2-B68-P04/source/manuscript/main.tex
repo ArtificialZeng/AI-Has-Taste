@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={Exact Maximal Dynamics of the Normalized Inverse-Weight Lin--Lu--Yau Flow on a Weighted Triangle},pdfauthor={Xiaojian Zeng}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\G}{\mathcal G}
+\newcommand{\D}{\Delta_3}
+\newcommand{\R}{\mathbb R}
+\DeclareMathOperator{\Lip}{Lip}
+
+\title{Exact Maximal Dynamics of the Normalized Inverse-Weight\\
+Lin--Lu--Yau Flow on a Weighted Triangle}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We completely classify the normalized inverse-weight Lin--Lu--Yau flow on a
+labelled weighted triangle when the curvature quotient is divided literally
+by the edge length.  For positive lengths $(a,b,c)$ summing to one, all three
+curvatures are finite exactly when $\max\{a,b,c\}\leq 1/2$.  On this region
+we give exact primal and dual transport certificates, including every
+shortest-path and optimal-transport equality wall, and obtain a Lipschitz
+piecewise-rational vector field.  Every admissible initial value has a unique
+global classical trajectory and no trajectory reaches a new transport wall,
+the non-finiteness locus, or a zero edge in finite time.  After sorting
+$a\geq b\geq c$, the equal point is fixed; data with $a>b=c$ converge to
+$(1/2,1/4,1/4)$; and all data with $b>c$ converge to
+$(1/2,1/2,0)$.  These alternatives give all equilibria, boundary
+degenerations, and omega-limit sets.  The last limit belongs only to the
+closed simplex; no curvature is assigned at its zero edge.
+\end{abstract}
+
+\section{Setting and relation to earlier flows}
+
+Ollivier's coarse Ricci curvature compares probability measures in
+Wasserstein distance, and Lin, Lu, and Yau introduced the graph idleness
+derivative that now bears their names
+\cite{Ollivier2009,LinLuYau2011}.  Bai, Lin, Lu, Wang, and Yau developed a
+continuous normalized flow for weighted graphs
+\cite{BaiLinLuWangYau2024}.  Their curvature is normalized by the induced
+endpoint distance $d_w(x,y)$, and their flow procedure deletes an edge once
+its length ceases to realize that distance.  Bai and Hua subsequently studied
+the inverse-weight specialization on finite trees, where every edge is
+automatically geodesic, and recorded its normalized flow and omega-limit
+notation \cite{BaiHua2026}.  They also noted that the behavior of this
+inverse-weight flow on graphs with cycles remained untreated.
+
+Here we solve the literal no-surgery triangle problem.  The distinction is
+essential: the denominator below is the edge length even when that edge is
+not a shortest path.  The result is confined to $C_3$ and does not import the
+tree curvature formula, tree Gauss--Bonnet identity, or tree convergence
+theorems.
+
+Let the edges $e_{12},e_{23},e_{31}$ have respective lengths
+\[
+ a,b,c>0,\qquad a+b+c=1,
+\]
+and let $d_w$ be the induced shortest-path metric.  At a vertex $x$, set
+\[
+ D_x=\sum_{e\ni x}\frac1{w_e},
+\]
+and, for $0\leq\alpha<1$, define
+\[
+ m_x^\alpha(x)=\alpha,\qquad
+ m_x^\alpha(z)=(1-\alpha)\frac{w_{xz}^{-1}}{D_x}\quad(z\sim x).
+\]
+For $e=xy$ of length $w_e$, the curvature under study is
+\begin{equation}\label{eq:literal-curvature}
+ \kappa_e(w)=\lim_{\alpha\uparrow1}
+ \frac{1-W_1(m_x^\alpha,m_y^\alpha)/w_e}{1-\alpha},
+\end{equation}
+whenever this is a finite real number.  When all three curvatures are finite,
+put
+\begin{equation}\label{eq:flow}
+ K=a\kappa_a+b\kappa_b+c\kappa_c,
+ \qquad \dot x=-x(\kappa_x-K),\quad x\in\{a,b,c\}.
+\end{equation}
+We write
+\[
+ \D=\{(a,b,c)>0:a+b+c=1\},\qquad
+ \G=\{(a,b,c)\in\D:\max(a,b,c)\leq\tfrac12\}.
+\]
+For a global trajectory, its omega-limit set means
+\[
+ \omega(w)=\{w^*\in\overline\D:\text{there are }t_j\to\infty
+ \text{ with }w(t_j)\to w^*\}.
+\]
+
+\section{Exact transport cells}
+
+We derive the curvature of $e_{12}$; cyclic relabelling gives the other two.
+Put $\varepsilon=1-\alpha$, $\mu=m_1^{1-\varepsilon}$, and
+$\nu=m_2^{1-\varepsilon}$.  In vertex order $(v_1,v_2,v_3)$,
+\[
+ \mu=\left(1-\varepsilon,\frac{\varepsilon c}{a+c},
+                    \frac{\varepsilon a}{a+c}\right),\qquad
+ \nu=\left(\frac{\varepsilon b}{a+b},1-\varepsilon,
+                    \frac{\varepsilon a}{a+b}\right).
+\]
+Thus $\Delta=\mu-\nu$ has coordinates
+\begin{align}
+ \Delta_1&=1-\varepsilon-\frac{\varepsilon b}{a+b},\nonumber\\
+ \Delta_2&=-1+\varepsilon+\frac{\varepsilon c}{a+c},\label{eq:imbalance}\\
+ \Delta_3&=\frac{\varepsilon a(b-c)}{(a+b)(a+c)},
+ \qquad \Delta_1+\Delta_2+\Delta_3=0.\nonumber
+\end{align}
+For
+\[
+0<\varepsilon<\min\left\{\frac{a+b}{a+2b},
+                           \frac{a+c}{a+2c}\right\},
+\]
+we have $\Delta_1>0$, $\Delta_2<0$, and
+$\operatorname{sgn}\Delta_3=\operatorname{sgn}(b-c)$.
+
+Write
+\[
+ A=d_w(v_1,v_2),\quad B=d_w(v_2,v_3),\quad C=d_w(v_3,v_1).
+\]
+If $a\leq1/2$, then $A=a$.  We use the finite transport primal and
+Lipschitz-potential dual recalled in \cite[Section 2]{BaiLinLuWangYau2024}.
+We now certify the optimum explicitly.  If $b\geq c$, the
+nonzero entries
+\[
+ \pi_{11}=\nu_1,\quad \pi_{22}=\mu_2,\quad \pi_{33}=\nu_3,
+ \quad \pi_{12}=\Delta_1,\quad \pi_{32}=\Delta_3
+\]
+form a coupling of cost $a\Delta_1+B\Delta_3$.  The Kantorovich potential
+\[
+ (\phi_1,\phi_2,\phi_3)=(a,0,B)
+\]
+has the same dual value and is $1$-Lipschitz: its only non-immediate
+constraint is $|a-B|\leq C$, which is a metric triangle inequality.  Hence
+primal and dual values coincide.  If $c\geq b$, instead use
+\[
+ \pi_{11}=\nu_1,\quad \pi_{22}=\mu_2,\quad \pi_{33}=\mu_3,
+ \quad \pi_{12}=-\Delta_2,\quad \pi_{13}=-\Delta_3.
+\]
+Its cost is $a(-\Delta_2)+C(-\Delta_3)$, attained in the dual by
+$(a,0,a-C)$; feasibility follows from $|a-C|\leq B$.  At $b=c$ the residual
+third-vertex shipment vanishes, so the certificates include the transport
+equality wall.
+
+On $\G$ we have $B=b$ and $C=c$.  Substitution in
+\eqref{eq:literal-curvature} gives
+\begin{equation}\label{eq:two-cells}
+ \kappa_a=
+ \begin{cases}
+  \displaystyle 1+\frac{b(a+2c-b)}{(a+b)(a+c)},&b\geq c,\\[6pt]
+  \displaystyle 1+\frac{c(a+2b-c)}{(a+b)(a+c)},&c\geq b.
+ \end{cases}
+\end{equation}
+The two expressions differ by
+\[
+ \frac{(b-c)(a-b-c)}{(a+b)(a+c)},
+\]
+and therefore agree when $b=c$.  More symmetrically, if $x$ is any edge and
+$y,z$ are the other two, let $M=\max(y,z)$ and $m=\min(y,z)$.  Cycling
+\eqref{eq:two-cells} yields the complete simultaneous transport-cell formula
+\begin{equation}\label{eq:curvature-vector}
+ \displaystyle
+ \kappa_x=1+\frac{M(x+2m-M)}{(x+y)(x+z)}\qquad(w\in\G).
+\end{equation}
+Thus the transport partition consists of the six weak ordering chambers and
+their equality strata, refined by the three geodesic walls.
+
+The geodesic walls and the non-geodesic region behave differently.  If, for
+example, $a=1/2$, then $b+c=1/2$ and either branch gives
+\begin{equation}\label{eq:tied-edge}
+ \kappa_a=1+\frac{3bc}{(a+b)(a+c)},
+\end{equation}
+so the shortest-path tie causes no divergence.  If $a>1/2$, however,
+$m_1^{1-\varepsilon}\to\delta_{v_1}$ and
+$m_2^{1-\varepsilon}\to\delta_{v_2}$, while continuity of $W_1$ on this
+finite metric space gives
+\[
+ W_1(m_1^{1-\varepsilon},m_2^{1-\varepsilon})\longrightarrow
+ d_w(v_1,v_2)=b+c=1-a.
+\]
+The numerator of \eqref{eq:literal-curvature} consequently tends to
+$(2a-1)/a>0$, so the quotient tends to $+\infty$.  Cyclically, all three
+curvatures are finite exactly on $\G$.
+
+\section{Well-posedness and invariant strata}
+
+Equation \eqref{eq:curvature-vector}, together with \eqref{eq:flow}, is an
+exact piecewise-rational vector field on every cell.  For later analysis, on
+the representative chamber $a\geq b\geq c$ it reads
+\begin{align}
+ \kappa_a&=1+\frac{b(a+2c-b)}{(a+b)(a+c)},\nonumber\\
+ \kappa_b&=1+\frac{a(b+2c-a)}{(a+b)(b+c)},\label{eq:ordered-kappa}\\
+ \kappa_c&=1+\frac{a(c+2b-a)}{(a+c)(b+c)},\nonumber
+\end{align}
+with $K=a\kappa_a+b\kappa_b+c\kappa_c$ and
+$F_x=-x(\kappa_x-K)$.  This also makes
+\[
+ F_a+F_b+F_c=-K+K(a+b+c)=0,
+\]
+so the simplex sum is preserved.
+
+Let
+\[
+ \overline\G=\{(a,b,c)\geq0:a+b+c=1,\ \max(a,b,c)\leq\tfrac12\}.
+\]
+The right side of \eqref{eq:curvature-vector} has a locally Lipschitz
+extension to a neighborhood of $\overline\G$: min and max are Lipschitz, and
+each pair sum is at least $1/2$ on $\overline\G$.  This extension is used
+only for the ODE argument and does not define the original inverse-weight
+measure at a zero edge.
+The local existence and uniqueness theorem for a locally Lipschitz field
+and its compact-set continuation criterion apply to this extension
+\cite[Theorem 2.2 and Corollary 2.15]{Teschl2012}.
+
+Every ordering wall is invariant.  Indeed, the vector field is equivariant
+under edge permutations, so equal coordinates have equal derivatives.
+For a geodesic wall, take $a=1/2$, $b+c=1/2$, and, without loss, $b\geq c$.
+The exact formulas are
+\[
+ \kappa_a=1+\frac{3bc}{(a+b)(a+c)},\qquad
+ \kappa_b=1+\frac{c}{a+b},\qquad
+ \kappa_c=1+\frac{b}{a+c},
+\]
+and direct simplification gives
+\begin{equation}\label{eq:wall-identity}
+ b(\kappa_b-\kappa_a)+c(\kappa_c-\kappa_a)=0.
+\end{equation}
+Since $a=b+c=1/2$, \eqref{eq:wall-identity} implies $K=\kappa_a$ and hence
+$F_a=0$.  All three geodesic walls are therefore invariant.
+
+Local uniqueness prevents a trajectory starting off one of these invariant
+walls from first meeting it at a finite time.  Moreover
+\[
+ \dot x=x(K-\kappa_x)
+\]
+has a bounded multiplier on $\overline\G$, so a positive coordinate cannot
+vanish in finite time.  A solution beginning in $\G$ consequently remains
+positive and in $\G$ for every finite time.  Compactness of $\overline\G$
+and the local extension give continuation for all $t\geq0$.
+
+We have proved the following well-posedness statement.
+
+\begin{proposition}\label{prop:wellposed}
+The full set of initial data for which all three literal curvatures are finite
+and \eqref{eq:flow} defines a classical forward flow is $\G$.  Every datum in
+$\G$ has a unique global classical trajectory.  The weak ordering chambers,
+their equality intersections, the geodesic walls, and their intersections
+are invariant strata.  A strict trajectory reaches neither a new transport
+wall nor the non-finiteness locus in finite time, and no positive coordinate
+vanishes in finite time.
+\end{proposition}
+
+\section{Complete maximal dynamics}
+
+On $a\geq b\geq c$, subtraction of \eqref{eq:ordered-kappa} gives the two
+exact log-ratio identities
+\begin{align}
+ \frac{d}{dt}\log\frac ab
+ &=\frac{(a-b)(2ab+3c-1)}{(a+b)(a+c)(b+c)},\label{eq:logab}\\
+ \frac{d}{dt}\log\frac bc
+ &=\frac{2a(b-c)}{(a+b)(a+c)}.\label{eq:logbc}
+\end{align}
+The largest-coordinate equation also factors as
+\begin{equation}\label{eq:Fa}
+ F_a=\frac{a(1-2a)(a^2+2ab+3b^2-2b)}{(a+b)(a+c)}.
+\end{equation}
+All other chambers follow by permuting labels.
+
+At an equilibrium, positivity forces all three curvatures to equal $K$.
+Equation \eqref{eq:logbc} first gives $b=c=s$.  Then $a=1-2s$ and
+\begin{equation}\label{eq:eqfactor}
+ \kappa_b-\kappa_a=
+ \frac{(1-3s)(4s-1)}{2s(1-s)},\qquad \frac14\leq s\leq\frac13.
+\end{equation}
+Hence the only equilibria are
+\begin{equation}\label{eq:equilibria}
+ (\tfrac13,\tfrac13,\tfrac13)
+ \quad\text{and the three labelled permutations of}\quad
+ (\tfrac12,\tfrac14,\tfrac14).
+\end{equation}
+
+We now classify every trajectory.  Permute its labels once so that
+$a(0)\geq b(0)\geq c(0)$; Proposition~\ref{prop:wellposed} preserves this
+ordering for every finite time.
+
+If $a=b=c$, the trajectory is the constant equal equilibrium.  Suppose next
+that $a>b=c=s$.  This median is invariant, and the simplex relation reduces
+the flow exactly to
+\begin{equation}\label{eq:median}
+ \dot s=-\frac{(1-2s)(1-3s)(4s-1)}{2(1-s)}.
+\end{equation}
+For $1/4<s<1/3$ the right side is negative.  Thus $s$ decreases, and its
+only possible limiting zero of the right side below the initial value is
+$1/4$; otherwise $\dot s$ would remain bounded away from zero.  Therefore
+\[
+ (a,b,c)\longrightarrow(\tfrac12,\tfrac14,\tfrac14).
+\]
+The endpoint $s=1/4$ is already the equilibrium in
+\eqref{eq:equilibria}.
+
+It remains to consider $b>c$, allowing $a=b$.  Let $R=\log(b/c)$.  By
+\eqref{eq:logbc}, $\dot R>0$.  In fact $R\to\infty$.  If it were bounded,
+then with $r_0=b(0)/c(0)>1$, the inequalities $b/c\geq r_0$ and
+$b+c\geq1/2$ would imply
+\[
+ b-c=\frac{b/c-1}{b/c+1}(b+c)
+ \geq\frac{r_0-1}{2(r_0+1)}>0.
+\]
+Also $a\geq1/3$ and $(a+b)(a+c)\leq1$, so \eqref{eq:logbc} would bound
+$\dot R$ below by a positive constant, a contradiction.  Thus $b/c\to
+\infty$.  Since $b\leq1/2$, it follows that $c\to0$.  Finally
+$a+b\to1$ while $a,b\leq1/2$, and hence
+\[
+ (a,b,c)\longrightarrow(\tfrac12,\tfrac12,0).
+\]
+
+Combining these cases proves the main result.
+
+\begin{theorem}\label{thm:classification}
+For the literal normalized inverse-weight Lin--Lu--Yau flow on the weighted
+triangle, the maximal classical dynamics are defined exactly for initial data
+in $\G$, and every such trajectory is global.  After sorting the initial
+coordinates as $a\geq b\geq c$, precisely one of the following occurs:
+\begin{enumerate}
+ \item $a=b=c$, and the trajectory is constant;
+ \item $a>b=c$, and the trajectory converges to
+ $(1/2,1/4,1/4)$;
+ \item $b>c$ (possibly $a=b$), and the trajectory converges to
+ $(1/2,1/2,0)$.
+\end{enumerate}
+Together with label permutations, \eqref{eq:equilibria} is the complete
+equilibrium list.  Every omega-limit set is the singleton consisting of the
+corresponding displayed limit.  All degeneration takes place only as
+$t\to\infty$; the point $(1/2,1/2,0)$ belongs to the closed simplex and is
+used only as a limit.
+\end{theorem}
+
+\section{Exact checking and assistance disclosure}
+
+The transport calculation and the chamber identities were additionally
+replayed in exact rational arithmetic with two SymPy scripts
+\cite{10.7717/peerj-cs.103}.  They verify
+the imbalance sum, both primal--dual objective identities, all equality-wall
+specializations, simplex preservation, the log-ratio factorizations,
+\eqref{eq:wall-identity}, and \eqref{eq:median}.  The proof above supplies the
+optimality, sign, invariance, and limiting arguments; successful script
+execution is not used as a substitute for those arguments.
+
+For comparison, Zeng's split-graph study separates a finite mathematical
+reduction from explicit cover and packing certificates, which an independent
+verifier checks \cite{ZengTuza2026}.  Here the paired certificates are a
+transport coupling and a Lipschitz potential with equal objective values;
+the rational identities are then checked separately.  The common point is
+the separation of certificate construction from verification, rather than a
+shared curvature theorem.
+
+OpenAI Codex assisted with route exploration, exact-algebra scripts,
+adversarial checking, literature screening, proof organization, language
+editing, and LaTeX preparation.  The calculations used SymPy with symbolic
+rational expressions; no floating-point experiment is evidence for the
+theorem.  This is not a proof-assistant formalization.  The author is
+responsible for the mathematical statements, executable artifacts,
+citations, and final manuscript.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

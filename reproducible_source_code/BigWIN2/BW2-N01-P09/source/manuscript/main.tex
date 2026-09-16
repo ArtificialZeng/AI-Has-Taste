@@ -1,0 +1,378 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The associative-commutative spectrum of SC229},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\ind}{\mathbf{1}}
+\DeclareMathOperator{\supp}{supp}
+\title{The associative-commutative spectrum of SC229}
+\author{Xiaojian Zeng\\[3pt]
+  {\small PBC School of Finance, Tsinghua University, 100190}\\
+  {\small\texttt{xiaojianzeng@foxmail.com}}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We determine the associative-commutative spectrum of the three-element
+groupoid SC229. Its full linear term functions are in bijection with rooted
+labelled trees having one distinguished child at every nonleaf vertex.
+The key step reconstructs the tree from the unique Cartesian prime factors
+of the function's truth set, with a separate treatment of singleton
+indicators. Consequently, the exponential generating function satisfies
+$T=x(1+Te^T)$, and the number of $n$-variable functions is
+$c_n=(n-1)!\sum_{k=0}^{n-1}\binom{n}{k}k^{n-1-k}/(n-1-k)!$,
+where $0^0=1$. We give canonical representatives, an integer recurrence,
+and exact finite checks of the classification.
+\end{abstract}
+
+\section{The problem and its answer}
+
+Let $A=\{0,1,2\}$, with the binary operation whose first argument indexes
+the row in the following table:
+\begin{equation}\label{eq:table}
+\begin{array}{c|ccc}
+\ast&0&1&2\\\hline
+0&0&0&0\\
+1&1&0&1\\
+2&1&1&1
+\end{array}
+\end{equation}
+For a finite nonempty set $I$ of labels, a \emph{full linear term on $I$}
+is a binary term in which each variable $x_i$, $i\in I$, occurs exactly
+once. Variable order and binary bracketing are arbitrary; constants are
+excluded. Write $t^*:A^I\to A$ for its evaluation. With $[n]=\{1,\ldots,n\}$,
+let $c_n$ count the distinct functions $t^*$ of full linear terms on $[n]$.
+Labels are fixed coordinates, so we take no further quotient by
+permutations. This is the associative-commutative spectrum in the sense of
+Huang and Lehtonen~\cite{HuangLehtonen2023}.
+
+Huang and Lehtonen~\cite[Section~7]{HuangLehtonen2024} identify
+\eqref{eq:table} as SC229, give the initial values
+$1,2,12,108,1340$, and ask for the general spectrum. They also record
+\begin{equation}\label{eq:interchange}
+((w\ast x)\ast y)\ast z=((w\ast x)\ast z)\ast y.
+\end{equation}
+The distinction between the first right factor and later right factors
+suggested by this identity is exactly the information retained by a term
+function.
+
+A \emph{decorated tree on $I$} is a rooted tree with vertex set $I$ in
+which each vertex having children has exactly one distinguished child.
+There is no order on the other children. Every nonsingleton term has a
+unique \emph{leftmost decomposition}
+\begin{equation}\label{eq:leftmost}
+t=(((x_i\ast R_1)\ast R_2)\cdots\ast R_m),\qquad m\geq1.
+\end{equation}
+It is obtained by following left operands down to a variable and recording
+the right subterms from bottom to top. Define $D(x_i)$ to be the one-vertex
+tree. Recursively, $D(t)$ has root $i$, distinguished child subtree $D(R_1)$,
+and ordinary child subtrees $D(R_2),\ldots,D(R_m)$.
+
+\begin{theorem}\label{thm:main}
+For every finite nonempty label set $I$, two full linear terms $s,t$ on
+$I$ satisfy $s^*=t^*$ if and only if $D(s)=D(t)$ as decorated labelled
+trees. Every decorated tree on $I$ is realized by such a term. Thus
+\begin{equation}\label{eq:sum}
+c_n=(n-1)!\sum_{k=0}^{n-1}\binom{n}{k}
+                 \frac{k^{n-1-k}}{(n-1-k)!}\qquad(n\geq1),
+\end{equation}
+with $0^0=1$. Equivalently, the formal exponential generating function
+$T(x)=\sum_{n\geq1}c_nx^n/n!$ satisfies
+\begin{equation}\label{eq:egf}
+T=x(1+Te^T).
+\end{equation}
+\end{theorem}
+
+The leftmost decomposition and its ordered rooted-tree encoding are due
+to Huang and Lehtonen~\cite[Definitions~6.1.2--6.1.3]{HuangLehtonen2023}.
+Their Proposition~6.1.4 permits forgetting all child order when
+$(x\ast y)\ast z=(x\ast z)\ast y$. That hypothesis fails for SC229:
+at $(x,y,z)=(2,0,1)$ the two sides are $0$ and $1$. The contribution here
+is the injective reconstruction that retains precisely one distinguished
+child, thereby proving that the tree model counts functions without
+duplication. The tree encoding, Cartesian factorization, and coefficient
+inversion are established tools.
+
+Injectivity of a tree encoding is a reconstruction question. In a related
+setting, Zeng~\cite[Theorem~1.1]{Zeng2026Multiplicity} reconstructs proper
+trees from their chromatic symmetric functions when the weight of each
+nonleaf core vertex occurs only once in the weighted core. Here each
+coordinate label remains visible in the entire term function; the
+reconstruction below uses this additional information to recover the
+supports of the child subtrees. No chromatic-symmetric-function result is
+needed for our proof.
+
+\section{Evaluation and essential coordinates}
+
+For every term $R$ put $q_R=\ind_{\{R^*=1\}}$. For a singleton,
+$q_{x_j}(a)=\ind_{\{a_j=1\}}$, whereas $x_j^*(a)=a_j$ is a ternary
+projection. Every nonsingleton term is $\{0,1\}$-valued by
+\eqref{eq:table}, so $q_R=R^*$ in that case. We keep this distinction
+throughout the recursive argument. Write $\supp(R)$ for its variable
+label set.
+
+For a Boolean function $q$ on coordinates disjoint from $i$, define
+\[
+H_i(q)(a)=\ind_{\{a_i=2\}}\vee
+          \bigl(\ind_{\{a_i=1\}}\wedge(1-q(a))\bigr).
+\]
+The first multiplication in \eqref{eq:leftmost} gives $H_i(q_{R_1})$.
+Every later left operand is a bit, and for $b\in\{0,1\}$ and $a\in A$
+the table gives $b\ast a=b(1-\ind_{\{a=1\}})$. Consequently,
+\begin{equation}\label{eq:evaluation}
+q_t=H_i(q_{R_1})\prod_{j=2}^{m}(1-q_{R_j}).
+\end{equation}
+Products are ordinary products of bits, with empty product $1$.
+The root coordinate and the child supports partition $I$.
+Induction in \eqref{eq:evaluation} shows that $D(t)$ determines $q_t$.
+Conversely, realize each child tree recursively, multiply its root
+variable first by the distinguished child's term, and then by the other
+child terms in any order. This realizes every decorated tree. It remains
+to prove that the function determines the tree.
+
+A coordinate is \emph{essential} if two assignments differing only there
+give different function values.
+\begin{lemma}\label{lem:essential}
+For every full linear term $t$, the indicator $q_t$ is nonconstant,
+vanishes at the all-zero assignment, and is essential in every coordinate
+of $\supp(t)$. If $i$ is the leftmost label, then
+$q_t|_{a_i=0}\equiv0$.
+\end{lemma}
+\begin{proof}
+All assertions hold for $q_{x_i}=\ind_{\{a_i=1\}}$. Induct on support
+size. For a nonsingleton, \eqref{eq:evaluation} gives the asserted zero
+slice and the all-zero value. Set $a_i=2$ and all child coordinates to
+zero; the value is $1$. Keeping those child coordinates fixed and changing
+$a_i$ from $0$ to $2$ witnesses essentiality of $i$.
+
+For a coordinate in $R_1$, use a pair of assignments witnessing its
+essentiality in $q_{R_1}$, set $a_i=1$, and set all other child coordinates
+to zero. The resulting function is $1-q_{R_1}$. For a coordinate in $R_j$,
+$j\geq2$, use its essentiality witness in $q_{R_j}$, set $a_i=2$, and set
+every other child to zero. The resulting function is $1-q_{R_j}$.
+Each pair changes only the coordinate under consideration.
+\end{proof}
+
+\section{Disjoint prime factors}
+
+A nonconstant Boolean function essential in all its coordinates is
+\emph{AND-prime} if it cannot be written
+$h(a)=b(a_U)c(a_V)$ for a partition of its support into two nonempty
+sets $U,V$. Define \emph{OR-prime} using $b(a_U)\vee c(a_V)$ instead.
+Primality here always concerns disjoint coordinate sets.
+
+We use the standard uniqueness of Cartesian prime factorization of finite
+relations; see Olteanu, Koch, and Antova~\cite[Section~6.1]{OlteanuKochAntova2008}.
+The following argument includes the nonemptiness and essentiality details
+needed here.
+
+\begin{lemma}\label{lem:factor}
+Let $h:A^I\to\{0,1\}$ be nonconstant and essential in every coordinate.
+There is a unique partition $\mathcal P_*$ of $I$ and a unique AND-prime
+Boolean factor $h_B$ on each $B\in\mathcal P_*$ such that
+$h=\prod_{B\in\mathcal P_*}h_B$.
+\end{lemma}
+\begin{proof}
+Let $S=h^{-1}(1)$, which is nonempty. Call a partition $\mathcal P$
+factorizing if
+$S=\prod_{B\in\mathcal P}\pi_B(S)$, where $\pi_B$ is coordinate
+projection and products are taken on the indicated disjoint blocks.
+Suppose $\mathcal P$ and $\mathcal Q$ both factorize $S$. Projecting
+the $\mathcal Q$-product onto $B\in\mathcal P$ yields
+\[
+\pi_B(S)=\prod_{\substack{C\in\mathcal Q\\B\cap C\ne\varnothing}}
+                       \pi_{B\cap C}(S).
+\]
+The choices on distinct blocks are independent; omitted blocks can be
+filled because $S$ is nonempty. Substitution into the $\mathcal P$-product
+shows that the common refinement also factorizes $S$.
+
+There are finitely many partitions of $I$. The common refinement of all
+factorizing partitions is therefore a factorizing partition $\mathcal P_*$,
+finer than every other one. Each projection $\pi_B(S)$ is prime, since a
+proper factorization of it would refine $\mathcal P_*$. Conversely, any
+partition into prime projections must be $\mathcal P_*$: a proper
+refinement within one of its blocks would contradict that block's
+primality.
+
+An AND factorization of $h$ gives just such a Cartesian factorization of
+$S$. Each factor's truth set is its corresponding projection of $S$,
+since the other nonempty factors can be filled. Thus the factors themselves
+are uniquely determined. Essentiality of $h$ implies essentiality on each
+factor's block, and excludes a constant-one factor on a nonempty block.
+Nonemptiness excludes constant-zero factors. The prime projections hence
+give exactly the asserted AND-prime factors.
+\end{proof}
+
+\begin{lemma}\label{lem:recognition}
+For a nonsingleton term in \eqref{eq:leftmost}, the factors displayed in
+\eqref{eq:evaluation} are precisely its disjoint AND-prime factors.
+Among those factors, exactly one has an identically zero slice at value
+$0$ of a coordinate. It is $H_i(q_{R_1})$, and that coordinate is $i$.
+\end{lemma}
+\begin{proof}
+First, every $q_R$ is OR-prime. A singleton admits no proper coordinate
+split. Otherwise, suppose $q_R=b(a_U)\vee c(a_V)$ on a proper split, and
+put its leftmost label $r$ in $U$. Setting $a_r=0$ makes $q_R$ identically
+zero by Lemma~\ref{lem:essential}, forcing $c\equiv0$. This makes all
+coordinates in $V$ inessential, a contradiction. Boolean complementation
+therefore makes $1-q_R$ AND-prime.
+
+Put $J=\supp(R_1)$ and $H=H_i(q_{R_1})$. The function $H$ is essential
+on $\{i\}\cup J$: its root-$0$ and root-$2$ slices distinguish $i$,
+and its root-$1$ slice is $1-q_{R_1}$, essential on $J$. In an AND split
+$H=b(a_U)c(a_V)$, put $i\in U$. The root-$2$ slice is identically one,
+forcing $c\equiv1$. This contradicts essentiality on $V$. Thus $H$ is
+AND-prime. The factors in \eqref{eq:evaluation} have disjoint nonempty
+essential supports covering $I$, so Lemma~\ref{lem:factor} identifies
+them as the unique prime factors.
+
+The root-$0$ slice of $H$ is identically zero. No child coordinate has
+that property in $H$, because assigning $a_i=2$ makes $H=1$ regardless
+of that child's value. Every other factor $1-q_{R_j}$ is $1$ at its
+all-zero assignment and therefore has no identically zero value-$0$
+slice in any coordinate. This proves both uniqueness assertions. The
+slice condition concerns each factor, rather than the entire product.
+\end{proof}
+
+\section{Reconstruction and normal forms}
+
+We now reconstruct $D(t)$ from the function $q_t$ and its fixed label
+set, inductively on the size of that set. A singleton indicator on $\{i\}$
+is decoded as the leaf $i$. For $|I|\geq2$, Lemma~\ref{lem:factor}
+recovers all prime factors from $q_t^{-1}(1)$, and
+Lemma~\ref{lem:recognition} recovers the root factor $H$ and the root
+coordinate $i$ using only those factors.
+
+The distinguished child has support $J=\supp(H)\setminus\{i\}$ and
+indicator
+\begin{equation}\label{eq:recover}
+q_{R_1}=1-H|_{a_i=1}.
+\end{equation}
+For every other prime factor $h_K$ on $K$, the corresponding ordinary
+child indicator is $1-h_K$. Each recovered support is nonempty and
+strictly smaller than $I$. Equation~\eqref{eq:evaluation} guarantees
+that these recovered functions are term indicators. Induction recovers
+their decorated trees, with \eqref{eq:recover} identifying the distinguished
+one. No knowledge of the original syntax is used to choose a factor,
+a coordinate, or a child support.
+
+Hence equal indicators have equal decorated trees. For $|I|\geq2$ the
+indicators are the term functions themselves, and for $|I|=1$ there is
+only the single projection. Together with realization and the evaluation
+formula, this proves the classification in Theorem~\ref{thm:main}.
+
+It also gives explicit normal forms. On $[n]$, order the ordinary child
+subtrees by their least vertex labels, which are distinct because the
+supports are disjoint. Recursively choose their representatives and use
+the distinguished child first in the leftmost product. Every function
+has exactly one such representative. An arbitrary fixed total order
+gives the same construction on any other finite label set; the underlying
+tree classification does not depend on this choice.
+
+\section{Counting the functions}
+
+Let $B_r$ count sets of decorated trees whose supports partition a fixed
+$r$-element label set, with $B_0=1$. Isolating the tree containing a
+specified label gives the integer recurrence
+\begin{equation}\label{eq:B}
+B_r=\sum_{j=1}^{r}\binom{r-1}{j-1}c_jB_{r-j}\qquad(r\geq1).
+\end{equation}
+Choose the root of a nonleaf decorated tree, the $k$ labels of its
+distinguished child subtree, that subtree, and the set of remaining
+child subtrees. The classification gives
+\begin{equation}\label{eq:c}
+c_1=1,\qquad
+c_n=n\sum_{k=1}^{n-1}\binom{n-1}{k}c_kB_{n-1-k}\qquad(n\geq2).
+\end{equation}
+These recurrences can be evaluated successively: after $c_1$, compute
+$B_1,c_2,B_2,c_3,B_3,\ldots$. In particular, \eqref{eq:c} uses only
+$c_k$ with $k<n$ and $B_r$ with $r\leq n-2$.
+
+The exponential generating function for the sets counted by $B_r$ is
+$e^T$: for each number of components, the labelled product counts ordered
+components, and division by the factorial of their number forgets their
+order. A decorated tree is a root with either no child or one distinguished
+child and a set of other children. This gives \eqref{eq:egf} by the
+usual labelled tree and forest construction; compare
+Gessel~\cite[Section~3.2]{Gessel2016}.
+
+For completeness, apply formal Lagrange inversion
+\cite[Theorem~2.1.1]{Gessel2016} to $T=x\Phi(T)$, where
+$\Phi(u)=1+ue^u$ and $\Phi(0)=1$. It yields
+\begin{align*}
+c_n
+  &=(n-1)!\,[u^{n-1}](1+ue^u)^n\\
+  &=(n-1)!\sum_{k=0}^{n-1}\binom{n}{k}
+                     [u^{n-1-k}]e^{ku}\\
+  &=(n-1)!\sum_{k=0}^{n-1}\binom{n}{k}
+                     \frac{k^{n-1-k}}{(n-1-k)!}.
+\end{align*}
+For $n=1$, the convention $0^0=1$ gives $c_1=1$.
+All manipulations are in formal power series over $\mathbb Q$; no
+analytic convergence is needed. This completes Theorem~\ref{thm:main}.
+
+\section{Exact finite checks and scope}
+
+The accompanying standard-library Python program
+\texttt{verify\_sc229.py} compares two enumerations. One generates every
+binary bracketing and every coordinate permutation. The other generates
+labelled trees by Pr\"ufer words, chooses every root, and chooses a
+distinguished child at each nonleaf. The Pr\"ufer correspondence is
+reviewed in Gessel~\cite[Section~4.6]{Gessel2016}. Both enumerations
+evaluate representatives using all nine entries of \eqref{eq:table}.
+Integer bitsets store the full truth tables, including all $3^n$
+assignments per function.
+
+\begin{center}
+\begin{tabular}{r r r}
+\toprule
+$n$ & Full linear terms & Distinct functions and decorated trees\\
+\midrule
+1 & 1 & 1\\
+2 & 2 & 2\\
+3 & 12 & 12\\
+4 & 120 & 108\\
+5 & 1680 & 1340\\
+6 & 30240 & 21150\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The two enumerations give identical function-to-tree mappings for
+$1\leq n\leq6$, with no collisions. A separate truth-set decoder tests
+binary coordinate splits for Cartesian factorization and reconstructs
+all $1463$ distinct functions for $1\leq n\leq5$. It is not exhaustively
+tested at $n=6$. The recurrence and finite sum agree in exact arithmetic
+through $n=12$; values after $n=6$ in that check are formula evaluations,
+not additional function censuses. The program also tests
+\eqref{eq:interchange} on all $81$ four-variable assignments. It can be
+run with Python~3 without third-party packages.
+
+These computations corroborate the universal proof; the proof has no
+computational premise. The result answers the full SC229 counting
+question of Huang and Lehtonen. It does not classify other operations
+satisfying \eqref{eq:interchange}, or terms with constants or repeated
+variables. A bounded primary-source search completed on 12 September
+2026 identified no equivalent SC229 classification in the sources
+inspected; this is not an exhaustive priority assessment.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, exact verification code,
+source checking, and manuscript preparation. A separate model context
+checked the mathematical argument and supplied the differently organized
+finite enumeration underlying the accompanying program. Such a check is
+not external peer review or statistically independent evidence. All
+reported computations use exact integers, finite relations, and rational
+arithmetic, without randomness. No proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

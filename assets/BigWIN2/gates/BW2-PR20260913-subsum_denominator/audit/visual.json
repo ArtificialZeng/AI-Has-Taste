@@ -1,0 +1,65 @@
+{
+  "verdict": "accept",
+  "job_id": "primary-20260913-subsum-denominator-release-2b584cd00e77",
+  "snapshot_digest": "c33bf573f4ff5837fe88c72e3f97531b9de48fe90675139f240935896a34a200",
+  "manuscript_digest": "b0fe6cb78bac2ee33f4a84c5ebd22d5cb4adfd04969134d7a521a94f487cb4ff",
+  "pdf_digest": "36c288b38a941918a020c62193cae801acb44391ed28e65b4a13b8a3d00b2c62",
+  "report": "audit/visual.md",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "render_command": "pdftoppm -r 130 -png manuscript/build/main.pdf audit/release-page",
+  "rendered_pages": [
+    {
+      "page": 1,
+      "path": "audit/release-page-1.png",
+      "sha256": "3784005a7557265e020d9d1b6939f65ff75f0181b30bfa59c3239831f1989f74",
+      "inspection": "Title, author, abstract, original all-index LC with four exceptions, and dyadic recurrence are legible; tags (1),(LC),(2) and references [1],[2] are clean."
+    },
+    {
+      "page": 2,
+      "path": "audit/release-page-2.png",
+      "sha256": "40fa698ed2e033de3ef83a8353bade9dc4fc5b6903a91264d5999e0201056a85",
+      "inspection": "Stage definitions, H, explicitly unproved K, least-start inequality and Proposition 1 fit within the margins. The DLMF locator is printed as Section 3.3(iv); no missing symbols."
+    },
+    {
+      "page": 3,
+      "path": "audit/release-page-3.png",
+      "sha256": "f87ea751f4d1f911c579fd1915068b49dc016893a4b76141976f4c2ddff788cb",
+      "inspection": "Reduction proof, conditional implication and edge theorem retain clear quantifiers. The fixed counts 4753/613137/3126 and formula(9) at the foot are legible, without footer collision."
+    },
+    {
+      "page": 4,
+      "path": "audit/release-page-4.png",
+      "sha256": "94c2438cfa670c749a61395c7d466845b1e67c352532a38b7937c443ee0f497a",
+      "inspection": "Exact recursion, signed formula (10), natural library citation [5], smoothing lemma and high-order band render clearly. Binomial coefficients, signs and inequality conditions are intact."
+    },
+    {
+      "page": 5,
+      "path": "audit/release-page-5.png",
+      "sha256": "389945ab944e64c29c0b097076d62472b3696e82286ded17f4fb5bbb16bdb2eb",
+      "inspection": "Top two Catalan formulas and the generic negative example are readable. Boundary discrepancy (13), high-difference identity (14), proof and QED marker stay inside the page."
+    },
+    {
+      "page": 6,
+      "path": "audit/release-page-6.png",
+      "sha256": "c9bb0e2340c30a590c8230dabfa186d659843bd520633dae62b399d94181b3bb",
+      "inspection": "Boundary values 19668,20795,-1127 are printed correctly. All four table rows match the exact numeric audit; the overlap warning is visible. Sixteen sparse degrees, shifts, version 0.9.0 and verification limits are legible."
+    },
+    {
+      "page": 7,
+      "path": "audit/release-page-7.png",
+      "sha256": "166532f91ada25de3ebaa6b70ad3470f3ac2698ab019e29b3e4aa904d567eeda",
+      "inspection": "Appendix Euler product (15), reproducibility and AI disclosure are readable. All five bibliography entries and their complete URLs fit without clipping. Compact reference type remains legible."
+    }
+  ],
+  "inspection_method": "Actually opened and viewed each page image with view_image in this fresh release context; no pdftotext-only acceptance.",
+  "issues": [],
+  "reviewed_at": "2026-09-13T01:07:03.134033+00:00"
+}

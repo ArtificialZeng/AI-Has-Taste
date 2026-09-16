@@ -1,0 +1,499 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage{microtype}
+
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Maximal sorting time under clumped-letter insertion
+  in two short multiplicity profiles},pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\DeclareMathOperator{\trunc}{trunc}
+\newcommand{\D}{\mathrm{D}}
+
+
+
+
+\title{Maximal sorting time under clumped-letter insertion\\
+  in two short multiplicity profiles}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $T$ denote the number of passes needed to sort a word through the greedy
+$aba$-avoiding stack, where sorting means making each letter contiguous.
+For $r\geq3$, let $q$ contain $r$ letters, each twice, with at most one letter
+allowed a third occurrence. We prove that inserting any finite number of
+additional letters, each confined to one contiguous block, preserves the
+condition $T(q)=r$. There is no restriction on the lengths of the inserted
+blocks, and adjacent equal letters in $q$ are allowed. The proof combines
+clumped-letter deletion with induction on $r$ and a complete computer-assisted
+base of $28{,}800$ marked three-letter inputs. A consequence is a first-letter
+deletion reduction for maximally slow words of length $2k+2$, for $k\geq4$.
+The uniform classification and enumeration of that length layer remain
+unresolved here.
+\end{abstract}
+
+\section{Setting and contribution}
+
+A word represents a set partition by putting positions with equal letters
+in the same block. Two words are identified exactly when one is obtained
+from the other by a bijective renaming of its alphabet. Position order is
+retained. Defant and Kravitz introduced foot-sorting as a stack-sorting
+analogue for such objects~\cite{DefantKravitz2024}. We use Xia's deterministic
+map~\cite[Definition 2.5]{Xia2024}, denoted here by $\phi$.
+
+Start with an empty stack and output, and read the input from left to right.
+Push the next letter if the resulting stack avoids a subsequence $aba$ with
+$a\ne b$. Otherwise pop the top letter into the output and retry the same
+input letter. Finally drain the stack into the output. The forbidden pattern
+need not be consecutive. Either stack orientation gives the same forbidden
+triples, since $aba$ is unchanged by reversal.
+
+A letter is \emph{clumped} when all its occurrences form one nonempty
+contiguous block. A word is \emph{sorted} if all its letters are clumped;
+there is no prescribed order on the blocks. Put
+\[
+ T(w)=\min\{t\geq0:\phi^t(w)\text{ is sorted}\}.
+\]
+In particular, sorted words have time zero. A sorted word stays sorted
+under $\phi$, which reverses the order of its blocks. Xia proved $T(w)\leq r$
+for words on $r$ letters, with sharpness for $r\geq3$, and asked for
+the words attaining it~\cite[Theorem 3.1 and Question 6.1]{Xia2024}.
+
+Choi, Gan, Li, and Zhu showed that, for $r\geq3$, the only such word of
+length at most $2r$, up to renaming, is $(a_1\cdots a_r)^2$. At length
+$2r+1$ they obtained
+\[
+ \binom{r+1}{2}+2\binom r2
+\]
+classes~\cite[Theorems 1.1--1.2]{ChoiGanLiZhu2025}. Their Lemma 3.5 also
+counts the length-$2r+2$ subclass whose first letter occurs four times and
+all others twice. These results are prior work. Related work of Ganesh,
+Xia, and Ying concerns image membership and numbers of preimages for the
+stack maps~\cite[Sections 3--4]{GaneshXiaYing2024}.
+
+For a set of letters $A$, write $\D_A(w)$ for deletion of all occurrences
+of letters in $A$, and abbreviate $\D_{\{a\}}$ to $\D_a$.
+The following theorem concerns the two shortest multiplicity profiles in
+which every letter is repeated.
+
+\begin{theorem}[Clumped-letter insertion; computer-assisted base]
+\label{thm:main}
+Let $r\geq3$ and let $q$ use exactly $r$ letters, each occurring twice,
+except that at most one may occur three times. Let $W$ be a word and $A$ a
+finite set of additional letters such that $\D_A(W)=q$ and every letter of
+$A$ is clumped in $W$. Then
+\begin{equation}\label{eq:main}
+ T(W)=r\quad\Longleftrightarrow\quad T(q)=r.
+\end{equation}
+There is no bound on $|A|$ or on the positive multiplicities of its letters.
+The set $A$ may be empty. Adjacent equal letters in $q$, and insertions
+between such letters, are allowed.
+\end{theorem}
+
+The assertion controls maximal time, not all sorting times.
+The contribution is an insertion principle for words whose total alphabet
+may be arbitrarily larger than that of $q$, together with the deletion
+application in Section~\ref{sec:application}. The neighboring length counts
+alone do not address this insertion. No equivalent statement was located
+in the primary sources compared above in a search through 12 September
+2026; this is a bounded literature comparison, not a claim of priority.
+The original target motivating the application is to classify and count,
+for every $k\geq3$, the length-$2k+2$ words on $k$ letters with $T=k$.
+That full target remains unresolved in this note.
+
+\section{Clumping and deletion}
+
+We first recall the elementary structure behind the sorting bound. We
+include the arguments to specify precisely the facts used in the insertion
+proof.
+
+\begin{lemma}[First-letter decomposition and clump growth]
+\label{lem:clump}
+If $w=a s_1 a s_2\cdots a s_m$, where $a$ occurs in none of the possibly
+empty words $s_i$, then
+\begin{equation}\label{eq:first}
+ \phi(w)=\phi(s_1)\phi(s_2)\cdots\phi(s_m)a^m.
+\end{equation}
+Every clumped letter stays clumped. On each unsorted pass, the first
+unclumped letter becomes clumped. Consequently a word with $u$ initially
+unclumped letters has sorting time at most $u$.
+\end{lemma}
+
+\begin{proof}
+The decomposition is Xia's first-letter lemma~\cite[Lemma 3.1]{Xia2024}.
+The stack retains its bottom copies of $a$ while processing a segment $s_i$.
+They cannot interact with the avoidance test inside that segment. Before
+the next $a$ is pushed, every intervening non-$a$ entry must leave. Thus the
+segments contribute their separate images in order; the copies of $a$
+leave last. Final draining gives the same conclusion for $s_m$.
+
+If a clumped block can begin to enter the stack, its remaining copies can
+enter immediately. A later obstruction cannot be cleared by popping only
+part of that block: any remaining copy gives the same obstruction. Hence
+the block also leaves as a whole. Strip off leading clumped blocks of an
+unsorted input and apply~\eqref{eq:first} to the remaining suffix. Its first
+letter becomes clumped, and the stripped blocks move to the end without
+splitting it. The number of unclumped letters therefore drops on every
+unsorted pass. This is the clump-growth argument in
+\cite[proof of Theorem 3.1]{Xia2024}, also stated in
+\cite[Corollary 2.1]{ChoiGanLiZhu2025}.
+\end{proof}
+
+\begin{lemma}[Deletion of clumped letters]\label{lem:delete}
+If $c$ is clumped in $w$, then
+\begin{equation}\label{eq:delete}
+ \D_c(\phi(w))=\phi(\D_c(w)).
+\end{equation}
+If all letters of $A$ are clumped in $w$, this identity extends to
+$\D_A\phi^t(w)=\phi^t\D_A(w)$ for every $t\geq0$. In particular,
+$T(\D_A(w))\leq T(w)$.
+\end{lemma}
+
+\begin{proof}
+Induct on $|w|$. If $c$ is the first letter, write $w=c^m u$; both sides
+of~\eqref{eq:delete} equal $\phi(u)$ by~\eqref{eq:first}. Otherwise, use
+the first letter $a\ne c$ in~\eqref{eq:first}. The block of $c$ belongs to
+exactly one segment $s_i$. Apply the induction hypothesis there and leave
+the other segment images unchanged. This proves~\eqref{eq:delete}.
+Clump persistence permits iteration. Deleting one clumped letter leaves
+the other clumped letters clumped, so successive deletions give the assertion
+for $A$. Finally, deleting letters from a sorted word preserves sortedness.
+\end{proof}
+
+For the pair $(q,W)$ in Theorem~\ref{thm:main}, these lemmas give
+\begin{equation}\label{eq:bounds}
+ T(q)\leq T(W)\leq r.
+\end{equation}
+The last bound uses the number of possibly unclumped old letters, rather
+than the larger alphabet size of $W$.
+
+\section{The finite base and induction}
+
+Call the letters of $A$ \emph{markers}. Their allowed multiplicities and
+number are unbounded, so the finite base requires the following reduction.
+
+\begin{lemma}[Reduction to occupied gaps]\label{lem:gaps}
+Fix an old word $q$ of length $n$. To test the sorting time of arbitrary
+clumped-marker insertions into $q$, it suffices to insert one distinct
+singleton marker in each gap belonging to a subset of its $n+1$ gaps.
+More precisely, replacing all marker blocks in each occupied gap by one
+fresh singleton preserves sortedness at every iterate.
+\end{lemma}
+
+\begin{proof}
+First compress each marker block to one copy. Such a block is pushed and
+popped as a unit, as in Lemma~\ref{lem:clump}. At the ends of its processing,
+the stack transitions on old letters agree before and after compression.
+Thus the old-letter output and the separations of old letters by markers
+agree at every pass.
+
+Within one original gap, the compressed markers form a string of distinct
+singletons, none of whose letters occurs elsewhere. This string is pushed
+without interruption. A later pop episode cannot stop strictly inside it:
+the incoming letter differs from every member of the string, so an
+obstruction requiring one of them to be popped also requires all remaining
+members of that string above the obstruction to be popped. The whole string
+is output consecutively in reverse order. The same property holds at the
+next pass, since each member is still a singleton.
+
+Replacing the string by a fresh singleton therefore preserves old-letter
+transitions and whether markers separate two old runs. If marker strings
+from different original gaps subsequently meet, neither can split. All
+marker letters stay clumped in both systems, so agreement of the old-letter
+order and separations implies agreement of full sortedness at every time.
+Apply this replacement in every occupied gap. Marker names are immaterial
+because relabelling commutes with $\phi$.
+\end{proof}
+
+\subsection*{Complete three-letter base}
+
+Represent each word by renaming letters $0,1,2,\ldots$ in order of first
+appearance. There are exactly
+\[
+ \frac{6!}{(2!)^3 3!}=15,
+ \qquad
+ \frac{7!}{3!(2!)^2 2!}=105
+\]
+representatives of profiles $(2,2,2)$ and $(3,2,2)$, respectively.
+Every representative and every subset of its gaps were checked. In all
+cases $\phi^2(W)$ is sorted if and only if $\phi^2(q)$ is sorted. The complete
+counts are in Table~\ref{tab:base}; the empty gap subset is included.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Old profile & Old words & Masks/word & Marked inputs & $T(q)=3$ & $T(W)=3$\\
+\midrule
+$(2,2,2)$ & 15 & 128 & 1,920 & 1 & 128\\
+$(3,2,2)$ & 105 & 256 & 26,880 & 12 & 3,072\\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive finite base. No sorting-equivalence failures occurred.}
+\label{tab:base}
+\end{table}
+
+Appendix~\ref{app:code} contains a complete executable verifier using only
+the Python standard library. It enumerates all labelled ternary words,
+filters the multiplicities, and forms the canonical quotient. For each
+proposed push, its stack routine checks every triple of positions for the
+literal forbidden subsequence. Sortedness is checked from the intervals of
+positions occupied by each letter. Both passes are recomputed on every
+marked input; the code also checks deletion commutation in both passes.
+Thus no sampling, numerical tolerance, or inferred recurrence is involved.
+
+The checks also compare distinct exact formulations. In a related
+combinatorial computation, Zeng's tree-reconstruction study computes
+cut-partition data by integer dynamic programming and independently checks
+small orders by direct edge-subset enumeration~\cite{Zeng2026MultiplicityArxiv}.
+That study's Section~4 describes the checks as diagnostic, without using
+them in the proof. Here the complete three-letter computation supplies
+the induction base.
+
+The original base calculation additionally compared a literal stack, a
+run-stack implementation, and the recursion~\eqref{eq:first}. A separately
+written verifier, using labelled words rather than that calculation's
+multiplicity-pruned generator, reproduced the complete base; the appendix
+is a compact presentation of this second computation. Since both sorting
+times are at most three by~\eqref{eq:bounds}, testing the second iterate
+proves~\eqref{eq:main} for the reduced three-letter inputs.
+Lemma~\ref{lem:gaps} extends the base to arbitrary clumped markers.
+
+\subsection*{Induction on the old alphabet}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+The case $r=3$ was just established. Suppose $r\geq4$ and the theorem is
+valid for $r-1$. Assume $T(W)=r$. By Lemma~\ref{lem:clump}, every old letter
+is initially unclumped in $W$. Let $a$ be the first letter of $q$. Only
+clumped markers can precede its first occurrence in $W$, so $a$ is the
+first unclumped letter of $W$. It becomes clumped in $U=\phi(W)$; it is
+also clumped in $v=\phi(q)$ by~\eqref{eq:first}.
+
+Set $q_1=\D_a(v)$. Deletion commutation gives
+\[
+ \D_{A\cup\{a\}}(U)=q_1.
+\]
+All deleted letters are clumped in $U$. Moreover, $q_1$ has $r-1$ letters
+with exactly their old multiplicities, so each occurs twice, except for at
+most one third occurrence. It need not be run-free, which is why that
+restriction was not imposed in the theorem. The induction hypothesis
+therefore applies to $(q_1,U)$. Since $T(U)=r-1$, it yields $T(q_1)=r-1$.
+
+By Lemma~\ref{lem:delete}, $T(v)\geq T(q_1)=r-1$. In particular $q$ cannot
+be sorted, because its image and every deletion of that image would then
+be sorted. Hence $T(q)=1+T(v)\geq r$. Together with~\eqref{eq:bounds} this
+gives $T(q)=r$. Conversely, $T(q)=r$ and~\eqref{eq:bounds} force $T(W)=r$.
+This completes the induction without invoking a two-letter case.
+\end{proof}
+
+\section{First-letter deletion at the next length}\label{sec:application}
+
+A word is \emph{run-free} if adjacent letters are unequal. Its truncation
+$\trunc(w)$ replaces each maximal constant run by one copy of its letter.
+
+\begin{corollary}[Terminal insertion]\label{cor:terminal}
+Let $q$ be run-free on $r\geq3$ letters, each occurring at least twice, and
+let $2r\leq|q|\leq2r+1$. For a new letter $x$,
+\[
+ T(qx)=r\quad\Longleftrightarrow\quad T(q)=r.
+\]
+\end{corollary}
+
+\begin{proof}
+The length bounds give precisely the two profiles in
+Theorem~\ref{thm:main}. Apply it with the single marker $x$.
+\end{proof}
+
+\begin{proposition}[First-letter deletion]\label{prop:application}
+Let $k\geq4$, and let $w$ use exactly $k$ letters, with $|w|=2k+2$ and
+$T(w)=k$. If its first letter $x$ occurs $m$ times, write
+$\phi(w)=v x^m$ and put $r=k-1$ and $q=\trunc(v)$. Then $q$ uses exactly
+$r$ letters, each at least twice, and
+\[
+ 2r\leq |q|\leq2r+1,\qquad T(q)=r.
+\]
+\end{proposition}
+
+\begin{proof}
+Maximal time and Lemma~\ref{lem:clump} force zero clumped letters initially
+and exactly one after the first pass, as in
+\cite[Corollary 2.2]{ChoiGanLiZhu2025}. Thus every letter initially occurs
+at least twice, $m\in\{2,3,4\}$, and the other $r$ letters are all
+unclumped in $v$. Each therefore occupies at least two runs, giving the
+lower bound $|q|\geq2r$.
+
+If $m\geq3$, then $|v|=2k+2-m\leq2r+1$. If $m=2$, some other letter
+occurs at least three times. Write $w=x s_1 x s_2$. That letter repeats
+inside at least one $s_i$. The image of any word containing a repetition
+has an adjacent equal pair: if its first letter repeats,
+\eqref{eq:first} produces a terminal repeated block; otherwise remove its
+unique first letter and apply the same argument to the shorter suffix.
+Consequently $v=\phi(s_1)\phi(s_2)$ contains an adjacent equal pair. Its
+truncation loses at least one position, giving
+$|q|\leq |v|-1=2r+1$ also in this case.
+
+Truncation compatibility is
+\begin{equation}\label{eq:trunc}
+ \trunc(\phi(z))=\trunc(\phi(\trunc(z))),
+\end{equation}
+as proved in~\cite[Proposition 3.1]{ChoiGanLiZhu2025}. To see the stack
+mechanism, copies in an input run enter consecutively and form one stack
+block; when that block must leave, retaining any positive number of its
+copies leaves the same obstruction. Compressing runs therefore preserves
+the sequence of output runs. Iterating~\eqref{eq:trunc} shows that $z$ and
+$\trunc(z)$ have equal truncated iterates. Sortedness is equivalent to
+having no repeated letter in the truncation, so
+$T(z)=T(\trunc(z))$.
+
+Because $x$ does not occur in $v$, we have $\trunc(vx^m)=qx$. It follows
+that
+\[
+ T(qx)=T(vx^m)=k-1=r.
+\]
+Corollary~\ref{cor:terminal} now gives $T(q)=r$. The assumption $k\geq4$
+ensures $r\geq3$ throughout.
+\end{proof}
+
+This reduction permits the first terminal clumped letter to be deleted
+while retaining maximal time in one of the two preceding length layers.
+It does not classify all inverse images of the resulting words or give
+the requested count $M_k$ of length-$2k+2$ classes.
+
+\section{Boundaries and verification scope}
+
+Three exact examples distinguish the hypotheses and conclusion:
+\[
+\begin{array}{c|c|c|c}
+ q & \text{terminal marker }x & T(q) & T(qx)\\ \hline
+ 0101 & 2 & 1 & 2\\
+ 0102102 & 3 & 1 & 2\\
+ 01201202 & 3 & 2 & 3
+\end{array}
+\]
+The first excludes $r=2$. The second has the allowed profile $(3,2,2)$,
+but shows that submaximal times need not be equal. The third has two
+tripled letters and shows that arbitrary repeated-letter profiles do not
+have the asserted maximal-time invariance. These values follow by direct
+iteration of the displayed stack algorithm.
+
+The proof uses only the complete three-letter base and the unbounded
+reduction and induction above. Additional computations on $58{,}905$ marked
+inputs with four or five old letters, and a separate $480$-input check of
+expanded marker blocks in the three-letter base, gave no failures. They
+are corroboration, not substitutes for the infinite argument. No all-$k$
+enumeration is inferred from finite counts.
+
+\paragraph{Computational and AI assistance.}
+AI assistance was used in developing the argument, generating and checking
+programs, comparing literature, and preparing this manuscript. A separate
+AI-assisted review reconstructed the proof and reran the finite base with
+a separately written standard-library verifier. Separate model contexts
+are not external peer review. The initial literal simulation used Numba
+to compile integer loops and was compared with two ordinary Python
+implementations. The verifier printed below needs neither Numba nor any
+external package. The mathematical decisions use equality tests and exact
+integer arithmetic; the general theorem also depends on the written
+compression and induction proofs. No formal proof-assistant certification
+is claimed.
+
+\appendix
+\section{Executable finite-base verification}\label{app:code}
+
+The following complete Python 3 program is supplied as
+\texttt{verify\_base.py}. Run \texttt{python3 verify\_base.py}. It prints
+the table rows and all $120$ old representatives with their second-iterate
+sortedness and number of masks. In each row, the entries are length,
+number of old representatives, number of marked inputs, number of old
+words with time three, and number of marked inputs with time three.
+Failure raises an exception; the checks are not disabled by Python's
+optimization option. The generation visits $3^6+3^7$ labelled old words
+before taking the quotient, and the resulting marker domain is exactly
+the one in Lemma~\ref{lem:gaps}.
+
+{\footnotesize
+\begin{verbatim}
+"""Exact finite base; run with Python 3. No external packages needed."""
+from collections import Counter
+from itertools import combinations, product
+import json
+
+def require(ok):
+    if not ok:
+        raise RuntimeError("finite-base verification failed")
+
+def canonical(w):
+    names = {}
+    return tuple(names.setdefault(x, len(names)) for x in w)
+
+def forbidden(s):
+    return any(s[i] == s[k] != s[j]
+               for i, j, k in combinations(range(len(s)), 3))
+
+def phi(w):
+    stack, out = [], []  # The top of the stack has index zero.
+    for x in w:
+        while forbidden([x] + stack):
+            out.append(stack.pop(0))
+        stack.insert(0, x)
+    return tuple(out + stack)
+\end{verbatim}
+}
+\newpage
+{\footnotesize
+\begin{verbatim}
+def sorted_word(w):
+    for x in set(w):
+        p = [i for i, y in enumerate(w) if y == x]
+        if p[-1] - p[0] + 1 != len(p):
+            return False
+    return True
+
+def marked(q, mask):
+    w = []
+    for gap in range(len(q) + 1):
+        if mask & (1 << gap):
+            w.append(3 + gap)
+        if gap < len(q):
+            w.append(q[gap])
+    return tuple(w)
+
+rows, cases = [], []
+for n, size in ((6, 15), (7, 105)):
+    words = sorted({canonical(w) for w in product(range(3), repeat=n)
+                    if sorted(Counter(w).values()) == [2, 2, n-4]})
+    require(len(words) == size)
+    hard_old = hard_marked = total = 0
+    for q in words:
+        old_second = phi(phi(q))
+        old_hard = not sorted_word(old_second)
+        hard_old += old_hard
+        for mask in range(1 << (n+1)):
+            u, v = marked(q, mask), q
+            for step in range(2):
+                u, v = phi(u), phi(v)
+                require(tuple(x for x in u if x < 3) == v)
+            require(sorted_word(u) == sorted_word(old_second))
+            hard_marked += not sorted_word(u)
+            total += 1
+        cases.append({"q": q, "sorted_after_two": not old_hard,
+                      "masks": 1 << (n+1)})
+    rows.append([n, size, total, hard_old, hard_marked])
+require(rows == [[6, 15, 1920, 1, 128], [7, 105, 26880, 12, 3072]])
+print(json.dumps({"rows": rows, "cases": cases}, indent=2))
+\end{verbatim}
+}
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

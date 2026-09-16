@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Restricted-Sumset Saturation with Two Missing Sums in Prime Fields},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Fp}{\mathbb F_p}
+\newcommand{\rsum}{\mathbin{\dot{+}}}
+
+\title{Restricted-Sumset Saturation with Two Missing Sums in Prime Fields}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For subsets $A,B$ of a prime field, let $A\rsum B$ consist of the sums
+$x+y$ with $x\in A$, $y\in B$, and $x\ne y$.  For every prime $p\geq
+11$ and $3\leq \ell\leq (p-3)/2$, we classify, up to simultaneous
+affine transformations, all ordered pairs satisfying
+$|B|=\ell$, $|A|=p-\ell$, and $|A\rsum B|=p-2$.  After the two missing
+sums are normalized to $\{0,2\}$, every pair is indexed by a decomposition
+$\ell=a+b$ into nonnegative integers.  Two such representatives are
+equivalent exactly when their parameters agree up to swapping, giving
+$\lfloor\ell/2\rfloor+1$ affine classes.  The main ingredient is an exact
+endpoint-corrected count for cyclic step-two runs; a direct converse handles
+both degenerate endpoint families.
+\end{abstract}
+
+\section{Context and statement}
+
+The symmetric restricted-sum problem in $\mathbb Z/p\mathbb Z$ was settled
+by Dias da Silva and Hamidoune~\cite{DiasDaSilvaHamidoune1994}.  For two
+nonempty sets of different sizes, Alon, Nathanson, and Ruzsa proved the sharp lower
+bound
+\[
+ |A\rsum B|\geq \min\{p,|A|+|B|-2\}
+\]
+and raised the corresponding inverse problem~\cite{AlonNathansonRuzsa1996}.
+K\'arolyi proved that, for $|A|\geq5$ and $2|A|-3<p$, equality
+$|A\rsum A|=2|A|-3$ holds exactly for arithmetic
+progressions~\cite{Karolyi2005}.  More recently, Liu
+and Qian classified the asymmetric critical pairs when at least one set is
+an arithmetic progression~\cite{LiuQian2026}.  Li and Liang exhibited a
+boundary counterexample to the ensuing general conjecture and proved a
+refined theorem in the range $|A|+|B|\leq p-1$~\cite{LiLiang2026}.
+
+The present note treats the complementary boundary $|A|+|B|=p$ when
+exactly two sums are missing and $|B|$ is in the range specified below,
+without assuming that either set is an arithmetic progression.  Thus its
+hypotheses lie outside Li--Liang's refined range, while its conclusion is not
+restricted to the arithmetic-progression case of
+Liu--Qian~\cite{LiuQian2026,LiLiang2026}.  This scope comparison is not a claim of
+priority, and our elementary proof does not invoke either inverse theorem.
+A separate finite-Abelian-group edge-sum problem uses coset and fiber
+constructions for rainbow trees~\cite{Zeng2026Rainbow}.  It concerns
+pairwise-distinct edge sums rather than restricted set addition, and no result
+from it is used here.
+
+All sets below lie in $\Fp$, where $p$ is prime.  For $A,B\subseteq\Fp$,
+define the asymmetric restricted sumset
+\[
+ A\rsum B=\{x+y:x\in A,\ y\in B,\ x\ne y\}.
+\]
+The pair $(A,B)$ is ordered.  Simultaneous affine equivalence means
+\[
+ (A,B)\longmapsto (uA+v,uB+v),\qquad u\in\Fp^\times,\quad v\in\Fp.
+\]
+For nonnegative integers $a,b$ with $a+b=\ell$, put
+\begin{align*}
+ B_{a,b}&=\{-2j:0\leq j<a\}\cup\{1+2j:0\leq j<b\},\\
+ C_{a,b}&=\{2+2j:0\leq j<a\}\cup\{-1-2j:0\leq j<b\},\\
+ A_{a,b}&=\Fp\setminus C_{a,b}.
+\end{align*}
+An index interval is empty when its upper endpoint is below its lower
+endpoint, and all displayed integers are reduced modulo $p$.
+
+\begin{theorem}\label{thm:classification}
+Let $p\geq11$ be prime and let $3\leq\ell\leq(p-3)/2$.  If
+$A,B\subseteq\Fp$ satisfy
+\[
+ |B|=\ell,\qquad |A|=p-\ell,\qquad |A\rsum B|=p-2,
+\]
+then $(A,B)$ is simultaneously affinely equivalent to
+$(A_{a,b},B_{a,b})$ for some $a,b\geq0$ with $a+b=\ell$.  Conversely,
+every displayed pair has these cardinalities and
+\[
+ A_{a,b}\rsum B_{a,b}=\Fp\setminus\{0,2\}.
+\]
+Moreover, two displayed representatives are affinely equivalent if and only
+if their parameters agree up to $(a,b)\leftrightarrow(b,a)$.  Hence there
+are exactly $\lfloor\ell/2\rfloor+1$ affine classes.
+\end{theorem}
+
+\section{The endpoint-corrected run lemma}
+
+The additive translation $x\mapsto x+2$ is one directed cycle on $\Fp$.
+A cyclic $+2$-run in a proper subset $X$ means a maximal consecutive block
+in this cycle.
+
+\begin{lemma}\label{lem:runs}
+Let $\varnothing\ne X\subsetneq\Fp$, $|X|=\ell$, and
+\[
+ V=(X\setminus\{0\})\cup((X+2)\setminus\{1\}).
+\]
+If $|V|\leq\ell$ and $2\ell\leq p-3$, then there are unique nonnegative
+integers $a,b$ with $a+b=\ell$ such that
+\begin{equation}\label{eq:Xform}
+ X=\{2j:0\leq j<a\}\cup\{-1-2j:0\leq j<b\}.
+\end{equation}
+For these parameters,
+\begin{equation}\label{eq:Vform}
+ V=\{2j:1\leq j\leq a\}\cup\{-1-2j:0\leq j<b\},
+ \qquad |V|=\ell.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $r$ be the number of maximal cyclic $+2$-runs of $X$.  Each run
+contributes one new endpoint to $X+2$, so
+\begin{equation}\label{eq:unioncount}
+ |X\cup(X+2)|=\ell+r.
+\end{equation}
+Let $\delta_0$ indicate that $0\in X$ and $-2\notin X$, equivalently that
+$0$ is a run start.  Removing $0$ from the first copy of $X$ removes it
+from the union in \eqref{eq:unioncount} exactly in this event.  Similarly,
+let $\delta_1$ indicate that $-1\in X$ and $1\notin X$, equivalently that
+$-1$ is a run end.  Removing $1$ from $X+2$ removes it from the union
+exactly in this second event.  As $0$ and $1$ are distinct,
+\begin{equation}\label{eq:endpointcount}
+ |V|=\ell+r-\delta_0-\delta_1.
+\end{equation}
+Thus $r\leq\delta_0+\delta_1\leq2$.
+
+If $r=1$, the run starts at $0$ or ends at $-1$.  These alternatives give,
+respectively,
+\[
+ \{0,2,\ldots,2(\ell-1)\}
+ \quad\hbox{or}\quad
+ \{-1,-3,\ldots,-1-2(\ell-1)\}.
+\]
+Both marked endpoint events cannot occur on one run: a run of length
+$m\leq\ell$ starting at $0$ and ending at $-1$ would imply
+$2(m-1)\equiv-1\pmod p$, whereas
+\[
+ 1\leq2m-1\leq2\ell-1\leq p-4.
+\]
+
+If $r=2$, equation~\eqref{eq:endpointcount} forces
+$\delta_0=\delta_1=1$.  The two marked endpoints lie on different runs by
+the same congruence argument.  Calling the lengths of the run starting at
+$0$ and the run ending at $-1$ respectively $a$ and $b$ gives
+\eqref{eq:Xform} and $a+b=\ell$.  The one-run cases are included by
+allowing $a=0$ or $b=0$.
+
+Shifting \eqref{eq:Xform} and making the two deletions gives
+\eqref{eq:Vform}.  Its two displayed pieces cannot meet: if they did, then
+$p$ would divide $2(i+j)+1$ for some $1\leq i\leq a$ and $0\leq j<b$,
+while
+\[
+ 3\leq2(i+j)+1\leq2\ell-1\leq p-4.
+\]
+Each piece is internally injective as well.  Therefore $|V|=a+b=\ell$.
+The maximal cyclic-run decomposition also recovers $a$ and $b$ uniquely.
+These inequalities supply the needed no-wrap argument in the field.
+\end{proof}
+
+\section{Classification and converse}
+
+\begin{proof}[Proof of Theorem~\ref{thm:classification}]
+Suppose first that $(A,B)$ satisfies the hypotheses.  Its two missing sums
+are distinct residues $s,t$.  Under $z\mapsto uz+v$, restricted sums
+transform by $w\mapsto uw+2v$, since the affine map preserves inequality
+of summands.  Choose
+\[
+ u=\frac{2}{t-s},\qquad 2v=-us.
+\]
+This normalizes the unordered missing set to $\{0,2\}$.
+
+Work in this normalization and put $C=\Fp\setminus A$.  If
+$y\in B\setminus\{0\}$, then $-y\ne y$ because $p$ is odd.  Missingness
+of $0$ therefore forces $-y\in C$.  Likewise, if
+$y\in B\setminus\{1\}$, missingness of $2$ forces $2-y\in C$.  Hence
+\begin{equation}\label{eq:forced}
+ U(B):=((-B)\setminus\{0\})\cup((2-B)\setminus\{1\})\subseteq C.
+\end{equation}
+As $|C|=\ell$, we have $|U(B)|\leq\ell$.  Apply
+Lemma~\ref{lem:runs} to $X=-B$.  It gives unique $a,b\geq0$ with
+$a+b=\ell$ and
+\[
+ B=B_{a,b},\qquad U(B)=C_{a,b},\qquad |U(B)|=\ell.
+\]
+The inclusion \eqref{eq:forced} and equality of cardinalities now give
+$C=C_{a,b}$, hence $A=A_{a,b}$.
+
+We next prove the converse without relying on cardinality alone.  A collision
+between the two pieces of $B_{a,b}$ would make $p$ divide
+$2(i+j)+1\leq2\ell-3$; a collision between the pieces of $C_{a,b}$ would
+make $p$ divide an odd integer at most $2\ell-1$.  Internal collisions are
+also excluded because $2$ is invertible and all index differences have
+absolute value below $p$.  Thus
+\[
+ |B_{a,b}|=|C_{a,b}|=\ell,
+ \qquad |A_{a,b}|=p-\ell.
+\]
+Equation~\eqref{eq:Vform} says $U(B_{a,b})=C_{a,b}$.  Consequently an
+allowed representation of $0$ or $2$ is impossible: except for the
+equal-summand choices $0+0$ and $1+1$, its $A$-summand would belong to
+$U(B_{a,b})=C_{a,b}$.
+
+It remains to represent every other residue.  Assume first that $a,b>0$.
+Then $0,1\in B_{a,b}$.  Every
+$w\notin C_{a,b}\cup\{0\}$ has the allowed representation $w=w+0$.
+For the remaining elements of $C_{a,b}\setminus\{2\}$, use
+\begin{align*}
+ 2i&=(2i-1)+1 &&(2\leq i\leq a),\\
+ -1-2j&=(-2j-2)+1 &&(0\leq j<b).
+\end{align*}
+In both lines the first summand lies outside $C_{a,b}$ and differs from
+$1$.  To verify this in $\Fp$, every possible collision with either piece
+of $C_{a,b}$ reduces either to a nonzero odd integer of absolute value less
+than $p$, or to a positive even integer at most $2\ell<p$.  Also
+$-2j-2\not\equiv1$, since $3\leq2j+3\leq2\ell-1<p$.  Thus no integer-order
+argument has been imported without a modular bound.
+
+If $a=\ell$ and $b=0$, residues outside
+$C_{\ell,0}\cup\{0\}$ are again represented using $0$.  For
+$2\leq i\leq\ell$, set $j=\ell-i+1$ and write
+\[
+ 2i=2(\ell+1)+(-2j).
+\]
+Here $-2j\in B_{\ell,0}$, while
+$2\ell+2\leq p-1$ places the first summand outside $C_{\ell,0}$.  The two
+summands are not congruent: their positive even difference is below $2p$,
+so it is neither the odd number $p$ nor $2p$.  The affine involution
+$z\mapsto1-z$ carries this endpoint family to $a=0,b=\ell$ and transforms
+sums by $w\mapsto2-w$.  This proves
+$A_{a,b}\rsum B_{a,b}=\Fp\setminus\{0,2\}$ in every case.
+
+Finally, suppose $z\mapsto uz+v$ sends one displayed ordered pair to
+another.  It must preserve their missing-sum set, so
+\[
+ \{2v,2u+2v\}=\{0,2\}.
+\]
+Thus either $(u,v)=(1,0)$ or $(u,v)=(-1,1)$.  The identity preserves the
+unique run lengths, whereas direct calculation gives
+\[
+ 1-B_{a,b}=B_{b,a},\qquad 1-C_{a,b}=C_{b,a}.
+\]
+The parameters therefore agree exactly up to swapping.  The $\ell+1$
+ordered decompositions of $\ell$ have
+$\lfloor\ell/2\rfloor+1$ orbits under this swap.
+\end{proof}
+
+\section*{Computational and AI assistance}
+
+An exact Python enumeration was used only as a falsification check: it
+tested every legal value of $\ell$ for $p=11,13,17,19$ after normalization.
+The computation is not used in the universal proof.  OpenAI Codex assisted
+with organizing the cyclic-run argument, checking endpoint and modular
+collision cases, locating bibliographic records, and editing the manuscript.
+The mathematical claims remain the author's responsibility; an AI-assisted
+review is not peer review.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

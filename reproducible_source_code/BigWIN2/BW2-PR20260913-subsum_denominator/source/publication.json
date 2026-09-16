@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "writer_job_id": "primary-20260913-subsum-denominator-write-e591bf2f01fe",
+  "source_files": [
+    "manuscript/README.md",
+    "manuscript/build.sh",
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/verify_edge.py"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build_command": "sh manuscript/build.sh > audit/write-build.log 2>&1",
+  "final_build_log": "manuscript/build/main.log",
+  "verification_command": "python3 manuscript/verify_edge.py",
+  "supporting_data_files": [
+    "evidence/research2_sharp_probe.json",
+    "evidence/research3_sharp_probe.json",
+    "evidence/research3_design_verify.json"
+  ],
+  "user_library_entries": [
+    {"key": "ZengGate", "registry_row": 29, "doi": "10.2139/ssrn.7348478"}
+  ],
+  "author": {
+    "name": "Xiaojian Zeng",
+    "affiliation": "PBC School of Finance, Tsinghua University, 100190",
+    "email": "xiaojianzeng@foxmail.com"
+  }
+}

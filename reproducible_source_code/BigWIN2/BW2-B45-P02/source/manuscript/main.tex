@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1.15in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\La}{\mathcal{L}_a}
+
+\title{Multiplication Closure with a Linear Factor\\
+for Normalized Pochhammer Transforms}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fix $a>0$, and let $\mathcal L_a$ send the normalized falling factorial
+$x^{\underline{k}}/(a)_k$ to $x^k$.  We prove that if
+$\mathcal L_a(P_1)$ has degree one and all its zeros in $[-1,0]$, while
+$\mathcal L_a(P_2)$ has arbitrary finite degree and all its zeros in the
+same interval, then every zero of $\mathcal L_a(P_1P_2)$ also belongs to
+$[-1,0]$.  In particular, this resolves the degree-$(1,2)$ case of the
+all-$a$ multiplication-closure question.  The proof identifies multiplication
+by the linear factor with a first-order differential operator and locates its
+zeros by a strictly increasing partial-fraction quotient.  Repeated and
+endpoint zeros follow by a degree-preserving compact limit.
+\end{abstract}
+
+\section{Context and statement}
+
+For $k\geq 0$, write
+\[
+ (a)_0=1,\qquad (a)_k=a(a+1)\cdots(a+k-1),\qquad
+ e_k(x)=\frac{x^{\underline{k}}}{(a)_k},
+\]
+where $x^{\underline{k}}=x(x-1)\cdots(x-k+1)$.  The polynomials
+$e_k$ form a basis of $\RR[x]$.  Define the degree-preserving linear
+isomorphism
+\[
+ \La:\RR[x]\longrightarrow\RR[x],\qquad \La(e_k)=x^k.
+\]
+This is the normalized Pochhammer transform introduced in the present form
+by Vishnyakova~\cite{Vishnyakova2026}.  It belongs to the broader study of
+linear operators preserving real-rootedness; general structural results for
+such preservers are given, for example, by Borcea and
+Brändén~\cite{BorceaBranden2009}.
+
+Vishnyakova~\cite[Definition~1.4 and Open Problem~1.9]{Vishnyakova2026}
+asks whether the class of polynomials whose transforms have all zeros in
+$[-1,0]$ is closed under multiplication for every $a>0$.  The same source
+records Wagner's theorem that this closure holds when $a=1$; Wagner's
+original result is in~\cite{Wagner1992}.  The theorem below proves the full
+all-$a$ assertion whenever one factor has transformed degree one.  It does
+not address the case in which both transformed factors have degree at least
+two.
+
+Exact rational certificates are another useful way to settle restricted
+parameter families in operator-polynomial problems; a recent example is
+Zeng's treatment of quadratic families in a spectral-set setting
+\cite{Zeng2026Lens}.  Here, however, the universal parameter range is handled
+directly by monotonicity, and computation is not part of the proof.
+
+\begin{theorem}[Linear-factor multiplication closure]\label{thm:main}
+Let $a>0$, let $n\geq0$, and let $P_1,P_2\in\RR[x]$ be nonzero polynomials
+with $\operatorname{deg} P_1=1$ and $\operatorname{deg} P_2=n$.  If every zero of $\La(P_1)$ and
+$\La(P_2)$ lies in $[-1,0]$, then every zero of $\La(P_1P_2)$ lies in
+$[-1,0]$.
+\end{theorem}
+
+Taking $n=2$ gives the first nontrivial low-degree instance of the
+multiplication-closure question for every $a>0$.
+
+\section{The differential operator}
+
+The key reduction uses only the elementary falling-factorial identity
+\[
+ x\,x^{\underline{k}}=x^{\underline{k+1}}+k x^{\underline{k}}.
+\]
+Since $e_1=x/a$, it follows that
+\begin{equation}\label{eq:basis-product}
+ e_1e_k=\frac{a+k}{a}e_{k+1}+\frac{k}{a}e_k.
+\end{equation}
+
+\begin{lemma}\label{lem:operator}
+Let $f=\La(P)$.  For every $r\in\RR$,
+\begin{equation}\label{eq:operator}
+ \La\bigl((e_1+r)P\bigr)
+   =(x+r)f(x)+\frac{x(x+1)}{a}f'(x).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write $f(x)=\sum_{k=0}^n b_kx^k$, so that
+$P=\sum_{k=0}^n b_ke_k$.  Applying $\La$ to
+\eqref{eq:basis-product} coefficientwise gives
+\[
+ \La(e_1P)=\sum_{k=0}^n b_k
+ \left(\frac{a+k}{a}x^{k+1}+\frac{k}{a}x^k\right)
+ =xf+\frac{x(x+1)}a f'.
+\]
+Adding $r\La(P)$ proves the identity.
+\end{proof}
+
+Thus it remains to study, for $0\leq r\leq1$, the operator
+\begin{equation}\label{eq:Tr}
+ T_rf=(x+r)f+\frac{x(x+1)}a f'.
+\end{equation}
+
+\section{Root location}
+
+\begin{lemma}\label{lem:location}
+Fix $a>0$ and $0\leq r\leq1$.  If every zero of a nonzero real polynomial
+$f$ lies in $[-1,0]$, then every zero of $T_rf$ lies in $[-1,0]$.
+Moreover, if $f$ has degree $n$, then $T_rf$ has degree $n+1$.
+\end{lemma}
+
+\begin{proof}
+First suppose that $n\geq1$, that $f$ is monic with distinct zeros in
+$(-1,0)$, and that $0<r<1$.  Write
+\[
+ f(x)=\prod_{i=1}^n(x+s_i),\qquad 0<s_1<\cdots<s_n<1.
+\]
+Away from the zeros of $f$, logarithmic differentiation and elementary
+division give
+\begin{align}
+ H(x):=\frac{T_rf(x)}{f(x)}
+ &=x+r+\frac{x(x+1)}a\sum_{i=1}^n\frac1{x+s_i}\notag\\
+ &=\left(1+\frac na\right)x+r+\frac{n-\sum_i s_i}{a}
+   -\sum_{i=1}^n\frac{s_i(1-s_i)}{a(x+s_i)}.\label{eq:H}
+\end{align}
+Consequently, on every interval separated by the poles $-s_i$,
+\begin{equation}\label{eq:Hprime}
+ H'(x)=1+\frac na+
+ \sum_{i=1}^n\frac{s_i(1-s_i)}{a(x+s_i)^2}>0.
+\end{equation}
+Each pole has strictly negative residue.  Hence $H$ tends to $+\infty$
+from the left of each pole and to $-\infty$ from its right.  Together with
+the signs at infinity and strict monotonicity, this puts exactly one zero of
+$H$ in each of the $n+1$ pole-separated intervals.  No polynomial zero is
+lost at a pole, because
+\[
+ T_rf(-s_i)=-\frac{s_i(1-s_i)}a f'(-s_i)\neq0.
+\]
+
+The two exterior zeros also lie in the target interval.  Indeed, directly
+from the first line of \eqref{eq:H},
+\begin{equation}\label{eq:endpoint-values}
+ H(-1)=r-1<0,\qquad H(0)=r>0.
+\end{equation}
+On the left exterior interval, monotonicity and $H(-1)<0$ put its zero to
+the right of $-1$; on the right exterior interval, $H(0)>0$ puts its zero
+to the left of $0$.  All middle zeros lie between poles in $(-1,0)$.
+Thus all $n+1$ zeros of $T_rf$ are distinct and belong to $(-1,0)$.
+
+For the remaining cases, first scale $f$ to be monic; this does not change
+any zero.  Write its roots as $-s_i$ with $s_i\in[0,1]$.  Choose pairwise
+distinct $s_{i,m}\in(0,1)$ converging to $s_i$, and choose
+$r_m\in(0,1)$ converging to $r$.  Put
+$f_m(x)=\prod_i(x+s_{i,m})$.  By the generic case, all roots of
+$T_{r_m}f_m$ lie in the compact interval $[-1,0]$.  These polynomials
+converge coefficientwise to $T_rf$, and every one, including the limit, has
+degree $n+1$ with leading coefficient $1+n/a>0$.  After normalizing this
+leading coefficient, compactness of the ordered root tuples in
+$[-1,0]^{n+1}$ and continuity of elementary symmetric functions show that
+$T_rf$ also factors into $n+1$ roots in $[-1,0]$.  Finally, if $n=0$ then
+$T_rf=(x+r)f$, so the conclusion is immediate.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Independent nonzero scalar multiples of $P_1$ and $P_2$ do not affect the
+zero sets at issue.  We may therefore write
+\[
+ \La(P_1)=x+r,\qquad 0\leq r\leq1,
+\]
+and hence $P_1=e_1+r$.  Put $f=\La(P_2)$.  Lemma~\ref{lem:operator}
+identifies $\La(P_1P_2)$ with $T_rf$, and
+Lemma~\ref{lem:location} gives the claimed root location.
+\end{proof}
+
+For completeness, in the original quadratic case write
+$f=(x+s)(x+t)$, where $r,s,t\in[0,1]$.  Formula~\eqref{eq:operator} expands
+to
+\[
+ \La(P_1P_2)=rst+
+ \left(r(s+t)+st+\frac{s+t}{a}\right)x+
+ \left(r+\frac{(a+1)(s+t)+2}{a}\right)x^2+
+ \frac{a+2}{a}x^3.
+\]
+Theorem~\ref{thm:main} therefore covers the complete semialgebraic parameter
+range $a>0$ and $r,s,t\in[0,1]$, including repeated roots and both endpoints.
+
+\section*{Assistance disclosure}
+
+The proof was developed and the manuscript was drafted with AI assistance.
+A symbolic-algebra script was used to check the basis-operator identity, the
+displayed quadratic-case cubic, and the partial-fraction expansion for sample
+degrees.  Those checks were transcription safeguards only; the universal
+root-location conclusion follows from the self-contained argument above.
+The author takes responsibility for the statements and proof.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

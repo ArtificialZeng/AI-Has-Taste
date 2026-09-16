@@ -1,0 +1,145 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\raggedbottom
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{The Exact Finite Sumset Value \(s(12,38)=65\)}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{2026-09-01}
+\hypersetup{pdftitle={The Exact Finite Sumset Value s(12,38)=65},pdfauthor={Zijian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+For \(s(k,n)=\max\{|A+A|:A\subseteq[1,n],\ |A|=k\}\), we prove the
+exact finite value \(s(12,38)=65\).  The lower bound is witnessed by an
+explicit integer set.  The upper bound is a finite computational proposition:
+a definition-level CNF encoding of the existence of a set with at least 66
+distinct sums has a DRUP/DRAT refutation that is replayed by an independent
+proof checker.  Exhaustive small-instance comparisons test the encoding.
+This result concerns one finite cell and has no claimed asymptotic consequence.
+\end{abstract}
+
+\maketitle
+\enlargethispage{4pt}
+
+\section{Introduction}
+
+Pikhurko introduced the finite extremal quantity
+\[
+s(k,n)=\max\{|A+A|:A\subseteq[1,n],\ |A|=k\}
+\]
+in connection with edge-magic graphs and quasi-Sidon sets
+\cite{Pikhurko2006}.  An online computational report dated August 12, 2026,
+records exact values through \(n=37\), including \(s(12,37)=64\)
+\cite{EPAD840}.  Its linked certificate bundle was not accessible during the
+present audit, so that row is background rather than an input to our proof.
+
+We determine only the next specified cell.  Exact-phrase, repository, and
+forward-source searches through September 1, 2026, located no earlier public
+determination of \(s(12,38)\).  This bounded search statement is not a claim
+that an uncatalogued computation cannot exist.
+
+\section{Definitions and reductions}
+
+Write \([1,n]=\{1,\ldots,n\}\) and
+\(A+A=\{a+b:a,b\in A\}\); diagonal sums are included.  There are
+\(\binom{13}{2}=78\) unordered pairs with repetition for a 12-set, and all
+sums lie in \([2,76]\).
+
+Translation preserves the objective.  Every nonempty subset of \([1,38]\)
+can therefore be translated to have minimum 1 while remaining in
+\([1,38]\).  The upper-bound encoding imposes this normalization.
+
+\section{Main result}
+
+\begin{theorem}\label{thm:main}
+Let
+\[
+s(12,38)=\max_{\substack{A\subseteq\{1,\ldots,38\}\\|A|=12}}|A+A|.
+\]
+Then \(s(12,38)=65\).
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+A=\{1,2,4,8,13,18,21,26,31,35,37,38\}.
+\]
+Direct integer evaluation gives the 65 sums
+\begin{align*}
+&2,3,4,5,6,8,9,10,12,14,15,16,17,19,20,21,22,23,25,26,27,28,\\
+&29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,\\
+&49,50,51,52,53,55,56,57,58,59,61,62,63,64,66,68,69,70,72,73,\\
+&74,75,76.
+\end{align*}
+Thus \(s(12,38)\ge65\).
+
+For the reverse inequality, Proposition~\ref{prop:certificate} certifies that
+no normalized 12-subset has 66 distinct sums.  Translation shows that every
+12-subset has a normalized representative, so \(s(12,38)\le65\).
+\end{proof}
+
+\section{Exact finite certificate}
+
+\begin{proposition}\label{prop:certificate}
+There is no 12-element \(A\subseteq[1,38]\) satisfying \(|A+A|\ge66\).
+\end{proposition}
+
+The CNF has selection variables \(x_i\) for \(1\le i\le38\), pair variables
+\(z_{ij}\) for \(1\le i<j\le38\), and sum variables \(y_t\) for
+\(2\le t\le76\).  Sequential-counter clauses impose
+\(\sum_i x_i=12\), and the unit clause \(x_1\) imposes the translation
+normalization.  For \(i<j\), three clauses express
+\(z_{ij}\leftrightarrow(x_i\wedge x_j)\); for diagonal pairs we use
+\(z_{ii}=x_i\).  For each \(t\), clauses express
+\[
+y_t\longleftrightarrow\bigvee_{\substack{1\le i\le j\le38\\i+j=t}}z_{ij}.
+\]
+A final sequential counter imposes \(\sum_{t=2}^{76}y_t\ge66\).
+Consequently the CNF is satisfiable exactly when the forbidden set exists.
+
+The generated DIMACS instance has 2034 variables and 5419 clauses.  A
+proof-producing SAT solver emitted an ASCII DRUP/DRAT refutation.  The
+separate \texttt{drat-trim} checker \cite{WetzlerHeuleHunt2014} reported
+\texttt{VERIFIED}; its backward check retained 3854 input clauses and 59,494
+lemmas and performed 6,690,497 resolution steps.  This proves the proposition.
+
+As a separate attack on encoding errors, transparent enumeration of every
+subset for all 55 cells \(1\le k\le n\le10\) was compared with the SAT encoding
+at the optimum and the two adjacent thresholds.  All comparisons passed.  The
+target CNF was regenerated after the test and was byte-for-byte identical.
+
+\section{Limitations}
+
+The theorem establishes an attained maximum but does not classify all
+maximizing 12-sets.  It does not compute another entry of the \(n=38\) row and
+does not strengthen any asymptotic quasi-Sidon bound.
+
+\section*{Data, code, and computational disclosure}
+
+The accompanying archive contains the literal witness, an independent integer
+evaluator, the definition-to-CNF generator, the DIMACS instance, the DRUP/DRAT
+proof, the checker log, and the small-instance cross-check.  The full commands
+and software versions are recorded in \texttt{REPRODUCE.md}.  Computational
+search was used to discover the witness and refutation; discovery and
+certificate verification are separated, and the theorem relies only on the
+displayed exact witness and the replayed finite proof.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

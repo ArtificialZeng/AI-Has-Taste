@@ -1,0 +1,53 @@
+{
+  "job_id": "primary-20260913-multiset-rook-triage-cd5e7d22bd0b",
+  "lam": [
+    3,
+    3,
+    3,
+    3,
+    4,
+    4
+  ],
+  "alpha": [
+    2,
+    2,
+    1,
+    1
+  ],
+  "enumeration": "Depth-first remaining-content recursion, bounded by each row flag; no search-script import.",
+  "legal_words": 60,
+  "refined_counts": {
+    "1": {
+      "2": 7,
+      "3": 15,
+      "4": 2
+    },
+    "2": {
+      "1": 1,
+      "2": 15,
+      "3": 8
+    },
+    "3": {
+      "1": 3,
+      "2": 8,
+      "3": 1
+    }
+  },
+  "refinements": {
+    "1": "2*t**4 + 15*t**3 + 7*t**2",
+    "2": "8*t**3 + 15*t**2 + t",
+    "3": "t**3 + 8*t**2 + 3*t"
+  },
+  "factorizations": {
+    "1": "t**2*(t + 7)*(2*t + 1)",
+    "2": "t*(8*t**2 + 15*t + 1)",
+    "3": "t*(t**2 + 8*t + 3)"
+  },
+  "total": "2*t**4 + 24*t**3 + 30*t**2 + 4*t",
+  "total_real_root_multiplicity": 4,
+  "total_degree": 4,
+  "exact_violation": "deg(R1)=deg(R3)+1, but minroot(R3)=-4-sqrt(13)<-7=minroot(R1); hence R3 does not precede R1 in Definition 8.",
+  "source_sha256": "2a88f14a8f18991b1253ef13abad929e8b00f48326545c52911ef89a6707f18f",
+  "word_list_sha256": "740703e89a0388b3f1aa1f75fa37e7fed3e22fee5cff16748a69aa8a7fc51f86",
+  "limitation": "Triage cross-check only; total polynomial here is real-rooted; no independent referee or priority claim."
+}

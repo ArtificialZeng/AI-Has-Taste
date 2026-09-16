@@ -1,0 +1,369 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Proof-Carrying Exclusion Through Length 18 for the 3-out-of-5 Picture-Hanging Word},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\title{A Proof-Carrying Exclusion Through Length 18\\
+for the 3-out-of-5 Picture-Hanging Word}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The exact shortest-word problem for the 3-out-of-5 picture-hanging puzzle is
+not settled here.  We prove the subsidiary lower bound that no admissible
+element of the free group on five generators has reduced length at most 18.
+The reduction has twelve finite cases: every generator has a positive even
+occurrence count, a shortest word is cyclically reduced, and complete
+generator, sign, and rotation symmetries leave twelve sorted count patterns
+through length 18.  For each pattern, an exact interval grammar for free
+reduction is translated to CNF.  Glucose3 produces a DRUP refutation, and
+each archived refutation is independently accepted by \texttt{drat-trim} and
+by a second RUP replay.  An explicit word of length 26 passes all twenty
+essential deletion tests.  Consequently \(20\leq L(3,5)\leq 26\); the
+possibilities 20, 22, 24, and 26 remain.
+\end{abstract}
+
+\section{Problem, context, and contribution}
+
+Picture-hanging puzzles were formulated in free-group language by Demaine
+et al.~\cite{DemaineEtAl2014}; later construction bounds include those of
+W\"astlund~\cite{Wastlund2021}.  Verhoeff~\cite{Verhoeff2026} studied short
+\(k\)-out-of-\(n\) words, proved the exact minimum 16 for 2-out-of-4, and
+identified 3-out-of-5 as the next small exact-minimum case left undetermined
+in that work.  The associated exhaustive-search record excludes lengths
+through 16, but supplies a search log rather than a proof object for those
+exclusions.
+
+Let
+\[
+ F_5=\langle x_1,x_2,x_3,x_4,x_5\rangle
+\]
+be the free group, and let \(\ell(w)\) be the length of the unique freely
+reduced word representing \(w\).  For \(S\subseteq[5]\), the deletion
+homomorphism \(\pi_S\) sends \(x_i\) to \(\mathbf{1}\) for \(i\in S\) and fixes the
+other generators.  An element \(w\) is \emph{3-out-of-5 admissible} when
+\[
+ w\ne\mathbf{1},\qquad
+ \pi_S(w)=\mathbf{1}\quad(|S|=3),\qquad
+ \pi_S(w)\ne\mathbf{1}\quad(|S|=2).
+\]
+The target of the exact problem is
+\[
+ L(3,5)=\min\left\{\ell(w):w\text{ is 3-out-of-5 admissible}\right\}.
+\]
+Equivalently, if \(\rho_R=\pi_{[5]\setminus R}\) retains precisely the
+generators in \(R\), then all ten pair projections \(\rho_R(w)\),
+\(|R|=2\), must be the identity and all ten triple projections, \(|R|=3\),
+must be nonidentity.
+
+Our scope is the following strict subsidiary result.
+
+\begin{theorem}\label{thm:lower}
+There is no 3-out-of-5 admissible element of reduced length at most \(18\).
+Hence \(L(3,5)\geq20\).
+\end{theorem}
+
+Together with the explicit upper-bound certificate in
+Proposition~\ref{prop:upper}, this narrows the exact problem to four even
+values.  It does not determine which of them occurs.  Proof-carrying finite
+searches elsewhere likewise separate an encoding from its solver outcome;
+for example, Zeng~\cite{Zeng2026GCD} uses an exact cardinality circuit and a
+checkable DRAT derivation for a finite pairwise-GCD extremal value.  Here the
+domain-specific ingredient is an interval grammar that is exactly equivalent
+to free reduction after each generator projection.
+
+\section{An explicit upper-bound certificate}
+
+Write the signed integer \(i\) for \(x_i\) and \(-i\) for \(x_i^{-1}\).
+Consider
+\begin{align*}
+W={}&(1,2,3,4,-1,-2,-3,-4,5,\
+       2,1,4,3,-4,-3,-2,-1,\\
+    &\qquad 3,4,1,2,-4,-3,-2,-1,-5).
+\end{align*}
+
+\begin{proposition}\label{prop:upper}
+The word \(W\) is freely reduced, has length \(26\), and is 3-out-of-5
+admissible.  In particular, \(L(3,5)\leq26\).
+\end{proposition}
+
+\begin{proof}
+No adjacent entries of \(W\) are inverse, so its reduced length is 26.
+A direct stack reduction gives \(\rho_R(W)=\mathbf{1}\) for each of the ten pairs
+\[
+12,13,14,15,23,24,25,34,35,45.
+\]
+For the ten retained triples, the lengths of the freely reduced residuals are
+as follows:
+\[
+\begin{array}{c|rrrrrrrrrr}
+R&123&124&125&134&135&145&234&235&245&345\\ \hline
+\ell(\rho_R(W))&16&16&10&18&10&10&18&10&10&10.
+\end{array}
+\]
+Every entry is positive.  These are exactly the twenty required projection
+tests, so \(W\) is admissible.
+\end{proof}
+
+The word is also obtainable from Verhoeff's one-step construction
+\cite[Proposition~15]{Verhoeff2026}, with four letters cancelled at the
+junction.  The displayed word and the projection data above are independent
+of that provenance.
+
+\section{Complete reduction to twelve cases}
+
+We next isolate all cases that a shortest word of length below 20 could
+occupy.
+
+\begin{lemma}\label{lem:counts}
+In every admissible word, each of the five generators occurs a positive even
+number of times, half with each sign.  Consequently every admissible length is
+even and at least 10.
+\end{lemma}
+
+\begin{proof}
+Suppose generator \(g\) were absent.  For two other generators \(a,b\), the
+projection retaining \(a,b,g\) would equal the projection retaining \(a,b\).
+The former is required to be nonidentity and the latter identity, a
+contradiction.  Thus every generator occurs.  Retain any pair containing
+\(g\).  Its projection is the identity, so its exponent sum in \(g\), which
+is the exponent sum of the original word in \(g\), is zero.  Hence the
+positive and negative occurrences of \(g\) are equally numerous.
+\end{proof}
+
+\begin{lemma}\label{lem:cyclic}
+A shortest admissible word is cyclically reduced.
+\end{lemma}
+
+\begin{proof}
+If its reduced spelling began with a letter \(a\) and ended with \(a^{-1}\),
+it would have the form \(aua^{-1}\).  Every retained-set projection of this
+word is either the corresponding conjugate of the projection of \(u\), or
+just that projection when \(a\) is deleted.  Thus identity versus nonidentity
+is unchanged, and \(u\) would be a shorter admissible word.
+\end{proof}
+
+Let \(c_i\) be the unsigned number of occurrences of generator \(i\).
+Generator permutation puts the vector \((c_1,\ldots,c_5)\) in nondecreasing
+order.  Lemma~\ref{lem:counts} then gives exactly the following patterns.
+
+\begin{table}[ht]
+\centering
+\caption{All sorted positive-even occurrence patterns below length 20.}
+\label{tab:patterns}
+\begin{tabular}{c@{\qquad}l}
+\toprule
+length & sorted pattern(s)\\
+\midrule
+10 & \((2,2,2,2,2)\)\\
+12 & \((2,2,2,2,4)\)\\
+14 & \((2,2,2,2,6)\), \((2,2,2,4,4)\)\\
+16 & \((2,2,2,2,8)\), \((2,2,2,4,6)\), \((2,2,4,4,4)\)\\
+18 & \((2,2,2,2,10)\), \((2,2,2,4,8)\), \((2,2,2,6,6)\),\\
+   & \((2,2,4,4,6)\), \((2,4,4,4,4)\)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The finite encoding uses only complete symmetries.  For a shortest word, first
+sort its counts.  Cyclically rotate to an occurrence of a least-count
+generator, call that generator 1, and independently invert generator 1 so
+that the first letter is \(+1\).  Within every equal-count block, name the
+remaining generators by order of first occurrence.  Independently invert each
+generator whose first occurrence is negative.  Finally, cyclic reduction
+ensures that the last letter is not \(-1\).  Generator permutation,
+independent inversion, and cyclic rotation preserve length and every
+projection condition.  Hence these constraints retain a representative of
+every possible shortest word.  Reversal symmetry is not used.
+
+\section{An exact CNF encoding of free reduction}
+
+Fix a length \(L\) and one pattern in Table~\ref{tab:patterns}.  At each
+position \(i\in\{0,\ldots,L-1\}\), one-hot variables choose one of the ten
+signed generators.  Clauses forbid adjacent inverse letters.  For generator
+\(g\), standard sequential-counter clauses~\cite{Sinz2005} require exactly
+\(c_g/2\) positive and \(c_g/2\) negative occurrences.  The complete symmetry
+conditions from the preceding section are imposed syntactically.
+
+It remains to encode all projected free reductions.  For each retained set
+\(R\) of size two or three and each half-open interval \(\mathopen{[}i,j)\), introduce
+\(E_R(i,j)\).  Its intended meaning is that the projection onto \(R\) of the
+subword in \(\mathopen{[}i,j)\) freely reduces to the identity.  Set \(E_R(i,i)\) true
+and, in increasing interval width, impose the equivalence
+\begin{equation}\label{eq:grammar}
+E_R(i,j)\ \Longleftrightarrow\
+\begin{cases}
+E_R(i+1,j),& |w_i|\notin R,\\[2mm]
+\displaystyle\mathop{\vee}\limits_{i<k<j}
+ \bigl(w_k=w_i^{-1}\ \wedge E_R(i+1,k)\wedge E_R(k+1,j)\bigr),
+ & |w_i|\in R.
+\end{cases}
+\end{equation}
+All relevance tests, inverse matches, conjunctions, and disjunctions in
+\eqref{eq:grammar} are represented by definitional auxiliary variables and
+both directions of their CNF equivalences.  The top-level clauses require
+\[
+ E_R(0,L)\quad (|R|=2),
+ \qquad
+ \lnot E_R(0,L)\quad (|R|=3).
+\]
+
+\begin{lemma}\label{lem:grammar}
+For every signed word, retained set \(R\), and interval \(\mathopen{[}i,j)\),
+\(E_R(i,j)\) as defined by \eqref{eq:grammar} is true if and only if the
+projected interval freely reduces to the identity.
+\end{lemma}
+
+\begin{proof}
+Induct on \(j-i\).  An unretained first letter is deleted, giving the first
+case.  If the first letter is retained and the projection reduces to the
+identity, that letter cancels with a later inverse.  Immediately before this
+cancellation the projected subword between the two letters has reduced to the
+identity; after the cancellation the projected suffix must also reduce to the
+identity.  This supplies one disjunct in the second case.  Conversely, any
+such disjunct permits the middle and suffix reductions and then cancellation
+of the matched inverse pair.  The shorter intervals are covered by the
+induction hypothesis.
+\end{proof}
+
+It follows that a satisfying assignment spells a normalized, freely reduced
+word with precisely the required pair and triple projections.  Conversely,
+the normalized representative of any shortest admissible word with the fixed
+pattern extends to a satisfying assignment by the displayed equivalences.
+
+\section{Proof certificates and the lower bound}
+
+The twelve formulas and archived refutations were generated under Python
+3.10.12 with PySAT 1.8.dev24~\cite{IgnatievEtAl2018}, using its
+\texttt{glucose3} backend.  Glucose3 returned UNSAT and emitted the textual
+DRUP derivations.  A fresh run in the same recorded environment reproduced
+all twelve CNFs and all twelve derivations byte for byte.  Table
+\ref{tab:certificates} records the exact formula sizes and the number of
+nondeletion RUP additions checked by the second replay path.  Every proof ends
+with an empty-clause addition.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{The twelve checked UNSAT cases.  ``Clauses'' counts the original
+CNF; ``RUP'' counts checked clause additions, including the empty clause.}
+\label{tab:certificates}
+\begin{tabular}{r l r r r}
+\toprule
+\(L\)&pattern&variables&clauses&RUP\\
+\midrule
+10&(2,2,2,2,2)&6,410&31,322&35\\
+12&(2,2,2,2,4)&10,228&49,810&394\\
+14&(2,2,2,2,6)&15,236&74,236&759\\
+14&(2,2,2,4,4)&15,270&74,278&1,733\\
+16&(2,2,2,2,8)&21,612&105,398&1,465\\
+16&(2,2,2,4,6)&21,658&105,428&6,117\\
+16&(2,2,4,4,4)&21,696&105,506&12,613\\
+18&(2,2,2,2,10)&29,516&144,096&2,838\\
+18&(2,2,2,4,8)&29,574&144,142&6,264\\
+18&(2,2,2,6,6)&29,582&144,194&6,700\\
+18&(2,2,4,4,6)&29,624&144,208&50,966\\
+18&(2,4,4,4,4)&29,666&144,294&37,708\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The archived CNF/proof pairs were independently replayed with
+\texttt{drat-trim}~\cite{WetzlerHeuleHunt2014}.  Each of the twelve processes
+returned exit code zero and exactly one \texttt{s VERIFIED} marker.  The audit
+binds every result to the formula, proof, checker, and raw-output digests.
+
+As a separate replay path, a checker uses MiniSat
+2.2~\cite{EenSorensson2003} solely as a unit-propagation engine.  For every
+proposed addition \(C\), it assumes the negation of every literal of \(C\),
+demands a propagation conflict, and only then adds \(C\).  Thus each accepted
+clause is a reverse-unit-propagation (RUP) consequence.  Deletion records are
+ignored: retaining a previously checked consequence merely strengthens the
+working formula, and induction shows that every retained clause follows from
+the original CNF.  A RUP-checked empty clause proves unsatisfiability.  This
+is the RUP fragment of the clausal proof framework discussed by Wetzler,
+Heule, and Hunt~\cite{WetzlerHeuleHunt2014}.
+
+Several checks address the finite reduction separately from solver replay.
+The archived generator reproduced every stored CNF clause for clause.  An
+independent partition enumeration returned respectively \(1,1,2,3,5\)
+patterns at lengths \(10,12,14,16,18\).  The interval grammar was compared
+with an independent stack reducer on all 335,923 words of length at most 7
+over two retained generators and one ignored generator; every result agreed.
+The sequential-counter component was separately tested at every length and
+bound used here.  These checks are not substitutes for
+Lemma~\ref{lem:grammar} or the DRUP derivations; they are implementation
+audits of those two decisive components.
+
+\begin{proof}[Proof of Theorem~\ref{thm:lower}]
+Assume that an admissible element of length at most 18 exists, and choose a
+shortest admissible word.  By Lemmas~\ref{lem:counts} and
+\ref{lem:cyclic}, its length and sorted count pattern occur in
+Table~\ref{tab:patterns}, and the word is cyclically reduced.  Apply the
+complete symmetries described above.  Lemma~\ref{lem:grammar} then extends the
+normalized word to a satisfying assignment of the corresponding CNF.  But
+the associated checked DRUP certificate proves that CNF unsatisfiable, a
+contradiction.  Therefore no admissible word has length at most 18.  Since
+admissible lengths are even, \(L(3,5)\geq20\).
+\end{proof}
+
+\section{Scope, reproducibility, and next frontier}
+
+Relative to Verhoeff's reported exclusions through length 16
+\cite{Verhoeff2026}, the contribution is a proof-checkable exclusion at
+length 18 together with self-contained certificates for all earlier possible
+lengths.  Proposition~\ref{prop:upper} supplies the other side of
+\[
+20\leq L(3,5)\leq26.
+\]
+No assertion is made about the exact value, the existence of a length-20,
+22, or 24 word, or the classification of minimizers.  The literature
+comparison is limited to the cited sources and version 1 of Verhoeff's
+preprint; it is not a claim of exhaustive priority.
+
+The supplementary archive contains the CNF generator
+\texttt{search\_exact\_sat.py}, all twelve DIMACS formulas and DRUP proofs,
+the Glucose3 byte-reproduction audit, the independent \texttt{drat-trim}
+audit, the separate RUP replay checker \texttt{check\_drup.py}, the
+deterministic encoding audit \texttt{audit\_exact\_encoding.py}, and the
+independent upper-word checker \texttt{verify\_upper26.py}.  The next
+decisive computation is the same proof-producing split at length 20.  Its
+seven sorted patterns are
+\[
+\begin{gathered}
+(2,2,2,2,12),\ (2,2,2,4,10),\ (2,2,2,6,8),\
+(2,2,4,4,8),\\
+(2,2,4,6,6),\ (2,4,4,4,6),\ (4,4,4,4,4).
+\end{gathered}
+\]
+A checked satisfying word in any case would prove \(L(3,5)=20\); seven
+checked UNSAT certificates would raise the lower bound to 22.
+
+\paragraph{Computational and AI assistance.}
+The finite search, proof generation, byte reproduction, and exact replay used
+the software and versions stated above; no floating-point calculation
+supports a mathematical claim.  An OpenAI Codex language model assisted with
+research planning, implementation, manuscript drafting, and internal
+consistency checks.  The author reviewed the statement, proof, code, and
+reported scope and takes responsibility for the article.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

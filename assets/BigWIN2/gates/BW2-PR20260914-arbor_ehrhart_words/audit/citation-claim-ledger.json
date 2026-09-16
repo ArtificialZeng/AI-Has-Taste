@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "job_id": "primary-20260914-arbor-ehrhart-words-release-df3b6d5a637c",
+  "citation_attempt": 1,
+  "citation_release_launch_id": "29ed2b81-e679-488f-914f-eff372f40c2d",
+  "manuscript_path": "manuscript/main.tex",
+  "bibliography_path": "manuscript/references.bib",
+  "snapshot_digest": "5f194544844405ff5f34b30b67d46783a6681d5dcd9e613d9868ceca69c19d76",
+  "manuscript_digest": "86d46d2a9bca82f4a491660782aab2fd6bab55254b9b392ef32d82dc8330d322",
+  "pdf_digest": "a0966dd2d7f0ae4465313fac6828dcc584637c136f7f96f29a054eb42a3c2b93",
+  "extraction_method": "Pass 1: complete 356-line manuscript read; direct ordinary body-flow citation pairs and substantive mathematical/context assertions frozen before source verification. Definitions are retained when attributed; methodology disclosure is not an external citation claim. No interactive confirmation, per job instruction.",
+  "claims": [
+    {
+      "id": "C01",
+      "text": "The all-arbor Ehrhart-word conjecture is proved by a subtree transformation and coefficient extraction.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 28,
+        "line_end": 36
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "We prove the conjecture of Athanasiadis, Xiao and Yan expressing the Ehrhart numerator of every arbor polytope as the non-descent enumerator of words satisfying descendant-set multiplicity conditions. The main step is a polynomial transformation relating upper bounds on lattice-point coordinates to lower bounds on binomially weighted word contents at every subtree. Extracting one coefficient gives an identity for every nonnegative integer dilation. A decreasing-box construction then yields the word formula. The argument allows arbitrary nonempty blocks, labels, depth, and branching."
+    },
+    {
+      "id": "C02",
+      "text": "The stated definition of an arbor is due to Chapoton.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 41,
+        "line_end": 42
+      },
+      "citation_keys": [
+        "Chapoton"
+      ],
+      "manuscript_excerpt": "An \\emph{arbor} on $[n]=\\{1,\\ldots,n\\}$ is a rooted tree whose vertices are the nonempty blocks of a partition of $[n]$ \\cite{Chapoton}."
+    },
+    {
+      "id": "C03",
+      "text": "The arbor polytope contains the unit cube, is bounded, is a lattice polytope, and has dimension n.",
+      "type": "Existence + Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 50,
+        "line_end": 52
+      },
+      "citation_keys": [
+        "Chapoton"
+      ],
+      "manuscript_excerpt": "It contains $[0,1]^n$ and is bounded by the root inequality. It is a lattice polytope by \\cite[Lemma~1.2]{Chapoton}. In particular, its dimension is $n$. Put $L_\\tau(m)=|mQ_\\tau\\cap\\Z^n|$ for $m\\in\\N$, with"
+    },
+    {
+      "id": "C04",
+      "text": "Ordinary non-descents count weak rises, including equal adjacent letters.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 64,
+        "line_end": 69
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "Letters may repeat or be absent. With the usual order on $[n]$, put \\[ \\des(w)=|\\{j:1\\leq j<n,\\ w_j>w_{j+1}\\}|, \\qquad d(w)=n-1-\\des(w). \\] Thus $d(w)$ counts weak rises, including adjacent equal letters."
+    },
+    {
+      "id": "C05",
+      "text": "For every arbor and every nonnegative integer dilation, the lattice count is the stated binomial-content sum and its Ehrhart numerator is the ordinary non-descent word polynomial.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 76,
+        "line_end": 85
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\begin{theorem}\\label{thm:main} For every arbor $\\tau$ on $[n]$ and every integer $m\\geq0$, \\begin{equation}\\label{eq:binomial} L_\\tau(m)=\\sum_{a\\in A_\\tau}\\prod_{i=1}^n\\binom{m+1}{a_i}, \\end{equation} where $\\binom{m+1}{a_i}=0$ when $a_i>m+1$. Consequently, \\begin{equation}\\label{eq:word} h^*(Q_\\tau,t)=\\sum_{w\\in W_\\tau}t^{n-1-\\des(w)}. \\end{equation} \\end{theorem}"
+    },
+    {
+      "id": "C06",
+      "text": "The word identity is AXY Conjecture 5.2; their Theorem 1.5 proves the root-block and singleton-leaf case.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 87,
+        "line_end": 89
+      },
+      "citation_keys": [
+        "AC",
+        "AXY"
+      ],
+      "manuscript_excerpt": "Equation~\\eqref{eq:word} is Conjecture~5.2 of Athanasiadis, Xiao and Yan \\cite{AXY}. Their Theorem~1.5 proves the case of a root block with singleton leaves. Athanasiadis and Chapoton \\cite[Conjecture~4.4]{AC}"
+    },
+    {
+      "id": "C07",
+      "text": "AC Conjecture 4.4 treats arbitrary preorders, and Remark 7.3 gives the binomial-content reformulation.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 89,
+        "line_end": 93
+      },
+      "citation_keys": [
+        "AC"
+      ],
+      "manuscript_excerpt": "singleton leaves. Athanasiadis and Chapoton \\cite[Conjecture~4.4]{AC} formulate the corresponding assertion for arbitrary preorders; their Remark~7.3 gives the binomial-content reformulation \\eqref{eq:binomial}. These identities and the fixed-content word identity used below are therefore prior formulations."
+    },
+    {
+      "id": "C08",
+      "text": "Chapoton Proposition 2.1 supplies the upper height recurrence; compatibility with the lower recurrence is the contribution here.",
+      "type": "Attribution + Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 95,
+        "line_end": 100
+      },
+      "citation_keys": [
+        "Chapoton"
+      ],
+      "manuscript_excerpt": "Our contribution is the compatibility of a polynomial transformation with the two subtree recurrences in Section~\\ref{sec:subtrees}. The upper recurrence is Chapoton's height-counting recurrence \\cite[Proposition~2.1]{Chapoton}. Its relation to a lower-truncation recurrence proves the asserted identities for every arbor. All algebra below concerns formal series and finite polynomials."
+    },
+    {
+      "id": "C09",
+      "text": "The local truncation identity holds for all integers b>=1 and K>=0 by coefficientwise binomial convolution.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 109,
+        "line_end": 126
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\begin{lemma}\\label{lem:local} For integers $b\\geq1$ and $K\\geq0$, \\begin{equation}\\label{eq:local} y^b\\sum_{q=0}^{K}\\binom{q+b-1}{b-1}(1+y)^{K-q} =T_{\\geq b}(1+y)^{K+b}. \\end{equation} \\end{lemma} \\begin{proof} Both sides have degrees between $b$ and $K+b$. For $0\\leq j\\leq K$, the coefficient of $y^{b+j}$ on the left is \\begin{align*} \\sum_{q=0}^{K-j}\\binom{q+b-1}{b-1}\\binom{K-q}{j} &=[z^{K-j}](1-z)^{-b}(1-z)^{-j-1}\\\\ &=\\binom{K+b}{b+j}. \\end{align*} The first equality follows by multiplying the two binomial series. These are exactly the coefficients on the right, including when $K=0$."
+    },
+    {
+      "id": "C10",
+      "text": "The operator identity holds for m>=0 and N>=b>=1 with degree at most m(N-b), without coefficient sign restrictions or infinite-series substitution.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 129,
+        "line_end": 159
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\begin{lemma}\\label{lem:operator} Let $m\\geq0$ and $N\\geq b\\geq1$ be integers. For any polynomial $R(x)$ of degree at most $m(N-b)$, define \\[ H(x)=T_{\\leq mN}\\bigl((1-x)^{-b}R(x)\\bigr). \\] Then \\begin{equation}\\label{eq:operator} \\begin{split} y^N(1+y)^{mN}H\\bigl((1+y)^{-1}\\bigr) =T_{\\geq N}\\!\\left( y^{N-b}(1+y)^{mN+b}R\\bigl((1+y)^{-1}\\bigr)\\right). \\end{split} \\end{equation} No sign condition on the coefficients of $R$ is required. \\end{lemma} \\begin{proof} Expand $R(x)=\\sum_s r_s x^s$. For each term put $K=mN-s$; the degree bound ensures $K\\geq mb\\geq0$. Its contribution to the left side of \\eqref{eq:operator} is \\begin{align*} r_s y^N\\sum_{q=0}^{K}\\binom{q+b-1}{b-1}(1+y)^{K-q} &=r_s y^{N-b}T_{\\geq b}(1+y)^{K+b}\\\\ &=T_{\\geq N}\\bigl(r_s y^{N-b}(1+y)^{mN+b-s}\\bigr), \\end{align*} by Lemma~\\ref{lem:local}. Summing over $s$ proves the identity. Every truncated expression on the right is a polynomial. On the left, $H$ is truncated before substitution and has degree at most $mN$. Thus the displayed powers clear all denominators; no substitution into the untruncated infinite series is used."
+    },
+    {
+      "id": "C11",
+      "text": "A descendant set is the disjoint union of its root block and its child descendant sets.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 164,
+        "line_end": 169
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "Fix $m\\in\\N$ for this section. Let $C(v)$ be the set of children of $v$. The structural property of an arbor used in the proof is the disjoint union \\begin{equation}\\label{eq:disjoint} D_v=B_v\\sqcup\\bigsqcup_{c\\in C(v)}D_c, \\qquad \\sum_{c\\in C(v)}N_c=N_v-b_v. \\end{equation}"
+    },
+    {
+      "id": "C12",
+      "text": "The upper subtree enumerator has degree at most mN_v, obeys the upper recurrence, and gives the lattice count at the root including m=0.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 171,
+        "line_end": 189
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "Define $F_v(x)$ by summing $x^{\\sum_{i\\in D_v}z_i}$ over the vectors $z\\in\\N^{D_v}$ satisfying \\[ \\sum_{i\\in D_u}z_i\\leq mN_u \\quad\\text{for every descendant }u\\text{ of }v,\\text{ including }v. \\] The inequality at $v$ gives $\\deg F_v\\leq mN_v$. The unrestricted coordinates in $B_v$ contribute $(1-x)^{-b_v}$. Independence of the child subtrees in \\eqref{eq:disjoint}, followed by the bound at $v$, gives \\begin{equation}\\label{eq:F} F_v(x)=T_{\\leq mN_v}\\!\\left((1-x)^{-b_v} \\prod_{c\\in C(v)}F_c(x)\\right). \\end{equation} This is the upper height recurrence credited above. At the root $r$, \\begin{equation}\\label{eq:rootF} F_r(1)=L_\\tau(m). \\end{equation} This also holds for $m=0$, since the root bound forces every coordinate to be zero."
+    },
+    {
+      "id": "C13",
+      "text": "Independent binomially weighted lower subtree counts obey the lower-truncation recurrence.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 191,
+        "line_end": 206
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "Independently define $G_v(y)$ by summing \\[ y^{\\sum_{i\\in D_v}a_i}\\prod_{i\\in D_v}\\binom{m+1}{a_i} \\] over $a\\in\\{0,\\ldots,m+1\\}^{D_v}$ satisfying \\[ \\sum_{i\\in D_u}a_i\\geq N_u \\quad\\text{for every descendant }u\\text{ of }v,\\text{ including }v. \\] The binomial theorem and \\eqref{eq:disjoint} give \\begin{equation}\\label{eq:G} G_v(y)=T_{\\geq N_v}\\!\\left((1+y)^{(m+1)b_v} \\prod_{c\\in C(v)}G_c(y)\\right). \\end{equation} The truncation here imposes the lower bound at $v$; all other required bounds have already been imposed in the child factors."
+    },
+    {
+      "id": "C14",
+      "text": "For every vertex the two finite subtree polynomials satisfy G_v(y)=y^(N_v)(1+y)^(mN_v)F_v((1+y)^(-1)), by induction including leaves.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 208,
+        "line_end": 231
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\begin{proposition}\\label{prop:transform} For every vertex $v$, \\begin{equation}\\label{eq:transform} G_v(y)=y^{N_v}(1+y)^{mN_v}F_v\\bigl((1+y)^{-1}\\bigr). \\end{equation} \\end{proposition} \\begin{proof} Induct from the leaves toward the root. At a vertex $v$, abbreviate $N=N_v$, $b=b_v$, and $R(x)=\\prod_{c\\in C(v)}F_c(x)$. The empty product for a leaf is $1$. In every case, \\[ \\deg R\\leq m\\sum_{c\\in C(v)}N_c=m(N-b). \\] Using the child identities, or the empty family of identities at a leaf, we obtain \\begin{align*} (1+y)^{(m+1)b}\\prod_{c\\in C(v)}G_c(y) &=y^{N-b}(1+y)^{(m+1)b+m(N-b)}R\\bigl((1+y)^{-1}\\bigr)\\\\ &=y^{N-b}(1+y)^{mN+b}R\\bigl((1+y)^{-1}\\bigr). \\end{align*} Apply $T_{\\geq N}$ and use Lemma~\\ref{lem:operator}. Equations \\eqref{eq:F} and \\eqref{eq:G} identify the result as \\eqref{eq:transform}. This proves both the leaf step and the induction."
+    },
+    {
+      "id": "C15",
+      "text": "The degree-n root coefficient yields the binomial-content identity for every m>=0; excluded contents have zero binomial weight.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 234,
+        "line_end": 243
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "At the root, $N_r=n$. The coefficient of $y^n$ in the right side of \\eqref{eq:transform} is the constant term of $(1+y)^{mn}F_r((1+y)^{-1})$, namely $F_r(1)$. The definition of $G_r$ and \\eqref{eq:rootF} therefore imply \\[ L_\\tau(m)=[y^n]G_r(y) =\\sum_{a\\in A_\\tau}\\prod_{i=1}^n\\binom{m+1}{a_i}. \\] Vectors outside $\\{0,\\ldots,m+1\\}^n$ contribute zero by the binomial convention. This proves \\eqref{eq:binomial} for all $m\\geq0$."
+    },
+    {
+      "id": "C16",
+      "text": "The fixed-content generating-function identity is already used in AXY Section 4 and AC Remark 7.3.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 247,
+        "line_end": 248
+      },
+      "citation_keys": [
+        "AC",
+        "AXY"
+      ],
+      "manuscript_excerpt": "We give the fixed-content conversion explicitly. Its generating-function form is used in \\cite[Section~4]{AXY} and \\cite[Remark~7.3]{AC}."
+    },
+    {
+      "id": "C17",
+      "text": "The fixed-content binomial generating function has the stated non-descent numerator and denominator (1-t)^(n+1).",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 250,
+        "line_end": 257
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\begin{lemma}\\label{lem:words} Let $a\\in\\N^n$ with $\\sum_i a_i=n$, and let $\\mathfrak S_a$ denote the words containing $a_i$ copies of each letter $i$. Then \\begin{equation}\\label{eq:fixedcontent} \\sum_{m\\geq0}\\left(\\prod_{i=1}^n\\binom{m+1}{a_i}\\right)t^m =\\frac{\\sum_{w\\in\\mathfrak S_a}t^{d(w)}}{(1-t)^{n+1}}. \\end{equation} \\end{lemma}"
+    },
+    {
+      "id": "C18",
+      "text": "Choosing subsets of ordered boxes and reading strictly decreasing boxes is bijective with barred words, allowing empty boxes.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 260,
+        "line_end": 267
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "For each letter $i$, choose a subset $S_i$ of size $a_i$ of the $m+1$ ordered boxes $0,\\ldots,m$. Place $i$ once in each chosen box. Read the letters in each box in strictly decreasing order, retaining one bar between consecutive boxes. This produces $n$ letters and exactly $m$ bars. Empty boxes give initial, final, or adjacent bars. Conversely, split such a barred word at its bars and record the indices of the boxes containing each letter. Strict decrease ensures that each letter occurs at most once per box. The two constructions are inverse."
+    },
+    {
+      "id": "C19",
+      "text": "Every weak-rise gap needs a bar; remaining bars are freely placed in n+1 gaps, giving binom(m-d(w)+n,n) and the stated series.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 269,
+        "line_end": 281
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "Fix the unbarred word $w$. A bar is necessary in each gap with $w_j\\leq w_{j+1}$; these are the $d(w)$ required gaps. This condition is also sufficient, since each resulting box is then strictly decreasing. After reserving one bar in each required gap, the remaining $m-d(w)$ bars can be placed freely in the $n+1$ gaps, including both ends. Thus the number of choices above $w$ is zero if $m<d(w)$ and otherwise equals \\[ \\binom{m-d(w)+n}{n}. \\] Its generating series is \\[ \\sum_{m\\geq d(w)}\\binom{m-d(w)+n}{n}t^m =\\frac{t^{d(w)}}{(1-t)^{n+1}}."
+    },
+    {
+      "id": "C20",
+      "text": "Summation over contents proves the word identity; n=1, m=0, arbitrary blocks and interleaved labels are included, with one degree-zero word.",
+      "type": "Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 286,
+        "line_end": 296
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\begin{proof}[Completion of the proof of Theorem~\\ref{thm:main}] Sum \\eqref{eq:fixedcontent} over the finite set $A_\\tau$ and use \\eqref{eq:binomial}. The disjoint union of $\\mathfrak S_a$ over $a\\in A_\\tau$ is exactly $W_\\tau$. Comparing with \\eqref{eq:ehrhart} gives \\eqref{eq:word}. \\end{proof} The proof includes $n=1$, arbitrary leaf-block sizes, and interleaved labels. At $m=0$ one has $F_v=1$ and $G_v=y^{N_v}$. On the word side the unique term of degree zero is the decreasing permutation $n(n-1)\\cdots1$, whose content satisfies every lower bound."
+    },
+    {
+      "id": "C21",
+      "text": "For an arbor preorder, the root is maximum and ideals are disjoint unions of descendant subtrees, giving the AC formulation; arbitrary preorders remain outside this proof.",
+      "type": "Attribution + Existence",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 300,
+        "line_end": 306
+      },
+      "citation_keys": [
+        "AC"
+      ],
+      "manuscript_excerpt": "The associated arbor preorder has the root as its maximum vertex. Each order ideal is a disjoint union of descendant subtrees. Summing their inequalities shows that the subtree formulation agrees with the order-ideal formulation of \\cite[Conjecture~4.4]{AC} in this case. The product decomposition \\eqref{eq:disjoint} is essential to the present proof; the argument does not establish that conjecture for arbitrary preorders."
+    },
+    {
+      "id": "C22",
+      "text": "Athanasiadis Proposition 4.2 uses modified ascents with initial letter w_0=1 for composition polytopes.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 308,
+        "line_end": 310
+      },
+      "citation_keys": [
+        "Athanasiadis"
+      ],
+      "manuscript_excerpt": "For composition polytopes, Athanasiadis \\cite[Proposition~4.2]{Athanasiadis} gives an interpretation using modified ascents, with an initial letter $w_0=1$. The corresponding minimum-vertex extension appears in"
+    },
+    {
+      "id": "C23",
+      "text": "AC Proposition 4.5 extends that formula under a minimum-vertex hypothesis, with a different statistic from ordinary non-descents.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 310,
+        "line_end": 312
+      },
+      "citation_keys": [
+        "AC"
+      ],
+      "manuscript_excerpt": "$w_0=1$. The corresponding minimum-vertex extension appears in \\cite[Proposition~4.5]{AC}. Those statistics differ from the ordinary non-descents in Theorem~\\ref{thm:main}. Yan"
+    },
+    {
+      "id": "C24",
+      "text": "Yan Corollary 5.4 counts words for the distinct reflexive polytope Q_tau+Delta_E-1 using an auxiliary letter.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 312,
+        "line_end": 316
+      },
+      "citation_keys": [
+        "Yan"
+      ],
+      "manuscript_excerpt": "non-descents in Theorem~\\ref{thm:main}. Yan \\cite[Corollary~5.4]{Yan} gives a word formula for the related reflexive polytope $Q_\\tau+\\Delta_E-\\mathbf1$, where $\\Delta_E=\\operatorname{conv}(0,e_i:i\\in E)$; that formula uses an auxiliary letter. It concerns a different polytope. These comparisons"
+    },
+    {
+      "id": "C25",
+      "text": "No equivalent proof was found in the primary passages inspected through 14 September 2026; the comparison is bounded, not exhaustive priority.",
+      "type": "Temporal",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 316,
+        "line_end": 319
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "auxiliary letter. It concerns a different polytope. These comparisons identify the precise assertion proved here without a claim of exhaustive priority. No equivalent proof was found in the primary passages inspected through 14 September 2026."
+    },
+    {
+      "id": "C26",
+      "text": "AC Conjecture 5.3 proposes real-rootedness of the support enumerator, distinct from the all-arbor Ehrhart-word theorem.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 321,
+        "line_end": 326
+      },
+      "citation_keys": [
+        "AC"
+      ],
+      "manuscript_excerpt": "Theorem~\\ref{thm:main} also makes no assertion about real-rootedness or about the support enumerator $\\sum_{x\\in Q_\\tau\\cap\\Z^n}t^{|\\{i:x_i>0\\}|}$, which counts points in a single undilated polytope. For general preorder polytopes, the real-rootedness of this support enumerator was proposed in \\cite[Conjecture~5.3]{AC}. Zijian Zeng"
+    },
+    {
+      "id": "C27",
+      "text": "Zijian Zeng certifies an eight-element height-two poset support-polynomial counterexample by exact enumeration and a rational non-real-root certificate in the author manuscript dated 31 August 2026; this concerns a different polynomial.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 326,
+        "line_end": 332
+      },
+      "citation_keys": [
+        "AC",
+        "ZengSupport"
+      ],
+      "manuscript_excerpt": "\\cite[Conjecture~5.3]{AC}. Zijian Zeng \\cite[Proposition~3.1 and Theorem~4.2]{ZengSupport} certifies an eight-element height-two poset counterexample using exact support enumeration and a rational non-real-root certificate. We use the author manuscript dated 31 August 2026 for this comparison. That result concerns the support enumerator, and is not a counterexample to Theorem~\\ref{thm:main}."
+    },
+    {
+      "id": "C28",
+      "text": "Two separately implemented exact Python programs check the stated identities and enumerations, including 153 arbors and 740 dilation pairs for n<=4 and the specified six- and seven-label examples.",
+      "type": "Statistic",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 334,
+        "line_end": 341
+      },
+      "citation_keys": [],
+      "manuscript_excerpt": "\\paragraph{Exact checks and computational assistance.} The proof is independent of computation. Two separately implemented Python programs using exact integer arithmetic checked the truncation identities, the box construction, and direct coordinate and word counts. The direct enumeration includes all rooted trees on the blocks of every partition of $[n]$ for $1\\leq n\\leq4$, with $0\\leq m\\leq n$: 153 arbors and 740 arbor--dilation pairs. Three specified six-label arbors and one seven-label arbor were also checked for $m=0,1,2,3$."
+    },
+    {
+      "id": "C29",
+      "text": "The finite checks do not extend the size-seven preorder tests reported in AC Section 4.3 and do not replace proof.",
+      "type": "Attribution",
+      "location": {
+        "path": "manuscript/main.tex",
+        "line_start": 342,
+        "line_end": 344
+      },
+      "citation_keys": [
+        "AC"
+      ],
+      "manuscript_excerpt": "These finite checks test conventions and formulas; they are not an extension of the previously reported size-seven preorder tests \\cite[Section~4.3]{AC}, and do not replace the proof."
+    }
+  ],
+  "manuscript_sha256": "18056464d9932ebe2528418a4821681a9fc454cc604970a918b6e435e342cf76",
+  "bibliography_sha256": "cbee14adbd416c8e91e5f9252601187e897664b3a5d52f43ff4f97c6303779a9",
+  "binding_refresh": "Bibliography-only removal of redundant begingroup/endgroup at lines 352/355; all 29 extracted claims, their direct citations and their line intervals remain identical. Refreshed bindings after clean build and freeze; no re-extraction in verification pass."
+}

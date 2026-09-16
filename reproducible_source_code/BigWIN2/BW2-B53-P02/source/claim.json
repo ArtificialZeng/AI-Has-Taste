@@ -1,0 +1,19 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every positive integer n and every subset D of the proper positive divisors of n, let ICG_n(D) be the simple graph on Z_n in which distinct x,y are adjacent exactly when gcd(x-y,n) lies in D. Among graphs that are uniquely 3-colorable and have clique number 2, the least possible order is n=60. At that least order the complete classification by equality of labeled graphs is the single divisor set D={2,5}; its unique unordered color-class partition consists of the three residue classes modulo 3.",
+  "contribution": "An exact exhaustive census of all 4,091 legal pairs through order 60 sharpens the previously known order-60 construction to the least order in the frozen (chi,omega)=(3,2) scope and classifies every divisor set at that order. A separately implemented neighbor-set/union-find/CNF-DPLL verifier reproduces every classification and checks every primary certificate. This does not claim unrestricted minimality for uniquely k-colorable integral circulants with arbitrary k>omega, and the bounded source comparison is not a claim of priority.",
+  "proposer_job_id": "win-00053-p02-research-3b8c016c762b",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/computational-proof.md",
+    "evidence/enumerate_icg.py",
+    "evidence/census-primary.jsonl",
+    "evidence/census-primary-summary.json",
+    "evidence/verify_census_sat.py",
+    "evidence/census-independent.jsonl",
+    "evidence/census-audit.json",
+    "evidence/external/2609.03184.pdf"
+  ]
+}

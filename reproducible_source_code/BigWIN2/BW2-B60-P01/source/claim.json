@@ -1,0 +1,16 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For every finite indexed monotone 4-uniform NAE instance F=(V;(C_j)_{j=1}^m) with four distinct unnegated variables in each clause, replacing every indexed occurrence by a fresh occurrence variable and joining it to the original variable with the explicit 98-clause PG(3,3)-subcore equality gadget in evidence/gadget-proof.md produces a monotone 4-uniform linear NAE instance F'. The satisfying assignments of F' project onto V exactly as Sat(F), every satisfying assignment of F extends to F', and every satisfying assignment of F' restricts to one of F. The construction uses 39 fresh variables and 98 gadget clauses per occurrence, hence n+156m variables and 393m clauses in total, runs in linear time, and satisfies all five frozen assertions with the absolute local bound B=98.",
+  "contribution": "This is a complete explicit construction for the frozen missing linearization step. The equality gadget is certified by a dependency-free exhaustive search of a fixed 99-line projective core, an exact two-row terminal projection, incidence checks, and composition tests on clause overlaps of sizes 2, 3, and 4. It fills the source paper's omitted arity-four gadget and composition proof; no claim of priority or publication novelty is made.",
+  "proposer_job_id": "win-00060-p01-research-763bb1d5b267",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "checkpoint.md",
+    "evidence/gadget-proof.md",
+    "evidence/gadget_certificate.py",
+    "evidence/gadget_certificate.out",
+    "evidence/external/2609.03508.pdf"
+  ]
+}

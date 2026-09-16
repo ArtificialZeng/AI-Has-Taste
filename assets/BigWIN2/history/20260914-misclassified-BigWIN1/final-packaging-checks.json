@@ -1,0 +1,184 @@
+{
+  "scope": "Local packaging checks only. Historical mathematical/release gates are separate.",
+  "repository_validation_passed": true,
+  "repository_tests": [
+    {
+      "name": "selection has222 unique PDFs and19 alias IDs",
+      "passed": true
+    },
+    {
+      "name": "catalog exactly matches selection IDs",
+      "passed": true
+    },
+    {
+      "name": "root manifest retains original230 paper records unchanged",
+      "passed": true
+    },
+    {
+      "name": "root manifest new paper IDs exactly match catalog",
+      "passed": true
+    },
+    {
+      "name": "root manifest count and page totals",
+      "passed": true
+    },
+    {
+      "name": "root manifest BigWIN1 directory/source counts",
+      "passed": true
+    },
+    {
+      "name": "root manifest aliases exactly match selection",
+      "passed": true
+    },
+    {
+      "name": "source commit is unchanged",
+      "passed": true
+    },
+    {
+      "name": "all452 final PDFs exist and preserve declared hashes",
+      "passed": true
+    },
+    {
+      "name": "no byte-identical final PDF duplicates",
+      "passed": true
+    },
+    {
+      "name": "BigWIN1 PDF directory contains only selected222 PDFs",
+      "passed": true
+    },
+    {
+      "name": "original tracked scientific files retain Git-blob contents",
+      "passed": true
+    },
+    {
+      "name": "all222 paired LaTeX/reproduction packages and their README links exist",
+      "passed": true
+    },
+    {
+      "name": "all distributed scientific file bytes match package manifests",
+      "passed": true
+    },
+    {
+      "name": "every selected PDF/LaTeX/distributed source is allowed by gitignore",
+      "passed": true
+    },
+    {
+      "name": "README.md:222 numbered rows with no duplicate archive IDs",
+      "passed": true
+    },
+    {
+      "name": "README.md:all222 pdf links",
+      "passed": true
+    },
+    {
+      "name": "README.md:all222 latex links",
+      "passed": true
+    },
+    {
+      "name": "README.md:all222 reproducible_source links",
+      "passed": true
+    },
+    {
+      "name": "README.md:all BigWIN1 section links resolve inside repository",
+      "passed": true
+    },
+    {
+      "name": "README.md:permanent formula rendered independently of LaTeX",
+      "passed": true
+    },
+    {
+      "name": "README.md:new manuscript total452 visible",
+      "passed": true
+    },
+    {
+      "name": "README.md:19 alias rows visible",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:222 numbered rows with no duplicate archive IDs",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:all222 pdf links",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:all222 latex links",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:all222 reproducible_source links",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:all BigWIN1 section links resolve inside repository",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:permanent formula rendered independently of LaTeX",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:new manuscript total452 visible",
+      "passed": true
+    },
+    {
+      "name": "README.zh-CN.md:19 alias rows visible",
+      "passed": true
+    },
+    {
+      "name": "no new distributed file reaches100000000 bytes",
+      "passed": true
+    }
+  ],
+  "readme_validation_report": {
+    "renderer": "Bundled marked17 GFM; no KaTeX package present. The requested permanent ratio is Unicode plain text.",
+    "tests": [
+      {
+        "name": "Actual GFM parser: all222 package README local links exist",
+        "passed": true,
+        "links": 888
+      },
+      {
+        "language": "en",
+        "name": "Rendered222 numbered rows with3 columns and all PDF/LaTeX/reproduction links",
+        "passed": true,
+        "rows": 222,
+        "maxColumns": 3,
+        "overflow": false
+      },
+      {
+        "language": "en",
+        "name": "Permanent ratio appears as readable Unicode text in original SM1-P03 row",
+        "passed": true
+      },
+      {
+        "language": "zh",
+        "name": "Rendered222 numbered rows with3 columns and all PDF/LaTeX/reproduction links",
+        "passed": true,
+        "rows": 222,
+        "maxColumns": 3,
+        "overflow": false
+      },
+      {
+        "language": "zh",
+        "name": "Permanent ratio appears as readable Unicode text in original SM1-P03 row",
+        "passed": true
+      }
+    ],
+    "blocked_remote_requests": []
+  },
+  "checked_file_digests": {
+    "README.md": "44663ccc425f21e1775fc748a3551aade6dbcacabc29aa85c09b09bc1e94d06a",
+    "README.zh-CN.md": "07e283c8867ca806fb57b6268d98d9bd5fa9022bae9905387133a8c230c90ba2",
+    "DIRECTORY_STRUCTURE.md": "60d03a877b8d5a8466c8d584a13ec8abdcaafe65dc0fb0cbfcc38cbcadeb15dd",
+    "archive-manifest.json": "408abe046537ed2a2057e779ee2cd224e0cbf5387fc6e5a56202939e62be394b",
+    "assets/BigWIN1/catalog.json": "70745a1428be7711ce447cf5fb16b0b8e5a976b6d4a0f4bff6b97a36562c5f8b",
+    "assets/BigWIN1/selection.json": "c1ae55e5a007b6266b2ee2f5574340375ce02a398c86f626cc688e52238b0a4c",
+    "reproducible_source_code/BigWIN1/prepare.py": "be576514d4147bb83ebbbf22046ac014acd8264f738f176e96ac00bf61a339a0",
+    "reproducible_source_code/BigWIN1/build.py": "0c6b956660f8063af01272a8754236fca3eb1b4f46444582fdee1582f04df26a"
+  },
+  "git_head": "2537a78914f784a42b3f6ff3677d93ba0f31e97e",
+  "new_commit_or_push_performed": false,
+  "snapshot_note": "Historical pre-reclassification packaging check. PDF contents/source bytes remain unchanged; current paths and counts are checked in assets/ai-conjectures/validation.json."
+}

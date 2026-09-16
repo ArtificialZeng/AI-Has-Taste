@@ -1,0 +1,23 @@
+Exact direct Boolean Mobius checks produced by
+`python3 evidence/verify_degree_certificate.py` on 2026-09-07:
+
+n=3: 2 irreducible polynomials
+  p=0xb, (r,a)=(1,2), coefficient=1
+  p=0xd, (r,a)=(0,1), coefficient=1
+n=4: 3 irreducible polynomials
+  p=0x13, (r,a)=(0,3), coefficient=1
+  p=0x19, (r,a)=(0,1), coefficient=1
+  p=0x1f, (r,a)=(0,1), coefficient=1
+n=5: 6 irreducible polynomials
+  p=0x25, (r,a)=(0,1), coefficient=1
+  p=0x29, (r,a)=(1,2), coefficient=1
+  p=0x2f, (r,a)=(0,1), coefficient=1
+  p=0x37, (r,a)=(0,2), coefficient=1
+  p=0x3b, (r,a)=(0,1), coefficient=1
+  p=0x3d, (r,a)=(0,1), coefficient=1
+PASS: 11 exact direct Mobius coefficient checks
+
+The script enumerates all monic irreducible binary polynomials of the stated
+degrees.  Each coefficient is evaluated from the definition as an XOR over
+all assignments to the proposed monomial support; this is finite corroboration
+of the symbolic proof, not the proof of the general statement.

@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Cay}{\operatorname{Cay}}
+
+\title{The Exact Abelian Cayley Embedding Order of $K_{1,1,5}$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite graph $G$, let $\eta(G)$ be the least order of a finite
+abelian group whose Cayley graph contains $G$ as an induced subgraph.  The
+known bounds for $K_{1,1,5}$ were $10\leq\eta(K_{1,1,5})\leq15$.  We prove
+that the upper endpoint is exact.  The lower bound is completed by an exact
+exhaustion of all $23{,}148$ translation-normalized labelings in every
+abelian group of orders $10$ through $14$; a separate all-pairs check
+verifies the order-$15$ construction.
+\end{abstract}
+
+\section{Context and statement}
+
+Write a finite abelian group $\Gamma$ additively.  For
+$S=-S\subseteq\Gamma\setminus\{0\}$, distinct $x,y\in\Gamma$ are adjacent
+in $\Cay(\Gamma,S)$ when $y-x\in S$.  An \emph{induced abelian Cayley
+embedding} of a graph $G$ is an injection $f:V(G)\to\Gamma$ for which
+\[
+ uv\in E(G) \quad\Longleftrightarrow\quad f(v)-f(u)\in S
+ \qquad (u\ne v).
+\]
+The invariant $\eta(G)$ is the minimum of $|\Gamma|$ over all such
+embeddings and all finite abelian groups $\Gamma$.
+
+This per-graph invariant and its minimization over all finite abelian groups
+were formulated by Fokam Souop and Bitjoka~\cite{FokamSouopBitjoka2026},
+building on the induced-Cayley-embedding framework of Babai and
+S\H{o}s~\cite{BabaiSos1985}.  Remark~12 of
+\cite{FokamSouopBitjoka2026} records
+\[
+ 10\leq\eta(K_{1,1,5})\leq15,
+\]
+explains why one natural order-$10$ construction fails, and does not
+determine the exact value.  The contribution here is the exclusion of every
+abelian host of each intervening order, together with a direct verification
+of the stated upper construction.  No assertion about other unbalanced
+complete multipartite graphs is made.
+
+\begin{theorem}
+\label{thm:main}
+The minimum abelian Cayley host order of $K_{1,1,5}$ is
+\[
+ \eta(K_{1,1,5})=15.
+\]
+\end{theorem}
+
+\section{Difference criterion and the finite domain}
+
+Let the two singleton parts of $K_{1,1,5}$ be $\{a\}$ and $\{b\}$, and
+let its independent part be $C=\{c_0,\ldots,c_4\}$.  For an injective
+labeling $f$, define the oriented difference sets
+\begin{align*}
+ D_E(f)&=\{f(v)-f(u):uv\in E(G),\ (u,v)\text{ is either orientation}\},\\
+ D_N(f)&=\{f(v)-f(u):uv\notin E(G),\ u\ne v\}.
+\end{align*}
+
+\begin{lemma}
+\label{lem:criterion}
+An injective labeling $f:V(G)\to\Gamma$ extends to an induced embedding
+for some symmetric connection set if and only if
+$D_E(f)\cap D_N(f)=\varnothing$.
+\end{lemma}
+
+\begin{proof}
+In an induced embedding, an element arising as both an edge difference and
+a nonedge difference would have to belong to both $S$ and its complement.
+Conversely, if the two sets are disjoint, take $S=D_E(f)$.  Both
+orientations were included, so $S=-S$; injectivity gives $0\notin S$; and
+the disjointness condition gives exactly the required adjacencies.
+\end{proof}
+
+We first recover the order floor in a form useful for completeness.  After
+translation assume $f(a)=0$.  Since every vertex in $C$ is adjacent to
+$a$, the five-element set $f(C)$ is contained in $S$.  Fix
+$s\in f(C)$.  The sets $f(C)$ and $f(C)+s$ are disjoint: otherwise
+$z=y+s$ for distinct $y,z\in f(C)$, so the two corresponding vertices of
+$C$ would be adjacent because $s\in S$.  Hence $|\Gamma|\geq10$.  This is
+the present instance of the local order floor in
+\cite[Theorem~6]{FokamSouopBitjoka2026}.
+
+It remains to consider orders $10$ through $14$.  The classification of
+finite abelian groups gives precisely
+\[
+ \Z_{10},\quad \Z_{11},\quad \Z_{12},\quad
+ \Z_2\times\Z_6,\quad \Z_{13},\quad \Z_{14}.
+\]
+Indeed, only order $12$ has two isomorphism types in this range; its
+Sylow $2$-subgroup is either cyclic or elementary abelian.
+
+Translation of all labels preserves every difference, so set $f(a)=0$.
+For a group of order $n$, the label $f(b)$ then ranges over all $n-1$
+nonzero elements, and the labels of the five interchangeable vertices in
+$C$ range over all unordered five-subsets of
+$\Gamma\setminus\{0,f(b)\}$.  Thus the exhaustive domain has exactly
+\[
+ (n-1)\binom{n-2}{5}
+\]
+labelings for each group of order $n$.  No group automorphism reduction is
+used.
+
+\section{Exact exhaustion and upper certificate}
+
+For every normalized labeling in the preceding domain, the exhaustive-search
+program supplied as
+\begin{center}
+\path{evidence/enumerate_embeddings.py}
+\end{center}
+constructs the two difference sets with modular integer arithmetic and applies
+Lemma~\ref{lem:criterion}.  The complete counts stored in
+\path{evidence/enumeration-log.json} are as follows.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+group & required & tested & valid\\
+\midrule
+$\Z_{10}$             &   504 &   504 & 0\\
+$\Z_{11}$             & 1,260 & 1,260 & 0\\
+$\Z_{12}$             & 2,772 & 2,772 & 0\\
+$\Z_2\times\Z_6$     & 2,772 & 2,772 & 0\\
+$\Z_{13}$             & 5,544 & 5,544 & 0\\
+$\Z_{14}$             &10,296 &10,296 & 0\\
+\midrule
+total                  &23,148 &23,148 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The required count is computed independently from the displayed binomial
+formula and asserted by the program.  The loops range over every nonzero
+$b$ and every five-combination of the remaining elements, so the equality
+of required and tested counts certifies completion of the stated finite
+domain.  All tests are set comparisons in finite products of residue
+classes; there is no floating-point arithmetic, randomness, heuristic
+pruning, or timeout.  This exact finite-reduction style is also used in
+other certificate-based discrete computations; for example, Zeng et
+al.~\cite{ZengLiuRatnaveluOng2026} combine symmetry-reduced exhaustive
+enumeration with exact predicates and explicit verification.  Here the
+domain is small enough that direct enumeration without symmetry pruning is
+preferable.
+
+The table and Lemma~\ref{lem:criterion} exclude every host of orders
+$10$ through $14$.  Together with the order floor, they prove
+$\eta(K_{1,1,5})\geq15$.
+
+For the reverse inequality, take $\Gamma=\Z_{15}$ and
+\[
+ f(a)=1,\qquad f(b)=2,\qquad
+ f(C)=\{0,3,6,9,12\},
+\]
+with
+\[
+ S=\{1,2,4,5,7,8,10,11,13,14\},
+\]
+the residues not divisible by $3$.  Differences inside $f(C)$ are nonzero
+multiples of $3$.  The difference $f(b)-f(a)=1$, and every difference
+between a singleton label and a label in $f(C)$ is nonzero modulo $3$.
+Consequently the eleven edges have differences in $S$, whereas the ten
+pairs internal to $C$ do not.  The labels are distinct, $0\notin S$, and
+$S=-S$.  The independent script
+\path{evidence/verify_order15_witness.py} additionally checks these axioms
+and all $21$ unordered vertex pairs directly from
+\path{evidence/order15-witness.json}, without importing the exhaustive
+search code.  This proves $\eta(K_{1,1,5})\leq15$ and completes the proof of
+Theorem~\ref{thm:main}.
+
+\section{Reproduction and disclosure}
+
+From the project root, the exact computations can be reproduced by
+\begin{verbatim}
+python3 evidence/enumerate_embeddings.py \
+  --output /tmp/enumeration-log.json
+cmp /tmp/enumeration-log.json evidence/enumeration-log.json
+python3 evidence/verify_order15_witness.py \
+  --witness evidence/order15-witness.json \
+  --output /tmp/order15-verification.json
+cmp /tmp/order15-verification.json \
+  evidence/order15-verification.json
+\end{verbatim}
+Both Python programs use only the standard library.  The search log,
+serialized witness, and complete all-pairs verification record accompany
+the manuscript as ancillary evidence.
+
+OpenAI Codex assisted with literature searching, finite-search design,
+draft code, organization of adversarial checks, and initial manuscript
+preparation.  Language-model output is not used as mathematical evidence:
+the proof rests on the reduction above, the inspectable exact programs and
+logs, and the explicit order-$15$ certificate.  No proof assistant was
+used.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

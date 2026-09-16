@@ -1,0 +1,14 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "disproved",
+  "statement": "For the CTM iteration of Cordero--Torregrosa, arXiv:2609.04433v1, with residual R_k=I-AX_k and nu_k=||R_k^2||_F^2/||R_k||_F^2, the general order-six assertion in PDF Theorem 2.1 is false. Precisely, take A=I_3 and X_0=I_3-t diag(1,2,3). For every 0<t<=10^{-2}, the exact first residual is R_1=t^4 diag(-6,-12,18)+7t^6 diag(1,16,81), and the entire nonterminating orbit has Q-order exactly four: for every k>=1, (27/512)||R_k||_F^4<||R_{k+1}||_F<(4/3)||R_k||_F^4, and ||R_{k+1}||_F/||R_k||_F^4 converges to a positive finite limit explicitly described by the limiting projective direction. Hence the quartic term is persistent, not a one-step artifact. The source proof's equation (2.7) both asserts an unjustified vanishing normalized quartic coefficient and then substitutes the moving value ||e_k||^2 for a fixed epsilon in the definition of convergence. The claim refutes the theorem's stated general order, but does not claim failure of convergence or classify all CTM orbits.",
+  "contribution": "An exact counterexample under the source's own update and residual convention, strengthened by a rational no-exit enclosure and a complete Q-order-four analysis of an explicit one-parameter diagonal family. The copied primary v1 PDF is hash-verified; the current arXiv record and limited exact-title/equivalent-language searches on 2026-09-07 disclosed no correction or independent audit, but no priority claim is made.",
+  "proposer_job_id": "win-00064-p12-research-a43b5067ff3f",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/external/2609.04433.pdf",
+    "evidence/diagonal_orbit_proof.md",
+    "evidence/verify_identities.py"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "statement": "Explicitly unproved conjecture K_sharp_v1. Let D_N(x)=product_{i=1}^N(1+x^i)^{#{q>=0:2^q i<=N}}. For every integer j>=0 and every integer 1<=s<=j+1, let tau be the least t>=0 with s*2^t>=9 and 2*s*2^t>j+1. For t with s*2^t>=9 set a_{s,t}(x)=D_{s*2^t-1}(x) product_{ell=1}^{v_2(s)}(1+x^{s/2^ell}); coefficients are zero outside support. Set T_r(a)=a_r^2-a_{r-1}a_{r+1} and F_{s,j}(t)=2T_j(a_{s,t}(1+x^s))-T_j(a_{s,t})-T_{j-s}(a_{s,t}). Conjecture: Delta_t^h F_{s,j}(tau)>=0 for all integers 0<=h<=2j, where Delta has step one in t. Supporting established claims submitted for review: (i) the exact affine reduction and degree bound deg_u F(tau+u)<=2j; (ii) the complete exact certificate through j=96, yielding H at every actual stage for all n>=9 at indices 0<=j<=96 and their reflections, and original log-concavity for all n outside {3,5,6,7} when min(j,deg(D_n)-j)<=96; (iii) the generic positive band h=2j-k when j>=2k^2+k-1, with the top two Catalan formulas; (iv) for every n>=9 and every actual stage adding s at n=s*2^t, at j=2n-1 the actual value differs from its polynomial tail extrapolation by -a_{2n-2}-2a_{2n-s-2}<0, so every even forward difference of order at least 4n is negative. The boundary obstruction is outside K_sharp and is not a counterexample to H or to the original conjecture. K_sharp is not claimed equivalent to, or a complete proof of, the original all-n, all-index problem. All supporting statements, proof details and computational limits are specified in evidence/research3.md and its cited evidence.",
+  "contribution": "A structurally motivated conjecture on all Newton coefficients of actual dyadic stage-minor margins at the earliest affine start, supported by an infinite-n fixed-edge certificate, a uniform high-order positivity band, and an infinite obstruction at the first excluded degree. The frozen conjecture survived 427,952 newly held-out coefficients for 65<=j<=96, fully recomputed by a separate exact implementation, and 69,632 coefficients in 128 listed larger boundary templates through j=513, with explicitly partial separate verification there. The original problem and the uniform low/middle Newton orders remain unresolved. A bounded current primary-source comparison found no equivalent statement in the inspected sources; novelty and interest are submitted for fresh review, not certified. No novelty is claimed for Newton interpolation or binomial smoothing in general.",
+  "proposer_job_id": "primary-20260913-subsum-denominator-research-077128f18f2f",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/research3.md",
+    "evidence/research3_literature.md",
+    "evidence/research3_boundary_lemma.md",
+    "evidence/research2_band.md",
+    "evidence/research2.md",
+    "evidence/research2_sharp_probe.json",
+    "evidence/research3_design_verify.py",
+    "evidence/research3_design_verify.json",
+    "evidence/research3_sharp_probe.py",
+    "evidence/research3_sharp_probe.json",
+    "evidence/research3_verify.py",
+    "evidence/research3_verify.json",
+    "evidence/research3_boundary_probe.py",
+    "evidence/research3_boundary_probe.json",
+    "evidence/research3_boundary_verify.py",
+    "evidence/research3_boundary_verify.json",
+    "evidence/research3_integrity.py",
+    "evidence/research3_integrity.json",
+    "evidence/external/bbfm-subsum-journal.pdf",
+    "evidence/external/chen-ono-zhang-2605.21718v2.pdf"
+  ]
+}

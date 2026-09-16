@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Z}{\mathbb Z}
+
+\title{A Certified Lower Bound $L_{42}\geq 530$\\
+for Two-Row Pairwise-Coprime Grids}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $n\geq1$, let $L_n$ be the least endpoint $x$ for which some positive
+integer gap $d$ and some $n$-element set
+$V\subseteq\{2,\ldots,x-d\}$ make the $2n$ integers $v$ and $v+d$
+($v\in V$) distinct and pairwise coprime.  We prove that no $42$-column
+witness exists at endpoint $529$.  The proof first eliminates all odd gaps
+and then gives, for each of the $263$ possible even gaps, a proper coloring
+with at most $41$ colors of the exact gcd-compatibility graph.  The complete
+coloring certificate is checked using exact integer arithmetic.  It follows
+that $L_{42}\geq530$, so in particular $L_{42}\ne529$.
+\end{abstract}
+
+\section{Statement and context}
+
+For integers $x$ and $d>0$ and a finite set $V\subset\Z$, write
+\[
+ S(d,V)=\bigcup_{v\in V}\{v,v+d\}.
+\]
+We call $(x,d,V)$ an $n$-column witness if
+$V\subseteq\{2,\ldots,x-d\}$ has cardinality $n$, the set $S(d,V)$ has
+cardinality $2n$, and any two distinct elements of $S(d,V)$ are coprime.
+Thus $L_n$ is the least endpoint of an $n$-column witness.
+
+The threshold problem is a finite, injective two-row specialization of a
+question of Straus, recorded by Erd\H{o}s and Graham: how dense can a sumset
+$A+B$ be when its distinct elements are pairwise relatively prime
+\cite[p.~85]{ErdosGraham1980}?  Indeed, the entries here form the complete
+sumset $V+\{0,d\}$, with the additional requirement that its $2|V|$ displayed
+sums be distinct.  This finite threshold should also be distinguished from
+prime-valued sumset results.  Pomerance, S\'ark\H{o}zy and Stewart construct
+large finite sets whose complete sumset is prime-valued
+\cite[Theorem~6]{PomeranceSarkozyStewart1988}, whereas Tao and Ziegler construct
+infinite sets for which $a_i+b_j$ is prime in the partial range $i<j$
+\cite{TaoZiegler2023}.  Neither result supplies the complete injective
+two-row grids considered here or determines $L_n$.
+
+The closest threshold result identified in a bounded literature search is a
+preprint whose deposited metadata and abstract report $L_{41}=529$
+\cite{Zeng2026SSRN7395519}.  Its full text and auxiliary files were not
+available for inspection.  The result below concerns the next index and does
+not use that reported theorem or any data from the preprint.  In particular,
+the contribution here is the direct, finite exclusion at endpoint $529$; no
+claim of priority is made.
+
+\begin{theorem}\label{thm:main}
+There do not exist an integer $d>0$ and a $42$-element set
+$V\subseteq\{2,\ldots,529-d\}$ for which the $84$ integers $v,v+d$
+($v\in V$) are distinct and pairwise coprime.  Consequently
+\[
+ L_{42}\geq530,
+\]
+and the assertion $L_{42}=529$ is false.
+\end{theorem}
+
+\section{Reduction to finite graph colorings}
+
+A nonempty set $V\subseteq\{2,\ldots,529-d\}$ forces
+$1\leq d\leq527$.  Odd gaps can be discarded without computation.
+
+\begin{lemma}\label{lem:odd}
+No witness with at least two columns has an odd gap.
+\end{lemma}
+
+\begin{proof}
+If $d$ is odd, exactly one of $v$ and $v+d$ is even for every $v\in V$.
+Distinctness therefore supplies one distinct even entry per column.  Any two
+of these entries have gcd at least $2$, contrary to pairwise coprimality.
+\end{proof}
+
+It remains to consider exactly the $263$ gaps
+\[
+ d\in\{2,4,\ldots,526\}.
+\]
+For each such $d$, define
+\[
+ C_d=\{v\in\{2,\ldots,529-d\}:\gcd(v,v+d)=1\}.
+\]
+Let $G_d$ be the graph with vertex set $C_d$ in which distinct starts $v,w$
+are adjacent precisely when the four integers
+\[
+ v,\quad v+d,\quad w,\quad w+d
+\]
+are distinct and pairwise coprime.  A set of starts is a valid witness with
+gap $d$ if and only if it is a clique in $G_d$: membership in $C_d$ checks
+the within-column gcd, while adjacency checks distinctness and every
+cross-column gcd.
+
+Thus it suffices to certify $\omega(G_d)\leq41$ for every remaining $d$.
+This is done by the elementary implication
+\[
+ \omega(G_d)\leq\chi(G_d):
+\]
+in a proper coloring, all vertices of a clique have different colors.
+
+\section{The exact certificate}
+
+The accompanying JSON certificate contains one record for each even gap in
+strictly increasing order.  A record gives the complete ordered vertex list
+$C_d$ and one nonnegative integer color for each vertex.  At most $41$
+distinct colors occur in every record.  A deterministic implementation of
+the saturation-degree (DSATUR) greedy heuristic of Br\'elaz
+\cite{Brelaz1979}, with explicit tie-breaking, produces these color vectors.
+This construction method is not used as evidence that the vectors are proper.
+
+The small accompanying verifier reconstructs every vertex set using the
+inclusive endpoint and the predicate $\gcd(v,v+d)=1$.  It checks that the gap
+list is exactly $2,4,\ldots,526$, that every color vector has the correct
+length, and that at most $41$ colors occur.  Finally, for every pair of
+vertices having the same color it forms their four displayed entries and
+rejects the certificate if the entries are distinct and all six pairwise
+gcds equal $1$.  Hence successful verification is a direct proof that every
+record is a proper coloring of the graph just defined.
+
+All operations are integer enumeration, integer equality, and Euclid's gcd;
+there are no floating-point predicates or optimization-status assumptions.
+The certificate comprises $263$ gap records and $28{,}231$ vertices.  The
+small verification path checks $147{,}843$ same-color pairs.  A second
+implementation reconstructs all $955{,}648$ compatible edges and checks
+their endpoint colors.  Both paths verify every record; the largest color
+count is $41$, occurring only for $d=42$.  Regeneration by the deterministic
+coloring program also reproduces the serialized certificate byte for byte.
+
+For reproducibility, from the directory containing the supplementary
+\texttt{evidence} folder, the two verification paths are run as follows.
+\begin{verbatim}
+python3 evidence/verify_x529_coloring.py \
+  evidence/x529-coloring-certificate.json
+python3 evidence/x529_coloring_certificate.py verify \
+  evidence/x529-coloring-certificate.json
+\end{verbatim}
+The first program is dependency-free apart from the Python standard library.
+The second also uses only that library.  This separation between a generator
+and a simpler certificate checker follows the general certifying-algorithm
+principle \cite{McConnellEtAl2011}; the cited principle does not verify this
+particular certificate, which is instead checked directly as described above.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemma~\ref{lem:odd}, only the $263$ even gaps above can occur.  For each
+one, the verified certificate is a proper coloring of $G_d$ with at most
+$41$ colors.  Therefore $\omega(G_d)\leq41$, whereas a $42$-column witness
+would give a $42$-clique.  No witness exists at endpoint $529$.
+
+If a witness existed at an endpoint $x\leq529$, then
+$V\subseteq\{2,\ldots,x-d\}\subseteq\{2,\ldots,529-d\}$, so the same
+$d,V$ would also be a witness at endpoint $529$.  Hence no witness exists at
+any endpoint at most $529$.  Since endpoints are integral,
+$L_{42}\geq530$, which also disproves $L_{42}=529$.
+\end{proof}
+
+\section*{Computational and AI assistance}
+
+The finite colorings and exact verification programs were produced with
+computational and AI assistance.  AI assistance was used in proof
+exploration, drafting verifier code, and preparing the manuscript.  The
+mathematical conclusion depends only on the stated reductions and the
+included, inspectable certificate, whose vertex lists and coloring conditions
+are recomputed by the accompanying exact-integer verifiers.  A separate fresh
+mathematical audit also reconstructed the graphs and checked all edges; this
+is a verification pass, not a claim of independent peer review.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

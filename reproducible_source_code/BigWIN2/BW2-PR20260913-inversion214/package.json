@@ -1,0 +1,348 @@
+{
+  "original_id": "primary-20260913-inversion214",
+  "archive_id": "BW2-PR20260913-inversion214",
+  "title": "An explicit formal quotient for Class 214 inversion sequences",
+  "batch_label": "primary",
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "scope": "For each n>=0, let I_n consist of tuples (e_1,...,e_n) with 0<=e_i<i and with no i<j<k satisfying e_i>=e_k and e_j>=e_k; the empty tuple is counted once. Put F(z)=sum_{n>=0}|I_n|z^n. In formal series at z=0 define X=(1-2z-sqrt(1-4z))/(2z), with sqrt(1-4z)=1+O(z); q=X^2/(1+2X); b=X^3/((1+X)(1+2X)); H(u)=z(1+u)^2-u; R0(u)=-zu^2(1-z-zu)/(1-zu); R1(u)=u^2(1-z-zu)^2/(1-zu). For every j>=0 define t_j=z^j q/(1-q sum_{r=1}^j z^r), with the empty sum zero, and D_j=product_{i=0}^j H(t_i). Then A=sum_{j>=0}R0(t_j)/D_j and L=q+sum_{j>=0}R1(t_j)/D_j converge z-adically in Z[[z]], their summands having exact orders j+4 and j+3 respectively, and F=(b-A)/(zL). Here L=z^2+O(z^3) and b-A=z^3+O(z^4), so the quotient is well-defined. If A_m,L_m retain exactly j=0,...,m-1 and F_m=(b-A_m)/(zL_m), then for every integer m>=0, F_m belongs to Q(z,X) intersect Z[[z]] and F_m-F=z^(m+3)+O(z^(m+4)). This solves the explicit generating-function representation part only; no algebraicity, transcendence, analytic continuation, or asymptotic assertion is made.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": null
+  },
+  "pdf": "pdfs/BigWIN2/BW2-PR20260913-inversion214_An_explicit_formal_quotient_for_Class_214_inversion_sequences.pdf",
+  "pdf_sha256": "699f3ced30b254d80a8aed66a274fad3b040cd9b981dcce08b8dd0f8d865e2bf",
+  "pages": 6,
+  "latex": "reproducible_source_code/BigWIN2/BW2-PR20260913-inversion214/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-PR20260913-inversion214/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-PR20260913-inversion214/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim.",
+    {
+      "path": "/home/ailab/4math-open-problems/projects/primary-20260913-inversion214/evidence/triage-registry.json",
+      "indicators": [
+        "absolute-local-path"
+      ]
+    },
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 17,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/terminal.json",
+      "sha256": "81b8b244b0294678d33b4083a3384dc9567b1e47fea1b22d0b1245571214c90a",
+      "bytes": 684
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/release/manifest.json",
+      "sha256": "3a9e6935e1e934ebe55594599db5d0bde779536f06e40d3e27661ea2c70efa83",
+      "bytes": 1655
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/math.json",
+      "sha256": "3bfcc20aba9e256fe7c5fde5ee7ad3d9102839f45e0b3207e130a1354687d9d2",
+      "bytes": 210
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/citations.json",
+      "sha256": "bf175b6ebea80696118154ccbb53c01377834cd96cd88bb5eede335e48844944",
+      "bytes": 1815
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/build.json",
+      "sha256": "36df18e875cf749b5916008699529c190ca6e148cce217db8767384fca52246d",
+      "bytes": 766
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/visual.json",
+      "sha256": "f18d8a7440fe98bb5b07475844ebb653be4c812419c14c2707fac7a03f27bdef",
+      "bytes": 3096
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/snapshot.json",
+      "sha256": "f6db219558feee4e7c30a3a4d0fcaee78e393921d715690ef63cc1bc0b1ebf0f",
+      "bytes": 1368
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/manuscript-snapshot.json",
+      "sha256": "92c5b6de3c2b5ded5e1fbafc9278a40666410c47a18eb7c706b2899ccac6085b",
+      "bytes": 568
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/math.md",
+      "sha256": "39c6a0fffd59ea7e2f043d85dfeb375b7386796a3b1c5f912a1d14aeeec3444c",
+      "bytes": 12817
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/citations.md",
+      "sha256": "a87d8490b8dc9958a3cbb78ccc157e344ae0a8e6e5ff5928954da3b6178fd83c",
+      "bytes": 17591
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/build.md",
+      "sha256": "72f1b635d8d384e33f15d22d36fdbbf579ef164402d842c04cf0c2db94a2d853",
+      "bytes": 2346
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-inversion214/audit/visual.md",
+      "sha256": "666062c9e58c596087e73f30df81db31761a185f354d43b6f133c3acf892efa1",
+      "bytes": 2775
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "3b7e1a0be08d03f5720735214e075bc0b8f21d79440d9f0e89cd05e220a14247",
+      "original_bytes": 15282,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "3b7e1a0be08d03f5720735214e075bc0b8f21d79440d9f0e89cd05e220a14247",
+          "bytes": 15282
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "57d66451b6a5bbcc7677995e5bb0becd741227d191664cbd6cc80e492886b527",
+      "original_bytes": 1924,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "57d66451b6a5bbcc7677995e5bb0becd741227d191664cbd6cc80e492886b527",
+          "bytes": 1924
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/main.bbl",
+      "original_sha256": "9e7eae92f05465c39e952f844250e47bc967aba44ffc457c8a182542e73573c2",
+      "original_bytes": 1670,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/main.bbl",
+          "sha256": "9e7eae92f05465c39e952f844250e47bc967aba44ffc457c8a182542e73573c2",
+          "bytes": 1670
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-registry.json",
+      "original_sha256": "817ed4d4abf8140d6176b9af4ec98018b1f009bd93e6ca8361f6f73f61b96562",
+      "original_bytes": 5393,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-registry.json",
+          "sha256": "817ed4d4abf8140d6176b9af4ec98018b1f009bd93e6ca8361f6f73f61b96562",
+          "bytes": 5393
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/quotient-check.json",
+      "original_sha256": "b37780f2e98de320dd9a23314c93137c5790e8f008699446277e3c5a9a12b433",
+      "original_bytes": 7652,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/quotient-check.json",
+          "sha256": "b37780f2e98de320dd9a23314c93137c5790e8f008699446277e3c5a9a12b433",
+          "bytes": 7652
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-calibration.json",
+      "original_sha256": "ddcef1a1fbdc50a916e888eea6a681daab794872267d6dedb71b13d13728fa21",
+      "original_bytes": 892,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-calibration.json",
+          "sha256": "ddcef1a1fbdc50a916e888eea6a681daab794872267d6dedb71b13d13728fa21",
+          "bytes": 892
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-provenance.json",
+      "original_sha256": "6ba5806916aa2fc2c3a43d1c896f11a9163e5c5ba00acaaa4c8229fe17ce2c40",
+      "original_bytes": 310,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-provenance.json",
+          "sha256": "6ba5806916aa2fc2c3a43d1c896f11a9163e5c5ba00acaaa4c8229fe17ce2c40",
+          "bytes": 310
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-kernel-check.json",
+      "original_sha256": "3782b2f00bb6a04fef04ab4ea385b138f9f7b59c41d0edac6f26fe47f7a27707",
+      "original_bytes": 828,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-kernel-check.json",
+          "sha256": "3782b2f00bb6a04fef04ab4ea385b138f9f7b59c41d0edac6f26fe47f7a27707",
+          "bytes": 828
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/quotient-check.py",
+      "original_sha256": "8c6fda7bb52f62cf32ab740ae73c27bdd014eaa633a5554fc2f66333a2630a0f",
+      "original_bytes": 6562,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/quotient-check.py",
+          "sha256": "8c6fda7bb52f62cf32ab740ae73c27bdd014eaa633a5554fc2f66333a2630a0f",
+          "bytes": 6562
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/quotient-proof.md",
+      "original_sha256": "83ec2fc4f85a17371f2c01beff8d0a6d16f537fef2aec7895952d045513edc9d",
+      "original_bytes": 9413,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/quotient-proof.md",
+          "sha256": "83ec2fc4f85a17371f2c01beff8d0a6d16f537fef2aec7895952d045513edc9d",
+          "bytes": 9413
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research-provenance.json",
+      "original_sha256": "6213f4016502aee84e10440a2969f40e202cb581761d11c09a60534743f5d395",
+      "original_bytes": 1006,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research-provenance.json",
+          "sha256": "6213f4016502aee84e10440a2969f40e202cb581761d11c09a60534743f5d395",
+          "bytes": 1006
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-kernel.md",
+      "original_sha256": "1188c4ac3ee53b42a37211e73feb6d5d7ea2e2bc1e5a6c76717b813195a908f7",
+      "original_bytes": 3691,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-kernel.md",
+          "sha256": "1188c4ac3ee53b42a37211e73feb6d5d7ea2e2bc1e5a6c76717b813195a908f7",
+          "bytes": 3691
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-kernel-check.py",
+      "original_sha256": "6328f3a0060e49dcb73c333e64c778dd451c8beb8cdecd304ef26e1ee7352352",
+      "original_bytes": 2782,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-kernel-check.py",
+          "sha256": "6328f3a0060e49dcb73c333e64c778dd451c8beb8cdecd304ef26e1ee7352352",
+          "bytes": 2782
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "10b6e5f831d61d7389fa574d0a32af69148c00c3e37b9e6985937a6ccc35f40f",
+      "original_bytes": 1209,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "10b6e5f831d61d7389fa574d0a32af69148c00c3e37b9e6985937a6ccc35f40f",
+          "bytes": 1209
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "97fdf89cdf125acd1fc17d573211a09e9fcad47327965a5d405d3f51ec4b6e72",
+      "original_bytes": 4523,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "97fdf89cdf125acd1fc17d573211a09e9fcad47327965a5d405d3f51ec4b6e72",
+          "bytes": 4523
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "f56a1211efd4bab52715a9266b74dd3972b4063b190f89ac84c6c262636e2bb0",
+      "original_bytes": 2279,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "f56a1211efd4bab52715a9266b74dd3972b4063b190f89ac84c6c262636e2bb0",
+          "bytes": 2279
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "805a2462e091d24dc57b306ae6531bd77fedf36aad4a1ab8d2de7994903fe313",
+      "original_bytes": 783,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "805a2462e091d24dc57b306ae6531bd77fedf36aad4a1ab8d2de7994903fe313",
+          "bytes": 783
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-PR20260913-inversion214",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

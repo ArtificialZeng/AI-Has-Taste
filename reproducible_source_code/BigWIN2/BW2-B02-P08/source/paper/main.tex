@@ -1,0 +1,399 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\RV}{\mathrm{RV}}
+\newcommand{\TC}{\mathrm{TC}}
+\newcommand{\D}{\mathcal D}
+
+\title[The $k=4$ phylogenetic-network conjecture is false]
+{A square-root obstruction to the $k=4$ phylogenetic-network enumeration conjecture}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University,
+Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 29, 2026}
+\subjclass[2020]{05A15, 05C30, 92B10}
+\keywords{phylogenetic network, reticulation-visible network, tree-child network,
+component graph, exponential generating function}
+\hypersetup{
+  pdftitle={A square-root obstruction to the k=4 phylogenetic-network enumeration conjecture},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+Batle conjectured that, for fixed reticulation number $k$, the difference
+between the numbers of reticulation-visible and tree-child networks is a sum
+of two prescribed factorial bases with polynomial coefficients.  We disprove
+the conjecture at its first open case, $k=4$.  If
+$X=(1-2z)^{1/2}$ and $R_4(z)$ is the exponential generating function for
+reticulation-visible networks, the Chang--Fuchs component-graph formula gives
+$[X^3]R_4(z)=5/16$.  A highest-exponent argument isolates this coefficient in
+the unique four-sink component graph, so the disproof does not depend on a
+large numerical enumeration.  Neither proposed factorial basis can produce
+a positive odd power $X^j$ with $j>1$.  We also compute the corrected exact
+formula: it contains the additional term $15(2\ell-5)!!/16$.  Two independent
+exact implementations certify the full Laurent generating function and an
+integer residual against the conjectured degree bounds.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+A binary phylogenetic network is a rooted directed acyclic graph whose leaves
+are labelled and whose internal vertices are tree vertices or reticulation
+vertices.  Two important subclasses are the tree-child networks and the
+reticulation-visible networks.  Chang and Fuchs developed a component-graph
+method for exact enumeration with a fixed small number of reticulations
+\cite{ChangFuchs2024}.  The tree-child counts are connected to the
+Pons--Batle word numbers \cite{PonsBatle2021}; the required identity has since
+been proved in full generality \cite{LinEtAl2026}, with a further combinatorial
+framework in \cite{LiuWallnerYu2026}.
+
+For the sets $\RV_{\ell,k}$ and $\TC_{\ell,k}$ of networks with $\ell$ leaves
+and $k$ reticulations, put
+\[
+ \Delta_k(\ell)=|\RV_{\ell,k}|-|\TC_{\ell,k}|.
+\]
+Batle's Conjecture~5.1 \cite{Batle2026} asserts, for $\ell\ge k+1$, that
+\begin{equation}\label{eq:conjecture}
+ \Delta_k(\ell)=A_k(\ell)(2\ell-3)!!
+ -B_k(\ell)2^{\ell-k+1}\ell!,
+\end{equation}
+where $A_k,B_k$ are polynomials of degrees $2k-1$ and $2k-3$, respectively,
+and the leading coefficient of $A_k$ is $2^k$.  The cases $k=2,3$ motivated
+the conjecture; the case $k=4$ was explicitly left open.
+
+Our main result is stronger than the negation of the degree conditions.
+
+\begin{theorem}\label{thm:main}
+There do not exist polynomials $A,B\in\mathbb Q[x]$ of any finite degrees such
+that
+\[
+ \Delta_4(\ell)=A(\ell)(2\ell-3)!!-B(\ell)2^{\ell-3}\ell!
+\]
+for every integer $\ell\ge5$.  In particular, the $k=4$ specialization of
+\eqref{eq:conjecture} is false.
+\end{theorem}
+
+In fact the conjecture misses one lower double-factorial term.  Define
+\begin{align*}
+A_0(x)={}&8x^7+\frac{110}{3}x^6-\frac{1027}{105}x^5
+-\frac{34739}{210}x^4-\frac{1088}{5}x^3\\
+&-\frac{7831}{140}x^2+\frac{48467}{840}x+\frac{309}{16},\\
+B_0(x)={}&64x^5+82x^4-\frac{985}{6}x^3
+-\frac{1091}{2}x^2-\frac{1633}{3}x-194.
+\end{align*}
+
+\begin{theorem}\label{thm:corrected}
+For every integer $\ell\ge5$,
+\begin{equation}\label{eq:corrected}
+ \Delta_4(\ell)=A_0(\ell)(2\ell-3)!!
+ +\frac{15}{16}(2\ell-5)!!
+ -B_0(\ell)2^{\ell-3}\ell!.
+\end{equation}
+\end{theorem}
+
+Thus the coefficient of $(2\ell-3)!!$ in the corrected formula is
+$A_0(\ell)+15/(16(2\ell-3))$, not a polynomial.  The proof of
+Theorem~\ref{thm:main} is human-checkable and uses only one component graph.
+The full exact sum is needed for Theorem~\ref{thm:corrected}; it is accompanied
+by two independent rational-arithmetic implementations.
+
+The literature search for this note used exact-title, conjecture, formula,
+citation, and correction queries through August 29, 2026.  No other solution
+of the $k=4$ case was found in those searches.  This is a bounded search
+statement, not a claim about inaccessible or unindexed work.
+
+\section{Definitions and the component-graph formula}
+
+A binary phylogenetic network on $[\ell]=\{1,\dots,\ell\}$ is a rooted simple
+directed acyclic graph.  Its root has indegree zero and outdegree one; its
+leaves have indegree one and outdegree zero and are bijectively labelled by
+$[\ell]$; every other vertex has degree pair $(1,2)$ or $(2,1)$.  The latter
+vertices are reticulations.  Isomorphisms fix all leaf labels.
+
+A network is tree-child if every non-leaf vertex has a tree vertex or a leaf
+as a child.  A reticulation is visible if there is a leaf such that every path
+from the root to that leaf contains the reticulation.  A network is
+reticulation-visible if all its reticulations are visible.  These are the
+conventions in \cite{Batle2026,ChangFuchs2024}.
+
+Let $M_{\ell,d}$ count one-component networks in the normalization of
+Chang--Fuchs, and define
+\[
+ F_d(z)=\sum_{r\ge0}M_{r+d,d}\frac{z^r}{r!}.
+\]
+Put $X=(1-2z)^{1/2}$.  In particular, $F_0(z)=1-X$, with $M_{0,0}=0$.
+
+Let $\D_m$ be the set of unlabelled rooted directed acyclic multigraphs with
+$m$ vertices, every non-root vertex having indegree two, and with double
+edges allowed.  For $G\in\D_m$ and $v\in V(G)$, let $c(v)$ be the number of
+distinct children and $d(v)$ the number of children joined to $v$ by a double
+edge.  Let $m(G)$ be the order of the root-preserving automorphism group.
+Chang--Fuchs Proposition~12 gives
+\begin{equation}\label{eq:CF}
+ R_k(z):=\sum_{\ell\ge1}|\RV_{\ell,k}|\frac{z^\ell}{\ell!}
+ =\sum_{G\in\D_{k+1}}\frac1{m(G)}
+   \prod_{v\in V(G)}W_{c(v),d(v)}(z).
+\end{equation}
+Directly shifting the index in their vertex series gives
+\begin{equation}\label{eq:weights}
+ W_{c,d}=F_d^{(c-d)}\quad(d>0),\qquad
+ W_{c,0}=F_0^{(c)}-M_{c,0}.
+\end{equation}
+Here differentiation in $z$ acts on Laurent polynomials in $X$ as
+$-X^{-1}d/dX$.
+
+\section{The isolated square-root obstruction}
+
+The one-component recurrence of Gunawan, Rathin, and Zhang
+\cite{GunawanRathinZhang2020}, as recorded in \cite{ChangFuchs2024}, is
+\begin{align}\label{eq:Mrec}
+M_{\ell,d}={}&(\ell+d-2)M_{\ell,d-1}+(d-1)M_{\ell,d-2}\notag\\
+&+\frac12\sum_{j=1}^{d-1}\binom{d-1}{j}(2j-1)!!
+ \bigl(M_{\ell-j,d-1-j}-M_{\ell+1-j,d-1-j}\bigr),
+\end{align}
+with $M_{\ell,0}=(2\ell-3)!!$, $M_{\ell,1}=(\ell-1)(2\ell-3)!!$, and
+$M_{\ell,d}=0$ for $\ell<d$.  Chang--Fuchs Lemma~7 implies
+\begin{equation}\label{eq:Fdshape}
+ F_d(z)=\frac{N_d(z)}{X^{4d-1}},\qquad \deg N_d\le2d-1.
+\end{equation}
+
+For $d=4$, the eight values from \eqref{eq:Mrec} are
+\begin{align*}
+&6249,\ 97182,\ 1701855,\ 33121890,\\
+&709428825,\ 16587636030,\ 420498508815,\ 11489311483650.
+\end{align*}
+Multiplying $F_4$ by $(1-2z)^{15/2}$, or equivalently taking the finite
+Cauchy product, uses
+\[
+ [z^r]N_4(z)=\sum_{m=0}^r\frac{M_{4+r-m,4}}{(r-m)!}
+ \binom{15/2}{m}(-2)^m\qquad(0\le r\le7)
+\]
+and gives
+\begin{align}\label{eq:N4}
+N_4(z)={}&6249+3447z+2475z^2-2370z^3+4215z^4\notag\\
+&-4968z^5+3216z^6-960z^7.
+\end{align}
+All quantities in this section are integers or rationals; no numerical
+approximation is involved.
+
+For a nonzero Laurent polynomial $H$, write $h(H)$ for the largest exponent
+of $X$ occurring in $H$.
+
+\begin{lemma}\label{lem:highest}
+Among the summands in \eqref{eq:CF} for $k=4$, only the graph consisting of
+the root joined by a double edge to each of four sinks can contain $X^3$.
+Its $X^3$ coefficient is $5/16$.
+\end{lemma}
+
+\begin{proof}
+By \eqref{eq:Fdshape}, $h(F_d)\le-1$ for $d>0$.  Each differentiation in $z$
+lowers every surviving exponent by two, so \eqref{eq:weights} gives
+\[
+ h(W_{c,d})\le-1-2(c-d)\quad(d>0).
+\]
+For $d=0$, $h(W_{0,0})=1$, whereas $h(W_{c,0})\le0$ for $c>0$.
+
+Suppose $G\in\D_5$ has $s$ sinks and $q$ vertices with at least one outgoing
+double edge.  It follows that
+\begin{equation}\label{eq:heightbound}
+ h\left(\prod_vW_{c(v),d(v)}\right)\le s-q.
+\end{equation}
+If $s\le2$, the right side is at most two.  If $s=3$, the two nonsinks are
+the root and one non-root vertex.  The latter has indegree two; if there were
+no double edge, it would need two distinct nonsink ancestors although only the
+root is available.  Hence $q\ge1$, and \eqref{eq:heightbound} is again at most
+two.
+
+If $s=4$, the only nonsink is the root, so every sink is joined to it by a
+double edge.  This graph is unique and has automorphism order $4!=24$.  Its
+contribution is $F_4(z)(1-X)^4/24$.  To obtain $X^3$, the $X^{14}$ term of
+$N_4((1-X^2)/2)$ must be multiplied by the $X^4$ term of $(1-X)^4$.  By
+\eqref{eq:N4}, the former is
+\[
+ -960\left(-\frac{X^2}{2}\right)^7=\frac{15}{2}X^{14}.
+\]
+Division by $24$ gives $5/16$.
+\end{proof}
+
+\begin{corollary}\label{cor:x3}
+The exact generating function satisfies $[X^3]R_4(z)=5/16$.
+\end{corollary}
+
+\section{The proposed bases cannot contain the obstruction}
+
+Let $\theta=z\,d/dz$.  Since
+\[
+ \sum_{\ell\ge1}(2\ell-3)!!\frac{z^\ell}{\ell!}=1-X,
+\]
+the exponential generating function of
+$P(\ell)(2\ell-3)!!$ is $P(\theta)(1-X)$.  On a Laurent monomial,
+\begin{equation}\label{eq:theta}
+ \theta X^e=\frac e2\bigl(X^e-X^{e-2}\bigr).
+\end{equation}
+Starting from $X$, repeated use of \eqref{eq:theta} produces only odd powers
+whose exponent is at most one.  Thus this basis cannot produce $X^3$.
+
+For the other basis,
+\[
+ \sum_{\ell\ge0}Q(\ell)2^{\ell-3}\ell!\frac{z^\ell}{\ell!}
+ =\frac18\sum_{\ell\ge0}Q(\ell)(2z)^\ell.
+\]
+This is rational in $2z=1-X^2$, with denominator a power of $X^2$, and hence
+has only even powers of $X$.  Changing finitely many initial coefficients adds
+a polynomial in $z=(1-X^2)/2$, which again has only even powers.  We have
+proved the following span obstruction.
+
+\begin{lemma}\label{lem:span}
+For arbitrary finite-degree polynomials $P,Q$, the eventual exponential
+generating function of
+\[
+ P(\ell)(2\ell-3)!!+Q(\ell)2^{\ell-3}\ell!
+\]
+has no $X^j$ term for any positive odd $j>1$.
+\end{lemma}
+
+The proved Pons--Batle identity and their equation~(19d) give
+\begin{align}\label{eq:TC4}
+|\TC_{\ell,4}|=\binom\ell4\bigl[&(2\ell+5)!!-4(2\ell+4)!!
++2(2\ell+3)!!\notag\\
+&+\tfrac{17}{2}(2\ell+2)!!-\tfrac{283}{63}(2\ell+1)!!\bigr]
+\end{align}
+for $\ell\ge5$ \cite{PonsBatle2021,LinEtAl2026}.  Expressing the shifted odd
+double factorials relative to $(2\ell-3)!!$ and the even double factorials
+relative to $2^{\ell-3}\ell!$ shows that \eqref{eq:TC4} lies in the span of
+Lemma~\ref{lem:span}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+If the asserted representation of $\Delta_4$ existed, adding
+\eqref{eq:TC4} would put $|\RV_{\ell,4}|$ in the same eventual two-basis span.
+Lemma~\ref{lem:span} would force $[X^3]R_4=0$, contradicting
+Corollary~\ref{cor:x3}.
+\end{proof}
+
+\section{The corrected closed form}
+
+For completeness, exact evaluation of all component graphs in $\D_5$ gives
+\begin{align}\label{eq:R4full}
+R_4(z)={}&\frac5{16}X^3-\frac54X^2+\frac{97}{32}X-4
++\frac{45}{32}X^{-1}+\frac{13}{8}X^{-2}-\frac{331}{128}X^{-3}\notag\\
+&-\frac{17}{8}X^{-4}+\frac{1111}{64}X^{-5}-\frac{19}{8}X^{-6}
++\frac{4487}{128}X^{-7}+\frac{385}{8}X^{-8}\notag\\
+&-\frac{319}{4}X^{-9}-586X^{-10}+\frac{45835}{128}X^{-11}
++1045X^{-12}-\frac{45045}{64}X^{-13}\notag\\
+&-480X^{-14}+\frac{45045}{128}X^{-15}.
+\end{align}
+This identity was computed twice by the independent procedures described in
+Section~\ref{sec:certificate}.
+
+For $j\ge1$ and sufficiently large $\ell$, the binomial theorem gives
+\begin{align*}
+\ell![z^\ell]X^{-(2j-1)}
+ &=\frac{(2\ell+2j-3)!!}{(2j-3)!!},\\
+\ell![z^\ell]X^{-2j}
+ &=2^\ell\ell!\binom{\ell+j-1}{j-1}.
+\end{align*}
+Moreover,
+\[
+\ell![z^\ell]X=-(2\ell-3)!!,
+\qquad
+\ell![z^\ell]X^3=3(2\ell-5)!!.
+\]
+The nonnegative even powers in \eqref{eq:R4full} have zero coefficient for
+$\ell\ge5$.  Substituting these identities into \eqref{eq:R4full}, subtracting
+\eqref{eq:TC4}, and collecting terms gives exactly \eqref{eq:corrected}.
+This proves Theorem~\ref{thm:corrected}.
+
+\section{Exact certificate and independent checks}\label{sec:certificate}
+
+The discovery implementation uses SymPy rational arithmetic.  With the root
+fixed, it chooses the unordered pair of parents of each of the four non-root
+vertices, rejects precisely the cyclic choices, evaluates the vertex weights,
+and divides the resulting labelled sum by $4!$.
+
+The independent verifier uses only the Python standard library.  It generates
+the graphs through all topological orders, deduplicates them, canonically
+quotients by root-preserving permutations, and weights every class by the
+reciprocal of its independently computed automorphism order.  It implements
+Laurent arithmetic with \texttt{fractions.Fraction}.  Both routes give 1587
+fixed-root labelled graphs and 79 unlabelled classes, with automorphism-order
+histogram
+\[
+56[1]+19[2]+[4]+2[6]+[24].
+\]
+A third check uses the sink-row inclusion--exclusion recurrence and gives 7935
+fully vertex-labelled graphs, equal to $5\cdot1587$.
+
+Cardona and Zhang's Figure~9 is captioned as a list of 82 five-vertex classes
+\cite{CardonaZhang2020}.  The 82 orbit sizes printed in that figure sum to
+7905, not 7935.  Thus that figure is not used as input here; exact generation
+from the definition and the independent recurrence are used instead.  This
+discrepancy is immaterial to Theorem~\ref{thm:main}, whose proof isolates the
+unique four-sink graph without enumerating the other classes.
+
+As a further check, the 14 coefficients allowed by
+$\deg A\le7$, $\deg B\le5$ are uniquely fitted from exact values at
+$\ell=5,\dots,18$.  At $\ell=19$ the actual value is
+\[
+618911914073871797682864561000,
+\]
+whereas the fit predicts
+\[
+618911914073871699607286961000.
+\]
+The exact residual is $98075577600000>0$.  This finite computation is a
+diagnostic falsification of the stated degree bounds; it is not used as proof
+of the all-$\ell$ assertion.
+
+The accompanying archive contains the stable paths
+\begin{verbatim}
+code/discover_delta4_sympy.py
+code/verify_delta4_certificate.py
+certificates/delta4_laurent.json
+\end{verbatim}
+and the full verification command is
+\begin{verbatim}
+python3 code/verify_delta4_certificate.py
+\end{verbatim}
+It checks the isolated-star coefficient, the complete Laurent polynomial, the
+three graph counts, the corrected formula on $5\le\ell\le30$, and the
+$\ell=19$ residual using exact arithmetic.  The finite-range check is redundant
+evidence for Theorem~\ref{thm:corrected}, whose proof is the coefficient
+extraction above.
+
+\section{Scope and disclosure}
+
+The result addresses only Batle's conjectured factorial-basis form and its
+$k=4$ case.  It does not make a claim about the conjecture at every larger
+$k$, nor does it alter the definitions or the Chang--Fuchs structural theorem.
+The main proof depends on their Proposition~12 and Lemma~7, and the subtraction
+step depends on the now-proved Pons--Batle identity.
+
+Every decisive computation uses rational or integer arithmetic and has an
+independent implementation.  No Lean, Coq, Isabelle, or other proof assistant
+was used.  The manuscript has not undergone journal peer review.
+
+\bibliographystyle{amsplain}
+\begingroup
+\sloppy
+\bibliography{references}
+\endgroup
+
+\end{document}

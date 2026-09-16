@@ -1,0 +1,252 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\F}{\mathbb F}
+\newcommand{\Mat}{M_3(\F_2)}
+
+\title[The least two-variable identity degree is seven]
+{The least degree of a two-variable polynomial identity for
+\(M_3(\mathbb F_2)\) is seven}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University,
+Kuala Lumpur 56000, Malaysia}
+\email{zijianzeng@foxmail.com}
+\email{1002266693@ucsiuniversity.edu.my}
+\date{August 30, 2026}
+\subjclass[2020]{16R10, 16Z05, 68W30}
+\keywords{polynomial identity, finite field, matrix algebra, exact computation,
+rank certificate}
+\hypersetup{
+  pdftitle={The least degree of a two-variable polynomial identity for M3(F2) is seven},
+  pdfauthor={Zijian Zeng}
+}
+
+\begin{document}
+
+\begin{abstract}
+We determine the least degree of a nonzero polynomial in the two-generator free
+algebra \(\F_2\langle X,Y\rangle\) that vanishes on every ordered pair of
+matrices in \(M_3(\F_2)\).  The answer is seven.  The upper bound is witnessed
+by an explicit 18-word inhomogeneous identity and is checked on all
+\(512^2=262144\) ordered pairs.  For the lower bound, evaluations of the 127
+words of length at most six on 15 matrix pairs contain a nonsingular
+\(127\times127\) minor over \(\F_2\).  Both claims are supplied as a compact
+exact certificate and are reconstructed by a dependency-free verifier.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+The Amitsur--Levitzki theorem gives the standard polynomial of degree \(2n\)
+as an identity of \(M_n\), and degree \(2n\) is minimal when the number of free
+variables is unrestricted \cite{AmitsurLevitzki1950}.  Requiring exactly two
+free variables is a different question: substituting two words into a
+multilinear identity can make the resulting free-algebra polynomial zero.  Over
+a finite field there is an additional distinction, because an inhomogeneous
+polynomial can define the zero function without its homogeneous components
+doing so separately.
+
+Genov gave an explicit finite basis for the full ideal of polynomial identities
+of \(M_3(K)\) over an arbitrary finite field \(K\)
+\cite{Genov1981}.  Later surveys place this result alongside the substantially
+different characteristic-zero theory \cite{Drensky2021}.  Those sources do not
+tabulate the least degree under the simultaneous restrictions of two free
+variables, matrix size three, and base field \(\F_2\).  This precise finite
+question was recorded as open in the source research packet
+\cite{TheoremDBP2746}; that packet explicitly notes that its status report was
+not editorially reviewed.
+
+We resolve the finite question exactly.
+
+\begin{theorem}\label{thm:main}
+Let \(d_{3,2}\) be the least degree of a nonzero
+\(f\in\F_2\langle X,Y\rangle\) such that
+\(f(A,B)=0\) for every \((A,B)\in\Mat^2\).  Then
+\[
+d_{3,2}=7.
+\]
+\end{theorem}
+
+The proof is computer-assisted but finite and exact.  Its two decisive objects
+are printed below: an explicit identity for the upper bound and a 15-pair rank
+witness for the lower bound.  The accompanying verifier reconstructs both from
+the serialized data using only integer and bit operations.
+
+\section{Conventions and the evaluation map}
+
+The algebra \(\F_2\langle X,Y\rangle\) is unital.  Its basis is the set of all
+words in \(X,Y\), including the empty word \(1\).  For a nonzero polynomial
+\(f=\sum_w c_w w\),
+\[
+\deg f=\max\{|w|:c_w=1\}.
+\]
+Thus lower-degree and constant terms are allowed.
+
+Let \(W_{\le d}\) be the words of length at most \(d\), ordered first by
+length and then lexicographically with \(X<Y\).  Evaluation on all matrix pairs
+defines an \(\F_2\)-linear map
+\[
+E_d:\F_2^{W_{\le d}}\longrightarrow
+\F_2^{\Mat^2\times\{0,\ldots,8\}},
+\]
+where the final coordinate indexes matrix entries in row-major order.  The
+desired number is the least \(d\) for which \(E_d\) has a nonzero kernel.
+Notice that \(|W_{\le6}|=1+2+2^2+\cdots+2^6=127\).
+
+We encode a matrix \(C=(c_{ij})_{0\le i,j<3}\) as
+\begin{equation}\label{eq:encoding}
+\iota(C)=\sum_{0\le i,j<3}c_{ij}2^{3i+j}\in\{0,\ldots,511\}.
+\end{equation}
+This is a bijection.  In particular, exhaustive iteration over the square of
+this integer interval includes zero, singular, scalar, commuting, and
+noncommuting pairs without any case restriction.
+
+\section{The degree-seven identity}
+
+Define the following polynomial, with every displayed coefficient equal to one
+in \(\F_2\):
+\begin{equation}\label{eq:identity}
+\begin{aligned}
+f(X,Y)={}&X^3YXY+X^3Y^2X+XYX^3Y+XY^2X^3\\
+&+YX^3YX+YXYX^3+X^4YXY+X^4Y^2X\\
+&+X^3YX^2Y+X^3Y^2X^2+X^2YX^3Y+X^2Y^2X^3\\
+&+XYX^4Y+XY^2X^4+YX^4YX+YX^3YX^2\\
+&+YX^2YX^3+YXYX^4.
+\end{aligned}
+\end{equation}
+The 18 words are distinct, and twelve have length seven.  Hence \(f\ne0\) in
+the free algebra and \(\deg f=7\).
+
+\begin{proposition}\label{prop:upper}
+The polynomial \(f\) in \eqref{eq:identity} satisfies
+\(f(A,B)=0\) for every \((A,B)\in\Mat^2\).
+\end{proposition}
+
+\begin{proof}
+The verifier constructs multiplication from \eqref{eq:encoding}.  Entry
+\((i,j)\) of a product is the parity of the bitwise intersection of row \(i\)
+of the first matrix with column \(j\) of the second.  For each of the 262144
+encoded pairs, it evaluates the prefix closure of the 18 words by induction on
+word length and XORs their values.  Every resulting nine-bit integer is zero.
+
+The computation is exhaustive exact arithmetic.  As an independent arithmetic
+check, the discovery program constructs multiplication by the three-term scalar
+formula for every entry; the two implementations agree on all \(512^2\) matrix
+products.  The verifier's compact success record reports 262144 checked pairs
+and zero violations.
+\end{proof}
+
+\section{The degree-six rank certificate}
+
+For the lower bound, the following are the 15 encoded ordered pairs used in the
+certificate.  The encoding is \eqref{eq:encoding}.
+
+\begin{center}
+\begin{tabular}{c@{\qquad}rr@{\qquad}c@{\qquad}rr@{\qquad}c@{\qquad}rr}
+\toprule
+\(k\)&\(A_k\)&\(B_k\)&\(k\)&\(A_k\)&\(B_k\)&\(k\)&\(A_k\)&\(B_k\)\\
+\midrule
+0&198&14&5&282&169&10&508&34\\
+1&491&43&6&356&227&11&70&92\\
+2&278&478&7&430&285&12&366&324\\
+3&208&111&8&211&314&13&440&382\\
+4&501&140&9&140&459&14&272&72\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Let \(R\) be the \(135\times127\) binary matrix obtained by evaluating the
+ordered words \(W_{\le6}\) on these pairs, with rows indexed by \((k,e)\),
+where \(0\le k<15\) and \(0\le e<9\) is the row-major entry index.  Let \(Q\)
+be the square submatrix consisting of all nine rows for \(0\le k<14\) and the
+single row \((14,3)\).
+
+\begin{proposition}\label{prop:lower}
+Over \(\F_2\), the matrix \(Q\) has rank 127.  Consequently, \(E_6\) is
+injective.
+\end{proposition}
+
+\begin{proof}
+Exact Gaussian elimination gives \(\operatorname{rank}_{\F_2}Q=127\), or
+equivalently \(\det Q=1\).  The verifier reconstructs every entry of \(Q\)
+from the 15 pairs and the word convention; the square matrix itself is not
+trusted as input.
+
+Now suppose that a polynomial of degree at most six vanished on every ordered
+matrix pair.  Its 127-dimensional coefficient vector would lie in the kernel of
+the restriction represented by \(Q\).  Since \(Q\) is nonsingular, this vector
+must be zero.  Thus \(E_6\) is injective.  The nested word bases then also give
+injectivity in every smaller degree.
+\end{proof}
+
+The number of witness pairs is minimal for a certificate of this form: one pair
+provides only nine scalar rows, while \(\lceil127/9\rceil=15\).  For reference,
+the recomputed ranks on the same pairs are
+\[
+\begin{array}{c|rrrrrrr}
+d&0&1&2&3&4&5&6\\ \hline
+\operatorname{rank}E_d|_{\{(A_k,B_k)\}}&1&3&7&15&31&63&127.
+\end{array}
+\]
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Proposition~\ref{prop:upper} gives \(d_{3,2}\le7\).
+Proposition~\ref{prop:lower} gives \(d_{3,2}>6\).  Hence \(d_{3,2}=7\).
+\end{proof}
+
+\section{Reproducibility and scope}
+
+The machine-readable certificate contains the literal support of
+\eqref{eq:identity}, the 15 encoded pairs, the 127 selected coordinates, and the
+claimed lower-degree ranks.  From the artifact root, the complete check is
+invoked by
+\begin{verbatim}
+python3 src/verify_certificate.py \
+  certificates/min_degree_7.json
+\end{verbatim}
+The verifier uses only the Python standard library.  It validates the schema and
+ranges, rejects duplicate or malformed data, reconstructs matrix multiplication
+and word evaluation, checks all ordered pairs, and independently rebuilds the
+rank minor.  A separate test suite compares both multiplication implementations
+on their complete domain and tests altered certificates.  No floating-point
+arithmetic, random seed, timeout, or unproved search cutoff enters the proof.
+
+The result is specific to the unital two-generator free algebra over
+\(\F_2\).  It does not classify the 48-dimensional sampled space of degree-seven
+relations, give a new basis for the full identity ideal, or extend the value to
+other matrix sizes or fields.  A search through the cited primary and survey
+literature, repeated after obtaining the exact polynomial, did not locate this
+precise value; this is a bounded literature-search statement rather than a claim
+of absolute priority.
+
+\section*{Computational and AI disclosure}
+
+Exact discovery used independently implemented GF(2) evaluators and elimination
+routines.  Generative AI assisted with exploratory code, literature queries,
+and manuscript drafting.  The mathematical claims are tied to the explicit
+certificate and dependency-free verifier described above.  No proof assistant
+was used.
+
+\section*{Data and code availability}
+
+The submission archive includes the certificate, independent verifier, test
+suite, and instructions needed to reproduce the result from the serialized
+exact data.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

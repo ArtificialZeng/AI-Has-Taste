@@ -1,0 +1,221 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks,pdftitle={A Complete Hamiltonicity Atlas for Acyclic-Orientation Flip Graphs Through Six Vertices},pdfauthor={Xiaojian Zeng},pdfsubject={Finite exact classification of acyclic-orientation flip-graph Hamiltonicity},pdfkeywords={acyclic orientation, Hamilton cycle, Gray code, graph census, exact certificate}]{hyperref}
+\usepackage{xurl}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\AO}{\mathcal{AO}}
+
+\title{A Complete Hamiltonicity Atlas for Acyclic-Orientation Flip Graphs\\
+Through Six Vertices}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a finite graph $G$, let $\AO(G)$ have the acyclic orientations of $G$ as
+vertices, with two orientations adjacent when they differ by reversing one
+edge.  We classify the Hamiltonicity of $\AO(G)$ for every connected
+unlabelled loopless simple graph $G$ with $2\leq |V(G)|\leq 6$.  Under the
+explicit convention that a two-item cyclic Gray code is allowed for $K_2$,
+$\AO(G)$ has a Hamilton cycle if and only if the acyclic signature $\sigma(G)$
+vanishes.  There are 142 graph classes: 125 signature-zero positive cases and
+17 negative cases, all excluded by parity imbalance.  The result is certified
+by an exhaustive canonical graph census, a complete serialization of 19,716
+acyclic orientations and 52,423 flips, an explicit spanning cycle for every
+positive case, and exact reconstruction verifiers.  The conclusion is only
+for this finite domain and does not settle the unrestricted classification.
+\end{abstract}
+
+\section{Statement and context}
+
+Savage, Squire, and West introduced the acyclic-orientation flip graph and
+studied Hamilton cycles in it as cyclic Gray codes, obtaining positive and
+negative families of examples~\cite{SavageSquireWest1993}.  M\"uhlherr and
+Poullot recently formulated the general classification problem, introduced
+the acyclic polynomial and its signature, and proved the parity obstruction
+used below~\cite{MuehlherrPoullot2026}.  Their Appendix~D reports 22 selected
+named graphs, including cases left undecided there.  It is not a census of all
+connected graphs of any bounded order.  The purpose of this note is to close
+the complete order-at-most-six census, with the accompanying data serving as
+the case-by-case certificate.
+
+Let $G=([n],E)$ be a labelled representative and order its edges
+$e_1,\ldots,e_m$ lexicographically.  Let $D_0$ direct every edge from its
+smaller to its larger endpoint.  An orientation $A$ is encoded by
+$x(A)\in\{0,1\}^m$, where bit $i$ is one precisely when $e_i$ is reversed
+relative to $D_0$.  Define
+\[
+ \operatorname{rk}_{D_0}(A)=|x(A)|,
+ \qquad
+ \sigma(G)=\left|\sum_{A\text{ acyclic}}
+          (-1)^{\operatorname{rk}_{D_0}(A)}\right|.
+\]
+Changing the base orientation changes at most the sign of the sum, so its
+absolute value depends only on $G$.
+
+Throughout, a Hamilton cycle means a cyclic list containing every vertex once
+and having adjacent consecutive entries, including the closing pair.  In the
+two-vertex boundary case we follow the cyclic-Gray-code convention: the two
+orientations of $K_2$ form an allowed two-item cyclic list.  If one instead
+requires a simple cycle to have at least three vertices, $K_2$ is a trivial
+signature-zero exception to the theorem.
+
+\begin{theorem}\label{thm:atlas}
+Under the preceding two-item convention, for every connected unlabelled
+loopless simple graph $G$ with $2\leq |V(G)|\leq 6$,
+\[
+       \AO(G)\text{ has a Hamilton cycle}
+       \quad\Longleftrightarrow\quad \sigma(G)=0.
+\]
+The complete domain contains 142 isomorphism classes, of which 125 are
+Hamiltonian and 17 are non-Hamiltonian.  In particular, there is no
+signature-zero counterexample in this domain.
+\end{theorem}
+
+\section{Exact census}
+
+For each $n\in\{2,3,4,5,6\}$, the census examines all
+$2^{\binom n2}$ labelled simple graphs on $[n]$, rejects the disconnected
+ones, applies all $n!$ vertex permutations, and retains the lexicographically
+least graph6 encoding in each orbit.  Thus neither a randomized isomorphism
+test nor a pre-existing small-graph table is needed for coverage.  The
+resulting class counts are shown in Table~\ref{tab:census}.  Canonical
+labelling is a standard tool for reproducible graph censuses; see, for
+example, McKay and Piperno~\cite{McKayPiperno2014}.
+
+For every representative, all $2^m$ orientation masks are tested for
+acyclicity by integer Kahn elimination.  As a cross-check, the resulting set
+is compared with the orientations induced by all $n!$ vertex orders: a vertex
+order induces an acyclic orientation, and every acyclic orientation admits a
+topological order.  A pair of retained masks is a flip edge exactly when its
+exclusive-or has one set bit.  The serialized atlas records the graph6 name,
+edge list, every retained mask, every flip edge, and the signed and absolute
+signatures.
+
+This proof-carrying architecture is methodologically close to the canonical
+graph6 census, exact witnesses, and reconstructing verifier used in a recent
+finite eight-vertex graph computation~\cite{Zeng2026Whiskered}.  Here the
+small bound $n\leq6$ additionally permits direct traversal of every labelled
+graph and every permutation.  A second census check canonicalizes the
+connected entries in an independently supplied small-graph atlas and rejects
+isomorphism for every distinct same-order pair.
+
+\begin{table}[ht]
+\centering
+\caption{The complete census.  The second row is exactly the Hamiltonian row;
+the third row is exactly the non-Hamiltonian row.}
+\label{tab:census}
+\begin{tabular}{lrrrrrr}
+\toprule
+$|V(G)|$ & 2 & 3 & 4 & 5 & 6 & Total\\
+\midrule
+Connected isomorphism classes & 1 & 2 & 6 & 21 & 112 & 142\\
+$\sigma(G)=0$ & 1 & 2 & 5 & 18 & 99 & 125\\
+$\sigma(G)\ne0$ & 0 & 0 & 1 & 3 & 13 & 17\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Negative cases: the parity certificate}
+
+\begin{lemma}\label{lem:parity}
+If $\AO(G)$ has a Hamilton cycle, then $\sigma(G)=0$.
+\end{lemma}
+
+\begin{proof}
+Color an orientation mask by the parity of its Hamming weight.  Reversing one
+edge changes that parity, so $\AO(G)$ is bipartite with even- and odd-weight
+parts.  A spanning cycle alternates between the two parts and hence uses the
+same number of vertices in each.  Their cardinality difference is
+\[
+ \sum_{A\text{ acyclic}}(-1)^{\operatorname{rk}_{D_0}(A)}.
+\]
+It must vanish, and therefore so must its absolute value $\sigma(G)$.
+\end{proof}
+
+The exact enumeration gives 17 nonzero-signature representatives.  Their
+canonical graph6 identifiers are
+\begin{center}
+\small\ttfamily
+C] \quad DFw \quad DLs \quad D]\{ \quad E?\string~o \quad E@vg \quad E@vo
+\quad EBj? \quad EBjW\\
+EBjg \quad EBz\_ \quad EBzw \quad EB\string~o \quad EJeg \quad EJnW
+\quad ELvg \quad E]\string~o.
+\end{center}
+For each one, the verifier reconstructs the acyclic masks directly from the
+edge list and obtains unequal parity classes.  Lemma~\ref{lem:parity} is thus
+an exact non-Hamiltonicity certificate for every negative case; no failed
+cycle search is used as evidence.
+
+\section{Positive cases: explicit cyclic witnesses}
+
+For every one of the remaining 125 representatives, the supplementary cycle
+file contains a cyclic list of all its acyclic-orientation bit vectors.  The
+lists were found by a deterministic OR-Tools CP-SAT \texttt{AddCircuit}
+search (version 9.14.6206, one worker, seed zero).  Search status is not part
+of the proof.  A separate verifier, which does not import OR-Tools, starts
+only from each graph's order and edge list and performs the following exact
+checks:
+\begin{enumerate}
+  \item re-enumerate all $2^m$ masks and retain exactly the acyclic ones;
+  \item check that the proposed list has no repetition and its underlying set
+        is exactly the reconstructed acyclic-orientation set;
+  \item check that every consecutive pair, including the closing pair, has
+        Hamming distance one.
+\end{enumerate}
+The verifier accepts 125 cycles in order counts $1,2,5,18,99$, collectively
+covering 17,130 orientation vertices.  The only two-item witness is the one
+for $K_2$, and its two masks differ in the unique bit.  These checks prove
+Hamiltonicity for every signature-zero case independently of the optimization
+search.
+
+Combining these witnesses with Lemma~\ref{lem:parity} and the exhaustive
+census proves Theorem~\ref{thm:atlas}.  Since all 17 negative cases have
+nonzero signature, the set of signature-zero negative cases is empty.
+
+\section{Reproducibility and limitations}
+
+The supplementary material consists of the following human-readable programs
+and machine-readable certificates:
+\begin{itemize}
+  \item \texttt{atlas-enumerate.py} and \texttt{atlas-through-6.json} generate
+        and serialize the complete graph, orientation, flip, and signature
+        census;
+  \item \texttt{atlas-verify.py} rechecks the census and its secondary atlas
+        comparison;
+  \item \texttt{hamilton-search.py} and \texttt{hamilton-cycles.json} record
+        witness discovery and all 125 cyclic lists;
+  \item \texttt{hamilton-verify.py} reconstructs and checks every positive
+        cycle and every negative parity imbalance without the search solver.
+\end{itemize}
+All decisive predicates use finite integers and explicit lists.  A complete
+replay runs the two verification programs with Python~3; witness discovery
+need not be rerun.  The result concerns only connected loopless simple graphs
+on two through six vertices.  It neither classifies larger graphs nor claims
+that vanishing signature is sufficient without the order bound.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex was used to assist with literature searching, implementation and
+review of the exact-enumeration scripts, witness generation, verification, and
+drafting of this manuscript.  NetworkX~3.4.2 was used for a secondary atlas
+cross-check, and OR-Tools CP-SAT~9.14.6206 was used only to discover positive
+witnesses.  The mathematical certificate consists of the explicit finite data
+and deterministic reconstruction checks, not of solver status or AI output.
+The author reviewed the statement, proof, source comparisons, and generated
+artifacts and is responsible for the conclusions.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

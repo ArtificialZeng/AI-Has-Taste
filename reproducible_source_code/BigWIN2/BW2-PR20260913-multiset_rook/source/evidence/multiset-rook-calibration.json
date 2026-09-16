@@ -1,0 +1,101 @@
+{
+  "purpose": "Intake calibration only; finite real-rootedness, not all-parameter proof.",
+  "algorithm": "Enumerate each legal word once for each nondecreasing board; group by exact content and first letter; SymPy rational real-root isolation with multiplicities.",
+  "domain": "1<=n<=7; every nondecreasing lambda in {1,2,3}^n; every realized nonnegative length-3 content vector; mu=0.",
+  "excluded_checks": "No interlacing verification or claim for n>7/k>3; zero polynomials skipped.",
+  "python": "3.10.12",
+  "sympy": "1.14.0",
+  "randomness": "none",
+  "levels": [
+    {
+      "n": 1,
+      "boards": 3,
+      "nonempty_board_content_cases": 6,
+      "nonzero_refinements": 6,
+      "words_enumerated": 6
+    },
+    {
+      "n": 2,
+      "boards": 6,
+      "nonempty_board_content_cases": 20,
+      "nonzero_refinements": 25,
+      "words_enumerated": 25
+    },
+    {
+      "n": 3,
+      "boards": 10,
+      "nonempty_board_content_cases": 50,
+      "nonzero_refinements": 66,
+      "words_enumerated": 90
+    },
+    {
+      "n": 4,
+      "boards": 15,
+      "nonempty_board_content_cases": 105,
+      "nonzero_refinements": 140,
+      "words_enumerated": 301
+    },
+    {
+      "n": 5,
+      "boards": 21,
+      "nonempty_board_content_cases": 196,
+      "nonzero_refinements": 260,
+      "words_enumerated": 966
+    },
+    {
+      "n": 6,
+      "boards": 28,
+      "nonempty_board_content_cases": 336,
+      "nonzero_refinements": 441,
+      "words_enumerated": 3025
+    },
+    {
+      "n": 7,
+      "boards": 36,
+      "nonempty_board_content_cases": 540,
+      "nonzero_refinements": 700,
+      "words_enumerated": 9330
+    }
+  ],
+  "failures": [],
+  "examples": [
+    {
+      "lam": [
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "alpha": [
+        2,
+        2,
+        1
+      ],
+      "total": [
+        0,
+        3,
+        8,
+        1
+      ],
+      "refined": [
+        [
+          0,
+          0,
+          5,
+          1
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        [
+          0
+        ]
+      ]
+    }
+  ],
+  "distinct_polynomials": 174,
+  "elapsed_seconds": 0.0354663539910689
+}

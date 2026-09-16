@@ -1,0 +1,428 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Even-Parameter Periods for Reversible Elementary Second-Order Cellular Automaton 115: A Computer-Assisted Proof},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact least periods for RESOCA rule 115},
+  pdfkeywords={cellular automata, reversible dynamics, exact period, finite-state certificate}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Ftwo}{\mathbb F_2}
+\newcommand{\InnerSet}{\mathcal I}
+\newcommand{\OuterSet}{\mathcal O}
+\newcommand{\GenericSet}{\mathcal G}
+\newcommand{\NextSet}{\mathcal N}
+
+\title{Even-Parameter Periods for Reversible Elementary\\
+Second-Order Cellular Automaton 115:\\A Computer-Assisted Proof}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Formenti and Kamilya conjectured an exact formula for the least period of the
+finite initial-configuration family denoted by $1(01)^k$ under reversible
+elementary second-order cellular automaton rule 115.  We prove their
+even-parameter formula for every $i\geq 0$:
+\[
+ P(2i)=\frac{2\,4^{2i+2}-7\,4^{i+1}+5}{3}.
+\]
+The proof samples every third time step and encodes pairs of adjacent sites by
+base-four blocks.  An exact finite-window certificate splits the sampled orbit
+into two independent finite path-language permutations.  A second exact
+finite-state certificate proves that each permutation is the cyclic successor
+in an explicitly defined colexicographic order.  The resulting factor periods
+are coprime, and the period-three background supplies the final leastness
+argument.  The computational part uses only exhaustive Boolean/integer checks;
+its predicates and all-length induction are described explicitly.
+\end{abstract}
+
+\section{Statement and context}
+
+Elementary cellular automata use a binary state set, a one-dimensional lattice,
+and a radius-one local rule; we use the standard Wolfram numbering convention
+\cite{Wolfram1983}.  An early explicit second-order reversible construction
+appears in Margolus's work on physics-like models of computation
+\cite[Appendix~A]{Margolus1984}.  Toffoli, Capobianco, and Mentrasti later
+gave an inversion scheme by representing any second-order cellular automaton
+as a functionally isomorphic lattice gas \cite{ToffoliCapobiancoMentrasti2004}.
+The broader reversible-cellular-automaton setting is surveyed by Toffoli and
+Margolus \cite{ToffoliMargolus1990}, while modern work on higher-order cellular
+automata includes decidability results for the linear subclass
+\cite{DennunzioEtAl2019}.  The elementary RESOCA subclass used here was
+introduced and studied systematically by Formenti and Kamilya
+\cite{FormentiKamilya2024}.
+
+Let $X=\{0,1\}^{\mathbb Z}$, with addition denoted by $\oplus$.  Wolfram rule
+115 is the map $\delta_{115}:\{0,1\}^3\to\{0,1\}$ whose values, in the
+neighborhood order
+\[
+111,110,101,100,011,010,001,000,
+\]
+are respectively
+\[
+0,1,1,1,0,0,1,1.
+\]
+The associated reversible elementary second-order cellular automaton is
+\begin{equation}\label{eq:F}
+ F(b,c)=(c,d),\qquad
+ d_j=b_j\oplus\delta_{115}(c_{j-1},c_j,c_{j+1})
+ \quad(j\in\mathbb Z).
+\end{equation}
+Its inverse is immediate: if $F(b,c)=(c,d)$, then
+\begin{equation}\label{eq:inverse}
+ b_j=d_j\oplus\delta_{115}(c_{j-1},c_j,c_{j+1}).
+\end{equation}
+
+Let $u\in X$ have $u_0=1$ and $u_j=0$ for $j\neq0$.  For $k\geq0$, let
+$c^{(k)}$ be the centered configuration whose finite word is $1(01)^k$;
+equivalently,
+\[
+ c^{(k)}_j=1 \quad\Longleftrightarrow\quad
+ j\in\{-k,-k+2,\ldots,k\}.
+\]
+Write $P(k)$ for the least positive period of $(u,c^{(k)})$ under $F$.
+Formenti and Kamilya proved that every finite initial pair is periodic and that
+its least period is a multiple of three.  They then stated the formula below as
+Conjecture~3 \cite[Sec.~6.3]{FormentiKamilya2026}.
+
+\begin{theorem}\label{thm:main}
+For every integer $i\geq0$, the least positive period of
+$(u,c^{(2i)})$ is
+\[
+ P(2i)=\frac{2\,4^{2i+2}-7\,4^{i+1}+5}{3}.
+\]
+In particular, the formula includes $P(0)=3$.
+\end{theorem}
+
+Our contribution is an all-$i$ equality and a proof of leastness.  The odd
+subfamily conjecture in the source paper is not addressed here.  A separate
+recent preprint reports a symbolic proof of that neighboring odd-parameter
+formula using a finite colored-tree walk \cite{Zeng2026SSRN7379379}; the
+factor/colex certificate used below is different.
+
+\section{Three-step blocks and path languages}
+
+Put $H=F^3$.  Under $F$, the uniform site-pair follows
+\begin{equation}\label{eq:background}
+ (0,0)\to(0,1)\to(1,0)\to(0,0).
+\end{equation}
+Thus times divisible by three again have zero background.  Encode a site-pair
+$(b_j,c_j)$ as $2b_j+c_j\in\{0,1,2,3\}$, pair the adjacent sites
+$(2r-1,2r)$, and encode the resulting two symbols by
+\begin{equation}\label{eq:blockcode}
+ [r]=4(2b_{2r-1}+c_{2r-1})+(2b_{2r}+c_{2r})\in\{0,\ldots,15\}.
+\end{equation}
+Three radius-one updates make the output block $[r]$ depend on the five input
+blocks $[r-2],\ldots,[r+2]$.
+
+We now define the finite path languages that describe the sampled orbit.  Let
+\[
+ \GenericSet=\{1,2,4,6,8,9,12,13,14,15\},
+\]
+and define allowed successors by
+\begin{center}
+\begin{tabular}{c@{\qquad}l}
+$a$ & $\NextSet(a)$\\
+$1,9,13$ & $\{1,2,8,9\}$\\
+$2,6,14$ & $\{1,2,4,6\}$\\
+$4,8,12$ & $\{4,6,8,9\}$\\
+$15$ & $\GenericSet$\\
+$0$ & $\{4,6,8,9\}$\\
+$3$ & $\GenericSet$\\
+\end{tabular}
+\end{center}
+Also set
+\[
+ \OuterSet=\{1,2,12,13,14,15\},\qquad
+ \InnerSet=\{1,2,6,9,13,14,15\}.
+\]
+For $i\geq1$, let $L_i$ contain the words $x_1\cdots x_i$ over $\GenericSet$
+such that $x_1\in\OuterSet$, $x_i\in\InnerSet$, and
+$x_{j+1}\in\NextSet(x_j)$.  Let $L_0=\{\epsilon\}$.
+For $i\geq1$, let $R_i$ contain the words $x_0x_1\cdots x_i$ such that
+$x_0\in\{0,3\}$, $x_1,\ldots,x_i\in\GenericSet$,
+$x_{j+1}\in\NextSet(x_j)$, and $x_i\in\InnerSet$.  Finally set
+$R_0=\{(3)\}$.
+
+Under the encoding \eqref{eq:blockcode}, the initial sampled state for family
+parameter $k=2i$ splits at the central interface into $i$ left blocks and
+$i+1$ right blocks as
+\begin{equation}\label{eq:initial-factors}
+ (1,\ldots,1)\;(3,1,\ldots,1)
+ \in L_iR_i.
+\end{equation}
+Indeed, the left blocks cover the sites $[-2i-1,-2]$ and the right blocks
+cover $[-1,2i]$.
+
+\begin{lemma}[Path counts]\label{lem:counts}
+For every $i\geq0$,
+\begin{equation}\label{eq:AB}
+ |L_i|=A_i=\frac{4^{i+1}-1}{3},\qquad
+ |R_i|=B_i=\frac{2\,4^{i+1}-5}{3}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Index a $10\times10$ zero-one matrix $M$ by the elements of $\GenericSet$ and
+put $M_{ab}=1$ exactly when $b\in\NextSet(a)$.  Let $e$ be the column
+indicator of $\InnerSet$.  Direct row substitution using the displayed successor
+table gives
+\begin{equation}\label{eq:minpoly}
+ (M^2-5M+4I)e=0.
+\end{equation}
+Consequently every path-count sequence obtained by applying a fixed starting
+row vector to $M^ne$ satisfies
+$C_{n+2}=5C_{n+1}-4C_n$.  Directly from the same table,
+\[
+ |L_0|,|L_1|,|L_2|=1,5,21,
+ \qquad
+ |R_0|,|R_1|,|R_2|=1,9,41.
+\]
+The two expressions in \eqref{eq:AB} have these initial values and satisfy the
+recurrence, proving the claim.
+\end{proof}
+
+\section{Exact invariance and factorization}
+
+Finite-state procedures that derive global properties of one-dimensional
+cellular automata from their local maps are classical; the injectivity and
+surjectivity decision procedures of Amoroso and Patt are an early precedent
+\cite{AmorosoPatt1972}.  The certificate below is not an application of those
+procedures: it is specialized to the two invariant path languages defined
+above and to their zero-padded finite boundaries.
+
+The next lemma is computer-assisted.  We state both the mathematical claim and
+the finite verification that implies it.
+
+\begin{lemma}[Block factorization]\label{lem:factorization}
+For every $i\geq0$, applying the zero-padded block map $H$ sends $L_i$ to
+$L_i$ and $R_i$ to $R_i$, with zero output outside the corresponding block
+interval.  Moreover,
+\begin{equation}\label{eq:decouple}
+ H(lr)=H(l)H(r)\qquad(l\in L_i,\ r\in R_i),
+\end{equation}
+where the two factors on the right are evolved with zero padding.  Each
+induced factor map is a permutation.
+\end{lemma}
+
+\begin{proof}
+Define the five-block local map $h:\{0,\ldots,15\}^5\to
+\{0,\ldots,15\}$ by decoding the five blocks into ten site-pairs,
+applying \eqref{eq:F} exactly three times, and returning the central two-site
+block.  An exhaustive program evaluates all $16^5=1{,}048{,}576$ inputs.
+
+Because the input languages are one-step path languages and $h$ has block
+radius two, every possible interior output symbol occurs in an admissible
+five-block input path, and every possible adjacent pair of outputs occurs in
+an admissible six-block input path.  The certificate checks all $3{,}070$
+five-block and $12{,}286$ six-block generic paths.  These checks prove that
+interior outputs belong to $\GenericSet$ and retain the successor relation.
+
+Only the first two and last two output blocks can meet a padded boundary.  The
+certificate exhausts $8{,}190$ left prefixes, $4{,}094$ right prefixes, and
+$8{,}191$ generic terminal suffixes of length six.  It separately tests all
+shorter words for which the two boundary windows overlap: $1{,}818$ left
+words and $3{,}630$ right words.  It checks both the relevant initial or
+terminal condition and that all four possible spill blocks are zero.  This
+proves all-length invariance.
+
+At the central interface, block radius two means that only the last two left
+outputs and the first two right outputs can depend on the other factor.  All
+$511$ generic left terminal contexts and $254$ right initial contexts of
+length four are combined, giving $129{,}794$ interface comparisons with the
+corresponding zero-padded factor outputs.  A further $15{,}272$ shorter factor
+pairs cover cases where an outer boundary also lies in the local window.  All
+comparisons give \eqref{eq:decouple}.
+
+These are exhaustive local implications, not tests through a bounded word
+length.  Finally, \eqref{eq:inverse} makes $H$ injective.  Its restrictions are
+injective self-maps of finite sets, hence permutations.
+\end{proof}
+
+Lemma~\ref{lem:factorization} does not by itself show that either permutation
+is a single cycle.  That is the purpose of the explicit order below.
+
+\section{Colexicographic successor cycles}
+
+Adjoin a formal right endpoint $0$.  For each possible right-hand symbol $t$,
+order its generic predecessors as follows:
+\begin{align*}
+O_0&=(1,9,13,14,6,2,15),\\
+O_1=O_2&=(14,6,2,15,1,9,13),\\
+O_4=O_6&=(8,12,4,14,6,2,15),\\
+O_8=O_9&=(15,1,9,13,8,12,4),\\
+O_{12}=O_{13}=O_{14}=O_{15}&=(15).
+\end{align*}
+For $t=0$, this is the terminal set $\InnerSet$ in its chosen order.  In every
+other case, comparison with the successor table shows that $O_t$ contains
+exactly those $a\in\GenericSet$ for which $t\in\NextSet(a)$.
+
+For $X\in\{L,R\}$, let $E_m^X(t)$ be an ordered list of length-$m$ prefixes.
+For the left lists, $E_1^L(t)$ consists of the one-letter words $(a)$ with
+$a\in O_t\cap\OuterSet$, in inherited order.  For the right lists, define
+\[
+ C_8=C_9=(3,0),\qquad C_4=C_6=(0,3),\qquad C_t=(3)
+ \quad\text{otherwise},
+\]
+for generic $t$, put $E_1^R(t)=((a):a\in C_t)$, and set
+$E_1^R(0)=((3))$.  For $m>1$ on either side, define recursively
+\begin{equation}\label{eq:Erec}
+ E_m^X(t)=\mathop{\operatorname{concat}}_{a\in O_t}
+ \{(v,a):v\in E_{m-1}^X(a)\},
+\end{equation}
+where $\operatorname{concat}$ denotes concatenation in the displayed order.
+
+Since every predecessor occurs exactly once in $O_t$, induction on $m$ shows
+that these lists contain every corresponding admissible path exactly once.
+In particular,
+\begin{equation}\label{eq:E-language}
+ E_i^L(0)=L_i\quad(i\geq1),\qquad
+ E_{i+1}^R(0)=R_i\quad(i\geq1),
+\end{equation}
+with the already specified exceptional $i=0$ factors.
+
+\begin{lemma}[Cyclic successor]\label{lem:successor}
+For every admissible length on each side, the zero-padded map $H$ sends each
+word of $E_m^X(0)$ to the next word of that list, cyclically.
+\end{lemma}
+
+\begin{proof}
+We give the exact finite-state induction used to certify the claim.  Let
+$Q_m^X(t)$ be the set of aligned pairs of adjacent words in $E_m^X(t)$,
+excluding wraparound.  From \eqref{eq:Erec}, it obeys the exact recurrence
+\begin{equation}\label{eq:Qrec}
+\begin{split}
+Q_m^X(t)={}&\bigcup_{a\in O_t}
+ \{((v,a),(w,a)):(v,w)\in Q_{m-1}^X(a)\}\\
+&{}\cup\bigcup_{a,b\text{ consecutive in }O_t}
+ \{((\operatorname{last}E_{m-1}^X(a),a),
+    (\operatorname{first}E_{m-1}^X(b),b))\}.
+\end{split}
+\end{equation}
+The first and last words themselves satisfy the one-symbol recursion obtained
+from the first and last elements of $O_t$.
+
+For a collection of equal-length aligned word pairs, retain all pair factors
+of lengths at most five, together with their five-pair prefixes and suffixes
+(or the whole word if shorter).  Appending a fixed pair of symbols updates
+this summary exactly: old factors remain, new factors are precisely the
+suffixes of length at most four followed by the appended pair, prefixes stay
+fixed once the length is at least five, and suffixes shift by one.  Union and
+the bridge pairs in \eqref{eq:Qrec} therefore give an exact deterministic
+summary recurrence.
+
+The induction state contains these summaries for every $Q_m^X(t)$, the
+first and last words truncated to their first and last five symbols, and the
+same summaries for every aligned pair of such extrema.  These latter records
+determine every bridge and the cyclic last-to-first pair at the next length.
+Thus the retained state contains all and only the finite information needed
+to construct the next state and to test a radius-two block map.
+
+For each aligned transition $x\to y$ in the summary of $E_m^X(0)$, including
+the cyclic transition from the last word to the first, the certificate checks
+\[
+ h(x_{j-2},x_{j-1},x_j,x_{j+1},x_{j+2})=y_j
+\]
+at every interior position and checks the two output and two spill records at
+each zero-padded boundary.  Lengths below five are checked directly.  The
+complete local-state signatures at left lengths $7$ and $8$ agree, and those
+at right lengths $8$ and $9$ agree.  The program checks $44{,}301$ left and
+$48{,}650$ right summary records before these repetitions.  Since the summary
+update is deterministic and the repetitions occur beyond the five-block
+window length, induction gives the same verified signature, hence all the
+same local transition identities, at every later length.
+
+Every earlier length was checked directly or by the exact summary.  Therefore
+$H(x)=y$ for each adjacent pair in every list, including wraparound, which is
+the asserted cyclic-successor action.
+\end{proof}
+
+\begin{corollary}\label{cor:factorperiods}
+The least $H$-periods of the two factors in \eqref{eq:initial-factors} are
+$A_i$ and $B_i$, respectively.
+\end{corollary}
+
+\begin{proof}
+By \eqref{eq:E-language}, each ordered list contains every word of its path
+language exactly once.  Lemma~\ref{lem:successor} makes its induced permutation
+one cycle.  Its cycle length is therefore its cardinality, given by
+Lemma~\ref{lem:counts}.  The singleton factors at $i=0$ have period one under
+$H$ and obey the same formulas.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}
+
+Lemma~\ref{lem:factorization} makes the two factor evolutions independent.
+Corollary~\ref{cor:factorperiods} gives their least sampled periods $A_i$ and
+$B_i$.  Since
+\begin{equation}\label{eq:coprime}
+ B_i=2A_i-1,
+\end{equation}
+we have $\gcd(A_i,B_i)=1$.  Hence the concatenated sampled state has least
+$H$-period $A_iB_i$.
+
+It remains to pass from $H=F^3$ back to $F$.  Equation
+\eqref{eq:background} shows that infinitely many sites outside the finite
+defect are in distinct uniform phases at times congruent to $0,1,2$ modulo
+three.  Therefore the initial pair cannot return at a time not divisible by
+three.  Its least $F$-period is consequently
+\begin{align*}
+3A_iB_i
+&=3\left(\frac{4^{i+1}-1}{3}\right)
+       \left(\frac{2\,4^{i+1}-5}{3}\right)\\
+&=\frac{2\,4^{2i+2}-7\,4^{i+1}+5}{3}.
+\end{align*}
+For $i=0$, both sampled factors are fixed and the genuine background cycle
+has length three, so the least period is exactly $3$.  This proves the theorem.
+
+\section{Reproducibility and assistance disclosure}
+
+The block-factorization certificate and colex-successor certificate are the
+plain Python 3 programs
+\begin{center}
+\texttt{evidence/research\_block\_transducer.py},\qquad
+\texttt{evidence/research\_colex\_certificate.py}.
+\end{center}
+They use exact Boolean and integer operations and Python's standard library;
+neither floating-point arithmetic nor randomized testing is used.  From the
+project root they can be rerun with
+\begin{verbatim}
+python3 evidence/research_block_transducer.py
+python3 evidence/research_colex_certificate.py
+\end{verbatim}
+The first program aborts on a failed local-rule, boundary, language, or
+interface assertion.  The second implements \eqref{eq:Qrec}, the five-local
+summary update, all boundary/spill checks, and the fixed-signature induction
+described in Lemma~\ref{lem:successor}.  Their supplied transcripts record a
+passing run and the counts reported above.  These computations certify only
+the precisely stated finite implications; the path-count, coprimality, and
+leastness arguments are mathematical deductions given in the text.
+
+AI assistance was used in proof search, construction and review of the exact
+certificate programs, and preparation of this exposition.  The certificate
+outputs are reproducible artifacts, not substitutes for the stated logical
+reductions, and an AI review is not represented as independent peer review.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

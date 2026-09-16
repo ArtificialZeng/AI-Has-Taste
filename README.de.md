@@ -98,7 +98,7 @@ Gerade deshalb ist dieser Vorgang aufschlussreich. Das Ergebnis ist weder ein er
 
 **Die Untersuchung erzeugte nicht nur eine Antwort. Sie erzeugte eine nächste Frage.**
 
-Beleg: [SM2-P11 · A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjectures/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf).
+Beleg: [SM2-P11 · A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjecture/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf).
 
 </details>
 
@@ -141,7 +141,7 @@ Hier stehen Arbeiten, deren Hauptbeitrag eine von KI vorgeschlagene Vermutung un
 
 | Serie + ID + Arbeit (PDF) | Problemstellung (englisches Original) | Beitrag (englisches Original) |
 |---|---|---|
-| **Batch 42 · SM42-10**<br>SM2-P11<br>[A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjectures/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf) | For fractional Gaussian binomial series, is the integer trace at parameter $1/2$ coefficientwise at least the trace at $1/4$, for every positive integer index? | **Historical conjecture paper, not a solution.** Proposes a sharp ten-term fixed-defect correction, necessary already at index 13, and proves that its uniform validity would imply the trace comparison. Archived exact tests reach index 1004; independent reconstruction has explicitly smaller coverage. Stabilization proves the bounded-degree extension, not the full conjecture. |
+| **Batch 42 · SM42-10**<br>SM2-P11<br>[A Sharp Fixed-Defect Conjecture for Fractional Gaussian Traces](pdfs/ai-conjecture/SM2-P11_A_Sharp_Fixed_Defect_Conjecture_for_Fractional_Gaussian_Traces.pdf) | For fractional Gaussian binomial series, is the integer trace at parameter $1/2$ coefficientwise at least the trace at $1/4$, for every positive integer index? | **Historical conjecture paper, not a solution.** Proposes a sharp ten-term fixed-defect correction, necessary already at index 13, and proves that its uniform validity would imply the trace comparison. Archived exact tests reach index 1004; independent reconstruction has explicitly smaller coverage. Stabilization proves the bounded-degree extension, not the full conjecture. |
 
 </details>
 

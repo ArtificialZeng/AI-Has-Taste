@@ -1,0 +1,312 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\BRQ}{\mathrm{BR}_{\operatorname{int}(Q)}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{Subtraction-Free Bounded Ratios in One Sign Chamber\\
+at Degree Four in Three Variables}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+\hypersetup{
+  pdftitle={Subtraction-Free Bounded Ratios in One Sign Chamber at Degree Four in Three Variables},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={An exact Hilbert-basis proof for one closed sign chamber},
+  pdfkeywords={Lorentzian polynomials, bounded ratios, subtraction-free, Hilbert basis, Normaliz}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a product of four nonnegative ternary linear forms, Bathija, Rohatgi,
+and Soskin conjectured that every integral point of the product
+bounded-ratio cone gives a subtraction-free ratio.  We prove the conjectured
+conclusion on one full-dimensional closed coordinate-sign chamber at
+$(n,k)=(4,3)$.  In the coordinate order
+\[
+004,013,022,031,040,103,112,121,130,202,211,220,301,310,400,
+\]
+the chamber has weak sign pattern \(+++++--+++++-++\).  An exact
+saturated-lattice computation gives a Hilbert basis of 134 elements, of
+which 86 are not extreme-ray generators.  Exact polynomial-support
+enumeration verifies the required containment for every Hilbert-basis
+element, and sign compatibility propagates it to every lattice point in the
+closed chamber.  The assertion for the other sign chambers, and hence the
+original universal conjecture, remains unresolved.
+\end{abstract}
+
+\section{Introduction}
+
+Lorentzian polynomials provide a common framework for log-concavity
+phenomena in combinatorics and geometry \cite{BrandenHuh2020}.  Bathija,
+Rohatgi, and Soskin introduced the corresponding bounded-ratio problem for
+products of linear forms and formulated a coefficientwise
+subtraction-free conjecture for all integral bounded ratios
+\cite{BathijaRohatgiSoskin2026}.  Their Proposition~7.4 shows that at
+$(n,k)=(4,3)$ the product bounded-ratio cone has 18 triangular extreme
+rays.  Real conical generation by these rays does not, however, imply
+generation of every lattice point by the primitive rays.
+
+The degree-two predecessor is the rank-two Lorentzian-matrix conjecture of
+Huang, Huh, Soskin, and Wang \cite[Conjecture~5.5]{HuangHuhSoskinWang2025}.
+The higher-degree formulation uses the ordinary coefficients of the product
+of linear forms and allows a constant depending on the exponent vector
+\cite[Definitions~5.4 and~9.1]{BathijaRohatgiSoskin2026}.  We retain those
+conventions throughout.
+
+Our contribution is deliberately local: we prove the conjectured conclusion
+for every integral point in one complete closed sign chamber.  The chamber
+is full-dimensional in the 12-dimensional balanced space, and its Hilbert
+basis has 86 non-ray elements.  Thus the result goes beyond checking the 18
+source rays, but it makes no assertion about points with an incompatible
+coordinate-sign pattern.
+
+\section{Coefficients, ratios, and the chamber}
+
+Let
+\[
+ H=H(4,3)=\{\alpha\in\mathbb Z_{\geq0}^{3}:|\alpha|=4\}
+\]
+and let $A=(a_{ri})$ be a formal $4\times3$ matrix.  Write
+\begin{equation}\label{eq:product}
+ Q_A(x_1,x_2,x_3)=\prod_{r=1}^{4}
+ (a_{r1}x_1+a_{r2}x_2+a_{r3}x_3)
+ =\sum_{\alpha\in H}P_\alpha(A)x^\alpha .
+\end{equation}
+These are ordinary coefficients:
+\begin{equation}\label{eq:assignment}
+ P_\alpha(A)=
+ \sum_{\phi:\{1,2,3,4\}\to\{1,2,3\},\;|\phi^{-1}(i)|=\alpha_i}
+ \prod_{r=1}^{4}a_{r,\phi(r)}.
+\end{equation}
+In particular, every monomial appearing in $P_\alpha$ has positive integer
+coefficient.
+
+For an integral exponent vector $\gamma=(\gamma_\alpha)_{\alpha\in H}$,
+put
+\[
+ N_\gamma=\prod_{\gamma_\alpha>0}P_\alpha^{\gamma_\alpha},
+ \qquad
+ D_\gamma=\prod_{\gamma_\alpha<0}P_\alpha^{-\gamma_\alpha}.
+\]
+The ratio $N_\gamma/D_\gamma$ is subtraction-free if some
+$C=C(\gamma)>0$ makes $CD_\gamma-N_\gamma$ coefficientwise nonnegative in
+the twelve variables $a_{ri}$.
+
+We use the fixed order
+\begin{equation}\label{eq:order}
+ (004,013,022,031,040,103,112,121,130,202,211,220,301,310,400)
+\end{equation}
+on $H$.  Let $K=\BRQ(4,3)$ and let
+\[
+ L=\left\{\gamma\in\mathbb Z^{H}:
+       \sum_{\alpha\in H}\gamma_\alpha\alpha=0\right\}
+\]
+be the balanced lattice.  Every point of $K$ is balanced
+\cite{BathijaRohatgiSoskin2026}.  Define the affine semigroup
+\begin{equation}\label{eq:semigroup}
+ S=K\cap L\cap
+ \left\{\begin{array}{ll}
+ \gamma_{103},\gamma_{112},\gamma_{301}\leq0,\\
+ \gamma_\alpha\geq0&\text{for all other }\alpha\in H.
+ \end{array}\right.
+\end{equation}
+Thus $S$ includes every boundary face and the zero vector.
+
+\begin{theorem}\label{thm:main}
+For every $\gamma\in S$, there is a constant $C(\gamma)>0$ such that
+$C(\gamma)D_\gamma-N_\gamma$ is coefficientwise nonnegative in the
+twelve parameters $a_{ri}$.
+\end{theorem}
+
+The theorem is exactly the subtraction-free assertion on the closed sign
+chamber \(+++++--+++++-++\) in the order \eqref{eq:order}.  It does not
+resolve the assertion for all of $K\cap\mathbb Z^H$.
+
+\section{Two finite reductions}
+
+For a polynomial with nonnegative coefficients, let $\supp(F)$ denote its
+set of exponent vectors.
+
+\begin{lemma}[Support criterion]\label{lem:support}
+For a fixed integral $\gamma$, a positive subtraction-free constant exists
+if and only if
+\[
+ \supp(N_\gamma)\subseteq\supp(D_\gamma).
+\]
+\end{lemma}
+
+\begin{proof}
+All nonzero coefficients of $N_\gamma$ and $D_\gamma$ are positive
+integers.  If the containment holds, one may take
+\[
+ C=\max_{u\in\supp(N_\gamma)}
+ \frac{[a^u]N_\gamma}{[a^u]D_\gamma}.
+\]
+Conversely, a monomial in the numerator support but not in the denominator
+has a negative coefficient in $CD_\gamma-N_\gamma$ for every $C$.
+\end{proof}
+
+\begin{lemma}[Sign-compatible multiplication]\label{lem:multiply}
+If $\gamma$ and $\eta$ both satisfy the weak signs in
+\eqref{eq:semigroup}, then
+\[
+ N_{\gamma+\eta}=N_\gamma N_\eta,
+ \qquad D_{\gamma+\eta}=D_\gamma D_\eta.
+\]
+Consequently, subtraction-freeness for two such vectors implies
+subtraction-freeness for their sum.
+\end{lemma}
+
+\begin{proof}
+At every coordinate, $\gamma_\alpha$ and $\eta_\alpha$ have the same weak
+sign, so no numerator--denominator cancellation occurs.  If constants
+$C_\gamma$ and $C_\eta$ work, then
+\begin{align*}
+ C_\gamma C_\eta D_\gamma D_\eta-N_\gamma N_\eta
+ ={}&C_\eta D_\eta(C_\gamma D_\gamma-N_\gamma)\\
+   &+N_\gamma(C_\eta D_\eta-N_\eta),
+\end{align*}
+which is coefficientwise nonnegative.
+\end{proof}
+
+It therefore suffices to find the Hilbert basis of $S$ and apply
+Lemma~\ref{lem:support} to its elements.  The lattice in that computation
+is essential: the primitive real extreme rays alone need not generate
+$S$ as a monoid.
+
+\section{Exact Hilbert-basis and support certificate}
+
+For $\beta\in H(2,3)$ and $\{i,j,k\}=\{1,2,3\}$, let
+$\rho_{\beta;i\mid jk}$ have positive coordinates at
+$\beta+2e_i$ and $\beta+e_j+e_k$, negative coordinates at
+$\beta+e_i+e_j$ and $\beta+e_i+e_k$, and zero coordinates elsewhere.
+Proposition~7.4 of \cite{BathijaRohatgiSoskin2026} gives
+\begin{equation}\label{eq:rays}
+ K=\operatorname{cone}\{\rho_{\beta;i\mid jk}:
+       \beta\in H(2,3),\ i\in\{1,2,3\}\},
+\end{equation}
+with 18 distinct extreme rays.
+
+Let $B$ be the $3\times15$ matrix whose columns, in the order
+\eqref{eq:order}, are the elements of $H$, and let $R$ be the
+$15\times18$ matrix whose columns are the rays in \eqref{eq:rays}.  Exact
+integer linear algebra gives
+\[
+ \operatorname{rank}B=3,\qquad \operatorname{rank}R=12,
+ \qquad BR=0,
+\]
+and the twelve nonzero Smith invariants of $R$ are all $1$.  Hence the
+integer span of the 18 rays is saturated in $\mathbb Z^{15}$ and, because
+its rational span is $\ker B$, it equals $L=\ker(B)\cap\mathbb Z^{15}$.
+This identifies the lattice used by the Hilbert-basis calculation with the
+full balanced lattice rather than a finite-index sublattice.
+
+In rank-12 lattice coordinates, the cone $K$ has 18 reconstructed support
+halfspaces.  Intersecting them with the 15 weak coordinate-sign halfspaces
+from \eqref{eq:semigroup} gives a pointed 12-dimensional cone.  Exact
+double-description cuts give 48 primitive extreme rays.  The Hilbert basis
+was then computed with Normaliz \cite{BrunsIchim2010,Normaliz} twice: once
+from those 48 rays and once from all 33 defining halfspaces.  The two
+calculations agree on the 15 irredundant support hyperplanes, the 48 extreme
+rays, and a 134-element Hilbert basis.  Among the basis elements, 48 lie on
+extreme rays and 86 do not.  If
+$d_+(\gamma)=\sum_{\gamma_\alpha>0}\gamma_\alpha$, their distribution is
+\begin{center}
+\small
+\begin{tabular}{c@{\quad}rrrrrrrrrr}
+\toprule
+$d_+$&2&3&4&5&6&7&8&9&10&12\\
+\midrule
+number&9&13&31&25&26&11&11&3&3&2\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Each returned vector was reconstructed in the original 15 coordinates and
+checked against the three balance equations, the saturated lattice basis,
+all 33 defining inequalities, and the sign conditions.  The polynomial
+test begins directly from the assignment formula \eqref{eq:assignment}.
+The support of a product is formed by exact Minkowski addition of finite
+integer supports.
+
+For efficiency, the verifier records in each row only the exponents of
+$a_{r1}$ and $a_{r2}$.  This eight-coordinate compression loses no
+information.  Indeed, balance implies
+\(
+ \sum_\alpha\gamma_\alpha=0
+\)
+because every $\alpha\in H$ has coordinate sum four.  Thus $N_\gamma$ and
+$D_\gamma$ contain the same number $d_+(\gamma)$ of coefficient-polynomial
+factors, counted with multiplicity.  In either product the total degree in
+row $r$ is $d_+(\gamma)$, so the omitted exponent of $a_{r3}$ is forced by
+the other two.
+
+The exact support calculation gives
+\begin{equation}\label{eq:all-supports}
+ \supp(N_h)\subseteq\supp(D_h)
+ \qquad\text{for every one of the 134 Hilbert-basis elements }h.
+\end{equation}
+There were no missing-support cases.  The largest numerator and denominator
+supports encountered had 889 and 157,521 elements, respectively.  These
+figures are bookkeeping checks; the proof-relevant output is the exact
+containment \eqref{eq:all-supports} for every certified generator.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By the Hilbert-basis certificate, every nonzero $\gamma\in S$ is a
+nonnegative integral sum of the 134 recorded elements.  By
+\eqref{eq:all-supports} and Lemma~\ref{lem:support}, each summand is
+subtraction-free.  All summands share the weak sign pattern, so repeated
+application of Lemma~\ref{lem:multiply} proves subtraction-freeness of
+$\gamma$.  For $\gamma=0$, one has $N_0=D_0=1$, and $C=1$ works.
+\end{proof}
+
+\section{Scope and reproducibility}
+
+The strict coordinate hyperplanes cut the relative interior of $K$ into
+4,074 realizable sign patterns.  The theorem treats the closure of one of
+them.  The other 4,073 strict patterns have not been covered by this
+Hilbert-basis argument, so Conjecture~9.2 of
+\cite{BathijaRohatgiSoskin2026}, even at $(4,3)$, remains unresolved.  Nor
+does this result assert that $C=1$ works for the 86 non-ray generators.
+
+The ancillary program
+\path{evidence/verify_chamber_hilbert.py} and its serialized certificate
+\path{evidence/chamber-hilbert-basis.json} reproduce the integer-lattice,
+cone, and support calculations.  The recorded run used Python~3, SymPy for
+exact integer and rational linear algebra \cite{MeurerEtAl2017}, and
+PyNormaliz~2.24 as the interface to Normaliz.  No floating-point decision is
+used.  A separate audit reconstructed all monomial supports in the full
+twelve-variable coordinates and recovered the same 134 exponent vectors
+from an ambient-coordinate cone calculation.
+
+The use of replayable exact verifiers follows the same methodological
+principle as other computer-assisted inequality work in which every
+machine-assisted assertion is paired with an exact rational verifier
+\cite[Section~14]{Zeng2026Lens}.  That paper supplies methodological context
+only; no result from it is used here.
+
+Generative-AI systems assisted with literature screening, program
+development and checking, and preparation of this manuscript.  The
+mathematical evidence for Theorem~\ref{thm:main} is the exact finite
+certificate and the proof reductions given above; generated text or model
+judgments are not used as evidence.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

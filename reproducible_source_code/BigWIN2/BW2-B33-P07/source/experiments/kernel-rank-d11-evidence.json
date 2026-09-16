@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "purpose": "finite exact obstruction to low-rank rational 2-kernel representations",
+  "sequence_definitions": {
+    "U": "U(q)=(a_(6q+1)-1)/4",
+    "V": "V(q)=(a_(12q+8)-1)/4",
+    "W": "W(q)=(a_(6q+3)+1)/4"
+  },
+  "row_definition": "rows (e,r), ordered by e then r, are s(2^e*q+r), 0<=e<level_count, 0<=r<2^e; columns are q=0,...,2^level_count-2",
+  "parameters": {
+    "min_level_count": 11,
+    "max_level_count": 11,
+    "primes": [
+      1000003
+    ],
+    "recurrence_limit": 25153532,
+    "largest_dimension": 2047,
+    "maximum_q_index": 2096127
+  },
+  "recurrence": {
+    "implementation": "direct signed XOR in guarded int64",
+    "maximum_conservative_step_bound": 1417892512225,
+    "int64_max": 9223372036854775807,
+    "final_pair": [
+      -479871057923,
+      141466927105
+    ]
+  },
+  "results": {
+    "U": {
+      "largest_matrix_sha256": "989c125e780b003ddb3537213373a72ca6413f592f8725eb6057d482c3f0319c",
+      "tests": [
+        {
+          "level_count": 11,
+          "dimension": 2047,
+          "determinants_mod_primes": {
+            "1000003": 329819
+          },
+          "all_nonzero": true
+        }
+      ]
+    },
+    "V": {
+      "largest_matrix_sha256": "3cd89e2d25fc3eb9ad35aaadec71402be718709c950a111edc96f18f9b9d8f27",
+      "tests": [
+        {
+          "level_count": 11,
+          "dimension": 2047,
+          "determinants_mod_primes": {
+            "1000003": 646456
+          },
+          "all_nonzero": true
+        }
+      ]
+    },
+    "W": {
+      "largest_matrix_sha256": "6e546a744a0afd55cf2e6ef0d7ca4fc572bf35946068c9c511f49980db96449f",
+      "tests": [
+        {
+          "level_count": 11,
+          "dimension": 2047,
+          "determinants_mod_primes": {
+            "1000003": 520101
+          },
+          "all_nonzero": true
+        }
+      ]
+    }
+  },
+  "proved_finite_consequence": "Each of U,V,W has rational 2-kernel rank at least 2047.",
+  "limitations": [
+    "Finite rank 1023 does not prove infinite 2-kernel rank or non-2-regularity.",
+    "The result does not exclude nonlinear finite-state or unbounded-carry descriptions.",
+    "It does not resolve any of the three universal unit-value classifications."
+  ],
+  "python": "3.10.12",
+  "numpy": "2.2.6"
+}

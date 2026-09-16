@@ -1,0 +1,347 @@
+{
+  "original_id": "primary-20260913-ascent-0120-0121",
+  "archive_id": "BW2-PR20260913-ascent_0120_0121",
+  "title": "A finite-width enumeration of ascent sequences avoiding 0120 and 0121",
+  "batch_label": "primary",
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "scope": "For the exact class A_n frozen in source.md and defined in problem.md (all nonnegative ascent sequences with x_1=0, x_i<=1+asc(x_1...x_(i-1)), simultaneously avoiding classical equality-preserving subsequences 0120 and 0121, with A_0={empty}), the following gives its all-length uniform structural enumeration. For K>=2 set D_K={(k,H):2<=k<=K, empty!=H subset {0,...,k-2}}. For s=(k,H), m=min(H), and 0<=t<k, set f(s,t)=(k,H union {t}) if t<=m; otherwise set r=|{h in H:h<t}| and f(s,t)=(k+1-r,{h-r:h in H,h>=t} union {t-r}). Define T_K(s,u)=|{t:f(s,t)=u}|, the row b_K to have value 1 on (K,{h}) for 0<=h<=K-2 and 0 elsewhere, and the column 1 to be all ones. Then, as an identity in Z[[z]], F(z)=sum_(n>=0)|A_n|z^n=(1-z)/(1-2z)+sum_(K>=2)(z/(1-z))^(2K-1) b_K(I-zT_K)^(-1)1. Equivalently, for n>=1, |A_n|=2^(n-1)+sum_(K=2)^floor((n+1)/2) sum_(d=0)^(n-2K+1) binom(n-d-1,2K-2)b_K T_K^d 1, and |A_0|=1. The eligible-rank quotient and binary initialization underlying these formulas hold for every prefix, width never increases after the first letter >=2, |D_K|=2^K-K-1, and only K<=floor((N+1)/2) is needed through degree N. The claimed resolution uses the original uniform-structural-enumeration alternative; no simpler scalar closed form, rationality or algebraicity of F, or nonzero analytic convergence radius is asserted.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": null
+  },
+  "pdf": "pdfs/BigWIN2/BW2-PR20260913-ascent_0120_0121_A_finite_width_enumeration_of_ascent_sequences_avoiding_0120_and_0121.pdf",
+  "pdf_sha256": "b826f7c4131f1e021d364c9a841d5e4e5fb82e26f5c66580c38550b425e194ad",
+  "pages": 7,
+  "latex": "reproducible_source_code/BigWIN2/BW2-PR20260913-ascent_0120_0121/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-PR20260913-ascent_0120_0121/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-PR20260913-ascent_0120_0121/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "sympy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    {
+      "path": "/home/ailab/4math-open-problems/projects/primary-20260913-ascent-0120-0121/evidence/recovery-registry-screen.json",
+      "indicators": [
+        "absolute-local-path"
+      ]
+    },
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 17,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/terminal.json",
+      "sha256": "a52d7290966b577a5b43d664d2d1ef90eae4ca39ada3209034d10ef0a1518547",
+      "bytes": 718
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/release/manifest.json",
+      "sha256": "7393e7d452680a32af3ecce9f80e01762ba3a844411946a3c4e63e43f380bb9a",
+      "bytes": 1671
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/math.json",
+      "sha256": "703b06ba70e50d98d014fbbd4f835c11a47f37892168d1ed54f4369a181bc2e6",
+      "bytes": 214
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/citations.json",
+      "sha256": "8978c44be3bc0a209069ff9113a10a0084044ebbb8ee21321284251dfa0f4e5a",
+      "bytes": 1326
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/build.json",
+      "sha256": "432f95d2850961b6f19afe560e6393f4f2544a92f628a71fd337bb307841925f",
+      "bytes": 554
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/visual.json",
+      "sha256": "746225dad4bf31766ed8fc0f03595acc6655c6fbf8a8ddc0c43be3f69642bbcb",
+      "bytes": 466
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/snapshot.json",
+      "sha256": "f3e06dfd1d7695f3ddff83d7f4ad9fcadc544e0a8279d15343493639afac1c78",
+      "bytes": 1000
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/manuscript-snapshot.json",
+      "sha256": "2f2a9b75ac27eaf71b1c844a9aa2ae2c73d8f9e558c41835c1f35e737935f2c1",
+      "bytes": 754
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/math.md",
+      "sha256": "c77e279cb014f062e61b840c37816eb59bebc3b203d54caa2d0dc8341b7b19b9",
+      "bytes": 13740
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/citations.md",
+      "sha256": "f138ad8e2bfb867da81ef963fc93a113451d3114e51d7dd9d5a3f28bb3def6e6",
+      "bytes": 8934
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/build.md",
+      "sha256": "593b4fba22935dfe2828c39c468fd4ceb22e7e24dcfb56b4a8038e5d00f736f3",
+      "bytes": 2324
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-ascent_0120_0121/audit/visual.md",
+      "sha256": "7ac7d13690b4b493d6dd56107500bdf0897c8f0b2ced21de668d21ed453d66bc",
+      "bytes": 2819
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "c8eb6fc37c08575d9bf9414a9a3fe79aab09a99772dc94bb39ac377a795dcded",
+      "original_bytes": 18505,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "c8eb6fc37c08575d9bf9414a9a3fe79aab09a99772dc94bb39ac377a795dcded",
+          "bytes": 18505
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "151594f8c21baee728abc95ab4e9a2460cecf68289c1358c74538cedbdcdff47",
+      "original_bytes": 3172,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "151594f8c21baee728abc95ab4e9a2460cecf68289c1358c74538cedbdcdff47",
+          "bytes": 3172
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/main.bbl",
+      "original_sha256": "17950790d1dcd97c2a99578728454250bebbeb328afdb7fe9e352758cb12949c",
+      "original_bytes": 3182,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/main.bbl",
+          "sha256": "17950790d1dcd97c2a99578728454250bebbeb328afdb7fe9e352758cb12949c",
+          "bytes": 3182
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/quotient_enumeration_test.py",
+      "original_sha256": "ce6fc4f5df21bece7762446faad677a3e946a44805d56d88c2c6697853da3e0e",
+      "original_bytes": 10390,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/quotient_enumeration_test.py",
+          "sha256": "ce6fc4f5df21bece7762446faad677a3e946a44805d56d88c2c6697853da3e0e",
+          "bytes": 10390
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/canonical_state_test.py",
+      "original_sha256": "cd8b1b80cf6e81388e2f95f81326a1def2b408445d9636fed6c305ab7078eeac",
+      "original_bytes": 2263,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/canonical_state_test.py",
+          "sha256": "cd8b1b80cf6e81388e2f95f81326a1def2b408445d9636fed6c305ab7078eeac",
+          "bytes": 2263
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/quotient-enumeration-results.json",
+      "original_sha256": "c06db2f2e27a208cbcf36cb4b1ebfa37070a1422115b504a85e6e8bb4da228af",
+      "original_bytes": 5257,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/quotient-enumeration-results.json",
+          "sha256": "c06db2f2e27a208cbcf36cb4b1ebfa37070a1422115b504a85e6e8bb4da228af",
+          "bytes": 5257
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/recovery-triage-results.json",
+      "original_sha256": "9b7a76219fc43803190166bdb03ee3eb5ac6154188c2beea04ccd0aca025b1eb",
+      "original_bytes": 4579,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/recovery-triage-results.json",
+          "sha256": "9b7a76219fc43803190166bdb03ee3eb5ac6154188c2beea04ccd0aca025b1eb",
+          "bytes": 4579
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/recovery_triage_test.py",
+      "original_sha256": "709924a8a895c62bed893f7831651f44365a181419930d93be16101dcf1b5a86",
+      "original_bytes": 5043,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/recovery_triage_test.py",
+          "sha256": "709924a8a895c62bed893f7831651f44365a181419930d93be16101dcf1b5a86",
+          "bytes": 5043
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/canonical-state-results.json",
+      "original_sha256": "ea8583706617a7b0ce2bf4d2af2ee96a68e76746839e8dfa51d63bfd1db790b4",
+      "original_bytes": 682,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/canonical-state-results.json",
+          "sha256": "ea8583706617a7b0ce2bf4d2af2ee96a68e76746839e8dfa51d63bfd1db790b4",
+          "bytes": 682
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_test.py",
+      "original_sha256": "a9e874d51311ea1cbbcdceb7c87980a13483468aeb0a75960cb651e1253fd1ac",
+      "original_bytes": 3439,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_test.py",
+          "sha256": "a9e874d51311ea1cbbcdceb7c87980a13483468aeb0a75960cb651e1253fd1ac",
+          "bytes": 3439
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/quotient-enumeration-proof.md",
+      "original_sha256": "70b04d893b7d41920290fe0cfbeba546df1c0ba7c510cda25bdfd3a646259689",
+      "original_bytes": 11100,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/quotient-enumeration-proof.md",
+          "sha256": "70b04d893b7d41920290fe0cfbeba546df1c0ba7c510cda25bdfd3a646259689",
+          "bytes": 11100
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage-test-results.json",
+      "original_sha256": "9531f8453c034676a51d99f9120ba95c96aa1fd8d8337e71c1ec137e5585ddd4",
+      "original_bytes": 1471,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage-test-results.json",
+          "sha256": "9531f8453c034676a51d99f9120ba95c96aa1fd8d8337e71c1ec137e5585ddd4",
+          "bytes": 1471
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/recovery-registry-screen.json",
+      "original_sha256": "b3d971512adf93d02e94ccc5d315399773c470daf7a2a90f377fd1a0568d3884",
+      "original_bytes": 2505,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/recovery-registry-screen.json",
+          "sha256": "b3d971512adf93d02e94ccc5d315399773c470daf7a2a90f377fd1a0568d3884",
+          "bytes": 2505
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "c3511d885d5d487049ba8d52247444c1e27c6005f320a593c5aa5ffbb7bfd48b",
+      "original_bytes": 1151,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "c3511d885d5d487049ba8d52247444c1e27c6005f320a593c5aa5ffbb7bfd48b",
+          "bytes": 1151
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "0db41de0ed2734e414a14c5b9496a3904befb7a51d378e41734fd8e5c33c94b0",
+      "original_bytes": 6905,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "0db41de0ed2734e414a14c5b9496a3904befb7a51d378e41734fd8e5c33c94b0",
+          "bytes": 6905
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "2cc4e67b3fbc05822048098d31526940978847f7d2802baead2f1947371054d3",
+      "original_bytes": 2712,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "2cc4e67b3fbc05822048098d31526940978847f7d2802baead2f1947371054d3",
+          "bytes": 2712
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "b69e692ea79df2e574954e7357f25df7864e3e7546821065cd781f1a403fdb38",
+      "original_bytes": 443,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "b69e692ea79df2e574954e7357f25df7864e3e7546821065cd781f1a403fdb38",
+          "bytes": 443
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-PR20260913-ascent_0120_0121",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

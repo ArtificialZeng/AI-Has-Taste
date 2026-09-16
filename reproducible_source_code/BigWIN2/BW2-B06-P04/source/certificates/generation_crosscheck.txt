@@ -1,0 +1,37 @@
+Independent finite-universe cross-check
+=======================================
+
+Order: 11
+Expected edges: 19
+
+Source 1 (2018 independent dataset)
+-----------------------------------
+Capco--Gallet--Grasegger--Koutschan--Lubbes--Schicho,
+Zenodo 10.5281/zenodo.1245517, LamanGraphs11.zip.
+Archive MD5 published by Zenodo and matched locally:
+392c790c3e8d06a4cbc15af66bb1ab54
+Parsed records: 2,039,273
+Distinct integer encodings: 2,039,273
+
+Source 2 (fresh canonical generation)
+-------------------------------------
+martinkjlarsson/nauty-laman-plugin
+commit 58ac60e31ef63a37682ec1df11d95b94d6b13ace
+nauty/Traces 2.8.9
+command: gensparseg 11 -K2
+reported records: 2,039,273
+graph6 output lines: 2,039,273
+
+Isomorphism-class comparison
+----------------------------
+Both inputs were converted to graph6, canonically relabelled independently by
+nauty labelg 2.8.9, sorted with LC_ALL=C, and compared byte for byte.
+
+Zenodo canonical lines: 2,039,273
+Generated canonical lines: 2,039,273
+Duplicate canonical lines in Zenodo input: 0
+Duplicate canonical lines in generated input: 0
+cmp exit status: 0 (identical files)
+
+In addition, src/verify_n11.c directly checked all 2,039,273 Zenodo records for
+19 edges and all 1,815 nontrivial Laman subset inequalities per graph.

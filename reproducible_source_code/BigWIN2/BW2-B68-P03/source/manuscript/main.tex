@@ -1,0 +1,254 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Conjectural Unary-Theta Formula for the 6n+1-Section of 18-Colored Generalized Frobenius Partitions},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={18-colored generalized Frobenius partitions and a conjectural modulo-16 identity},
+  pdfkeywords={generalized Frobenius partitions, congruences, q-series, exact computation}
+}
+
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\cphi}{c\phi}
+\newcommand{\CT}{\operatorname{CT}}
+
+\title{A Conjectural Unary-Theta Formula for the $6n+1$-Section of\\
+18-Colored Generalized Frobenius Partitions}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Das, Nath, and Sarma recently conjectured two congruences modulo $16$ for
+the $18$-colored generalized Frobenius partition function.  We propose the
+stronger, explicitly unproved, coefficientwise congruence
+\[
+ \sum_{m\geq0}\cphi_{18}(6m+1)q^m
+ \equiv 4\frac{f_2f_3^2}{f_1f_6}
+ =4\sum_{k\in\mathbb Z}q^{k(3k-1)/2}\quad(\mathrm{mod}\ 16),
+ \qquad f_d=(q^d;q^d)_\infty.
+\]
+We prove the equality between the two expressions on the right and show that
+the proposed congruence would imply both source congruences.  Exact
+computations from two different generating descriptions support it for
+$0\leq m\leq504$; the range $0\leq m\leq99$ was used for discovery and
+$100\leq m\leq504$ was held out.  A termwise dissection audit gives several
+formal parity cancellations but leaves other grouped cancellations unproved.
+Thus neither the displayed congruence nor the original problem is resolved.
+\end{abstract}
+
+\section{Statement and context}
+
+A generalized Frobenius partition is an equal-length two-row array of
+nonnegative integers whose weight is the row length plus the sum of its
+entries.  Andrews introduced the colored version, in which the entries are
+taken from fixed ordered copies of the nonnegative integers
+\cite{Andrews1984GFP}.  We write \(\cphi_k(N)\) for the number of such
+partitions of \(N\) with \(k\) colors.  Equivalently, the generating function
+needed below is
+\begin{equation}\label{eq:lattice}
+ \sum_{N\geq0}\cphi_{18}(N)q^N
+ =\frac{1}{(q;q)_\infty^{18}}
+   \sum_{(x_1,\ldots,x_{17})\in\mathbb Z^{17}}
+   q^{Q(x_1,\ldots,x_{17})},
+\end{equation}
+where
+\[
+ Q(x)=\sum_{i=1}^{17}x_i^2+
+       \sum_{1\leq i<j\leq17}x_ix_j.
+\]
+Constant-term descriptions and integral expressions for colored generalized
+Frobenius generating functions were developed by Cui, Gu, and Tang
+\cite{CuiGuTang2024,CuiGuTang2025}.  These descriptions are especially useful
+when exact coefficients, rather than floating-point approximations, are
+required.
+
+Das, Nath, and Sarma proved congruences for \(\cphi_{18}\) modulo $8$,
+$81$, and $2187$, and then stated
+\begin{equation}\label{eq:source-conj}
+ \cphi_{18}(30n+19)\equiv0\quad(\mathrm{mod}\ 16),\qquad
+ \cphi_{18}(30n+25)\equiv0\quad(\mathrm{mod}\ 16)
+ \quad(n\geq0)
+\end{equation}
+as a numerical conjecture whose proof was left for future investigation
+\cite[Conjecture 5.1]{DasNathSarma2026}.  Their nearby modulus-$8$ theorem is
+on the class $6n+5$; it does not apply directly to either class in
+\eqref{eq:source-conj}, since both $30n+19$ and $30n+25$ are $1$
+modulo $6$.
+
+Put
+\[
+ H(q)=\sum_{m\geq0}\cphi_{18}(6m+1)q^m.
+\]
+All congruences of power series below are coefficientwise.  Our proposed
+refinement is the following.
+
+\medskip
+\noindent\textbf{Conjecture.}
+In \((\mathbb Z/16\mathbb Z)[[q]]\),
+\begin{equation}\label{eq:main-conj}
+ H(q)\equiv4\frac{f_2f_3^2}{f_1f_6}\quad(\mathrm{mod}\ 16).
+\end{equation}
+The quotient is well defined as a formal power series because every $f_d$
+has constant coefficient one.  The conjecture is stronger than
+\eqref{eq:source-conj}: it predicts every coefficient in the entire
+$6n+1$ section modulo $16$, rather than only two residue classes within
+that section.  A bounded search of the cited sources and exact formula
+searches through September 7, 2026, located no source stating
+\eqref{eq:main-conj}; this is a description of the search, not a priority
+claim.
+
+\section{A proved identity and the implication for the source conjecture}
+
+The right side of \eqref{eq:main-conj} has a sparse description that explains
+the two progressions in \eqref{eq:source-conj}.
+
+\begin{proposition}\label{prop:theta}
+In \(\mathbb Z[[q]]\),
+\begin{equation}\label{eq:theta}
+ \frac{f_2f_3^2}{f_1f_6}
+ =\sum_{k\in\mathbb Z}q^{k(3k-1)/2}.
+\end{equation}
+Consequently, if \eqref{eq:main-conj} holds, then both congruences in
+\eqref{eq:source-conj} hold for every \(n\geq0\).
+\end{proposition}
+
+\begin{proof}
+The Jacobi triple product in the form recorded, for example, in
+\cite[Theorem 2.8]{Andrews1998Partitions}, with base \(q^3\) and parameter
+\(q\), gives
+\[
+ \sum_{k\in\mathbb Z}q^{k(3k-1)/2}
+ =f_3(-q;q^3)_\infty(-q^2;q^3)_\infty.
+\]
+Using $1+x=(1-x^2)/(1-x)$ in the two nonzero residue classes modulo $3$
+turns the product on the right into
+\[
+ f_3\prod_{r\geq1,\,3\nmid r}
+ \frac{1-q^{2r}}{1-q^r}
+ =f_3\frac{f_2/f_6}{f_1/f_3}
+ =\frac{f_2f_3^2}{f_1f_6},
+\]
+which proves \eqref{eq:theta} formally.
+
+For $k$ modulo $5$, the exponent $k(3k-1)/2$ takes only the residues
+$0,1,2$.  Thus the coefficients of $q^{5n+3}$ and $q^{5n+4}$ on the
+right of \eqref{eq:theta} vanish.  Under \eqref{eq:main-conj} this yields
+\[
+ \cphi_{18}(6(5n+3)+1)\equiv
+ \cphi_{18}(6(5n+4)+1)\equiv0\quad(\mathrm{mod}\ 16),
+\]
+and the two arguments are $30n+19$ and $30n+25$, respectively.
+\end{proof}
+
+\section{Exact finite evidence}
+
+The finite test covered all coefficients of the full generating series
+through $q^{3025}$, hence all coefficients of $H(q)$ through $m=504$.
+The first computation used the direct Laurent constant term
+\begin{equation}\label{eq:ct}
+ \CT_z\,(1+z^{-1})^{18}
+ \prod_{w\geq1}(1+zq^w)^{18}(1+z^{-1}q^w)^{18}.
+\end{equation}
+For degrees at most $3025$, factors with $w>3025$ can be omitted.  The
+largest necessary row length is $233$: lengths $233$ and $234$ have
+minimum possible weights $3017$ and $3042$, respectively.  This makes the
+Laurent truncation at absolute $z$-degree $233$ exhaustive in the stated
+range.  Arithmetic was performed modulo $256$ and then reduced modulo
+$16$, which is exact because the reduction map is a ring homomorphism.
+
+The second computation independently expanded formula (3.15) of
+Das, Nath, and Sarma \cite{DasNathSarma2026} modulo $16$,
+retaining fourteen summands. It used Euler's pentagonal theorem,
+the partition recurrence for reciprocal eta products, and enumeration of the
+Borwein cubic theta series.  The two resulting $3026$-term residue vectors
+agreed.  On the right of \eqref{eq:main-conj}, one calculation expanded the
+eta quotient, while another directly enumerated the generalized pentagonal
+exponents.  All four section vectors agreed for $0\leq m\leq504$.
+
+The support pattern was recognized on $0\leq m\leq99$, after which
+\eqref{eq:main-conj} was fixed and tested on the held-out range
+$100\leq m\leq504$.  In particular, the finite computation verifies both
+congruences in \eqref{eq:source-conj} only for $0\leq n\leq100$.  It does
+not establish any case beyond that bound and supplies no finite-to-infinite
+reduction.  This separation is the same basic scope issue that arises in
+exact finite-certificate work on restricted models
+\cite{ZengEtAl2026Finite}: exhaustive exactness inside a stated finite model
+does not settle its ambient open problem.
+
+\section{Structural attack and remaining gap}
+
+A termwise audit of formula (3.15) \cite{DasNathSarma2026} first deletes
+the four summands with multipliers divisible by $16$. Number the fourteen
+remaining summands in their original displayed order. The
+fourth, fifth, sixth, tenth, and twelfth summands carry a factor $8$ modulo
+$16$.  After that factor is removed and the remaining eta quotients are
+reduced modulo $2$, their residual products are, respectively,
+\[
+ \frac{f_{48}}{f_2f_{16}},\quad
+ \frac{f_{48}}{f_2f_{16}},\quad
+ \frac{f_6f_{48}}{f_8f_{16}},\quad
+ \frac{f_6f_{96}}{f_8f_{16}},\quad
+ \frac{f_6f_{96}}{f_8f_{16}}.
+\]
+Their shifts are $q^2,q^2,q^2,q^4,q^4$.  Every displayed product has only
+even powers of $q$, so these five terms make no contribution to any odd
+coefficient, formally and to all orders.  The same modulo-$2$ reductions
+also prove the whole-series cancellations of the pairs consisting of terms
+$(4,5)$ and $(10,12)$ modulo $16$.
+
+In the tested $6m+1$ section, the remaining summands split into the groups
+\[
+ (1+2),\qquad(3+7),\qquad(8+9),\qquad(11+13+14).
+\]
+The last three groups vanished for every tested $m$, while the first group
+agreed with $4\sum_kq^{k(3k-1)/2}$ and had zero fifth-sections in residues
+$3$ and $4$.  These grouped statements are finite observations through
+$m=504$, not formal identities.  They are the unresolved kernel of the
+proposed congruence.
+
+A direct continuation is to apply the relevant $2$-dissections to formula
+(3.15) modulo $16$, extract odd powers, and then apply $3$-dissections to
+the resulting indices congruent to $0$ modulo $3$.  After the five formal
+parity eliminations above, one must prove that the four surviving groups
+combine to $4f_2f_3^2/(f_1f_6)$.  A modular-form alternative would require
+an explicit level, character, integral coefficient ring, cusp-holomorphy or
+denominator-clearing argument, and a justified Sturm-type bound; none is
+provided here.
+
+The computational conjecture is immediately falsifiable: extend either exact
+left-side generator beyond degree $3025$, and compare
+\(\cphi_{18}(6m+1)\bmod16\) with $4$ when $m=k(3k-1)/2$ for some
+$k\in\mathbb Z$, and with $0$ otherwise.  Any mismatch disproves
+\eqref{eq:main-conj}.  The supplied scripts replay the present finite test via
+\begin{verbatim}
+python3 evidence/computation/constant_term_mod16.py
+python3 evidence/computation/source_formula_mod16.py
+python3 evidence/computation/h_identity_mod16.py
+python3 evidence/computation/projection_term_audit.py
+\end{verbatim}
+
+\section*{Computational and AI assistance}
+
+All reported coefficient calculations used exact integer or modular
+arithmetic; no floating-point comparison was used.  Python and NumPy were
+used to implement the two left-side generators, the two right-side
+generators, and the summand audit.  An OpenAI language model assisted with
+formula exploration, draft code, adversarial checks, literature screening,
+and initial manuscript preparation.  Its output is not mathematical
+evidence.  In particular, the language model did not prove
+\eqref{eq:main-conj}; the universal identity and both source congruences
+remain unresolved.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}

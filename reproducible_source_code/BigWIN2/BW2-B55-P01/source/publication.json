@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "title": "A Parity Classification for Maximum-Likelihood Thresholds of Distinctly Edge-Colored Cycles",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "pdf": "manuscript/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex"
+  }
+}

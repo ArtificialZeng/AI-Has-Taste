@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Simple negative roots for the rows of the Delannoy matrix square},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Arg}{Arg}
+\title{Simple negative roots for the rows of the Delannoy matrix square}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $D(n,k)$ count lattice paths from $(0,0)$ to $(n-k,k)$ with steps
+$(1,0)$, $(0,1)$ and $(1,1)$. We prove that, for every $n\geq1$, the
+$n$th row generating polynomial of the ordinary matrix square $D^2$ is
+monic of degree $n$ and has $n$ simple real roots in
+$(-4-3\sqrt2,-3+2\sqrt2)$. This establishes the Delannoy component of
+Mao and Wang's conjecture on the squares of the Eulerian and Delannoy
+triangles, with simplicity and a uniform enclosure. The Eulerian component,
+and hence the full conjecture, remains unresolved here. The proof expresses
+each row as a divided difference and constructs alternating signs on two
+adjacent intervals, using a complex phase on one and a trigonometric
+amplitude comparison on the other.
+\end{abstract}
+
+\section{Statement and context}
+
+For $n\geq0$ and $0\leq k\leq n$, let $D(n,k)$ count the paths specified
+in the abstract, with $D(0,0)=1$ for the empty path. Set $D(n,k)=0$ outside
+this range and write
+\begin{equation}\label{eq:definitions}
+ d_n(y)=\sum_{k=0}^n D(n,k)y^k,
+ \qquad
+ G_n(x)=\sum_{k=0}^n\sum_{i=k}^n D(n,i)D(i,k)x^k.
+\end{equation}
+Thus $G_n$ is the row generating polynomial of the ordinary lower
+triangular matrix product $D^2$. All sums defining its entries are finite.
+
+Mao and Wang~\cite[Conjecture~4.1, p.~11]{MaoWang2026} conjecture that
+the row generating polynomials of both $A^2$ and $D^2$ have only real
+nonpositive roots. Here $A(0,0)=1$ and, for $n\geq1$, $A(n,k)$ counts
+permutations of $[n]$ with $k-1$ descents. The following theorem concerns
+exactly the Delannoy component.
+
+\begin{theorem}\label{thm:main}
+With the conventions in~\eqref{eq:definitions}, $G_0=1$. For every integer
+$n\geq1$, $G_n$ is monic of degree $n$ and has $n$ distinct real roots,
+all in the open interval
+\[
+ \bigl(-4-3\sqrt2,\,-3+2\sqrt2\bigr).
+\]
+\end{theorem}
+
+For the ordinary row polynomials $d_n$, Wang, Zheng and
+Chen~\cite{WangZhengChen2019} established the root interval
+$(-3-2\sqrt2,-3+2\sqrt2)$ and density in its closure. Weighted ordinary
+rows, with a corresponding simplicity and interval theorem, are treated by
+Chen, Zhang and Pan~\cite[Theorem~1]{ChenZhangPan2026}. These results supply
+the ordinary-row background; Theorem~\ref{thm:main} treats the composed rows
+$G_n=\sum_i D(n,i)d_i$.
+
+Mao and Wang also derive the recurrence
+\begin{equation}\label{eq:fourterm}
+ G_n=(x+3)G_{n-1}+(x-1)(G_{n-2}+G_{n-3})+xG_{n-4}
+ \qquad(n\geq4),
+\end{equation}
+with $G_0=1$, $G_1=x+2$, $G_2=x^2+6x+5$ and
+$G_3=x^3+10x^2+25x+12$~\cite[Section~4]{MaoWang2026}.
+Alternating-sign arguments are a standard tool for real-rootedness;
+Liu and Wang~\cite[Theorem~2.1 and its proof]{LiuWang2007} develop them
+in an interlacing framework. Our argument constructs the sample points
+directly for each $G_n$. It does not require interlacing of consecutive
+rows or a general preservation property of the Delannoy transformation.
+
+The contribution is the all-degree Delannoy-square assertion together with
+the stated simplicity and enclosure. No equivalent assertion was found in
+the primary material inspected through September 14, 2026. This is a bounded
+literature assessment: access to the 2019 paper was limited to its publisher
+abstract and bibliographic record, and we make no exhaustive priority claim.
+
+\section{A divided difference}
+
+Last-step decomposition gives
+\begin{equation}\label{eq:ordinary}
+ d_0(y)=1,\quad d_1(y)=1+y,\quad
+ d_n(y)=(1+y)d_{n-1}(y)+y d_{n-2}(y)\quad(n\geq2).
+\end{equation}
+The characteristic-root method for this recurrence also appears in the
+weighted setting of~\cite[Section~2]{ChenZhangPan2026}. We give the
+identities needed here explicitly. If $w,z$ are the distinct roots of
+$t^2-(1+y)t-y=0$, the initial values and recurrence imply
+\begin{equation}\label{eq:quadratic}
+ d_n(y)=\frac{w^{n+1}-z^{n+1}}{w-z}.
+\end{equation}
+Let $u,v$ be the distinct roots of $t^2-(1+x)t-x=0$. Reordering the
+finite sums in~\eqref{eq:definitions} and using~\eqref{eq:quadratic} yields
+\begin{equation}\label{eq:divided}
+ G_n(x)=\sum_{i=0}^n D(n,i)d_i(x)
+       =\frac{u d_n(u)-v d_n(v)}{u-v}.
+\end{equation}
+The factors $u$ and $v$ arise from the exponent $i+1$ in the formula
+for $d_i(x)$.
+
+For the rest of the proof fix $n\geq1$ and put
+\begin{equation}\label{eq:constants}
+ \begin{gathered}
+ N=n+1,\qquad a=-4-3\sqrt2,\quad b=-3-2\sqrt2,\quad c=-3+2\sqrt2,\\
+ u_0=-1-\sqrt2,\qquad
+ \theta_0=\arccos\frac{1+u_0}{2\sqrt{-u_0}}.
+ \end{gathered}
+\end{equation}
+Then $a<b<c<0$ and $\pi/2<\theta_0<\pi$.
+
+\section{Two families of alternating signs}
+
+\subsection{The interval (b,c)}
+
+For $b<x<c$ choose the outer roots as
+\[
+ u=\frac{1+x+i\sqrt{-(x^2+6x+1)}}2,\qquad v=\overline u.
+\]
+They satisfy $\operatorname{Im}u>0$ and $|u+1|^2=2$. As $x$ decreases
+from $c$ to $b$, $u$ traverses the upper semicircle from $\sqrt2-1$ to
+$u_0$. In particular $\operatorname{Re}u>-3$, so
+\[
+ \operatorname{Im}(u^2+6u+1)
+ =2\operatorname{Im}u\,(\operatorname{Re}u+3)>0.
+\]
+Let $s=\sqrt{u^2+6u+1}$ have positive real and imaginary parts and set
+\begin{equation}\label{eq:inner}
+ w=\frac{1+u+s}2,\qquad z=\frac{1+u-s}2,\qquad B=\frac{u}{s}.
+\end{equation}
+These functions are continuous on the arc and $s=w-z\ne0$.
+Moreover $\operatorname{Im}w>0$. The quadratic relations give
+$z=(1-w)/(1+w)$ and hence
+\[
+ \operatorname{Im}z=-\frac{2\operatorname{Im}w}{|1+w|^2}<0.
+\]
+Here $1+w\ne0$, and $wz=-u\ne0$.
+
+\begin{lemma}\label{lem:dominance}
+For every $x\in(b,c)$ the roots in~\eqref{eq:inner} satisfy $|w|>|z|$.
+\end{lemma}
+\begin{proof}
+If $|w|=|z|$, then $w/z$ has modulus one and
+\[
+ \frac{(w+z)^2}{wz}=2+\frac wz+\frac zw\in[0,4].
+\]
+The same expression is $-u-2-1/u$, whose imaginary part equals
+$\operatorname{Im}u\,(|u|^{-2}-1)$. Its vanishing forces $|u|=1$.
+Together with $|u+1|^2=2$ and $\operatorname{Im}u>0$, this implies $u=i$.
+But $-i-2-1/i=-2$, a contradiction. Thus equality never occurs on the
+connected arc. At the endpoint $x=c$ the limiting $u$ is positive, and
+the limiting real roots satisfy $w>0>z$ and $w+z=1+u>0$. Consequently
+$|w|>|z|$ near that endpoint, and continuity proves the assertion throughout.
+\end{proof}
+
+Use the continuous arguments $\Arg u\in(0,\pi)$,
+$\Arg s\in(0,\pi/2)$ and $\Arg w\in(0,\pi)$, and define
+\[
+ \Phi(x)=N\Arg w+\Arg u-\Arg s.
+\]
+As $x\to c^-$, the three quantities $u,s,w$ tend to positive real
+numbers, so $\Phi(x)\to0$. As $x\to b^+$,
+\[
+ u\to u_0,\qquad s\to i\sqrt{2+4\sqrt2},\qquad
+ w\to\frac{-\sqrt2+i\sqrt{2+4\sqrt2}}2
+       =\sqrt{-u_0}\,e^{i\theta_0}.
+\]
+Therefore
+\begin{equation}\label{eq:limits}
+ \Phi(c^-)=0,\qquad \Phi(b^+)=N\theta_0+\frac\pi2.
+\end{equation}
+Since $d_n$ has real coefficients, equations~\eqref{eq:quadratic}
+and~\eqref{eq:divided} give
+\begin{equation}\label{eq:phase}
+ G_n(x)=\frac{\operatorname{Im}\{B(w^N-z^N)\}}{\operatorname{Im}u}.
+\end{equation}
+At a point where $\Phi(x)=(j+\tfrac12)\pi$, the imaginary part of
+$Bw^N$ is $(-1)^j|Bw^N|$. Lemma~\ref{lem:dominance} makes
+$|Bz^N|<|Bw^N|$, and thus
+\begin{equation}\label{eq:sign}
+ \sgn G_n(x)=(-1)^j.
+\end{equation}
+
+For every integer $j$ with $0\leq j<N\theta_0/\pi$, the level
+$(j+\tfrac12)\pi$ lies strictly between the limits in~\eqref{eq:limits}.
+The points realizing these levels can be chosen in strictly decreasing
+order of $x$. Indeed, parametrize the closed arc from $c$ to $b$ and
+extend $\Phi$ by its endpoint limits. For each level take its first hitting
+time. Continuity ensures existence in the open arc, and reaching a higher
+level from zero requires passing every lower level strictly earlier.
+No monotonicity of $\Phi$ is needed.
+
+\subsection{The interval (a,b)}
+
+For $u\in(b,u_0)$ put
+\[
+ h(u)=\frac{u(u-1)}{u+1},\qquad x=h(u),\qquad v=\frac{1-u}{1+u}.
+\]
+The identities
+\[
+ h(b)=a,\qquad h(u_0)=b,\qquad h'(u)=1-\frac{2}{(u+1)^2}>0
+\]
+show that $h$ maps $(b,u_0)$ increasingly onto $(a,b)$. Also
+$u+v=1+x$, $uv=-x$ and
+\begin{equation}\label{eq:ordering}
+ b<u<u_0<v<-\sqrt2<-1.
+\end{equation}
+Thus $u,v$ are distinct outer roots in~\eqref{eq:divided}, and both lie
+in $(b,c)$.
+
+On $(b,c)$ define $\theta(t)\in(0,\pi)$ by
+\[
+ \cos\theta(t)=\frac{1+t}{2\sqrt{-t}}.
+\]
+The derivative of the right side is $(1-t)/(4(-t)^{3/2})>0$;
+hence $\theta$ decreases strictly with $t$. In the range~\eqref{eq:ordering},
+\[
+ \frac\pi2<\theta(v)<\theta(u)<\pi.
+\]
+As $u$ decreases from $u_0$ to $b$, $\theta(u)$ increases from
+$\theta_0$ to $\pi$. Applying~\eqref{eq:quadratic} to the conjugate
+roots $\sqrt{-t}\,e^{\pm i\theta(t)}$ gives
+\[
+ d_n(t)=(-t)^{n/2}\frac{\sin(N\theta(t))}{\sin\theta(t)}.
+\]
+Put $M(t)=(-t)^{n/2+1}/\sin\theta(t)$. Then $M(u)>M(v)>0$,
+because $-u>-v>0$ and
+$0<\sin\theta(u)<\sin\theta(v)$. Equation~\eqref{eq:divided} becomes
+\begin{equation}\label{eq:amplitude}
+ G_n(h(u))=
+ \frac{-M(u)\sin(N\theta(u))+M(v)\sin(N\theta(v))}{u-v}.
+\end{equation}
+For each integer $j$ satisfying
+\begin{equation}\label{eq:leftindices}
+ \frac{N\theta_0}{\pi}<j+\frac12<N,
+\end{equation}
+there is exactly one $u\in(b,u_0)$ with
+$\theta(u)=(j+\tfrac12)\pi/N$. At this point the first term in the
+numerator of~\eqref{eq:amplitude} strictly dominates the second.
+Since $u-v<0$, its sign is again $\sgn G_n(h(u))=(-1)^j$.
+The corresponding $x=h(u)$ decrease as $j$ increases.
+
+\subsection{Joining the samples and counting roots}
+
+Let $q=N\theta_0/\pi$ and $m=\lceil q\rceil$. As $0<q<N$,
+we have $1\leq m\leq N$. For $j=0,\ldots,m-1$, use the samples
+in $(b,c)$: the required inequality $j<q$ holds even if $q$ is an
+integer. For $j=m,\ldots,N-1$, use the samples in $(a,b)$, since
+$q<j+\tfrac12<N$. If $m=N$, this second group is empty.
+
+There are exactly $N=n+1$ samples, in the order
+\[
+ c>x_0>x_1>\cdots>x_n>a,\qquad \sgn G_n(x_j)=(-1)^j.
+\]
+The intermediate value theorem gives a root in each of the $n$ disjoint
+intervals $(x_{j+1},x_j)$. The unique vertical path gives $D(n,n)=1$,
+so $(D^2)(n,n)=1$ and $G_n$ is monic of degree $n$. Thus these are
+all its roots and each is simple. They lie in $(a,c)$, as asserted.
+The join $x=b$ needs no sign evaluation and may lie inside one of these
+root intervals. Finally $G_0=1$ follows from the empty path. This proves
+Theorem~\ref{thm:main}.
+
+\section{Exact checks and remaining questions}
+
+The argument above covers every degree without computation. The
+supplementary checks used Python~3.10.12, SymPy~1.14.0~\cite{SymPy2017}, and
+mpmath~1.3.0 for sample discovery. Exact rational root isolation confirmed
+the assertion for every $1\leq n\leq24$. For
+\[
+ n\in\{1,2,3,4,5,8,16,31,64,128,257\},
+\]
+the stored certificates contain all $n+1$ alternating sample signs,
+530 signs in total. Floating-point phase inversion located candidate
+samples; subsequent sign, order and enclosure decisions used exact
+integer or rational arithmetic. Separate implementations rebuilt the
+path counts and the ordinary matrix products and replayed these signs.
+These checks cover only the stated finite degrees.
+
+For reproducibility, write $G_n(x)=\sum_{k=0}^n g_kx^k$. At a rational
+sample $p/r$, with $r>0$, its sign is the sign of the integer
+\begin{equation}\label{eq:certificate}
+ H_n(p,r)=\sum_{k=0}^n g_kp^kr^{n-k}.
+\end{equation}
+Given the coefficients, the $n+1$ sample checks form a multipoint
+polynomial evaluation task. Zeng~\cite{Zeng2026Evaluation}
+studies its generic characteristic-zero complexity in relation to
+derivative Bézout inversion and interpolation. Here direct integer
+evaluation suffices; we make no fast-complexity claim. As discussed
+in~\cite[Section~2.1]{Zeng2026Evaluation}, a bit-cost analysis would
+also have to account for the sizes of the integers, beyond counting
+arithmetic operations.
+
+The enclosure can be checked at each rational sample without approximating
+$\sqrt2$. For a real rational $t$, the strict inequalities $a<t<c$ are
+equivalent to
+\[
+ \bigl(t+4\geq0\ \text{or}\ (t+4)^2<18\bigr),\qquad
+ \bigl(t+3\leq0\ \text{or}\ (t+3)^2<8\bigr).
+\]
+Together with strict sample order and the signs in~\eqref{eq:certificate},
+these tests reproduce the finite root certificates. Each certificate is
+specified by its coefficient vector, a common positive denominator,
+and the ordered integer numerators of the sample points.
+
+Theorem~\ref{thm:main} does not establish consecutive strict interlacing,
+optimality of either endpoint, or a general Delannoy preservation theorem.
+The Eulerian-square component of the original conjecture remains
+unresolved here. Each of these questions requires an additional argument.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, symbolic and exact-arithmetic
+verification programs, source comparison, a separate-context mathematical
+review, and manuscript preparation. That review was an additional model
+pass, not external peer review. No proof assistant was used. The mathematical
+justification is the explicit argument above; the finite computations and
+AI review are supporting checks.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

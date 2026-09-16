@@ -1,0 +1,168 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\emergencystretch=1em
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\title[Eight-Vertex Whiskered-Graph WLP]{The Whiskered-Graph Weak Lefschetz Conjecture\\for Graphs on Eight Vertices}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{August 31, 2026}
+\hypersetup{pdftitle={The Whiskered-Graph Weak Lefschetz Conjecture for Graphs on Eight Vertices},pdfauthor={Zijian Zeng}}
+\begin{document}
+\begin{abstract}
+Over fields of characteristic zero, we verify the eight-vertex case of the
+whiskered-graph conjecture of Holleben and Nicklasson. A structural argument reduces
+the new computation to graphs of independence number three. There are
+6,021 such isomorphism classes. For every class, an exhaustive canonical
+enumeration and exact integer arithmetic produce a nonzero kernel vector for
+the multiplication map from degree four to degree five. The complete list of
+kernel vectors is independently checkable by a short verifier that reconstructs
+the multiplication matrices from the graph6 representatives.
+\end{abstract}
+\maketitle
+\section{Introduction}
+For a graph $G$, let $w(G)$ be its whiskering and let $A(w(G))$ be the
+Artinian squarefree monomial algebra associated with the independence complex
+of $w(G)$. Holleben and Nicklasson conjectured that
+\[
+  \alpha(G)\geq3\quad\Longrightarrow\quad A(w(G))\text{ does not have the
+  weak Lefschetz property}.
+\]
+They proved a range with large independence number and reported computations
+for every graph on at most seven vertices and for many graphs on eight
+vertices~\cite[Corollary~3.12, Conjecture~3.15, Remark~3.16]{Holleben_2026}.
+
+We close the eight-vertex case over fields of characteristic zero. The field
+qualification is explicit here because the ranks of the relevant integer
+matrices can change in positive characteristic, while the source conjecture
+does not state a characteristic.
+
+\begin{theorem}\label{thm:main}
+Let $K$ be a field of characteristic zero and let $G$ be a finite simple graph
+on eight vertices. If $\alpha(G)\geq3$, then $A_K(w(G))$ does not have the
+weak Lefschetz property.
+\end{theorem}
+
+The proof has two parts. Existing structural results, together with a short
+Hilbert-function estimate, cover $\alpha(G)\geq4$. For $\alpha(G)=3$ we give
+an exhaustive exact certificate: all 6,021 isomorphism classes have a
+noninjective multiplication map $A_4\to A_5$.
+
+\section{The algebra and its multiplication matrices}
+Write $V(G)=[8]$. The graph $w(G)$ has vertices
+$x_1,\ldots,x_8,y_1,\ldots,y_8$, the edges $x_ix_j$ for
+$\{i,j\}\in E(G)$, and the eight whisker edges $x_iy_i$. Define
+\[
+A_K(w(G))=\frac{K[x_1,\ldots,x_8,y_1,\ldots,y_8]}
+{(x_i^2,y_i^2,x_iy_i,\ x_ix_j:\{i,j\}\in E(G))}.
+\]
+For an independent set $X$ of $G$ and $Y\subseteq[8]\setminus X$, put
+\[
+ e_{X,Y}=\prod_{i\in X}x_i\prod_{j\in Y}y_j.
+\]
+The elements $e_{X,Y}$ with $|X|+|Y|=d$ form a basis of $A_d$. In
+particular, if $i_k(G)$ is the number of independent $k$-sets of $G$, then
+\begin{equation}\label{eq:hilbert}
+ h_d:=\dim_K A_d=\sum_{k=0}^{\alpha(G)}i_k(G)\binom{8-k}{d-k}.
+\end{equation}
+
+Let $L=\sum_{i=1}^8(x_i+y_i)$ and denote the matrix of
+$\times L:A_d\to A_{d+1}$ by $M_d(G)$. Its rows and columns are indexed by
+the above monomial bases, and
+\begin{equation}\label{eq:incidence}
+ M_d(G)[(X',Y'),(X,Y)]=1
+ \quad\Longleftrightarrow\quad
+ \operatorname{supp}(e_{X,Y})\subset
+ \operatorname{supp}(e_{X',Y'}),
+\end{equation}
+with support sizes $d$ and $d+1$; all other entries are zero.
+
+For completeness, testing this one form is sufficient. Indeed, if a
+Lefschetz form exists over an infinite field, the common maximal-rank locus
+is a nonempty Zariski-open subset of $A_1$. It therefore meets the torus on
+which every coefficient is nonzero. Diagonal rescaling of the variables is
+an automorphism of this monomial quotient and takes any such form to $L$.
+Thus $A$ has WLP if and only if every $M_d(G)$ has maximal rank.
+
+\section{Structural reduction}
+\begin{proposition}\label{prop:structural}
+If $G$ has eight vertices and $\alpha(G)\geq4$, then $A_K(w(G))$ fails WLP
+in characteristic zero.
+\end{proposition}
+\begin{proof}
+If $\alpha(G)\geq5$, the assertion is Holleben--Nicklasson
+Corollary~3.12~\cite{Holleben_2026}, since $\alpha(G)\geq 8/3+2$.
+
+Suppose $\alpha(G)=4$. Their Theorem~3.10, applied to an independent
+four-set, says that $M_5:A_5\to A_6$ is not
+surjective~\cite[Theorem~3.10]{Holleben_2026}. Formula
+\eqref{eq:hilbert} gives
+\[
+ h_6-h_5=-5i_2(G)+2i_4(G)-140.
+\]
+An independent four-set contains six independent pairs, so $i_2(G)\geq6$,
+while $i_4(G)\leq\binom84=70$. Hence $h_6-h_5\leq-30$. Maximal rank
+would therefore require $M_5$ to be surjective, which it is not.
+\end{proof}
+
+It remains to treat $\alpha(G)=3$. In this stratum, \eqref{eq:hilbert}
+also gives $h_5-h_4=5i_2+5i_3-14>0$, so any nonzero vector in
+$\ker M_4(G)$ proves failure of maximal rank. Indeed, an independent triple
+gives $i_2\geq3$ and $i_3\geq1$.
+
+\section{Exact finite certificate}
+The program \texttt{geng 8} from nauty~2.7r3
+\cite{McKay_2014,NautyGuide}
+enumerated one graph6 representative of each of the 12,346 isomorphism
+classes of simple graphs on eight vertices; the total agrees with the
+published online census of McKay~\cite{McKayData}. Direct enumeration of all 256
+vertex subsets gave the distribution in Table~\ref{tab:alpha}.
+\begin{table}[ht]
+\centering
+\caption{Eight-vertex graph classes by independence number.}\label{tab:alpha}
+\begin{tabular}{c@{\qquad}rrrrrrrr}
+\toprule
+$\alpha$&1&2&3&4&5&6&7&8\\
+\midrule
+classes&1&409&6021&4985&842&80&7&1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For each of the 6,021 representatives with $\alpha=3$, the certificate file
+stores the graph6 string, the ordered Hilbert vector, and a nonzero sparse
+integer vector $v_G$ satisfying
+\begin{equation}\label{eq:certificate}
+ M_4(G)v_G=0.
+\end{equation}
+The verifier parses the graph6 string, recomputes $\alpha(G)$, reconstructs
+the monomial bases and the inclusion relation \eqref{eq:incidence}, checks
+the dimensions against the stored Hilbert vector, and evaluates every
+integer coordinate of \eqref{eq:certificate}. It also rejects zero vectors,
+repeated sparse indices, malformed dimensions, missing graph records, and
+duplicate graph records. All 6,021 records pass.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Proposition~\ref{prop:structural} covers $\alpha(G)\geq4$. When
+$\alpha(G)=3$, the exact certificate supplies a nonzero vector in
+$\ker M_4(G)$ for every isomorphism class. Since $h_4<h_5$, the map is not
+of maximal rank. Relabeling $G$ only permutes matrix rows and columns, so the
+conclusion holds for every labelled graph. Finally, an integer matrix has
+the same rank over every characteristic-zero field as over $\mathbb Q$.
+\end{proof}
+
+\section{Scope and data availability}
+The theorem is a finite characteristic-zero result; it does not settle the
+conjecture for graphs on nine or more vertices, nor does it assert a uniform
+positive-characteristic statement. The certificate, verifier, and supporting
+data are available in the supplementary archive distributed with this article.
+\enlargethispage{7\baselineskip}
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

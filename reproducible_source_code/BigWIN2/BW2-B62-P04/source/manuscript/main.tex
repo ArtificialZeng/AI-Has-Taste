@@ -1,0 +1,219 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\Unif}{\operatorname{Unif}}
+\newcommand{\E}{\mathbb{E}}
+
+\title{Exact Encoding Ladders for a Uniform Bandwidth Law\\
+with an Endpoint Atom}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For an encoding ladder \(0=R_0<R_1<\cdots<R_n\leq 1\), a client with
+bandwidth \(B\) selects the largest rung not exceeding \(B\), incurring the
+one-sided loss \(B-R(B)\).  We solve the finite-\(n\) problem when the bandwidth
+law is \((1-\alpha)\Unif[0,1]+\alpha\delta_1\), for every \(n\geq1\) and
+\(0\leq\alpha<1\).  The unique optimum changes active set at
+\(\alpha=1/(n+1)\): below the transition all \(n+1\) geometric gaps are
+positive, while at and above it the top rung is \(1\).  We give the exact
+minimum, prove attainment without relaxing the strict ladder inequalities,
+and check the low-dimensional and endpoint cases.  This is only the
+uniform-plus-single-endpoint-atom specialization of the broader problem for
+atomic bandwidth laws.
+\end{abstract}
+
+\section{Problem and context}
+
+Fix an integer \(n\geq1\) and \(0\leq\alpha<1\).  Let
+\[
+ P_\alpha=(1-\alpha)\Unif[0,1]+\alpha\delta_1
+\]
+and choose \(0=R_0<R_1<\cdots<R_n\leq1\).  At bandwidth \(B\), set
+\[
+ R(B)=\max\{R_i:R_i\leq B,\ 0\leq i\leq n\}.
+\]
+The goal is to minimize \(\E[B-R(B)]\), including the equality and
+attainment cases under the displayed strict inequalities.
+
+Gray and Neuhoff survey standard scalar quantizers with cell thresholds and
+separately chosen reproduction levels~\cite{GrayNeuhoff1998}.  In contrast,
+Reznik's adaptive-streaming formulation pins each reproduction value to the
+left edge of its cell~\cite{Reznik2026}.  In the uniform,
+atom-free, linear-quality case, his Example~1 gives equal cells and loss
+\(1/(2(n+1))\); his Remark~1 separately identifies bandwidth laws with atoms
+as part of a broader extension problem.  One-way substitution problems of a
+related finite character also occur in the assortment literature, where
+Sadowski used dynamic programming~\cite{Sadowski1959}.  Here the particular
+endpoint mixture makes an exact finite-dimensional convex reduction possible.
+
+An exact sharp-constant calculation that reduces to a low-dimensional convex
+minimization, separates endpoint and interior cases, and then classifies
+equality also appears in a different matrix setting in Zeng, Liu, and
+Ratnavelu~\cite{202608.1346}.
+For the present problem the reduction is elementary: Cauchy--Schwarz and a
+one-variable quadratic give the entire answer.  No conclusion below concerns
+an arbitrary atomic distribution.
+
+\section{Exact solution}
+
+\begin{theorem}
+For every \(n\geq1\) and \(0\leq\alpha<1\), the infimum is attained and equals
+\[
+ L^*_{n,\alpha}=
+ \begin{cases}
+ \displaystyle
+ \frac{1-(n+1)\alpha^2}{2(n+1)(1-\alpha)},
+ &0\leq\alpha\leq\dfrac1{n+1},\\[7pt]
+ \displaystyle
+ \frac{1-\alpha}{2n},
+ &\dfrac1{n+1}\leq\alpha<1.
+ \end{cases}
+\]
+The attaining ladder is unique.  For \(1\leq i\leq n\), it is
+\[
+ R_i=
+ \begin{cases}
+ \displaystyle\frac{i}{(n+1)(1-\alpha)},
+ &0\leq\alpha\leq\dfrac1{n+1},\\[7pt]
+ \displaystyle\frac{i}{n},
+ &\dfrac1{n+1}\leq\alpha<1.
+ \end{cases}
+\]
+At \(\alpha=1/(n+1)\), the two descriptions coincide.
+\end{theorem}
+
+\begin{proof}
+Put \(R_{n+1}=1\) and define
+\[
+ \Delta_i=R_{i+1}-R_i\quad(0\leq i<n),
+ \qquad \Delta_n=1-R_n.
+\]
+The original ladder constraints are equivalent to
+\[
+ \Delta_i>0\ (0\leq i<n),\qquad
+ \Delta_n\geq0,\qquad
+ \sum_{i=0}^{n}\Delta_i=1.                                      \tag{1}
+\]
+Thus \(\Delta_n=0\) is feasible and means \(R_n=1\), whereas a zero
+among \(\Delta_0,\ldots,\Delta_{n-1}\) would violate strict increase.
+
+On a uniform draw, the client uses \(R_i\) on
+\([R_i,R_{i+1})\).  Hence the contribution of that cell is
+\[
+ \int_{R_i}^{R_{i+1}}(B-R_i)\,dB=\frac{\Delta_i^2}{2}.
+\]
+The convention at a cell endpoint is immaterial for the continuous part.
+At the atom \(B=1\), however, the client uses \(R_n\), so the loss is exactly
+\(1-R_n=\Delta_n\), including when this quantity is zero.  Consequently the
+expected loss is
+\[
+ F(\Delta)=\frac{1-\alpha}{2}\sum_{i=0}^{n}\Delta_i^2
+            +\alpha\Delta_n.                                   \tag{2}
+\]
+This derives both the objective and the feasible set directly from the
+original problem.
+
+Let \(t=\Delta_n\).  By (1), \(0\leq t<1\).  At fixed \(t\), the first
+\(n\) gaps have sum \(1-t\), and Cauchy--Schwarz gives
+\[
+ \sum_{i=0}^{n-1}\Delta_i^2\geq\frac{(1-t)^2}{n},                \tag{3}
+\]
+with equality if and only if
+\(
+ \Delta_0=\cdots=\Delta_{n-1}=(1-t)/n.
+\)
+This equality point respects all strict inequalities because \(t<1\).
+Thus no closure of the feasible ladder set has been introduced: the original
+problem is equivalent to minimizing
+\[
+ g(t)=\frac{1-\alpha}{2}
+      \left(\frac{(1-t)^2}{n}+t^2\right)+\alpha t,
+ \qquad 0\leq t<1.                                               \tag{4}
+\]
+Since
+\[
+ g''(t)=\frac{(1-\alpha)(n+1)}{n}>0,
+\]
+this quadratic is strictly convex.  Its unconstrained critical point is
+\[
+ t_0=\frac{1-(n+1)\alpha}{(n+1)(1-\alpha)}.                      \tag{5}
+\]
+If \(0\leq\alpha<1/(n+1)\), then \(0<t_0<1\), so \(t_0\) is the unique
+minimum.  Equation (3) then makes every first gap equal to
+\[
+ \frac{1-t_0}{n}=\frac{1}{(n+1)(1-\alpha)}.                      \tag{6}
+\]
+If \(\alpha\geq1/(n+1)\), then
+\[
+ g'(0)=\frac{(n+1)\alpha-1}{n}\geq0,
+\]
+so the unique constrained minimum is \(t=0\); every first gap is then
+\(1/n\).  Both candidates satisfy (1), proving attainment in the original
+partly open feasible set.  Substitution into (4) gives the two displayed
+values.  Summing the gaps gives the displayed rungs.  Finally, strict
+convexity of \(g\) and the equality condition in (3) prove uniqueness.
+\end{proof}
+
+\section{Direct checks and endpoint behavior}
+
+For \(n=1\), write \(R_1=r\) and \(c=1-\alpha\).  Direct integration in the
+original variable gives
+\[
+ F_1(r)=\frac c2\bigl(r^2+(1-r)^2\bigr)+\alpha(1-r),
+ \qquad 0<r\leq1.
+\]
+Its derivative is \(c(2r-1)-\alpha\).  The stationary point
+\(r=1/(2c)\) is feasible exactly for \(\alpha\leq1/2\); thereafter the
+unique minimum is \(r=1\).  The corresponding values are
+\((1-2\alpha^2)/(4c)\) and \(c/2\), respectively.
+
+For \(n=2\), writing \(R_1=x\) and \(R_2=y\) gives
+\[
+ F_2(x,y)=\frac c2\bigl(x^2+(y-x)^2+(1-y)^2\bigr)
+           +\alpha(1-y).
+\]
+The interior stationarity equations are \(2x-y=0\) and
+\(c(2y-x-1)-\alpha=0\), so
+\((x,y)=(1/(3c),2/(3c))\), feasible exactly through
+\(\alpha=1/3\).  Above that transition, the active face \(y=1\) has the
+unique minimum \(x=1/2\).  The two values are
+\((1-3\alpha^2)/(6c)\) and \(c/4\).
+
+At \(\alpha=0\), all \(n+1\) gaps equal \(1/(n+1)\), recovering the
+atom-free value \(1/(2(n+1))\).  At the transition, the last gap reaches
+zero, both ladder formulas give \(R_i=i/n\), and both value formulas give
+\(1/(2(n+1))\).  As \(\alpha\uparrow1\), the optimizer remains
+\(R_i=i/n\) while the minimum \((1-\alpha)/(2n)\) tends to zero.  The case
+\(\alpha=1\) is excluded from the theorem.  Considered separately, it would
+minimize \(1-R_n\), so every strictly increasing ladder with \(R_n=1\) would
+attain zero; this explains why uniqueness is lost at the omitted endpoint.
+
+\section*{Scope and assistance disclosure}
+
+The argument determines only the stated uniform-plus-endpoint-atom model.
+It neither proves a general theorem for atomic bandwidth distributions nor
+establishes a priority claim beyond the literature compared above.
+
+AI assistance was used in proof exploration, a separate mathematical audit,
+manuscript drafting, and bibliographic screening.  The author is responsible
+for the final text.  Every mathematical step needed for the result is given
+analytically above; no numerical optimization, computer algebra, or
+computer-generated certificate is used as proof.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

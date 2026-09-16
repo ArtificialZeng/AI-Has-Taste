@@ -1,0 +1,23 @@
+{
+  "certificate_id": "AS-C1-5-RHOMBPYR-20260830",
+  "claim": "For A,S,u,v>0, the cleared centered-rhombic-pyramid determinant satisfies u^2*v^2*Delta = 2^7*i*A^6*S*P*Q with P,Q as displayed in proof/rhombic_pyramid_theorem.md.",
+  "parameter_map": {
+    "S": "sqrt(1+A^2)",
+    "u": "sqrt(1+H^2)-H = 1/(sqrt(1+H^2)+H)",
+    "v": "(sqrt(A^2+H^2)-H)/A = A/(sqrt(A^2+H^2)+H)"
+  },
+  "discovery_artifact": "code/explore_centered_rhombic_pyramid.py",
+  "checker_1": {
+    "path": "code/certify_rhombic_pyramid.py",
+    "method": "exact coefficient convolution and determinant over ZZ_I[u,v,A,S]",
+    "raw_determinant_terms": 363,
+    "verified": true
+  },
+  "checker_2": {
+    "path": "code/verify_rhombic_pyramid_identity.py",
+    "method": "exact direct evaluation at 0,1,-1,I,-I and division by Vandermonde determinant -16*I",
+    "verified": true
+  },
+  "positivity_certificate": "P is a sum of positive monomials; Q is displayed as a sum of nonnegative terms with strictly positive terms, using u^3+v^3-u^2*v-u*v^2=(u+v)*(u-v)^2.",
+  "floating_point_dependency": false
+}

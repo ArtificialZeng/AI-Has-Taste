@@ -1,0 +1,356 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={A Narayana factorization for a truncated two-row grid polytope},
+  pdfauthor={Xiaojian Zeng},pdfkeywords={Narayana polynomial, preorder polytope, lattice point, rank-one commutator}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\CT}{CT}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\A}{\mathsf A}
+\newcommand{\B}{\mathsf B}
+\newcommand{\T}{\mathsf T}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\title{A Narayana factorization for a truncated two-row grid polytope}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Remove the maximum element from the product of an $n$-element chain and
+a two-element chain. For the associated polytope, defined by nonnegativity
+and an upper bound of $|I|$ on the sum over each lower ideal $I$, we prove
+that the lattice-point support enumerator is the product of the type~A
+Narayana polynomial of index $n-1$ and the type~B Narayana polynomial of
+index $n$. This establishes the factorization proposed by Athanasiadis
+and Chapoton. A transfer with two slack variables becomes a pair of
+operators with a rank-one commutator. An explicit finite boundary trace,
+followed by formal Lagrange inversion and telescoping, evaluates its
+terminal moment for every $n\geq1$.
+\end{abstract}
+
+\section{The support identity}
+Let $[n]=\{1,\ldots,n\}$ and let
+\[
+ P_n=([n]\times[2])\setminus\{(n,2)\},
+ \qquad (i,r)\leq(j,s)\ \Longleftrightarrow\ i\leq j\text{ and }r\leq s.
+\]
+A lower ideal contains every predecessor of each of its elements. Set
+\[
+ Q_n=\left\{x\in\mathbb R_{\geq0}^{P_n}:
+          \sum_{v\in I}x_v\leq |I|
+          \text{ for every lower ideal }I\subseteq P_n\right\},
+ \qquad
+ H_n(t)=\sum_{x\in Q_n\cap\Z^{P_n}}t^{|\supp(x)|},
+\]
+where $\supp(x)=\{v:x_v\ne0\}$. The full ideal bounds the total coordinate
+sum by $2n-1$, so this is a finite sum. The empty ideal adds no condition.
+For $r\geq0$, use the normalizations
+\begin{equation}\label{eq:narayana}
+ A_r(t)=\sum_{j=0}^r\frac{1}{j+1}\binom rj\binom{r+1}j t^j,
+ \qquad B_r(t)=\sum_{j=0}^r\binom rj^2t^j.
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+For every integer $n\geq1$,
+\begin{equation}\label{eq:main}
+ H_n(t)=A_{n-1}(t)B_n(t).
+\end{equation}
+\end{theorem}
+
+This is the maximum-deleted grid identity proposed in the final paragraph
+of \cite[Section~9.3]{AC26}. The polynomial denoted by $h$ there counts
+nonzero coordinates, as defined in \cite[Section~5]{AC26}; the present
+statement concerns this support statistic. The two factors already occur
+separately in composition polytopes: a total-sum bound gives $B_r$, while
+all chain-prefix bounds give $A_r$ \cite[Examples~2.3--2.4]{Ath25}.
+Those evaluations do not by themselves separate the coupled grid
+inequalities. We evaluate the coupled transfer directly, without requiring
+a support-preserving product bijection.
+
+All series below are formal. We first introduce an independent parameter
+$c$, work over $\Q(c,t)$ when division by $t$ is convenient, and recover
+polynomial identities before specializing $c=1+t$.
+
+\section{Two slack variables and the transfer}
+Write $a_i=x_{(i,1)}$ and $b_j=x_{(j,2)}$. An ideal is exactly a pair of
+row prefixes of lengths $(i,j)$, where
+$0\leq i\leq n$ and $0\leq j\leq\min(i,n-1)$.
+Indeed, each row must be a prefix, and inclusion of $(j,2)$ forces
+inclusion of $(j,1)$; these conditions also suffice. Define
+\[
+ U_i=i-\sum_{k=1}^ia_k,\qquad V_j=j-\sum_{k=1}^jb_k,
+ \qquad U_0=V_0=0.
+\]
+The ideal inequalities are therefore precisely $U_i+V_j\geq0$ over the
+indicated pairs. After $m$ complete columns, record
+\[
+ M_m=\min(V_0,\ldots,V_m),\qquad z=U_m+M_m,\qquad s=V_m-M_m.
+\]
+Both $z$ and $s$ are nonnegative. Appending the next two coordinates
+$a,b$ is legal exactly when
+\begin{equation}\label{eq:bounds}
+ 0\leq a\leq z+1,\qquad 0\leq b\leq z+s+2-a.
+\end{equation}
+The first bound imposes the new lower prefix against every old upper
+prefix. The second imposes the pair of new prefixes, which is the only
+remaining new ideal. If $\delta=\max(0,b-s-1)$, the new minimum is
+$M_m-\delta$, and the new state is
+\begin{equation}\label{eq:update}
+ (z+1-a-\delta,\ \max(0,s+1-b)).
+\end{equation}
+Thus the two recorded slacks suffice for every future constraint.
+
+Give each positive coordinate weight $t$ and each zero coordinate weight
+$1$. If $F_m(x,y)$ is the state polynomial after $m$ complete columns,
+the two half-step operators are
+\begin{align}
+ \alpha(x^zy^s)&=\left(x^{z+1}+t\sum_{r=0}^z x^r\right)y^s,
+ \label{eq:alpha}\\
+ \beta(x^ry^s)&=x^r\left(y^{s+1}+t\sum_{h=0}^s y^h\right)
+                    +t\sum_{h=0}^{r-1}x^h.\label{eq:beta}
+\end{align}
+The last sum is empty when $r=0$. In \eqref{eq:beta}, the three groups
+correspond to $b=0$, $1\leq b\leq s+1$, and
+$s+2\leq b\leq s+1+r$, respectively. Starting at $(0,0)$ gives
+$F_m=(\beta\alpha)^m1$. After $n-1$ complete columns only $a_n$ remains,
+so
+\begin{equation}\label{eq:terminal}
+ H_n(t)=\bigl(\alpha(\beta\alpha)^{n-1}1\bigr)(1,1).
+\end{equation}
+
+Make the change of variables $x=1+u$, $y=1+v$. On polynomials in $u,v$,
+let $\mathsf U_i$ multiply by the $i$th variable, let $\mathsf D_i$
+lower its exponent by one and kill its constant term, and let
+$\mathsf E_i$ set that variable to zero. Then
+\[
+ \mathsf D_i\mathsf U_i=1,\qquad
+ \mathsf U_i\mathsf D_i=1-\mathsf E_i.
+\]
+Introduce
+\begin{equation}\label{eq:operators}
+ \A=\mathsf U_1+c+t\mathsf D_1,\qquad
+ \B=\mathsf U_2+c+t\mathsf D_2+t\mathsf D_1\mathsf E_2,
+ \qquad \T=\B\A.
+\end{equation}
+At $c=1+t$, these are the transformed $\alpha,\beta$. For example,
+the transformed first half-step sends $f$ to
+$(1+u+t)f+t(f-f(0,v))/u$. The second sends it to
+\[
+ (1+v+t)f+t\frac{f-f(u,0)}{v}
+                    +t\frac{f(u,0)-f(0,0)}{u},
+\]
+which verifies every term in \eqref{eq:operators}.
+Let $e=1$, let $\epsilon f=[u^0v^0]f$, and put
+$E=\mathsf E_1\mathsf E_2=e\epsilon$. Equation~\eqref{eq:terminal} becomes
+\begin{equation}\label{eq:moment}
+ h_n:=\epsilon\A\T^{n-1}e,\qquad H_n(t)=h_n\big|_{c=1+t}.
+\end{equation}
+With $[X,Y]=XY-YX$, the only noncommuting summands in $\B,\A$ give
+\begin{equation}\label{eq:commutator}
+ [\B,\A]=t[\mathsf D_1,\mathsf U_1]\mathsf E_2=tE,
+ \qquad [\A,\T]=-tE\A.
+\end{equation}
+
+\section{The finite boundary trace}
+We now keep $c,t$ independent. In the basis $u^iv^j$, $i,j\geq0$, the
+operators have bounded displacement. A fixed word containing $E$ has
+only finitely many nonzero matrix entries: both its input and output
+indices must be within a bounded distance of the origin. Its trace and
+the cyclic permutations used below are consequently finite sums.
+Expanding \eqref{eq:commutator} gives
+\begin{equation}\label{eq:trace}
+ \tr[\A,\T^n]
+ =-t\sum_{r=0}^{n-1}\tr(\T^rE\A\T^{n-1-r})=-nt h_n.
+\end{equation}
+Here and below, we take the trace of the displayed finite-support
+operator, without assigning separate traces to its infinite summands.
+
+Set
+\[
+ S(u)=u+c+t/u,\qquad J=\mathsf U+c+t\mathsf D
+       \quad\hbox{on polynomials in }v,
+ \qquad B_u=J+(t/u)E_v,
+\]
+where $E_vf=f(0)$. Write $\CT_u$ for the coefficient of $u^0$.
+
+\begin{lemma}\label{lem:boundary}
+For every $n\geq1$, with
+$R_n(y)=\tr((J+yE_v)^n-J^n)$,
+\begin{equation}\label{eq:boundary}
+ nt h_n=\CT_u (u-t/u)S(u)^nR_n(t/u).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $K=\T^n$, with the first matrix index denoting the output. For each
+fixed $j$, cancellation of adjacent horizontal terms gives
+\begin{equation}\label{eq:flux}
+ \sum_{i=0}^N[\A,K]_{(i,j),(i,j)}
+       =tK_{(N+1,j),(N,j)}-K_{(N,j),(N+1,j)}.
+\end{equation}
+There is no lower-boundary contribution because the unilateral lowering
+operator kills exponent zero. Choose $N\geq2n+2$. Each of the $2n$
+half-steps in $K$ moves the horizontal index by at most one. Thus paths
+contributing to the two entries on the right stay away from horizontal
+index zero, and their horizontal shifts may be treated as bilateral.
+The Laurent symbol of $K$ there is $S(u)^nB_u^n$. The two entries are its
+$u^1$ and $u^{-1}$ coefficients, respectively, on vertical diagonal $j$.
+The right side of \eqref{eq:flux} is therefore
+\[
+ -\CT_u(u-t/u)S(u)^n(B_u^n)_{j,j}.
+\]
+Sum over $0\leq j\leq L$, where $L\geq n+2$. This rectangle contains
+the diagonal support of \eqref{eq:trace}: its terms propagate at most
+$n$ vertical steps and $2n+1$ horizontal steps from the origin.
+For each $j$ we may replace $(B_u^n)_{j,j}$ by
+$(B_u^n-J^n)_{j,j}$, since
+\[
+ \CT_u(u-t/u)S(u)^n
+   =\frac{1}{n+1}\CT_u\,u\frac{d}{du}S(u)^{n+1}=0.
+\]
+Every word in $B_u^n-J^n$ contains $E_v$, so its diagonal entries vanish
+for $j>n$. The resulting vertical sum is a finite trace and is independent
+of $L$. Comparing with \eqref{eq:trace} proves \eqref{eq:boundary},
+including its sign.
+\end{proof}
+
+\section{Formal extraction and the two factors}
+Let $\epsilon_v$ extract the constant term in $v$, and define
+\[
+ M(q)=\epsilon_v(1-qJ)^{-1}1.
+\]
+Its coefficients enumerate nonnegative Motzkin excursions with up-weight
+$1$, level-weight $c$, and down-weight $t$. This is the constant-weight
+case of the weighted-path framework of \cite[Theorem~1]{Flajolet80}.
+Decomposing at the first step and, for an up-step, its first matching
+return gives directly
+\begin{equation}\label{eq:motzkin}
+ M=1+cqM+tq^2M^2.
+\end{equation}
+Consequently $V=tqM$ is the unique series with zero constant term satisfying
+\begin{equation}\label{eq:lagrange}
+ V=q(V^2+cV+t).
+\end{equation}
+The rank-one perturbation has the logarithmic generating series
+\begin{equation}\label{eq:log}
+ \sum_{n\geq1}\frac{R_n(y)}{n}q^n=-\log(1-yqM(q)).
+\end{equation}
+To verify this without infinite traces, differentiate the left side in
+$y$. Cyclicity of the finite-support terms yields
+$q\epsilon_v(1-q(J+yE_v))^{-1}1$. Expansion by the number of insertions
+of $E_v=1\epsilon_v$ evaluates this as $qM/(1-yqM)$. Integrating
+coefficientwise and using the value zero at $y=0$ proves \eqref{eq:log}.
+
+Substituting $y=t/u$ into \eqref{eq:log} gives
+$R_n(t/u)=-n[q^n]\log(1-V/u)$. Lemma~\ref{lem:boundary} and formal
+constant-term integration by parts now imply
+\begin{align}
+ t h_n
+ &=-[q^n]\CT_u(u-t/u)S(u)^n\log(1-V/u)\notag\\
+ &=\frac{1}{n+1}[q^n]\CT_u S(u)^{n+1}\frac{V}{u-V}.
+ \label{eq:extract}
+\end{align}
+Indeed, $u(d/du)S^{n+1}=(n+1)(u-t/u)S^n$ and
+$u(d/du)\log(1-V/u)=V/(u-V)$. Expand the last fraction in powers of
+$V/u$. Since $V$ has zero constant term, each $q$ coefficient involves
+only finitely many Laurent monomials, justifying these operations.
+
+For every integer $k$, put $C_{m,k}=[u^k]S(u)^m$.
+Formal Lagrange inversion \cite[Theorem~2.1.1]{Gessel16}, applied to
+\eqref{eq:lagrange}, gives for $1\leq k\leq n$
+\begin{equation}\label{eq:lagrange-coeff}
+ [q^n]V^k=\frac{k}{n}[w^{n-k}](w^2+cw+t)^n
+         =\frac{k}{n}C_{n,-k}=\frac{k}{n}t^kC_{n,k}.
+\end{equation}
+The last equality follows from $S(t/u)=S(u)$; coefficients vanish for
+$k>n$. For completeness, the inversion formula here also follows by
+writing $\phi(w)=w^2+cw+t$ and changing variables
+$q=w/\phi(w)$ in the formal residue for $[q^n]V^k$.
+The residue is
+\[
+ \mathop{\rm Res}_w
+ w^{k-n-1}\phi(w)^n\left(1-\frac{w\phi'(w)}{\phi(w)}\right).
+\]
+The zero residue of $(w^{k-n}\phi(w)^n)'$ makes this
+$(k/n)[w^{n-k}]\phi(w)^n$. The substitution is valid over
+$\Q(c,t)$ because $\phi(0)=t$ is invertible there.
+
+Expanding $V/(u-V)=\sum_{k\geq1}V^ku^{-k}$ in \eqref{eq:extract}
+therefore yields
+\begin{equation}\label{eq:sum}
+ h_n=\frac{1}{n(n+1)t}
+       \sum_{k=1}^n k t^k C_{n+1,k}C_{n,k}.
+\end{equation}
+Differentiating $S^{n+1}$ gives
+\[
+ kC_{n+1,k}=(n+1)(C_{n,k-1}-tC_{n,k+1}).
+\]
+Thus the numerator of \eqref{eq:sum} telescopes to
+\begin{align*}
+ &(n+1)\sum_{k\geq1}
+ \left(t^k C_{n,k-1}C_{n,k}-t^{k+1}C_{n,k}C_{n,k+1}\right)\\
+ &=(n+1)tC_{n,0}C_{n,1}.
+\end{align*}
+All sums are finite because $C_{n,k}=0$ for $k>n$. We have proved
+\begin{equation}\label{eq:generic}
+ \epsilon\A(\B\A)^{n-1}1=\frac{1}{n}C_{n,0}C_{n,1}.
+\end{equation}
+Both sides are polynomials in $c,t$, so the identity holds also at $t=0$.
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:main}]
+Specialize $c=1+t$. Then $S(u)=(1+u)(1+t/u)$, and binomial expansion gives
+\begin{align*}
+ C_{n,0}&=\sum_{j=0}^n\binom nj^2t^j=B_n(t),\\
+ \frac{C_{n,1}}{n}
+ &=\sum_{j=0}^{n-1}\frac{1}{n}\binom n{j+1}\binom nj t^j
+ =\sum_{j=0}^{n-1}\frac{1}{j+1}\binom{n-1}j\binom nj t^j
+ =A_{n-1}(t).
+\end{align*}
+Equations~\eqref{eq:moment} and \eqref{eq:generic} prove \eqref{eq:main}.
+For $n=1$ this gives $1+t$, agreeing with $Q_1=[0,1]$. At $t=0$ both
+sides are $1$, and no exceptional specialization is excluded.
+\end{proof}
+
+\section{Exact checks and computational disclosure}
+The proof is accompanied by two separately written Python verifiers
+using integer arithmetic. Reconstructing the finite objects in a separate
+exact checker is a verification practice also used in
+\cite[Section~6]{ZengEtAl26}; here the checker reconstructs ideals from
+the coordinatewise order, independently of the transfer implementation.
+For $n=1,\ldots,6$, it tests every nonnegative integer vector of total
+at most $2n-1$ against every ideal. The ambient counts are
+$2,20,252,3432,48620,705432$, respectively, and all six complete support
+polynomials agree with \eqref{eq:main}.
+
+Further checks test the commutator on all $u^iv^j$ with $0\leq i,j\leq7$,
+the moment and coefficient-sum identities through $n=16$, and the finite
+boundary identity through $n=8$, at each parameter pair
+\[
+ (c,t)\in\{(0,0),(2,3),(0,1),(-3,2),(4,-3),(1,0),(-2,-2)\}.
+\]
+These are exact finite checks of the formulas, including zero and negative
+weights. They do not extend the quantified ranges of the computations;
+the all-$n$ result follows from the formal argument above.
+
+OpenAI Codex assisted with proof development, literature searches, Python
+code, a separate model-context review of the argument, and manuscript
+preparation. The second checker was written in that separate context
+without importing the first implementation. This separation describes
+the computation and review procedure; it is not external peer review or
+a claim of statistical independence. No proof assistant was used. The
+accompanying source archive records the check commands and their exact
+coverage.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

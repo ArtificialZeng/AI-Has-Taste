@@ -1,0 +1,459 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage{url}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{listings}
+\hypersetup{pdftitle={Sharp local-dimension jumps and degree-jump growth in the partition graph},
+  pdfauthor={Xiaojian Zeng},pdfsubject={Quantitative edgewise bounds for the integer partition graph}}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\HH}{\mathsf{H}}
+\title{Sharp local-dimension jumps and degree-jump growth\\
+in the partition graph}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+For the graph of integer partitions joined by a transfer of one unit between
+rows, we determine the maximum change in local clique dimension along an
+edge. It is zero for $n=2,3$, one for $4\leq n\leq10$ and $n=12,13$,
+and two for $n=11$ and every $n\geq14$. We also characterize every edge
+with dimension jump two by its support and multiplicities. If
+$T_s=s(s+1)/2\leq n<T_{s+1}$ and $n\geq10$, the maximum degree jump
+satisfies $4s-8\leq D_d(n)\leq4s+2$, so
+$D_d(n)=4\sqrt{2n}+O(1)$. The arguments combine established vertex
+formulas with restrictions on adjacent support patterns and explicit
+witnesses for every required $n$. Only the finitely many small dimension
+exceptions require exhaustive computation; a complete verifier is included.
+These results answer the quantitative growth questions, while the original
+problem's additional question about localization remains unresolved.
+\end{abstract}
+
+\section{The graph and the quantitative results}
+
+Let $G_n$, for $n\geq2$, be the simple undirected graph whose vertices are
+the integer partitions of $n$. A move selects a donor row of size $p\geq1$
+and a different recipient row of size $q\geq1$, or a new row represented
+by $q=0$. Replace these sizes by $p-1$ and $q+1$, discard zero parts,
+and sort. The resulting partition must differ from the starting partition.
+In particular, $p=q>0$ requires two distinct rows; repeated descriptions of
+the same move create only one edge. This is the row-transfer convention of
+Lyudogovskiy~\cite[Section~2]{LyudogovskiyMorphology}.
+
+For a vertex $\lambda$, let $d(\lambda)$ be its degree and let
+\[
+ \delta(\lambda)=\max\{|C|-1:C\text{ is a clique of }G_n,
+                                      \ \lambda\in C\}.
+\]
+Equivalently, $\delta(\lambda)$ is the clique number of the graph induced
+by the neighbors of $\lambda$. Set
+\[
+ D_d(n)=\max_{\lambda\sim\mu}|d(\mu)-d(\lambda)|,
+ \qquad
+ D_\delta(n)=\max_{\lambda\sim\mu}|\delta(\mu)-\delta(\lambda)|.
+\]
+Lyudogovskiy~\cite[Problems~8.1--8.2]{LyudogovskiyJumps} asks for the
+growth of these quantities and, separately, for the location of large
+dimension jumps. Uniform boundedness of dimension jumps was also asked
+in~\cite[Problem~6.4(iii)]{LyudogovskiyStratification}.
+
+Write $r(\lambda)=|\supp(\lambda)|$ for the number of distinct positive
+part sizes. Denote the staircase partition $(r,r-1,\ldots,1)$ by $S_r$.
+We say that $\HH(\lambda)$ holds if a size $x\geq2$ occurs at least twice
+in $\lambda$ and $x-1$ is absent.
+
+\begin{theorem}\label{thm:dimension}
+For every integer $n\geq2$,
+\begin{equation}\label{eq:exact-dimension}
+ D_\delta(n)=
+ \begin{cases}
+ 0,& n=2,3,\\
+ 1,& 4\leq n\leq10\text{ or }n=12,13,\\
+ 2,& n=11\text{ or }n\geq14.
+ \end{cases}
+\end{equation}
+Orient an edge $\lambda\to\mu$ so that $r(\mu)\geq r(\lambda)$ and put
+$k=r(\mu)-r(\lambda)$. Its absolute dimension jump is two if and only if
+one of the following holds:
+\begin{enumerate}
+\item $k=1$, $\lambda$ is neither a staircase nor an $\HH$ partition,
+      and $\HH(\mu)$ holds;
+\item $k=2$ and both $\HH(\lambda)$ and $\HH(\mu)$ hold.
+\end{enumerate}
+In either case $\delta(\mu)-\delta(\lambda)=2$.
+\end{theorem}
+
+\begin{theorem}\label{thm:degree}
+Let $n\geq10$, $T_s=s(s+1)/2$, and choose the unique integer $s$ with
+$T_s\leq n<T_{s+1}$. Then
+\begin{equation}\label{eq:degree-bounds}
+ 4s-8\leq D_d(n)\leq4s+2.
+\end{equation}
+Consequently $D_d(n)=4\sqrt{2n}+O(1)$, with an absolute implied constant.
+The lower bound has an explicit witness for every $n\geq10$.
+\end{theorem}
+
+The prior vertex formulas give degree in terms of support, gaps and
+multiplicities~\cite[Theorem~2.2]{LyudogovskiyDegree}, and local dimension
+in terms of corner capacities~\cite[Theorem~7.1]{LyudogovskiyMorphology}.
+Support birth and death accounting, including the bound
+$|r(\mu)-r(\lambda)|\leq2$, is established
+in~\cite[Theorem~3.4 and Corollary~3.5]{LyudogovskiySupport}.
+These inputs alone yield the coarse dimension-jump bound four.
+The additional step here is to restrict which endpoint types can be
+adjacent: this gives the sharp bound two and the equality criterion.
+For degree, controlling the change in the correction terms and constructing
+edges of almost maximal support difference yields the leading coefficient.
+The vertex maxima studied in~\cite{LyudogovskiyDegree} are distinct from
+the adjacent-pair maximum considered here.
+
+Our literature comparison is bounded: no equivalent sharp edgewise
+statement was located in the cited partition-graph preprints inspected on
+14 September 2026. This is not an exhaustive priority assessment. The
+conclusions below concern quantitative extrema and a local equality
+criterion; the original localization question remains unresolved.
+
+\section{Vertex formulas and restrictions on support}
+
+Write the distinct sizes as $s_1>\cdots>s_r>0$, with multiplicities $m_i$,
+and put $s_{r+1}=0$. Define
+\[
+ A=\#\{i:s_i-s_{i+1}>1\},\qquad B=\#\{i:m_i>1\},
+\]
+and set $a_i=\one_{\{m_i=1\}}$, $b_i=\one_{\{s_i-s_{i+1}=1\}}$,
+with $a_{r+1}=b_0=0$. The established formulas are
+\begin{align}
+ d(\lambda)&=r(r-1)+A+B,\label{eq:vertex-degree}\\
+ \delta(\lambda)&=\max\left\{
+  \max_{1\leq i\leq r}(r+1-a_i-b_i),
+  \max_{1\leq j\leq r+1}(r-a_j-b_{j-1})\right\}.
+  \label{eq:vertex-dimension}
+\end{align}
+Equation~\eqref{eq:vertex-degree} is
+\cite[Theorem~2.2]{LyudogovskiyDegree};
+equation~\eqref{eq:vertex-dimension} is
+\cite[Theorem~7.1]{LyudogovskiyMorphology}, also reproduced with these
+boundary conventions in~\cite[Background Proposition~3.1]{LyudogovskiySynthesis}.
+The two families in~\eqref{eq:vertex-dimension} are the row and column
+capacities of the local admissibility graph.
+
+Put $\varepsilon(\lambda)=\delta(\lambda)-r(\lambda)$. An immediate
+reformulation of the attributed dimension formula is
+\begin{equation}\label{eq:three-types}
+ \varepsilon(\lambda)=
+ \begin{cases}
+ -1,&\lambda=S_r,\\
+ 1,&\HH(\lambda),\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+Indeed, every column capacity is at most $r$. A row capacity equals $r+1$
+exactly when $a_i=b_i=0$, which is precisely $\HH$. If $\HH$ fails,
+all rows have capacity at most $r$; every row has capacity $r-1$ exactly
+when all $a_i=b_i=1$, giving $S_r$. For $S_r$, the first and last column
+capacities are $r-1$, and any other column has capacity $r-2$. Otherwise
+some row has capacity $r$. This reasoning includes $r=1$.
+
+Only donor and recipient sizes can disappear in a move, and only their
+output sizes can appear. Omitting zero therefore gives
+\begin{equation}\label{eq:support-bound}
+ |r(\mu)-r(\lambda)|\leq2.
+\end{equation}
+This also gives a direct proof of the known support bound. We need two
+further restrictions.
+
+\begin{lemma}\label{lem:staircase}
+Every neighbor of $S_r$ has strictly smaller support.
+\end{lemma}
+\begin{proof}
+The partition $S_1$ has no neighbor. At $S_r$ all sizes occur once, so
+equal positive donor and recipient sizes are impossible. A move with
+$p=q+1$ is an identity and is excluded. If $q=0$, then $p\geq2$;
+size $p$ disappears and both outputs $p-1$ and $1$ were already present.
+If $q>0$, both distinct sizes $p,q$ disappear: an output could restore
+one of them only in the excluded case $p=q+1$. The only possible size
+outside $\{1,\ldots,r\}$ is $r+1$. Thus at least two sizes are lost
+and at most one is gained. Coincident output sizes cannot increase the
+number of new sizes.
+\end{proof}
+
+\begin{lemma}\label{lem:two-births}
+If a move increases support by two, its starting partition satisfies $\HH$.
+\end{lemma}
+\begin{proof}
+There are at most two new sizes, so an increase of two requires two
+distinct positive new sizes and no disappearance. In particular $p>1$,
+$p-1$ was absent, and size $p$ survives. Since the move removes a row of
+size $p$ and neither output was previously present, another row of size
+$p$ must have existed. Thus $p$ was repeated and its predecessor was
+absent. If $p=q$, survival requires at least three copies, which gives the
+same conclusion. A unit donor or coincident outputs cannot produce two
+distinct positive new sizes.
+\end{proof}
+
+\section{Dimension jumps}
+
+\begin{proof}[Proof of the universal bound and equality criterion in
+Theorem~\ref{thm:dimension}]
+Orient the edge toward nondecreasing support, and write
+$k=r(\mu)-r(\lambda)$, $e=\varepsilon(\lambda)$ and
+$f=\varepsilon(\mu)$. Then
+\begin{equation}\label{eq:signed-jump}
+ \delta(\mu)-\delta(\lambda)=k+f-e.
+\end{equation}
+By~\eqref{eq:support-bound}, $k\in\{0,1,2\}$.
+If $k=0$, Lemma~\ref{lem:staircase} excludes staircases at both endpoints,
+so $e,f\in\{0,1\}$ and the difference lies in $[-1,1]$.
+If $k=1$, the same lemma excludes a staircase at the starting endpoint,
+so $e\in\{0,1\}$ and $f\in\{-1,0,1\}$; the difference lies in $[-1,2]$.
+If $k=2$, Lemma~\ref{lem:two-births} gives $e=1$, and the difference
+is $1+f\in[0,2]$.
+Hence its absolute value is at most two. Equality is possible exactly
+when $k=1,e=0,f=1$, or $k=2,e=f=1$. Substitution also proves sufficiency,
+and~\eqref{eq:three-types} identifies these conditions with the stated
+endpoint criterion. Ties in the support orientation are harmless.
+\end{proof}
+
+\begin{proof}[Proof of the attainment set in Theorem~\ref{thm:dimension}]
+At $n=11$ and $n=14$, respectively, use
+\[
+ (4,4,3)\sim(4,4,2,1),\qquad
+ (5,5,4)\sim(5,5,3,1).
+\]
+Both edges split one row into a predecessor row and a new unit row.
+Their endpoint dimensions are $2$ and $4$ by~\eqref{eq:three-types}.
+For every $n\geq15$, set $h=n-11\geq4$ and sort the multisets in
+\begin{equation}\label{eq:dimension-family}
+ (h,4,4,3)\sim(h,4,4,2,1).
+\end{equation}
+If $h=4$, the supports have sizes two and three; the starting vertex
+is neither a staircase nor an $\HH$ partition, while the final vertex
+satisfies $\HH$ at size four. Their dimensions are $2$ and $4$.
+For $h\geq5$, the supports have sizes three and four. The only repeated
+size at the starting vertex is four, whose predecessor three is present;
+at the final vertex that predecessor is absent. Their dimensions are
+$3$ and $5$. Thus every asserted value two is attained.
+
+For $n\geq4$, the edge $(n)\sim(n-1,1)$ has dimensions $1$ and $2$.
+At $n=2$ the graph is a single edge, and at $n=3$ it is a three-vertex
+path; all local dimensions are one. The remaining upper bounds are the
+finite calculations in Table~\ref{tab:small}. A complete integer-only
+verifier appears in Appendix~\ref{app:verifier}. Together with the
+universal bound and~\eqref{eq:dimension-family}, these calculations prove
+\eqref{eq:exact-dimension}.
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\caption{Exhaustive graph and clique calculations for the finite exceptions.
+Every vertex and every edge is included.}\label{tab:small}
+\begin{tabular}{rrrr}
+\toprule
+$n$ & $|V(G_n)|$ & $|E(G_n)|$ & $D_\delta(n)$\\
+\midrule
+2&2&1&0\\
+3&3&2&0\\
+4&5&5&1\\
+5&7&9&1\\
+6&11&17&1\\
+7&15&28&1\\
+8&22&47&1\\
+9&30&73&1\\
+10&42&114&1\\
+11&56&170&2\\
+12&77&253&1\\
+13&101&365&1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Degree jumps}
+
+\begin{lemma}\label{lem:correction}
+For every edge $\lambda\sim\mu$,
+\begin{equation}\label{eq:correction}
+ \left|d(\mu)-d(\lambda)
+ -\bigl(r(\mu)(r(\mu)-1)-r(\lambda)(r(\lambda)-1)\bigr)\right|\leq8.
+\end{equation}
+\end{lemma}
+\begin{proof}
+View $A$ as a function of the support, including the gap to zero.
+Inserting a size $x$ between consecutive augmented sizes $a>b\geq0$
+replaces $\one_{\{a-b>1\}}$ by
+\[
+ \one_{\{a-x>1\}}+\one_{\{x-b>1\}}.
+\]
+Since both smaller gaps are positive integers, the change has absolute
+value at most one. Insertion above the maximum adds either zero or one;
+the same holds when inserting into an empty support. Deletion reverses
+an insertion. A move changes membership at at most four positive sizes,
+so $|A(\mu)-A(\lambda)|\leq4$.
+
+Likewise $B=\sum_{x\geq1}\one_{\{m_x\geq2\}}$ changes at at most four
+sizes, and each indicator changes by at most one, even when donor and
+recipient sizes coincide. Thus $|B(\mu)-B(\lambda)|\leq4$.
+Equation~\eqref{eq:vertex-degree} now gives~\eqref{eq:correction}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:degree}]
+The distinct positive sizes of a partition with support $r$ sum to at
+least $T_r$, so $r\leq s$. Because $s\geq4$ and the endpoint supports
+differ by at most two, the largest difference in the quadratic terms is
+\[
+ s(s-1)-(s-2)(s-3)=4s-6.
+\]
+Lemma~\ref{lem:correction} proves $D_d(n)\leq4s+2$.
+
+For the lower bound, write $n=T_s+q$ with $0\leq q\leq s$, and let
+\begin{align*}
+ \mu&=(s+q,s-1,\ldots,1),\\
+ \lambda&=(s+q,s-1,\ldots,4,3,3).
+\end{align*}
+The range $s-1,\ldots,4$ in the second line is empty when $s=4$.
+Both partitions sum to $n$, and transferring the unit row of $\mu$ into
+its row of size two gives $\lambda$. At $\mu$,
+\[
+ (r,A,B)=(s,\one_{\{q>0\}},0),
+\]
+whereas at $\lambda$,
+\[
+ (r,A,B)=(s-2,1+\one_{\{q>0\}},1).
+\]
+The extra gap is the bottom gap to zero; the sole repeated size is three.
+Consequently
+\[
+ d(\mu)-d(\lambda)=s(s-1)-(s-2)(s-3)-2=4s-8.
+\]
+This works for every $q$ in its range, proving~\eqref{eq:degree-bounds}.
+Finally, the triangular inequalities imply
+$s<\sqrt{2n}<s+3/2$. Thus replacing $s$ by $\sqrt{2n}$ changes the
+bounds only by an absolute constant, giving the asserted asymptotic.
+\end{proof}
+
+\section{Computation, scope and assistance}
+
+The finite part of the proof examines all 371 vertices and 1,084 edges
+for $2\leq n\leq13$. The verifier in the appendix computes actual
+neighborhood clique numbers without either vertex formula. The first clique
+found supplies a lower certificate, and exhaustive rejection of all larger
+subsets supplies the matching upper certificate. There is no symmetry
+quotient, floating-point comparison or unproved search cutoff.
+
+For a methodological comparison, Zeng, Liu, Ratnavelu and
+Ong~\cite[Section~4, Lemma~3 and Proposition~1]{ZengFiniteCertificates}
+use integer compatibility predicates and two exact clique implementations
+for a finite library of normalized ternary codes. Here the finite graph is
+small enough for literal subset enumeration. A separately written checker
+also reconstructed the partition graphs by coefficient-wise partition
+generation and literal row transfers, using a different clique search;
+its checks through $n=24$ agree with the stated formulas and bounds.
+These additional checks are finite corroboration. The infinite conclusions
+rest on the support arguments and witness families above.
+
+The equality criterion describes individual maximal dimension transitions
+from endpoint multiplicities. It does not determine their spatial or
+statistical concentration relative to simplex layers or other regions.
+Accordingly, the original localization question remains unresolved.
+We do not determine $D_d(n)$ exactly for all $n$, or claim sharpness of
+the additive constants in~\eqref{eq:degree-bounds}.
+
+\paragraph{Computational and AI assistance.}
+OpenAI language-model assistance was used in developing the arguments,
+drafting verification programs, comparing sources and preparing the text.
+A separate model context inspected the mathematical arguments and ran a
+separately written exact verifier. These checks are neither external peer
+review nor proof-assistant certification. The computations use Python
+integers and finite sets; exhaustive computation is used in the proof only
+for the explicitly stated finite exceptions.
+
+\appendix
+\section{Complete verifier for the finite exceptions}\label{app:verifier}
+
+Save the following as \texttt{verify\_small.py} and run
+\texttt{python3 verify\_small.py}. Only the Python standard library is
+needed. The program prints the four columns of Table~\ref{tab:small}.
+
+The partition recursion chooses each next part no larger than its
+predecessor, so every nonincreasing positive partition occurs exactly once.
+The neighbor routine tries every donor row and every different recipient
+row, including a new zero row, and deduplicates the results. Therefore it
+constructs precisely $G_n$. The clique routine tests neighborhood subsets
+in decreasing cardinality and returns at the first clique. Every larger
+subset has been rejected by a missing edge, so the returned size is the
+actual $\delta(\lambda)$. Taking the largest edge difference then gives
+the displayed maximum. The assertions check closure and symmetry and
+compare the computed rows with the stated table; they do not determine
+any adjacency or clique value.
+
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\footnotesize,columns=fullflexible,keepspaces=true,showstringspaces=false,breaklines=true,emptylines=1,frame=single,framesep=5pt]
+"""Reproduce the finite dimension-jump table; Python standard library only."""
+from itertools import combinations
+
+
+def partitions(total, cap):
+    if total == 0:
+        yield ()
+    else:
+        for a in range(min(total, cap), 0, -1):
+            for tail in partitions(total - a, a):
+                yield (a,) + tail
+
+
+def neighbors(v):
+    out = set()
+    for i in range(len(v)):
+        for j in range(len(v) + 1):
+            if i == j:
+                continue
+            w = list(v) + [0]
+            w[i] -= 1
+            w[j] += 1
+            w = tuple(sorted((x for x in w if x), reverse=True))
+            if w != v:
+                out.add(w)
+    return out
+
+
+def clique_number(vertices, adj):
+    vertices = sorted(vertices)
+    for size in range(len(vertices), -1, -1):
+        for c in combinations(vertices, size):
+            if all(w in adj[v] for v, w in combinations(c, 2)):
+                return size
+    raise AssertionError("The empty set is a clique")
+
+
+expected = [(2, 1, 0), (3, 2, 0), (5, 5, 1), (7, 9, 1),
+            (11, 17, 1), (15, 28, 1), (22, 47, 1), (30, 73, 1),
+            (42, 114, 1), (56, 170, 2), (77, 253, 1), (101, 365, 1)]
+print("n vertices edges D_delta")
+for n in range(2, 14):
+    vs = list(partitions(n, n))
+    assert len(vs) == len(set(vs))
+    adj = {v: neighbors(v) for v in vs}
+    assert all(adj[v] <= set(vs) for v in vs)
+    assert all(v in adj[w] for v in vs for w in adj[v])
+    dims = {v: clique_number(adj[v], adj) for v in vs}
+    edges = [(v, w) for v in vs for w in adj[v] if v < w]
+    jump = max(abs(dims[v] - dims[w]) for v, w in edges)
+    row = (len(vs), len(edges), jump)
+    assert row == expected[n - 2], (n, row)
+    print(n, *row)
+\end{lstlisting}
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

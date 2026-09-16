@@ -1,0 +1,275 @@
+{
+  "original_id": "legacy-b06-p01",
+  "archive_id": "BW2-B06-P01",
+  "title": "The least degree of a two-variable polynomial identity for M₃(𝔽₂) is seven",
+  "batch_label": "6",
+  "kind": "historical-gated-manuscript",
+  "original_status": "proved",
+  "scope": "The fixed M3(F2) two-variable polynomial identity problem; least degree exactly seven.",
+  "gate_basis": "Historical independent proof, citation, build/PDF and release gates passed for the stated manuscript scope; the current manuscript matches the archived final source. Exact upper certificate checks all 262144 ordered pairs; an independent nonsingular evaluation minor proves the lower bound through degree six.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B06-P01_The_least_degree_of_a_two_variable_polynomial_identity_for_M3_F2_is_seven.pdf",
+  "pdf_sha256": "5c9586468d552771c19ea953c8125dbfa20317eba3a3533b91bec9d256a3b40e",
+  "pages": 4,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B06-P01/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B06-P01/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B06-P01/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Verifier: Python 3 standard library. Optional discovery/tests use NumPy 2.2.6 and Numba 0.67.0."
+  ],
+  "limitations": [
+    "The main verifier is a finite full certificate check, not advertised as an instant smoke test.",
+    "Original entrypoints: ['python3 src/verify_certificate.py certificates/min_degree_7.json']",
+    "Long/full or external-tool entrypoints: []"
+  ],
+  "entrypoints": [],
+  "source_files": 15,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B06-P01/audit/PROOF_AUDIT.md",
+      "sha256": "0ad2aea7b11b89b01bd2ddbb2bd66d438c942727b7d34be6aeb8d66c25df7ba5",
+      "bytes": 1959
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B06-P01/audit/CITATION_AUDIT.md",
+      "sha256": "c80d0bda5de5572bb47018974ef4d6bcb7ef1079ad497d03e89dee9b717813c0",
+      "bytes": 1659
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B06-P01/audit/SUBMISSION_AUDIT.md",
+      "sha256": "638de1ffca2a888359115b1062d9cd16de78766bb611f32a5ac2b25ef3e40359",
+      "bytes": 2293
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B06-P01/audit/PDF_AUDIT.md",
+      "sha256": "9317c3d87a59aedeba15d7d5f33d2cca6e21a4126971c61f6ba63c950562daf9",
+      "bytes": 1033
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B06-P01/manifests/release_manifest.json",
+      "sha256": "9d4607498edfb67cf0063ed9c1886a8443a1952cf864bae02439448383233176",
+      "bytes": 5870
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "a4ce94c86b7387aa69b980d6f6e320344499f7f7ea3c0f93152c8b0359342fd6",
+      "original_bytes": 10236,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "a4ce94c86b7387aa69b980d6f6e320344499f7f7ea3c0f93152c8b0359342fd6",
+          "bytes": 10236
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "0d93eab1e632e804e1b74dc1c5a393b29c93c05165b3dc77738130995a82b67b",
+      "original_bytes": 1261,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "0d93eab1e632e804e1b74dc1c5a393b29c93c05165b3dc77738130995a82b67b",
+          "bytes": 1261
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/min_degree_7.json",
+      "original_sha256": "91674740abc2821225539515d139cfaea9af24f40e6cf3fa136db97c2eb2f1e1",
+      "original_bytes": 10276,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/min_degree_7.json",
+          "sha256": "91674740abc2821225539515d139cfaea9af24f40e6cf3fa136db97c2eb2f1e1",
+          "bytes": 10276
+        }
+      ]
+    },
+    {
+      "path": "source/certificates/README.md",
+      "original_sha256": "40daa7c4a27d00094297c7496cc45c4ac26137781f41102ca0ea3ef4eee77154",
+      "original_bytes": 603,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificates/README.md",
+          "sha256": "40daa7c4a27d00094297c7496cc45c4ac26137781f41102ca0ea3ef4eee77154",
+          "bytes": 603
+        }
+      ]
+    },
+    {
+      "path": "source/src/verify_certificate.py",
+      "original_sha256": "1aa3b90abfb492092752527f332a79f7f95e556aeed7745a04e5115d11e16116",
+      "original_bytes": 8634,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/verify_certificate.py",
+          "sha256": "1aa3b90abfb492092752527f332a79f7f95e556aeed7745a04e5115d11e16116",
+          "bytes": 8634
+        }
+      ]
+    },
+    {
+      "path": "source/src/discover_numpy.py",
+      "original_sha256": "e9b5fdcc068e7ab57920ca5fd18c75ba36bb586dfd8408f7ff7e1b1e72e70c79",
+      "original_bytes": 5023,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/discover_numpy.py",
+          "sha256": "e9b5fdcc068e7ab57920ca5fd18c75ba36bb586dfd8408f7ff7e1b1e72e70c79",
+          "bytes": 5023
+        }
+      ]
+    },
+    {
+      "path": "source/src/breaker_independent.py",
+      "original_sha256": "1fd8683a6b765f156eada1d7409d5e54bcc7f101dc92f2178789b5aeb5438356",
+      "original_bytes": 3774,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/breaker_independent.py",
+          "sha256": "1fd8683a6b765f156eada1d7409d5e54bcc7f101dc92f2178789b5aeb5438356",
+          "bytes": 3774
+        }
+      ]
+    },
+    {
+      "path": "source/src/make_certificate.py",
+      "original_sha256": "5ebe2ceda0eeb1e7789cde80e766eba98cda66cd19b90b215dd363a2e1903bf7",
+      "original_bytes": 3892,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/src/make_certificate.py",
+          "sha256": "5ebe2ceda0eeb1e7789cde80e766eba98cda66cd19b90b215dd363a2e1903bf7",
+          "bytes": 3892
+        }
+      ]
+    },
+    {
+      "path": "source/tests/test_exact.py",
+      "original_sha256": "34fac68338d0ac196c1541f1cc1191b297f90768027184a3d562d60247800894",
+      "original_bytes": 1592,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/tests/test_exact.py",
+          "sha256": "34fac68338d0ac196c1541f1cc1191b297f90768027184a3d562d60247800894",
+          "bytes": 1592
+        }
+      ]
+    },
+    {
+      "path": "source/README.md",
+      "original_sha256": "50a02b8d12fb0fdd79bac2416a03b377b0f1c3a6371d442267b4ba59fceedf81",
+      "original_bytes": 661,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/README.md",
+          "sha256": "50a02b8d12fb0fdd79bac2416a03b377b0f1c3a6371d442267b4ba59fceedf81",
+          "bytes": 661
+        }
+      ]
+    },
+    {
+      "path": "source/requirements-discovery.txt",
+      "original_sha256": "2034d30bf3981bf34f16a8365b78aaea45d33b82d2be08abab405f078979af34",
+      "original_bytes": 27,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/requirements-discovery.txt",
+          "sha256": "2034d30bf3981bf34f16a8365b78aaea45d33b82d2be08abab405f078979af34",
+          "bytes": 27
+        }
+      ]
+    },
+    {
+      "path": "source/problem/formal_statement.md",
+      "original_sha256": "759a43c3958b8a719e901500840f76578b1f11faa2a7853c3c1754490c46f3fe",
+      "original_bytes": 2014,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem/formal_statement.md",
+          "sha256": "759a43c3958b8a719e901500840f76578b1f11faa2a7853c3c1754490c46f3fe",
+          "bytes": 2014
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+      "original_sha256": "40daa7c4a27d00094297c7496cc45c4ac26137781f41102ca0ea3ef4eee77154",
+      "original_bytes": 603,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+          "sha256": "40daa7c4a27d00094297c7496cc45c4ac26137781f41102ca0ea3ef4eee77154",
+          "bytes": 603
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+      "original_sha256": "50a02b8d12fb0fdd79bac2416a03b377b0f1c3a6371d442267b4ba59fceedf81",
+      "original_bytes": 661,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+          "sha256": "50a02b8d12fb0fdd79bac2416a03b377b0f1c3a6371d442267b4ba59fceedf81",
+          "bytes": 661
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_03.md",
+      "original_sha256": "2034d30bf3981bf34f16a8365b78aaea45d33b82d2be08abab405f078979af34",
+      "original_bytes": 27,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_03.md",
+          "sha256": "2034d30bf3981bf34f16a8365b78aaea45d33b82d2be08abab405f078979af34",
+          "bytes": 27
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "original_title_source": "The least degree of a two-variable polynomial identity for \\(M_3(\\mathbb F_2)\\) is seven",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B06-P01",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

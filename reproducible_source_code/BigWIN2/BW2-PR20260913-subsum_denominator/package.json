@@ -1,0 +1,832 @@
+{
+  "original_id": "primary-20260913-subsum-denominator",
+  "archive_id": "BW2-PR20260913-subsum_denominator",
+  "title": "A Newton-positivity conjecture for dyadic stages of reciprocal-subsum denominators",
+  "batch_label": "primary",
+  "kind": "conjecture-note",
+  "original_status": "unresolved",
+  "scope": "Explicitly unproved conjecture K_sharp_v1. Let D_N(x)=product_{i=1}^N(1+x^i)^{#{q>=0:2^q i<=N}}. For every integer j>=0 and every integer 1<=s<=j+1, let tau be the least t>=0 with s*2^t>=9 and 2*s*2^t>j+1. For t with s*2^t>=9 set a_{s,t}(x)=D_{s*2^t-1}(x) product_{ell=1}^{v_2(s)}(1+x^{s/2^ell}); coefficients are zero outside support. Set T_r(a)=a_r^2-a_{r-1}a_{r+1} and F_{s,j}(t)=2T_j(a_{s,t}(1+x^s))-T_j(a_{s,t})-T_{j-s}(a_{s,t}). Conjecture: Delta_t^h F_{s,j}(tau)>=0 for all integers 0<=h<=2j, where Delta has step one in t. Supporting established claims submitted for review: (i) the exact affine reduction and degree bound deg_u F(tau+u)<=2j; (ii) the complete exact certificate through j=96, yielding H at every actual stage for all n>=9 at indices 0<=j<=96 and their reflections, and original log-concavity for all n outside {3,5,6,7} when min(j,deg(D_n)-j)<=96; (iii) the generic positive band h=2j-k when j>=2k^2+k-1, with the top two Catalan formulas; (iv) for every n>=9 and every actual stage adding s at n=s*2^t, at j=2n-1 the actual value differs from its polynomial tail extrapolation by -a_{2n-2}-2a_{2n-s-2}<0, so every even forward difference of order at least 4n is negative. The boundary obstruction is outside K_sharp and is not a counterexample to H or to the original conjecture. K_sharp is not claimed equivalent to, or a complete proof of, the original all-n, all-index problem. All supporting statements, proof details and computational limits are specified in evidence/research3.md and its cited evidence.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": null
+  },
+  "pdf": "pdfs/ai-conjecture/BW2-PR20260913-subsum_denominator_A_Newton_positivity_conjecture_for_dyadic_stages_of_reciprocal_subsum_denominators.pdf",
+  "pdf_sha256": "36c288b38a941918a020c62193cae801acb44391ed28e65b4a13b8a3d00b2c62",
+  "pages": 7,
+  "latex": "reproducible_source_code/BigWIN2/BW2-PR20260913-subsum_denominator/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-PR20260913-subsum_denominator/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-PR20260913-subsum_denominator/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "flint"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim.",
+    "External reference literature is not redistributed. Consult the bibliography and archived source URLs."
+  ],
+  "entrypoints": [],
+  "source_files": 52,
+  "compressed_inputs": 1,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/terminal.json",
+      "sha256": "ee9f1c668f26899a65a8da9620c70ad228db5e8208761a6c4605b546a6f38b0a",
+      "bytes": 668
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/release/manifest.json",
+      "sha256": "d8c4a0394a1c19b1089a3cb7b40f8fe54cc646f22d8c10a6a1027b36fb134537",
+      "bytes": 1673
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/math.json",
+      "sha256": "61db1d28f29b4f63329687b499841333092428a0fbd5e2ec19c4a22b42707a7f",
+      "bytes": 216
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/citations.json",
+      "sha256": "ab71cd9dc2287e3dfc72b094cef8d6a0fb4c09fc2118dbc428401484cbf3cbed",
+      "bytes": 2112
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/build.json",
+      "sha256": "a8d80563c5e869ee0b86018398a0a6a4a2dd5c3a9b439386aafd21a1a46d1eed",
+      "bytes": 1036
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/visual.json",
+      "sha256": "9843b089b8ccb674bd072a010db97a5fe65bec271ebdac521c1621e1c1fd55a9",
+      "bytes": 3338
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/snapshot.json",
+      "sha256": "16ee778f707092620a2270739217bbf0f1e653bc4a0b4337e1479ec4a2ef9e55",
+      "bytes": 2411
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/manuscript-snapshot.json",
+      "sha256": "86df9accbc2f9dbd8d13d2ebf0d5da8bc7a2f1ba3a1ff75be0d45c1355dbc984",
+      "bytes": 842
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/math.md",
+      "sha256": "51a86fc24a4ea27597866da6b03a018159e5f592e18c455aff406186538109a1",
+      "bytes": 12852
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/citations.md",
+      "sha256": "4fd9f8d26e979c7f53f3ad9138bcf96d7382ae54a25d0a8912fab809cc2ae356",
+      "bytes": 19193
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/build.md",
+      "sha256": "7a9fd1511d4b9d039666b25c18cdf3b27b08ec22a197be9ce564546c58d8b09f",
+      "bytes": 1749
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-PR20260913-subsum_denominator/audit/visual.md",
+      "sha256": "3cdc9a890ae070a884fb6592ab1ad6caca7e680579017f09f31b4a392c2a82d2",
+      "bytes": 2265
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "e8161e3a8f9cd5d8209114856263173c74a70b41240bc091b007745e353f54b0",
+      "original_bytes": 22664,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "e8161e3a8f9cd5d8209114856263173c74a70b41240bc091b007745e353f54b0",
+          "bytes": 22664
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "13ae0ec1749b0124443b520b793f3f115abae864872b752f2523ccbd90036f71",
+      "original_bytes": 1594,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "13ae0ec1749b0124443b520b793f3f115abae864872b752f2523ccbd90036f71",
+          "bytes": 1594
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/build/main.bbl",
+      "original_sha256": "41d11ed3483d580756bf075d89627f615f3dceacf9e1e65af02f2e83f0dd90ae",
+      "original_bytes": 1409,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/build/main.bbl",
+          "sha256": "41d11ed3483d580756bf075d89627f615f3dceacf9e1e65af02f2e83f0dd90ae",
+          "bytes": 1409
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_bivariate_verify.json",
+      "original_sha256": "eb6cd69071060510b93302508e73287f08c4ac87baf308ef1af189b5061aa0f7",
+      "original_bytes": 502,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_bivariate_verify.json",
+          "sha256": "eb6cd69071060510b93302508e73287f08c4ac87baf308ef1af189b5061aa0f7",
+          "bytes": 502
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_kernel_probe.py",
+      "original_sha256": "55679f7a1ca651975f58e4e0393ad09eb34708036c0c6e379e90fea7296b57ea",
+      "original_bytes": 1809,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_kernel_probe.py",
+          "sha256": "55679f7a1ca651975f58e4e0393ad09eb34708036c0c6e379e90fea7296b57ea",
+          "bytes": 1809
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_kernel_probe.json",
+      "original_sha256": "da2d0a503c6e843b2fa6135cb6dd4e48aa07c41d5e356ab232c6bbb6d8a68d17",
+      "original_bytes": 10061317,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_kernel_probe.json",
+          "sha256": "da2d0a503c6e843b2fa6135cb6dd4e48aa07c41d5e356ab232c6bbb6d8a68d17",
+          "bytes": 10061317
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_boundary_verify.json",
+      "original_sha256": "ab77118448b3b234829173f1142eab2e7de14a1445733b63dd94d6f75ba608f4",
+      "original_bytes": 13357,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_boundary_verify.json",
+          "sha256": "ab77118448b3b234829173f1142eab2e7de14a1445733b63dd94d6f75ba608f4",
+          "bytes": 13357
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_integrity.py",
+      "original_sha256": "cb8c53cac261c2461a034d75f658d5e02df7851b1fd2d28f70bbbb59707f2589",
+      "original_bytes": 5512,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_integrity.py",
+          "sha256": "cb8c53cac261c2461a034d75f658d5e02df7851b1fd2d28f70bbbb59707f2589",
+          "bytes": 5512
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_h_probe.json",
+      "original_sha256": "80282e6aabc0a11faf33e8d055fbc0accddd2f2a829833d4a0a8d06edad492c2",
+      "original_bytes": 28522,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_h_probe.json",
+          "sha256": "80282e6aabc0a11faf33e8d055fbc0accddd2f2a829833d4a0a8d06edad492c2",
+          "bytes": 28522
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_edge_probe.json",
+      "original_sha256": "73d4eb7de49c22870fb8c254c846bf495f88fdb1c8fb595182037a314b8b7e69",
+      "original_bytes": 1038852,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_edge_probe.json",
+          "sha256": "73d4eb7de49c22870fb8c254c846bf495f88fdb1c8fb595182037a314b8b7e69",
+          "bytes": 1038852
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/smoothing_probe.json",
+      "original_sha256": "f345c132d643ffa1c4a87f9b02d7c210f7d4484b28cddb72e9e3d6e62549de2b",
+      "original_bytes": 67729,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/smoothing_probe.json",
+          "sha256": "f345c132d643ffa1c4a87f9b02d7c210f7d4484b28cddb72e9e3d6e62549de2b",
+          "bytes": 67729
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_integrity.py",
+      "original_sha256": "8571a48ff1f26f86d3105dea7ebceff2b52464dc6933933a824a8701d5b04e14",
+      "original_bytes": 5812,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_integrity.py",
+          "sha256": "8571a48ff1f26f86d3105dea7ebceff2b52464dc6933933a824a8701d5b04e14",
+          "bytes": 5812
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_verify.json",
+      "original_sha256": "ede4dc9c07d5e8c1ed251f31ffd5fa257df814ddf1a382ac858ba7ac3ba221a2",
+      "original_bytes": 704,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_verify.json",
+          "sha256": "ede4dc9c07d5e8c1ed251f31ffd5fa257df814ddf1a382ac858ba7ac3ba221a2",
+          "bytes": 704
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_integrity.py",
+      "original_sha256": "672feec914263296274d51f560bbabfa241086b7994b5f457dffcab253ba5c1b",
+      "original_bytes": 7144,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_integrity.py",
+          "sha256": "672feec914263296274d51f560bbabfa241086b7994b5f457dffcab253ba5c1b",
+          "bytes": 7144
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_verify.py",
+      "original_sha256": "14695ef0c8ef8dbb61dfffa58b0a3809653d91364f2371600872745360bacb0a",
+      "original_bytes": 4377,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_verify.py",
+          "sha256": "14695ef0c8ef8dbb61dfffa58b0a3809653d91364f2371600872745360bacb0a",
+          "bytes": 4377
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_band.md",
+      "original_sha256": "495b9ac566e6e1d6d390188b204b14a3993b563a3f4ef5970f465f9253a3664a",
+      "original_bytes": 3590,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_band.md",
+          "sha256": "495b9ac566e6e1d6d390188b204b14a3993b563a3f4ef5970f465f9253a3664a",
+          "bytes": 3590
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3.md",
+      "original_sha256": "e12a8da6590a28289ec62171866750fad8792f53370728ce823c19aa62418fc2",
+      "original_bytes": 10941,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3.md",
+          "sha256": "e12a8da6590a28289ec62171866750fad8792f53370728ce823c19aa62418fc2",
+          "bytes": 10941
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_h_probe.py",
+      "original_sha256": "175e95d87b8bba65c6ce4e20e0a8f12881853ba31e852e2a4e98e3f3a626229b",
+      "original_bytes": 5707,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_h_probe.py",
+          "sha256": "175e95d87b8bba65c6ce4e20e0a8f12881853ba31e852e2a4e98e3f3a626229b",
+          "bytes": 5707
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_edge_probe.py",
+      "original_sha256": "a65b6eb1f4349b04cdd32491181ab050bc44c839633cba957feefa75b5ddce27",
+      "original_bytes": 4000,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_edge_probe.py",
+          "sha256": "a65b6eb1f4349b04cdd32491181ab050bc44c839633cba957feefa75b5ddce27",
+          "bytes": 4000
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_sharp_probe.py",
+      "original_sha256": "9eac6a8e4d586081ae382136aa7eedc1910310fa74970a3f779fc2b83144c216",
+      "original_bytes": 3523,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_sharp_probe.py",
+          "sha256": "9eac6a8e4d586081ae382136aa7eedc1910310fa74970a3f779fc2b83144c216",
+          "bytes": 3523
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_verify.json",
+      "original_sha256": "a32dac31506920d92f4459b3cfe4aa85951eca7841ede5f218a9bcca41dd0d14",
+      "original_bytes": 1964,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_verify.json",
+          "sha256": "a32dac31506920d92f4459b3cfe4aa85951eca7841ede5f218a9bcca41dd0d14",
+          "bytes": 1964
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_literature.md",
+      "original_sha256": "a4641d56262d240c6db0f55306206398ed7b5b7d8c5f4cef2c41799250383643",
+      "original_bytes": 3218,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_literature.md",
+          "sha256": "a4641d56262d240c6db0f55306206398ed7b5b7d8c5f4cef2c41799250383643",
+          "bytes": 3218
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_kernel_probe.json",
+      "original_sha256": "1243840c593454a9012a14656cc72a73a48eae06a036ce8b0e8b13344aec2d87",
+      "original_bytes": 816050,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_kernel_probe.json",
+          "sha256": "1243840c593454a9012a14656cc72a73a48eae06a036ce8b0e8b13344aec2d87",
+          "bytes": 816050
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_integrity.json",
+      "original_sha256": "efd7a10d6b131d45c68a02145d473acc6fdb4680b4aaa33bd1ffa42b64ec1bde",
+      "original_bytes": 1145,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_integrity.json",
+          "sha256": "efd7a10d6b131d45c68a02145d473acc6fdb4680b4aaa33bd1ffa42b64ec1bde",
+          "bytes": 1145
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_integrity.json",
+      "original_sha256": "90e3548b01d174c3991ba0bf81a64228f9c4f09f0cc1a697ff848b895cdf01c6",
+      "original_bytes": 4796,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_integrity.json",
+          "sha256": "90e3548b01d174c3991ba0bf81a64228f9c4f09f0cc1a697ff848b895cdf01c6",
+          "bytes": 4796
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2.md",
+      "original_sha256": "55b92c84cee8251a4714260d189bda845ab3a63fa229186fe9de2a5fddfcc218",
+      "original_bytes": 9515,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2.md",
+          "sha256": "55b92c84cee8251a4714260d189bda845ab3a63fa229186fe9de2a5fddfcc218",
+          "bytes": 9515
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_integrity.json",
+      "original_sha256": "4b3e2138fe666ee7504b18215f0d7b0f6bc1f7361507a7b083f882bd69b48151",
+      "original_bytes": 6037,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_integrity.json",
+          "sha256": "4b3e2138fe666ee7504b18215f0d7b0f6bc1f7361507a7b083f882bd69b48151",
+          "bytes": 6037
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_bivariate_verify.py",
+      "original_sha256": "b192121e448c5737302015952ab101bc840fc3bc084dcaf0e14f809c8ab0a8b3",
+      "original_bytes": 2996,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_bivariate_verify.py",
+          "sha256": "b192121e448c5737302015952ab101bc840fc3bc084dcaf0e14f809c8ab0a8b3",
+          "bytes": 2996
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_sharp_probe.json",
+      "original_sha256": "4381422954b23bcd3b28acc9ae29b0d2fd8a416c5a1cbffd89e6bf472384c0c9",
+      "original_bytes": 9973766,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_sharp_probe.json",
+          "sha256": "4381422954b23bcd3b28acc9ae29b0d2fd8a416c5a1cbffd89e6bf472384c0c9",
+          "bytes": 9973766
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research_verify.py",
+      "original_sha256": "fdd4501e612e068fd361bebf3fbcd271f834d83a2cc33396aa19aee114afac86",
+      "original_bytes": 4524,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research_verify.py",
+          "sha256": "fdd4501e612e068fd361bebf3fbcd271f834d83a2cc33396aa19aee114afac86",
+          "bytes": 4524
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_integrity.json",
+      "original_sha256": "12a05a616bf423f397004bd2b8d815929c1c4d6bf1ddba773b276c0ca470dbf0",
+      "original_bytes": 6014,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_integrity.json",
+          "sha256": "12a05a616bf423f397004bd2b8d815929c1c4d6bf1ddba773b276c0ca470dbf0",
+          "bytes": 6014
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_verify.json",
+      "original_sha256": "462b4db17c0416f5cf342f5535c5fe5e759a32cac50b0fda639f6ab9b24079d9",
+      "original_bytes": 311081,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_verify.json",
+          "sha256": "462b4db17c0416f5cf342f5535c5fe5e759a32cac50b0fda639f6ab9b24079d9",
+          "bytes": 311081
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/smoothing_probe.py",
+      "original_sha256": "bc70cbf8790847d80507af384085aaf93c250461ef11a624650471b88496f5a2",
+      "original_bytes": 1336,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/smoothing_probe.py",
+          "sha256": "bc70cbf8790847d80507af384085aaf93c250461ef11a624650471b88496f5a2",
+          "bytes": 1336
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_boundary_lemma.md",
+      "original_sha256": "167adbd395465ad5ed45cc3b504c770fb928ec8f0d2ad347f9c48f3e039228ee",
+      "original_bytes": 3626,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_boundary_lemma.md",
+          "sha256": "167adbd395465ad5ed45cc3b504c770fb928ec8f0d2ad347f9c48f3e039228ee",
+          "bytes": 3626
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research.md",
+      "original_sha256": "bf93f68e7be36bdab3c01f199277bc6477ce2a015f9ac5671ea906457917c82f",
+      "original_bytes": 10574,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research.md",
+          "sha256": "bf93f68e7be36bdab3c01f199277bc6477ce2a015f9ac5671ea906457917c82f",
+          "bytes": 10574
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_design_verify.json",
+      "original_sha256": "5f77831893cff4f66a4c09cfb2b30f690734e9510393190beff6364623bf7458",
+      "original_bytes": 112724,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_design_verify.json",
+          "sha256": "5f77831893cff4f66a4c09cfb2b30f690734e9510393190beff6364623bf7458",
+          "bytes": 112724
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage.md",
+      "original_sha256": "d97f8576fda72dbd1e067e1fc1f10737fa03058771b0459037fa3e5948310146",
+      "original_bytes": 6751,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage.md",
+          "sha256": "d97f8576fda72dbd1e067e1fc1f10737fa03058771b0459037fa3e5948310146",
+          "bytes": 6751
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_sharp_probe.json",
+      "original_sha256": "ae024e72d2c8394f3cd4ba47ec90c2f55ba8b13358ba6e6c33d72027d7af6126",
+      "original_bytes": 36591320,
+      "role": "reproduction-data-or-proof",
+      "storage": "gzip",
+      "stored_files": [
+        {
+          "path": "compressed/evidence/research3_sharp_probe.json.gz",
+          "sha256": "b93f290114a70a3331b5b8c92276d06b19c77c9544544835141f749d029a5e64",
+          "bytes": 15857977
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_design_verify.py",
+      "original_sha256": "2fa9b1f2223dc53ee4e2c07c0f2d19c0cccc32c2af6e3478a328fa0fca2b5463",
+      "original_bytes": 3007,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_design_verify.py",
+          "sha256": "2fa9b1f2223dc53ee4e2c07c0f2d19c0cccc32c2af6e3478a328fa0fca2b5463",
+          "bytes": 3007
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_sharp_probe.py",
+      "original_sha256": "ed9d5435c4b9c7ee2715b19898fe897867da7c28c8cbc8a834598ada4bcff818",
+      "original_bytes": 3845,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_sharp_probe.py",
+          "sha256": "ed9d5435c4b9c7ee2715b19898fe897867da7c28c8cbc8a834598ada4bcff818",
+          "bytes": 3845
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_progress.md",
+      "original_sha256": "1839e432e096d20f5be6362b3cc9b96824e72643c2116491d0e8447c145e4a18",
+      "original_bytes": 2063,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_progress.md",
+          "sha256": "1839e432e096d20f5be6362b3cc9b96824e72643c2116491d0e8447c145e4a18",
+          "bytes": 2063
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_probe.py",
+      "original_sha256": "69ea29704230084728626c66aa5c6c12f3d6e66b8277c434e9ffc4c2cf2da3f0",
+      "original_bytes": 4719,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_probe.py",
+          "sha256": "69ea29704230084728626c66aa5c6c12f3d6e66b8277c434e9ffc4c2cf2da3f0",
+          "bytes": 4719
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage_probe.json",
+      "original_sha256": "1d0e1c3299761b5792814be59c1bf56029a61eeb9ffeff45b6be62917f087910",
+      "original_bytes": 48291,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage_probe.json",
+          "sha256": "1d0e1c3299761b5792814be59c1bf56029a61eeb9ffeff45b6be62917f087910",
+          "bytes": 48291
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_boundary_probe.json",
+      "original_sha256": "1c3e82e3f5fa7a487963721867bf66606a6857feaae6413167e7f4fad571971c",
+      "original_bytes": 23045350,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_boundary_probe.json",
+          "sha256": "1c3e82e3f5fa7a487963721867bf66606a6857feaae6413167e7f4fad571971c",
+          "bytes": 23045350
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_verify.py",
+      "original_sha256": "cede2f838953c875c99a52c368200bf950f90252382750af6a9b673139024591",
+      "original_bytes": 4006,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_verify.py",
+          "sha256": "cede2f838953c875c99a52c368200bf950f90252382750af6a9b673139024591",
+          "bytes": 4006
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research2_kernel_probe.py",
+      "original_sha256": "1cf2feaf37de406805da5050433998f88d212aa168203ec95e34d5e80049164f",
+      "original_bytes": 1836,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research2_kernel_probe.py",
+          "sha256": "1cf2feaf37de406805da5050433998f88d212aa168203ec95e34d5e80049164f",
+          "bytes": 1836
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_boundary_probe.py",
+      "original_sha256": "e145a03002227d689e0eb0785ed043c90b70cdcfac0ca974de85423e3564e464",
+      "original_bytes": 3651,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_boundary_probe.py",
+          "sha256": "e145a03002227d689e0eb0785ed043c90b70cdcfac0ca974de85423e3564e464",
+          "bytes": 3651
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/research3_boundary_verify.py",
+      "original_sha256": "7a0b39ab9bc09842397919c62b723791721a64c259fe27ffa1c98f30f873e252",
+      "original_bytes": 3845,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/research3_boundary_verify.py",
+          "sha256": "7a0b39ab9bc09842397919c62b723791721a64c259fe27ffa1c98f30f873e252",
+          "bytes": 3845
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "3d8e6928f3bd250dbdfde723603903f527d4ec0da8f85f5ac628b232991e240a",
+      "original_bytes": 1379,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "3d8e6928f3bd250dbdfde723603903f527d4ec0da8f85f5ac628b232991e240a",
+          "bytes": 1379
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "5cc34ab90dbd80071ed261b573675c8b83c28554eda763c01e0bc33d1a1cd9b3",
+      "original_bytes": 11736,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "5cc34ab90dbd80071ed261b573675c8b83c28554eda763c01e0bc33d1a1cd9b3",
+          "bytes": 11736
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "45533ad58df7da7e9d695355d9b9c98d454cf4ed3ff3d05ccd28323c08a8d97f",
+      "original_bytes": 3492,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "45533ad58df7da7e9d695355d9b9c98d454cf4ed3ff3d05ccd28323c08a8d97f",
+          "bytes": 3492
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "edc7af46be8622d7222f12816f4b87d04cb43efbc3f2896621f0f70807eefe0d",
+      "original_bytes": 989,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "edc7af46be8622d7222f12816f4b87d04cb43efbc3f2896621f0f70807eefe0d",
+          "bytes": 989
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-PR20260913-subsum_denominator",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

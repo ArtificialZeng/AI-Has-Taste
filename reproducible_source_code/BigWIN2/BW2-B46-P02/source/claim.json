@@ -1,0 +1,16 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the ten-vertex graph M_2(C_3) and the coloring-game rules exactly specified in source.md and problem.md, Alice has a winning strategy with a palette of four colors. Together with the cited lower bound 4 <= chi_g(M_2(C_3)), this proves chi_g(M_2(C_3)) = 4 and resolves the frozen original question in full.",
+  "contribution": "This resolves the fixed two-layer finite instance for which the inspected primary source gives only the interval [4,5]. The proof object is a complete 1,020-node canonical Alice strategy DAG, accompanied by a separately implemented verifier that replays 2,467 edges, covers every one of the 1,809 raw legal Bob replies represented at canonical opponent states, checks turn parity and terminal status, and reaches only fully colored leaves. The bounded literature search recorded in problem.md does not establish priority.",
+  "proposer_job_id": "win-00046-p02-research-eeb76d098f9f",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/result.md",
+    "evidence/minimax_solver.py",
+    "evidence/strategy.json",
+    "evidence/verify_strategy.py",
+    "evidence/verification.json"
+  ]
+}

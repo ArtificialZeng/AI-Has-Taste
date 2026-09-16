@@ -1,0 +1,31 @@
+{
+  "arithmetic": "exact integer enumeration",
+  "candidates_also_with_zero_of_degree_two": 5004,
+  "candidates_with_required_omitted_edge_count": 72144,
+  "candidates_with_target_degree_multiset": 15012,
+  "completeness": "all inverse-closed connection sets of forced size 4 or 6 and all omitted seven-subsets avoiding the normalized identity",
+  "conclusion": "an induced Abelian Cayley embedding exists in Z_19",
+  "counts_by_host_degree": {
+    "4": {"connection_sets": 36, "corner_matches": 4932, "degree_matches": 14796, "isomorphisms": 36, "omitted_edge_matches": 67608, "pairs": 1145664},
+    "6": {"connection_sets": 84, "corner_matches": 72, "degree_matches": 216, "isomorphisms": 0, "omitted_edge_matches": 4536, "pairs": 2673216}
+  },
+  "first_witness": {
+    "connection_set": [1, 4, 15, 18],
+    "grid_vertex_order": [[0, 0], [0, 1], [0, 2], [0, 3], [1, 0], [1, 1], [1, 2], [1, 3], [2, 0], [2, 1], [2, 2], [2, 3]],
+    "group": "Z_19",
+    "host_degree": 4,
+    "label_by_grid_vertex": {"0,0": 0, "0,1": 15, "0,2": 11, "0,3": 7, "1,0": 18, "1,1": 14, "1,2": 10, "1,3": 6, "2,0": 17, "2,1": 13, "2,2": 9, "2,3": 5},
+    "labels_in_grid_vertex_order": [0, 15, 11, 7, 18, 14, 10, 6, 17, 13, 9, 5],
+    "omitted_residues": [1, 2, 3, 4, 8, 12, 16],
+    "verification": {"all_unordered_pairs_checked": 66, "distinct_labels_checked": 12, "edge_pairs_checked": 17, "nonedge_pairs_checked": 49}
+  },
+  "fixed_corner_isomorphism_checks": 5004,
+  "group": "Z_19",
+  "isomorphic_host_candidates": 36,
+  "normalization": "the fixed grid corner (0,0) has label 0",
+  "normalized_candidate_pairs_tested": 3818880,
+  "omitted_seven_subsets_tested_per_connection_set": 31824,
+  "structural_filter": "19d/2 minus (7d minus e_U) equals 17, so 5d/2+e_U=17; d is even and at least 4, hence only (d,e_U)=(4,7) or (6,2)",
+  "symmetric_connection_sets_tested": 120,
+  "target_degree_multiset": [2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4]
+}

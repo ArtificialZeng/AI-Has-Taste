@@ -1,0 +1,224 @@
+{
+  "original_id": "legacy-b07-p13",
+  "archive_id": "BW2-B07-P13",
+  "title": "The Prime-Cube/Prime-Square Minimum Below One Trillion Is 49,600",
+  "batch_label": "7",
+  "kind": "historical-gated-manuscript",
+  "original_status": "proved",
+  "scope": "Prime-cube/adjacent-prime-square minimum for p<=10^12; relies explicitly on published integral-point classification.",
+  "gate_basis": "Historical independent proof, citation, build/PDF and release gates passed for the stated manuscript scope; the current manuscript matches the archived final source. Independent exact filtering, attainment and primality certificate audits PASS within the stated external-classification dependency.",
+  "provenance": {},
+  "pdf": "pdfs/BigWIN2/BW2-B07-P13_The_Prime_Cube_Prime_Square_Minimum_Below_One_Trillion_Is_49_600.pdf",
+  "pdf_sha256": "166a665a180ea98e80b0559a69cc80615c16a3085b020df6ab8e9a9cf51e0718",
+  "pages": 4,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B07-P13/source/paper/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B07-P13/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B07-P13/source/",
+  "main_tex": "paper/main.tex",
+  "dependencies": [
+    "Python 3.10+ and pdftotext; full reproduction first fetches two source PDFs by fixed URL and SHA. Optional discovery uses SymPy."
+  ],
+  "limitations": [
+    "No fully offline short end-to-end check is claimed. Retain fetch_upstream.py and derived certificates, not the external source PDFs.",
+    "This is not a rerun of the published month-long integral-point enumeration.",
+    "Original entrypoints: []",
+    "Long/full or external-tool entrypoints: ['python3 fetch_upstream.py', 'python3 reproduce.py']"
+  ],
+  "entrypoints": [],
+  "source_files": 11,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P13/audit/PROOF_AUDIT.md",
+      "sha256": "a9c653eea1ff54b61c5995f7cc9a97b664b56dd5d5149dd020c5f4c9e8aa141c",
+      "bytes": 2129
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P13/audit/CITATION_AUDIT.md",
+      "sha256": "bf28f2593162e634c310d2b09326a1a92a79ae229d1e529cbe9dd72a58a51648",
+      "bytes": 2356
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P13/audit/SUBMISSION_AUDIT.md",
+      "sha256": "534b6c5a0fff12ea4328d382d45e595f1be2a825e744403ae2ed10f18368e314",
+      "bytes": 2177
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P13/audit/PDF_AUDIT.md",
+      "sha256": "bef8ee673e9a278dd89371be219d259b034b5461903c6577b0a3765e9d824e57",
+      "bytes": 2000
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P13/release/audit/PDF_AUDIT.md",
+      "sha256": "bef8ee673e9a278dd89371be219d259b034b5461903c6577b0a3765e9d824e57",
+      "bytes": 2000
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B07-P13/release/release_manifest.json",
+      "sha256": "63e8fcc5a113cbc68ec4a23772371d611ebfee4914b08a09acbf89095aa50a2c",
+      "bytes": 4238
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/certificate/incumbent_pocklington.json",
+      "original_sha256": "3b1cf134193cc826ced4623b962bc717a241770a2ecc14c3ef96ba9d73d1f2f0",
+      "original_bytes": 738,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificate/incumbent_pocklington.json",
+          "sha256": "3b1cf134193cc826ced4623b962bc717a241770a2ecc14c3ef96ba9d73d1f2f0",
+          "bytes": 738
+        }
+      ]
+    },
+    {
+      "path": "source/certificate/mordell_filter_certificate.json",
+      "original_sha256": "1d6f3fb67affa423a96bfeb4b34593d58b2395ee0d850c614e4a62639f33fd09",
+      "original_bytes": 14029,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/certificate/mordell_filter_certificate.json",
+          "sha256": "1d6f3fb67affa423a96bfeb4b34593d58b2395ee0d850c614e4a62639f33fd09",
+          "bytes": 14029
+        }
+      ]
+    },
+    {
+      "path": "source/code/discover_mordell_filter.py",
+      "original_sha256": "92196c0c8cd397078dfde17b65f213d6cb75ea1d2db92ca7d63595967d44e8d5",
+      "original_bytes": 5951,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/discover_mordell_filter.py",
+          "sha256": "92196c0c8cd397078dfde17b65f213d6cb75ea1d2db92ca7d63595967d44e8d5",
+          "bytes": 5951
+        }
+      ]
+    },
+    {
+      "path": "source/code/verify_mordell_certificate.py",
+      "original_sha256": "c88c1e884d6288b9660c86bfa29c1553b690e0b32003fbcb045e44fc33a314ab",
+      "original_bytes": 9834,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/code/verify_mordell_certificate.py",
+          "sha256": "c88c1e884d6288b9660c86bfa29c1553b690e0b32003fbcb045e44fc33a314ab",
+          "bytes": 9834
+        }
+      ]
+    },
+    {
+      "path": "source/data/UPSTREAM.md",
+      "original_sha256": "5339823b39ce5c4a2c1415c8a42d95af9967bb2eeb6f4d605212da60675c8c71",
+      "original_bytes": 789,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/data/UPSTREAM.md",
+          "sha256": "5339823b39ce5c4a2c1415c8a42d95af9967bb2eeb6f4d605212da60675c8c71",
+          "bytes": 789
+        }
+      ]
+    },
+    {
+      "path": "source/fetch_upstream.py",
+      "original_sha256": "b1530803b6448ce6a8eea21d7300632f613545080846db80f83b7864ba105707",
+      "original_bytes": 1983,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/fetch_upstream.py",
+          "sha256": "b1530803b6448ce6a8eea21d7300632f613545080846db80f83b7864ba105707",
+          "bytes": 1983
+        }
+      ]
+    },
+    {
+      "path": "source/reproduce.py",
+      "original_sha256": "1a776660d1b47f5a7507bf672b442ede99bb46a1750600ce4b546fdb3c2da49c",
+      "original_bytes": 799,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/reproduce.py",
+          "sha256": "1a776660d1b47f5a7507bf672b442ede99bb46a1750600ce4b546fdb3c2da49c",
+          "bytes": 799
+        }
+      ]
+    },
+    {
+      "path": "source/paper/main.tex",
+      "original_sha256": "62f0f5d7157d81ad5a5fc939f26008147a6393f32a218fd963bb079fd768dbdc",
+      "original_bytes": 9121,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/main.tex",
+          "sha256": "62f0f5d7157d81ad5a5fc939f26008147a6393f32a218fd963bb079fd768dbdc",
+          "bytes": 9121
+        }
+      ]
+    },
+    {
+      "path": "source/paper/references.bib",
+      "original_sha256": "c2df67812bdf0d9e74bbf84f0e88b354eb3b03fffa0994f646ca59fa43093837",
+      "original_bytes": 1411,
+      "role": "historical-publication-source",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/paper/references.bib",
+          "sha256": "c2df67812bdf0d9e74bbf84f0e88b354eb3b03fffa0994f646ca59fa43093837",
+          "bytes": 1411
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+      "original_sha256": "5339823b39ce5c4a2c1415c8a42d95af9967bb2eeb6f4d605212da60675c8c71",
+      "original_bytes": 789,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_01.md",
+          "sha256": "5339823b39ce5c4a2c1415c8a42d95af9967bb2eeb6f4d605212da60675c8c71",
+          "bytes": 789
+        }
+      ]
+    },
+    {
+      "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+      "original_sha256": "30916a2705ca8664f519775ceb91a62665147f579ed0887cea555f98128357fa",
+      "original_bytes": 577,
+      "role": "archived-instructions",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/ARCHIVED_INSTRUCTIONS_02.md",
+          "sha256": "30916a2705ca8664f519775ceb91a62665147f579ed0887cea555f98128357fa",
+          "bytes": 577
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B07-P13",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}

@@ -1,0 +1,14 @@
+Command: python3 evidence/n4_symbolic_check.py
+Date: 2026-09-09
+Exit status: 0
+
+PASS: exact polynomial identity over Z[r_ij]
+H_r(u1,u2,u3,u4) = det(A) u4
+coordinates(G_r-r(H_r)) =
+  -det(A)*r14
+  -det(A)*r24
+  -det(A)*r34
+  det(R)-r44*det(A)
+
+The executable script contains the independent symbolic construction and asserts
+equality after polynomial expansion; a failed identity exits nonzero.

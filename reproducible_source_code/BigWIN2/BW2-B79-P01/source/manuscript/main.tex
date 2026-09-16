@@ -1,0 +1,264 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Rigidity at the Ideal Endpoint for Equiangular Hyperbolic $4$-Cubes}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\hypersetup{
+  pdftitle={Rigidity at the Ideal Endpoint for Equiangular Hyperbolic 4-Cubes},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Hyperbolic 4-polytope rigidity at the ideal endpoint}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $\alpha _0=\arccos(1/3)$.  We prove that every finite-volume
+convex hyperbolic $4$-polytope with the face lattice of the $4$-cube,
+with no hyperideal or truncated vertices, and with all dihedral angles
+equal to $\alpha _0$, is isometric to the regular ideal equiangular
+$4$-cube.  The proof is a Lorentz--Gram argument.  The ideal vertex
+rays make the four differences of opposite-facet normals spacelike;
+their positive span forces all four previously undetermined opposite
+Gram entries to equal $-5/3$.  A relation-compatible Lorentz isometry
+then carries the eight oriented halfspaces to the cube
+$[-1/2,1/2]^4$ in the Klein ball.  This addresses only the ideal
+endpoint for cube combinatorics and makes no volume, higher-dimensional,
+or priority claim.
+\end{abstract}
+
+\section{Statement and source comparison}
+
+Egorov studies finite-volume acute equiangular hyperbolic
+$4$-polytopes and introduces
+\[
+  \alpha _0=\arccos(1/3).
+\]
+At this angle every vertex is ideal, and a regular ideal cube is
+constructed in the Klein model.  For cube combinatorics, the uniqueness
+statement in Proposition~2.3 of \cite{Egorov2026} is restricted to
+$\alpha>\alpha _0$; its proof expressly says that uniqueness at
+$\alpha=\alpha _0$ is not needed.  The same restriction occurs in its
+Proposition~5.1 and Remark~5.2.  The compact uniqueness step cited there
+is traced to Andreev's rigidity work \cite{Andreev1970}.  The argument
+below is instead an endpoint argument and does not use compactness.
+
+We use ``face lattice of the $4$-cube'' literally: the eight facets can
+be labelled in four specified opposite pairs $F_i^+,F_i^-$, and a sign
+vector in $\{+,-\}^4$ specifies one of sixteen distinct vertices.  All
+vertices are assumed to be finite or ideal; hyperideal vertices and
+polar truncations are not included.
+
+\begin{theorem}\label{thm:main}
+Let $P\subset\mathbb H^4$ be a full-dimensional finite-volume convex
+hyperbolic polytope with the face lattice of the $4$-cube.  Suppose
+that its vertices are finite or ideal and that every dihedral angle is
+$\alpha _0=\arccos(1/3)$.  Then $P$ is isometric to the regular ideal
+equiangular cube $C^4_{\alpha _0}$.  In Klein coordinates its closure
+is $[-1/2,1/2]^4$.
+\end{theorem}
+
+\section{Ideal vertex rays}
+
+Work in $V=\mathbb R^{4,1}$ with Lorentzian product
+\[
+ \langle x,y\rangle=-x_0y_0+x_1y_1+\cdots+x_4y_4,
+ \qquad
+ \mathbb H^4=\{x:\langle x,x\rangle=-1,\ x_0>0\}.
+\]
+Choose outward unit spacelike normals $u_i^\pm$ to the facets
+$F_i^\pm$.  Thus
+\[
+ P=\{z\in\mathbb H^4:\langle z,u_i^\pm\rangle\leq0
+       \text{ for every }i,\pm\}.
+\]
+Facets belonging to different opposite pairs meet.  The outward-normal
+angle formula, in the conventions also used in \cite[Section~2.1]{Egorov2026},
+therefore gives
+\begin{equation}\label{eq:cross}
+ \langle u_i^\varepsilon,u_j^\delta\rangle=-\cos\alpha _0=-\frac13
+ \qquad (i\ne j).
+\end{equation}
+
+For $\sigma=(\sigma_1,\ldots,\sigma_4)\in\{+,-\}^4$, set
+\[
+ r_\sigma=\sum_{i=1}^4 u_i^{\sigma_i}.
+\]
+The four selected normals have Gram matrix
+\begin{equation}\label{eq:vertexgram}
+ H=\frac43I_4-\frac13J_4.
+\end{equation}
+It is positive semidefinite of rank $3$, and its kernel is spanned by
+${\bf1}=(1,1,1,1)$.  Consequently $r_\sigma$ is null and is orthogonal
+to all four selected normals.
+
+Let $q$ be an interior point of $P$.  Every facet inequality is then
+strict, so
+\begin{equation}\label{eq:nonzero}
+ \langle q,r_\sigma\rangle
+   =\sum_i\langle q,u_i^{\sigma_i}\rangle<0.
+\end{equation}
+In particular $r_\sigma\ne0$.  The four selected normals are linearly
+independent: if their linear combination with coefficient vector $c$
+vanishes, then $Hc=0$, hence $c=\lambda{\bf1}$; the relation becomes
+$\lambda r_\sigma=0$, so $\lambda=0$.
+
+The vertex indexed by $\sigma$ cannot be finite.  Indeed, if a timelike
+representative of that vertex existed, the four incident normals would
+belong to its positive-definite four-dimensional orthogonal complement,
+contrary to the singularity of \eqref{eq:vertexgram}.  Hyperideal
+vertices are excluded by hypothesis.  The vertex is therefore ideal.
+The common orthogonal complement of its four independent incident
+normals is one-dimensional, so its null ray is exactly the ray of
+$r_\sigma$; inequality \eqref{eq:nonzero} selects its future-pointing
+representative.
+
+\section{The forced Gram matrix}
+
+Put
+\[
+ x_i=\langle u_i^+,u_i^-\rangle,\qquad
+ d_i=u_i^+-u_i^-,\qquad s_i=u_i^++u_i^-.
+\]
+Fix the other three signs and compare the two vertices obtained by
+choosing $+$ or $-$ in coordinate $i$.  Their representatives $r_+$
+and $r_-$ are nonproportional future null vectors, because the two
+vertices are distinct faces in the assumed cube face lattice.  Two
+nonproportional future null vectors have strictly negative Lorentzian
+product.  Since $d_i=r_+-r_-$, it follows that
+\begin{equation}\label{eq:dpositive}
+ d_i^2=-2\langle r_+,r_-\rangle>0.
+\end{equation}
+
+Expanding with \eqref{eq:cross} gives
+\begin{align}
+ \langle d_i,d_j\rangle&=0 &&(i\ne j),\label{eq:dorth}\\
+ \langle s_i,d_j\rangle&=0 &&(1\leq i,j\leq4),\label{eq:sdorth}\\
+ d_i^2&=2-2x_i,\qquad s_i^2=2+2x_i,\label{eq:squares}\\
+ \langle s_i,s_j\rangle&=-\frac43 &&(i\ne j).\label{eq:scross}
+\end{align}
+By \eqref{eq:dpositive}--\eqref{eq:dorth}, the four vectors $d_i$
+span a positive four-space $D$.  Its orthogonal complement in the
+space of signature $(4,1)$ is a negative line.  Equation
+\eqref{eq:sdorth} places every $s_i$ on this line.  Write
+$s_i=a_i\tau$ with $\tau^2=-1$.  Equation \eqref{eq:scross} says
+$a_i a_j=4/3$ whenever $i\ne j$.  None of the $a_i$ vanishes, and these
+pairwise equations force all four coefficients to be equal and to have
+square $4/3$.  Hence $s_i^2=-4/3$, and \eqref{eq:squares} yields
+\begin{equation}\label{eq:opposite}
+ x_i=-\frac53\qquad(1\leq i\leq4).
+\end{equation}
+
+Thus, in the order
+$(u_1^+,u_1^-,u_2^+,u_2^-,u_3^+,u_3^-,u_4^+,u_4^-)$, the full Gram
+matrix is
+\begin{equation}\label{eq:fullgram}
+G=\frac13\begin{pmatrix}
+ 3&-5&-1&-1&-1&-1&-1&-1\\
+-5& 3&-1&-1&-1&-1&-1&-1\\
+-1&-1& 3&-5&-1&-1&-1&-1\\
+-1&-1&-5& 3&-1&-1&-1&-1\\
+-1&-1&-1&-1& 3&-5&-1&-1\\
+-1&-1&-1&-1&-5& 3&-1&-1\\
+-1&-1&-1&-1&-1&-1& 3&-5\\
+-1&-1&-1&-1&-1&-1&-5& 3
+\end{pmatrix}.
+\end{equation}
+It has rank $5$ and nonzero inertia $(4,1)$.  Its three-dimensional
+kernel is spanned by the relations saying that each of the last three
+pair sums equals the first pair sum.  These facts also follow directly
+from the decomposition into the positive difference space and the
+common negative sum line.
+
+\section{From normals to the oriented polytope}
+
+For the model system define
+\begin{equation}\label{eq:modelnormals}
+ w_i^\pm=\left(\frac1{\sqrt3},\ \pm\frac2{\sqrt3}e_i\right).
+\end{equation}
+These eight unit spacelike vectors have Gram matrix
+\eqref{eq:fullgram}.  Both ordered normal systems span $V$: their four
+difference vectors span a positive four-space, while any pair sum
+supplies the negative orthogonal line.
+
+We record why equality of the two Gram matrices yields a well-defined
+Lorentz isometry despite the three relations.  For $c\in\mathbb R^8$,
+write
+\[
+ A(c)=\sum c_{i,\pm}u_i^\pm,
+ \qquad B(c)=\sum c_{i,\pm}w_i^\pm.
+\]
+If $A(c)=0$, Gram equality makes $B(c)$ orthogonal to every model
+normal.  The model normals span the nondegenerate space $V$, so
+$B(c)=0$.  Therefore $T(A(c))=B(c)$ defines a surjective linear
+isometry $T\in O(4,1)$ satisfying $T(u_i^\pm)=w_i^\pm$.
+
+This isometry preserves time orientation.  For the interior point $q$
+chosen above,
+\[
+ \langle Tq,w_i^\pm\rangle=\langle q,u_i^\pm\rangle<0.
+\]
+Adding the two inequalities for any fixed $i$ and using
+$w_i^++w_i^-=(2/\sqrt3,0,0,0,0)$ gives $(Tq)_0>0$.  Hence $T$ maps the
+future hyperboloid sheet to itself and retains all eight halfspace
+orientations.  For every future hyperboloid point $z$,
+\[
+ \langle z,u_i^\pm\rangle\leq0
+ \quad\Longleftrightarrow\quad
+ \langle Tz,w_i^\pm\rangle\leq0.
+\]
+Thus $T$ maps $P$, not merely its supporting hyperplanes, onto the
+model halfspace intersection.
+
+In Klein coordinates $y_k=z_k/z_0$, the two inequalities coming from
+\eqref{eq:modelnormals} are
+\[
+ -\frac12\leq y_i\leq\frac12.
+\]
+The Euclidean cube $[-1/2,1/2]^4$ lies in the closed Klein ball, and
+each of its sixteen vertices has squared norm $1$.  Its vertices are
+therefore ideal, and its hyperbolic interior is precisely the regular
+ideal equiangular cube $C^4_{\alpha _0}$.  This proves
+Theorem~\ref{thm:main}.
+
+\section{Exact check, scope, and assistance disclosure}
+
+As an arithmetic check, the rational matrix \eqref{eq:fullgram} was
+recomputed in SymPy~1.14.0.  Exact row reduction and exact eigenvalue
+calculation give rank $5$, spectrum
+\[
+ -\frac83\ (1\text{ time}),\qquad 0\ (3\text{ times}),\qquad
+ \frac83\ (4\text{ times}),
+\]
+and verify the three displayed pair-sum relations.  This computation
+only checks finite matrix arithmetic; it is not used in place of the
+vertex-ray, time-orientation, or halfspace arguments.  The same
+distinction between a mathematical claim and the precise scope of its
+exact verification is emphasized in a recent discrete-geometry
+certificate study \cite{ZengEtAl2026Certificates}; here the deductive
+proof above is self-contained.
+
+OpenAI Codex assisted with the bounded literature search, development
+and adversarial checking of the Lorentz--Gram argument, the exact
+matrix calculation, and preparation of the manuscript.  Its output is
+not treated as mathematical evidence.  No proof assistant was used.
+The literature comparison is limited to the cited and inspected
+sources and is not a claim of priority.  The theorem concerns only
+$4$-cube combinatorics at $\alpha_0$; it asserts no volume extremum,
+Coxeter classification, right-angled result, different combinatorial
+type, or higher-dimensional analogue.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

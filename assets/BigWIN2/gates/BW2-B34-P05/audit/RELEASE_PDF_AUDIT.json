@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "final_pdf": "conjecture-note/main.pdf",
+  "pages_checked": 7,
+  "visual_defects": [],
+  "metadata_checked": true,
+  "no_internal_hashes": true,
+  "evidence": [
+    "audit/release-pdf/inspection.md",
+    "audit/release-pdf/pdfinfo.txt",
+    "audit/release-pdf/pdftotext-layout.txt",
+    "audit/release-pdf/pdffonts.txt",
+    "audit/release-pdf/destinations.txt",
+    "audit/release-pdf/pdfxml.xml",
+    "audit/release-pdf/pages/page-1.png",
+    "audit/release-pdf/pages/page-2.png",
+    "audit/release-pdf/pages/page-3.png",
+    "audit/release-pdf/pages/page-4.png",
+    "audit/release-pdf/pages/page-5.png",
+    "audit/release-pdf/pages/page-6.png",
+    "audit/release-pdf/pages/page-7.png"
+  ],
+  "notes": [
+    "pdfinfo reports seven pages; all seven 150-dpi page renders were inspected at original resolution.",
+    "The PDF title exactly matches decision/conjecture_note_gate.json and the author exactly matches project_metadata.json.",
+    "All listed fonts are embedded and subsetted with Unicode mappings; equations, citations, references, commands, and the C001 statement render legibly.",
+    "Named destinations and extracted internal-link targets resolve within pages 1 through 7; no external URL actions are present.",
+    "Source and extracted-text scans found no SHA-256 digest, run identifier, UUID, or internal provenance token."
+  ]
+}

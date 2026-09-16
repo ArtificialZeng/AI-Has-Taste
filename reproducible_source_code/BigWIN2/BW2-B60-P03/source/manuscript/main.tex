@@ -1,0 +1,305 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage{url}
+
+\pdfinfo{
+  /Title (Exact Solution and Optimal Face of a Four-Dimensional Boolean-Quadric Semidefinite Relaxation)
+  /Author (Xiaojian Zeng)
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
+
+\title{Exact Solution and Optimal Face of a Four-Dimensional\\
+Boolean-Quadric Semidefinite Relaxation}
+\author{Xiaojian Zeng\\
+\small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\small \texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We solve exactly a specific four-dimensional semidefinite relaxation introduced
+by Zhang and Wang: their Boolean-quadric-polytope relaxation (9) for the
+box-constrained quadratic instance (5) with $a=b=1/2$.  If $\alpha$ is the
+unique root in $(-1/24,-1/25)$ of
+$32\alpha^3+48\alpha^2+26\alpha+1=0$, then the optimum is
+\[
+ -\frac{32\alpha^2+16\alpha+1}{36}
+ =-0.0108411477500751\ldots.
+\]
+We give matching exact primal and dual certificates.  Strict dual slacks and
+semidefinite complementarity also show that the complete optimal face,
+including the auxiliary probability vector used to represent the Boolean
+quadric polytope, is a singleton.  This replaces the previously available
+$-1/100$ feasible value and numerical value near $-0.0108$ by an exact
+certificate and a full face classification.
+\end{abstract}
+
+\section{The finite conic program}
+
+Boolean quadric polytopes provide a standard lifted representation of binary
+quadratic products~\cite{Padberg1989}; their connection with box-constrained
+nonconvex quadratic programming is developed in~\cite{BurerLetchford2009}.
+Zhang and Wang~\cite{ZhangWang2026} consider
+\begin{equation}
+Q=\begin{pmatrix}
+1/4&-1/2&0&0\\
+-1/2&1&-1&0\\
+0&-1&1&-1/2\\
+0&0&-1/2&1/4
+\end{pmatrix},
+\qquad c=(1/2,1,0,0)^\top.                                       \tag{1}
+\end{equation}
+For $x\in\R^4$, $X\in\mathbb{S}^4$, and a probability vector
+$p=(p_z)_{z\in\{0,1\}^4}$, define
+\[
+Y(x,X)=\begin{pmatrix}1&x^\top\\x&X\end{pmatrix}.
+\]
+The program addressed here is
+\begin{equation}
+\begin{aligned}
+v_*={}&\min\ \ip{Q}{X}+c^\top x,\\
+&Y(x,X)\succeq0,\qquad p_z\geq0,\qquad \sum_z p_z=1,\\
+&x_i=\sum_z p_z z_i,\qquad
+X_{ij}=\sum_z p_z z_i z_j\quad(1\leq i<j\leq4).
+\end{aligned}                                                     \tag{2}
+\end{equation}
+Thus the full off-diagonal projection belongs to
+\[
+\B_4=\operatorname{conv}\{(z,(z_i z_j)_{i<j}):z\in\{0,1\}^4\},
+\]
+while the diagonal entries $X_{ii}$ are constrained through $Y\succeq0$
+rather than set equal to $x_i$.  This is the full formulation of relaxation
+(9), not the relaxation containing only the displayed McCormick inequalities.
+
+The source proves that the underlying box-constrained quadratic program has
+value zero, gives a feasible point of (2) with value $-1/100$, and reports an
+uncertified numerical optimum near $-0.0108$~\cite[Propositions 1--3 and
+Appendix A]{ZhangWang2026}.  The result below closes precisely that finite
+instance.  No claim about other parameter values or about priority beyond this
+comparison is intended.
+
+\section{Exact certificate}
+
+Put
+\[
+P(A)=32A^3+48A^2+26A+1.
+\]
+Since $P(-1/24)=-1/432$, $P(-1/25)=543/15625$, and $P'$ is positive on
+$[-1/24,-1/25]$, there is a unique
+\begin{equation}
+\alpha\in(-1/24,-1/25)\quad\text{with}\quad P(\alpha)=0.          \tag{3}
+\end{equation}
+Define
+\begin{equation}
+t=\frac{32\alpha^2+16\alpha+1}{36},\qquad
+v=\frac{8\alpha^2+8\alpha+1}{2},\qquad w=-2\alpha-1.             \tag{4}
+\end{equation}
+
+All unlisted probabilities in the following display are zero:
+\begin{equation}
+\begin{array}{c@{\qquad}l}
+\toprule
+z & p_z\\
+\midrule
+0000,1111 & \displaystyle \frac{4(5144\alpha^2+3256\alpha+1711)}{35073}\\[3pt]
+0001,0111 & \displaystyle -\frac{2(7552\alpha^2+3362\alpha-2779)}{35073}\\[3pt]
+0011 & \displaystyle -\frac{8(1046\alpha^2+1153\alpha-1193)}{35073}\\[3pt]
+1010 & \displaystyle -\frac{2576\alpha^2+3376\alpha-725}{35073}\\
+\bottomrule
+\end{array}                                                       \tag{5}
+\end{equation}
+Use these probabilities to define $x_i=\sum_z p_z z_i$ and
+$X_{ij}=\sum_z p_z z_i z_j$ for $i<j$, and set
+\begin{align}
+X_{11}&=\frac{8368\alpha^2+9224\alpha+2147}{11691},\nonumber\\
+X_{22}&=-\frac{4(1204\alpha^2+53\alpha-2245)}{35073},\nonumber\\
+X_{33}&=-\frac{15760\alpha^2+12812\alpha-19249}{35073},\nonumber\\
+X_{44}&=-\frac{8(454\alpha^2-349\alpha-1099)}{11691}.            \tag{6}
+\end{align}
+The six ordered weights on
+$(0000,0001,0011,0111,1010,1111)$ are approximately
+\[
+(0.1807155517,0.1656936580,0.2826366501,
+  0.1656936580,0.02454493068,0.1807155517).
+\]
+
+With the scalar simplex multiplier set to $\tau=0$, the dual matrix is
+\begin{equation}
+S=\begin{pmatrix}
+t&\frac14-\alpha-v&-\frac12-v-w&\alpha&0\\
+\frac14-\alpha-v&\frac14&-\frac12-\alpha&v&2\alpha\\
+-\frac12-v-w&-\frac12-\alpha&1&w&v\\
+\alpha&v&w&1&-\frac12-\alpha\\
+0&2\alpha&v&-\frac12-\alpha&\frac14
+\end{pmatrix}.                                                    \tag{7}
+\end{equation}
+
+\begin{theorem}\label{thm:main}
+The optimum of \emph{(2)} is
+\[
+v_*=-t=-\frac{32\alpha^2+16\alpha+1}{36}.
+\]
+Equivalently, $v_*$ is the root near $-0.0108411477500751$ of
+\begin{equation}
+576V^3-16V^2+92V+1=0.                                             \tag{8}
+\end{equation}
+The complete optimal face in $(x,X,p)$ is the single point
+\emph{(5)}--\emph{(6)} with the moment definitions above.  This point is
+fixed by reverse-complement symmetry.
+\end{theorem}
+
+\begin{proof}
+We first prove dual feasibility.  Let $B$ be the lower-right $4\times4$
+block of $S$.  In orthonormal bases adapted to reversal of the four
+coordinates, its even and odd blocks are
+\begin{equation}
+B_+=\begin{pmatrix}
+\frac14+2\alpha&-\frac12-\alpha+v\\
+-\frac12-\alpha+v&1+w
+\end{pmatrix},\qquad
+B_-=\begin{pmatrix}
+\frac14-2\alpha&-\frac12-\alpha-v\\
+-\frac12-\alpha-v&1-w
+\end{pmatrix}.                                                     \tag{9}
+\end{equation}
+Reduction modulo $P(\alpha)=0$ gives
+\[
+\det B_+=\det B_-=0.
+\]
+All four diagonal entries in (9) are positive on the isolating interval
+(3), so both blocks are positive semidefinite of rank one.  If
+\[
+k_1=\tfrac14-\alpha-v,\qquad k_2=-\tfrac12-v-w,
+\]
+then the top row of $S$ lies in the ranges of these two blocks because
+\begin{align*}
+(\tfrac14+2\alpha)(k_2+\alpha)-(-\tfrac12-\alpha+v)k_1&=0,\\
+(\tfrac14-2\alpha)(k_2-\alpha)-(-\tfrac12-\alpha-v)k_1&=0.
+\end{align*}
+Its Schur complement is zero:
+\begin{equation}
+t-\frac{k_1^2}{2(\frac14+2\alpha)}
+ -\frac{k_1^2}{2(\frac14-2\alpha)}=0.                              \tag{10}
+\end{equation}
+The identities again hold exactly modulo $P$.  Hence $S\succeq0$ and
+$\operatorname{rank}S=2$.
+
+For $z\in\{0,1\}^4$, let $F_z\in\mathbb{S}^5$ have top row and column
+$z$, lower off-diagonal entries $(F_z)_{ij}=z_i z_j$, and zero diagonal.
+Writing $d_i=X_{ii}$, every feasible lifted matrix has the form
+\begin{equation}
+Y=E_{00}+\sum_z p_zF_z+\sum_{i=1}^4d_iE_{ii}.                      \tag{11}
+\end{equation}
+Set
+\[
+h_z=c^\top z+2\sum_{i<j}Q_{ij}z_i z_j,\qquad
+r_z=h_z-\ip{S}{F_z}.
+\]
+The sixteen exact slacks are zero precisely for
+\begin{equation}
+0000,\ 0001,\ 0011,\ 0111,\ 1010,\ 1111,                         \tag{12}
+\end{equation}
+and the remaining values, grouped when equal, are
+\begin{equation}
+\begin{array}{c@{\quad}c}
+\toprule
+\text{atoms} & \text{slack}\\
+\midrule
+0010,1011 & -2\alpha\\
+0101 & -4\alpha\\
+0100,1101 & 8\alpha^2+4\alpha+1\\
+0110,1001 & (2\alpha+1)(4\alpha+1)\\
+1000,1110 & 8\alpha^2+10\alpha+1\\
+1100 & 2(8\alpha^2+8\alpha+1)\\
+\bottomrule
+\end{array}                                                         \tag{13}
+\end{equation}
+Every expression in (13) is strictly positive on (3).  Also
+$S_{ii}=Q_{ii}$ for $i=1,\ldots,4$.  It follows from (11) that every
+feasible point satisfies the exact weak-duality identity
+\begin{equation}
+\ip{Q}{X}+c^\top x
+=\ip{S}{Y}-t+\sum_z p_zr_z\geq-t.                                 \tag{14}
+\end{equation}
+
+The probabilities (5) are strictly positive and sum to one; these facts
+follow by reducing the sum modulo $P$ and applying rational interval
+arithmetic on (3).  Direct multiplication in $\mathbb{Q}[\alpha]/(P)$ gives
+\begin{equation}
+SY=0,\qquad \ip{Q}{X}+c^\top x=-t.                                \tag{15}
+\end{equation}
+It remains only to justify $Y\succeq0$.  The leading principal minors of
+its submatrix on indices $\{0,1,2\}$, after the initial $1$, are
+\begin{equation}
+\frac{4(4064\alpha^2+5146\alpha+1171)}{35073},\qquad
+-\frac{8(313756\alpha^2+607256\alpha-428197)}{1230115329},          \tag{16}
+\end{equation}
+and both are positive on (3).  Thus this $3\times3$ principal submatrix
+is positive definite.  Since $S$ has rank two and $SY=0$, we have
+$\operatorname{rank}Y\leq3$; (16) forces equality.  The Schur complement
+of the positive definite block therefore has rank zero, proving
+$Y\succeq0$.  Equations (14)--(16) give matching exact dual and primal
+certificates and establish the value.
+
+For completeness, consider an arbitrary optimal point.  Equality in (14)
+and the strict slacks (13) force $p_z=0$ outside (12).  Moreover,
+$\ip{S}{Y}=0$ for two positive semidefinite matrices, hence $SY=0$.
+Use the six probabilities in (12) and the four diagonal variables as the
+ten unknowns.  A square subsystem of normalization and $SY=0$---the five
+entries of row zero and columns $0,1,2,4$ of row one---has determinant
+\begin{equation}
+\frac{5775280\alpha^2+8296838\alpha+334859}{331776}.               \tag{17}
+\end{equation}
+The numerator in (17) is coprime to $P$, so it cannot vanish at $\alpha$.
+The variables (5)--(6) satisfy the full system, and (17) makes them its
+unique solution.  The moment equations then determine $x$ and every
+off-diagonal entry of $X$ uniquely.  Thus the entire optimal face is the
+claimed singleton.
+
+Finally, reverse-complement sends
+$0000\leftrightarrow1111$, $0001\leftrightarrow0111$, and fixes $0011$
+and $1010$.  The equal weights in (5), together with direct substitution
+in (6), shows that the singleton is fixed.  Eliminating $\alpha$ between
+(3) and $V=-t$ gives (8).
+\end{proof}
+
+\section{Verification and scope}
+
+All displayed equalities can be checked using degree-two representatives in
+$\mathbb{Q}[\alpha]/(P)$, and every strict sign can be checked by rational
+interval arithmetic on $[-1/24,-1/25]$.  The accompanying
+\texttt{exact\_certificate.py} carries out these reductions, enumerates all
+sixteen atom slacks, reconstructs the primal moments, and checks the rank-ten
+uniqueness system.  Exact rational or algebraic sign certification with
+inspectable verification programs has also been used in finite-dimensional
+matrix-positivity problems~\cite{ZengEtAl2026}; the present certificate is
+independent and specific to (2).
+
+The result concerns only the fixed $n=4$, $a=b=1/2$ instance of (2).  It
+does not strengthen the asymptotic relaxation-gap theorems
+of~\cite{ZhangWang2026}, and it does not classify optima for other parameters
+or for relaxations with a different lifted feasible region.
+
+\paragraph{Computational and AI assistance.}
+The algebraic certificate was discovered and checked with computer algebra.
+OpenAI Codex assisted with symbolic exploration, exact-certificate code, and
+manuscript preparation.  The released Python/SymPy verifier uses exact rational
+polynomial reduction and rational interval arithmetic; floating-point values in
+this article are descriptive only and are not used in the proof.
+
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

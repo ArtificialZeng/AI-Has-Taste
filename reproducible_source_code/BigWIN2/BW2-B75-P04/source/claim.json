@@ -1,0 +1,15 @@
+{
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "statement": "Let alpha >= 0, A = alpha+2, C_alpha = B(1+alpha,2+alpha/2), and fix 0 <= b < 1. For the displayed function G_(alpha,b)(p) in source.md, lim_{p downarrow A} G_(alpha,b)(p) = 4b; moreover, if b > C_alpha/4, an explicit epsilon > 0 makes every admissible p in (A,A+epsilon) satisfy G_(alpha,b)(p) > C_alpha. For L_(alpha,b)(p), the exact left side of condition (3.38) in arXiv:2609.04833v1, writing h=p-A gives the certified expansion |L_(alpha,b)(A+h) - pi^2 b/3 - D(A,b)h| <= K_L(A,b)h^2 for 0<h<=1/4, where D(A,b)=pi^2/(3A)-2b zeta(3)(2-1/A) and K_L(A,b) is the explicit positive constant in evidence/quantitative-taylor-audit.md. Consequently, there exists an admissible punctured right neighborhood on which condition (3.38), L_(alpha,b)(p) <= C_alpha, holds if and only if 0 <= b < 3C_alpha/pi^2. At equality b=3C_alpha/pi^2, D(A,b)>0 for every A>=2, so (3.38) fails throughout an explicit punctured right neighborhood. Hence the published Corollary-3.5 route does not prove Theorem 3.4's natural uniform-in-b reading. This statement neither disproves the operator-norm identity nor asserts that (3.38) is necessary.",
+  "contribution": "A quantitative endpoint audit supplies explicit remainders and neighborhoods, resolves the previously open equality case, gives the sharp fixed-b endpoint classification for the sufficient condition (3.38), and precisely isolates a quantifier-sensitive proof gap in a current arXiv theorem while preserving the unresolved operator-level status. Exact-title and identifier searches on 2026-09-09 found no correction or equivalent endpoint treatment, which is a bounded literature check rather than a priority claim.",
+  "proposer_job_id": "win-00075-p04-research-1d4946398a68",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/triage-endpoint-audit.md",
+    "evidence/endpoint-audit.py",
+    "evidence/quantitative-taylor-audit.md",
+    "evidence/quantitative-taylor-audit.py"
+  ]
+}

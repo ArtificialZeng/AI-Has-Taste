@@ -1,0 +1,404 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[Conjectural CDS-Colorability]{Conjectural CDS-Colorability for Young Shapes with Two or Three Row Lengths (No Accepted Resolution Located)}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{2026-09-04}
+\hypersetup{pdftitle={Conjectural CDS-Colorability for Young Shapes with Two or Three Row Lengths (No Accepted Resolution Located)},pdfauthor={Xiaojian Zeng}}
+
+\begin{document}
+
+\begin{abstract}
+No accepted resolution of the original Latin Tableau/CDS-colorability problem
+was located in our bounded search through 4 September 2026; within that stated
+literature frontier the original problem remains unresolved, and the two
+conjectures formulated here are unproved.  We isolate the restrictions
+to Young shapes having at most two or at most three distinct positive row
+lengths.  Exact computations supply direct CDS colorings for 5,252 recorded
+instances (5,127 distinct shapes), feasible block allocations for a complete
+8,478-instance three-level boundary, and further adversarial suites aimed
+specifically at the two restrictions.  These finite results, together with
+elementary boundary constructions and an unaudited owner-context
+block-allocation argument, motivate the conjectures but do not prove an
+infinite family.  We record failed coloring rules, the strongest
+counterexample attacks, the bounded literature search, the unsearched region,
+and direct routes by which either conjecture could be falsified.
+\end{abstract}
+
+\maketitle
+
+\section{Original problem and verified frontier}
+
+A finite Young shape is a partition
+\[
+  \lambda=(\lambda_1,\ldots,\lambda_r),
+  \qquad \lambda_1\geq\cdots\geq\lambda_r\geq 1.
+\]
+Its cells are the pairs $(i,j)$ with $0\leq i<r$ and
+$0\leq j<\lambda_{i+1}$.  The rook graph $R_\lambda$ has these cells as
+vertices, with two different cells adjacent when they share a row or a
+column.  For a finite graph $G$, set $\rho_0(G)=0$ and
+\[
+ \rho_k(G)=\max\bigl\{|I_1\cup\cdots\cup I_k|:
+ I_1,\ldots,I_k\text{ are independent sets of }G\bigr\}
+ \quad(k\geq1),
+\]
+and write $\delta_k(G)=\rho_k(G)-\rho_{k-1}(G)$.  Trailing zero
+increments are suppressed.
+
+The original conjecture asks whether, for every finite Young shape
+$\lambda$, there is one proper coloring
+$c:Y_\lambda\to\mathbb N_0$ such that
+\begin{equation}
+ \bigl|\{v:c(v)<k\}\bigr|=\rho_k(R_\lambda)
+ \qquad\text{for every integer }k\geq1.
+ \label{eq:ltc-cds}
+\end{equation}
+The use of zero-based colors is essential for the threshold formulation.
+Equivalently, after ordering the color classes by nonincreasing size, their
+sizes are the full chromatic difference sequence
+$\delta(R_\lambda)$.  The empty shape satisfies the statement
+vacuously, but the two restricted conjectures below are deliberately stated
+for nonempty shapes.
+
+Let $B_\lambda$ be the Ferrers bipartite graph whose left vertices are rows,
+whose right vertices are columns, and whose edges are cells.  Then
+$R_\lambda=L(B_\lambda)$, so a CDS coloring is an edge-coloring of
+$B_\lambda$ into matchings of sizes $\delta_1,\delta_2,\ldots$.
+The exact corner formula used throughout the computations is
+\begin{equation}
+ \rho_k(R_\lambda)=
+ \min_{0\leq i\leq r,\ 0\leq j\leq\lambda_1}
+ \left(k(i+j)+\sum_{t=i+1}^{r}\max(\lambda_t-j,0)\right).
+ \label{eq:corner}
+\end{equation}
+This is the partition-graph corner formula stated as Theorem~14 by
+Chow and Tiefenbruck~\cite{ChowTiefenbruck2025}.
+
+The source paper reports a computation for shapes inside a $12$ by $12$
+square and proves that, for every shape, the first four CDS parts can be
+attained simultaneously; it leaves the full conjecture open
+\cite{ChowTiefenbruck2025}.  A recorded search through 4 September 2026
+found no accepted proof or counterexample to the full CDS-colorability
+statement.  The older wide-partition problem
+\cite{ChowFanGoemansVondrak2003} and the allocation result for wide Young
+diagrams with three distinct row lengths
+\cite{AllsopKotlarWanless2025} concern a weaker Latin-filling requirement,
+not realization of every CDS part.  Thus those results do not prove either
+conjecture in Section~\ref{sec:conjectures}.  Accordingly, within the stated
+accepted-literature search boundary, the original problem
+\eqref{eq:ltc-cds} remains unresolved.
+
+\section{Research routes and failure diagnosis}
+
+\subsection{Compatible matching layers}
+
+Formula~\eqref{eq:corner} computes the best union of $k$ matchings for each
+$k$ separately, but separate optima need not be nested or split into one
+compatible sequence of matching layers.  This is the fatal gap in the direct
+max-flow route.  An exact obstruction occurs for
+$\lambda=(5,4,3,3)$.  If the first matching is forced to be
+\[
+ \{(0,4),(1,3),(2,0),(3,1)\},
+\]
+then, on deletion, column $3$ has the unique residual edge $(0,3)$.
+Every residual matching of size $4$ must use that edge, so two disjoint
+residual matchings of size $4$ cannot coexist, although the residual CDS
+demands sizes $(4,4,2,1)$.  The shape itself has a CDS coloring.  Hence this
+is a counterexample only to arbitrary greedy choice of the first maximum
+matching, not to the original conjecture.
+
+\subsection{Local coloring rules}
+
+Three tempting universal constructions fail exactly:
+\begin{itemize}
+ \item row-major First Fit gives $(2,2,1,1)$ on $(2,2,2)$ instead of the
+ CDS $(2,2,2)$;
+ \item the fixed cyclic rule gives $(3,2,2,1)$ on $(3,3,1,1)$ instead of
+ $(3,3,1,1)$; and
+ \item none of the $4P3=24$ injective choices of cyclic row shifts gives
+ the CDS $(3,3,1,1)$ on $(4,2,2)$.
+\end{itemize}
+These are proved obstructions to the named routes.  They neither oppose nor
+support the truth of the original statement except by showing that a proof
+needs a more global compatibility mechanism.
+
+\subsection{The compressed allocation kernel}
+
+Group equal-length rows into blocks.  If the distinct lengths are
+$a_1>\cdots>a_t>0$ with multiplicities $r_1,\ldots,r_t$, put
+$a_{t+1}=0$ and $c_j=a_j-a_{j+1}$.  Row block $i$ meets column block $j$
+precisely for $i\leq j$, in a full $r_i\times c_j$ rectangle.  The owner
+research produced the following candidate block-allocation system for
+nonnegative integers $z_{ij\ell}$:
+\begin{align}
+ \sum_\ell z_{ij\ell}&=r_ic_j &&(i\leq j),\nonumber\\
+ \sum_{j\geq i}z_{ij\ell}&\leq r_i &&(i,\ell),\nonumber\\
+ \sum_{i\leq j}z_{ij\ell}&\leq c_j &&(j,\ell),\nonumber\\
+ \sum_{i\leq j}z_{ij\ell}&=\delta_\ell &&(\ell).
+ \label{eq:ba}
+\end{align}
+Counting gives necessity.  The proposed sufficiency forms an edge-colored
+amalgamated multigraph and successively splits row and column block vertices,
+using the colored-detachment lemma restated as Lemma~3.1 by
+Bahmanian~\cite{Bahmanian2026}.  That dependency mapping and its
+sequential application have not passed an independent proof audit.
+Consequently, this note treats \eqref{eq:ba} as a promising compressed
+kernel, not as an established equivalence.  A genuine two-level shape gives
+three nonempty incidence rectangles; a genuine three-level shape gives six.
+
+For $\lambda=(a^p,b^q)$ with $a>b\geq1$ and $p,q\geq1$, the owner
+argument derives
+\begin{equation}
+ \rho_k=\min\{pa+qb,ka,k(p+q),k(p+b),kb+p(a-b),kp+qb\}.
+ \label{eq:six-line}
+\end{equation}
+It then proposes explicit quotas satisfying \eqref{eq:ba}, separately for
+$a\geq p+q$ and $p+q\geq a$.  The formula and quotas have extensive exact
+checks, but the proposed infinite-family proof remains unaudited.  It is not
+used as proof of Conjecture~\ref{conj:C001}.
+
+\section{Proved partial results}
+
+The following elementary boundary facts have direct constructions and corner
+upper bounds.  They are strictly weaker than the two conjectures.
+
+For a rectangle $\lambda=(a^b)$, with
+$m=\min(a,b)$ and $M=\max(a,b)$,
+\[
+ \rho_k=m\min(k,M),\qquad
+ \delta=(\underbrace{m,\ldots,m}_{M\text{ terms}}).
+\]
+When $b\leq a$, coloring cell $(i,j)$ by $i+j\pmod a$ gives the required
+classes; transposition covers the other case.
+
+For a hook $(M,1^{m-1})$ with $M\geq m$, the CDS is
+\[
+ (\underbrace{2,\ldots,2}_{m-1},
+  \underbrace{1,\ldots,1}_{M-m+1}).
+\]
+Pair the tail cell $(i,0)$ with $(0,i)$ for $1\leq i<m$ and leave the
+remaining long-row cells as singleton colors.  The same pairing gives, after
+the evident adjustment, the familiar formula for every two-row shape
+$(a,b)$:
+\[
+ \delta=(\underbrace{2,\ldots,2}_{b},
+          \underbrace{1,\ldots,1}_{a-b}).
+\]
+Transposition covers shapes with at most two columns.
+
+Finally, for the staircase $\lambda=(n,n-1,\ldots,1)$,
+\[
+ \rho_k=kn-\frac{k(k-1)}2\quad(0\leq k\leq n),
+ \qquad \delta=(n,n-1,\ldots,1).
+\]
+The antidiagonal coloring $(i,j)\mapsto i+j$ supplies the matching classes,
+and the corner $i=0$, $j=n-k$ in \eqref{eq:corner} supplies the matching
+upper bound.  None of these arguments controls arbitrary two-level or
+three-level shapes.
+
+\section{Robust candidate conjectures}\label{sec:conjectures}
+
+Every item in this section is unproved.  The designation robust candidate
+records passage through an independent communication-quality and
+falsification audit; it is not a probability estimate and does not assert
+truth.
+
+\begin{conjecture}[Registry C001]\label{conj:C001}
+Every finite nonempty Young shape with at most two distinct positive row lengths is CDS-colorable. Equivalently, this holds for every rectangle \(\lambda=(a^p)\) with \(a,p\ge 1\), and for every \(\lambda=(a^p,b^q)\) with integers \(a>b\ge 1\) and \(p,q\ge 1\).
+\par\smallskip
+\noindent\emph{Plain-language statement.} Every finite nonempty Young shape with at most two distinct positive row lengths has a proper coloring whose color-class sizes equal its full chromatic difference sequence; this includes all positive rectangles and all genuine two-level shapes.
+\end{conjecture}
+
+Conjecture~\ref{conj:C001} is a strict restriction of
+\eqref{eq:ltc-cds}, but an unbounded four-parameter restriction.  It reaches
+beyond rectangles, hooks, and two-row or two-column shapes.  Its three-block
+structure is the first level at which the simplest cyclic-shift ansatz already
+fails.  If true, it would supply a natural full-CDS infinite family and a test
+case for the compatibility mechanism absent from greedy matching deletion.
+If false, one exact two-level counterexample would refute the original
+universal conjecture.
+
+\begin{conjecture}[Registry C002]\label{conj:C002}
+Every finite nonempty Young shape with at most three distinct positive row lengths is CDS-colorable.
+\par\smallskip
+\noindent\emph{Plain-language statement.} For every finite nonempty Young diagram whose positive row lengths take at most three distinct values, its partition graph has a proper coloring whose color-class sizes equal the full chromatic\linebreak \mbox{difference sequence}.
+\end{conjecture}
+
+Conjecture~\ref{conj:C002} properly contains
+Conjecture~\ref{conj:C001} but excludes all shapes with four or more distinct
+row lengths, so it is not the original target renamed.  It is the first
+genuinely multi-corner, six-incidence-rectangle case.  A proof could expose
+an inductive invariant for the general allocation kernel.  A certified false
+case would be a counterexample to both Conjecture~\ref{conj:C002} and the
+original problem.
+
+The primary-source and terminology searches recorded on 4 September 2026
+found neither restricted full-CDS statement.  This is only a bounded
+\emph{not found in the recorded search} conclusion.  The weaker two- and
+three-row-length Latin-filling results in
+\cite{ChowFanGoemansVondrak2003,AllsopKotlarWanless2025} do not state these
+full-CDS conjectures.
+
+\section{Exact evidence and reproducibility}
+
+All numerical counts in this section come from integer data and direct
+checkers.  No floating-point inequality is used as evidence.  The four
+primary cell-level runs contain 5,252 records, representing 5,127 distinct
+shapes after overlaps.  Every record stores a zero-based coloring.  A checker
+recomputes the CDS, verifies every row and column conflict constraint and
+every class total, and compares every prefix from \eqref{eq:corner} with a
+separate integral max-flow evaluator.
+
+\begin{center}
+\small
+\begin{tabular}{p{0.30\textwidth}rrp{0.27\textwidth}}
+\hline
+Declared finite domain & Records & Prefixes & Result \\
+\hline
+All nonempty shapes in a $6$ by $6$ box
+  & 923 & 6,116 & direct colorings verified \\
+Width exactly $13$, at most $5$ rows
+  & 2,380 & 33,320 & direct colorings verified \\
+Seeded sample, width $13$, $6$--$13$ rows
+  & 1,000 & 14,000 & direct colorings verified \\
+Width $13$, at most $13$ rows, at most two row lengths
+  & 949 & 13,286 & direct colorings verified \\
+Width and row count both $15$, at most three row lengths
+  & 8,478 & 135,648 & block allocations verified \\
+\hline
+\end{tabular}
+\end{center}
+
+The last line verifies the integer constraints \eqref{eq:ba}, not direct
+cell colorings.  Its interpretation as a coloring depends on the
+not-yet-audited detachment argument.  Five transient solver
+\texttt{UNKNOWN} results in that run were retried with recorded deterministic
+seeds and ended \texttt{OPTIMAL}; no unresolved status is counted as
+evidence.  The two-level checker separately verified
+Equation~\eqref{eq:six-line} on 4,224 parameter quadruples and 48,710
+prefixes, checked the proposed quotas in all 4,224 cases, and realized those
+fixed quotas as direct cell colorings in 525 small cases.
+
+From the project root, the principal verification commands are:
+\begin{verbatim}
+python3 code/verify_evidence.py \
+  data/exhaustive-box-6x6-rerun.json \
+  data/exhaustive-width13-rows5.json \
+  data/random-13x13-1000.json \
+  data/two-level-width13-rows13.json
+PYTHONPATH=code python3 code/verify_two_level_candidate.py
+PYTHONPATH=code python3 code/verify_block_allocations.py \
+  data/three-level-boundary-15x15.json
+python3 audit/verify_fresh_candidate_falsification.py
+\end{verbatim}
+The recorded environment used Python 3.10.12, OR-Tools 9.14.6206,
+NetworkX 3.4.2, and 64-bit Linux under WSL2.  The seeded primary
+1,000-shape sample used seed 3402.  Serialized inputs and witnesses remain
+in the named JSON files; the verification programs do not call the solver
+when checking stored coloring witnesses.
+
+\section{Adversarial falsification}
+
+In addition to the baseline data, dedicated direct attacks targeted each
+conjecture rather than merely extending a convenient square box.  One
+candidate-specific suite checked 96 two-level and 96 three-level cases, with
+2,634 independent prefix comparisons.  A subsequent fresh audit checked
+34 additional cases for each candidate.  For
+Conjecture~\ref{conj:C001}, these cases reached width $20$, $26$ rows, and
+area $348$, with 600 prefix comparisons.  For
+Conjecture~\ref{conj:C002}, they reached width $18$, $28$ rows, and area
+$252$, with 589 comparisons.  Every returned coloring passed direct
+verification.
+
+The targeted cases include the one-cell shape, rectangles, hooks, two-row
+and two-column boundaries, multiplicity-one degeneracies, balanced and
+extreme ratios, near rectangles, transposition stress, and deterministic
+random instances.  The C001 suite includes $(4,2,2)$, where all distinct
+cyclic row shifts fail.  The C002 suite includes the smallest genuine
+three-level staircase $(3,2,1)$ and the greedy obstruction
+$(5,4,3,3)$.  The fresh attack seeds were 5224396 for C001 and 5224397
+for C002.  Solver retries were retained as such and did not convert
+\texttt{UNKNOWN} into negative evidence.
+
+The fastest direct falsifier for Conjecture~\ref{conj:C001} is to enumerate
+$a>b\geq1$ and $p,q\geq1$ by increasing dimension and area, compute the
+CDS from \eqref{eq:corner}, and solve the exact prescribed-profile
+edge-coloring instance.  For Conjecture~\ref{conj:C002}, the six-block
+allocation system offers a cheaper screening problem, followed by a direct
+cell-coloring instance.  A timeout or solver \texttt{UNKNOWN} is not a
+counterexample.  Any claimed infeasibility must be accompanied by an
+independently checkable exact certificate; until the detachment reduction is
+independently proved, direct coloring infeasibility is the decisive
+falsifier.
+
+\section{Limitations and open scope}
+
+The evidence does not prove either conjecture.  In particular:
+\begin{itemize}
+ \item finite feasibility, even with exact witnesses, has no implication for
+ all unbounded parameters;
+ \item the proposed proof of the two-row-length case and its colored
+ detachment dependency have not passed a fresh proof audit;
+ \item for three row lengths there is no symbolic construction or proof of
+ feasibility for the unbounded six-block system;
+ \item three-level shapes outside the direct $6$ by $6$ box and the
+ simultaneous width-$15$/row-count-$15$ allocation boundary are not
+ exhaustively covered;
+ \item the full $13$ by $13$ boundary was not enumerated, and an interrupted
+ width-$20$ sample produced no serialized result and is excluded;
+ \item all shapes with four or more distinct row lengths lie outside C002,
+ apart from incidental finite data relevant only to the original problem;
+ and
+ \item no proof assistant was used.
+\end{itemize}
+
+The novelty search was also bounded.  It inspected the source article and
+arXiv version, the 2003 wide-partition paper, the 2025 three-row-length
+preprint, the 2026 detachment paper, an author publication list, and
+exact/synonym searches.  It did not exhaust MathSciNet, zbMATH, subscription
+citation networks, or the older CDS-coloring literature.  Accordingly this
+note makes no priority or exhaustive novelty claim.
+
+Within the stated accepted-literature search boundary, the original problem
+remains unresolved.  Conjectures~\ref{conj:C001} and \ref{conj:C002} are
+unproved and may be refuted by future exact computation or construction.  The
+most informative next proof test is an independent
+audit of the block-detachment reduction and every two-level quota inequality.
+The most informative next discovery test is to reduce the three-level
+six-block quotas to a prescribed-degree factor criterion and attack all of
+its subset inequalities.
+
+\section*{Data, code, and computational disclosure}
+
+This project used exact combinatorial code for integer max flow, CP-SAT
+feasibility, direct witness verification, finite enumeration, and
+deterministic seeded searches.  AI assistance, including OpenAI Codex, was
+used in formalizing the problem, proposing and criticizing proof routes,
+drafting and checking code, organizing the finite experiments, forming the
+candidate conjectures, and drafting this note.  A separate fresh AI context
+audited the conjecture statements, finite evidence, falsification coverage,
+literature boundaries, value case, and conjectural labeling.  That audit was
+a communication-quality gate, not a proof audit.  Every mathematical and
+computational claim is limited to the exact arguments, serialized data, and
+checker outputs described above; no model confidence was treated as
+mathematical evidence.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

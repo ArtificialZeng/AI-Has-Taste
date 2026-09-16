@@ -1,0 +1,19 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the five-vertex tree T* with edge set {ca, cb, cd, de}, using ordinary (not induced) subgraph comparability on every induced five-vertex subset exactly as frozen in source.md and problem.md, f(T*) = 8. Specifically, 2 K_4 is T*-exact, no nine-vertex T*-exact graph exists, and heredity excludes all larger orders.",
+  "contribution": "This resolves the frozen single-tree case. The cited source supplies the prior bounds 8 <= f(T*) <= 16 and the lower-bound mechanism; the new contribution is the nine-vertex nonexistence theorem, represented by a complete deterministic 36-variable, 95,382-clause CNF and a full DRUP refutation whose 3,993 additions and 997 deletions were replayed by a separate no-SAT-library checker. A bounded current primary-source search found no later equivalent resolution, but no priority claim is made.",
+  "proposer_job_id": "win-00086-p07-research-6249c24c714d",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/n9_resolution_certificate.md",
+    "evidence/literature_check_6249c24c714d.md",
+    "evidence/generate_n9_cnf_and_proof.py",
+    "evidence/n9_tstar_exact.cnf",
+    "evidence/n9_tstar_exact.drup",
+    "evidence/n9_generation.log",
+    "evidence/verify_n9_certificate.py",
+    "evidence/n9_independent_replay.log"
+  ]
+}

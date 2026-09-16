@@ -1,0 +1,18 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "disproved",
+  "statement": "Let n=34; map digits 0,1,2,3 to 1,i,-1,-i; take A=2202202000022020222202000220200020 and B=1133303133112311101113211331303331; define (c_r X)_j=X_{j-r} and (d_k X)_j=X_{j k^{-1}} on Z_34; and let Gamma_34(A,B) be exactly the set of s^e(alpha c_r d_k(A^epsilon), beta c_t d_k(B^epsilon)) with alpha,beta in {1,i,-1,-i}, r,t in Z_34, k in Z_34^times, and epsilon,e in {0,1}. Then Gamma_34(A,B) contains no ordered pair whose four Gray rows all satisfy x_j=x_{-j} for every j in Z_34. This is only a conclusion about the displayed frozen Gamma_34, not about any larger qLP equivalence relation or other length-34 qLPs.",
+  "contribution": "This completely answers the frozen finite-orbit question negatively. A paper-checkable 17-axis obstruction proves that every permitted pair retains a transform of A whose two Gray rows cannot both be reversible. An exact census independently reconstructs all 1,183,744 parameter tuples, finds 1,183,744 distinct ordered images, fixes a canonical orbit digest, and supplies and separately recomputes one deterministic reflection-failure witness for every image. The nearest primary source establishes only failure in the printed orientation; no priority claim is made beyond this explicitly named orbit.",
+  "proposer_job_id": "win-00072-p02-research-d9e9a040870f",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/orbit_resolution.md",
+    "evidence/orbit_census.py",
+    "evidence/orbit_census_output.json",
+    "evidence/orbit_failure_witnesses.jsonl.gz",
+    "evidence/verify_orbit_census.py",
+    "evidence/orbit_census_verification.json",
+    "evidence/external/2609.04589.pdf"
+  ]
+}

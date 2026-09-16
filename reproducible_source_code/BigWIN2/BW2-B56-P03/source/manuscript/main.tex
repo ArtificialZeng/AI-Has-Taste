@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\NN}{\mathbb N}
+
+\title{The Borel-fixed colength-15 tangent maximum on \\
+  $\operatorname{Hilb}^{15}(\mathbb A^3)$}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the fixed Borel order $x<y<z$, we classify the zero-dimensional
+Borel-fixed monomial ideals of colength $15$ in $\CC[x,y,z]$ that maximize
+$\dim_{\CC}\operatorname{Hom}(I,R/I)$.  An exhaustive exact census contains
+$107$ ideals.  The maximum tangent dimension is $81$, attained by exactly
+four ideals, all having smallest pure-power exponent $m_1=3$.  The largest
+dimension when $m_1\leq2$ is $69$ and has a unique equality case.  This
+settles the colength-15 Borel-fixed cell of the necessary-condition
+conjecture, but it makes no assertion about the maximum over non-Borel
+points of the Hilbert scheme.
+\end{abstract}
+
+\section{Statement and context}
+
+Put $R=\CC[x,y,z]$, with the variable order $x<y<z$.  For a
+zero-dimensional Borel-fixed monomial ideal $I$, write
+\[
+ T(I)=\dim_{\CC}\operatorname{Hom}_R(I,R/I)
+\]
+and let $m_i(I)$ be the exponent of the least pure power in the $i$th
+variable that belongs to $I$.  Thus $m_1\leq m_2\leq m_3$.
+
+Rezaee formulated necessary and sufficient conjectural criteria for maximum
+tangent dimension and gave explicit candidate families
+\cite{Rezaee2025}.  At colength $15$, her family includes an ideal with
+tangent dimension predicted to be $81$.  Ascott, Rezaee, and Zhou later
+reported the exact stratum maxima $45,69,81$ for $m_1=1,2,3$ respectively
+\cite{AscottRezaeeZhou2026}.  Their table establishes the numerical
+comparison relevant to the necessary condition, but does not print a
+complete colength-15 atlas or the list of all equality cases.
+
+Rezaee and Saberi prove the necessary condition for three explicit families
+of colengths \cite{RezaeeSaberi2026}.  In the first interval
+$10\leq l<20$, substituting $k=3$ in those families covers
+$10,11,12,13,14,16,17,18,19$; hence $15$ is the one colength in that
+interval outside their theorem.  The contribution here is an exact finite
+resolution of that Borel-fixed cell and a classification of every equality
+case.  No claim of priority beyond the cited, bounded comparison is made.
+
+\begin{theorem}\label{thm:main}
+Among all zero-dimensional Borel-fixed monomial ideals of colength $15$ in
+$R$, one has
+\[
+ \max_I T(I)=81.
+\]
+Exactly four ideals attain the maximum:
+\begin{align*}
+I_1={}&(y^3,xyz,xy^2,x^2z,x^2y,x^3,yz^3,y^2z^2,xz^3,z^5),\\
+I_2={}&(y^2z,y^3,xyz,xy^2,x^2z,x^2y,x^3,yz^3,xz^3,z^6),\\
+I_3={}&(xyz,xy^2,x^2z,x^2y,x^3,z^4,yz^3,y^2z^2,y^3z,y^4,xz^3),\\
+I_4={}&(xz^2,xyz,xy^2,x^2z,x^2y,x^3,yz^3,y^2z^2,y^3z,y^4,z^5).
+\end{align*}
+Their pure-power tuples are, respectively,
+\[
+ (3,3,5),\qquad(3,3,6),\qquad(3,4,4),\qquad(3,4,5).
+\]
+In particular every Borel-fixed maximizer has $m_1=3$.  Among the ideals
+with $m_1\leq2$, the maximum is $69$ and is attained uniquely by
+\[
+ (x^2,xyz,xy^2,yz^3,y^2z^2,y^3z,y^4,xz^3,z^5),
+\]
+whose pure-power tuple is $(2,4,5)$.
+\end{theorem}
+
+\section{Complete finite encoding}
+
+For a monomial ideal $I$, let
+\[
+ O(I)=\{(a,b,c)\in\NN^3:x^ay^bz^c\notin I\}.
+\]
+Colength $15$ says that $|O(I)|=15$.  The set $O(I)$ is coordinatewise
+downward closed.  With the chosen Borel order, strong stability of $I$ is
+equivalent to the following additional closures of its standard set:
+whenever $a_i>0$ and $i<j$, the vector obtained by moving one unit from
+coordinate $i$ to coordinate $j$ also belongs to $O(I)$.
+
+The census was constructed in two exact ways.  The first begins with the
+origin, successively adds every available outer corner, and canonicalizes
+the resulting coordinate downsets; at size $15$ it retains precisely those
+sets satisfying all three Borel moves.  This is complete because deleting a
+coordinatewise maximal point from a finite downset gives the reverse
+induction, while the final closure test is equivalent to strong stability.
+
+The second construction assigns to each exponent vector its least closure
+under coordinate predecessors and Borel right shifts, then recursively forms
+unions of these closures.  Every closed set is the union of the one-point
+closures of its members.  A point of total degree $d$ forces a coordinate
+chain of $d+1$ points, so degree at most $14$ is sufficient for a set of
+size $15$.  Pruning unions only after their size exceeds $15$ therefore
+cannot discard a target.  The two constructions give the same $107$
+canonical exponent sets, not merely the same cardinality.  Minimal
+generators are recovered as the minimal boundary of each complement, and
+the pure powers are read from the three coordinate axes.
+
+\section{Exact tangent calculation}
+
+Fix one census ideal, put $A=R/I$, and let $g_1,\ldots,g_s$ be its minimal
+monomial generators.  A homomorphism $I\to A$ is specified by images
+$a_i\in A$ subject to the relations among the $g_i$.  The pairwise Taylor
+relations \cite{Taylor1966}
+\[
+ \frac{\operatorname{lcm}(g_i,g_j)}{g_i}e_i-
+ \frac{\operatorname{lcm}(g_i,g_j)}{g_j}e_j,
+ \qquad i<j,
+\]
+generate the kernel of $\bigoplus_i Re_i\to I$.  Expanding every $a_i$ in
+the $15$ standard monomials therefore produces an integer matrix whose
+nullity is $T(I)$.  Exact rational row reduction is sufficient because an
+integer matrix has the same rank over $\mathbb Q$ and $\CC$.
+
+As a structurally separate check, each ideal was also given its
+Eliahou--Kervaire stable presentation \cite{EliahouKervaire1990}.  After
+expansion in the standard basis, every surviving coefficient equation in
+this presentation either pins one coefficient to zero or equates two
+coefficients.  Thus its nullity is the number of connected equality-graph
+components not pinned to zero.  This component calculation agrees with the
+Taylor-matrix rank for every one of the $107$ ideals.  A separately written
+verifier reconstructs the stable factorizations and repeats this calculation
+for the four maximizers and the closest $m_1\leq2$ case.  The same general
+certificate pattern---canonical exhaustive input, exact arithmetic, and an
+independent reconstructor---has been used in another finite monomial-algebra
+problem \cite{Zeng2026SSRN7385138}; here both presentations additionally agree on
+the full atlas.
+
+The resulting distribution is as follows.
+\begin{center}
+\small
+\begin{tabular}{@{}rrrrrrrrrrrrrr@{}}
+\toprule
+$T$&45&51&53&55&57&59&61&63&65&67&69&75&81\\
+\midrule
+count&27&8&11&5&8&10&7&10&4&5&1&7&4\\
+\bottomrule
+\end{tabular}
+\end{center}
+The counts sum to $107$.  Extracting the four records in the last column
+gives exactly $I_1,\ldots,I_4$.  Filtering the same complete table by
+$m_1\leq2$ leaves $96$ records; its last nonempty column is $69$ and contains
+only the ideal stated in Theorem~\ref{thm:main}.  This proves the theorem.
+
+\section{Scope and reproducibility}
+
+The theorem is only a classification within the Borel-fixed points.  It
+does not bound tangent dimensions at non-Borel points and therefore does not
+classify the most singular points of the full
+$\operatorname{Hilb}^{15}(\mathbb A^3)$.
+
+The accompanying archive contains the canonical $107$-record atlas, the
+complete tangent table, the two census implementations, the Taylor and
+Eliahou--Kervaire computations, and the standalone extrema verifier.  All
+enumeration predicates and rank decisions use integer or rational
+arithmetic; no floating-point rank or probabilistic prime is used.
+
+The author used OpenAI Codex to assist with literature discovery, program
+development, proof organization, exact-output auditing, and manuscript
+drafting.  The mathematical claim rests on the stated finite arguments and
+replayable exact certificates, not on model output.  The software routines
+were checked through the two complete census constructions, two syzygy
+presentations on all records, and the separately implemented extrema
+reconstruction.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

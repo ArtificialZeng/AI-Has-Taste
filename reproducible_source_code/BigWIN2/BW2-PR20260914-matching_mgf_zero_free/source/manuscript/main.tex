@@ -1,0 +1,425 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype,listings}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A zero-free disk for the minimum cost of a four-edge bipartite matching},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\DeclareMathOperator{\Ree}{Re}
+\title{A zero-free disk for the minimum cost\\of a four-edge bipartite matching}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\texttt{xiaojianzeng@foxmail.com}}
+\date{September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $C_{4,m,n}$ be the minimum total cost of a four-edge matching in
+$K_{m,n}$, with independent exponential edge costs of mean one.
+For every pair of integers $m,n\ge4$, we prove that
+$\E e^{tC_{4,m,n}}$ has no zero in $|t|<mn/4$.
+Its reduced rational numerator has no zero even in the closed disk.
+The proof establishes a stronger algebraic statement for all real
+$m,n\ge4$: a M\"obius transform of the explicit sextic numerator has
+positive Hurwitz determinants, certified by exact integer coefficients
+after shifting $m$ and $n$ by four. The unrestricted matching-size
+conjecture of W\"astlund remains unresolved.
+\end{abstract}
+
+\section{The four-edge statement}
+
+Assign independent rate-one exponential variables $X_{ij}$ to the edges
+of the complete bipartite graph $K_{m,n}$. A matching is a set of edges
+with no shared endpoints. For $1\le k\le\min(m,n)$, put
+\[
+ C_{k,m,n}=\min_{M:\,|M|=k}\sum_{(i,j)\in M}X_{ij},
+ \qquad F_{k,m,n}(t)=\E e^{tC_{k,m,n}}.
+\]
+W\"astlund conjectures that $F_{k,m,n}$ is nonzero for
+$|t|<mn/k$ \cite{wastlund2026} (Conjecture 11). We settle the complete
+four-edge range of that conjecture.
+
+\begin{theorem}\label{thm:main}
+For every pair of integers $m,n\ge4$,
+\[
+ F_{4,m,n}(t)\neq0\qquad(t\in\C,\ |t|<mn/4).
+\]
+Every zero of the reduced numerator of its rational continuation has
+modulus strictly greater than $mn/4$. More strongly, the sextic
+$P_{m,n}$ defined in \eqref{eq:coefficients} has no root in
+$|t|\le mn/4$ for every pair of real numbers $m,n\ge4$.
+\end{theorem}
+
+The distinction between the open and closed disks is necessary:
+$t=mn/4$ is a pole of the rational continuation. The theorem makes
+no assertion of a finite value there. Nonintegral $m,n$ occur only
+in the algebraic part of the statement.
+
+The closest zero-exclusion results in \cite{wastlund2026} (Section 4.3 and
+Propositions 15--16) cover all $k\le3$ and leave at most
+finitely many possible exceptional pairs $(m,n)$ for each fixed $k$;
+the latter result gives no explicit cutoff. Theorem~\ref{thm:main}
+removes all possible exceptions for $k=4$.
+Alm and Sorkin had already developed exact distribution calculations,
+including Laplace transforms, for $k\le4$ \cite{almsorkin2002}.
+Thus our contribution is the uniform zero exclusion. The rational
+recursion and the ability to compute a four-edge transform are prior work.
+No equivalent four-edge zero-exclusion theorem was identified in the
+primary sources inspected through 14 September 2026; this is a bounded
+literature comparison, not a claim of exhaustive priority.
+
+\section{The rational numerator}
+
+Write $r=mn$ and $s=m+n$, and set
+\begin{equation}\label{eq:AQ}
+ A=\prod_{j=0}^{3}(m-j)(n-j),\qquad
+ Q(t)=\prod_{\substack{i,j\ge0\\ i+j<4}}
+       \bigl((m-i)(n-j)-(4-i-j)t\bigr).
+\end{equation}
+Define $P(t)=P_{m,n}(t)=\sum_{a=0}^6p_a t^a$ by
+\begin{equation}\label{eq:coefficients}
+\begin{aligned}
+ p_0={}&r^3(r-s+1)^2(r-2s+4),\\
+ p_1={}&-r^2(r-s+1)(12s^2-25sr-28s+10r^2+37r+12),\\
+ p_2={}&r\bigl(40r^3-117sr^2+97s^2r-22s^3+129r^2\\
+       &\qquad\qquad{}-179sr+44s^2+75r-16s-8\bigr),\\
+ p_3={}&12s^3-107s^2r+187sr^2+117sr+4s\\
+       &\qquad\qquad{}-82r^3-145r^2-58r-8,\\
+ p_4={}&42s^2-143sr-2s+91r^2+47r+8,\\
+ p_5={}&42s-52r+10,\qquad p_6=12.
+\end{aligned}
+\end{equation}
+
+\begin{lemma}\label{lem:rational}
+For integers $m,n\ge4$, the rational continuation of the MGF is
+\begin{equation}\label{eq:rational}
+ F_{4,m,n}(t)=\frac{A P(t)}{Q(t)}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We give the finite calculation from W\"astlund's recursion
+\cite{wastlund2026} (Theorem 8 and equation (9)), including its separate
+rule for the ordinary MGF. Let $N_i=n-4+i$ and let
+$L_{i,j}=F^{(i-j)}_{i,m,N_i}$ in that source's ghost-function notation.
+Only the diagonal functions are ordinary MGFs.
+Start with $L_{0,0}=1$. For $1\le i\le4$ and $0\le j<i$, use
+\begin{equation}\label{eq:recurrence}
+ L_{i,j}=\frac{N_iL_{i-1,j}+(m-j)(i-j+1)tL_{i,j-1}
+                         +(m-j)N_iL_{i-1,j-1}}
+                   {(m-j)N_i-(i-j)t},
+\end{equation}
+where out-of-range terms are zero. On the diagonal use
+\begin{equation}\label{eq:diagonal}
+ L_{i,i}=\frac{t}{N_i}L_{i,i-1}+L_{i-1,i-1}.
+\end{equation}
+Increasing $i$, and then $j$, determines all fifteen cells. Combining
+these fractions gives $L_{4,4}=AP/Q$, with the coefficients
+\eqref{eq:coefficients}. This is a rational-function identity in
+$\mathbb Q(m,n,t)$, obtained by clearing denominators; it also gives
+$AP(0)=Q(0)$ and $\deg_tP=6$.
+The accompanying program \texttt{reconstruct.py} checks that identity
+directly from \eqref{eq:recurrence}--\eqref{eq:diagonal} and the displayed
+coefficients.
+
+For $m,n\ge4$, $N_i\ge1$ and $m-j\ge1$ whenever $j<i$.
+The diagonal rule never divides by $m-i$, so the endpoint $m=i=4$
+is included. Each recurrence denominator is a nonzero polynomial in
+$t$ after specialization. Consequently the generic rational identity
+specializes throughout the asserted domain.
+\end{proof}
+
+\section{An exact Hurwitz certificate}
+
+Let $R=mn/4$ and define
+\begin{equation}\label{eq:H}
+ H(z)=\frac{4^6}{(mn)^3}(1+z)^6
+       P\!\left(R\frac{1-z}{1+z}\right)
+      =h_0z^6+h_1z^5+\cdots+h_6.
+\end{equation}
+The left side is interpreted as a polynomial after clearing the
+substitution denominator. Set $x=m-4$, $y=n-4$, and
+$v(u)=(1,u,u^2,u^3)^{\mathsf T}$. Direct expansion of
+\eqref{eq:coefficients} gives
+\begin{equation}\label{eq:matrices}
+ h_a=v(x)^{\mathsf T}B_a v(y),\qquad 0\le a\le6,
+\end{equation}
+where all seven integer matrices $B_a$ are printed in
+Appendix~\ref{app:matrices}.
+
+Form the Hurwitz matrix
+\begin{equation}\label{eq:hurwitz}
+ \mathcal H=\left(\begin{array}{cccccc}
+ h_1&h_3&h_5&0&0&0\\
+ h_0&h_2&h_4&h_6&0&0\\
+ 0&h_1&h_3&h_5&0&0\\
+ 0&h_0&h_2&h_4&h_6&0\\
+ 0&0&h_1&h_3&h_5&0\\
+ 0&0&h_0&h_2&h_4&h_6
+ \end{array}\right),
+\end{equation}
+and denote its leading $j$ by $j$ determinant by $\Delta_j$.
+
+\begin{lemma}\label{lem:positive}
+Every $h_a$ has strictly positive coefficients on the full support
+$\{x^uy^v:0\le u,v\le3\}$. For $1\le j\le6$, every coefficient
+of $\Delta_j$ on the full support
+$\{x^uy^v:0\le u,v\le3j\}$ is strictly positive, and there are
+no other terms.
+\end{lemma}
+
+\begin{proof}
+The first assertion is visible in the matrices $B_a$.
+Expand the determinants of \eqref{eq:hurwitz} over $\mathbb Z[x,y]$.
+The exact coefficient counts and minima are as follows.
+\begin{center}
+\begin{tabular}{crrr}
+$j$ & Degree in each variable & Number of terms & Least coefficient\\
+1&3 &16 &82200\\
+2&6 &49 &5637588000\\
+3&9 &100&176698647552000\\
+4&12&169&1539481522876416000\\
+5&15&256&2195347272420556800000\\
+6&18&361&237097505421420134400000\\
+\end{tabular}
+\end{center}
+Appendix~\ref{app:arithmetic} specifies the entire expansion using
+integer additions and multiplications, and checks every support entry
+and coefficient. Thus the table summarizes a finite algebraic
+certificate, with no parameter sampling or root approximation.
+Expansion along the last column also gives
+$\Delta_6=h_6\Delta_5$.
+\end{proof}
+
+For $x,y\ge0$, Lemma~\ref{lem:positive} implies $h_0>0$ and
+$\Delta_j>0$ for all six $j$. The positive constant terms ensure
+strictness on both axes, including $x=y=0$.
+The real Routh--Hurwitz criterion therefore puts every root of $H$
+in $\Ree z<0$; see Holtz \cite{holtz2003} (Theorem 3 and its proof).
+To reconcile coefficient conventions explicitly, apply that source's
+ascending-coefficient form to
+$f(w)=w^6H(1/w)=h_0+h_1w+\cdots+h_6w^6$.
+Its first seven leading minors are
+$h_0,h_0\Delta_1,\ldots,h_0\Delta_6$.
+All are positive. Since $h_0,h_6>0$, inversion bijects the roots of
+$f$ and $H$, and $\Ree(1/w)=\Ree(w)/|w|^2$ preserves their half-plane.
+
+Exact coefficient positivity is useful for certifying a whole parameter
+domain from finite data. A related implementation appears in
+Zeng \cite{zeng2026lens} (Theorem 10, equations (8.25)--(8.27)),
+where rational Bernstein coefficients certify a two-parameter
+spectral-set inequality on a box. Here shifted monomial coefficients
+certify Hurwitz determinants on an unbounded quadrant. The
+spectral-set result supplies a methodological comparison, not a
+matching-cost theorem.
+
+\section{Proof of the zero-free disk}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+First let $m,n\ge4$ be real. For $|t|\le R$ and $t\neq-R$, put
+$z=(R-t)/(R+t)$. Then
+\[
+ \Ree z=\frac{R^2-|t|^2}{|R+t|^2}\ge0,
+ \qquad 1+z=\frac{2R}{R+t}\neq0.
+\]
+Strict Hurwitz stability and \eqref{eq:H} imply $P(t)\neq0$.
+The exceptional point is covered by the leading coefficient:
+\[
+ h_0=\frac{4^6}{(mn)^3}P(-R)>0.
+\]
+This proves the algebraic assertion on the closed disk.
+
+All roots of $Q$ are positive real numbers
+$\rho_{ij}=(m-i)(n-j)/(4-i-j)$, where $i+j<4$. Since
+\[
+ \frac{(m-i)(n-j)}{mn}
+ =\left(1-\frac{i}{m}\right)\left(1-\frac{j}{n}\right)
+ \ge\left(1-\frac{i}{4}\right)\left(1-\frac{j}{4}\right)
+ \ge1-\frac{i+j}{4},
+\]
+we have $\rho_{ij}\ge R$. Also $A>0$.
+For integer parameters, \eqref{eq:rational} is therefore nonzero
+throughout the open disk. After any such specialization,
+cancellation of common polynomial factors can only remove roots
+from $P$, which has leading coefficient $12$ and is never the zero
+polynomial. This proves the reduced-numerator assertion.
+The factor indexed by $(i,j)=(0,0)$ vanishes at $t=R$, whereas
+$P(R)=(mn)^3h_6/4^6>0$. Thus $R$ is indeed a pole.
+
+Finally, the rational expression represents the analytic expectation
+on the claimed disk. For every fixed nonnegative cost array, the
+minimum cost is at most the average over all four-edge matchings.
+Each edge occurs in a fraction $4/(mn)$ of those matchings, so
+\[
+ C_{4,m,n}\le\frac{4}{mn}\sum_{i,j}X_{ij},\qquad
+ \E e^{aC_{4,m,n}}\le
+       \left(1-\frac{4a}{mn}\right)^{-mn}<\infty
+       \quad(0\le a<R).
+\]
+For each compact subset of $|t|<R$, choose $a<R$ strictly larger
+than the real parts on that set. Domination by $e^{aC_{4,m,n}}$
+gives analyticity. The source identity agrees with the expectation
+near zero, hence throughout the disk by analytic continuation.
+\end{proof}
+
+The result concerns exactly four edges. It proves no case with
+$k\ge5$ and gives no Gaussian scaling limit when the matching size
+grows. The useful finite step is the positivity of all six Hurwitz
+determinants on the entire shifted quadrant; positivity of the
+seven coefficients of $H$ alone would not suffice.
+
+\paragraph{Computation and assistance.}
+The rational identity and the transformed coefficients were checked
+with SymPy 1.14.0 \cite{meurer2017}; a separate implementation using
+only Python integer arithmetic rebuilt the cleared-denominator
+recursion and all determinant coefficients. Both the displayed
+matrices and the complete support rectangles were checked.
+The accompanying \texttt{reconstruct.py} checks the manuscript's
+sextic and its transform, and \texttt{hurwitz\_certificate.py}
+reproduces the determinant table without third-party packages.
+These are exact symbolic computations over an infinite parameter
+domain, not a finite sweep. OpenAI Codex assisted with proof
+development, programming, source checking, and manuscript drafting.
+A separate AI review pass recomputed the rational identity and
+certificate; this is neither human peer review nor proof-assistant
+formalization. The mathematical argument consists of the stated
+identities, exact sign certificates, and the classical stability
+criterion.
+
+\appendix
+\section{The transformed coefficients}\label{app:matrices}
+
+In \eqref{eq:matrices}, rows and columns are indexed by $0,1,2,3$;
+the $(u,v)$ entry of $B_a$ is $[x^uy^v]h_a$.
+The following matrices contain all $112$ coefficients.
+\small
+\[
+B_0=\left(\begin{array}{cccc}
+20519424 & 21197056 & 7200000 & 806400 \\
+21197056 & 21858816 & 7416032 & 829920 \\
+7200000 & 7416032 & 2514760 & 281400 \\
+806400 & 829920 & 281400 & 31500
+\end{array}\right)
+\]
+\[
+B_1=\left(\begin{array}{cccc}
+33546240 & 38182912 & 14102784 & 1701120 \\
+38182912 & 43108608 & 15818560 & 1897792 \\
+14102784 & 15818560 & 5775296 & 690080 \\
+1701120 & 1897792 & 690080 & 82200
+\end{array}\right)
+\]
+\[
+B_2=\left(\begin{array}{cccc}
+22417920 & 27708672 & 11058688 & 1434368 \\
+27708672 & 34036992 & 13489952 & 1737504 \\
+11058688 & 13489952 & 5309384 & 679384 \\
+1434368 & 1737504 & 679384 & 86420
+\end{array}\right)
+\]
+\[
+B_3=\left(\begin{array}{cccc}
+7274496 & 10035200 & 4387328 & 616960 \\
+10035200 & 13540864 & 5832576 & 810880 \\
+4387328 & 5832576 & 2482112 & 341504 \\
+616960 & 810880 & 341504 & 46544
+\end{array}\right)
+\]
+\[
+B_4=\left(\begin{array}{cccc}
+1101312 & 1815296 & 907520 & 142336 \\
+1815296 & 2783232 & 1329440 & 202272 \\
+907520 & 1329440 & 616280 & 91752 \\
+142336 & 202272 & 91752 & 13428
+\end{array}\right)
+\]
+\[
+B_5=\left(\begin{array}{cccc}
+73728 & 147456 & 89344 & 16640 \\
+147456 & 268544 & 147776 & 25408 \\
+89344 & 147776 & 75904 & 12384 \\
+16640 & 25408 & 12384 & 1944
+\end{array}\right)
+\]
+\[
+B_6=\left(\begin{array}{cccc}
+1536 & 3840 & 3072 & 768 \\
+3840 & 8448 & 5856 & 1248 \\
+3072 & 5856 & 3480 & 648 \\
+768 & 1248 & 648 & 108
+\end{array}\right)
+\]
+\normalsize
+
+\section{Reproducing the determinant certificate}\label{app:arithmetic}
+
+The code below uses a dictionary whose entry \texttt{(u,v):c}
+represents $cx^uy^v$. Set \texttt{B} to the list
+$[B_0,\ldots,B_6]$ in Appendix~\ref{app:matrices}.
+The accompanying file \texttt{hurwitz\_certificate.py} includes those
+matrices and runs as \texttt{python3 hurwitz\_certificate.py}.
+The determinant recursion is ordinary first-row Laplace expansion.
+It compares the entire support rectangle, the coefficient minimum,
+and the identity $\Delta_6=h_6\Delta_5$.
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\footnotesize,
+  columns=fullflexible,keepspaces=true,showstringspaces=false,
+  breaklines=true,frame=single,framesep=5pt]
+def add(p, q, sign=1):
+    out = p.copy()
+    for e, c in q.items():
+        out[e] = out.get(e, 0) + sign*c
+    return {e: c for e, c in out.items() if c}
+
+def mul(p, q):
+    out = {}
+    for (a, b), c in p.items():
+        for (u, v), d in q.items():
+            e = (a+u, b+v)
+            out[e] = out.get(e, 0) + c*d
+    return {e: c for e, c in out.items() if c}
+
+def det(M):
+    if not M:
+        return {(0, 0): 1}
+    out = {}
+    for j, entry in enumerate(M[0]):
+        if entry:
+            sub = [row[:j] + row[j+1:] for row in M[1:]]
+            out = add(out, mul(entry, det(sub)), (-1)**j)
+    return out
+
+def certificate():
+    h = [{(u, v): b[u][v] for u in range(4)
+          for v in range(4)} for b in B]
+    assert all(c > 0 for p in h for c in p.values())
+    H = [[h[2*j-i+1] if 0 <= 2*j-i+1 <= 6 else {}
+          for j in range(6)] for i in range(6)]
+    minima = [82200, 5637588000, 176698647552000,
+              1539481522876416000, 2195347272420556800000,
+              237097505421420134400000]
+    D = []
+    for j in range(1, 7):
+        p = det([row[:j] for row in H[:j]])
+        support = {(u, v) for u in range(3*j+1)
+                   for v in range(3*j+1)}
+        assert set(p) == support
+        assert min(p.values()) == minima[j-1] > 0
+        D.append(p)
+        print(j, len(p), min(p.values()))
+    assert D[5] == mul(h[6], D[4])
+    return h, D
+
+if __name__ == "__main__":
+    certificate()
+\end{lstlisting}
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

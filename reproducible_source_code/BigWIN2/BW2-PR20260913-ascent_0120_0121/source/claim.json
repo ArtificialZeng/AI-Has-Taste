@@ -1,0 +1,17 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "statement": "For the exact class A_n frozen in source.md and defined in problem.md (all nonnegative ascent sequences with x_1=0, x_i<=1+asc(x_1...x_(i-1)), simultaneously avoiding classical equality-preserving subsequences 0120 and 0121, with A_0={empty}), the following gives its all-length uniform structural enumeration. For K>=2 set D_K={(k,H):2<=k<=K, empty!=H subset {0,...,k-2}}. For s=(k,H), m=min(H), and 0<=t<k, set f(s,t)=(k,H union {t}) if t<=m; otherwise set r=|{h in H:h<t}| and f(s,t)=(k+1-r,{h-r:h in H,h>=t} union {t-r}). Define T_K(s,u)=|{t:f(s,t)=u}|, the row b_K to have value 1 on (K,{h}) for 0<=h<=K-2 and 0 elsewhere, and the column 1 to be all ones. Then, as an identity in Z[[z]], F(z)=sum_(n>=0)|A_n|z^n=(1-z)/(1-2z)+sum_(K>=2)(z/(1-z))^(2K-1) b_K(I-zT_K)^(-1)1. Equivalently, for n>=1, |A_n|=2^(n-1)+sum_(K=2)^floor((n+1)/2) sum_(d=0)^(n-2K+1) binom(n-d-1,2K-2)b_K T_K^d 1, and |A_0|=1. The eligible-rank quotient and binary initialization underlying these formulas hold for every prefix, width never increases after the first letter >=2, |D_K|=2^K-K-1, and only K<=floor((N+1)/2) is needed through degree N. The claimed resolution uses the original uniform-structural-enumeration alternative; no simpler scalar closed form, rationality or algebraicity of F, or nonzero analytic convergence radius is asserted.",
+  "contribution": "A self-contained quotient proof, explicit locally finite matrix generating series, and finite coefficient formula for the full original avoidance class, including non-RGF words. Fixed exit width has rational continuations for suffixes of arbitrary length and 2^K-K-1 states; coefficient computation has the proved arithmetic bound O(N L 2^L+N^3), L=floor((N+1)/2), without generating words. This advances the exact pair left unenumerated by the checked April 2026 primary source. No equivalent was found in the sources actually inspected in the bounded current comparison. Worldwide priority is not established: the July 0132 paper remains uninspected in full and the 021 journal version was not compared against its accessible preprint. Those limits and original-scope sufficiency are explicit matters for the fresh referee, not preclaimed acceptance.",
+  "proposer_job_id": "primary-20260913-ascent-0120-0121-research-3f4c053fe3cf",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/quotient-enumeration-proof.md",
+    "evidence/quotient_enumeration_test.py",
+    "evidence/quotient-enumeration-results.json",
+    "evidence/external/liu-kitaev-zhang-2604.06735v1.html",
+    "literature/research-scope-screen.md",
+    "evidence/recovery-registry-screen.json"
+  ]
+}

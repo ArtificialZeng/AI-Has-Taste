@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "epistemic_status": "finite exact evidence; not a proof",
+  "primary_runs": [
+    {
+      "path": "data/exhaustive-box-6x6-rerun.json",
+      "domain": "every nonempty partition in a 6 by 6 box",
+      "records": 923,
+      "solver_statuses": {"optimal": 923},
+      "rho_prefixes_cross_checked": 6116,
+      "witnesses_directly_verified": 923
+    },
+    {
+      "path": "data/exhaustive-width13-rows5.json",
+      "domain": "every partition of exact width 13 and at most 5 rows",
+      "records": 2380,
+      "solver_statuses": {"optimal": 2380},
+      "rho_prefixes_cross_checked": 33320,
+      "witnesses_directly_verified": 2380
+    },
+    {
+      "path": "data/random-13x13-1000.json",
+      "domain": "1000 distinct seeded shapes of exact width 13 and 6 through 13 rows; nonuniform generator recorded in file",
+      "records": 1000,
+      "solver_statuses": {"optimal": 1000},
+      "rho_prefixes_cross_checked": 14000,
+      "witnesses_directly_verified": 1000,
+      "seed": 3402
+    },
+    {
+      "path": "data/two-level-width13-rows13.json",
+      "domain": "every partition of exact width 13, at most 13 rows, and at most two distinct positive row lengths",
+      "records": 949,
+      "solver_statuses": {"optimal": 949},
+      "rho_prefixes_cross_checked": 13286,
+      "witnesses_directly_verified": 949
+    }
+  ],
+  "totals": {
+    "records_including_overlaps": 5252,
+    "unique_shapes": 5127,
+    "rho_prefix_cross_checks_including_overlaps": 66722,
+    "largest_area": 169,
+    "largest_row_or_column_dimension": 13
+  },
+  "block_allocation_runs": [
+    {
+      "path": "data/three-level-boundary-15x15.json",
+      "domain": "every partition of exact width 15 and exactly 15 rows with at most three distinct positive row lengths",
+      "records": 8478,
+      "solver_statuses": {"optimal": 8478},
+      "rho_prefixes_cross_checked": 135648,
+      "allocations_directly_verified": 8478,
+      "largest_area": 225,
+      "largest_row_or_column_dimension": 15,
+      "translation_note": "A feasible block allocation lifts to a cell coloring by the owner-context colored-detachment argument in proof/two_level_candidate.md; that proof mapping awaits fresh mathematical audit."
+    }
+  ],
+  "independence_notes": [
+    "The corner minimum and integral capacitated max flow are distinct exact rho evaluators.",
+    "The direct witness checker does not invoke CP-SAT and checks every row, column, color count, and CDS prefix.",
+    "The block-allocation verifier recomputes each quota constraint and compares the corner formula with a separate integral max flow on the amalgamated Ferrers network.",
+    "All computations ran in the owner context; this is evaluator independence, not a fresh-context mathematical audit."
+  ],
+  "excluded_runs": [
+    {
+      "path": "logs/two-level-width20-sample500.stderr",
+      "status": "interrupted-without-serialized-result",
+      "reason": "The shell session became nonresponsive after logging 100/500 and no worker process was visible. No cases from this run are counted as evidence."
+    },
+    {
+      "path": "data/exhaustive-box-6x6.json",
+      "status": "superseded",
+      "reason": "Two transient UNKNOWN solver returns occurred; both shapes solved immediately on individual rerun, and the entire domain was rerun cleanly in exhaustive-box-6x6-rerun.json."
+    }
+  ]
+}

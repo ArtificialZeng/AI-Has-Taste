@@ -1,0 +1,346 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=26mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A first counterexample to the Archer-Bourne recurrence for the avoidance chain (312,54321:132)},
+  pdfauthor={Xiaojian Zeng},
+  pdfsubject={Exact finite disproof in permutation pattern avoidance}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\DeclareMathOperator{\Av}{Av}
+\DeclareMathOperator{\LDS}{LDS}
+
+
+\title{A first counterexample to the Archer--Bourne recurrence\\
+for the avoidance chain $(312,54321:132)$}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small\href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $a_n$ count permutations avoiding the classical patterns $312$ and
+$54321$ whose composition squares avoid $132$. We disprove the recurrence
+$a_n=a_{n-1}+a_{n-2}+a_{n-3}+a_{n-4}+n-1$ proposed by Archer and Bourne
+for $n\geq6$. Its first failure is at $n=11$: the exact count is $1265$,
+whereas the proposed right-hand side is $1266$.
+An elementary direct-sum reduction reduces the discrepancy to the count of
+permutations ending in $1$. A complete finite certificate checks all $4181$
+classical candidates of length $11$, excludes $4172$ by explicit square-pattern
+witnesses, and leaves nine. We give those nine permutations and their squares,
+the counts through length $11$, and reproducible verification instructions.
+No corrected recurrence for arbitrary length is asserted.
+\end{abstract}
+
+\section{Statement and context}
+
+Write $S_n$ for the permutations of $[n]=\{1,\ldots,n\}$, with one empty
+permutation in $S_0$. A permutation contains a \emph{classical pattern}
+$\sigma\in S_k$ if some subsequence of $k$ entries has the same relative
+order as $\sigma$; it avoids $\sigma$ otherwise. The square is composition,
+$\pi^2(i)=\pi(\pi(i))$. Define
+\[
+ C_n=\{\pi\in S_n:\pi\text{ avoids }312,54321,
+                  \ \pi^2\text{ avoids }132\},\qquad a_n=|C_n|.
+\]
+B\'ona and Smith~\cite{BonaSmith2019} study strong pattern avoidance,
+where a permutation and its square avoid the same pattern. Archer and
+Geary~\cite{ArcherGeary2024} introduce chain avoidance, allowing different
+restrictions on successive powers. In this notation $C_n$ avoids the chain
+$(312,54321:132)$.
+
+Archer and Bourne~\cite[Section~5]{ArcherBourne2026} conjecture that
+\begin{equation}\label{eq:conjecture}
+ a_n=a_{n-1}+a_{n-2}+a_{n-3}+a_{n-4}+n-1\qquad(n\geq6).
+\end{equation}
+Their Theorem~4.2 enumerates the neighboring class with $4321$ in place of
+$54321$. Its proof decomposes a permutation at its minimum and identifies
+an involution suffix. We use that method with an exact finite endpoint
+certificate to refute~\eqref{eq:conjecture}.
+
+\begin{theorem}\label{thm:main}
+The counts for $0\leq n\leq11$ are
+\[
+ (a_0,\ldots,a_{11})=(1,1,2,5,11,22,45,89,174,338,655,1265).
+\]
+Equation~\eqref{eq:conjecture} holds for $6\leq n\leq10$ and first fails at
+$n=11$, where
+\[
+ 1265\ne655+338+174+89+10=1266.
+\]
+There are exactly nine members of $C_{11}$ ending in $1$, listed with their
+squares in Table~\ref{tab:endpoints}.
+\end{theorem}
+
+This is a computer-assisted finite disproof. The contribution is the first
+failing coefficient and the exhaustive certificate; the direct-sum method is
+credited to the preceding work. A bounded primary-literature search on
+12 September 2026 located no equivalent disproof. This is not a claim of
+priority or exhaustive coverage of unpublished work.
+
+\section{Reduction to permutations ending in one}
+
+For $u\in S_r$ and $v\in S_s$, the direct sum $u\oplus v$ is the
+concatenation of $u$ with $v_1+r,\ldots,v_s+r$. Put
+$\delta_j=(j,j-1,\ldots,1)$ and, for $n\geq1$, let
+\[
+ b_n=|\{\pi\in C_n:\pi(n)=1\}|.
+\]
+The direct-sum argument below is the version of
+\cite[proof of Theorem~4.2]{ArcherBourne2026} needed here.
+
+\begin{lemma}\label{lem:sum}
+Every nonempty member of $C_n$ has a unique expression
+\[
+ \rho\oplus\delta_{d_1}\oplus\cdots\oplus\delta_{d_\ell},
+ \qquad \rho\in C_k,\quad \rho(k)=1,\quad 1\leq d_i\leq4,
+\]
+where $k\geq1$ and $\ell\geq0$. Consequently
+\begin{equation}\label{eq:endpoint}
+ a_n=b_n+\sum_{j=1}^{\min(4,n-1)}a_{n-j}\qquad(n\geq1).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If the minimum of a $312$-avoider $\pi$ is in position $k$, every entry
+before it is smaller than every entry after it. Otherwise entries $x,1,y$
+with $x>y$ form $312$. Thus the first $k$ values are precisely $[k]$, and
+$\pi=\rho\oplus\tau$ uniquely, with $\rho(k)=1$.
+Neither $312$ nor $54321$ can cross a direct-sum boundary.
+Each summand is an invariant interval for the map, so
+\[
+ (\rho\oplus\tau)^2=\rho^2\oplus\tau^2;
+\]
+see also~\cite[Lemma~2.1]{ArcherGeary2024}.
+
+If $\tau$ is nonempty, any inversion in $\tau^2$, together with any earlier
+entry of $\rho^2$, would form $132$. Therefore $\tau^2$ is increasing,
+and hence is the identity. Conversely, if $\rho^2$ avoids $132$ and
+$\tau^2$ is the identity, their direct sum avoids $132$: a mixed occurrence
+would require an inversion in the right summand.
+
+A $312$-avoiding involution is layered, that is, a direct sum of decreasing
+blocks. To see this, suppose its minimum is in position $j$. The same
+minimum decomposition isolates $[j]$. Involutivity forces its first entry
+to be $j$. An ascent among the entries between this $j$ and the terminal
+$1$ would form $312$ with $j$. The entire first block is consequently
+$\delta_j$. Induction applies to the suffix. Conversely, such layered
+permutations are $312$-avoiding involutions. They avoid $54321$ precisely
+when every decreasing block has size at most four. Their block boundaries
+are ascents, so the blocks are unique.
+
+For a member of $C_n$ not ending in $1$, delete the last decreasing block
+of this nonempty layered suffix. Its length $j$ belongs to $\{1,2,3,4\}$,
+and the remainder is a nonempty member of $C_{n-j}$. Conversely, appending
+$\delta_j$ to such a remainder preserves every restriction and gives a
+permutation not ending in $1$. The final decreasing run has length exactly
+$j$, so these cases are disjoint. This proves~\eqref{eq:endpoint}. The bound
+$j\leq n-1$ excludes the empty remainder, which would double-count an
+endpoint permutation.
+\end{proof}
+
+In particular, for $n\geq5$,
+\begin{equation}\label{eq:residual}
+ a_n-a_{n-1}-a_{n-2}-a_{n-3}-a_{n-4}=b_n.
+\end{equation}
+Thus the conjecture at each $n\geq6$ is equivalent to $b_n=n-1$.
+The reduction is valid for every length and does not assume that square
+avoidance is inherited by arbitrary subpermutations.
+
+\section{The finite endpoint certificate}
+
+An endpoint permutation has the unique form
+\[
+ \pi=(\alpha_1+1,\ldots,\alpha_{n-1}+1,1),\qquad\alpha\in S_{n-1}.
+\]
+A terminal minimum cannot participate in $312$. A four-term descent in
+$\alpha$ extends to a five-term descent in $\pi$; conversely any five-term
+descent in $\pi$ supplies a four-term descent in $\alpha$.
+The classical endpoint domain is therefore a copy of
+$\Av_{n-1}(312,4321)$, before the square restriction is imposed.
+
+\begin{lemma}\label{lem:domain}
+Let $f_h(m)$ count $312$-avoiders of length $m$ with longest decreasing
+subsequence of length at most $h$. For $h\geq0$, $f_h(0)=1$; for $m>0$,
+$f_0(m)=0$. For $h,m\geq1$,
+\begin{equation}\label{eq:domain}
+ f_h(m)=\sum_{k=0}^{m-1}f_{h-1}(k)f_h(m-1-k).
+\end{equation}
+In particular $|\Av_{10}(312,4321)|=f_3(10)=4181$.
+\end{lemma}
+
+\begin{proof}
+The minimum decomposition writes the permutation uniquely as
+$(\alpha+1),1,(\beta+k+1)$, where $|\alpha|=k$ and
+$|\beta|=m-1-k$. Both $\alpha$ and $\beta$ avoid $312$, and this condition
+also suffices for the concatenation to avoid $312$.
+No decreasing subsequence crosses the direct-sum boundary after $1$, so
+the longest decreasing-subsequence length is
+\[
+ \max\{\LDS(\alpha)+1,\LDS(\beta)\},\qquad\LDS(\varnothing)=0.
+\]
+This proves the recurrence and its boundary cases. Integer evaluation gives
+\[
+ (f_3(0),\ldots,f_3(10))=(1,1,2,5,13,34,89,233,610,1597,4181).
+\]
+\end{proof}
+
+\begin{proposition}\label{prop:finite}
+The exact endpoint counts are
+\[
+ (b_1,\ldots,b_{11})=(1,1,2,3,3,5,6,7,8,9,9).
+\]
+\end{proposition}
+
+\begin{proof}[Finite certificate proof]
+For each $1\leq n\leq11$, the endpoint census visits every permutation
+of $\{2,\ldots,n\}$ and appends $1$. It rejects a prefix if it contains
+$312$ or $4321$, and tests every triple in the composition square of each
+remaining endpoint. Thus it visits exactly $(n-1)!$ tuples, without
+symmetry reduction or an assumed counting recurrence.
+The direct index tests are given in Appendix~\ref{sec:reproduce}.
+
+At length $11$ the certificate records $4181$ distinct endpoint permutations,
+their squares, and either an increasing triple of one-based indices forming
+$132$ in the square or a null entry. A separate checker imports no census
+code. It checks bijectivity, the terminal $1$, distinctness, and original
+$312$ and $54321$ avoidance, using the relative ranks of all relevant
+subsequences. By Lemma~\ref{lem:domain}, these $4181$ verified distinct
+members exhaust the classical domain.
+
+The checker recomputes every square. It verifies all $4172$ exclusion triples
+by testing $q_i<q_k<q_j$ for $i<j<k$, where $q=\pi^2$. For each of the nine
+null entries it tests all triples and finds no $132$ occurrence. These nine
+permutations are displayed in Table~\ref{tab:endpoints}.
+Partitioning the certificate by first entry gives classical counts
+$1597,1597,987$ at first entries $2,3,4$, respectively; the surviving counts
+are $5,0,4$.
+The exhaustive smaller endpoint lists give the remaining values in
+Table~\ref{tab:counts}. All comparisons use exact integers.
+\end{proof}
+
+\begin{table}[tbp]
+\centering\small
+\caption{All members of $C_{11}$ ending in $1$, and their composition squares.
+Each comma separates two values; $10$ and $11$ are single entries.}
+\label{tab:endpoints}
+\begin{tabular}{@{}ll@{}}
+\toprule
+$\pi$ & $\pi^2$ \\
+\midrule
+ $(2,3,4,5,6,7,8,9,10,11,1)$ & $(3,4,5,6,7,8,9,10,11,1,2)$ \\
+ $(2,4,3,5,6,7,8,9,10,11,1)$ & $(4,5,3,6,7,8,9,10,11,1,2)$ \\
+ $(2,5,4,3,6,7,8,9,10,11,1)$ & $(5,6,3,4,7,8,9,10,11,1,2)$ \\
+ $(2,5,4,7,6,3,8,9,10,11,1)$ & $(5,6,7,8,3,4,9,10,11,1,2)$ \\
+ $(2,5,4,7,6,9,8,3,10,11,1)$ & $(5,6,7,8,9,10,3,4,11,1,2)$ \\
+ $(4,3,5,6,7,8,9,10,11,2,1)$ & $(6,5,7,8,9,10,11,2,1,3,4)$ \\
+ $(4,3,5,7,6,9,8,11,10,2,1)$ & $(7,5,6,8,9,10,11,1,2,3,4)$ \\
+ $(4,3,6,5,8,7,10,9,2,11,1)$ & $(5,6,7,8,9,10,11,2,3,1,4)$ \\
+ $(4,3,6,7,5,8,9,10,11,2,1)$ & $(7,6,8,9,5,10,11,2,1,3,4)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[tbp]
+\centering\small
+\caption{Exact counts through length $11$. The endpoint count $b_0$ is not defined.}
+\label{tab:counts}
+\begin{tabular}{@{}lrrrrrrrrrrrr@{}}
+\toprule
+$n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+\midrule
+$a_n$ & 1 & 1 & 2 & 5 & 11 & 22 & 45 & 89 & 174 & 338 & 655 & 1265 \\
+$b_n$ & --- & 1 & 1 & 2 & 3 & 3 & 5 & 6 & 7 & 8 & 9 & 9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This separation of a generated witness from its checker follows the
+certifying-algorithm framework of McConnell, Mehlhorn, N\"aher, and
+Schweitzer~\cite{McConnellEtAl2011}. A related finite-certificate architecture
+appears in Zeng, Liu, Ratnavelu, and Ong Seng Huat~\cite{ZengEtAl2026}:
+their standard-library verifier reconstructs a finite domain and checks stored
+coloring witnesses. Here the domain-completeness argument is
+Lemma~\ref{lem:domain}, and the exclusion witnesses are triples of indices.
+The cited geometric results are not assumptions in this permutation proof.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Starting with $a_0=1$, substitute Proposition~\ref{prop:finite} into
+\eqref{eq:endpoint}. This gives the values of $a_n$ in Table~\ref{tab:counts},
+including the six specified initial values. For $6\leq n\leq10$ the endpoint
+counts are $b_n=n-1$, whereas $b_{11}=9\ne10$.
+Equation~\eqref{eq:residual} proves that $11$ is the first failing order
+in the conjecture's stated range.
+\end{proof}
+
+\section{Scope and computational assistance}
+
+The failed identity is the universally quantified recurrence
+\eqref{eq:conjecture}. The endpoint certificate determines only the listed
+finite range; it gives no corrected formula for $b_n$ or $a_n$ at arbitrary
+length. The neighboring $4321$ theorem is unaffected.
+
+Besides the endpoint census and certificate checker, a separately written
+program exhaustively visited every member of $S_n$ for $0\leq n\leq11$,
+a total of $43\,954\,714$ permutations. It reproduced the counts, the full
+$1265$-member set at length $11$, and the complete classical endpoint domain.
+This provides an algorithmic cross-check without using the direct-sum
+recurrence to generate the permutations.
+
+OpenAI Codex assisted with literature searches, proof development, exact
+enumeration and verification code, a separate mathematical review pass, and
+manuscript preparation. The separate review pass used a fresh model context
+and newly written verification code; it was not journal peer review or a
+proof-assistant formalization. The mathematical evidence consists of the
+arguments and exact finite checks described above. No floating-point fit,
+random sampling, or language-model confidence is used in the proof.
+
+\appendix
+\section{Reproduction of the finite checks}\label{sec:reproduce}
+
+The companion files preserve the endpoint census, every accepted endpoint
+through length $11$, and the complete length-$11$ certificate. From a fresh
+extraction of the companion archive, using Python~3 and its standard library,
+run the following commands in the displayed order:
+\begin{lstlisting}[basicstyle=\small\ttfamily,columns=fullflexible,keepspaces=true,showstringspaces=false,breaklines=true]
+python3 audit/referee_verify.py
+python3 evidence/endpoint_exhaustive.py
+python3 evidence/verify_endpoint_certificate.py
+\end{lstlisting}
+The first command performs the full symmetric-group cross-check and imports
+no endpoint or earlier enumeration implementation. The other two regenerate
+the endpoint census and check its certificate. Use a working copy, since
+these commands write JSON outputs. The census uses the following tests,
+with zero-based array indices:
+\begin{align*}
+ 312\text{ in }p&\Longleftrightarrow \exists i<j<k:\ p_i>p_k>p_j,\\
+ 4321\text{ in }p&\Longleftrightarrow \exists i<j<k<\ell:\ p_i>p_j>p_k>p_\ell,\\
+ 132\text{ in }q&\Longleftrightarrow \exists i<j<k:\ q_i<q_k<q_j,
+ \qquad q_i=p_{p_i-1}.
+\end{align*}
+The prefix tests apply to the tuple from $\{2,\ldots,n\}$; the square
+test applies after appending $1$. The factorial loop visits all tuples and
+checks its iteration count against $(n-1)!$ for every length.
+
+The file \path{evidence/endpoint_exhaustive.json} contains the per-length
+counts and accepted lists. In \path{evidence/endpoint_classical_n11.json},
+each record has fields \texttt{permutation}, \texttt{square}, and
+\texttt{square\_132\_indices}; a null last field designates an accepted
+square. The checker computes~\eqref{eq:domain} itself, verifies each record,
+and reconstructs the counts by the proved reduction. Comparisons with the
+additional archived enumerations occur after the endpoint computation and
+are not used to generate it.
+
+The companion README records input dependencies, output files, and the
+reason for running the integrity-checking command before regeneration.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

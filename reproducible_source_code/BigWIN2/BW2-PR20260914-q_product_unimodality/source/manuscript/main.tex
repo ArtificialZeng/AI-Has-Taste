@@ -1,0 +1,264 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A two-factor criterion for unimodality of stretched q-integer products},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\ind}{\mathbf{1}}
+\title{A two-factor criterion for unimodality\protect\\
+of stretched $q$-integer products}
+\author{Xiaojian Zeng\thanks{PBC School of Finance, Tsinghua University,
+100190. Email: \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}.}}
+\date{September 14, 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+For every integer $r\ge2$ and positive integers $a,c,b$, we prove that
+$[a]_q[c]_q[b]_{q^r}$ is weakly unimodal exactly when $r$ divides $a$ or $c$,
+or $b\le1+\lfloor a/r\rfloor+\lfloor c/r\rfloor$.
+This establishes the two-factor case of Conjecture~5.4 of Connelly, Ito,
+Martinez, Shevchenko, and Yang, extending their stretch-$2$ characterization
+to arbitrary stretch. The proof compares two counts of multiples of $r$
+and controls their endpoints by a uniform midpoint estimate. When the
+criterion fails, an explicit first-half coefficient difference equals $-1$.
+The original conjecture in its full parameter range remains unresolved here.
+\end{abstract}
+
+\section{Statement and context}
+For a positive integer $m$, write $[m]_q=1+q+\cdots+q^{m-1}$, with $q$
+an indeterminate. A polynomial $P(q)=\sum_{n=0}^D p_nq^n$ is
+\emph{weakly unimodal} if, for some $m$,
+$p_0\le\cdots\le p_m\ge\cdots\ge p_D$.
+The sequence includes every integer degree, including degrees with zero
+coefficient. We call $P$ symmetric if $p_n=p_{D-n}$.
+
+In their study of $q$-Fibonomial coefficients, Connelly, Ito, Martinez,
+Shevchenko, and Yang proposed a criterion for products with one stretched
+factor \cite[Conjecture~5.4]{CIMSY2026}. For $r\ge2$, $k\ge1$, and positive
+integers $a_1,\ldots,a_k,b$, their conjecture asserts that
+\begin{equation}\label{eq:parent}
+ r\mid a_i\text{ for some }i
+ \quad\text{or}\quad
+ b\le1+\sum_{i=1}^k\left\lfloor \frac{a_i}{r}\right\rfloor
+\end{equation}
+is sufficient for the unimodality of
+$[a_1]_q\cdots[a_k]_q[b]_{q^r}$, and is also necessary when $k\le3$ or
+$r\le3$. We establish precisely its $k=2$ restriction.
+
+\begin{theorem}\label{thm:main}
+Let $r\ge2$ be an integer and let $a,c,b$ be positive integers. Then
+$[a]_q[c]_q[b]_{q^r}$ is weakly unimodal if and only if
+\begin{equation}\label{eq:criterion}
+ r\mid a\quad\text{or}\quad r\mid c\quad\text{or}\quad
+ b\le1+\left\lfloor \frac{a}{r}\right\rfloor+\left\lfloor \frac{c}{r}\right\rfloor.
+\end{equation}
+The alternatives are inclusive, and parameters equal to $1$ are allowed.
+\end{theorem}
+
+The divisibility branch is already known
+\cite[Lemma~4.2 and Corollary~4.3]{CIMSY2026}, as is the case of one ordinary
+factor \cite[Proposition~5.3]{CIMSY2026}. The closest two-factor result is
+\cite[Proposition~4.5]{CIMSY2026}: at $r=2$ the criterion is $2b\le a+c$
+or at least one of $a,c$ is even. For two odd lengths, this is exactly
+\eqref{eq:criterion}. Their proof compares intervals contributing $+1$
+and $-1$ to a coefficient difference. We use the same reduction; the step
+that permits every stretch is the floor estimate in
+\eqref{eq:floor-bound}--\eqref{eq:residue}. The proof below includes the
+known boundary cases to make the argument self-contained. It makes no
+claim of priority beyond this comparison with the inspected sources.
+
+\section{Proof of the criterion}
+We first recall the classical closure of symmetric, nonnegative, unimodal
+polynomials under multiplication \cite{Andrews1975}. Here is a direct
+argument. If $F(q)=\sum_{i=0}^E f_iq^i$ has these properties, then
+\begin{equation}\label{eq:centered}
+ F(q)=\sum_{j=0}^{\lfloor E/2\rfloor}
+ (f_j-f_{j-1})q^j[E-2j+1]_q,\qquad f_{-1}=0.
+\end{equation}
+This follows by telescoping up to the midpoint and then using symmetry.
+All the displayed weights are nonnegative. The product $[u]_q[v]_q$ has
+symmetric trapezoidal coefficients, since its coefficient at degree $n$
+counts pairs $(i,j)$ with $i+j=n$, $0\le i<u$, and $0\le j<v$.
+Expanding two decompositions \eqref{eq:centered} therefore expresses their
+product as a nonnegative sum of shifted trapezoids with a common center.
+Their sum is symmetric and unimodal.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+If $a=rA$ for a positive integer $A$, then
+\[
+ [a]_q[b]_{q^r}=[r]_q\left.\bigl([A]_x[b]_x\bigr)\right|_{x=q^r}.
+\]
+Its coefficients repeat each coefficient of the symmetric trapezoid
+$[A]_x[b]_x$ exactly $r$ times. Hence it is symmetric and unimodal, and
+the closure just proved permits multiplication by $[c]_q$.
+The case $r\mid c$ is identical.
+
+Assume henceforth that neither $a$ nor $c$ is divisible by $r$.
+By commutativity we may suppose $a\le c$. Put
+\[
+ P(q)=[a]_q[c]_q[b]_{q^r}=\sum_{n=0}^D p_nq^n,
+ \qquad D=a+c-2+r(b-1),
+\]
+and set $p_n=0$ outside $[0,D]$. Each factor is symmetric, so
+unimodality is equivalent to
+\begin{equation}\label{eq:half}
+ \Delta_n:=p_n-p_{n-1}\ge0
+ \qquad\left(1\le n\le\left\lfloor \frac D2\right\rfloor\right).
+\end{equation}
+When $D$ is odd the two central coefficients agree by symmetry; when
+$D=0$ the comparison range is empty.
+
+For integers $L,U$, define
+\[
+ N(L,U)=\#\{j\in\mathbb Z:0\le j\le b-1,\ L\le rj\le U\}.
+\]
+Taking coefficients in
+$(1-q)[a]_q[c]_q=[a]_q-q^c[a]_q$ gives the identity
+\begin{equation}\label{eq:counts}
+ \Delta_n=N(n-a+1,n)-N(n-a-c+1,n-c).
+\end{equation}
+In particular, $\Delta_n\ge0$ for $n<c$, because the second count vanishes.
+Write
+\begin{equation}\label{eq:parameters}
+ \begin{gathered}
+ a=rA+s,\qquad c=rC+t,\qquad A,C\ge0,\quad 1\le s,t\le r-1,\\
+ M=A+C,\qquad B=b-1,\qquad D=r(M+B)+s+t-2.
+ \end{gathered}
+\end{equation}
+
+\emph{Sufficiency.}
+Suppose $B\le M$. Only $c\le n\le\lfloor D/2\rfloor$ remains to be
+considered. If this range is nonempty then $B\ge1$, since for $B=0$ one
+has $D/2=(a+c-2)/2\le c-1$.
+Since $rB\le rM\le a+c-2$, the midpoint bound gives $n\le a+c-2$.
+Moreover,
+\[
+ 0\le n-c\le\frac{a-c-2+rB}{2}\le\frac{rB-2}{2}<rB,
+ \qquad n-a\ge0.
+\]
+Thus the second count in \eqref{eq:counts} starts at $j=0$ and its upper
+endpoint is below $B$; the first count has lower endpoint at least $1$.
+Accounting for the possible upper clipping of the first count yields
+\begin{equation}\label{eq:clipped}
+ \Delta_n=\max\!\left\{0,\min\!\left(B,\left\lfloor \frac nr\right\rfloor\right)
+                -\left\lfloor \frac{n-a}{r}\right\rfloor\right\}
+               -\left\lfloor \frac{n-c}{r}\right\rfloor-1.
+\end{equation}
+Set
+\[
+ F=\left\lfloor \frac{n-a}{r}\right\rfloor+\left\lfloor \frac{n-c}{r}\right\rfloor+1,
+ \qquad h=\left\lfloor \frac nr\right\rfloor.
+\]
+We will show $F\le\min(B,h)$. Floor subadditivity and $2n\le D$ imply
+\begin{equation}\label{eq:floor-bound}
+ F\le\left\lfloor \frac{2n-a-c}{r}\right\rfloor+1
+   \le\left\lfloor \frac{rB-2}{r}\right\rfloor+1=B.
+\end{equation}
+For the other bound, write $n=rh+v$, $0\le v<r$, and put
+$e=\ind_{v<s}+\ind_{v<t}$, where $\ind$ denotes an indicator. Then
+\begin{equation}\label{eq:residue}
+ F=2h-M+1-e.
+\end{equation}
+The midpoint estimate gives
+\[
+ n\le\frac D2\le rM+\frac{s+t-2}{2}<r(M+1),
+\]
+so $h\le M$. If $h\le M-1$, equation~\eqref{eq:residue} gives $F\le h$.
+If $h=M$, the same estimate gives $2v\le s+t-2$, whence
+$v<\max(s,t)$ and $e\ge1$; again $F\le h$.
+It follows that
+\[
+ \min(B,h)-\left\lfloor \frac{n-a}{r}\right\rfloor
+ \ge\left\lfloor \frac{n-c}{r}\right\rfloor+1\ge1.
+\]
+Equation~\eqref{eq:clipped} now yields $\Delta_n\ge0$, proving sufficiency
+by symmetry.
+
+\emph{Necessity.}
+Suppose instead that $B\ge M+1$. Put $u=\max(s,t)$ and
+\begin{equation}\label{eq:witness}
+ n_*=rM+u.
+\end{equation}
+For the first count in \eqref{eq:counts}, the lower endpoint is
+$rC+u-s+1$, strictly between $rC$ and $r(C+1)$, and the upper endpoint
+is $rM+u<r(M+1)$. Consequently its indices are $C+1,\ldots,M$,
+giving $A$ choices, with an empty range when $A=0$.
+For the second count, the lower endpoint is
+$u-s-t+1=1-\min(s,t)\le0$, and the upper endpoint is $rA+u-t$,
+where $0\le u-t<r$. Its indices are $0,\ldots,A$, giving $A+1$ choices.
+Neither count is clipped above, since $B\ge M+1$. Therefore
+\begin{equation}\label{eq:drop}
+ p_{n_*}-p_{n_*-1}=A-(A+1)=-1.
+\end{equation}
+This drop is in the first half: $n_*\ge1$ and
+\[
+ D-2n_*=r(B-M)-|s-t|-2\ge r-(r-2)-2=0.
+\]
+It contradicts \eqref{eq:half}. The alternatives $B\le M$ and $B\ge M+1$
+exhaust the nondivisible case and complete the proof.
+\end{proof}
+
+Zero quotients $A$ or $C$ were allowed throughout. In particular, $a=1$
+recovers the one-factor criterion, and $a=c=1$ gives unimodality exactly
+when $b=1$. Thus no small-length exceptions are suppressed.
+
+\section{Checks, an example, and scope}
+For example, the theorem makes $[7]_q[9]_q[3]_{q^5}$ unimodal.
+Its coefficients through the midpoint, at degrees $0$ through $12$, are
+\[
+ 1,2,3,4,5,7,9,10,11,11,12,13,13.
+\]
+Both $[7]_q[3]_{q^5}$ and $[9]_q[3]_{q^5}$ fail the one-factor criterion
+\cite[Proposition~5.3]{CIMSY2026}; applying that criterion to either
+subproduct therefore does not account for the two-factor range.
+
+Exact integer computations checked all $81\,648$ ordered tuples with
+\[
+ 2\le r\le19,\qquad 1\le a,c\le18,\qquad 1\le b\le14,
+\]
+as well as $600$ draws with $2\le r\le79$, $1\le a,c\le120$, and
+$1\le b\le20$. Python's \texttt{random.Random} was initialized once with seed
+$202609140919$; each draw used four successive inclusive \texttt{randint}
+calls in the order $(r,a,c,b)$, with repeated tuples permitted.
+All $82\,248$ tests agreed with \eqref{eq:criterion}. The $54\,281$
+nonunimodal tests also satisfied the exact witness identity
+\eqref{eq:drop}.
+
+For reproducibility, the coefficient construction first forms
+\[
+ t_\ell=\#\{(i,j):0\le i<a,\ 0\le j<c,\ i+j=\ell\},
+ \qquad p_n=\sum_{j=0}^{b-1}t_{n-rj},
+\]
+with $t_\ell=0$ outside its support. The complete coefficient sequence is
+scanned for a rise after a strict fall, without using the midpoint
+criterion as the test. A separately implemented evaluator sums the three
+affine pieces of the ordinary trapezoid over arithmetic progressions;
+it agreed on $597\,941$ selected coefficient comparisons.
+Reconstructing the objects and checking integer predicates with separate
+implementations is also the verification design used by Zeng, Liu,
+Ratnavelu, and Ong in their finite geometric certificates
+\cite[Sections~4 and~6]{ZengEtAl2026}. Here the computations serve only as
+consistency checks on the symbolic proof; their finite coverage is not
+an argument for untested parameters.
+
+The theorem gives an exact decision from the four input integers and a
+degree witnessing failure. The all-$k$ sufficiency and the remaining
+necessity assertions of the original conjecture remain unresolved here.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, code, source comparison, and
+drafting. A separate model context examined the proof and ran separately
+written exact checks. This checking pass was not external peer review or
+statistically independent evidence. No proof assistant was used.
+
+\bibliographystyle{plain}
+\small
+\bibliography{references}
+\normalsize
+\end{document}

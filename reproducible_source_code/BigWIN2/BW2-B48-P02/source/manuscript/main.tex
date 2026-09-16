@@ -1,0 +1,222 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}\hypersetup{pdftitle={Four Boolean Values for Four-Layer Hamilton Starters at r=3 and r=7},pdfauthor={Xiaojian Zeng},pdfsubject={Exact small-parameter Hamilton starter and chain-compatibility certificates},pdfkeywords={Hamilton cycle, directed circulant, balanced starter, chain compatibility, exact enumeration}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Cr}{\mathcal C_4(r)}
+
+\title{Four Boolean Values for Four-Layer Hamilton Starters at
+  \(r=3\) and \(r=7\)}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the directed circulant
+\(\mathcal C_4(r)=\operatorname{Cay}^{\to}(\Z_{4r},\{1,\ldots,r\})\),
+we determine existence and chain compatibility of four-layer balanced
+Hamilton starters at the first two parameters congruent to \(3\pmod 4\).
+The exact tuple is
+\[
+  (E_3,C_3,E_7,C_7)=(0,0,1,1).
+\]
+The negative value at \(r=3\) follows from an exhaustive enumeration of the
+\((3!)^4=1296\) balanced successor assignments: only 15 are permutations,
+and their cycle types are \(6+6\) or \(4+8\).  At \(r=7\), an explicit
+balanced 28-cycle proves existence, and a displayed simple seven-arc path
+has all seven development colours.  All computations are exact, and the
+positive claims can be checked directly from the integers printed here.
+No assertion is made for another value of \(r\) or about uniqueness.
+\end{abstract}
+
+\section{Statement and context}
+
+For odd \(r\), identify \(\Z_{4r}\) with the residues modulo \(4r\), and let
+\[
+  \Cr=\operatorname{Cay}^{\to}(\Z_{4r},[r]),
+  \qquad [r]=\{1,\ldots,r\}.
+\]
+Thus its arcs are \(x\to x+s\), with arithmetic modulo \(4r\).  A directed
+Hamilton cycle \(H\) is a \emph{four-layer balanced Hamilton starter} when,
+for every \(j\in\Z_4\) and \(s\in[r]\), it contains exactly one step-\(s\)
+arc whose tail is congruent to \(j\pmod 4\).  Write \(E_r\) for the assertion
+that such an \(H\) exists.
+
+For \(k\in\Z_r\), put \(H_k=H+4k\).  Balance implies that the \(H_k\)
+partition all arcs of \(\Cr\): for fixed \((j,s)\), translating the unique
+starter arc through \(4\Z_r\) gives exactly all step-\(s\) arcs with tail
+residue \(j\).  Following Jiang and Yang~\cite{JiangYang2026}, the starter is
+\emph{chain-compatible} when one arc from each \(H_k\) can be selected so
+that the selected arcs, in some order, form a simple directed path.  Let
+\(C_r\) denote the existence of such a starter and path.  In particular,
+\(C_r\Rightarrow E_r\).
+
+Jiang and Yang construct chain-compatible four-layer starters for
+\(r\equiv1\pmod4\), \(r\geq9\), and their Section~9 asks whether a different
+construction or an obstruction occurs for \(r\equiv3\pmod4\)
+\cite{JiangYang2026}.  The present result concerns only \(r=3,7\).  A bounded
+search of the literature did not locate these two exact determinations; this
+is a search report, not a priority claim.
+
+The finite-certificate organization used below---an exhaustive finite domain,
+exact predicates, and a separate replay verifier---has a methodological
+analogue in exact finite-library work in discrete geometry
+\cite{ZengEtAl2026ExactFinite}.  That paper supplies no graph-theoretic input
+to the present proof.
+
+For use with chain compatibility, balance gives a unique
+\(\beta_j(s)\in\Z_r\) such that the step-\(s\) starter arc with tail residue
+\(j\) has tail \(j+4\beta_j(s)\).  If \(x=j+4t\), then
+\begin{equation}\label{eq:colour}
+  \chi(x,s)=t-\beta_j(s)\pmod r
+\end{equation}
+is the unique \(k\) for which \(x\to x+s\) belongs to \(H_k\)
+\cite[Lemma~5.2]{JiangYang2026}.  Hence a simple \(r\)-arc path is a
+compatible deletion chain exactly when its colours are all distinct.
+
+\begin{theorem}\label{thm:main}
+Under the preceding definitions,
+\[
+  (E_3,C_3,E_7,C_7)=(0,0,1,1).
+\]
+\end{theorem}
+
+\section{The exhaustive obstruction at \texorpdfstring{\(r=3\)}{r=3}}
+
+\begin{lemma}\label{lem:r3}
+There is no four-layer balanced Hamilton starter in \(\mathcal C_4(3)\).
+\end{lemma}
+
+\begin{proof}
+Let \(s(x)\in\{1,2,3\}\) be the step used at tail \(x\).  For fixed
+\(j\in\Z_4\), balance says precisely that
+\[
+  \bigl(s(j),s(j+4),s(j+8)\bigr)
+\]
+is a permutation of \((1,2,3)\).  The four residue classes therefore give
+all and only \((3!)^4=1296\) balanced assignments.
+
+For every assignment, form the successor function
+\[
+  f(x)=x+s(x)\pmod {12}.
+\]
+A Hamilton starter would make \(f\) a permutation consisting of one
+12-cycle.  Exhausting the four independent permutations gives the following
+exact census.
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+outcome for \(f\) & number of assignments\\
+\midrule
+not bijective & 1281\\
+bijection of cycle type \(6+6\) & 12\\
+bijection of cycle type \(4+8\) & 3\\
+bijection of cycle type \(12\) & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+The ancillary enumeration implements the following literal loop, so there is
+no symmetry assumption in the decisive count:
+\[
+  (\pi_0,\pi_1,\pi_2,\pi_3)\in S_3^4,
+  \qquad s(j+4t)=\pi_j(t)\quad(0\leq t<3),
+\]
+followed by integer evaluation of \(f\), a bijectivity test, and cycle
+tracing.  A second standard-library verifier regenerates the unsymmetrized
+domain in a separate pass; it obtains the same 1296 assignments, 15
+bijections, and cycle-type counts.  The domain description above proves that
+no balanced assignment is omitted, and the cycle census contains no
+Hamilton cycle.  Thus \(E_3=0\).
+\end{proof}
+
+Since chain compatibility includes the existence of a balanced Hamilton
+starter, Lemma~\ref{lem:r3} also gives \(C_3=0\).
+
+\section{A starter and compatible chain at \texorpdfstring{\(r=7\)}{r=7}}
+
+Define a step at each tail \(0,1,\ldots,27\), in that order, by
+\begin{equation}\label{eq:tailword}
+\begin{split}
+(&1,6,4,2,5,5,7,1,4,7,1,3,7,2,3,6,\\
+ &6,1,2,5,3,4,5,7,2,3,6,4).
+\end{split}
+\end{equation}
+Iterating the resulting successor function from zero gives
+\begin{equation}\label{eq:cycle}
+\begin{split}
+0,&1,7,8,12,19,24,26,4,9,16,22,27,3,5,10,11,14,\\
+  &17,18,20,23,2,6,13,15,21,25,0.
+\end{split}
+\end{equation}
+The 28 entries before the final zero are pairwise distinct, so
+\eqref{eq:cycle} is a directed Hamilton cycle using only allowed steps.
+
+For a compact balance check, the tails at which steps \(1,\ldots,7\) occur
+are, respectively,
+\begin{equation}\label{eq:balancetable}
+\begin{array}{c|c@{\qquad}c|c}
+s&\text{tails}&s&\text{tails}\\ \hline
+1&0,7,10,17 & 5&4,5,19,22\\
+2&3,13,18,24& 6&1,15,16,26\\
+3&11,14,20,25&7&6,9,12,23\\
+4&2,8,21,27&&
+\end{array}
+\end{equation}
+Each row contains exactly one tail in every residue class modulo 4.  Thus
+\eqref{eq:cycle} is balanced and proves \(E_7=1\).
+
+It remains to check chain compatibility.  The values \(\beta_j(s)\), with
+rows indexed by \(j=0,1,2,3\) and columns by \(s=1,\ldots,7\), are
+\begin{equation}\label{eq:beta}
+\begin{pmatrix}
+0&6&5&2&1&4&3\\
+4&3&6&5&1&0&2\\
+2&4&3&0&5&6&1\\
+1&0&2&6&4&3&5
+\end{pmatrix}.
+\end{equation}
+These entries can also be read directly from \eqref{eq:balancetable}: the
+tail is \(j+4\beta_j(s)\).  Consider the path
+\begin{equation}\label{eq:path}
+  0\longrightarrow1\longrightarrow2\longrightarrow3\longrightarrow4
+  \longrightarrow5\longrightarrow6\longrightarrow12,
+\end{equation}
+whose steps are \((1,1,1,1,1,1,6)\).  Its eight vertices are distinct.
+Applying \eqref{eq:colour} and \eqref{eq:beta} to the seven arcs gives
+\begin{equation}\label{eq:colours}
+  (0,3,5,6,1,4,2),
+\end{equation}
+which is exactly \(\Z_7\).  Hence the path selects one arc from each of
+\(H_0,\ldots,H_6\), proving \(C_7=1\).  Together with the two values from
+Lemma~\ref{lem:r3}, this proves Theorem~\ref{thm:main}.
+
+\section{Scope and computational disclosure}
+
+The exhaustive claim is only the nonexistence statement at \(r=3\).  At
+\(r=7\), the displayed integers prove existence but make no assertion about
+the number or uniqueness of starters or compatible chains.  Nothing here
+settles another member of the \(r\equiv3\pmod4\) family.
+
+The \(r=3\) census was generated by exact Python integer arithmetic and was
+replayed by a separate standard-library verifier.  An OR-Tools CP-SAT model
+was used to discover the \(r=7\) witness, but solver feasibility is not used
+as evidence: equations \eqref{eq:tailword}--\eqref{eq:colours} provide the
+direct certificate.  OpenAI Codex assisted with finite-search design,
+implementation, literature screening, adversarial verification, and initial
+manuscript preparation.  Language-model output is not mathematical evidence;
+the proof rests on the exhaustive finite domain and the exact displayed
+certificates.  No proof assistant was used.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+
+\end{document}

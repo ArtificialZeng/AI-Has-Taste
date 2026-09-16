@@ -1,0 +1,15 @@
+{
+  "kind": "resolution-paper",
+  "original_status": "disproved",
+  "statement": "The universal claim in source.md is false. For n=m=4, c=3, T_1={1}, T_2={1,2}, T_3={1,3,4}, and T_4={2,3,4}, the unique maximizing unordered PI root pair is {1,4} and the unique next selected job is 3. If the root orientation is (1,4), the generated proper node (3,1,4) is fathomed under its unique KTNS history and has globally optimal completion (2,3,1,4). If the root orientation is (4,1), the generated proper node (4,3,1) is fathomed under its unique KTNS history and has globally optimal completion (2,4,3,1). The remaining job 2 is not covered by any node configuration in either case, so the Section 6.2 completion-pruning condition does not apply. Thus, under either reversal-symmetry orientation, an unsafe node exists with four jobs.",
+  "contribution": "An exact, orientation-robust and tie-free four-job counterexample disproves the proposed assertion that no admissible instance with at most four jobs and tools has an unsafe almost-exact fathoming event. The certificate uses distinct job tool sets, a unique root pair, a unique next-job choice, explicit KTNS histories, a check that completion pruning does not preempt the event, and cost-two completions matching an exact lower bound.",
+  "proposer_job_id": "win-00055-p04-research-a988ad63c1d0",
+  "evidence_files": [
+    "source.md",
+    "problem.md",
+    "evidence/counterexample.md",
+    "verify_counterexample.py",
+    "evidence/counterexample_verification.json",
+    "evidence/external/2609.03219.pdf"
+  ]
+}

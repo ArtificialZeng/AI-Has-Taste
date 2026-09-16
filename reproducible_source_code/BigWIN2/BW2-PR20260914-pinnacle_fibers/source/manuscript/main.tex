@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newcommand{\pinn}{\operatorname{pinn}}
+\newcommand{\leM}{\leq_{\mathrm M}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
+\hypersetup{
+  pdftitle={A counterexample to distributivity of fixed pinnacle-order fibers},
+  pdfauthor={Xiaojian Zeng}
+}
+\title{A counterexample to distributivity of\protect\\ fixed pinnacle-order fibers}
+\author{Xiaojian Zeng\\[3pt]
+  \small PBC School of Finance, Tsinghua University, 100190\\
+  \small \href{mailto:xiaojianzeng@foxmail.com}{\texttt{xiaojianzeng@foxmail.com}}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Liang and Sagan asked whether permutations with a prescribed left-to-right
+ordering of their pinnacle values form a distributive lattice in the
+middle order. We give a negative answer using permutations of $[5]$ whose
+only pinnacle is $5$. Five explicit permutations violate a distributive
+identity, with every required meet and join determined in the entire
+fiber. The decisive meet is certified by listing four possible inversion
+tables. Thus the counterexample concerns a nonempty fiber and has a
+self-contained proof independent of exhaustive computation.
+\end{abstract}
+
+\section{The question}
+
+Write $S_n$ for the permutations of $[n]=\{1,\ldots,n\}$ in one-line
+notation. An interior position $i$ is a peak of $\pi\in S_n$ when
+$\pi_{i-1}<\pi_i>\pi_{i+1}$, and the value $\pi_i$ is a pinnacle
+\cite{DNPT}. Endpoints are excluded. Let $\pinn(\pi)$ be the complete
+sequence of pinnacle values, read from left to right, and define
+\[
+  P_n(\sigma)=\{\pi\in S_n:\pinn(\pi)=\sigma\}
+\]
+for a sequence $\sigma$ of distinct positive integers. This records the
+actual pinnacle values in their specified order.
+
+For $v\in[n]$, set
+\[
+ I_v(\pi)=\#\{u<v:\pi^{-1}(u)>\pi^{-1}(v)\},
+ \qquad I(\pi)=(I_1(\pi),\ldots,I_n(\pi)).
+\]
+The middle order is
+\[
+ \pi\leM\rho\quad\Longleftrightarrow\quad
+ I_v(\pi)\le I_v(\rho)\text{ for every }v\in[n].
+\]
+These are coordinates indexed by values, as in
+Bouvel--Ferrari--Tenner \cite{BFT} and Liang--Sagan \cite[Section~6]{LS}.
+The full middle order is a product of chains and hence a distributive
+lattice \cite[Section~1]{BFT}.
+
+For completeness, the coordinate bijection has an elementary description.
+Given integers $0\le t_v\le v-1$, insert $v=1,2,\ldots,n$ successively
+into the current word, placing $v$ in the unique slot with exactly $t_v$
+entries to its right. Later insertions involve larger values and preserve
+the count of smaller entries to the right of $v$. This constructs the
+unique permutation with $I_v=t_v$. Consequently, ambient meets and joins
+correspond to coordinatewise minima and maxima.
+
+Liang and Sagan \cite[Question~8.6(a)]{LS} ask whether the induced middle
+order on $P_n(\sigma)$ is a distributive lattice for every $n$ and
+$\sigma$. The same question is numbered 8.7(a) in their first arXiv
+version. Rusu and Tenner \cite{RT} characterize which pinnacle orderings
+can occur, through a criterion limiting interruptions by larger
+pinnacles. That existence criterion does not determine meets and joins
+among the realizing permutations. The counterexample below supplies
+such internal operations and shows that ambient distributivity is lost
+on a fixed ordered fiber.
+
+The question can also be restricted explicitly to nonempty fibers,
+avoiding any convention about whether an empty poset is a lattice.
+Our example answers this qualified question negatively as well.
+
+\section{The counterexample}
+
+\begin{theorem}\label{thm:main}
+The nonempty fiber $P_5((5))$, with its induced middle order, is not a
+distributive lattice.
+\end{theorem}
+
+\begin{proof}
+Put $P=P_5((5))$. All meets and joins used below are bounds in the
+whole of $P$. Consider the five permutations
+\[
+\begin{array}{@{}cccl@{}}
+\toprule
+\text{Name}&\text{Permutation}&I(\pi)&\text{Only peak position}\\
+\midrule
+e&12354&(0,0,0,0,1)&4\\
+b&12534&(0,0,0,0,2)&3\\
+a&13524&(0,0,1,0,2)&3\\
+c&13452&(0,0,1,1,1)&4\\
+d&13542&(0,0,1,1,2)&3\\
+\bottomrule
+\end{array}
+\]
+Each has precisely one pinnacle, of value $5$, so all five lie in $P$.
+Their coordinates give $e<_{\mathrm M}b<_{\mathrm M}a<_{\mathrm M}d$
+and $e<_{\mathrm M}c<_{\mathrm M}d$. In particular, the operations on
+the comparable pairs satisfy
+\begin{equation}\label{eq:comparable}
+ a\wedge d=a,\qquad a\wedge b=b,\qquad b\vee e=b.
+\end{equation}
+The coordinate maximum of $I(b)$ and $I(c)$ is $I(d)$. Since $d\in P$,
+it is an upper bound in $P$, and every upper bound in $P$ has each
+coordinate at least the corresponding coordinate of $d$. Therefore
+\begin{equation}\label{eq:join}
+ b\vee c=d.
+\end{equation}
+
+It remains to find $a\wedge c$. Every ambient common lower bound has
+inversion table
+\[
+ (0,0,u,0,v),\qquad u,v\in\{0,1\}.
+\]
+The coordinate bijection shows that the following four permutations
+exhaust these bounds:
+\[
+\begin{array}{@{}ccc@{}}
+\toprule
+I(\pi)&\pi&\pinn(\pi)\\
+\midrule
+(0,0,0,0,0)&12345&()\\
+(0,0,0,0,1)&12354&(5)\\
+(0,0,1,0,0)&13245&(3)\\
+(0,0,1,0,1)&13254&(3,5)\\
+\bottomrule
+\end{array}
+\]
+Only $e=12354$ belongs to $P$. Thus $e$ is the only common lower bound
+of $a,c$ in $P$, and in particular
+\begin{equation}\label{eq:meet}
+ a\wedge c=e.
+\end{equation}
+This establishes the internal meet even though the ambient meet,
+$13254$, is outside the fiber.
+
+Equations \eqref{eq:comparable}--\eqref{eq:meet} now give
+\begin{align*}
+ a\wedge(b\vee c)&=a\wedge d=a,\\
+ (a\wedge b)\vee(a\wedge c)&=b\vee e=b.
+\end{align*}
+Since $a=13524\ne12534=b$, the distributive identity fails. Every
+operation in this identity has been justified within $P$; if $P$ were
+a distributive lattice, these operations would have to satisfy the
+identity. This contradiction proves the theorem.
+\end{proof}
+
+\section{Verification and scope}
+
+An exact enumeration of the $120$ permutations of $[5]$ gives $56$
+elements of $P$. The computation checked the common lower and upper
+bounds for all $25$ ordered pairs of the five named elements against
+the entire fiber. A separately written verifier reconstructed the
+permutations by retaining the words with distinct entries in
+$\{1,\ldots,5\}^5$, computed inversion coordinates from inverse
+positions, and obtained the same fiber and bounds. These checks use
+only integers and finite comparisons.
+
+Zeng et al.\ \cite[Proposition~1 and Section~6]{ZLRO} likewise use exact
+predicates and separately reconstructed finite geometric models to
+separate computation from certificate checking. Here the two displayed
+tables and the bound arguments already give a complete certificate.
+
+To reproduce the finite check, list the permutations with pinnacle
+sequence $(5)$ and compare their five inversion coordinates. For each
+named pair $x,y$, form
+\[
+ L_{x,y}=\{z\in P:z\leM x,\ z\leM y\},\qquad
+ U_{x,y}=\{z\in P:x\leM z,\ y\leM z\}.
+\]
+A proposed meet $m$ is verified by checking $m\in L_{x,y}$ and
+$z\leM m$ for every $z\in L_{x,y}$; verify a proposed join dually.
+No floating-point tolerance, random sampling, symmetry reduction, or
+proof assistant is involved.
+
+Theorem~\ref{thm:main} gives a negative answer to the universal assertion
+in Question~8.6(a) of \cite{LS}. It makes no assertion of minimality in
+$n$, no classification of other fibers, and no claim concerning the
+separate counting question 8.6(b). A focused literature comparison on
+14~September~2026 found no equivalent counterexample in the inspected
+sources; this is a bounded assessment rather than a claim of priority.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with literature searches, counterexample
+exploration, proof development, exact verification code, a separate
+mathematical review pass, and manuscript preparation. The separate
+model context is not external peer review. The mathematical basis is
+the explicit argument above, corroborated by the finite computations.
+
+\bibliographystyle{abbrvurl}
+\bibliography{references}
+\end{document}

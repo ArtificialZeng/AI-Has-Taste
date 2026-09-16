@@ -1,0 +1,432 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% Standard typography; no optional microtype processing.
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\erfc}{\operatorname{erfc}}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\dd}{\,\mathrm d}
+% Floor delimiters are written explicitly below.
+% Continuous equation numbering.
+\title[The lane-merging gap near capacity]{A uniform two-term expansion for the\\lane-merging gap near capacity}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190}
+\email{xiaojianzeng@foxmail.com}
+\date{September 12, 2026}
+\thanks{2020 Mathematics Subject Classification. Primary 05A16; Secondary 60C05, 60F05.}
+\keywords{Lane merging, binomial sum, uniform asymptotic expansion, lattice correction}
+\hypersetup{pdftitle={A uniform two-term expansion for the lane-merging gap near capacity},pdfauthor={Xiaojian Zeng}}
+\begin{document}
+\begin{abstract}
+We determine the leading term and the constant term of the expected gap
+in the limited-capacity lane-merging model when the number of red drivers
+is $k=m+\lfloor x\sqrt m\rfloor$. The coefficients are explicit in the
+complementary error function and the floor offset. The absolute remainder
+is $O_A(m^{-1/2})$, uniformly over every fixed interval $|x|\le A$,
+including zero and all floor discontinuities. Binomial symmetry, a local
+finite-product estimate, and signed trapezoidal summation give an
+elementary proof with explicit, nonoptimized constants. This refines the
+near-center approximation question of Insko, Johnson, and Sullivan.
+\end{abstract}
+\maketitle
+
+\section{The model and the expansion}
+
+In the model of Insko, Johnson, and Sullivan \cite{IJS2026}, cars arrive
+one at a time. Red drivers always choose the right lane; green drivers
+choose the shorter lane, with ties going to the right. Each lane has
+capacity $m$. Once the right lane fills, later cars cannot enter the
+left lane. The gap is $m$ minus the number of cars that enter the left
+lane. Condition on a uniformly chosen arrival sequence of length $2m-1$
+with $k$ red drivers.
+
+Corollary 7.2 of \cite{IJS2026} gives the exact expectation
+\begin{equation}\label{eq:definition}
+ E_{m,k}=\frac{G_{m,k}}{\binom{2m-1}{k}},\qquad
+ G_{m,k}=
+ \begin{cases}
+ \displaystyle\sum_{i=0}^k\binom{2m-1}{i},&k<m,\\[5pt]
+ \displaystyle\sum_{i=0}^{2m-2-k}\binom{2m-1}{i}
+ +(k-m+1)\binom{2m}{k+1},&k\ge m,
+ \end{cases}
+\end{equation}
+for integers $m\ge1$ and $0\le k\le2m-1$. A sum with negative upper
+endpoint is zero. The upper branch in \cite{IJS2026} includes a final
+summand and subtracts $\binom{2m-1}{k}$; binomial symmetry cancels those
+two terms and yields \eqref{eq:definition}.
+That paper gives off-center upper bounds and a central asymptotic
+value, and asks in its Section 8, question 2, for a better approximation
+when $k$ is close to $m$. We solve the following precise version:
+two explicit terms and a uniform absolute error when $k-m=O(\sqrt m)$.
+
+Use the usual complementary error function
+$\erfc(t)=2\pi^{-1/2}\int_t^\infty\ee^{-u^2}\dd u$
+\cite[Eq.~7.2.2]{DLMF}. For real $x$ and $-1<\delta\le0$, set
+\begin{align}
+ H(x)&=\frac{\sqrt\pi}{2}\ee^{x^2}\erfc(|x|)
+      =\ee^{x^2}\int_{|x|}^{\infty}\ee^{-t^2}\dd t,
+       \qquad x_+=\max(x,0),\label{eq:H}\\
+ F_0(x)&=H(x)+2x_+,\qquad
+ F_1(x,\delta)=(2\delta+1)xH(x)+\delta+1-2x_+^2.\label{eq:F}
+\end{align}
+
+\begin{theorem}\label{thm:main}
+For every real $A>0$ there are a finite constant $C_A\ge0$ and an
+integer $M_A\ge1$ such that, for every integer $m\ge M_A$ and every
+real $|x|\le A$, the index $k=m+\left\lfloor x\sqrt m\right\rfloor$ is admissible and
+\begin{equation}\label{eq:main}
+ \left|E_{m,k}-\sqrt m\,F_0(x)-F_1(x,\delta_m(x))\right|
+ \le \frac{C_A}{\sqrt m},\qquad
+ \delta_m(x)=\left\lfloor x\sqrt m\right\rfloor-x\sqrt m.
+\end{equation}
+Explicit choices of $M_A$ and $C_A$ are given in
+\eqref{eq:KM} and \eqref{eq:finalconstants}, with $B=A+1$.
+The same constants cover $x=0$, all floor jumps, and $x$ depending on $m$.
+\end{theorem}
+
+The earlier unrestricted model of Bardenova, Insko, Johnson, and
+Sullivan \cite{BIJS2023} gives a fixed-driver-ratio limit for the
+right-lane proportion in Corollary 26 and poses the capacity-gap
+expectation separately in Open Problem 39.
+Hiveley and Zeilberger \cite{HZ2026} enumerate end states for multiple
+lanes in Theorem 1 and tabulate lane-length statistics in Section 6;
+their setting has different capacity and conditioning assumptions.
+The refinement here is the pair of coefficients in \eqref{eq:F}
+together with the uniform error in \eqref{eq:main}.
+We found no equivalent expansion in these inspected primary texts
+as of September 12, 2026; this comparison is not an exhaustive priority
+assessment. The asymptotic tools are classical. We give their needed
+inequalities explicitly, including the beta-integral normalization
+and trapezoidal estimate; see also \cite[Sections 5.12 and 3.5(i)]{DLMF}.
+
+\section{Local binomial estimates}
+
+Write $h=m^{-1/2}$, $d=k-m$, and $y=dh$. For indices in their supports,
+define
+\[
+ p_{m,j}=2^{-(2m-1)}\binom{2m-1}{m+j},
+ \qquad q_{m,j}=4^{-m}\binom{2m}{m+j},
+\]
+and let $S_{m,d}$ be the distribution function of
+$\operatorname{Bin}(2m-1,1/2)$ at $m+d$, extended by zero and one
+outside the support. Factorial cancellation gives
+\begin{equation}\label{eq:symmetry}
+ p_{m,j}=(1-j/m)q_{m,j},\qquad
+ q_{m,j}=q_{m,-j},\qquad p_{m,j}=p_{m,-j-1}.
+\end{equation}
+Thus $S_{m,-1}=1/2$ and
+\begin{equation}\label{eq:signedcdf}
+ S_{m,d}=
+ \begin{cases}
+ \displaystyle\frac12+\sum_{j=0}^{d}p_{m,j},&d\ge0,\\[4pt]
+ \displaystyle\frac12-\sum_{j=d+1}^{-1}p_{m,j},&d\le-1.
+ \end{cases}
+\end{equation}
+Reflection gives $S_{m,-d-2}=1-S_{m,d}$, with the endpoint $-d-2$
+excluding the reflected atom. Consequently \eqref{eq:definition} is
+exactly
+\begin{equation}\label{eq:branches}
+ E_{m,m+d}=
+ \begin{cases}
+ S_{m,d}/p_{m,d},&d<0,\\[2pt]
+ (1-S_{m,d})/p_{m,d}+2m(d+1)/(m+d+1),&d\ge0.
+ \end{cases}
+\end{equation}
+The extra term follows from
+$\binom{2m}{m+d+1}/\binom{2m-1}{m+d}=2m/(m+d+1)$.
+
+Fix $B\ge1$ for the remainder of this section, and put
+\begin{equation}\label{eq:KM}
+ K=\frac14+\frac{5B^2}{6}+\frac{B^4}{3},\qquad
+ M=\left\lceil\max\{4,4B^2,K\}\right\rceil,\qquad
+ L=\frac32\ee K.
+\end{equation}
+Also write $f(t)=c\ee^{-t^2}$, where $c=\pi^{-1/2}$.
+
+\begin{lemma}\label{lem:local}
+If $m\ge M$, $j$ is an integer with $|j|\le B\sqrt m$, and $t=jh$,
+then
+\begin{equation}\label{eq:local}
+ p_{m,j}=hf(t)(1-th+\rho_{m,j}),\qquad
+ |\rho_{m,j}|\le Lh^2,\qquad
+ \frac{p_{m,j}}{hf(t)}\ge\frac1{2\ee}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $I_n=\int_0^{\pi/2}\sin^n u\dd u$, integration by parts gives
+$I_n=(n-1)I_{n-2}/n$, with $I_0=\pi/2$ and $I_1=1$. Hence
+\[
+ I_{2m}=\frac\pi2q_{m,0},\quad
+ I_{2m+1}=\frac1{(2m+1)q_{m,0}},\quad
+ I_{2m-1}=\frac1{2m q_{m,0}}.
+\]
+The inequalities $I_{2m+1}\le I_{2m}\le I_{2m-1}$ imply
+\begin{equation}\label{eq:wallis}
+ \frac1{\sqrt{\pi(m+1/2)}}\le q_{m,0}\le\frac1{\sqrt{\pi m}},
+ \qquad
+ \left|\log\frac{q_{m,0}}{hf(0)}\right|\le\frac1{4m}.
+\end{equation}
+The last step uses $\log(1+v)\le v$ for $v\ge0$.
+
+For $r=|j|\le m/2$, use the exact product
+\[
+ R_{m,r}=\frac{q_{m,r}}{q_{m,0}}
+ =\prod_{\ell=1}^{r}\frac{1-(\ell-1)/m}{1+\ell/m}.
+\]
+For $|u|\le1/2$ the logarithmic series gives
+$|\log(1+u)-u+u^2/2|\le 2|u|^3/3$. Applying it to every factor gives
+\begin{equation}\label{eq:logproduct}
+ \left|\log R_{m,r}+\frac{r^2}{m}-\frac{r^2}{2m^2}\right|
+ \le \frac{r^2(r^2+1)}{3m^3}.
+\end{equation}
+Here the linear sum is $-r^2/m$, the quadratic sum is $r^2/(2m^2)$,
+and $\sum_{\ell=1}^r((\ell-1)^3+\ell^3)=r^2(r^2+1)/2$.
+Since $r\le B\sqrt m$, equations \eqref{eq:wallis} and
+\eqref{eq:logproduct} imply
+\[
+ q_{m,j}=hf(t)\ee^{\xi_{m,j}},\qquad
+ |\xi_{m,j}|\le Kh^2\le1.
+\]
+Indeed, the noncentral logarithmic error is at most
+$(5B^2/6+B^4/3)/m$.
+Now $|th|=|j|/m\le1/2$ and $|\ee^\xi-1|\le\ee|\xi|$.
+Use \eqref{eq:symmetry} with
+$\rho_{m,j}=(1-th)(\ee^{\xi_{m,j}}-1)$ to obtain both assertions
+in \eqref{eq:local}.
+\end{proof}
+
+The symmetry point $S_{m,-1}=1/2$ lets us estimate the distribution
+function using only a finite interval of central masses.
+Define
+\begin{equation}\label{eq:D}
+ D=c\left[(B+1)L+\frac{B(2+4B^2)}{12}
+                   +\frac B2+\frac{B(6B+4B^3)}{12}\right],
+ \qquad P(y)=\frac12+\int_0^y f(t)\dd t.
+\end{equation}
+
+\begin{lemma}\label{lem:cdf}
+For $m\ge M$ and integer $|d|\le B\sqrt m$,
+\begin{equation}\label{eq:cdf}
+ S_{m,d}=P(y)+hf(y)+\varepsilon_{m,d},
+ \qquad |\varepsilon_{m,d}|\le Dh^2,\qquad y=dh.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $g\in C^2[-B,B]$, use the signed sum
+\[
+ \mathcal T_d(g)=
+ \begin{cases}
+ \displaystyle h\sum_{j=0}^d g(jh),&d\ge0,\\[3pt]
+ \displaystyle-h\sum_{j=d+1}^{-1}g(jh),&d\le-1.
+ \end{cases}
+\]
+The trapezoidal estimate, with its orientation retained, is
+\begin{equation}\label{eq:trapezoid}
+ \left|\mathcal T_d(g)-\int_0^y g(t)\dd t
+             -\frac h2(g(0)+g(y))\right|
+ \le\frac{|y|h^2}{12}\sup_{|t|\le B}|g''(t)|.
+\end{equation}
+On one interval, integrating the linear-interpolation error gives
+the bound $h^3\sup|g''|/12$, the usual composite trapezoidal remainder
+\cite[Eqs.~3.5.2--3.5.3]{DLMF}.
+For $d\ge1$, add endpoint half-weights to the trapezoidal sum on
+$[0,dh]$. For $d\le-1$, negate the sum on $[dh,0]$ and add the same
+half-weights. For $d=0$ the formula is exact. In particular,
+\eqref{eq:trapezoid} covers the empty sum at $d=-1$.
+
+Set $g(t)=tf(t)$. Substituting \eqref{eq:local} into
+\eqref{eq:signedcdf} yields
+\[
+ S_{m,d}=\frac12+\mathcal T_d(f)-h\mathcal T_d(g)+\eta,
+ \qquad |\eta|\le c(B+1)Lh^2.
+\]
+There are at most $B/h+1$ terms, each with absolute error at most
+$cLh^3$. On $[-B,B]$ we have
+\[
+ |f''|\le c(2+4B^2),\qquad |g(y)|\le cB,\qquad
+ g(0)=0,\qquad |g''|\le c(6B+4B^3).
+\]
+Apply \eqref{eq:trapezoid} to $f$ and $g$. Since $f'=-2tf$,
+\[
+ \frac h2(f(0)+f(y))-h\int_0^y tf(t)\dd t=hf(y).
+\]
+The remaining endpoint term is at most $cBh^2/2$. The quadrature
+errors are at most $cB(2+4B^2)h^2/12$ and
+$cB(6B+4B^3)h^3/12$. As $h\le1$, their sum with the local errors
+is bounded by $Dh^2$, proving \eqref{eq:cdf}.
+\end{proof}
+
+\section{Division and the lattice correction}
+
+Continue with $m\ge M$ and $|d|\le B\sqrt m$. Put
+\begin{equation}\label{eq:Q}
+ \begin{gathered}
+ a=c\ee^{-B^2},\qquad J=2\ee(B^2+3L/2),\\
+ Q=\frac{J+2\ee D}{a}+B+J,\qquad
+ T=4B+2+2(B+1)^3.
+ \end{gathered}
+\end{equation}
+By Lemma~\ref{lem:local},
+$z=p_{m,d}/(hf(y))=1-yh+\rho$ is at least $1/(2\ee)$.
+The exact reciprocal identity gives
+\begin{equation}\label{eq:reciprocal}
+ z^{-1}=1+yh+\theta,\qquad
+ \theta=\frac{y^2h^2-\rho(1+yh)}{z},\qquad
+ |\theta|\le Jh^2.
+\end{equation}
+The Gaussian integral shows $0\le P(y)\le1$, and $f(y)\ge a$.
+Thus \eqref{eq:cdf} and \eqref{eq:reciprocal} imply
+\begin{align}
+ \left|\frac{S_{m,d}}{p_{m,d}}
+ -\left(\frac{P(y)}{hf(y)}+\frac{yP(y)}{f(y)}+1\right)\right|
+ &\le Qh,\label{eq:ratio1}\\
+ \left|\frac{1-S_{m,d}}{p_{m,d}}
+ -\left(\frac{1-P(y)}{hf(y)}+\frac{y(1-P(y))}{f(y)}-1\right)\right|
+ &\le Qh.\label{eq:ratio2}
+\end{align}
+For \eqref{eq:ratio1}, the three errors are bounded by
+$(J/a)h$ from $P\theta/(hf)$, $Bh+Jh^2$ from $z^{-1}-1$, and
+$(2\ee D/a)h$ from $\varepsilon/(hfz)$. The same bounds prove
+\eqref{eq:ratio2} with the sign of the $hf$ correction reversed.
+This accounts explicitly for the error from division by a mass of
+order $h$.
+
+If $y\ge0$, exact polynomial division, with $v=y+h$, gives
+\begin{equation}\label{eq:rational}
+ \begin{split}
+ \frac{2m(d+1)}{m+d+1}
+ &=\frac{2v}{h(1+hv)}\\
+ &=\frac{2y}{h}+2-2y^2
+       -4yh-2h^2+\frac{2h(y+h)^3}{1+h(y+h)}.
+ \end{split}
+\end{equation}
+The last three terms have absolute value at most $Th$.
+For $y<0$, $P(y)/f(y)=H(y)$; for $y\ge0$,
+$(1-P(y))/f(y)=H(y)$. Therefore \eqref{eq:branches},
+\eqref{eq:ratio1}--\eqref{eq:rational} yield
+\begin{equation}\label{eq:grid}
+ \left|E_{m,m+d}-h^{-1}F_0(y)-V(y)\right|\le(Q+T)h,
+ \qquad V(y)=yH(y)+1-2y_+^2.
+\end{equation}
+The lower branch includes $d=-1$ and the upper branch includes $d=0$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Write $b=\sqrt\pi/2$. The integral
+$H(x)=\int_0^\infty\ee^{-u^2-2|x|u}\dd u$ gives $0<H(x)\le b$.
+For $x<0$ we have $H'=2xH+1$, and for $x>0$ we have
+$H'=2xH-1$. Although $H$ has a corner at zero, $F_0=H+2x_+$
+is twice continuously differentiable, with
+\begin{equation}\label{eq:smooth}
+ F_0'(x)=2xH(x)+1\quad(x\in\mathbb R),\qquad F_0''(0)=2b.
+\end{equation}
+Indeed, the one-sided first derivatives agree, and for $x\ne0$,
+$F_0''=2H+2xH'$ tends to $2b$ at zero. Also $V$ is continuously
+differentiable, with $V'(0)=b$ and $V'=H+xH'-4x_+$ away from zero.
+Consequently, on $[-B,B]$,
+\begin{equation}\label{eq:UW}
+ |F_0''|\le U=(2+4B^2)b+2B,\qquad
+ |V'|\le W=(1+2B^2)b+5B.
+\end{equation}
+
+Given $A>0$, choose
+\begin{equation}\label{eq:finalconstants}
+ B=A+1,\qquad M_A=M,\qquad C_A=Q+T+U/2+W,
+\end{equation}
+where \eqref{eq:KM}, \eqref{eq:D}, \eqref{eq:Q}, and \eqref{eq:UW}
+define every constant on the right.
+For $m\ge M_A$ and $|x|\le A$, let
+$d=\left\lfloor x/h\right\rfloor$, $\delta=d-x/h$, and $y=dh=x+\delta h$.
+Then $-1<\delta\le0$ and $|y|\le B$. Moreover,
+$|d|\le B\sqrt m\le m/2$. Since $m\ge4$, this implies
+$0\le m+d\le2m-1$, so the index is admissible.
+
+Taylor's theorem on the interval joining $x$ and $y$ gives
+\[
+ \left|h^{-1}F_0(y)-h^{-1}F_0(x)-\delta F_0'(x)\right|\le Uh/2,
+ \qquad |V(y)-V(x)|\le Wh.
+\]
+Finally, \eqref{eq:F} and \eqref{eq:smooth} give
+$V(x)+\delta F_0'(x)=F_1(x,\delta)$. Combining these inequalities
+with \eqref{eq:grid} proves \eqref{eq:main} with the constants in
+\eqref{eq:finalconstants}. They depend only on $A$, so the proof
+does not restrict the way $x$ varies with $m$ or approaches a floor jump.
+\end{proof}
+
+\section{The central cells and finite verification}
+
+The exact central value was already obtained in
+\cite[Corollary 7.2]{IJS2026}. From \eqref{eq:branches} one also has
+\begin{equation}\label{eq:central}
+ E_{m,m-1}=\frac{1}{2q_{m,0}},\qquad
+ E_{m,m}-E_{m,m-1}=\frac{m-1}{m+1}.
+\end{equation}
+At $x=0$, the coefficients are $F_0(0)=\sqrt\pi/2$ and $F_1(0,0)=1$.
+In the adjacent negative floor cell, the offset tends to $-1$ as
+$x\uparrow0$. This accounts for the distinct constant terms of the two
+central cells. More generally, extending \eqref{eq:F} continuously in
+$\delta$ to $-1$ gives
+\[
+ F_1(x,0)-F_1(x,-1)=F_0'(x),
+\]
+the reset in the lattice correction.
+
+The accompanying program \texttt{supplement/verify.py} checks finite
+identities using integers and rational numbers, then performs numerical
+consistency checks using mpmath 1.3.0 \cite{mpmath}.
+It was written separately from the initial computational checker and
+reconstructs the expectations directly from \eqref{eq:definition}.
+For $m=1,\ldots,9$ it additionally simulates every binary arrival
+sequence using the capacity-blocking rule, and compares the accumulated
+gap in each red-count class with $G_{m,k}$. These are $174{,}762$
+sequences in $90$ classes. It checks all $4{,}160$ branch identities
+for $m=1,\ldots,64$, all $64$ central jumps in that range, and $567$
+signed quadrature bounds for monomials of degrees $0,\ldots,6$, meshes
+$h=2/7,3/11,5/13$, and $d=-13,\ldots,13$.
+Reconstruction with exact predicates and a separate checking program
+is also used in the certificate architecture of Zeng, Liu, Ratnavelu,
+and Ong \cite{Zeng2026Certificates}, Section 6; the connection here is
+the verification procedure.
+
+For the numerical part, let
+$A\in\{1/16,3/4,2,4\}$ and take the values of
+$m\in\{M_A,M_A+1,3M_A,64,311,1024\}$ satisfying $m\ge M_A$.
+Every integer cell intersecting $[-A,A]$ is visited at the phases
+\[
+ \theta\in
+ \left\{0,10^{-30},\frac1{m^2+1},\frac12,
+                   1-\frac1{m^2+1},1-10^{-30}\right\},
+ \qquad x=\frac{d+\theta}{\sqrt m},
+\]
+retaining only points in the window. Floor indices and membership are
+checked rationally before evaluation. At $80$ decimal digits, the
+$1{,}939$ local-mass/CDF comparisons and $7{,}735$ full-expansion
+comparisons all satisfy the displayed error bounds.
+The special-function computations use floating-point arithmetic,
+without interval certification. These finite checks do not exhaust
+the real floor cells and do not prove Theorem~\ref{thm:main}.
+Its proof is the analytic argument above.
+
+The constants in \eqref{eq:finalconstants} are deliberately conservative;
+they establish uniformity rather than a sharp numerical error estimate.
+No optimal remainder or theorem for windows growing with $m$ is asserted.
+
+\subsection*{Code and assistance disclosure}
+The supplementary program and its recorded output permit reproduction
+of the finite checks; its README gives the command and environment.
+OpenAI Codex assisted with literature searches, the derivation and
+checking of the analytic argument, verification code, and manuscript
+preparation. A separate model context reviewed the mathematical dossier;
+that review is not outside peer review or statistically independent
+evidence. No proof assistant was used. Neither language-model output
+nor the numerical checks replace the written proof.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

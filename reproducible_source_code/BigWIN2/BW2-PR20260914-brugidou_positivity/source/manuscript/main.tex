@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Positive initial coefficients and a positivity region for Brugidou's hook polynomials},
+  pdfauthor={Xiaojian Zeng},pdfsubject={Partial coefficient positivity for hook partitions}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb Z_{\geq0}}
+\newcommand{\coeff}[2]{[q^{#1}]#2}
+\title{Positive initial coefficients and a positivity region\newline
+for Brugidou's hook polynomials}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Brugidou associates an integer polynomial $J_\lambda(q)$ to each monomial
+symmetric function under the specialization $e_j\mapsto q^{\binom j2}/j!$.
+For hooks, write $K_{a,b}=J_{(a,1^b)}/b!$, where $a\geq2$ and $b\geq0$,
+and put $d=\binom{a-1}{2}+(a-1)b$. We prove that $K_{a,b}\in\Z[q]$ and
+that its coefficients in degrees $0$ through $\min(d,2b+3)$ are strictly
+positive. All its coefficients are strictly positive if
+$b\geq\max\{0,\lceil(\binom{a-2}{2}-4)/2\rceil\}$.
+Together with the known row cases, this includes every hook with
+$2\leq a\leq6$. The proof combines two coefficient-prefix identities with
+a positive excess in the established row recurrence. Brugidou's
+all-partition positivity conjecture remains unresolved by this result.
+\end{abstract}
+
+\section{Statement and context}
+
+Let $\Lambda_{\Q}=\Q[e_1,e_2,\ldots]$ be the ring of symmetric functions,
+where $e_j$ is the elementary symmetric function and $e_0=1$. For an
+indeterminate $q$, define the unital specialization
+\[
+ \phi_q:\Lambda_{\Q}\longrightarrow\Q[q],\qquad
+ \phi_q(e_j)=\frac{q^{\binom j2}}{j!}.
+\]
+For a nonempty partition $\lambda=(\lambda_1\geq\cdots\geq\lambda_r)$ of
+$n$, put $\nu(\lambda)=\sum_{i=1}^r(i-1)\lambda_i$ and
+$a_j(\lambda)=\#\{i:\lambda_i=j\}$. The monomial symmetric function
+$m_\lambda$ is the sum of the distinct monomials with nonzero exponent
+multiset $\lambda$. Brugidou's normalization is
+\begin{equation}\label{eq:normalization}
+ \phi_q(m_\lambda)=
+ \frac{(1-q)^{n-r}q^{\nu(\lambda)}}{(n-1)!\prod_{j\geq1}a_j(\lambda)!}
+ J_\lambda(q).
+\end{equation}
+The polynomial $J_\lambda$ belongs to $\Z[q]$, has nonzero constant
+coefficient, and has degree
+$\binom{n-1}{2}+r-1-\nu(\lambda)$
+\cite[Corollary~3.5]{BrugidouMonomial}. All cancellations in
+\eqref{eq:normalization} are identities in $\Q(q)$, not pointwise division
+at $q=0$ or $q=1$.
+
+Brugidou conjectures strict positivity at every degree from zero to
+$\deg J_\lambda$ for every nonempty partition
+\cite[Conjecture~4.1]{BrugidouMonomial}. We obtain the following restricted
+result. Throughout, $J_m$ abbreviates $J_{(m)}$.
+
+\begin{theorem}\label{thm:main}
+For integers $a\geq2$ and $b\geq0$, define
+\begin{align*}
+ K_{a,b}&=\frac{J_{(a,1^b)}}{b!},&
+ d_{a,b}&=\binom{a-1}{2}+(a-1)b,\\
+ D_a&=\binom{a-2}{2},&
+ F(a)&=\max\left\{0,\left\lceil\frac{D_a-4}{2}\right\rceil\right\}.
+\end{align*}
+Then $K_{a,b}\in\Z[q]$, and
+\begin{equation}\label{eq:prefix-statement}
+ \coeff{k}{K_{a,b}}>0
+ \quad\text{for }0\leq k\leq\min(d_{a,b},2b+3).
+\end{equation}
+If $b\geq F(a)$, then $\coeff{k}{K_{a,b}}>0$ for every
+$0\leq k\leq d_{a,b}$. Together with the established positive row
+polynomials, this proves positivity for every hook with $2\leq a\leq6$.
+\end{theorem}
+
+The positive aggregate polynomials $J_n^{(r)}$ and their recurrence were
+established in \cite[Theorem~6.3]{BrugidouAnalog}. Their two-variable
+Tutte extension appears in \cite[Theorem~1.1]{BrugidouTutte}. These
+aggregate statements concern sums over partitions of fixed size and
+length, so positivity does not directly isolate an individual hook.
+For individual non-column partitions, Brugidou proves a positive terminal block of
+$n-1$ coefficients and reports computations through $n=43$
+\cite[Corollary~5.2 and Section~4]{BrugidouMonomial}.
+Our contribution is the initial range \eqref{eq:prefix-statement} and its
+combination with a tail induction to obtain the region $b\geq F(a)$.
+The elementary hook recurrence and the known row and column cases serve
+as inputs. No equivalent hook statement was found in the primary sources
+inspected for this note; this is a bounded comparison, not a priority claim.
+
+Local coefficient data also suffice for Zeng's reconstruction of proper
+trees with a multiplicity-isolated weighted core: the proof uses the
+leading star-basis partition and its adjacent coefficient layer
+\cite[Theorem~1.1 and Lemma~2.2]{ZengMultiplicity}. Our use of a coefficient
+window concerns a different symmetric-function invariant and combines
+initial positivity with a recursive tail identity.
+
+\section{The hook recurrence and a row excess}
+
+For a hook, \eqref{eq:normalization} reads
+\begin{equation}\label{eq:hook-normalization}
+ \phi_q(m_{(a,1^b)})=
+ \frac{(1-q)^{a-1}q^{\binom{b+1}{2}}}{(a+b-1)!}K_{a,b}.
+\end{equation}
+It also gives $\deg K_{a,b}=d_{a,b}$. If $a\geq3$, the power sum
+$p_{a-1}=\sum_i x_i^{a-1}$ satisfies
+\[
+ p_{a-1}e_{b+1}=m_{(a,1^b)}+m_{(a-1,1^{b+1})}.
+\]
+Indeed, its distinguished variable either occurs among the elementary
+variables or does not; since $a-1\geq2$, each resulting monomial occurs
+once. Specialization using \eqref{eq:hook-normalization} gives
+\begin{equation}\label{eq:hook}
+ (1-q)K_{a,b}=\binom{a+b-1}{a-2}J_{a-1}-q^{b+1}K_{a-1,b+1}.
+\end{equation}
+The base case from \cite[Equation~(3.22)]{BrugidouMonomial} is
+\begin{equation}\label{eq:base2}
+ K_{2,b}=1+q+\cdots+q^b.
+\end{equation}
+Since $K_{a,b}$ is already known to be a rational polynomial, induction on
+$a$ in \eqref{eq:hook}, simultaneously for all $b\geq0$, proves its
+integrality: division by $1-q$ takes integral coefficient prefixes.
+This proves the divisibility by $b!$ required in the theorem, without
+assuming it in advance. Constants in the same recurrence give
+\begin{equation}\label{eq:constant}
+ K_{a,b}(0)=\frac{(a+b-1)!}{(b+1)!}>0.
+\end{equation}
+For $a=2$, this agrees with \eqref{eq:base2}; for $a\geq3$ it uses
+$J_{a-1}(0)=(a-2)!$. The next base case follows directly:
+\begin{equation}\label{eq:base3}
+ K_{3,b}=(b+2)\sum_{k=0}^{b}q^k
+       +\sum_{j=1}^{b+1}(b+2-j)q^{b+j}.
+\end{equation}
+Thus all coefficients are positive for $a=2,3$.
+
+To state the needed row estimate, recall the aggregate notation. For
+$n\geq r\geq1$, let $p_n^{(r)}=\sum_{|\lambda|=n,\,\ell(\lambda)=r}m_\lambda$.
+The polynomials defined by
+\[
+ \phi_q(p_n^{(r)})=
+ \frac{(1-q)^{n-r}q^{\binom r2}}{r!(n-r)!}J_n^{(r)}(q)
+\]
+have positive integer coefficients and constant term $(n-r)!$, with
+$J_n^{(1)}=J_n$ \cite[Theorem~6.3(i)]{BrugidouAnalog}.
+At $r=1$, their established recurrence is
+\begin{equation}\label{eq:row}
+ J_m=\sum_{j=1}^{m-1}\binom{m-1}{j}q^{\binom j2}J_{m-1}^{(j)}
+ \qquad(m\geq2)
+\end{equation}
+\cite[Equation~(6.5)]{BrugidouAnalog}.
+
+\begin{lemma}\label{lem:excess}
+For $m\geq3$, let $R_m=J_m-(m-1)J_{m-1}$. Then
+\[
+ R_m\in\N[q],\qquad R_m(0)=0,\qquad
+ \coeff{1}{R_m}=\frac{(m-1)!}{2}.
+\]
+\end{lemma}
+\begin{proof}
+Subtract the $j=1$ summand in \eqref{eq:row}. Every remaining summand is
+nonnegative and has positive valuation. Only $j=2$ contributes to degree
+one, giving $\binom{m-1}{2}(m-3)!=(m-1)!/2$.
+\end{proof}
+
+\section{Positive prefixes and completion by tails}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Integrality was proved above, and \eqref{eq:base2}--\eqref{eq:base3} settle
+$a=2,3$. Fix $a\geq4$, $b\geq0$, and abbreviate
+\[
+ s=b+1,\qquad N=a+b-1,\qquad K=K_{a,b}.
+\]
+Set
+\begin{align*}
+ A&=\binom N{a-2}J_{a-1},& B&=K_{a-1,b+1},\\
+ P&=\binom N{a-3}J_{a-2},& C&=K_{a-2,b+2}.
+\end{align*}
+Two applications of \eqref{eq:hook} give
+\begin{equation}\label{eq:double}
+ (1-q)K=A-q^sB,\qquad (1-q)B=P-q^{s+1}C.
+\end{equation}
+Write $p_i=\coeff{i}{P}$ and extend every coefficient sequence by zero
+outside its support. The binomial identity
+\[
+ \binom N{a-2}(a-2)=(s+1)\binom N{a-3}
+\]
+and Lemma~\ref{lem:excess} imply that
+\begin{equation}\label{eq:delta}
+ \Delta:=A-(s+1)P=\binom N{a-2}R_{a-1}\in\N[q],\qquad
+ \Delta_1=\frac{s+1}{2}p_0>0,
+\end{equation}
+where $\Delta_i=\coeff{i}{\Delta}$.
+
+Put $c_k=\coeff{k}{K}$. For $0\leq k<s$, the first equation in
+\eqref{eq:double} gives $c_k=\sum_{i=0}^k\coeff{i}{A}>0$.
+For $k=s+t$, with $0\leq t\leq s$, the second equation gives
+\[
+ \sum_{j=0}^t\coeff{j}{B}=\sum_{i=0}^t(t-i+1)p_i.
+\]
+The shifted $C$ term has not yet appeared. Substituting this expression
+and $A=(s+1)P+\Delta$ into the prefix of the first equation yields
+\begin{equation}\label{eq:prefix}
+ c_{s+t}=\sum_{i=0}^{s+t}\Delta_i
+       +\sum_{i=0}^t(s-t+i)p_i
+       +(s+1)\sum_{i=t+1}^{s+t}p_i.
+\end{equation}
+Every summand is nonnegative. If $t<s$, the term $(s-t)p_0$ is positive.
+If $t=s$, the first sum contains $\Delta_1>0$. Thus $c_k>0$ through
+$k=2s$.
+
+At $k=2s+1$, the double prefix receives its first contribution from $C$,
+namely $C_0=K_{a-2,b+2}(0)>0$. The analogous identity is
+\begin{align}
+ c_{2s+1}
+ &=\sum_{i=0}^{2s+1}\Delta_i+\sum_{i=0}^{s+1}(i-1)p_i
+       +(s+1)\sum_{i=s+2}^{2s+1}p_i+C_0\notag\\
+ &\geq\Delta_1-p_0+C_0
+   =\frac{s-1}{2}p_0+C_0>0.\label{eq:endpoint}
+\end{align}
+Here $s\geq1$, so strictness also holds at $s=1$.
+For $a\geq4$, $d_{a,b}\geq3s\geq2s+1$; hence this endpoint lies in
+the polynomial's degree range. This proves
+\eqref{eq:prefix-statement}. In particular, the prefix argument has used
+no positivity assumption on $B$ or on the nonconstant coefficients of $C$.
+
+For full positivity, induct on $a$, simultaneously for $b\geq F(a)$.
+The function $F$ is nondecreasing, so $b+1\geq F(a-1)$ and the induction
+hypothesis makes every coefficient of $B$ strictly positive through its
+degree $L$. Let $D=\deg A=D_a$. Evaluating the polynomial identity
+\eqref{eq:double} at $q=1$ gives $A(1)=B(1)$. For $k\geq D$,
+\begin{equation}\label{eq:tail}
+ c_k=A(1)-\sum_{j=0}^{k-s}\coeff{j}{B}
+     =\sum_{j>k-s}\coeff{j}{B},
+\end{equation}
+where a prefix with negative upper limit is empty. The last sum is
+strictly positive for every $k\leq s+L-1=d_{a,b}$.
+Finally,
+\[
+ b\geq F(a)\quad\Longrightarrow\quad D_a-1\leq2b+3,
+\]
+so the positive prefix reaches every index below $D$ and the tail covers
+all remaining indices. This includes the boundary $D_a=2b+4$.
+
+The values $F(2),\ldots,F(6)$ are $0,0,0,0,1$.
+The known row case $K_{6,0}=J_6$ supplies the remaining value $b=0$ at
+$a=6$, proving the final assertion.
+\end{proof}
+
+\section{Examples, exact checks, and limits}
+
+The overlap in the subtraction of \eqref{eq:hook} is already visible at
+$(a,b)=(5,1)$. Here the coefficient of $q^2$ equals
+$10(6+6+3)-20=130$, and
+\begin{align*}
+ K_{5,1}={}&60+120q+130q^2+110q^3+80q^4+55q^5\\
+          &+35q^6+20q^7+10q^8+4q^9+q^{10}.
+\end{align*}
+Separating the supports in \eqref{eq:hook} would require
+$b+1\geq D_a$. Identities \eqref{eq:prefix}--\eqref{eq:endpoint} control
+the intervening overlap and give the smaller sufficient bound $F(a)$.
+For example, $F(14)=31$. The hook $(14,1^{31})$ has size $45$ and degree
+$481$; the theorem covers all degrees $0$ through $481$. The terminal
+block supplied by \cite[Corollary~5.2]{BrugidouMonomial} consists of
+degrees $438$ through $481$, and the example exceeds the reported
+size-$43$ computational range.
+
+Two implementations use exact integers and rational numbers. The first
+computes rows from connected labeled graph counts using
+$J_m=T_{K_m}(1,q)$ \cite[Equation~(1.2)]{BrugidouTutte}, then applies
+\eqref{eq:hook}. It checks 66 direct specializations through size 12 and
+177 selected hook cases with $2\leq a\leq16$, including 88 cases in the
+full positivity region. A separately implemented check obtains power sums
+from
+\begin{equation}\label{eq:log}
+ \sum_{m\geq1}\frac{(-1)^{m-1}}{m}\phi_q(p_m)t^m
+ =\log\left(\sum_{j\geq0}\frac{q^{\binom j2}}{j!}t^j\right).
+\end{equation}
+This follows by taking the formal logarithm of
+$\sum e_jt^j=\prod_i(1+x_it)$.
+It then uses the augmented-monomial recurrence of
+\cite[Theorem~1]{MercaAugmented}: for
+$\widetilde m_\lambda=(\prod_j a_j(\lambda)!)m_\lambda$,
+\[
+ \widetilde m_{(\lambda_1,\ldots,\lambda_r)}
+ =p_{\lambda_r}\widetilde m_{(\lambda_1,\ldots,\lambda_{r-1})}
+ -\sum_{i=1}^{r-1}
+ \widetilde m_{(\lambda_1,\ldots,\lambda_i+\lambda_r,\ldots,\lambda_{r-1})},
+\]
+with parts reordered when necessary. This computes all 120 hooks of
+sizes 2 through 16 directly from the defining specialization.
+Comparison with an unrolled form of \eqref{eq:hook}, divided from its
+leading term, also reproduces the 177 recorded cases and adds 28 cases
+with $17\leq a\leq20$ and
+$b\in\{0,1,2,5,F(a)-1,F(a),F(a)+1\}$.
+Across these 205 cases, it verifies 3,243 prefix identities and 37,827
+tail coefficient identities. These computations validate formulas on
+explicit finite domains; the proof above supplies the universal result.
+The two scripts and their exact parameter lists are retained in the
+accompanying computational dossier.
+
+The function $F$ is a sufficient bound, with no optimality assertion.
+For larger $a$, this note does not establish full positivity for general
+hooks with $0<b<F(a)$, or for general non-hook partitions. It proves no
+coefficient log-concavity statement. The original all-partition conjecture
+therefore remains unresolved here.
+
+\paragraph{Computational and AI assistance.}
+OpenAI Codex assisted with proof development, exact-checking code,
+literature inspection, and manuscript preparation. A separate model
+context reconstructed the argument and produced the second implementation.
+That pass was an additional automated check, not external peer review.
+The computations use Python integer arithmetic and \texttt{fractions.Fraction};
+no floating-point signs or proof-assistant certificate are used.
+
+
+\small
+\raggedright
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

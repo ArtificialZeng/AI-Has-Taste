@@ -1,0 +1,349 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Bfive}{\mathcal B_5(G)}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Stab}{\operatorname{Stab}}
+
+\title{All Minimum Bondage Sets of an Eighteen-Vertex Counterexample}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Yavari exhibited a connected cubic bipartite graph $G$ on eighteen
+vertices with domination number $6$ and bondage number $5$.  We classify all
+minimum bondage sets of this fixed graph.  Exactly $801$ of its
+$\binom{27}{5}=80{,}730$ five-edge subsets increase the domination number, and
+every resulting graph has domination number $7$.  The full automorphism group
+has order $6$ and partitions these sets into $140$ orbits: $127$ orbits have
+size $6$ and trivial setwise stabilizer, while $13$ have size $3$ and
+stabilizer order $2$.  A complete table of canonical representatives and
+stabilizers is given.  The classification is an exact finite computation and
+is replayed by a separately designed exhaustive verifier.
+\end{abstract}
+
+\section{The graph and the classification}
+
+A set $D$ dominates a finite simple graph $H$ when every vertex outside $D$
+has a neighbor in $D$; the minimum size of such a set is $\gamma(H)$.  The
+bondage number, introduced by Fink, Jacobson, Kinch, and Roberts
+\cite{FinkEtAl1990}, is the least number of edges whose deletion increases the
+domination number.
+
+Let $G$ have vertex set $\{0,1,\ldots,17\}$.  Index its edges in
+lexicographic order as follows:
+\begin{equation}
+\begin{aligned}
+e_0&=\{0,6\},&e_1&=\{0,10\},&e_2&=\{0,16\},&e_3&=\{1,8\},
+ &e_4&=\{1,11\},&e_5&=\{1,12\},\\
+e_6&=\{2,4\},&e_7&=\{2,5\},&e_8&=\{2,13\},&e_9&=\{3,4\},
+ &e_{10}&=\{3,5\},&e_{11}&=\{3,9\},\\
+e_{12}&=\{4,16\},&e_{13}&=\{5,11\},&e_{14}&=\{6,7\},
+ &e_{15}&=\{6,13\},&e_{16}&=\{7,8\},&e_{17}&=\{7,14\},\\
+e_{18}&=\{8,13\},&e_{19}&=\{9,10\},&e_{20}&=\{9,14\},
+ &e_{21}&=\{10,15\},&e_{22}&=\{11,15\},\\
+e_{23}&=\{12,15\},&e_{24}&=\{12,17\},&e_{25}&=\{14,17\},
+ &e_{26}&=\{16,17\}.
+\end{aligned}
+\tag{1}\label{eq:edges}
+\end{equation}
+This is precisely the graph constructed by Yavari \cite{Yavari2026}.  That
+work proves $\gamma(G)=6$ and
+$b(G)=5$, exhibits one five-edge deletion that raises the domination number to
+$7$, and certifies that every four-edge deletion leaves it equal to $6$.
+It does not enumerate all qualifying five-edge deletions or their automorphism
+orbits.  Our object is therefore the finite family
+\[
+ \Bfive=\left\{F\in\binom{E(G)}5:\gamma(G-F)>6\right\}.
+\]
+
+For canonical representatives, write each edge with its smaller endpoint
+first, sort the five edges lexicographically, and then choose the
+lexicographically least five-tuple in each automorphism orbit.  Stabilizers
+below are setwise stabilizers of the edge set.
+
+\begin{theorem}\label{thm:classification}
+The family $\Bfive$ consists of exactly $801$ labelled edge sets.  Every
+$F\in\Bfive$ satisfies $\gamma(G-F)=7$.  Moreover, $|\Aut(G)|=6$, and its
+action on $\Bfive$ has exactly the $140$ orbits in Table~\ref{tab:orbits}.
+There are $127$ orbits of size $6$ with stabilizer order $1$ and $13$ orbits
+of size $3$ with stabilizer order $2$.
+\end{theorem}
+
+To make the stabilizer column explicit, the six permutations $a_0,\ldots,a_5$
+are listed below in one-line notation: the entry in position $v$ is $a_i(v)$.
+\begin{align*}
+a_0={}&(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17),\\
+a_1={}&(9,13,11,12,15,1,3,4,2,17,14,8,6,5,16,7,10,0),\\
+a_2={}&(10,8,5,4,3,2,15,12,1,16,0,13,7,11,17,6,9,14),\\
+a_3={}&(14,2,1,15,12,11,7,6,13,10,9,5,4,8,0,3,17,16),\\
+a_4={}&(16,11,13,7,6,8,4,3,5,14,17,1,15,2,9,12,0,10),\\
+a_5={}&(17,5,8,6,7,13,12,15,11,0,16,2,3,1,10,4,14,9).
+\end{align*}
+Thus, for example, a table entry $\{a_0,a_4\}$ is the complete stabilizer,
+not merely a generating set.  Acting on every row by all six displayed
+permutations recovers every labelled member of $\Bfive$.
+
+\section{Exact exhaustive proof}
+
+For $D\subseteq V(G)$ and $x\notin D$, put
+\[
+ C(D,x)=\{xd\in E(G):d\in D\}.
+\]
+
+\begin{lemma}\label{lem:bundle}
+If $D$ dominates $G$ and $F\subseteq E(G)$, then $D$ dominates $G-F$ if and
+only if $C(D,x)\nsubseteq F$ for every $x\notin D$.
+\end{lemma}
+
+\begin{proof}
+Every member of $D$ remains dominated by itself.  A vertex $x\notin D$ is
+dominated after the deletion precisely when at least one edge from $x$ to
+$D$ remains, which is equivalent to $C(D,x)\nsubseteq F$.
+\end{proof}
+
+The first computation represents vertex and edge subsets by integer bitsets.
+It exhausts all vertex subsets through size $6$ and obtains the following
+numbers of dominating sets:
+\[
+\begin{array}{c|rrrrrrr}
+|D|&0&1&2&3&4&5&6\\ \hline
+\#D&0&0&0&0&0&0&297.
+\end{array}
+\]
+In particular $\gamma(G)=6$; for a direct upper-bound witness one may take
+$\{0,1,2,3,14,15\}$.
+
+For each of the $297$ six-vertex dominators, Lemma~\ref{lem:bundle} gives an
+exact test for survival under a prescribed deletion.  The program applies
+this test to all $\binom{27}{5}=80{,}730$ five-edge subsets and finds exactly
+$801$ for which no six-set survives.  Edge deletion cannot decrease a
+domination number.  Moreover, an exhaustive search through the $2{,}826$
+seven-vertex dominating sets of $G$ finds a seven-vertex dominator after each
+of the $801$ deletions.  Hence every qualifying deletion has domination
+number exactly $7$.
+
+The first program next exhausts all adjacency-preserving vertex bijections,
+obtaining exactly the six permutations displayed above.  It applies all six
+maps to the $801$ edge sets, selects the stated canonical representative of
+each orbit, and tests every group element for setwise stabilization.  This
+produces the $140$ rows in Table~\ref{tab:orbits}.  The orbit sizes give the
+independent partition count
+\[
+127\cdot6+13\cdot3=801,
+\]
+and orbit--stabilizer gives $6$ in every row.  This proves
+Theorem~\ref{thm:classification} subject only to the exhaustiveness of the
+finite loops just described.
+
+That exhaustiveness was replayed by a second standard-library implementation.
+Instead of Lemma~\ref{lem:bundle}, it rebuilds the closed neighborhoods of
+each deleted graph and directly unions them for the $297$ candidate six-sets.
+It independently recovers the same $801$ edge sets and finds a size-seven
+witness for every one.  Instead of adjacency backtracking, it computes the
+all-pairs distance matrix and exhausts its bijective isometries; distance-one
+preservation is equivalent to adjacency preservation.  It recovers the same
+six permutations and directly checks every representative, orbit size, and
+stabilizer in the certificate.  The supplementary machine-readable file
+\texttt{bondage5\_classification.json} contains all $801$ labelled edge-index
+sets and one seven-vertex witness for every canonical orbit, while the two
+complete programs reproduce and independently replay it.
+
+Exact canonical enumeration together with a short independent verifier has
+also been used in a recent finite graph computation of a different kind
+\cite{Zeng2026Whiskered}.  The comparison here is methodological only: neither
+that result nor the present one implies a structural theorem beyond its
+explicit finite scope.
+
+\section{Complete orbit table}
+
+The edge indices in the following table refer to \eqref{eq:edges}.  Since
+$\gamma(G-F)=7$ in every row, that column is intentionally repetitive: it
+records the requested exact value for each orbit.  The stabilizer notation is
+resolved completely by the one-line permutations above.
+
+% The generated table is inlined so the canonical source is self-contained.
+\begin{longtable}{@{}r l c c l@{}}
+\caption{All canonical orbits.  The second column lists edge indices from (1); $s$ is orbit size.\label{tab:orbits}}\\
+\toprule
+No. & canonical edge-index set & $\gamma(G-F)$ & $s$ & $\operatorname{Stab}(F)$\\
+\midrule
+\endfirsthead
+\toprule
+No. & canonical edge-index set & $\gamma(G-F)$ & $s$ & $\operatorname{Stab}(F)$\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1 & $0,1,2,3,4$ & 7 & 6 & $\{a_{0}\}$\\
+2 & $0,1,2,4,8$ & 7 & 6 & $\{a_{0}\}$\\
+3 & $0,1,2,4,9$ & 7 & 6 & $\{a_{0}\}$\\
+4 & $0,1,2,4,10$ & 7 & 6 & $\{a_{0}\}$\\
+5 & $0,1,2,4,11$ & 7 & 6 & $\{a_{0}\}$\\
+6 & $0,1,2,4,15$ & 7 & 6 & $\{a_{0}\}$\\
+7 & $0,1,2,4,16$ & 7 & 6 & $\{a_{0}\}$\\
+8 & $0,1,2,4,21$ & 7 & 6 & $\{a_{0}\}$\\
+9 & $0,1,2,4,22$ & 7 & 6 & $\{a_{0}\}$\\
+10 & $0,1,2,4,25$ & 7 & 6 & $\{a_{0}\}$\\
+11 & $0,1,2,4,26$ & 7 & 6 & $\{a_{0}\}$\\
+12 & $0,1,2,6,8$ & 7 & 6 & $\{a_{0}\}$\\
+13 & $0,1,2,6,9$ & 7 & 6 & $\{a_{0}\}$\\
+14 & $0,1,2,6,15$ & 7 & 6 & $\{a_{0}\}$\\
+15 & $0,1,2,6,21$ & 7 & 6 & $\{a_{0}\}$\\
+16 & $0,1,2,6,25$ & 7 & 6 & $\{a_{0}\}$\\
+17 & $0,1,2,8,9$ & 7 & 6 & $\{a_{0}\}$\\
+18 & $0,1,2,8,12$ & 7 & 6 & $\{a_{0}\}$\\
+19 & $0,1,2,8,13$ & 7 & 6 & $\{a_{0}\}$\\
+20 & $0,1,2,8,15$ & 7 & 6 & $\{a_{0}\}$\\
+21 & $0,1,2,8,17$ & 7 & 6 & $\{a_{0}\}$\\
+22 & $0,1,2,8,18$ & 7 & 6 & $\{a_{0}\}$\\
+23 & $0,1,2,8,20$ & 7 & 6 & $\{a_{0}\}$\\
+24 & $0,1,2,8,21$ & 7 & 6 & $\{a_{0}\}$\\
+25 & $0,1,2,8,23$ & 7 & 6 & $\{a_{0}\}$\\
+26 & $0,1,2,8,25$ & 7 & 6 & $\{a_{0}\}$\\
+27 & $0,1,2,9,11$ & 7 & 6 & $\{a_{0}\}$\\
+28 & $0,1,2,9,14$ & 7 & 6 & $\{a_{0}\}$\\
+29 & $0,1,2,9,16$ & 7 & 6 & $\{a_{0}\}$\\
+30 & $0,1,2,9,19$ & 7 & 6 & $\{a_{0}\}$\\
+31 & $0,1,2,9,22$ & 7 & 6 & $\{a_{0}\}$\\
+32 & $0,1,2,9,24$ & 7 & 6 & $\{a_{0}\}$\\
+33 & $0,1,2,9,26$ & 7 & 6 & $\{a_{0}\}$\\
+34 & $0,1,2,11,12$ & 7 & 6 & $\{a_{0}\}$\\
+35 & $0,1,2,11,13$ & 7 & 6 & $\{a_{0}\}$\\
+36 & $0,1,2,11,15$ & 7 & 6 & $\{a_{0}\}$\\
+37 & $0,1,2,11,17$ & 7 & 6 & $\{a_{0}\}$\\
+38 & $0,1,2,11,18$ & 7 & 6 & $\{a_{0}\}$\\
+39 & $0,1,2,11,20$ & 7 & 6 & $\{a_{0}\}$\\
+40 & $0,1,2,11,21$ & 7 & 6 & $\{a_{0}\}$\\
+41 & $0,1,2,11,23$ & 7 & 6 & $\{a_{0}\}$\\
+42 & $0,1,2,11,25$ & 7 & 6 & $\{a_{0}\}$\\
+43 & $0,1,2,12,16$ & 7 & 6 & $\{a_{0}\}$\\
+44 & $0,1,2,12,22$ & 7 & 6 & $\{a_{0}\}$\\
+45 & $0,1,2,12,26$ & 7 & 3 & $\{a_{0},a_{4}\}$\\
+46 & $0,1,2,13,16$ & 7 & 6 & $\{a_{0}\}$\\
+47 & $0,1,2,13,22$ & 7 & 6 & $\{a_{0}\}$\\
+48 & $0,1,2,13,26$ & 7 & 6 & $\{a_{0}\}$\\
+49 & $0,1,2,14,15$ & 7 & 6 & $\{a_{0}\}$\\
+50 & $0,1,2,14,21$ & 7 & 6 & $\{a_{0}\}$\\
+51 & $0,1,2,14,25$ & 7 & 6 & $\{a_{0}\}$\\
+52 & $0,1,2,15,16$ & 7 & 6 & $\{a_{0}\}$\\
+53 & $0,1,2,15,19$ & 7 & 6 & $\{a_{0}\}$\\
+54 & $0,1,2,15,22$ & 7 & 6 & $\{a_{0}\}$\\
+55 & $0,1,2,15,24$ & 7 & 6 & $\{a_{0}\}$\\
+56 & $0,1,2,15,26$ & 7 & 6 & $\{a_{0}\}$\\
+57 & $0,1,2,16,17$ & 7 & 6 & $\{a_{0}\}$\\
+58 & $0,1,2,16,18$ & 7 & 6 & $\{a_{0}\}$\\
+59 & $0,1,2,16,20$ & 7 & 6 & $\{a_{0}\}$\\
+60 & $0,1,2,16,21$ & 7 & 6 & $\{a_{0}\}$\\
+61 & $0,1,2,16,23$ & 7 & 6 & $\{a_{0}\}$\\
+62 & $0,1,2,16,25$ & 7 & 6 & $\{a_{0}\}$\\
+63 & $0,1,2,17,22$ & 7 & 6 & $\{a_{0}\}$\\
+64 & $0,1,2,17,26$ & 7 & 6 & $\{a_{0}\}$\\
+65 & $0,1,2,18,22$ & 7 & 6 & $\{a_{0}\}$\\
+66 & $0,1,2,18,26$ & 7 & 6 & $\{a_{0}\}$\\
+67 & $0,1,2,19,21$ & 7 & 3 & $\{a_{0},a_{2}\}$\\
+68 & $0,1,2,19,25$ & 7 & 6 & $\{a_{0}\}$\\
+69 & $0,1,2,20,22$ & 7 & 6 & $\{a_{0}\}$\\
+70 & $0,1,2,20,26$ & 7 & 6 & $\{a_{0}\}$\\
+71 & $0,1,2,21,22$ & 7 & 6 & $\{a_{0}\}$\\
+72 & $0,1,2,21,24$ & 7 & 6 & $\{a_{0}\}$\\
+73 & $0,1,2,21,26$ & 7 & 6 & $\{a_{0}\}$\\
+74 & $0,1,2,22,23$ & 7 & 6 & $\{a_{0}\}$\\
+75 & $0,1,2,22,25$ & 7 & 6 & $\{a_{0}\}$\\
+76 & $0,1,2,23,24$ & 7 & 6 & $\{a_{0}\}$\\
+77 & $0,1,2,23,26$ & 7 & 6 & $\{a_{0}\}$\\
+78 & $0,1,2,24,25$ & 7 & 6 & $\{a_{0}\}$\\
+79 & $0,1,2,25,26$ & 7 & 6 & $\{a_{0}\}$\\
+80 & $0,1,6,9,12$ & 7 & 6 & $\{a_{0}\}$\\
+81 & $0,1,7,14,15$ & 7 & 6 & $\{a_{0}\}$\\
+82 & $0,2,9,10,14$ & 7 & 6 & $\{a_{0}\}$\\
+83 & $0,2,9,10,26$ & 7 & 6 & $\{a_{0}\}$\\
+84 & $0,2,14,15,25$ & 7 & 6 & $\{a_{0}\}$\\
+85 & $0,2,14,17,25$ & 7 & 3 & $\{a_{0},a_{3}\}$\\
+86 & $0,2,17,25,26$ & 7 & 3 & $\{a_{0},a_{3}\}$\\
+87 & $0,2,21,22,23$ & 7 & 6 & $\{a_{0}\}$\\
+88 & $0,3,6,7,8$ & 7 & 6 & $\{a_{0}\}$\\
+89 & $0,3,8,12,13$ & 7 & 3 & $\{a_{0},a_{4}\}$\\
+90 & $0,3,8,13,17$ & 7 & 3 & $\{a_{0},a_{3}\}$\\
+91 & $0,3,8,13,21$ & 7 & 3 & $\{a_{0},a_{2}\}$\\
+92 & $0,3,8,17,19$ & 7 & 3 & $\{a_{0},a_{3}\}$\\
+93 & $0,3,13,14,15$ & 7 & 6 & $\{a_{0}\}$\\
+94 & $0,3,13,16,18$ & 7 & 6 & $\{a_{0}\}$\\
+95 & $0,3,14,15,16$ & 7 & 6 & $\{a_{0}\}$\\
+96 & $0,3,14,15,18$ & 7 & 6 & $\{a_{0}\}$\\
+97 & $0,3,14,15,19$ & 7 & 6 & $\{a_{0}\}$\\
+98 & $0,3,14,16,18$ & 7 & 6 & $\{a_{0}\}$\\
+99 & $0,3,15,16,18$ & 7 & 6 & $\{a_{0}\}$\\
+100 & $0,3,16,18,19$ & 7 & 6 & $\{a_{0}\}$\\
+101 & $0,4,8,13,22$ & 7 & 6 & $\{a_{0}\}$\\
+102 & $0,4,9,10,11$ & 7 & 6 & $\{a_{0}\}$\\
+103 & $0,5,21,22,23$ & 7 & 6 & $\{a_{0}\}$\\
+104 & $0,6,7,8,14$ & 7 & 6 & $\{a_{0}\}$\\
+105 & $0,6,7,8,26$ & 7 & 6 & $\{a_{0}\}$\\
+106 & $0,6,7,14,15$ & 7 & 6 & $\{a_{0}\}$\\
+107 & $0,6,9,10,12$ & 7 & 6 & $\{a_{0}\}$\\
+108 & $0,7,8,13,21$ & 7 & 3 & $\{a_{0},a_{2}\}$\\
+109 & $0,7,10,13,15$ & 7 & 6 & $\{a_{0}\}$\\
+110 & $0,7,13,14,15$ & 7 & 6 & $\{a_{0}\}$\\
+111 & $0,7,14,15,16$ & 7 & 6 & $\{a_{0}\}$\\
+112 & $0,7,14,15,19$ & 7 & 6 & $\{a_{0}\}$\\
+113 & $0,7,14,15,25$ & 7 & 6 & $\{a_{0}\}$\\
+114 & $0,8,14,15,18$ & 7 & 6 & $\{a_{0}\}$\\
+115 & $0,14,15,16,17$ & 7 & 3 & $\{a_{0},a_{3}\}$\\
+116 & $0,14,15,20,25$ & 7 & 6 & $\{a_{0}\}$\\
+117 & $0,14,15,23,25$ & 7 & 6 & $\{a_{0}\}$\\
+118 & $1,2,4,13,22$ & 7 & 6 & $\{a_{0}\}$\\
+119 & $1,2,8,15,18$ & 7 & 6 & $\{a_{0}\}$\\
+120 & $1,3,6,7,8$ & 7 & 6 & $\{a_{0}\}$\\
+121 & $1,4,7,13,22$ & 7 & 6 & $\{a_{0}\}$\\
+122 & $1,4,13,16,22$ & 7 & 6 & $\{a_{0}\}$\\
+123 & $1,4,13,22,23$ & 7 & 6 & $\{a_{0}\}$\\
+124 & $2,3,4,5,8$ & 7 & 6 & $\{a_{0}\}$\\
+125 & $2,3,4,5,10$ & 7 & 6 & $\{a_{0}\}$\\
+126 & $2,3,4,5,14$ & 7 & 6 & $\{a_{0}\}$\\
+127 & $3,4,5,7,8$ & 7 & 6 & $\{a_{0}\}$\\
+128 & $3,4,5,7,10$ & 7 & 6 & $\{a_{0}\}$\\
+129 & $3,4,5,8,10$ & 7 & 6 & $\{a_{0}\}$\\
+130 & $3,4,5,8,15$ & 7 & 6 & $\{a_{0}\}$\\
+131 & $3,4,5,8,18$ & 7 & 6 & $\{a_{0}\}$\\
+132 & $3,4,5,8,23$ & 7 & 6 & $\{a_{0}\}$\\
+133 & $3,4,5,10,14$ & 7 & 6 & $\{a_{0}\}$\\
+134 & $3,4,5,10,16$ & 7 & 6 & $\{a_{0}\}$\\
+135 & $3,4,5,10,22$ & 7 & 6 & $\{a_{0}\}$\\
+136 & $3,4,5,10,23$ & 7 & 6 & $\{a_{0}\}$\\
+137 & $3,4,5,13,22$ & 7 & 3 & $\{a_{0},a_{4}\}$\\
+138 & $3,4,5,14,23$ & 7 & 6 & $\{a_{0}\}$\\
+139 & $3,4,5,16,18$ & 7 & 3 & $\{a_{0},a_{2}\}$\\
+140 & $3,4,10,13,16$ & 7 & 3 & $\{a_{0},a_{4}\}$\\
+\end{longtable}
+
+\section*{Computational and AI assistance disclosure}
+
+The classification used exact Python~3 standard-library computations.  Two
+separately designed implementations exhaust the deletion domain and the
+automorphism group, and the complete certificate is supplied for replay.
+OpenAI language models assisted with code development, proof organization,
+and manuscript drafting.  No mathematical claim is inferred from model output:
+all finite claims in the theorem are supported by the exact exhaustive checks
+described above.  The author reviewed the manuscript and takes responsibility
+for its contents.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

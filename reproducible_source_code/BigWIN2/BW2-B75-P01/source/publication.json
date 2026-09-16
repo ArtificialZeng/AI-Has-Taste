@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "resolution-paper",
+  "writer_job_id": "win-00075-p01-write-baca9c9dee7e",
+  "title": "The Subfield-Coefficient Root Distribution for a Seventh-Degree Unit-Circle Polynomial",
+  "pdf": "manuscript/main.pdf",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib"
+  ],
+  "build": {
+    "working_directory": "manuscript",
+    "command": "latexmk -C && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex",
+    "engine": "pdfTeX 3.141592653-2.6-1.40.22",
+    "bibliography": "BibTeX 0.99d"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "task_id": "02_resoca115_odd",
+  "formal_statement": {
+    "path": "problem/formal_statement.md",
+    "sha256": "83f619b909485fb9fb34eacd44c311336106003b147845ce74997236271472aa"
+  },
+  "mathematical_data": {
+    "wolfram_rule": 115,
+    "rule_table_wolfram_order_111_to_000": [0, 1, 1, 1, 0, 0, 1, 1],
+    "background_site_symbols": [0, 1, 2],
+    "generator_by_phase": [1, 0, 2],
+    "exact_window": "[-k-1,k]",
+    "window_length": "N=2k+2",
+    "target_period": "P(2i+1)=2^(4i+6)-1"
+  },
+  "audits": {
+    "primary_tree_exhaustive_max_depth": 12,
+    "independent_tree_exhaustive_max_depth": 14,
+    "normalized_local_inputs": 192,
+    "direct_first_return_odd_k": {
+      "1": 63,
+      "3": 1023,
+      "5": 16383,
+      "7": 262143
+    }
+  },
+  "even_depth_counts": {
+    "2": {"vertices": 5, "phase_states": 15},
+    "4": {"vertices": 21, "phase_states": 63},
+    "6": {"vertices": 85, "phase_states": 255},
+    "8": {"vertices": 341, "phase_states": 1023},
+    "10": {"vertices": 1365, "phase_states": 4095},
+    "12": {"vertices": 5461, "phase_states": 16383},
+    "14": {"vertices": 21845, "phase_states": 65535}
+  },
+  "theorem_values_i_0_through_20": [
+    63,
+    1023,
+    16383,
+    262143,
+    4194303,
+    67108863,
+    1073741823,
+    17179869183,
+    274877906943,
+    4398046511103,
+    70368744177663,
+    1125899906842623,
+    18014398509481983,
+    288230376151711743,
+    4611686018427387903,
+    73786976294838206463,
+    1180591620717411303423,
+    18889465931478580854783,
+    302231454903657293676543,
+    4835703278458516698824703,
+    77371252455336267181195263
+  ],
+  "bound_code_sha256": {
+    "src/tree_model.py": "6dd1b148e09e029b0c9a6a11966c58074c3d0b7edae34eade38aba52c96a097d",
+    "src/breaker_tree_audit.py": "e64c4c666fb64d5c5bbe536c02cd90a833cbaeb6062b965650d018d3780bd34f",
+    "src/referee_dense.py": "f36d48ff3b655bfcbd1bc0970225f9a6222ac674b9f4651c4ee21c4c322f4c62",
+    "src/referee_bitpacked.py": "122bb4219fa2b64e7b2ea0448403aa5d11380fa1edd0a522caac960ca1d5f3bc"
+  },
+  "interpretation": "The all-parameter theorem is proved symbolically in proof/tree_conjugacy_proof.md. This certificate independently recomputes every finite local context, exhaustive tree instances through the stated depths, and two direct first-return implementations through k=7; it is not used to extrapolate the theorem."
+}

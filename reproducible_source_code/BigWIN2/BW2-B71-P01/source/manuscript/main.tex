@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+
+\title{Real stability for the all-one odd-length\\two-bridge family}
+\author{Xiaojian Zeng\\
+  \small PBC School of Finance, Tsinghua University, Beijing 100190, China\\
+  \small \href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{8 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $L_n=\mathcal C(1^{2n+1})$ be the rational link whose positive
+Conway continued fraction has $2n+1$ entries, all equal to one.  Shoji
+proved real stability of the corresponding even-length family and recorded
+the odd-length analogue without a complete proof.  We prove that analogue:
+after its Laurent monomial factor is removed, the Brandt--Lickorish--
+Millett--Ho $Q$-polynomial of $L_n$ has only simple real zeros, all in
+$[-3,1]$, for every $n\geq1$.  A three-state rational-tangle transfer gives
+the odd subsequence with its own initial data.  A Chebyshev closed form then
+places one numerator zero in each interval of an explicit trigonometric grid;
+degree counting and exact cancellation of the possible factors $x$ and
+$x+3$ complete the proof.  Exact rational computations through $n=20$ check
+the transfer and closed form but are not used to infer the universal result.
+\end{abstract}
+
+\section{Statement and context}
+
+The $Q$-polynomial is the invariant of an unoriented link $L$ determined by
+\begin{equation}\label{eq:skein}
+ Q_{L_+}(x)+Q_{L_-}(x)
+   =x\bigl(Q_{L_0}(x)+Q_{L_\infty}(x)\bigr),
+ \qquad Q_U(x)=1,
+\end{equation}
+where $U$ is the unknot; see Brandt, Lickorish, and Millett
+\cite{BrandtLickorishMillett1986}.  It lies in $\Z[x^{\pm1}]$.  For a
+nonzero Laurent polynomial, real stability means that all of its nonzero
+zeros are real.
+
+Write $\mathcal C(1^j)=\mathcal C(1,\ldots,1)$ for the all-positive Conway
+normal form with $j$ entries.  These rational links are commonly called
+Fibonacci links, and their Schubert fraction is $F_{j+1}/F_j$, where
+$F_0=0$, $F_1=1$, and $F_{r+1}=F_r+F_{r-1}$
+\cite{KoseleffPecker2010}.  Shoji's Proposition~4.3 proves real stability
+when $j=2n$; Remark~4.5 reports checks for a few values when $j=2n+1$ and
+does not give a complete proof \cite{Shoji2026}.  Thus the issue is the odd
+subsequence and its distinct initial data, not a relabelling of the even
+case.
+
+For $n\geq1$, set
+\[
+ L_n=\mathcal C(1^{2n+1}),\qquad R_n(x)=Q_{L_n}(x).
+\]
+If $e_n$ is the least exponent occurring in $R_n$, put
+$P_n(x)=x^{-e_n}R_n(x)$.  Then $P_n\in\Z[x]$ and $P_n(0)\ne0$.
+
+\begin{theorem}\label{thm:main}
+For every integer $n\geq1$, every zero of $P_n$ is simple, real, and belongs
+to $[-3,1]$.  In particular, $Q_{L_n}$ is real stable.
+\end{theorem}
+
+The proof below uses Shoji's Conway convention.  The transfer calculation
+also recovers his even-family recurrence and smallest value, providing a
+convention check.  The literature comparison here is deliberately limited:
+the exact odd analogue was searched by statement, recurrence, and family
+name, and no inspected source besides \cite{Shoji2026} was found to address
+it.  This is not an exhaustive priority claim.
+
+\section{The rational-tangle transfer}
+
+Put
+\[
+ q_j(x)=Q_{\mathcal C(1^j)}(x),\qquad j\geq1.
+\]
+Work in the relative $Q$-skein of a disk with four boundary points.  Let
+$1,e,g$ denote, respectively, the vertical tangle, the cup--cap tangle, and
+one positive crossing.  Set $\delta=2x^{-1}-1$.  The skein relation,
+Reidemeister-I invariance, and the value of a disjoint trivial component give
+\begin{equation}\label{eq:relative}
+ g+g^{-1}=x(1+e),\qquad ge=eg=e,\qquad e^2=\delta e.
+\end{equation}
+Multiplying the first identity by $g$ yields
+\begin{equation}\label{eq:g2}
+ g^2=-1+xe+xg.
+\end{equation}
+
+Let $\rho$ be reciprocal rotation: a quarter-turn followed by mirroring.  It
+interchanges $1$ and $e$ and fixes $g$.  Beginning with $T_1=g$, the positive
+all-one construction is $T_{j+1}=g\rho(T_j)$.  At the level of rational
+tangle fractions this is $f\mapsto1+1/f$ and hence produces
+$F_{j+2}/F_{j+1}$.  In the ordered spanning set $(1,e,g)$, equations
+\eqref{eq:relative}--\eqref{eq:g2} give the step matrix
+\begin{equation}\label{eq:A}
+ A=\begin{pmatrix}
+       0&0&-1\\
+       1&0&x\\
+       0&1&x
+    \end{pmatrix}.
+\end{equation}
+The numerator closure functional $N$ has values
+$N(1)=\delta$ and $N(e)=N(g)=1$.  Therefore
+\begin{equation}\label{eq:closure}
+ q_j=N(A^{j-1}g).
+\end{equation}
+In particular,
+\begin{equation}\label{eq:initial}
+ q_1=1,\qquad q_2=2x+1-2x^{-1},\qquad
+ q_3=2x^2+2x-3.
+\end{equation}
+Here the first three closures are the unknot, Hopf link, and trefoil.  The
+same calculation gives $q_4=2x^3+4x^2-2x-3$, agreeing with the value forced
+by Shoji's even-family recurrence.
+
+Direct calculation from \eqref{eq:A} gives
+\begin{equation}\label{eq:charpolys}
+\begin{aligned}
+ \det(\lambda I-A)
+   &=(\lambda+1)\bigl(\lambda^2-(x+1)\lambda+1\bigr),\\
+ \det(\lambda I-A^2)
+   &=(\lambda-1)\bigl(\lambda^2-(x^2+2x-1)\lambda+1\bigr).
+\end{aligned}
+\end{equation}
+Consequently
+\begin{equation}\label{eq:fullrec}
+ q_{j+3}=xq_{j+2}+xq_{j+1}-q_j.
+\end{equation}
+For completeness, the odd subsequence $R_n=q_{2n+1}$ obeys
+\begin{equation}\label{eq:oddrec}
+ R_n-(x^2+2x)R_{n-1}+(x^2+2x)R_{n-2}-R_{n-3}=0
+\end{equation}
+with its complete initial data
+\begin{equation}\label{eq:oddinitial}
+ R_0=1,\quad R_1=2x^2+2x-3,\quad
+ R_2=2x^4+6x^3-8x-1+2x^{-1}.
+\end{equation}
+
+\section{Closed form and root count}
+
+Let $T_r$ be the Chebyshev polynomial determined by
+$T_r(\cos\theta)=\cos(r\theta)$.
+
+\begin{lemma}\label{lem:closed}
+For $j\geq1$, after setting $x=2\cos\theta-1$, one has the
+cross-multiplied identity
+\begin{equation}\label{eq:trig}
+ q_j(2\cos\theta-1)
+ =\frac{(-1)^j(\cos2\theta-\cos\theta)
+          +2\cos((j+1)\theta)}
+        {(2\cos\theta-1)(\cos\theta+1)}.
+\end{equation}
+No value at a zero of the displayed denominator is asserted by division.
+\end{lemma}
+
+\begin{proof}
+The two roots of the quadratic factor in the first line of
+\eqref{eq:charpolys} become $e^{\pm i\theta}$, while the remaining root is
+$-1$.  Matching the three values in \eqref{eq:initial} gives
+\eqref{eq:trig}.  Equivalently, one may multiply by the denominator: both
+sides then satisfy \eqref{eq:fullrec}, and the three initial identities prove
+the polynomial identity without division at the exceptional values.
+\end{proof}
+
+Fix $n\geq1$ and put
+\begin{equation}\label{eq:Hdef}
+ m=2n+2,\qquad c=\frac{x+1}{2},\qquad
+ H_n(x)=2\bigl(c-T_2(c)+2T_m(c)\bigr).
+\end{equation}
+The polynomial $H_n$ has degree exactly $m$, and Lemma~\ref{lem:closed}
+specialized to $j=2n+1$ says
+\begin{equation}\label{eq:factoridentity}
+ x(x+3)R_n(x)=H_n(x).
+\end{equation}
+
+\begin{lemma}\label{lem:rootsH}
+The polynomial $H_n$ has $m$ distinct real zeros, all in $[-3,1]$.
+\end{lemma}
+
+\begin{proof}
+For $0\leq\theta\leq\pi$, define
+\[
+ h_n(\theta)=\cos\theta-\cos2\theta+2\cos(m\theta).
+\]
+At $\theta_k=k\pi/m$, with $c_k=\cos\theta_k$, we have
+\begin{equation}\label{eq:grid}
+ h_n(\theta_k)=2(-1)^k+\phi(c_k),
+ \qquad \phi(c)=-2c^2+c+1.
+\end{equation}
+On $[-1,1]$,
+\begin{equation}\label{eq:phi}
+ -2\leq\phi(c)\leq\frac98,
+\end{equation}
+and equality on the left occurs only at $c=-1$.  Hence
+$h_n(\theta_k)>0$ for every even $k<m$ and
+$h_n(\theta_k)<0$ for every odd $k$, while $h_n(\pi)=0$.
+There is therefore a zero in each of the $m-1$ open intervals
+$(\theta_k,\theta_{k+1})$, $0\leq k\leq m-2$, together with the endpoint
+zero $\theta=\pi$.
+
+These give $m$ distinct values of $c=\cos\theta$, because cosine is
+injective on $[0,\pi]$.  By \eqref{eq:Hdef}, $H_n$ has degree $m$ in $c$,
+so these are all its roots and each is simple.  Finally $x=2c-1$ maps
+$[-1,1]$ onto $[-3,1]$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+It remains to track the denominator factors in
+\eqref{eq:factoridentity}.  Equation \eqref{eq:Hdef} gives $H_n(-3)=0$.
+At $x=0$ it gives
+\begin{equation}\label{eq:H0}
+ H_n(0)=2\left(1+2\cos\frac{m\pi}{3}\right)
+ =\begin{cases}
+    0,&n\not\equiv2\pmod3,\\
+    6,&n\equiv2\pmod3.
+  \end{cases}
+\end{equation}
+Lemma~\ref{lem:rootsH} shows that every indicated zero is simple, so every
+cancellation is exactly once.
+
+If $n\not\equiv2\pmod3$, then
+\[
+ R_n(x)=\frac{H_n(x)}{x(x+3)}
+\]
+is an ordinary polynomial with nonzero constant term.  It has degree
+$m-2=2n$, and its zeros are the remaining simple zeros of $H_n$.  If
+$n\equiv2\pmod3$, then $R_n$ has lowest exponent $-1$ and
+\[
+ P_n(x)=xR_n(x)=\frac{H_n(x)}{x+3}.
+\]
+Here \eqref{eq:H0} makes $P_n(0)\ne0$; its $m-1=2n+1$ zeros are again the
+remaining simple zeros of $H_n$.  In both cases every zero of the canonical
+polynomial $P_n$ is simple and belongs to $[-3,1]$.
+\end{proof}
+
+\section{Exact verification and assistance disclosure}
+
+As a reproducibility check, the supplementary script
+\texttt{verify\_odd\_family.py} works over $\Q$ and independently constructs
+$q_{2n+1}$ from \eqref{eq:A} and $H_n$ from \eqref{eq:Hdef}.  For each
+$1\leq n\leq20$ it verifies \eqref{eq:factoridentity}, integrality and the
+nonzero constant term of $P_n$, and squarefreeness.  It then uses exact Sturm
+sequences to obtain a real-root count equal to $\deg P_n$.  The command is
+\texttt{python3 verify\_odd\_family.py}; the recorded run used SymPy 1.14.0.
+These finite calculations check the formulas and small cases.  The
+all-$n$ conclusion is supplied only by Lemma~\ref{lem:rootsH} and the exact
+cancellations in \eqref{eq:H0}.  This separation of diagnostic exact
+computation from a universal proof is also used for another polynomial
+invariant in \cite{Zeng2026MultiplicityArxiv}, where finite cut-partition
+computations are expressly not premises of the all-size theorem.
+
+OpenAI Codex was used during the research and preparation of this article to
+assist with exploratory symbolic calculations, exact-verification code,
+literature triage, proof checking, and English/\LaTeX{} editing.  The author
+checked the mathematical statements, citations, and computational artifacts,
+takes responsibility for the article, and did not treat the system as an
+author or source of mathematical authority.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

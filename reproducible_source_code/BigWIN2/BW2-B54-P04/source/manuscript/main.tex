@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={A Roman-Domination Bound for the Graph Burning Number},
+  pdfauthor={Xiaojian Zeng}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{A Roman-Domination Bound for the Graph Burning Number}
+\author{Xiaojian Zeng\\
+PBC School of Finance, Tsinghua University, 100190\\
+\texttt{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For every finite simple connected graph $G$ with at least two vertices, we
+prove
+\[
+  2b(G)-2\leq \gamma_R(G),
+\]
+where $b(G)$ is the burning number under the simultaneous-spread convention
+and $\gamma_R(G)$ is the Roman domination number.  The proof chooses a
+minimum Roman dominating function having as few vertices labelled $1$ as
+possible.  The vertices labelled $1$ are then independent and have no
+neighbour labelled $2$, which puts them at distance two from the set of
+$2$-vertices.  This structure gives a legal burning process of length at most
+$\lfloor\gamma_R(G)/2\rfloor+1$.
+\end{abstract}
+
+\section{Definitions and context}
+
+All graphs in this note are finite, simple, and undirected.  For a vertex $x$
+of a graph $G$, let
+\[
+  N_r[x]=\{v\in V(G):d_G(v,x)\leq r\}.
+\]
+Under the simultaneous-spread convention, one previously unburned vertex is
+chosen as a new source in each round, and fire already present spreads across
+one edge.  Equivalently, the burning number $b(G)$ is the least positive
+integer $k$ for which there are vertices $x_1,\ldots,x_k$ such that
+\begin{equation}\label{eq:burning}
+ V(G)=\bigcup_{i=1}^k N_{k-i}[x_i],
+ \qquad d_G(x_i,x_j)\geq j-i\quad(1\leq i<j\leq k).
+\end{equation}
+This metric formulation and its connection with the spreading process are
+standard in the graph-burning literature; see Bessy et
+al.~\cite{BessyEtAl2018}.
+
+A \emph{Roman dominating function} (RDF) on $G$ is a map
+$f:V(G)\to\{0,1,2\}$ such that every vertex assigned $0$ has a neighbour
+assigned $2$.  Its weight is $w(f)=\sum_{v\in V(G)}f(v)$, and the Roman
+domination number $\gamma_R(G)$ is the minimum weight of an RDF.  These are
+the standard definitions of Cockayne et al.~\cite{CockayneEtAl2004}.
+
+The inequality proved below was recorded as a surviving machine-generated
+candidate in the data accompanying AutoGraphForge~\cite{Pastorek2026}.
+That system tests candidate graph inequalities on a large finite graph
+collection and explicitly distinguishes survival of such tests from a
+universal theorem.  We make no claim about priority or about the status of the
+inequality before that release; the contribution here is the proof of the
+precise universal statement.
+
+\section{The bound}
+
+We first isolate the structure needed from an optimal RDF.
+
+\begin{lemma}\label{lem:rdf}
+Let $G$ be connected and have at least two vertices.  There is a minimum RDF
+$f$ such that, on writing $V_i=f^{-1}(i)$, the following hold:
+\begin{enumerate}
+  \item $V_1$ is independent;
+  \item there is no edge between $V_1$ and $V_2$;
+  \item $V_2$ is nonempty; and
+  \item every vertex of $V_1$ is at distance exactly two from $V_2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Among all minimum RDFs, choose $f$ so that $|V_1|$ is as small as possible.
+If a vertex of $V_1$ had a neighbour in $V_2$, changing its label from $1$
+to $0$ would produce a lighter RDF.  This proves (2).
+
+If adjacent vertices $u,v$ both belonged to $V_1$, change the label of $u$
+to $2$ and that of $v$ to $0$.  Every old $0$-vertex keeps its old
+$2$-neighbour, while the new $0$-vertex $v$ is defended by $u$.  The weight
+is unchanged but there are two fewer $1$-vertices, a contradiction.  Thus
+(1) holds.
+
+Suppose that $V_2$ were empty.  Roman feasibility would then force every
+vertex to have label $1$.  Choose a vertex $v$ of positive degree, which
+exists by connectedness and nontriviality.  Assign $2$ to $v$, assign $0$ to
+all its neighbours, and assign $1$ to every other vertex.  The resulting RDF
+has weight
+\[
+  |V(G)|+1-\deg(v)\leq |V(G)|.
+\]
+Strict inequality contradicts minimum weight, while equality gives a minimum
+RDF with fewer $1$-vertices.  Hence (3) holds.
+
+Finally, every vertex of $V_0$ has a neighbour in $V_2$.  A vertex of $V_1$
+has a neighbour because $G$ is connected and has at least two vertices.  By
+(1) and (2), that neighbour belongs to $V_0$, and consequently it has a
+neighbour in $V_2$.  Thus the distance from each $V_1$-vertex to $V_2$ is at
+most two and, by (2), is exactly two.  This proves (4).
+\end{proof}
+
+\begin{theorem}\label{thm:main}
+For every finite simple connected graph $G$ with at least two vertices,
+\[
+  2b(G)-2\leq \gamma_R(G).
+\]
+\end{theorem}
+
+\begin{proof}
+Choose $f$ as in Lemma~\ref{lem:rdf}, and put
+\[
+  a=|V_2|,\qquad c=|V_1|.
+\]
+Then $a\geq1$ and $\gamma_R(G)=2a+c$.
+
+During each of the first $a$ burning rounds, choose an unburned vertex of
+$V_2$ whenever one remains; if none remains, choose any unburned vertex.  If
+the entire graph has already burned, the desired upper bound is immediate.
+Every round in which an unburned $V_2$-vertex remains therefore burns at least
+one previously unburned member of $V_2$.  It follows that all of $V_2$ is
+burned by the end of round $a$.  Every source is unburned when chosen, so the
+construction is legal under \eqref{eq:burning}.
+
+If $c=0$, one additional round lets the fire on $V_2$ reach all of $V_0$,
+and hence $b(G)\leq a+1$.  If $c=1$, in round $a+1$ choose the unique
+$V_1$-vertex when it is still unburned.  In that same round the existing fire
+reaches all of $V_0$, so again $b(G)\leq a+1$.  If $c\geq2$, two additional
+rounds let the fire on $V_2$ reach every vertex at distance at most two.
+Lemma~\ref{lem:rdf} then gives
+\[
+  b(G)\leq a+2\leq a+\left\lfloor\frac c2\right\rfloor+1.
+\]
+The same final bound holds in the first two cases.  Consequently,
+\[
+  b(G)\leq a+\left\lfloor\frac c2\right\rfloor+1
+       =\left\lfloor\frac{\gamma_R(G)}2\right\rfloor+1.
+\]
+Since the parameters are integral, this implies
+$2b(G)-2\leq\gamma_R(G)$.
+\end{proof}
+
+The inequality is sharp: for $K_2$, one has $b(K_2)=2$ and
+$\gamma_R(K_2)=2$.
+
+\section{Computational check and assistance disclosure}
+
+As a check on the structural transformations and round timing, an exact
+enumerator examined all $995$ connected unlabeled graphs of orders two
+through seven.  It independently optimized the two parameters, selected the
+canonical RDF used in Lemma~\ref{lem:rdf}, and simulated the prescribed
+burning strategy; no failure occurred.  The implementation used Python and
+NetworkX 3.4.2.  These finite calculations are diagnostic only and are not
+used in the proof of Theorem~\ref{thm:main}.  This distinction matters: exact
+enumeration can prove a theorem whose domain is itself a specified finite
+library, as illustrated by the finite geometric certificates of Zeng et
+al.~\cite{ZengEtAl2026}, but it cannot by itself establish the universal
+statement considered here.
+
+OpenAI Codex assisted with proof exploration, preparation and execution of
+the finite checks, literature triage, adversarial review organization, and
+LaTeX editing.  Language-model output and the finite computations are not
+treated as mathematical proof; the universal conclusion rests on the
+deductive argument above.  The author takes responsibility for the statement
+and proof.
+
+\bibliographystyle{plain}
+\begin{sloppypar}
+\bibliography{references}
+\end{sloppypar}
+
+\end{document}

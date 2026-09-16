@@ -1,0 +1,376 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}\hypersetup{pdftitle={Schur (2,2) reconstruction for explicit length classes},pdfauthor={Xiaojian Zeng},pdfsubject={Partial reconstruction theorem for the Schur (2,2) monomial-value multiset},pdfkeywords={Schur polynomial, multiset reconstruction, integer partition, logarithmic moment}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Sxx}{\mathcal{S}_{22}}
+\newcommand{\RR}{\mathbb{R}}
+% Exceptional residues are written explicitly for citation-audit parsing.
+% Multiset braces are written explicitly for citation-audit parsing.
+\DeclareMathOperator{\SSYT}{SSYT}
+\title[Schur $(2,2)$ reconstruction by length]{Schur $(2,2)$ reconstruction for explicit length classes}
+\author{Xiaojian Zeng}
+\address{PBC School of Finance, Tsinghua University, 100190, China}
+\email{xiaojianzeng@foxmail.com}
+\date{September 12, 2026}
+\thanks{2020 Mathematics Subject Classification. Primary 05E05; Secondary 05A17.}
+\keywords{Schur polynomial, multiset reconstruction, integer partition,
+logarithmic moment, Chern shadow}
+
+\begin{document}
+\begin{abstract}
+For a positive multiset, retain the value of every monomial of
+$s_{(2,2)}$, including its coefficient as a multiplicity. We prove
+reconstruction of every $n$-element positive real multiset whenever
+$c_j(n)=n(n^2-1+3\cdot2^{j-1}-3^j)/3$ is nonzero for $1\leq j\leq n$.
+The output cardinality and first $n$ logarithmic power sums suffice.
+An elementary congruence argument verifies this condition for $n\geq3$,
+$n\ne4$, outside the residue classes $14,26,34,46$ modulo $60$.
+Separate arguments at lengths $2$ and $4$ give fixed-sum reconstruction.
+Consequently the same-sum integer-partition question for shape $(2,2)$
+holds at every length outside those four residue classes. The all-length
+question, including length $14$, remains unresolved here. The contribution
+is an application and arithmetic refinement of established moment and
+Chern-shadow methods.
+\end{abstract}
+\maketitle
+
+\section{The reconstruction problem and the result}
+
+Let $a=\{\!\{a_1,\ldots,a_n\}\!\}$ be a multiset of positive real numbers,
+where $n\geq2$. Indices distinguish occurrences, even when values coincide.
+For each semistandard Young tableau $T$ of shape $(2,2)$ with entries
+in $\{1,\ldots,n\}$, let $\alpha_i(T)$ be the number of occurrences of $i$.
+Rows are weakly increasing and columns are strictly increasing. Define
+\begin{equation}\label{eq:definition}
+ \Sxx(a)=\{\!\{\prod_{i=1}^n a_i^{\alpha_i(T)}:
+                    T\in\SSYT((2,2),n)\}\!\}.
+\end{equation}
+This is the multiset of monomial values in $s_{(2,2)}(a)$, counted with
+the coefficients of the monomials. Equal numerical values contribute
+additively to their multiplicity. Equality of these multisets is stronger
+than equality of their supports or their sums.
+
+An integer partition is identified with its multiset of positive integer
+parts, written in nonincreasing order. The Schur partition maps and the
+broader injectivity question appear in
+Hadelyn--Niergarth--Li--Li \cite[Section~5, Question~5.3]{HadelynEtAl2026}.
+Thomas--Tung \cite[Conjecture~6.3]{ThomasTung2026} ask whether every
+two-row shape gives an injective map on the partitions of each prescribed
+integer. For shape $(2,2)$ this asks, for every $N\geq2$, whether
+\begin{equation}\label{eq:original}
+ \lambda,\mu\text{ partitions of }N,\qquad \ell(\lambda),\ell(\mu)\geq2,
+ \qquad \Sxx(\lambda)=\Sxx(\mu)
+ \quad\Longrightarrow\quad \lambda=\mu.
+\end{equation}
+We prove this implication for explicit length classes. Its unrestricted
+form remains unresolved by the results below.
+
+For $j\geq1$ put
+\begin{equation}\label{eq:coefficient}
+ c_j(n)=\frac n3\bigl(n^2-1+3\cdot2^{j-1}-3^j\bigr),
+ \qquad
+ Q_j(a)=\sum_{v\in\Sxx(a)}(\log v)^j,
+\end{equation}
+with every sum over a multiset taken with multiplicities.
+
+\begin{theorem}[Moment criterion]\label{thm:criterion}
+Let $n\geq2$. If $c_j(n)\ne0$ for every $1\leq j\leq n$, then every
+$n$-element positive real multiset $a$ is uniquely determined by
+$|\Sxx(a)|$ and $Q_1(a),\ldots,Q_n(a)$. In particular $\Sxx$ is
+injective on these multisets, allowing arbitrary repeated values and
+without prescribing their sum.
+\end{theorem}
+
+\begin{theorem}[Sufficient length classes]\label{thm:classes}
+If $n\geq3$, $n\ne4$, and $n\bmod60\notin\{14,26,34,46\}$, then $c_j(n)\ne0$
+for every $j\geq1$. In particular Theorem~\ref{thm:criterion} applies
+at every odd length $n\geq3$ and every length divisible by four with
+$n\geq8$.
+\end{theorem}
+
+\begin{corollary}[Fixed-sum partitions]\label{cor:partitions}
+Let $N\geq2$ be an integer, and let $\lambda,\mu$ be partitions of $N$ with at
+least two parts. If $\Sxx(\lambda)=\Sxx(\mu)$, their lengths are equal.
+If this common length is outside $\{14,26,34,46\}$ modulo $60$, then
+$\lambda=\mu$. Lengths $2$ and $4$ are included.
+\end{corollary}
+
+These are sufficient conditions. Membership in an excluded residue class
+does not imply failure of the coefficient criterion, and a zero coefficient
+does not imply a collision of output multisets.
+
+Thomas--Tung prove the $(2,1)$ case and show, for a shape with $k$ rows,
+that prescribing the first $k-1$ parts suffices for recovery
+\cite[Theorems~1.7 and~5.7]{ThomasTung2026}. For $(2,2)$, our length
+criterion removes this need to know the largest part.
+The underlying triangular power-sum argument is familiar from subset-sum
+reconstruction; see Fomin \cite[equation~(1), Theorem~2.1]{Fomin2019}.
+The coefficient in \eqref{eq:coefficient} is a specialization of the
+Chern shadows of D'Andrea--Fatighenti--Onorati
+\cite[Example~4.7, Appendix~A]{DAndreaEtAl2025}.
+Our contribution is their application to the full $(2,2)$ tableau multiset
+and the explicit arithmetic length criterion. The comparisons made here
+identify the scope of this application; they do not assert comprehensive
+priority.
+
+Repeated values are a substantive part of a symmetric reconstruction
+problem. In the related setting of trees, Zeng
+\cite[Theorem~1.1, Lemmas~2.2 and~3.1]{Zeng2026MultiplicityArxiv}
+recovers a proper tree from its chromatic symmetric function when every
+nonleaf vertex of its weighted core has a weight occurring only once;
+weights on core leaves may repeat. Here all input multiplicities are
+allowed: they are recovered as root multiplicities by Newton identities.
+
+\section{Tableau contents and logarithmic moments}
+
+Write $m_\nu$ for the monomial symmetric polynomial of exponent partition
+$\nu$. A label occurs at most twice in a tableau of shape $(2,2)$.
+There is one tableau for each content of type $(2,2)$ or $(2,1,1)$,
+and two for each content of type $(1,1,1,1)$. Indeed, for three ordered
+labels $i<j<k$, the tableaux, displayed by rows, are
+$(i,i;j,k)$, $(i,j;j,k)$, and $(i,j;k,k)$. For four ordered labels
+$i<j<k<l$, they are $(i,j;k,l)$ and $(i,k;j,l)$. Thus
+\begin{equation}\label{eq:contents}
+ s_{(2,2)}=m_{22}+m_{211}+2m_{1111}.
+\end{equation}
+The output cardinality is therefore
+\begin{equation}\label{eq:cardinality}
+ D(n)=\binom n2+3\binom n3+2\binom n4
+     =\frac{n^2(n^2-1)}{12},
+\end{equation}
+where a binomial coefficient is zero if its lower index exceeds $n$.
+The first summand is strictly increasing for integers $n\geq2$ and the
+others are nondecreasing, so $D(n)$ determines $n$.
+
+Let $u_r=\sum_i x_i^r$. Expanding by exponent types gives
+\begin{equation}\label{eq:character}
+ s_{(2,2)}(x)=\frac{u_1^4+3u_2^2-4u_1u_3}{12}.
+\end{equation}
+For a direct check, the coefficients of
+$(m_4,m_{31},m_{22},m_{211},m_{1111})$ in $u_1^4$ are
+$(1,4,6,12,24)$, in $u_2^2$ they are $(1,0,2,0,0)$, and in
+$u_1u_3$ they are $(1,1,0,0,0)$. The combination in
+\eqref{eq:character} is exactly \eqref{eq:contents}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:criterion}]
+Set $y_i=\log a_i$, $p_0=n$, and $p_j=\sum_i y_i^j$ for $j\geq1$.
+Introduce the formal series
+\[
+ P(t)=\sum_i e^{t y_i}=\sum_{j\geq0}p_j\frac{t^j}{j!}.
+\]
+Substituting $x_i=e^{t y_i}$ in \eqref{eq:character} yields
+\begin{equation}\label{eq:generating}
+ \sum_{v\in\Sxx(a)}e^{t\log v}
+   =\frac{P(t)^4+3P(2t)^2-4P(t)P(3t)}{12}.
+\end{equation}
+At total degree $j$, a term involving $p_j$ has all other factors of
+degree zero. Its coefficient in the $j$th derivative at zero is
+\[
+ \frac{4n^3+6n\,2^j-4n(1+3^j)}{12}=c_j(n).
+\]
+Every other term uses only $p_1,\ldots,p_{j-1}$. Consequently
+\begin{equation}\label{eq:triangular}
+ Q_j(a)=c_j(n)p_j+R_{j,n}(p_1,\ldots,p_{j-1}),
+\end{equation}
+where $R_{j,n}$ is explicit: set $p_j=0$ in the degree-$j$ part of
+the right-hand side of \eqref{eq:generating} and multiply by $j!$.
+There is no analytic approximation in this identity.
+
+By \eqref{eq:cardinality}, the data determine $n$. Since the first $n$
+coefficients $c_j(n)$ are nonzero, \eqref{eq:triangular} successively
+determines $p_1,\ldots,p_n$. Put $E_0=1$ and use Newton's recurrence
+\begin{equation}\label{eq:newton}
+ kE_k=\sum_{j=1}^k(-1)^{j-1}E_{k-j}p_j,
+ \qquad 1\leq k\leq n.
+\end{equation}
+Then $E_k$ is the $k$th elementary symmetric function of the $y_i$, and
+\[
+ z^n-E_1z^{n-1}+\cdots+(-1)^nE_n=\prod_{i=1}^n(z-y_i).
+\]
+The polynomial determines its root multiset, including repeated roots.
+Exponentiation recovers $a$. The data are assumed to arise from a
+positive multiset, so no separate existence assertion for arbitrary
+moment sequences is needed.
+\end{proof}
+
+For the attribution of the coefficient, write the derivation of
+\cite[Definition~3.2]{DAndreaEtAl2025} as
+$\mathsf D_s=\sum_{r\geq1}r^{s+1}\partial/\partial u_r$.
+Equation~\eqref{eq:character} gives
+\[
+ \mathsf D_s(s_{(2,2)})
+ =\frac{u_1^3-u_3}{3}+u_2\,2^s-u_1\,3^s.
+\]
+Rank evaluation $u_r=n$ and $s=j-1$ gives $c_j(n)$. This is the
+Chern-shadow specialization described in that source. Our proof keeps
+the lower-moment polynomial $R_{j,n}$ at every order; it does not extend
+a low-degree scalar identity by assumption.
+
+\section{The arithmetic condition}
+
+\begin{proof}[Proof of Theorem~\ref{thm:classes}]
+For $n>0$, the equation $c_j(n)=0$ is equivalent to
+\begin{equation}\label{eq:square}
+ n^2=A_j:=1+3^j-3\cdot2^{j-1}.
+\end{equation}
+For $j=1,2,3$, the values are $1,4,16$, giving $n=1,2,4$.
+If $j\geq4$ is even, then $A_j\equiv2\pmod8$, which is not a square.
+If $j\geq5$ is odd, then $A_j\equiv4\pmod8$, so a square root
+must satisfy $n\equiv2\pmod4$. Also $A_j\equiv1\pmod3$, hence
+$3\nmid n$.
+
+For odd $j$, one has $A_j\equiv1\pmod5$: when $j\equiv1\pmod4$,
+the pair $(3^j,2^{j-1})$ is $(3,1)$ modulo $5$; when
+$j\equiv3\pmod4$, it is $(2,4)$. Thus $n\equiv\pm1\pmod5$.
+The simultaneous necessary congruences are
+\[
+ n\equiv2\pmod4,\qquad n\equiv\pm1\pmod3,
+ \qquad n\equiv\pm1\pmod5.
+\]
+Their four solutions modulo $60$ are $14,26,34,46$. Outside these
+classes, with $n\geq3$ and $n\ne4$, \eqref{eq:square} has no solution
+at any order $j\geq1$.
+\end{proof}
+
+\section{The fixed-sum boundary lengths}
+
+For a positive multiset $a$, let $\mathcal E_k(a)$ consist of the products
+over $k$-element subsets of its index set. For a positive multiset
+$B=\{\!\{b_1,\ldots,b_m\}\!\}$, put
+\[
+ \mathcal H_2(B)=\{\!\{b_i b_j:1\leq i\leq j\leq m\}\!\}.
+\]
+The next elementary recovery argument is the complete homogeneous
+case of the extremal reconstruction in
+\cite[Theorem~5.1]{HadelynEtAl2026}; we give it for positive reals.
+
+\begin{lemma}\label{lem:pair}
+The map $\mathcal H_2$ is injective on nonempty positive multisets, and
+\begin{equation}\label{eq:pairs}
+ \mathcal H_2(\mathcal E_2(a))=\Sxx(a)\mathbin{\dot{\cup}}\mathcal E_4(a),
+\end{equation}
+where $\mathbin{\dot{\cup}}$ adds multiplicities.
+\end{lemma}
+
+\begin{proof}
+Order $b_1\geq\cdots\geq b_m>0$. The cardinality $m(m+1)/2$
+determines $m$, and the maximum of $\mathcal H_2(B)$ is $b_1^2$.
+After recovering $b_1,\ldots,b_r$, subtract all products from this
+prefix, with their multiplicities. If $r<m$, the maximum residual is
+$b_1b_{r+1}$: every surviving pair contains an index outside the prefix,
+and its other factor is at most $b_1$. This determines the next value.
+The argument permits repeated maxima.
+
+For \eqref{eq:pairs}, classify two two-element index subsets. Coincident
+pairs yield exponent type $(2,2)$ once; pairs meeting in one index yield
+each type $(2,1,1)$ once; disjoint pairs yield three copies for each
+four-element subset. Formula~\eqref{eq:contents} gives only two copies
+in the last case, leaving exactly $\mathcal E_4(a)$.
+\end{proof}
+
+\begin{lemma}\label{lem:boundary}
+At lengths $2$ and $4$, $\Sxx(a)$ and the prescribed sum
+$\sum_i a_i=N>0$ determine every positive real multiset $a$.
+\end{lemma}
+
+\begin{proof}
+At length two the only output value is $(a_1a_2)^2$. Positivity gives
+the product, and the sum gives the quadratic with roots $a_1,a_2$.
+
+At length four, put $A=a_1a_2a_3a_4$. There are $D(4)=20$ output
+entries, each of degree four. Symmetry makes their total exponent the
+same in every input variable, so
+\[
+ \prod_{v\in\Sxx(a)}v=A^{20}.
+\]
+The output therefore determines the positive number $A$. Since
+$\mathcal E_4(a)=\{\!\{A\}\!\}$, adding one copy of $A$ in
+\eqref{eq:pairs} and applying Lemma~\ref{lem:pair} recovers
+$\mathcal E_2(a)$. Its sum is the elementary symmetric value $e_2(a)$.
+The identity
+\begin{equation}\label{eq:elementary}
+ s_{(2,2)}(a)=e_2(a)^2-e_1(a)e_3(a)
+\end{equation}
+follows by exponent types: $e_2^2$ has coefficients $1,2,6$ at
+$m_{22},m_{211},m_{1111}$, while $e_1e_3$ has $0,1,4$.
+The left side is the sum of the observed entries. Since $e_1(a)=N>0$,
+this determines $e_3(a)$. Together with $e_4(a)=A$, these data determine
+\[
+ z^4-Nz^3+e_2(a)z^2-e_3(a)z+A=\prod_{i=1}^4(z-a_i),
+\]
+and hence its positive root multiset.
+\end{proof}
+
+Li's fixed-sum pair-product theorem
+\cite[Theorem~1 and the following positive-real extension]{Li2026}
+also gives the final recovery once $\mathcal E_2(a)$ is known. The
+boundary reductions are included to make the partition consequence
+self-contained; they are not separate novelty claims.
+
+\begin{proof}[Proof of Corollary~\ref{cor:partitions}]
+Equation~\eqref{eq:cardinality} forces equal input lengths. At lengths
+$2$ and $4$, apply Lemma~\ref{lem:boundary}. At every other length in
+the stated classes, apply Theorems~\ref{thm:criterion} and~\ref{thm:classes}.
+\end{proof}
+
+The fixed-sum condition cannot simply be dropped from the boundary
+statement. The inputs $(4,1)$ and $(2,2)$ both give $\{\!\{16\}\!\}$, but
+have sums $5$ and $4$. At length four, $(8,2,2,2)$ and $(4,4,4,1)$
+both give six copies of $16$, eight of $64$, and six of $256$, but
+have sums $14$ and $13$. These examples do not contradict
+\eqref{eq:original}.
+
+\section{Exact checks and remaining scope}
+
+The proofs above are symbolic. Supplementary integer and rational
+calculations check the tableau multiplicities, the series identity and
+Newton recovery without approximating logarithms. Taking $a_i=2^{y_i}$
+allows rational $y_i$ to serve as exact base-two logarithmic coordinates;
+the change of logarithm base rescales each moment by a known power.
+One implementation checked all $1281$ nondecreasing lists over
+$\{-2,-1,0,1,2\}$ of lengths $2$ through $8$, and $60$ specified
+structured lists at lengths up to $61$. Of the $1341$ moment recoveries,
+$1252$ complete and $89$ stop at the predicted coefficient zero.
+Separate fixed-sum recovery succeeds for all $85$ small boundary inputs.
+A second implementation, using a different log alphabet, checked $1281$
+lists and $85$ rational boundary inputs. These are finite implementation
+checks, not an exhaustive collision search over positive real inputs.
+
+The accompanying coefficient certificate also gives a finite observation:
+for $2\leq n\leq10^6$, the only zero-coefficient pairs at any order are
+$(n,j)=(2,2),(4,3),(14,5)$. Indeed, exact integer square-root checks
+of $A_j$ for $1\leq j\leq26$ give squares only at $j=1,2,3,5$,
+with roots $1,2,4,14$. The stopping argument is
+\[
+ A_{j+1}-A_j=2\cdot3^j-3\cdot2^{j-1}>0\quad(j\geq1),
+ \qquad A_{26}=2541765165034>10^{12}.
+\]
+This is a bounded classification and gives no classification at arbitrary
+lengths. A short reproducer is included in the accompanying source package.
+
+Length $14$ has $c_5(14)=0$, so the particular successive division in
+\eqref{eq:triangular} does not recover $p_5$ at that step. Higher moments
+or the prescribed input sum might supply additional information. No
+noninjectivity statement at length $14$, converse to the criterion,
+numerical stability bound, or all-length resolution is claimed.
+
+\subsection*{Computational and AI assistance}
+OpenAI Codex assisted with the moment calculation, proof development,
+literature comparison, Python verification programs and manuscript
+preparation. A separate model context reconstructed the argument and
+wrote a second exact-arithmetic implementation. These checks are not
+proof-assistant certification or journal peer review. The mathematical
+claims rest on the proofs displayed above. The accompanying source
+package documents the executed checks and their finite ranges.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

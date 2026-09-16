@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "title": "Quadratic positivity for finite-field q-hit residues",
+  "kind": "resolution-paper",
+  "original_status": "proved",
+  "writer_job_id": "newwin-00001-p13-write-af1aa5422365",
+  "source_files": [
+    "manuscript/main.tex",
+    "manuscript/references.bib",
+    "manuscript/orbit-table.tex",
+    "manuscript/build/main.bbl"
+  ],
+  "pdf": "manuscript/build/main.pdf",
+  "build": {
+    "working_directory": "manuscript",
+    "clean_command": [
+      "latexmk",
+      "-C",
+      "-outdir=build",
+      "main.tex"
+    ],
+    "command": [
+      "latexmk",
+      "-pdf",
+      "-outdir=build",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "main.tex"
+    ],
+    "final_log": "audit/write-build.log",
+    "transcript": "audit/write-build-transcript.log"
+  },
+  "supplements": [
+    {
+      "file": "manuscript/supplement.zip",
+      "sha256": "071a5e8db4c807084b49bd07a19d27e11df23285fd8fae0759566d642d07dd6a",
+      "manifest": "manuscript/supplement-manifest.json",
+      "manifest_sha256": "b7317a51f0d140fe30b36c1d61844fe8c6eb1de1919785f4d35360a5af218e4b"
+    }
+  ],
+  "readme": "manuscript/README.md",
+  "user_library": {
+    "registry": "/home/ailab/4math-open-problems/resources/user-bibliography/registry.json",
+    "rows": [
+      9
+    ],
+    "citation_keys": [
+      "ZengEtAl2026Certificates"
+    ],
+    "claim_checks": "audit/write-bibliography.md"
+  }
+}

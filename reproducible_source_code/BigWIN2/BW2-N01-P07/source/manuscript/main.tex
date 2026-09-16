@@ -1,0 +1,284 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A bijection for 312/321-avoiding permutations whose cubes avoid 2143},
+  pdfauthor={Xiaojian Zeng}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Av}{\operatorname{Av}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\C}{\mathcal C}
+\newcommand{\B}{\mathcal B}
+
+\title{A bijection for $312/321$-avoiding permutations\\
+whose cubes avoid $2143$}
+\author{Xiaojian Zeng\\[3pt]
+\small PBC School of Finance, Tsinghua University, 100190\\
+\small\href{mailto:xiaojianzeng@foxmail.com}{xiaojianzeng@foxmail.com}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove the cube-enumeration conjecture in Section~5 of Archer and
+Bourne's \emph{Pattern avoidance in compositions and powers of
+permutations}. Their cyclic-block encoding restricts to a bijection
+between permutations avoiding $312$ and $321$ whose cubes avoid $2143$
+and ordered compositions with at most one part outside $\{1,3\}$.
+The inverse reads successive positions of the minimum in the original
+permutation. The restriction follows because every cubed block avoids
+$2143$, while two blocks containing inversions create $2143=21\oplus21$.
+We obtain the resulting rational generating function, including the empty
+objects. No condition on the square of the permutation is imposed.
+\end{abstract}
+
+\section{Statement and context}
+
+For $n\geq0$, let $S_n$ be the permutations of $[n]=\{1,\ldots,n\}$,
+with one empty permutation in $S_0$. We use one-line notation. A
+permutation contains a \emph{classical pattern} $\tau$ if a subsequence
+of its entries has the same relative order as $\tau$; the selected
+positions need not be consecutive. Write $\Av_n(312,321)$ for the
+permutations in $S_n$ avoiding both patterns. Powers are compositional:
+$\pi^3(i)=\pi(\pi(\pi(i)))$.
+
+Pattern restrictions on permutation powers extend the strong avoidance
+studied by B\'ona and Smith~\cite{BonaSmith2019}, where both a permutation
+and its square avoid the same pattern. Archer and Geary
+\cite{ArcherGeary2024} study chains that permit different restrictions
+on different powers. Archer and Bourne~\cite{ArcherBourne2026} encode
+$\Av_n(312,321)$ by compositions and use this encoding to enumerate
+square-pattern restrictions. In their Section~5 they conjecture the
+cube enumeration proved here.
+
+A \emph{composition} of $n$ is an ordered list of positive integers
+summing to $n$; only the empty list composes zero. Define
+\begin{align*}
+\B_n&=\{\pi\in\Av_n(312,321):\pi^3\text{ avoids }2143\},\\
+\C_n&=\{(d_1,\ldots,d_m):d_i\geq1,\ \textstyle\sum_i d_i=n,
+          \ |\{i:d_i\notin\{1,3\}\}|\leq1\}.
+\end{align*}
+An exceptional part may occur in any position and carries no additional
+mark. There is no restriction on $\pi^2$ in the definition of $\B_n$.
+
+For $\alpha\in S_a$ and $\beta\in S_b$, their \emph{direct sum}
+$\alpha\oplus\beta$ is the concatenation of $\alpha$ and the entries of
+$\beta$ increased by $a$. Set
+\[
+\eps_1=(1),\qquad \eps_d=(2,3,\ldots,d,1)\quad(d\geq2),\qquad
+F(d_1,\ldots,d_m)=\bigoplus_{i=1}^{m}\eps_{d_i}.
+\]
+The empty direct sum is the empty permutation.
+
+\begin{theorem}\label{thm:main}
+For every $n\geq0$, $F$ restricts to a size-preserving bijection
+$\C_n\longrightarrow\B_n$. Its inverse repeatedly records the position
+$d$ of the minimum, removes the prefix $\eps_d$, and subtracts $d$
+from every remaining entry. More precisely, for every finite list of
+positive integers,
+\begin{equation}\label{eq:criterion}
+F(d_1,\ldots,d_m)^3\text{ avoids }2143
+\quad\Longleftrightarrow\quad
+|\{i:d_i\notin\{1,3\}\}|\leq1.
+\end{equation}
+\end{theorem}
+
+The unrestricted encoding is Archer--Bourne's Lemma~3.1
+\cite{ArcherBourne2026}. Compatibility of powers with direct sums is
+also known~\cite[Lemma~2.1]{ArcherGeary2024}. The contribution here is
+the exact restriction~\eqref{eq:criterion} and the resulting enumeration.
+The closest higher-power comparison is Archer--Geary's
+Theorem~5.2~\cite{ArcherGeary2024}: for $231/321$-avoiders whose
+$k$th powers avoid $132$, every part after the first must divide $k$.
+Here the target is $2143$, and an exceptional part is allowed anywhere.
+The proof below supplies all the required structural arguments.
+
+\section{The restricted bijection}
+
+We first recall the block encoding, keeping its inverse explicit.
+
+\begin{lemma}[Archer--Bourne]\label{lem:encoding}
+The map $F$ is a bijection from all compositions of $n$ to
+$\Av_n(312,321)$, for every $n\geq0$.
+\end{lemma}
+
+\begin{proof}
+In a block $\eps_d$, each entry has at most one smaller entry to its
+right. Later direct-sum blocks have larger values, so the same assertion
+holds in $F(d_1,\ldots,d_m)$. The first entry of either a $312$ or a
+$321$ occurrence would have two smaller entries to its right. Hence
+every image of $F$ avoids both patterns.
+
+Conversely, let $\pi\in\Av_n(312,321)$ be nonempty, and let $d$ be the
+position of $1$. If $i<d<j$ and $\pi_i>\pi_j$, then
+$(\pi_i,1,\pi_j)$ is a $312$ occurrence. Thus every value before $1$
+is smaller than every value after it, and the prefix of length $d$
+has value set $[d]$. If $i<j<d$ and $\pi_i>\pi_j$, then
+$(\pi_i,\pi_j,1)$ is a $321$ occurrence. The prefix is therefore
+exactly $\eps_d$. Subtracting $d$ from the suffix yields
+$\rho\in\Av_{n-d}(312,321)$, and $\pi=\eps_d\oplus\rho$.
+This argument includes $d=1$ and $d=n$.
+
+Define $G(\varnothing)=()$ and obtain $G(\pi)$ by placing $d$ before
+the list $G(\rho)$. The recursion terminates since each step removes
+at least one entry. In $F(d_1,\ldots,d_m)$, the minimum occurs at the
+end of the first block, in position $d_1$; removing this block leaves
+the encoding of the remaining parts after subtracting $d_1$.
+Induction on the number of parts gives $G(F(\mathbf d))=\mathbf d$.
+Conversely, the forced-prefix decomposition and induction on $n$ give
+$F(G(\pi))=\eps_d\oplus F(G(\rho))=\pi$. Both inductions start
+with the empty objects. The maps preserve the sum of the block lengths.
+\end{proof}
+
+\begin{lemma}\label{lem:cubes}
+Let $q_d=\eps_d^3$. Then $q_d$ avoids $2143$ for every $d\geq1$,
+and $q_d$ has an inversion if and only if $d\notin\{1,3\}$.
+Moreover,
+\begin{equation}\label{eq:power-sum}
+F(d_1,\ldots,d_m)^3=q_{d_1}\oplus\cdots\oplus q_{d_m}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+On $[d]$, the block $\eps_d$ adds one modulo $d$, with residues
+represented by $1,\ldots,d$. Thus
+\[
+q_d(i)=1+((i-1+3)\bmod d),
+\]
+and in one-line notation
+\begin{equation}\label{eq:blocks}
+q_1=(1),\quad q_2=(2,1),\quad q_3=(1,2,3),\quad
+q_d=(4,5,\ldots,d,1,2,3)\quad(d\geq4).
+\end{equation}
+The cases $d=1,3$ are increasing. The block $q_2$ has an inversion,
+and for $d\geq4$ the consecutive entries $d,1$ give one.
+
+For $d=2$ and $d\geq4$, the block $q_d$ in~\eqref{eq:blocks} is a
+concatenation of two increasing runs. Any subsequence takes entries from the first
+run followed by entries from the second, and so has at most one descent
+between successive selected entries. Since $2143$ has two such
+descents, it cannot occur. The increasing cases also avoid $2143$.
+
+Finally, each direct-sum block occupies the same interval of positions
+and values, which is invariant under $F$. If its offset is $s$, then
+$F(s+i)=s+\eps_d(i)$ inside that block. Applying this identity three
+times proves~\eqref{eq:power-sum}.
+\end{proof}
+
+\begin{lemma}\label{lem:two-inversions}
+Suppose $\sigma_1,\ldots,\sigma_m$ are nonempty permutations, each
+avoiding $2143$. Their direct sum avoids $2143$ if and only if at most
+one summand has an inversion. The assertion also holds for the empty
+direct sum.
+\end{lemma}
+
+\begin{proof}
+Every inversion in a direct sum lies within a summand: an earlier
+summand has smaller positions and smaller values than a later one.
+If two summands have inversions, choose positions $a<b$ in the earlier
+one and $c<e$ in the later one. Writing $\sigma$ for the direct sum,
+we have
+\[
+a<b<c<e,\qquad
+\sigma(b)<\sigma(a)<\sigma(e)<\sigma(c).
+\]
+These four entries form $2143$.
+
+Conversely, an occurrence of $2143$ at $a<b<c<e$ supplies the
+inversions $(a,b)$ and $(c,e)$. Each pair lies in a summand. If they
+lay in the same summand, all four selected entries would lie there,
+contradicting that summand's avoidance of $2143$. An occurrence therefore
+requires two distinct summands with inversions. The empty sum contains
+neither an inversion nor a four-entry pattern.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemma~\ref{lem:cubes}, the summands of $F(\mathbf d)^3$ all avoid
+$2143$, and precisely the parts outside $\{1,3\}$ yield summands
+with inversions. Lemma~\ref{lem:two-inversions} now gives
+\eqref{eq:criterion}. Consequently $F$ maps $\C_n$ into $\B_n$,
+and its inverse $G$ from Lemma~\ref{lem:encoding} maps $\B_n$ into
+$\C_n$. The two inverse identities restrict to these sets, including
+the empty objects.
+\end{proof}
+
+The inverse must act on the original permutation: the compositions
+$(3)$ and $(1,1,1)$ encode different permutations with equal cubes.
+Also, internal avoidance is essential in Lemma~\ref{lem:two-inversions};
+the single summand $2143$ would violate its conclusion if that hypothesis
+were removed.
+
+\section{Enumeration and finite checks}
+
+\begin{corollary}\label{cor:gf}
+Writing $b_n=|\B_n|$, one has $b_n=|\C_n|$ for every $n\geq0$ and
+the formal power-series identity
+\begin{equation}\label{eq:gf}
+\sum_{n\geq0}b_nz^n
+=\frac{1}{1-z-z^3}
+ +\frac{z^2+z^4/(1-z)}{(1-z-z^3)^2}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Let $A(z)$ count sequences of parts in $\{1,3\}$ and let $E(z)$
+count a single exceptional part. Then
+\[
+A(z)=\sum_{r\geq0}(z+z^3)^r=\frac{1}{1-z-z^3},\qquad
+E(z)=\sum_{\substack{d\geq1\\d\notin\{1,3\}}}z^d
+    =z^2+\frac{z^4}{1-z}.
+\]
+An admissible composition either has no exceptional part or has a
+unique decomposition into an ordinary prefix, an exceptional part,
+and an ordinary suffix. These disjoint cases contribute $A$ and
+$AEA$, respectively. Theorem~\ref{thm:main} therefore gives
+\eqref{eq:gf}. All operations take place in $\mathbb Z[[z]]$:
+positive part sizes make each coefficient sum finite, and every
+denominator has constant term one. The constant coefficient is $1$.
+\end{proof}
+
+The first values are
+\[
+(b_0,b_1,\ldots,b_9)=(1,1,2,4,7,13,23,39,66,110).
+\]
+As finite diagnostics, a separately written standard-library Python
+verifier examined all $409{,}114$ permutations of sizes $0$ through $9$.
+It tested input avoidance by direct subsequence ranks, formed each cube
+by three literal applications, and compared the entire resulting sets
+with the unrestricted and restricted block images. Both inverse
+identities were checked. It also tested Lemma~\ref{lem:two-inversions}
+on all $1{,}057$ lists of length at most two from the $32$ nonempty
+$2143$-avoiders of sizes at most four, and compared the coefficients
+of~\eqref{eq:gf} with a last-part composition recurrence through
+degree $100$. All these finite comparisons agreed.
+
+Using exact predicates and a separate implementation to recheck
+computed objects has a methodological parallel in the certificate
+architecture in Section~6 of Zeng, Liu, Ratnavelu, and Ong
+\cite{ZengEtAl2026}. Here the separate verifier checks for
+encoding, iteration, and pattern-detection errors. The computations
+are supplementary finite observations; the lemmas and the unique
+exceptional-part decomposition prove the assertion for every $n$.
+
+\paragraph{Reproducibility and assistance.}
+The accompanying computational supplement includes the two exact
+Python verification programs, their recorded outputs, and run
+instructions. OpenAI Codex assisted with proof development, literature
+search, verification code, and manuscript preparation. A separate
+model-context pass checked the argument and wrote the second verifier;
+this is neither external peer review nor statistically independent
+evidence. No proof assistant was used. The result resolves the specific
+cube conjecture stated above; it does not claim a classification for
+arbitrary powers or target patterns. The comparison with prior work is
+limited to the cited sources and targeted searches through
+12 September 2026.
+
+\bibliographystyle{plainurl}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,125 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\title{The Exact Value of a Pairwise-GCD Sunflower-Free Function at 126}
+\author{Zijian Zeng}
+\address{Institute of Computer Science and Digital Innovation, UCSI University, Kuala Lumpur, 56000, MALAYSIA}
+\email{zijianzeng@foxmail.com; 1002266693@ucsiuniversity.edu.my}
+\date{}
+\hypersetup{pdftitle={The Exact Value of a Pairwise-GCD Sunflower-Free Function at 126},pdfauthor={Zijian Zeng},pdfsubject={An exact finite result in extremal number theory}}
+
+\begin{document}
+\begin{abstract}
+For a positive integer $N$, let $f_3(N)$ be the largest cardinality of a set
+$A\subseteq\{1,\ldots,N\}$ containing no three distinct elements whose three
+pairwise greatest common divisors are equal. We prove the exact finite result
+$f_3(126)=16$. The lower bound is an explicit set. For the upper bound, the
+forbidden triples and an exact cardinality circuit give a Boolean formula whose
+unsatisfiability is certified by a checkable DRAT derivation. This result
+concerns only the stated finite value and does not resolve the asymptotic
+estimation problem.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+Erd\H{o}s studied the problem of finding many integers without $t$ members
+whose pairwise greatest common divisors are all equal
+\cite{Erd_s_1964}. His notation used the least length forcing such a
+configuration. We use the current maximum-avoiding convention recorded for
+Erd\H{o}s Problem 535 \cite{ErdosProblems535}; the two conventions differ by
+one.
+
+The classical literature on asymptotic bounds includes work of Abbott and
+Hanson \cite{Abbott_1970}. Our scope is deliberately finite.
+Searches of the primary records and public exact-data repositories listed in
+the accompanying archive, through 1 September 2026, found no verifiable
+certificate for the value below. This is a bounded search report, not an
+assertion that no unpublished or differently indexed computation exists.
+
+\section{Definition and result}
+For $N\geq1$, write $[N]=\{1,2,\ldots,N\}$ and define
+\begin{align*}
+ f_3(N)=\max\bigl\{|A|: {}& A\subseteq[N],\text{ and for every }
+ \set{a,b,c}\in\tbinom{A}{3},\\[-2mm]
+ &\gcd(a,b),\gcd(a,c),\gcd(b,c)\text{ are not all equal}\bigr\}.
+\end{align*}
+
+\begin{theorem}\label{thm:main}
+$f_3(126)=16$.
+\end{theorem}
+
+\section{Exact lower bound}
+Let
+\begin{equation}\label{eq:witness}
+A=\set{14,20,21,24,25,30,36,40,48,63,80,90,96,98,108,125}.
+\end{equation}
+A direct integer calculation checks all $\binom{16}{3}=560$ triples in $A$.
+For every such triple, the three pairwise gcds are not all equal. Thus
+$f_3(126)\geq16$. The archive includes a short independent verifier that
+parses the displayed set and repeats precisely this calculation.
+
+\section{Certified upper bound}
+Introduce a Boolean variable $x_i$ for each $i\in[126]$. For every unordered
+triple $\set{a,b,c}$ satisfying
+\[
+ \gcd(a,b)=\gcd(a,c)=\gcd(b,c),
+\]
+insert the clause $\neg x_a\lor\neg x_b\lor\neg x_c$. There are 114345 such
+clauses.
+
+To impose $\sum_i x_i\geq17$, for $1\leq j\leq\min(i,17)$ introduce
+$s_{i,j}$ with the exact meaning that at least $j$ of $x_1,\ldots,x_i$ are
+true. The boundary cases and recurrence
+\[
+s_{i,j}\ \longleftrightarrow\
+s_{i-1,j}\lor(s_{i-1,j-1}\land x_i)
+\]
+are encoded in both directions by Tseitin clauses, and $s_{126,17}$ is
+asserted. Consequently, the CNF is satisfiable if and only if an admissible set
+of size at least 17 exists.
+
+The deterministic generator produces 2132 variables and 122227 clauses. A SAT
+solver emitted a DRAT derivation of unsatisfiability. The derivation was then
+replayed by an independently distributed DRAT checker, which reported
+\texttt{s VERIFIED}. Its checked core used 112162 input clauses, 1834588
+lemmas, and 120875397 resolution steps. A semantic cross-check also compares
+the CNF answer with direct enumeration of every subset for each $N\leq12$ and
+every cardinality threshold.
+
+\begin{proposition}\label{prop:upper}
+No admissible subset of $[126]$ has cardinality at least $17$.
+\end{proposition}
+\begin{proof}
+The generator enumerates every unordered triple of distinct members of
+$[126]$ and inserts exactly the corresponding forbidden-triple clause. By
+induction on $i$, the two-direction recurrence clauses make $s_{i,j}$ true
+exactly when at least $j$ of the first $i$ selection variables are true.
+Therefore a satisfying assignment would encode an admissible set of size at
+least 17. The checked DRAT derivation proves that this CNF is unsatisfiable.
+\end{proof}
+
+Combining Proposition~\ref{prop:upper} with the set in
+\eqref{eq:witness} proves Theorem~\ref{thm:main}.
+
+\section{Reproducibility and limitations}
+The accompanying computational supplement contains the deterministic CNF generator, direct
+witness verifier, small-instance cross-check, DIMACS instance, DRAT
+certificate, solver log, and independent checker log. Fast checks and the full
+certificate replay are separate commands. All decisive arithmetic is
+integer-valued; timeouts and heuristic searches play no role in the proof.
+The theorem rests on the explicit witness, source code, and independently
+checkable certificate described above.
+
+The theorem determines one finite cell only. It neither proves the supplied
+claims about earlier finite values nor advances the asymptotic mother problem.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,70 @@
+Command: /usr/bin/time -v python3 evidence/n10_sat_screen.py
+Run date: 2026-09-06 (Asia/Shanghai)
+Resource report: elapsed=8:34.45, user_seconds=513.28, system_seconds=1.15,
+maxrss_kb=682004, exit_status=0.
+
+Before the full run, the optimized order-10 extension legality predicate was
+compared with the complete `is_legal` predicate on every allowed nonempty
+neighborhood of size at most four for each of the first 300 reconstructed
+order-9 representatives.  There was no mismatch.
+
+{
+  "conflict_clique_number_histogram": [
+    [2, 2], [3, 568], [4, 20685], [5, 22916], [6, 34625],
+    [7, 5020], [8, 4030], [9, 1453]
+  ],
+  "connected_legal_order_10_isomorphism_classes": 89299,
+  "connected_legal_order_8_bases": 1918,
+  "connected_legal_order_9_bases": 12177,
+  "edge_count_histogram": [
+    [9, 75], [10, 475], [11, 1792], [12, 4875], [13, 10162],
+    [14, 16461], [15, 20342], [16, 18424], [17, 11461],
+    [18, 4389], [19, 843]
+  ],
+  "exact_order_10_iso_comparisons": 849829,
+  "generation_basis": "all connected legal order-9 representatives reconstructed exactly, extended by one nonisolated vertex of degree 1..4",
+  "independent_decision": "exact DSATUR backtracking",
+  "networkx_version": "3.4.2",
+  "non_9_colorable_witness_count": 0,
+  "order_8_exact_iso_comparisons": 13929,
+  "order_8_raw_legal_extensions": 15791,
+  "order_9_exact_iso_comparisons": 104581,
+  "order_9_raw_legal_extensions": 116290,
+  "pysat_solver": "Glucose4 (g4)",
+  "raw_legal_order_10_extensions": 933827,
+  "representative_graph6_multiset_sha256": "34cab285445605740c842d5dd18a697e5dd67b96a93b58b11de82980840d998c",
+  "scope": "exact finite observation for connected legal graphs on exactly ten vertices; not a universal upper-bound proof",
+  "verified_sat_coloring_records_sha256": "67c759b488d1acdec07b534370b23a355c9cb1504d4172ba8106a2a2f76e209c",
+  "witnesses": []
+}
+
+Completeness of order-10 generation: every connected graph with at least two
+vertices has a non-cut vertex.  Deleting such a vertex from a connected legal
+order-10 graph gives a connected legal induced order-9 graph, since maximum
+degree at most four, 3-degeneracy, and K_{3,4}-freeness are hereditary under
+vertex deletion.  The order-9 generator supplies an exact-isomorphism
+representative of this graph.  Restoring the deleted vertex is one of the
+enumerated nonempty neighborhoods of size at most four, and every one of its
+neighbors has degree below four in the order-9 base.
+
+The optimized K_{3,4} test is exact.  Any new K_{3,4} uses vertex 9.  If 9 is
+on its four-vertex side, three vertices in N(9) already have three common old
+neighbors.  If 9 is on its three-vertex side, two old vertices have all four
+members of N(9) as common neighbors.  These are precisely the two cases tested.
+For degree at most three, deleting vertex 9 first extends a 3-degeneracy
+ordering of the base; degree four is checked by the exact core number.  Maximum
+degree and connectivity follow from the available-neighbor and nonempty-
+neighborhood restrictions.  Invariant buckets only reduce comparisons; every
+deduplication decision uses exact NetworkX graph isomorphism.
+
+For each of the 89,299 representatives, the script constructs Gamma_B(G), asks
+Glucose4 for a proper 9-coloring, and directly checks its unique assignment at
+every conflict-graph vertex and every conflict edge.  A separate exact DSATUR
+backtracker agreed with every decision.  The script would serialize the graph,
+coloring CNF, and Glucose4 DRUP proof for an UNSAT instance; none occurred.
+
+Interpretation: no connected legal graph on exactly ten vertices has B-
+chromatic index 10.  Together with the earlier exhaustive screens, there is no
+value-10 witness of order at most ten.  This exact finite observation does not
+prove M_3(4)=9 for arbitrary finite graphs and does not resolve the original
+problem.

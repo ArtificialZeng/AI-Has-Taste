@@ -1,0 +1,371 @@
+{
+  "original_id": "win-00044-p02",
+  "archive_id": "BW2-B44-P02",
+  "title": "An Exact One-High-Boundary Obstruction for Cyclic 13-Layer K₇-Free Weighted Graphs",
+  "batch_label": "44",
+  "kind": "result-note",
+  "original_status": "unresolved",
+  "scope": "Consider a cyclic weighted graph with 13 nonempty layers, one to four vertices per layer, and edges only within layers or between consecutive layers. Assume the graph is K_7-free, every vertex has weighted open-neighborhood at least one, all vertex weights are nonnegative, and exactly one cyclic layer boundary has adjacent layer-cardinality sum at least seven. Then the total vertex weight is at least 4154/851, which is strictly greater than 39/8.",
+  "gate_basis": "Current released terminal, manifest, PDF, TeX freeze, snapshot files, provenance and four audits agree.",
+  "provenance": {
+    "attribution_status": "confirmed-in-Windows-math_WIN-controller-session",
+    "registry_batch_preserved": 44
+  },
+  "pdf": "pdfs/BigWIN2/BW2-B44-P02_An_Exact_One_High_Boundary_Obstruction_for_Cyclic_13_Layer_K7_Free_Weighted_Graphs.pdf",
+  "pdf_sha256": "3ac2ad7b0f171e5129d721892a3b342f60fbaf1852ac82739ac812c25b20f6cb",
+  "pages": 5,
+  "latex": "reproducible_source_code/BigWIN2/BW2-B44-P02/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/BigWIN2/BW2-B44-P02/",
+  "source_root": "reproducible_source_code/BigWIN2/BW2-B44-P02/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "numpy",
+    "ortools",
+    "scipy"
+  ],
+  "limitations": [
+    "Asset selection is a packaging recommendation, not a rerun of the proof or citation audit.",
+    "Do not copy external literature PDFs, downloaded web pages, third-party archives, jobs, logs, prompts, or private operational metadata.",
+    "Review absolute paths and third-party attribution markers before publishing. Import names are inferred dependencies, not a tested environment lock.",
+    "The original question is unresolved; the released artifact is a partial result or unproved conjecture, according to its frozen claim."
+  ],
+  "entrypoints": [],
+  "source_files": 19,
+  "compressed_inputs": 0,
+  "gates": [
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/terminal.json",
+      "sha256": "ecbfa603f41a5d85e6a05c29033a29b416ccbcfee8c52da210e0a5862207daa5",
+      "bytes": 707
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/release/manifest.json",
+      "sha256": "b097007cef766a8416e300efcf4b4c59656c470c9ff67200279c3cd264778534",
+      "bytes": 1597
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/math.json",
+      "sha256": "a9c6a109d9b01285df7d1eff1ba08293319fc972aabd34415febcca0ea47dc03",
+      "bytes": 194
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/citations.json",
+      "sha256": "5bbffd91535180d08caa222c2fe49d4cdf411af56b14193ac9de962a6b02c4c9",
+      "bytes": 1007
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/build.json",
+      "sha256": "84a65c24e4b7dfe1ec8e2134994b74442a2d5332e47cc603585f1120bd94d181",
+      "bytes": 521
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/visual.json",
+      "sha256": "38be9af7f4d351f5d6cd08c2822c4e81622dfe59152e7e228e8f0e43654bcc40",
+      "bytes": 613
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/snapshot.json",
+      "sha256": "83a18927b583086fd47e0d93c6c8bf8c7ee9c184875494c6dda58c25b33aecfa",
+      "bytes": 536
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/manuscript-snapshot.json",
+      "sha256": "c71ca82c9a556963517267cd57f1442a5f7ad1764ab9aaa93a4b970d238eede9",
+      "bytes": 654
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/math.md",
+      "sha256": "c2fe2fbf96978d3c9a90695c80117798db54c27a293bb95744d9e746d433304b",
+      "bytes": 5452
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/citations.md",
+      "sha256": "367b03dc64015b798e6d5b1426803d74ca1504c44924900e9dc055fb2feab551",
+      "bytes": 2412
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/build.md",
+      "sha256": "73496b7f821c5748d66b53212e05b17beb11f5a0311649ff83d1de0cc309f3d5",
+      "bytes": 1010
+    },
+    {
+      "path": "assets/BigWIN2/gates/BW2-B44-P02/audit/visual.md",
+      "sha256": "35677445f81e67fe84ecc10677a2c3ab4a59f18e314cf2c75d59165da5b05ef5",
+      "bytes": 877
+    }
+  ],
+  "build_status": "pass",
+  "reproduction_status": "not-rerun",
+  "files": [
+    {
+      "path": "source/manuscript/main.tex",
+      "original_sha256": "d268b974b4f1f11dee812b2d1a99f94b2ae66399cc9b43fb67d8ce60a57d272c",
+      "original_bytes": 20,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.tex",
+          "sha256": "d268b974b4f1f11dee812b2d1a99f94b2ae66399cc9b43fb67d8ce60a57d272c",
+          "bytes": 20
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/article.tex",
+      "original_sha256": "eb321a6ae36b674f91fdb160fcd70ec918919dd2e6ac37378ae4a74bff9c56e0",
+      "original_bytes": 12027,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/article.tex",
+          "sha256": "eb321a6ae36b674f91fdb160fcd70ec918919dd2e6ac37378ae4a74bff9c56e0",
+          "bytes": 12027
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/article.bbl",
+      "original_sha256": "c3c2d39dec6f64b779f8cc629ad09c8ae97fe3dfac07a4080b88058aba9b4696",
+      "original_bytes": 1424,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/article.bbl",
+          "sha256": "c3c2d39dec6f64b779f8cc629ad09c8ae97fe3dfac07a4080b88058aba9b4696",
+          "bytes": 1424
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/main.bbl",
+      "original_sha256": "2a87cad08269e2eba71501d40aa66157b5aeda69edc72cab4c9c53190844bbe1",
+      "original_bytes": 1379,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/main.bbl",
+          "sha256": "2a87cad08269e2eba71501d40aa66157b5aeda69edc72cab4c9c53190844bbe1",
+          "bytes": 1379
+        }
+      ]
+    },
+    {
+      "path": "source/manuscript/references.bib",
+      "original_sha256": "e6ae438c99245e48391b1f515e7b4518746b8b5792f49e6de23e81d36b280846",
+      "original_bytes": 2150,
+      "role": "latex-source-or-asset",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/manuscript/references.bib",
+          "sha256": "e6ae438c99245e48391b1f515e7b4518746b8b5792f49e6de23e81d36b280846",
+          "bytes": 2150
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/arbitrary_layered_cpsat.py",
+      "original_sha256": "9d899a5fda49edbde0ecf4fd3b31824758896c1b729799bc7ab62fefc32fa7e5",
+      "original_bytes": 7358,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/arbitrary_layered_cpsat.py",
+          "sha256": "9d899a5fda49edbde0ecf4fd3b31824758896c1b729799bc7ab62fefc32fa7e5",
+          "bytes": 7358
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/junction_lp.py",
+      "original_sha256": "6982f5a3dc83fcd012bafbeb27b393fc2aee9d41e28ff4495e8cb43f0d7c6bb2",
+      "original_bytes": 4098,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/junction_lp.py",
+          "sha256": "6982f5a3dc83fcd012bafbeb27b393fc2aee9d41e28ff4495e8cb43f0d7c6bb2",
+          "bytes": 4098
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/complete_layered.md",
+      "original_sha256": "5a8d8dec9a159108ca38f5c998aa720f21ec88202be7078b6ad74ed87e362fb7",
+      "original_bytes": 2380,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/complete_layered.md",
+          "sha256": "5a8d8dec9a159108ca38f5c998aa720f21ec88202be7078b6ad74ed87e362fb7",
+          "bytes": 2380
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/one_high_junction.md",
+      "original_sha256": "8b1cb2dadf03e1fca6c7331bab6c5e0670d686e401f21d0535409eab4502654c",
+      "original_bytes": 3974,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/one_high_junction.md",
+          "sha256": "8b1cb2dadf03e1fca6c7331bab6c5e0670d686e401f21d0535409eab4502654c",
+          "bytes": 3974
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/junction_lp.md",
+      "original_sha256": "cc435a9509210133d3fae5ff45eb48a1ed8cb0b5880182e97a14a1c70d3b24dd",
+      "original_bytes": 2390,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/junction_lp.md",
+          "sha256": "cc435a9509210133d3fae5ff45eb48a1ed8cb0b5880182e97a14a1c70d3b24dd",
+          "bytes": 2390
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/triage.md",
+      "original_sha256": "e42380b8cae23cbca3a00e1992b64a77389164edea96d43c8782823559fc60bf",
+      "original_bytes": 3267,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/triage.md",
+          "sha256": "e42380b8cae23cbca3a00e1992b64a77389164edea96d43c8782823559fc60bf",
+          "bytes": 3267
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/arbitrary_layered_milp.py",
+      "original_sha256": "428291dcf632ec615b6db2eb300134ae0d4e714d76b646ea6d1875412d37e4da",
+      "original_bytes": 10475,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/arbitrary_layered_milp.py",
+          "sha256": "428291dcf632ec615b6db2eb300134ae0d4e714d76b646ea6d1875412d37e4da",
+          "bytes": 10475
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/arbitrary_layered_search.md",
+      "original_sha256": "6a3e5224b92d434b4f348f0d404308ae29bed25ba7169bdc4dd77ee9e893c599",
+      "original_bytes": 4747,
+      "role": "reproduction-data-or-proof",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/arbitrary_layered_search.md",
+          "sha256": "6a3e5224b92d434b4f348f0d404308ae29bed25ba7169bdc4dd77ee9e893c599",
+          "bytes": 4747
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/one_high_junction.py",
+      "original_sha256": "2543936414c6f9f9c5b65ff3aab399d6fb239fff7929dd1cbd72c43ba7074fd3",
+      "original_bytes": 6559,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/one_high_junction.py",
+          "sha256": "2543936414c6f9f9c5b65ff3aab399d6fb239fff7929dd1cbd72c43ba7074fd3",
+          "bytes": 6559
+        }
+      ]
+    },
+    {
+      "path": "source/evidence/complete_layered.py",
+      "original_sha256": "5d0040746498aa967d0fe1f7cb2b9b587b722c84de8e74e5a1af7d07efcc79b1",
+      "original_bytes": 3946,
+      "role": "reproduction-code",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/evidence/complete_layered.py",
+          "sha256": "5d0040746498aa967d0fe1f7cb2b9b587b722c84de8e74e5a1af7d07efcc79b1",
+          "bytes": 3946
+        }
+      ]
+    },
+    {
+      "path": "source/source.md",
+      "original_sha256": "ab0704f0de5fc5c2317404c3924ee9a21b70a52a90eff2f2f38c063473b2cbe9",
+      "original_bytes": 1151,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/source.md",
+          "sha256": "ab0704f0de5fc5c2317404c3924ee9a21b70a52a90eff2f2f38c063473b2cbe9",
+          "bytes": 1151
+        }
+      ]
+    },
+    {
+      "path": "source/problem.md",
+      "original_sha256": "174bde94cac9c956ce72a39efd1fbf6835191fe81f561d7276f683ab1b080e16",
+      "original_bytes": 3336,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/problem.md",
+          "sha256": "174bde94cac9c956ce72a39efd1fbf6835191fe81f561d7276f683ab1b080e16",
+          "bytes": 3336
+        }
+      ]
+    },
+    {
+      "path": "source/claim.json",
+      "original_sha256": "2f62fea9d74f0198b16f22a320100a59c70e9067543bda2c2e98040665b6536e",
+      "original_bytes": 1224,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/claim.json",
+          "sha256": "2f62fea9d74f0198b16f22a320100a59c70e9067543bda2c2e98040665b6536e",
+          "bytes": 1224
+        }
+      ]
+    },
+    {
+      "path": "source/publication.json",
+      "original_sha256": "8d59ebd4b03146f23169698b99a4a1fda89f16b78d098adb1b6166079ed55544",
+      "original_bytes": 587,
+      "role": "frozen-problem-or-publication-metadata",
+      "storage": "verbatim",
+      "stored_files": [
+        {
+          "path": "source/publication.json",
+          "sha256": "8d59ebd4b03146f23169698b99a4a1fda89f16b78d098adb1b6166079ed55544",
+          "bytes": 587
+        }
+      ]
+    }
+  ],
+  "build_cwd": "latex-parent",
+  "archive_collection": "BigWIN2",
+  "former_archive_id": "BW1-B44-P02",
+  "reclassification_note": "Conversation/workflow ownership correction on 2026-09-17; original research ID and frozen scientific bytes unchanged."
+}
