@@ -6,7 +6,7 @@
   "kind": "resolution-paper",
   "original_status": "Proved",
   "scope": "n coils: nonexistence for all n >= 5 not divisible by 4; explicit tours for the multiples of 4 from 12 to 48; n >= 28 quoted from Knuth's draft. Lower bound: at least n/2 + 2 coils for n = 4, 6 (mod 8) and at least (n+3)/2 coils for odd n >= 5 not congruent to 1, 19 (mod 24). Least number of coils for every n >= 12 with n not congruent to 3 (mod 4): n/2 for n = 0, 2 (mod 8), n/2 + 2 for n = 4, 6 (mod 8), (n+1)/2 for n = 1 (mod 24), (n+3)/2 for the other n = 1 (mod 4), with tours from explicit lists (n <= 95) and a ring construction from eighteen seed tours (n >= 96). n = 3 (mod 4): tours attaining the bounds for 11 <= n <= 47 and n = 67 only.",
-  "gate_basis": "Exact verification scripts pass (verify_weights.py for 5 <= n <= 70; check_tour.py on all tour files; lower_bounds.py for even n <= 500 and odd n <= 301; half_family.py: 63 explicit tours, conditions (Z),(S),(W),(C) for eighteen seeds, direct checks of every n not congruent to 3 (mod 4) from 96 to 573 and of n = 1000, 1001). Independent AI referee passes re-implemented the checks from the text. Referee passes on 2026-11-16, each given only the paper and data files: a third found no mathematical error in the n/2-coil construction; a fourth found no error in the lower-bound section or in the n/2 + 2 families beyond one misstated proposition for the 3 x 3 board, now corrected. The families for odd n = 1 (mod 4) were added afterwards and have been checked only by the author's programs. No external review.",
+  "gate_basis": "Exact verification scripts pass (verify_weights.py for 5 <= n <= 70; check_tour.py on all tour files; lower_bounds.py for even n <= 500 and odd n <= 301; half_family.py: 63 explicit tours, conditions (Z),(S),(W),(C) for eighteen seeds, direct checks of every n not congruent to 3 (mod 4) from 96 to 573 and of n = 1000, 1001). Independent AI referee passes re-implemented the checks from the text. Referee passes on 2026-11-16, each given only the paper and data files: a third found no mathematical error in the n/2-coil construction; a fourth found no error in the lower-bound section or in the n/2 + 2 families beyond one misstated proposition for the 3 x 3 board, now corrected. A fifth found no error in the families for odd n = 1 (mod 4) or in the two propositions added last, and two misstatements, now corrected. No external review.",
   "provenance": {
     "tool": "Claude Code (Anthropic)",
     "first_obtained": "2026-11-14",
@@ -15,7 +15,7 @@
     "revised": "2026-11-16 (twice)"
   },
   "pdf": "pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf",
-  "pdf_sha256": "25fc9e276e88de8ac656521c9213b7d62acc7cdafed4aed67748abadf03f67f2",
+  "pdf_sha256": "2675c196eaebde52721482c5604670f6e8628711d39860e88f98e7fd469bc0f1",
   "pages": 19,
   "latex": "reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex",
   "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P01/",
@@ -26,10 +26,10 @@
     "python-sat (CaDiCaL), numpy, scipy and matplotlib for the search, LP and figure scripts."
   ],
   "limitations": [
-    "Not externally peer reviewed. Checks so far: exact verification scripts, and independent re-implementations from the text of the paper by separate AI agents. Referee passes on 2026-11-16, each given only the paper and data files: a third found no mathematical error in the n/2-coil construction; a fourth found no error in the lower-bound section or in the n/2 + 2 families beyond one misstated proposition for the 3 x 3 board, now corrected. The families for odd n = 1 (mod 4) were added afterwards and have been checked only by the author's programs.",
+    "Not externally peer reviewed. Checks so far: exact verification scripts, and independent re-implementations from the text of the paper by separate AI agents. Referee passes on 2026-11-16, each given only the paper and data files: a third found no mathematical error in the n/2-coil construction; a fourth found no error in the lower-bound section or in the n/2 + 2 families beyond one misstated proposition for the 3 x 3 board, now corrected. A fifth found no error in the families for odd n = 1 (mod 4) or in the two propositions added last, and two misstatements, now corrected.",
     "n coils: the existence direction for n >= 28 is quoted from Knuth's draft (answer 232, Beluhov and Stappers) and was not re-derived; tours for multiples of 4 up to 48 are supplied independently. The cases n = 4 and n = 8 rest on exhaustive enumeration (Knuth's counts, reproduced by whirl_sat.py).",
-    "Least number of coils: the lower bound has a complete written proof, except that the bound (n+1)/2 for n = 1 (mod 24) is quoted from Knuth's exercise 229(c). The existence proof is computer-assisted: the eighteen seeds were found by SAT search, and the proof for all n rests on a lemma plus finite conditions that half_family.py checks. The cases n = 8, 10 of exercise 231(a) rest on Knuth's counts.",
-    "n = 3 (mod 4): only the lower bound is proved. That it is attained is shown by explicit tours for n from 11 to 47 and n = 67; the general case is open. For n = 8, 9, 10 the least number of coils rests on the SAT search and Knuth's counts.",
+    "Least number of coils: the lower bound has a complete written proof. The existence proof is computer-assisted: the eighteen seeds were found by SAT search, and the proof for all n rests on a lemma plus finite conditions that half_family.py checks. The cases n = 8, 10 of exercise 231(a) are covered by two small labelled wedges, and also by Knuth's counts.",
+    "n = 3 (mod 4): only the lower bound is proved. That it is attained is shown by explicit tours for n from 11 to 47 and n = 67; the general case is open. The least number of coils for n = 8, 9 rests on exhaustive enumeration (ours and Knuth's counts), and for n = 10 on the SAT search.",
     "We found no published construction for n/2 coils, but cannot rule out that one is known to others (Beluhov, Stappers) and unpublished. Knuth's site was unreachable on 2026-11-16, so we could not check for a newer draft.",
     "The n-coil proof technique (closed-form Farkas certificates for a cycle-cover LP relaxation) follows S. Li, arXiv:2605.04603. Li's theorem on n/2 coils is reproved here by a different method.",
     "Knuth's draft is cited, not reproduced. Priority has not been established by an external party."
@@ -78,7 +78,7 @@
     "source/evidence/verify_weights.py": "23bf58101f44fb06e733a859cac751b8d08b4b08457105a74aeb5d651ae43b16",
     "source/evidence/whirl_sat.py": "e60e4f89f9f15ae743aae88a63d741f42fe3d5dedbf0c249f9e867e8a79a0441",
     "source/manuscript/labels.pdf": "682d9050922b12d57938a0c4ae9306adb7c17718c866da77921920d6bba8621b",
-    "source/manuscript/main.tex": "85ae875462b8d6c082dc80936fa5777ab295c9b3cd7c3866102a5a6cf5f1102a",
+    "source/manuscript/main.tex": "1ebb47b78a49f3822465c56b5a80b9b7d79ccbeff2a72c59311c368ca2f51556",
     "source/manuscript/new_tours.pdf": "fd355b2e48009d3ec8043c5b11ee6535f03736e0a90b4ac843e1225b0489d22a",
     "source/manuscript/ring96.pdf": "1f546d0ee6fb6a7c659184cfd6dd31f03004646f1e63f82b876e05580e5cc12b"
   },

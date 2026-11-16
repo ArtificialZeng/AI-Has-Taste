@@ -34,7 +34,7 @@ and $24$. For $n\ge52$ the existence part rests on the construction reported in 
 \item \emph{A lower bound.} Every tour has at least $n/2+2$ coils if $n\equiv4$ or $6\pmod 8$, and at least
 $(n+3)/2$ coils if $n$ is odd and $n\not\equiv1,19\pmod{24}$. The bound comes from path covers of a wedge of the
 board and has a short proof; it contains the theorem of S.~Li that $n/2$ coils are impossible when $n\equiv4$ or
-$6\pmod 8$.
+$6\pmod 8$. For every odd $n\ge9$ there are at least $(n+1)/2$ coils.
 \item \emph{The least number of coils.} For every $n\ge12$ with $n\not\equiv3\pmod 4$ we determine it: $n/2$ if
 $n\equiv0,2\pmod 8$; $n/2+2$ if $n\equiv4,6\pmod 8$; $(n+1)/2$ if $n\equiv1\pmod{24}$; and $(n+3)/2$ for the other
 $n\equiv1\pmod 4$. Together with two small cases, this shows that a tour with $n/2$ coils exists if and only if
@@ -124,9 +124,10 @@ $n\equiv4$ or $6\pmod 8$.
 \end{itemize}
 \end{theorem}
 For $n\equiv4$ or $6\pmod 8$, part (a) contains Li's theorem and excludes $n/2+1$ coils as well; the latter is not
-addressed in \cite{li}. The first statement of part (c) is the odd case of \cite[exercise 229(c)]{knuth}. The proof,
-in Section~\ref{sec:lower}, is short: the tour passes through any wedge of the board in at most $c$ pieces, and these
-pieces are disjoint paths that cover the wedge. We bound the number of paths needed from below.
+addressed in \cite{li}. The first statement of part (c) is the odd case of \cite[exercise 229(c)]{knuth}. The
+proofs are in Section~\ref{sec:lower}, and they are short. For all but the first statement of (c), the idea is that
+the tour passes through any wedge of the board in at most $c$ pieces, and these pieces are disjoint paths that cover
+the wedge; we bound the number of paths needed from below. The first statement of (c) has a separate proof.
 
 For three quarters of all $n$ we can show that the bounds are attained.
 \begin{theorem}\label{thm:half}
@@ -386,13 +387,14 @@ Summing over the pieces gives $|\mathsf B|-|\mathsf N|\le c$.
 \begin{remark}
 The pieces form a cover of $W$ by vertex-disjoint paths, and a labelling is a dual certificate, in the sense of
 K\H onig's theorem, for the least number of paths in such a cover. The labellings below were found by computing
-minimum vertex covers for small boards and reading off the pattern. Figure~\ref{fig:labels} shows them.
+minimum vertex covers for small boards and reading off the pattern. Figure~\ref{fig:labels} shows four of them.
 \end{remark}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.86\textwidth]{labels.pdf}
-\caption{The four labelled wedges used in the proof of Theorem~\ref{thm:lower}. The cross is the pivot. A tour has at
+\caption{Four of the labelled wedges used in the proof of Theorem~\ref{thm:lower}; the two wedges of
+Proposition~\ref{prop:small} are not shown. The cross is the pivot. A tour has at
 least as many coils as there are cells labelled $\mathsf B$ minus cells labelled $\mathsf N$.}
 \label{fig:labels}
 \end{figure}
@@ -462,7 +464,7 @@ Every whirling knight's tour of the $8\times8$ board, and of the $10\times10$ bo
 For $n=8$ take the wedge between the directions of the cells $(5,4)$ and $(5,7)$. It has $11$ cells. Label
 $(4,4)$, $(5,5)$, $(5,7)$, $(6,6)$, $(7,5)$, $(7,7)$ with $\mathsf B$; $(5,6)$, $(6,7)$ with $\mathsf O$; and $(5,4)$,
 $(6,5)$, $(7,6)$ with $\mathsf I$. For $n=10$ take the wedge between the directions of the cells $(6,5)$ and $(4,5)$.
-It has $45$ cells, in the columns $5,\dots,9$, and we label them as follows; a dot marks a cell outside the wedge.
+It has $37$ cells, in the columns $5,\dots,9$, and we label them as follows; a dot marks a cell outside the wedge.
 \begin{center}\small\ttfamily
 \begin{tabular}{r@{\quad}ccccc}
 $i$ & 5 & 6 & 7 & 8 & 9\\
@@ -595,11 +597,11 @@ half-lines.
 By \eqref{eq:oddarc}, the arcs that end at $(2,1)$ start at $(1,-1)$, $(3,-1)$ or $(4,0)$. The first two pass over a
 half-axis, so the tour contains $(4,0)\to(2,1)$. The arcs that start at $(2,1)$ end at $(3,3)$, $(1,3)$ or $(0,2)$.
 The last two pass over a half-diagonal, so the tour contains $(2,1)\to(3,3)$. The reflection $(x,y)\mapsto(y,x)$
-reverses all arcs and preserves the eight half-lines. Hence the tour also contains $(3,3)\to(1,2)$ and
-$(1,2)\to(0,4)$. So it contains the path
+reverses all arcs and preserves the eight half-lines. So the same argument at the reflected cell $(1,2)$ shows that
+the tour contains $(3,3)\to(1,2)$ and $(1,2)\to(0,4)$. Hence it contains the path
 \[ (4,0)\to(2,1)\to(3,3)\to(1,2)\to(0,4). \]
-The quarter turn $(x,y)\mapsto(-y,x)$ preserves arcs and the eight half-lines, so the tour contains the three
-rotated copies of this path as well. The four paths form a closed cycle through $16$ cells, which is impossible
+The quarter turn $(x,y)\mapsto(-y,x)$ preserves arcs and the eight half-lines, so the same argument at the rotated
+cells shows that the tour contains the three rotated copies of this path as well. The four paths form a closed cycle through $16$ cells, which is impossible
 because the board has more than $16$ cells.
 \end{proof}
 
@@ -752,8 +754,9 @@ each part of $P$ in (b) or (c) stays in these columns. It does not contain $u$ o
 and a knight move cannot lead from the top side to the bottom side; so the part also lies on one of the two sides.
 An insertion in another column zone fixes all cells in the columns $A-2,\dots,B+1$, or translates all of them by the
 same vector. An insertion in a row zone fixes the top side and translates the bottom side. The cells $u$ and $v$
-stay in the columns $12$ and $13$, to the left of every column zone; their rows lie between the first and the
-second row zone, and they are translated together with the second and third row zones. In each case (a)--(c)
+stay in the columns $12$ and $13$, to the left of every column zone. By (S) and the first clause of (a), their rows
+lie between the first and the second row zone, and they are translated together with the second and third row
+zones. In each case (a)--(c)
 still hold, for $[A,B)$ or for its translate. The same argument applies to the row zones. The result is a Hamiltonian path $P_e$ from $\varphi_e(u)$ to $\varphi_e(v)$ of the
 set formed by the ring of the $N_{e+1}\times N_{e+1}$ board and these two cells. After the insertions the three column zones are
 \[ [14,\,21+6e),\qquad [h-3+6e,\,h+3+\varepsilon+18e),\qquad [N_1-21+18e,\,N_1-14+24e). \]
@@ -839,8 +842,8 @@ Lemma~\ref{lem:rays}).
 We used CaDiCaL~\cite{cadical} through PySAT~\cite{pysat}. Each tour below was found in at most a few minutes on a
 laptop.
 
-For the tours of Theorem~\ref{thm:half} with $n\ge72$ in case (a), $n\ge52$ in case (b) and $n\ge53$ in case (c)
-we searched for the ring only. The arcs of a known tour of side $n-24$ are kept on the inner board, except that exactly one of them may
+For the tours of Theorem~\ref{thm:half} with $n\ge72$ in case (a), $n\ge52$ in case (b) and $n\ge53$ in case (c),
+except $n=73$, we searched for the ring only. The arcs of a known tour of side $n-24$ are kept on the inner board, except that exactly one of them may
 be dropped, and the variables are the arcs at ring cells. For the eighteen seeds we added the requirements that in each zone, widened by one column on either side, the move depends
 only on the depth of the cell, and that condition (S) holds. Each seed was then found in under a second. With
 these zones the search reports that no seed exists for $N_1=82$, $88$ or $90$, at least over the inner tours that we
@@ -869,8 +872,9 @@ for every such $n$ from $11$ to $47$, and for $n=67$.
 The cell sequences accompany this note. The file \texttt{tours\_n\_coils.txt} has the tours with $n$ coils. The
 tours and seeds for the three cases of Theorem~\ref{thm:half} are in three pairs of files, named
 \texttt{tours\_X\_coils.txt} and \texttt{seeds\_X\_coils.txt} with \texttt{X} equal to \texttt{half},
-\texttt{plus2} and \texttt{odd}. The other tours with the least number of coils are in
-\texttt{tours\_least\_coils.txt}. Figure~\ref{fig:tours} shows four of the tours.
+\texttt{plus2} and \texttt{odd}. The file \texttt{tours\_least\_coils.txt} collects tours with the least
+number of coils for small $n$, including every $n\equiv3\pmod 4$ from $11$ to $47$; some of them also appear in the
+other files. Figure~\ref{fig:tours} shows four of the tours.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{new_tours.pdf}
@@ -924,7 +928,7 @@ $u\times w>0$, every cell is visited once, and the number of plumb-line crossing
 \item The inequalities $g\le0$ and the values of the right-hand side in Lemma~\ref{lem:count} were also checked by
 the accompanying program \texttt{verify\_weights.py}, in exact arithmetic, for every $n\le70$ not divisible by $4$.
 \item Two further implementations, each written by a separate AI agent from the text of the proof alone, confirmed
-the three cases up to $n=122$ and $n=130$.
+the three cases of the proof of Theorem~\ref{thm:main} up to $n=122$ and $n=130$.
 \item For $13\le n\le27$, the Farkas certificates and three SAT solvers independently agree with
 Theorem~\ref{thm:main}.
 \item The program \texttt{lower\_bounds.py} uses only the Python standard library. For every even $n\le500$ and
@@ -938,12 +942,20 @@ number of paths that cover each wedge by bipartite matching, for even $n\le120$ 
 the stated values except for $n=8$, where the wedge of Proposition~\ref{prop:evenlabel} needs $6$ paths. It checked
 the $22$ tours and six seeds of case (b) and built $T_k$ directly for $k\le20$. It found one false statement, for
 the board of side $3$ in Proposition~\ref{prop:diaglabel}, which is corrected here, and it suggested
-Propositions~\ref{prop:small} and~\ref{prop:oddhalf}. Case (c) of Theorem~\ref{thm:half} was added afterwards and
-has been checked only by our own programs.
+Propositions~\ref{prop:small} and~\ref{prop:oddhalf}.
+\item A fifth AI agent, again given only the text and the data files, refereed
+Propositions~\ref{prop:small} and~\ref{prop:oddhalf} and case (c) of Theorem~\ref{thm:half}, which were added after
+the fourth pass. It checked conditions (Z), (S), (W), (C) for all eighteen seeds, carried out the insertions of
+Lemma~\ref{lem:insert} one by one for $e\le3$, and built $T_k$ directly for $k\le20$ in all eighteen families and
+for $n=1000$, $1001$, $1009$ and $1521$. For odd $n\le151$ it computed the least total winding of a cycle cover; this
+equals the bound of Theorem~\ref{thm:lower}(b) outside the two exceptional classes, and inside them every cover
+that attains $(n-1)/2$ contains the cycle of $16$ cells from the proof of Proposition~\ref{prop:oddhalf}. It also
+found by exhaustive search that no $10\times10$ tour has $5$ or $6$ coils, which supports the entry of
+Table~\ref{tab:least} for $n=10$. It found no mathematical error and two misstatements, corrected here.
 \item The program \texttt{half\_family.py} uses only the Python standard library. It checks conditions (Z), (S), (W)
 and (C) for the eighteen seeds. Independently of Proposition~\ref{prop:stretch}, it builds $T_k$ and checks it
 directly as a tour. We ran this for $k\le20$ in each of the eighteen families, which covers every
-$n\not\equiv3\pmod 4$ from $96$ to $573$, and for $n=1000$ and $n=1001$.
+$n\not\equiv3\pmod 4$ from $96$ to $574$, and for $n=1000$ and $n=1001$.
 \item A third AI agent, which saw only an earlier version of this text and the data files for $n/2$ coils,
 re-implemented the conditions and the construction. It confirmed (Z), (S), (W), (C) for the first six seeds and
 checked $T_k$ directly for every $n\equiv0$ or $2\pmod 8$ from $72$ to $810$ and for $n=1000$. It also carried out the insertions of Lemma~\ref{lem:insert} one by one for
