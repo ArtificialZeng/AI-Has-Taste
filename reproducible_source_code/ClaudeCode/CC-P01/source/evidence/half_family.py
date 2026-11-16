@@ -8,13 +8,17 @@ Python 3 standard library only.
   python half_family.py tours_odd3_coils.txt seeds_odd3_coils.txt            n = 3 (mod 4): (n+3)/2 coils, or (n+1)/2 if n = 19 (mod 24)
   ... -K 20                                                                  check 20 levels of each family (default 8)
   ... -n 1000 -o tour1000.txt                                                write the tour for one n
+  python half_family.py tours_sym_coils.txt seeds_sym_coils.txt --symmetric  tours that are invariant under the quarter turn
+  python half_family.py tours_sym_coils.txt seeds_sym3_coils.txt --symmetric the same for n = 3 (mod 4)
+  python half_family.py tours_half_turn_coils.txt seeds_half_turn_coils.txt --symmetric 2      half turn, 4 | n
 
 Data.  The first file holds a tour T for every admissible n below the seeds; its header gives the number of coils.
 The second file holds, for six values N1 (one in each class modulo 24), a seed tour T1 of the N1 x N1 board.  T1 is
 obtained from the tour T0 of the central (N1-24) x (N1-24) board (first file, shifted by (12,12)) by replacing
 disjoint pieces Q_1..Q_r of T0 by disjoint paths P_1..P_r, where P_i has the same first and last cell as Q_i; the
 paths P_i together visit all cells of the outer ring (depth < 12) and all cells of the pieces.
-  * Without an entry omega= in the header, r = 1 and Q_1 is the single arc of T0 that is missing in T1.
+  * Without an entry omega= in the header, the pieces are the maximal paths formed by the arcs of T0 that are
+    missing in T1: a single arc in the simple seeds, four arcs in the seeds with quarter-turn symmetry.
   * With omega=D,L0,L1 let Omega be the set of inner cells of depth < D whose distance to the second nearest side
     of the board is in [L0, L1).  The pieces are the maximal subpaths of T0 all of whose arcs have an end in Omega,
     except those that are paths of T1 as well.
@@ -60,6 +64,12 @@ def check_tour(n, T, coils_claimed):
         if u[0] * ray[1] - ray[0] * u[1] > 0 and ray[0] * w[1] - w[0] * ray[1] > 0: coils += 1
     return ok and coils == coils_claimed
 
+def symmetric(n, T, order=4):
+    """Is the tour invariant under the rotation of the board by a quarter turn (order 4) or a half turn (order 2)?"""
+    succ = dict(zip(T, T[1:] + T[:1]))
+    rot = (lambda v: (n - 1 - v[1], v[0])) if order == 4 else (lambda v: (n - 1 - v[0], n - 1 - v[1]))
+    return all(succ[rot(v)] == rot(w) for v, w in succ.items())
+
 class Family:
     def __init__(self, T0, T1, shift=0, omega=None):
         self.N1 = N1 = max(max(v) for v in T1) + 1; self.N0 = max(max(v) for v in T0) + 1; assert N1 == self.N0 + 2 * W
@@ -71,7 +81,7 @@ class Family:
         self.ring = ring = {v for v in succ1 if depth(v) < W}
         # the pieces Q_i of T0 (shifted): maximal runs of the arcs in `cut`
         if omega is None:
-            cut = {x for x in succ0 if succ1[x] != succ0[x]}; assert len(cut) == 1
+            cut = {x for x in succ0 if succ1[x] != succ0[x]}; assert cut            # the arcs of T0 that are missing in T1
         else:
             D, L0, L1 = map(int, omega.split(","))
             along = lambda v: max(min(v[0], N1 - 1 - v[0]), min(v[1], N1 - 1 - v[1]))
@@ -183,6 +193,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("tours"); ap.add_argument("seeds"); ap.add_argument("-K", type=int, default=8)
     ap.add_argument("-n", type=int, default=None); ap.add_argument("-o", default=None)
+    ap.add_argument("--symmetric", type=int, nargs="?", const=4, default=0, choices=(2, 4),
+                    help="also check that every tour is invariant under the quarter turn (default) or, with 2, the half turn")
     args = ap.parse_args()
     coils, scoils, opts = {}, {}, {}
     tours, seeds = load(args.tours, coils), load(args.seeds, scoils, opts)
@@ -195,21 +207,22 @@ if __name__ == "__main__":
             assert n in seeds or cand, "no tour or family for this n in these files"
             N1 = n if n in seeds else cand[0]; k = 1 + (n - N1) // 24
             fam = Family(tours[N1 - 24], seeds[N1], **opts[N1]); T = fam.tour(k); c = coils[N1 - 24] + 12 * k
-        ok = check_tour(n, T, c)
-        print(f"n={n}: coils = {c} -> {'VALID' if ok else 'INVALID'}")
+        ok = check_tour(n, T, c) and (not args.symmetric or symmetric(n, T, args.symmetric))
+        print(f"n={n}: coils = {c} -> {'VALID' if ok else 'INVALID'}" + (", symmetric" if ok and args.symmetric else ""))
         if args.o: open(args.o, "w").write(f"n={n} coils={c} tour=" + " ".join(f"{i},{j}" for i, j in T) + "\n")
         sys.exit(0 if ok else 1)
     allok = True
     for n in sorted(tours):
-        allok &= check_tour(n, tours[n], coils[n])
+        allok &= check_tour(n, tours[n], coils[n]) and (not args.symmetric or symmetric(n, tours[n], args.symmetric))
     print(f"explicit tours n = {', '.join(map(str, sorted(tours)))}: {'ALL VALID' if allok else 'SOME INVALID'}")
     for N1 in sorted(seeds):
         fam = Family(tours[N1 - 24], seeds[N1], **opts[N1])
         info = fam.certify()
         ns = []
         for k, succ in fam.levels(args.K):
-            n = N1 + 24 * (k - 1); allok &= check_tour(n, fam.as_list(succ), coils[N1 - 24] + 12 * k); ns.append(n)
+            n = N1 + 24 * (k - 1); T = fam.as_list(succ); ns.append(n)
+            allok &= check_tour(n, T, coils[N1 - 24] + 12 * k) and (not args.symmetric or symmetric(n, T, args.symmetric))
         shown = ", ".join(map(str, ns)) if len(ns) <= 3 else f"{ns[0]}, {ns[1]}, ..., {ns[-1]}"
         print(f"family {N1} + 24k ({scoils[N1]} + 12k coils): conditions (Z),(S),(W),(C) hold, {info}; "
-              f"tours n = {shown} checked directly: {'ALL VALID' if allok else 'SOME INVALID'}", flush=True)
+              f"tours n = {shown} checked directly{' (with their symmetry)' if args.symmetric else ''}: {'ALL VALID' if allok else 'SOME INVALID'}", flush=True)
     print("ALL VALID" if allok else "SOME TOUR IS INVALID")

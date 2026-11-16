@@ -126,7 +126,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **454 份数学研究文稿／2,334 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
+本仓库共 **454 份数学研究文稿／2,339 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
 
 七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
@@ -143,7 +143,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 
 | 编号 + PDF | LaTeX 源码 | 复现源码 |
 |---|---|---|
-| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>关于高德纳 TAOCP 第 7.2.2.4–231 题。(b) 恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n：对所有不被 4 整除的 n ≥ 5 证明了不存在；n ≥ 28 引自高德纳草稿。(a) 由扇形区域的路径覆盖得到新的下界：n ≡ 4、6 (mod 8) 时至少 n/2 + 2 圈，奇数 n ≢ 1、19 (mod 24) 时至少 (n+3)/2 圈。对每个 n ≥ 11，最少圈数完全确定：n/2（n ≡ 0、2 mod 8）、n/2 + 2（n ≡ 4、6 mod 8）、(n+1)/2（n ≡ 1、19 mod 24）、(n+3)/2（其余奇数），由小棋盘上的显式巡回和二十四个种子巡回的可拉伸环带（计算机辅助证明）达到。因此 n/2 圈存在当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)。n ≡ 3 (mod 4) 时环带不是替换一步棋，而是替换里面巡回的 28 到 31 小段。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>关于高德纳 TAOCP 第 7.2.2.4–231 题。(b) 恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n：对所有不被 4 整除的 n ≥ 5 证明了不存在；n ≥ 28 引自高德纳草稿。(a) 由扇形区域的路径覆盖得到新的下界：n ≡ 4、6 (mod 8) 时至少 n/2 + 2 圈，奇数 n ≢ 1、19 (mod 24) 时至少 (n+3)/2 圈。对每个 n ≥ 11，最少圈数完全确定：n/2（n ≡ 0、2 mod 8）、n/2 + 2（n ≡ 4、6 mod 8）、(n+1)/2（n ≡ 1、19 mod 24）、(n+3)/2（其余奇数），由小棋盘上的显式巡回和二十四个种子巡回的可拉伸环带（计算机辅助证明）达到。因此 n/2 圈存在当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)。n ≡ 3 (mod 4) 时环带不是替换一步棋，而是替换里面巡回的 28 到 31 小段。转 180° 不变的巡回圈数必为奇数，这类巡回的最少圈数对所有 n ≥ 11 也已确定（n 不是 4 的倍数时可取转 90° 不变的巡回）。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
 
 </details>
 
@@ -775,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2334 pages
+├── archive-manifest.json              454 PDFs / 2339 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -841,5 +841,5 @@ AI-Has-Taste/
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。仓库现为454份文稿／2,334页。其余PDF、源码与门控文件字节均未改动。该文稿未经外部同行评审。
+**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。仓库现为454份文稿／2,339页。其余PDF、源码与门控文件字节均未改动。该文稿未经外部同行评审。
 <!-- END CLAUDECODE RELEASE NOTE -->

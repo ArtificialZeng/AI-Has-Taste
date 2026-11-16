@@ -42,6 +42,11 @@ $n\equiv0$ or $2\pmod 8$. The tours consist of nested rings of width $12$ that c
 twenty-four seed tours. For $n\not\equiv3\pmod 4$ each ring replaces a single arc of the tour inside it. For
 $n\equiv3\pmod 4$ we found no such ring; there about thirty short pieces of the tour inside the ring are replaced
 by paths with the same ends, which between them pass through all cells of the ring.
+\item \emph{Symmetric tours.} A whirling tour that is invariant under the half turn of the board has an odd number
+of coils; one that is invariant under the quarter turn exists only if $4\nmid n$. For every $n\ge11$ the least number
+of coils of a tour with half-turn symmetry is the least odd number that is at least the least number of coils of all
+tours, and for $4\nmid n$ it is attained by a tour with quarter-turn symmetry. These tours are built from
+twenty-four further seeds.
 \end{itemize}
 All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
 lists of conditions on the seeds that a program checks.
@@ -175,6 +180,15 @@ tour inside the ring are replaced by paths with the same ends, and these paths b
 of the ring. The pieces lie in the five outer layers of the inner tour, near the eight places where the lanes of the
 ring change their direction. The proof rests on $121$ tours,
 given in the accompanying files, and on a finite check carried out by a program.
+
+Section~\ref{sec:sym} treats the whirling tours that are invariant under a rotation of the board. A tour that is
+invariant under the half turn has an odd number of coils, and one that is invariant under the quarter turn exists
+only if $n$ is not a multiple of $4$ (Proposition~\ref{prop:symnec}). In particular no tour with $n$ coils has
+either symmetry when $n\ge4$. For every $n\ge11$ we determine the least number of coils of a tour with half-turn
+symmetry: it is the least odd number that is at least the number in Corollary~\ref{cor:least}, and when $4\nmid n$
+it is attained by a tour with quarter-turn symmetry (Theorem~\ref{thm:sym}). So for $n\equiv2\pmod 4$ the least
+number of coils of all tours is attained by a tour with quarter-turn symmetry. The construction uses seeds in which
+two or four arcs, or several orbits of pieces, are replaced, and it rests on $121$ further tours.
 
 \section{The counting identity}
 
@@ -909,7 +923,8 @@ enlarged. Dashed: arcs of $T_0$ that are not in $T_1$; there are $60$ of them in
 \end{figure}
 
 \begin{remark}\label{rem:shape}
-In all twenty-four seeds, and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
+In all seeds of this note, the twenty-four of Theorem~\ref{thm:half} and the twenty-four of Section~\ref{sec:sym},
+and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
 that the path runs towards smaller columns, and let $i$ be the row. In the first zone the move is $(2,1)$ if
 $i\equiv0\pmod3$ and $(-1,-2)$ otherwise. In the second it is $(2,-1)$ if $i\bmod4\in\{0,1\}$ and $(-2,-1)$
 otherwise. In the third it is $(1,-2)$ if $i\bmod3\in\{0,1\}$ and $(-2,1)$ otherwise. So the paths run in lanes that
@@ -928,6 +943,165 @@ places where the bands change. Condition (S) then asks that the outer layers of 
 these places. In our seeds the five outer layers of $T_1$ are the image of the five outer layers of $T_0$ under the
 stretching map, with rows and columns inserted as in the definition of $\varphi_1$ and $\pi_1$.
 \end{remark}
+
+\section{Tours with rotational symmetry}\label{sec:sym}
+
+Let $q(i,j)=(n-1-j,\,i)$ be the rotation of the $n\times n$ board by a quarter turn about the pivot; it is the
+inverse of the rotation $\rho$ of Section~2. It maps arcs to arcs. We call a whirling knight's tour \emph{symmetric} if $q$ maps it to itself, and \emph{centrally
+symmetric} if the half turn $q^2$ maps it to itself. A symmetric tour is centrally symmetric. According to the
+report~\cite{cassel}, Knuth closed his Christmas lecture of 2025 with an $18\times18$ whirling tour that a rotation
+by $90$ degrees maps to itself, that is, with a symmetric tour; by Proposition~\ref{prop:symnec} below, such a tour
+has an odd number of coils.
+Figure~\ref{fig:sym} shows three symmetric tours.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{sym_tours.pdf}
+\caption{Symmetric whirling knight's tours with the least number of coils. The four quarters of each tour, drawn in
+four colours, are rotations of one another.}
+\label{fig:sym}
+\end{figure}
+
+\begin{proposition}\label{prop:symnec}
+Let $T$ be an $n\times n$ whirling knight's tour with $c$ coils, where $n\ge3$, and let $\ell$ be its number of
+cells.
+\begin{itemize}
+\item[(a)] If $T$ is centrally symmetric, then $c$ is odd.
+\item[(b)] If $T$ is symmetric, then moreover $n\not\equiv0\pmod 4$, and $q$ moves every cell $\ell/4$ steps
+forward along $T$ if $c\equiv1\pmod 4$, and $3\ell/4$ steps forward if $c\equiv3\pmod 4$.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Let $\theta_0<\theta_1<\cdots$ be the polar angles of the cells along $T$, continued beyond one round, so that
+$\theta_{t+1}-\theta_t\in(0,\pi)$ is the angle of the arc that leaves position $t$, and
+$\theta_{t+\ell}=\theta_t+2\pi c$.
+
+(a) The half turn $q^2$ maps the arcs of $T$ to arcs of $T$, so it is an automorphism of the directed cycle $T$:
+there is an $s$ with $0\le s<\ell$ such that $q^2$ moves every cell $s$ steps forward along $T$. It fixes no
+cell, because the pivot is not a cell, and its square is the identity; so $s=\ell/2$. The cell at position $t+s$
+is the image of the cell at position $t$, so $\theta_{t+s}-\theta_t=\pi+2\pi m_t$ with an integer $m_t$. The
+difference of two consecutive values of this expression is the difference of the angles of two arcs, one the image
+of the other under the rotation; both angles are the same number in $(0,\pi)$. So $m_t=m$ does not depend on $t$,
+and $2\pi c=\theta_{t+2s}-\theta_t=2\pi+4\pi m$. Hence $c=1+2m$.
+
+(b) In the same way $q$ moves every cell $s$ steps forward along $T$, for some $s$. The maps $q$ and $q^2$
+fix no cell, and $q^4$ is the identity. Hence $s\ne0$, $2s\not\equiv0$ and $4s\equiv0\pmod\ell$, so $s=\ell/4$ or
+$s=3\ell/4$.
+
+Let $n$ be even. Colour the cell $(i,j)$ by the parity of $i+j$. A knight move changes the colour, and so does
+$q$, because $(n-1-j)+i\equiv i+j+1\pmod 2$. So $s$ is odd. But $\ell=n^2$, and if $4\mid n$ then $\ell/4$ and
+$3\ell/4$ are even. Hence $n\equiv2\pmod 4$.
+
+As in (a), $\theta_{t+s}-\theta_t=\pi/2+2\pi m$ with an integer $m$ that does not depend on $t$, and so
+$\theta_{t+4s}-\theta_t=2\pi+8\pi m$. For $s=\ell/4$ this is $2\pi c$, so $c=1+4m$. For $s=3\ell/4$ it is $6\pi c$,
+so $3c=1+4m$ and $c\equiv3\pmod 4$.
+\end{proof}
+
+For even $n$ the condition $n\equiv2\pmod 4$ is the classical one for closed knight's tours with this symmetry; it
+does not use the whirling property. Part (a) has two consequences. A tour with $n$ coils requires $4\mid n$ when
+$n\ge5$ (Theorem~\ref{thm:main}), so no $n\times n$ whirling tour with $n$ coils is centrally symmetric, except the
+$3\times3$ tour. And for $n\equiv0\pmod 8$ no tour with $n/2$ coils is centrally symmetric. The smallest board on
+which part (a) excludes something is the $10\times10$ board: by a complete enumeration made in one of the referee
+passes (Section~\ref{sec:comp}), it has $5\,196\,504$ tours with $8$ coils, and none of them is centrally symmetric.
+
+\begin{theorem}\label{thm:sym}
+Let $n\ge11$. The least number of coils of a centrally symmetric $n\times n$ whirling knight's tour is the least odd
+number that is at least the number in Corollary~\ref{cor:least}. That is, it is
+\begin{itemize}
+\item $n/2+1$ if $n\equiv0\pmod 8$, and $n/2+3$ if $n\equiv4\pmod 8$;
+\item $n/2$ if $n\equiv2\pmod 8$, and $n/2+2$ if $n\equiv6\pmod 8$;
+\item $(n+1)/2$ if $n\equiv1\pmod{24}$, and $(n+5)/2$ for every other $n\equiv1\pmod 4$;
+\item $(n+3)/2$ if $n\equiv3\pmod 4$.
+\end{itemize}
+If $n\not\equiv0\pmod 4$, this number is attained by a symmetric tour; so it is also the least number of coils of a
+symmetric tour.
+\end{theorem}
+So for $n\equiv2\pmod 4$, for $n\equiv1\pmod{24}$, and for $n\equiv3\pmod 4$ with $n\not\equiv19\pmod{24}$, the
+least number of coils of all tours is attained by a symmetric tour. In all other classes a centrally symmetric tour
+needs exactly one coil more. For $6\le n\le10$ the least numbers of coils $5$, $5$, $7$, $7$, $7$ are odd, and they
+are attained by the listed tours, which are symmetric for $n\ne8$ and centrally symmetric for $n=8$.
+
+The lower bound in Theorem~\ref{thm:sym} follows from Corollary~\ref{cor:least} and
+Proposition~\ref{prop:symnec}. The tours are again built from seeds, and we need one more fact: stretching preserves
+the symmetry.
+
+\begin{lemma}\label{lem:symstretch}
+Consider a seed that is stretchable with shift $\sigma$. Assume that $T_0$ and $T_1$ are symmetric and that the
+quarter turn of the $N_1\times N_1$ board maps every piece onto a piece, the first cell to the first cell. Then
+every tour $T_k$ is symmetric. The
+same holds with the half turn and central symmetry in place of the quarter turn and symmetry.
+\end{lemma}
+\begin{proof}
+For $e\ge0$ let $R_e(t)=N_{e+1}-1-t$, so that the quarter turn of the $N_{e+1}\times N_{e+1}$ board is
+$q_e(i,j)=(R_e(j),i)$. We use two facts about the maps $\varphi_e$ and $\pi_e$. Call $Z=[h-3,h+3+\varepsilon)$ the
+second zone; $R_0$ maps $Z$ onto itself, and $a+b=N_1$.
+\begin{itemize}
+\item[(i)] $\varphi_e(R_0(t))=R_e(\varphi_e(t))$ for every $t\notin Z$. Indeed, $R_0$ exchanges the intervals $[0,a)$
+and $[b,N_1)$, and it exchanges $[a,h)\setminus Z$ and $[h,b)\setminus Z$; on these four sets $\varphi_e$ adds
+$0$, $24e$, $6e$ and $18e$.
+\item[(ii)] For every $s$ with $0\le s<N_{e+1}$, either $\pi_e(R_e(s))=R_0(\pi_e(s))$, or both numbers lie in $Z$ and
+their difference is even. Indeed, if $s=\varphi_e(t)$ with $t\notin Z$, the first alternative holds by (i). If $s$
+lies in the first block, then $R_e(s)$ lies in the third block; with $r=(s-a)\bmod 3$ we get
+$\pi_e(s)=a-3+r$ and $\pi_e(R_e(s))=b+2-r=R_0(\pi_e(s))$. The third block is treated in the same way. In the
+remaining cases $s$ lies in the second block or $s=\varphi_e(t)$ with $t\in Z$, and the same holds for $R_e(s)$.
+Then $\pi_e(s)$ and $\pi_e(R_e(s))$ lie in $Z$, and $\pi_e(s)\equiv s\pmod 2$, $\pi_e(R_e(s))\equiv R_e(s)\pmod 2$.
+Since $N_{e+1}\equiv N_1\pmod 2$, the numbers $\pi_e(R_e(s))$ and $R_0(\pi_e(s))$ have the same parity.
+\end{itemize}
+Now let $e\ge1$ and assume that $T_e$ is symmetric. We compare the move of $T_{e+1}$ at $q_e(z)$ with the
+rotated move at $z$, for the three kinds of cells in the definition of $T_{e+1}$. Write $q$ also for the
+rotation of moves, $q(m_1,m_2)=(-m_2,m_1)$. By the assumption on the pieces, $q_0$ maps $G$ onto $G$ and the
+last cells of the pieces to last cells. Since $T_1$ is symmetric, $m(q_0(x))=q(m(x))$ for every cell $x$ of $G$
+that is not a last cell.
+
+\emph{Ring cells.} Let $z=(i,j)$ be a ring cell. The move at
+$z$ is $m(x)$ with $x=(\pi_e(i),\pi_e(j))$, and the move at $q_e(z)=(R_e(j),i)$ is $m(y)$ with
+$y=(\pi_e(R_e(j)),\pi_e(i))$. We need $m(y)=q(m(x))=m(q_0(x))$, where $q_0(x)=(R_0(\pi_e(j)),\pi_e(i))$.
+By (ii), $y=q_0(x)$, or $y$ and $q_0(x)$ are two ring cells in the same column whose rows lie in $Z$ and
+differ by an even number. In the second case they have the same move. Indeed, the cells of this column whose rows
+lie in $Z$ are ring cells, because the column is one of the twelve outermost on its side; and by condition (a) of
+Lemma~\ref{lem:insert} for the second row zone, which is part of (Z), two of them whose rows differ by $2$ have the
+same move.
+
+\emph{Cells of pieces.} Let $x$ be a cell of a piece other than its last cell. Its coordinates lie in no zone, so
+$q_e(\varphi_e(x))=\varphi_e(q_0(x))$ by (i). The cell $q_0(x)$ is again a cell of a piece other than its
+last cell, so the move at $q_e(\varphi_e(x))$ is $m(q_0(x))=q(m(x))$.
+
+\emph{Other cells.} They keep their moves in $T_e+(12,12)$, which is symmetric, and the set of these cells is
+invariant under $q_e$ by the two cases above.
+
+\emph{The half turn.} Here $q_e^2(i,j)=(R_e(i),R_e(j))$, and (i) and (ii) are applied to both coordinates. For a
+ring cell $z$ with $x=(\pi_e(i),\pi_e(j))$ the cells $y=(\pi_e(R_e(i)),\pi_e(R_e(j)))$ and $q_0^2(x)$ agree in
+each coordinate, or differ there by an even number inside $Z$. A ring cell has a coordinate outside $Z$, so they
+differ in at most one coordinate; the other coordinate is then one of the twelve outermost, and they have the same
+move by condition (a) for the second row zone or for the second column zone, as before. The other two cases are as before.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sym}]
+The lower bound was noted above. For $n\le95$, and for $n\le143$ when $n\equiv3\pmod 4$, tours with the stated
+numbers of coils are in accompanying files (Section~\ref{sec:comp}); they are symmetric if $4\nmid n$ and centrally
+symmetric if $4\mid n$. For larger $n$ we use twenty-four seeds, in each of which $T_0$ is the listed tour of side
+$N_1-24$. In the last eighteen of them $T_0$ and $T_1$ are symmetric.
+\begin{itemize}
+\item For $N_1=96$, $100$, $104$, $108$, $112$, $116$ the tours $T_0$ and $T_1$ are centrally symmetric, and $T_1$
+contains every arc of $T_0+(12,12)$ except an arc $u\to v$ and its image under the half turn. These two arcs are the
+pieces, and $\sigma=0$. Each of the two paths that replace them winds six times through the ring.
+\item For $N_1=97$, $98$, $101$, $102$, $105$, $106$, $109$, $110$, $113$, $114$, $117$, $118$ the tour $T_1$
+contains every arc of $T_0+(12,12)$ except the four rotations of one arc $u\to v$. These four arcs are the pieces,
+and $\sigma=0$. The path that replaces an arc begins and ends at the ends of that arc, and each of the four paths
+winds three times through the ring.
+\item For $N_1=147$, $151$, $155$, $159$, $163$, $167$ the pieces are defined through the set $\Omega$ as in the proof
+of Theorem~\ref{thm:half}, and $\sigma=3$. Here $r$ is $28$, $36$, $32$, $36$, $28$, $24$ for the six values of
+$N_1$; the pieces have $232$ to $392$ arcs in all and at most $15$ each, and $T_1$ lacks $40$ to $68$ arcs of
+$T_0+(12,12)$.
+\end{itemize}
+In the first two groups the rotation permutes the pieces by their definition. In the third group it does so
+because $\Omega$ is invariant under the quarter turn and $T_0$ and $T_1$ are symmetric.
+The accompanying program checks that the twenty-four seeds are stretchable. By Proposition~\ref{prop:stretch} and
+Lemma~\ref{lem:symstretch}, every $T_k$ is a whirling tour with $12(k-1)$ more coils than $T_1$, and it is centrally
+symmetric in the first group and symmetric in the other two. Every $n\ge96$ with $n\not\equiv3\pmod 4$ and every
+$n\ge147$ with $n\equiv3\pmod 4$ arises in this way, and the number of coils is the one stated, because that number
+grows by $12$ when $n$ grows by $24$.
+\end{proof}
 
 \section{Tours and computations}\label{sec:comp}
 
@@ -968,6 +1142,18 @@ number of that piece. We also required the zones as for the simple seeds, with t
 five outer layers of $T_1$ are the stretched copy of the five outer layers of $T_0$ (Remark~\ref{rem:odd3}), which
 gives condition (S). With these requirements the seed of side $151$, for example, is found in a few seconds.
 \end{itemize}
+For the tours of Section~\ref{sec:sym} all searches use one Boolean variable for each orbit of arcs under the
+quarter turn, or under the half turn when $4\mid n$. This makes the direct search fast: every listed tour of that
+section, symmetric or centrally symmetric, was found in at most two minutes, without the help of a smaller tour. The eighteen seeds with two or four replaced arcs were found like the
+simple seeds, each in under a second. With an even number of coils the same search finds no centrally symmetric
+tour, as Proposition~\ref{prop:symnec} predicts: for each of the sides $12$, $13$, $16$ and $20$, searched with
+orbits under the half turn and with the least number of coils, which is even, it produced $6000$ cycle covers, none
+of which was a single cycle. For $n\equiv3\pmod 4$ the six tours of sides $123$ to $143$ were searched with the
+additional requirement that the moves in their five outer layers follow the rule of Remark~\ref{rem:shape}, except
+near the corners and near the eight places where the bands change; the six seeds were then found like the seeds of
+sides $147$ to $167$ above. There are no symmetric seeds with four replaced arcs for $n\equiv3\pmod 4$ over the
+inner tours that we tried: the solver reports none for the sides $75$, $79$, $83$, $87$, $91$ and $95$.
+
 In the last step the pieces are the paths in $T_0+(12,12)$ from a cell outside $\Omega$ through cells of $\Omega$ to
 the next cell outside $\Omega$. The pieces of Section~\ref{sec:half} are unions of these, without the unions that
 $T_1$ leaves unchanged.
@@ -994,11 +1180,23 @@ except for one arc.
 \item \emph{Seeds for $n\equiv3\pmod 4$.} Six, of sides $147$, $151$, $155$, $159$, $163$, $167$, with $(N_1+1)/2$
 coils for $N_1=163$ and $(N_1+3)/2$ coils otherwise. Each contains the listed tour of side $N_1-24$ except for
 $47$ to $60$ arcs.
+\item \emph{Symmetric tours.} Every $n$ with $4\nmid n$ and $11\le n\le95$, and every $n\equiv3\pmod 4$ with
+$99\le n\le143$, that is, $76$ tours, with the numbers of coils of Theorem~\ref{thm:sym}; and the symmetric tours
+of sides $3$, $6$, $7$, $9$, $10$ with $3$, $5$, $5$, $7$, $7$ coils.
+\item \emph{Centrally symmetric tours for $4\mid n$.} Every multiple of $4$ with $12\le n\le92$, that is, $21$
+tours, with the numbers of coils of Theorem~\ref{thm:sym}, and one of side $8$ with $7$ coils; and six seeds of sides
+$96$, $100$, $104$, $108$, $112$, $116$, with $49$, $53$, $53$, $57$, $57$, $61$ coils.
+\item \emph{Symmetric seeds.} Twelve of sides $97$, $98$, $101$, $102$, $105$, $106$, $109$, $110$, $113$, $114$,
+$117$, $118$, and six of sides $147$, $151$, $155$, $159$, $163$, $167$, with the numbers of coils of
+Theorem~\ref{thm:sym}.
 \end{itemize}
 The cell sequences accompany this note. The file \texttt{tours\_n\_coils.txt} has the tours with $n$ coils. The
 tours and seeds for the four cases of Theorem~\ref{thm:half} are in four pairs of files, named
 \texttt{tours\_X\_coils.txt} and \texttt{seeds\_X\_coils.txt} with \texttt{X} equal to \texttt{half},
-\texttt{plus2}, \texttt{odd} and \texttt{odd3}. The file
+\texttt{plus2}, \texttt{odd} and \texttt{odd3}. The symmetric tours are in \texttt{tours\_sym\_coils.txt}, and
+their seeds in \texttt{seeds\_sym\_coils.txt} and \texttt{seeds\_sym3\_coils.txt}. For $4\mid n$ the centrally
+symmetric tours and their seeds are in two files named \texttt{tours\_half\_turn\_coils.txt} and
+\texttt{seeds\_half\_turn\_coils.txt}. The file
 \texttt{tours\_least\_coils.txt} collects tours with the least number of coils for $n\le49$; some of them also
 appear in the other files. Figure~\ref{fig:tours} shows four of the tours.
 
@@ -1082,6 +1280,24 @@ paths of the twenty-four seeds and checks conditions (Z), (S), (W) and (C). Inde
 Proposition~\ref{prop:stretch}, it builds $T_k$ and checks it directly as a tour. We ran this for $k\le20$ in each
 of the twenty-four families, which covers every $n\not\equiv3\pmod 4$ from $96$ to $574$ and every
 $n\equiv3\pmod 4$ from $147$ to $623$, and for $n=1000$, $n=1001$ and every $n\equiv3\pmod 4$ from $1003$ to $1027$.
+\item For the tours of Section~\ref{sec:sym} the same program, with the option \texttt{--symmetric}, also checks
+the invariance under the quarter turn or the half turn. It checks the $103$ listed tours and the twenty-four seeds of
+that section, and it builds $T_k$ for $k\le20$ in each of the twenty-four families, with its symmetry; this covers
+every $n\not\equiv3\pmod 4$ from $96$ to $574$ and every $n\equiv3\pmod 4$ from $147$ to $623$. We also ran it for
+twelve sides between $1000$ and $1020$. In a first search for the seeds with half-turn symmetry the zones had been
+imposed on two sides of the ring only, by a mistake in the search program; the check of condition (Z) rejected one
+of the six seeds found in this way, and all six were replaced.
+\item A seventh AI agent, given only the text and the data files of Section~\ref{sec:sym}, refereed that section
+in two rounds. It re-implemented the checks from the text and confirmed the $103$ listed tours with their symmetry
+and the twenty-four seeds with their pieces and conditions (Z), (S), (W), (C). It built $T_k$ for $k\le80$ in each
+of the twenty-four families; with the listed tours this gives a checked tour with the number of coils and the
+symmetry of Theorem~\ref{thm:sym} for every $n$ from $11$ to $2012$. It checked the facts (i) and (ii) in the proof
+of Lemma~\ref{lem:symstretch} by brute force. Without a SAT solver it enumerated all symmetric tours for $n\le15$
+and all centrally symmetric tours for $n\le11$; this confirms Proposition~\ref{prop:symnec} on these boards, and it
+gives the values $7$, $9$, $9$, $9$ of Theorem~\ref{thm:sym} for $n=11$, $13$, $14$, $15$ independently of
+Theorem~\ref{thm:lower}. For $n=10$ it found $226\,436$ tours with $7$ coils, none with fewer, and $5\,196\,504$ with
+$8$ coils. It found no mathematical error; a gap in the wording of Lemma~\ref{lem:symstretch} and its remarks on the
+exposition are taken into account here.
 \item The third, fourth and fifth passes described here were made when Section~\ref{sec:half} treated simple seeds
 only; condition (S) then had the form of the sufficient condition that follows the list of conditions.
 \item A sixth AI agent, again given only the text and the data files, refereed the present form of
@@ -1112,6 +1328,8 @@ saw only the text of the proofs. The author is responsible for the content.
 \bibitem{knuth} D.~E.~Knuth, \emph{The Art of Computer Programming}, Volume 4, Pre-Fascicle 8A: \emph{Hamiltonian
 Paths and Cycles}, draft of 8 May 2026, exercises 7.2.2.4--227 to 232 and their answers.
 \url{https://www-cs-faculty.stanford.edu/~knuth/fasc8a.ps.gz}
+\bibitem{cassel} D.~Cassel, Donald Knuth's 2025 Christmas lecture: the knight's tours, \emph{The New Stack},
+25 December 2025. \url{https://thenewstack.io/donald-knuths-2025-christmas-lecture-the-knights-tours/}
 \bibitem{li} S.~Li, Nonexistence of whirling-knight tours at half coil count for $n\equiv4,6\pmod 8$,
 arXiv:2605.04603 (2026).
 \bibitem{cadical} A.~Biere, K.~Fazekas, M.~Fleury and M.~Heisinger, CaDiCaL, Kissat, Paracooba, Plingeling and
