@@ -6,7 +6,7 @@
 
 **From Answer Generation to Research-Agenda Generation**
 
-**453 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
+**454 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
 
 > **Can AI decide what mathematics is worth pursuing next?**
 
@@ -126,11 +126,27 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **453 research manuscripts / 2,312 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 453 original open problems have been solved.
+The archive contains **454 research manuscripts / 2,318 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
 
-Six PDF folders distinguish origin collections and conjecture papers. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
+Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
-**Language policy:** English and Simplified Chinese include the corrected BigWIN2 collection. French, Russian, German and Japanese retain their preceding archive snapshots. Existing PDF bytes and authorship are unchanged.
+**Language policy:** English and Simplified Chinese include the corrected BigWIN2 collection and the Claude Code addition. French, Russian, German and Japanese retain their preceding archive snapshots. Existing PDF bytes and authorship are unchanged.
+
+<details open>
+<summary><strong>Claude Code · 1 manuscript · added 2026-11-16</strong></summary>
+
+<a id="claude-code"></a>
+
+A separate collection for results obtained with Claude Code (Anthropic) under the author's direction. Each entry has a paired package with LaTeX, exact evidence and stand-alone verification scripts. These manuscripts are not externally peer reviewed; scope and limitations are stated in each package.
+
+[PDFs](pdfs/ClaudeCode/) · [LaTeX + reproduction](reproducible_source_code/ClaudeCode/) · [Directory](DIRECTORY_STRUCTURE.md)
+
+| ID + PDF | LaTeX source | Reproducible source code |
+|---|---|---|
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils exist only when n = 3 or 4 divides n](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf)<br>Answers Knuth's TAOCP exercise 7.2.2.4–231(b): an n×n whirling knight's tour with exactly n coils exists iff n = 3, or n ≥ 12 and 4 &#124; n. Nonexistence is proved for all n ≥ 5 not divisible by 4; tours are given for n = 16, 20, 24; the case n ≥ 28 is quoted from Knuth's draft. Also gives n/2-coil tours for n ≡ 0, 2 (mod 8), 16 ≤ n ≤ 66. | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+
+</details>
+
 
 <details>
 <summary><strong>AI-Proposed Conjectures · 6 PDFs</strong></summary>
@@ -162,7 +178,7 @@ All papers explicitly introducing a new conjecture are collected here, including
 
 **BigWIN2 denotes this conversation's research collection, not merely the net-new files in a later packaging pass.** The earlier BigWIN1 attribution of 222 manuscripts was a packaging error. Those 222 and the already archived arbor-polytope paper now form one BigWIN2 collection: 218 ordinary manuscripts below and 5 papers introducing conjectures under [AI-Proposed Conjectures](#ai-proposed-conjectures). All 223 paired source packages are under `reproducible_source_code/BigWIN2/`. The old `#bigwin1` anchor is retained only for historical links; it is not a separate manuscript collection.
 
-This correction adds no PDFs: the archive remains **453 manuscripts / 2,312 pages**. PDF bytes, original research IDs, frozen scientific sources and historical gate contents are unchanged. Only collection attribution, archive display IDs and paths are corrected. The 42 older Windows/v3 manuscripts have workflow-level provenance and the user's explicit attribution, but lack a per-paper chat UUID; no raw-chat forensic attribution is claimed.
+This correction added no PDFs: the archive stood at **453 manuscripts / 2,312 pages** until the Claude Code addition of 2026-11-16. PDF bytes, original research IDs, frozen scientific sources and historical gate contents are unchanged. Only collection attribution, archive display IDs and paths are corrected. The 42 older Windows/v3 manuscripts have workflow-level provenance and the user's explicit attribution, but lack a per-paper chat UUID; no raw-chat forensic attribution is claimed.
 
 [PDFs](pdfs/BigWIN2/) · [LaTeX + reproduction](reproducible_source_code/BigWIN2/) · [Current catalog](assets/BigWIN2/catalog.json) · [Reclassification mapping](assets/BigWIN2/reclassification-20260917.json) · [Checks and limitations](assets/BigWIN2/PACKAGING_REPORT.md) · [Directory](DIRECTORY_STRUCTURE.md)
 
@@ -759,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              453 PDFs / 2312 pages
+├── archive-manifest.json              454 PDFs / 2318 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -778,9 +794,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
+│   ├── ClaudeCode/                    1 PDF (added 2026-11-16)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
+    ├── ClaudeCode/                    1 paired package (CC-P01)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
@@ -800,7 +818,7 @@ AI-Has-Taste/
 
 The next release should make more of the research replayable—not merely make the archive larger.
 
-*Archive edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
+*Archive edition: November 16, 2026 (454 manuscripts; Claude Code collection added). Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
 
 **AI Has Taste. The question is no longer only whether it can find an answer—but how it chooses the next question.**
 
@@ -821,3 +839,7 @@ The next release should make more of the research replayable—not merely make t
 <!-- BEGIN BIGWIN2 RELEASE NOTE -->
 **BigWIN2 attribution correction (2026-09-17):** All 223 manuscripts from this workflow now belong to BigWIN2: 218 ordinary manuscripts and 5 conjecture papers. No incremental PDF was found; the archive remains at 453. The 19 same-result/older-version aliases are retained. The original 230 PDFs and WIN scientific file bytes are unchanged; this is not a new proof audit. GitHub publication is user-authorized, with completion subject to remote verification.
 <!-- END BIGWIN2 RELEASE NOTE -->
+
+<!-- BEGIN CLAUDECODE RELEASE NOTE -->
+**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. The archive now has 454 manuscripts / 2,318 pages. No existing PDF, source or gate byte was changed. The new manuscript is not externally peer reviewed.
+<!-- END CLAUDECODE RELEASE NOTE -->

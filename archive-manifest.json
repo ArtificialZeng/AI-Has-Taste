@@ -1,6 +1,6 @@
 {
   "project": "AI Has Taste",
-  "prepared_on": "2026-09-17",
+  "prepared_on": "2026-11-16",
   "language": "en",
   "homepage_languages": [
     "en",
@@ -18,7 +18,7 @@
     "de": "README.de.md",
     "ja": "README.ja.md"
   },
-  "homepage_edition": "en-zh-453-manuscripts-bigwin2-origin-corrected",
+  "homepage_edition": "en-zh-454-manuscripts-claude-code-added",
   "localization_scope": "English/Chinese counts and topical catalogs synchronized; PDF links corrected in other language snapshots where necessary.",
   "catalog_language": "en",
   "pdf_sections_collapsed_by_default": true,
@@ -29,22 +29,24 @@
     "generation": "Built-in image generation tool",
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
-  "paper_count": 453,
-  "page_count": 2312,
+  "paper_count": 454,
+  "page_count": 2318,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
     "ai-conjecture": 6,
     "BigMac1": 41,
     "BigMac2": 55,
-    "BigWIN2": 218
+    "BigWIN2": 218,
+    "ClaudeCode": 1
   },
   "source_collection_counts": {
     "smallmac_1": 17,
     "smallmac_2": 117,
     "BigMac1": 41,
     "BigMac2": 55,
-    "BigWIN2": 223
+    "BigWIN2": 223,
+    "ClaudeCode": 1
   },
   "scope": "230 upstream manuscripts plus 223 unique current-conversation BigWIN2 manuscripts. Prior BigWIN1 attribution corrected, without changing PDF or frozen source/evidence bytes. No newly eligible final PDF found in the 2026-09-17 incremental scan.",
   "upload_notice": "Repository publication authorized by the user; actual Git transport outcome is reported separately, not inferred from this manifest.",
@@ -8661,6 +8663,25 @@
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
+    },
+    {
+      "paper_id": "CC-P01",
+      "title": "Whirling knight's tours with n coils exist only when n = 3 or 4 divides n",
+      "pages": 6,
+      "sha256": "7e5e1affafce5f7c7f98d2b31361293011eee27eaf47703f4eb8c913619075cd",
+      "archive_status": "final-manuscript-internal-checks-only",
+      "manuscript_kind": "resolution-paper",
+      "original_status": "proved",
+      "collection_of_origin": "ClaudeCode",
+      "directory": "ClaudeCode",
+      "pdf": "pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf",
+      "latex": "reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex",
+      "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P01/",
+      "original_id": "claude-code-20261114-knuth-231b",
+      "contribution": "Knuth's exercise 7.2.2.4-231(b) (TAOCP Pre-Fascicle 8A, draft of 8 May 2026) asks for n x n whirling knight's tours with exactly n coils. Theorem: for every n >= 5 with n not divisible by 4, no such tour exists (weighted counting argument; explicit weights for n = 1, 2, 3 mod 4). New tours with n coils for n = 16, 20, 24 (and for every multiple of 4 from 12 to 48). With the 12 x 12 tour and the n >= 28 construction reported in Knuth's draft, and his counts for n = 4 and 8, an n x n whirling knight's tour with n coils exists if and only if n = 3, or n >= 12 and 4 | n. Also: tours with n/2 coils for every n = 0 or 2 mod 8 with 16 <= n <= 66 (computational; the general case is left as a question).",
+      "introduces_new_conjecture": false,
+      "build_status": "pass",
+      "replay_status": "pass-bounded-exact-replay"
     }
   ],
   "code_inclusion_scope": "BigMac1 only; selected source and exact evidence, not every external tool or large historical trace.",
@@ -8713,7 +8734,8 @@
   ],
   "latex_source_in_git": true,
   "latex_source_in_git_scope": [
-    "BigWIN2"
+    "BigWIN2",
+    "ClaudeCode"
   ],
   "bigwin1_aliases": [
     {
@@ -8910,5 +8932,13 @@
   "conjecture_paper_count": 6,
   "conjecture_classification": "assets/ai-conjectures/classification.json",
   "latest_reconciliation": "assets/BigWIN2/intake-reconciliation.json",
-  "reclassification_mapping": "assets/BigWIN2/reclassification-20260917.json"
+  "reclassification_mapping": "assets/BigWIN2/reclassification-20260917.json",
+  "latest_addition": {
+    "date": "2026-11-16",
+    "collection": "ClaudeCode",
+    "paper_ids": [
+      "CC-P01"
+    ],
+    "note": "One manuscript added; no existing PDF, source or gate byte changed."
+  }
 }

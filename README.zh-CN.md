@@ -6,7 +6,7 @@
 
 **从生成答案，到生成研究议程**
 
-**453 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
+**454 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
 
 > **AI 能否决定：下一步，什么数学值得研究？**
 
@@ -126,11 +126,27 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **453 份数学研究文稿／2,312 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了453道原始开放问题。
+本仓库共 **454 份数学研究文稿／2,318 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
 
-六个PDF目录按来源和猜想类型区分；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
+七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
-**语言说明：** 本次BigWIN2归属纠错同步更新英文和简体中文。法文、俄文、德文和日文保留此前档案快照；原有PDF字节和署名不变。
+**语言说明：** BigWIN2归属纠错与Claude Code新增条目均同步更新英文和简体中文。法文、俄文、德文和日文保留此前档案快照；原有PDF字节和署名不变。
+
+<details open>
+<summary><strong>Claude Code · 1 篇文稿 · 2026-11-16 新增</strong></summary>
+
+<a id="claude-code"></a>
+
+本合集单独收录在作者指导下用 Claude Code（Anthropic）得到的结果。每篇配有 LaTeX、精确证据和可独立运行的验证脚本。文稿未经外部同行评审；适用范围与局限见各配套包。
+
+[PDF](pdfs/ClaudeCode/) · [LaTeX 与复现材料](reproducible_source_code/ClaudeCode/) · [目录](DIRECTORY_STRUCTURE.md)
+
+| 编号 + PDF | LaTeX 源码 | 复现源码 |
+|---|---|---|
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils exist only when n = 3 or 4 divides n](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf)<br>回答高德纳 TAOCP 第 7.2.2.4–231(b) 题：恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n。对所有不被 4 整除的 n ≥ 5 证明了不存在；给出 n = 16、20、24 的巡回；n ≥ 28 引自高德纳草稿。另给出 16 ≤ n ≤ 66 中 n ≡ 0、2 (mod 8) 的 n/2 圈巡回。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+
+</details>
+
 
 <details>
 <summary><strong>AI 自主提出的猜想 · 6 篇 PDF</strong></summary>
@@ -162,7 +178,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 
 **BigWIN2 表示本会话的研究归属，不是某次整理中的净新增文件集合。** 此前将222篇归入BigWIN1属于整理归属错误；这222篇与已收录的arbor-polytope论文现统一为BigWIN2：下表218篇普通稿，另5篇提出新猜想的论文列于[AI猜想目录](#ai-proposed-conjectures)。全部223套源码均位于 `reproducible_source_code/BigWIN2/`。旧 `#bigwin1` 锚点只为历史链接保留，不再表示独立文稿集合。
 
-本次纠错没有新增PDF：仓库仍为 **453份文稿／2,312页**。PDF字节、原始研究ID、冻结科学源码与历史门控内容不变；只纠正合集归属、展示编号及路径。42篇较早的Windows/v3文稿依据历史流程记录与用户明确归属归入本合集，但缺少逐篇聊天UUID；不声称已经逐条聊天取证。
+该次纠错没有新增PDF：在2026-11-16新增Claude Code条目之前，仓库为 **453份文稿／2,312页**。PDF字节、原始研究ID、冻结科学源码与历史门控内容不变；只纠正合集归属、展示编号及路径。42篇较早的Windows/v3文稿依据历史流程记录与用户明确归属归入本合集，但缺少逐篇聊天UUID；不声称已经逐条聊天取证。
 
 [PDFs](pdfs/BigWIN2/) · [LaTeX与复现](reproducible_source_code/BigWIN2/) · [当前清单](assets/BigWIN2/catalog.json) · [归属纠错映射](assets/BigWIN2/reclassification-20260917.json) · [检查与限制](assets/BigWIN2/PACKAGING_REPORT.md) · [完整目录](DIRECTORY_STRUCTURE.md)
 
@@ -759,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              453 PDFs / 2312 pages
+├── archive-manifest.json              454 PDFs / 2318 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -778,9 +794,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
+│   ├── ClaudeCode/                    1 PDF (added 2026-11-16)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
+    ├── ClaudeCode/                    1 paired package (CC-P01)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
@@ -800,7 +818,7 @@ AI-Has-Taste/
 
 下一次发布应让更多研究可以复现，而不只是让档案更大。
 
-*档案版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
+*档案版本：2026 年 11 月 16 日（454份文稿，新增Claude Code合集）。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
 
 **AI Has Taste。问题不再只是它能否找到答案，还在于它如何选择下一个问题。**
 
@@ -821,3 +839,7 @@ AI-Has-Taste/
 <!-- BEGIN BIGWIN2 RELEASE NOTE -->
 **BigWIN2归属纠错（2026-09-17）：** 本会话223份文稿统一归入BigWIN2，其中218篇普通稿、5篇猜想稿；本次没有增量PDF，仓库仍为453份。19条同结果或旧版本别名保留。原有230份PDF及WIN科学文件字节不变；本次不是重新证明或审稿。GitHub发布已获用户授权，完成状态以远端核验为准。
 <!-- END BIGWIN2 RELEASE NOTE -->
+
+<!-- BEGIN CLAUDECODE RELEASE NOTE -->
+**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。仓库现为454份文稿／2,318页。原有PDF、源码与门控文件字节均未改动。新增文稿未经外部同行评审。
+<!-- END CLAUDECODE RELEASE NOTE -->

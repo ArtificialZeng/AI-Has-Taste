@@ -1,0 +1,65 @@
+{
+  "original_id": "claude-code-20261114-knuth-231b",
+  "archive_id": "CC-P01",
+  "title": "Whirling knight's tours with n coils exist only when n = 3 or 4 divides n",
+  "batch_label": "Claude Code",
+  "kind": "resolution-paper",
+  "original_status": "Proved",
+  "scope": "Nonexistence for all n >= 5 with n not divisible by 4; existence shown by explicit tours for the multiples of 4 from 12 to 48; n >= 28 quoted from Knuth's draft.",
+  "gate_basis": "Exact verification scripts pass (verify_weights.py for 5 <= n <= 70, check_tour.py on all 24 tours). Two independent AI referee passes re-implemented the weights from the text (to n = 122 and n = 130). No external review.",
+  "provenance": {
+    "tool": "Claude Code (Anthropic)",
+    "first_obtained": "2026-11-14",
+    "archived": "2026-11-16"
+  },
+  "pdf": "pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf",
+  "pdf_sha256": "7e5e1affafce5f7c7f98d2b31361293011eee27eaf47703f4eb8c913619075cd",
+  "pages": 6,
+  "latex": "reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P01/",
+  "source_root": "reproducible_source_code/ClaudeCode/CC-P01/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "Python 3.10+ standard library for check_tour.py and verify_weights.py.",
+    "python-sat (CaDiCaL), numpy, scipy and matplotlib for the search, LP and figure scripts."
+  ],
+  "limitations": [
+    "Not externally peer reviewed. Checks so far: exact verification scripts, and an independent re-implementation from the text of the proof by a second AI agent.",
+    "The existence direction for n >= 28 is quoted from Knuth's draft (answer 232, Beluhov and Stappers) and was not re-derived; tours for multiples of 4 up to 48 are supplied independently.",
+    "The cases n = 4 and n = 8 rest on exhaustive enumeration (Knuth's counts, reproduced by whirl_sat.py).",
+    "The n/2-coil statement for n <= 66 is computational; no general construction is claimed.",
+    "The proof technique (closed-form Farkas certificates for a cycle-cover LP relaxation) follows S. Li, arXiv:2605.04603.",
+    "Knuth's draft is cited, not reproduced. Priority has not been established by an external party."
+  ],
+  "entrypoints": [
+    "python3 evidence/verify_weights.py 70",
+    "python3 evidence/check_tour.py evidence/tours_n_coils.txt",
+    "python3 evidence/check_tour.py evidence/tours_half_coils.txt"
+  ],
+  "source_files": 22,
+  "source_sha256": {
+    "source/evidence/certificates/cert_n13_c13.json": "a2efa7802d6e311c59724052b544785854f6be923c87f8d8a6227f00faa9d393",
+    "source/evidence/certificates/cert_n14_c14.json": "84a7952fc46bbbe574305ffe4db5581dc3b7b602d59f3908ad3f6de7f34a83cf",
+    "source/evidence/certificates/cert_n15_c15_inner.json": "8572ceaea89a132b34ae4dffa4ea37f669dff3ed342c2ec9f59760afa7ebcba6",
+    "source/evidence/certificates/cert_n17_c17.json": "c90d0780913f8d919fe1143b4a3a22b2891342f8419f11eb2aaaab9dced19837",
+    "source/evidence/certificates/cert_n18_c18.json": "06958e8ecea7e7ea76d2c4358317aa95fc0e27227d664a4d16e9ce6cd1f62d2e",
+    "source/evidence/certificates/cert_n19_c19_inner.json": "1390508b9c5f3a458ea55603ac9d51affa8ef251ce016e799d186d2e6f78ac86",
+    "source/evidence/certificates/cert_n21_c21.json": "6b1795588330d4079c889ab13abb2efc853fd487f7f3b094ab733a34722061ea",
+    "source/evidence/certificates/cert_n22_c22.json": "002a93d9df88c0439942b5e092c28cf74860aebfb6b6e66d2e24d9ad093a283f",
+    "source/evidence/certificates/cert_n23_c23_inner.json": "b4ecdcc52bf340dce20e8ea4c40391388ee4bc6916ed58c7160170724d49f04d",
+    "source/evidence/certificates/cert_n25_c25.json": "fca9209261231f0813888deaa2f63ec4510ef3452afe47db96c2f45947920c69",
+    "source/evidence/certificates/cert_n26_c26.json": "19dea723545275395efee35d64e1e28ecd2b0d4f255b218b7de0c0ab2d8b1520",
+    "source/evidence/certificates/cert_n27_c27_inner.json": "10a7bd1e805f5931916900714e66735e888036402e321a5a23b137d82944daa6",
+    "source/evidence/check_tour.py": "a124c6c4576abdd809ccfc0779bf606e79c2fc951260a6d9f881de494de881e7",
+    "source/evidence/draw_tours.py": "2a15a31c8c7b250cb0a945217defae7b6406fb1a3e881ee2c2381b6de1b21013",
+    "source/evidence/lp_certificates.py": "5027ef1c4190b2324b1d305d7b5cef10473990b7e4bf578440f6c0543a298fb1",
+    "source/evidence/requirements.txt": "3a68d75d6e0a90a5204178b4c7a5c9e6c0caa43740494661df15455f5a87ac29",
+    "source/evidence/tours_half_coils.txt": "e5844a15a0b2a45d4bf3309070b692661a48be9b3c18555fc4bd49f8d8405568",
+    "source/evidence/tours_n_coils.txt": "0d38a218f27b7f4f23e4e7cf628b5e79f72c750484fa4ea83370285256bf36c5",
+    "source/evidence/verify_weights.py": "23bf58101f44fb06e733a859cac751b8d08b4b08457105a74aeb5d651ae43b16",
+    "source/evidence/whirl_sat.py": "e60e4f89f9f15ae743aae88a63d741f42fe3d5dedbf0c249f9e867e8a79a0441",
+    "source/manuscript/main.tex": "9ea754c72839805b275c81830f83d885f531e5d7f3056774beb39a63da9a11b2",
+    "source/manuscript/new_tours.pdf": "fd355b2e48009d3ec8043c5b11ee6535f03736e0a90b4ac843e1225b0489d22a"
+  },
+  "introduces_new_conjecture": false
+}
