@@ -35,12 +35,13 @@ and $24$. For $n\ge52$ the existence part rests on the construction reported in 
 $(n+3)/2$ coils if $n$ is odd and $n\not\equiv1,19\pmod{24}$. The bound comes from path covers of a wedge of the
 board and has a short proof; it contains the theorem of S.~Li that $n/2$ coils are impossible when $n\equiv4$ or
 $6\pmod 8$. For every odd $n\ge9$ there are at least $(n+1)/2$ coils.
-\item \emph{The least number of coils.} For every $n\ge12$ with $n\not\equiv3\pmod 4$ we determine it: $n/2$ if
-$n\equiv0,2\pmod 8$; $n/2+2$ if $n\equiv4,6\pmod 8$; $(n+1)/2$ if $n\equiv1\pmod{24}$; and $(n+3)/2$ for the other
-$n\equiv1\pmod 4$. Together with two small cases, this shows that a tour with $n/2$ coils exists if and only if
-$n\ge16$ and $n\equiv0$ or $2\pmod 8$. The tours consist of nested rings of width $12$ that can be stretched; they
-are built from eighteen seed tours. For $n\equiv3\pmod 4$ the bounds are attained for $11\le n\le119$, but we have no
-general construction.
+\item \emph{The least number of coils.} We determine it for every $n\ge11$: it is $n/2$ if $n\equiv0,2\pmod 8$;
+$n/2+2$ if $n\equiv4,6\pmod 8$; $(n+1)/2$ if $n\equiv1$ or $19\pmod{24}$; and $(n+3)/2$ for every other odd $n$.
+Together with two small cases, this shows that a tour with $n/2$ coils exists if and only if $n\ge16$ and
+$n\equiv0$ or $2\pmod 8$. The tours consist of nested rings of width $12$ that can be stretched; they are built from
+twenty-four seed tours. For $n\not\equiv3\pmod 4$ each ring replaces a single arc of the tour inside it. For
+$n\equiv3\pmod 4$ we found no such ring; there about thirty short pieces of the tour inside the ring are replaced
+by paths with the same ends, which between them pass through all cells of the ring.
 \end{itemize}
 All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
 lists of conditions on the seeds that a program checks.
@@ -129,27 +130,31 @@ proofs are in Section~\ref{sec:lower}, and they are short. For all but the first
 the tour passes through any wedge of the board in at most $c$ pieces, and these pieces are disjoint paths that cover
 the wedge; we bound the number of paths needed from below. The first statement of (c) has a separate proof.
 
-For three quarters of all $n$ we can show that the bounds are attained.
+For every $n\ge11$ these bounds are attained.
 \begin{theorem}\label{thm:half}
 There is an $n\times n$ whirling knight's tour
 \begin{itemize}
 \item[(a)] with exactly $n/2$ coils, for every $n\ge16$ with $n\equiv0$ or $2\pmod 8$;
 \item[(b)] with exactly $n/2+2$ coils, for every $n\ge12$ with $n\equiv4$ or $6\pmod 8$;
 \item[(c)] with exactly $(n+1)/2$ coils, for every $n\ge25$ with $n\equiv1\pmod{24}$, and with exactly $(n+3)/2$
-coils, for every other $n\ge13$ with $n\equiv1\pmod 4$.
+coils, for every other $n\ge13$ with $n\equiv1\pmod 4$;
+\item[(d)] with exactly $(n+1)/2$ coils, for every $n\ge19$ with $n\equiv19\pmod{24}$, and with exactly $(n+3)/2$
+coils, for every other $n\ge11$ with $n\equiv3\pmod 4$.
 \end{itemize}
 \end{theorem}
 
 \begin{corollary}\label{cor:least}
-Let $n\ge12$ and $n\not\equiv3\pmod 4$. The least number of coils of an $n\times n$ whirling knight's tour is
+Let $n\ge11$. The least number of coils of an $n\times n$ whirling knight's tour is
 \begin{itemize}
 \item $n/2$ if $n\equiv0$ or $2\pmod 8$, and $n/2+2$ if $n\equiv4$ or $6\pmod 8$;
-\item $(n+1)/2$ if $n\equiv1\pmod{24}$, and $(n+3)/2$ for every other $n\equiv1\pmod 4$.
+\item $(n+1)/2$ if $n\equiv1$ or $19\pmod{24}$, and $(n+3)/2$ for every other odd $n$.
 \end{itemize}
 \end{corollary}
 \begin{proof}
 The tours are those of Theorem~\ref{thm:half}, and the lower bounds are those of Theorem~\ref{thm:lower}.
 \end{proof}
+For $6\le n\le10$ the least number of coils is $5$, $5$, $7$, $7$, $7$ (Section~\ref{sec:comp}); there is no
+$5\times5$ tour.
 
 \begin{corollary}\label{cor:half}
 Let $n$ be even. An $n\times n$ whirling knight's tour with exactly $n/2$ coils exists if and only if $n\ge16$ and
@@ -161,15 +166,15 @@ is Li's theorem~\cite{li}. For $n=2$ the digraph has no arcs. For $n=8$ and $n=1
 Theorem~\ref{thm:lower}(c); it also follows from the exhaustive counts in \cite[answer 229]{knuth}.
 \end{proof}
 The cases $n=16$ and $n=18$ of Theorem~\ref{thm:half} were known \cite[answer 231]{knuth}. The proof of
-Theorem~\ref{thm:half} is in Section~\ref{sec:half}, and it is computer-assisted. For $n\le95$ we list tours. For
-larger $n$ the tour consists of nested rings of width $12$ around a tour of side between $72$ and $94$. Each ring
-is a path that is periodic along parts of each side, so that it can be lengthened to fit any larger board in the same
-class modulo $24$. The proof rests on $81$ tours, given in the accompanying files, and on a finite check carried out
-by a program.
-
-For $n\equiv3\pmod 4$ we have no general construction: our searches find no ring of this kind around any of the
-tours of such sides that we tried. Section~\ref{sec:comp} reports tours that attain the bound of Theorem~\ref{thm:lower}(b), or the bound
-$(n+1)/2$ when $n\equiv19\pmod{24}$, for every $n\equiv3\pmod 4$ from $11$ to $119$.
+Theorem~\ref{thm:half} is in Section~\ref{sec:half}, and it is computer-assisted. For $n\le95$, and for $n\le143$
+when $n\equiv3\pmod 4$, we list tours. For larger $n$ the tour consists of nested rings of width $12$ around one of
+the listed tours. Each ring is periodic along parts of each side, so that it can be lengthened to fit any larger
+board in the same class modulo $24$. In cases (a), (b) and (c) the ring is a single path, and it replaces one arc of
+the tour inside it. In case (d) our searches find no ring of this kind. There $28$ to $31$ short pieces of the
+tour inside the ring are replaced by paths with the same ends, and these paths between them pass through all cells
+of the ring. The pieces lie in the five outer layers of the inner tour, near the eight places where the lanes of the
+ring change their direction. The proof rests on $121$ tours,
+given in the accompanying files, and on a finite check carried out by a program.
 
 \section{The counting identity}
 
@@ -622,37 +627,52 @@ its \emph{moves} $m(z)=\operatorname{succ}(z)-z$. We write $c(z)$ for the column
 The \emph{depth} of a cell $(i,j)$ of the $N\times N$ board is $\min(i,j,N-1-i,N-1-j)$. The \emph{ring} is the set
 of cells of depth less than $12$, and the other cells form the \emph{inner board}. The translation by $(12,12)$ maps
 the $(N-24)\times(N-24)$ board onto the inner board and the pivot to the pivot, so it preserves arcs and coils.
+Paths are \emph{disjoint} if they have no cell in common.
 
-A \emph{seed} is a pair $(T_0,T_1)$ with the following properties.
+A \emph{seed} consists of two tours $T_0$, $T_1$ and of paths $Q_1,\dots,Q_r$ and $P_1,\dots,P_r$, where $r\ge1$,
+with the following properties.
 \begin{itemize}
 \item $T_0$ is a whirling tour of the $N_0\times N_0$ board; let $c_0$ be its number of coils.
 \item $T_1$ is a whirling tour of the $N_1\times N_1$ board with $c_0+12$ coils, where $N_1=N_0+24$.
-\item $T_1$ contains every arc of $T_0+(12,12)$ except one arc $u\to v$.
+\item $Q_1,\dots,Q_r$ are pairwise disjoint paths in $T_0+(12,12)$, each with at least one arc. We call them the
+\emph{pieces} of the seed; the word has nothing to do with its use in Section~\ref{sec:lower}. Let $G$ be the set
+that consists of the ring and of the cells of the pieces.
+\item $P_1,\dots,P_r$ are pairwise disjoint paths that together visit exactly the cells of $G$, and $P_i$ has the
+same first cell and the same last cell as $Q_i$.
+\item $T_1$ consists of the arcs of $T_0+(12,12)$ that belong to no piece, and of the arcs of $P_1,\dots,P_r$.
 \end{itemize}
-The remaining arcs of $T_1$ then form a path $P$ from $u$ to $v$ that visits every cell of the ring. We call $P$ the
-\emph{ring path}. It is a Hamiltonian path of the set $G$ that consists of the ring and the two cells $u$ and $v$.
-Figure~\ref{fig:ring} shows a seed with $N_1=96$.
+So $T_1$ arises from $T_0+(12,12)$ when each piece $Q_i$ is replaced by the path $P_i$, which has the same ends.
+Between them the paths $P_i$ pass through all cells of the ring. A single path $P_i$ may visit cells of other pieces,
+and it need not enter the ring.
+
+The seed is \emph{simple} if $r=1$ and $Q_1$ is a single arc $u\to v$. Then $P_1$ is a path from $u$ to $v$ through
+all cells of the ring, and $T_1$ contains every arc of $T_0+(12,12)$ except $u\to v$. Figure~\ref{fig:ring} shows a
+simple seed with $N_1=96$, and Figure~\ref{fig:teeth} a seed with $N_1=147$ and $31$ pieces.
 
 \subsection*{Inserting a period}
-The next lemma lets us lengthen a path where it is periodic. For a cell $z$ and a fixed integer $\tau\ge1$ write
+The next lemma lets us lengthen paths where they are periodic. For a cell $z$ and a fixed integer $\tau\ge1$ write
 $z^+=z+(0,\tau)$ and $z^-=z-(0,\tau)$.
 
 \begin{lemma}\label{lem:insert}
-Let $G$ be a finite set of cells, that is, of points of $\mathbb Z^2$, and $P$ a Hamiltonian path of $G$ from $s$
-to $t$ whose arcs are knight moves, with moves $m$. Let $A<B$ and $\tau\ge1$ be integers with $B-A\ge\tau+4$. Assume:
+Let $G$ be a finite set of cells, that is, of points of $\mathbb Z^2$. Let $P_1,\dots,P_r$ be pairwise disjoint paths
+that together visit exactly the cells of $G$; their arcs are knight moves, with moves $m$, and $P_i$ leads from
+$s_i$ to $t_i$. Let $A<B$ and $\tau\ge1$ be integers with $B-A\ge\tau+4$. Assume:
 \begin{itemize}
-\item[(a)] $c(s)$ and $c(t)$ are not in $[A,B)$. For every cell $z$ with $A\le c(z)<B-\tau$ we have
+\item[(a)] No $c(s_i)$ and no $c(t_i)$ is in $[A,B)$. For every cell $z$ with $A\le c(z)<B-\tau$ we have
 $z\in G\iff z^+\in G$, and $m(z)=m(z^+)$ when both are in $G$.
-\item[(b)] If $z\in G$ and $A\le c(z)<A+2$, the part of $P$ between $z$ and $z^+$ lies in columns less than $B$.
-\item[(c)] If $z\in G$ and $B-2\le c(z)<B$, the part of $P$ between $z^-$ and $z$ lies in columns at least $A$.
+\item[(b)] If $z\in G$ and $A\le c(z)<A+2$, then $z$ and $z^+$ lie on the same path $P_i$, and the part of $P_i$
+between them lies in columns less than $B$.
+\item[(c)] If $z\in G$ and $B-2\le c(z)<B$, then $z^-$ and $z$ lie on the same path $P_i$, and the part of $P_i$
+between them lies in columns at least $A$.
 \end{itemize}
 Let $G'=\{z\in G:c(z)<B\}\cup\{z^+:z\in G,\ c(z)\ge A\}$. For $z\in G'$ put $m'(z)=m(z)$ if $c(z)<B$, and
-$m'(z)=m(z^-)$ if $c(z)\ge A+\tau$. Then $m'$ is well defined at every cell of $G'$ other than $t'$, and the arcs $z\to z+m'(z)$ form a Hamiltonian
-path
-$P'$ of $G'$ from $s'$ to $t'$, where $x'=x$ if $c(x)<A$ and $x'=x^+$ if $c(x)\ge B$. Moreover \textup{(a)--(c)} hold
-for $G'$ and $P'$ with $B+\tau$ in place of $B$.
+$m'(z)=m(z^-)$ if $c(z)\ge A+\tau$. For a cell $x$ write $x'=x$ if $c(x)<A$ and $x'=x^+$ if $c(x)\ge B$. Then $m'$
+is well defined at every cell of $G'$ other than $t_1',\dots,t_r'$, and the arcs $z\to z+m'(z)$ form pairwise
+disjoint paths $P_1',\dots,P_r'$ that together visit exactly the cells of $G'$, where $P_i'$ leads from $s_i'$ to
+$t_i'$. Moreover \textup{(a)--(c)} hold for $G'$ and $P_1',\dots,P_r'$ with $B+\tau$ in place of $B$.
 \end{lemma}
 \begin{proof}
+We call the arcs of $P_1,\dots,P_r$ the \emph{old} arcs and the arcs $z\to z+m'(z)$ the \emph{new} arcs.
 Let $W=\{z\in G':c(z)<B\}$ and $E=\{z\in G':c(z)\ge A+\tau\}$. By (a), $W=\{z\in G:c(z)<B\}$ and
 $E=\{z^+:z\in G,\ c(z)\ge A\}$. On $W\cap E$ the two definitions of $m'$ agree, again by (a). So $m'=m$ on $W$, and
 $m'(z^+)=m(z)$ for $z^+\in E$. In words: on $W$ the new arcs are the old ones, and on $E$ they are the old arcs
@@ -660,46 +680,49 @@ between cells of column at least $A$, translated by $(0,\tau)$.
 
 A knight move changes the column by at most $2$, and $B-(A+\tau)\ge4$. Hence for every cell $z$ the five columns
 $c(z)-2,\dots,c(z)+2$ are all less than $B$, or all at least $A+\tau$. In the first case call $z$ itself the
-\emph{counterpart} of $z$; otherwise call $z^-$ its counterpart. All arcs of $P$ at the counterpart, and all arcs of
-$P'$ at $z$, then lie in $W$, respectively in $E$ after translation. So $z+m'(z)\in G'$, and $z$ has as many
-incoming and outgoing arcs in $P'$ as its counterpart has in $P$. Exactly one cell of $G'$ has counterpart $s$, namely
-$s'$, and exactly one has counterpart $t$, namely $t'$; this is because $c(s)$ and $c(t)$ are not in $[A,B)$. Therefore $P'$ consists of a path from $s'$ to $t'$ and
-possibly some cycles.
+\emph{counterpart} of $z$; otherwise call $z^-$ its counterpart. All old arcs at the counterpart, and all new arcs at
+$z$, then lie in $W$, respectively in $E$ after translation. So $z+m'(z)\in G'$, and $z$ has as many incoming and
+outgoing new arcs as its counterpart has old ones. Exactly one cell of $G'$ has counterpart $s_i$, namely $s_i'$,
+and exactly one has counterpart $t_i$, namely $t_i'$; this is because $c(s_i)$ and $c(t_i)$ are not in $[A,B)$.
+Therefore the new arcs form $r$ paths, each from some $s_i'$ to some $t_j'$, and possibly some cycles.
 
-To exclude cycles, call a cell of $G'$ \emph{good} if $P'$ joins it to $s'$, directions ignored. Let
-$P=(x_0,x_1,\dots,x_M)$ with $x_0=s$. We show by induction on $i$:
+Fix $i$, and call a cell of $G'$ \emph{good} if the new arcs join it to $s_i'$, directions ignored. Let
+$P_i=(x_0,x_1,\dots,x_M)$ with $x_0=s_i$. We show by induction on $k$:
 \begin{itemize}
-\item[(1)] if $c(x_i)<B$, then $x_i$ is good;
-\item[(2)] if $c(x_i)\ge A$, then $x_i^+$ is good.
+\item[(1)] if $c(x_k)<B$, then $x_k$ is good;
+\item[(2)] if $c(x_k)\ge A$, then $x_k^+$ is good.
 \end{itemize}
-For $i=0$ one statement is void and the other says that $s'$ is good. Let $y=x_{i+1}$ and assume (1) and (2) for
-$x_i$.
+For $k=0$ one statement is void and the other says that $s_i'$ is good. Let $y=x_{k+1}$ and assume (1) and (2) for
+$x_k$.
 \begin{itemize}
-\item \emph{$c(y)<B$ and $c(x_i)<B$.} The arc $x_i\to y$ lies in $W$, so $y$ is good.
-\item \emph{$c(y)<B\le c(x_i)$.} Then $c(y)\ge B-2\ge A$. The arc $x_i^+\to y^+$ lies in $E$, so $y^+$ is good. By
-(c), $y^-$ and $y$ are joined in $P$ through cells of column at least $A$. Translating, $y$ and $y^+$ are joined in
-$P'$. So $y$ is good.
-\item \emph{$c(y)\ge A$ and $c(x_i)\ge A$.} The arc $x_i^+\to y^+$ lies in $E$, so $y^+$ is good.
-\item \emph{$c(y)\ge A>c(x_i)$.} Then $c(y)<A+2<B$, and $y$ is good by the first case. By (b), $y$ and $y^+$ are
-joined in $P$ through cells of column less than $B$, hence also in $P'$. So $y^+$ is good.
+\item \emph{$c(y)<B$ and $c(x_k)<B$.} The arc $x_k\to y$ lies in $W$, so $y$ is good.
+\item \emph{$c(y)<B\le c(x_k)$.} Then $c(y)\ge B-2\ge A$. The arc $x_k^+\to y^+$ lies in $E$, so $y^+$ is good. By
+(c), $y^-$ and $y$ are joined by old arcs through cells of column at least $A$. Translating, $y$ and $y^+$ are
+joined by new arcs. So $y$ is good.
+\item \emph{$c(y)\ge A$ and $c(x_k)\ge A$.} The arc $x_k^+\to y^+$ lies in $E$, so $y^+$ is good.
+\item \emph{$c(y)\ge A>c(x_k)$.} Then $c(y)<A+2<B$, and $y$ is good by the first case. By (b), $y$ and $y^+$ are
+joined by old arcs through cells of column less than $B$, and these are new arcs as well. So $y^+$ is good.
 \end{itemize}
-Every cell of $G'$ is some $x_i$ with $c(x_i)<B$ or some $x_i^+$ with $c(x_i)\ge A$. So all cells are good and $P'$
-is a single path.
+For $k=M$ we find that $t_i'$ is good. So the path of new arcs that begins at $s_i'$ ends at $t_i'$; call it
+$P_i'$. Every cell of $G'$ is $x$ with $c(x)<B$, or $x^+$ with $c(x)\ge A$, for a cell $x$ of some $P_i$, and then
+it lies on $P_i'$. So there are no cycles.
 
-Finally we check (a)--(c) for $G'$, $P'$ and the interval $[A,B+\tau)$. The columns of $s'$ and $t'$ are less
-than $A$ or at least $B+\tau$. If $A\le c(z)<B$ then
-$z\in G'\iff z\in G\iff z^+\in G'$, and $m'(z^+)=m(z)=m'(z)$; this is (a). In (b) the part of $P$ between $z$ and
-$z^+$ lies in $W$, so it is also a part of $P'$. In (c) we have $z=y^+$ with $B-2\le c(y)<B$, and the part of $P$
-between $y^-$ and $y$, translated, is the part of $P'$ between $z^-$ and $z$.
+Finally we check (a)--(c) for $G'$, the paths $P_i'$ and the interval $[A,B+\tau)$. The columns of $s_i'$ and
+$t_i'$ are less than $A$ or at least $B+\tau$. If $A\le c(z)<B$ then
+$z\in G'\iff z\in G\iff z^+\in G'$, and $m'(z^+)=m(z)=m'(z)$; this is (a). In (b) the part of $P_i$ between $z$ and
+$z^+$ lies in $W$, so it is also a part of $P_i'$. In (c) we have $z=y^+$ with $B-2\le c(y)<B$, and the part of
+$P_i$ between $y^-$ and $y$, translated, is the part of $P_i'$ between $z^-$ and $z$.
 \end{proof}
 
 The lemma also holds with rows in place of columns. We call the interval $[A,B)$ together with $\tau$ a
-\emph{zone}, and the passage from $(G,P)$ to $(G',P')$ an \emph{insertion}. After $q$ insertions in the same zone,
-the moves in columns less than $B$ are unchanged, the moves in columns at least $A+q\tau$ are the old ones
-translated by $(0,q\tau)$, and in the columns from $A$ to $B+q\tau-1$ the moves are periodic with period $\tau$.
+\emph{zone}, and the passage from $G$ and $P_1,\dots,P_r$ to $G'$ and $P_1',\dots,P_r'$ an \emph{insertion}. After
+$q$ insertions in the same zone, the moves in columns less than $B$ are unchanged, the moves in columns at least
+$A+q\tau$ are the old ones translated by $(0,q\tau)$, and in the columns from $A$ to $B+q\tau-1$ the moves are
+periodic with period $\tau$.
 
 \subsection*{Stretching a seed}
-Fix a seed and put $a=19$, $h=\lfloor N_1/2\rfloor$ and $b=N_1-19$. Let $\varepsilon=0$ if $N_1$ is even and
+Fix a seed and an integer $\sigma\ge0$, which we call the \emph{shift}. Put $a=19+\sigma$,
+$h=\lfloor N_1/2\rfloor$ and $b=N_1-19-\sigma$. Let $\varepsilon=0$ if $N_1$ is even and
 $\varepsilon=1$ if $N_1$ is odd. For $e\ge0$ let $N_{e+1}=N_1+24e$. Define
 $\varphi_e\colon\{0,\dots,N_1-1\}\to\{0,\dots,N_{e+1}-1\}$ by
 \[ \varphi_e(t)=\begin{cases} t & t<a,\\ t+6e & a\le t<h,\\ t+18e & h\le t<b,\\ t+24e & t\ge b.\end{cases} \]
@@ -708,16 +731,17 @@ $b+18e$. Define $\pi_e\colon\{0,\dots,N_{e+1}-1\}\to\{0,\dots,N_1-1\}$ by $\pi_e
 block,
 \[ \pi_e(s)\in\{a-3,a-2,a-1\},\quad \pi_e(s)\in\{h-2,h-1\},\quad \pi_e(s)\in\{b,b+1,b+2\} \]
 for the first, second and third block, with $\pi_e(s)\equiv s$ modulo $3$, $2$ and $3$ respectively. Both maps act
-on cells coordinatewise. Then $\pi_e$ maps the ring of the $N_{e+1}\times N_{e+1}$ board onto the ring of the
-$N_1\times N_1$ board.
+on cells coordinatewise. Then $\varphi_e$ maps ring cells to ring cells and inner cells to inner cells, and $\pi_e$
+maps the ring of the $N_{e+1}\times N_{e+1}$ board onto the ring of the $N_1\times N_1$ board.
 
-Now define $T_{e+1}$ on the $N_{e+1}\times N_{e+1}$ board for $e\ge1$, given $T_e$:
+Let $m$ denote the moves of the paths $P_1,\dots,P_r$ of the seed. We define $T_{e+1}$ on the
+$N_{e+1}\times N_{e+1}$ board for $e\ge1$, given $T_e$, by its moves:
 \begin{itemize}
-\item it contains every arc of $T_e+(12,12)$ except $\varphi_e(u)\to\varphi_e(v)$;
-\item it contains the arc $\varphi_e(u)\to\varphi_e(u)+m(u)$;
-\item every ring cell $z$ has the move $m(\pi_e(z))$.
+\item every ring cell $z$ has the move $m(\pi_e(z))$;
+\item every cell $\varphi_e(x)$, where $x$ is a cell of a piece other than its last cell, has the move $m(x)$;
+\item every other cell has the move that it has in $T_e+(12,12)$.
 \end{itemize}
-Here $m$ denotes the moves of the ring path $P$ of the seed. For $e=0$ the same rule returns $T_1$.
+For $e=0$ the same rule returns $T_1$.
 
 \subsection*{Four finite conditions}
 Let $D(t)$, for $0\le t<N_1$, be the set
@@ -726,54 +750,87 @@ Let $D(t)$, for $0\le t<N_1$, be the set
 \{-6,6\}\ \ (h-2\le t<h), & \{6\}\ \ (h\le t<b), & \{6,12\}\ \ (b\le t<b+3),\\
 \{12\}\ \ (t\ge b+3).
 \end{array}\]
-We say that the seed is \emph{stretchable} if the following hold.
+For a coordinate $t$ put $\psi(t)=\varphi_1(t)-12$, and for a cell $z=(i,j)$ put $\psi(z)=(\psi(i),\psi(j))$. We
+say that the seed is \emph{stretchable} with shift $\sigma$ if $N_1\ge52+2\sigma$ and the following hold. The bound on $N_1$
+says that there are at least two columns between the first zone and the second, and between the second and the third.
 \begin{itemize}
-\item[(Z)] Conditions (a), (b), (c) of Lemma~\ref{lem:insert} hold for $(G,P)$ and each of the three zones
-\[ [14,21),\ \tau=3;\qquad [h-3,h+3+\varepsilon),\ \tau=2;\qquad [N_1-21,N_1-14),\ \tau=3, \]
-and also with rows in place of columns. Moreover, the parts of $P$ in (b) lie in columns (rows) at least $A-2$,
-and those in (c) lie in columns (rows) less than $B+2$.
-\item[(S)] $u=(r,c)$ and $v=(r',c')$ with $c,c'\in\{12,13\}$ and $25\le r,r'<h$, and $P$ contains the arc
-$(r-6,c-12)\to(r'-6,c'-12)$.
-\item[(W)] For every cell $z=(i,j)$ of $G$ other than $v$, with move $m(z)=(m_1,m_2)$, and for all
-$\delta_1\in D(i)$ and $\delta_2\in D(j)$, we have $\delta_1m_2-m_1\delta_2\ge0$.
+\item[(Z)] Consider the three zones
+\[ [14+\sigma,21+\sigma),\ \tau=3;\qquad [h-3,h+3+\varepsilon),\ \tau=2;\qquad
+[N_1-21-\sigma,N_1-14-\sigma),\ \tau=3. \]
+No cell of a piece has its column in one of these intervals, or its row. Conditions (a), (b), (c) of
+Lemma~\ref{lem:insert} hold for $G$, the paths $P_1,\dots,P_r$ and each of the three zones, and also with rows in
+place of columns. Moreover, the parts of the paths in (b) and (c) consist of ring cells; those in (b) lie in columns
+(rows) at least $A-2$, and those in (c) in columns (rows) less than $B+2$.
+\item[(S)] For every arc $x\to y$ of a piece, $\psi(x)$ and $\psi(y)$ are ring cells and $\psi(x)\to\psi(y)$ is an
+arc of one of the paths $P_1,\dots,P_r$. Moreover, in each coordinate, the four cells $x$, $y$, $\psi(x)$,
+$\psi(y)$ lie in the same of the four intervals $[0,a)$, $[a,h)$, $[h,b)$, $[b,N_1)$.
+\item[(W)] For every cell $z=(i,j)$ of $G$ that is not the last cell of one of the paths, with move $m(z)=(m_1,m_2)$,
+and for all $\delta_1\in D(i)$ and $\delta_2\in D(j)$, we have $\delta_1m_2-m_1\delta_2\ge0$.
 \item[(C)] Every cell $(i,j)$ with $i<12$ and $h-3\le j<h+3+\varepsilon$ has move $(2,-1)$ or $(-2,-1)$.
 \end{itemize}
+For a simple seed with $u=(i,j)$ and $v=(i',j')$, condition (S) holds if $j,j'\in\{12,13\}$, $25+\sigma\le i,i'<h$
+and $P_1$ contains the arc $(i-6,j-12)\to(i'-6,j'-12)$.
 
 \begin{proposition}\label{prop:stretch}
-If the seed $(T_0,T_1)$ is stretchable, then for every $k\ge0$ the set $T_k$ is a whirling knight's tour of the
-board of side $N_0+24k$, with $c_0+12k$ coils.
+If the seed is stretchable with shift $\sigma$, then for every $k\ge0$ the set $T_k$ is a whirling knight's tour of
+the board of side $N_0+24k$, with $c_0+12k$ coils.
 \end{proposition}
 \begin{proof}
 The cases $k=0$ and $k=1$ are part of the definition of a seed. Let $e\ge1$ and assume the claim for $T_e$.
 
-\emph{The ring path.} Apply Lemma~\ref{lem:insert} to $(G,P)$: $2e$ insertions in the first zone, $6e$ in the
-second and $2e$ in the third, for columns and then for rows. This is allowed, because the hypotheses (a)--(c) for one zone survive an insertion in
-another zone. To see this, consider a column zone $[A,B)$. The ring cells in the columns $A-2,\dots,B+1$ belong to
-the top side or to the bottom side of the ring. So each pair $z,z^+$ in (a) lies on one of these two sides. By (Z),
-each part of $P$ in (b) or (c) stays in these columns. It does not contain $u$ or $v$, which are the ends of $P$,
-and a knight move cannot lead from the top side to the bottom side; so the part also lies on one of the two sides.
-An insertion in another column zone fixes all cells in the columns $A-2,\dots,B+1$, or translates all of them by the
-same vector. An insertion in a row zone fixes the top side and translates the bottom side. The cells $u$ and $v$
-stay in the columns $12$ and $13$, to the left of every column zone. By (S) and the first clause of (a), their rows
-lie between the first and the second row zone, and they are translated together with the second and third row
-zones. In each case (a)--(c)
-still hold, for $[A,B)$ or for its translate. The same argument applies to the row zones. The result is a Hamiltonian path $P_e$ from $\varphi_e(u)$ to $\varphi_e(v)$ of the
-set formed by the ring of the $N_{e+1}\times N_{e+1}$ board and these two cells. After the insertions the three column zones are
-\[ [14,\,21+6e),\qquad [h-3+6e,\,h+3+\varepsilon+18e),\qquad [N_1-21+18e,\,N_1-14+24e). \]
-They contain the three blocks omitted by $\varphi_e$, and the values
-of $\pi_e$ on a block lie in the original zone and in the right residue class. So by the remark after the lemma, the
-move of $P_e$ at a ring cell $z$ is $m(\pi_e(z))$, and its move at $\varphi_e(u)$ is $m(u)$. So $T_{e+1}$ consists of
-$T_e+(12,12)$ without the arc $\varphi_e(u)\to\varphi_e(v)$, together with $P_e$.
+\emph{The paths through the ring.} Apply Lemma~\ref{lem:insert} to $G$ and $P_1,\dots,P_r$: $2e$ insertions in the
+first zone, $6e$ in the second and $2e$ in the third, for columns and then for rows. This is allowed, because the
+hypotheses (a)--(c) for one zone survive an insertion in another zone. To see this, consider a column zone $[A,B)$.
+The ring cells in the columns $A-2,\dots,B+1$ belong to the top side or to the bottom side of the ring, and a knight
+move cannot lead from one of these sides to the other. By (Z), the cells of $G$ in the columns of the zone are ring
+cells, and each part of a path in (b) or (c) consists of ring cells in the columns $A-2,\dots,B+1$. So each pair
+$z,z^+$ in (a), and each part in (b) or (c), lies on one of the two sides. An insertion in another column zone fixes
+all cells in the columns $A-2,\dots,B+1$, or translates all of them by the same vector. An insertion in a row zone
+fixes the top side and translates the bottom side. The cells of the pieces are fixed or translated, too. They stay
+outside the columns of all column zones, because an insertion in a zone translates the cells and the zones on the
+far side of that zone, and nothing else. In each case (a)--(c) and the additional properties in (Z) still hold, for
+$[A,B)$ or for its translate. They also survive an insertion in the zone $[A,B)$ itself, with $B+\tau$ in place of
+$B$: for (a)--(c) this is part of Lemma~\ref{lem:insert}, and by the last paragraph of its proof the parts in (b) are
+unchanged, while those in (c) are the old ones translated by $(0,\tau)$. So the argument can be repeated at every
+insertion. The same applies to the row zones.
 
-\emph{Hamiltonian cycle.} We claim that $T_e+(12,12)$ contains the arc $\varphi_e(u)\to\varphi_e(v)$; then
-$T_{e+1}$ is a Hamiltonian cycle. By (S), $\varphi_e(u)=(r+6e,c)$ and $\varphi_e(v)=(r'+6e,c')$. For $e=1$ the claim
-is the last part of (S). For $e\ge2$, the ring of $T_e$ carries the path $P_{e-1}$. The cells
-$(r-6,c-12)$ and $(r'-6,c'-12)$ have rows in $[a,h)$ and columns less than $a$, so $\varphi_{e-1}$ moves both by
-$(6(e-1),0)$, and $P_{e-1}$ contains the arc $(r+6e-12,c-12)\to(r'+6e-12,c'-12)$. Adding $(12,12)$ gives the claim.
+Let $t$ be a coordinate of a cell of a piece. By (Z) it lies in no zone, and the three zones contain $a$, $h$ and
+$b$ respectively. So the insertions move $t$ by $0$, $6e$, $18e$ or $24e$, according as $t<a$, $a\le t<h$,
+$h\le t<b$ or $t\ge b$; that is, they move it to $\varphi_e(t)$. Hence the result of the insertions is a set of
+pairwise disjoint paths $P_1^e,\dots,P_r^e$ that together visit exactly the ring cells of the
+$N_{e+1}\times N_{e+1}$ board and the cells $\varphi_e(x)$, where $x$ runs through the cells of the pieces; and
+$P_i^e$ has the same first cell and the same last cell as $\varphi_e(Q_i)$, the image of $Q_i$. After the
+insertions the three column zones are
+\[ [14+\sigma,\,21+\sigma+6e),\qquad [h-3+6e,\,h+3+\varepsilon+18e),\qquad
+[N_1-21-\sigma+18e,\,N_1-14-\sigma+24e). \]
+They contain the three blocks omitted by $\varphi_e$, and the values of $\pi_e$ on a block lie in the original zone
+and in the right residue class. So by the remark after the lemma, the move of a ring cell $z$ in these paths is
+$m(\pi_e(z))$, and the move of $\varphi_e(x)$ is $m(x)$. These are the moves in the first two items of the
+definition of $T_{e+1}$. So $T_{e+1}$ consists of the arcs of $P_1^e,\dots,P_r^e$ and of the arcs of $T_e+(12,12)$
+that do not begin at a cell $\varphi_e(x)$, where $x$ is a cell of a piece other than its last cell.
+
+\emph{Hamiltonian cycle.} We claim that $T_e+(12,12)$ contains the arc $\varphi_e(x)\to\varphi_e(y)$ for every arc
+$x\to y$ of a piece. Then $\varphi_e(Q_1),\dots,\varphi_e(Q_r)$ are pairwise disjoint paths in the Hamiltonian cycle
+$T_e+(12,12)$ of the inner board, and $T_{e+1}$ arises from this cycle when each $\varphi_e(Q_i)$ is replaced by
+$P_i^e$, which has the same ends. The paths $P_i^e$ are pairwise disjoint, and they visit the cells of the paths
+$\varphi_e(Q_i)$ and the ring cells, and no other cells. So $T_{e+1}$ is a Hamiltonian cycle of the board.
+
+To prove the claim, let $x\to y$ be an arc of a piece. On the four intervals $[0,a)$, $[a,h)$, $[h,b)$, $[b,N_1)$
+the map $\varphi_e$ is $t\mapsto t+\kappa e$ with $\kappa=0$, $6$, $18$, $24$ respectively, and
+$\psi(t)=t+\kappa-12$. If $t$ and $\psi(t)$ lie in the same interval, then
+\[ \varphi_e(t)-12=t+\kappa e-12=\psi(t)+\kappa(e-1)=\varphi_{e-1}(\psi(t)). \]
+By (S) this applies to both coordinates of $x$ and of $y$. So
+$\varphi_e(x)-(12,12)=\varphi_{e-1}(\psi(x))$, and likewise for $y$, and we must show that $T_e$ contains the arc
+$\varphi_{e-1}(\psi(x))\to\varphi_{e-1}(\psi(y))$. For $e=1$ this is the arc $\psi(x)\to\psi(y)$ of (S). Let
+$e\ge2$. The cell $z=\varphi_{e-1}(\psi(x))$ is a ring cell of the $N_e\times N_e$ board, and
+$\pi_{e-1}(z)=\psi(x)$. So its move in $T_e$ is $m(\psi(x))$, which equals $\psi(y)-\psi(x)$ by (S). Also by (S),
+$\psi(x)$ and $\psi(y)$ lie in the same interval in each coordinate, so
+$\varphi_{e-1}(\psi(y))-\varphi_{e-1}(\psi(x))=\psi(y)-\psi(x)$. This proves the claim.
 
 \emph{Every arc turns counterclockwise.} For the arcs of $T_e+(12,12)$ this holds by induction. Let $z$ be a cell
-of $P_e$ other than its last cell, let $x=\pi_e(z)$, with $x=u$ if $z=\varphi_e(u)$, and let $m=m(x)$ be their
-common move. Let $o_e$ be the pivot of the $N_{e+1}\times N_{e+1}$ board, so that $o_0$ is the pivot of the
+of some $P_i^e$ other than its last cell. Let $x=\pi_e(z)$ if $z$ is a ring cell, and let $x$ be the cell of a piece
+with $z=\varphi_e(x)$ otherwise. Let $m=m(x)$ be the common move of $z$ and $x$. Let $o_e$ be the pivot of the
+$N_{e+1}\times N_{e+1}$ board, so that $o_0$ is the pivot of the
 $N_1\times N_1$ board; both coordinates of $o_e$ exceed those of $o_0$ by $12e$. We claim that
 \[ z-o_e=(x-o_0)+e\,(\delta_1,\delta_2)\qquad\text{with }\delta_1\in\operatorname{conv}D(x_1),\
 \delta_2\in\operatorname{conv}D(x_2), \]
@@ -785,48 +842,91 @@ $18e\le s-t\le24e-3$. Since the cross product is bilinear,
 The first term is positive because $T_1$ is whirling. The second is affine in $\delta_1$ and in $\delta_2$, and it is
 nonnegative at the corners by (W), hence nonnegative.
 
-\emph{Coils.} Let $R$ be the half-line from the pivot towards row $0$ that passes, in the rows less than $12$, between
-the columns $h+12e-1+\varepsilon$ and $h+12e+\varepsilon$. For even $N_1$ this is the central line. For odd $N_1$
+\emph{Coils.} Let $R$ be the half-line from the pivot towards row $0$ that passes between the columns
+$h+12e-1+\varepsilon$ and $h+12e+\varepsilon$. For even $N_1$ this is the central line. For odd $N_1$
 the pivot is the centre of the removed cell, and we tilt $R$ slightly so that it contains no cell. By
-Lemma~\ref{lem:rays} the number of coils of $T_{e+1}$ is the number of its arcs that cross $R$. The arcs of
-$T_e+(12,12)$ cross it $c_0+12e$ times, and the removed arc is not among them. An arc of $P_e$ that crosses $R$ joins
-two cells in rows less than $12$ on different sides of $R$. These cells lie in the second zone, where by (C) and
-periodicity every move is $(\pm2,-1)$. So exactly the $12$ cells of column $h+12e+\varepsilon$ in rows
-$0,\dots,11$ send an arc across $R$. Hence $T_{e+1}$ has $c_0+12(e+1)$ coils.
+Lemma~\ref{lem:rays} the number of coils of $T_{e+1}$ is the number of its arcs that cross $R$. An arc that crosses
+$R$ joins two cells on different sides of $R$ whose columns differ by at most $2$. So both columns are among
+$h+12e-2+\varepsilon,\dots,h+12e+1+\varepsilon$, which lie in the second column zone after the insertions; no cell
+$\varphi_e(x)$ of a piece lies there. Hence all arcs of $T_e+(12,12)$ that cross $R$ belong to $T_{e+1}$, and there
+are $c_0+12e$ of them. The other arcs of $T_{e+1}$ that cross $R$ join two ring cells, in rows less than $12$. These
+cells lie in the second zone, where by (C) and periodicity every move is $(\pm2,-1)$. So exactly the $12$ cells of
+column $h+12e+\varepsilon$ in rows $0,\dots,11$ send an arc across $R$. Hence $T_{e+1}$ has $c_0+12(e+1)$ coils.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:half}]
-For $n\le95$ the tours are in accompanying files (Section~\ref{sec:comp}). Every $n\ge96$ with
-$n\not\equiv3\pmod 4$ is $N_1+24(k-1)$ for a unique $k\ge1$ and a unique $N_1$ among the eighteen values
-\[ 96,\,98,\,104,\,106,\,112,\,114;\qquad 100,\,102,\,108,\,110,\,116,\,118;\qquad 97,\,101,\,105,\,109,\,113,\,117. \]
-For each of them, Section~\ref{sec:comp} gives a tour $T_1$ that forms a seed with the listed tour $T_0$ of side
+For $n\le95$, and for $n\le143$ when $n\equiv3\pmod 4$, the tours are in accompanying files
+(Section~\ref{sec:comp}). Every $n\ge96$ with $n\not\equiv3\pmod 4$, and every $n\ge147$ with $n\equiv3\pmod 4$, is
+$N_1+24(k-1)$ for a unique $k\ge1$ and a unique $N_1$ among the twenty-four values
+\begin{align*}
+&96,\,98,\,104,\,106,\,112,\,114;\qquad 100,\,102,\,108,\,110,\,116,\,118;\\
+&97,\,101,\,105,\,109,\,113,\,117;\qquad 147,\,151,\,155,\,159,\,163,\,167.
+\end{align*}
+For each of them, Section~\ref{sec:comp} gives a tour $T_1$ of side $N_1$, and $T_0$ is the listed tour of side
 $N_0=N_1-24$. The number of coils of $T_0$ is $N_0/2$ in the first group and $N_0/2+2$ in the second. In the third
-group it is $(N_0+1)/2$ for $N_0=73$ and $(N_0+3)/2$ otherwise. The accompanying program checks, in exact integer
-arithmetic, that the eighteen seeds are stretchable. Proposition~\ref{prop:stretch} then gives a tour $T_k$ of side
-$n$ with $12(k-1)$ more coils than $T_1$, which is the number stated in the theorem.
+and fourth group it is $(N_0+1)/2$ for $N_0=73$ and $N_0=139$, and $(N_0+3)/2$ otherwise.
+
+In the first three groups $T_1$ contains every arc of $T_0+(12,12)$ except one arc $u\to v$. This defines a simple
+seed, and we take the shift $\sigma=0$. In the fourth group the pieces are defined as follows, and $\sigma=3$. For a
+cell $z=(i,j)$ of the $N_1\times N_1$ board let $\ell(z)=\max(\min(i,N_1-1-i),\min(j,N_1-1-j))$, the distance to the
+second nearest side of the board. Let $\lambda=\lfloor N_1/4\rfloor+2$, and let $\Omega$ be the set of inner cells
+$z$ of depth $12$, $13$ or $14$ with $\lambda\le\ell(z)<\lambda+16$; these are eight blocks of $3\times16$ cells,
+two along each side of the inner board. Consider the maximal paths in $T_0+(12,12)$ all of
+whose arcs have an end in $\Omega$. There are $45$ to $50$ of them, and $15$ to $22$ of them are paths in $T_1$ as
+well. The others are the pieces $Q_1,\dots,Q_r$. The tour $T_1$ contains every arc of $T_0+(12,12)$ that is in no
+piece, and its remaining arcs form paths $P_1,\dots,P_r$ as in the definition of a seed. Here $r$ is $31$, $28$,
+$29$, $31$, $28$, $28$ for the six values of $N_1$, and $27$, $25$, $28$, $29$, $24$, $25$ of the paths $P_i$
+contain ring cells. The pieces have $301$ to $361$ arcs in all, and at most $17$ each; their cells have depth $12$ to
+$16$. Most of these arcs belong to $T_1$ as well: $T_1$ lacks only $47$ to $60$ arcs of $T_0+(12,12)$. But the
+maximal paths formed by these missing arcs cannot serve as pieces. There are $29$ to $44$ of them, and when one
+follows the arcs of $T_1$ that are not arcs of $T_0+(12,12)$ from the first cell of such a path, one arrives in
+$3$ to $31$ cases at the last cell of another one. Grouping the arcs through $\Omega$ is what makes the ends match.
+
+The accompanying program determines the pieces and the paths, and it checks in exact integer arithmetic that these
+are seeds and that the twenty-four seeds are stretchable with the given shifts. Proposition~\ref{prop:stretch} then
+gives a tour $T_k$ of side $n$ with $12(k-1)$ more coils than $T_1$, which is the number stated in the theorem.
 \end{proof}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\textwidth]{ring96.pdf}
-\caption{Top: the seed tour $T_1$ of side $96$. The inner board (grey) carries the tour $T_0$ of side $72$ except
-for one arc; the short black arcs join its ends $u,v$ to the ring path. The shaded parts of the ring are the zones:
+\caption{Top: the seed tour $T_1$ of side $96$, a simple seed. The inner board (grey) carries the tour $T_0$ of side $72$ except
+for one arc; the short black arcs join its ends $u,v$ to the path $P_1$ through the ring. The shaded parts of the ring are the zones:
 three intervals of columns on the top and bottom sides, and three intervals of rows on the left and right sides.
 Dashed lines mark the cuts $a$, $h$, $b$ where rows and columns are inserted. Bottom:
 the left half of the top side, enlarged.}
 \label{fig:ring}
 \end{figure}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{teeth147.pdf}
+\caption{Top: the seed tour $T_1$ of side $147$. Grey: the arcs that it shares with the tour $T_0$ of side $123$ on
+the inner board. Black: its other arcs at inner cells; there are $93$ of them. The eight boxes are the set
+$\Omega$, and the blue parts of the ring are the zones, for the shift $\sigma=3$. Bottom: the surroundings of the second box of the top side,
+enlarged. Dashed: arcs of $T_0$ that are not in $T_1$; there are $60$ of them in all.}
+\label{fig:teeth}
+\end{figure}
+
 \begin{remark}\label{rem:shape}
-In all eighteen seeds, and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
+In all twenty-four seeds, and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
 that the path runs towards smaller columns, and let $i$ be the row. In the first zone the move is $(2,1)$ if
 $i\equiv0\pmod3$ and $(-1,-2)$ otherwise. In the second it is $(2,-1)$ if $i\bmod4\in\{0,1\}$ and $(-2,-1)$
-otherwise. In the third it is $(1,-2)$ if $i\bmod3\in\{0,1\}$ and $(-2,1)$ otherwise. So the path runs in lanes that
+otherwise. In the third it is $(1,-2)$ if $i\bmod3\in\{0,1\}$ and $(-2,1)$ otherwise. So the paths run in lanes that
 advance one column per move, in bands of three rows near the corners and of four rows in the middle. This explains
 the shape of the construction, although the proof does not use it. A ring that fits both kinds of band has width
 $12$, so the side grows by $24$ and one seed is needed for each class modulo $24$. The amounts $6e$, $12e$, $6e$ come from the geometry: in
 centred coordinates the move $(2,1)$ is an arc only where $x>2y$, and the line $x=2y$ meets the top row $6$ columns
 further from the corner each time the side grows by $24$.
+\end{remark}
+
+\begin{remark}\label{rem:odd3}
+For $n\equiv3\pmod 4$ a simple seed does not seem to exist (Section~\ref{sec:comp}). Between its first and its
+second zone the ring has to pass from bands of three rows to bands of four rows, and for these $n$ the tours that
+we found do this only with the help of the outer layers of the inner tour. This is why the pieces lie near the eight
+places where the bands change. Condition (S) then asks that the outer layers of $T_1$ repeat those of $T_0$ near
+these places. In our seeds the five outer layers of $T_1$ are the image of the five outer layers of $T_0$ under the
+stretching map, with rows and columns inserted as in the definition of $\varphi_1$ and $\pi_1$.
 \end{remark}
 
 \section{Tours and computations}\label{sec:comp}
@@ -844,10 +944,33 @@ laptop.
 
 For the tours of Theorem~\ref{thm:half} with $n\ge72$ in case (a), $n\ge52$ in case (b) and $n\ge53$ in case (c),
 except $n=73$, we searched for the ring only. The arcs of a known tour of side $n-24$ are kept on the inner board, except that exactly one of them may
-be dropped, and the variables are the arcs at ring cells. For the eighteen seeds we added the requirements that in each zone, widened by one column on either side, the move depends
+be dropped, and the variables are the arcs at ring cells. For the eighteen simple seeds we added the requirements that in each zone, widened by one column on either side, the move depends
 only on the depth of the cell, and that condition (S) holds. Each seed was then found in under a second. With
-these zones the search reports that no seed exists for $N_1=82$, $88$ or $90$, at least over the inner tours that we
+these zones the search reports that no simple seed exists for $N_1=82$, $88$ or $90$, at least over the inner tours that we
 tried.
+
+For $n\equiv3\pmod 4$ this search fails. The solver reports that no ring of width $12$ with $12$ coils can replace
+a single arc of any of the tours of sides $11$, $15$, $19$, $23$, $27$, $31$, $35$, $39$, $43$, $47$ and $67$ that we
+tried; for the tour of side $23$ this remains so when up to $16$ of its arcs may be replaced. We proceeded in three
+steps.
+\begin{itemize}
+\item \emph{Sides $51$ to $119$.} Keep every arc of the listed tour of side $n-24$ between two cells that are not on
+its boundary, and search the thirteen outer layers of the new board.
+\item \emph{Sides $123$ to $143$.} The same, with the additional requirement that in the five outer layers the move
+of a cell depends only on its depth, except near the corners and near the eight places where the bands of the ring
+change (Remark~\ref{rem:shape}). This makes the boundary of the tour regular enough for the next step.
+\item \emph{The six seeds, of sides $147$ to $167$.} With $\Omega$ as in the proof of Theorem~\ref{thm:half}, the
+arcs of $T_0+(12,12)$ that have no end in $\Omega$ are kept. The variables are the arcs at the ring cells, at the
+cells of $\Omega$, and at the cells whose successor in $T_0+(12,12)$ lies in $\Omega$. To make sure that each piece is replaced by a path with the same
+ends, every ring cell and every cell of $\Omega$ carries the number of a piece, written with a few Boolean variables. The two ends
+of a chosen arc must carry the same number, and the first and the last cell of a piece count as carrying the
+number of that piece. We also required the zones as for the simple seeds, with the shift $\sigma=3$, and that the
+five outer layers of $T_1$ are the stretched copy of the five outer layers of $T_0$ (Remark~\ref{rem:odd3}), which
+gives condition (S). With these requirements the seed of side $151$, for example, is found in a few seconds.
+\end{itemize}
+In the last step the pieces are the paths in $T_0+(12,12)$ from a cell outside $\Omega$ through cells of $\Omega$ to
+the next cell outside $\Omega$. The pieces of Section~\ref{sec:half} are unions of these, without the unions that
+$T_1$ leaves unchanged.
 
 \subsection*{Calibration}
 With the ray constraints removed or with $c$ fixed, exhaustive enumeration reproduces the counts of
@@ -862,17 +985,20 @@ $n=3$, and none with $n/2$ coils for $n=8$ and $n=10$.
 \item \emph{$n/2+2$ coils.} Every $n\equiv4$ or $6\pmod 8$ with $12\le n\le94$, that is, $22$ tours.
 \item \emph{Odd $n\equiv1\pmod 4$.} Every such $n$ with $13\le n\le93$, that is, $21$ tours, with $(n+1)/2$ coils
 for $n=25$, $49$, $73$ and $(n+3)/2$ coils otherwise.
-\item \emph{Seeds.} Six with $N_1/2$ coils, of sides $96$, $98$, $104$, $106$, $112$, $114$; six with $N_1/2+2$
+\item \emph{Odd $n\equiv3\pmod 4$.} Every such $n$ with $11\le n\le143$, that is, $34$ tours, with $(n+1)/2$ coils
+for $n=19$, $43$, $67$, $91$, $115$, $139$ and $(n+3)/2$ coils otherwise.
+\item \emph{Simple seeds.} Six with $N_1/2$ coils, of sides $96$, $98$, $104$, $106$, $112$, $114$; six with $N_1/2+2$
 coils, of sides $100$, $102$, $108$, $110$, $116$, $118$; and six of sides $97$, $101$, $105$, $109$, $113$, $117$,
 with $(N_1+1)/2$ coils for $N_1=97$ and $(N_1+3)/2$ coils otherwise. Each contains the listed tour of side $N_1-24$
 except for one arc.
-\item \emph{Odd $n\equiv3\pmod 4$.} Tours with $(n+3)/2$ coils, or with $(n+1)/2$ coils when $n\equiv19\pmod{24}$,
-for every such $n$ from $11$ to $119$, that is, $28$ tours.
+\item \emph{Seeds for $n\equiv3\pmod 4$.} Six, of sides $147$, $151$, $155$, $159$, $163$, $167$, with $(N_1+1)/2$
+coils for $N_1=163$ and $(N_1+3)/2$ coils otherwise. Each contains the listed tour of side $N_1-24$ except for
+$47$ to $60$ arcs.
 \end{itemize}
 The cell sequences accompany this note. The file \texttt{tours\_n\_coils.txt} has the tours with $n$ coils. The
-tours and seeds for the three cases of Theorem~\ref{thm:half} are in three pairs of files, named
+tours and seeds for the four cases of Theorem~\ref{thm:half} are in four pairs of files, named
 \texttt{tours\_X\_coils.txt} and \texttt{seeds\_X\_coils.txt} with \texttt{X} equal to \texttt{half},
-\texttt{plus2} and \texttt{odd}. The tours for $n\equiv3\pmod 4$ are in \texttt{tours\_odd3\_coils.txt}. The file
+\texttt{plus2}, \texttt{odd} and \texttt{odd3}. The file
 \texttt{tours\_least\_coils.txt} collects tours with the least number of coils for $n\le49$; some of them also
 appear in the other files. Figure~\ref{fig:tours} shows four of the tours.
 
@@ -903,25 +1029,17 @@ Table~\ref{tab:least} lists the least number of coils for $6\le n\le37$. The tou
 The lower bounds are those of Theorem~\ref{thm:lower}, with one exception: for $n=8$, $9$ and $10$ the theorem gives
 only $6$. For $n=8$ and $n=9$ the value $7$ follows from exhaustive enumeration: all $1120$ tours of the $8\times8$
 board and all $146$ tours of the $9\times9$ board have $7$ coils, in agreement with \cite[answer 229]{knuth}. For
-$n=10$ the entry rests on the search, which reports no tour with $6$ coils. The bound of Theorem~\ref{thm:lower} is
+$n=10$ the entry rests on the search, which reports no tour with $6$ coils, and on the exhaustive enumerations
+of two of the referee passes described below. The bound of Theorem~\ref{thm:lower} is
 sharp for $n=6$ and $n=7$ as well.
 
-By Corollary~\ref{cor:least}, what remains open is the case $n\equiv3\pmod 4$.
+Together with Corollary~\ref{cor:least} this gives the least number of coils for every $n\ge6$.
 
-\begin{question}\label{q:least}
-Let $n\ge11$ and $n\equiv3\pmod 4$. Is the least number of coils of an $n\times n$ whirling knight's tour equal to
-$(n+1)/2$ if $n\equiv19\pmod{24}$, and to $(n+3)/2$ otherwise?
+\begin{question}\label{q:simple}
+Is there a simple seed, or any whirling tour that contains all arcs but one of a whirling tour of the board that is
+smaller by a ring, when $n\equiv3\pmod 4$?
 \end{question}
-The answer is yes for $n\le119$, by the tours listed above. What is missing is a construction that works for all
-$n$. For $n\equiv3\pmod 4$ our search finds no ring of width $12$ with $12$ coils around any of the tours of sides
-$11$, $15$, $19$, $23$, $27$, $31$, $35$, $39$, $43$, $47$ and $67$ that we tried; the solver reports that none
-exists. For the tour of side $23$ this remains so when up to $16$ of its arcs may be replaced. A weaker kind of extension does work, and it
-gave the listed tours of sides $51$ to $119$: keep every arc of the listed tour of side $n-24$ between two cells
-that are not on its boundary, and search the thirteen outer layers of the new board. So a recursive construction may
-exist in which only the neighbourhood of the old boundary is rebuilt at each step. We could not bring it into a form
-that repeats from one step to the next. In the one case that we tried, with sides $143$ and $167$, the search finds
-nothing when the boundary row of the new tour is required to be the stretched copy of the boundary row of the old
-one.
+The searches described above found none.
 
 \begin{question}\label{q:all}
 Let $n\ge12$. Does every number of coils between the least one and $n-1$ occur?
@@ -952,17 +1070,31 @@ the board of side $3$ in Proposition~\ref{prop:diaglabel}, which is corrected he
 Propositions~\ref{prop:small} and~\ref{prop:oddhalf}.
 \item A fifth AI agent, again given only the text and the data files, refereed
 Propositions~\ref{prop:small} and~\ref{prop:oddhalf} and case (c) of Theorem~\ref{thm:half}, which were added after
-the fourth pass. It checked conditions (Z), (S), (W), (C) for all eighteen seeds, carried out the insertions of
-Lemma~\ref{lem:insert} one by one for $e\le3$, and built $T_k$ directly for $k\le20$ in all eighteen families and
+the fourth pass. It checked conditions (Z), (S), (W), (C) for all eighteen simple seeds, carried out the insertions of
+Lemma~\ref{lem:insert} one by one for $e\le3$, and built $T_k$ directly for $k\le20$ in these eighteen families and
 for $n=1000$, $1001$, $1009$ and $1521$. For odd $n\le151$ it computed the least total winding of a cycle cover; this
 equals the bound of Theorem~\ref{thm:lower}(b) outside the two exceptional classes, and inside them every cover
 that attains $(n-1)/2$ contains the cycle of $16$ cells from the proof of Proposition~\ref{prop:oddhalf}. It also
 found by exhaustive search that no $10\times10$ tour has $5$ or $6$ coils, which supports the entry of
 Table~\ref{tab:least} for $n=10$. It found no mathematical error and two misstatements, corrected here.
-\item The program \texttt{half\_family.py} uses only the Python standard library. It checks conditions (Z), (S), (W)
-and (C) for the eighteen seeds. Independently of Proposition~\ref{prop:stretch}, it builds $T_k$ and checks it
-directly as a tour. We ran this for $k\le20$ in each of the eighteen families, which covers every
-$n\not\equiv3\pmod 4$ from $96$ to $574$, and for $n=1000$ and $n=1001$.
+\item The program \texttt{half\_family.py} uses only the Python standard library. It determines the pieces and the
+paths of the twenty-four seeds and checks conditions (Z), (S), (W) and (C). Independently of
+Proposition~\ref{prop:stretch}, it builds $T_k$ and checks it directly as a tour. We ran this for $k\le20$ in each
+of the twenty-four families, which covers every $n\not\equiv3\pmod 4$ from $96$ to $574$ and every
+$n\equiv3\pmod 4$ from $147$ to $623$, and for $n=1000$, $n=1001$ and every $n\equiv3\pmod 4$ from $1003$ to $1027$.
+\item The third, fourth and fifth passes described here were made when Section~\ref{sec:half} treated simple seeds
+only; condition (S) then had the form of the sufficient condition that follows the list of conditions.
+\item A sixth AI agent, again given only the text and the data files, refereed the present form of
+Section~\ref{sec:half}, in which a seed may replace several pieces, and case (d) of Theorem~\ref{thm:half}. It
+re-implemented the seeds, the pieces, the conditions (Z), (S), (W), (C) and the construction, and it confirmed all
+$97$ listed tours of Theorem~\ref{thm:half} and all twenty-four seeds. It built $T_k$ directly for $k\le38$ in the
+eighteen simple families and for $k\le40$ in the six families for $n\equiv3\pmod 4$, that is, for every such $n$
+from $147$ to $1103$. It carried out the insertions of Lemma~\ref{lem:insert} one by one for $e\le2$ on all
+twenty-four seeds, and it tested the lemma on $17427$ intervals of four seeds and on $734563$ intervals of $300$
+random systems of up to seven paths. By exhaustive enumeration it confirmed the least numbers of coils $5$, $5$,
+$7$, $7$, $7$ for $n=6,\dots,10$. It found no mathematical error. It found one misstatement, about the number of
+pieces and of paths through the ring, and two steps in the proof of Proposition~\ref{prop:stretch} that were not
+spelled out; all three are corrected here. It did not referee Sections 2 to~5.
 \item A third AI agent, which saw only an earlier version of this text and the data files for $n/2$ coils,
 re-implemented the conditions and the construction. It confirmed (Z), (S), (W), (C) for the first six seeds and
 checked $T_k$ directly for every $n\equiv0$ or $2\pmod 8$ from $72$ to $810$ and for $n=1000$. It also carried out the insertions of Lemma~\ref{lem:insert} one by one for

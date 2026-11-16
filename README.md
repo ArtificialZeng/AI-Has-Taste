@@ -126,7 +126,7 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **454 research manuscripts / 2,331 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
+The archive contains **454 research manuscripts / 2,334 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
 
 Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
@@ -143,7 +143,7 @@ A separate collection for results obtained with Claude Code (Anthropic) under th
 
 | ID + PDF | LaTeX source | Reproducible source code |
 |---|---|---|
-| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>On Knuth's TAOCP exercise 7.2.2.4–231. (b) An n×n whirling knight's tour with exactly n coils exists iff n = 3, or n ≥ 12 and 4 &#124; n: nonexistence is proved for all n ≥ 5 not divisible by 4; the case n ≥ 28 is quoted from Knuth's draft. (a) A new lower bound from path covers of a wedge: at least n/2 + 2 coils when n ≡ 4, 6 (mod 8), and at least (n+3)/2 coils for odd n ≢ 1, 19 (mod 24). For every n ≥ 12 with n ≢ 3 (mod 4) the least number of coils is determined: n/2 (n ≡ 0, 2 mod 8), n/2 + 2 (n ≡ 4, 6 mod 8), (n+1)/2 (n ≡ 1 mod 24), (n+3)/2 (other n ≡ 1 mod 4); it is attained by explicit tours (n ≤ 95) and nested stretchable rings from eighteen seed tours (n ≥ 96; computer-assisted). Hence n/2 coils occur iff n ≥ 16 and n ≡ 0, 2 (mod 8). For n ≡ 3 (mod 4) the bounds are attained for 11 ≤ n ≤ 119; the general case is open. | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>On Knuth's TAOCP exercise 7.2.2.4–231. (b) An n×n whirling knight's tour with exactly n coils exists iff n = 3, or n ≥ 12 and 4 &#124; n: nonexistence is proved for all n ≥ 5 not divisible by 4; the case n ≥ 28 is quoted from Knuth's draft. (a) A new lower bound from path covers of a wedge: at least n/2 + 2 coils when n ≡ 4, 6 (mod 8), and at least (n+3)/2 coils for odd n ≢ 1, 19 (mod 24). For every n ≥ 11 the least number of coils is determined: n/2 (n ≡ 0, 2 mod 8), n/2 + 2 (n ≡ 4, 6 mod 8), (n+1)/2 (n ≡ 1, 19 mod 24), (n+3)/2 (other odd n); it is attained by explicit tours for small n and by nested stretchable rings from twenty-four seed tours (computer-assisted). Hence n/2 coils occur iff n ≥ 16 and n ≡ 0, 2 (mod 8). For n ≡ 3 (mod 4) the ring replaces 28 to 31 short pieces of the inner tour instead of a single arc. | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
 
 </details>
 
@@ -775,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2331 pages
+├── archive-manifest.json              454 PDFs / 2334 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -841,5 +841,5 @@ The next release should make more of the research replayable—not merely make t
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised twice the same day, to add the n/2-coil theorem and then lower bounds and the least number of coils for every even n; its title and PDF changed. The archive now has 454 manuscripts / 2,331 pages. No other PDF, source or gate byte was changed. The manuscript is not externally peer reviewed.
+**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. The archive now has 454 manuscripts / 2,334 pages. No other PDF, source or gate byte was changed. The manuscript is not externally peer reviewed.
 <!-- END CLAUDECODE RELEASE NOTE -->
