@@ -39,7 +39,7 @@ $6\pmod 8$. For every odd $n\ge9$ there are at least $(n+1)/2$ coils.
 $n\equiv0,2\pmod 8$; $n/2+2$ if $n\equiv4,6\pmod 8$; $(n+1)/2$ if $n\equiv1\pmod{24}$; and $(n+3)/2$ for the other
 $n\equiv1\pmod 4$. Together with two small cases, this shows that a tour with $n/2$ coils exists if and only if
 $n\ge16$ and $n\equiv0$ or $2\pmod 8$. The tours consist of nested rings of width $12$ that can be stretched; they
-are built from eighteen seed tours. For $n\equiv3\pmod 4$ the bounds are attained for $11\le n\le47$, but we have no
+are built from eighteen seed tours. For $n\equiv3\pmod 4$ the bounds are attained for $11\le n\le119$, but we have no
 general construction.
 \end{itemize}
 All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
@@ -169,7 +169,7 @@ by a program.
 
 For $n\equiv3\pmod 4$ we have no general construction: our searches find no ring of this kind around any of the
 tours of such sides that we tried. Section~\ref{sec:comp} reports tours that attain the bound of Theorem~\ref{thm:lower}(b), or the bound
-$(n+1)/2$ when $n\equiv19\pmod{24}$, for every $n\equiv3\pmod 4$ from $11$ to $47$.
+$(n+1)/2$ when $n\equiv19\pmod{24}$, for every $n\equiv3\pmod 4$ from $11$ to $119$.
 
 \section{The counting identity}
 
@@ -867,14 +867,14 @@ coils, of sides $100$, $102$, $108$, $110$, $116$, $118$; and six of sides $97$,
 with $(N_1+1)/2$ coils for $N_1=97$ and $(N_1+3)/2$ coils otherwise. Each contains the listed tour of side $N_1-24$
 except for one arc.
 \item \emph{Odd $n\equiv3\pmod 4$.} Tours with $(n+3)/2$ coils, or with $(n+1)/2$ coils when $n\equiv19\pmod{24}$,
-for every such $n$ from $11$ to $47$, and for $n=67$.
+for every such $n$ from $11$ to $119$, that is, $28$ tours.
 \end{itemize}
 The cell sequences accompany this note. The file \texttt{tours\_n\_coils.txt} has the tours with $n$ coils. The
 tours and seeds for the three cases of Theorem~\ref{thm:half} are in three pairs of files, named
 \texttt{tours\_X\_coils.txt} and \texttt{seeds\_X\_coils.txt} with \texttt{X} equal to \texttt{half},
-\texttt{plus2} and \texttt{odd}. The file \texttt{tours\_least\_coils.txt} collects tours with the least
-number of coils for small $n$, including every $n\equiv3\pmod 4$ from $11$ to $47$; some of them also appear in the
-other files. Figure~\ref{fig:tours} shows four of the tours.
+\texttt{plus2} and \texttt{odd}. The tours for $n\equiv3\pmod 4$ are in \texttt{tours\_odd3\_coils.txt}. The file
+\texttt{tours\_least\_coils.txt} collects tours with the least number of coils for $n\le49$; some of them also
+appear in the other files. Figure~\ref{fig:tours} shows four of the tours.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{new_tours.pdf}
@@ -912,9 +912,16 @@ By Corollary~\ref{cor:least}, what remains open is the case $n\equiv3\pmod 4$.
 Let $n\ge11$ and $n\equiv3\pmod 4$. Is the least number of coils of an $n\times n$ whirling knight's tour equal to
 $(n+1)/2$ if $n\equiv19\pmod{24}$, and to $(n+3)/2$ otherwise?
 \end{question}
-The answer is yes for $n\le47$ and for $n=67$, by the tours listed above. What is missing is a construction. For
-$n\equiv3\pmod 4$ our search finds no ring of width $12$ with $12$ coils around any of the tours of sides $19$, $23$,
-$27$, $31$, $35$, $39$, $43$, $47$ and $67$ that we tried; the solver reports that none exists.
+The answer is yes for $n\le119$, by the tours listed above. What is missing is a construction that works for all
+$n$. For $n\equiv3\pmod 4$ our search finds no ring of width $12$ with $12$ coils around any of the tours of sides
+$11$, $15$, $19$, $23$, $27$, $31$, $35$, $39$, $43$, $47$ and $67$ that we tried; the solver reports that none
+exists. For the tour of side $23$ this remains so when up to $16$ of its arcs may be replaced. A weaker kind of extension does work, and it
+gave the listed tours of sides $51$ to $119$: keep every arc of the listed tour of side $n-24$ between two cells
+that are not on its boundary, and search the thirteen outer layers of the new board. So a recursive construction may
+exist in which only the neighbourhood of the old boundary is rebuilt at each step. We could not bring it into a form
+that repeats from one step to the next. In the one case that we tried, with sides $143$ and $167$, the search finds
+nothing when the boundary row of the new tour is required to be the stretched copy of the boundary row of the old
+one.
 
 \begin{question}\label{q:all}
 Let $n\ge12$. Does every number of coils between the least one and $n-1$ occur?

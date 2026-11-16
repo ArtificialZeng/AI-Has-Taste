@@ -26,7 +26,8 @@ whirling knight's tours with exactly n/2 coils (the least conceivable number) an
   (The bound (n+1)/2 for odd n ≥ 9 is Knuth's exercise 229(c); a short proof is included.)
 - **Exercise 231(a).** A tour with exactly n/2 coils exists if and only if n ≥ 16 and n ≡ 0 or 2 (mod 8).
 - **n ≡ 3 (mod 4) (open).** Tours that attain the lower bound, or (n+1)/2 when n ≡ 19 (mod 24), are given for every
-  such n from 11 to 47 and for n = 67. A general construction is not known to us; rings of width 12 do not exist here.
+  such n from 11 to 119. A general construction is not known to us; rings of width 12 do not exist here. The tours
+  from 51 on were found by a weaker "frame" extension that rebuilds the 13 outer layers around the tour of side n − 24.
 
 - **n 圈。** 存在，当且仅当 n = 3，或 n ≥ 12 且 n 是 4 的倍数。
 - **下界（新）。** n ≡ 4、6 (mod 8) 时至少 n/2 + 2 圈；n 为奇数且 n ≢ 1、19 (mod 24) 时至少 (n+3)/2 圈。证明很短：
@@ -36,7 +37,7 @@ whirling knight's tours with exactly n/2 coils (the least conceivable number) an
   n ≡ 1 (mod 24) 时为 (n+1)/2；其余 n ≡ 1 (mod 4) 时为 (n+3)/2。n ≤ 95 直接给出巡回；n ≥ 96 由十八个种子巡回的
   12 格宽可拉伸环带逐层外套得到。
 - **第 231(a) 题。** 恰好 n/2 圈的巡回存在，当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)。
-- **n ≡ 3 (mod 4)（未解决）。** 对 11 到 47 的每个这样的 n 以及 n = 67 给出了达到下界的巡回；一般构造未知。
+- **n ≡ 3 (mod 4)（未解决）。** 对 11 到 119 的每个这样的 n 给出了达到下界的巡回；一般构造未知。
 
 ## Check it yourself / 自行验证
 
@@ -50,6 +51,7 @@ python3 half_family.py tours_half_coils.txt seeds_half_coils.txt
 python3 half_family.py tours_plus2_coils.txt seeds_plus2_coils.txt
 python3 half_family.py tours_odd_coils.txt seeds_odd_coils.txt
 python3 check_tour.py tours_least_coils.txt
+python3 check_tour.py tours_odd3_coils.txt
 ```
 
 - `verify_weights.py` checks, in exact arithmetic and over every arc, the two facts the n-coil proof needs (every arc
@@ -71,8 +73,10 @@ Other files:
 | `tours_plus2_coils.txt`, `seeds_plus2_coils.txt` | n ≡ 4, 6 (mod 8): tours with n/2 + 2 coils for n ≤ 94, and six seeds |
 | `tours_odd_coils.txt`, `seeds_odd_coils.txt` | n ≡ 1 (mod 4): tours with (n+3)/2 coils, or (n+1)/2 if n ≡ 1 (mod 24), for n ≤ 93, and six seeds |
 | `tours_least_coils.txt` | Tours with the least number of coils for 6 ≤ n ≤ 49 (and n = 67, 73) |
+| `tours_odd3_coils.txt` | n ≡ 3 (mod 4): tours that attain the lower bound for 11 ≤ n ≤ 119 |
 | `whirl_sat.py` | SAT search with lazy subtour elimination (needs `python-sat`); also reproduces Knuth's counts for n ≤ 9 |
 | `extend_sat.py` | SAT search for a ring of width 12 around a given tour |
+| `frame_sat.py` | SAT search for a tour that keeps the inner tour except at its boundary cells (used for n ≡ 3 mod 4) |
 | `ring_sat.py` | SAT search for a stretchable ring (the seeds) |
 | `least_coils_scan.py` | For each n, the least c for which `whirl_sat.py` finds a tour |
 | `lp_certificates.py` | LP relaxation and exact Farkas certificates for 13 ≤ n ≤ 27 (needs numpy, scipy); outputs in `certificates/` |
@@ -83,14 +87,14 @@ Other files:
 - Not externally peer reviewed. Checks so far: exact verification scripts, and independent re-implementations from the text of the paper by separate AI agents. Referee passes on 2026-11-16, each given only the paper and data files: a third found no mathematical error in the n/2-coil construction; a fourth found no error in the lower-bound section or in the n/2 + 2 families beyond one misstated proposition for the 3 x 3 board, now corrected. A fifth found no error in the families for odd n = 1 (mod 4) or in the two propositions added last, and two misstatements, now corrected.
 - n coils: the existence direction for n >= 28 is quoted from Knuth's draft (answer 232, Beluhov and Stappers) and was not re-derived; tours for multiples of 4 up to 48 are supplied independently. The cases n = 4 and n = 8 rest on exhaustive enumeration (Knuth's counts, reproduced by whirl_sat.py).
 - Least number of coils: the lower bound has a complete written proof. The existence proof is computer-assisted: the eighteen seeds were found by SAT search, and the proof for all n rests on a lemma plus finite conditions that half_family.py checks. The cases n = 8, 10 of exercise 231(a) are covered by two small labelled wedges, and also by Knuth's counts.
-- n = 3 (mod 4): only the lower bound is proved. That it is attained is shown by explicit tours for n from 11 to 47 and n = 67; the general case is open. The least number of coils for n = 8, 9 rests on exhaustive enumeration (ours and Knuth's counts), and for n = 10 on the SAT search.
+- n = 3 (mod 4): only the lower bound is proved. That it is attained is shown by explicit tours for n from 11 to 119; the general case is open. The least number of coils for n = 8, 9 rests on exhaustive enumeration (ours and Knuth's counts), and for n = 10 on the SAT search.
 - We found no published construction for n/2 coils, but cannot rule out that one is known to others (Beluhov, Stappers) and unpublished. Knuth's site was unreachable on 2026-11-16, so we could not check for a newer draft.
 - The n-coil proof technique (closed-form Farkas certificates for a cycle-cover LP relaxation) follows S. Li, arXiv:2605.04603. Li's theorem on n/2 coils is reproved here by a different method.
 - Knuth's draft is cited, not reproduced. Priority has not been established by an external party.
 
 本条目未经外部同行评审。n 圈：n ≥ 28 的存在性引自高德纳草稿（答案 232），未重新推导。最少圈数：下界有完整的书面证明；
 存在性是计算机辅助证明，十八个种子由 SAT 搜出，对所有 n 的证明依赖一条引理和程序核对的有限条件。n ≡ 3 (mod 4)：只证明了下界，
-达到下界的巡回只对 11 到 47 以及 67 给出，一般情形未解决。没有查到已发表的同类构造，但不排除他人已有未发表的结果。
+达到下界的巡回只对 11 到 119 给出，一般情形未解决。没有查到已发表的同类构造，但不排除他人已有未发表的结果。
 高德纳草稿只作引用，不转载原文。
 
 The search programs, the proofs and the manuscript were produced with Claude Code (Anthropic) under the author's

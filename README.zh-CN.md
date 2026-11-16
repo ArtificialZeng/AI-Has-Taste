@@ -143,7 +143,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 
 | 编号 + PDF | LaTeX 源码 | 复现源码 |
 |---|---|---|
-| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>关于高德纳 TAOCP 第 7.2.2.4–231 题。(b) 恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n：对所有不被 4 整除的 n ≥ 5 证明了不存在；n ≥ 28 引自高德纳草稿。(a) 由扇形区域的路径覆盖得到新的下界：n ≡ 4、6 (mod 8) 时至少 n/2 + 2 圈，奇数 n ≢ 1、19 (mod 24) 时至少 (n+3)/2 圈。对每个 n ≥ 12、n ≢ 3 (mod 4)，最少圈数完全确定：n/2（n ≡ 0、2 mod 8）、n/2 + 2（n ≡ 4、6 mod 8）、(n+1)/2（n ≡ 1 mod 24）、(n+3)/2（其余 n ≡ 1 mod 4），由显式巡回（n ≤ 95）和十八个种子巡回的可拉伸环带（n ≥ 96，计算机辅助证明）达到。因此 n/2 圈存在当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)。n ≡ 3 (mod 4) 时只对 11 ≤ n ≤ 47 给出了达到下界的巡回，一般情形未解决。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>关于高德纳 TAOCP 第 7.2.2.4–231 题。(b) 恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n：对所有不被 4 整除的 n ≥ 5 证明了不存在；n ≥ 28 引自高德纳草稿。(a) 由扇形区域的路径覆盖得到新的下界：n ≡ 4、6 (mod 8) 时至少 n/2 + 2 圈，奇数 n ≢ 1、19 (mod 24) 时至少 (n+3)/2 圈。对每个 n ≥ 12、n ≢ 3 (mod 4)，最少圈数完全确定：n/2（n ≡ 0、2 mod 8）、n/2 + 2（n ≡ 4、6 mod 8）、(n+1)/2（n ≡ 1 mod 24）、(n+3)/2（其余 n ≡ 1 mod 4），由显式巡回（n ≤ 95）和十八个种子巡回的可拉伸环带（n ≥ 96，计算机辅助证明）达到。因此 n/2 圈存在当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)。n ≡ 3 (mod 4) 时只对 11 ≤ n ≤ 119 给出了达到下界的巡回，一般情形未解决。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
 
 </details>
 
