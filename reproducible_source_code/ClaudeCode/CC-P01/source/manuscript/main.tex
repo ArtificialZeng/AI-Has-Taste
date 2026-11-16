@@ -48,7 +48,8 @@ $n/2+2$ if $n\equiv4,6\pmod 8$; $(n+1)/2$ if $n\equiv1$ or $19\pmod{24}$; and $(
 Together with two small cases, this shows that a tour with $n/2$ coils exists if and only if $n\ge16$ and
 $n\equiv0$ or $2\pmod 8$. The tours consist of nested rings of width $12$ that can be stretched; they are built from
 twenty-four seed tours. For $n\not\equiv3\pmod 4$ each ring replaces a single arc of the tour inside it. For
-$n\equiv3\pmod 4$ we found no such ring; there about thirty short pieces of the tour inside the ring are replaced
+$n\equiv3\pmod 4$ we prove that a ring of width $12$ that replaces a single arc adds at least $14$ coils, two too
+many; there about thirty short pieces of the tour inside the ring are replaced
 by paths with the same ends, which between them pass through all cells of the ring.
 \item \emph{Symmetric tours.} A whirling tour that is invariant under the half turn of the board has an odd number
 of coils; one that is invariant under the quarter turn exists only if $4\nmid n$. For every $n\ge11$ the least number
@@ -58,8 +59,8 @@ greatest number of coils of a tour with half-turn symmetry is $n-1$ for even $n$
 odd number between the least and the greatest one occurs, for every $n\ge6$. For $4\nmid n$ all this holds with
 quarter-turn symmetry.
 \end{itemize}
-All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
-lists of conditions on the seeds that a program checks.
+All tours are verified in exact arithmetic by an independent program; the general constructions, and the bound for
+rings that replace one arc, rest on finite lists of conditions that a program checks.
 \end{abstract}
 \maketitle
 
@@ -185,7 +186,8 @@ Theorem~\ref{thm:half} is in Section~\ref{sec:half}, and it is computer-assisted
 when $n\equiv3\pmod 4$, we list tours. For larger $n$ the tour consists of nested rings of width $12$ around one of
 the listed tours. Each ring is periodic along parts of each side, so that it can be lengthened to fit any larger
 board in the same class modulo $24$. In cases (a), (b) and (c) the ring is a single path, and it replaces one arc of
-the tour inside it. In case (d) our searches find no ring of this kind. There $28$ to $31$ short pieces of the
+the tour inside it. In case (d) no ring of this kind will do: a ring of width $12$ that replaces a single arc then
+adds at least $14$ coils instead of $12$ (Theorem~\ref{thm:onearc}). There $28$ to $31$ short pieces of the
 tour inside the ring are replaced by paths with the same ends, and these paths between them pass through all cells
 of the ring. The pieces lie in the five outer layers of the inner tour, near the eight places where the lanes of the
 ring change their direction. The proof rests on $121$ tours,
@@ -960,7 +962,7 @@ further from the corner each time the side grows by $24$.
 \end{remark}
 
 \begin{remark}\label{rem:odd3}
-For $n\equiv3\pmod 4$ a simple seed does not seem to exist (Section~\ref{sec:comp}). Between its first and its
+For $n\equiv3\pmod 4$ there is no simple seed (Theorem~\ref{thm:onearc}). Between its first and its
 second zone the ring has to pass from bands of three rows to bands of four rows, and for these $n$ the tours that
 we found do this only with the help of the outer layers of the inner tour. This is why the pieces lie near the eight
 places where the bands change. Condition (S) then asks that the outer layers of $T_1$ repeat those of $T_0$ near
@@ -1440,19 +1442,167 @@ $L(n)$ to $M(n)$. For $k=0$ the bases suffice.
 \end{proof}
 
 \begin{remark}\label{rem:spec3}
-In the cases that we tried, a ring that replaces a few arcs adds more than its width when $n\equiv3\pmod 4$. The
-following are reports of the solver; the negative ones are not certified, and the rings of the positive ones are not
-among the accompanying files. Around the tour of side $27$ with $26$ coils in \texttt{tours\_max\_coils.txt}, a ring
-of width $12$ that replaces at most four arcs cannot add $12$ or $13$ coils, and it can add $14$; it cannot add
-$12$ coils with at most eight replaced arcs, and it can with at most sixteen. Around the tour of side $27$ with $15$
-coils in \texttt{tours\_odd3\_coils.txt} it cannot add $12$ coils with at most sixteen replaced arcs, and it can with
-at most thirty-two. Around the tours of side $25$ with $24$ coils and of side $29$ with $28$ coils in
-\texttt{tours\_max\_coils.txt}, a ring of odd width $w$ that replaces one arc cannot add $w$ or $w+1$ coils, for
-every odd $w$ from $3$ to $13$; around the tour of side $25$ with $13$ coils in \texttt{tours\_odd\_coils.txt} it
-cannot add $w+1$ coils, nor $w$ coils when $w=9$ (for the other $w$ Theorem~\ref{thm:lower} excludes this number of
-coils). This is why the towers for $n\equiv3\pmod 4$ begin with bases of sides $123$ to $143$, where
-the seeds of Theorem~\ref{thm:half} are available, and why the tours of sides $51$ to $119$ are listed one by one.
+For $n\equiv3\pmod 4$ a ring of width $12$ that replaces one arc adds at least $14$ coils
+(Theorem~\ref{thm:onearc} below). In the cases that we tried, a ring that replaces a few arcs
+does not add $12$ coils either. The following are reports of the solver; the negative ones are not certified, and
+the rings of the positive ones are not among the accompanying files. Around the tour of side $27$ with $26$ coils in
+\texttt{tours\_max\_coils.txt}, a ring of width $12$ that replaces at most four arcs cannot add $12$ or $13$ coils,
+and it can add $14$; it cannot add $12$ coils with at most eight replaced arcs, and it can with at most sixteen.
+Around the tour of side $27$ with $15$ coils in \texttt{tours\_odd3\_coils.txt} it cannot add $12$ coils with at most
+sixteen replaced arcs, and it can with at most thirty-two. This is why the towers for $n\equiv3\pmod 4$ begin with
+bases of sides $123$ to $143$, where the seeds of Theorem~\ref{thm:half} are available, and why the tours of sides
+$51$ to $119$ are listed one by one.
 \end{remark}
+
+\subsection*{Rings that replace one arc}
+The rings of Section~\ref{sec:half} have width $12$, and for $n\equiv3\pmod 4$ they replace many pieces instead of
+one arc. The following bound, which is Lemma~\ref{lem:wedge} for a ring, shows that a ring of width $12$ that replaces
+one arc cannot add only $12$ coils if $n\equiv3\pmod 4$; and among the widths from $2$ to $24$, on the boards up to
+side $403$, it leaves only $12$ and $24$ for a ring that replaces one arc and adds as many coils as its width.
+
+\begin{proposition}\label{prop:onearc}
+Let $w\ge1$, and let $T_0$ and $T_1$ be whirling knight's tours of sides $N-2w$ and $N$, with $c_0$ and $c_1$ coils,
+such that $T_1$ contains every arc of $T_0+(w,w)$ but one. Let $W$ be a wedge whose angle is a quarter turn and whose
+two bounding rays contain no cell, and let $W_w$ be the set of cells of $W$ of depth less than $w$. Suppose that the
+cells of $W_w$ are labelled $\mathsf B$, $\mathsf N$, $\mathsf O$, $\mathsf I$ in such a way that no arc leads from
+a cell of $W_w$ labelled $\mathsf B$ or $\mathsf O$ to a cell of $W_w$ labelled $\mathsf B$ or $\mathsf I$. Then
+$c_1\ge c_0+|\mathsf B|-|\mathsf N|$.
+\end{proposition}
+\begin{proof}
+Let $u\to v$ be the arc of $T_0+(w,w)$ that $T_1$ lacks. The cells of depth less than $w$ are not cells of
+$T_0+(w,w)$; we call them outer cells here, and the others inner cells. The only arcs of $T_1$ between an outer and
+an inner cell are one arc that begins at $u$ and one that ends at $v$. Indeed, every inner cell other than $u$ is left
+in $T_1$ by its arc of $T_0+(w,w)$, which ends at an inner cell, and every inner cell other than $v$ is entered by
+its arc of $T_0+(w,w)$; and the arc of $T_1$ that begins at $u$ cannot end at an inner cell $x$, because $x\ne v$ is
+entered by another arc and $x=v$ would give the missing arc.
+
+The images of $W$ under the quarter turn and its powers are four wedges $W^0,\dots,W^3$, numbered counterclockwise,
+and every cell lies in exactly one of them. Let $R^i$ be the ray between $W^i$ and $W^{i+1}$, with indices modulo
+$4$. The digraph is invariant under the quarter turn, so each $W^i$ has a labelling of its outer cells as in the
+statement, with the same numbers $|\mathsf B|$ and $|\mathsf N|$. Along the arc $u\to v$ the polar angle increases
+by less than a half-turn. So if $u\in W^j$, then $v$ lies in $W^j$, $W^{j+1}$ or $W^{j+2}$, and the arc crosses no
+ray $R^i$, only $R^j$, or only $R^j$ and $R^{j+1}$, respectively. In each case $i=j+3$ has the property that neither
+$u$ nor $v$ lies in $W^i$ and the arc $u\to v$ does not cross $R^i$. We work with this wedge and this ray, and call
+them $W$ and $R$.
+
+Cut $T_1$ into pieces as in the proof of Lemma~\ref{lem:wedge}. Since $u$ and $v$ are not in $W$, no piece
+contains an arc between an outer and an inner cell. So the pieces that contain an outer cell consist of outer
+cells; they are paths in the digraph on $W_w$, and together they visit every cell of $W_w$. By the second part
+of that proof, applied to these pieces, there are at least $|\mathsf B|-|\mathsf N|$ of them. By its first part, the
+arc that leaves the last cell of a piece crosses $R$, and different pieces give different arcs. For the pieces of
+outer cells this arc begins at an outer cell, so it is not an arc of $T_0+(w,w)$. On the other hand, by
+Lemma~\ref{lem:rays}, exactly $c_1$ arcs of $T_1$ cross $R$, and among them are all $c_0$ arcs of $T_0+(w,w)$ that
+cross $R$, because the arc $u\to v$ does not. Hence at most $c_1-c_0$ arcs of $T_1$ across $R$ begin at an outer
+cell, and $|\mathsf B|-|\mathsf N|\le c_1-c_0$.
+\end{proof}
+
+For given $N$ and $w$ let $W$ be the wedge between two diagonals of the board, turned against the sense in which the
+arcs turn by an angle so small that no cell lies on its boundary or between a diagonal and the turned ray: it
+contains the cells of the diagonal at which the tours enter it and not those of the other diagonal. Let
+$\rho(N,w)$ be the greatest value of $|\mathsf B|-|\mathsf N|$ over the labellings of $W_w$ as in the proposition.
+The digraph on $W_w$ has no cycle, because the polar angle increases along its arcs; so by K\H onig's theorem
+$\rho(N,w)$ is the least number of pairwise disjoint paths of this digraph that visit every cell of $W_w$. (Turning
+the wedge the other way gives the same number: the reflection in the axis of the wedge exchanges the two wedges and
+reverses all arcs.) The accompanying program \texttt{ring\_bound.py} computes a maximum matching and derives from it
+a labelling and a set of paths; it checks directly that the labelling is as in the proposition and that the paths
+are disjoint, visit every cell of $W_w$, and are $|\mathsf B|-|\mathsf N|$ in number. It finds:
+\begin{itemize}
+\item $\rho(N,12)=14$ for every $N\equiv3\pmod 4$ with $27\le N\le1003$, and $\rho(N,12)=12$ for every other $N$ in
+this range.
+\item For $2\le w\le24$ and $4w+3\le N\le403$: $\rho(N,w)=w+4$ if $w\equiv1\pmod 3$, and $\rho(N,w)=w+2$ otherwise,
+with these exceptions: $\rho(N,12)=12$ and $\rho(N,24)=24$ if $N\not\equiv3\pmod 4$.
+\end{itemize}
+
+\begin{theorem}\label{thm:onearc}
+Let $N\equiv3\pmod 4$ and $N\ge27$. If a whirling knight's tour of side $N$ contains every arc but one of
+$T_0+(12,12)$, where $T_0$ is a whirling knight's tour of side $N-24$ with $c_0$ coils, then it has at least $c_0+14$
+coils. In particular there is no simple seed for $n\equiv3\pmod 4$.
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:onearc} it suffices to label the cells of $W_{12}$ so that $|\mathsf B|-|\mathsf N|=14$.
+For $N\le119$ the program \texttt{ring\_bound.py} finds such a labelling for each $N$. Let $N\ge123$. We take the
+wedge $W$ described above, on the left side of the board; its cells of depth less than $12$ are the cells $(i,j)$
+with $j\le11$, $j\le i$ and $j<N-1-i$, and the tours run through them towards larger $i$. Let
+$q_0=(3N-25)/4$. Label the cells of the rows $i<q_0$ with $\mathsf I$, those of the rows $q_0,\dots,q_0+10$ by the
+eleven rows of Table~\ref{tab:head}, and in every row $i\ge q_0+11$ label the cell of column $0$ with $\mathsf B$,
+the cell of column $1$ with $\mathsf N$, and the other cells with $\mathsf O$; except that the cell $(N-3,1)$ gets
+the label $\mathsf O$. The rows of the table have $12$ cells labelled $\mathsf B$ more than cells labelled
+$\mathsf N$. Each later row has one of each, except the rows $N-3$ and $N-2$, which consist of the cells $(N-3,0)$,
+$(N-3,1)$ and $(N-2,0)$ and have no cell labelled $\mathsf N$. So $|\mathsf B|-|\mathsf N|=14$.
+
+It remains to see that no arc leads from a cell labelled $\mathsf B$ or $\mathsf O$ to a cell labelled $\mathsf B$
+or $\mathsf I$. The move $(\alpha,\beta)$ from the cell $(i,j)$ is an arc if and only if $x\beta-\alpha y>0$, where
+$x=2i-(N-1)$ and $y=2j-(N-1)$. For a cell of the row $q_0+r$ this reads
+\[ N(2\alpha+\beta)+(4r-23)\beta-2\alpha(2j+1)>0, \]
+and for a cell of the row $N-2-t$ it reads $N(\alpha+\beta)-(3+2t)\beta-\alpha(2j+1)>0$. Both conditions are linear
+in $N$. The labels of the rows $q_0+r$ with $-3\le r\le13$ depend on $r$ and $j$ only, and those of the rows
+$N-2-t$ with $t\le10$ on $t$ and $j$ only; these two sets of rows are disjoint for $N\ge123$. The moves from these
+rows end in the rows $q_0+r$ with $-5\le r\le15$ and $N-2-t$ with $t\le12$, whose labels likewise depend on $r$ and
+$j$, or on $t$ and $j$, only: for $N\ge123$ the rows up to $q_0+15$ are full rows of twelve cells, and the row
+$N-2-t$ with $t\le10$ consists of the cells with $j\le t$. The program
+\texttt{ring\_bound\_all.py} lists all pairs of a cell labelled $\mathsf B$ or $\mathsf O$ in one of these rows and a
+move to a cell labelled $\mathsf B$ or $\mathsf I$; there are $135$ such pairs for the rows $q_0+r$ and $19$ for the
+rows $N-2-t$. It checks for each that the left-hand side has a coefficient of
+$N$ that is at most $0$ and is at most $0$ for $N=123$; hence it is at most $0$ for every $N\ge123$, and the move is
+not an arc. In all other rows that contain a cell labelled $\mathsf B$ or $\mathsf O$ the labels are $\mathsf B$,
+$\mathsf N$, $\mathsf O,\dots,\mathsf O$; these are rows $q_0+r$ with $r\ge14$, and the moves from them end in rows
+$q_0+r$ with $r\ge12$, where no cell is labelled $\mathsf I$. So a move from such a row to a cell labelled
+$\mathsf B$ or $\mathsf I$ leads from column $2$ to column $0$; it is $(1,-2)$ or $(-1,-2)$. In the row $q_0+r$ the
+left-hand side is $36-8r$ for the first and $-4N-8r+56$ for the second, and both are negative for $r\ge5$. The
+program also checks the labelling directly for every $N\equiv3\pmod 4$ from $123$ to $2003$.
+\end{proof}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{r@{\quad}l}
+$r$ & columns $0,\dots,11$\\ \hline
+$0$ & \texttt{I B I I I B I I I B I B}\\
+$1$ & \texttt{B I B N B I B N B B B O}\\
+$2$ & \texttt{N B N B N B N B N B N O}\\
+$3$ & \texttt{B N B N B N B N O O O O}\\
+$4$ & \texttt{N I N B N B O B O B O O}\\
+$5$ & \texttt{B N B N B N B N O O O O}\\
+$6$ & \texttt{I I N B N O O O O O O O}\\
+$7$ & \texttt{B N B O B O B O O O O O}\\
+$8$ & \texttt{I I N B N O O O O O O O}\\
+$9$ & \texttt{B N O O O O O O O O O O}\\
+$10$ & \texttt{B I O B O O O O O O O O}
+\end{tabular}
+\caption{The labels of the cells $(q_0+r,j)$, $0\le j\le11$, in the proof of Theorem~\ref{thm:onearc}.}
+\label{tab:head}
+\end{table}
+
+The argument also says something about rings that replace several pieces.
+
+\begin{proposition}\label{prop:several}
+Let $T_0$ and $T_1$ be whirling knight's tours of sides $N-2w$ and $N$, with $c_0$ and $c_1$ coils. Let $W$ be a
+wedge and $R$ a ray just beyond its end, as in the proof of Lemma~\ref{lem:wedge}, and let the cells of $W$ of depth
+less than $w$ be labelled as in Proposition~\ref{prop:onearc}. Let $m$ be the number of arcs of $T_1$ that lead from
+a cell of $W$ of depth less than $w$ to a cell of $W$ of depth at least $w$, and let $d$ be the number of arcs of
+$T_0+(w,w)$ across $R$ that are not arcs of $T_1$. Then $c_1-c_0+m+d\ge|\mathsf B|-|\mathsf N|$.
+\end{proposition}
+\begin{proof}
+Call the cells of depth less than $w$ outer cells and the others inner cells. Cut $T_1$ into maximal runs of
+consecutive cells that are outer cells of $W$. These runs are paths in the digraph on $W_w$ that together visit
+every cell of $W_w$, so there are at least $|\mathsf B|-|\mathsf N|$ of them, by the second part of the proof of
+Lemma~\ref{lem:wedge}. The arc of $T_1$ that leaves the last cell of a run leads to an inner cell of $W$, or to a
+cell outside $W$. There are $m$ arcs of the first kind. An arc of the second kind crosses $R$, by the first part of
+that proof, and it is not an arc of $T_0+(w,w)$, because it begins at an outer cell. Now $T_1$ has $c_1$ arcs across
+$R$, and at least $c_0-d$ of them are arcs of $T_0+(w,w)$; so there are at most $c_1-c_0+d$ arcs of the second kind.
+\end{proof}
+
+For $w=12$, $N\equiv3\pmod 4$ and $c_1=c_0+12$, Theorem~\ref{thm:onearc} and its proof give $m+d\ge2$ for each of
+the four wedges between the diagonals: on every side of the board, at least two arcs of $T_1$ lead from the ring
+into the tour inside, or arcs of that tour across the diagonal at the end of the side are replaced. The seeds of
+sides $147$ to $167$ are attached at two places on each side (Figure~\ref{fig:teeth}).
+
+The rings that add $14$ coils, with which most of the listed tours of sides $75$ to $119$ were assembled
+(Section~\ref{sec:comp}), show that the number $14$ cannot be improved. The values of $\rho(N,w)$ explain the width
+of our rings: among the widths $w$ from $2$ to $24$ and for the boards with $4w+3\le N\le403$, a ring that replaces
+one arc can add as many coils as its width only if the width is $12$ or $24$ and $N\not\equiv3\pmod 4$. The labelling
+in the proof was read off from the labellings that \texttt{ring\_bound.py} finds. Its cells labelled $\mathsf B$ or
+$\mathsf N$ lie in the rows $i\ge q_0$: in the last quarter of the side, where the lanes of the rings have
+period $3$, and in the six rows before it.
 
 \subsection*{All odd numbers of coils with symmetry}
 For $n\ge6$ let $L_s(n)$ and $M_s(n)$ be the least and the greatest number of coils of a centrally symmetric
@@ -1532,9 +1682,8 @@ only on the depth of the cell, and that condition (S) holds. Each seed was then 
 these zones the search reports that no simple seed exists for $N_1=82$, $88$ or $90$, at least over the inner tours that we
 tried.
 
-For $n\equiv3\pmod 4$ this search fails. The solver reports that no ring of width $12$ with $12$ coils can replace
-a single arc of any of the tours of sides $11$, $15$, $19$, $23$, $27$, $31$, $35$, $39$, $43$, $47$ and $67$ that we
-tried; for the tour of side $23$ this remains so when up to $16$ of its arcs may be replaced. We proceeded in three
+For $n\equiv3\pmod 4$ this search fails, as it must by Theorem~\ref{thm:onearc}. The solver also reports that no
+ring of width $12$ that adds $12$ coils can replace up to $16$ arcs of the tour of side $23$ that we tried. We proceeded in three
 steps.
 \begin{itemize}
 \item \emph{Sides $51$ to $119$.} Keep every arc of the listed tour of side $n-24$ between two cells that are not on
@@ -1731,11 +1880,6 @@ sharp for $n=6$ and $n=7$ as well.
 
 Together with Corollary~\ref{cor:least} this gives the least number of coils for every $n\ge6$.
 
-\begin{question}\label{q:simple}
-Is there a simple seed, or any whirling tour that contains all arcs but one of a whirling tour of the board that is
-smaller by a ring, when $n\equiv3\pmod 4$?
-\end{question}
-The searches described above found none.
 
 
 \subsection*{Verification}
@@ -1810,6 +1954,18 @@ seed around $U_1$ were not specified, seven tours that had not been made in the 
 the symmetric tours $H$ that the proof needs and the text did not state, and several sentences that claimed more
 than was shown or used a letter twice; these are corrected here. It also found the certificate for $n=10$
 mentioned above.
+\item The program \texttt{ring\_bound.py}, which uses only the Python standard library, computes the numbers
+$\rho(N,w)$ reported after Proposition~\ref{prop:onearc}. For each board it checks directly that the labelling it
+has found satisfies the hypothesis of the proposition, which gives the lower bound, and that the paths it has found
+are disjoint, visit every cell and are equally many, which gives the upper bound; so the numbers do not depend on the
+matching algorithm. The program \texttt{ring\_bound\_all.py} carries out the checks in the proof of
+Theorem~\ref{thm:onearc}. The ninth agent, in a fourth round, computed the numbers $\rho(N,w)$ again with a program
+of its own, for both ways of turning the wedge, and tested Proposition~\ref{prop:onearc} on the $914$ listed tours
+that are rings of width $12$ replacing one arc. In a fifth round it re-implemented the proof of
+Theorem~\ref{thm:onearc} from the text: it found the same $154$ pairs, checked the labelling directly for every
+$N\equiv3\pmod 4$ from $123$ to $2003$ and for five larger $N$ up to $4\,000\,003$, and tested
+Proposition~\ref{prop:several} on $642$ pairs of tours. Its findings in these two rounds concerned the wording
+only.
 \item An eighth AI agent, given only the text and the data files of Section~\ref{sec:max} (without
 Theorem~\ref{thm:symmax}), refereed that section. It re-implemented the checks from the text and confirmed the $38$
 listed tours and the twenty-four fast seeds with their pieces and conditions (Z$'$), (S$'$), (W$'$), (C$'$). It built

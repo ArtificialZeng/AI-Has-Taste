@@ -126,7 +126,7 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **454 research manuscripts / 2,350 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
+The archive contains **454 research manuscripts / 2,353 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
 
 Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
@@ -775,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2350 pages
+├── archive-manifest.json              454 PDFs / 2353 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -841,5 +841,5 @@ The next release should make more of the research replayable—not merely make t
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. The archive now has 454 manuscripts / 2,350 pages. No other PDF, source or gate byte was changed. The manuscript is not externally peer reviewed.
+**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. The archive now has 454 manuscripts / 2,353 pages. No other PDF, source or gate byte was changed. The manuscript is not externally peer reviewed.
 <!-- END CLAUDECODE RELEASE NOTE -->
