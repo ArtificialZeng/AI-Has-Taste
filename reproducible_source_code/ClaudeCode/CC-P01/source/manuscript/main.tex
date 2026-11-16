@@ -54,8 +54,9 @@ by paths with the same ends, which between them pass through all cells of the ri
 of coils; one that is invariant under the quarter turn exists only if $4\nmid n$. For every $n\ge11$ the least number
 of coils of a tour with half-turn symmetry is the least odd number that is at least the least number of coils of all
 tours, and for $4\nmid n$ it is attained by a tour with quarter-turn symmetry. Likewise, for every $n\ge10$ the
-greatest number of coils of a tour with half-turn symmetry is $n-1$ for even $n$ and $n-2$ for odd $n$. These tours are built from
-forty-eight further seeds.
+greatest number of coils of a tour with half-turn symmetry is $n-1$ for even $n$ and $n-2$ for odd $n$, and every
+odd number between the least and the greatest one occurs, for every $n\ge6$. For $4\nmid n$ all this holds with
+quarter-turn symmetry.
 \end{itemize}
 All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
 lists of conditions on the seeds that a program checks.
@@ -202,7 +203,8 @@ Section~\ref{sec:spec} shows that every number of coils between the least and th
 $n\ge6$ (Theorem~\ref{thm:spec}). The point is that a ring does not depend on the tour inside it, except for the
 pieces that it replaces (Lemma~\ref{lem:transplant}). With seeds made for the purpose, rings of one kind can be put
 around rings of the other, and the innermost ring around any tour of a fixed side that contains its pieces. This
-rests on $2240$ further tours.
+rests on $2240$ further tours. With $1119$ more, the same is shown for the tours with rotational symmetry and the
+odd numbers of coils (Theorem~\ref{thm:symspec}).
 
 Section~\ref{sec:sym} treats the whirling tours that are invariant under a rotation of the board. A tour that is
 invariant under the half turn has an odd number of coils, and one that is invariant under the quarter turn exists
@@ -1402,7 +1404,7 @@ We use the following tours, which depend on $N_0$ only.
 \item \emph{The seed of Theorem~\ref{thm:half}} with $N_1=N_0+24$. We write $U_j$ for its tours, so that $U_j$ has
 side $N_0+24j$ and $L(N_0)+12j$ coils; $a$ and $b$ are its cuts, and $Q_1,\dots,Q_r$ its pieces.
 \item \emph{A fast seed around $U_1$.} A stretchable fast seed in which $T_0=U_1$. Its pieces
-$Q_1',\dots,Q_s'$ are defined through a rectangle $\Omega'$ as in the proof of Theorem~\ref{thm:max}, with
+$Q_1',\dots,Q_p'$ are defined through a rectangle $\Omega'$ as in the proof of Theorem~\ref{thm:max}, with
 $(\eta,\gamma)$ equal to $(4,6)$, $(4,8)$ or $(6,6)$, which is recorded with the seed; $h'$ is its cut.
 \item \emph{The fast seed of Theorem~\ref{thm:max}} whose tour $T_1$ has side $N_0-72$. We write $F_j$ for its
 tours, so that $F_4$ has side $N_0$ and $M(N_0)$ coils, and $Q_1'',\dots,Q_t''$ for its pieces.
@@ -1451,6 +1453,64 @@ cannot add $w+1$ coils, nor $w$ coils when $w=9$ (for the other $w$ Theorem~\ref
 coils). This is why the towers for $n\equiv3\pmod 4$ begin with bases of sides $123$ to $143$, where
 the seeds of Theorem~\ref{thm:half} are available, and why the tours of sides $51$ to $119$ are listed one by one.
 \end{remark}
+
+\subsection*{All odd numbers of coils with symmetry}
+For $n\ge6$ let $L_s(n)$ and $M_s(n)$ be the least and the greatest number of coils of a centrally symmetric
+$n\times n$ whirling knight's tour. By Theorems~\ref{thm:sym} and~\ref{thm:symmax}, $L_s(n)$ is the least odd number
+that is at least $L(n)$, for $n\ge11$, and $M_s(n)$ is $n-1$ for even $n$ and $n-2$ for odd $n$, for $n\ge10$. For
+$n=6,\dots,10$ the numbers $L_s(n)$ are $5,5,7,7,7$, and $M_s(n)$ is $5,5,7,7$ for $n=6,\dots,9$
+(Section~\ref{sec:comp}). The number of coils of a centrally symmetric tour is odd
+(Proposition~\ref{prop:symnec}).
+
+\begin{theorem}\label{thm:symspec}
+Let $n\ge6$. For every odd $c$ with $L_s(n)\le c\le M_s(n)$ there is a centrally symmetric $n\times n$ whirling
+knight's tour with $c$ coils. If $n\not\equiv0\pmod 4$, there is a symmetric one.
+\end{theorem}
+So the numbers of coils of the centrally symmetric tours are exactly the odd numbers from $L_s(n)$ to $M_s(n)$, and
+for $4\nmid n$ the same holds for the symmetric tours.
+
+\begin{proof}
+We repeat the proof of Theorem~\ref{thm:spec} with tours that have the symmetry in question: the quarter turn if
+$4\nmid n$, the half turn if $4\mid n$. Two remarks make this possible. First, in Lemma~\ref{lem:transplant} let
+$T_0$, $T_1$ and $T_0'$ be invariant under the rotation, and let the rotation map every piece onto a piece, the first
+cell to the first cell. Then $T_1'$ is invariant: its arcs are the arcs of $T_0'+(12,12)$ that belong to no piece
+and the arcs of the paths $P_i$, and both sets are invariant; for the second set this holds because the arcs of the
+paths $P_i$ are the arcs of $T_1$ that are not arcs of $T_0+(12,12)$ outside the pieces. Second, consider a
+stretchable seed in which $T_0$ and $T_1$ are invariant and the rotation maps pieces onto pieces, and which
+satisfies (Z$''$) if it is a fast seed. Then all its tours $T_e$ are invariant, by Lemma~\ref{lem:symstretch}; for
+a fast seed this is the argument in the proof of Theorem~\ref{thm:symmax}, which uses nothing else about the seeds
+of that theorem. Moreover the rotation maps the pieces $\varphi_e(Q_i)$ of the ring of level $e+1$ onto one
+another: the coordinates of the cells of the pieces lie in no zone, so the rotation of the larger board maps
+$\varphi_e(x)$ to $\varphi_e$ of the rotated cell, by fact (i) in the proof of Lemma~\ref{lem:symstretch}. So every
+tower of such rings around an invariant base is invariant.
+
+The tours, seeds and bases of the proof of Theorem~\ref{thm:spec} are replaced as follows. All of them have the
+symmetry, and in all seeds the rotation maps pieces onto pieces; the program checks this.
+\begin{itemize}
+\item For $6\le n\le47$, and for $n=51,55,\dots,119$: a tour for every odd $c$ from $L_s(n)$ to $M_s(n)$.
+\item For $n\not\equiv3\pmod 4$: the fast seed is the one of Theorem~\ref{thm:symmax}. The pieces of the seed around
+$F_2$ are the rotations of an arc $\zeta+(12,12)$, with $\zeta$ as before, and $H$ contains every arc of
+$F_1+(12,12)$ except the rotations of an arc $\xi+(12,12)$. The tours $F_1$ and $H$, with these arcs as pieces, form
+a seed: each path through the ring leads from the tail to the head of the same arc. There is a base $J_c$ for every
+odd $c$ from $L_s(N_0)$ to $M_s(N_0)$; it contains the rotations of $\xi$, and for $c\ge M_s(N_0)-10$ the paths
+$\varphi'_1(Q_i)-(12,12)$. Condition ($\dagger$) is checked for $\zeta$. So $F_{e+2}$ contains $\zeta+(6e,0)$, and
+hence its rotations, because it is invariant; and by the second remark the pieces of the ring of level $e+1$ of the
+seed around $F_2$ are the rotations of $\zeta+(12,12)+(6e,0)$. The towers with $f=0$ give the odd numbers from $L_s(N_0)+12k$ to $M_s(N_0)+12k$, and
+for $1\le f\le k$ the six values of $c$ give the six odd numbers from $M_s(N_0)+12k+12f-10$ to $M_s(N_0)+12k+12f$.
+\item For $n\equiv3\pmod 4$: the seed with the tours $U_j$ is the symmetric seed of side $N_0+24$ of
+Theorem~\ref{thm:sym}; the fast seed around $U_1$ is symmetric and satisfies (Z$''$), and its set $\Omega'$
+consists of the rectangle with $(\eta,\gamma)=(4,6)$ and its images under the quarter turn; the third seed is the
+one of
+Theorem~\ref{thm:symmax}. There is a base $J_c$ for every odd $c$ from $L_s(N_0)$ to $M_s(N_0)-4$ and a base $J_c'$
+for every odd $c$ from $M_s(N_0)-14$ to $M_s(N_0)$. Condition ($\ddagger$) is required of each piece $Q_i'$ after
+it has been turned into the top right corner; then $U_e+(12,12)$ contains the pieces of the fast rings in that
+corner by the argument above, and those in the other corners because $U_e$ is invariant. The towers of the first
+kind give the odd numbers from $L_s(N_0)+12k$ to $M_s(N_0)+24k-16$, and those of the second kind the eight odd
+numbers from $M_s(N_0)+24k-14$ to $M_s(N_0)+24k$.
+\end{itemize}
+In both cases these are all odd numbers from $L_s(n)$ to $M_s(n)$, because $L_s(N_0+24k)=L_s(N_0)+12k$ and
+$M_s(N_0+24k)=M_s(N_0)+24k$.
+\end{proof}
 
 \section{Tours and computations}\label{sec:comp}
 
@@ -1524,6 +1584,19 @@ which is not among the accompanying files. (The negative report is not certified
 quarter of a side, and this seems to be the obstruction. This is why the seed is put around $F_2$ and not around
 $F_1$, and why the bases for $n\not\equiv3\pmod 4$ have sides from $48$ on.
 
+The symmetric tours of Theorem~\ref{thm:symspec} were found in the same ways, with one Boolean variable for each
+orbit of arcs. Here the plain search is faster: it took at most two seconds for the sides up to $47$, twenty seconds
+for the bases of sides $48$ to $70$, and five minutes for the sides $51$ to $119$. The bases $J_c$ of sides $123$ to
+$143$ with $L_s(N_0)+2$ coils were found by the plain search, in at most three minutes. The other bases $J_c$ of
+these sides consist of a symmetric tour of side $N_0-24$, which is a tour of the fast seed or was found by the plain
+search with one arc required, and a
+symmetric ring of width $12$ around it that replaces the four rotations of this arc, contains the pieces
+$Q_i-(12,12)$ and adds $16$ or $20$ coils. The bases $J_c'$ are symmetric tours of side $N_0-72$ with three fast
+rings; these inner tours were found by the plain search with the pieces of the fast ring required, and they are
+not among the listed tours. A ring that adds $14$ coils does not serve here: if a ring with quarter-turn symmetry replaces the four
+rotations of an arc by paths with the same ends, the four arcs keep their cyclic order along the tour, so by
+Proposition~\ref{prop:symnec} the number of coils keeps its residue modulo $4$.
+
 For the tours of Section~\ref{sec:sym} all searches use one Boolean variable for each orbit of arcs under the
 quarter turn, or under the half turn when $4\mid n$. This makes the direct search fast: every listed tour of that
 section, symmetric or centrally symmetric, was found in at most two minutes, without the help of a smaller tour. The eighteen seeds with two or four replaced arcs were found like the
@@ -1575,6 +1648,11 @@ in all; the tour $H$ of side $N_0+24$; and the seed tour of side $N_0+48$ of the
 $N_0=123,127,\dots,143$: a base $J_c$ for every $c$ from $L(N_0)+1$ to $M(N_0)-4$ and a base $J_c'$ for every $c$
 from $M(N_0)-15$ to $M(N_0)-1$, that is, $451$ bases in all; and the seed tour of side $N_0+48$ of the fast
 seed around $U_1$ (Section~\ref{sec:spec}).
+\item \emph{All odd numbers of coils with symmetry.} The same for Theorem~\ref{thm:symspec}, with symmetric tours
+if $4\nmid n$ and centrally symmetric tours if $4\mid n$, and with odd $c$ only: $251$ tours of sides $6$ to $47$ and
+$369$ of sides $51$ to $119$; $238$ bases of sides $48$ to $70$, with the tours $H$ and the seed tours around $F_2$;
+and $177$ bases $J_c$ and $42$ bases $J_c'$ of sides $123$ to $143$, with the seed tours of the fast seeds around
+$U_1$.
 \item \emph{Symmetric tours.} Every $n$ with $4\nmid n$ and $11\le n\le95$, and every $n\equiv3\pmod 4$ with
 $99\le n\le143$, that is, $76$ tours, with the numbers of coils of Theorem~\ref{thm:sym}; and the symmetric tours
 of sides $3$, $6$, $7$, $9$, $10$ with $3$, $5$, $5$, $7$, $7$ coils.
@@ -1606,6 +1684,15 @@ $123$ to $143$.
 \item \texttt{rings\_slow.txt}: the tours $H$. \texttt{seeds\_slow\_on\_fast.txt}: the seeds around $F_2$.
 \item \texttt{seeds\_fast\_on\_slow.txt}: the fast seeds around $U_1$; the header of each line records the pair $(\eta,\gamma)$ of its rectangle $\Omega'$, as in \texttt{seeds\_max\_coils.txt}.
 \end{itemize}
+For Theorem~\ref{thm:symspec} there are seven files of the same kinds, with \texttt{sym\_} inserted in the name:
+\begin{itemize}
+\item \texttt{tours\_sym\_spectrum\_small.txt}, \texttt{tours\_sym\_spectrum\_mid.txt};
+\item \texttt{bases\_sym\_spectrum.txt}, \texttt{bases\_sym\_spectrum\_fast.txt};
+\item \texttt{rings\_sym\_slow.txt}, \texttt{seeds\_sym\_slow\_on\_fast.txt}, \texttt{seeds\_sym\_fast\_on\_slow.txt}.
+\end{itemize}
+In the headers of the symmetric fast seeds, here and in \texttt{seeds\_symmax\_coils.txt}, an entry \texttt{osym=4}
+or \texttt{osym=2} says that $\Omega'$ contains the images of the rectangle under the quarter turn or under the
+half turn.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{new_tours.pdf}
@@ -1650,13 +1737,6 @@ smaller by a ring, when $n\equiv3\pmod 4$?
 \end{question}
 The searches described above found none.
 
-\begin{question}\label{q:all}
-Which numbers of coils occur for the symmetric and for the centrally symmetric whirling knight's tours of the
-$n\times n$ board?
-\end{question}
-For all tours the answer is Theorem~\ref{thm:spec}. For the centrally symmetric tours the number of coils is odd
-(Proposition~\ref{prop:symnec}), and the least and the greatest numbers are given by Theorems~\ref{thm:sym}
-and~\ref{thm:symmax}.
 
 \subsection*{Verification}
 \begin{itemize}
@@ -1715,15 +1795,21 @@ $J_c$ and on $J_c'$ separately, these are $3364$ tours of sides up to $142$ for 
 tours of sides up to $215$ for $n\equiv3\pmod 4$; for every side in this range they include a tour with each number
 of coils from $L(n)$ to $M(n)$. The program also builds single tours, for example for $n=1000$ and any $c$ from
 $500$ to $1000$.
-\item A ninth AI agent, given only the text and the eleven data files of Section~\ref{sec:spec}, refereed that
-section in two rounds. From the text alone it re-implemented the seeds, the conditions and the towers, confirmed all $2342$ tours
-of these files and the completeness of the lists, checked the properties that the two proofs ask of the data for
-all twenty-four values of $N_0$, and checked the counting for $k\le400$. It built $27\,558$ towers directly and
-checked each as a tour with the right number of coils: every tower with at most eight rings (sides up to $335$),
-and further ones of sides up to $2007$. It found no mathematical error. It found that the pieces of the fast seed
-around $U_1$ were not specified, seven tours that had not been made in the way the text said, and several
-sentences that claimed more than was shown or used a letter twice; these are corrected here. It also found the
-certificate for $n=10$ mentioned above.
+\item For Theorem~\ref{thm:symspec} the program \texttt{spectrum\_sym\_family.py} does the same with the symmetric
+data, and it checks the symmetry of every listed tour, of every seed tour and of every tower: $620$ listed tours,
+twenty-four values of $N_0$, and $1672$ and $1473$ towers with at most three rings, of sides up to $142$ and $215$.
+\item A ninth AI agent, given only the text and the data files of Section~\ref{sec:spec}, refereed that section in
+three rounds. From the text alone it re-implemented the seeds, the conditions and the towers. For
+Theorem~\ref{thm:spec} it confirmed all $2342$ tours of the eleven files and the completeness of the lists, checked
+the properties that the two proofs ask of the data for all twenty-four values of $N_0$, and checked the counting for
+$k\le400$. It built $27\,558$ towers directly and checked each as a tour with the right number of coils: every tower
+with at most eight rings (sides up to $335$), and further ones of sides up to $2007$. For
+Theorem~\ref{thm:symspec} it did the same with the symmetric data: $1268$ tours of eleven files, and $14\,100$
+towers, each checked also for its symmetry. It found no mathematical error. It found that the pieces of the fast
+seed around $U_1$ were not specified, seven tours that had not been made in the way the text said, a property of
+the symmetric tours $H$ that the proof needs and the text did not state, and several sentences that claimed more
+than was shown or used a letter twice; these are corrected here. It also found the certificate for $n=10$
+mentioned above.
 \item An eighth AI agent, given only the text and the data files of Section~\ref{sec:max} (without
 Theorem~\ref{thm:symmax}), refereed that section. It re-implemented the checks from the text and confirmed the $38$
 listed tours and the twenty-four fast seeds with their pieces and conditions (Z$'$), (S$'$), (W$'$), (C$'$). It built

@@ -126,7 +126,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **454 份数学研究文稿／2,348 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
+本仓库共 **454 份数学研究文稿／2,350 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
 
 七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
@@ -775,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2348 pages
+├── archive-manifest.json              454 PDFs / 2350 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -841,5 +841,5 @@ AI-Has-Taste/
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。仓库现为454份文稿／2,348页。其余PDF、源码与门控文件字节均未改动。该文稿未经外部同行评审。
+**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。仓库现为454份文稿／2,350页。其余PDF、源码与门控文件字节均未改动。该文稿未经外部同行评审。
 <!-- END CLAUDECODE RELEASE NOTE -->
