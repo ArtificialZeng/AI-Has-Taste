@@ -11,6 +11,8 @@ Python 3 standard library only.
   python half_family.py tours_sym_coils.txt seeds_sym_coils.txt --symmetric  tours that are invariant under the quarter turn
   python half_family.py tours_sym_coils.txt seeds_sym3_coils.txt --symmetric the same for n = 3 (mod 4)
   python half_family.py tours_half_turn_coils.txt seeds_half_turn_coils.txt --symmetric 2      half turn, 4 | n
+  python half_family.py tours_max_coils.txt seeds_max_coils.txt                    the greatest number of coils (fast rings)
+  python half_family.py tours_symmax_coils.txt seeds_symmax_coils.txt --symmetric 1    the same with rotational symmetry
 
 Data.  The first file holds a tour T for every admissible n below the seeds; its header gives the number of coils.
 The second file holds, for six values N1 (one in each class modulo 24), a seed tour T1 of the N1 x N1 board.  T1 is
@@ -71,16 +73,24 @@ def symmetric(n, T, order=4):
     return all(succ[rot(v)] == rot(w) for v, w in succ.items())
 
 class Family:
-    def __init__(self, T0, T1, shift=0, omega=None):
+    def __init__(self, T0, T1, shift=0, omega=None, fast=0, obox=None, osym=1):
         self.N1 = N1 = max(max(v) for v in T1) + 1; self.N0 = max(max(v) for v in T0) + 1; assert N1 == self.N0 + 2 * W
         self.s = shift = int(shift); self.a, self.h, self.b = 19 + shift, N1 // 2, N1 - 19 - shift
+        self.fast = bool(int(fast)); self.inc = 24 if self.fast else 12        # coils added by one ring
+        self.osym = int(osym)
         self.succ1 = succ1 = dict(zip(T1, T1[1:] + T1[:1]))
         succ0 = {(x[0] + W, x[1] + W): (y[0] + W, y[1] + W) for x, y in zip(T0, T0[1:] + T0[:1])}
         pred0 = {w: u for u, w in succ0.items()}
         depth = lambda v: min(v[0], v[1], N1 - 1 - v[0], N1 - 1 - v[1])
         self.ring = ring = {v for v in succ1 if depth(v) < W}
         # the pieces Q_i of T0 (shifted): maximal runs of the arcs in `cut`
-        if omega is None:
+        if obox is not None:                                                   # Omega: a block in the top right corner of the inner board
+            R, C = map(int, obox.split(",")); osym = int(osym)                # osym = 4 or 2: with the rotated copies of the block
+            rot = (lambda v: (N1 - 1 - v[1], v[0])) if osym == 4 else (lambda v: (N1 - 1 - v[0], N1 - 1 - v[1]))
+            Om = {v for v in succ0 if v[0] < W + R and v[1] >= N1 - W - C}
+            for _ in range(osym - 1): Om |= {rot(v) for v in Om}
+            cut = {x for x in succ0 if x in Om or succ0[x] in Om}
+        elif omega is None:
             cut = {x for x in succ0 if succ1[x] != succ0[x]}; assert cut            # the arcs of T0 that are missing in T1
         else:
             D, L0, L1 = map(int, omega.split(","))
@@ -105,9 +115,11 @@ class Family:
         self.cut = cut
         self.T = {0: dict(zip(T0, T0[1:] + T0[:1]))}
     def fwd(self, t, e):
+        if self.fast: return t if t < self.h else t + 24 * e           # a fast ring is cut once, in the middle
         return t if t < self.a else t + 6 * e if t < self.h else t + 18 * e if t < self.b else t + 24 * e
     def pull(self, t, e):
         a, h, b = self.a, self.h, self.b
+        if self.fast: return t if t < h else h - 4 + (t - h) % 4 if t < h + 24 * e else t - 24 * e
         if t < a: return t
         if t < a + 6 * e: return a - 3 + (t - a) % 3
         if t < h + 6 * e: return t - 6 * e
@@ -145,9 +157,11 @@ class Family:
         def piece(x, y):
             assert pos[x][0] == pos[y][0], "the two cells must lie on the same path"
             P = self.paths[pos[x][0]]; return P[min(pos[x][1], pos[y][1]): max(pos[x][1], pos[y][1]) + 1]
-        # (Z) the six zones
-        assert N1 >= 52 + 2 * s, "the three zones must be apart"
-        zones = [(14 + s, 21 + s, 3), (h - 3, h + 3 + N1 % 2, 2), (N1 - 21 - s, N1 - 14 - s, 3)]
+        # (Z) the six zones (slow ring), or the two zones of period 4 around the middle (fast ring)
+        fast = self.fast; ZF = (h - 6, h + 2 + N1 % 2)
+        assert N1 >= (48 if fast else 52 + 2 * s), "the zones must fit"
+        zones = [(ZF[0], ZF[1], 4)] if fast else [(14 + s, 21 + s, 3), (h - 3, h + 3 + N1 % 2, 2), (N1 - 21 - s, N1 - 14 - s, 3)]
+        if fast and self.osym > 1: zones.append((h - 6, h + 6 + N1 % 2, 4))    # a zone that the reflection maps onto itself
         for ax in (1, 0):                                    # ax = 1: columns; ax = 0: rows
             sh = lambda z, t: (z[0], z[1] + t) if ax else (z[0] + t, z[1])
             side = lambda z: z[1 - ax] < W                   # which of the two sides that the zone crosses
@@ -161,9 +175,9 @@ class Family:
                         assert all(x in ring and side(x) == side(z) and A - 2 <= x[ax] < B for x in piece(z, sh(z, tau))), ("Z-b", z)
                     if B - 2 <= z[ax] < B:
                         assert all(x in ring and side(x) == side(z) and A <= x[ax] < B + 2 for x in piece(sh(z, -tau), z)), ("Z-c", z)
-        assert 14 + s + 3 <= a <= 21 + s and N1 - 21 - s <= b <= N1 - 21 - s + 4          # the cuts lie in the zones
+        assert fast or (14 + s + 3 <= a <= 21 + s and N1 - 21 - s <= b <= N1 - 21 - s + 4)   # the cuts lie in the zones
         # (S) every arc of a piece reappears in the ring of T1, and the four cells stay in one segment in each coordinate
-        seg = lambda t: 0 if t < a else 1 if t < h else 2 if t < b else 3
+        seg = (lambda t: 0 if t < h else 1) if fast else (lambda t: 0 if t < a else 1 if t < h else 2 if t < b else 3)
         psi = lambda x: (self.fwd(x[0], 1) - W, self.fwd(x[1], 1) - W)
         for Q in self.pieces:
             for x, y in zip(Q, Q[1:]):
@@ -172,6 +186,7 @@ class Family:
                     assert seg(x[k]) == seg(y[k]) == seg(psi(x)[k]) == seg(psi(y)[k]), ("S", x, y)
         # (W) displacement of a cell relative to the pivot, per level: e * delta with delta in a box; delta x m >= 0
         def box(t):
+            if fast: return (-12,) if t < h - 4 else (-12, 12) if t < h else (12,)
             if t < a - 3: return (-12,)
             if t < a: return (-12, -6)
             if t < h - 2: return (-6,)
@@ -183,8 +198,9 @@ class Family:
             for di in box(x[0]):
                 for dj in box(x[1]):
                     assert di * m[1] - m[0] * dj >= 0, ("W", x)
-        # (C) in the middle zone of the top side every move goes one column to the left
-        assert all(move[(t, j)][1] == -1 for t in range(W) for j in range(h - 3, h + 3 + N1 % 2))
+        # (C) in the middle zone of the top side every move goes one column to the left (two columns in a fast ring)
+        if fast: assert all(move[(t, j)][1] == -2 for t in range(W) for j in range(ZF[0], ZF[1]))
+        else: assert all(move[(t, j)][1] == -1 for t in range(W) for j in range(h - 3, h + 3 + N1 % 2))
         r = len(self.pieces); k = sum(1 for P in self.paths if any(x in ring for x in P))
         if r == 1: return f"piece {self.pieces[0][0]}->{self.pieces[0][-1]}"
         return f"{r} pieces with {len(self.cut)} arcs, {k} of the new paths pass through the ring"
@@ -193,12 +209,15 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("tours"); ap.add_argument("seeds"); ap.add_argument("-K", type=int, default=8)
     ap.add_argument("-n", type=int, default=None); ap.add_argument("-o", default=None)
-    ap.add_argument("--symmetric", type=int, nargs="?", const=4, default=0, choices=(2, 4),
-                    help="also check that every tour is invariant under the quarter turn (default) or, with 2, the half turn")
+    ap.add_argument("--symmetric", type=int, nargs="?", const=4, default=0, choices=(1, 2, 4),
+                    help="also check that every tour is invariant under the quarter turn (default) or, with 2, the half turn; "
+                         "with 1: the quarter turn if 4 does not divide n, and the half turn otherwise")
     args = ap.parse_args()
+    order = lambda n: (2 if n % 4 == 0 else 4) if args.symmetric == 1 else args.symmetric
     coils, scoils, opts = {}, {}, {}
     tours, seeds = load(args.tours, coils), load(args.seeds, scoils, opts)
-    for N1 in seeds: assert scoils[N1] == coils[N1 - 24] + 12
+    inc = lambda N1: 24 if int(opts[N1].get("fast", 0)) else 12
+    for N1 in seeds: assert scoils[N1] == coils[N1 - 24] + inc(N1)
     if args.n is not None:
         n = args.n
         if n in tours: T, c = tours[n], coils[n]
@@ -206,14 +225,14 @@ if __name__ == "__main__":
             cand = [N1 for N1 in seeds if n > N1 and (n - N1) % 24 == 0]
             assert n in seeds or cand, "no tour or family for this n in these files"
             N1 = n if n in seeds else cand[0]; k = 1 + (n - N1) // 24
-            fam = Family(tours[N1 - 24], seeds[N1], **opts[N1]); T = fam.tour(k); c = coils[N1 - 24] + 12 * k
-        ok = check_tour(n, T, c) and (not args.symmetric or symmetric(n, T, args.symmetric))
+            fam = Family(tours[N1 - 24], seeds[N1], **opts[N1]); T = fam.tour(k); c = coils[N1 - 24] + inc(N1) * k
+        ok = check_tour(n, T, c) and (not args.symmetric or symmetric(n, T, order(n)))
         print(f"n={n}: coils = {c} -> {'VALID' if ok else 'INVALID'}" + (", symmetric" if ok and args.symmetric else ""))
         if args.o: open(args.o, "w").write(f"n={n} coils={c} tour=" + " ".join(f"{i},{j}" for i, j in T) + "\n")
         sys.exit(0 if ok else 1)
     allok = True
     for n in sorted(tours):
-        allok &= check_tour(n, tours[n], coils[n]) and (not args.symmetric or symmetric(n, tours[n], args.symmetric))
+        allok &= check_tour(n, tours[n], coils[n]) and (not args.symmetric or symmetric(n, tours[n], order(n)))
     print(f"explicit tours n = {', '.join(map(str, sorted(tours)))}: {'ALL VALID' if allok else 'SOME INVALID'}")
     for N1 in sorted(seeds):
         fam = Family(tours[N1 - 24], seeds[N1], **opts[N1])
@@ -221,8 +240,8 @@ if __name__ == "__main__":
         ns = []
         for k, succ in fam.levels(args.K):
             n = N1 + 24 * (k - 1); T = fam.as_list(succ); ns.append(n)
-            allok &= check_tour(n, T, coils[N1 - 24] + 12 * k) and (not args.symmetric or symmetric(n, T, args.symmetric))
+            allok &= check_tour(n, T, coils[N1 - 24] + inc(N1) * k) and (not args.symmetric or symmetric(n, T, order(n)))
         shown = ", ".join(map(str, ns)) if len(ns) <= 3 else f"{ns[0]}, {ns[1]}, ..., {ns[-1]}"
-        print(f"family {N1} + 24k ({scoils[N1]} + 12k coils): conditions (Z),(S),(W),(C) hold, {info}; "
+        print(f"family {N1} + 24k ({scoils[N1]} + {inc(N1)}k coils): conditions (Z),(S),(W),(C) hold, {info}; "
               f"tours n = {shown} checked directly{' (with their symmetry)' if args.symmetric else ''}: {'ALL VALID' if allok else 'SOME INVALID'}", flush=True)
     print("ALL VALID" if allok else "SOME TOUR IS INVALID")

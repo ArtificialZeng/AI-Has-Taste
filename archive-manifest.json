@@ -30,7 +30,7 @@
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
   "paper_count": 454,
-  "page_count": 2339,
+  "page_count": 2343,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -8667,8 +8667,8 @@
     {
       "paper_id": "CC-P01",
       "title": "Whirling knight's tours with n coils and with the least number of coils",
-      "pages": 27,
-      "sha256": "0858cd5f5e77fee7909432da0c7908a97f60b929e6eb0032bb0554425d63e5f5",
+      "pages": 31,
+      "sha256": "1998d20fe599bf9230ac66cded8f00155a399de8d47f0eb8811a3cb6540bb52e",
       "archive_status": "final-manuscript-internal-checks-only",
       "manuscript_kind": "resolution-paper",
       "original_status": "proved",
@@ -8678,7 +8678,7 @@
       "latex": "reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex",
       "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P01/",
       "original_id": "claude-code-20261114-knuth-231b",
-      "contribution": "Knuth's exercise 7.2.2.4-231 (TAOCP Pre-Fascicle 8A, draft of 8 May 2026) asks for n x n whirling knight's tours with exactly n/2 coils and with exactly n coils. (1) n coils: for every n >= 5 with n not divisible by 4, no such tour exists (weighted counting argument); new tours for n = 16, 20, 24; with the constructions and counts reported in Knuth's draft, a tour with n coils exists if and only if n = 3, or n >= 12 and 4 | n. (2) Lower bound: every tour has at least n/2 + 2 coils when n = 4 or 6 (mod 8), and at least (n+3)/2 coils when n >= 5 is odd and not congruent to 1 or 19 (mod 24); the proof bounds the number of disjoint paths needed to cover a wedge of the board by an explicit labelling, and for n = 4, 6 (mod 8) it contains S. Li's theorem that n/2 coils are impossible. (3) For every n >= 11 the least number of coils is determined: n/2 if n = 0, 2 (mod 8), n/2 + 2 if n = 4, 6 (mod 8), (n+1)/2 if n = 1, 19 (mod 24), (n+3)/2 for the other odd n. The tours: explicit ones for small n, and for larger n nested rings of width 12 built from twenty-four seed tours whose ring can be stretched by inserting periods (computer-assisted: a lemma on inserting a period into a system of disjoint paths plus finite conditions on the seeds). Hence a tour with n/2 coils exists if and only if n >= 16 and n = 0 or 2 (mod 8). (4) For n = 3 (mod 4) no ring that replaces a single arc was found; the six seeds for this case replace 28 to 31 short pieces of the inner tour, in its five outer layers, by paths with the same ends that between them pass through all cells of the ring. (5) Rotational symmetry: a whirling tour invariant under the half turn has an odd number of coils, and one invariant under the quarter turn exists only if 4 does not divide n; for every n >= 11 the least number of coils of a tour with half-turn symmetry is the least odd number that is at least the overall minimum, and it is attained with quarter-turn symmetry when 4 does not divide n.",
+      "contribution": "Knuth's exercise 7.2.2.4-231 (TAOCP Pre-Fascicle 8A, draft of 8 May 2026) asks for n x n whirling knight's tours with exactly n/2 coils and with exactly n coils. (1) n coils: for every n >= 5 with n not divisible by 4, no such tour exists (weighted counting argument); new tours for n = 16, 20, 24; with the constructions and counts reported in Knuth's draft, a tour with n coils exists if and only if n = 3, or n >= 12 and 4 | n. (2) Lower bound: every tour has at least n/2 + 2 coils when n = 4 or 6 (mod 8), and at least (n+3)/2 coils when n >= 5 is odd and not congruent to 1 or 19 (mod 24); the proof bounds the number of disjoint paths needed to cover a wedge of the board by an explicit labelling, and for n = 4, 6 (mod 8) it contains S. Li's theorem that n/2 coils are impossible. (3) For every n >= 11 the least number of coils is determined: n/2 if n = 0, 2 (mod 8), n/2 + 2 if n = 4, 6 (mod 8), (n+1)/2 if n = 1, 19 (mod 24), (n+3)/2 for the other odd n. The tours: explicit ones for small n, and for larger n nested rings of width 12 built from twenty-four seed tours whose ring can be stretched by inserting periods (computer-assisted: a lemma on inserting a period into a system of disjoint paths plus finite conditions on the seeds). Hence a tour with n/2 coils exists if and only if n >= 16 and n = 0 or 2 (mod 8). (4) For n = 3 (mod 4) no ring that replaces a single arc was found; the six seeds for this case replace 28 to 31 short pieces of the inner tour, in its five outer layers, by paths with the same ends that between them pass through all cells of the ring. (5) Rotational symmetry: a whirling tour invariant under the half turn has an odd number of coils, and one invariant under the quarter turn exists only if 4 does not divide n; for every n >= 11 the least number of coils of a tour with half-turn symmetry is the least odd number that is at least the overall minimum, and it is attained with quarter-turn symmetry when 4 does not divide n. (6) The greatest number of coils is n if 4 | n and n - 1 otherwise, for every n >= 10; the tours are nests of rings that add 24 coils each, which also gives a construction of tours with n coils independent of the one in Knuth's draft. With half-turn symmetry the greatest number of coils is n - 1 for even n and n - 2 for odd n.",
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
@@ -8946,6 +8946,6 @@
     "paper_ids": [
       "CC-P01"
     ],
-    "note": "CC-P01 revised several times: the n/2-coil theorem, then lower bounds, the least number of coils for every n >= 11, and tours with rotational symmetry. Its title, PDF and package were replaced. No other PDF, source or gate byte changed."
+    "note": "CC-P01 revised several times: the n/2-coil theorem, lower bounds, the least number of coils for every n >= 11, tours with rotational symmetry, and the greatest number of coils for every n >= 10. Its title, PDF and package were replaced. No other PDF, source or gate byte changed."
   }
 }

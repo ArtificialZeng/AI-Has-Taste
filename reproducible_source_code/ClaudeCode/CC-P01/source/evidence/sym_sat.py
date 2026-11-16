@@ -61,7 +61,13 @@ def crosses(a, th):
     return x1 * d[1] - d[0] * y1 > 0 and d[0] * y2 - x2 * d[1] > 0
 for k in range(args.rays):                                  # rays within one sector; the others follow by symmetry
     th = 0.0137 + k * (2 * math.pi / args.order) / args.rays
-    lits = [var[a] for a in arcs if crosses(a, th)]
+    lits, used = [], set()
+    for a in arcs:
+        if not crosses(a, th): continue
+        x = var[a]
+        if x in used:                                       # an arc near the pivot and its rotation may cross the same ray:
+            y = pool.id(("copy", x, len(lits))); clauses.append([-x, y]); clauses.append([x, -y]); x = y   # count both
+        used.add(x); lits.append(x)
     exactly(lits, c)
 if args.clean:
     R_, f_, w_ = args.clean; tau = (n - 1) // 4 - 1

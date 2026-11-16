@@ -30,7 +30,10 @@ number of coils is its winding number about the centre, which lies between $n/2$
 \begin{itemize}
 \item \emph{$n$ coils.} Such a tour exists if and only if $n=3$, or $n\ge12$ and $4\mid n$. We prove that none
 exists for $n\ge5$ unless $4$ divides $n$, by a short weighted counting argument, and we give tours for $n=16$, $20$
-and $24$. For $n\ge52$ the existence part rests on the construction reported in Knuth's draft.
+and $24$. For $n\ge28$ the existence was known from a construction reported in Knuth's draft; we give an
+independent one for $n\ge48$, and tours found by search for smaller $n$. In the same way we obtain tours with $n-1$
+coils for every $n\ge10$ that is not a multiple of $4$. So the
+greatest number of coils is $n$ if $4\mid n$ and $n-1$ otherwise, for every $n\ge10$.
 \item \emph{A lower bound.} Every tour has at least $n/2+2$ coils if $n\equiv4$ or $6\pmod 8$, and at least
 $(n+3)/2$ coils if $n$ is odd and $n\not\equiv1,19\pmod{24}$. The bound comes from path covers of a wedge of the
 board and has a short proof; it contains the theorem of S.~Li that $n/2$ coils are impossible when $n\equiv4$ or
@@ -45,8 +48,9 @@ by paths with the same ends, which between them pass through all cells of the ri
 \item \emph{Symmetric tours.} A whirling tour that is invariant under the half turn of the board has an odd number
 of coils; one that is invariant under the quarter turn exists only if $4\nmid n$. For every $n\ge11$ the least number
 of coils of a tour with half-turn symmetry is the least odd number that is at least the least number of coils of all
-tours, and for $4\nmid n$ it is attained by a tour with quarter-turn symmetry. These tours are built from
-twenty-four further seeds.
+tours, and for $4\nmid n$ it is attained by a tour with quarter-turn symmetry. Likewise, for every $n\ge10$ the
+greatest number of coils of a tour with half-turn symmetry is $n-1$ for even $n$ and $n-2$ for odd $n$. These tours are built from
+forty-eight further seeds.
 \end{itemize}
 All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
 lists of conditions on the seeds that a program checks.
@@ -109,8 +113,8 @@ $n=8$ are excluded by the exhaustive counts in \cite[answer 229]{knuth}, which w
 
 \emph{Existence.} The $3\times3$ knight cycle around the removed centre has $3$ coils. For $n=12$ there is Beluhov's
 tour. For $n=16,20,24$ we give tours in Section~\ref{sec:comp}. For $n\ge28$ there is the construction of
-\cite[answer 232]{knuth}. Independently of that construction, Section~\ref{sec:comp} also gives a tour for every
-multiple of $4$ with $12\le n\le48$.
+\cite[answer 232]{knuth}. Independently of that construction, Theorem~\ref{thm:max} gives a tour with $n$ coils for
+every multiple of $4$ from $12$ on.
 \end{proof}
 
 \begin{remark}
@@ -180,6 +184,14 @@ tour inside the ring are replaced by paths with the same ends, and these paths b
 of the ring. The pieces lie in the five outer layers of the inner tour, near the eight places where the lanes of the
 ring change their direction. The proof rests on $121$ tours,
 given in the accompanying files, and on a finite check carried out by a program.
+
+Section~\ref{sec:max} determines the greatest number of coils for every $n\ge10$: it is $n$ if $4\mid n$, and $n-1$
+otherwise (Theorem~\ref{thm:max}). For $n\ge48$ the tours are nests of rings of width $12$ of another kind, which
+add $24$ coils each and replace three to eight short pieces in a corner of the tour inside; for $10\le n\le47$ they
+were found by search. For the multiples of $4$ this is a
+second construction of tours with $n$ coils, independent of the one in \cite[answer 232]{knuth}; it rests on $62$
+further tours. With $62$ more, the same section determines the greatest number of coils of the tours with
+rotational symmetry (Theorem~\ref{thm:symmax}).
 
 Section~\ref{sec:sym} treats the whirling tours that are invariant under a rotation of the board. A tour that is
 invariant under the half turn has an odd number of coils, and one that is invariant under the quarter turn exists
@@ -923,8 +935,7 @@ enlarged. Dashed: arcs of $T_0$ that are not in $T_1$; there are $60$ of them in
 \end{figure}
 
 \begin{remark}\label{rem:shape}
-In all seeds of this note, the twenty-four of Theorem~\ref{thm:half} and the twenty-four of Section~\ref{sec:sym},
-and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
+In the forty-eight seeds of Sections~\ref{sec:half} and~\ref{sec:sym}, and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
 that the path runs towards smaller columns, and let $i$ be the row. In the first zone the move is $(2,1)$ if
 $i\equiv0\pmod3$ and $(-1,-2)$ otherwise. In the second it is $(2,-1)$ if $i\bmod4\in\{0,1\}$ and $(-2,-1)$
 otherwise. In the third it is $(1,-2)$ if $i\bmod3\in\{0,1\}$ and $(-2,1)$ otherwise. So the paths run in lanes that
@@ -1103,6 +1114,151 @@ $n\ge147$ with $n\equiv3\pmod 4$ arises in this way, and the number of coils is 
 grows by $12$ when $n$ grows by $24$.
 \end{proof}
 
+\section{Tours with the greatest number of coils}\label{sec:max}
+
+A tour has at most $n$ coils \cite[exercise 229(c)]{knuth}, and at most $n-1$ when $n\ge5$ is not a multiple of $4$
+(Theorem~\ref{thm:main}). For $n\ge10$ both bounds are attained.
+
+\begin{theorem}\label{thm:max}
+Let $n\ge10$. The greatest number of coils of an $n\times n$ whirling knight's tour is $n$ if $4\mid n$, and $n-1$
+otherwise.
+\end{theorem}
+For $n=3$, $6$, $7$, $8$, $9$ the greatest numbers are $3$, $5$, $5$, $7$, $7$, by the exhaustive counts of
+\cite[answer 229]{knuth}; there is no tour for $n=4$ or $5$. For the multiples of $4$ the theorem gives the tours with $n$ coils of
+Corollary~\ref{cor:iff} once more, by a construction that is independent of the one in \cite[answer 232]{knuth}.
+
+For $n\ge48$ the tours are again nests of rings of width $12$, but each ring now adds $24$ coils, two for each of
+its layers. We call a seed \emph{fast} if $T_1$ has $c_0+24$ coils instead of $c_0+12$;
+everything else in the definition of a seed stays as it is. Figure~\ref{fig:fast} shows a fast seed. A fast seed is
+stretched at one place only. With
+$h=\lfloor N_1/2\rfloor$ and $\varepsilon$ as before, put
+\[ \varphi'_e(t)=\begin{cases} t & t<h,\\ t+24e & t\ge h,\end{cases} \]
+and define $\pi'_e$ by $\pi'_e(\varphi'_e(t))=t$ and, for $s$ in the block $[h,h+24e)$ omitted by $\varphi'_e$, by
+$\pi'_e(s)\in\{h-4,h-3,h-2,h-1\}$ with $\pi'_e(s)\equiv s\pmod 4$. As before, $\varphi'_e$ maps ring cells to
+ring cells and inner cells to inner cells, and $\pi'_e$ maps the ring onto the ring, because $12\le h\le N_1-12$.
+The tour $T_{e+1}$ is defined by the three items
+of Section~\ref{sec:half}, with $\varphi'_e$ and $\pi'_e$ in place of $\varphi_e$ and $\pi_e$. Let $D'(t)$ be
+$\{-12\}$ for $t<h-4$, $\{-12,12\}$ for $h-4\le t<h$, and $\{12\}$ for $t\ge h$, and put $\psi'(t)=\varphi'_1(t)-12$.
+We say that a fast seed is \emph{stretchable} if $N_1\ge48$ and the following hold.
+\begin{itemize}
+\item[(Z$'$)] Condition (Z) with the single zone $[h-6,h+2+\varepsilon)$, $\tau=4$, in place of the three zones.
+\item[(S$'$)] Condition (S) with $\psi'$ in place of $\psi$ and the two intervals $[0,h)$, $[h,N_1)$ in place of
+the four intervals.
+\item[(W$'$)] Condition (W) with $D'$ in place of $D$.
+\item[(C$'$)] Every cell $(i,j)$ with $i<12$ and $h-6\le j<h+2+\varepsilon$ has a move of the form $(\pm1,-2)$.
+\end{itemize}
+
+\begin{proposition}\label{prop:fast}
+If a fast seed is stretchable, then for every $k\ge0$ the set $T_k$ is a whirling knight's tour of the board of side
+$N_0+24k$, with $c_0+24k$ coils.
+\end{proposition}
+\begin{proof}
+The proof of Proposition~\ref{prop:stretch} applies with the following changes.
+
+\emph{The paths through the ring.} Apply Lemma~\ref{lem:insert} $6e$ times in the zone, for columns and then for
+rows. The ring cells in the columns $h-8,\dots,h+3+\varepsilon$ belong to the top side or to the bottom side of
+the ring; this is where $N_1\ge48$ is used ($N_1\ge40$ would do). There is no other zone in the same direction. An
+insertion in the column zone fixes the left side and translates the right side, so the hypotheses for the row zone
+survive the insertions in the column zone, as before. A coordinate $t$ of a cell of a piece is not in the zone, and the zone
+contains $h$; so the insertions move $t$ to $\varphi'_e(t)$. After the insertions the zone is
+$[h-6,\,h+2+\varepsilon+24e)$. It contains the block, the values of $\pi'_e$ on the block lie in the original zone
+and in the right residue class modulo $4$, and so the move of a ring cell $z$ is $m(\pi'_e(z))$.
+
+\emph{Hamiltonian cycle.} On $[0,h)$ and $[h,N_1)$ the map $\varphi'_e$ is $t\mapsto t+\kappa e$ with $\kappa=0$
+and $\kappa=24$, and $\psi'(t)=t+\kappa-12$. So $\varphi'_e(t)-12=\varphi'_{e-1}(\psi'(t))$ whenever $t$ and
+$\psi'(t)$ lie in the same of the two intervals, and the argument goes through with (S$'$).
+
+\emph{Every arc turns counterclockwise.} A coordinate $s=\varphi'_e(t)$ gives $s-12e-t=\mp12e$. For $s$ in the
+block and $t=\pi'_e(s)$ we have $4\le s-t\le24e$, so $s-12e-t$ lies between $-12e$ and $12e$. Hence
+$z-o_e=(x-o_0)+e(\delta_1,\delta_2)$ with $\delta_1\in\operatorname{conv}D'(x_1)$ and
+$\delta_2\in\operatorname{conv}D'(x_2)$, and (W$'$) is used as (W) was.
+
+\emph{Coils.} Let $R$ be as before. An arc that crosses $R$ joins two cells in the columns
+$h+12e-2+\varepsilon,\dots,h+12e+1+\varepsilon$, which lie in the zone after the insertions. No cell of a piece lies
+there, so the arcs of $T_e+(12,12)$ cross $R$ exactly $c_0+24e$ times and all of them belong to $T_{e+1}$. The other
+arcs that cross $R$ join two ring cells in rows less than $12$. By (C$'$) and periodicity every move in the zone
+changes the column by $-2$. So exactly the $24$ cells of the columns $h+12e+\varepsilon$ and
+$h+12e+1+\varepsilon$ in rows $0,\dots,11$ send an arc across $R$, and $T_{e+1}$ has $c_0+24(e+1)$ coils.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:max}]
+The upper bounds were recalled above. For $10\le n\le47$ tours with $n$ coils ($4\mid n$) or $n-1$ coils
+($4\nmid n$) are in an accompanying file (Section~\ref{sec:comp}). For each $N_1$ from $48$ to $71$ the same section
+gives a tour $T_1$ of side $N_1$ that forms a fast seed with the listed tour $T_0$ of side $N_1-24$. Its pieces are
+defined through a rectangle in the top right corner of the inner board: let $\Omega'$ be the set of inner cells in the
+rows $12,\dots,11+\eta$ and in the columns $N_1-12-\gamma,\dots,N_1-13$, where $(\eta,\gamma)$ is one of $(4,8)$,
+$(5,6)$, $(5,8)$, $(6,6)$, $(6,8)$, $(8,8)$ and is recorded with the seed. The pieces are the maximal paths in
+$T_0+(12,12)$ all of whose arcs have an end in $\Omega'$ and that are not paths in $T_1$. There are $3$ to $8$
+pieces, with $21$ to $58$ arcs in all, and $T_1$ lacks $6$ to $35$ arcs of $T_0+(12,12)$; one to four of the paths
+$P_i$ pass through the ring. The accompanying program
+checks that these are fast seeds and that they are stretchable. By Proposition~\ref{prop:fast} the tour $T_k$ of
+side $N_1+24(k-1)$ has $24(k-1)$ more coils than $T_1$, that is, as many as its side if $4\mid N_1$ and one less
+otherwise. Every $n\ge48$ arises in this way.
+\end{proof}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth]{fast54.pdf}
+\caption{Left: the fast seed tour $T_1$ of side $54$, with $53$ coils. Grey: the arcs that it shares with the tour
+$T_0$ of side $30$, which has $29$ coils. The box is the rectangle $\Omega'$, here with $\eta=\gamma=6$; black: the $22$
+arcs of $T_1$ at inner cells that are not arcs of $T_0$. The blue parts of the ring are the zones, and the dashed
+lines mark the cut $h$. Right: the top right corner enlarged; dashed: the $17$ arcs of $T_0$ that are not in $T_1$.}
+\label{fig:fast}
+\end{figure}
+
+\begin{remark}\label{rem:fast}
+In all forty-eight fast seeds of this section the moves in the zones follow one rule: on the top side the move is $(1,-2)$ in the
+even rows and $(-1,-2)$ in the odd rows, and the other sides are rotations of it. So the paths zigzag in lanes of
+two rows that advance two columns per move, and this pattern has no need to change along a side. This is why one
+zone suffices. The zone is not placed symmetrically about $h$ because in the seeds of sides $48$ and $49$ the
+cells of the pieces reach the column $h+2+\varepsilon$.
+
+A single arc does not seem to carry such a ring. What follows are reports of the solver for one inner tour of each
+kind and for our formulation of the search; the negative ones are not certified, and the rings of the positive ones
+are not among the accompanying files. Around the listed $24\times24$ tour with $12$ coils, the solver finds a ring
+of width $12$ that replaces one arc and adds $c$ coils, for each $c$ from $12$ to $23$, and it reports that there is
+none for $c=24$. Around a tour with the greatest number of coils, for each of the sides $21$, $22$ and $24$, it
+finds such a ring that adds $23$ coils and reports that none adds $24$. For side $24$ it also reports that no ring
+that replaces at most two arcs adds $24$ coils, and it finds one that replaces at most four.
+\end{remark}
+
+\subsection*{With rotational symmetry}
+The notions and results of Section~\ref{sec:sym} apply here as well.
+
+\begin{theorem}\label{thm:symmax}
+Let $n\ge10$. The greatest number of coils of a centrally symmetric $n\times n$ whirling knight's tour is the greatest
+odd number that is at most the number in Theorem~\ref{thm:max}: it is $n-1$ if $n$ is even, and $n-2$ if $n$ is odd.
+If $n\not\equiv0\pmod 4$, this number is attained by a symmetric tour.
+\end{theorem}
+The same holds for $6\le n\le9$, where the numbers are $5$, $5$, $7$, $7$, by the exhaustive enumeration of the
+eighth referee pass described in Section~\ref{sec:comp}.
+\begin{proof}
+The upper bound follows from Theorem~\ref{thm:max} and Proposition~\ref{prop:symnec}(a). For $10\le n\le47$ tours
+with these numbers of coils are in an accompanying file (Section~\ref{sec:comp}); they are symmetric if $4\nmid n$
+and centrally symmetric if $4\mid n$. For each $N_1$ from $48$ to $71$ a second file gives a tour $T_1$ of side $N_1$
+that forms a fast seed with the listed tour $T_0$ of side $N_1-24$, and $T_0$ and $T_1$ have this symmetry. Its set $\Omega'$ consists of the rectangle with $(\eta,\gamma)$ equal to $(4,4)$, $(5,5)$, $(6,6)$ or
+$(6,8)$ and of the images of this rectangle under the quarter turn, or under the half turn when $4\mid N_1$; so the
+rotation maps pieces onto pieces. There are $4$ to $32$ pieces, with $22$ to $224$ arcs in all, $T_1$ lacks $8$ to
+$120$ arcs of $T_0+(12,12)$, and $2$ to $16$ of the paths $P_i$ pass through the ring.
+The accompanying program checks that these seeds are stretchable and that they satisfy
+\begin{itemize}
+\item[(Z$''$)] condition (Z$'$) also with the interval $Z=[h-6,h+6+\varepsilon)$ in place of
+$[h-6,h+2+\varepsilon)$.
+\end{itemize}
+(This condition follows from (Z$'$) and the invariance of $T_1$ under the half turn, as the eighth referee pass
+observed; the program checks it directly.) The interval $Z$ lies in $[12,N_1-12)$.
+By Proposition~\ref{prop:fast} the tours $T_k$ have the stated numbers of coils. They have the symmetry of $T_0$
+and $T_1$: the proof of Lemma~\ref{lem:symstretch} applies with $\varphi'_e$, $\pi'_e$ and the interval $Z$ above,
+which $R_0$ maps onto itself, in the following form. (i) $\varphi'_e(R_0(t))=R_e(\varphi'_e(t))$ for $t\notin Z$,
+because $R_0$ exchanges $[0,h-6)$ and $[h+6+\varepsilon,N_1)$, on which $\varphi'_e$ adds $0$ and $24e$. (ii) For
+every $s$, either $\pi'_e(R_e(s))=R_0(\pi'_e(s))$, or both numbers lie in $Z$ and their difference is a multiple of
+$4$. Indeed, if $s$ is not of the form $\varphi'_e(t)$ with $t\notin Z$, then $s$ lies in
+$[h-6,\,h+6+\varepsilon+24e)$, and so does $R_e(s)$; on this interval $\pi'_e$ takes values in $Z$ and
+$\pi'_e(s)\equiv s\pmod 4$, and $N_{e+1}\equiv N_1\pmod 4$. In the case of the ring cells, two ring cells in the
+same column whose rows lie in $Z$ and differ by $4$ or by $8$ have the same move by (Z$''$); the coordinates of
+the cells of the pieces lie outside $Z$, also by (Z$''$).
+\end{proof}
+
 \section{Tours and computations}\label{sec:comp}
 
 \subsection*{Search}
@@ -1142,6 +1298,14 @@ number of that piece. We also required the zones as for the simple seeds, with t
 five outer layers of $T_1$ are the stretched copy of the five outer layers of $T_0$ (Remark~\ref{rem:odd3}), which
 gives condition (S). With these requirements the seed of side $151$, for example, is found in a few seconds.
 \end{itemize}
+The fast seeds of Section~\ref{sec:max} were found like the seeds of sides $147$ to $167$, with the rectangle $\Omega'$
+in place of $\Omega$, with the requirement that on each side the move depends only on the depth in the columns
+$16,\dots,N_1-17$ (rows, for the left and the right side), with the arcs excluded that violate (W$'$), and with the requirement that the top right corner of
+$T_1$ repeats that of $T_0$, which gives (S$'$). Each was found in at most ten seconds. Not every inner tour admits
+such a seed; where the first one did not, we took another tour with the same number of coils, at most four times.
+The seeds of Theorem~\ref{thm:symmax} were found in the same way, with one Boolean variable for each orbit of arcs;
+here the first inner tour sufficed in all cases but three, and the third one at the latest.
+
 For the tours of Section~\ref{sec:sym} all searches use one Boolean variable for each orbit of arcs under the
 quarter turn, or under the half turn when $4\mid n$. This makes the direct search fast: every listed tour of that
 section, symmetric or centrally symmetric, was found in at most two minutes, without the help of a smaller tour. The eighteen seeds with two or four replaced arcs were found like the
@@ -1180,6 +1344,12 @@ except for one arc.
 \item \emph{Seeds for $n\equiv3\pmod 4$.} Six, of sides $147$, $151$, $155$, $159$, $163$, $167$, with $(N_1+1)/2$
 coils for $N_1=163$ and $(N_1+3)/2$ coils otherwise. Each contains the listed tour of side $N_1-24$ except for
 $47$ to $60$ arcs.
+\item \emph{Greatest number of coils.} Every $n$ with $10\le n\le47$, that is, $38$ tours, with $n$ coils if
+$4\mid n$ and $n-1$ coils otherwise; and twenty-four fast seeds of sides $48$ to $71$ with the same numbers of
+coils.
+\item \emph{Greatest number of coils with symmetry.} Every $n$ with $10\le n\le47$, that is, $38$ tours, with
+$n-1$ coils for even $n$ and $n-2$ coils for odd $n$, symmetric if $4\nmid n$ and centrally symmetric if $4\mid n$;
+and twenty-four fast seeds of sides $48$ to $71$ with the same numbers of coils and the same symmetry.
 \item \emph{Symmetric tours.} Every $n$ with $4\nmid n$ and $11\le n\le95$, and every $n\equiv3\pmod 4$ with
 $99\le n\le143$, that is, $76$ tours, with the numbers of coils of Theorem~\ref{thm:sym}; and the symmetric tours
 of sides $3$, $6$, $7$, $9$, $10$ with $3$, $5$, $5$, $7$, $7$ coils.
@@ -1196,7 +1366,9 @@ tours and seeds for the four cases of Theorem~\ref{thm:half} are in four pairs o
 \texttt{plus2}, \texttt{odd} and \texttt{odd3}. The symmetric tours are in \texttt{tours\_sym\_coils.txt}, and
 their seeds in \texttt{seeds\_sym\_coils.txt} and \texttt{seeds\_sym3\_coils.txt}. For $4\mid n$ the centrally
 symmetric tours and their seeds are in two files named \texttt{tours\_half\_turn\_coils.txt} and
-\texttt{seeds\_half\_turn\_coils.txt}. The file
+\texttt{seeds\_half\_turn\_coils.txt}. The tours and fast seeds of Theorem~\ref{thm:max} are in
+\texttt{tours\_max\_coils.txt} and \texttt{seeds\_max\_coils.txt}, and those of Theorem~\ref{thm:symmax} in
+\texttt{tours\_symmax\_coils.txt} and \texttt{seeds\_symmax\_coils.txt}. The file
 \texttt{tours\_least\_coils.txt} collects tours with the least number of coils for $n\le49$; some of them also
 appear in the other files. Figure~\ref{fig:tours} shows four of the tours.
 
@@ -1287,6 +1459,28 @@ every $n\not\equiv3\pmod 4$ from $96$ to $574$ and every $n\equiv3\pmod 4$ from 
 twelve sides between $1000$ and $1020$. In a first search for the seeds with half-turn symmetry the zones had been
 imposed on two sides of the ring only, by a mistake in the search program; the check of condition (Z) rejected one
 of the six seeds found in this way, and all six were replaced.
+\item For Section~\ref{sec:max} the same program reads the fast seeds with their rectangles $\Omega'$, checks the
+conditions (Z$'$), (S$'$), (W$'$), (C$'$), and builds $T_k$ directly. We ran this for $k\le20$ in each of the
+twenty-four families, which covers every $n$ from $48$ to $527$, and for $n=1000$, $1001$, $1002$ and $1003$; the
+$38$ listed tours were checked as well. The same was done for the tours and seeds of Theorem~\ref{thm:symmax},
+with condition (Z$''$) and with the symmetry of every tour.
+\item An eighth AI agent, given only the text and the data files of Section~\ref{sec:max} (without
+Theorem~\ref{thm:symmax}), refereed that section. It re-implemented the checks from the text and confirmed the $38$
+listed tours and the twenty-four fast seeds with their pieces and conditions (Z$'$), (S$'$), (W$'$), (C$'$). It built
+$T_k$ for $k\le40$ in each of the twenty-four families; with the listed tours this gives a checked tour with the
+number of coils of Theorem~\ref{thm:max} for every $n$ from $10$ to $1007$. It carried out the insertions of
+Lemma~\ref{lem:insert} one by one for $e\le3$ on all twenty-four seeds, and it tested each step of the proof of
+Proposition~\ref{prop:fast} separately. By exhaustive enumeration without a SAT solver it found the greatest
+numbers of coils $3$, $5$, $5$, $7$, $7$, $9$ for $n=3,6,7,8,9,10$, among them all $77\,640\,818$ tours of the
+$10\times10$ board, and no tour with $11$ coils for $n=11$. It found no mathematical error. It found three steps in
+the proof of Proposition~\ref{prop:fast} that were not spelled out, and four statements that claimed more than was
+shown, in the abstract, in the introduction, in Section~\ref{sec:max} and in Remarks~\ref{rem:shape}
+and~\ref{rem:fast}; these are corrected here. In a second round it refereed Theorem~\ref{thm:symmax}: it confirmed
+the $38$ tours and the twenty-four seeds with their symmetry and with condition (Z$''$), built $T_k$ with its
+symmetry for $k\le40$ in each family, that is, for every $n$ from $72$ to $1007$, and checked the facts (i) and (ii)
+of the proof by brute force. By enumeration it found the greatest numbers of coils $9$, $9$, $11$, $11$ of the
+centrally symmetric tours for $n=10,\dots,13$. It found no error and no gap in this theorem, and two more
+inaccurate sentences, which are corrected.
 \item A seventh AI agent, given only the text and the data files of Section~\ref{sec:sym}, refereed that section
 in two rounds. It re-implemented the checks from the text and confirmed the $103$ listed tours with their symmetry
 and the twenty-four seeds with their pieces and conditions (Z), (S), (W), (C). It built $T_k$ for $k\le80$ in each
