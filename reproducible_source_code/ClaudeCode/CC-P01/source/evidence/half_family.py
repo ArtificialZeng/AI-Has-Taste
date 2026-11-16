@@ -73,10 +73,12 @@ def symmetric(n, T, order=4):
     return all(succ[rot(v)] == rot(w) for v, w in succ.items())
 
 class Family:
-    def __init__(self, T0, T1, shift=0, omega=None, fast=0, obox=None, osym=1):
+    def __init__(self, T0, T1, shift=0, omega=None, fast=0, obox=None, osym=1, width=12, add=None, nos=0):
+        self.W = W = int(width)                                               # width of the ring (12 except for the rings of odd width)
+        self.nos = bool(int(nos))                                             # nos=1: the ring is used once, condition (S) is not needed
         self.N1 = N1 = max(max(v) for v in T1) + 1; self.N0 = max(max(v) for v in T0) + 1; assert N1 == self.N0 + 2 * W
         self.s = shift = int(shift); self.a, self.h, self.b = 19 + shift, N1 // 2, N1 - 19 - shift
-        self.fast = bool(int(fast)); self.inc = 24 if self.fast else 12        # coils added by one ring
+        self.fast = bool(int(fast)); self.inc = int(add) if add is not None else 24 if self.fast else W     # coils added by one ring
         self.osym = int(osym)
         self.succ1 = succ1 = dict(zip(T1, T1[1:] + T1[:1]))
         succ0 = {(x[0] + W, x[1] + W): (y[0] + W, y[1] + W) for x, y in zip(T0, T0[1:] + T0[:1])}
@@ -131,7 +133,7 @@ class Family:
         """Yield (k, successor map of T_k) for k = 1..K; only one level is kept in memory."""
         succ = self.T[0]
         for k in range(1, K + 1):
-            e = k - 1; N = self.N1 + 24 * e
+            e = k - 1; N = self.N1 + 24 * e; W = self.W; assert W == 12, "only rings of width 12 are nested"
             succ = {(x[0] + W, x[1] + W): (y[0] + W, y[1] + W) for x, y in succ.items()}
             for x in self.cut:                                      # the cells of the pieces, at their new positions
                 z = (self.fwd(x[0], e), self.fwd(x[1], e)); m = self.move[x]
@@ -151,7 +153,7 @@ class Family:
         for kk, succ in self.levels(k): pass
         return self.as_list(succ)
     def certify(self):
-        N1, a, h, b, s = self.N1, self.a, self.h, self.b, self.s
+        N1, a, h, b, s, W = self.N1, self.a, self.h, self.b, self.s, self.W
         succ1, move, ring, G = self.succ1, self.move, self.ring, self.G
         pos = {x: (i, t) for i, P in enumerate(self.paths) for t, x in enumerate(P)}
         def piece(x, y):
@@ -179,7 +181,7 @@ class Family:
         # (S) every arc of a piece reappears in the ring of T1, and the four cells stay in one segment in each coordinate
         seg = (lambda t: 0 if t < h else 1) if fast else (lambda t: 0 if t < a else 1 if t < h else 2 if t < b else 3)
         psi = lambda x: (self.fwd(x[0], 1) - W, self.fwd(x[1], 1) - W)
-        for Q in self.pieces:
+        for Q in ([] if self.nos else self.pieces):
             for x, y in zip(Q, Q[1:]):
                 assert psi(x) in ring and psi(y) in ring and succ1[psi(x)] == psi(y), ("S", x, y)
                 for k in (0, 1):
@@ -198,9 +200,15 @@ class Family:
             for di in box(x[0]):
                 for dj in box(x[1]):
                     assert di * m[1] - m[0] * dj >= 0, ("W", x)
-        # (C) in the middle zone of the top side every move goes one column to the left (two columns in a fast ring)
+        # (C) in the middle zone of the top side every move goes one column to the left (two columns in a fast ring).
+        #     General form, for the rings of other widths: every move there goes one or two columns to the left, and
+        #     the number of ring arcs across the plumb line (between the columns h-1+eps and h+eps) is the number of
+        #     coils that the ring adds.
         if fast: assert all(move[(t, j)][1] == -2 for t in range(W) for j in range(ZF[0], ZF[1]))
-        else: assert all(move[(t, j)][1] == -1 for t in range(W) for j in range(h - 3, h + 3 + N1 % 2))
+        elif self.inc == W: assert all(move[(t, j)][1] == -1 for t in range(W) for j in range(h - 3, h + 3 + N1 % 2))
+        else:
+            assert all(move[(t, j)][1] in (-1, -2) for t in range(W) for j in range(h - 3, h + 3 + N1 % 2))
+            assert W + sum(1 for t in range(W) if move[(t, h + N1 % 2 + 1)][1] == -2) == self.inc, "(C): wrong number of coils"
         r = len(self.pieces); k = sum(1 for P in self.paths if any(x in ring for x in P))
         if r == 1: return f"piece {self.pieces[0][0]}->{self.pieces[0][-1]}"
         return f"{r} pieces with {len(self.cut)} arcs, {k} of the new paths pass through the ring"

@@ -20,13 +20,14 @@
 \address{UCSI University, Kuala Lumpur, Malaysia}
 \date{16 November 2026. The results on $n$ coils were first obtained on 14 November 2026 and made public on
 16 November; the constructions and the lower bounds for the least number of coils were obtained on 16 November
-2026.}
+2026, and the greatest numbers of coils and the numbers in between on 17 November 2026.}
 
 \begin{abstract}
 A whirling knight's tour of the $n\times n$ board, introduced by Knuth in a draft of \emph{The Art of Computer
 Programming}, is a closed knight's tour in which every move turns counterclockwise about the centre of the board. Its
 number of coils is its winding number about the centre, which lies between $n/2$ and $n$. Knuth's exercise
-7.2.2.4--231 asks for tours with exactly $n/2$ coils and with exactly $n$ coils.
+7.2.2.4--231 asks for tours with exactly $n/2$ coils and with exactly $n$ coils. We answer both parts and
+determine, for every $n$, all numbers of coils that occur.
 \begin{itemize}
 \item \emph{$n$ coils.} Such a tour exists if and only if $n=3$, or $n\ge12$ and $4\mid n$. We prove that none
 exists for $n\ge5$ unless $4$ divides $n$, by a short weighted counting argument, and we give tours for $n=16$, $20$
@@ -34,6 +35,10 @@ and $24$. For $n\ge28$ the existence was known from a construction reported in K
 independent one for $n\ge48$, and tours found by search for smaller $n$. In the same way we obtain tours with $n-1$
 coils for every $n\ge10$ that is not a multiple of $4$. So the
 greatest number of coils is $n$ if $4\mid n$ and $n-1$ otherwise, for every $n\ge10$.
+\item \emph{The numbers in between.} For every $n\ge6$, each number of coils between the least and the greatest one
+occurs. So the numbers of coils of the $n\times n$ whirling knight's tours form an interval, which is known for
+every $n$. For large $n$ the tours are towers of rings of two kinds, which add $12$ and $24$
+coils, around a tour of a fixed side.
 \item \emph{A lower bound.} Every tour has at least $n/2+2$ coils if $n\equiv4$ or $6\pmod 8$, and at least
 $(n+3)/2$ coils if $n$ is odd and $n\not\equiv1,19\pmod{24}$. The bound comes from path covers of a wedge of the
 board and has a short proof; it contains the theorem of S.~Li that $n/2$ coils are impossible when $n\equiv4$ or
@@ -192,6 +197,12 @@ were found by search. For the multiples of $4$ this is a
 second construction of tours with $n$ coils, independent of the one in \cite[answer 232]{knuth}; it rests on $62$
 further tours. With $62$ more, the same section determines the greatest number of coils of the tours with
 rotational symmetry (Theorem~\ref{thm:symmax}).
+
+Section~\ref{sec:spec} shows that every number of coils between the least and the greatest one occurs, for every
+$n\ge6$ (Theorem~\ref{thm:spec}). The point is that a ring does not depend on the tour inside it, except for the
+pieces that it replaces (Lemma~\ref{lem:transplant}). With seeds made for the purpose, rings of one kind can be put
+around rings of the other, and the innermost ring around any tour of a fixed side that contains its pieces. This
+rests on $2240$ further tours.
 
 Section~\ref{sec:sym} treats the whirling tours that are invariant under a rotation of the board. A tour that is
 invariant under the half turn has an odd number of coils, and one that is invariant under the quarter turn exists
@@ -1259,6 +1270,188 @@ same column whose rows lie in $Z$ and differ by $4$ or by $8$ have the same move
 the cells of the pieces lie outside $Z$, also by (Z$''$).
 \end{proof}
 
+\section{The numbers of coils in between}\label{sec:spec}
+
+For $n\ge6$ let $L(n)$ be the least and $M(n)$ the greatest number of coils of an $n\times n$ whirling knight's
+tour. For $n\ge11$ these are the numbers of Corollary~\ref{cor:least} and of Theorem~\ref{thm:max}; for
+$n=6,\dots,10$ they are $5,5,7,7,7$ and $5,5,7,7,9$ (Section~\ref{sec:comp}).
+
+\begin{theorem}\label{thm:spec}
+Let $n\ge6$. For every $c$ with $L(n)\le c\le M(n)$ there is an $n\times n$ whirling knight's tour with $c$ coils.
+\end{theorem}
+So the numbers of coils of the $n\times n$ whirling knight's tours are exactly the integers from $L(n)$ to $M(n)$.
+
+For small $n$ the tours are in accompanying files. For large $n$ they are towers of rings of both kinds, the rings
+of Section~\ref{sec:half}, which add $12$ coils, and the fast rings of Section~\ref{sec:max}, which add $24$, around
+a tour of a fixed side: $48$ to $70$ if $n\not\equiv3\pmod 4$, and $123$ to $143$ if $n\equiv3\pmod 4$. This is
+possible because a ring does not depend on the tour inside it, except for the pieces that it replaces.
+Figure~\ref{fig:towers} shows three such towers around one tour.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{towers96.pdf}
+\caption{Three towers of two rings around the same tour of side $48$ with $40$ coils (grey), in the notation of the
+proof of Theorem~\ref{thm:spec} with $N_0=48$ and $k=2$. Blue: rings that add $12$ coils; orange: fast rings, which
+add $24$. Left: the ring of the seed $F_1$, $H$ and the ring of level $1$ of the seed around $F_2$. Middle: the fast
+ring of level $2$ and the ring of level $1$ of the seed around $F_2$. Right: the fast rings of levels $2$ and $3$.
+The three tours have side $96$.}
+\label{fig:towers}
+\end{figure}
+
+\begin{lemma}\label{lem:transplant}
+Consider a seed or a fast seed, with tours $T_0$ and $T_1$, pieces $Q_1,\dots,Q_r$ and paths $P_1,\dots,P_r$. Let
+$T_0'$ be a whirling knight's tour of the board of side $N_0$, with $c_0'$ coils, such that every piece $Q_i$ is a
+path in $T_0'+(12,12)$. Then the arcs of $T_0'+(12,12)$ that belong to no piece, together with the arcs of
+$P_1,\dots,P_r$, form a whirling knight's tour $T_1'$ of the board of side $N_1$. Its number of coils is
+$c_0'+12$, or $c_0'+24$ for a fast seed. Every ring cell has the same move in $T_1'$ as in $T_1$.
+\end{lemma}
+\begin{proof}
+$T_0'+(12,12)$ is a Hamiltonian cycle of the inner board, and it contains the pairwise disjoint paths $Q_i$. When
+the arcs of the pieces are removed from this cycle, there remain $r$ paths, each from the last cell of a piece to
+the first cell of the next piece on $T_0'$, and the cells of the pieces other than their ends as isolated cells.
+These $r$ paths meet $G$ only in their ends. The paths $P_i$ are pairwise disjoint, they visit exactly the cells of
+$G$, and $P_i$ leads from the first cell of $Q_i$ to its last cell. So they join the $r$ paths to one cycle through
+all cells of the board of side $N_1$; the order in which $T_0'$ passes through the pieces plays no role, and
+neither does it matter that a path $P_i$ may visit cells of other pieces. This cycle is $T_1'$. Each of its
+arcs is an arc of $T_0'+(12,12)$ or of $T_1$, so it turns counterclockwise about the pivot. A ring cell is not the
+last cell of a path $P_i$, so its move in $T_1'$ is its move in $T_1$. Finally, let $R$ be an open ray from the
+pivot that contains no cell. By Lemma~\ref{lem:rays} a tour with $c$ coils has exactly $c$ arcs that cross $R$.
+The arcs of $T_1'$ are those of $T_1$, except that the arcs of $T_0'+(12,12)$ outside the pieces take the place of
+the arcs of $T_0+(12,12)$ outside the pieces. The arcs of the pieces belong to both inner tours, so the number of
+arcs across $R$ changes by $c_0'-c_0$.
+\end{proof}
+We say that $T_1'$ arises when \emph{the ring of the seed is put around} $T_0'$.
+
+The same can be done with the stretched rings. Consider a stretchable seed, or a stretchable fast seed, and let
+$e\ge1$. The proofs of Propositions~\ref{prop:stretch} and~\ref{prop:fast} show that $T_e+(12,12)$ contains the
+paths $\varphi_e(Q_i)$; that the paths $P_i^e$ are pairwise disjoint, visit exactly the ring cells and the cells
+of the paths $\varphi_e(Q_i)$, and have the same ends as these; and that $T_{e+1}$ consists of the arcs of the
+paths $P_i^e$ and of the arcs of $T_e+(12,12)$ that belong to no path $\varphi_e(Q_i)$ (with $\varphi'_e$ in place
+of $\varphi_e$ for a fast seed).
+So the tours $T_e$ and $T_{e+1}$, with the pieces $\varphi_e(Q_i)$ and the paths $P_i^e$, satisfy the definition of
+a seed, or of a fast seed. We call this the \emph{ring of level $e+1$}; the ring of level $1$ is the seed itself.
+Moreover, for a cell $x$ of a piece, $\varphi_e(x)-(12,12)=\varphi_{e-1}(\psi(x))$ is a ring cell of the board of
+side $N_e$, by (S); for a fast seed, $\varphi'_e(x)-(12,12)=\varphi'_{e-1}(\psi'(x))$, by (S$'$). Hence:
+\begin{itemize}
+\item[($*$)] If a whirling knight's tour $T'$ of the board of side $N_e$ has the same moves as $T_e$ at all ring
+cells, then the ring of level $e+1$ can be put around $T'$, and the result has the same moves as $T_{e+1}$ at all
+ring cells.
+\end{itemize}
+In this section $f$ denotes the number of fast rings of a tower.
+
+\begin{proof}[Proof of Theorem~\ref{thm:spec} for $n\not\equiv3\pmod 4$]
+For $6\le n\le47$ a tour for every $c$ from $L(n)$ to $M(n)$ is in an accompanying file
+(Section~\ref{sec:comp}). Let $n\ge48$ with $n\not\equiv3\pmod 4$, and write $n=N_0+24k$ with $48\le N_0\le70$ and
+$k\ge0$. We use the following tours, which depend on $N_0$ only.
+\begin{itemize}
+\item \emph{A fast seed.} The fast seed of Theorem~\ref{thm:max} whose tour $T_1$ has side $N_0$. We write $F_j$ for
+its tours, so that $F_j$ has side $N_0+24(j-1)$ and $M(N_0)+24(j-1)$ coils. Let $Q_1,\dots,Q_r$ be its pieces and
+$h'=\lfloor N_0/2\rfloor$ its cut.
+\item \emph{A seed around $F_2$.} A simple seed, stretchable with shift $0$, in which $T_0=F_2$. Its piece is
+$\zeta+(12,12)$, where $\zeta$ is an arc of $F_2$ of the form $(i_0,j_0)\to(i_0+2,1-j_0)$ with $j_0\in\{0,1\}$; so
+$\zeta$ lies in the two outer columns on the left. The rows $i_0+12$ and $i_0+14$ lie in the interval $[a,h)$ of
+this seed. We write $K_j$ for its tours, so that $K_0=F_2$ and $K_j$ has side $N_0+24(j+1)$.
+\item \emph{A ring around $F_1$.} A whirling knight's tour $H$ of side $N_0+24$ with $M(N_0)+12$ coils that contains
+every arc of $F_1+(12,12)$ except one arc $\xi+(12,12)$, and that contains the arc $\zeta$. So $F_1$ and $H$ form a
+simple seed. It need not be stretchable.
+\item \emph{Bases.} For every $c$ with $L(N_0)\le c\le M(N_0)$ a whirling knight's tour $J_c$ of side $N_0$ with $c$
+coils that contains the arc $\xi$. For $c\ge M(N_0)-11$ it also contains the paths
+$\varphi'_1(Q_i)-(12,12)$, $i=1,\dots,r$. For $c=M(N_0)$ it is $F_1$.
+\end{itemize}
+The seeds, the tours $H$ and the bases are in accompanying files, and the accompanying program checks the
+properties just listed, and
+\begin{itemize}
+\item[($\dagger$)] in $F_1$ every cell $(i,j_0)$ with $\min(i_0,h'-4)\le i<h'$ has the move $(2,1-2j_0)$.
+\end{itemize}
+
+\emph{The fast tours contain translates of $\zeta$.} Let $e\ge0$. The cut of the seed around $F_2$ is $h=h'+24$,
+so $i_0+14<h'+24$ and $i_0+6e<h'+24(e+1)$. The tour $F_{e+2}$ has side $N_0+24(e+1)$, so
+$(i_0+6e,j_0)$ is one of its ring cells. Its move is the move of $(\pi'_{e+1}(i_0+6e),j_0)$ in $F_1$, and the number
+$\pi'_{e+1}(i_0+6e)$ is $i_0+6e<h'$ itself or one of $h'-4,\dots,h'-1$. By ($\dagger$) the move is $(2,1-2j_0)$. So
+$F_{e+2}$ contains the arc $\zeta+(6e,0)$. On the other hand, the piece of the ring of level $e+1$ of the seed
+around $F_2$ is $\varphi_e(\zeta+(12,12))=\zeta+(12,12)+(6e,0)$, because the rows of $\zeta+(12,12)$ lie in $[a,h)$
+and its columns are $12$ and $13$.
+
+\emph{Towers.} Let $0\le f\le k$.
+
+If $f=0$, take any $c$ with $L(N_0)\le c\le M(N_0)$ and start with $J_c$. If $k\ge1$, put the ring of the seed
+$F_1$, $H$ around it. By Lemma~\ref{lem:transplant} this gives a tour of side $N_0+24$ with $c+12$ coils that has
+the moves of $H$ at its ring cells, so it contains $\zeta$. If $k\ge2$, the rings of levels $1,\dots,k-1$ of the
+seed around $F_2$ can be put around it, the first by Lemma~\ref{lem:transplant} and the others by ($*$). The result
+has side $N_0+24k$ and $c+12k$ coils.
+
+If $f\ge1$, take $c$ with $M(N_0)-11\le c\le M(N_0)$. By the choice of $J_c$ and Lemma~\ref{lem:transplant}, the ring
+of level $2$ of the fast seed can be put around $J_c$, and then, by ($*$), the rings of levels $3,\dots,f+1$. This
+gives a tour of side $N_0+24f$ with $c+24f$ coils that has the moves of $F_{f+1}$ at its ring cells. So it contains
+$\zeta+(6(f-1),0)$, and the translate of this arc by $(12,12)$ is the piece of the ring of level $f$ of the seed
+around $F_2$. If $f<k$, this ring can
+therefore be put around it, by Lemma~\ref{lem:transplant} applied to the tours $K_{f-1}$, $K_f$, and then the rings
+of levels $f+1,\dots,k-1$, by ($*$). The result has side $N_0+24k$ and $c+24f+12(k-f)=c+12k+12f$ coils.
+
+\emph{Counting.} The towers with $f=0$ give every number of coils from $L(N_0)+12k$ to $M(N_0)+12k$. For
+$1\le f\le k$ the twelve values of $c$ give the twelve numbers from $M(N_0)+12k+12f-11$ to $M(N_0)+12k+12f$. Together
+these are all numbers from $L(N_0)+12k=L(n)$ to $M(N_0)+24k=M(n)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:spec} for $n\equiv3\pmod 4$]
+For $n\le47$, and for $51\le n\le119$, a tour for every $c$ from $L(n)$ to $M(n)$ is in an accompanying file. Let
+$n\ge123$ with $n\equiv3\pmod 4$, and write $n=N_0+24k$ with $123\le N_0\le143$ and $k\ge0$. Here a ring that adds
+$12$ coils replaces many pieces, so we let the bases contain these pieces, and we put the fast rings outside.
+We use the following tours, which depend on $N_0$ only.
+\begin{itemize}
+\item \emph{The seed of Theorem~\ref{thm:half}} with $N_1=N_0+24$. We write $U_j$ for its tours, so that $U_j$ has
+side $N_0+24j$ and $L(N_0)+12j$ coils; $a$ and $b$ are its cuts, and $Q_1,\dots,Q_r$ its pieces.
+\item \emph{A fast seed around $U_1$.} A stretchable fast seed in which $T_0=U_1$. Its pieces
+$Q_1',\dots,Q_s'$ are defined through a rectangle $\Omega'$ as in the proof of Theorem~\ref{thm:max}, with
+$(\eta,\gamma)$ equal to $(4,6)$, $(4,8)$ or $(6,6)$, which is recorded with the seed; $h'$ is its cut.
+\item \emph{The fast seed of Theorem~\ref{thm:max}} whose tour $T_1$ has side $N_0-72$. We write $F_j$ for its
+tours, so that $F_4$ has side $N_0$ and $M(N_0)$ coils, and $Q_1'',\dots,Q_t''$ for its pieces.
+\item \emph{Bases.} For every $c$ with $L(N_0)\le c\le M(N_0)-4$ a whirling knight's tour $J_c$ of side $N_0$ with
+$c$ coils that contains the paths $Q_i-(12,12)$; for $c=L(N_0)$ it is $U_0$. For every $c$ with
+$M(N_0)-15\le c\le M(N_0)$ a whirling knight's tour $J_c'$ of side $N_0$ with $c$ coils that contains the paths
+$\varphi'_4(Q_i'')-(12,12)$; for $c=M(N_0)$ it is $F_4$.
+\end{itemize}
+The seeds and the bases are in accompanying files, and the program checks these properties, and
+\begin{itemize}
+\item[($\ddagger$)] every cell $x$ of a piece $Q_i'$ lies in a row less than $h'$ and in a column at least $h'$,
+and $x-(12,12)$ is a ring cell $(i,j)$ of $U_1$ with $i<a$ and $j\ge b$.
+\end{itemize}
+
+\emph{The tours $U_e$ contain the pieces of the fast rings.} Let $e\ge1$, and let $y=(i,j)$ be a ring cell of $U_1$
+with $i<a$ and $j\ge b$. Then $z=(i,j+24(e-1))$ is a ring cell of $U_e$ with $\pi_{e-1}(z)=y$, so $z$ has in $U_e$
+the move that $y$ has in $U_1$. By ($\ddagger$), the pieces of the ring of level $e$ of the fast seed around $U_1$
+are the paths $\varphi'_{e-1}(Q_i')=Q_i'+(0,24(e-1))$, and $U_e+(12,12)$ contains them.
+
+\emph{Towers.} Let $k\ge1$. For $L(N_0)\le c\le M(N_0)-4$ and $0\le f\le k-1$, start with $J_c$ and put the rings of
+levels $1,\dots,k-f$ of the seed of Theorem~\ref{thm:half} around it; the first by Lemma~\ref{lem:transplant} and
+the choice of $J_c$, the others by ($*$). The result has the moves of $U_{k-f}$ at its ring cells. So, if $f\ge1$,
+the ring of level $k-f$ of the fast seed around $U_1$ can be put around it, by Lemma~\ref{lem:transplant}, and then
+the rings of levels $k-f+1,\dots,k-1$, by ($*$). The tour has side $N_0+24k$ and $c+12(k-f)+24f=c+12k+12f$ coils.
+
+For $M(N_0)-15\le c\le M(N_0)$, start with $J_c'$ and put the rings of levels $5,\dots,k+4$ of the fast seed of
+Theorem~\ref{thm:max} around it; the first by Lemma~\ref{lem:transplant} and the choice of $J_c'$, the others by
+($*$). The result has side $N_0+24k$ and $c+24k$ coils.
+
+\emph{Counting.} The towers of the first kind give every number of coils from $L(N_0)+12k$ to $M(N_0)+24k-16$, and
+those of the second kind the sixteen numbers from $M(N_0)+24k-15$ to $M(N_0)+24k$. These are all numbers from
+$L(n)$ to $M(n)$. For $k=0$ the bases suffice.
+\end{proof}
+
+\begin{remark}\label{rem:spec3}
+In the cases that we tried, a ring that replaces a few arcs adds more than its width when $n\equiv3\pmod 4$. The
+following are reports of the solver; the negative ones are not certified, and the rings of the positive ones are not
+among the accompanying files. Around the tour of side $27$ with $26$ coils in \texttt{tours\_max\_coils.txt}, a ring
+of width $12$ that replaces at most four arcs cannot add $12$ or $13$ coils, and it can add $14$; it cannot add
+$12$ coils with at most eight replaced arcs, and it can with at most sixteen. Around the tour of side $27$ with $15$
+coils in \texttt{tours\_odd3\_coils.txt} it cannot add $12$ coils with at most sixteen replaced arcs, and it can with
+at most thirty-two. Around the tours of side $25$ with $24$ coils and of side $29$ with $28$ coils in
+\texttt{tours\_max\_coils.txt}, a ring of odd width $w$ that replaces one arc cannot add $w$ or $w+1$ coils, for
+every odd $w$ from $3$ to $13$; around the tour of side $25$ with $13$ coils in \texttt{tours\_odd\_coils.txt} it
+cannot add $w+1$ coils, nor $w$ coils when $w=9$ (for the other $w$ Theorem~\ref{thm:lower} excludes this number of
+coils). This is why the towers for $n\equiv3\pmod 4$ begin with bases of sides $123$ to $143$, where
+the seeds of Theorem~\ref{thm:half} are available, and why the tours of sides $51$ to $119$ are listed one by one.
+\end{remark}
+
 \section{Tours and computations}\label{sec:comp}
 
 \subsection*{Search}
@@ -1306,6 +1499,31 @@ such a seed; where the first one did not, we took another tour with the same num
 The seeds of Theorem~\ref{thm:symmax} were found in the same way, with one Boolean variable for each orbit of arcs;
 here the first inner tour sufficed in all cases but three, and the third one at the latest.
 
+For Theorem~\ref{thm:spec} the tours of sides up to $47$ and the bases of sides $48$ to $70$ were found by the plain
+search for a tour with a given number of coils, in which the arcs and pieces that a base must contain are required.
+So were, for $n\equiv3\pmod 4$, the tours of sides $51$ to $71$ with more than the least and less than the greatest
+number of coils. On a machine that ran about a dozen searches at a time, a search took at most a minute and a half
+for the sides up to $47$, eight minutes for the bases of sides $48$ to $70$, and seven minutes for the sides $51$ to
+$71$. For $n\equiv3\pmod 4$ the listed tours of sides $51$ to $119$ with the least number of coils are those of
+Theorem~\ref{thm:half}, and those with the greatest number are tours of the fast seeds of Theorem~\ref{thm:max}.
+From side $75$ on the plain search is slow for these $n$. We used it for the tours with one coil more than the least
+number, which took up to an hour and a quarter (for the sides $123$ to $143$ the pieces $Q_i-(12,12)$ were
+required), and it had also found six tours of side $95$, with $84$, $85$, $86$, $87$, $91$ and $92$ coils, and the
+base of side $131$ with $69$ coils. The other tours of sides $75$ to $119$, and the other bases $J_c$, were assembled
+by Lemma~\ref{lem:transplant}: around a listed tour of the side smaller by $24$ we put a ring of width $12$ that
+replaces one arc and adds $14$, $20$ or $23$ coils. These rings were found by the search for a ring without zones,
+in a few seconds each; those of sides $123$ to $143$ were required to contain the pieces $Q_i-(12,12)$. Each base
+$J_c'$ is a listed tour of side $N_0-72$ with three fast rings around it. All these tours are listed and checked as
+they are; how they were made plays no role in the proof.
+
+The seed around $F_2$ was found by the search for simple seeds described above, the tour $H$ by the same search
+without zones and with the arc $\zeta$ required, and the fast seed around $U_1$ like the other fast seeds; each
+took a few seconds. A seed that adds $12$ coils needs room. Around the tours $F_1$ of sides $48$ to $69$ the solver
+finds no such seed, of side $N_1=72,\dots,93$, with the zones of Section~\ref{sec:half}; it finds one for side $70$,
+which is not among the accompanying files. (The negative report is not certified.) The lanes of the first zone use the move $(2,1)$, which is an arc only in the outer
+quarter of a side, and this seems to be the obstruction. This is why the seed is put around $F_2$ and not around
+$F_1$, and why the bases for $n\not\equiv3\pmod 4$ have sides from $48$ on.
+
 For the tours of Section~\ref{sec:sym} all searches use one Boolean variable for each orbit of arcs under the
 quarter turn, or under the half turn when $4\mid n$. This makes the direct search fast: every listed tour of that
 section, symmetric or centrally symmetric, was found in at most two minutes, without the help of a smaller tour. The eighteen seeds with two or four replaced arcs were found like the
@@ -1350,6 +1568,13 @@ coils.
 \item \emph{Greatest number of coils with symmetry.} Every $n$ with $10\le n\le47$, that is, $38$ tours, with
 $n-1$ coils for even $n$ and $n-2$ coils for odd $n$, symmetric if $4\nmid n$ and centrally symmetric if $4\mid n$;
 and twenty-four fast seeds of sides $48$ to $71$ with the same numbers of coils and the same symmetry.
+\item \emph{All numbers of coils.} For every $n$ with $6\le n\le47$, and for $n=51,55,\dots,119$, a tour with $c$
+coils for every $c$ from $L(n)$ to $M(n)$: $507$ and $741$ tours. For each $N_0$ from $48$ to $70$ with
+$N_0\not\equiv3\pmod 4$: a base with $c$ coils for every $c$ from $L(N_0)$ to $M(N_0)-1$, that is, $499$ bases
+in all; the tour $H$ of side $N_0+24$; and the seed tour of side $N_0+48$ of the seed around $F_2$. For
+$N_0=123,127,\dots,143$: a base $J_c$ for every $c$ from $L(N_0)+1$ to $M(N_0)-4$ and a base $J_c'$ for every $c$
+from $M(N_0)-15$ to $M(N_0)-1$, that is, $451$ bases in all; and the seed tour of side $N_0+48$ of the fast
+seed around $U_1$ (Section~\ref{sec:spec}).
 \item \emph{Symmetric tours.} Every $n$ with $4\nmid n$ and $11\le n\le95$, and every $n\equiv3\pmod 4$ with
 $99\le n\le143$, that is, $76$ tours, with the numbers of coils of Theorem~\ref{thm:sym}; and the symmetric tours
 of sides $3$, $6$, $7$, $9$, $10$ with $3$, $5$, $5$, $7$, $7$ coils.
@@ -1370,7 +1595,17 @@ symmetric tours and their seeds are in two files named \texttt{tours\_half\_turn
 \texttt{tours\_max\_coils.txt} and \texttt{seeds\_max\_coils.txt}, and those of Theorem~\ref{thm:symmax} in
 \texttt{tours\_symmax\_coils.txt} and \texttt{seeds\_symmax\_coils.txt}. The file
 \texttt{tours\_least\_coils.txt} collects tours with the least number of coils for $n\le49$; some of them also
-appear in the other files. Figure~\ref{fig:tours} shows four of the tours.
+appear in the other files. Figure~\ref{fig:tours} shows four of the tours. For Theorem~\ref{thm:spec} there are
+seven more files. The first four give each tour by its sequence of moves from the cell $(0,0)$: the digits
+$0,\dots,7$ stand for the moves $(1,2)$, $(2,1)$, $(-1,2)$, $(-2,1)$, $(1,-2)$, $(2,-1)$, $(-1,-2)$, $(-2,-1)$.
+\begin{itemize}
+\item \texttt{tours\_spectrum\_small.txt}, \texttt{tours\_spectrum\_mid.txt}: the tours of sides $6$ to $47$ and $51$
+to $119$.
+\item \texttt{bases\_spectrum.txt}: the bases $J_c$. \texttt{bases\_spectrum\_fast.txt}: the bases $J_c'$ of sides
+$123$ to $143$.
+\item \texttt{rings\_slow.txt}: the tours $H$. \texttt{seeds\_slow\_on\_fast.txt}: the seeds around $F_2$.
+\item \texttt{seeds\_fast\_on\_slow.txt}: the fast seeds around $U_1$; the header of each line records the pair $(\eta,\gamma)$ of its rectangle $\Omega'$, as in \texttt{seeds\_max\_coils.txt}.
+\end{itemize}
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{new_tours.pdf}
@@ -1400,7 +1635,11 @@ The lower bounds are those of Theorem~\ref{thm:lower}, with one exception: for $
 only $6$. For $n=8$ and $n=9$ the value $7$ follows from exhaustive enumeration: all $1120$ tours of the $8\times8$
 board and all $146$ tours of the $9\times9$ board have $7$ coils, in agreement with \cite[answer 229]{knuth}. For
 $n=10$ the entry rests on the search, which reports no tour with $6$ coils, and on the exhaustive enumerations
-of two of the referee passes described below. The bound of Theorem~\ref{thm:lower} is
+of two of the referee passes described below. It can also be certified without a search: there are weights in
+$\{-1,0,1\}$ on the cells, of the kind used in Lemma~\ref{lem:count}, which show that every cycle cover of the
+$10\times10$ digraph, and hence every tour, crosses a fixed ray at least $7$ and at most $9$ times. They were found
+by the ninth referee pass and are in the file \texttt{cert10.txt}; the program \texttt{cert10\_verify.py} checks
+them. The bound of Theorem~\ref{thm:lower} is
 sharp for $n=6$ and $n=7$ as well.
 
 Together with Corollary~\ref{cor:least} this gives the least number of coils for every $n\ge6$.
@@ -1412,9 +1651,12 @@ smaller by a ring, when $n\equiv3\pmod 4$?
 The searches described above found none.
 
 \begin{question}\label{q:all}
-Let $n\ge12$. Does every number of coils between the least one and $n-1$ occur?
+Which numbers of coils occur for the symmetric and for the centrally symmetric whirling knight's tours of the
+$n\times n$ board?
 \end{question}
-The search finds a tour for every such number of coils when $12\le n\le22$ and when $n=24$.
+For all tours the answer is Theorem~\ref{thm:spec}. For the centrally symmetric tours the number of coils is odd
+(Proposition~\ref{prop:symnec}), and the least and the greatest numbers are given by Theorems~\ref{thm:sym}
+and~\ref{thm:symmax}.
 
 \subsection*{Verification}
 \begin{itemize}
@@ -1464,6 +1706,24 @@ conditions (Z$'$), (S$'$), (W$'$), (C$'$), and builds $T_k$ directly. We ran thi
 twenty-four families, which covers every $n$ from $48$ to $527$, and for $n=1000$, $1001$, $1002$ and $1003$; the
 $38$ listed tours were checked as well. The same was done for the tours and seeds of Theorem~\ref{thm:symmax},
 with condition (Z$''$) and with the symmetry of every tour.
+\item For Theorem~\ref{thm:spec} the program \texttt{spectrum\_family.py}, which uses \texttt{half\_family.py}, checks
+the $1248$ listed tours of sides $6$ to $119$ and, for each of the twenty-four values of $N_0$, the properties listed
+in the proofs: the seeds with their conditions, the tour $H$, the bases with the arcs and pieces that they must
+contain, and ($\dagger$) or ($\ddagger$). It then builds every tower with at most three rings and checks each one
+directly. Counting also the towers without a ring, which are the bases, and for $n\equiv3\pmod 4$ the towers on
+$J_c$ and on $J_c'$ separately, these are $3364$ tours of sides up to $142$ for $n\not\equiv3\pmod 4$ and $2953$
+tours of sides up to $215$ for $n\equiv3\pmod 4$; for every side in this range they include a tour with each number
+of coils from $L(n)$ to $M(n)$. The program also builds single tours, for example for $n=1000$ and any $c$ from
+$500$ to $1000$.
+\item A ninth AI agent, given only the text and the eleven data files of Section~\ref{sec:spec}, refereed that
+section in two rounds. From the text alone it re-implemented the seeds, the conditions and the towers, confirmed all $2342$ tours
+of these files and the completeness of the lists, checked the properties that the two proofs ask of the data for
+all twenty-four values of $N_0$, and checked the counting for $k\le400$. It built $27\,558$ towers directly and
+checked each as a tour with the right number of coils: every tower with at most eight rings (sides up to $335$),
+and further ones of sides up to $2007$. It found no mathematical error. It found that the pieces of the fast seed
+around $U_1$ were not specified, seven tours that had not been made in the way the text said, and several
+sentences that claimed more than was shown or used a letter twice; these are corrected here. It also found the
+certificate for $n=10$ mentioned above.
 \item An eighth AI agent, given only the text and the data files of Section~\ref{sec:max} (without
 Theorem~\ref{thm:symmax}), refereed that section. It re-implemented the checks from the text and confirmed the $38$
 listed tours and the twenty-four fast seeds with their pieces and conditions (Z$'$), (S$'$), (W$'$), (C$'$). It built
