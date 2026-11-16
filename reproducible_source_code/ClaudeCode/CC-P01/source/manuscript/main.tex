@@ -15,28 +15,35 @@
 \newcommand{\yin}{y_{\mathrm{in}}}
 
 \begin{document}
-\title[Whirling knight's tours with $n$ and with $n/2$ coils]{Whirling knight's tours\\ with $n$ coils and with $n/2$ coils}
+\title[Whirling knight's tours with many and with few coils]{Whirling knight's tours with $n$ coils\\ and with the least number of coils}
 \author{Zijian Zeng}
 \address{UCSI University, Kuala Lumpur, Malaysia}
 \date{16 November 2026. The results on $n$ coils were first obtained on 14 November 2026 and made public on
-16 November; the construction for $n/2$ coils was obtained on 16 November 2026.}
+16 November; the constructions and the lower bounds for the least number of coils were obtained on 16 November
+2026.}
 
 \begin{abstract}
 A whirling knight's tour of the $n\times n$ board, introduced by Knuth in a draft of \emph{The Art of Computer
 Programming}, is a closed knight's tour in which every move turns counterclockwise about the centre of the board. Its
 number of coils is its winding number about the centre, which lies between $n/2$ and $n$. Knuth's exercise
-7.2.2.4--231 asks for tours with exactly $n/2$ coils and with exactly $n$ coils. Together with results of S.~Li and of N.~Beluhov and
-F.~Stappers, the present note settles both questions.
+7.2.2.4--231 asks for tours with exactly $n/2$ coils and with exactly $n$ coils.
 \begin{itemize}
 \item \emph{$n$ coils.} Such a tour exists if and only if $n=3$, or $n\ge12$ and $4\mid n$. We prove that none
 exists for $n\ge5$ unless $4$ divides $n$, by a short weighted counting argument, and we give tours for $n=16$, $20$
 and $24$. For $n\ge52$ the existence part rests on the construction reported in Knuth's draft.
-\item \emph{$n/2$ coils.} Such a tour exists if and only if $n\ge16$ and $n\equiv0$ or $2\pmod 8$. Nonexistence
-is due to S.~Li and to exhaustive counts. We prove existence: there are explicit tours for $n\le90$, and for
-$n\ge96$ the tour is built from one of six seed tours, whose outer ring of width $12$ can be stretched and nested.
+\item \emph{A lower bound.} Every tour has at least $n/2+2$ coils if $n\equiv4$ or $6\pmod 8$, and at least
+$(n+3)/2$ coils if $n$ is odd and $n\not\equiv1,19\pmod{24}$. The bound comes from path covers of a wedge of the
+board and has a short proof; it contains the theorem of S.~Li that $n/2$ coils are impossible when $n\equiv4$ or
+$6\pmod 8$.
+\item \emph{The least number of coils.} For every $n\ge12$ with $n\not\equiv3\pmod 4$ we determine it: $n/2$ if
+$n\equiv0,2\pmod 8$; $n/2+2$ if $n\equiv4,6\pmod 8$; $(n+1)/2$ if $n\equiv1\pmod{24}$; and $(n+3)/2$ for the other
+$n\equiv1\pmod 4$. Together with two small cases, this shows that a tour with $n/2$ coils exists if and only if
+$n\ge16$ and $n\equiv0$ or $2\pmod 8$. The tours consist of nested rings of width $12$ that can be stretched; they
+are built from eighteen seed tours. For $n\equiv3\pmod 4$ the bounds are attained for $11\le n\le47$, but we have no
+general construction.
 \end{itemize}
-All tours are verified in exact arithmetic by an independent program, and the general construction rests on a finite
-list of conditions on the six seeds that a program checks.
+All tours are verified in exact arithmetic by an independent program, and the general constructions rest on finite
+lists of conditions on the seeds that a program checks.
 \end{abstract}
 \maketitle
 
@@ -76,9 +83,10 @@ $4\le n\le 11$, and the unique $3\times3$ tour has $3$ coils.
 In addition, S.~Li~\cite{li} proved that no tour has $n/2$ coils when $n\equiv4$ or $6\pmod 8$, by exhibiting
 closed-form Farkas certificates for a linear relaxation. This settled a conjecture of Beluhov; Li remarks that the
 other two classes admit such tours, with the examples $n=16$ and $n=18$. To our knowledge the following were open:
-the cases $13\le n\le27$ of exercise 231(b); all $n\ge29$ that are not multiples of $4$; and, for $n/2$ coils, every
-$n\ge24$ with $n\equiv0$ or $2\pmod 8$. We could not rule out that a construction for $n/2$ coils is known to others
-but unpublished; the draft \cite{knuth} of 8 May 2026 contains none.
+the cases $13\le n\le27$ of exercise 231(b); all $n\ge29$ that are not multiples of $4$; for $n/2$ coils, every
+$n\ge24$ with $n\equiv0$ or $2\pmod 8$; and the least number of coils for all other $n\ge12$. We could not rule out
+that a construction for $n/2$ coils is known to others but unpublished; the draft \cite{knuth} of 8 May 2026
+contains none.
 
 \subsection*{Results}
 \begin{theorem}\label{thm:main}
@@ -105,29 +113,62 @@ $n=3$: answer
 229(d) of the same draft records the single $3\times3$ tour, which has $3$ coils.
 \end{remark}
 
-For the least possible number of coils we prove the following.
-\begin{theorem}\label{thm:half}
-For every $n\ge16$ with $n\equiv0$ or $2\pmod 8$ there is an $n\times n$ whirling knight's tour with exactly $n/2$
-coils.
+Our second topic is the least number of coils. The first result is a lower bound.
+\begin{theorem}\label{thm:lower}
+Let $c$ be the number of coils of an $n\times n$ whirling knight's tour.
+\begin{itemize}
+\item[(a)] If $n=2h$ is even, then $c\ge(h\bmod2)+4\lfloor(h+2)/4\rfloor$. That is, $c\ge n/2$, and $c\ge n/2+2$ if
+$n\equiv4$ or $6\pmod 8$.
+\item[(b)] If $n\ge5$ is odd and $n\not\equiv1,19\pmod{24}$, then $c\ge(n+3)/2$.
+\item[(c)] If $n\ge9$ is odd, then $c\ge(n+1)/2$. If $n=8$ or $n=10$, then $c\ge6$.
+\end{itemize}
 \end{theorem}
+For $n\equiv4$ or $6\pmod 8$, part (a) contains Li's theorem and excludes $n/2+1$ coils as well; the latter is not
+addressed in \cite{li}. The first statement of part (c) is the odd case of \cite[exercise 229(c)]{knuth}. The proof,
+in Section~\ref{sec:lower}, is short: the tour passes through any wedge of the board in at most $c$ pieces, and these
+pieces are disjoint paths that cover the wedge. We bound the number of paths needed from below.
+
+For three quarters of all $n$ we can show that the bounds are attained.
+\begin{theorem}\label{thm:half}
+There is an $n\times n$ whirling knight's tour
+\begin{itemize}
+\item[(a)] with exactly $n/2$ coils, for every $n\ge16$ with $n\equiv0$ or $2\pmod 8$;
+\item[(b)] with exactly $n/2+2$ coils, for every $n\ge12$ with $n\equiv4$ or $6\pmod 8$;
+\item[(c)] with exactly $(n+1)/2$ coils, for every $n\ge25$ with $n\equiv1\pmod{24}$, and with exactly $(n+3)/2$
+coils, for every other $n\ge13$ with $n\equiv1\pmod 4$.
+\end{itemize}
+\end{theorem}
+
+\begin{corollary}\label{cor:least}
+Let $n\ge12$ and $n\not\equiv3\pmod 4$. The least number of coils of an $n\times n$ whirling knight's tour is
+\begin{itemize}
+\item $n/2$ if $n\equiv0$ or $2\pmod 8$, and $n/2+2$ if $n\equiv4$ or $6\pmod 8$;
+\item $(n+1)/2$ if $n\equiv1\pmod{24}$, and $(n+3)/2$ for every other $n\equiv1\pmod 4$.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+The tours are those of Theorem~\ref{thm:half}, and the lower bounds are those of Theorem~\ref{thm:lower}.
+\end{proof}
 
 \begin{corollary}\label{cor:half}
 Let $n$ be even. An $n\times n$ whirling knight's tour with exactly $n/2$ coils exists if and only if $n\ge16$ and
 $n\equiv0$ or $2\pmod 8$.
 \end{corollary}
 \begin{proof}
-Existence is Theorem~\ref{thm:half}. For $n\equiv4$ or $6\pmod 8$ nonexistence is Li's theorem~\cite{li}. For $n=2$
-the digraph has no arcs. For $n=8$ and $n=10$ it follows from the exhaustive counts in \cite[answer 229]{knuth}; our
-own search also finds no such tour (Section~\ref{sec:comp}).
+Existence is Theorem~\ref{thm:half}(a). For $n\equiv4$ or $6\pmod 8$ nonexistence is Theorem~\ref{thm:lower}(a); this
+is Li's theorem~\cite{li}. For $n=2$ the digraph has no arcs. For $n=8$ and $n=10$ nonexistence is
+Theorem~\ref{thm:lower}(c); it also follows from the exhaustive counts in \cite[answer 229]{knuth}.
 \end{proof}
-The cases $n=16$ and $n=18$ of Theorem~\ref{thm:half} were known \cite[answer 231]{knuth}; the theorem is new for
-$n\ge24$. Its proof is computer-assisted: it rests on $26$ tours, given in the accompanying files, and on a finite
-check carried out by a program.
+The cases $n=16$ and $n=18$ of Theorem~\ref{thm:half} were known \cite[answer 231]{knuth}. The proof of
+Theorem~\ref{thm:half} is in Section~\ref{sec:half}, and it is computer-assisted. For $n\le95$ we list tours. For
+larger $n$ the tour consists of nested rings of width $12$ around a tour of side between $72$ and $94$. Each ring
+is a path that is periodic along parts of each side, so that it can be lengthened to fit any larger board in the same
+class modulo $24$. The proof rests on $81$ tours, given in the accompanying files, and on a finite check carried out
+by a program.
 
-The proof of Theorem~\ref{thm:half} is in Section~\ref{sec:half}. For $n\le90$ we list tours. For larger $n$ the
-tour consists of nested rings of width $12$ around a tour of side between $72$ and $90$. Each ring is a path that
-is periodic along parts of each side, so that it can be lengthened to fit any larger board in the same class
-modulo $24$.
+For $n\equiv3\pmod 4$ we have no general construction: our searches find no ring of this kind around any of the
+tours of such sides that we tried. Section~\ref{sec:comp} reports tours that attain the bound of Theorem~\ref{thm:lower}(b), or the bound
+$(n+1)/2$ when $n\equiv19\pmod{24}$, for every $n\equiv3\pmod 4$ from $11$ to $47$.
 
 \section{The counting identity}
 
@@ -309,9 +350,270 @@ rotation-invariant, to use only four rays, and to differ from a checkerboard onl
 patterns above, which we then proved for all $n$.
 \end{remark}
 
-\section{Tours with \texorpdfstring{$n/2$}{n/2} coils}\label{sec:half}
+\section{A lower bound for the number of coils}\label{sec:lower}
 
-In this section every board has even side. A set of arcs in which each cell has at most one successor is described by
+In this section the letters $a$, $b$, $h$ and $m$ have the meanings given below; they are used differently in
+Section~\ref{sec:half}.
+
+The \emph{direction} of a cell is the half-line from the pivot through that cell. A \emph{wedge} is the set of all
+cells whose directions lie in a closed angle at the pivot that is smaller than a half-turn.
+
+\begin{lemma}\label{lem:wedge}
+Let $W$ be a wedge. Suppose that each cell of $W$ has one of the labels $\mathsf B$, $\mathsf N$, $\mathsf O$,
+$\mathsf I$, in such a way that no arc leads from a cell of $W$ labelled $\mathsf B$ or $\mathsf O$ to a cell of $W$
+labelled $\mathsf B$ or $\mathsf I$. Then every whirling knight's tour has at least $|\mathsf B|-|\mathsf N|$ coils,
+where $|\mathsf B|$ and $|\mathsf N|$ are the numbers of cells with these labels.
+\end{lemma}
+\begin{proof}
+Let $T$ be a tour with $c$ coils. Cut $T$ into \emph{pieces}: maximal runs of consecutive cells of $T$ that lie in
+$W$. Every cell of $W$ lies in exactly one piece.
+
+\emph{There are at most $c$ pieces.} Let $R$ be a ray from the pivot just beyond the end of the angle of $W$, in the
+sense in which the arcs turn, so that $R$ contains no cell and no cell direction lies between $W$ and $R$. Along an
+arc the polar angle increases by less than a half-turn, and $W$ is smaller than a half-turn and contains every cell
+of its angle. So the arc that leaves the last cell of a piece ends beyond $W$, and it crosses $R$. Different pieces give different arcs, and by
+Lemma~\ref{lem:rays} exactly $c$ arcs of $T$ cross $R$.
+
+\emph{In each piece, the cells labelled $\mathsf B$ outnumber those labelled $\mathsf N$ by at most one.} By
+assumption, a cell labelled $\mathsf B$ or $\mathsf O$ is followed in its piece by a cell labelled $\mathsf N$ or
+$\mathsf O$, unless it is the last cell. So after a cell labelled $\mathsf B$ the piece runs through cells labelled
+$\mathsf O$ until it reaches a cell labelled $\mathsf N$ or ends. Hence between two cells labelled $\mathsf B$ there is
+one labelled $\mathsf N$.
+
+Summing over the pieces gives $|\mathsf B|-|\mathsf N|\le c$.
+\end{proof}
+
+\begin{remark}
+The pieces form a cover of $W$ by vertex-disjoint paths, and a labelling is a dual certificate, in the sense of
+K\H onig's theorem, for the least number of paths in such a cover. The labellings below were found by computing
+minimum vertex covers for small boards and reading off the pattern. Figure~\ref{fig:labels} shows them.
+\end{remark}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.86\textwidth]{labels.pdf}
+\caption{The four labelled wedges used in the proof of Theorem~\ref{thm:lower}. The cross is the pivot. A tour has at
+least as many coils as there are cells labelled $\mathsf B$ minus cells labelled $\mathsf N$.}
+\label{fig:labels}
+\end{figure}
+
+\subsection*{Even $n$}
+Let $n=2h$. For the cell $(i,j)$ put $a=h-1-i$ and $b=j-h$, so that the four cells around the pivot have
+$a,b\in\{0,-1\}$. In centred coordinates $x=-(a+\tfrac12)$ and $y=b+\tfrac12$. If a move changes $(a,b)$ by
+$(\alpha,\beta)$, then $u\times w=\alpha(b+\tfrac12)-\beta(a+\tfrac12)$. So
+\begin{equation}\label{eq:evenarc}
+\text{the move $(\alpha,\beta)$ from the cell $(a,b)$ is an arc if and only if }\ \alpha(2b+1)>\beta(2a+1).
+\end{equation}
+Let
+\[ Q=\{a\ge0,\ b\ge0\},\qquad S=\{a\le-1,\ b\ge-3a-2\},\qquad S'=\{b\le-1,\ a\ge-3b-2\}, \]
+and $W=Q\cup S\cup S'$. This is a wedge: $Q$ is the quarter of the board between two half-axes, and a cell with
+$a\le-1$ has its direction between that of the cell $(-1,1)$ and the half-axis exactly when $y\ge3x$, that is,
+$b\ge-3a-2$; likewise for $S'$. The angle of $W$ is $\tfrac\pi2+2\arctan\tfrac13<\pi$. Label the cells of $W$ as
+follows.
+\begin{itemize}
+\item In $Q$: $\mathsf B$ if $a+b$ is even and $\mathsf N$ if $a+b$ is odd, with two exceptions: the cells $(0,b)$
+with $b\equiv1\pmod4$ get $\mathsf I$, and the cells $(a,0)$ with $a\equiv1\pmod4$ get $\mathsf O$.
+\item In $S$: $\mathsf B$ at the cells $(-1,b)$ with $b\equiv1\pmod4$, and $\mathsf I$ elsewhere.
+\item In $S'$: $\mathsf B$ at the cells $(a,-1)$ with $a\equiv1\pmod4$, and $\mathsf O$ elsewhere.
+\end{itemize}
+
+\begin{proposition}\label{prop:evenlabel}
+This labelling satisfies the hypothesis of Lemma~\ref{lem:wedge}, and
+$|\mathsf B|-|\mathsf N|=(h\bmod2)+4\lfloor(h+2)/4\rfloor$.
+\end{proposition}
+\begin{proof}
+We use four facts, all read off from \eqref{eq:evenarc}.
+\begin{itemize}
+\item[(i)] From a cell of $Q$, a move with $\alpha<0<\beta$ is never an arc. From a cell $(a,0)$ with $a\ge1$, a move
+with $\beta>0$ is never an arc, because it would need $\alpha>\beta(2a+1)\ge3$.
+\item[(ii)] No arc leads from $Q$ to a cell $(0,b)$ with $b\ge1$, or to a cell of $S$. Such an arc has $\alpha<0$,
+hence $\beta<0$ by (i), and there are five cases. The moves $(-1,-2)$ from $(1,b+2)$ and $(-2,-1)$ from $(2,b+1)$
+would need $2b+5<6$ and $4b+6<5$. For a target $(a',b')$ in $S$, where $b'\ge1$, the moves $(-1,-2)$ from
+$(0,b'+2)$, $(-2,-1)$ from $(1,b'+1)$ and $(-2,-1)$ from $(0,b'+1)$ would need $2b'+5<2$, $4b'+6<3$ and $4b'+6<1$.
+\item[(iii)] Every arc from a cell $(a,b)$ of $S'$ has $\beta<0$. Here $2b+1<0$ and $2a+1\ge6|b|-3=3\,|2b+1|$. For
+$\beta>0$, \eqref{eq:evenarc} would need $\alpha<0$ and $|\alpha|\,|2b+1|>3\beta\,|2b+1|$, that is, $|\alpha|>3\beta$.
+\item[(iv)] From a cell $(-1,b)$ of $S$ the arcs are exactly the four moves with $\alpha>0$, since
+\eqref{eq:evenarc} reads $\alpha(2b+1)>-\beta$ and $2b+1\ge3$.
+\end{itemize}
+Now take a cell labelled $\mathsf B$ or $\mathsf O$ and an arc from it to a cell of $W$.
+\begin{itemize}
+\item \emph{A cell of $Q$ labelled $\mathsf B$.} A move changes the parity of $a+b$, so the target has $a+b$ odd.
+In $Q$ it is labelled $\mathsf N$ or $\mathsf O$, because the cells labelled $\mathsf I$ are excluded by (ii). It is
+not in $S$, by (ii). In $S'$ the cells labelled $\mathsf B$ have $a+b$ even, so the target is labelled $\mathsf O$.
+\item \emph{A cell $(a,0)$ labelled $\mathsf O$.} By (i) the target is $(a\pm1,-2)$ or $(a\pm2,-1)$. As
+$a\pm2\equiv3\pmod4$, it is labelled $\mathsf O$.
+\item \emph{A cell of $S'$.} By (iii) the target has $b\le-2$ and is labelled $\mathsf O$.
+\item \emph{A cell $(-1,b)$ labelled $\mathsf B$.} By (iv) the target is $(0,b\pm2)$ or $(1,b\pm1)$. The first has
+$b\pm2\equiv3\pmod4$ and is labelled $\mathsf N$. The second is labelled $\mathsf N$, or $\mathsf O$ if it is $(1,0)$.
+\end{itemize}
+For the count, let $g=\lfloor(h+2)/4\rfloor$ be the number of $b$ with $1\le b\le h-1$ and $b\equiv1\pmod4$. In $Q$
+there are $\lceil h^2/2\rceil$ cells labelled $\mathsf B$ and $\lfloor h^2/2\rfloor-2g$ labelled $\mathsf N$, and $S$
+and $S'$ contain $g$ cells labelled $\mathsf B$ each.
+\end{proof}
+
+\subsection*{The boards of sides $8$ and $10$}
+For $n=8$ and $n=10$, Proposition~\ref{prop:evenlabel} gives only $4$ and $5$. Two other wedges do better. We use
+the original coordinates $(i,j)$.
+
+\begin{proposition}\label{prop:small}
+Every whirling knight's tour of the $8\times8$ board, and of the $10\times10$ board, has at least $6$ coils.
+\end{proposition}
+\begin{proof}
+For $n=8$ take the wedge between the directions of the cells $(5,4)$ and $(5,7)$. It has $11$ cells. Label
+$(4,4)$, $(5,5)$, $(5,7)$, $(6,6)$, $(7,5)$, $(7,7)$ with $\mathsf B$; $(5,6)$, $(6,7)$ with $\mathsf O$; and $(5,4)$,
+$(6,5)$, $(7,6)$ with $\mathsf I$. For $n=10$ take the wedge between the directions of the cells $(6,5)$ and $(4,5)$.
+It has $45$ cells, in the columns $5,\dots,9$, and we label them as follows; a dot marks a cell outside the wedge.
+\begin{center}\small\ttfamily
+\begin{tabular}{r@{\quad}ccccc}
+$i$ & 5 & 6 & 7 & 8 & 9\\
+0 & . & . & . & . & B\\
+1 & . & . & . & O & B\\
+2 & . & . & O & I & I\\
+3 & . & B & B & N & B\\
+4 & O & B & N & I & I\\
+5 & I & I & I & N & B\\
+6 & I & B & I & I & I\\
+7 & . & I & I & N & B\\
+8 & . & I & I & I & I\\
+9 & . & I & I & I & B
+\end{tabular}
+\end{center}
+In both cases one checks directly that no arc leads from a cell labelled $\mathsf B$ or $\mathsf O$ to a cell of the
+wedge labelled $\mathsf B$ or $\mathsf I$; the accompanying program does this. The values of
+$|\mathsf B|-|\mathsf N|$ are $6-0$ and $10-4$. Now apply Lemma~\ref{lem:wedge}.
+\end{proof}
+
+\subsection*{Odd $n$: the wedge around a half-axis}
+Let $n=2m+1$. The centred coordinates $(x,y)$ are integers, and
+\begin{equation}\label{eq:oddarc}
+\text{the move $(\mu_1,\mu_2)$ from the cell $(x,y)$ is an arc if and only if }\ x\mu_2-y\mu_1>0.
+\end{equation}
+Let $W_A=\{(x,y):y\ge1,\ 2|x|\le y\}$, the wedge between the directions of $(1,2)$ and $(-1,2)$. Label it as follows.
+\begin{itemize}
+\item $x=0$: $\mathsf N$ if $4\mid y$, and $\mathsf B$ otherwise.
+\item $x=\pm1$ and $y\equiv2\pmod4$: $\mathsf B$.
+\item All other cells: $\mathsf O$ if $x<0$, and $\mathsf I$ if $x>0$.
+\end{itemize}
+
+\begin{proposition}\label{prop:axislabel}
+This labelling satisfies the hypothesis of Lemma~\ref{lem:wedge}, and $|\mathsf B|-|\mathsf N|$ equals $m+2$ if
+$m\equiv2$ or $3\pmod4$, and $m$ otherwise.
+\end{proposition}
+\begin{proof}
+For a cell of $W_A$ and a move with $\mu_1>0$ we have $x\mu_2-y\mu_1\le2|x|-y\le0$ if $\mu_1=1$, and
+$x\mu_2-y\mu_1\le|x|-2y<0$ if $\mu_1=2$. So by \eqref{eq:oddarc} every arc from a cell of $W_A$ has $\mu_1<0$. Hence an arc
+from a cell with $x\le-1$ ends at a cell with $x\le-2$, labelled $\mathsf O$. An arc from $(0,y)$, where $4\nmid y$,
+ends at $(-1,y\pm2)$ or $(-2,y\pm1)$; the first is not labelled $\mathsf B$ because $y\pm2\not\equiv2\pmod4$. An arc
+from $(1,y)$ with $y\equiv2\pmod4$ ends at $(0,y\pm2)$, labelled $\mathsf N$, or at $(-1,y\pm1)$, labelled
+$\mathsf O$. For the count, the row $x=0$ has $m-\lfloor m/4\rfloor$ cells labelled $\mathsf B$ and $\lfloor m/4\rfloor$
+labelled $\mathsf N$, and each of the rows $x=\pm1$ has $\lfloor(m+2)/4\rfloor$ cells labelled $\mathsf B$.
+\end{proof}
+
+\subsection*{Odd $n$: the wedge around a diagonal}
+Let $W_D=\{(x,y):x,y\ge1,\ y\le2x,\ x\le2y\}$, the wedge between the directions of $(2,1)$ and $(1,2)$. By
+\eqref{eq:oddarc}, a move from a cell of $W_D$ can be an arc only if it is one of
+\[ (-2,1),\qquad(-1,2),\qquad(1,2),\qquad(-2,-1); \]
+for the other four moves $x\mu_2-y\mu_1$ is $x-2y$, $y-2x$, $-x-2y$ or $-2x-y$. Write $x=3t+r$ with $r\in\{0,1,2\}$,
+and $e=y-3t$. We use two labellings of $W_D$; in both, the label depends only on $r$ and $e$, apart from one or two
+cells next to the pivot.
+
+\begin{center}\small
+\begin{tabular}{ll}
+\toprule
+\multicolumn{2}{l}{Pattern 1}\\
+\midrule
+$r=0$ & $\mathsf I$ $(e<0)$,\quad $\mathsf N$ $(e=0)$,\quad $\mathsf O$ $(e>0)$\\
+$r=1$ & $\mathsf I$ $(e\le0)$,\quad $\mathsf B$ $(e=1)$,\quad $\mathsf I$ $(e=2)$,\quad $\mathsf O$ $(e\ge3)$\\
+$r=2$ & $\mathsf I$ $(e\le0)$,\quad $\mathsf B$ $(e=1,2,4)$,\quad $\mathsf O$ $(e=3$ and $e\ge5)$\\
+exception & the cell $(1,2)$ is labelled $\mathsf B$\\
+\midrule
+\multicolumn{2}{l}{Pattern 2}\\
+\midrule
+$r=0$ & $\mathsf I$ $(e\le0)$,\quad $\mathsf O$ $(e\ge1)$\\
+$r=1$ & $\mathsf B$ $(e=-1$ and $e=1)$,\quad $\mathsf I$ (all other $e\le2$),\quad $\mathsf O$ $(e\ge3)$\\
+$r=2$ & $\mathsf I$ $(e\le0)$,\quad $\mathsf N$ $(e=1)$,\quad $\mathsf B$ $(e=2,4)$,\quad $\mathsf O$ $(e=3$ and $e\ge5)$\\
+exceptions & the cell $(1,2)$ is labelled $\mathsf B$, and the cell $(2,1)$ is labelled $\mathsf I$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}\label{prop:diaglabel}
+Both patterns satisfy the hypothesis of Lemma~\ref{lem:wedge}. Pattern~$1$ has $|\mathsf B|-|\mathsf N|=m+2$ when
+$m\equiv2\pmod3$, and Pattern~$2$ has $|\mathsf B|-|\mathsf N|=m+2$ when $m\equiv1\pmod3$ and $m\ge4$.
+\end{proposition}
+\begin{proof}
+The four moves act on the pair $(r,e)$ as follows.
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+move & from $(0,e)$ & from $(1,e)$ & from $(2,e)$\\
+\midrule
+$(-2,1)$ & $(1,e+4)$ & $(2,e+4)$ & $(0,e+1)$\\
+$(-1,2)$ & $(2,e+5)$ & $(0,e+2)$ & $(1,e+2)$\\
+$(1,2)$ and $(-2,-1)$ & $(1,e+2)$ & $(2,e+2)$ & $(0,e-1)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+We go through the cells labelled $\mathsf B$ or $\mathsf O$ and check that every target is labelled $\mathsf N$ or
+$\mathsf O$.
+
+\emph{Pattern $1$.} From $(0,e)$ with $e\ge1$ the targets are $(1,e')$ with $e'\ge3$ and $(2,e')$ with $e'\ge6$,
+all labelled $\mathsf O$. From $(1,e)$ with $e=1$ or $e\ge3$ they are $(2,e+4)$, $(0,e+2)$ and $(2,e+2)$. These are
+labelled $\mathsf O$, because $e+4\ge5$, $e+2>0$, and $e+2$ is $3$ or at least $5$. From $(2,e)$ with $e\ge1$ they
+are $(0,e+1)$ and $(1,e+2)$, both labelled $\mathsf O$, and $(0,e-1)$, which is labelled $\mathsf N$ if $e=1$ and
+$\mathsf O$ otherwise.
+
+\emph{Pattern $2$.} From $(0,e)$ with $e\ge1$ the targets are as before. From $(1,e)$ with $e=\pm1$ or $e\ge3$ they
+are $(2,e+4)$, $(0,e+2)$ and $(2,e+2)$. Here $e+4$ is $3$, $5$ or at least $7$, so $(2,e+4)$ is labelled $\mathsf O$;
+$(0,e+2)$ has $e+2\ge1$; and $(2,e+2)$ is labelled $\mathsf N$ if $e=-1$ and $\mathsf O$ otherwise. From $(2,e)$ with $e\ge2$ the targets $(0,e\pm1)$ and $(1,e+2)$ are labelled $\mathsf O$.
+
+\emph{The exceptions.} The general rule labels $(1,2)$ with $\mathsf I$, so the check above shows that no arc
+enters it from a cell labelled $\mathsf B$ or $\mathsf O$. No arc leaves $(1,2)$ inside $W_D$: three of the four moves
+lead out of $W_D$, and $(1,2)\to(2,4)$ is not an arc because $1\cdot2-2\cdot1=0$. In Pattern~2 the general rule
+labels $(2,1)$ with $\mathsf N$. In the check above it occurs as a target only as $(2,e+2)$ with $e=-1$. The source is then
+$(4,2)$, with the move $(-2,-1)$, or $(1,-1)$, which is not in $W_D$. The move from $(4,2)$ is not an arc, because
+$4\cdot(-1)-2\cdot(-2)=0$.
+
+\emph{The count.} Let $m=3q+2$. In Pattern~1 the cells labelled $\mathsf B$ are $(3t+1,3t+1)$, $(3t+2,3t+1)$ and
+$(3t+2,3t+2)$ for $0\le t\le q$, the cells $(3t+2,3t+4)$ for $0\le t\le q-1$, and $(1,2)$: in all $4q+4$. The cells
+labelled $\mathsf N$ are $(3t,3t)$ for $1\le t\le q$. The difference is $3q+4=m+2$. Let $m=3q+1$ with $q\ge1$. In Pattern~2 the
+cells labelled $\mathsf B$ are $(3t+1,3t+1)$ for $0\le t\le q$, $(3t+1,3t-1)$ for $1\le t\le q$, $(3t+2,3t+2)$ and
+$(3t+2,3t+4)$ for $0\le t\le q-1$, and $(1,2)$: in all $4q+2$. The cells labelled $\mathsf N$ are $(3t+2,3t+1)$ for
+$1\le t\le q-1$. The difference is $3q+3=m+2$.
+\end{proof}
+
+\subsection*{Odd $n$: the bound $(n+1)/2$}
+\begin{proposition}\label{prop:oddhalf}
+Let $n=2m+1\ge9$. Every $n\times n$ whirling knight's tour has at least $m+1$ coils.
+\end{proposition}
+\begin{proof}
+Consider the eight half-lines from the pivot along the axes and the diagonals. Each of them contains $m$ cells. A
+tour with $c$ coils passes each direction exactly $c$ times, at a cell or inside an arc, because its polar angle
+increases monotonically by $2\pi c$. So $c\ge m$. Suppose that $c=m$. Then no arc passes over any of the eight
+half-lines.
+
+By \eqref{eq:oddarc}, the arcs that end at $(2,1)$ start at $(1,-1)$, $(3,-1)$ or $(4,0)$. The first two pass over a
+half-axis, so the tour contains $(4,0)\to(2,1)$. The arcs that start at $(2,1)$ end at $(3,3)$, $(1,3)$ or $(0,2)$.
+The last two pass over a half-diagonal, so the tour contains $(2,1)\to(3,3)$. The reflection $(x,y)\mapsto(y,x)$
+reverses all arcs and preserves the eight half-lines. Hence the tour also contains $(3,3)\to(1,2)$ and
+$(1,2)\to(0,4)$. So it contains the path
+\[ (4,0)\to(2,1)\to(3,3)\to(1,2)\to(0,4). \]
+The quarter turn $(x,y)\mapsto(-y,x)$ preserves arcs and the eight half-lines, so the tour contains the three
+rotated copies of this path as well. The four paths form a closed cycle through $16$ cells, which is impossible
+because the board has more than $16$ cells.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:lower}]
+Part (a) is Lemma~\ref{lem:wedge} with Proposition~\ref{prop:evenlabel}; note that
+$(h\bmod2)+4\lfloor(h+2)/4\rfloor$ is $h$ if $h\equiv0$ or $1\pmod4$, and $h+2$ if $h\equiv2$ or $3\pmod4$. For
+part (b), use Proposition~\ref{prop:axislabel} if $m\equiv2$ or $3\pmod4$, and Proposition~\ref{prop:diaglabel} if
+$m\not\equiv0\pmod3$. Neither applies exactly when $m\equiv0$ or $9\pmod{12}$, that is, when $n\equiv1$ or
+$19\pmod{24}$. Part (c) is Propositions~\ref{prop:oddhalf} and~\ref{prop:small}.
+\end{proof}
+
+\section{Tours with the least number of coils}\label{sec:half}
+
+A set of arcs in which each cell has at most one successor is described by
 its \emph{moves} $m(z)=\operatorname{succ}(z)-z$. We write $c(z)$ for the column of a cell $z$.
 
 \subsection*{Rings and seeds}
@@ -321,8 +623,8 @@ the $(N-24)\times(N-24)$ board onto the inner board and the pivot to the pivot, 
 
 A \emph{seed} is a pair $(T_0,T_1)$ with the following properties.
 \begin{itemize}
-\item $T_0$ is a whirling tour of the $N_0\times N_0$ board with $N_0/2$ coils.
-\item $T_1$ is a whirling tour of the $N_1\times N_1$ board with $N_1/2$ coils, where $N_1=N_0+24$.
+\item $T_0$ is a whirling tour of the $N_0\times N_0$ board; let $c_0$ be its number of coils.
+\item $T_1$ is a whirling tour of the $N_1\times N_1$ board with $c_0+12$ coils, where $N_1=N_0+24$.
 \item $T_1$ contains every arc of $T_0+(12,12)$ except one arc $u\to v$.
 \end{itemize}
 The remaining arcs of $T_1$ then form a path $P$ from $u$ to $v$ that visits every cell of the ring. We call $P$ the
@@ -395,7 +697,8 @@ the moves in columns less than $B$ are unchanged, the moves in columns at least 
 translated by $(0,q\tau)$, and in the columns from $A$ to $B+q\tau-1$ the moves are periodic with period $\tau$.
 
 \subsection*{Stretching a seed}
-Fix a seed and put $a=19$, $h=N_1/2$ and $b=N_1-19$. For $e\ge0$ let $N_{e+1}=N_1+24e$. Define
+Fix a seed and put $a=19$, $h=\lfloor N_1/2\rfloor$ and $b=N_1-19$. Let $\varepsilon=0$ if $N_1$ is even and
+$\varepsilon=1$ if $N_1$ is odd. For $e\ge0$ let $N_{e+1}=N_1+24e$. Define
 $\varphi_e\colon\{0,\dots,N_1-1\}\to\{0,\dots,N_{e+1}-1\}$ by
 \[ \varphi_e(t)=\begin{cases} t & t<a,\\ t+6e & a\le t<h,\\ t+18e & h\le t<b,\\ t+24e & t\ge b.\end{cases} \]
 Its image omits three blocks of $6e$, $12e$ and $6e$ consecutive integers, which begin at $a$, at $h+6e$ and at
@@ -424,19 +727,19 @@ Let $D(t)$, for $0\le t<N_1$, be the set
 We say that the seed is \emph{stretchable} if the following hold.
 \begin{itemize}
 \item[(Z)] Conditions (a), (b), (c) of Lemma~\ref{lem:insert} hold for $(G,P)$ and each of the three zones
-\[ [14,21),\ \tau=3;\qquad [h-3,h+3),\ \tau=2;\qquad [N_1-21,N_1-14),\ \tau=3, \]
+\[ [14,21),\ \tau=3;\qquad [h-3,h+3+\varepsilon),\ \tau=2;\qquad [N_1-21,N_1-14),\ \tau=3, \]
 and also with rows in place of columns. Moreover, the parts of $P$ in (b) lie in columns (rows) at least $A-2$,
 and those in (c) lie in columns (rows) less than $B+2$.
 \item[(S)] $u=(r,c)$ and $v=(r',c')$ with $c,c'\in\{12,13\}$ and $25\le r,r'<h$, and $P$ contains the arc
 $(r-6,c-12)\to(r'-6,c'-12)$.
 \item[(W)] For every cell $z=(i,j)$ of $G$ other than $v$, with move $m(z)=(m_1,m_2)$, and for all
 $\delta_1\in D(i)$ and $\delta_2\in D(j)$, we have $\delta_1m_2-m_1\delta_2\ge0$.
-\item[(C)] Every cell $(i,j)$ with $i<12$ and $h-3\le j<h+3$ has move $(2,-1)$ or $(-2,-1)$.
+\item[(C)] Every cell $(i,j)$ with $i<12$ and $h-3\le j<h+3+\varepsilon$ has move $(2,-1)$ or $(-2,-1)$.
 \end{itemize}
 
 \begin{proposition}\label{prop:stretch}
 If the seed $(T_0,T_1)$ is stretchable, then for every $k\ge0$ the set $T_k$ is a whirling knight's tour of the
-board of side $N_0+24k$, with $(N_0+24k)/2$ coils.
+board of side $N_0+24k$, with $c_0+12k$ coils.
 \end{proposition}
 \begin{proof}
 The cases $k=0$ and $k=1$ are part of the definition of a seed. Let $e\ge1$ and assume the claim for $T_e$.
@@ -453,7 +756,7 @@ stay in the columns $12$ and $13$, to the left of every column zone; their rows 
 second row zone, and they are translated together with the second and third row zones. In each case (a)--(c)
 still hold, for $[A,B)$ or for its translate. The same argument applies to the row zones. The result is a Hamiltonian path $P_e$ from $\varphi_e(u)$ to $\varphi_e(v)$ of the
 set formed by the ring of the $N_{e+1}\times N_{e+1}$ board and these two cells. After the insertions the three column zones are
-\[ [14,\,21+6e),\qquad [h-3+6e,\,h+3+18e),\qquad [N_1-21+18e,\,N_1-14+24e). \]
+\[ [14,\,21+6e),\qquad [h-3+6e,\,h+3+\varepsilon+18e),\qquad [N_1-21+18e,\,N_1-14+24e). \]
 They contain the three blocks omitted by $\varphi_e$, and the values
 of $\pi_e$ on a block lie in the original zone and in the right residue class. So by the remark after the lemma, the
 move of $P_e$ at a ring cell $z$ is $m(\pi_e(z))$, and its move at $\varphi_e(u)$ is $m(u)$. So $T_{e+1}$ consists of
@@ -479,20 +782,25 @@ $18e\le s-t\le24e-3$. Since the cross product is bilinear,
 The first term is positive because $T_1$ is whirling. The second is affine in $\delta_1$ and in $\delta_2$, and it is
 nonnegative at the corners by (W), hence nonnegative.
 
-\emph{Coils.} By Lemma~\ref{lem:rays} the number of coils of $T_{e+1}$ is the number of its arcs that cross the
-half-line $R$ from the pivot along the central line towards row $0$, between the columns $h+12e-1$ and $h+12e$.
-The arcs of $T_e+(12,12)$ cross it $N_e/2$ times, and the removed arc is not among them. An arc of $P_e$ that crosses
-$R$ joins two cells in rows less than $12$ on different sides of the central line. These cells lie in the second
-zone, where by (C) and periodicity every move is $(\pm2,-1)$. So exactly the $12$ cells of column $h+12e$ in rows
-$0,\dots,11$ send an arc across $R$. Hence $T_{e+1}$ has $N_e/2+12=N_{e+1}/2$ coils.
+\emph{Coils.} Let $R$ be the half-line from the pivot towards row $0$ that passes, in the rows less than $12$, between
+the columns $h+12e-1+\varepsilon$ and $h+12e+\varepsilon$. For even $N_1$ this is the central line. For odd $N_1$
+the pivot is the centre of the removed cell, and we tilt $R$ slightly so that it contains no cell. By
+Lemma~\ref{lem:rays} the number of coils of $T_{e+1}$ is the number of its arcs that cross $R$. The arcs of
+$T_e+(12,12)$ cross it $c_0+12e$ times, and the removed arc is not among them. An arc of $P_e$ that crosses $R$ joins
+two cells in rows less than $12$ on different sides of $R$. These cells lie in the second zone, where by (C) and
+periodicity every move is $(\pm2,-1)$. So exactly the $12$ cells of column $h+12e+\varepsilon$ in rows
+$0,\dots,11$ send an arc across $R$. Hence $T_{e+1}$ has $c_0+12(e+1)$ coils.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:half}]
-For $n\le90$ the tours are in an accompanying file (Section~\ref{sec:comp}). Every admissible $n\ge96$ is
-$N_1+24(k-1)$ for a unique $N_1\in\{96,98,104,106,112,114\}$ and $k\ge1$. For each of these six values,
-Section~\ref{sec:comp} gives a tour $T_1$ that forms a seed with the listed tour $T_0$ of side $N_1-24$. The
-accompanying program checks, in exact integer arithmetic, that the six seeds are stretchable.
-Proposition~\ref{prop:stretch} then gives $T_k$.
+For $n\le95$ the tours are in accompanying files (Section~\ref{sec:comp}). Every $n\ge96$ with
+$n\not\equiv3\pmod 4$ is $N_1+24(k-1)$ for a unique $k\ge1$ and a unique $N_1$ among the eighteen values
+\[ 96,\,98,\,104,\,106,\,112,\,114;\qquad 100,\,102,\,108,\,110,\,116,\,118;\qquad 97,\,101,\,105,\,109,\,113,\,117. \]
+For each of them, Section~\ref{sec:comp} gives a tour $T_1$ that forms a seed with the listed tour $T_0$ of side
+$N_0=N_1-24$. The number of coils of $T_0$ is $N_0/2$ in the first group and $N_0/2+2$ in the second. In the third
+group it is $(N_0+1)/2$ for $N_0=73$ and $(N_0+3)/2$ otherwise. The accompanying program checks, in exact integer
+arithmetic, that the eighteen seeds are stretchable. Proposition~\ref{prop:stretch} then gives a tour $T_k$ of side
+$n$ with $12(k-1)$ more coils than $T_1$, which is the number stated in the theorem.
 \end{proof}
 
 \begin{figure}[t]
@@ -507,13 +815,13 @@ the left half of the top side, enlarged.}
 \end{figure}
 
 \begin{remark}\label{rem:shape}
-In all six seeds, and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
+In all eighteen seeds, and on all four sides, the moves in the zones follow one rule. Rotate the side to the top, so
 that the path runs towards smaller columns, and let $i$ be the row. In the first zone the move is $(2,1)$ if
 $i\equiv0\pmod3$ and $(-1,-2)$ otherwise. In the second it is $(2,-1)$ if $i\bmod4\in\{0,1\}$ and $(-2,-1)$
 otherwise. In the third it is $(1,-2)$ if $i\bmod3\in\{0,1\}$ and $(-2,1)$ otherwise. So the path runs in lanes that
 advance one column per move, in bands of three rows near the corners and of four rows in the middle. This explains
 the shape of the construction, although the proof does not use it. A ring that fits both kinds of band has width
-$12$, so the side grows by $24$ and six seeds are needed. The amounts $6e$, $12e$, $6e$ come from the geometry: in
+$12$, so the side grows by $24$ and one seed is needed for each class modulo $24$. The amounts $6e$, $12e$, $6e$ come from the geometry: in
 centred coordinates the move $(2,1)$ is an arc only where $x>2y$, and the line $x=2y$ meets the top row $6$ columns
 further from the corner each time the side grows by $24$.
 \end{remark}
@@ -531,9 +839,9 @@ Lemma~\ref{lem:rays}).
 We used CaDiCaL~\cite{cadical} through PySAT~\cite{pysat}. Each tour below was found in at most a few minutes on a
 laptop.
 
-For $n/2$ coils and $n\ge72$ we searched for the ring only. The arcs of a known tour of side $n-24$ are kept on
-the inner board, except that exactly one of them may be dropped, and the variables are the arcs at ring cells. For
-the six seeds we added the requirements that in each zone, widened by one column on either side, the move depends
+For the tours of Theorem~\ref{thm:half} with $n\ge72$ in case (a), $n\ge52$ in case (b) and $n\ge53$ in case (c)
+we searched for the ring only. The arcs of a known tour of side $n-24$ are kept on the inner board, except that exactly one of them may
+be dropped, and the variables are the arcs at ring cells. For the eighteen seeds we added the requirements that in each zone, widened by one column on either side, the move depends
 only on the depth of the cell, and that condition (S) holds. Each seed was then found in under a second. With
 these zones the search reports that no seed exists for $N_1=82$, $88$ or $90$, at least over the inner tours that we
 tried.
@@ -548,12 +856,21 @@ $n=3$, and none with $n/2$ coils for $n=8$ and $n=10$.
 \begin{itemize}
 \item \emph{$n$ coils.} $n=12,16,20,24,28,32,36,40,44,48$.
 \item \emph{$n/2$ coils.} Every $n\equiv0$ or $2\pmod 8$ with $16\le n\le90$, that is, $20$ tours.
-\item \emph{Seeds for $n/2$ coils.} $N_1=96,98,104,106,112,114$. Each contains the listed tour of side $N_1-24$
+\item \emph{$n/2+2$ coils.} Every $n\equiv4$ or $6\pmod 8$ with $12\le n\le94$, that is, $22$ tours.
+\item \emph{Odd $n\equiv1\pmod 4$.} Every such $n$ with $13\le n\le93$, that is, $21$ tours, with $(n+1)/2$ coils
+for $n=25$, $49$, $73$ and $(n+3)/2$ coils otherwise.
+\item \emph{Seeds.} Six with $N_1/2$ coils, of sides $96$, $98$, $104$, $106$, $112$, $114$; six with $N_1/2+2$
+coils, of sides $100$, $102$, $108$, $110$, $116$, $118$; and six of sides $97$, $101$, $105$, $109$, $113$, $117$,
+with $(N_1+1)/2$ coils for $N_1=97$ and $(N_1+3)/2$ coils otherwise. Each contains the listed tour of side $N_1-24$
 except for one arc.
+\item \emph{Odd $n\equiv3\pmod 4$.} Tours with $(n+3)/2$ coils, or with $(n+1)/2$ coils when $n\equiv19\pmod{24}$,
+for every such $n$ from $11$ to $47$, and for $n=67$.
 \end{itemize}
-The cell sequences accompany this note, in the files \texttt{tours\_n\_coils.txt},
-\texttt{tours\_half\_coils.txt} and \texttt{seeds\_half\_coils.txt}. Figure~\ref{fig:tours} shows four of the
-tours.
+The cell sequences accompany this note. The file \texttt{tours\_n\_coils.txt} has the tours with $n$ coils. The
+tours and seeds for the three cases of Theorem~\ref{thm:half} are in three pairs of files, named
+\texttt{tours\_X\_coils.txt} and \texttt{seeds\_X\_coils.txt} with \texttt{X} equal to \texttt{half},
+\texttt{plus2} and \texttt{odd}. The other tours with the least number of coils are in
+\texttt{tours\_least\_coils.txt}. Figure~\ref{fig:tours} shows four of the tours.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{new_tours.pdf}
@@ -573,31 +890,32 @@ $n$ & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30 & 31 & 32 & 33 & 34 & 35 & 36 &
 least $c$ & 13 & 13 & 12 & 13 & 13 & 15 & 16 & 16 & 17 & 17 & 16 & 18 & 17 & 19 & 20 & 20\\
 \bottomrule
 \end{tabular}
-\caption{The least number of coils $c$ of an $n\times n$ whirling knight's tour, according to the SAT search. There
-is no $5\times5$ tour.}
+\caption{The least number of coils $c$ of an $n\times n$ whirling knight's tour. There is no $5\times5$ tour.}
 \label{tab:least}
 \end{table}
 
-\subsection*{The least number of coils for other $n$}
-For $n\equiv0$ or $2\pmod 8$ the least number of coils is $n/2$, by Theorem~\ref{thm:half}. For the other $n$ we have
-only computations. Table~\ref{tab:least} lists the least $c$ for which the search finds a tour, for $6\le n\le37$;
-the tours are in the files \texttt{tours\_least\_coils.txt} and \texttt{tours\_half\_coils.txt}. For every smaller $c\ge n/2$ the solver reports that
-there is no tour, and for $n\ge12$ it does so before any cycle has to be excluded. The entries for $n=6,7,8,9$ and
-$11$ agree with the counts in \cite[answer 229]{knuth}. Beyond the table we found the following.
-\begin{itemize}
-\item \emph{$n\equiv4$ or $6\pmod 8$.} There are tours with $n/2+2$ coils for every such $n$ with $12\le n\le46$.
-The solver reports none with $n/2+1$ coils for $12\le n\le36$.
-\item \emph{Odd $n$.} There are tours with $(n+1)/2$ coils for $n=19$, $25$, $43$, $49$, $67$ and $73$. The solver
-reports none for any other odd $n$ with $5\le n\le65$. For those $n$ with $13\le n\le47$ there are tours with $(n+3)/2$ coils.
-\end{itemize}
+\subsection*{The least number of coils}
+Table~\ref{tab:least} lists the least number of coils for $6\le n\le37$. The tours are in the files named above.
+The lower bounds are those of Theorem~\ref{thm:lower}, with one exception: for $n=8$, $9$ and $10$ the theorem gives
+only $6$. For $n=8$ and $n=9$ the value $7$ follows from exhaustive enumeration: all $1120$ tours of the $8\times8$
+board and all $146$ tours of the $9\times9$ board have $7$ coils, in agreement with \cite[answer 229]{knuth}. For
+$n=10$ the entry rests on the search, which reports no tour with $6$ coils. The bound of Theorem~\ref{thm:lower} is
+sharp for $n=6$ and $n=7$ as well.
+
+By Corollary~\ref{cor:least}, what remains open is the case $n\equiv3\pmod 4$.
 
 \begin{question}\label{q:least}
-Let $n\ge12$. Is the least number of coils of an $n\times n$ whirling knight's tour equal to $n/2+2$ when
-$n\equiv4$ or $6\pmod 8$, to $(n+1)/2$ when $n\equiv1$ or $19\pmod{24}$, and to $(n+3)/2$ for every other odd $n$?
+Let $n\ge11$ and $n\equiv3\pmod 4$. Is the least number of coils of an $n\times n$ whirling knight's tour equal to
+$(n+1)/2$ if $n\equiv19\pmod{24}$, and to $(n+3)/2$ otherwise?
 \end{question}
-The appearance of the modulus $24$ for odd $n$ matches the ring construction of Section~\ref{sec:half}. A ring of
-width $12$ can indeed be put around the tours of sides $25$ and $49$ with $13$ and $25$ coils, but our search found
-none around the tours of sides $19$, $43$ and $67$ that we tried.
+The answer is yes for $n\le47$ and for $n=67$, by the tours listed above. What is missing is a construction. For
+$n\equiv3\pmod 4$ our search finds no ring of width $12$ with $12$ coils around any of the tours of sides $19$, $23$,
+$27$, $31$, $35$, $39$, $43$, $47$ and $67$ that we tried; the solver reports that none exists.
+
+\begin{question}\label{q:all}
+Let $n\ge12$. Does every number of coils between the least one and $n-1$ occur?
+\end{question}
+The search finds a tour for every such number of coils when $12\le n\le22$ and when $n=24$.
 
 \subsection*{Verification}
 \begin{itemize}
@@ -609,13 +927,26 @@ the accompanying program \texttt{verify\_weights.py}, in exact arithmetic, for e
 the three cases up to $n=122$ and $n=130$.
 \item For $13\le n\le27$, the Farkas certificates and three SAT solvers independently agree with
 Theorem~\ref{thm:main}.
+\item The program \texttt{lower\_bounds.py} uses only the Python standard library. For every even $n\le500$ and
+every odd $n\le301$ it builds the labelled wedges of Section~\ref{sec:lower} and checks that they are wedges, that no
+arc leads from a cell labelled $\mathsf B$ or $\mathsf O$ to one labelled $\mathsf B$ or $\mathsf I$, and that
+$|\mathsf B|-|\mathsf N|$ has the stated value. It also checks the two labellings of Proposition~\ref{prop:small}
+and the forced arcs in the proof of Proposition~\ref{prop:oddhalf}.
+\item A fourth AI agent, which saw only the text and the data files, refereed Section~\ref{sec:lower} and case (b)
+of Theorem~\ref{thm:half}. It rebuilt the labelled wedges for the same ranges of $n$, and it computed the least
+number of paths that cover each wedge by bipartite matching, for even $n\le120$ and odd $n\le101$; this agrees with
+the stated values except for $n=8$, where the wedge of Proposition~\ref{prop:evenlabel} needs $6$ paths. It checked
+the $22$ tours and six seeds of case (b) and built $T_k$ directly for $k\le20$. It found one false statement, for
+the board of side $3$ in Proposition~\ref{prop:diaglabel}, which is corrected here, and it suggested
+Propositions~\ref{prop:small} and~\ref{prop:oddhalf}. Case (c) of Theorem~\ref{thm:half} was added afterwards and
+has been checked only by our own programs.
 \item The program \texttt{half\_family.py} uses only the Python standard library. It checks conditions (Z), (S), (W)
-and (C) for the six seeds. Independently of Proposition~\ref{prop:stretch}, it builds $T_k$ and checks it directly
-as a tour. We ran this for $k\le20$ in each of the six families, which covers every admissible $n\le570$, and for
-$n=1000$.
-\item A third AI agent, which saw only this text and the data files, re-implemented the conditions and the
-construction. It confirmed (Z), (S), (W), (C) for the six seeds and checked $T_k$ directly for every admissible $n$
-from $72$ to $810$ and for $n=1000$. It also carried out the insertions of Lemma~\ref{lem:insert} one by one for
+and (C) for the eighteen seeds. Independently of Proposition~\ref{prop:stretch}, it builds $T_k$ and checks it
+directly as a tour. We ran this for $k\le20$ in each of the eighteen families, which covers every
+$n\not\equiv3\pmod 4$ from $96$ to $573$, and for $n=1000$ and $n=1001$.
+\item A third AI agent, which saw only an earlier version of this text and the data files for $n/2$ coils,
+re-implemented the conditions and the construction. It confirmed (Z), (S), (W), (C) for the first six seeds and
+checked $T_k$ directly for every $n\equiv0$ or $2\pmod 8$ from $72$ to $810$ and for $n=1000$. It also carried out the insertions of Lemma~\ref{lem:insert} one by one for
 $e\le5$ and compared the result with the formula, and it tested the lemma on all $8458$ intervals of the six ring
 paths that satisfy its hypotheses. By a separate exhaustive search it confirmed that no tour has $n/2$ coils for
 $n=4,6,8,10,12,14$ and $20$. It found no mathematical error; its remarks on the exposition are incorporated.

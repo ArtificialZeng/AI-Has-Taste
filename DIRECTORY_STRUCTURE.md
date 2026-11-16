@@ -1,13 +1,13 @@
 # Repository directory / 完整目录层级
 
-**454 manuscripts / 2,325 pages** (edition of 2026-11-16: the Claude Code collection adds one manuscript, CC-P01, revised the same day; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
+**454 manuscripts / 2,331 pages** (edition of 2026-11-16: the Claude Code collection adds one manuscript, CC-P01, revised the same day; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
 
 ```text
 AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2325 pages
+├── archive-manifest.json              454 PDFs / 2331 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow

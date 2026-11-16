@@ -1,15 +1,17 @@
-"""Whirling knight's tours with n/2 coils for every n >= 16 with n = 0 or 2 (mod 8)   (Knuth, TAOCP 7.2.2.4, ex. 231(a)).
+"""Whirling knight's tours with the least number of coils, built from stretchable rings   (Knuth, TAOCP 7.2.2.4, ex. 231(a)).
 
 Python 3 standard library only.
 
-  python half_family.py tours_half_coils.txt seeds_half_coils.txt            certify the six families, check 8 levels
-  python half_family.py tours_half_coils.txt seeds_half_coils.txt -K 20      ... check 20 levels of each family
-  python half_family.py tours_half_coils.txt seeds_half_coils.txt -n 1000 -o tour1000.txt     write the tour for n
+  python half_family.py tours_half_coils.txt seeds_half_coils.txt            n = 0, 2 (mod 8): n/2 coils
+  python half_family.py tours_plus2_coils.txt seeds_plus2_coils.txt          n = 4, 6 (mod 8): n/2 + 2 coils
+  python half_family.py tours_odd_coils.txt seeds_odd_coils.txt              n = 1 (mod 4): (n+3)/2 coils, or (n+1)/2 if n = 1 (mod 24)
+  ... -K 20                                                                  check 20 levels of each family (default 8)
+  ... -n 1000 -o tour1000.txt                                                write the tour for one n
 
-Data.  tours_half_coils.txt holds a tour T for every admissible n <= 90.  seeds_half_coils.txt holds, for each
-N1 in {96, 98, 104, 106, 112, 114}, a tour T1 of the N1 x N1 board that contains the tour T0 of the central
-(N1-24) x (N1-24) board from the first file, except for one arc u -> v; the rest of T1 is a path from u through all
-cells of the outer ring (depth < 12) to v.
+Data.  The first file holds a tour T for every admissible n below the seeds; its header gives the number of coils.
+The second file holds, for six values N1 (one in each class modulo 24), a tour T1 of the N1 x N1 board that contains
+the tour T0 of the central (N1-24) x (N1-24) board from the first file, except for one arc u -> v; the rest of T1 is
+a path from u through all cells of the outer ring (depth < 12) to v.  Each ring adds 12 coils.
 
 Construction.  With a = 19, h = N1/2, b = N1 - 19 and e >= 0, the board of side N1 + 24e is obtained from the board
 of side N1 by inserting 6e, 12e, 6e rows and columns at the cuts a, h, b.  A ring cell z of the big board takes the
@@ -24,18 +26,22 @@ import sys, math, argparse
 from fractions import Fraction as F
 
 W = 12
-def load(file):
+def load(file, coils=None):
     d = {}
     for line in open(file):
         if not line.strip(): continue
         head, t = line.strip().split(" tour=")
-        d[int(head.split()[0][2:])] = [tuple(map(int, s.split(","))) for s in t.split()]
+        n = int(head.split()[0][2:])
+        d[n] = [tuple(map(int, s.split(","))) for s in t.split()]
+        if coils is not None: coils[n] = int(head.split()[1][6:])
     return d
 
 def check_tour(n, T, coils_claimed):
     """Exact check: all cells once, every step a counterclockwise knight move, winding number as claimed."""
     p = F(n - 1, 2)
-    ok = len(T) == n * n and set(T) == {(i, j) for i in range(n) for j in range(n)}
+    cells = {(i, j) for i in range(n) for j in range(n)}
+    if n % 2: cells.discard((n // 2, n // 2))            # odd n: the central cell is removed
+    ok = len(T) == len(cells) and set(T) == cells
     ray = (F(-1), F(1, 2 * n)); coils = 0
     for k in range(len(T)):
         (i, j), (i2, j2) = T[k], T[(k + 1) % len(T)]
@@ -47,7 +53,7 @@ def check_tour(n, T, coils_claimed):
 
 class Family:
     def __init__(self, T0, T1):
-        self.N0 = math.isqrt(len(T0)); self.N1 = N1 = math.isqrt(len(T1)); assert N1 == self.N0 + 2 * W
+        self.N1 = N1 = max(max(v) for v in T1) + 1; self.N0 = max(max(v) for v in T0) + 1; assert N1 == self.N0 + 2 * W
         self.a, self.h, self.b = 19, N1 // 2, N1 - 19
         self.succ1 = succ1 = dict(zip(T1, T1[1:] + T1[:1]))
         depth = lambda v: min(v[0], v[1], N1 - 1 - v[0], N1 - 1 - v[1])
@@ -108,7 +114,7 @@ class Family:
         pos = {x: t for t, x in enumerate(path)}
         piece = lambda x, y: path[min(pos[x], pos[y]): max(pos[x], pos[y]) + 1]
         # (Z) the six zones
-        zones = [(14, 21, 3), (h - 3, h + 3, 2), (N1 - 21, N1 - 14, 3)]
+        zones = [(14, 21, 3), (h - 3, h + 3 + N1 % 2, 2), (N1 - 21, N1 - 14, 3)]      # the middle zone is symmetric
         for ax in (1, 0):                                    # ax = 1: columns; ax = 0: rows
             sh = lambda z, t: (z[0], z[1] + t) if ax else (z[0] + t, z[1])
             for A, B, tau in zones:
@@ -136,7 +142,7 @@ class Family:
                 for dj in box(x[1]):
                     assert di * m[1] - m[0] * dj >= 0, ("W", x)
         # (C) in the middle zone of the top side every move goes one column to the left
-        assert all(move[(t, j)][1] == -1 for t in range(W) for j in range(h - 3, h + 3))
+        assert all(move[(t, j)][1] == -1 for t in range(W) for j in range(h - 3, h + 3 + N1 % 2))
         return f"u={u} v={v}"
 
 if __name__ == "__main__":
@@ -144,26 +150,31 @@ if __name__ == "__main__":
     ap.add_argument("tours"); ap.add_argument("seeds"); ap.add_argument("-K", type=int, default=8)
     ap.add_argument("-n", type=int, default=None); ap.add_argument("-o", default=None)
     args = ap.parse_args()
-    tours, seeds = load(args.tours), load(args.seeds)
+    coils, scoils = {}, {}
+    tours, seeds = load(args.tours, coils), load(args.seeds, scoils)
+    for N1 in seeds: assert scoils[N1] == coils[N1 - 24] + 12
     if args.n is not None:
-        n = args.n; assert n >= 16 and n % 8 in (0, 2), "n must be >= 16 and 0 or 2 (mod 8)"
-        if n in tours: T = tours[n]
+        n = args.n
+        if n in tours: T, c = tours[n], coils[n]
         else:
-            N1 = 96 + (n - 96) % 24; fam = Family(tours[N1 - 24], seeds[N1]); T = fam.tour(1 + (n - N1) // 24)
-        ok = check_tour(n, T, n // 2)
-        print(f"n={n}: coils = {n // 2} -> {'VALID' if ok else 'INVALID'}")
-        if args.o: open(args.o, "w").write(f"n={n} coils={n // 2} tour=" + " ".join(f"{i},{j}" for i, j in T) + "\n")
+            cand = [N1 for N1 in seeds if n > N1 and (n - N1) % 24 == 0]
+            assert n in seeds or cand, "no tour or family for this n in these files"
+            N1 = n if n in seeds else cand[0]; k = 1 + (n - N1) // 24
+            fam = Family(tours[N1 - 24], seeds[N1]); T = fam.tour(k); c = coils[N1 - 24] + 12 * k
+        ok = check_tour(n, T, c)
+        print(f"n={n}: coils = {c} -> {'VALID' if ok else 'INVALID'}")
+        if args.o: open(args.o, "w").write(f"n={n} coils={c} tour=" + " ".join(f"{i},{j}" for i, j in T) + "\n")
         sys.exit(0 if ok else 1)
     allok = True
     for n in sorted(tours):
-        ok = check_tour(n, tours[n], n // 2); allok &= ok
+        allok &= check_tour(n, tours[n], coils[n])
     print(f"explicit tours n = {', '.join(map(str, sorted(tours)))}: {'ALL VALID' if allok else 'SOME INVALID'}")
     for N1 in sorted(seeds):
         fam = Family(tours[N1 - 24], seeds[N1])
         info = fam.certify()
         ns = []
         for k, succ in fam.levels(args.K):
-            n = N1 + 24 * (k - 1); ok = check_tour(n, fam.as_list(succ), n // 2); allok &= ok; ns.append(n)
-        print(f"family {N1} + 24k: conditions (Z),(S),(W),(C) hold, {info}; "
+            n = N1 + 24 * (k - 1); allok &= check_tour(n, fam.as_list(succ), coils[N1 - 24] + 12 * k); ns.append(n)
+        print(f"family {N1} + 24k ({scoils[N1]} + 12k coils): conditions (Z),(S),(W),(C) hold, {info}; "
               f"tours n = {ns[0]}, {ns[1]}, ..., {ns[-1]} checked directly: {'ALL VALID' if allok else 'SOME INVALID'}", flush=True)
     print("ALL VALID" if allok else "SOME TOUR IS INVALID")
