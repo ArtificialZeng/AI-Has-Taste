@@ -126,7 +126,7 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **454 research manuscripts / 2,318 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
+The archive contains **454 research manuscripts / 2,325 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 454 original open problems have been solved.
 
 Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
@@ -143,7 +143,7 @@ A separate collection for results obtained with Claude Code (Anthropic) under th
 
 | ID + PDF | LaTeX source | Reproducible source code |
 |---|---|---|
-| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils exist only when n = 3 or 4 divides n](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf)<br>Answers Knuth's TAOCP exercise 7.2.2.4–231(b): an n×n whirling knight's tour with exactly n coils exists iff n = 3, or n ≥ 12 and 4 &#124; n. Nonexistence is proved for all n ≥ 5 not divisible by 4; tours are given for n = 16, 20, 24; the case n ≥ 28 is quoted from Knuth's draft. Also gives n/2-coil tours for n ≡ 0, 2 (mod 8), 16 ≤ n ≤ 66. | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with n/2 coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_n_over_2_coils.pdf)<br>Answers both parts of Knuth's TAOCP exercise 7.2.2.4–231. (b) An n×n whirling knight's tour with exactly n coils exists iff n = 3, or n ≥ 12 and 4 &#124; n: nonexistence is proved for all n ≥ 5 not divisible by 4, tours are given for n = 16, 20, 24, and the case n ≥ 28 is quoted from Knuth's draft. (a) A tour with exactly n/2 coils exists iff n ≥ 16 and n ≡ 0, 2 (mod 8): existence is proved for all such n (explicit tours for n ≤ 90; nested stretchable rings of width 12 from six seed tours for n ≥ 96; computer-assisted), and nonexistence is S. Li's theorem. | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
 
 </details>
 
@@ -775,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2318 pages
+├── archive-manifest.json              454 PDFs / 2325 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -841,5 +841,5 @@ The next release should make more of the research replayable—not merely make t
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. The archive now has 454 manuscripts / 2,318 pages. No existing PDF, source or gate byte was changed. The new manuscript is not externally peer reviewed.
+**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised the same day to add a second theorem (whirling knight's tours with n/2 coils); its title and PDF changed. The archive now has 454 manuscripts / 2,325 pages. No other PDF, source or gate byte was changed. The manuscript is not externally peer reviewed.
 <!-- END CLAUDECODE RELEASE NOTE -->

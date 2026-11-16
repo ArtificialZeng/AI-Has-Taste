@@ -126,7 +126,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **454 份数学研究文稿／2,318 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
+本仓库共 **454 份数学研究文稿／2,325 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
 
 七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
@@ -143,7 +143,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 
 | 编号 + PDF | LaTeX 源码 | 复现源码 |
 |---|---|---|
-| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils exist only when n = 3 or 4 divides n](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf)<br>回答高德纳 TAOCP 第 7.2.2.4–231(b) 题：恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n。对所有不被 4 整除的 n ≥ 5 证明了不存在；给出 n = 16、20、24 的巡回；n ≥ 28 引自高德纳草稿。另给出 16 ≤ n ≤ 66 中 n ≡ 0、2 (mod 8) 的 n/2 圈巡回。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+| **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with n/2 coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_n_over_2_coils.pdf)<br>回答高德纳 TAOCP 第 7.2.2.4–231 题的两问。(b) 恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n：对所有不被 4 整除的 n ≥ 5 证明了不存在；给出 n = 16、20、24 的巡回；n ≥ 28 引自高德纳草稿。(a) 恰好 n/2 圈的巡回存在，当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)：对所有这样的 n 证明了存在（n ≤ 90 直接给出巡回；n ≥ 96 由六个种子巡回的 12 格宽可拉伸环带逐层外套；计算机辅助证明），不存在的一半是 S. Li 的定理。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
 
 </details>
 
@@ -775,7 +775,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2318 pages
+├── archive-manifest.json              454 PDFs / 2325 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -841,5 +841,5 @@ AI-Has-Taste/
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。仓库现为454份文稿／2,318页。原有PDF、源码与门控文件字节均未改动。新增文稿未经外部同行评审。
+**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日修订，加入第二个定理（n/2 圈的旋转马步巡回），标题与PDF随之更新。仓库现为454份文稿／2,325页。其余PDF、源码与门控文件字节均未改动。该文稿未经外部同行评审。
 <!-- END CLAUDECODE RELEASE NOTE -->

@@ -30,7 +30,7 @@
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
   "paper_count": 454,
-  "page_count": 2318,
+  "page_count": 2325,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -8666,19 +8666,19 @@
     },
     {
       "paper_id": "CC-P01",
-      "title": "Whirling knight's tours with n coils exist only when n = 3 or 4 divides n",
-      "pages": 6,
-      "sha256": "7e5e1affafce5f7c7f98d2b31361293011eee27eaf47703f4eb8c913619075cd",
+      "title": "Whirling knight's tours with n coils and with n/2 coils",
+      "pages": 13,
+      "sha256": "6bb8cd81aba8abb6d5d70a021b156b982ed02fff9d3f570a65099161f576c130",
       "archive_status": "final-manuscript-internal-checks-only",
       "manuscript_kind": "resolution-paper",
       "original_status": "proved",
       "collection_of_origin": "ClaudeCode",
       "directory": "ClaudeCode",
-      "pdf": "pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_exist_only_when_n_is_3_or_4_divides_n.pdf",
+      "pdf": "pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_n_over_2_coils.pdf",
       "latex": "reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex",
       "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P01/",
       "original_id": "claude-code-20261114-knuth-231b",
-      "contribution": "Knuth's exercise 7.2.2.4-231(b) (TAOCP Pre-Fascicle 8A, draft of 8 May 2026) asks for n x n whirling knight's tours with exactly n coils. Theorem: for every n >= 5 with n not divisible by 4, no such tour exists (weighted counting argument; explicit weights for n = 1, 2, 3 mod 4). New tours with n coils for n = 16, 20, 24 (and for every multiple of 4 from 12 to 48). With the 12 x 12 tour and the n >= 28 construction reported in Knuth's draft, and his counts for n = 4 and 8, an n x n whirling knight's tour with n coils exists if and only if n = 3, or n >= 12 and 4 | n. Also: tours with n/2 coils for every n = 0 or 2 mod 8 with 16 <= n <= 66 (computational; the general case is left as a question).",
+      "contribution": "Knuth's exercise 7.2.2.4-231 (TAOCP Pre-Fascicle 8A, draft of 8 May 2026) asks for n x n whirling knight's tours with exactly n/2 coils and with exactly n coils. (1) n coils: for every n >= 5 with n not divisible by 4, no such tour exists (weighted counting argument; explicit weights for n = 1, 2, 3 mod 4); new tours for n = 16, 20, 24 (and every multiple of 4 from 12 to 48). With the 12 x 12 tour and the n >= 28 construction reported in Knuth's draft, and his counts for n = 4 and 8, a tour with n coils exists if and only if n = 3, or n >= 12 and 4 | n. (2) n/2 coils: for every n >= 16 with n = 0 or 2 (mod 8) such a tour exists: explicit tours for the 20 values n <= 90, and for n >= 96 nested rings of width 12 built from six seed tours (n = 96, 98, 104, 106, 112, 114) whose ring can be stretched by inserting periods; the proof is a lemma on inserting a period into a Hamiltonian path plus finite conditions on the seeds checked by program. With S. Li's nonexistence theorem for n = 4, 6 (mod 8) and Knuth's counts, a tour with n/2 coils exists if and only if n >= 16 and n = 0 or 2 (mod 8). Also (computations only): the least number of coils for 6 <= n <= 37, with a question for general n.",
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
@@ -8940,5 +8940,12 @@
       "CC-P01"
     ],
     "note": "One manuscript added; no existing PDF, source or gate byte changed."
+  },
+  "latest_update": {
+    "date": "2026-11-16",
+    "paper_ids": [
+      "CC-P01"
+    ],
+    "note": "CC-P01 revised to add the n/2-coil theorem: its title, PDF and package were replaced. No other PDF, source or gate byte changed."
   }
 }
