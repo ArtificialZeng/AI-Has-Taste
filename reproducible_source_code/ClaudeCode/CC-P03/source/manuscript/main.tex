@@ -1,0 +1,247 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\tr}{\operatorname{tr}}
+\begin{document}
+\title[Removing edges from flower snark line graphs]{How many edges can be removed from a flower snark line graph?}
+\author{Zijian Zeng}
+\address{UCSI University, Kuala Lumpur, Malaysia}
+\date{17 November 2026}
+
+\begin{abstract}
+The line graph $L(J_q)$ of the flower snark $J_q$ has $6q$ vertices and $12q$ edges, and it is not
+$3$-colourable when $q$ is odd. Exercise 7.2.2.3--233 of Knuth's \emph{The Art of Computer Programming}
+asks how many of its edges can be removed before it becomes $3$-colourable; Knuth's best answer so far
+removes nine. We show that nine is optimal for every odd $q\ge5$: no ten edges can be removed, and the
+removable nine-edge sets are exactly the $4q$ sets obtained by isolating the three edges of $J_q$ at one vertex.
+For $q=3$ the maximum is fifteen. The lower bound holds for every snark by the parity lemma. The upper bound
+uses a $27$-state transfer matrix $T$ around the ring of $J_q$; since $T^2=T^4$, the problem for all $q$
+reduces to a finite computation, which we carry out and check in several independent ways. We also find the
+number of removable $k$-edge sets for every $k$: it is $q$ times $12,132,324,498,504,336,144,36,4$ for
+$k=1,\dots,9$ when $q\ge7$.
+\end{abstract}
+\maketitle
+
+\section{The question and the answer}
+In this note a \emph{snark} is a connected simple cubic graph whose edges cannot be coloured with three
+colours so that the three edges at every vertex get different colours (we do not require girth at least five,
+so that $J_3$, which has a triangle, is included). The flower snarks $J_q$ of Isaacs~\cite{isaacs}, $q\ge3$
+odd, have vertices $a_i,b_i,c_i,d_i$ for $i\in\mathbb Z_q$; each centre $a_i$ is joined to $b_i,c_i,d_i$; the
+$b_i$ form a $q$-cycle $b_0b_1\ldots b_{q-1}b_0$; and the $c_i$ and $d_i$ together form one $2q$-cycle
+$c_0c_1\ldots c_{q-1}d_0d_1\ldots d_{q-1}c_0$. Its line graph $L(J_q)$ has the $6q$ edges of $J_q$ as vertices,
+two of them adjacent when they share an endpoint; so $L(J_q)$ is the union of $4q$ triangles, one for each
+vertex of $J_q$, and has $12q$ edges. A proper $3$-colouring of $L(J_q)$ is the same thing as a $3$-edge-colouring
+of $J_q$, so $L(J_q)$ is not $3$-colourable when $q$ is odd.
+
+Knuth uses these graphs as test cases for SAT solvers~\cite[\S7.2.2.2, ex.~176]{knuth4b}, \cite[\S7.2.2.3]{knuth7}.
+His exercise 7.2.2.3--233~\cite{knuth7}, rated~$40$ (numbering as in the draft cited), observes that $L(J_q)$ stays non-$3$-colourable when any one
+edge is removed, and asks for the largest number of edges whose removal leaves it non-$3$-colourable.
+His answer says that he hopes a reader will supply a good answer, and that his best so far is to remove nine
+edges; his example removes the nine edges of $L(J_q)$ that touch the triangle $\{b_1,c_1,d_1\}$ of his
+labelling. (His labels name the vertices of $L(J_q)$, i.e.\ the edges of $J_q$; judging from the adjacencies in
+his example, $b_1,c_1,d_1$ are the three spokes at the centre of unit~$1$, so in our notation the example is the
+claw set $R_{a_1}$ defined below.)
+
+Call a set $R$ of edges of $L(J_q)$ \emph{removable} if $L(J_q)-R$ is not $3$-colourable. A subset of a removable
+set is removable. For a vertex $v$ of $J_q$ let $R_v$ be the set of edges of $L(J_q)$ that touch at least one of
+the three edges of $J_q$ at $v$: the three edges of the triangle of $v$ and the two further edges at each of its
+corners, nine in all. We call $R_v$ the \emph{claw set} of $v$. Knuth's example is a claw set.
+
+\begin{theorem}\label{thm:main}
+Let $q\ge5$ be odd. Every removable set of edges of $L(J_q)$ has at most nine edges, and the removable sets with
+nine edges are exactly the $4q$ claw sets $R_v$. For $q=3$ the largest removable set has fifteen edges, and it
+is unique: it consists of the edges that touch the six edges of $J_3$ at $b_0$, $b_1$, $b_2$.
+\end{theorem}
+
+So the answer to the exercise is \emph{nine}, for every odd $q\ge5$, and Knuth's example is best possible. We
+also count all removable sets.
+
+\begin{theorem}\label{thm:count}
+For odd $q\ge7$ the number of removable $k$-edge sets of $L(J_q)$ is $c_k\,q$, where
+\[(c_1,\dots,c_9)=(12,\,132,\,324,\,498,\,504,\,336,\,144,\,36,\,4)\]
+and $c_k=0$ for $k\ge10$. For $q=5$ the numbers are $5\cdot(12,132,325,498,504,336,144,36,4)$: the five
+extra triples consist of the edges $\{B,C\}$ at the centres $a_i,a_{i+1},a_{i+3}$, which do not lie in three
+consecutive units of the $5$-ring.
+\end{theorem}
+
+In particular a pair of edges is removable for only $132q$ of the $6q(12q-1)$ pairs, i.e.\ each edge of $L(J_q)$ can
+be removed together with only $22$ others on average.
+
+\section{The lower bound: claw sets}
+\begin{proposition}\label{prop:claw}
+Let $G$ be a snark and $v$ a vertex of $G$. Then the claw set $R_v$ is removable from $L(G)$.
+\end{proposition}
+\begin{proof}
+Removing $R_v$ isolates the three vertices of $L(G)$ that are the edges at $v$, and what is left of $L(G)$ is
+$L(G-v)$ plus three isolated vertices. So it suffices to show that $G-v$ has no $3$-edge-colouring. Suppose it
+had one, and let $x,y,z$ be the neighbours of $v$; they have degree $2$ in $G-v$ and every other vertex has
+degree~$3$. Each colour class is a matching, so the number of vertices it misses has the parity of
+$|V(G-v)|$, which is odd because cubic graphs have an even number of vertices. The vertices missed by a colour
+are among $x,y,z$, and each of them misses exactly one colour. Hence each of the three colours is missed by
+exactly one of $x,y,z$, and colouring $vx,vy,vz$ with the colours missing at $x,y,z$ gives a $3$-edge-colouring
+of $G$, a contradiction.
+\end{proof}
+
+The fifteen-edge set of Theorem~\ref{thm:main} for $q=3$ is removable for a similar reason. Removing it leaves
+$L(J_3-\{b_0,b_1,b_2\})$ plus six isolated vertices. Contracting the triangle $b_0b_1b_2$ of $J_3$ gives the
+Petersen graph $P$, so $J_3-\{b_0,b_1,b_2\}$ is $P$ minus a vertex, which has no $3$-edge-colouring by the
+argument above applied to the snark $P$. More generally, if a snark $G$ has a triangle whose contraction gives a
+simple graph $G'$, then $G'$ is again a snark, $G$ minus the triangle is $G'$ minus a vertex, and the fifteen
+edges of $L(G)$ that touch the six edges at the triangle form a removable set.
+
+\section{The upper bound: a transfer matrix}
+\subsection*{Units and states}
+Unit $i$ of $J_q$ consists of the vertices $a_i,b_i,c_i,d_i$, the spokes $A=a_ib_i$, $B=a_ic_i$, $C=a_id_i$, and the
+three \emph{right connectors} $X=b_ib_{i+1}$, $Y=c_ic_{i+1}$, $Z=d_id_{i+1}$, except that for $i=q-1$ they are
+$X=b_{q-1}b_0$, $Y=c_{q-1}d_0$, $Z=d_{q-1}c_0$. The right connectors of unit $i-1$ are the \emph{left connectors}
+$X_L,Y_L,Z_L$ of unit $i$; at unit $0$ the roles of $Y$ and $Z$ are exchanged (the twist). A \emph{state} is a
+triple of colours $(X,Y,Z)\in\{0,1,2\}^3$; there are $27$ states.
+
+The twelve edges of $L(J_q)$ at the four vertices of unit $i$ get local numbers:
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+at $a_i$ & at $b_i$ & at $c_i$ & at $d_i$\\
+\midrule
+$0:\{A,B\}$ & $3:\{X_L,A\}$ & $6:\{Y_L,B\}$ & $9:\{Z_L,C\}$\\
+$1:\{A,C\}$ & $4:\{A,X\}$ & $7:\{B,Y\}$ & $10:\{C,Z\}$\\
+$2:\{B,C\}$ & $5:\{X_L,X\}$ & $8:\{Y_L,Y\}$ & $11:\{Z_L,Z\}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For $S\subseteq\{0,\dots,11\}$ let $U(S)$ be the $27\times27$ Boolean matrix whose entry $(s,t)$ is $1$ when
+there are colours for $A,B,C$ such that, with left connectors coloured by $s$ and right connectors by $t$, any two
+edges of $J_q$ that form one of the twelve pairs get different colours unless the pair is in $S$. Let
+$T=U(\emptyset)$, and let $W$ be the permutation matrix of $(X,Y,Z)\mapsto(X,Z,Y)$. A set $R$ of edges of $L(J_q)$
+is a set of pairs (unit $i$, local number), and $R_i$ denotes its part in unit~$i$.
+
+\begin{lemma}\label{lem:trace}
+$L(J_q)-R$ is $3$-colourable if and only if the Boolean matrix
+\[W\,U(R_0)\,U(R_1)\cdots U(R_{q-1})\]
+has a $1$ on its diagonal.
+\end{lemma}
+\begin{proof}
+A $3$-colouring of $L(J_q)-R$ is a colouring of the edges of $J_q$ in which two edges at a common vertex get
+different colours unless the corresponding edge of $L(J_q)$ is in~$R$. Every such pair lies in exactly one unit,
+and the constraints of unit $i$ involve only its spokes and its left and right connectors. So colourings
+correspond to closed walks $s_{q-1}\to s_0\to\dots\to s_{q-1}$ through the states of the right connectors, the
+step into unit $0$ going through the twist~$W$.
+\end{proof}
+
+The next facts are finite computations with $27\times27$ Boolean matrices (\S\ref{sec:check}).
+
+\begin{lemma}\label{lem:facts}
+\textup{(a)} $T^2=T^4$, so $T^k$ for $k\ge2$ depends only on $k\bmod2$.
+
+\noindent\textup{(b)} $WTW=T$, and $W\,U(S)\,W=U(\sigma S)$ for every $S$; here $\sigma$ exchanges $0$ and $1$,
+$6$ and $9$, $7$ and $10$, $8$ and $11$, and fixes $2,3,4,5$.
+\end{lemma}
+
+The map that sends unit $i$ to unit $i+1$ for $i<q-1$, and unit $q-1$ to unit $0$ with $c$ and $d$ exchanged,
+is an automorphism of $J_q$. In terms of matrices this is (b) together with the cyclic invariance of the trace:
+the twist can be moved past a unit at the cost of relabelling that unit by~$\sigma$. So any configuration can be
+rotated so that a chosen unit becomes unit~$0$; the rotated configuration is again a set of (unit, local number)
+pairs, of the same size.
+
+\begin{lemma}\label{lem:far}
+Let $q\ge7$ be odd. If two edges of $L(J_q)$ lie in units at cyclic distance at least $3$, they do not form a
+removable pair. (For $q=5$ no two units are at distance $3$.)
+\end{lemma}
+\begin{proof}
+Rotate so that the first edge, $e$, is in unit $0$ and the second, $f$, in unit $\delta$ with $3\le\delta\le q-3$.
+By Lemma~\ref{lem:trace} the pair is removable iff
+$W\,U(\{e\})\,T^{\delta-1}\,U(\{f\})\,T^{q-1-\delta}$ has no $1$ on its diagonal. Both exponents are at least $2$ and
+their sum $q-2$ is odd, so by Lemma~\ref{lem:facts}(a) the product takes only the two values with exponents
+$(2,3)$ and $(3,2)$. For each of these and each of the $144$ choices of $e,f$ the diagonal contains a~$1$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main} for $q\ge7$]
+Let $R$ be removable. Every two of its edges form a removable pair, so by Lemma~\ref{lem:far} their units are at
+cyclic distance at most~$2$. These units lie in an arc of three consecutive units: rotate so that one of them is
+unit $0$; all others are in $\{-2,\dots,2\}$, and a unit $x>0$ and a unit $y<0$ would be at cyclic distance
+$\min(x-y,\,q-x+y)\ge3$ unless $x-y\le2$, because $q-x+y\ge q-4\ge3$. So the units of $R$ are in $\{-2,-1,0\}$,
+$\{-1,0,1\}$ or $\{0,1,2\}$. Rotate them to units $0,1,2$. By Lemma~\ref{lem:trace} and Lemma~\ref{lem:facts}(a), $R$ is removable iff
+\[W\,U(R_0)\,U(R_1)\,U(R_2)\,T^2\]
+has no $1$ on its diagonal, because $q-3\ge4$ is even. This condition does not depend on $q$. We enumerate all
+sets $R$ of the $36$ edges of units $0,1,2$ that satisfy it, by depth-first search that adds edges in a fixed order
+and stops as soon as a set fails (subsets of removable sets are removable). The numbers of such sets of sizes
+$0,1,\dots,9$ are
+\[1,\ 36,\ 297,\ 678,\ 951,\ 882,\ 546,\ 222,\ 54,\ 6,\]
+and there are none of size $10$. Of the six sets of size~$9$, four meet unit $0$; they are the claw sets of $a_0$,
+$b_1$, $c_1$, $d_1$ (the program reads them off the explicit graph). Every removable set has a unique first unit,
+the first unit of the shortest arc that contains its units (an arc of three units has a unique first unit
+when $q\ge7$), so for each odd $q\ge7$ the removable nine-edge sets are the $4q$ claw sets
+$R_{a_i},R_{b_{i+1}},R_{c_{i+1}},R_{d_{i+1}}$, $i\in\mathbb Z_q$, and there is no removable set with ten edges.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main} for $q=3,5$]
+Here the same depth-first search runs over all $12q$ edges of the ring, using Lemma~\ref{lem:trace} to test each
+set. For $q=5$ the largest removable sets have nine edges and there are $20$ of them; by
+Proposition~\ref{prop:claw} the $20$ claw sets are among them, so these are all. For $q=3$ the largest removable
+set has fifteen edges and is unique.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:count}]
+As in the proof above, a removable $k$-set of $L(J_q)$, $q\ge7$ odd, corresponds to a removable $k$-set of the
+window of units $0,1,2$ that meets unit~$0$, rotated to each of the $q$ possible first units. The number of window
+sets meeting unit $0$ is the number of removable window sets minus the number of those that avoid unit $0$.
+The window sets avoiding unit $0$, i.e.\ the removable sets inside units $1,2$ alone, number
+$1,24,165,354,453,378,210,78,18,2$ for $k=0,\dots,9$; subtracting these from the window counts gives the $c_k$.
+The counts for $q=5$ come from the exhaustive search over the whole ring.
+\end{proof}
+
+\section{Checks}\label{sec:check}
+The program \texttt{snark\_check.py} (Python standard library only) does the following.
+\begin{itemize}
+\item \texttt{model}: for $q=3,5,7$ and for every set $R$ of at most two edges of $L(J_q)$ ($6069$ sets in all) it
+compares Lemma~\ref{lem:trace} with a direct backtracking $3$-colouring of the explicit graph $L(J_q)-R$; it also
+checks that the local numbering is a bijection onto the $12q$ edges. No disagreement.
+\item \texttt{period}: $T^2=T^4$ (and $T\ne T^3$); $WTW=T$; $W\,U(S)\,W=U(\sigma S)$ for all $4096$ sets $S$.
+\item \texttt{pairs}: the computation in the proof of Lemma~\ref{lem:far}.
+\item \texttt{window}: the enumeration in the proof of Theorem~\ref{thm:main}, including the identification of the
+four maximum sets with claw sets of the explicit graph.
+\item \texttt{small}: the cases $q=3,5$, including the description of the fifteen-edge set for $q=3$ and the
+counts for $q=5$.
+\item \texttt{claws}: every claw set is removable for all odd $q\le41$ by Lemma~\ref{lem:trace}, and for $q\le9$ also
+by direct colouring.
+\end{itemize}
+Independently of the transfer matrix, a CP-SAT model with the removable pairs as constraints, followed by a direct
+colourability test of each candidate, gives the maximum $9$ with exactly $4q$ maximum sets for $q=5,7,\dots,15$,
+the maximum $15$ for $q=3$, and $132q$ removable pairs and $324q$ removable triples for $q=5,\dots,11$ and $q=7,9$
+respectively, in agreement with Theorem~\ref{thm:count}. We also checked that our $J_q$ is isomorphic to the graph
+of~\cite[\S7.2.2.2, ex.~176]{knuth4b} for $q=3,5,7,9$. Finally, an independent referee (another AI agent) rebuilt
+the graphs, a SAT-based colourability test and the transfer matrices from the text of this note alone, and
+found Theorems~\ref{thm:main} and~\ref{thm:count} confirmed by exhaustive enumeration for every odd
+$q\le17$.
+
+\section{Remarks}
+For the Petersen graph $P$ the same search shows that the largest removable sets of $L(P)$ also have nine edges,
+and that there are exactly ten of them, the claw sets of its ten vertices. By Proposition~\ref{prop:claw} nine
+edges can be removed from $L(G)$ for every snark $G$, and fifteen when $G$ has a suitable triangle
+(\S2). The graph $J_3$ shows that more than nine is sometimes possible.
+
+\begin{question}
+For which snarks $G$ is nine the largest number of removable edges of $L(G)$, with the claw sets as the only
+nine-edge removable sets? Is this true for all snarks of girth at least five?
+\end{question}
+
+\medskip\noindent\emph{How this was done.} The search programs, the transfer-matrix argument, the checks and this
+note were produced with Claude Code (Anthropic) at the author's direction. The author is responsible for the
+content.
+
+\begin{thebibliography}{9}
+\bibitem{isaacs} R.~Isaacs, Infinite families of nontrivial trivalent graphs which are not Tait colorable,
+\emph{Amer. Math. Monthly} \textbf{82} (1975), 221--239.
+\bibitem{knuth4b} D.~E. Knuth, \emph{The Art of Computer Programming}, Volume 4B, Addison--Wesley, 2022.
+\bibitem{knuth7} D.~E. Knuth, \emph{The Art of Computer Programming}, Volume 4, Fascicle 7: Constraint
+Satisfaction, Addison--Wesley, 2025. Cited from its final draft, Pre-Fascicle 7A (5 December 2024), exercise
+7.2.2.3--233 and its answer.
+\end{thebibliography}
+\end{document}

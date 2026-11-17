@@ -1,0 +1,54 @@
+{
+  "original_id": "claude-code-20261117-knuth-7-2-2-3-233",
+  "archive_id": "CC-P03",
+  "title": "How many edges can be removed from a flower snark line graph?",
+  "batch_label": "Claude Code",
+  "kind": "resolution-paper",
+  "original_status": "Proved",
+  "scope": "For every odd q >= 5: the largest removable edge set of L(J_q) has 9 edges and the 9-edge removable sets are exactly the 4q claw sets; q = 3: maximum 15. Counts of removable k-sets for q >= 7. No claim about other snarks.",
+  "gate_basis": "snark_check.py (Python standard library) recomputes the transfer matrices, checks T^2 = T^4 and the twist symmetry for all 4096 unit subsets, the far-pairs lemma, the exhaustive window search, the cases q = 3, 5, and claw validity for q <= 41; it compares the transfer model with direct colouring of L(J_q) - R for all |R| <= 2 and q = 3, 5, 7. extras.py gives the counts and the Petersen case. Logs in evidence/logs/. One independent AI referee pass.",
+  "provenance": {
+    "tool": "Claude Code (Anthropic)",
+    "first_obtained": "2026-11-17",
+    "archived": "2026-11-17"
+  },
+  "pdf": "pdfs/ClaudeCode/CC-P03_Removing_edges_from_flower_snark_line_graphs.pdf",
+  "pdf_sha256": "9582cbf86ca6a6c5a1e323fc8137bace8c32e9dea137adb59867c319c6fd0cd2",
+  "pages": 5,
+  "latex": "reproducible_source_code/ClaudeCode/CC-P03/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P03/",
+  "source_root": "reproducible_source_code/ClaudeCode/CC-P03/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "Python 3.8+ standard library for snark_check.py and extras.py.",
+    "OR-Tools (CP-SAT) and a C compiler for the exploratory programs in evidence/search/."
+  ],
+  "limitations": [
+    "Not externally peer reviewed. Checks so far: the stand-alone program, independent brute-force computations, and one independent AI referee pass on 2026-11-17. One independent AI referee (another agent) rebuilt the graphs, a SAT colourability test and the transfer matrices from the text alone, confirmed both theorems by exhaustive enumeration for every odd q from 3 to 17, and recommended acceptance with minor revisions, which were made (an explicit arc argument, the q = 5 counts, the q = 3 case via the Petersen graph, clearer wording).",
+    "Computer-assisted. The upper bound rests on finite computations with 27 x 27 Boolean matrices (T^2 = T^4, the far-pairs lemma, and an exhaustive search over the 2^36 edge sets of three consecutive units with monotone pruning); the transfer model is checked against direct colouring of the explicit graph for every set of at most two edges when q = 3, 5, 7.",
+    "The question for other snarks is open: the Petersen graph also gives 9 (its 10 claw sets), J_3 gives 15.",
+    "Knuth's exercise and answer are paraphrased from Pre-Fascicle 7A (5 December 2024), the frozen draft of Volume 4 Fascicle 7, fetched from the Internet Archive; they are cited, not reproduced. Whether the result is new was checked only against that answer and a short literature search."
+  ],
+  "entrypoints": [
+    "python3 evidence/snark_check.py all",
+    "python3 evidence/extras.py"
+  ],
+  "source_files": 14,
+  "source_sha256": {
+    "source/evidence/extras.py": "b406925e6103fe5076fb73106da20c1dec24ca43b649e0516ca40134515156fb",
+    "source/evidence/logs/log_all.txt": "4282318948ca91d84e08e71cce5afe476f30f4e5e8b8e8c3f9c03119c5a8e7fb",
+    "source/evidence/logs/log_extras.txt": "e05bc55a22c2c2515007ffd8f6bf733e12aadaa8b301c8eb75534955a50c6e96",
+    "source/evidence/search/color3.c": "0cb0b2c9c931d5883d3c6cbf463ba95307d228bf908a7b281871ffcc3d0f2a26",
+    "source/evidence/search/count9.py": "24dff8d2b0e98d8c18091f17b2eeb6cf90c7fd54d146efcf29b0f33fb0bcc5d3",
+    "source/evidence/search/proof1.py": "aa8d7e9d3f71a1a985f9e6b206ca05138682a66eb617c3e66f6b2585f7f551ae",
+    "source/evidence/search/proof2.py": "f4f2d4018926e739944a662f0fed8f2bb00675bb2f79064d6bc15fcf0daec021",
+    "source/evidence/search/proof3.py": "773034d16ffc1490a0d01af2f42125d6d670105ae681bdc7bb82100922a90044",
+    "source/evidence/search/snark.py": "c3c887bcfd6a2e4b6a45d258a3e8cbdd3fef0ce8930618de04fd386a189176bc",
+    "source/evidence/search/snark2.py": "ede6a9637c3233f9f4ba5f6676fb5a03ccdcddbd4460677ceac183882f0a81d1",
+    "source/evidence/search/transfer.py": "e6f0cd990170833e277e83276664261a298a7031f2ef741de5f112938ec98cd8",
+    "source/evidence/search/xcheck.py": "05d28e1fac4815792962ff630ec7a10d8ab5cfe72105b22e379b67e12050f3ee",
+    "source/evidence/snark_check.py": "dc5fa2a11d6da020a7943e974103855004abeffbdf4b2f35d692e3b752dfb743",
+    "source/manuscript/main.tex": "62bf585198db50f0f8621a202ad779cd018800186cfe2dbdd535c755c91c75a0"
+  },
+  "introduces_new_conjecture": false
+}

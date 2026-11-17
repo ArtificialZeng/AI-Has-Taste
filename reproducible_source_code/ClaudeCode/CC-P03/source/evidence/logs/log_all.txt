@@ -1,0 +1,15 @@
+model q=3: 667 edge sets of size <= 2 compared with direct coloring, disagreements: 0
+model q=5: 1831 edge sets of size <= 2 compared with direct coloring, disagreements: 0
+model q=7: 3571 edge sets of size <= 2 compared with direct coloring, disagreements: 0
+T^2 == T^4: True   T == T^3: False
+SW U(R) SW == U(sigma R) for all 4096 subsets R: True   SW T SW == T: True
+largest cyclic unit distance of two removable edges that keep L(J_q) uncolorable: 2
+removable sets inside 3 consecutive units, by size: {0: 1, 1: 36, 2: 297, 3: 678, 4: 951, 5: 882, 6: 546, 7: 222, 8: 54, 9: 6}
+maximum size 9; maximum sets meeting unit 0: 4
+  they are the claw sets of a_0, b_1, c_1, d_1, so there are exactly 4q maximum sets for every odd q >= 7
+q=3: maximum 15, attained by 1 sets; removable sets by size / q: [12.0, 137.0, 486.6666666666667, 1004.0, 1631.0, 2172.3333333333335, 2421.0, 2244.0, 1689.3333333333333, 1003.0, 455.0, 151.66666666666666, 35.0, 5.0, 0.3333333333333333]
+  it is the set touching the edges at b_0, b_1, b_2; J_3 - {b_0,b_1,b_2} has no 3-edge-coloring
+q=5: maximum 9, attained by 20 sets; removable sets by size / q: [12.0, 132.0, 325.0, 498.0, 504.0, 336.0, 144.0, 36.0, 4.0]
+all 4q claw sets keep L(J_q) uncolorable for odd q = 3..41 (direct check for q <= 9)
+all checks passed
+python3 snark_check.py all  68.35s user 0.09s system 99% cpu 1:08.46 total

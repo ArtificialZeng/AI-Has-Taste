@@ -6,7 +6,7 @@
 
 **From Answer Generation to Research-Agenda Generation**
 
-**455 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
+**456 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
 
 > **Can AI decide what mathematics is worth pursuing next?**
 
@@ -126,14 +126,14 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **455 research manuscripts / 2,364 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 455 original open problems have been solved.
+The archive contains **456 research manuscripts / 2,369 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 456 original open problems have been solved.
 
 Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
 **Language policy:** English and Simplified Chinese include the corrected BigWIN2 collection and the Claude Code addition. French, Russian, German and Japanese retain their preceding archive snapshots. Existing PDF bytes and authorship are unchanged.
 
 <details open>
-<summary><strong>Claude Code · 2 manuscripts · added 2026-11-16 and 2026-11-17</strong></summary>
+<summary><strong>Claude Code · 3 manuscripts · added 2026-11-16 and 2026-11-17</strong></summary>
 
 <a id="claude-code"></a>
 
@@ -145,6 +145,7 @@ A separate collection for results obtained with Claude Code (Anthropic) under th
 |---|---|---|
 | **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>On Knuth's TAOCP exercise 7.2.2.4–231. (b) An n×n whirling knight's tour with exactly n coils exists iff n = 3, or n ≥ 12 and 4 &#124; n: nonexistence is proved for all n ≥ 5 not divisible by 4; the case n ≥ 28 is quoted from Knuth's draft. (a) A new lower bound from path covers of a wedge: at least n/2 + 2 coils when n ≡ 4, 6 (mod 8), and at least (n+3)/2 coils for odd n ≢ 1, 19 (mod 24). For every n ≥ 11 the least number of coils is determined: n/2 (n ≡ 0, 2 mod 8), n/2 + 2 (n ≡ 4, 6 mod 8), (n+1)/2 (n ≡ 1, 19 mod 24), (n+3)/2 (other odd n); it is attained by explicit tours for small n and by nested stretchable rings from twenty-four seed tours (computer-assisted). Hence n/2 coils occur iff n ≥ 16 and n ≡ 0, 2 (mod 8). For n ≡ 3 (mod 4) the ring replaces 28 to 31 short pieces of the inner tour instead of a single arc. The greatest number of coils is n if 4 &#124; n and n − 1 otherwise, for every n ≥ 10, and every number of coils between the least and the greatest one occurs (n ≥ 6). Tours invariant under the half turn have an odd number of coils, and the least number of coils of such tours is determined for every n ≥ 11 (with quarter-turn symmetry when 4 ∤ n). | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
 | **CC-P02** · Claude Code<br>[Closed knight's tours with 7.5 n + O(1) crossings](pdfs/ClaudeCode/CC-P02_Closed_knights_tours_with_7_5_n_crossings.pdf)<br>On Knuth's TAOCP exercise 7.2.2.4–161: for every even n ≥ 30 there is a closed knight's tour of the n×n board with exactly 7.5 n + 13 crossings (the best construction in print has 12n + O(1); at least 4n − O(1) are necessary). Explicit tours: one field of parallel moves, four periodic wall patterns, 179 cells found by a solver. Computer-assisted; a stand-alone program checks every even n from 30 to 500. | [main.tex](reproducible_source_code/ClaudeCode/CC-P02/source/manuscript/main.tex) | [CC-P02](reproducible_source_code/ClaudeCode/CC-P02/) |
+| **CC-P03** · Claude Code<br>[How many edges can be removed from a flower snark line graph?](pdfs/ClaudeCode/CC-P03_Removing_edges_from_flower_snark_line_graphs.pdf)<br>On Knuth's TAOCP exercise 7.2.2.3–233: for every odd q ≥ 5 at most nine edges can be removed from the flower snark line graph L(J_q) so that it stays non-3-colourable, and the nine-edge sets are exactly the 4q claw sets (q = 3: fifteen). Knuth's best was nine. Transfer-matrix proof (T² = T⁴); stand-alone checker. | [main.tex](reproducible_source_code/ClaudeCode/CC-P03/source/manuscript/main.tex) | [CC-P03](reproducible_source_code/ClaudeCode/CC-P03/) |
 
 </details>
 
@@ -776,7 +777,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              455 PDFs / 2364 pages
+├── archive-manifest.json              456 PDFs / 2369 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -795,11 +796,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    2 PDFs (added 2026-11-16 and 2026-11-17)
+│   ├── ClaudeCode/                    3 PDFs (added 2026-11-16 and 2026-11-17)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    2 paired packages (CC-P01, CC-P02)
+    ├── ClaudeCode/                    3 paired packages (CC-P01, CC-P02, CC-P03)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
@@ -819,7 +820,7 @@ AI-Has-Taste/
 
 The next release should make more of the research replayable—not merely make the archive larger.
 
-*Archive edition: November 17, 2026 (455 manuscripts; second Claude Code manuscript added). Edition of November 16, 2026: 454 manuscripts; Claude Code collection added. Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
+*Archive edition: November 17, 2026 (456 manuscripts; second and third Claude Code manuscripts added). Edition of November 16, 2026: 454 manuscripts; Claude Code collection added. Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
 
 **AI Has Taste. The question is no longer only whether it can find an answer—but how it chooses the next question.**
 
@@ -842,5 +843,5 @@ The next release should make more of the research replayable—not merely make t
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. On 2026-11-17 a second manuscript, CC-P02 (closed knight's tours with 7.5 n + 13 crossings), was added with its paired package. The archive now has 455 manuscripts / 2,364 pages. No other PDF, source or gate byte was changed. The two manuscripts are not externally peer reviewed.
+**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. On 2026-11-17 a second manuscript, CC-P02 (closed knight's tours with 7.5 n + 13 crossings), was added with its paired package, and later that day a third, CC-P03 (removable edges of flower snark line graphs, TAOCP 7.2.2.3–233). The archive now has 456 manuscripts / 2,369 pages. No other PDF, source or gate byte was changed. The three manuscripts are not externally peer reviewed.
 <!-- END CLAUDECODE RELEASE NOTE -->

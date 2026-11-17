@@ -18,7 +18,7 @@
     "de": "README.de.md",
     "ja": "README.ja.md"
   },
-  "homepage_edition": "en-zh-455-manuscripts-claude-code-second-entry",
+  "homepage_edition": "en-zh-456-manuscripts-claude-code-third-entry",
   "localization_scope": "English/Chinese counts and topical catalogs synchronized; PDF links corrected in other language snapshots where necessary.",
   "catalog_language": "en",
   "pdf_sections_collapsed_by_default": true,
@@ -29,8 +29,8 @@
     "generation": "Built-in image generation tool",
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
-  "paper_count": 455,
-  "page_count": 2364,
+  "paper_count": 456,
+  "page_count": 2369,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -38,7 +38,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 218,
-    "ClaudeCode": 2
+    "ClaudeCode": 3
   },
   "source_collection_counts": {
     "smallmac_1": 17,
@@ -46,7 +46,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 223,
-    "ClaudeCode": 2
+    "ClaudeCode": 3
   },
   "scope": "230 upstream manuscripts plus 223 unique current-conversation BigWIN2 manuscripts. Prior BigWIN1 attribution corrected, without changing PDF or frozen source/evidence bytes. No newly eligible final PDF found in the 2026-09-17 incremental scan.",
   "upload_notice": "Repository publication authorized by the user; actual Git transport outcome is reported separately, not inferred from this manifest.",
@@ -8701,6 +8701,25 @@
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
+    },
+    {
+      "paper_id": "CC-P03",
+      "title": "How many edges can be removed from a flower snark line graph?",
+      "pages": 5,
+      "sha256": "9582cbf86ca6a6c5a1e323fc8137bace8c32e9dea137adb59867c319c6fd0cd2",
+      "archive_status": "final-manuscript-internal-checks-only",
+      "manuscript_kind": "resolution-paper",
+      "original_status": "proved",
+      "collection_of_origin": "ClaudeCode",
+      "directory": "ClaudeCode",
+      "pdf": "pdfs/ClaudeCode/CC-P03_Removing_edges_from_flower_snark_line_graphs.pdf",
+      "latex": "reproducible_source_code/ClaudeCode/CC-P03/source/manuscript/main.tex",
+      "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P03/",
+      "original_id": "claude-code-20261117-knuth-7-2-2-3-233",
+      "contribution": "Knuth's exercise 7.2.2.3-233 (TAOCP Volume 4, Fascicle 7, 2025) asks how many edges can be removed from the line graph L(J_q) of the flower snark J_q, q odd, before it becomes 3-colorable; his answer hopes for a reader's answer and reports nine. Theorem: for every odd q >= 5 the maximum is exactly 9, and the removable 9-edge sets are exactly the 4q claw sets (the edges of L(J_q) touching the three edges of J_q at one vertex); for q = 3 the maximum is 15 (unique). For q >= 7 the number of removable k-edge sets is q times 12, 132, 324, 498, 504, 336, 144, 36, 4 (k = 1..9). Lower bound by the parity lemma (for every snark); upper bound computer-assisted by a 27-state Boolean transfer matrix with T^2 = T^4.",
+      "introduces_new_conjecture": false,
+      "build_status": "pass",
+      "replay_status": "pass-bounded-exact-replay"
     }
   ],
   "code_inclusion_scope": "BigMac1 only; selected source and exact evidence, not every external tool or large historical trace.",
@@ -8956,7 +8975,7 @@
     "date": "2026-11-17",
     "collection": "ClaudeCode",
     "paper_ids": [
-      "CC-P02"
+      "CC-P03"
     ],
     "note": "One manuscript added; no existing PDF, source or gate byte changed."
   },
