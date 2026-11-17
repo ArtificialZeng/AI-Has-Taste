@@ -1,0 +1,25 @@
+157: on the 8x8 board the five classes are ['D', 'I', 'K', 'L', 'N'] (letters as read from Knuth's figure)
+157: facts (i) and (ii) hold for every n x n board, 7 <= n <= 20 (not for n = 6); hence the five classes carry exactly 8 moves of any closed tour
+q=6: printed rule: accesses outside the node 14, pointers allocated 723
+q=6: swapped rule: accesses outside the node 0, pointers allocated 800
+q=8: printed rule: accesses outside the node 86, pointers allocated 2500
+q=8: swapped rule: accesses outside the node 0, pointers allocated 2735
+q=10: printed rule: accesses outside the node 201, pointers allocated 4682
+q=10: swapped rule: accesses outside the node 0, pointers allocated 5212
+q=14: printed rule: accesses outside the node 484, pointers allocated 9608
+q=14: swapped rule: accesses outside the node 0, pointers allocated 11293
+q=2: brute force over all 5 keys 24/5 = 4.800000; formula 24/5; equal: True
+q=3: brute force over all 14 keys 54/7 = 7.714286; formula 54/7; equal: True
+q=4: brute force over all 43 keys 471/43 = 10.953488; formula 471/43; equal: True
+q=5: brute force over all 142 keys 1024/71 = 14.422535; formula 1024/71; equal: True
+q=6: brute force over all 499 keys 9064/499 = 18.164329; formula 9064/499; equal: True
+q=7: brute force over all 1850 keys 554/25 = 22.160000; formula 554/25; equal: True
+q=8: brute force over all 7193 keys 190055/7193 = 26.422216; formula 190055/7193; equal: True
+q=9: brute force over all 29186 keys 451616/14593 = 30.947441; formula 451616/14593; equal: True
+asymptotics: E P - q^2/6 + q^1.5/3 divided by q:
+  q=100: E P = 1663.4195; (E P - q^2/6 + q^1.5/3)/q = 3.300862
+  q=400: E P = 25358.5316; (E P - q^2/6 + q^1.5/3)/q = 3.396329
+  q=1600: E P = 410848.6590; (E P - q^2/6 + q^1.5/3)/q = 3.447079
+  q=3200: E P = 1657406.4029; (E P - q^2/6 + q^1.5/3)/q = 3.462348
+all checks passed
+python3 notes8a_check.py all  3.67s user 0.03s system 99% cpu 3.698 total

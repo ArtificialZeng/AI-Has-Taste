@@ -1,13 +1,13 @@
 # Repository directory / 完整目录层级
 
-**457 manuscripts / 2,373 pages** (edition of 2026-11-17: the Claude Code collection has four manuscripts, CC-P01, added on 2026-11-16 and revised since, and CC-P02, CC-P03 and CC-P04, added on 2026-11-17; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
+**458 manuscripts / 2,376 pages** (edition of 2026-11-18: the Claude Code collection has five manuscripts, CC-P01, added on 2026-11-16 and revised since, CC-P02, CC-P03 and CC-P04, added on 2026-11-17, and CC-P05, added on 2026-11-18; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
 
 ```text
 AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              457 PDFs / 2373 pages
+├── archive-manifest.json              458 PDFs / 2376 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -26,11 +26,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    4 PDFs (added 2026-11-16 and 2026-11-17)
+│   ├── ClaudeCode/                    5 PDFs (added 2026-11-16 to 2026-11-18)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    4 paired packages (CC-P01, CC-P02, CC-P03, CC-P04)
+    ├── ClaudeCode/                    5 paired packages (CC-P01 to CC-P05)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/

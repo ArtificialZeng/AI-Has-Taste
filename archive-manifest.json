@@ -1,6 +1,6 @@
 {
   "project": "AI Has Taste",
-  "prepared_on": "2026-11-17",
+  "prepared_on": "2026-11-18",
   "language": "en",
   "homepage_languages": [
     "en",
@@ -18,7 +18,7 @@
     "de": "README.de.md",
     "ja": "README.ja.md"
   },
-  "homepage_edition": "en-zh-457-manuscripts-claude-code-fourth-entry",
+  "homepage_edition": "en-zh-458-manuscripts-claude-code-fifth-entry",
   "localization_scope": "English/Chinese counts and topical catalogs synchronized; PDF links corrected in other language snapshots where necessary.",
   "catalog_language": "en",
   "pdf_sections_collapsed_by_default": true,
@@ -29,8 +29,8 @@
     "generation": "Built-in image generation tool",
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
-  "paper_count": 457,
-  "page_count": 2373,
+  "paper_count": 458,
+  "page_count": 2376,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -38,7 +38,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 218,
-    "ClaudeCode": 4
+    "ClaudeCode": 5
   },
   "source_collection_counts": {
     "smallmac_1": 17,
@@ -46,7 +46,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 223,
-    "ClaudeCode": 4
+    "ClaudeCode": 5
   },
   "scope": "230 upstream manuscripts plus 223 unique current-conversation BigWIN2 manuscripts. Prior BigWIN1 attribution corrected, without changing PDF or frozen source/evidence bytes. No newly eligible final PDF found in the 2026-09-17 incremental scan.",
   "upload_notice": "Repository publication authorized by the user; actual Git transport outcome is reported separately, not inferred from this manifest.",
@@ -8739,6 +8739,25 @@
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
+    },
+    {
+      "paper_id": "CC-P05",
+      "title": "Three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b) and 205",
+      "pages": 3,
+      "sha256": "8757b44815266ba4132eb7c45b9fd378fc7d2c8929fb09c61ccafeb20176a890",
+      "archive_status": "final-manuscript-internal-checks-only",
+      "manuscript_kind": "resolution-paper",
+      "original_status": "proved",
+      "collection_of_origin": "ClaudeCode",
+      "directory": "ClaudeCode",
+      "pdf": "pdfs/ClaudeCode/CC-P05_Three_remarks_on_Pre-Fascicle_8A_157b_204b_205.pdf",
+      "latex": "reproducible_source_code/ClaudeCode/CC-P05/source/manuscript/main.tex",
+      "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P05/",
+      "original_id": "claude-code-20261118-knuth-8a-157-204-205",
+      "contribution": "Three remarks on Knuth's draft of TAOCP Section 7.2.2.4 (Pre-Fascicle 8A, 8 May 2026). (1) Answer 157(b) says no explanation is known for the absence of closed 8x8 knight's tours with at least two moves in every one of the 21 symmetry classes; in fact five classes (D, I, K, L, N) always carry exactly eight moves, because each of the eight cells next to a corner spends one move on its corner and its other move in these classes. (2) The field count in the trie-building loop of answer 204(b) has its two cases interchanged (confirmed by running the loop literally). (3) The case n = 1 of research problem 205: exact average number of pointers for one random key, and its expansion q^2/6 - q^{3/2}/3 + 7q/2 - c sqrt q + O(1).",
+      "introduces_new_conjecture": false,
+      "build_status": "pass",
+      "replay_status": "pass-bounded-exact-replay"
     }
   ],
   "code_inclusion_scope": "BigMac1 only; selected source and exact evidence, not every external tool or large historical trace.",
@@ -8991,10 +9010,10 @@
   "latest_reconciliation": "assets/BigWIN2/intake-reconciliation.json",
   "reclassification_mapping": "assets/BigWIN2/reclassification-20260917.json",
   "latest_addition": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "collection": "ClaudeCode",
     "paper_ids": [
-      "CC-P04"
+      "CC-P05"
     ],
     "note": "One manuscript added; no existing PDF, source or gate byte changed."
   },

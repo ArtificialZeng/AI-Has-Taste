@@ -1,0 +1,48 @@
+{
+  "original_id": "claude-code-20261118-knuth-8a-157-204-205",
+  "archive_id": "CC-P05",
+  "title": "Three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b) and 205",
+  "batch_label": "Claude Code",
+  "kind": "resolution-paper",
+  "original_status": "Proved",
+  "scope": "An explanation of answer 157(b) (8x8 and every n >= 7), a correction to answer 204(b), and the case n = 1 of problem 205.",
+  "gate_basis": "notes8a_check.py (Python standard library): the two structural facts for 7 <= n <= 20; the loop of 204(b) as printed and corrected (trie204.py); the exact formula of 205 against the brute-force average over all keys for q <= 9 and its expansion (one_key.py). CP-SAT computations for 157 in search/.",
+  "provenance": {
+    "tool": "Claude Code (Anthropic)",
+    "first_obtained": "2026-11-17",
+    "archived": "2026-11-18"
+  },
+  "pdf": "pdfs/ClaudeCode/CC-P05_Three_remarks_on_Pre-Fascicle_8A_157b_204b_205.pdf",
+  "pdf_sha256": "8757b44815266ba4132eb7c45b9fd378fc7d2c8929fb09c61ccafeb20176a890",
+  "pages": 3,
+  "latex": "reproducible_source_code/ClaudeCode/CC-P05/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P05/",
+  "source_root": "reproducible_source_code/ClaudeCode/CC-P05/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "Python 3.8+ standard library for notes8a_check.py, trie204.py, one_key.py.",
+    "OR-Tools (CP-SAT) for search/."
+  ],
+  "limitations": [
+    "Not externally peer reviewed and no separate AI referee pass; checks by the stand-alone program (structural facts, literal simulation, brute-force averages for q <= 9).",
+    "The letters of the classes in 157 were read from the figure of the draft; the argument itself only uses the orbits of moves.",
+    "In 205 only the case of one key is treated; the sqrt q constant is a standard Laplace estimate checked numerically to q = 6400, while the first three terms follow rigorously from the exact formula.",
+    "Knuth's draft is cited, not reproduced; exercise numbers are those of the draft of 8 May 2026."
+  ],
+  "entrypoints": [
+    "python3 evidence/notes8a_check.py all"
+  ],
+  "source_files": 9,
+  "source_sha256": {
+    "source/evidence/logs/log_all.txt": "4563091920c4d28fa8a72c3b745e4b185d86cee568c7c6d3e054ff73107e2538",
+    "source/evidence/notes8a_check.py": "f9e1da11e7b529592a4836015b3f7d19ae45210d03411e0ac9318c44dbde9cec",
+    "source/evidence/one_key.py": "06fb650c79f8023dab6e85e7e332299963b69c2c7d9e96b204bd816d2db3b672",
+    "source/evidence/search/classes.py": "58a42de8c18b4f7f310307024fdda8a078285229b671e8adf5973923165d70f9",
+    "source/evidence/search/identity.py": "2ece056c33f23304f54e5d0d8917a09cd3d10f35c4f5b87d5594026a7774cf38",
+    "source/evidence/search/mincore.log": "b37cd6193a5ee640db777a85a5fec98e47a7bcdc78e1dd412235b799abde2c40",
+    "source/evidence/search/mincore.py": "556a99f109807466fc1ab89408b2dedff018c2c861e1dc36c2bcac69efcb5595",
+    "source/evidence/trie204.py": "2e672675d52ed580c9ae39562d9473a343393c65aca7ab5bb44a2678087035a9",
+    "source/manuscript/main.tex": "af95c855664e2815e4a34a35753ad9f0621115cf918b6b19847cab07b54bcb56"
+  },
+  "introduces_new_conjecture": false
+}
