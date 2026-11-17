@@ -6,7 +6,7 @@
 
 **从生成答案，到生成研究议程**
 
-**454 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
+**455 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
 
 > **AI 能否决定：下一步，什么数学值得研究？**
 
@@ -126,14 +126,14 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **454 份数学研究文稿／2,353 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了454道原始开放问题。
+本仓库共 **455 份数学研究文稿／2,364 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了455道原始开放问题。
 
 七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
 **语言说明：** BigWIN2归属纠错与Claude Code新增条目均同步更新英文和简体中文。法文、俄文、德文和日文保留此前档案快照；原有PDF字节和署名不变。
 
 <details open>
-<summary><strong>Claude Code · 1 篇文稿 · 2026-11-16 新增</strong></summary>
+<summary><strong>Claude Code · 2 篇文稿 · 2026-11-16 与 2026-11-17 新增</strong></summary>
 
 <a id="claude-code"></a>
 
@@ -144,6 +144,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 | 编号 + PDF | LaTeX 源码 | 复现源码 |
 |---|---|---|
 | **CC-P01** · Claude Code<br>[Whirling knight's tours with n coils and with the least number of coils](pdfs/ClaudeCode/CC-P01_Whirling_knights_tours_with_n_coils_and_with_the_least_number_of_coils.pdf)<br>关于高德纳 TAOCP 第 7.2.2.4–231 题。(b) 恰好 n 圈的 n×n 旋转马步巡回存在，当且仅当 n = 3，或 n ≥ 12 且 4 &#124; n：对所有不被 4 整除的 n ≥ 5 证明了不存在；n ≥ 28 引自高德纳草稿。(a) 由扇形区域的路径覆盖得到新的下界：n ≡ 4、6 (mod 8) 时至少 n/2 + 2 圈，奇数 n ≢ 1、19 (mod 24) 时至少 (n+3)/2 圈。对每个 n ≥ 11，最少圈数完全确定：n/2（n ≡ 0、2 mod 8）、n/2 + 2（n ≡ 4、6 mod 8）、(n+1)/2（n ≡ 1、19 mod 24）、(n+3)/2（其余奇数），由小棋盘上的显式巡回和二十四个种子巡回的可拉伸环带（计算机辅助证明）达到。因此 n/2 圈存在当且仅当 n ≥ 16 且 n ≡ 0、2 (mod 8)。n ≡ 3 (mod 4) 时环带不是替换一步棋，而是替换里面巡回的 28 到 31 小段。对所有 n ≥ 10，最多圈数是 n（4 &#124; n）或 n − 1（其余）；最少与最多之间的每个圈数都能取到（n ≥ 6）。转 180° 不变的巡回圈数必为奇数，这类巡回的最少圈数对所有 n ≥ 11 也已确定（n 不是 4 的倍数时可取转 90° 不变的巡回）。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P01/source/manuscript/main.tex) | [CC-P01](reproducible_source_code/ClaudeCode/CC-P01/) |
+| **CC-P02** · Claude Code<br>[Closed knight's tours with 7.5 n + O(1) crossings](pdfs/ClaudeCode/CC-P02_Closed_knights_tours_with_7_5_n_crossings.pdf)<br>关于高德纳 TAOCP 第 7.2.2.4–161 题：对每个偶数 n ≥ 30，存在恰有 7.5 n + 13 个交叉的 n×n 闭合马步巡游（已发表的最好构造是 12n + O(1)；至少需要 4n − O(1)）。巡游是显式的：内部是一片平行棋步，四面墙各有一种周期图样，另有 179 个格子由求解器填好。计算机辅助；独立程序核对了 30 到 500 的所有偶数 n。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P02/source/manuscript/main.tex) | [CC-P02](reproducible_source_code/ClaudeCode/CC-P02/) |
 
 </details>
 
@@ -775,7 +776,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2353 pages
+├── archive-manifest.json              455 PDFs / 2364 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -794,11 +795,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    1 PDF (added 2026-11-16)
+│   ├── ClaudeCode/                    2 PDFs (added 2026-11-16 and 2026-11-17)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    1 paired package (CC-P01)
+    ├── ClaudeCode/                    2 paired packages (CC-P01, CC-P02)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
@@ -818,7 +819,7 @@ AI-Has-Taste/
 
 下一次发布应让更多研究可以复现，而不只是让档案更大。
 
-*档案版本：2026 年 11 月 16 日（454份文稿，新增Claude Code合集）。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
+*档案版本：2026 年 11 月 17 日（455份文稿，Claude Code合集新增第二篇）。2026 年 11 月 16 日版：454份文稿，新增Claude Code合集。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
 
 **AI Has Taste。问题不再只是它能否找到答案，还在于它如何选择下一个问题。**
 
@@ -841,5 +842,5 @@ AI-Has-Taste/
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。仓库现为454份文稿／2,353页。其余PDF、源码与门控文件字节均未改动。该文稿未经外部同行评审。
+**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。2026-11-17 又新增第二篇文稿 CC-P02（交叉数为 7.5 n + 13 的闭合马步巡游）及其配套包。仓库现为455份文稿／2,364页。其余PDF、源码与门控文件字节均未改动。这两篇文稿未经外部同行评审。
 <!-- END CLAUDECODE RELEASE NOTE -->

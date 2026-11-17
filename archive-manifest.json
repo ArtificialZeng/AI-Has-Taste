@@ -1,6 +1,6 @@
 {
   "project": "AI Has Taste",
-  "prepared_on": "2026-11-16",
+  "prepared_on": "2026-11-17",
   "language": "en",
   "homepage_languages": [
     "en",
@@ -18,7 +18,7 @@
     "de": "README.de.md",
     "ja": "README.ja.md"
   },
-  "homepage_edition": "en-zh-454-manuscripts-claude-code-added",
+  "homepage_edition": "en-zh-455-manuscripts-claude-code-second-entry",
   "localization_scope": "English/Chinese counts and topical catalogs synchronized; PDF links corrected in other language snapshots where necessary.",
   "catalog_language": "en",
   "pdf_sections_collapsed_by_default": true,
@@ -29,8 +29,8 @@
     "generation": "Built-in image generation tool",
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
-  "paper_count": 454,
-  "page_count": 2353,
+  "paper_count": 455,
+  "page_count": 2364,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -38,7 +38,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 218,
-    "ClaudeCode": 1
+    "ClaudeCode": 2
   },
   "source_collection_counts": {
     "smallmac_1": 17,
@@ -46,7 +46,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 223,
-    "ClaudeCode": 1
+    "ClaudeCode": 2
   },
   "scope": "230 upstream manuscripts plus 223 unique current-conversation BigWIN2 manuscripts. Prior BigWIN1 attribution corrected, without changing PDF or frozen source/evidence bytes. No newly eligible final PDF found in the 2026-09-17 incremental scan.",
   "upload_notice": "Repository publication authorized by the user; actual Git transport outcome is reported separately, not inferred from this manifest.",
@@ -8682,6 +8682,25 @@
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
+    },
+    {
+      "paper_id": "CC-P02",
+      "title": "Closed knight's tours with 7.5 n + O(1) crossings",
+      "pages": 11,
+      "sha256": "fa9c03b0ef951290d0696e0ede88364f0001b3467fc7d24c70a19dce4ee89789",
+      "archive_status": "final-manuscript-internal-checks-only",
+      "manuscript_kind": "resolution-paper",
+      "original_status": "proved",
+      "collection_of_origin": "ClaudeCode",
+      "directory": "ClaudeCode",
+      "pdf": "pdfs/ClaudeCode/CC-P02_Closed_knights_tours_with_7_5_n_crossings.pdf",
+      "latex": "reproducible_source_code/ClaudeCode/CC-P02/source/manuscript/main.tex",
+      "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P02/",
+      "original_id": "claude-code-20261117-knuth-161",
+      "contribution": "Knuth's exercise 7.2.2.4-161 (TAOCP Pre-Fascicle 8A, draft of 8 May 2026) asks whether a closed n x n knight's tour can have fewer than 12n + O(1) crossings, the number in the construction of Besa, Johnson, Mamano, Osegueda and Williams, who also prove that 4n - O(1) are necessary. Theorem: for every even n >= 30 there is a closed knight's tour of the n x n board with exactly 7.5 n + 13 crossings. The tours are explicit: one field of parallel moves in the interior, four periodic wall patterns, and 179 cells near the corners and near the middle of one wall, taken once and for all from a tour of side 40 found by a solver. Computer-assisted: the paper lists all joins between the 3n - 32 lines of the field (fourteen exceptional joins and five arithmetic rules), checked by a program for 30 <= n <= 54 and proved for larger n from the periodicity of the patterns; that the joins form a single cycle is then proved directly from the list. A variant with 43n/6 + 24 crossings is checked for n = 48, 60, ..., 600 only.",
+      "introduces_new_conjecture": false,
+      "build_status": "pass",
+      "replay_status": "pass-bounded-exact-replay"
     }
   ],
   "code_inclusion_scope": "BigMac1 only; selected source and exact evidence, not every external tool or large historical trace.",
@@ -8934,10 +8953,10 @@
   "latest_reconciliation": "assets/BigWIN2/intake-reconciliation.json",
   "reclassification_mapping": "assets/BigWIN2/reclassification-20260917.json",
   "latest_addition": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "collection": "ClaudeCode",
     "paper_ids": [
-      "CC-P01"
+      "CC-P02"
     ],
     "note": "One manuscript added; no existing PDF, source or gate byte changed."
   },

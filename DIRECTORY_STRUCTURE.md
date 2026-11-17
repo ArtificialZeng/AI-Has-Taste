@@ -1,13 +1,13 @@
 # Repository directory / 完整目录层级
 
-**454 manuscripts / 2,353 pages** (edition of 2026-11-16: the Claude Code collection adds one manuscript, CC-P01, revised the same day; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
+**455 manuscripts / 2,364 pages** (edition of 2026-11-17: the Claude Code collection has two manuscripts, CC-P01, added on 2026-11-16 and revised since, and CC-P02, added on 2026-11-17; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
 
 ```text
 AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              454 PDFs / 2353 pages
+├── archive-manifest.json              455 PDFs / 2364 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -26,11 +26,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    1 PDF (added 2026-11-16)
+│   ├── ClaudeCode/                    2 PDFs (added 2026-11-16 and 2026-11-17)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    1 paired package (CC-P01)
+    ├── ClaudeCode/                    2 paired packages (CC-P01, CC-P02)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
