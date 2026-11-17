@@ -1,0 +1,38 @@
+model n=2: profile recursion vs direct colouring of the explicit graph on 300 random sets: 0 disagreements
+model n=3: profile recursion vs direct colouring of the explicit graph on 300 random sets: 0 disagreements
+exhaustive direct search n=2: largest removable sets have 3 edges; 2 of them; equal to Stappers' sets: True
+exhaustive direct search n=3: largest removable sets have 5 edges; 4 of them; equal to Stappers' sets: True
+reachable profiles: 15 for n = 2 and n = 3, hence for all n >= 2
+closed forms agree with the DP for 4 <= n <= 24; induction step:
+  every profile: the best triples are the same for all n >= 4 and the counts satisfy the recursion
+  {D}              max removed = 0*3^n + 0*2^n + 0, number = 1 + 0*2^n + 0*4^n   <- pinched graph stays uncolourable
+  {01,D}           max removed = 0*3^n + 1/2*2^n + 0, number = 1 + 0*2^n + 0*4^n
+  {E,01,D}         max removed = 0*3^n + 1/4*2^n + 0, number = 1 + 0*2^n + 0*4^n
+  {02,D}           max removed = 0*3^n + 1/2*2^n + 0, number = 1 + 0*2^n + 0*4^n   <- pinched graph stays uncolourable
+  {E,02,D}         max removed = 0*3^n + 1/4*2^n + 0, number = 1 + 0*2^n + 0*4^n
+  {01,02,D}        max removed = 0*3^n + 1/2*2^n + 1, number = 0 + 1/2*2^n + 0*4^n
+  {E,01,02,D}      max removed = 0*3^n + 1/2*2^n + 2, number = 0 + -1/4*2^n + 1/8*4^n
+  {12,D}           max removed = 0*3^n + 1/2*2^n + 0, number = 1 + 0*2^n + 0*4^n   <- pinched graph stays uncolourable
+  {E,12,D}         max removed = 0*3^n + 1/4*2^n + 0, number = 1 + 0*2^n + 0*4^n
+  {01,12,D}        max removed = 0*3^n + 1/2*2^n + 1, number = 0 + 1/2*2^n + 0*4^n
+  {E,01,12,D}      max removed = 0*3^n + 1/2*2^n + 2, number = 0 + -1/4*2^n + 1/8*4^n
+  {02,12,D}        max removed = 0*3^n + 1/2*2^n + 1, number = 0 + 1/2*2^n + 0*4^n   <- pinched graph stays uncolourable
+  {E,02,12,D}      max removed = 0*3^n + 1/2*2^n + 2, number = 0 + -1/4*2^n + 1/8*4^n
+  {01,02,12,D}     max removed = 0*3^n + 3/4*2^n + 0, number = 2 + 0*2^n + 0*4^n
+  {E,01,02,12,D}   max removed = 1*3^n + 0*2^n + 0, number = 1 + 0*2^n + 0*4^n
+hence for every n >= 2: largest removable set 2^(n-1)+1 (profile {02,12,D}), exactly 2^(n-1) such sets
+structure of the largest sets (every step n -> n+1, n >= 1):
+  {02,12,D}: copy 2 has a largest set of the same kind, one of copies 0, 1 has the unique {01,D}-set, the other copy nothing
+  {01,D}: copy 0 has the unique {02,D}-set, copy 1 the unique {12,D}-set; similarly for {02,D}, {12,D}
+n=2: the 2 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=3: the 4 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=4: the 8 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=5: the 16 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=6: the 32 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=7: the 64 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=8: the 128 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=9: the 256 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+n=10: the 512 largest removable sets (from the DP, as explicit edge sets) are exactly Stappers' sets: True
+Knuth's n = 4 example is one of them: True
+all checks passed
+python3 gasket_check.py all  75.53s user 0.08s system 99% cpu 1:15.64 total

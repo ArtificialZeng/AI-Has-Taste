@@ -18,7 +18,7 @@
     "de": "README.de.md",
     "ja": "README.ja.md"
   },
-  "homepage_edition": "en-zh-456-manuscripts-claude-code-third-entry",
+  "homepage_edition": "en-zh-457-manuscripts-claude-code-fourth-entry",
   "localization_scope": "English/Chinese counts and topical catalogs synchronized; PDF links corrected in other language snapshots where necessary.",
   "catalog_language": "en",
   "pdf_sections_collapsed_by_default": true,
@@ -29,8 +29,8 @@
     "generation": "Built-in image generation tool",
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
-  "paper_count": 456,
-  "page_count": 2369,
+  "paper_count": 457,
+  "page_count": 2373,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -38,7 +38,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 218,
-    "ClaudeCode": 3
+    "ClaudeCode": 4
   },
   "source_collection_counts": {
     "smallmac_1": 17,
@@ -46,7 +46,7 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 223,
-    "ClaudeCode": 3
+    "ClaudeCode": 4
   },
   "scope": "230 upstream manuscripts plus 223 unique current-conversation BigWIN2 manuscripts. Prior BigWIN1 attribution corrected, without changing PDF or frozen source/evidence bytes. No newly eligible final PDF found in the 2026-09-17 incremental scan.",
   "upload_notice": "Repository publication authorized by the user; actual Git transport outcome is reported separately, not inferred from this manifest.",
@@ -8720,6 +8720,25 @@
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-bounded-exact-replay"
+    },
+    {
+      "paper_id": "CC-P04",
+      "title": "The largest removable edge sets of the pinched Sierpinski gasket",
+      "pages": 4,
+      "sha256": "53c2f834153a4fba5e9d2afe4e9c211e8d8210a7fbe46412268797e3d9cbeef0",
+      "archive_status": "final-manuscript-internal-checks-only",
+      "manuscript_kind": "resolution-paper",
+      "original_status": "proved",
+      "collection_of_origin": "ClaudeCode",
+      "directory": "ClaudeCode",
+      "pdf": "pdfs/ClaudeCode/CC-P04_Largest_removable_edge_sets_of_the_pinched_Sierpinski_gasket.pdf",
+      "latex": "reproducible_source_code/ClaudeCode/CC-P04/source/manuscript/main.tex",
+      "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P04/",
+      "original_id": "claude-code-20261117-knuth-7-2-2-3-227",
+      "contribution": "Knuth's exercise 7.2.2.3-227 (TAOCP Volume 4, Fascicle 7, 2025) asks for the largest number of edges removable from the pinched Sierpinski gasket (corners 0^n and 1^n identified) before it becomes 3-colourable; the answer gives Filip Stappers' 2^(n-1) sets of 2^(n-1)+1 edges and asks whether they are all the largest sets for every n (known for n <= 4). Theorem: yes, for every n >= 2. Proof: an exact recursion over the corner colour patterns of a gasket (15 profiles), closed forms for all profiles by an induction reduced to a finite computation, and the maximizing terms of the recursion reproduce Stappers' refinement rule.",
+      "introduces_new_conjecture": false,
+      "build_status": "pass",
+      "replay_status": "pass-bounded-exact-replay"
     }
   ],
   "code_inclusion_scope": "BigMac1 only; selected source and exact evidence, not every external tool or large historical trace.",
@@ -8975,7 +8994,7 @@
     "date": "2026-11-17",
     "collection": "ClaudeCode",
     "paper_ids": [
-      "CC-P03"
+      "CC-P04"
     ],
     "note": "One manuscript added; no existing PDF, source or gate byte changed."
   },

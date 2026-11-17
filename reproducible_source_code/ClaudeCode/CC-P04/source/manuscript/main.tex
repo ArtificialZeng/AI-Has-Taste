@@ -1,0 +1,190 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Sh}{\widehat S}
+\begin{document}
+\title[Removable edges of the pinched Sierpi\'nski gasket]{The largest removable edge sets of the pinched Sierpi\'nski gasket}
+\author{Zijian Zeng}
+\address{UCSI University, Kuala Lumpur, Malaysia}
+\date{17 November 2026}
+\begin{abstract}
+The Sierpi\'nski gasket graph $S_n$ has a unique $3$-colouring up to the names of the colours, and its three
+corners get different colours; so the graph $\Sh_n$ obtained by identifying two corners is not $3$-colourable.
+Exercise 7.2.2.3--227 of Knuth's \emph{The Art of Computer Programming} asks for the largest number of edges that
+can be removed from $\Sh_n$ before it becomes $3$-colourable. Filip Stappers constructed $2^{n-1}$ removable sets
+of $2^{n-1}+1$ edges, and Knuth's answer reports that these are all the largest removable sets when $n\le4$ and asks
+whether this is true for all $n$. It is: for every $n\ge2$ the largest removable sets have $2^{n-1}+1$ edges and
+they are exactly Stappers' sets. The proof is an exact recursion over the $3$-colourings of the three corners of a
+gasket, which has fifteen states; closed forms for all states follow by an induction that reduces to a finite
+computation.
+\end{abstract}
+\maketitle
+
+\section{The question and the answer}
+Following Knuth~\cite[\S7.2.2.3]{knuth7}, the vertices of the Sierpi\'nski gasket graph $S_n=S^{(3)}_n$ are the
+strings of length $n$ over $\{0,1,2\}$, where $\alpha ab^k$ and $\alpha ba^k$ name the same vertex ($k\ge1$,
+$a\ne b$); for every string $w$ of length $n-1$ the three vertices $w0,w1,w2$ form a triangle, and these
+$3^{n-1}$ triangles give the $3^n$ edges. Equivalently, $S_n$ consists of three copies of $S_{n-1}$, with prefixes
+$0$, $1$, $2$, in which corner $ij^{n-1}$ of copy $i$ is identified with corner $ji^{n-1}$ of copy $j$; its
+corners are $0^n$, $1^n$, $2^n$. In every $3$-colouring of $S_n$ the corners get three different colours. The
+\emph{pinched} gasket $\Sh_n=\Sh^{(3)}_n$ is $S_n$ with the corners $0^n$ and $1^n$ identified; it is not
+$3$-colourable. Its edges are the $3^n$ edges of $S_n$ (for $n=2$ the two edges $00\,\text{---}\,01$ and
+$11\,\text{---}\,10$ become parallel, since $01=10$ and $00$ is pasted to $11$; for $n\ge3$ there are no parallel
+edges). Call a set $R$ of these edges \emph{removable} if $\Sh_n-R$ is still not $3$-colourable. Subsets of
+removable sets are removable.
+
+Exercise 7.2.2.3--227 of~\cite{knuth7}, rated~$40$, observes that five particular edges can be removed from
+$\Sh_4$ and asks for the largest number of edges that can be removed from $\Sh_n$ before it becomes
+$3$-colourable. The answer describes a construction of Filip Stappers for $n>2$, starting from $n=2$. For $n=2$
+take the two \emph{tip} edges $22\,\text{---}\,20$ and $22\,\text{---}\,21$ together with one of the edges
+$00\,\text{---}\,01$ and $11\,\text{---}\,10$ (the answer writes the latter as $11\,\text{---}\,01$). To pass from $n-1$ to $n$, replace every non-tip edge $\alpha a\,\text{---}\,\alpha b$ by the two edges
+$\alpha aa\,\text{---}\,\alpha ac$ and $\alpha bb\,\text{---}\,\alpha bc$, where $\{a,b,c\}=\{0,1,2\}$; add one of
+the edges $2^{n-2}00\,\text{---}\,2^{n-2}01$ and $2^{n-2}11\,\text{---}\,2^{n-2}10$; and take the two tip edges
+at $2^n$. This gives $2^{n-1}$ sets of $2^{n-1}+1$ removable edges; Knuth's nine-edge example in the answer is one of them
+for $n=4$. He reports that they are all the largest removable sets when $n\le4$, and asks whether that conjecture
+is true for all~$n$. (Throughout, an edge is written in triangle form $wa\,\text{---}\,wb$, where $w$ is the string
+of length $n-1$ of its triangle; vertex names have aliases, but this form is unique.)
+
+\begin{theorem}\label{thm:main}
+For every $n\ge2$ the largest removable sets of $\Sh_n$ have $2^{n-1}+1$ edges, and they are exactly the
+$2^{n-1}$ sets of Stappers' construction.
+\end{theorem}
+
+\section{Corner profiles}
+Let $G$ be a graph with three designated corners $0,1,2$. Every $3$-colouring of $G$ colours the corners in one of
+five \emph{patterns}, up to renaming the colours: $E$ (all equal), $01$ (corners $0$ and $1$ equal, $2$ different),
+$02$, $12$, and $D$ (all different). The \emph{profile} of $G$ is the set of patterns that occur.
+
+\begin{lemma}\label{lem:comp}
+Let $R$ be a set of edges of $S_n$ and $R_0,R_1,R_2$ its parts in the three copies of $S_{n-1}$. The profile of
+$S_n-R$ is determined by the profiles $Q_0,Q_1,Q_2$ of the three copies minus $R_i$: it is $\Phi(Q_0,Q_1,Q_2)$, the
+set of patterns of $(A,B,C)$ over all colourings $A,\dots,F$ of the six corner vertices of the copies for which
+$(A,D,E)$, $(D,B,F)$, $(E,F,C)$ have patterns in $Q_0$, $Q_1$, $Q_2$ respectively. Here $A,B,C$ are the corners
+$0^n,1^n,2^n$ and $D,E,F$ the shared corners $01^{n-1}=10^{n-1}$, $02^{n-1}=20^{n-1}$, $12^{n-1}=21^{n-1}$.
+\end{lemma}
+\begin{proof}
+Every edge lies in one copy, and two copies share only a corner. Colourings of the three copies combine exactly
+when they agree on the shared corners, and a copy whose profile contains a pattern can realize any colouring of
+its corners with that pattern, by renaming colours.
+\end{proof}
+
+The pinched graph $\Sh_n-R$ is $3$-colourable if and only if $S_n-R$ has a colouring with $c(0^n)=c(1^n)$. So
+$R$ is removable if and only if the profile of $S_n-R$ avoids $E$ and $01$.
+
+For $n\ge1$ and each profile $Q$ let $m_n(Q)$ be the largest size of a set $R$ of edges of $S_n$ such that $S_n-R$
+has profile exactly $Q$, and let $c_n(Q)$ be the number of such sets of size $m_n(Q)$. For $n=1$ these come from the $8$ subsets of
+the three edges of a triangle. By Lemma~\ref{lem:comp},
+\begin{align*}
+m_{n+1}(Q)&=\max_{\Phi(Q_0,Q_1,Q_2)=Q}\bigl(m_n(Q_0)+m_n(Q_1)+m_n(Q_2)\bigr),\\
+c_{n+1}(Q)&=\sum c_n(Q_0)\,c_n(Q_1)\,c_n(Q_2),
+\end{align*}
+the sum over the triples that attain the maximum. Only fifteen profiles occur for $n\ge2$ (the set of occurring
+profiles is the same for $n=2$ and $n=3$, so it stays the same).
+
+\begin{proposition}\label{prop:table}
+For $n\ge4$ the values are as follows (the profile is written as a set of patterns).
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+profile $Q$ & $m_n(Q)$ & $c_n(Q)$\\
+\midrule
+$\{D\}$ & $0$ & $1$\\
+$\{ij,D\}$ & $2^{n-1}$ & $1$\\
+$\{E,ij,D\}$ & $2^{n-2}$ & $1$\\
+$\{ij,ik,D\}$ & $2^{n-1}+1$ & $2^{n-1}$\\
+$\{E,ij,ik,D\}$ & $2^{n-1}+2$ & $\binom{2^{n-1}}{2}$\\
+$\{01,02,12,D\}$ & $3\cdot2^{n-2}$ & $2$\\
+$\{E,01,02,12,D\}$ & $3^n$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $ij$ and $ik$ stand for any one, respectively any two, of the patterns $01,02,12$.
+\end{proposition}
+\begin{proof}
+By induction on $n$; the case $n=4$ is computed. (The table is not valid for $n=3$: there
+$c_3(\{01,02,12,D\})=8$.) Each entry has the form $a3^n+b2^n+c$, and each count is a polynomial of degree at most
+$2$ in $x=2^n$. For the step from $n$ to $n+1$, take any profile $Q$ and any triple
+$(Q_0,Q_1,Q_2)$ with $\Phi(Q_0,Q_1,Q_2)=Q$. The difference $m_{n+1}(Q)-\sum m_n(Q_i)$ is
+$\alpha3^n+\beta2^n+\gamma$ with explicit rational $\alpha,\beta,\gamma$. For every triple, either
+$\alpha=\beta=\gamma=0$, or the first nonzero coefficient is positive and the difference is positive for all
+$n\ge4$; this is checked with explicit thresholds beyond which the leading term dominates (and the difference only
+grows), and directly below them. Every profile has at least one triple with $\alpha=\beta=\gamma=0$, so the
+maximum equals the closed form, and the maximizing triples are the same for all $n\ge4$. The counts then satisfy the recursion as an identity of polynomials in $x$. The program of
+\S\ref{sec:check} carries out all of these finite checks.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}, the size]
+The profiles that avoid $E$ and $01$ are $\{D\}$, $\{02,D\}$, $\{12,D\}$ and $\{02,12,D\}$. By the table, for
+$n\ge4$ the largest of their $m_n$ is $m_n(\{02,12,D\})=2^{n-1}+1$, attained by $c_n=2^{n-1}$ sets. The DP gives the
+same for $n=2,3$.
+\end{proof}
+
+\section{The largest sets are Stappers' sets}
+The proof of Proposition~\ref{prop:table} also lists the maximizing triples for $n\ge4$, and for $1\le n\le3$
+they are found directly from the DP; they are the same at every step $n\to n+1$. For the profiles that matter
+they are (copy $0$, copy $1$, copy $2$):
+\begin{align*}
+\{02,12,D\}&:\ (\{D\},\{01,D\},\{02,12,D\})\ \text{or}\ (\{01,D\},\{D\},\{02,12,D\});\\
+\{01,D\}&:\ (\{02,D\},\{12,D\},\{D\});\\
+\{02,D\}&:\ (\{01,D\},\{D\},\{12,D\});\\
+\{12,D\}&:\ (\{D\},\{01,D\},\{02,D\});\\
+\{D\}&:\ (\{D\},\{D\},\{D\}).
+\end{align*}
+For $n=1$: the unique set with profile $\{ab,D\}$ is the edge between corners $a$ and $b$; the empty set is the only
+set with profile $\{D\}$; and the unique set with profile $\{02,12,D\}$ is the pair of edges at corner~$2$.
+
+Write $U^{ab}_k[\beta]$ for the unique \emph{largest} set of edges with profile $\{ab,D\}$ in the copy of $S_k$ with
+prefix $\beta$ (unique because $c_k(\{ab,D\})=1$ for every $k$: by the table for $k\ge4$ and by the DP for $k\le3$).
+Then $U^{ab}_1[\beta]=\{\beta a\,\text{---}\,\beta b\}$ and
+$U^{ab}_{k+1}[\beta]=U^{ac}_k[\beta a]\cup U^{bc}_k[\beta b]$, where $c$ is the third symbol. If $\rho$ denotes
+Stappers' refinement, which replaces each edge $\gamma a\,\text{---}\,\gamma b$ (in triangle form) by
+$\gamma aa\,\text{---}\,\gamma ac$ and $\gamma bb\,\text{---}\,\gamma bc$, then by induction on $k$
+\[\rho\bigl(U^{ab}_k[\beta]\bigr)=U^{ab}_{k+1}[\beta].\]
+Unrolling the first line of the list, the largest removable sets of $\Sh_n$ are exactly the $2^{n-1}$ sets
+\[\{\text{the two tip edges at }2^n\}\ \cup\ \bigcup_{k=1}^{n-1}U^{01}_{n-k}\bigl[2^{k-1}x_k\bigr],\qquad x_1,\dots,x_{n-1}\in\{0,1\}.\]
+In Stappers' construction the edge added at step $m$ is $U^{01}_1[2^{m-2}x]$ with $x\in\{0,1\}$; after the
+$n-m$ later refinements it has become $U^{01}_{n-m+1}[2^{m-2}x]$, which is the term $k=m-1$ above (for $m=2$, the
+edge chosen at the start). So the two families coincide, which completes the proof of Theorem~\ref{thm:main}.
+
+\section{Checks}\label{sec:check}
+The program \texttt{gasket\_check.py} (Python standard library only, about a minute) does the following.
+\begin{itemize}
+\item \texttt{proof}: computes the DP for $n\le24$; checks that the occurring profiles are the same for $n=2,3$; fits
+and checks the closed forms of Proposition~\ref{prop:table} for $4\le n\le24$; carries out the induction step
+(all $15^3$ triples, explicit thresholds, the polynomial identities for the counts); checks the maximizing
+triples listed in \S3, for every step $n\to n+1$.
+\item \texttt{sets}: for $2\le n\le10$ it reconstructs all largest removable sets from the DP as explicit edge
+sets and checks that they are exactly Stappers' sets, as produced literally from the description in~\cite{knuth7};
+it also checks that Knuth's nine-edge example for $n=4$ is one of them.
+\item \texttt{model}: for $n=2,3$ and $300$ random sets $R$ each, compares removability as given by
+Lemma~\ref{lem:comp} with a direct backtracking $3$-colouring of the explicit graph $\Sh_n-R$; and finds the largest
+removable sets for $n=2,3$ by an exhaustive search that uses only the direct colouring.
+\end{itemize}
+The program \texttt{search/xcheck.py} with the C colourer \texttt{search/color3.c} agreed with
+Lemma~\ref{lem:comp} on $4000$ random sets for $n=2,\dots,5$, and an exhaustive search with it found the largest
+removable sets for $n=2,3,4$ ($3,5,9$ edges; $2,4,8$ sets), equal to Stappers' sets. Finally, an independent referee
+(another AI agent) rebuilt the graphs, a SAT colourability test and the recursion from the text alone; its
+exhaustive search found $3,5,9,17$ edges and $2,4,8,16$ largest sets for $n=2,3,4,5$, equal to Stappers' sets, and
+it checked the induction step exactly.
+
+\begin{remark}
+The table answers related questions too. For instance, $m_n(\{D\})=0$: removing any edge of $S_n$ allows a
+colouring in which two corners agree. And $m_n(\{01,02,12,D\})=3\cdot2^{n-2}$: that many edges can be removed
+while the three corners still never all get the same colour.
+\end{remark}
+
+\medskip\noindent\emph{How this was done.} The recursion, the programs, the checks and this note were produced
+with Claude Code (Anthropic) at the author's direction. The author is responsible for the content.
+
+\begin{thebibliography}{9}
+\bibitem{knuth7} D.~E. Knuth, \emph{The Art of Computer Programming}, Volume 4, Fascicle 7: Constraint
+Satisfaction, Addison--Wesley, 2025. Cited from its final draft, Pre-Fascicle 7A (5 December 2024); exercise
+7.2.2.3--227 and its answer, numbered as in that draft.
+\end{thebibliography}
+\end{document}

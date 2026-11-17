@@ -1,0 +1,47 @@
+{
+  "original_id": "claude-code-20261117-knuth-7-2-2-3-227",
+  "archive_id": "CC-P04",
+  "title": "The largest removable edge sets of the pinched Sierpinski gasket",
+  "batch_label": "Claude Code",
+  "kind": "resolution-paper",
+  "original_status": "Proved",
+  "scope": "For every n >= 2: the largest removable edge sets of the pinched Sierpinski gasket have 2^(n-1)+1 edges and are exactly Stappers' 2^(n-1) sets; closed forms for all 15 corner profiles.",
+  "gate_basis": "gasket_check.py (Python standard library): the profile DP up to n = 24, closure of the profile set, the closed forms, the induction step, the maximizing triples at every step; reconstruction of all largest sets for n <= 10 compared with Stappers' sets built literally from the book's description; comparison with direct colouring and exhaustive search for n = 2, 3. A C colourer cross-check (n <= 5) is logged. One independent AI referee pass.",
+  "provenance": {
+    "tool": "Claude Code (Anthropic)",
+    "first_obtained": "2026-11-17",
+    "archived": "2026-11-17"
+  },
+  "pdf": "pdfs/ClaudeCode/CC-P04_Largest_removable_edge_sets_of_the_pinched_Sierpinski_gasket.pdf",
+  "pdf_sha256": "53c2f834153a4fba5e9d2afe4e9c211e8d8210a7fbe46412268797e3d9cbeef0",
+  "pages": 4,
+  "latex": "reproducible_source_code/ClaudeCode/CC-P04/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/ClaudeCode/CC-P04/",
+  "source_root": "reproducible_source_code/ClaudeCode/CC-P04/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "Python 3.8+ standard library for gasket_check.py.",
+    "A C compiler for color3.c used by evidence/search/xcheck.py."
+  ],
+  "limitations": [
+    "Not externally peer reviewed. Checks so far: the stand-alone program, a separate C colourer, and one independent AI referee pass on 2026-11-17. One independent AI referee (another agent) rebuilt the graphs, a SAT colourability test and the recursion from the text alone, found by exhaustive search the largest removable sets for n = 2..5 (3, 5, 9, 17 edges; 2, 4, 8, 16 sets, equal to Stappers' sets), checked the induction step exactly, and found no mathematical gap; its wording corrections were made.",
+    "Computer-assisted. The closed forms for the 15 profiles are proved by induction; the induction step is a finite computation (15^3 triples, explicit thresholds, polynomial identities) done by the program; the profile recursion is checked against direct colouring of the explicit graph.",
+    "Knuth's exercise and answer are paraphrased from Pre-Fascicle 7A (5 December 2024), the frozen draft of Volume 4 Fascicle 7, fetched from the Internet Archive; they are cited, not reproduced. Novelty was checked only against that answer."
+  ],
+  "entrypoints": [
+    "python3 evidence/gasket_check.py all"
+  ],
+  "source_files": 9,
+  "source_sha256": {
+    "source/evidence/gasket_check.py": "bde76a328e8b0a4493ed4ad6cbb6d305f7eb1d2323d867a4d358c2d9ca915d3a",
+    "source/evidence/logs/log_all.txt": "d8a54458020aca0ab2d40c98ec563c4e018bf32aa3f7601838d72e0e2f468e35",
+    "source/evidence/logs/log_xcheck_c.txt": "816d17c90915449d45051ce99e620f363ccb2a9ce5f2a311fa0f6228645159d5",
+    "source/evidence/search/color3.c": "0cb0b2c9c931d5883d3c6cbf463ba95307d228bf908a7b281871ffcc3d0f2a26",
+    "source/evidence/search/explicit.py": "30f2ef54f2166192c901b057ee42d02cc9dda881fbdb97624709806d8954ffa4",
+    "source/evidence/search/gdp.py": "3ac1755452e7fde67adcb3d3de1955a58093c1e094dc2e93f3e5a2e91c5320ef",
+    "source/evidence/search/gproof.py": "76a28f2e7d17550feb2ec31c30bf13d275d7aca42333bf296489c63ace9bb1bd",
+    "source/evidence/search/xcheck.py": "0606c438d165422923a11a8edcdb7db0b48397777f45c15b68a688bc2417766c",
+    "source/manuscript/main.tex": "b6f2bc53287d5e2d411e5d0959e86a2fa06642f9931e327fd616f550d1a498ec"
+  },
+  "introduces_new_conjecture": false
+}
