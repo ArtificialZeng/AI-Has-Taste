@@ -1,0 +1,130 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Sp}{\spadesuit}\newcommand{\He}{\heartsuit}\newcommand{\Di}{\diamondsuit}\newcommand{\Cl}{\clubsuit}
+\begin{document}
+\title[Poison cards in Late Binding solitaire]{There are no nine poison cards in Late Binding solitaire}
+\author{Zijian Zeng}
+\address{UCSI University, Kuala Lumpur, Malaysia}
+\date{19 November 2026}
+\begin{abstract}
+In Late Binding solitaire eighteen cards are dealt in a row and the player tries to reduce them to one pile; a pile may
+capture the pile next to it or three places to its left when their top cards share a suit or a rank. In Stanford's
+1989 problem seminar K.~A. Ross asked for the least $n$ such that some sequence of $n$ cards makes every game that
+starts with it a loss; Knuth's answer to exercise 7.2.2.2--486 of \emph{The Art of Computer Programming} records the
+question, ``still unsolved,'' as whether there is a sequence of (say) nine such ``poison cards.'' There is not: every
+sequence of nine cards can be completed to a winning deal. On the other hand the thirteen cards
+$5\Di\,7\He\,3\Di\,6\He\,4\Sp\,A\Cl\,9\Sp\,Q\Cl\,K\Sp\,J\Cl\,2\He\,8\Di\,10\He$ are poison. So the least length
+of a poison sequence is between $10$ and $13$; the seminar had believed it to be at most $17$, and perhaps provably
+at most $15$.
+\end{abstract}
+\maketitle
+
+\section{The game and the question}
+Shuffle a deck and deal eighteen cards in a row, as eighteen piles. A \emph{capture} places a pile on top of the pile
+immediately to its left, or on the pile obtained by skipping left over two other piles, provided the top cards of the
+two piles have the same suit or the same rank; the combined pile takes the place of the captured one and the gap
+closes. All eighteen cards are dealt before play begins (``late binding''), and the game is won if the piles can be
+reduced to a single pile. Only top cards matter, so in the terms of Knuth's exercise 7.2.2.2--484 the game is the
+\emph{quenching} of the sequence of the eighteen cards, where two cards are adjacent when they share a suit or a
+rank~\cite[\S7.2.2.2, exercises 484--486]{knuth4b}.
+
+The game was Problem~1 of Stanford's CS problem seminar in 1989~\cite{rossknuth}. There K.~A. Ross asked for the
+minimum number $n^*$ of cards such that some initial sequence of $n^*$ cards admits no win for any continuation; the
+group ``convinced itself'' that $n^*\le17$, and thought that $n^*\le15$ might be provable, but the question was not
+pursued. Knuth's answer to exercise 486 calls it ``an interesting question, still unsolved'': is there a sequence of
+(say) nine ``poison cards'' such that all games starting with them are lost? We call a sequence of $k\le18$ distinct
+cards \emph{poison} if every deal of eighteen cards that begins with it is lost. Every extension of a poison sequence
+is poison, so the poison sequences of each length $k\ge n^*$ exist and those of length $k<n^*$ do not.
+
+\begin{theorem}\label{thm:nine}
+No sequence of nine cards is poison. Hence $n^*\ge10$.
+\end{theorem}
+
+\begin{theorem}\label{thm:fourteen}
+The sequence $5\Di\,7\He\,3\Di\,6\He\,4\Sp\,A\Cl\,9\Sp\,Q\Cl\,K\Sp\,J\Cl\,2\He\,8\Di\,10\He$ is poison: each of the
+$39\cdot38\cdot37\cdot36\cdot35=69{,}090{,}840$ ways to deal the remaining five cards gives a lost game. Hence
+$n^*\le13$.
+\end{theorem}
+
+\section{Patterns}
+Permuting the four suits, or the thirteen ranks, maps the deck onto itself and preserves the relation ``same suit or
+same rank,'' so it maps winning deals to winning deals. Hence whether a sequence of $k$ cards is poison depends only
+on its \emph{pattern}: relabel the suits in order of first appearance and the ranks in order of first appearance. The
+number of patterns of length $k$ is
+\[
+\begin{array}{c|cccccccccc}
+k&1&2&3&4&5&6&7&8&9&10\\\hline
+&1&3&15&113&1101&12657&162863&2281239&34260563&546727587
+\end{array}
+\]
+(a pattern is a sequence of distinct pairs (suit class, rank class) in which each class first appears in increasing
+order, with at most four cards per rank). So Theorem~\ref{thm:nine} amounts to $34{,}260{,}563$ claims, one winning
+deal for each pattern of length nine.
+
+\section{The computations}
+\subsection*{The solver} A depth-first search over the sequences of top cards, remembering positions already known to
+be lost. It also stops as soon as the ``suit--rank graph'' of the current top cards is disconnected (vertices the
+suits and ranks present, an edge for each card); such a position can never be reduced to one pile, an observation
+from the 1989 seminar. The solver reproduces Knuth's statements about the example deal of exercise 486 (winnable;
+lost after A$\Cl\times$J$\Cl$ and after A$\Cl\times\times$10$\Cl$), and wins $46.4\%$ of $20{,}000$ random deals
+(Knuth reports $4432$ wins in $10{,}000$ deals; Blake and Gent estimate $47.02\%$~\cite{gent}).
+
+\subsection*{Theorem~\ref{thm:nine}} For each pattern of length nine the program tries random completions, half of them
+chosen greedily so that each new card matches the card one or three places to its left, with an increasing node limit,
+until the solver finds a win. Two complete runs with different random seeds found a winning completion for every one
+of the $34{,}260{,}563$ patterns; the second run stored all the winning deals ($617$ MB).
+
+\subsection*{Theorem~\ref{thm:fourteen}} All $69{,}090{,}840$ ordered completions were solved (in six parallel parts);
+none is winnable. The thirteen cards are \emph{frozen}: no two of them at distance one or three share a suit or a
+rank, so no capture is possible inside the sequence. They were found by a hill-climbing search over frozen
+sequences that minimizes the number of wins among random completions; a candidate was checked exhaustively only
+after it lost all of $200{,}000$ random completions. The same search found the frozen poison sequence
+$7\Cl\,3\Sp\,4\Cl\,3\He\,8\Cl\,Q\Sp\,A\Cl\,9\Sp\,10\He\,2\Di\,5\Cl\,K\Sp\,J\He\,6\Di$ of fourteen cards ($1{,}771{,}560$
+completions) and two poison sequences of fifteen cards,
+$8\Di\,6\Sp\,9\Di\,5\He\,8\Cl\,10\Sp\,3\Cl\,K\Di\,7\He\,4\Di\,Q\He\,K\Sp\,J\He\,4\Cl\,A\Sp$ and
+$3\He\,4\Sp\,9\Cl\,Q\Sp\,7\Cl\,J\He\,9\Di\,10\Sp\,4\Di\,3\Cl\,2\He\,K\Cl\,6\Di\,5\Di\,J\Sp$ ($46{,}620$ completions each).
+About $8\%$ of random sequences of seventeen cards and $0.5\%$ of sixteen are poison. Two other thirteen-card
+candidates that lost $20{,}000$ random completions turned out to have winning completions, found after
+$612{,}807$ and $151{,}826$ completions.
+
+\subsection*{Independent check} A separate program, written without access to the solver above, re-implemented the
+game, the solver and the enumeration of patterns. It read the $34{,}260{,}563$ stored deals, found every one of them
+winnable, and found that their nine-card prefixes cover all $34{,}260{,}563$ patterns, with no duplicates and none
+missing; its own three counts of the patterns agree with the table above. It also confirmed that the thirteen-,
+fourteen- and fifteen-card sequences above are poison, with $0$ winnable completions. Its solver agrees with a
+second, brute-force solver on $20{,}000$ random deals, of which it finds $46.9\%$ winnable, and it detected five
+deliberately corrupted versions of a test file.
+
+\begin{remark}
+Both solvers find about $47\%$ of random deals winnable, as do Blake and Gent~\cite{gent}; the figure of $4432$ wins in
+$10{,}000$ random deals quoted in answer 486 is about five standard deviations lower.
+\end{remark}
+
+\begin{remark}
+The exact value of $n^*$ is still open. Settling $n^*\ge11$ would mean finding winning completions for all
+$546{,}727{,}587$ patterns of length ten, about sixteen times the work of Theorem~\ref{thm:nine}; a poison sequence of
+twelve cards would need $2{,}763{,}633{,}600$ completions to be checked, about an hour on six cores; the search for
+such a candidate continues.
+\end{remark}
+
+\subsection*{How this was done}
+The programs were written and run by Claude (Anthropic's AI model) at the author's direction, and the independent check
+by a separate AI agent that did not see the solver. No human expert has checked the results yet. Programs, logs and
+data are public at \url{https://github.com/ArtificialZeng/AI-Has-Taste}.
+
+\begin{thebibliography}{9}
+\bibitem{knuth4b} D. E. Knuth, \emph{The Art of Computer Programming}, Vol.~4B: Combinatorial Algorithms, Part~2
+(Addison--Wesley, 2022), \S7.2.2.2, exercises 484--486 and answers.
+\bibitem{rossknuth} K. A. Ross and D. E. Knuth, \emph{A Programming and Problem Solving Seminar}, Report STAN-CS-89-1269,
+Stanford University (1989), Problem~1.
+\bibitem{gent} C. Blake and I. P. Gent, The winnability of Klondike Solitaire and many other patience games,
+\emph{J. Artificial Intelligence Res.} \textbf{85} (2026), article 21; arXiv:1906.12314. (The Late Binding figure
+$47.021\pm0.032\%$ is from I.~P. Gent's CP~2024 invited talk.)
+\end{thebibliography}
+\end{document}

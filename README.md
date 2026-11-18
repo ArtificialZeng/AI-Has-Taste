@@ -6,7 +6,7 @@
 
 **From Answer Generation to Research-Agenda Generation**
 
-**459 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
+**460 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
 
 > **Can AI decide what mathematics is worth pursuing next?**
 
@@ -126,14 +126,14 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **459 research manuscripts / 2,380 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 459 original open problems have been solved.
+The archive contains **460 research manuscripts / 2,383 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 460 original open problems have been solved.
 
 Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
 **Language policy:** English and Simplified Chinese include the corrected BigWIN2 collection and the Claude Code addition. French, Russian, German and Japanese retain their preceding archive snapshots. Existing PDF bytes and authorship are unchanged.
 
 <details open>
-<summary><strong>Claude Code · 6 manuscripts · added 2026-11-16 to 2026-11-18</strong></summary>
+<summary><strong>Claude Code · 7 manuscripts · added 2026-11-16 to 2026-11-19</strong></summary>
 
 <a id="claude-code"></a>
 
@@ -149,6 +149,7 @@ A separate collection for results obtained with Claude Code (Anthropic) under th
 | **CC-P04** · Claude Code<br>[The largest removable edge sets of the pinched Sierpinski gasket](pdfs/ClaudeCode/CC-P04_Largest_removable_edge_sets_of_the_pinched_Sierpinski_gasket.pdf)<br>On Knuth's TAOCP exercise 7.2.2.3–227: for every n ≥ 2 the largest sets of edges removable from the pinched Sierpiński gasket without making it 3-colourable have 2^(n−1)+1 edges and are exactly Filip Stappers' 2^(n−1) sets, as conjectured in the answer (known for n ≤ 4). Exact corner-profile recursion; stand-alone checker. | [main.tex](reproducible_source_code/ClaudeCode/CC-P04/source/manuscript/main.tex) | [CC-P04](reproducible_source_code/ClaudeCode/CC-P04/) |
 | **CC-P05** · Claude Code<br>[Three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b) and 205](pdfs/ClaudeCode/CC-P05_Three_remarks_on_Pre-Fascicle_8A_157b_204b_205.pdf)<br>On Knuth's draft of TAOCP 7.2.2.4: why no closed 8×8 knight's tour has two moves of every class (five classes always carry exactly eight moves; answer 157(b) said no explanation was known), a correction to answer 204(b), and the one-key case of research problem 205 (exact average and asymptotics). | [main.tex](reproducible_source_code/ClaudeCode/CC-P05/source/manuscript/main.tex) | [CC-P05](reproducible_source_code/ClaudeCode/CC-P05/) |
 | **CC-P06** · Claude Code<br>[A fully clued Slitherlink diagram with exactly five solutions](pdfs/ClaudeCode/CC-P06_Fully_clued_Slitherlink_with_exactly_five_solutions.pdf)<br>Answers the question Knuth added in 2023 to the answer of TAOCP exercise 7.2.2.1–411 ("currently unknown whether or not exactly five loops are possible"): a fully clued 13×13 Slitherlink diagram with exactly five solutions; also 12×12 and 13×13 diagrams with exactly six, and no five or more below 144 cells. | [main.tex](reproducible_source_code/ClaudeCode/CC-P06/source/manuscript/main.tex) | [CC-P06](reproducible_source_code/ClaudeCode/CC-P06/) |
+| **CC-P07** · Claude Code<br>[There are no nine poison cards in Late Binding solitaire](pdfs/ClaudeCode/CC-P07_No_nine_poison_cards_in_Late_Binding_solitaire.pdf)<br>Settles Ross's 1989 question, recorded as unsolved in the answer to TAOCP exercise 7.2.2.2–486: no 9-card poison start exists in Late Binding solitaire (all 34,260,563 patterns, independently re-verified), and a 13-card poison start is given; the least length is 10 to 13. | [main.tex](reproducible_source_code/ClaudeCode/CC-P07/source/manuscript/main.tex) | [CC-P07](reproducible_source_code/ClaudeCode/CC-P07/) |
 
 </details>
 
@@ -780,7 +781,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              459 PDFs / 2380 pages
+├── archive-manifest.json              460 PDFs / 2383 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -799,11 +800,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    6 PDFs (added 2026-11-16 to 2026-11-18)
+│   ├── ClaudeCode/                    7 PDFs (added 2026-11-16 to 2026-11-19)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    6 paired packages (CC-P01 to CC-P06)
+    ├── ClaudeCode/                    7 paired packages (CC-P01 to CC-P07)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
@@ -823,7 +824,7 @@ AI-Has-Taste/
 
 The next release should make more of the research replayable—not merely make the archive larger.
 
-*Archive edition: November 18, 2026 (459 manuscripts; fifth and sixth Claude Code manuscripts added). Edition of November 17, 2026: 457 manuscripts. Edition of November 16, 2026: 454 manuscripts; Claude Code collection added. Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
+*Archive edition: November 19, 2026 (460 manuscripts; seventh Claude Code manuscript added). Edition of November 18, 2026: 459 manuscripts. Edition of November 17, 2026: 457 manuscripts. Edition of November 16, 2026: 454 manuscripts; Claude Code collection added. Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
 
 **AI Has Taste. The question is no longer only whether it can find an answer—but how it chooses the next question.**
 
@@ -846,5 +847,5 @@ The next release should make more of the research replayable—not merely make t
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. On 2026-11-17 a second manuscript, CC-P02 (closed knight's tours with 7.5 n + 13 crossings), was added with its paired package, and later that day a third, CC-P03 (removable edges of flower snark line graphs, TAOCP 7.2.2.3–233), and a fourth, CC-P04 (largest removable edge sets of the pinched Sierpinski gasket, TAOCP 7.2.2.3–227). On 2026-11-18 a fifth, CC-P05 (three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b), 205), was added. Later the same day a sixth, CC-P06 (a fully clued Slitherlink diagram with exactly five solutions, TAOCP 7.2.2.1-411), was added. The archive now has 459 manuscripts / 2,380 pages. No other PDF, source or gate byte was changed. The six manuscripts are not externally peer reviewed.
+**Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. On 2026-11-17 a second manuscript, CC-P02 (closed knight's tours with 7.5 n + 13 crossings), was added with its paired package, and later that day a third, CC-P03 (removable edges of flower snark line graphs, TAOCP 7.2.2.3–233), and a fourth, CC-P04 (largest removable edge sets of the pinched Sierpinski gasket, TAOCP 7.2.2.3–227). On 2026-11-18 a fifth, CC-P05 (three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b), 205), was added. Later the same day a sixth, CC-P06 (a fully clued Slitherlink diagram with exactly five solutions, TAOCP 7.2.2.1-411), was added. On 2026-11-19 a seventh, CC-P07 (no nine poison cards in Late Binding solitaire, TAOCP 7.2.2.2-486), was added. The archive now has 460 manuscripts / 2,383 pages. No other PDF, source or gate byte was changed. The seven manuscripts are not externally peer reviewed.
 <!-- END CLAUDECODE RELEASE NOTE -->

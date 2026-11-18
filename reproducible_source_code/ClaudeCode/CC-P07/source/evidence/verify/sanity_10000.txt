@@ -1,0 +1,16 @@
+Knuth example: DFS 1 BFS 1 (expect 1 1)
+after AC takes JC: DFS 0 BFS 0 (expect 0 0)
+after AC takes TC: DFS 0 BFS 0 (expect 0 0)
+first moves of example (pos of mover -> pos captured : DFS BFS):
+  5H(2)->JH(1): 1 1
+  AC(6)->TC(3): 0 0
+  AC(6)->JC(5): 0 0
+  4C(9)->AC(6): 0 0
+  8S(10)->KS(7): 1 1
+  5S(11)->8S(10): 1 1
+  5D(12)->5S(11): 1 1
+  TS(14)->5S(11): 1 1
+  2D(13)->5D(12): 1 1
+  AS(15)->TS(14): 1 1
+  3H(17)->6H(16): 1 1
+random deals: 10000, DFS wins 4678 (46.78%), DFS/BFS disagreements 0, max BFS layer 359610

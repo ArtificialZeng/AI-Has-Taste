@@ -1,0 +1,206 @@
+INDEPENDENT VERIFICATION: "no 9-card poison sequence" in Late Binding solitaire
+(TAOCP 4B ex. 7.2.2.2-486, Ross's question; Ross & Knuth STAN-CS-89-1269)
+Verifier: independent re-implementation, written without reading lb.py,
+quench.c, quench2.c, lbsearch*.c, penum.c (or any other authors' code).
+Date: 2026-11-18/19.  All files in P/verify/ (P = knuth/poison).
+
+VERDICT
+-------
+YES. The evidence, checked with independently written code, proves that
+there is NO 9-card poison sequence: every one of the 34,260,563 canonical
+9-card prefix patterns (= all 9-card prefixes up to suit and rank
+relabelling) is the prefix of a witness deal that my own solver finds
+winnable. No failures of any kind were found.
+  records 34,260,563; winnable 34,260,563; not winnable 0; invalid 0;
+  "no witness" sentinels 0; distinct patterns 34,260,563; duplicates 0;
+  missing 0; extra 0.
+Test set (k=6): 12,657 records, all winnable, all 12,657 patterns covered.
+Additional check: the 14-card prefix and the two 15-card prefixes supplied
+by the author are poison (0 winnable completions of 1,771,560 / 46,620 /
+46,620), confirmed by both the DFS and the exhaustive BFS solver.
+Remaining trust assumptions: correctness of my solver (validated as in
+section 3) and of the game rules as stated in the task (checked against
+Knuth's example and the published ~47% win rate).
+
+1. WHAT IS CHECKED, AND WHY IT SUFFICES
+--------------------------------------
+Claim: for every sequence x of 9 distinct cards there are 9 further cards
+y such that the 18-card deal x+y is winnable.
+
+Witness files hold 18-card deals. For a deal r and a prefix length k the
+verifier checks: (i) r is 18 distinct cards in 0..51 (not the 255 sentinel);
+(ii) r is winnable by the verifier's own solver; (iii) the canonical pattern
+of r's first k cards is computed. Then it checks that the set of canonical
+patterns of winnable records equals the set of ALL canonical k-patterns,
+enumerated independently.
+
+Soundness: compatibility (same suit or same rank) is preserved by any
+permutation of the 4 suits combined with any permutation of the 13 ranks,
+so such a relabelling maps winnable deals to winnable deals. Given any
+9-card x, let p be its canonical pattern and r a winnable record whose
+prefix has pattern p. Both r[1..9] and x map to p by relabellings that are
+injective on the suits/ranks used; extend to full permutations and compose
+to get a relabelling g with g(r[1..9]) = x. Then g(r) is a winnable deal
+of 18 distinct cards beginning with x. Hence no 9-card poison sequence.
+(Dealing and moving may also be interleaved in the original game; this does
+not change winnability, since moves only act leftward on existing piles and
+any interleaved play can be postponed until all 18 cards are down.)
+
+2. SOLVER (vsolve.h)
+--------------------
+State = sequence of top cards (6 bits each, packed into 128 bits). Moves
+exactly as in ex. 484: if v[k]~v[k+1] delete v[k]; if v[l]~v[l+3] put v[l+3]
+in place of v[l] and delete position l+3. Win iff length 1 reachable.
+Depth-first search, moves tried left to right (at each k the 1-step capture
+before the 3-step capture), with a per-deal hash table of states already
+proven LOSING (a state is stored only after all its successors failed; the
+table is an optimisation only - when full it would just stop inserting; it
+never filled: "tablefull=0" everywhere). Length 2 is decided directly.
+Pruning (sound necessary condition): the compatibility graph on the current
+top cards must be connected - a card disappears only when a compatible card
+is placed on it and survives, so each component keeps >= 1 card forever.
+
+Independent cross-check solver (sanity.c, bfscheck.c): exhaustive
+breadth-first enumeration of ALL reachable states, layer by layer (length
+n, n-1, ..., 1), sorted and deduplicated, no pruning, no memo; win iff the
+length-1 layer is nonempty.
+
+3. SANITY CHECKS OF THE SOLVER
+------------------------------
+Knuth's example deal (clubs, diamonds, hearts, spades = suits 0..3,
+A..K = ranks 0..12)
+  JH 5H TC 8D JC AC KS AH 4C 8S 5S 5D 2D TS AS 6H 3H TD
+  DFS winnable 1, BFS winnable 1                         (expected: winnable)
+  after AC (pos 6) captures JC (pos 5): DFS 0, BFS 0     (expected: unwinnable)
+  after AC (pos 6) captures TC (pos 3): DFS 0, BFS 0     (expected: unwinnable)
+  All 11 legal first moves (DFS = BFS for each): losing ones are exactly
+  AC->TC, AC->JC and 4C(pos 9)->AC(pos 6); the other 8 keep it winnable.
+Random 18-card deals (uniform from 52 cards), DFS vs exhaustive BFS:
+  run 1 (seed 20261118, 10000 deals): 4678 winnable (46.78%), 0 disagreements
+  run 2 (seed 777,      10000 deals): 4706 winnable (47.06%), 0 disagreements
+  total 20000 deals: 9384 winnable = 46.92% (std. error ~0.35%), matching
+  Gent et al.'s 47.0%. (The 4432/10000 = 44.3% attributed to Knuth is ~5
+  standard errors lower; this does not affect the verification, which is
+  anchored by Knuth's example and the exhaustive BFS cross-check, but the
+  source of that figure may be worth re-reading.)
+  (run 1 used an earlier build: no connectivity pruning, moves tried
+  right-to-left; run 2 the final solver used for all witness checks.)
+BFS on witness records themselves:
+  witness6: 2110 records (every 6th): BFS winnable 2110, 0 disagreements
+  witness9: 1500 records (150 from each of p0..p9, every 1999th record):
+            BFS winnable 1500, 0 disagreements
+Negative test of the verifier (corrupt6.bin = witness6 with a sentinel
+record, an unwinnable deal, a deal with a repeated card, a duplicated record
+and the last record dropped): all five defects reported (SENTINEL,
+NOT-WINNABLE, INVALID, DUPLICATE, and 5 MISSING patterns, "NOT COVERED").
+
+4. NUMBER OF PREFIX PATTERNS (independent)
+------------------------------------------
+Three independent methods:
+ (a) closed formula (patcount_formula.py): sequences using exactly a given a
+     suits and b ranks are acted on freely by S_a x S_b, so
+     #patterns(k) = sum_{a<=4,b<=13} Surj(a,b,k)/(a! b!), with Surj by
+     inclusion-exclusion over unused rows/columns of the a x b grid;
+ (b) recursive generation of canonical sequences (cover.c);
+ (c) brute force over all ordered k-sequences of 52 cards, canonicalised and
+     deduplicated (brute.c), k <= 5 (311,875,200 sequences for k=5).
+   k :     1  2   3    4     5      6       7        8         9
+ (a) :     1  3  15  113  1101  12657  162863  2281239  34260563
+ (b) :     1  3  15  113  1101  12657  162863  2281239  34260563
+ (c) :     1  3  15  113  1101      -       -        -         -
+All agree with the authors' numbers.
+
+5. TEST SET  witness6/p0.bin  (k = 6)
+-------------------------------------
+records 12657, sentinel 0, invalid 0, winnable 12657, not winnable 0
+distinct canonical 6-patterns 12657, duplicates 0, missing 0, extra 0
+=> COVERED EXACTLY. (Every record's prefix is literally in canonical form
+under suit=c//13, rank=c%13.) DFS nodes total 12.8M, max 228K per deal.
+
+6. MAIN SET  witness9/p0.bin .. p9.bin  (k = 9)
+-----------------------------------------------
+Run: records were verified while the files were being written (rounds A,
+R1..R5, 4 processes, nice 5) and the rest after all ten logs reported
+"K=9 proc" (FINAL, up to 6 processes). For every earlier round the sha256
+of the verified byte prefix of each file was recorded; after completion
+all were recomputed: 0 mismatches, i.e. the bytes verified early are the
+bytes in the final files. Per-file chunk ranges tile [0, #records) exactly.
+All k=9 checks used the final solver build (binary built 22:55:20 from the
+final vsolve.h; first k=9 chunk started 22:57).
+
+file   records    (authors' log "patterns", all with "hard 0")
+p0    2,889,959   2,889,959
+p1    4,073,964   4,073,964
+p2    4,753,268   4,753,268
+p3    2,537,164   2,537,164
+p4    3,260,300   3,260,300
+p5    4,393,132   4,393,132
+p6    3,429,356   3,429,356
+p7    2,796,244   2,796,244
+p8    3,500,940   3,500,940
+p9    2,626,236   2,626,236
+total 34,260,563  (all file sizes exact multiples of 18 bytes)
+
+records 34,260,563   sentinel (all 255) 0   invalid (card >51 or repeated) 0
+winnable (my solver) 34,260,563   NOT winnable 0
+canonical 9-patterns of winnable records: 34,260,563 distinct, 0 duplicates
+independently enumerated canonical 9-patterns: 34,260,563
+element-by-element comparison of the two sorted sets: missing 0, extra 0
+=> COVERED EXACTLY.
+(Every record's 9-prefix is literally in canonical form under suit=c//13,
+rank=c%13.) Solver effort: 33.5e9 DFS nodes in total (avg ~980 per deal,
+max 583,564 for one deal), ~20,400 CPU seconds; hash table never full.
+Full output: k9/final_check.txt; per-chunk lines: k9/out_*.txt.
+
+6b. EXTRA CHECK: CLAIMED POISON PREFIXES (requested by the author)
+------------------------------------------------------------------
+poison.c enumerates every ordered choice of the remaining cards (distinct,
+not in the prefix) and solves each 18-card deal; poisonbfs.c does the same
+with the exhaustive BFS solver.
+ 14-card prefix 45 2 42 15 46 11 39 8 22 27 43 12 23 31
+   completions 1,771,560 (= 38*37*36*35): winnable 0 (DFS), 0 (BFS)
+ 15-card prefix 33 5 34 17 46 9 41 38 19 29 24 12 23 42 0
+   completions 46,620 (= 37*36*35): winnable 0 (DFS), 0 (BFS)
+ 15-card prefix 15 3 47 11 45 23 34 9 29 41 14 51 31 30 10
+   completions 46,620: winnable 0 (DFS), 0 (BFS)
+ => all three prefixes are poison.
+Positive control (the checker can find winnable completions): 16-card
+prefix of witness9/p0.bin record 12345 (0 1 2 3 4 16 27 17 18 45 30 39 49
+42 43 47): 1184 of 1260 completions winnable, DFS and BFS agree.
+Outputs: poison_dfs.txt, poison_bfs.txt, poison_control.txt.
+
+7. FILES
+--------
+vsolve.h            DFS solver (memo of losing states + connectivity prune)
+sanity.c            Knuth example + random deals, DFS vs exhaustive BFS
+sanity_10000*.txt   outputs of the two 10000-deal runs
+bfscheck.c          BFS vs DFS on a sample of witness records (bfscheck9.txt)
+patcount_formula.py closed-formula pattern counts
+brute.c             brute-force pattern counts k<=5
+verify.c            per-record checks + canonical prefix codes
+cover.c             enumerates all canonical k-patterns, compares with codes
+phase.sh, follow.sh, final_check.sh   driver scripts for the k=9 run
+poison.c, poisonbfs.c                 exhaustive completion check of a prefix
+exp.c               move-ordering experiment (not used for results)
+corrupt6.bin        corrupted copy of witness6 used for the negative test
+verify6.txt, cover6.txt               k=6 results
+k9/                 k=9 per-chunk outputs (out_*.txt), codes, sha256 of
+                    prefixes verified while the files were still growing,
+                    final_check.txt (final check output). The codes_*.bin
+                    files (~260 MB) are intermediate and can be deleted.
+
+8. ADDENDUM (2026-11-19): 13-CARD PREFIX CLAIMED POISON
+-------------------------------------------------------
+Prefix 30 19 28 18 3 39 8 50 12 49 14 33 22
+(= 5D 7H 3D 6H 4S AC 9S QC KS JC 2H 8D TH; suit = c//13 in order S,H,D,C;
+rank = c%13, A..K).
+Exhaustive check of all ordered completions by 5 distinct further cards
+(39*38*37*36*35 = 69,090,840), split over 6 processes by the first added
+card (poison.c / poisonbfs.c, same programs as section 6b):
+  DFS solver (vsolve.h):        completions tried 69,090,840, winnable 0
+                                (1.04e9 DFS nodes, 414 CPU s)
+  exhaustive BFS solver:        completions tried 69,090,840, winnable 0
+                                (915 CPU s)
+  Per-part counts 3 x 12,400,920 + 3 x 10,629,360 = 69,090,840.
+=> CONFIRMED: the 13-card prefix is poison (0 winnable completions).
+Outputs: poison13_dfs.txt, poison13_bfs.txt.

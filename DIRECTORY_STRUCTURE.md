@@ -1,13 +1,13 @@
 # Repository directory / 完整目录层级
 
-**459 manuscripts / 2,380 pages** (edition of 2026-11-18: the Claude Code collection has six manuscripts, CC-P01, added on 2026-11-16 and revised since, CC-P02, CC-P03 and CC-P04, added on 2026-11-17, and CC-P05 and CC-P06, added on 2026-11-18; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
+**460 manuscripts / 2,383 pages** (edition of 2026-11-19: the Claude Code collection has seven manuscripts, CC-P01, added on 2026-11-16 and revised since, CC-P02, CC-P03 and CC-P04, added on 2026-11-17, CC-P05 and CC-P06, added on 2026-11-18, and CC-P07, added on 2026-11-19; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
 
 ```text
 AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              459 PDFs / 2380 pages
+├── archive-manifest.json              460 PDFs / 2383 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -26,11 +26,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    6 PDFs (added 2026-11-16 to 2026-11-18)
+│   ├── ClaudeCode/                    7 PDFs (added 2026-11-16 to 2026-11-19)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    6 paired packages (CC-P01 to CC-P06)
+    ├── ClaudeCode/                    7 paired packages (CC-P01 to CC-P07)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
