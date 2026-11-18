@@ -6,7 +6,7 @@
 
 **从生成答案，到生成研究议程**
 
-**458 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
+**459 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
 
 > **AI 能否决定：下一步，什么数学值得研究？**
 
@@ -126,14 +126,14 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **458 份数学研究文稿／2,376 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了458道原始开放问题。
+本仓库共 **459 份数学研究文稿／2,380 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了459道原始开放问题。
 
 七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
 **语言说明：** BigWIN2归属纠错与Claude Code新增条目均同步更新英文和简体中文。法文、俄文、德文和日文保留此前档案快照；原有PDF字节和署名不变。
 
 <details open>
-<summary><strong>Claude Code · 5 篇文稿 · 2026-11-16 至 2026-11-18 新增</strong></summary>
+<summary><strong>Claude Code · 6 篇文稿 · 2026-11-16 至 2026-11-18 新增</strong></summary>
 
 <a id="claude-code"></a>
 
@@ -148,6 +148,7 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 | **CC-P03** · Claude Code<br>[How many edges can be removed from a flower snark line graph?](pdfs/ClaudeCode/CC-P03_Removing_edges_from_flower_snark_line_graphs.pdf)<br>关于高德纳 TAOCP 第 7.2.2.3–233 题：对每个奇数 q ≥ 5，花形 snark 线图 L(J_q) 最多删 9 条边仍不能 3 着色，且 9 边集恰为 4q 个爪集（q = 3 时为 15）。高德纳此前最好为 9。转移矩阵证明（T² = T⁴）；附独立核对程序。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P03/source/manuscript/main.tex) | [CC-P03](reproducible_source_code/ClaudeCode/CC-P03/) |
 | **CC-P04** · Claude Code<br>[The largest removable edge sets of the pinched Sierpinski gasket](pdfs/ClaudeCode/CC-P04_Largest_removable_edge_sets_of_the_pinched_Sierpinski_gasket.pdf)<br>关于高德纳 TAOCP 第 7.2.2.3–227 题：对每个 n ≥ 2，捏合 Sierpiński 垫片的最大可删边集恰有 2^(n−1)+1 条边，且恰为 Filip Stappers 的 2^(n−1) 个集合，证实了书中答案的猜想（此前仅知 n ≤ 4）。角轮廓精确递推；附独立核对程序。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P04/source/manuscript/main.tex) | [CC-P04](reproducible_source_code/ClaudeCode/CC-P04/) |
 | **CC-P05** · Claude Code<br>[Three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b) and 205](pdfs/ClaudeCode/CC-P05_Three_remarks_on_Pre-Fascicle_8A_157b_204b_205.pdf)<br>关于高德纳 TAOCP 7.2.2.4 草稿：解释为何没有每类棋步都用两次的 8×8 闭合马步巡游（五类棋步恒为 8 步；第 157(b) 题答案原称原因未知），订正第 204(b) 题答案，并解决研究题 205 的单键情形（精确平均与渐近）。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P05/source/manuscript/main.tex) | [CC-P05](reproducible_source_code/ClaudeCode/CC-P05/) |
+| **CC-P06** · Claude Code<br>[A fully clued Slitherlink diagram with exactly five solutions](pdfs/ClaudeCode/CC-P06_Fully_clued_Slitherlink_with_exactly_five_solutions.pdf)<br>回答高德纳 2023 年在 TAOCP 第 7.2.2.1–411 题答案中新增的问题（"目前未知是否可能恰好有五个环"）：一个恰好有五个解的 13×13 全线索 Slitherlink 盘面；另有恰好六个解的 12×12 与 13×13 盘面，并证明面积小于 144 格时不可能有五个或更多解。 | [main.tex](reproducible_source_code/ClaudeCode/CC-P06/source/manuscript/main.tex) | [CC-P06](reproducible_source_code/ClaudeCode/CC-P06/) |
 
 </details>
 
@@ -779,7 +780,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              458 PDFs / 2376 pages
+├── archive-manifest.json              459 PDFs / 2380 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -798,11 +799,11 @@ AI-Has-Taste/
 │   ├── BigMac1/                       41 PDFs
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
-│   ├── ClaudeCode/                    5 PDFs (added 2026-11-16 to 2026-11-18)
+│   ├── ClaudeCode/                    6 PDFs (added 2026-11-16 to 2026-11-18)
 │   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
-    ├── ClaudeCode/                    5 paired packages (CC-P01 to CC-P05)
+    ├── ClaudeCode/                    6 paired packages (CC-P01 to CC-P06)
     └── BigWIN2/                       223 paired packages, including conjectures
         ├── prepare.py / build.py      verify bytes / disposable rebuild
         └── <archive-id>/
@@ -822,7 +823,7 @@ AI-Has-Taste/
 
 下一次发布应让更多研究可以复现，而不只是让档案更大。
 
-*档案版本：2026 年 11 月 18 日（458份文稿，Claude Code合集新增第五篇）。2026 年 11 月 17 日版：457份文稿。2026 年 11 月 16 日版：454份文稿，新增Claude Code合集。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
+*档案版本：2026 年 11 月 18 日（459份文稿，Claude Code合集新增第五、六篇）。2026 年 11 月 17 日版：457份文稿。2026 年 11 月 16 日版：454份文稿，新增Claude Code合集。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
 
 **AI Has Taste。问题不再只是它能否找到答案，还在于它如何选择下一个问题。**
 
@@ -845,5 +846,5 @@ AI-Has-Taste/
 <!-- END BIGWIN2 RELEASE NOTE -->
 
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
-**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。2026-11-17 又新增第二篇文稿 CC-P02（交叉数为 7.5 n + 13 的闭合马步巡游）及其配套包。同日稍后新增第三篇 CC-P03（花形 snark 线图的可删边，TAOCP 7.2.2.3–233）与第四篇 CC-P04（捏合 Sierpiński 垫片的最大可删边集，TAOCP 7.2.2.3–227）。2026-11-18 新增第五篇 CC-P05（关于 TAOCP 预印分册 8A 第 157(b)、204(b)、205 题的三则注记）。仓库现为458份文稿／2,376页。其余PDF、源码与门控文件字节均未改动。这五篇文稿未经外部同行评审。
+**Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。2026-11-17 又新增第二篇文稿 CC-P02（交叉数为 7.5 n + 13 的闭合马步巡游）及其配套包。同日稍后新增第三篇 CC-P03（花形 snark 线图的可删边，TAOCP 7.2.2.3–233）与第四篇 CC-P04（捏合 Sierpiński 垫片的最大可删边集，TAOCP 7.2.2.3–227）。2026-11-18 新增第五篇 CC-P05（关于 TAOCP 预印分册 8A 第 157(b)、204(b)、205 题的三则注记）。同日稍后新增第六篇 CC-P06（恰好有五个解的全线索 Slitherlink 盘面，TAOCP 7.2.2.1-411）。仓库现为459份文稿／2,380页。其余PDF、源码与门控文件字节均未改动。这六篇文稿未经外部同行评审。
 <!-- END CLAUDECODE RELEASE NOTE -->
