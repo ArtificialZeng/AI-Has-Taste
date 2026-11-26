@@ -1,6 +1,6 @@
 {
   "project": "AI Has Taste",
-  "prepared_on": "2026-11-19",
+  "prepared_on": "2026-11-27",
   "language": "en",
   "homepage_languages": [
     "en",
@@ -18,19 +18,19 @@
     "de": "README.de.md",
     "ja": "README.ja.md"
   },
-  "homepage_edition": "en-zh-460-manuscripts-claude-code-seventh-entry",
+  "homepage_edition": "en-zh-461-manuscripts-neon-added",
   "localization_scope": "English/Chinese counts and topical catalogs synchronized; PDF links corrected in other language snapshots where necessary.",
   "catalog_language": "en",
   "pdf_sections_collapsed_by_default": true,
-  "pdf_catalog_layout": "Six nonempty physical PDF folders; five BigWIN2 conjectures and one Smallmac conjecture remain in pdfs/ai-conjecture/.",
+  "pdf_catalog_layout": "Eight nonempty physical PDF folders (including ClaudeCode and Neon); five BigWIN2 conjectures and one Smallmac conjecture remain in pdfs/ai-conjecture/.",
   "hero_illustration": {
     "file": "assets/ai-has-taste-hero.png",
     "prompt": "assets/ai-has-taste-hero.prompt.md",
     "generation": "Built-in image generation tool",
     "depiction": "Symbolic intellectual confrontation between AI and the Fields Medal tradition; not a real award, endorsement, or contest result."
   },
-  "paper_count": 460,
-  "page_count": 2383,
+  "paper_count": 461,
+  "page_count": 2396,
   "directory_counts": {
     "smallmac_1": 17,
     "smallmac_2": 116,
@@ -38,7 +38,8 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 218,
-    "ClaudeCode": 7
+    "ClaudeCode": 7,
+    "Neon": 1
   },
   "source_collection_counts": {
     "smallmac_1": 17,
@@ -46,7 +47,8 @@
     "BigMac1": 41,
     "BigMac2": 55,
     "BigWIN2": 223,
-    "ClaudeCode": 7
+    "ClaudeCode": 7,
+    "Neon": 1
   },
   "scope": "230 upstream manuscripts plus 223 unique current-conversation BigWIN2 manuscripts. Prior BigWIN1 attribution corrected, without changing PDF or frozen source/evidence bytes. No newly eligible final PDF found in the 2026-09-17 incremental scan.",
   "upload_notice": "Repository publication authorized by the user; actual Git transport outcome is reported separately, not inferred from this manifest.",
@@ -8796,6 +8798,25 @@
       "introduces_new_conjecture": false,
       "build_status": "pass",
       "replay_status": "pass-exact-replay"
+    },
+    {
+      "paper_id": "NEON-P01",
+      "title": "Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh–Giuga Conjecture",
+      "pages": 13,
+      "sha256": "fc92119c228e03879baf5d03a43de099f77354661c5484b331175850545f0786",
+      "archive_status": "final-manuscript-independent-verifier-checks",
+      "manuscript_kind": "partial-theorem-paper",
+      "original_status": "partial theorem",
+      "collection_of_origin": "Neon",
+      "directory": "Neon",
+      "pdf": "pdfs/Neon/NEON-P01_Star_Pack_Dominance_and_Forced_Prime_CRT_Lower_Bounds_for_the_Agoh_Giuga_Conjecture.pdf",
+      "latex": "reproducible_source_code/Neon/NEON-P01/source/manuscript/main.tex",
+      "reproducible_source": "reproducible_source_code/Neon/NEON-P01/",
+      "original_id": "neon-20261126-agoh-giuga-star-pack-crt",
+      "contribution": "Partial theorem on the Agoh-Giuga conjecture (full conjecture remains open), produced with Gemini 4 Neon. Proves the 4-line Star-Pack Reciprocal Dominance Lemma and a 7-leaf Exact Extremal Normal-Set Theorem exhausting Borwein-Maitland-Skerritt (2013) without external compute (|S| >= 8,135, max(S) >= 321,053 and prod S >= P(L) of 40,733 digits with unique attainment at L = L_{27,692}; exact outside-Leaf-2 minimum max(S) >= 352,757). Breaks past the normal-set ceiling by coupling an elementary mod-16 congruence (m - a = 1 mod 8, independently obtained via lattices by Mavrotheris 2026), a 3-line elementary a >= 2 splitting bound (omega(n) >= 329,188, P(n) >= 1,284,211, >= 1,808,611 digits), forced-prime CRT congruences, sound 2D integer knapsacks, linear forcing cascades, zero-float Lagrangian star inequalities, and 846 exact 2D lattice witnesses to prove unconditionally omega(n) >= 8,138, P(n) >= 326,057, and n >= 10^{40,921} (>= 40,922 decimal digits), plus sharp dichotomies (omega=8,138 => >= 51,798 digits and P(n) > 10^{3,685}; omega=8,146 => >= 41,895 digits and P(n) > 10^{103}; omega=8,154 => >= 41,128 digits) and a sharp r=2 giant-prime structural barrier (N_0 >= 3 odd, P_1 P_2 < t_0(N_0)^3 M_0^2 + t_0(N_0)^2 M_0 < 0.4523 M_0^2). Certified in ~15 s by a standalone AST-audited zero-float Python stdlib verifier.",
+      "introduces_new_conjecture": false,
+      "build_status": "pass",
+      "replay_status": "pass-exact-replay"
     }
   ],
   "code_inclusion_scope": "BigMac1 only; selected source and exact evidence, not every external tool or large historical trace.",
@@ -8849,7 +8870,8 @@
   "latex_source_in_git": true,
   "latex_source_in_git_scope": [
     "BigWIN2",
-    "ClaudeCode"
+    "ClaudeCode",
+    "Neon"
   ],
   "bigwin1_aliases": [
     {
@@ -9048,12 +9070,12 @@
   "latest_reconciliation": "assets/BigWIN2/intake-reconciliation.json",
   "reclassification_mapping": "assets/BigWIN2/reclassification-20260917.json",
   "latest_addition": {
-    "date": "2026-11-19",
-    "collection": "ClaudeCode",
+    "date": "2026-11-27",
+    "collection": "Neon",
     "paper_ids": [
-      "CC-P07"
+      "NEON-P01"
     ],
-    "note": "One manuscript added; no existing PDF, source or gate byte changed."
+    "note": "One manuscript (Agoh-Giuga partial theorem, produced with Gemini 4 Neon) added at the end of the archive in the new Neon collection; no existing PDF, source or gate byte changed."
   },
   "latest_update": {
     "date": "2026-11-16",
