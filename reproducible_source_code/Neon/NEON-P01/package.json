@@ -1,0 +1,52 @@
+{
+  "original_id": "neon-20261126-agoh-giuga-star-pack-crt",
+  "archive_id": "NEON-P01",
+  "title": "Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh–Giuga Conjecture",
+  "batch_label": "Neon (Gemini 4 Neon)",
+  "kind": "partial-theorem-paper",
+  "original_status": "Partial theorem",
+  "scope": "Exhausts the normal-set bound for the Agoh-Giuga conjecture (8,135 factors / 321,053 max prime / 40,733 digits; 352,757 exact outside Leaf 2) via a 4-line Star-Pack Reciprocal Dominance Lemma and 7-leaf partition, then breaks past the normal-set ceiling via mod-16 congruences, elementary a >= 2 splitting, forced-prime CRT, and 846 exact 2D lattice witnesses to prove unconditionally omega(n) >= 8,138, P(n) >= 326,057, and >= 40,922 decimal digits, plus sharp dichotomies and an r = 2 giant-prime structural barrier.",
+  "gate_basis": "src/verify_agoh_giuga_certificate.py independently re-verifies all 7 Star-Pack leaves, exhaustive mod-16 table, elementary a >= 2 bounds, all 846 exact (U, R) lattice witnesses, and zero-float Lagrangian star inequalities in ~15 seconds using Python 3 stdlib only (AST-audited zero floats). tests/test_agoh_giuga_tier2.py runs 11 unit, AST zero-float, DP2 soundness, r=2 boundary, and fail-closed tamper tests.",
+  "provenance": {
+    "tool": "Gemini 4 Neon",
+    "first_obtained": "2026-11-26",
+    "archived": "2026-11-27"
+  },
+  "pdf": "pdfs/Neon/NEON-P01_Star_Pack_Dominance_and_Forced_Prime_CRT_Lower_Bounds_for_the_Agoh_Giuga_Conjecture.pdf",
+  "pdf_sha256": "fc92119c228e03879baf5d03a43de099f77354661c5484b331175850545f0786",
+  "pages": 13,
+  "latex": "reproducible_source_code/Neon/NEON-P01/source/manuscript/main.tex",
+  "reproducible_source": "reproducible_source_code/Neon/NEON-P01/",
+  "source_root": "reproducible_source_code/Neon/NEON-P01/source/",
+  "main_tex": "manuscript/main.tex",
+  "dependencies": [
+    "Python 3 standard library only (zero external packages, zero floating-point arithmetic in the verifier); TeX Live / latexmk only for optional PDF rebuild."
+  ],
+  "limitations": [
+    "Terminal status: partial theorem. The full Agoh-Giuga conjecture remains open; Theorem 5.1 proves a sharp structural barrier explaining why local CRT + 2D lattice refutation leaves 3 <= N_0 <= ~10^17704 open for two-giant-prime completions.",
+    "Not externally peer reviewed; no interactive proof assistant (Lean, Coq, Isabelle) was used.",
+    "Novelty wording is bounded to literature indexed through October 2026 (citing Mavrotheris Aug 2026 Zenodo DOI 10.5281/zenodo.22085830 for the mod-8 congruence and Lopez Oct 2026 arXiv:2610.09129v2).",
+    "External literature PDFs are cited, not reproduced."
+  ],
+  "entrypoints": [
+    "python3 src/verify_agoh_giuga_certificate.py certificates/agoh_giuga_tier2_certificate.json",
+    "python3 -m unittest tests/test_agoh_giuga_tier2.py -v"
+  ],
+  "source_files": 13,
+  "source_sha256": {
+    "source/evidence/audit/BIBLIOGRAPHY_AUDIT.md": "ec3d62b6aa0a992def40c6ed868da315cf8b3addde6eb40e12e0c5fb72131e37",
+    "source/evidence/audit/PDF_AUDIT.md": "072e0be164167a96b5bf8aada38b4f3e786147bbcfed635d4cd53c3a2b9ccc4e",
+    "source/evidence/audit/PROOF_AUDIT.md": "c14f0dd0e1be7ed39965e3ae491bb68bb2d207710d9d17e42b3f3057e8853014",
+    "source/evidence/certificates/agoh_giuga_tier2_certificate.json": "9d3bf88b78f3a3d336b1e2329528d93e43ed911eef663583087724084e037e15",
+    "source/evidence/experiments/improved_bound_certificate.json": "0822744c0d31d28aab0e5509f25256d0b736634f0a45344ee6eff9276a2d242f",
+    "source/evidence/proof/gap_ledger.md": "1052bf70ece274d76fe848480035074cf67836dc76bd35149e131bf578f7be76",
+    "source/evidence/proof/star_pack_crt_tier2_proof.md": "ac40557834ff045a3cf63275f41cfa82b635411cbfad6b08e5772b29d6108a6c",
+    "source/evidence/src/generate_agoh_giuga_certificate.py": "5ecd8a3fdf26de4fd510a91ee1ef292ac76019b4e67fdceb6df56f4fcb95f294",
+    "source/evidence/src/verify_agoh_giuga_certificate.py": "34db6793cfab4046095cd14c7ff15086dfadb8b3ad5d032e4efc48a386d213eb",
+    "source/evidence/src/verify_improved_bound.py": "ff7ae5771ec99f031c02e906d030fe76d30872e4808c46c75db6b559d72b030c",
+    "source/evidence/tests/test_agoh_giuga_tier2.py": "adf733b752641d16c6468767c399f475cd1415e3f5756c708879f0b79acdf6c1",
+    "source/manuscript/main.tex": "90f7e2572d4a3689ebb61dbe26696e186956f3f2876cc1e2e9497e303bf8a6d1",
+    "source/manuscript/references.bib": "41d805846df6f472ed6b72e31d19d9c53ce1cf97de53db9f7a2039ae1c5494e4"
+  },
+  "introduces_new_conjecture": false
+}

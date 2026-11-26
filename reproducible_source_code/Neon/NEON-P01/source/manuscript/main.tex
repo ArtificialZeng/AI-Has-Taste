@@ -1,0 +1,988 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh--Giuga Conjecture},
+  pdfauthor={Anonymous}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\Podd}{\mathbb{P}_{\mathrm{odd}}}
+\newcommand{\capf}{\operatorname{cap}}
+\newcommand{\gap}{\operatorname{gap}}
+
+\title{Star-Pack Dominance and Forced-Prime CRT Lower Bounds\\
+for the Agoh--Giuga Conjecture}
+\author{Anonymous}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Agoh--Giuga conjecture asserts that no composite integer $n$ satisfies
+$\sum_{j=1}^{n-1} j^{n-1} \equiv -1 \pmod n$; it remains open. The strongest
+prior published computational lower bound, due to Borwein, Maitland, and
+Skerritt (2013), used ten days of tree trimming to depth $311$ to prove that any
+counterexample has at least $4{,}771$ distinct prime factors and exceeds
+$10^{19{,}907}$, while noting that normal-set tree pruning can never exceed the
+$8{,}135$-prime threshold of the greedy normal set $L_{27,692}$.
+
+We first prove an elementary four-line \emph{Star-Pack Reciprocal Dominance
+Lemma} and combine it with an exhaustive $7$-leaf partition of the odd primes to
+establish the \emph{Exact Extremal Normal-Set Theorem} without external
+large-scale search: every finite normal set $S$ of odd primes with
+$\sum_{p\in S} 1/p > 1$ satisfies $|S| \ge 8{,}135$ (not uniquely attained),
+$\max(S) \ge 321{,}053$ (equality iff $S = L_{27,692}$), and
+$\prod_{p\in S} p \ge P(L_{27,692})$ ($40{,}733$ decimal digits, equality iff
+$S = L_{27,692}$). This exhausts the Borwein--Maitland--Skerritt algorithm
+($j_d = 8{,}135$ for all $d \ge 27{,}692$) and establishes that outside the
+extremal leaf $\{5,7,23,83\}\subseteq S$, $3\notin S$, the exact minimum of
+$\max(S)$ is $352{,}757$.
+
+We then break past the normal-set ceiling by coupling an elementary
+$(\mathbb{Z}/16\mathbb{Z})^\times$ congruence (giving $m - a \equiv 1 \pmod 8$,
+independently obtained via unimodular lattices by Mavrotheris in 2026), a
+three-line elementary splitting bound for Giuga values $a \ge 2$
+($\omega(n)\ge 329{,}188$, $P(n)\ge 1{,}284{,}211$, $\ge 1{,}808{,}611$ digits),
+and forced-prime Chinese Remainder Theorem congruences refuted by exact
+$2$-dimensional lattice witnesses. Every composite counterexample to the
+Agoh--Giuga conjecture therefore satisfies unconditionally
+\[
+  \omega(n) \ge 8{,}138,
+  \qquad
+  P(n) \ge 326{,}057,
+  \qquad
+  n \ge 10^{40{,}921} \text{ ($\ge 40{,}922$ decimal digits)},
+\]
+with sharper dichotomies at the smallest prime-factor counts ($\omega(n)=8{,}138$
+forces $\ge 51{,}798$ digits and $P(n) > 10^{3{,}685}$; $\omega(n)=8{,}146$
+forces $\ge 41{,}895$ digits and $P(n) > 10^{103}$; $\omega(n)=8{,}154$ forces
+$\ge 41{,}128$ digits). Finally, we prove a sharp structural barrier for
+two-giant-prime completions $n = M_0 P_1 P_2$ ($N_0 \ge 3$ odd and
+$P_1 P_2 < t_0(N_0)^3 M_0^2 + t_0(N_0)^2 M_0 < 0.4523 M_0^2$ for
+$M_0 \ge 10^5$), explaining why local CRT methods alone cannot settle the full
+conjecture. All computational claims are certified by a standalone zero-float
+Python standard-library verifier checking $846$ exact lattice witnesses in
+under $16$ seconds; no interactive proof assistant was used.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+In 1950, Giuga~\cite{Giuga1950} conjectured that an integer $n > 1$ is prime if
+and only if
+\begin{equation}\label{eq:giuga-power}
+  \sum_{j=1}^{n-1} j^{n-1} \equiv -1 \pmod n.
+\end{equation}
+Agoh~\cite{Agoh1995} independently formulated the equivalent Bernoulli-number
+congruence $n B_{n-1} \equiv -1 \pmod n$, and the assertion that no composite
+$n$ satisfies~\eqref{eq:giuga-power} is now known as the \emph{Agoh--Giuga
+conjecture}. By Giuga's characterization~\cite{Giuga1950} and Korselt's
+criterion for Carmichael numbers~\cite{Korselt1899} (see also Borwein et
+al.~\cite{Borwein_1996} and Luca, Pomerance, and
+Shparlinski~\cite{LucaPomeranceShparlinski2009}), a composite integer $n$
+satisfies~\eqref{eq:giuga-power} if and only if $n$ is odd, squarefree, and
+satisfies, for every prime $p \mid n$,
+\begin{equation}\label{eq:local}
+  p \mid \frac{n}{p} - 1 \quad\text{(Giuga condition)}
+  \qquad\text{and}\qquad
+  (p - 1) \mid (n - 1) \quad\text{(Carmichael condition)}.
+\end{equation}
+Equivalently, letting $S = \PP(n) = \{p \text{ prime} : p \mid n\}$ and
+$m = \omega(n) = |S|$, the Giuga condition is equivalent to the reciprocal
+identity
+\begin{equation}\label{eq:recip}
+  \sum_{p \in S} \frac{1}{p} - \frac{1}{n} = a
+\end{equation}
+for a positive integer $a \ge 1$ (called the \emph{value} of $n$), while the
+Carmichael condition implies that $S$ is a \emph{normal} set of odd primes: no
+two distinct $p, q \in S$ satisfy $p \mid (q - 1)$. Indeed, $p \mid (q - 1)$
+and $(q - 1) \mid (n - 1)$ would give $p \mid (n - 1)$, contradicting $p \mid n$.
+
+Lower bounds on a hypothetical counterexample have a long computational history:
+Giuga~\cite{Giuga1950} obtained $1{,}000$ digits, Bedocchi~\cite{Bedocchi1985}
+reached $1{,}700$ digits, Borwein, Borwein, Borwein, and
+Girgensohn~\cite{Borwein_1996} pushed normal-set tree pruning to depth $135$
+($\omega(n) \ge 3{,}459$, $>10^{13{,}886}$), and Borwein, Maitland, and
+Skerritt~\cite{DBLP:journals/int/BorweinMS13} reached depth $311$ in over ten
+days of computation and $120\,\mathrm{GB}$ of storage, proving
+$\omega(n) \ge 4{,}771$ and $n > 10^{19{,}907}$. Crucially, Borwein et
+al.~\cite{Borwein_1996,DBLP:journals/int/BorweinMS13} observed that the greedy
+normal set $L = L_{27,692}$ starting from $\{5,7\}$ up to the $27{,}692$nd odd
+prime $q_{27,692} = 321{,}053$ already has $|L| = 8{,}135$ and
+$\sum_{p\in L} 1/p > 1$, creating an absolute \emph{normal-set ceiling} of
+$8{,}135$ prime factors for pure normality arguments. Because their trimmed
+search tree grew exponentially with depth, they remarked that exhausting their
+algorithm up to $d = 27{,}692$ appeared ``exceptionally unlikely to
+happen''~\cite[p.~7]{DBLP:journals/int/BorweinMS13}. Recent work through
+October 2026 continues to investigate modular and algebraic obstructions without
+resolving the conjecture: Mavrotheris~\cite{Mavrotheris2026} derived mod-$8$
+congruences via unimodular star lattices and van der Blij's theorem, and
+L\'opez~\cite{Lopez2026} formulated an idempotence criterion for
+counterexamples.
+
+\subsection*{Summary of results and honest scope}
+
+The full Agoh--Giuga conjecture remains open; our results are partial theorems
+that (i) completely exhaust the normal-set extremal problem with a short
+elementary proof and a $7$-leaf partition, and (ii) break decisively past the
+normal-set ceiling by incorporating the exact Giuga and Carmichael congruences
+via forced-prime Chinese Remainder Theorem (CRT) moduli and $2$-dimensional
+lattice refutation. Specifically, within the scope of literature indexed through
+October 2026, we establish the following new results:
+
+\begin{enumerate}
+  \item \textbf{Exact Extremal Normal-Set Theorem (Section~\ref{sec:starpack}).}
+  Using a four-line \emph{Star-Pack Reciprocal Dominance Lemma}
+  (Lemma~\ref{lem:starpack}) on a $7$-leaf partition of the odd primes, we prove
+  (Theorem~\ref{thm:extremal}) that every finite normal set $S \subset \Podd$
+  with $\sum_{p\in S} 1/p > 1$ satisfies $|S| \ge 8{,}135$ (not uniquely
+  attained), $\max(S) \ge 321{,}053$ (equality iff $S = L$), and
+  $\prod_{p\in S} p \ge P(L)$ ($40{,}733$ digits, equality iff $S = L$). This
+  exhausts the Borwein--Maitland--Skerritt algorithm ($j_d = 8{,}135$ for all
+  $d \ge 27{,}692$) and resolves the extremal lower-bound consequence of Borwein
+  et al.~\cite[Open Problem~5]{Borwein_1996} (without settling the intermediate
+  relaxed tree scores $j_d = j_d(L_d)$ for $312 \le d \le 27{,}691$). Moreover,
+  outside the extremal leaf $\{5,7,23,83\}\subseteq S$, $3\notin S$, we prove
+  $|S| \ge 8{,}846$, $\prod_{p\in S} p \ge 10^{44{,}627}$, and the exact
+  attained bound $\max(S) \ge 352{,}757$.
+
+  \item \textbf{Elementary mod-$16$ congruence and $a \ge 2$ splitting
+  (Section~\ref{sec:elementary}).} Combining quadratic reciprocity with an
+  elementary $+8$-invariance calculation in $(\mathbb{Z}/16\mathbb{Z})^\times$,
+  we give a short self-contained proof of the mod-$8$ congruence
+  $m - a \equiv 1 \pmod 8$ (first proved for odd Giuga numbers by
+  Mavrotheris~\cite{Mavrotheris2026}) together with its exact mod-$16$
+  refinement (Theorem~\ref{thm:mod16}). For $a \ge 2$, a purely elementary
+  three-line splitting argument (Theorem~\ref{thm:a-ge-2}) using zero analytic
+  number theory yields $\omega(n) \ge 329{,}188$, $P(n) \ge 1{,}284{,}211$, and
+  at least $1{,}808{,}611$ decimal digits.
+
+  \item \textbf{Unconditional Tier 2 exclusion bounds and dichotomies
+  (Section~\ref{sec:tier2}).} Applying forced-prime CRT congruences
+  $X \equiv C_F Y \pmod{M_F}$, sound suffix-minimum $2$-dimensional integer
+  knapsacks, linear forcing cascades, zero-float Lagrangian star inequalities,
+  and $846$ certified $2$-dimensional lattice witnesses, we prove
+  (Theorem~\ref{thm:tier2}) that every composite Agoh--Giuga counterexample $n$
+  satisfies
+  \[
+    \omega(n) \ge 8{,}138,
+    \qquad
+    P(n) \ge 326{,}057,
+    \qquad
+    n \ge 10^{40{,}921} \text{ ($\ge 40{,}922$ decimal digits)},
+  \]
+  and that small factor counts force massive prime factors and digit lengths
+  ($\omega(n)=8{,}138 \implies \ge 51{,}798$ digits and $P(n)>10^{3{,}685}$;
+  $\omega(n)=8{,}146 \implies \ge 41{,}895$ digits and $P(n)>10^{103}$;
+  $\omega(n)=8{,}154 \implies \ge 41{,}128$ digits).
+
+  \item \textbf{Sharp $r=2$ giant-prime structural barrier
+  (Section~\ref{sec:barrier}).} For any $a = 1$ completion $n = M_0 P_1 P_2$
+  with $N_0 = M_0(1 - \sum_{p\mid M_0} 1/p)$, we prove
+  (Theorem~\ref{thm:barrier}) that $N_0 \ge 3$ is odd and
+  $P_1 P_2 < t_0(N_0)^3 M_0^2 + t_0(N_0)^2 M_0$, where
+  $t_0(N_0) = \bigl(1 + \sqrt{1+4N_0}\bigr)/(2N_0)$ (giving
+  $P_1 P_2 < 0.4523 M_0^2$ whenever $M_0 \ge 10^5$). Since
+  $M_L = P(L)\lambda(L)$ has $54{,}909$ digits while $M_0^2 \approx 10^{81{,}464}$,
+  this pinpoints why local CRT + lattice methods leave
+  $3 \le N_0 \lesssim 10^{17{,}704}$ open.
+\end{enumerate}
+
+To separate discovery from certification cleanly, we distinguish theoretical
+lemmas proved purely algebraically from computationally certified theorems
+checked by a standalone, zero-float, fail-closed Python verifier
+(\texttt{src/verify\_agoh\_giuga\_certificate.py}) consuming a serialized exact
+certificate (\texttt{certificates/agoh\_giuga\_tier2\_certificate.json}).
+
+\section{Star-Pack Dominance and the Extremal Normal-Set Theorem}
+\label{sec:starpack}
+
+Let $q_1 = 3 < q_2 = 5 < q_3 = 7 < \cdots$ denote the odd primes, so that
+$q_{27,692} = 321{,}053$. Define $L = L_{27,692}$ to be the greedy normal set
+constructed from $\{5,7\}$ up to $B := 321{,}053$: initialize $L^{(0)} = \{5,7\}$
+and scan odd primes $p \in [11, B]$ in ascending order, adjoining $p$ whenever
+no already chosen prime $r < p$ divides $p - 1$. (In Borwein, Maitland, and
+Skerritt~\cite[Definition~11]{DBLP:journals/int/BorweinMS13}, the index is
+shifted by one via $Q_k = \{q_1,\dots,q_{k-1}\}$, though the text likewise
+refers to this $8{,}135$-element set as $L_{27,692}$.) Direct exact rational
+evaluation shows $|L| = 8{,}135$, $\max(L) = 321{,}053$,
+\[
+  \sum_{p \in L} \frac{1}{p} \approx 1.000000918503 > 1,
+  \qquad
+  \sum_{p \in L \setminus \{321{,}053\}} \frac{1}{p} \approx 0.999997803752 < 1,
+\]
+and $\gap_L := \sum_{p\in L} 1/p - 1 < 1/B$. Its product $P(L) := \prod_{p\in L} p$
+satisfies $10^{40{,}732} \le P(L) < 10^{40{,}733}$ ($40{,}733$ decimal digits,
+$135{,}311$ bits).
+
+The key to replacing exponential depth-$27{,}692$ tree pruning by a $7$-leaf
+exact proof is a four-line graph-theoretic upper bound on normal subsets of an
+interval $[1,B]$.
+
+\begin{lemma}[Star-Pack Reciprocal Dominance]\label{lem:starpack}
+Let $N, F \subset \Podd$ be disjoint finite sets with $N$ normal, let
+$B \ge \max(N \cup F \cup \{3\})$, and set
+\[
+  U := \bigl\{p \in \Podd \cap [1, B] \setminus (N \cup F) :
+  \forall r \in N,\; r \nmid (p - 1) \text{ and } p \nmid (r - 1)\bigr\}.
+\]
+Suppose $U = \bigsqcup_{c\in C} A_c$ is partitioned into pairwise disjoint
+\emph{stars} $A_c = \{c\} \sqcup T_c$ such that for every $c \in C$:
+\begin{enumerate}
+  \item[(i)] $c \mid (q - 1)$ (hence $q \ge 2c + 1 > c$) for every $q \in T_c$;
+  \item[(ii)] $\capf(c) := \frac{1}{c} - \sum_{q\in T_c} \frac{1}{q} > 0$.
+\end{enumerate}
+Let $\Sigma := \sum_{p \in N \cup C} 1/p$. Let $S \subset \Podd$ be any finite
+set with $\sum_{p\in S} 1/p > 1$, $N \subseteq S$, $S \cap F = \emptyset$, and
+such that $S_{\le B} := S \cap [1, B]$ is normal (no normality is assumed on
+$S_{>B} := S \cap (B, \infty)$). Partition $C = M_0 \sqcup M_1 \sqcup M_+$ by
+\[
+  M_0 := \{c \in C : S \cap A_c = \emptyset\},
+  \quad
+  M_1 := \{c \in C : \emptyset \neq S \cap A_c \subseteq T_c\},
+  \quad
+  M_+ := \{c \in C : c \in S\}.
+\]
+Then:
+\begin{enumerate}
+  \item For every $c \in C$, $\sum_{q \in S \cap A_c} 1/q \le 1/c$, with strict
+  inequality for $c \in M_0 \cup M_1$; in particular
+  $\sum_{q \in S_{\le B}} 1/q \le \Sigma$.
+  \item If $\Sigma \le 1$, then $S_{>B} \neq \emptyset$, $\max(S) > B$, and with
+  $t := \lfloor B(1 - \Sigma)\rfloor + 1 \ge 1$ we have
+  \[
+    |S_{>B}| \ge |M_0| + t,
+    \qquad
+    |S| \ge |N \cup C| + t,
+    \qquad
+    \prod_{q\in S} q > \left(\prod_{p \in N \cup C} p\right) B^t.
+  \]
+  \item If $\Sigma > 1$ and
+  $\Sigma - 1 < \min\bigl(\frac{1}{B},\, \min_{c\in C} \capf(c)\bigr)$, then
+  $|S_{>B}| \ge |M_0|$, $|S| \ge |N \cup C|$, $\max(S) \ge B$ (with
+  $\max(S) \le B$ iff $S = N \cup C$), and $\prod_{q\in S} q \ge \prod_{p\in N\cup C} p$
+  (with equality iff $S = N \cup C$).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $S_{\le B}$ is normal and $N \subseteq S_{\le B}$, we have
+$S_{\le B} \subseteq N \sqcup U$. Within each star $A_c = \{c\}\sqcup T_c$,
+condition~(i) forbids $S_{\le B}$ from containing both $c$ and any element of
+$T_c$, so $M_0, M_1, M_+$ partition $C$ and condition~(ii) yields
+$\sum_{q\in S\cap A_c} 1/q \le 1/c$, proving~(1). Using $1/c \ge 1/B$ for
+$c \in M_0$ and $1/q < 1/B$ for $q \in S_{>B}$, we obtain
+\begin{equation}\label{eq:star-balance}
+  1 < \sum_{q\in S}\frac{1}{q}
+  \le \Sigma - \sum_{c\in M_1}\capf(c) - \sum_{c\in M_0}\frac{1}{c}
+      + \sum_{q\in S_{>B}}\frac{1}{q}
+  \le \Sigma - \frac{|M_0|}{B} + \frac{|S_{>B}|}{B},
+\end{equation}
+where the last inequality is strict whenever $S_{>B} \neq \emptyset$.
+
+In~(2), $\Sigma \le 1$ forces $S_{>B} \neq \emptyset$, hence $\max(S) > B$ and
+$|S_{>B}| > |M_0| + B(1 - \Sigma)$, so $|S_{>B}| \ge |M_0| + t$. Since each star
+in $M_+ \cup M_1$ contributes at least one prime to $S_{\le B}$,
+$|S_{\le B}| \ge |N \cup C| - |M_0|$, whence $|S| = |S_{\le B}| + |S_{>B}|
+\ge |N \cup C| + t$. For the product, each $c \in M_1$ satisfies
+$\prod_{q \in S\cap T_c} q \ge 2c + 1 > c$, while
+$\prod_{q\in S_{>B}} q > B^{|M_0|+t} \ge (\prod_{c\in M_0} c) B^t$; multiplying
+over $N, M_+, M_1$, and $S_{>B}$ gives the product inequality.
+
+In~(3), suppose first that $S_{>B} = \emptyset$. If $S \neq N \cup C$, then
+$M_0 \cup M_1 \neq \emptyset$, so~\eqref{eq:star-balance} drops by at least
+$\min(1/B, \min_{c\in C}\capf(c)) > \Sigma - 1$, contradicting
+$\sum_{q\in S} 1/q > 1$. Hence $S_{>B} = \emptyset$ forces $S = N \cup C$,
+giving the $\max(S)$ statement. If $S_{>B} \neq \emptyset$,
+then~\eqref{eq:star-balance} yields $|S_{>B}| > |M_0| - B(\Sigma - 1) > |M_0| - 1$,
+so $|S_{>B}| \ge |M_0|$. Therefore $|S| \ge |N \cup C|$, and since
+$S_{>B} \neq \emptyset$ implies $\prod_{q\in S_{>B}} q > B^{|M_0|} \ge \prod_{c\in M_0} c$
+strictly, we obtain $\prod_{q\in S} q > \prod_{p\in N\cup C} p$.
+\end{proof}
+
+Note that Lemma~\ref{lem:starpack} does \emph{not} require the center set $C$
+itself to be normal for parts~(1)--(2) to hold: any valid disjoint star
+partition of $U$ gives a rigorous upper bound. To construct a star partition
+mechanically for any leaf $(N,F)$ and cutoff $B$, we use \emph{max-capacity
+ascending Star-Pack}: scan $p \in U$ in ascending order; if any already chosen
+center $c < p$ divides $p - 1$ and has remaining capacity strictly exceeding
+$1/p$, assign $p$ to the leaf set $T_c$ of the divisor $c$ with largest
+remaining capacity; otherwise make $p$ a new center with $T_p = \emptyset$.
+Whenever no center divides $p - 1$ for any other center (zero non-normal
+centers), the resulting set $N \cup C$ coincides identically with the greedy
+normal set extending $N$ within $[1,B]\setminus F$.
+
+\begin{theorem}[Exact Extremal Normal-Set Theorem; computationally certified]
+\label{thm:extremal}
+Partition all subsets of $\Podd$ into the seven mutually exclusive, exhaustive
+leaves of Table~\ref{tab:leaves} according to membership in $\{3,5,7,23,83\}$.
+Then:
+\begin{enumerate}
+  \item Every finite normal set $S \subset \Podd$ with $\sum_{p\in S} 1/p > 1$
+  satisfies
+  \[
+    |S| \ge 8{,}135,
+    \qquad
+    \max(S) \ge 321{,}053,
+    \qquad
+    \prod_{p\in S} p \ge P(L) > 10^{40{,}732}.
+  \]
+  Equality holds in $\max(S) = 321{,}053$ if and only if $S = L$, and in
+  $\prod_{p\in S} p = P(L)$ if and only if $S = L$. Equality in $|S| = 8{,}135$
+  is \emph{not} uniquely attained: the normal set
+  $L' = (L \setminus \{321{,}053\}) \cup \{321{,}073\}$ also satisfies
+  $|L'| = 8{,}135$ and $\sum_{p\in L'} 1/p > 1$.
+  \item \emph{(Exhaustion of Borwein--Maitland--Skerritt~\cite{DBLP:journals/int/BorweinMS13}.)}
+  In the notation of~\cite[Definition~7]{DBLP:journals/int/BorweinMS13},
+  $j_d = 8{,}135$ for every $d \ge 27{,}692$.
+  \item \emph{(Strict separation outside Leaf~2.)} Every finite normal set $S$
+  with $\sum_{p\in S} 1/p > 1$ outside Leaf~2 (i.e., not satisfying
+  $\{5,7,23,83\}\subseteq S$ and $3\notin S$) obeys
+  \[
+    |S| \ge 8{,}846,
+    \qquad
+    \prod_{p\in S} p \ge 10^{44{,}627} \text{ ($\ge 44{,}628$ digits)},
+    \qquad
+    \max(S) \ge 352{,}757.
+  \]
+  The bound $\max(S) \ge 352{,}757$ is sharp and uniquely attained outside
+  Leaf~2 by the $8{,}880$-element greedy normal set $L^{(3)}$ of Leaf~3
+  ($N=\{5,7,23\}$, $F=\{3,83\}$).
+  \item Max-capacity ascending Star-Pack on Leaf~2 has zero non-normal centers
+  throughout $[1, 352{,}756]$ ($|L_{338,032}| = 8{,}512$,
+  $|L_{352,756}| = 8{,}855$).
+\end{enumerate}
+\end{theorem}
+
+\begin{table}[t]
+\centering
+\caption{Exact $7$-leaf max-capacity ascending Star-Pack partition at $B = 321{,}053$
+(all bounds certified in exact rational/integer arithmetic). Outside Leaf~2, every
+leaf also satisfies $\Sigma < 1$ at $B_{\mathrm{out}} = 352{,}756$, while Leaf~3
+attains normality and $\Sigma > 1$ uniquely at $352{,}757$.}
+\label{tab:leaves}
+\small
+\begin{tabular}{cllrrrrr}
+\toprule
+Leaf & Forced $N$ & Forbidden $F$ & $|N\cup C|$ & Non-norm. & $t$ & Min $|S|$ & Min digits \\
+\midrule
+1 & $\{3\}$ & $\emptyset$ & $8{,}009$ & $2{,}299$ & $6{,}748$ & $14{,}757$ & $77{,}339$ \\
+2 & $\{5,7,23,83\}$ & $\{3\}$ & $8{,}135$ & $0$ & $0$ & $8{,}135$ & $40{,}733$ \\
+3 & $\{5,7,23\}$ & $\{3,83\}$ & $8{,}156$ & $0$ & $690$ & $8{,}846$ & $44{,}628$ \\
+4 & $\{5,7\}$ & $\{3,23\}$ & $8{,}286$ & $17$ & $4{,}355$ & $12{,}641$ & $65{,}487$ \\
+5 & $\{7\}$ & $\{3,5\}$ & $10{,}455$ & $1{,}882$ & $3{,}239$ & $13{,}694$ & $70{,}327$ \\
+6 & $\{5\}$ & $\{3,7\}$ & $10{,}174$ & $1{,}453$ & $16{,}000$ & $26{,}174$ & $139{,}312$ \\
+7 & $\emptyset$ & $\{3,5,7\}$ & $12{,}304$ & $3{,}347$ & $12{,}116$ & $24{,}420$ & $128{,}610$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proof}
+Exhaustiveness and mutual exclusivity of the $7$ leaves are verified directly
+over all $2^5 = 32$ truth assignments to $\{3,5,7,23,83\}$. Running max-capacity
+ascending Star-Pack at $B = 321{,}053$ and independently checking every star's
+exact rational sum $\sum_{q\in T_c} 1/q < 1/c$ yields Table~\ref{tab:leaves}. On
+Leaf~2, the star packing has zero non-normal centers, so $N \cup C = L$ with
+$\Sigma = \sum_{p\in L} 1/p > 1$, $\Sigma - 1 < 1/B$, and
+$\min_{c\in C}\capf(c) = 1/B$ (attained at $c = B$, which has $T_B = \emptyset$).
+Applying Lemma~\ref{lem:starpack}(3) on Leaf~2 and Lemma~\ref{lem:starpack}(2)
+on Leaves~1 and~3--7 proves part~(1), together with exact verification of the
+alternative $8{,}135$-element normal set $L'$.
+
+For part~(2), recall that in~\cite{DBLP:journals/int/BorweinMS13} a vertex
+$N \in \mathcal{N}_{27,692}$ is a normal subset of $Q_{27,692} = \{3,\dots,321{,}037\}$
+and $T_{27,692}(N)$ appends odd primes $\ge q_{27,692} = B$ compatible with $N$
+until the reciprocal sum exceeds $1$. Every appended prime satisfies $1/q \le 1/B$,
+and $T_{27,692}(N) \cap [1, B - 1] = N$ is normal. Because
+Lemma~\ref{lem:starpack} never assumes mutual normality among primes $\ge B$
+(and the non-strict bound $1/q \le 1/B$ still gives
+$|T_{27,692}(N)| > |L| - B(\Sigma - 1) > 8{,}134$ on Leaf~2 and $>8{,}845$ on
+Leaves~1, 3--7), we have $j_{27,692}(N) \ge 8{,}135$ for all
+$N \in \mathcal{N}_{27,692}$. Combining this with monotonicity
+\cite[Theorem~10]{DBLP:journals/int/BorweinMS13} and the explicit normal set $L$
+gives $8{,}135 \le j_{27,692} \le j_d \le |L| = 8{,}135$ for all $d \ge 27{,}692$.
+
+For part~(3), running max-capacity ascending Star-Pack at $B_{\mathrm{out}} = 352{,}756$
+on Leaves~1 and~3--7 certifies $\Sigma < 1$ on every non-Leaf-2 leaf, so
+Lemma~\ref{lem:starpack}(2) gives $\max(S) \ge 352{,}757$ outside Leaf~2. At
+$B = 352{,}757$, Leaf~3 produces zero non-normal centers, $8{,}880$ elements,
+$\Sigma > 1$, and $\min_{c\in C}\capf(c) > \Sigma - 1$; hence
+Lemma~\ref{lem:starpack}(3) proves unique attainment at $L^{(3)}$. Part~(4) is
+checked directly at $B_{\mathrm{out}} = 352{,}756$.
+\end{proof}
+
+\begin{remark}\label{rem:open5}
+Theorem~\ref{thm:extremal}(2) establishes the full lower-bound consequence of
+Open Problem~5 of Borwein et al.~\cite{Borwein_1996} (and sharpens their
+$36{,}069$-digit estimate to the exact normal-set minimum of $40{,}733$ digits),
+while leaving open whether $j_d = j_d(L_d)$ holds at every intermediate depth
+$312 \le d \le 27{,}691$.
+\end{remark}
+
+\section{Elementary Mod-16 Congruences and Value Splitting (\texorpdfstring{$a \ge 2$}{a >= 2})}
+\label{sec:elementary}
+
+To break past the $8{,}135$-prime normal-set ceiling, we exploit the Giuga
+equation~\eqref{eq:recip}. Let $n = \prod_{p\in S} p$ be an odd weak Giuga
+number ($p \mid n/p - 1$ for all $p \in S$, no Carmichael condition required),
+with $m = |S|$ and value $a \in \mathbb{Z}_{\ge 1}$. Let
+$c_k := \#\{p \in S : p \equiv k \pmod 8\}$ for $k \in \{1,3,5,7\}$, and let
+$r := c_3 + c_7 = \#\{p \in S : p \equiv 3 \pmod 4\}$.
+
+\begin{theorem}[Mod-$16$ and Mod-$8$ Congruences]\label{thm:mod16}
+For every odd squarefree integer $n = \prod_{p\in S} p$ satisfying
+$\sum_{p\in S} 1/p - 1/n = a \in \mathbb{Z}_{\ge 1}$:
+\begin{enumerate}
+  \item $r \equiv 0 \text{ or } 1 \pmod 4$;
+  \item modulo $16$,
+  \[
+    m - a - 1 \equiv
+    \begin{cases}
+      2r + 8c_3 \pmod{16} & \text{if } r \equiv 0 \pmod 4,\\
+      2(r - 1) + 8c_5 \pmod{16} & \text{if } r \equiv 1 \pmod 4;
+    \end{cases}
+  \]
+  \item in particular, $m - a \equiv 1 \pmod 8$ (cf.\ Mavrotheris~\cite{Mavrotheris2026}).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For part~(1), the Giuga condition gives $\prod_{q\in S\setminus\{p\}} q \equiv 1 \pmod p$
+for each $p \in S$. Taking Legendre symbols and multiplying over all $p \in S$,
+quadratic reciprocity yields
+\[
+  1 = \prod_{p\in S} \prod_{q\neq p}\left(\frac{q}{p}\right)
+    = \prod_{\{p,q\}\subset S}\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)
+    = (-1)^{\binom{r}{2}},
+\]
+so $\binom{r}{2}$ is even, i.e., $r \equiv 0$ or $1 \pmod 4$.
+
+For part~(2), reducing~\eqref{eq:recip} in $(\mathbb{Z}/16\mathbb{Z})^\times$
+gives $a \equiv \sum_{p\in S} p^{-1} - n^{-1} \pmod{16}$. Observe that for any
+odd $p$, $(p + 8)(p^{-1} + 8) = 1 + 8(p + p^{-1}) + 64 \equiv 1 \pmod{16}$ since
+$p + p^{-1}$ is even. Thus shifting any factor $p \mapsto p + 8$ shifts both
+$p^{-1}$ and $n^{-1} = (n/p)^{-1}p^{-1}$ by $+8 \pmod{16}$, leaving
+$\sum_{p\in S} p^{-1} - n^{-1} \pmod{16}$ invariant. We may therefore replace
+each prime by its representative in $\{1,3,5,7\} \pmod 8$. Using
+$1^{-1}\equiv 1$, $3^{-1}\equiv 11$, $5^{-1}\equiv 13$, $7^{-1}\equiv 7 \pmod{16}$,
+we have
+\[
+  \sum_{p\in S} p^{-1} \equiv c_1 + 11c_3 + 13c_5 + 7c_7
+  = m + 10c_3 + 12c_5 + 6c_7 \pmod{16}.
+\]
+In $(\mathbb{Z}/16\mathbb{Z})^\times$, we have $11 \equiv 7\cdot 13$, $7^2\equiv 1$,
+and $13^k = (1 - 4)^k \equiv 1 - 4k \pmod{16}$ (since $4^2 = 16 \equiv 0 \pmod{16}$).
+Hence
+\[
+  n^{-1} \equiv 11^{c_3} 13^{c_5} 7^{c_7}
+  \equiv 7^{c_3 + c_7} 13^{c_3 + c_5}
+  \equiv 7^r\bigl(1 - 4(c_3 + c_5)\bigr) \pmod{16}.
+\]
+If $r \equiv 0 \pmod 4$, then $7^r \equiv 1 \pmod{16}$, so
+\[
+  a \equiv (m + 10c_3 + 12c_5 + 6c_7) - (1 - 4c_3 - 4c_5)
+    \equiv m - 1 + 6r + 8c_3 \pmod{16}.
+\]
+Since $4r \equiv 0 \pmod{16}$, we have $-6r \equiv 2r \pmod{16}$ and
+$-8c_3 \equiv 8c_3 \pmod{16}$, giving $m - a - 1 \equiv 2r + 8c_3 \pmod{16}$.
+If $r \equiv 1 \pmod 4$, then $7^r \equiv 7 \pmod{16}$ and
+$7(1 - 4(c_3+c_5)) \equiv 7 + 4(c_3+c_5) \pmod{16}$, giving
+\[
+  a \equiv m - 7 + 6c_3 + 8c_5 + 6c_7 = m - 1 + 6(r - 1) + 8c_5 \pmod{16},
+\]
+and hence $m - a - 1 \equiv 2(r - 1) + 8c_5 \pmod{16}$. Reducing modulo $8$
+gives~(3) immediately.
+\end{proof}
+
+\begin{remark}
+Mavrotheris~\cite{Mavrotheris2026} derived the odd-Giuga congruence
+$m - a \equiv 1 \pmod 8$ using unimodular star lattices and van der Blij's
+characteristic-vector theorem; Theorem~\ref{thm:mod16} provides an elementary
+$10$-line proof and lifts the identity modulo~$16$. Note that when $a = 1$,
+Theorem~\ref{thm:mod16}(3) forces $m \equiv 2 \pmod 8$, lifting
+Theorem~\ref{thm:extremal}'s $|S| \ge 8{,}135$ immediately to
+$\omega(n) \ge 8{,}138$.
+\end{remark}
+
+We next separate the value $a \ge 2$ regime by a purely elementary argument
+requiring zero analytic prime-counting estimates.
+
+\begin{theorem}[Elementary $a \ge 2$ Splitting Bound]\label{thm:a-ge-2}
+Every composite Agoh--Giuga counterexample $n$ of value $a \ge 2$ satisfies
+\[
+  \omega(n) \ge 329{,}188,
+  \qquad
+  P(n) \ge 1{,}284{,}211,
+  \qquad
+  n > 10^{1{,}808{,}610} \text{ ($\ge 1{,}808{,}611$ decimal digits)}.
+\]
+\end{theorem}
+
+\begin{proof}
+Write $S = \PP(n) = \{p_1 < p_2 < \dots < p_m\}$. Since $\sum_{i=1}^m 1/p_i > a \ge 2$,
+let $k$ be the least index such that $\sum_{i=1}^k 1/p_i > 1$, and set
+$S_1 = \{p_1,\dots,p_k\}$ and $S_2 = \{p_{k+1},\dots,p_m\}$. Because $S_1$ is
+normal with $\sum_{p\in S_1} 1/p > 1$, Theorem~\ref{thm:extremal}(1) gives
+$k \ge 8{,}135$, $p_k \ge 321{,}053$, and $\prod_{p\in S_1} p \ge P(L) \ge 10^{40{,}732}$.
+By minimality of $k$, $\sum_{i=1}^{k-1} 1/p_i \le 1$, so
+$\sum_{p\in S_1} 1/p \le 1 + 1/p_k$. Hence
+\[
+  1 - \frac{1}{p_k} < \left(a + \frac{1}{n}\right) - \sum_{p\in S_1}\frac{1}{p}
+  = \sum_{p\in S_2}\frac{1}{p} < \frac{|S_2|}{p_k},
+\]
+forcing $|S_2| > p_k - 1$, i.e., $|S_2| \ge p_k \ge 321{,}053$. Thus
+$\omega(n) = k + |S_2| \ge 8{,}135 + 321{,}053 = 329{,}188$.
+
+Every prime $p \in S_2$ exceeds $321{,}053$ and is coprime to $6$. Since
+$321{,}053 = 6\cdot 53{,}508 + 5$, the integers $> 321{,}053$ coprime to $6$
+alternate by $+2$ and $+4$, so the $321{,}053$rd such integer is
+$321{,}053 + 6\cdot 160{,}526 + 2 = 1{,}284{,}211$ (which is prime), giving
+$P(n) \ge 1{,}284{,}211$. Finally, exact integer exponentiation confirms
+$321{,}053^{10{,}000} > 10^{55{,}065}$ and $321{,}053^{1{,}053} > 10^{5{,}798}$,
+whence
+\begin{align*}
+  n &> P(L)\cdot 321{,}053^{321{,}053}
+     = P(L)\cdot\bigl(321{,}053^{10{,}000}\bigr)^{32}\cdot 321{,}053^{1{,}053} \\
+    &> 10^{40{,}732 + 32\cdot 55{,}065 + 5{,}798} = 10^{1{,}808{,}610}. \qedhere
+\end{align*}
+\end{proof}
+
+\section{Breaking Past the Normal-Set Ceiling via Forced-Prime CRT}
+\label{sec:tier2}
+
+Theorems~\ref{thm:extremal} and~\ref{thm:a-ge-2} reduce all unconditional
+exclusion bounds below $8{,}846$ prime factors, largest prime $352{,}757$, or
+$44{,}628$ decimal digits to the single case $a = 1$ inside Leaf~2
+($\{5,7,23,83\}\subseteq S$, $3\notin S$). On this leaf, any normal base set
+$L_{\mathrm{base}} = L_{P_0}$ ($P_0 \le 352{,}756$) turns the simultaneous
+congruences~\eqref{eq:local} into a massive $2$-dimensional lattice constraint.
+
+\begin{lemma}[Forced-Prime CRT and $2$D Lattice Box Refutation]\label{lem:crt-lattice}
+Let $L_{\mathrm{base}} \subset \Podd$ be a finite normal set with
+$P_{\mathrm{base}} := \prod_{p\in L_{\mathrm{base}}} p$. For any composite
+Agoh--Giuga counterexample $n = \prod_{p\in S} p$, define the coprime positive
+integers
+\[
+  Y := \prod_{p \in L_{\mathrm{base}} \setminus S} p,
+  \qquad
+  X := \prod_{q \in S \setminus L_{\mathrm{base}}} q,
+  \qquad
+  \text{so that } Y n = P_{\mathrm{base}} X \text{ and } \gcd(X, Y) = 1.
+\]
+Let $F \subseteq S \cap L_{\mathrm{base}}$ be any nonempty subset of forced
+primes, and set $\lambda(F) := \operatorname{lcm}_{p\in F}(p - 1)$ and
+$M_F := \bigl(\prod_{p\in F} p\bigr)\lambda(F)$. Then:
+\begin{enumerate}
+  \item Normality of $L_{\mathrm{base}}$ ensures that the moduli $\{p : p\in F\}$
+  and $\lambda(F)$ are pairwise coprime and $\gcd(P_{\mathrm{base}}, \lambda(F)) = 1$.
+  Consequently, the Giuga and Carmichael congruences~\eqref{eq:local} at $p\in F$
+  combine via CRT into a unique residue $C_F \in (\mathbb{Z}/M_F\mathbb{Z})^\times$
+  such that
+  \begin{equation}\label{eq:crt-main}
+    X \equiv C_F Y \pmod{M_F}.
+  \end{equation}
+  \item Let $(u, v) \in \mathbb{Z}^2 \setminus \{(0,0)\}$ satisfy
+  $u \equiv C_F v \pmod{M_F}$, and let $U, R \ge 1$ be integers. If either
+  \begin{enumerate}
+    \item[(a)] $uv < 0$ and $|v|R + |u|U < M_F$, or
+    \item[(b)] $uv > 0$, $|v|R < M_F$, $|u|U < M_F$, and
+    $\max\bigl(|u|/g - R,\, |v|/g - U\bigr) > 0$ where $g = \gcd(|u|, |v|)$,
+  \end{enumerate}
+  then no coprime integer pair $(X, Y) \in [1, R] \times [1, U]$ satisfies~\eqref{eq:crt-main}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For~(1), if a prime $q \in L_{\mathrm{base}}$ divided $p - 1$ for some
+$p \in F \subseteq L_{\mathrm{base}}$, then $q \neq p$ would contradict normality
+of $L_{\mathrm{base}}$. Thus $\gcd(P_{\mathrm{base}}, \lambda(F)) = 1$, and in
+particular $\gcd(\prod_{p\in F} p, \lambda(F)) = 1$. For each $p \in F$, $p \nmid Y$
+and $p^2 \nmid P_{\mathrm{base}}$, so the Giuga condition $n/p \equiv 1 \pmod p$
+becomes $(P_{\mathrm{base}}/p) X \equiv Y \pmod p$, while the Carmichael
+condition $n \equiv 1 \pmod{\lambda(F)}$ becomes
+$P_{\mathrm{base}} X \equiv Y \pmod{\lambda(F)}$. Since every coefficient is
+invertible modulo its modulus, CRT yields a unique $C_F \bmod M_F$ satisfying~\eqref{eq:crt-main}.
+
+For~(2), $u \equiv C_F v$ and $X \equiv C_F Y \pmod{M_F}$ give
+$vX - uY \equiv 0 \pmod{M_F}$. Under~(a), $vX - uY$ has constant sign and
+satisfies $0 < |vX - uY| = |v|X + |u|Y \le |v|R + |u|U < M_F$, a contradiction.
+Under~(b), $-M_F < -|u|U < vX - uY < |v|R < M_F$, forcing $vX = uY$; since
+$\gcd(X,Y) = 1$, we must have $(X,Y) = (|u|/g, |v|/g)$, which lies outside
+$[1,R]\times [1,U]$.
+\end{proof}
+
+Notice that checking a witness $(u,v)$ in Lemma~\ref{lem:crt-lattice}(2) takes
+just one modular multiplication and two integer comparisons, with zero floating
+point operations. In practice, whenever $4UR < M_F$, running the extended
+Euclidean algorithm on $(M_F, C_F)$ down to the threshold
+$r_i \le \lfloor \sqrt{M_F R / U}\rfloor$ produces a valid witness directly.
+
+\begin{theorem}[Unconditional Tier 2 Bounds and Dichotomies; computationally certified]
+\label{thm:tier2}
+Every composite counterexample $n$ to the Agoh--Giuga conjecture satisfies
+unconditionally
+\[
+  \omega(n) \ge 8{,}138,
+  \qquad
+  P(n) \ge 326{,}057,
+  \qquad
+  n \ge 10^{40{,}921} \text{ ($\ge 40{,}922$ decimal digits)}.
+\]
+Moreover, for the smallest admissible prime-factor counts ($a = 1$,
+$\omega(n) \equiv 2 \pmod 8$):
+\begin{enumerate}
+  \item if $\omega(n) = 8{,}138$, then $n \ge 10^{51{,}797}$ ($\ge 51{,}798$
+  digits) and $P(n) > 10^{3{,}685}$;
+  \item if $\omega(n) = 8{,}146$, then $n \ge 10^{41{,}894}$ ($\ge 41{,}895$
+  digits) and $P(n) > 10^{103}$;
+  \item if $\omega(n) = 8{,}154$, then $n \ge 10^{41{,}127}$ ($\ge 41{,}128$
+  digits).
+\end{enumerate}
+\end{theorem}
+
+The proof splits cleanly into two independent exact certifications: one for
+$P(n) \ge 326{,}057$ and one for $n \ge 10^{40{,}921}$ (together with the three
+dichotomies).
+
+\subsection{Certification of \texorpdfstring{$P(n) \ge 326{,}057$}{P(n) >= 326,057}}\label{sec:proof-maxp}
+
+Suppose $n$ is a counterexample with $P(n) \le P_0 := 326{,}056$ (the next prime
+is $326{,}057$). By Theorems~\ref{thm:extremal} and~\ref{thm:a-ge-2}, $a = 1$
+and $S$ lies in Leaf~2. Let $L_0 = L_{P_0}$ be the Leaf-2 max-capacity Star-Pack
+center set up to $P_0$: $|L_0| = 8{,}254$, $\max(L_0) = 325{,}999$, and $L_0$ is
+$100\%$ normal by Theorem~\ref{thm:extremal}(4). Because $P(n) \le P_0$, we have
+$S_{>P_0} = \emptyset$, so every omitted center $c \in M_0 \cup M_1$ draws
+strictly from $\gap_0 := \sum_{p\in L_0} 1/p - 1 \approx 3.6865 \times 10^{-4}$:
+\begin{equation}\label{eq:p0-budget}
+  \sum_{c \in M_0} \frac{1}{c}
+  + \sum_{c \in M_1} \left(\frac{1}{c} - \sum_{q\in S\cap T_c}\frac{1}{q}\right)
+  < \gap_0.
+\end{equation}
+Fixing the exact integer scale $D = 10^{12}$, set
+$B_{\mathrm{int}} := \lceil D\cdot\gap_0\rceil$ and
+$\capf_{\mathrm{int}}(c) := \lfloor D\cdot\capf_{P_0}(c)\rfloor$. Any center
+$c \in C_0$ with $\capf_{\mathrm{int}}(c) \ge B_{\mathrm{int}}$ cannot lie in
+$M_0 \cup M_1$ and is therefore forced into $S$; together with $\{5,7,23,83\}$
+this gives an initial forced set $F_0$ of size $104$.
+
+For any state with forced set $F_{\mathrm{cur}} \subseteq S$ and optional
+omitted prime $p_{\mathrm{omit}} \notin S$, we bound $Y = \prod_{c\in L_0\setminus S} c$
+as a function of $k = |S \setminus L_0|$ via a sound $2$-dimensional integer
+knapsack. Each remaining star $c$ with $T_c \neq \emptyset$ has cost at least
+$\capf_{\mathrm{int}}(c)$ and contributes at most $|T_c|$ leaves to $k$; computing
+$\mathrm{dp}[ds][k]$ (minimum total scaled cost using $ds$ stars with full leaf
+counts summing to $k$, initialized with $p_{\mathrm{omit}}$ in $M_0$ or $M_1$)
+up to the exact fractional-knapsack upper bound $K_{\mathrm{ub}}$, and then
+taking the \emph{suffix minimum} $\mathrm{dp}_{\mathrm{sound}}[ds][k] :=
+\min_{k' \ge k} \mathrm{dp}[ds][k']$, guarantees soundness for \emph{every}
+partial leaf subset $W_c \subseteq T_c$ (since replacing $W_c$ by $T_c$ cannot
+increase cost and only increases $k$). For each feasible $(ds,k)$, the remaining
+budget $B_{\mathrm{int}} - \mathrm{dp}_{\mathrm{sound}}[ds][k]$ caps
+$m_0 = |M_0 \setminus \{p_{\mathrm{omit}}\}|$, yielding an exact integer bound
+$U(k) = \max_{ds} \bigl(p_{\mathrm{omit}} \prod_{j=1}^{ds} c^{\mathrm{star}}_{\mathrm{top},j}
+\prod_{j=1}^{m_0} L_{0,\mathrm{top},j}\bigr)$.
+
+We close $P_0 = 326{,}056$ by a \emph{linear forcing cascade}: iterate through
+non-forced primes $p \in L_0 \setminus F_0$ in descending order of
+$\capf_{\mathrm{int}}(p)$ (skipping only $p = 233$, which has $47$ leaves and
+remains unconstrained). At each step, Branch~A assumes $p \notin S$: subtracting
+$\capf_{\mathrm{int}}(p)$ immediately forces dozens to thousands of additional
+primes $F_{\mathrm{ext}}(p) \subseteq S$, and $k$-bucketing $[0, k_{\max}]$
+into contiguous intervals $[k_{\mathrm{lo}}, k_{\mathrm{hi}}]$ with
+$U_{\mathrm{box}} = \max_{k\in [k_{\mathrm{lo}}, k_{\mathrm{hi}}]} U(k)$ and
+$R_{\mathrm{box}} = P_0^{k_{\mathrm{hi}}}$ refutes Branch~A via
+Lemma~\ref{lem:crt-lattice}. Branch~B then adjoins $p$ to $F_{\mathrm{cur}}$.
+After $152$ Branch~A steps ($|F_{\mathrm{cur}}| = 256$), Branch~B is refuted
+directly in $3$ buckets ($[0,84]$, $[85,102]$, $[103,104]$), totaling $153$
+branches and $155$ exact $(U,R)$ witnesses.
+
+\subsection{Certification of \texorpdfstring{$n \ge 10^{40{,}921}$}{n >= 10\textasciicircum 40921} and the \texorpdfstring{$\omega(n)$}{omega(n)} Dichotomies}
+\label{sec:proof-digits}
+
+By Theorems~\ref{thm:extremal}, \ref{thm:mod16}, and~\ref{thm:a-ge-2}, any
+counterexample with fewer than $40{,}922$ decimal digits satisfies $a = 1$, lies
+in Leaf~2, and has $|S| = 8{,}135 + \Delta m$ with $\Delta m \equiv 3 \pmod 8$,
+$\Delta m \ge 3$. Work relative to $L_{\mathrm{base}} = L$ ($B = 321{,}053$).
+Writing $m_0 = |M_0|$, $m_1 = |M_1|$, $E = \sum_{c\in M_1}(|S\cap T_c| - 1) \ge 0$,
+and $s_{\mathrm{out}} = |S_{>B}| = m_0 + \Delta m - E$, rearranging the
+Star-Pack identity~\eqref{eq:star-balance} yields two exact inequalities:
+\begin{align}
+  \sum_{c\in M_0}\left(\frac{1}{c} - \frac{1}{B}\right)
+  + \sum_{c\in M_1} \delta(c)
+  + \sum_{q\in S_{>B}}\left(\frac{1}{B} - \frac{1}{q}\right)
+  &< \gap_L + \frac{\Delta m}{B},
+  \label{eq:delta-budget}\\
+  \sum_{c\in M_0}\frac{1}{c} + \sum_{c\in M_1}\capf(c)
+  &< \gap_L + T_F[m_0 + \Delta m],
+  \label{eq:tail-budget}
+\end{align}
+where $\delta(c) := \capf(c) + (|T_c| - 1)/B > 0$, and $T_F[s]$ is the sum of
+$1/q$ over the first $s$ primes $> B$ compatible with a forced set $F \subseteq S$
+(quantized conservatively at exact integer scale $S_4 = 10^{18}$: ceiling for
+$\gap_L$ and $T_F$, floor for $1/c$ and $\capf(c)$). Note that
+$T_F[m_0 + \Delta m] - \sum_{j=1}^{m_0} 1/L_{8{,}136-j}$ is strictly decreasing
+in $m_0$, giving an exact upper bound $m_{0,\max}$ and progressively stronger
+forced sets on every interval $m_0 \in [m_{0,\mathrm{lo}}, m_{0,\mathrm{hi}}]$.
+
+Moreover, \eqref{eq:delta-budget} immediately yields an elementary per-rank
+prime bound: ordering the $d + \Delta m$ primes of $S \setminus L$ in descending
+order $x_1 > x_2 > \dots$, for every rank $j \ge \Delta m + 1$, if $x_j > B$
+then $x_1,\dots,x_j \in S_{>B}$ each contribute at least $1/B - 1/x_j$ to the
+third sum in~\eqref{eq:delta-budget}, forcing
+\begin{equation}\label{eq:per-rank}
+  x_j < \frac{j B}{j - \Delta m - B\cdot\gap_L}
+  \qquad (j \ge \Delta m + 1),
+\end{equation}
+which also holds trivially when $x_j \le B$. The exact floor $H_j$ strictly
+below the right-hand side of~\eqref{eq:per-rank} bounds
+$X \le P(n)^{\Delta m}\prod_{j=\Delta m+1}^{\Delta m + d_{\max}} H_j$.
+
+We verify all six $\Delta m$ regimes as summarized in Table~\ref{tab:tier2}:
+\begin{itemize}
+  \item \textbf{$\Delta m = 3$ ($\omega = 8{,}138$) and $\Delta m = 11$
+  ($\omega = 8{,}146$):} Inequality~\eqref{eq:delta-budget} forces
+  $|F_3| = 2{,}184$ ($\operatorname{digits}(M_{F_3}) = 12{,}837$) and
+  $|F_{11}| = 832$ ($\operatorname{digits}(M_{F_{11}}) = 4{,}362$), while
+  \eqref{eq:tail-budget} bounds $d_{\max} = 161$ and $d_{\max} = 291$. One
+  witness each for $Q_{\lceil} = \lceil(10^{D-1}-1)/P(L)\rceil$ certifies
+  $D = 51{,}798$ ($\Delta m = 3$) and $D = 41{,}895$ ($\Delta m = 11$), while
+  one witness each with~\eqref{eq:per-rank} certifies $P(n) > 10^{3{,}685}$ and
+  $P(n) > 10^{103}$.
+
+  \item \textbf{$\Delta m = 19$ ($\omega = 8{,}154$):} Here $|F_{19,0}| = 529$
+  and $m_{0,\max} = 377$. Splitting $[0, 377]$ into $4$ intervals
+  $[0,180]$, $[181,240]$, $[241,300]$, $[301,377]$ raises $|F|$ from $529$ to
+  $643, 798, 1{,}201$, refuting $n < 10^{41{,}127}$ ($\ge 41{,}128$ digits) in
+  $4$ witnesses.
+
+  \item \textbf{$\Delta m = 27$ ($\omega = 8{,}162$):} Here $|F_{27,0}| = 391$
+  ($392$--$1{,}233$ across intervals) and $m_{0,\max} = 448$. Under $n \le 10^{40{,}921} - 1$
+  ($Q_{\lceil} = \lceil(10^{40{,}921}-1)/P(L)\rceil$), we partition $[0,448]$
+  into $8$ intervals: $[0,120]$, $[121,175]$, $[176,225]$, $[226,270]$,
+  $[271,310]$, $[311,345]$, $[346,380]$, $[381,448]$. The first and last two
+  intervals close directly ($1$ pair each); the five middle intervals each close
+  by a linear forcing cascade over $p \in L \setminus F_{\mathrm{base}}$
+  (guarding $p < L_{8{,}136 - m_{0,\mathrm{hi}}}$ so omitted primes remain
+  disjoint from the top $m_0$ primes of $L$), totaling $683$ exact witnesses.
+
+  \item \textbf{$\Delta m = 35$ and $\Delta m \ge 43$ (Zero-Float Lagrangian):}
+  For any integer $0 < A < B$, define
+  $f_A(q) := \log_B(q/B) + A(1/B - 1/q)$. Since $f_A(q) > 0$ for $q > B$ and
+  $f_A(q) \le 0$ for $q \le B$, for every nonempty $W_c \subseteq T_c$ we have
+  $\sum_{q\in W_c} f_A(q) \ge \sum_{q\in T_c} f_A(q)$. Hence, if every
+  non-forced star $c$ satisfies the exact integer-power condition
+  \begin{equation}\label{eq:lagrangian}
+    c^v B^{v(|T_c|-1) - u_c} \le \Bigl(\prod_{q\in T_c} q\Bigr)^v,
+    \qquad u_c := \lfloor v A\,\delta(c)\rfloor,
+  \end{equation}
+  for some positive integer $v$, then every star term $\sum_{q\in W_c} f_A(q) - f_A(c)$
+  is nonnegative, yielding
+  \[
+    \log_B\!\left(\frac{n}{P(L)}\right) > \Delta m - A\left(\gap_L + \frac{\Delta m}{B}\right)
+    = \Delta m\left(1 - \frac{A}{B}\right) - A\cdot\gap_L.
+  \]
+  With $A_{35} = 6{,}900$ on all $1{,}171$ non-$F_{35}$ stars,
+  $r_{35} > 34{,}241/1{,}000$, and the exact integer check
+  $P_{\mathrm{top}}^{1000} B^{34{,}241} \ge 10^{1000(40{,}921 - 40{,}729)}$
+  (where $P_{\mathrm{top}} = \lfloor P(L)/10^{40{,}729}\rfloor$) proves
+  $n > 10^{40{,}921}$ ($\ge 40{,}922$ digits). Globally, $A_{\mathrm{glob}} = 15{,}050 < B$
+  passes~\eqref{eq:lagrangian} on all $1{,}455$ stars of $L$; since $1 - A_{\mathrm{glob}}/B > 0$,
+  the bound increases with $\Delta m$, and at $\Delta m = 43$ we get
+  $r_{43} > 40{,}970/1{,}000$, certifying $n > 10^{40{,}958}$ ($\ge 40{,}959$
+  digits) for all $\Delta m \ge 43$.
+\end{itemize}
+Combining all regimes with Theorems~\ref{thm:extremal} and~\ref{thm:a-ge-2}
+completes the proof of Theorem~\ref{thm:tier2}.
+
+\begin{table}[t]
+\centering
+\caption{Summary of the certified Tier~2 exclusion regimes ($846$ total exact
+$(U,R)$ witnesses plus zero-float Lagrangian star checks).}
+\label{tab:tier2}
+\footnotesize
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{llcl r}
+\toprule
+Regime & Method & Forced $|F|$ & Certified bound & Pairs \\
+\midrule
+$P(n) \le 326{,}056$ & Sound $2$D knapsack + cascade & $104 \to 256$ & $P(n) \ge 326{,}057$ & $155$ \\
+$\omega(n) = 8{,}138$ ($\Delta m=3$) & Single-box CRT + rank $H_j$ & $2{,}184$ & $\ge 51{,}798$ digits; $P(n) > 10^{3{,}685}$ & $2$ \\
+$\omega(n) = 8{,}146$ ($\Delta m=11$) & Single-box CRT + rank $H_j$ & $832$ & $\ge 41{,}895$ digits; $P(n) > 10^{103}$ & $2$ \\
+$\omega(n) = 8{,}154$ ($\Delta m=19$) & $4$ $m_0$-intervals on $[0,377]$ & $529 \to 1{,}201$ & $\ge 41{,}128$ digits & $4$ \\
+$\omega(n) = 8{,}162$ ($\Delta m=27$) & $8$ $m_0$-intervals + cascades & $392 \to 1{,}233$ & $\ge 40{,}922$ digits & $683$ \\
+$\omega(n) = 8{,}170$ ($\Delta m=35$) & Zero-float Lagrangian ($6{,}900$) & $299$ & $\ge 40{,}922$ digits & $0$ \\
+$\omega(n) \ge 8{,}178$ ($\Delta m\ge 43$) & Zero-float Lagrangian ($15{,}050$) & $4$ & $\ge 40{,}959$ digits & $0$ \\
+\midrule
+Outside Leaf~2 / $a \ge 2$ & Thm.~\ref{thm:extremal} / Thm.~\ref{thm:a-ge-2} & --- & $\ge 44{,}628$ / $\ge 1{,}808{,}611$ digits & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Limitations: The Sharp \texorpdfstring{$r=2$}{r = 2} Giant-Prime Structural Barrier}
+\label{sec:barrier}
+
+Theorem~\ref{thm:tier2} shows that any small-$\omega(n)$ counterexample must
+possess enormous prime factors, yet CRT + $2$D lattice refutation cannot close
+the conjecture by itself. The obstruction is already sharp when only $r = 2$
+giant primes complete a base set $S_0$.
+
+\begin{theorem}[$r = 2$ Giant-Prime Structural Barrier]\label{thm:barrier}
+Suppose $n = M_0 P_1 P_2$ is an $a = 1$ composite Agoh--Giuga counterexample
+with $M_0 = \prod_{p\in S_0} p$ ($S_0 \neq \emptyset$) and two remaining primes
+$P_1 < P_2$. Set $N_0 := M_0\bigl(1 - \sum_{p\in S_0} 1/p\bigr) \in \mathbb{Z}$
+and $t_0(N_0) := \bigl(1 + \sqrt{1 + 4N_0}\bigr)/(2N_0)$. Then:
+\begin{enumerate}
+  \item $N_0 \ge 3$ is odd;
+  \item $P_1 P_2$ obeys the unconditional strict upper bound
+  \begin{equation}\label{eq:r2-bound}
+    P_1 P_2 < t_0(N_0)^3 M_0^2 + t_0(N_0)^2 M_0.
+  \end{equation}
+  In particular, for every $M_0 \ge 10^5$ (hence for every counterexample),
+  $P_1 P_2 < 0.4523 M_0^2$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Multiplying $1/P_1 + 1/P_2 - 1/(M_0 P_1 P_2) = N_0 / M_0$ by $M_0 P_1 P_2$ yields
+$M_0(P_1 + P_2) - 1 = N_0 P_1 P_2$. Since $M_0, P_1, P_2$ are odd, $P_1 + P_2$
+is even, so $N_0$ is positive and odd; also $S_0 \neq \emptyset$ gives $N_0 < M_0$.
+Because $N_0 P_1 P_2 = M_0 P_1 + M_0 P_2 - 1 > M_0 P_2$, we have
+$d_1 := N_0 P_1 - M_0 > 0$, and similarly $d_2 := N_0 P_2 - M_0 > d_1 > 0$,
+satisfying
+\[
+  d_1 d_2 = M_0^2 - N_0
+  \qquad\text{and}\qquad
+  M_0 P_1 - 1 = (N_0 P_1 - M_0) P_2 = d_1 P_2.
+\]
+Reducing the second identity modulo $P_2 - 1$, the Carmichael condition
+$(P_2 - 1) \mid (M_0 P_1 - 1)$ forces $(P_2 - 1) \mid d_1$, hence
+$d_1 \ge P_2 - 1$. If $N_0 = 1$, then $d_1 < d_2 = P_2 - M_0 < P_2 - 1$, a
+contradiction; thus $N_0 \ge 3$.
+
+Substituting $P_2 = (M_0 + d_2)/N_0 = (M_0 + (M_0^2 - N_0)/d_1)/N_0$ into
+$N_0(d_1 + 1) \ge N_0 P_2$ yields
+\[
+  f(d_1) := N_0 d_1^2 - (M_0 - N_0) d_1 - (M_0^2 - N_0) \ge 0,
+\]
+so $d_1 \ge x_+$, where $x_+$ is the unique positive root of $f$. Since
+$N_0 \ge 3$ and $M_0 > N_0$, one has $3M_0^2 > 4N_0$, so
+$(N_0 - 1)\sqrt{M_0^2 - N_0} \ge 2\sqrt{M_0^2 - N_0} > M_0 > M_0 - N_0$,
+whence $f(\sqrt{M_0^2 - N_0}) > 0$ and thus $x_+ < \sqrt{M_0^2 - N_0}$. Because
+\[
+  P_1 P_2 = \frac{(M_0 + d_1)(M_0 + d_2)}{N_0^2}
+          = \frac{2M_0^2 - N_0 + M_0\bigl(d_1 + (M_0^2 - N_0)/d_1\bigr)}{N_0^2}
+\]
+is strictly decreasing in $d_1$ on $(0, \sqrt{M_0^2 - N_0}]$, we obtain
+\[
+  P_1 P_2 \le \frac{(M_0 + x_+)(M_0 + (M_0^2 - N_0)/x_+)}{N_0^2}
+          = \frac{(M_0 + x_+)(x_+ + 1)}{N_0},
+\]
+using $N_0(x_+ + 1) = M_0 + (M_0^2 - N_0)/x_+$. Now $t_0 = t_0(N_0)$ satisfies
+$N_0 t_0^2 = t_0 + 1$, so $f(t_0 M_0) = N_0(t_0 M_0 + 1) > 0$, implying
+$x_+ < t_0 M_0$. Substituting $x_+ < t_0 M_0$ into the strictly increasing
+expression above gives
+\[
+  P_1 P_2 < \frac{(1 + t_0) M_0 (t_0 M_0 + 1)}{N_0}
+          = t_0^3 M_0^2 + t_0^2 M_0.
+\]
+Finally, $t_0(N_0) \le t_0(3) = (1 + \sqrt{13})/6$, where
+$t_0(3)^3 = (5 + 2\sqrt{13})/27$ and $t_0(3)^2 < 1$. The exact integer check
+$13 \cdot 200{,}000^2 < (27 \cdot 45{,}229 - 500{,}000)^2$ establishes
+$t_0(3)^3 + 10^{-5} < 0.4523$, giving $P_1 P_2 < 0.4523 M_0^2$ for all
+$M_0 \ge 10^5$.
+\end{proof}
+
+\begin{remark}[Why local CRT cannot settle giant-prime completions]
+Even if every prime of $L$ were forced, the full CRT modulus
+$M_L = P(L)\lambda(L)$ has exact decimal digit length $54{,}909$
+($\operatorname{digits}(P(L)) = 40{,}733$, $\operatorname{digits}(\lambda(L)) = 14{,}176$),
+whereas $M_0^2 \approx P(L)^2 \approx 10^{81{,}464}$. Because
+$t_0(N_0)^3 \sim N_0^{-3/2}$, the inequality $M_L < t_0(N_0)^3 M_0^2$ remains
+satisfied across the entire range $3 \le N_0 \lesssim 10^{17{,}704}$. Eliminating
+giant-prime completions therefore lies strictly beyond $2$-dimensional lattice
+refutation on local CRT congruences. Note also that the $+t_0(N_0)^2 M_0$ term
+in~\eqref{eq:r2-bound} is mathematically necessary: at the exact boundary
+$d_1 = x_+$ (corresponding to $d_1 = P_2 - 1$), $P_1 P_2$ exceeds
+$t_0(N_0)^3 M_0^2$ by $\Theta(M_0)$.
+\end{remark}
+
+\section{Reproducibility, Exact Data, and Disclosures}\label{sec:repro}
+
+All computational theorems in this paper are independently reproducible from
+scratch using Python~3 standard library alone, with zero external dependencies
+and zero floating-point arithmetic in the verifier. Table~\ref{tab:digests}
+records the exact canonical integer invariants verified by the standalone
+script \path{src/verify_agoh_giuga_certificate.py}.
+
+\begin{table}[htbp]
+\centering
+\caption{Canonical exact integer invariants certified without floating-point arithmetic.}
+\label{tab:digests}
+\small
+\begin{tabular}{llrr}
+\toprule
+Quantity & Definition & Digits & Bits \\
+\midrule
+$P(L)$ & $\prod_{p\in L_{27,692}} p$ ($|L|=8{,}135$, $\max=321{,}053$) & $40{,}733$ & $135{,}311$ \\
+$P_{8138}$ & $P(L)\cdot 321{,}073\cdot 321{,}109\cdot 321{,}143$ & $40{,}750$ & $135{,}366$ \\
+$M_L$ & $P(L)\cdot \operatorname{lcm}_{p\in L}(p-1)$ & $54{,}909$ & $182{,}403$ \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.25em}
+\footnotesize
+Binary big-endian SHA-256 digests:\\
+$P(L)$: \texttt{826dad79c2ef410c85a9bd4cb8f3b1ea01dddfabfec8363badc427ca9f4ea7bb}\\
+$P_{8138}$: \texttt{54e7192a3b8d0ea5cc571755ff05d9c4e39f788f73acedee41eae134dd439276}\\
+$M_L$: \texttt{e37b93406f70df4da505ed071a96a0e9f581ab8c770a0bdefc875e98ed836db0}
+\end{table}
+
+\paragraph{Reproduction commands.}
+From the project root directory (\texttt{agoh\_giuga/}), the certificate is
+generated and independently verified by:
+{\small
+\begin{verbatim}
+python3 src/generate_agoh_giuga_certificate.py
+python3 src/verify_agoh_giuga_certificate.py \
+  certificates/agoh_giuga_tier2_certificate.json
+python3 -m unittest tests/test_agoh_giuga_tier2.py -v
+\end{verbatim}
+}
+On CPython~3.13.5, generation takes approximately $20$ seconds, producing the
+$2.68\,\mathrm{MB}$ JSON certificate
+(\texttt{agoh\_giuga\_tier2\_certificate.json}), and the standalone zero-float
+verifier independently audits all $7$ leaves, the exhaustive mod-$16$ table,
+the $a \ge 2$ inequalities, all $846$ lattice witnesses, and the zero-float
+Lagrangian checks in approximately $15.6$ seconds. The unit test suite includes
+an abstract-syntax-tree audit confirming that the verifier contains zero
+floating-point constructs, together with fail-closed tamper tests.
+
+\paragraph{Computational and AI assistance disclosure.}
+The mathematical proofs, Star-Pack algorithm, forced-prime CRT cascades, exact
+certificate generator, standalone zero-float verifier, and manuscript text were
+developed with AI research-assistant tooling. No interactive proof assistant
+(such as Lean, Coq, or Isabelle) was used. Every mathematical deduction was
+independently audited, and every computational assertion is certified
+deterministically by the accompanying zero-float verifier and SHA-256 release
+manifest. Author attribution, affiliations, contact details, and acknowledgments
+remain anonymized pending user confirmation prior to journal submission.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

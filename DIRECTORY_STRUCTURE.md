@@ -1,13 +1,13 @@
 # Repository directory / 完整目录层级
 
-**460 manuscripts / 2,383 pages** (edition of 2026-11-19: the Claude Code collection has seven manuscripts, CC-P01, added on 2026-11-16 and revised since, CC-P02, CC-P03 and CC-P04, added on 2026-11-17, CC-P05 and CC-P06, added on 2026-11-18, and CC-P07, added on 2026-11-19; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
+**461 manuscripts / 2,396 pages** (edition of 2026-11-27: the Neon collection adds one manuscript, NEON-P01, produced with Gemini 4 Neon; the Claude Code collection has seven manuscripts, CC-P01, added on 2026-11-16 and revised since, CC-P02, CC-P03 and CC-P04, added on 2026-11-17, CC-P05 and CC-P06, added on 2026-11-18, and CC-P07, added on 2026-11-19; the edition of 2026-09-17 had 453 / 2,312). BigWIN2 is the corrected origin collection for all 223 manuscripts from this workflow, not a one-paper net increment. This correction adds no new PDFs. GitHub publication is user-authorized; only a verified remote push establishes completion.
 
 ```text
 AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              460 PDFs / 2383 pages
+├── archive-manifest.json              461 PDFs / 2396 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -27,17 +27,19 @@ AI-Has-Taste/
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
 │   ├── ClaudeCode/                    7 PDFs (added 2026-11-16 to 2026-11-19)
-│   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
+│   ├── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
+│   └── Neon/                          1 PDF (added 2026-11-27; Gemini 4 Neon)
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
     ├── ClaudeCode/                    7 paired packages (CC-P01 to CC-P07)
-    └── BigWIN2/                       223 paired packages, including conjectures
-        ├── prepare.py / build.py      verify bytes / disposable rebuild
-        └── <archive-id>/
-            ├── README.md / package.json
-            └── source/               original relative paths and file bytes
-                ├── manuscript/       or original paper/conjecture-note layout
-                └── evidence/         code, exact data and proof
+    ├── BigWIN2/                       223 paired packages, including conjectures
+    │   ├── prepare.py / build.py      verify bytes / disposable rebuild
+    │   └── <archive-id>/
+    │       ├── README.md / package.json
+    │       └── source/               original relative paths and file bytes
+    │           ├── manuscript/       or original paper/conjecture-note layout
+    │           └── evidence/         code, exact data and proof
+    └── Neon/                          1 paired package (NEON-P01; Gemini 4 Neon)
 ```
 
 ## Collections and deduplication / 分组与去重

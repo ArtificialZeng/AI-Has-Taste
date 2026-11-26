@@ -6,7 +6,7 @@
 
 **From Answer Generation to Research-Agenda Generation**
 
-**460 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
+**461 Research Manuscripts · Proofs · Disproofs · Partial Results · AI-Proposed Conjectures**
 
 > **Can AI decide what mathematics is worth pursuing next?**
 
@@ -126,11 +126,11 @@ Fresh AI review is not external peer review. A successful script is not a proof 
 </details>
 
 
-The archive contains **460 research manuscripts / 2,383 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 460 original open problems have been solved.
+The archive contains **461 research manuscripts / 2,396 pages**, including proofs, disproofs, partial results and papers introducing new conjectures. This is a manuscript count, not a claim that 461 original open problems have been solved.
 
-Seven PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16. BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
+Eight PDF folders distinguish origin collections and conjecture papers; `pdfs/ClaudeCode/` was added on 2026-11-16 and `pdfs/Neon/` was added on 2026-11-27 ([Neon](#neon)). BigWIN2 links each PDF, LaTeX entry and reproduction package; conjecture papers are under `pdfs/ai-conjecture/`.
 
-**Language policy:** English and Simplified Chinese include the corrected BigWIN2 collection and the Claude Code addition. French, Russian, German and Japanese retain their preceding archive snapshots. Existing PDF bytes and authorship are unchanged.
+**Language policy:** English and Simplified Chinese include the corrected BigWIN2 collection, the Claude Code addition, and the Neon addition. French, Russian, German and Japanese retain their preceding archive snapshots. Existing PDF bytes and authorship are unchanged.
 
 <details open>
 <summary><strong>Claude Code · 7 manuscripts · added 2026-11-16 to 2026-11-19</strong></summary>
@@ -751,6 +751,22 @@ All 116 papers in the browser-driven collection are listed together below. Its a
 </details>
 
 
+<details open>
+<summary><strong>Neon (Gemini 4 Neon) · 1 manuscript · added 2026-11-27</strong></summary>
+
+<a id="neon"></a>
+
+A separate collection for results obtained with **Gemini 4 Neon** under the author's direction. Each entry has a paired package with LaTeX, exact zero-float certificates, proofs, audit records, and stand-alone verification scripts. These manuscripts are not externally peer reviewed; scope and limitations are stated in each package.
+
+[PDFs](pdfs/Neon/) · [LaTeX + reproduction](reproducible_source_code/Neon/) · [Directory](DIRECTORY_STRUCTURE.md)
+
+| ID + PDF | LaTeX source | Reproducible source code |
+|---|---|---|
+| **NEON-P01** · Neon (Gemini 4 Neon)<br>[Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh–Giuga Conjecture](pdfs/Neon/NEON-P01_Star_Pack_Dominance_and_Forced_Prime_CRT_Lower_Bounds_for_the_Agoh_Giuga_Conjecture.pdf)<br>**Partial theorem (full conjecture remains open).** Exhausts the 76-year normal-set paradigm via a 4-line *Star-Pack Reciprocal Dominance Lemma* and a 7-leaf partition (zero external compute): every normal set $S\subset\mathbb{P}_{\mathrm{odd}}$ with $\sum_{p\in S}1/p>1$ has $|S|\ge 8{,}135$, $\max(S)\ge 321{,}053$ (equality iff $S=L_{27,692}$), and $\prod S \ge P(L_{27,692})$ ($40{,}733$ digits, equality iff $S=L_{27,692}$), proving $j_d=8{,}135$ for all $d\ge 27{,}692$ in Borwein–Maitland–Skerritt (2013) and exact outside-Leaf-2 minimum $\max(S)\ge 352{,}757$. Breaks past the normal-set ceiling by combining an elementary mod-16 congruence ($m-a\equiv 1\pmod 8$, independently proved via lattices by Mavrotheris 2026), a 3-line elementary $a\ge 2$ bound ($\omega(n)\ge 329{,}188$, $P(n)\ge 1{,}284{,}211$, $\ge 1{,}808{,}611$ digits), and forced-prime CRT + 2D lattice refutation (846 exact witnesses) to prove unconditionally $\omega(n)\ge 8{,}138$, $P(n)\ge 326{,}057$, and $n\ge 10^{40{,}921}$ ($\ge 40{,}922$ decimal digits, more than doubling the 2013 19,908-digit record), with sharp dichotomies ($\omega=8{,}138\implies\ge 51{,}798$ digits and $P(n)>10^{3{,}685}$; $\omega=8{,}146\implies\ge 41{,}895$ digits and $P(n)>10^{103}$; $\omega=8{,}154\implies\ge 41{,}128$ digits) and a sharp $r=2$ giant-prime structural barrier ($N_0\ge 3$ odd, $P_1P_2 < t_0(N_0)^3 M_0^2 + t_0(N_0)^2 M_0 < 0.4523 M_0^2$). Independently verified by an AST-audited 100% zero-float Python stdlib verifier in ~15 s. | [main.tex](reproducible_source_code/Neon/NEON-P01/source/manuscript/main.tex) | [NEON-P01](reproducible_source_code/Neon/NEON-P01/) |
+
+</details>
+
+
 <details>
 <summary><strong>What the Claims Mean—and What They Do Not</strong></summary>
 
@@ -781,7 +797,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              460 PDFs / 2383 pages
+├── archive-manifest.json              461 PDFs / 2396 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -801,17 +817,19 @@ AI-Has-Taste/
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
 │   ├── ClaudeCode/                    7 PDFs (added 2026-11-16 to 2026-11-19)
-│   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
+│   ├── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
+│   └── Neon/                          1 PDF (added 2026-11-27; Gemini 4 Neon)
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
     ├── ClaudeCode/                    7 paired packages (CC-P01 to CC-P07)
-    └── BigWIN2/                       223 paired packages, including conjectures
-        ├── prepare.py / build.py      verify bytes / disposable rebuild
-        └── <archive-id>/
-            ├── README.md / package.json
-            └── source/               original relative paths and file bytes
-                ├── manuscript/       or original paper/conjecture-note layout
-                └── evidence/         code, exact data and proof
+    ├── BigWIN2/                       223 paired packages, including conjectures
+    │   ├── prepare.py / build.py      verify bytes / disposable rebuild
+    │   └── <archive-id>/
+    │       ├── README.md / package.json
+    │       └── source/               original relative paths and file bytes
+    │           ├── manuscript/       or original paper/conjecture-note layout
+    │           └── evidence/         code, exact data and proof
+    └── Neon/                          1 paired package (NEON-P01; Gemini 4 Neon)
 ~~~
 
 **ai-conjecture** is the directory name; **AI-Proposed Conjectures** is the more precise display label. Papers that only prove or refute existing conjectures stay in their origin collections; papers explicitly introducing a new conjecture are collected in ai-conjecture.
@@ -824,7 +842,7 @@ AI-Has-Taste/
 
 The next release should make more of the research replayable—not merely make the archive larger.
 
-*Archive edition: November 19, 2026 (460 manuscripts; seventh Claude Code manuscript added). Edition of November 18, 2026: 459 manuscripts. Edition of November 17, 2026: 457 manuscripts. Edition of November 16, 2026: 454 manuscripts; Claude Code collection added. Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
+*Archive edition: November 27, 2026 (461 manuscripts; Neon collection added with NEON-P01, produced with Gemini 4 Neon). Edition of November 19, 2026: 460 manuscripts (seventh Claude Code manuscript added). Edition of November 18, 2026: 459 manuscripts. Edition of November 17, 2026: 457 manuscripts. Edition of November 16, 2026: 454 manuscripts; Claude Code collection added. Previous edition: September 17, 2026 (453 manuscripts; corrected BigWIN2 attribution).*
 
 **AI Has Taste. The question is no longer only whether it can find an answer—but how it chooses the next question.**
 
@@ -849,3 +867,7 @@ The next release should make more of the research replayable—not merely make t
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
 **Claude Code addition (2026-11-16):** One manuscript, CC-P01, was added in the new Claude Code collection with its paired package. It was revised several times the same day, to add the n/2-coil theorem, then lower bounds, and finally the least number of coils for every n ≥ 11; its title and PDF changed. On 2026-11-17 a second manuscript, CC-P02 (closed knight's tours with 7.5 n + 13 crossings), was added with its paired package, and later that day a third, CC-P03 (removable edges of flower snark line graphs, TAOCP 7.2.2.3–233), and a fourth, CC-P04 (largest removable edge sets of the pinched Sierpinski gasket, TAOCP 7.2.2.3–227). On 2026-11-18 a fifth, CC-P05 (three remarks on TAOCP Pre-Fascicle 8A: exercises 157(b), 204(b), 205), was added. Later the same day a sixth, CC-P06 (a fully clued Slitherlink diagram with exactly five solutions, TAOCP 7.2.2.1-411), was added. On 2026-11-19 a seventh, CC-P07 (no nine poison cards in Late Binding solitaire, TAOCP 7.2.2.2-486), was added. The archive now has 460 manuscripts / 2,383 pages. No other PDF, source or gate byte was changed. The seven manuscripts are not externally peer reviewed.
 <!-- END CLAUDECODE RELEASE NOTE -->
+
+<!-- BEGIN NEON RELEASE NOTE -->
+**Neon addition (2026-11-27):** One manuscript, NEON-P01 (*Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh–Giuga Conjecture*, 13 pages, partial theorem), produced with **Gemini 4 Neon** under the author's direction, was added at the end of the catalog in the new `Neon` collection with its paired LaTeX source, exact zero-float certificate (846 2D lattice witnesses), standalone AST-audited zero-float verifier, unit/tamper test suite, and audit records. The archive now has 461 manuscripts / 2,396 pages. No existing PDF, source, or gate byte was changed. This manuscript is not externally peer reviewed; the full Agoh–Giuga conjecture remains open.
+<!-- END NEON RELEASE NOTE -->

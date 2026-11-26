@@ -6,7 +6,7 @@
 
 **从生成答案，到生成研究议程**
 
-**460 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
+**461 份数学研究文稿 · 证明 · 反驳 · 部分结果 · AI 自主提出的猜想**
 
 > **AI 能否决定：下一步，什么数学值得研究？**
 
@@ -126,11 +126,11 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
-本仓库共 **460 份数学研究文稿／2,383 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了460道原始开放问题。
+本仓库共 **461 份数学研究文稿／2,396 页**，包括证明、反驳、部分结果及提出新猜想的论文。这是文稿数量，不代表完整解决了461道原始开放问题。
 
-七个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
+八个PDF目录按来源和猜想类型区分（`pdfs/ClaudeCode/` 于2026-11-16新增，`pdfs/Neon/` 于2026-11-27新增，[Neon](#neon)）；BigWIN2逐篇链接PDF、LaTeX及复现材料，猜想稿统一位于 `pdfs/ai-conjecture/`。
 
-**语言说明：** BigWIN2归属纠错与Claude Code新增条目均同步更新英文和简体中文。法文、俄文、德文和日文保留此前档案快照；原有PDF字节和署名不变。
+**语言说明：** BigWIN2归属纠错、Claude Code新增条目与Neon新增条目均同步更新英文和简体中文。法文、俄文、德文和日文保留此前档案快照；原有PDF字节和署名不变。
 
 <details open>
 <summary><strong>Claude Code · 7 篇文稿 · 2026-11-16 至 2026-11-19 新增</strong></summary>
@@ -751,6 +751,22 @@ Tang–Zhang 提出的 Schatten 范数公式是起点。精确反例表明，它
 </details>
 
 
+<details open>
+<summary><strong>Neon（Gemini 4 Neon）· 1 篇文稿 · 2026-11-27 新增</strong></summary>
+
+<a id="neon"></a>
+
+本合集单独收录在作者指导下由 **Gemini 4 Neon** 完成的研究成果。每篇配有 LaTeX 源码、零浮点精确证书、详细证明、审计记录与可独立运行的验证脚本。文稿未经外部同行评审；适用范围与局限见各配套包。
+
+[PDF](pdfs/Neon/) · [LaTeX 与复现材料](reproducible_source_code/Neon/) · [目录](DIRECTORY_STRUCTURE.md)
+
+| 编号 + PDF | LaTeX 源码 | 复现源码 |
+|---|---|---|
+| **NEON-P01** · Neon（Gemini 4 Neon）<br>[Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh–Giuga Conjecture](pdfs/Neon/NEON-P01_Star_Pack_Dominance_and_Forced_Prime_CRT_Lower_Bounds_for_the_Agoh_Giuga_Conjecture.pdf)<br>**部分定理（完整 Agoh–Giuga 猜想仍开放）。** 通过 4 行 *Star-Pack 倒数支配引理* 与 7 叶子划分零外部算力穷尽延续 76 年的正规集下界范式：任意满足 $\sum_{p\in S}1/p>1$ 的有限奇素数正规集满足 $|S|\ge 8{,}135$、$\max(S)\ge 321{,}053$（当且仅当 $S=L_{27,692}$ 取等）与 $\prod S \ge P(L_{27,692})$（$40{,}733$ 位，当且仅当 $S=L_{27,692}$ 取等），从而证明 Borwein–Maitland–Skerritt (2013) 序列对一切 $d\ge 27{,}692$ 恒有 $j_d=8{,}135$，并确定 Leaf 2 之外的精确最小最大素因子为 $352{,}757$。进一步结合初等模 16 同余（含 $m-a\equiv 1\pmod 8$，Mavrotheris 2026 年 8 月独立由幺模格证得）、3 行纯初等 $a\ge 2$ 分裂界（$\omega(n)\ge 329{,}188$、$P(n)\ge 1{,}284{,}211$、$\ge 1{,}808{,}611$ 位）以及强迫素数 CRT + 二维格精确反驳（846 组格见证），突破正规集天花板无条件证得 $\omega(n)\ge 8{,}138$、$P(n)\ge 326{,}057$、$n\ge 10^{40{,}921}$（$\ge 40{,}922$ 位十进制数字，超过 2013 年 19,908 位纪录的 2 倍），给出小素因子个数的剧烈二分跳跃（$\omega=8{,}138\implies\ge 51{,}798$ 位且 $P(n)>10^{3{,}685}$；$\omega=8{,}146\implies\ge 41{,}895$ 位且 $P(n)>10^{103}$；$\omega=8{,}154\implies\ge 41{,}128$ 位），并证明两枚巨素数补全的精确结构障碍（$N_0\ge 3$ 为奇数且 $P_1P_2 < t_0(N_0)^3 M_0^2 + t_0(N_0)^2 M_0 < 0.4523 M_0^2$）。附经 AST 审计的 100% 零浮点 Python 标准库独立验证器（约 15 秒完成全部复算）。 | [main.tex](reproducible_source_code/Neon/NEON-P01/source/manuscript/main.tex) | [NEON-P01](reproducible_source_code/Neon/NEON-P01/) |
+
+</details>
+
+
 <details>
 <summary><strong>这些主张意味着什么，又不意味着什么</strong></summary>
 
@@ -781,7 +797,7 @@ AI-Has-Taste/
 ├── README.md / README.zh-CN.md         English / 中文 catalogs
 ├── DIRECTORY_STRUCTURE.md             layout and naming
 ├── UPLOAD_GUIDE.md                    authorized publication checklist
-├── archive-manifest.json              460 PDFs / 2383 pages
+├── archive-manifest.json              461 PDFs / 2396 pages
 ├── assets/
 │   ├── BigWIN2/
 │   │   ├── catalog.json               223 manuscripts from this workflow
@@ -801,17 +817,19 @@ AI-Has-Taste/
 │   ├── BigMac2/                       55 PDFs
 │   ├── BigWIN2/                       218 PDFs
 │   ├── ClaudeCode/                    7 PDFs (added 2026-11-16 to 2026-11-19)
-│   └── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
+│   ├── ai-conjecture/                 6 PDFs: 5 BigWIN2 + 1 Smallmac
+│   └── Neon/                          1 PDF (added 2026-11-27; Gemini 4 Neon)
 └── reproducible_source_code/
     ├── BigMac1/ / BigMac2/            unchanged upstream source availability
     ├── ClaudeCode/                    7 paired packages (CC-P01 to CC-P07)
-    └── BigWIN2/                       223 paired packages, including conjectures
-        ├── prepare.py / build.py      verify bytes / disposable rebuild
-        └── <archive-id>/
-            ├── README.md / package.json
-            └── source/               original relative paths and file bytes
-                ├── manuscript/       or original paper/conjecture-note layout
-                └── evidence/         code, exact data and proof
+    ├── BigWIN2/                       223 paired packages, including conjectures
+    │   ├── prepare.py / build.py      verify bytes / disposable rebuild
+    │   └── <archive-id>/
+    │       ├── README.md / package.json
+    │       └── source/               original relative paths and file bytes
+    │           ├── manuscript/       or original paper/conjecture-note layout
+    │           └── evidence/         code, exact data and proof
+    └── Neon/                          1 paired package (NEON-P01; Gemini 4 Neon)
 ~~~
 
 目录名采用 **ai-conjecture**，展示名称采用更准确的 **AI 自主提出的猜想（AI-Proposed Conjectures）**。仅证明或反驳已有猜想的论文仍留在原来源合集；明确提出新猜想的论文则统一归入ai-conjecture。
@@ -824,7 +842,7 @@ AI-Has-Taste/
 
 下一次发布应让更多研究可以复现，而不只是让档案更大。
 
-*档案版本：2026 年 11 月 19 日（460份文稿，Claude Code合集新增第七篇）。2026 年 11 月 18 日版：459份文稿。2026 年 11 月 17 日版：457份文稿。2026 年 11 月 16 日版：454份文稿，新增Claude Code合集。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
+*档案版本：2026 年 11 月 27 日（461份文稿，新增由 Gemini 4 Neon 完成的 Neon 合集 NEON-P01）。2026 年 11 月 19 日版：460份文稿（Claude Code合集新增第七篇）。2026 年 11 月 18 日版：459份文稿。2026 年 11 月 17 日版：457份文稿。2026 年 11 月 16 日版：454份文稿，新增Claude Code合集。上一版本：2026 年 9 月 17 日（453份文稿，BigWIN2归属纠错版）。*
 
 **AI Has Taste。问题不再只是它能否找到答案，还在于它如何选择下一个问题。**
 
@@ -849,3 +867,7 @@ AI-Has-Taste/
 <!-- BEGIN CLAUDECODE RELEASE NOTE -->
 **Claude Code新增（2026-11-16）：** 在新的Claude Code合集中新增1篇文稿 CC-P01 及其配套包。该文稿当日多次修订，先加入 n/2 圈定理，再加入下界，最后得到所有 n ≥ 11 的最少圈数，标题与PDF随之更新。2026-11-17 又新增第二篇文稿 CC-P02（交叉数为 7.5 n + 13 的闭合马步巡游）及其配套包。同日稍后新增第三篇 CC-P03（花形 snark 线图的可删边，TAOCP 7.2.2.3–233）与第四篇 CC-P04（捏合 Sierpiński 垫片的最大可删边集，TAOCP 7.2.2.3–227）。2026-11-18 新增第五篇 CC-P05（关于 TAOCP 预印分册 8A 第 157(b)、204(b)、205 题的三则注记）。同日稍后新增第六篇 CC-P06（恰好有五个解的全线索 Slitherlink 盘面，TAOCP 7.2.2.1-411）。2026-11-19 新增第七篇 CC-P07（Late Binding 纸牌不存在九张毒牌，TAOCP 7.2.2.2-486）。仓库现为460份文稿／2,383页。其余PDF、源码与门控文件字节均未改动。这七篇文稿未经外部同行评审。
 <!-- END CLAUDECODE RELEASE NOTE -->
+
+<!-- BEGIN NEON RELEASE NOTE -->
+**Neon 新增（2026-11-27）：** 在目录末尾的新合集 `Neon` 中新增 1 篇由 **Gemini 4 Neon** 在作者指导下完成的文稿 NEON-P01（*Star-Pack Dominance and Forced-Prime CRT Lower Bounds for the Agoh–Giuga Conjecture*，13 页，部分定理）及其完整配套包（LaTeX 源码、含 846 组二维格见证的零浮点精确证书、经 AST 审计的独立零浮点验证器、单元测试与篡改拦截测试及审计记录）。仓库现为 461 份文稿／2,396 页。其余 PDF、源码与门控文件字节均未改动。本文稿未经外部同行评审，完整 Agoh–Giuga 猜想仍处于开放状态。
+<!-- END NEON RELEASE NOTE -->
